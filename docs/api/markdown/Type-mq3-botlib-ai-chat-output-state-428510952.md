@@ -12,7 +12,7 @@ struct State
 `State` record for ai chat output, containing `profiles`, `strings`, `actions`, `context` and `readFn` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L93)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct State
 actions
 ```
 
+Elementary-action runtime used to send say, say_team, and tell commands.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L99)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-context-context-src-mq3-botlib-ai-chat-output-ml-1625534722"></a>
 ### context
@@ -33,8 +35,10 @@ actions
 context
 ```
 
+Caller-supplied data associated with reply-file loading, reply timing, and random chat selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L101)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-filereads-filereads-src-mq3-botlib-ai-chat-output-ml-2004187990"></a>
 ### fileReads
@@ -43,8 +47,10 @@ context
 fileReads
 ```
 
+Number of source-file reads performed through the loading interface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L115)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-loaded-loaded-src-mq3-botlib-ai-chat-output-ml-669656204"></a>
 ### loaded
@@ -53,8 +59,10 @@ fileReads
 loaded
 ```
 
+True after the random-chat and reply-chat resources required for output have been loaded.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L113)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-profiles-profiles-src-mq3-botlib-ai-chat-output-ml-998170106"></a>
 ### profiles
@@ -63,8 +71,10 @@ loaded
 profiles
 ```
 
+Loaded initial-chat profiles and their cached message selections.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L95)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-randomfn-randomfn-src-mq3-botlib-ai-chat-output-ml-761153840"></a>
 ### randomFn
@@ -73,8 +83,10 @@ profiles
 randomFn
 ```
 
+Host callback that supplies the random values used by bot selection and fuzzy logic.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L107)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-randomlists-randomlists-src-mq3-botlib-ai-chat-output-ml-634272958"></a>
 ### randomLists
@@ -83,8 +95,10 @@ randomFn
 randomLists
 ```
 
+Named lists of random phrases used while expanding bot chat.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L109)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-readfn-readfn-src-mq3-botlib-ai-chat-output-ml-277947090"></a>
 ### readFn
@@ -93,8 +107,10 @@ randomLists
 readFn
 ```
 
+Host callback that reads random-chat lists and reply-chat rules.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L103)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-replies-replies-src-mq3-botlib-ai-chat-output-ml-1357086690"></a>
 ### replies
@@ -103,8 +119,10 @@ readFn
 replies
 ```
 
+Reply-chat definitions considered for an incoming message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L111)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-strings-strings-src-mq3-botlib-ai-chat-output-ml-738664330"></a>
 ### strings
@@ -113,8 +131,10 @@ replies
 strings
 ```
 
+Whitespace and synonym-normalization runtime used by chat processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L97)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-timefn-timefn-src-mq3-botlib-ai-chat-output-ml-1429620504"></a>
 ### timeFn
@@ -123,5 +143,7 @@ strings
 timeFn
 ```
 
+Host callback that supplies the current time used by the bot runtime.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L105)

@@ -12,7 +12,7 @@ struct Client
 Client record for server.pause, containing `state`, `addressType`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L20)
 
 ## Members
 
@@ -23,8 +23,10 @@ Client record for server.pause, containing `state`, `addressType`.
 addressType
 ```
 
+Network-address kind, such as loopback, IPv4, or bot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L25)
 
 <a id="field-field-mq3-server-pause-client-state-state-src-mq3-server-pause-ml-113248006"></a>
 ### state
@@ -33,5 +35,7 @@ addressType
 state
 ```
 
+Connection lifecycle value that determines whether this slot counts as a connected or playing participant.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L23)

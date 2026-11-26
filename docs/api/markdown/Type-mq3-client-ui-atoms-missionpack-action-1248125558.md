@@ -12,7 +12,7 @@ struct Action
 Stores UI atoms missionpack queued engine action, including `kind`, `arguments`, `dispatched`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L68)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI atoms missionpack queued engine action, including `kind`, `arguments`,
 arguments
 ```
 
+When constructing this record, `internal` supplies `arguments` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L73)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-action-dispatched-dispatched-src-mq3-client-ui-atoms-missionpack-ml-825758677"></a>
 ### dispatched
@@ -33,8 +35,10 @@ arguments
 dispatched
 ```
 
+True when this request is marked for native dispatch while updating postgame cvars, cached score files, and Missionpack UI state; false when its native effect is suppressed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-action-kind-kind-src-mq3-client-ui-atoms-missionpack-ml-789308703"></a>
 ### kind
@@ -43,5 +47,7 @@ dispatched
 kind
 ```
 
+Operation selector telling the host how to interpret a request emitted while updating postgame cvars, cached score files, and Missionpack UI state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L71)

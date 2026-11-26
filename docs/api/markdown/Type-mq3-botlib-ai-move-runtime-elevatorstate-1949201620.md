@@ -12,7 +12,7 @@ struct ElevatorState
 `ElevatorState` record for ai move runtime, containing `onMover`, `down`, `bottomCenter` and `maxBarrier`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L209)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct ElevatorState
 bottomCenter
 ```
 
+Center of the mover's lower support surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L215)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-elevatorstate-down-down-src-mq3-botlib-ai-move-runtime-ml-601289080"></a>
 ### down
@@ -33,8 +35,10 @@ bottomCenter
 down
 ```
 
+True when the elevator is at or moving toward its lower position.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L213)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-elevatorstate-maxbarrier-maxbarrier-src-mq3-botlib-ai-move-runtime-ml-443047090"></a>
 ### maxBarrier
@@ -43,8 +47,10 @@ down
 maxBarrier
 ```
 
+Maximum obstacle height accepted by a barrier-jump prediction.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L217)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-elevatorstate-onmover-onmover-src-mq3-botlib-ai-move-runtime-ml-926520704"></a>
 ### onMover
@@ -53,5 +59,7 @@ maxBarrier
 onMover
 ```
 
+True when the bot is standing on the queried moving platform.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L211)

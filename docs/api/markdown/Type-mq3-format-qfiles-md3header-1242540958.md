@@ -12,7 +12,7 @@ struct Md3Header
 Md3Header record for format.qfiles, containing `ident`, `version`, `name`, `flags`, `numFrames`, `numTags`, and 6 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L310)
 
 ## Members
 
@@ -23,8 +23,10 @@ Md3Header record for format.qfiles, containing `ident`, `version`, `name`, `flag
 flags
 ```
 
+Raw model flags preserved from the MD3 header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L318)
 
 <a id="field-field-mq3-format-qfiles-md3header-ident-ident-src-mq3-format-qfiles-ml-1474799768"></a>
 ### ident
@@ -33,8 +35,10 @@ flags
 ident
 ```
 
+Magic value identifying the MD3 model file.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L312)
 
 <a id="field-field-mq3-format-qfiles-md3header-name-name-src-mq3-format-qfiles-ml-934119578"></a>
 ### name
@@ -43,8 +47,10 @@ ident
 name
 ```
 
+Model name stored in the MD3 header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L316)
 
 <a id="field-field-mq3-format-qfiles-md3header-numframes-numframes-src-mq3-format-qfiles-ml-1374840288"></a>
 ### numFrames
@@ -53,8 +59,10 @@ name
 numFrames
 ```
 
+Number of animation frames represented by this model, surface, or animation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L320)
 
 <a id="field-field-mq3-format-qfiles-md3header-numskins-numskins-src-mq3-format-qfiles-ml-53218328"></a>
 ### numSkins
@@ -63,8 +71,10 @@ numFrames
 numSkins
 ```
 
+Number of skin slots declared by the model header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L326)
 
 <a id="field-field-mq3-format-qfiles-md3header-numsurfaces-numsurfaces-src-mq3-format-qfiles-ml-2025087080"></a>
 ### numSurfaces
@@ -73,8 +83,10 @@ numSkins
 numSurfaces
 ```
 
+Number of surfaces described by this model or file record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L324)
 
 <a id="field-field-mq3-format-qfiles-md3header-numtags-numtags-src-mq3-format-qfiles-ml-565113040"></a>
 ### numTags
@@ -83,8 +95,10 @@ numSurfaces
 numTags
 ```
 
+Number of attachment tags stored for each model frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L322)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofsend-ofsend-src-mq3-format-qfiles-ml-501104318"></a>
 ### ofsEnd
@@ -93,8 +107,10 @@ numTags
 ofsEnd
 ```
 
+Byte offset of the end of this serialized record, relative to its start.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L334)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofsframes-ofsframes-src-mq3-format-qfiles-ml-895018328"></a>
 ### ofsFrames
@@ -103,8 +119,10 @@ ofsEnd
 ofsFrames
 ```
 
+Byte offset from the file header to the frame records.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L328)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofssurfaces-ofssurfaces-src-mq3-format-qfiles-ml-1098422904"></a>
 ### ofsSurfaces
@@ -113,8 +131,10 @@ ofsFrames
 ofsSurfaces
 ```
 
+Byte offset from the file header to the first mesh surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L332)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofstags-ofstags-src-mq3-format-qfiles-ml-1767661788"></a>
 ### ofsTags
@@ -123,8 +143,10 @@ ofsSurfaces
 ofsTags
 ```
 
+Byte offset from the file header to the attachment tags for all frames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L330)
 
 <a id="field-field-mq3-format-qfiles-md3header-version-version-src-mq3-format-qfiles-ml-471886196"></a>
 ### version
@@ -133,5 +155,7 @@ ofsTags
 version
 ```
 
+MD3 file-format version.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L105)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L314)

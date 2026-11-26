@@ -12,7 +12,7 @@ struct Reachability
 Reachability record for format.aas, containing `areaNum`, `faceNum`, `edgeNum`, `start`, `finish`, `travelType`, and 1 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L302)
 
 ## Members
 
@@ -23,8 +23,10 @@ Reachability record for format.aas, containing `areaNum`, `faceNum`, `edgeNum`, 
 areaNum
 ```
 
+Destination area reached by this serialized navigation connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L304)
 
 <a id="field-field-mq3-format-aas-reachability-edgenum-edgenum-src-mq3-format-aas-ml-1673484050"></a>
 ### edgeNum
@@ -33,8 +35,10 @@ areaNum
 edgeNum
 ```
 
+Index of the AAS edge associated with the movement link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L308)
 
 <a id="field-field-mq3-format-aas-reachability-facenum-facenum-src-mq3-format-aas-ml-862931874"></a>
 ### faceNum
@@ -43,8 +47,10 @@ edgeNum
 faceNum
 ```
 
+Index of the AAS face associated with the movement link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L306)
 
 <a id="field-field-mq3-format-aas-reachability-finish-finish-src-mq3-format-aas-ml-987964260"></a>
 ### finish
@@ -53,8 +59,10 @@ faceNum
 finish
 ```
 
+Arrival position stored for this serialized area-to-area connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L312)
 
 <a id="field-field-mq3-format-aas-reachability-start-start-src-mq3-format-aas-ml-1316519190"></a>
 ### start
@@ -63,8 +71,10 @@ finish
 start
 ```
 
+Departure position stored for this serialized area-to-area connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L310)
 
 <a id="field-field-mq3-format-aas-reachability-traveltime-traveltime-src-mq3-format-aas-ml-1881489840"></a>
 ### travelTime
@@ -73,8 +83,10 @@ start
 travelTime
 ```
 
+AAS travel cost assigned to traversing this movement link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L316)
 
 <a id="field-field-mq3-format-aas-reachability-traveltype-traveltype-src-mq3-format-aas-ml-408034862"></a>
 ### travelType
@@ -83,5 +95,7 @@ travelTime
 travelType
 ```
 
+Encoded AAS movement type required to traverse this link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L314)

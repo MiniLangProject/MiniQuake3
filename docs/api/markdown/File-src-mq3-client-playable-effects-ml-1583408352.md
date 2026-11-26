@@ -30,7 +30,7 @@ Computes `effect!=void and nowMilliseconds>=effect.bornAt and nowMilliseconds<ef
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L155)
 
 <a id="function-function-mq3-client-playable-effects-billboardsize-function-billboardsize-depth-src-mq3-client-playable-effects-ml-1491055793"></a>
 ### billboardSize
@@ -46,7 +46,7 @@ Calls `mq3.compat.numeric.trunc32` from playable effects `billboardSize`. The fi
 | `depth` | `dynamic` | — | Value used by `size=numeric.trunc32(190.0/depth)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L175)
 
 <a id="function-function-mq3-client-playable-effects-category-function-category-classname-src-mq3-client-playable-effects-ml-886208391"></a>
 ### category
@@ -62,7 +62,7 @@ Calls `std.string.toLowerAscii`, `std.string.startsWith` from playable effects `
 | `classname` | `dynamic` | — | Value used by `lower=strings.toLowerAscii(classname)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L89)
 
 <a id="function-function-mq3-client-playable-effects-color-function-color-itemcategory-classname-src-mq3-client-playable-effects-ml-1480937640"></a>
 ### color
@@ -79,7 +79,7 @@ Calls `std.string.toLowerAscii`, `std.string.contains` from playable effects `co
 | `classname` | `dynamic` | — | Value used by `lower=strings.toLowerAscii(classname)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L104)
 
 <a id="function-function-mq3-client-playable-effects-command-function-command-a-b-rgb-src-mq3-client-playable-effects-ml-707579908"></a>
 ### command
@@ -97,7 +97,7 @@ Creates a `mq3.client.playable_effects.LineCommand` record. Assigns `a` from `a`
 | `rgb` | `dynamic` | — | Value used to initialize `LineCommand.red`, `LineCommand.green`, `LineCommand.blue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L163)
 
 <a id="constant-constant-mq3-client-playable-effects-default-effect-milliseconds-const-default-effect-milliseconds-180-src-mq3-client-playable-effects-ml-2034347384"></a>
 ### DEFAULT_EFFECT_MILLISECONDS
@@ -106,8 +106,10 @@ Creates a `mq3.client.playable_effects.LineCommand` record. Assigns `a` from `a`
 const DEFAULT_EFFECT_MILLISECONDS = 180
 ```
 
+Default effect duration in milliseconds when the caller supplies no override.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L27)
 
 <a id="function-function-mq3-client-playable-effects-defaultshot-function-defaultshot-startpoint-impactpoint-nowmilliseconds-src-mq3-client-playable-effects-ml-5949286"></a>
 ### defaultShot
@@ -125,7 +127,7 @@ Adapts `mq3.client.playable_effects.shot` to playable effects `defaultShot`, ret
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. Forwarded to `mq3.client.playable_effects.shot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L148)
 
 <a id="function-function-mq3-client-playable-effects-draw-function-draw-lines-src-mq3-client-playable-effects-ml-1232547011"></a>
 ### draw
@@ -141,7 +143,7 @@ Calls `mq3.platform.playable_window.drawLine` from playable effects `draw`. The 
 | `lines` | `dynamic` | — | Sequence whose length/content is inspected by `draw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L288)
 
 <a id="function-function-mq3-client-playable-effects-effectcolor-function-effectcolor-effect-nowmilliseconds-src-mq3-client-playable-effects-ml-1187559989"></a>
 ### effectColor
@@ -158,7 +160,7 @@ Calls `mq3.compat.numeric.trunc32` from playable effects `effectColor`. The fina
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L215)
 
 <a id="function-function-mq3-client-playable-effects-effectlines-function-effectlines-camera-effect-nowmilliseconds-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-effects-ml-1778075122"></a>
 ### effectLines
@@ -180,7 +182,7 @@ Calls `mq3.client.playable_effects.alive`, `mq3.client.playable_effects.effectCo
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L231)
 
 <a id="function-function-mq3-client-playable-effects-framelines-function-framelines-camera-items-effects-nowmilliseconds-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-effects-ml-363094809"></a>
 ### frameLines
@@ -203,7 +205,7 @@ Calls `mq3.client.playable_effects.itemLines`, `mq3.client.playable_effects.effe
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L263)
 
 <a id="function-function-mq3-client-playable-effects-item-function-item-classname-origin-src-mq3-client-playable-effects-ml-1143389209"></a>
 ### item
@@ -220,7 +222,7 @@ Calls `mq3.client.playable_effects.validPoint`, `mq3.client.playable_effects.Ite
 | `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L81)
 
 <a id="constant-constant-mq3-client-playable-effects-item-ammo-const-item-ammo-4-src-mq3-client-playable-effects-ml-1414286225"></a>
 ### ITEM_AMMO
@@ -229,8 +231,10 @@ Calls `mq3.client.playable_effects.validPoint`, `mq3.client.playable_effects.Ite
 const ITEM_AMMO = 4
 ```
 
+Pickup category used to classify ammo items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-effects-item-armor-const-item-armor-2-src-mq3-client-playable-effects-ml-1965599923"></a>
 ### ITEM_ARMOR
@@ -239,8 +243,10 @@ const ITEM_AMMO = 4
 const ITEM_ARMOR = 2
 ```
 
+Pickup category used to classify armor items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-effects-item-health-const-item-health-1-src-mq3-client-playable-effects-ml-1790964916"></a>
 ### ITEM_HEALTH
@@ -249,8 +255,10 @@ const ITEM_ARMOR = 2
 const ITEM_HEALTH = 1
 ```
 
+Pickup category used to classify health items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-effects-item-holdable-const-item-holdable-6-src-mq3-client-playable-effects-ml-1936286251"></a>
 ### ITEM_HOLDABLE
@@ -259,8 +267,10 @@ const ITEM_HEALTH = 1
 const ITEM_HOLDABLE = 6
 ```
 
+Pickup category used to classify holdable items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L23)
 
 <a id="constant-constant-mq3-client-playable-effects-item-powerup-const-item-powerup-5-src-mq3-client-playable-effects-ml-40924802"></a>
 ### ITEM_POWERUP
@@ -269,8 +279,10 @@ const ITEM_HOLDABLE = 6
 const ITEM_POWERUP = 5
 ```
 
+Pickup category used to classify powerup items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L21)
 
 <a id="constant-constant-mq3-client-playable-effects-item-team-const-item-team-7-src-mq3-client-playable-effects-ml-709972766"></a>
 ### ITEM_TEAM
@@ -279,8 +291,10 @@ const ITEM_POWERUP = 5
 const ITEM_TEAM = 7
 ```
 
+Pickup category used to classify team items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L25)
 
 <a id="constant-constant-mq3-client-playable-effects-item-unknown-const-item-unknown-0-src-mq3-client-playable-effects-ml-872995483"></a>
 ### ITEM_UNKNOWN
@@ -289,8 +303,10 @@ const ITEM_TEAM = 7
 const ITEM_UNKNOWN = 0
 ```
 
+Pickup category used to classify unknown items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-effects-item-weapon-const-item-weapon-3-src-mq3-client-playable-effects-ml-465430142"></a>
 ### ITEM_WEAPON
@@ -299,8 +315,10 @@ const ITEM_UNKNOWN = 0
 const ITEM_WEAPON = 3
 ```
 
+Pickup category used to classify weapon items for HUD presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L17)
 
 <a id="function-function-mq3-client-playable-effects-itemlines-function-itemlines-camera-marker-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-effects-ml-344706193"></a>
 ### itemLines
@@ -321,7 +339,7 @@ Calls `mq3.client.playable_viewer.projectPoint`, `mq3.client.playable_effects.ca
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L189)
 
 - [mq3.client.playable_effects.ItemMarker](Type-mq3-client-playable-effects-itemmarker-799855165.md) — struct
 - [mq3.client.playable_effects.LineCommand](Type-mq3-client-playable-effects-linecommand-1903700667.md) — struct
@@ -340,7 +358,7 @@ Calls `mq3.client.playable_effects.alive` from playable effects `liveEffects`. T
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L248)
 
 <a id="constant-constant-mq3-client-playable-effects-max-effect-milliseconds-const-max-effect-milliseconds-2000-src-mq3-client-playable-effects-ml-865715543"></a>
 ### MAX_EFFECT_MILLISECONDS
@@ -349,8 +367,10 @@ Calls `mq3.client.playable_effects.alive` from playable effects `liveEffects`. T
 const MAX_EFFECT_MILLISECONDS = 2000
 ```
 
+Upper duration bound in milliseconds for effect processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L29)
 
 <a id="function-function-mq3-client-playable-effects-screenpoint-function-screenpoint-x-y-depth-src-mq3-client-playable-effects-ml-840422420"></a>
 ### screenPoint
@@ -368,7 +388,7 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable effects `screenPoint
 | `depth` | `dynamic` | — | Argument 3 of `mq3.client.playable_viewer.ScreenPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L171)
 
 <a id="function-function-mq3-client-playable-effects-shot-function-shot-startpoint-impactpoint-nowmilliseconds-durationmilliseconds-src-mq3-client-playable-effects-ml-1413885170"></a>
 ### shot
@@ -387,7 +407,7 @@ Calls `mq3.client.playable_effects.validPoint`, `mq3.client.playable_effects.Sho
 | `durationMilliseconds` | `dynamic` | — | Value used by `if durationMilliseconds<=0 or durationMilliseconds>MAX_EFFECT_MILLISECONDS then return error(7503,"shot effect duration is outside preview bou...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L125)
 
 - [mq3.client.playable_effects.ShotEffect](Type-mq3-client-playable-effects-shoteffect-731222753.md) — struct
 <a id="function-function-mq3-client-playable-effects-shotframelines-function-shotframelines-camera-effects-nowmilliseconds-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-effects-ml-2130632891"></a>
@@ -410,7 +430,7 @@ Effects-only pass used when pickups are represented by their retail MD3 assets. 
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L280)
 
 <a id="function-function-mq3-client-playable-effects-validpoint-function-validpoint-point-src-mq3-client-playable-effects-ml-1983630522"></a>
 ### validPoint
@@ -426,7 +446,7 @@ Computes `point!=void and len(point)==3` for playable effects `validPoint`.
 | `point` | `dynamic` | — | Sequence whose length/content is inspected by `validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L76)
 
 <a id="function-function-mq3-client-playable-effects-weaponshot-function-weaponshot-key-classname-startpoint-impactpoint-normal-worldhit-nowmilliseconds-src-mq3-client-playable-effects-ml-1403798156"></a>
 ### weaponShot
@@ -448,4 +468,4 @@ Calls `mq3.client.playable_effects.defaultShot` from playable effects `weaponSho
 | `nowMilliseconds` | `dynamic` | — | Current monotonic/frame clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L139)

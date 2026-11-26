@@ -30,7 +30,7 @@ Calls `mq3.client.playable_weapon_sounds.findClip`, `mq3.client.playable_weapon_
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L120)
 
 - [mq3.client.playable_weapon_sounds.Catalog](Type-mq3-client-playable-weapon-sounds-catalog-1734826936.md) — struct
 <a id="function-function-mq3-client-playable-weapon-sounds-choose-function-choose-clips-sequence-src-mq3-client-playable-weapon-sounds-ml-67292786"></a>
@@ -48,7 +48,7 @@ Evaluates playable weapon sounds `choose` and returns `void`, `clips[index].soun
 | `sequence` | `dynamic` | — | Value used by `index=sequence%len(clips)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L170)
 
 - [mq3.client.playable_weapon_sounds.Clip](Type-mq3-client-playable-weapon-sounds-clip-2067069723.md) — struct
 <a id="function-function-mq3-client-playable-weapon-sounds-decodeclip-function-decodeclip-path-data-src-mq3-client-playable-weapon-sounds-ml-1102755113"></a>
@@ -66,7 +66,7 @@ Calls `mq3.audio.wav.decode`, `mq3.client.playable_weapon_sounds.Clip` from play
 | `data` | `dynamic` | — | Value used by `decoded=try(wav.decode(data))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L103)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-definition-function-definition-name-src-mq3-client-playable-weapon-sounds-ml-852724781"></a>
 ### definition
@@ -82,7 +82,7 @@ Calls `mq3.client.playable_weapon_sounds.definitions`, `mq3.client.playable_weap
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable weapon sounds resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L86)
 
 - [mq3.client.playable_weapon_sounds.Definition](Type-mq3-client-playable-weapon-sounds-definition-2089340608.md) — struct
 <a id="function-function-mq3-client-playable-weapon-sounds-definitions-function-definitions-src-mq3-client-playable-weapon-sounds-ml-522742786"></a>
@@ -95,7 +95,7 @@ function definitions()
 Builds the playable weapon sounds `definitions` sequence from `[ Definition("gauntlet","weapon_gauntlet",["sound/weapons/melee/fstrun.wav"],[],PICKUP_PATH), Definition("machinegun","weapon_machinegun",["sound/weapons/machinegun/machgf1b.wav","sound/weapons/mac...`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L58)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-fail-function-fail-message-src-mq3-client-playable-weapon-sounds-ml-445929423"></a>
 ### fail
@@ -111,7 +111,7 @@ Creates the playable weapon sounds error `7570` with diagnostic text `"Weapon so
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"Weapon sounds: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L55)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-find-function-find-catalog-name-src-mq3-client-playable-weapon-sounds-ml-776154144"></a>
 ### find
@@ -128,7 +128,7 @@ Searches the playable weapon sounds collection for find, returning `void` when n
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable weapon sounds resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L161)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-findclip-function-findclip-clips-path-src-mq3-client-playable-weapon-sounds-ml-141987948"></a>
 ### findClip
@@ -145,7 +145,7 @@ Searches the playable weapon sounds collection for find clip, returning `void` w
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L95)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-firesound-function-firesound-catalog-name-sequence-src-mq3-client-playable-weapon-sounds-ml-803747819"></a>
 ### fireSound
@@ -163,7 +163,7 @@ Calls `mq3.client.playable_weapon_sounds.find`, `mq3.client.playable_weapon_soun
 | `sequence` | `dynamic` | — | Value used by `return choose(weapon.fire,sequence)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L180)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-impactsound-function-impactsound-catalog-name-sequence-src-mq3-client-playable-weapon-sounds-ml-538135095"></a>
 ### impactSound
@@ -181,7 +181,7 @@ Calls `mq3.client.playable_weapon_sounds.find`, `mq3.client.playable_weapon_soun
 | `sequence` | `dynamic` | — | Value used by `return choose(weapon.impact,sequence)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L185)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-isname-function-isname-def-name-src-mq3-client-playable-weapon-sounds-ml-1698181248"></a>
 ### isName
@@ -198,7 +198,7 @@ Calls `stringEqualsIgnoreCaseAscii` from playable weapon sounds `isName`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable weapon sounds resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L75)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-load-function-load-archive-src-mq3-client-playable-weapon-sounds-ml-1066428982"></a>
 ### load
@@ -214,7 +214,7 @@ Calls `mq3.client.playable_weapon_sounds.definitions`, `mq3.client.playable_weap
 | `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L140)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-loadclip-function-loadclip-archive-path-src-mq3-client-playable-weapon-sounds-ml-104378969"></a>
 ### loadClip
@@ -231,7 +231,7 @@ Calls `mq3.format.pk3.read`, `mq3.client.playable_weapon_sounds.decodeClip` from
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L111)
 
 <a id="constant-constant-mq3-client-playable-weapon-sounds-pickup-path-const-pickup-path-sound-misc-w-pkup-wav-src-mq3-client-playable-weapon-sounds-ml-208607306"></a>
 ### PICKUP_PATH
@@ -240,8 +240,10 @@ Calls `mq3.format.pk3.read`, `mq3.client.playable_weapon_sounds.decodeClip` from
 const PICKUP_PATH = "sound/misc/w_pkup.wav"
 ```
 
+Virtual asset path used to load the pickup path renderer or menu resource.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L9)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-pickupsound-function-pickupsound-catalog-name-src-mq3-client-playable-weapon-sounds-ml-288725150"></a>
 ### pickupSound
@@ -258,7 +260,7 @@ Calls `mq3.client.playable_weapon_sounds.find` from playable weapon sounds `pick
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable weapon sounds resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L189)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-play-function-play-sound-src-mq3-client-playable-weapon-sounds-ml-899781055"></a>
 ### play
@@ -274,7 +276,7 @@ Calls `mq3.platform.playable_audio.play` from playable weapon sounds `play`.
 | `sound` | `dynamic` | — | Sound handle or asset name passed to the audio action. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L193)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-resolve-function-resolve-clips-paths-src-mq3-client-playable-weapon-sounds-ml-840070931"></a>
 ### resolve
@@ -291,6 +293,6 @@ Calls `mq3.client.playable_weapon_sounds.findClip` from playable weapon sounds `
 | `paths` | `dynamic` | — | Value used by `for each path in paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L129)
 
 - [mq3.client.playable_weapon_sounds.WeaponSounds](Type-mq3-client-playable-weapon-sounds-weaponsounds-2125466897.md) — struct

@@ -28,7 +28,7 @@ Validates positive RGBA image dimensions, overflow limits, and the available pix
 | `height` | `dynamic` | — | Input tested by `width<1 or height<1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L20)
 
 <a id="function-function-mq3-renderer-image-processing-copypixels-function-copypixels-pixels-count-src-mq3-renderer-image-processing-ml-163311812"></a>
 ### copyPixels
@@ -45,7 +45,7 @@ Builds `output[i]` in `mq3.renderer.image_processing.copyPixels`; returns `outpu
 | `count` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L31)
 
 <a id="function-function-mq3-renderer-image-processing-fail-function-fail-message-src-mq3-renderer-image-processing-ml-2100642975"></a>
 ### fail
@@ -61,7 +61,7 @@ Creates error `7160` with message `"image processing: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7160,"image processing: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L12)
 
 <a id="function-function-mq3-renderer-image-processing-ispoweroftwo-function-ispoweroftwo-value-src-mq3-renderer-image-processing-ml-772254649"></a>
 ### isPowerOfTwo
@@ -77,7 +77,7 @@ Computes `value>0 and (value&(value-1))==0` for `mq3.renderer.image_processing.i
 | `value` | `dynamic` | — | Input used in the result expression `value>0 and (value&(value-1))==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L125)
 
 <a id="function-function-mq3-renderer-image-processing-lightscale-function-lightscale-pixels-width-height-onlygamma-devicesupportsgamma-gammatable-intensitytable-src-mq3-renderer-image-processing-ml-338221746"></a>
 ### lightScale
@@ -99,7 +99,7 @@ R_LightScaleTexture with tables supplied by the renderer color-mapping owner.
 | `intensityTable` | `dynamic` | — | Indexed input read at `value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L75)
 
 <a id="constant-constant-mq3-renderer-image-processing-max-resample-width-const-max-resample-width-2048-src-mq3-renderer-image-processing-ml-1423819327"></a>
 ### MAX_RESAMPLE_WIDTH
@@ -108,8 +108,10 @@ R_LightScaleTexture with tables supplied by the renderer color-mapping owner.
 const MAX_RESAMPLE_WIDTH = 2048
 ```
 
+Largest scanline width supported by the image resampling workspace.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L8)
 
 <a id="function-function-mq3-renderer-image-processing-mipmapfiltered-function-mipmapfiltered-pixels-width-height-src-mq3-renderer-image-processing-ml-317123300"></a>
 ### mipMapFiltered
@@ -127,7 +129,7 @@ Proper linear R_MipMap2 filter with the original power-of-two wrapping masks.
 | `height` | `dynamic` | — | Value forwarded as `height` to `mq3.renderer.image_processing.checkedPixels`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L133)
 
 <a id="function-function-mq3-renderer-image-processing-mipmapsimple-function-mipmapsimple-pixels-width-height-src-mq3-renderer-image-processing-ml-1397981732"></a>
 ### mipMapSimple
@@ -145,7 +147,7 @@ Simple R_MipMap path. The one-dimensional case follows its adjacent-pixel rule.
 | `height` | `dynamic` | — | Value forwarded as `height` to `mq3.renderer.image_processing.checkedPixels`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L99)
 
 <a id="function-function-mq3-renderer-image-processing-resample-function-resample-pixels-inwidth-inheight-outwidth-outheight-src-mq3-renderer-image-processing-ml-879919253"></a>
 ### resample
@@ -165,4 +167,4 @@ Exact fixed-point sample positions and four-tap average from ResampleTexture.
 | `outHeight` | `dynamic` | — | Input tested by `outWidth<1 or outHeight<1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L43)

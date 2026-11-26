@@ -12,7 +12,7 @@ struct State
 Stores input command state, including `left`, `right`, `forward`, `back`, `lookup`, `lookdown` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L80)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores input command state, including `left`, `right`, `forward`, `back`, `looku
 back
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L90)
 
 <a id="field-field-mq3-client-input-command-state-buttons-buttons-src-mq3-client-input-command-ml-962803582"></a>
 ### buttons
@@ -33,8 +35,10 @@ back
 buttons
 ```
 
+When constructing this record, `create` supplies `values` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L116)
 
 <a id="field-field-mq3-client-input-command-state-down-down-src-mq3-client-input-command-ml-1985989714"></a>
 ### down
@@ -43,8 +47,10 @@ buttons
 down
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L114)
 
 <a id="field-field-mq3-client-input-command-state-forward-forward-src-mq3-client-input-command-ml-12042258"></a>
 ### forward
@@ -53,8 +59,10 @@ down
 forward
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L87)
 
 <a id="field-field-mq3-client-input-command-state-joystickaxis-joystickaxis-src-mq3-client-input-command-ml-1801244024"></a>
 ### joystickAxis
@@ -63,8 +71,10 @@ forward
 joystickAxis
 ```
 
+Latest sampled joystick-axis values used by user-command generation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L130)
 
 <a id="field-field-mq3-client-input-command-state-left-left-src-mq3-client-input-command-ml-1523357660"></a>
 ### left
@@ -73,8 +83,10 @@ joystickAxis
 left
 ```
 
+Left boundary of the interactive or clipped region.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L82)
 
 <a id="field-field-mq3-client-input-command-state-lookdown-lookdown-src-mq3-client-input-command-ml-294368248"></a>
 ### lookdown
@@ -83,8 +95,10 @@ left
 lookdown
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `adjustAngles` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L96)
 
 <a id="field-field-mq3-client-input-command-state-lookup-lookup-src-mq3-client-input-command-ml-28006274"></a>
 ### lookup
@@ -93,8 +107,10 @@ lookdown
 lookup
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `adjustAngles` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L93)
 
 <a id="field-field-mq3-client-input-command-state-mlooking-mlooking-src-mq3-client-input-command-ml-1096099210"></a>
 ### mlooking
@@ -103,8 +119,10 @@ lookup
 mlooking
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `mouseMove` and `joystickMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L119)
 
 <a id="field-field-mq3-client-input-command-state-mousedx-mousedx-src-mq3-client-input-command-ml-2082947062"></a>
 ### mouseDx
@@ -113,8 +131,10 @@ mlooking
 mouseDx
 ```
 
+Buffered horizontal mouse movement awaiting user-command generation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L123)
 
 <a id="field-field-mq3-client-input-command-state-mousedy-mousedy-src-mq3-client-input-command-ml-1248231354"></a>
 ### mouseDy
@@ -123,8 +143,10 @@ mouseDx
 mouseDy
 ```
 
+Buffered vertical mouse movement awaiting user-command generation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L125)
 
 <a id="field-field-mq3-client-input-command-state-mouseindex-mouseindex-src-mq3-client-input-command-ml-941929468"></a>
 ### mouseIndex
@@ -133,8 +155,10 @@ mouseDy
 mouseIndex
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `accumulateMouse` and `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L128)
 
 <a id="field-field-mq3-client-input-command-state-moveleft-moveleft-src-mq3-client-input-command-ml-1049716674"></a>
 ### moveleft
@@ -143,8 +167,10 @@ mouseIndex
 moveleft
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L99)
 
 <a id="field-field-mq3-client-input-command-state-moveright-moveright-src-mq3-client-input-command-ml-1156630654"></a>
 ### moveright
@@ -153,8 +179,10 @@ moveleft
 moveright
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L102)
 
 <a id="field-field-mq3-client-input-command-state-right-right-src-mq3-client-input-command-ml-204580618"></a>
 ### right
@@ -163,8 +191,10 @@ moveright
 right
 ```
 
+Right boundary of the interactive or clipped region.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L84)
 
 <a id="field-field-mq3-client-input-command-state-speed-speed-src-mq3-client-input-command-ml-37786558"></a>
 ### speed
@@ -173,8 +203,10 @@ right
 speed
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `adjustAngles` and `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L108)
 
 <a id="field-field-mq3-client-input-command-state-strafe-strafe-src-mq3-client-input-command-ml-1324213512"></a>
 ### strafe
@@ -183,8 +215,10 @@ speed
 strafe
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `adjustAngles` and `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L105)
 
 <a id="field-field-mq3-client-input-command-state-up-up-src-mq3-client-input-command-ml-1785603984"></a>
 ### up
@@ -193,8 +227,10 @@ strafe
 up
 ```
 
+When constructing this record, `create` supplies `button()` for this member. Used by `keyMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L111)
 
 <a id="field-field-mq3-client-input-command-state-viewangles-viewangles-src-mq3-client-input-command-ml-655844480"></a>
 ### viewangles
@@ -203,5 +239,7 @@ up
 viewangles
 ```
 
+Locally accumulated view angles used when constructing outgoing user commands.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L121)

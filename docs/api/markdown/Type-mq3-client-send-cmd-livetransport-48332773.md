@@ -12,7 +12,7 @@ struct LiveTransport
 Stores send cmd live transport record, including `runtime`, `channel`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L164)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores send cmd live transport record, including `runtime`, `channel`.
 channel
 ```
 
+When constructing this record, `liveServices` supplies `channel` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L168)
 
 <a id="field-field-mq3-client-send-cmd-livetransport-runtime-runtime-src-mq3-client-send-cmd-ml-2092921652"></a>
 ### runtime
@@ -33,5 +35,7 @@ channel
 runtime
 ```
 
+When constructing this record, `liveServices` supplies `runtime` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L166)

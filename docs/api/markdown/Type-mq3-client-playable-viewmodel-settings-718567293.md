@@ -12,7 +12,7 @@ struct Settings
 Stores playable viewmodel settings record, including `horizontalFov`, `gunX`, `gunY`, `gunZ`, `modelScale`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L32)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable viewmodel settings record, including `horizontalFov`, `gunX`, `g
 gunX
 ```
 
+When constructing this record, `defaults` supplies `0.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L36)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-guny-guny-src-mq3-client-playable-viewmodel-ml-1661144712"></a>
 ### gunY
@@ -33,8 +35,10 @@ gunX
 gunY
 ```
 
+When constructing this record, `defaults` supplies `0.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L38)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-gunz-gunz-src-mq3-client-playable-viewmodel-ml-750277550"></a>
 ### gunZ
@@ -43,8 +47,10 @@ gunY
 gunZ
 ```
 
+When constructing this record, `defaults` supplies `0.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L40)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-horizontalfov-horizontalfov-src-mq3-client-playable-viewmodel-ml-1322536318"></a>
 ### horizontalFov
@@ -53,8 +59,10 @@ gunZ
 horizontalFov
 ```
 
+When constructing this record, `defaults` supplies `DEFAULT_FOV` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L34)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-modelscale-modelscale-src-mq3-client-playable-viewmodel-ml-167526760"></a>
 ### modelScale
@@ -63,5 +71,7 @@ horizontalFov
 modelScale
 ```
 
+When constructing this record, `defaults` supplies `1.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L42)

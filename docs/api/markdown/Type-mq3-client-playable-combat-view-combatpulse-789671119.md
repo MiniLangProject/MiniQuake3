@@ -12,7 +12,7 @@ struct CombatPulse
 Stores playable combat view combat pulse record, including `recoil`, `muzzle`, `hit`, `damage`, `kill`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L49)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable combat view combat pulse record, including `recoil`, `muzzle`, `
 damage
 ```
 
+Damage amount applied or reported by the weapon, projectile, or hit result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L60)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-hit-hit-src-mq3-client-playable-combat-view-ml-500564018"></a>
 ### hit
@@ -33,8 +35,10 @@ damage
 hit
 ```
 
+When constructing this record, `pulse` supplies `remaining(now,view.lastHit,HIT_MARK_MS)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L58)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-kill-kill-src-mq3-client-playable-combat-view-ml-1655862218"></a>
 ### kill
@@ -43,8 +47,10 @@ hit
 kill
 ```
 
+When constructing this record, `pulse` supplies `remaining(now,view.lastKill,KILL_MARK_MS)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L63)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-muzzle-muzzle-src-mq3-client-playable-combat-view-ml-1526994340"></a>
 ### muzzle
@@ -53,8 +59,10 @@ kill
 muzzle
 ```
 
+When constructing this record, `pulse` supplies `remaining(now,view.lastFire,FIRE_FLASH_MS)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L55)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-recoil-recoil-src-mq3-client-playable-combat-view-ml-1003455402"></a>
 ### recoil
@@ -63,5 +71,7 @@ muzzle
 recoil
 ```
 
+When constructing this record, `pulse` supplies `remaining(now,view.lastFire,RECOIL_MS)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L52)

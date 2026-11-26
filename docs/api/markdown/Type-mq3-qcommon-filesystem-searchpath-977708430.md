@@ -12,7 +12,7 @@ struct SearchPath
 SearchPath record for qcommon.filesystem, containing `kind`, `pak`, `root`, `gameName`, `looseFiles`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L37)
 
 ## Members
 
@@ -23,8 +23,10 @@ SearchPath record for qcommon.filesystem, containing `kind`, `pak`, `root`, `gam
 gameName
 ```
 
+Game directory searched by this path entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L45)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-kind-kind-src-mq3-qcommon-filesystem-ml-372167936"></a>
 ### kind
@@ -33,8 +35,10 @@ gameName
 kind
 ```
 
+Search-path discriminator selecting a package or loose-file directory.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L39)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-loosefiles-loosefiles-src-mq3-qcommon-filesystem-ml-1740652306"></a>
 ### looseFiles
@@ -43,8 +47,10 @@ kind
 looseFiles
 ```
 
+Loose files made available through this search-path entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L47)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-pak-pak-src-mq3-qcommon-filesystem-ml-557722076"></a>
 ### pak
@@ -53,8 +59,10 @@ looseFiles
 pak
 ```
 
+Package descriptor when this search path refers to a PK3 archive.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L41)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-root-root-src-mq3-qcommon-filesystem-ml-932253128"></a>
 ### root
@@ -63,5 +71,7 @@ pak
 root
 ```
 
+Filesystem root of a loose-file search path.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L43)

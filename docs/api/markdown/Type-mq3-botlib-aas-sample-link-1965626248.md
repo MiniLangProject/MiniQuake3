@@ -12,7 +12,7 @@ struct Link
 `Link` record for aas sample, containing `id`, `entNum`, `areaNum` and `allocated`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L33)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Link
 allocated
 ```
 
+True when the represented object currently owns a live allocation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-sample-link-areanum-areanum-src-mq3-botlib-aas-sample-ml-713087809"></a>
 ### areaNum
@@ -33,8 +35,10 @@ allocated
 areaNum
 ```
 
+Navigation area associated with this entity-to-area link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L39)
 
 <a id="field-field-mq3-botlib-aas-sample-link-entnum-entnum-src-mq3-botlib-aas-sample-ml-1924860239"></a>
 ### entNum
@@ -43,8 +47,10 @@ areaNum
 entNum
 ```
 
+Game-entity number associated with the area link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-sample-link-id-id-src-mq3-botlib-aas-sample-ml-809745847"></a>
 ### id
@@ -53,5 +59,7 @@ entNum
 id
 ```
 
+Identifier of this allocated entity-to-area link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L35)

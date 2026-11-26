@@ -19,8 +19,10 @@ Reachable from entry: **yes**
 const BYTE_SIZE = 468
 ```
 
+Byte size used for byte storage or binary layout in mq3.game.playerstate.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L8)
 
 <a id="function-function-mq3-game-playerstate-copy-function-copy-source-src-mq3-game-playerstate-ml-145962029"></a>
 ### copy
@@ -36,7 +38,7 @@ Create a `mq3.game.playerstate.PlayerState` record, initializing `commandTime` a
 | `source` | `dynamic` | — | Parser source state; accesses `commandTime`, `pm_type`, `bobCycle`, `pm_flags` and `pm_time` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L111)
 
 <a id="function-function-mq3-game-playerstate-create-function-create-src-mq3-game-playerstate-ml-677961258"></a>
 ### create
@@ -48,7 +50,7 @@ function create()
 Create a `mq3.game.playerstate.PlayerState` record, initializing `origin` as `[0.0,0.0,0.0]`, `velocity` as `[0.0,0.0,0.0]` and `delta_angles` as `[0,0,0]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L105)
 
 <a id="function-function-mq3-game-playerstate-load-function-load-data-offset-src-mq3-game-playerstate-ml-432057859"></a>
 ### load
@@ -65,7 +67,7 @@ Populate player state from the ordered word representation used by the network p
 | `offset` | `dynamic` | — | Offset into the buffer or sequence used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L164)
 
 - [mq3.game.playerstate.PlayerState](Type-mq3-game-playerstate-playerstate-825163064.md) — struct
 <a id="function-function-mq3-game-playerstate-words-function-words-ps-src-mq3-game-playerstate-ml-1763832683"></a>
@@ -82,4 +84,4 @@ Serialize player state into the ordered integer and floating-point bit patterns 
 | `ps` | `dynamic` | — | Player movement state; accesses `commandTime`, `pm_type`, `bobCycle`, `pm_flags` and `pm_time` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L217)

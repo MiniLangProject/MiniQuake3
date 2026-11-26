@@ -23,8 +23,10 @@ A face's vertices, including each patch LOD variant, are immutable within its wo
 byFace
 ```
 
+Portal-clipped geometry cached by original BSP face index.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L92)
 
 <a id="field-field-mq3-renderer-portal-clip-facecache-dist-dist-src-mq3-renderer-portal-clip-ml-1074223300"></a>
 ### dist
@@ -33,8 +35,10 @@ byFace
 dist
 ```
 
+Signed plane distance measured along its normal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L90)
 
 <a id="field-field-mq3-renderer-portal-clip-facecache-normal-normal-src-mq3-renderer-portal-clip-ml-1462692438"></a>
 ### normal
@@ -43,8 +47,10 @@ dist
 normal
 ```
 
+Clipping-plane normal associated with the cached portal-clipped face set.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L88)
 
 <a id="field-field-mq3-renderer-portal-clip-facecache-world-world-src-mq3-renderer-portal-clip-ml-1095998608"></a>
 ### world
@@ -53,5 +59,7 @@ normal
 world
 ```
 
+Loaded world geometry and associated scene state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L86)

@@ -12,7 +12,7 @@ struct Weight
 Data record for `mq3.renderer.md4_animation.Weight`; groups `boneIndex`, `boneWeight`, `offset`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L14)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.md4_animation.Weight`; groups `boneIndex`, `boneWe
 boneIndex
 ```
 
+Index of the skeleton bone contributing this vertex weight.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L16)
 
 <a id="field-field-mq3-renderer-md4-animation-weight-boneweight-boneweight-src-mq3-renderer-md4-animation-ml-1354256729"></a>
 ### boneWeight
@@ -33,8 +35,10 @@ boneIndex
 boneWeight
 ```
 
+Blend weight of the bone's contribution to the animated vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L18)
 
 <a id="field-field-mq3-renderer-md4-animation-weight-offset-offset-src-mq3-renderer-md4-animation-ml-247886355"></a>
 ### offset
@@ -43,5 +47,7 @@ boneWeight
 offset
 ```
 
+Vertex offset in the coordinate system of the influencing bone.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L20)

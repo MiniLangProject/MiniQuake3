@@ -31,7 +31,7 @@ Evaluates console input display `bounded` and returns `low`, `high`, `value` acc
 | `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L33)
 
 <a id="function-function-mq3-client-console-input-display-draw-function-draw-media-state-width-height-now-src-mq3-client-console-input-display-ml-2078644314"></a>
 ### draw
@@ -51,7 +51,7 @@ Calls `mq3.client.console_input_display.present`, `mq3.compat.numeric.trunc32`, 
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L64)
 
 <a id="function-function-mq3-client-console-input-display-fieldtext-function-fieldtext-edit-prompt-now-src-mq3-client-console-input-display-ml-1626068566"></a>
 ### fieldText
@@ -69,7 +69,7 @@ Calls `mq3.client.console_input_display.bounded`, `decode`, `slice` from console
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L38)
 
 <a id="function-function-mq3-client-console-input-display-present-function-present-state-now-src-mq3-client-console-input-display-ml-1929212121"></a>
 ### present
@@ -86,6 +86,6 @@ Calls `mq3.client.console_input_display.Presentation`, `mq3.client.console_input
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L49)
 
 - [mq3.client.console_input_display.Presentation](Type-mq3-client-console-input-display-presentation-2062669794.md) — struct

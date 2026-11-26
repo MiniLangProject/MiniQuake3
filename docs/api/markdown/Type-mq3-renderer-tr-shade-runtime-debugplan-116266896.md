@@ -12,7 +12,7 @@ struct DebugPlan
 Data record for `mq3.renderer.tr_shade_runtime.DebugPlan`; groups `mode`, `indexes`, `vertices`, `depthNear`, `depthFar`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L49)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_shade_runtime.DebugPlan`; groups `mode`, `index
 depthFar
 ```
 
+Far end of the depth range used by the debug pass.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L59)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-debugplan-depthnear-depthnear-src-mq3-renderer-tr-shade-runtime-ml-163472569"></a>
 ### depthNear
@@ -33,8 +35,10 @@ depthFar
 depthNear
 ```
 
+Near end of the depth range used by the debug pass.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L57)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-debugplan-indexes-indexes-src-mq3-renderer-tr-shade-runtime-ml-680962377"></a>
 ### indexes
@@ -43,8 +47,10 @@ depthNear
 indexes
 ```
 
+Index sequence used when drawing the surface's debug triangles.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L53)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-debugplan-mode-mode-src-mq3-renderer-tr-shade-runtime-ml-1262114347"></a>
 ### mode
@@ -53,8 +59,10 @@ indexes
 mode
 ```
 
+Primitive mode used to draw the debug geometry, such as triangles or lines.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L51)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-debugplan-vertices-vertices-src-mq3-renderer-tr-shade-runtime-ml-686908503"></a>
 ### vertices
@@ -63,5 +71,7 @@ mode
 vertices
 ```
 
+Explicit line vertices used to visualize normals or other surface debug geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L55)

@@ -33,7 +33,7 @@ Compute adjusted in collision.patchtrace; the normal completion returns `Adjuste
 | `border` | `dynamic` | — | Border operand used by `adjusted`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L72)
 
 - [mq3.collision.patchtrace.Adjusted](Type-mq3-collision-patchtrace-adjusted-1193895741.md) — struct
 <a id="function-function-mq3-collision-patchtrace-checkplane-function-checkplane-adjusted-clip-src-mq3-collision-patchtrace-ml-768337312"></a>
@@ -53,7 +53,7 @@ Direct state writes: `clip.hit`, `clip.enter`, `clip.leave`.
 | `clip` | `dynamic` | — | Record exposing `enter`, `leave`. Updated in place: `hit`, `enter`, `leave`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L95)
 
 - [mq3.collision.patchtrace.Clip](Type-mq3-collision-patchtrace-clip-921546117.md) — struct
 <a id="function-function-mq3-collision-patchtrace-cm-checkfacetplane-function-cm-checkfacetplane-adjusted-clip-src-mq3-collision-patchtrace-ml-332715564"></a>
@@ -71,7 +71,7 @@ Return `mq3.collision.patchtrace.checkPlane(adjusted, clip)` from `collision.pat
 | `clip` | `dynamic` | — | Clip passed as `clip` to `mq3.collision.patchtrace.checkPlane`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L116)
 
 <a id="function-function-mq3-collision-patchtrace-cm-clearlevelpatches-function-cm-clearlevelpatches-src-mq3-collision-patchtrace-ml-1323472252"></a>
 ### CM_ClearLevelPatches
@@ -83,7 +83,7 @@ function CM_ClearLevelPatches()
 Create `mq3.collision.patchtrace.DebugState` with patch=void; facet=- 1.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L38)
 
 <a id="function-function-mq3-collision-patchtrace-cm-drawdebugsurface-function-cm-drawdebugsurface-state-src-mq3-collision-patchtrace-ml-117816511"></a>
 ### CM_DrawDebugSurface
@@ -99,7 +99,7 @@ Compute draw debug surface in collision.patchtrace; the normal completion return
 | `state` | `dynamic` | — | Record exposing `patch`, `facet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L41)
 
 <a id="function-function-mq3-collision-patchtrace-cm-positiontestinpatchcollide-function-cm-positiontestinpatchcollide-work-patch-src-mq3-collision-patchtrace-ml-2130630383"></a>
 ### CM_PositionTestInPatchCollide
@@ -116,7 +116,7 @@ Return `mq3.collision.patchtrace.positionTest(work, patch)` from `collision.patc
 | `patch` | `dynamic` | — | Patch passed as `patch` to `mq3.collision.patchtrace.positionTest`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L226)
 
 <a id="function-function-mq3-collision-patchtrace-cm-tracepointthroughpatchcollide-function-cm-tracepointthroughpatchcollide-work-patch-playercurveclip-src-mq3-collision-patchtrace-ml-757991167"></a>
 ### CM_TracePointThroughPatchCollide
@@ -134,7 +134,7 @@ Return `mq3.collision.patchtrace.tracePoint(work, patch, playerCurveClip)` from 
 | `playerCurveClip` | `dynamic` | — | Player curve clip passed as `playerCurveClip` to `mq3.collision.patchtrace.tracePoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L170)
 
 <a id="function-function-mq3-collision-patchtrace-cm-tracethroughpatchcollide-function-cm-tracethroughpatchcollide-work-patch-playercurveclip-src-mq3-collision-patchtrace-ml-212994473"></a>
 ### CM_TraceThroughPatchCollide
@@ -152,7 +152,7 @@ Return `mq3.collision.patchtrace.trace(work, patch, playerCurveClip)` from `coll
 | `playerCurveClip` | `dynamic` | — | Player curve clip passed as `playerCurveClip` to `mq3.collision.patchtrace.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L203)
 
 <a id="function-function-mq3-collision-patchtrace-cornerdot-function-cornerdot-work-signbits-as-int-normal-as-array-returns-float-src-mq3-collision-patchtrace-ml-734604248"></a>
 ### cornerDot
@@ -172,7 +172,7 @@ Project the box support corner selected by the plane sign bits onto the plane no
 
 **Returns:** The binary32 dot product of the selected corner and the normal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L59)
 
 - [mq3.collision.patchtrace.DebugState](Type-mq3-collision-patchtrace-debugstate-763828607.md) — struct
 <a id="function-function-mq3-collision-patchtrace-positiontest-function-positiontest-work-patch-src-mq3-collision-patchtrace-ml-861045993"></a>
@@ -190,7 +190,7 @@ Test position test in collision.patchtrace; the normal completion returns `false
 | `patch` | `dynamic` | — | Record exposing `facets`, `planes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L208)
 
 <a id="function-function-mq3-collision-patchtrace-trace-function-trace-work-patch-playercurveclip-src-mq3-collision-patchtrace-ml-844192801"></a>
 ### trace
@@ -208,7 +208,7 @@ Trace patchtrace in collision.patchtrace.
 | `playerCurveClip` | `dynamic` | — | Player curve clip passed as `playerCurveClip` to `mq3.collision.patchtrace.CM_TracePointThroughPatchCollide`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L176)
 
 <a id="function-function-mq3-collision-patchtrace-tracepoint-function-tracepoint-work-patch-playercurveclip-src-mq3-collision-patchtrace-ml-989481203"></a>
 ### tracePoint
@@ -226,4 +226,4 @@ Trace point in collision.patchtrace.
 | `playerCurveClip` | `dynamic` | — | Player curve clip used in `(not playerCurveClip or not work.isPoint)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L122)

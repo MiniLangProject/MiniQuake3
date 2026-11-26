@@ -12,7 +12,7 @@ struct State
 Stores snapshot parse state, including `parseEntities`, `parseEntitiesNum`, `entityBaselines`, `shownetLevel`, `shownetLines`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L27)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores snapshot parse state, including `parseEntities`, `parseEntitiesNum`, `ent
 entityBaselines
 ```
 
+Baseline entity states used when delta decoding has no previous snapshot state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L33)
 
 <a id="field-field-mq3-client-snapshot-parse-state-parseentities-parseentities-src-mq3-client-snapshot-parse-ml-1336154130"></a>
 ### parseEntities
@@ -33,8 +35,10 @@ entityBaselines
 parseEntities
 ```
 
+Parsed entity-state ring used to reconstruct snapshots from their absolute entity positions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L29)
 
 <a id="field-field-mq3-client-snapshot-parse-state-parseentitiesnum-parseentitiesnum-src-mq3-client-snapshot-parse-ml-1741808506"></a>
 ### parseEntitiesNum
@@ -43,8 +47,10 @@ parseEntities
 parseEntitiesNum
 ```
 
+Absolute position in the parsed-entity ring at which this snapshot's entities begin.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L31)
 
 <a id="field-field-mq3-client-snapshot-parse-state-shownetlevel-shownetlevel-src-mq3-client-snapshot-parse-ml-1473801042"></a>
 ### shownetLevel
@@ -53,8 +59,10 @@ parseEntitiesNum
 shownetLevel
 ```
 
+When constructing this record, `createState` supplies `0` for this member. Used by `trace` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L36)
 
 <a id="field-field-mq3-client-snapshot-parse-state-shownetlines-shownetlines-src-mq3-client-snapshot-parse-ml-562558304"></a>
 ### shownetLines
@@ -63,5 +71,7 @@ shownetLevel
 shownetLines
 ```
 
+When constructing this record, `createState` supplies an empty list for this member. Used by `trace` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L39)

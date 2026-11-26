@@ -12,7 +12,7 @@ struct RunContext
 Stores client game predict run context record, including `observer`, `services`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L110)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game predict run context record, including `observer`, `services`.
 observer
 ```
 
+When constructing this record, `predict` supplies `state` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L112)
 
 <a id="field-field-mq3-client-cgame-predict-runcontext-services-services-src-mq3-client-cgame-predict-ml-1685843425"></a>
 ### services
@@ -33,5 +35,7 @@ observer
 services
 ```
 
+Service callbacks and context used to access the host engine from this client subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L114)

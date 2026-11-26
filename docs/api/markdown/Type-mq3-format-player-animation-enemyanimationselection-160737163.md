@@ -12,7 +12,7 @@ struct EnemyAnimationSelection
 EnemyAnimationSelection record for format.player_animation, containing `lowerAnimation`, `upperAnimation`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L359)
 
 ## Members
 
@@ -23,8 +23,10 @@ EnemyAnimationSelection record for format.player_animation, containing `lowerAni
 lowerAnimation
 ```
 
+Animation selected for the player's lower body.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L266)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L361)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationselection-upperanimation-upperanimation-src-mq3-format-player-animation-ml-1240545557"></a>
 ### upperAnimation
@@ -33,5 +35,7 @@ lowerAnimation
 upperAnimation
 ```
 
+Animation selected for the player's upper body.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L266)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L363)

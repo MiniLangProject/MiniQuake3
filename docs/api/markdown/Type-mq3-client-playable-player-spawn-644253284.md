@@ -12,7 +12,7 @@ struct Spawn
 Stores playable player spawn record, including `origin`, `yaw`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L30)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable player spawn record, including `origin`, `yaw`.
 origin
 ```
 
+World-space spawn position copied into the player's state when selecting a spawn point.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L32)
 
 <a id="field-field-mq3-client-playable-player-spawn-yaw-yaw-src-mq3-client-playable-player-ml-2051380736"></a>
 ### yaw
@@ -33,5 +35,7 @@ origin
 yaw
 ```
 
+When constructing this record, `collectSpawns` supplies `yaw` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L34)

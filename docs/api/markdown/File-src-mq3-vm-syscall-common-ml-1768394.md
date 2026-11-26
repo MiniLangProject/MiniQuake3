@@ -23,8 +23,10 @@ Reachable from entry: **yes**
 const ABI_CGAME = 1
 ```
 
+ABI selector for the client game VM.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L14)
 
 <a id="constant-constant-mq3-vm-syscall-common-abi-qagame-const-abi-qagame-0-src-mq3-vm-syscall-common-ml-1532437661"></a>
 ### ABI_QAGAME
@@ -33,8 +35,10 @@ const ABI_CGAME = 1
 const ABI_QAGAME = 0
 ```
 
+ABI selector for the server game VM.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L12)
 
 <a id="constant-constant-mq3-vm-syscall-common-abi-ui-const-abi-ui-2-src-mq3-vm-syscall-common-ml-135679351"></a>
 ### ABI_UI
@@ -43,8 +47,10 @@ const ABI_QAGAME = 0
 const ABI_UI = 2
 ```
 
+ABI selector for the user-interface VM.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L16)
 
 <a id="extern_function-extern-function-mq3-vm-syscall-common-acos-extern-function-acos-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-vm-syscall-common-ml-1099186900"></a>
 ### acos
@@ -62,7 +68,7 @@ Compute the inverse cosine in radians.
 
 **Returns:** The principal angle in radians, with C-runtime domain handling outside [-1, 1].
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L33)
 
 <a id="function-function-mq3-vm-syscall-common-anglevectors-function-anglevectors-vm-base-src-mq3-vm-syscall-common-ml-1044862000"></a>
 ### angleVectors
@@ -79,7 +85,7 @@ Compute angle vectors in vm.syscall_common; the normal completion returns `0`.
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L458)
 
 <a id="function-function-mq3-vm-syscall-common-argc-function-argc-host-src-mq3-vm-syscall-common-ml-1904164954"></a>
 ### argc
@@ -95,7 +101,7 @@ Compute argc in vm.syscall_common; the normal completion returns `command.argc(h
 | `host` | `dynamic` | — | Record exposing `commands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L269)
 
 <a id="function-function-mq3-vm-syscall-common-argstext-function-argstext-vm-base-host-src-mq3-vm-syscall-common-ml-1956237070"></a>
 ### argsText
@@ -113,7 +119,7 @@ Compute args text in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Record exposing `commands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L288)
 
 <a id="function-function-mq3-vm-syscall-common-argument-function-argument-vm-address-as-int-index-as-int-src-mq3-vm-syscall-common-ml-1813552869"></a>
 ### argument
@@ -122,16 +128,16 @@ Compute args text in vm.syscall_common; the normal completion returns `0`.
 function argument(vm, address as int, index as int)
 ```
 
-Compute argument in vm.syscall_common; the normal completion returns `n.readI32(vm.data, at)`.
+Read one signed little-endian 32-bit slot from a QVM syscall argument vector. Slot zero contains the trap number; subsequent slots contain arguments. Rejects negative offsets or indexes, address overflow, and reads beyond VM data memory. The argument-vector address is not masked.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `address` | `int` | — | Address used in `(address < 0)` and `(at < address)`. |
-| `index` | `int` | — | Index used in `(index * 4)` and `(index < 0)`. |
+| `vm` | `dynamic` | — | VM exposing its data-memory byte buffer. |
+| `address` | `int` | — | Byte offset of the first argument-vector slot in VM memory. |
+| `index` | `int` | — | Zero-based slot index, with each slot occupying four bytes. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L87)
 
 <a id="function-function-mq3-vm-syscall-common-argv-function-argv-vm-base-host-src-mq3-vm-syscall-common-ml-849066622"></a>
 ### argv
@@ -149,7 +155,7 @@ Compute argv in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Record exposing `commands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L278)
 
 <a id="function-function-mq3-vm-syscall-common-callback-function-callback-abi-host-src-mq3-vm-syscall-common-ml-1479744616"></a>
 ### callback
@@ -158,15 +164,15 @@ Compute argv in vm.syscall_common; the normal completion returns `0`.
 function callback(abi, host)
 ```
 
-Apply `mq3.vm.syscall_common.dispatch` for callback in vm.syscall_common.
+Capture an ABI and service bundle in a VM-compatible syscall callback. Returns a function `(vm, base)` that forwards to `dispatch`; `base` is a byte offset inside VM memory.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `abi` | `dynamic` | — | Abi passed as `abi` to `mq3.vm.syscall_common.dispatch`. |
-| `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.dispatch`. |
+| `abi` | `dynamic` | — | ABI_QAGAME, ABI_CGAME, or ABI_UI for the loaded module. |
+| `host` | `dynamic` | — | Shared Services retained by the returned callback. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L542)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L607)
 
 <a id="extern_function-extern-function-mq3-vm-syscall-common-ceil-extern-function-ceil-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-vm-syscall-common-ml-1256415774"></a>
 ### ceil
@@ -184,7 +190,7 @@ Round up to the least integral double no smaller than the input.
 
 **Returns:** The integral double rounded toward positive infinity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L29)
 
 <a id="function-function-mq3-vm-syscall-common-cvarcreate-function-cvarcreate-vm-base-host-src-mq3-vm-syscall-common-ml-803860222"></a>
 ### cvarCreate
@@ -202,7 +208,7 @@ Compute cvar create in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L255)
 
 <a id="function-function-mq3-vm-syscall-common-cvarinfostring-function-cvarinfostring-vm-base-host-src-mq3-vm-syscall-common-ml-217700774"></a>
 ### cvarInfoString
@@ -220,7 +226,7 @@ Compute cvar info string in vm.syscall_common; the normal completion returns `0`
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L262)
 
 <a id="function-function-mq3-vm-syscall-common-cvarinteger-function-cvarinteger-vm-base-host-src-mq3-vm-syscall-common-ml-52146638"></a>
 ### cvarInteger
@@ -238,7 +244,7 @@ Return `mq3.qcommon.cvar.variableIntegerValue(requireCvars(host), readString(vm,
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L216)
 
 <a id="function-function-mq3-vm-syscall-common-cvarreset-function-cvarreset-vm-base-host-src-mq3-vm-syscall-common-ml-234277880"></a>
 ### cvarReset
@@ -256,7 +262,7 @@ Compute cvar reset in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L248)
 
 <a id="function-function-mq3-vm-syscall-common-cvarset-function-cvarset-vm-base-host-src-mq3-vm-syscall-common-ml-1052599414"></a>
 ### cvarSet
@@ -274,7 +280,7 @@ Compute cvar set in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L208)
 
 <a id="function-function-mq3-vm-syscall-common-cvarsetvalue-function-cvarsetvalue-vm-base-host-src-mq3-vm-syscall-common-ml-1407179106"></a>
 ### cvarSetValue
@@ -292,7 +298,7 @@ Compute cvar set value in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L241)
 
 <a id="function-function-mq3-vm-syscall-common-cvarstring-function-cvarstring-vm-base-host-src-mq3-vm-syscall-common-ml-1950376642"></a>
 ### cvarString
@@ -310,7 +316,7 @@ Compute cvar string in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L232)
 
 <a id="function-function-mq3-vm-syscall-common-cvarvaluebits-function-cvarvaluebits-vm-base-host-src-mq3-vm-syscall-common-ml-985991928"></a>
 ### cvarValueBits
@@ -328,7 +334,7 @@ Return `mq3.compat.numeric.i32(n.floatBits(cvar.variableValue(requireCvars(host)
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L224)
 
 <a id="function-function-mq3-vm-syscall-common-dispatch-function-dispatch-abi-host-vm-base-src-mq3-vm-syscall-common-ml-1409756384"></a>
 ### dispatch
@@ -337,17 +343,17 @@ Return `mq3.compat.numeric.i32(n.floatBits(cvar.variableValue(requireCvars(host)
 function dispatch(abi, host, vm, base)
 ```
 
-Dispatch syscall common in vm.syscall_common; the normal completion returns `fail("unknown ABI")`.
+Read a QVM trap number and route it to the shared libc or selected subsystem dispatcher. Validates the host/VM context and argument-vector access first. Opcodes 100..113 use the libc table; other opcodes use the selected server-game, client-game, or UI table. Returns that trap's ABI result or a syscall error for missing services, invalid memory, or unsupported dispatch.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `abi` | `dynamic` | — | Abi passed as `abi` to `mq3.vm.syscall_common.dispatchLibc`. |
-| `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.dispatchQagame`. |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
+| `abi` | `dynamic` | — | ABI selector expected to be ABI_QAGAME, ABI_CGAME, or ABI_UI. |
+| `host` | `dynamic` | — | Shared Services whose callbacks receive `host.context` as their first argument. |
+| `vm` | `dynamic` | — | VM exposing a data-memory byte buffer and pointer mask. |
+| `base` | `dynamic` | — | Byte offset of the syscall vector; slot zero is the trap number, followed by four-byte arguments. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L529)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L593)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchcgame-function-dispatchcgame-vm-base-host-op-src-mq3-vm-syscall-common-ml-925060171"></a>
 ### dispatchCgame
@@ -356,17 +362,17 @@ Dispatch syscall common in vm.syscall_common; the normal completion returns `fai
 function dispatchCgame(vm, base, host, op)
 ```
 
-Dispatch cgame in vm.syscall_common; the normal completion returns `fail(("unsupported cgame trap " + str(op)))`.
+Dispatch a shared client-game console, cvar, command, clock, or file-system trap. Returns the selected service's ABI result: zero for side-effect traps, an integer/bit-pattern value, or a file-open length/status result. Unknown trap numbers produce a subsystem-specific syscall error.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.dispatchQagame`. |
-| `base` | `dynamic` | — | Base passed as `base` to `mq3.vm.syscall_common.dispatchQagame`. |
-| `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.dispatchQagame`. |
-| `op` | `dynamic` | — | Op passed as `op` to `mq3.vm.syscall_common.dispatchQagame`. |
+| `vm` | `dynamic` | — | VM containing the argument vector and any input/output memory spans. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector. |
+| `host` | `dynamic` | — | Shared Services providing the registry, command parser, and callbacks needed by the trap. |
+| `op` | `dynamic` | — | Client-game trap number already read from argument slot zero. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L478)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L537)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchlibc-function-dispatchlibc-abi-vm-base-op-src-mq3-vm-syscall-common-ml-1088994921"></a>
 ### dispatchLibc
@@ -375,17 +381,17 @@ Dispatch cgame in vm.syscall_common; the normal completion returns `fail(("unsup
 function dispatchLibc(abi, vm, base, op)
 ```
 
-Dispatch libc in vm.syscall_common; the normal completion returns `fail(("unsupported VM libc trap " + str(op)))`.
+Dispatch a QVM memory, scalar-math, or vector-math compatibility trap. Opcodes 100..106 share the memory/trigonometry mappings. Later opcodes depend on the selected ABI; floating results are returned as signed int32 containers of float32 bits. Unsupported combinations fail.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `abi` | `dynamic` | — | Abi used in `(abi == ABI_CGAME)` and `(abi == ABI_QAGAME)`. |
-| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.libcMemset`. |
-| `base` | `dynamic` | — | Base passed as `base` to `mq3.vm.syscall_common.libcMemset`. |
-| `op` | `dynamic` | — | Op used in `str(op)` and `(op == 107)`. |
+| `abi` | `dynamic` | — | ABI_QAGAME, ABI_CGAME, or ABI_UI, selecting the ABI-specific tail of the trap table. |
+| `vm` | `dynamic` | — | VM whose argument vector and memory spans are consumed by the selected trap. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector. |
+| `op` | `dynamic` | — | Trap number already read from argument slot zero. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L425)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L480)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchqagame-function-dispatchqagame-vm-base-host-op-src-mq3-vm-syscall-common-ml-461021241"></a>
 ### dispatchQagame
@@ -394,17 +400,17 @@ Dispatch libc in vm.syscall_common; the normal completion returns `fail(("unsupp
 function dispatchQagame(vm, base, host, op)
 ```
 
-Dispatch qagame in vm.syscall_common; the normal completion returns `fail(("unsupported qagame trap " + str(op)))`.
+Dispatch a shared server-game console, cvar, command, clock, or file-system trap. Returns the selected service's ABI result: zero for side-effect traps, an integer/bit-pattern value, or a file-open length/status result. Unknown trap numbers produce a subsystem-specific syscall error.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.emitPrint`. |
-| `base` | `dynamic` | — | Base passed as `base` to `mq3.vm.syscall_common.emitPrint`. |
-| `host` | `dynamic` | — | Record exposing `millisecondsFn`, `context`. |
-| `op` | `dynamic` | — | Op used in `str(op)` and `("unsupported qagame trap " + str(op))`. |
+| `vm` | `dynamic` | — | VM containing the argument vector and any input/output memory spans. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector. |
+| `host` | `dynamic` | — | Shared Services providing the registry, command parser, and callbacks needed by the trap. |
+| `op` | `dynamic` | — | Server-game trap number already read from argument slot zero. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L452)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L509)
 
 <a id="function-function-mq3-vm-syscall-common-dispatchui-function-dispatchui-vm-base-host-op-src-mq3-vm-syscall-common-ml-44064469"></a>
 ### dispatchUi
@@ -413,17 +419,17 @@ Dispatch qagame in vm.syscall_common; the normal completion returns `fail(("unsu
 function dispatchUi(vm, base, host, op)
 ```
 
-Dispatch ui in vm.syscall_common; the normal completion returns `fail(("unsupported UI trap " + str(op)))`.
+Dispatch a shared user-interface console, cvar, command, clock, or file-system trap. Returns the selected service's ABI result: zero for side-effect traps, an integer/bit-pattern value, or a file-open length/status result. Unknown trap numbers produce a subsystem-specific syscall error.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.emitPrint`. |
-| `base` | `dynamic` | — | Base passed as `base` to `mq3.vm.syscall_common.emitPrint`. |
-| `host` | `dynamic` | — | Record exposing `millisecondsFn`, `context`. |
-| `op` | `dynamic` | — | Op used in `str(op)` and `("unsupported UI trap " + str(op))`. |
+| `vm` | `dynamic` | — | VM containing the argument vector and any input/output memory spans. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector. |
+| `host` | `dynamic` | — | Shared Services providing the registry, command parser, and callbacks needed by the trap. |
+| `op` | `dynamic` | — | User-interface trap number already read from argument slot zero. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L560)
 
 <a id="function-function-mq3-vm-syscall-common-emitprint-function-emitprint-vm-base-host-iserror-src-mq3-vm-syscall-common-ml-1206086400"></a>
 ### emitPrint
@@ -442,7 +448,7 @@ Emit print in vm.syscall_common; the normal completion returns `0`.
 | `isError` | `dynamic` | — | Is error operand used by `emitPrint`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L352)
 
 <a id="function-function-mq3-vm-syscall-common-executeconsole-function-executeconsole-vm-base-host-src-mq3-vm-syscall-common-ml-1362842418"></a>
 ### executeConsole
@@ -460,7 +466,7 @@ Execute console in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Record exposing `consoleFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L363)
 
 <a id="function-function-mq3-vm-syscall-common-fail-function-fail-message-src-mq3-vm-syscall-common-ml-357426807"></a>
 ### fail
@@ -476,7 +482,7 @@ Create the vm.syscall_common error for `fail` with 3420 and the supplied diagnos
 | `message` | `dynamic` | — | Message used in `("QVM syscall: " + message)` and `error(3420, ("QVM syscall: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L79)
 
 <a id="function-function-mq3-vm-syscall-common-floatresult-function-floatresult-value-src-mq3-vm-syscall-common-ml-1968315299"></a>
 ### floatResult
@@ -492,7 +498,7 @@ Return `mq3.compat.numeric.i32(n.floatBits(value))` from `vm.syscall_common.floa
 | `value` | `dynamic` | — | Floating-point value to narrow and reinterpret. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L417)
 
 <a id="extern_function-extern-function-mq3-vm-syscall-common-floor-extern-function-floor-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-vm-syscall-common-ml-1357807104"></a>
 ### floor
@@ -510,7 +516,7 @@ Round down to the greatest integral double no larger than the input.
 
 **Returns:** The integral double rounded toward negative infinity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L25)
 
 <a id="function-function-mq3-vm-syscall-common-fsclose-function-fsclose-vm-base-host-src-mq3-vm-syscall-common-ml-2115556960"></a>
 ### fsClose
@@ -519,16 +525,16 @@ Round down to the greatest integral double no larger than the input.
 function fsClose(vm, base, host)
 ```
 
-Close syscall common in vm.syscall_common; the normal completion returns `0`.
+Close the host file handle in argument slot one and return zero. A missing close callback produces a syscall error.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.argument`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
-| `host` | `dynamic` | — | Record exposing `closeFn`, `context`. |
+| `vm` | `dynamic` | — | VM containing the syscall argument vector. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector. |
+| `host` | `dynamic` | — | Services with `closeFn(context, handle)`; its result is ignored. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L342)
 
 <a id="function-function-mq3-vm-syscall-common-fsopen-function-fsopen-vm-base-host-src-mq3-vm-syscall-common-ml-733493098"></a>
 ### fsOpen
@@ -537,16 +543,16 @@ Close syscall common in vm.syscall_common; the normal completion returns `0`.
 function fsOpen(vm, base, host)
 ```
 
-Open syscall common in vm.syscall_common; the normal completion returns `result.length`.
+Open a host file and return the callback's length/status result to the VM. Reads argument slots 1..3 as path pointer, optional handle-output pointer, and open mode. A `void` callback result becomes handle 0 and result -1. With no handle-output pointer, a nonzero opened handle is closed when `closeFn` is available; the length/status result is still returned.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`, `mask`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
-| `host` | `dynamic` | — | Record exposing `openFn`, `context`, `closeFn`. |
+| `vm` | `dynamic` | — | VM providing the path string and an optional writable four-byte handle slot. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector, whose slot zero holds the trap number. |
+| `host` | `dynamic` | — | Services with `openFn(context, path, mode)` and optional `closeFn(context, handle)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L300)
 
 <a id="function-function-mq3-vm-syscall-common-fsread-function-fsread-vm-base-host-src-mq3-vm-syscall-common-ml-213420058"></a>
 ### fsRead
@@ -555,16 +561,16 @@ Open syscall common in vm.syscall_common; the normal completion returns `result.
 function fsRead(vm, base, host)
 ```
 
-Read syscall common in vm.syscall_common; the normal completion returns `0`.
+Read an exact byte count from a host file into VM memory and return zero. Argument slots 1..3 contain destination pointer, requested byte count, and file handle. The callback must return at least the requested count; a short result is a syscall error.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Vm passed as `vm` to `mq3.vm.syscall_common.argument`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
-| `host` | `dynamic` | — | Record exposing `readFn`, `context`. |
+| `vm` | `dynamic` | — | VM containing the writable destination span and syscall argument vector. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector. |
+| `host` | `dynamic` | — | Services with `readFn(context, handle, count)` returning source bytes. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L319)
 
 <a id="function-function-mq3-vm-syscall-common-fswrite-function-fswrite-vm-base-host-src-mq3-vm-syscall-common-ml-1069829086"></a>
 ### fsWrite
@@ -573,16 +579,16 @@ Read syscall common in vm.syscall_common; the normal completion returns `0`.
 function fsWrite(vm, base, host)
 ```
 
-Write syscall common in vm.syscall_common; the normal completion returns `0`.
+Pass a checked byte slice from VM memory to the host file writer and return zero. Argument slots 1..3 contain source pointer, byte count, and file handle. The callback's return value is ignored; this trap does not return a partial-write count.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
-| `host` | `dynamic` | — | Record exposing `writeFn`, `context`. |
+| `vm` | `dynamic` | — | VM containing the source byte span and syscall argument vector. |
+| `base` | `dynamic` | — | Byte offset of the syscall argument vector. |
+| `host` | `dynamic` | — | Services with `writeFn(context, handle, data)` handling the outgoing bytes. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L331)
 
 <a id="function-function-mq3-vm-syscall-common-libcmemcpy-function-libcmemcpy-vm-base-src-mq3-vm-syscall-common-ml-1864672372"></a>
 ### libcMemcpy
@@ -591,15 +597,15 @@ Write syscall common in vm.syscall_common; the normal completion returns `0`.
 function libcMemcpy(vm, base)
 ```
 
-Compute libc memcpy in vm.syscall_common; the normal completion returns `destination`.
+Copy a checked VM memory span through a temporary byte buffer, preserving overlapping-source data. Argument slots 1..3 contain destination pointer, source pointer, and byte count. Returns the original destination pointer value after copying exactly the requested number of bytes.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
+| `vm` | `dynamic` | — | VM containing both memory spans. |
+| `base` | `dynamic` | — | Byte offset of the memcpy syscall argument vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L385)
 
 <a id="function-function-mq3-vm-syscall-common-libcmemset-function-libcmemset-vm-base-src-mq3-vm-syscall-common-ml-1527759304"></a>
 ### libcMemset
@@ -608,15 +614,15 @@ Compute libc memcpy in vm.syscall_common; the normal completion returns `destina
 function libcMemset(vm, base)
 ```
 
-Compute libc memset in vm.syscall_common; the normal completion returns `destination`.
+Fill a checked VM memory span with the low eight bits of the requested value. Argument slots 1..3 contain destination pointer, fill value, and byte count. Returns the original destination pointer value; even a zero count requires a valid nonzero pointer.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
+| `vm` | `dynamic` | — | VM whose data-memory bytes are modified. |
+| `base` | `dynamic` | — | Byte offset of the memset syscall argument vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L328)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L373)
 
 <a id="function-function-mq3-vm-syscall-common-libcstrncpy-function-libcstrncpy-vm-base-src-mq3-vm-syscall-common-ml-1186171926"></a>
 ### libcStrncpy
@@ -625,15 +631,15 @@ Compute libc memset in vm.syscall_common; the normal completion returns `destina
 function libcStrncpy(vm, base)
 ```
 
-Compute libc strncpy in vm.syscall_common; the normal completion returns `destination`.
+Copy up to a fixed number of bytes from a VM string, zero-padding after the first terminator. Argument slots 1..3 contain destination pointer, source pointer, and byte count. Returns the original destination pointer. If no zero byte occurs within the count, the output has no added terminator. Both pointers are validated even when the count is zero; the source is checked as each byte is read.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
+| `vm` | `dynamic` | — | VM containing the source string and destination span. |
+| `base` | `dynamic` | — | Byte offset of the strncpy syscall argument vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L400)
 
 <a id="function-function-mq3-vm-syscall-common-matrixmultiply-function-matrixmultiply-vm-base-src-mq3-vm-syscall-common-ml-915894864"></a>
 ### matrixMultiply
@@ -650,7 +656,7 @@ Compute matrix multiply in vm.syscall_common; the normal completion returns `0`.
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L395)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L448)
 
 <a id="constant-constant-mq3-vm-syscall-common-max-vm-string-const-max-vm-string-8192-src-mq3-vm-syscall-common-ml-1787193685"></a>
 ### MAX_VM_STRING
@@ -659,8 +665,10 @@ Compute matrix multiply in vm.syscall_common; the normal completion returns `0`.
 const MAX_VM_STRING = 8192
 ```
 
+Maximum number of VM bytes inspected for a string, including its required zero terminator.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L18)
 
 - [mq3.vm.syscall_common.OpenResult](Type-mq3-vm-syscall-common-openresult-1613615283.md) — struct
 <a id="function-function-mq3-vm-syscall-common-perpendicularvector-function-perpendicularvector-vm-base-src-mq3-vm-syscall-common-ml-329215006"></a>
@@ -678,7 +686,7 @@ Compute perpendicular vector in vm.syscall_common; the normal completion returns
 | `base` | `dynamic` | — | Address passed as `address` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L465)
 
 <a id="function-function-mq3-vm-syscall-common-pointer-function-pointer-vm-value-size-label-src-mq3-vm-syscall-common-ml-1609263377"></a>
 ### pointer
@@ -687,17 +695,17 @@ Compute perpendicular vector in vm.syscall_common; the normal completion returns
 function pointer(vm, value, size, label)
 ```
 
-Compute pointer in vm.syscall_common; the normal completion returns `at`.
+Convert a nonzero QVM pointer value to a checked byte offset for a contiguous memory span. Applies `value & vm.mask` before checking the span against VM data memory. Rejects a zero original pointer, negative size, or an out-of-bounds span; a zero-length request still requires a nonzero pointer.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `mask`, `data`. |
-| `value` | `dynamic` | — | Value used in `(value == 0)` and `(value & vm.mask)`. |
-| `size` | `dynamic` | — | Size used in `(size < 0)` and `(size > (len(vm.data) - at))`. |
-| `label` | `dynamic` | — | Label used in `(label + " is NULL")` and `fail((label + " is NULL"))`. |
+| `vm` | `dynamic` | — | VM supplying the data buffer and its address mask. |
+| `value` | `dynamic` | — | QVM pointer value to mask and validate, not a native host address. |
+| `size` | `dynamic` | — | Required contiguous span length in bytes. |
+| `label` | `dynamic` | — | Name of the accessed value, included in validation diagnostics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L100)
 
 <a id="function-function-mq3-vm-syscall-common-readfloatvector-function-readfloatvector-vm-address-count-label-src-mq3-vm-syscall-common-ml-711285158"></a>
 ### readFloatVector
@@ -706,17 +714,17 @@ Compute pointer in vm.syscall_common; the normal completion returns `at`.
 function readFloatVector(vm, address, count, label)
 ```
 
-Read float vector in vm.syscall_common; the normal completion returns `result`.
+Read consecutive little-endian float32 values from VM memory into a MiniLang numeric array. The checked memory span occupies `count * 4` bytes.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `address` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
-| `count` | `dynamic` | — | Count used in `(count * 4)` and `(index < count)`. |
-| `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.pointer`. |
+| `vm` | `dynamic` | — | VM whose data memory contains the packed float32 values. |
+| `address` | `dynamic` | — | Nonzero QVM pointer to the first component. |
+| `count` | `dynamic` | — | Number of float32 components to read, not a byte count. |
+| `label` | `dynamic` | — | Vector name included in memory-validation diagnostics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L425)
 
 <a id="function-function-mq3-vm-syscall-common-readstring-function-readstring-vm-value-src-mq3-vm-syscall-common-ml-1917382626"></a>
 ### readString
@@ -725,15 +733,15 @@ Read float vector in vm.syscall_common; the normal completion returns `result`.
 function readString(vm, value)
 ```
 
-Read string in vm.syscall_common; the normal completion returns `decode(slice(vm.data, at, (stop - at)))`.
+Decode a zero-terminated string from QVM memory. The terminator must occur within the first MAX_VM_STRING bytes or before the end of VM memory, whichever comes first. A missing terminator or invalid pointer produces a syscall error.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
+| `vm` | `dynamic` | — | VM whose data-memory buffer contains the string. |
+| `value` | `dynamic` | — | Nonzero QVM pointer value for the first string byte; masked by the VM address mask. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L113)
 
 <a id="function-function-mq3-vm-syscall-common-registercvar-function-registercvar-vm-base-host-src-mq3-vm-syscall-common-ml-1637769386"></a>
 ### registerCvar
@@ -751,7 +759,7 @@ Register cvar in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L184)
 
 <a id="function-function-mq3-vm-syscall-common-requirecvars-function-requirecvars-host-src-mq3-vm-syscall-common-ml-2017679414"></a>
 ### requireCvars
@@ -767,7 +775,7 @@ Compute require cvars in vm.syscall_common; the normal completion returns `host.
 | `host` | `dynamic` | — | Record exposing `cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L158)
 
 <a id="function-function-mq3-vm-syscall-common-services-function-services-registry-commands-context-src-mq3-vm-syscall-common-ml-1456419160"></a>
 ### services
@@ -776,16 +784,16 @@ Compute require cvars in vm.syscall_common; the normal completion returns `host.
 function services(registry, commands, context)
 ```
 
-Create `mq3.vm.syscall_common.Services` with cvars=registry; commands=commands; context=context; printFn=void; errorFn=void; millisecondsFn=void; consoleFn=void; openFn=void; readFn=void; writeFn=void; closeFn=void.
+Create shared QVM services with all host callbacks initially unset.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — | Initial `cvars` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record. |
-| `commands` | `dynamic` | — | Initial `commands` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record. |
-| `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record. |
+| `registry` | `dynamic` | — | Host cvar registry used by cvar traps, or `void` until configured. |
+| `commands` | `dynamic` | — | Command-buffer state supplying the current tokenized command, or `void` until configured. |
+| `context` | `dynamic` | — | Opaque value passed unchanged as the first argument to host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L73)
 
 - [mq3.vm.syscall_common.Services](Type-mq3-vm-syscall-common-services-1954415278.md) — struct
 <a id="function-function-mq3-vm-syscall-common-updatecvar-function-updatecvar-vm-base-host-src-mq3-vm-syscall-common-ml-1855830262"></a>
@@ -804,7 +812,7 @@ Update cvar in vm.syscall_common; the normal completion returns `0`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.syscall_common.requireCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L195)
 
 <a id="constant-constant-mq3-vm-syscall-common-vm-cvar-size-const-vm-cvar-size-272-src-mq3-vm-syscall-common-ml-671875366"></a>
 ### VM_CVAR_SIZE
@@ -813,8 +821,10 @@ Update cvar in vm.syscall_common; the normal completion returns `0`.
 const VM_CVAR_SIZE = 272
 ```
 
+Legacy vmCvar_t size: four 32-bit header fields followed by 256 bytes of zero-terminated string storage.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L20)
 
 <a id="function-function-mq3-vm-syscall-common-writebuffer-function-writebuffer-vm-value-capacity-data-label-src-mq3-vm-syscall-common-ml-452780766"></a>
 ### writeBuffer
@@ -823,18 +833,18 @@ const VM_CVAR_SIZE = 272
 function writeBuffer(vm, value, capacity, data, label)
 ```
 
-Write buffer in vm.syscall_common; the normal completion returns `count`.
+Write a bounded zero-terminated byte string to QVM memory and return its payload byte count. Copies at most `capacity - 1` bytes and appends a zero byte. Zero capacity returns zero without accessing or validating the pointer; negative capacity and invalid positive-capacity spans fail. Truncation is byte-based and may split a multibyte encoded character.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
-| `capacity` | `dynamic` | — | Size passed as `size` to `mq3.vm.syscall_common.pointer`. |
-| `data` | `dynamic` | — | Data used in `bytes(data)` and `copyBytes(vm.data, at, source, 0, count)`. |
-| `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.pointer`. |
+| `vm` | `dynamic` | — | VM whose data memory receives the string and terminator. |
+| `value` | `dynamic` | — | Destination QVM pointer value, validated only when capacity is positive. |
+| `capacity` | `dynamic` | — | Total destination capacity in bytes, including space for the zero terminator. |
+| `data` | `dynamic` | — | Value converted by `bytes(data)` before copying, typically text or a byte buffer. |
+| `label` | `dynamic` | — | Destination name included in validation diagnostics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L131)
 
 <a id="function-function-mq3-vm-syscall-common-writefloatvector-function-writefloatvector-vm-address-values-label-src-mq3-vm-syscall-common-ml-1911562129"></a>
 ### writeFloatVector
@@ -843,17 +853,17 @@ Write buffer in vm.syscall_common; the normal completion returns `count`.
 function writeFloatVector(vm, address, values, label)
 ```
 
-Write float vector in vm.syscall_common.
+Write a numeric array as consecutive little-endian float32 values and return `void`. An address of zero intentionally skips the write, allowing optional vector outputs such as AngleVectors. Otherwise the destination must hold four bytes per input component.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `address` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
-| `values` | `dynamic` | — | Values used in `len(values)` and `values[index]`. |
-| `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.pointer`. |
+| `vm` | `dynamic` | — | VM whose data-memory buffer receives the packed components. |
+| `address` | `dynamic` | — | Optional output QVM pointer; zero means no output requested. |
+| `values` | `dynamic` | — | Numeric components narrowed to float32 before serialization. |
+| `label` | `dynamic` | — | Vector name included in memory-validation diagnostics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L440)
 
 <a id="function-function-mq3-vm-syscall-common-writeraw-function-writeraw-vm-value-data-count-label-src-mq3-vm-syscall-common-ml-1927750217"></a>
 ### writeRaw
@@ -862,18 +872,18 @@ Write float vector in vm.syscall_common.
 function writeRaw(vm, value, data, count, label)
 ```
 
-Write raw in vm.syscall_common.
+Copy exactly `count` bytes into QVM memory without appending a terminator. Returns `void` on success. Rejects negative lengths, invalid destinations, and source buffers shorter than the requested count. A zero count still validates the destination pointer.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `value` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
-| `data` | `dynamic` | — | Data used in `len(data)` and `(len(data) < count)`. |
-| `count` | `dynamic` | — | Size passed as `size` to `mq3.vm.syscall_common.pointer`. |
-| `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.pointer`. |
+| `vm` | `dynamic` | — | VM whose data memory receives the raw bytes. |
+| `value` | `dynamic` | — | Nonzero destination QVM pointer value, masked and checked for the requested span. |
+| `data` | `dynamic` | — | Source byte buffer containing at least `count` bytes. |
+| `count` | `dynamic` | — | Number of source bytes to copy. |
+| `label` | `dynamic` | — | Output name included in pointer and short-source diagnostics. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L148)
 
 <a id="function-function-mq3-vm-syscall-common-writevmcvar-function-writevmcvar-vm-address-variable-src-mq3-vm-syscall-common-ml-494905159"></a>
 ### writeVmCvar
@@ -882,13 +892,13 @@ Write raw in vm.syscall_common.
 function writeVmCvar(vm, address, variable)
 ```
 
-Write vm cvar in vm.syscall_common.
+Serialize a host cvar into the 272-byte legacy vmCvar_t layout and return `void`. Writes the index, modification count, float32 value bits, and integer at byte offsets 0, 4, 8, and 12. The following 256 bytes contain the string with zero padding; encoded string payloads above 255 bytes fail validation after the four header fields have already been written.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — | Record exposing `data`. |
-| `address` | `dynamic` | — | Value passed as `value` to `mq3.vm.syscall_common.pointer`. |
-| `variable` | `dynamic` | — | Record exposing `index`, `modificationCount`, `value`, `integer`, `string`. |
+| `vm` | `dynamic` | — | VM whose data memory contains the destination structure. |
+| `address` | `dynamic` | — | Nonzero QVM pointer to at least VM_CVAR_SIZE writable bytes. |
+| `variable` | `dynamic` | — | Host cvar exposing index, modificationCount, value, integer, and string. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L170)

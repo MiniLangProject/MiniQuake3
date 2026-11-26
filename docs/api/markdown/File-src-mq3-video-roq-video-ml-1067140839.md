@@ -30,7 +30,7 @@ Compute video.roq_video.build4 as `[a[0], a[1], b[0], b[1], a[2], a[3], b[2], b[
 | `d` | `dynamic` | — | D used in `d[0]` and `d[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L81)
 
 <a id="function-function-mq3-video-roq-video-build8-function-build8-a-b-c-d-src-mq3-video-roq-video-ml-314565088"></a>
 ### build8
@@ -49,7 +49,7 @@ Build 8 in video.roq_video; the normal completion returns `result`.
 | `d` | `dynamic` | — | D operand used by `build8`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L89)
 
 <a id="function-function-mq3-video-roq-video-clamp8-function-clamp8-value-src-mq3-video-roq-video-ml-1466038615"></a>
 ### clamp8
@@ -65,7 +65,7 @@ Clamp 8 in video.roq_video; the normal completion returns `value`.
 | `value` | `dynamic` | — | Value used in `(value < 0)` and `(value > 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L61)
 
 <a id="function-function-mq3-video-roq-video-copymotion-function-copymotion-destination-previous-width-height-x-y-size-vector-xoff-yoff-src-mq3-video-roq-video-ml-1509893048"></a>
 ### copyMotion
@@ -92,7 +92,7 @@ Direct state writes: `destination elements`.
 | `yoff` | `dynamic` | — | Yoff used in `((8 - (vector & 15)) - yoff)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L179)
 
 <a id="function-function-mq3-video-roq-video-create-function-create-src-mq3-video-roq-video-ml-1684163808"></a>
 ### create
@@ -104,7 +104,7 @@ function create()
 Create `mq3.video.roq_video.Decoder` with width=0; height=0; q2=array(256, void); q4=array(256, void); q8=array(256, void); buffers=[void, void]; frameCount=0; latest=void.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L58)
 
 <a id="function-function-mq3-video-roq-video-decodecodebook-function-decodecodebook-decoder-movie-chunk-src-mq3-video-roq-video-ml-311185347"></a>
 ### decodeCodebook
@@ -122,7 +122,7 @@ Decode codebook in video.roq_video; the normal completion returns `(two + four)`
 | `chunk` | `dynamic` | — | Record exposing `flags`, `size`, `dataOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L102)
 
 - [mq3.video.roq_video.Decoder](Type-mq3-video-roq-video-decoder-838768531.md) — struct
 <a id="function-function-mq3-video-roq-video-decodesmall-function-decodesmall-decoder-input-destination-previous-x-y-xoff-yoff-src-mq3-video-roq-video-ml-1344856687"></a>
@@ -146,7 +146,7 @@ Decode small in video.roq_video.
 | `yoff` | `dynamic` | — | Yoff passed as `yoff` to `mq3.video.roq_video.copyMotion`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L195)
 
 <a id="function-function-mq3-video-roq-video-decodevq-function-decodevq-decoder-movie-chunk-src-mq3-video-roq-video-ml-1095389591"></a>
 ### decodeVq
@@ -166,7 +166,7 @@ Direct state writes: `decoder.frameCount`, `decoder.latest`.
 | `chunk` | `dynamic` | — | Record exposing `dataOffset`, `size`, `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L210)
 
 <a id="function-function-mq3-video-roq-video-fail-function-fail-message-src-mq3-video-roq-video-ml-1131883573"></a>
 ### fail
@@ -182,7 +182,7 @@ Create the video.roq_video error for `fail` with 7691 and the supplied diagnosti
 | `message` | `dynamic` | — | Message used in `("RoQ video: " + message)` and `error(7691, ("RoQ video: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L56)
 
 - [mq3.video.roq_video.Frame](Type-mq3-video-roq-video-frame-123206610.md) — struct
 <a id="constant-constant-mq3-video-roq-video-max-dimension-const-max-dimension-1024-src-mq3-video-roq-video-ml-658582580"></a>
@@ -192,8 +192,10 @@ Create the video.roq_video error for `fail` with 7691 and the supplied diagnosti
 const MAX_DIMENSION = 1024
 ```
 
+Upper bound on dimension represented by mq3.video.roq_video.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L9)
 
 <a id="function-function-mq3-video-roq-video-nextbyte-function-nextbyte-value-src-mq3-video-roq-video-ml-2034662247"></a>
 ### nextByte
@@ -211,7 +213,7 @@ Direct state writes: `value.offset`.
 | `value` | `dynamic` | — | Record exposing `offset`, `limit`, `data`. Updated in place: `offset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L148)
 
 <a id="function-function-mq3-video-roq-video-nextcode-function-nextcode-value-src-mq3-video-roq-video-ml-454321763"></a>
 ### nextCode
@@ -229,7 +231,7 @@ Direct state writes: `value.control`, `value.offset`, `value.remaining`.
 | `value` | `dynamic` | — | Record exposing `remaining`, `offset`, `limit`, `data`, `control`. Updated in place: `control`, `offset`, `remaining`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L140)
 
 <a id="function-function-mq3-video-roq-video-pixelcopy-function-pixelcopy-value-src-mq3-video-roq-video-ml-1784864737"></a>
 ### pixelCopy
@@ -245,7 +247,7 @@ Compute video.roq_video.pixelCopy as `[value[0], value[1], value[2], value[3]]`.
 | `value` | `dynamic` | — | Value used in `value[0]` and `value[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L74)
 
 <a id="function-function-mq3-video-roq-video-process-function-process-decoder-movie-chunk-src-mq3-video-roq-video-ml-820925265"></a>
 ### process
@@ -263,7 +265,7 @@ Process roq video in video.roq_video.
 | `chunk` | `dynamic` | — | Record exposing `id`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L237)
 
 <a id="function-function-mq3-video-roq-video-reader-function-reader-data-offset-size-src-mq3-video-roq-video-ml-1295369714"></a>
 ### reader
@@ -281,7 +283,7 @@ Create `mq3.video.roq_video.Reader` with data=data; offset=offset; limit=(offset
 | `size` | `dynamic` | — | Size used in `(offset + size)` and `Reader(data, offset, (offset + size), 0, 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L135)
 
 - [mq3.video.roq_video.Reader](Type-mq3-video-roq-video-reader-1755394874.md) — struct
 <a id="function-function-mq3-video-roq-video-setinfo-function-setinfo-decoder-movie-chunk-src-mq3-video-roq-video-ml-1935696971"></a>
@@ -302,7 +304,7 @@ Direct state writes: `decoder.width`, `decoder.height`, `decoder.buffers`, `deco
 | `chunk` | `dynamic` | — | Record exposing `size`, `dataOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L124)
 
 <a id="function-function-mq3-video-roq-video-writeblock-function-writeblock-buffer-width-height-x-y-size-pixels-src-mq3-video-roq-video-ml-76671456"></a>
 ### writeBlock
@@ -326,7 +328,7 @@ Direct state writes: `buffer elements`.
 | `pixels` | `dynamic` | — | Pixels used in `len(pixels)` and `(pixels == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L160)
 
 <a id="function-function-mq3-video-roq-video-yuv-function-yuv-y-u-v-src-mq3-video-roq-video-ml-503766102"></a>
 ### yuv
@@ -344,4 +346,4 @@ Compute yuv in video.roq_video; the normal completion returns `[clamp8(((yy + vr
 | `v` | `dynamic` | — | V used in `(2 * v)` and `((2 * v) - 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L66)

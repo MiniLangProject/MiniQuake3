@@ -30,7 +30,7 @@ Updates `cache.frameTargets`, `cache.frameTriangles`, `cache.frameCulled`, `cach
 | `cache` | `dynamic` | — | Mutable record or buffer; this call updates `cache.frameTargets`, `cache.frameTriangles`, `cache.frameCulled`, `cache.frameFull`, `cache.frameMedium`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L228)
 
 <a id="function-function-mq3-renderer-player-render-cache-bindingforsurface-function-bindingforsurface-cache-part-surfaceindex-src-mq3-renderer-player-render-cache-ml-449598302"></a>
 ### bindingForSurface
@@ -48,7 +48,7 @@ Computes `bindingForSurface` from `fail("skin has no binding for "+surfaceName)`
 | `surfaceIndex` | `dynamic` | — | Input tested by `surfaceIndex<0 or surfaceIndex>=len(model.surfaces)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L457)
 
 <a id="function-function-mq3-renderer-player-render-cache-build-function-build-cache-key-src-mq3-renderer-player-render-cache-ml-353843161"></a>
 ### build
@@ -65,7 +65,7 @@ Updates `cache.entries`, `cache.evictions`, `cache.builds`, `cache.sourceTriangl
 | `key` | `dynamic` | — | Record providing `key.lowerFrame`, `key.lowerOldFrame`, `key.lowerPhase`, `key.upperFrame`, `key.upperOldFrame`, `key.upperPhase`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L310)
 
 - [mq3.renderer.player_render_cache.Cache](Type-mq3-renderer-player-render-cache-cache-1177242732.md) — struct
 <a id="function-function-mq3-renderer-player-render-cache-create-function-create-models-phasecount-maxentries-maxtrianglespertarget-maxtargetsperframe-src-mq3-renderer-player-render-cache-ml-1577631981"></a>
@@ -86,7 +86,7 @@ Builds `mq3.renderer.player_render_cache.Cache` for `mq3.renderer.player_render_
 | `maxTargetsPerFrame` | `dynamic` | — | Initial value for `mq3.renderer.player_render_cache.Cache.maxTargetsPerFrame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L174)
 
 <a id="function-function-mq3-renderer-player-render-cache-createdetailed-function-createdetailed-models-skinset-phasecount-maxentries-maxtargetsperframe-policy-light-src-mq3-renderer-player-render-cache-ml-759014161"></a>
 ### createDetailed
@@ -108,7 +108,7 @@ Detailed caches retain every triangle at build time. LOD selection happens after
 | `light` | `dynamic` | — | Value assigned to `value.lighting`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L218)
 
 <a id="function-function-mq3-renderer-player-render-cache-decoratetriangle-function-decoratetriangle-cache-triangle-lod-src-mq3-renderer-player-render-cache-ml-1928259113"></a>
 ### decorateTriangle
@@ -126,7 +126,7 @@ Builds `mq3.renderer.player_render_cache.DrawTriangle` for `mq3.renderer.player_
 | `lod` | `dynamic` | — | Initial value for `mq3.renderer.player_render_cache.DrawTriangle.lod`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L351)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L482)
 
 <a id="function-function-mq3-renderer-player-render-cache-distance-function-distance-a-b-src-mq3-renderer-player-render-cache-ml-34275043"></a>
 ### distance
@@ -143,7 +143,7 @@ Computes `distance` from `numeric.fsqrt(numeric.fadd(numeric.fadd(numeric.fmul(d
 | `b` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.player_render_cache.validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L385)
 
 - [mq3.renderer.player_render_cache.DrawTriangle](Type-mq3-renderer-player-render-cache-drawtriangle-1503976252.md) — struct
 - [mq3.renderer.player_render_cache.Entry](Type-mq3-renderer-player-render-cache-entry-1693965014.md) — struct
@@ -161,7 +161,7 @@ Creates error `7540` with message `"player render cache: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7540,"player render cache: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L166)
 
 <a id="function-function-mq3-renderer-player-render-cache-find-function-find-cache-key-src-mq3-renderer-player-render-cache-ml-351563649"></a>
 ### find
@@ -178,7 +178,7 @@ Returns `void` from `mq3.renderer.player_render_cache.find`; earlier branches re
 | `key` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.player_render_cache.sameKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L284)
 
 <a id="constant-constant-mq3-renderer-player-render-cache-full-surface-triangle-limit-const-full-surface-triangle-limit-8192-src-mq3-renderer-player-render-cache-ml-259966397"></a>
 ### FULL_SURFACE_TRIANGLE_LIMIT
@@ -187,8 +187,10 @@ Returns `void` from `mq3.renderer.player_render_cache.find`; earlier branches re
 const FULL_SURFACE_TRIANGLE_LIMIT = 8192
 ```
 
+Triangle-count threshold used when retaining full detail for a model surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L21)
 
 - [mq3.renderer.player_render_cache.Key](Type-mq3-renderer-player-render-cache-key-1751774261.md) — struct
 <a id="function-function-mq3-renderer-player-render-cache-keyfor-function-keyfor-cache-lowersample-uppersample-src-mq3-renderer-player-render-cache-ml-465354061"></a>
@@ -207,7 +209,7 @@ Builds `mq3.renderer.player_render_cache.Key` for `mq3.renderer.player_render_ca
 | `upperSample` | `dynamic` | — | Record providing `upperSample.oldFrame`, `upperSample.frame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L268)
 
 <a id="function-function-mq3-renderer-player-render-cache-lighting-function-lighting-direction-ambient-directed-src-mq3-renderer-player-render-cache-ml-716791615"></a>
 ### lighting
@@ -225,7 +227,7 @@ Builds `mq3.renderer.player_render_cache.Lighting` for `mq3.renderer.player_rend
 | `directed` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L199)
 
 - [mq3.renderer.player_render_cache.Lighting](Type-mq3-renderer-player-render-cache-lighting-1222861998.md) — struct
 <a id="function-function-mq3-renderer-player-render-cache-limittriangles-function-limittriangles-triangles-budget-src-mq3-renderer-player-render-cache-ml-1448515294"></a>
@@ -243,7 +245,7 @@ Evenly retain triangles across the stable lower/upper/head stream. This avoids s
 | `budget` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.quotient`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L297)
 
 <a id="function-function-mq3-renderer-player-render-cache-localtriangletotarget-function-localtriangletotarget-source-target-src-mq3-renderer-player-render-cache-ml-1364180696"></a>
 ### localTriangleToTarget
@@ -260,7 +262,7 @@ Builds `positions[corner]`, `normals[corner]` in `mq3.renderer.player_render_cac
 | `target` | `dynamic` | — | Record providing `target.axis`, `target.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L330)
 
 <a id="constant-constant-mq3-renderer-player-render-cache-lod-culled-const-lod-culled-0-src-mq3-renderer-player-render-cache-ml-635264133"></a>
 ### LOD_CULLED
@@ -269,8 +271,10 @@ Builds `positions[corner]`, `normals[corner]` in `mq3.renderer.player_render_cac
 const LOD_CULLED = 0
 ```
 
+Level-of-detail result indicating that the model is not drawn.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L13)
 
 <a id="constant-constant-mq3-renderer-player-render-cache-lod-far-const-lod-far-1-src-mq3-renderer-player-render-cache-ml-774643834"></a>
 ### LOD_FAR
@@ -279,8 +283,10 @@ const LOD_CULLED = 0
 const LOD_FAR = 1
 ```
 
+Level-of-detail tier used for distant player models.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L15)
 
 <a id="constant-constant-mq3-renderer-player-render-cache-lod-full-const-lod-full-3-src-mq3-renderer-player-render-cache-ml-27694836"></a>
 ### LOD_FULL
@@ -289,8 +295,10 @@ const LOD_FAR = 1
 const LOD_FULL = 3
 ```
 
+Level-of-detail tier retaining full player-model geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L19)
 
 <a id="constant-constant-mq3-renderer-player-render-cache-lod-medium-const-lod-medium-2-src-mq3-renderer-player-render-cache-ml-817785835"></a>
 ### LOD_MEDIUM
@@ -299,8 +307,10 @@ const LOD_FULL = 3
 const LOD_MEDIUM = 2
 ```
 
+Level-of-detail tier used for intermediate-distance player models.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L17)
 
 <a id="function-function-mq3-renderer-player-render-cache-lodfor-function-lodfor-cache-viewerorigin-visible-target-src-mq3-renderer-player-render-cache-ml-1962275473"></a>
 ### lodFor
@@ -319,7 +329,7 @@ Selects full, medium, far, or culled detail from visibility and the cache's dist
 | `target` | `dynamic` | — | Record providing `target.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L396)
 
 <a id="function-function-mq3-renderer-player-render-cache-lodpolicy-function-lodpolicy-fulldistance-mediumdistance-fardistance-mediumstride-farstride-src-mq3-renderer-player-render-cache-ml-669046802"></a>
 ### lodPolicy
@@ -339,7 +349,7 @@ Builds `mq3.renderer.player_render_cache.LodPolicy` for `mq3.renderer.player_ren
 | `farStride` | `dynamic` | — | Initial value for `mq3.renderer.player_render_cache.LodPolicy.farStride`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L189)
 
 - [mq3.renderer.player_render_cache.LodPolicy](Type-mq3-renderer-player-render-cache-lodpolicy-2072277335.md) — struct
 <a id="function-function-mq3-renderer-player-render-cache-modelforpart-function-modelforpart-cache-part-src-mq3-renderer-player-render-cache-ml-145590895"></a>
@@ -357,7 +367,7 @@ Computes `modelForPart` from `fail("unknown player part")`.
 | `part` | `dynamic` | — | Input tested by `part==player.LOWER_PART`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L436)
 
 <a id="function-function-mq3-renderer-player-render-cache-phasebacklerp-function-phasebacklerp-cache-phase-src-mq3-renderer-player-render-cache-ml-2050328031"></a>
 ### phaseBacklerp
@@ -374,7 +384,7 @@ Returns `numeric.f32((phase*1.0)/(cache.phaseCount-1))` from `mq3.renderer.playe
 | `phase` | `dynamic` | — | Input used in the result expression `numeric.f32((phase*1.0)/(cache.phaseCount-1))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L259)
 
 <a id="function-function-mq3-renderer-player-render-cache-phasefor-function-phasefor-cache-value-src-mq3-renderer-player-render-cache-ml-2002310559"></a>
 ### phaseFor
@@ -391,7 +401,7 @@ Round to the nearest one of phaseCount evenly spaced backlerp values. phaseCount
 | `value` | `dynamic` | — | Record providing `value.backlerp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L247)
 
 <a id="function-function-mq3-renderer-player-render-cache-rendertarget-function-rendertarget-cache-lowersample-uppersample-target-src-mq3-renderer-player-render-cache-ml-1814437606"></a>
 ### renderTarget
@@ -410,7 +420,7 @@ One call consumes one target from the current frame budget. Cache misses assembl
 | `target` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.player_model_assembly.validateTransform`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L364)
 
 <a id="function-function-mq3-renderer-player-render-cache-rendertargetdetailed-function-rendertargetdetailed-cache-lowersample-uppersample-target-viewerorigin-visible-src-mq3-renderer-player-render-cache-ml-1735482132"></a>
 ### renderTargetDetailed
@@ -431,7 +441,7 @@ Visibility and distance are evaluated before consuming the per-frame target budg
 | `visible` | `dynamic` | — | Value forwarded as `visible` to `mq3.renderer.player_render_cache.lodFor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L366)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L497)
 
 <a id="function-function-mq3-renderer-player-render-cache-samekey-function-samekey-a-b-src-mq3-renderer-player-render-cache-ml-31161249"></a>
 ### sameKey
@@ -448,7 +458,7 @@ Compares lower/upper current frames, previous frames, and quantized interpolatio
 | `b` | `dynamic` | — | Record providing `b.lowerOldFrame`, `b.lowerFrame`, `b.lowerPhase`, `b.upperOldFrame`, `b.upperFrame`, `b.upperPhase`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L277)
 
 <a id="function-function-mq3-renderer-player-render-cache-selectlodtriangles-function-selectlodtriangles-cache-triangles-lod-src-mq3-renderer-player-render-cache-ml-63217140"></a>
 ### selectLodTriangles
@@ -466,7 +476,7 @@ The source stream is grouped by part and surface. Resetting the stride at every 
 | `lod` | `dynamic` | — | Value forwarded as `lod` to `mq3.renderer.player_render_cache.strideFor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L421)
 
 <a id="function-function-mq3-renderer-player-render-cache-skinforpart-function-skinforpart-cache-part-src-mq3-renderer-player-render-cache-ml-1579082117"></a>
 ### skinForPart
@@ -483,7 +493,7 @@ Computes `skinForPart` from `fail("unknown player part")`.
 | `part` | `dynamic` | — | Input tested by `part==player.LOWER_PART`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L446)
 
 <a id="function-function-mq3-renderer-player-render-cache-stats-function-stats-cache-src-mq3-renderer-player-render-cache-ml-723614630"></a>
 ### stats
@@ -499,7 +509,7 @@ Builds `mq3.renderer.player_render_cache.Stats` for `mq3.renderer.player_render_
 | `cache` | `dynamic` | — | Record providing `cache.entries`, `cache.hits`, `cache.misses`, `cache.builds`, `cache.evictions`, `cache.frameTargets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L392)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L523)
 
 - [mq3.renderer.player_render_cache.Stats](Type-mq3-renderer-player-render-cache-stats-76336821.md) — struct
 <a id="function-function-mq3-renderer-player-render-cache-stridefor-function-stridefor-cache-lod-src-mq3-renderer-player-render-cache-ml-1362544337"></a>
@@ -517,7 +527,7 @@ Returns `0` from `mq3.renderer.player_render_cache.strideFor`; earlier branches 
 | `lod` | `dynamic` | — | Input tested by `lod==LOD_FULL`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L409)
 
 <a id="function-function-mq3-renderer-player-render-cache-transformtriangles-function-transformtriangles-triangles-target-src-mq3-renderer-player-render-cache-ml-437571454"></a>
 ### transformTriangles
@@ -534,7 +544,7 @@ Builds `result[index]` in `mq3.renderer.player_render_cache.transformTriangles`;
 | `target` | `dynamic` | — | Value forwarded as `target` to `mq3.renderer.player_render_cache.localTriangleToTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L345)
 
 <a id="function-function-mq3-renderer-player-render-cache-validatesample-function-validatesample-value-src-mq3-renderer-player-render-cache-ml-825117869"></a>
 ### validateSample
@@ -550,7 +560,7 @@ Rejects missing animation samples, negative frame indices, and backlerp outside 
 | `value` | `dynamic` | — | Record providing `value.oldFrame`, `value.frame`, `value.backlerp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L236)
 
 <a id="function-function-mq3-renderer-player-render-cache-validpoint-function-validpoint-value-src-mq3-renderer-player-render-cache-ml-1493447297"></a>
 ### validPoint
@@ -566,7 +576,7 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.player_render_cache.v
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L380)
 
 <a id="function-function-mq3-renderer-player-render-cache-vertexlight-function-vertexlight-cache-normal-src-mq3-renderer-player-render-cache-ml-504386421"></a>
 ### vertexLight
@@ -583,4 +593,4 @@ Computes `vertexLight` from `numeric.f32(value)` using `mq3.compat.numeric.fadd`
 | `normal` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L339)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L470)

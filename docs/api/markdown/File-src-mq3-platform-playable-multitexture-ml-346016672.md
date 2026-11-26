@@ -15,8 +15,10 @@ Reachable from entry: **yes**
 const ALPHA_TEST_GE128 = 3
 ```
 
+Alpha-test selector that accepts byte alpha values of at least 128.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L82)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-alpha-test-gt0-const-alpha-test-gt0-1-src-mq3-platform-playable-multitexture-ml-1342109998"></a>
 ### ALPHA_TEST_GT0
@@ -25,8 +27,10 @@ const ALPHA_TEST_GE128 = 3
 const ALPHA_TEST_GT0 = 1
 ```
 
+Alpha-test selector that accepts alpha values greater than zero.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L78)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-alpha-test-lt128-const-alpha-test-lt128-2-src-mq3-platform-playable-multitexture-ml-1619107939"></a>
 ### ALPHA_TEST_LT128
@@ -35,8 +39,10 @@ const ALPHA_TEST_GT0 = 1
 const ALPHA_TEST_LT128 = 2
 ```
 
+Alpha-test selector that accepts byte alpha values below 128.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L80)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-alpha-test-none-const-alpha-test-none-0-src-mq3-platform-playable-multitexture-ml-1497700613"></a>
 ### ALPHA_TEST_NONE
@@ -45,8 +51,10 @@ const ALPHA_TEST_LT128 = 2
 const ALPHA_TEST_NONE = 0
 ```
 
+Alpha-test selector that accepts all fragment alpha values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L76)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-add-const-blend-add-2-src-mq3-platform-playable-multitexture-ml-498732635"></a>
 ### BLEND_ADD
@@ -55,8 +63,10 @@ const ALPHA_TEST_NONE = 0
 const BLEND_ADD = 2
 ```
 
+Blend mode that adds source and destination colors.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L57)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L60)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-alpha-const-blend-alpha-1-src-mq3-platform-playable-multitexture-ml-691660838"></a>
 ### BLEND_ALPHA
@@ -65,8 +75,10 @@ const BLEND_ADD = 2
 const BLEND_ALPHA = 1
 ```
 
+Blend mode using source alpha and one minus source alpha as color factors.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L58)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-dst-color-one-minus-dst-alpha-const-blend-dst-color-one-minus-dst-alpha-4-src-mq3-platform-playable-multitexture-ml-1221903261"></a>
 ### BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA
@@ -75,8 +87,10 @@ const BLEND_ALPHA = 1
 const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA = 4
 ```
 
+Blend mode using destination color and one minus destination alpha as factors.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L64)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-dynamic-light-const-blend-dynamic-light-5-src-mq3-platform-playable-multitexture-ml-1040163734"></a>
 ### BLEND_DYNAMIC_LIGHT
@@ -85,8 +99,10 @@ const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA = 4
 const BLEND_DYNAMIC_LIGHT = 5
 ```
 
+Blend mode combining a dynamic-light contribution with existing surface color.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L60)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L66)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-filter-const-blend-filter-3-src-mq3-platform-playable-multitexture-ml-1999902322"></a>
 ### BLEND_FILTER
@@ -95,8 +111,10 @@ const BLEND_DYNAMIC_LIGHT = 5
 const BLEND_FILTER = 3
 ```
 
+Blend mode that multiplies source and destination colors.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L62)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-gl-state-const-blend-gl-state-256-src-mq3-platform-playable-multitexture-ml-2082211992"></a>
 ### BLEND_GL_STATE
@@ -108,7 +126,7 @@ const BLEND_GL_STATE = 256
 Generic OpenGL blend state.  Low nibble is GLS_SRCBLEND_*, high nibble is GLS_DSTBLEND_* and bit 8 distinguishes it from the optimized legacy modes.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L74)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-mark-const-blend-mark-6-src-mq3-platform-playable-multitexture-ml-39465539"></a>
 ### BLEND_MARK
@@ -117,8 +135,10 @@ Generic OpenGL blend state.  Low nibble is GLS_SRCBLEND_*, high nibble is GLS_DS
 const BLEND_MARK = 6
 ```
 
+Blend mode multiplying destination color by one minus the source color for impact marks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L68)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-opaque-const-blend-opaque-0-src-mq3-platform-playable-multitexture-ml-1101995713"></a>
 ### BLEND_OPAQUE
@@ -127,8 +147,10 @@ const BLEND_MARK = 6
 const BLEND_OPAQUE = 0
 ```
 
+Blend mode that replaces destination color with the source color.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L56)
 
 <a id="constant-constant-mq3-platform-playable-multitexture-blend-premultiplied-alpha-const-blend-premultiplied-alpha-7-src-mq3-platform-playable-multitexture-ml-1817005580"></a>
 ### BLEND_PREMULTIPLIED_ALPHA
@@ -137,8 +159,10 @@ const BLEND_OPAQUE = 0
 const BLEND_PREMULTIPLIED_ALPHA = 7
 ```
 
+Blend mode combining premultiplied source color with destination color scaled by one minus source alpha.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L71)
 
 <a id="function-function-mq3-platform-playable-multitexture-draw-function-draw-baseslot-lightmapslot-a-basea-lightmapa-lighta-b-baseb-lightmapb-lightb-c-basec-lightmapc-lightc-red-green-blue-src-mq3-platform-playable-multitexture-ml-1697416720"></a>
 ### draw
@@ -170,7 +194,7 @@ Expands three projected vertices and their base/lightmap UVs into the native mul
 | `blue` | `dynamic` | — | Value forwarded as `blue` to `mq3.platform.playable_multitexture.drawNative`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L141)
 
 <a id="extern_function-extern-function-mq3-platform-playable-multitexture-drawnative-extern-function-drawnative-baseslot-as-i32-lightmapslot-as-i32-x0-as-double-y0-as-double-depth0-as-double-u0-as-double-v0-as-double-lu0-as-double-lv0-as-double-light0-as-double-x1-as-double-y1-as-double-depth1-as-double-u1-as-double-v1-as-double-lu1-as-double-lv1-as-double-light1-as-double-x2-as-double-y2-as-double-depth2-as-double-u2-as-double-v2-as-double-lu2-as-double-lv2-as-double-light2-as-double-red-as-i32-green-as-i32-blue-as-i32-from-playable-window-dll-symbol-playable-window-draw-triangle-multitexture-returns-void-src-mq3-platform-playable-multitexture-ml-728383780"></a>
 ### drawNative
@@ -231,7 +255,7 @@ Computes `BLEND_GL_STATE|srcFactor|dstFactor` for `mq3.platform.playable_multite
 | `dstFactor` | `dynamic` | — | Input used in the result expression `BLEND_GL_STATE\|srcFactor\|dstFactor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L98)
 
 <a id="function-function-mq3-platform-playable-multitexture-setalphatest-function-setalphatest-mode-src-mq3-platform-playable-multitexture-ml-2030045335"></a>
 ### setAlphaTest
@@ -247,7 +271,7 @@ Returns `void` from `mq3.platform.playable_multitexture.setAlphaTest`; earlier b
 | `mode` | `dynamic` | — | Value forwarded as `mode` to `mq3.platform.playable_multitexture.setAlphaTestNative`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L102)
 
 <a id="extern_function-extern-function-mq3-platform-playable-multitexture-setalphatestnative-extern-function-setalphatestnative-mode-as-i32-from-playable-window-dll-symbol-playable-window-set-alpha-test-returns-i32-src-mq3-platform-playable-multitexture-ml-1327730526"></a>
 ### setAlphaTestNative
@@ -281,7 +305,7 @@ Returns `void` from `mq3.platform.playable_multitexture.setPolygonOffset`; earli
 | `enabled` | `dynamic` | — | Input tested by `enabled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L117)
 
 <a id="extern_function-extern-function-mq3-platform-playable-multitexture-setpolygonoffsetnative-extern-function-setpolygonoffsetnative-enabled-as-i32-from-playable-window-dll-symbol-playable-window-set-polygon-offset-returns-i32-src-mq3-platform-playable-multitexture-ml-1985161575"></a>
 ### setPolygonOffsetNative
@@ -317,7 +341,7 @@ Converts depth flags to native integers and applies the blend/depth raster state
 | `depthWrite` | `dynamic` | — | Input tested by `depthWrite`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L88)
 
 <a id="extern_function-extern-function-mq3-platform-playable-multitexture-setstatenative-extern-function-setstatenative-blendmode-as-i32-depthequal-as-i32-depthwrite-as-i32-from-playable-window-dll-symbol-playable-window-set-raster-state-returns-i32-src-mq3-platform-playable-multitexture-ml-1811046"></a>
 ### setStateNative
@@ -353,7 +377,7 @@ Returns `void` from `mq3.platform.playable_multitexture.setTextureClamp`; earlie
 | `enabled` | `dynamic` | — | Input tested by `enabled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_multitexture.ml#L109)
 
 <a id="extern_function-extern-function-mq3-platform-playable-multitexture-settextureclampnative-extern-function-settextureclampnative-enabled-as-i32-from-playable-window-dll-symbol-playable-window-set-texture-clamp-returns-i32-src-mq3-platform-playable-multitexture-ml-295747140"></a>
 ### setTextureClampNative

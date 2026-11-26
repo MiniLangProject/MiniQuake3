@@ -12,7 +12,7 @@ struct Client
 Client record for server.timeouts, containing `state`, `lastPacketTime`, `timeoutCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L19)
 
 ## Members
 
@@ -23,8 +23,10 @@ Client record for server.timeouts, containing `state`, `lastPacketTime`, `timeou
 lastPacketTime
 ```
 
+Server timestamp of the most recently received client packet, in milliseconds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L24)
 
 <a id="field-field-mq3-server-timeouts-client-state-state-src-mq3-server-timeouts-ml-1213154814"></a>
 ### state
@@ -33,8 +35,10 @@ lastPacketTime
 state
 ```
 
+Connection lifecycle value that selects inactivity handling for connected, active, and lingering zombie slots.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L22)
 
 <a id="field-field-mq3-server-timeouts-client-timeoutcount-timeoutcount-src-mq3-server-timeouts-ml-517366154"></a>
 ### timeoutCount
@@ -43,5 +47,7 @@ state
 timeoutCount
 ```
 
+Consecutive timeout checks exceeded before disconnecting the client.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L26)

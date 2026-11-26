@@ -12,7 +12,7 @@ struct DrawSurface
 Data record for `mq3.renderer.md4_animation.DrawSurface`; groups `surfaceIndex`, `shaderIndex`, `fogNum`, `dlightMap`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L47)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.md4_animation.DrawSurface`; groups `surfaceIndex`,
 dlightMap
 ```
 
+Dynamic-light state encoded into the draw-surface sort key.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L55)
 
 <a id="field-field-mq3-renderer-md4-animation-drawsurface-fognum-fognum-src-mq3-renderer-md4-animation-ml-56737738"></a>
 ### fogNum
@@ -33,8 +35,10 @@ dlightMap
 fogNum
 ```
 
+Fog volume number encoded or used by the draw surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L53)
 
 <a id="field-field-mq3-renderer-md4-animation-drawsurface-shaderindex-shaderindex-src-mq3-renderer-md4-animation-ml-222340610"></a>
 ### shaderIndex
@@ -43,8 +47,10 @@ fogNum
 shaderIndex
 ```
 
+Index of the resolved shader in the renderer's shader table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L51)
 
 <a id="field-field-mq3-renderer-md4-animation-drawsurface-surfaceindex-surfaceindex-src-mq3-renderer-md4-animation-ml-951028708"></a>
 ### surfaceIndex
@@ -53,5 +59,7 @@ shaderIndex
 surfaceIndex
 ```
 
+Index of the source surface within the model or world.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L49)

@@ -12,7 +12,7 @@ struct Services
 `Services` record for be interface, containing `context`, `aasSetupFn`, `eaSetupFn`, `weaponSetupFn` and `goalSetupFn` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L24)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Services
 aasLoadMapFn
 ```
 
+Host callback that loads the navigation data for a requested map.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L67)
 
 <a id="field-field-mq3-botlib-be-interface-services-aassetupfn-aassetupfn-src-mq3-botlib-be-interface-ml-870929735"></a>
 ### aasSetupFn
@@ -33,8 +35,10 @@ aasLoadMapFn
 aasSetupFn
 ```
 
+Host callback that initializes the AAS navigation subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L29)
 
 <a id="field-field-mq3-botlib-be-interface-services-aasshutdownfn-aasshutdownfn-src-mq3-botlib-be-interface-ml-1396878023"></a>
 ### aasShutdownFn
@@ -43,8 +47,10 @@ aasSetupFn
 aasShutdownFn
 ```
 
+Host callback that releases the AAS navigation subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L53)
 
 <a id="field-field-mq3-botlib-be-interface-services-aasstartframefn-aasstartframefn-src-mq3-botlib-be-interface-ml-654190735"></a>
 ### aasStartFrameFn
@@ -53,8 +59,10 @@ aasShutdownFn
 aasStartFrameFn
 ```
 
+Host callback that advances AAS bookkeeping to the supplied frame time.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L65)
 
 <a id="field-field-mq3-botlib-be-interface-services-aasupdateentityfn-aasupdateentityfn-src-mq3-botlib-be-interface-ml-1451468987"></a>
 ### aasUpdateEntityFn
@@ -63,8 +71,10 @@ aasStartFrameFn
 aasUpdateEntityFn
 ```
 
+Host callback that updates the navigation representation of a game entity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L73)
 
 <a id="field-field-mq3-botlib-be-interface-services-charactersshutdownfn-charactersshutdownfn-src-mq3-botlib-be-interface-ml-1755699063"></a>
 ### charactersShutdownFn
@@ -73,8 +83,10 @@ aasUpdateEntityFn
 charactersShutdownFn
 ```
 
+Host callback that releases cached bot-character definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L51)
 
 <a id="field-field-mq3-botlib-be-interface-services-chatsetupfn-chatsetupfn-src-mq3-botlib-be-interface-ml-236288047"></a>
 ### chatSetupFn
@@ -83,8 +95,10 @@ charactersShutdownFn
 chatSetupFn
 ```
 
+Host callback that initializes the bot chat subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L37)
 
 <a id="field-field-mq3-botlib-be-interface-services-chatshutdownfn-chatshutdownfn-src-mq3-botlib-be-interface-ml-453366639"></a>
 ### chatShutdownFn
@@ -93,8 +107,10 @@ chatSetupFn
 chatShutdownFn
 ```
 
+Host callback that releases bot chat resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L41)
 
 <a id="field-field-mq3-botlib-be-interface-services-checksourcesfn-checksourcesfn-src-mq3-botlib-be-interface-ml-1914862499"></a>
 ### checkSourcesFn
@@ -103,8 +119,10 @@ chatShutdownFn
 checkSourcesFn
 ```
 
+Host callback that checks the state of registered preprocessor sources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L63)
 
 <a id="field-field-mq3-botlib-be-interface-services-context-context-src-mq3-botlib-be-interface-ml-62703127"></a>
 ### context
@@ -113,8 +131,10 @@ checkSourcesFn
 context
 ```
 
+Caller-supplied data associated with setup, shutdown, and frame dispatch across the bot-library subsystems.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L27)
 
 <a id="field-field-mq3-botlib-be-interface-services-definesremovedfn-definesremovedfn-src-mq3-botlib-be-interface-ml-1144823063"></a>
 ### definesRemovedFn
@@ -123,8 +143,10 @@ context
 definesRemovedFn
 ```
 
+Host callback that observes removal of preprocessor definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L59)
 
 <a id="field-field-mq3-botlib-be-interface-services-easetupfn-easetupfn-src-mq3-botlib-be-interface-ml-1445061311"></a>
 ### eaSetupFn
@@ -133,8 +155,10 @@ definesRemovedFn
 eaSetupFn
 ```
 
+Host callback that initializes the bot elementary-action interface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L31)
 
 <a id="field-field-mq3-botlib-be-interface-services-eashutdownfn-eashutdownfn-src-mq3-botlib-be-interface-ml-1217637911"></a>
 ### eaShutdownFn
@@ -143,8 +167,10 @@ eaSetupFn
 eaShutdownFn
 ```
 
+Host callback that releases the bot elementary-action interface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L55)
 
 <a id="field-field-mq3-botlib-be-interface-services-goalsetupfn-goalsetupfn-src-mq3-botlib-be-interface-ml-1192803939"></a>
 ### goalSetupFn
@@ -153,8 +179,10 @@ eaShutdownFn
 goalSetupFn
 ```
 
+Host callback that initializes bot goal and item-selection state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L35)
 
 <a id="field-field-mq3-botlib-be-interface-services-goalshutdownfn-goalshutdownfn-src-mq3-botlib-be-interface-ml-793356353"></a>
 ### goalShutdownFn
@@ -163,8 +191,10 @@ goalSetupFn
 goalShutdownFn
 ```
 
+Host callback that releases bot goal and item-selection resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L45)
 
 <a id="field-field-mq3-botlib-be-interface-services-initlevelitemsfn-initlevelitemsfn-src-mq3-botlib-be-interface-ml-1404992079"></a>
 ### initLevelItemsFn
@@ -173,8 +203,10 @@ goalShutdownFn
 initLevelItemsFn
 ```
 
+Host callback that discovers and initializes bot goals for map items.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L69)
 
 <a id="field-field-mq3-botlib-be-interface-services-libvarsreleasedfn-libvarsreleasedfn-src-mq3-botlib-be-interface-ml-1465899727"></a>
 ### libvarsReleasedFn
@@ -183,8 +215,10 @@ initLevelItemsFn
 libvarsReleasedFn
 ```
 
+Host callback that observes release of bot-library variables.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L57)
 
 <a id="field-field-mq3-botlib-be-interface-services-logshutdownfn-logshutdownfn-src-mq3-botlib-be-interface-ml-597789375"></a>
 ### logShutdownFn
@@ -193,8 +227,10 @@ libvarsReleasedFn
 logShutdownFn
 ```
 
+Host callback that closes the bot-library logging subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L61)
 
 <a id="field-field-mq3-botlib-be-interface-services-movesetupfn-movesetupfn-src-mq3-botlib-be-interface-ml-110292015"></a>
 ### moveSetupFn
@@ -203,8 +239,10 @@ logShutdownFn
 moveSetupFn
 ```
 
+Host callback that initializes bot movement resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L39)
 
 <a id="field-field-mq3-botlib-be-interface-services-moveshutdownfn-moveshutdownfn-src-mq3-botlib-be-interface-ml-823538073"></a>
 ### moveShutdownFn
@@ -213,8 +251,10 @@ moveSetupFn
 moveShutdownFn
 ```
 
+Host callback that releases bot movement resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L43)
 
 <a id="field-field-mq3-botlib-be-interface-services-setbrushmodeltypesfn-setbrushmodeltypesfn-src-mq3-botlib-be-interface-ml-1666983755"></a>
 ### setBrushModelTypesFn
@@ -223,8 +263,10 @@ moveShutdownFn
 setBrushModelTypesFn
 ```
 
+Host callback that classifies brush models used by bot movement.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L71)
 
 <a id="field-field-mq3-botlib-be-interface-services-weaponsetupfn-weaponsetupfn-src-mq3-botlib-be-interface-ml-1273527847"></a>
 ### weaponSetupFn
@@ -233,8 +275,10 @@ setBrushModelTypesFn
 weaponSetupFn
 ```
 
+Host callback that initializes bot weapon selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L33)
 
 <a id="field-field-mq3-botlib-be-interface-services-weaponshutdownfn-weaponshutdownfn-src-mq3-botlib-be-interface-ml-121528719"></a>
 ### weaponShutdownFn
@@ -243,8 +287,10 @@ weaponSetupFn
 weaponShutdownFn
 ```
 
+Host callback that releases bot weapon-selection resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L47)
 
 <a id="field-field-mq3-botlib-be-interface-services-weightsshutdownfn-weightsshutdownfn-src-mq3-botlib-be-interface-ml-199401995"></a>
 ### weightsShutdownFn
@@ -253,5 +299,7 @@ weaponShutdownFn
 weightsShutdownFn
 ```
 
+Host callback that releases cached fuzzy-weight definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L49)

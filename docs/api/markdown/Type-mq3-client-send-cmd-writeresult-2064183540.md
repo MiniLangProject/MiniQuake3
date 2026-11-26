@@ -12,7 +12,7 @@ struct WriteResult
 Stores send cmd write result record, including `sent`, `message`, `commandCount`, `moveType`, `key`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L151)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores send cmd write result record, including `sent`, `message`, `commandCount`
 commandCount
 ```
 
+When constructing this record, `writePacket` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L157)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-key-key-src-mq3-client-send-cmd-ml-514149079"></a>
 ### key
@@ -33,8 +35,10 @@ commandCount
 key
 ```
 
+When constructing this record, `writePacket` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L161)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-message-message-src-mq3-client-send-cmd-ml-1292651575"></a>
 ### message
@@ -43,8 +47,10 @@ key
 message
 ```
 
+When constructing this record, `writePacket` supplies an absent (`void`) value for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L155)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-movetype-movetype-src-mq3-client-send-cmd-ml-1212137629"></a>
 ### moveType
@@ -53,8 +59,10 @@ message
 moveType
 ```
 
+When constructing this record, `writePacket` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L159)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-sent-sent-src-mq3-client-send-cmd-ml-887372499"></a>
 ### sent
@@ -63,5 +71,7 @@ moveType
 sent
 ```
 
+When constructing this record, `writePacket` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L153)

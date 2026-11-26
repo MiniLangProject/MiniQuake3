@@ -32,7 +32,7 @@ Apply `mq3.vm.syscall_common.readFloatVector`, `mq3.vm.syscall_common.argument` 
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L30)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-syscalls-inventory-count-const-inventory-count-256-src-mq3-botlib-ai-goal-selection-syscalls-ml-903049230"></a>
 ### INVENTORY_COUNT
@@ -41,8 +41,10 @@ Apply `mq3.vm.syscall_common.readFloatVector`, `mq3.vm.syscall_common.argument` 
 const INVENTORY_COUNT = 256
 ```
 
+Number of inventory integer slots read from the bot VM ABI.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-syscalls-readinventory-function-readinventory-vm-address-src-mq3-botlib-ai-goal-selection-syscalls-ml-1302086663"></a>
 ### readInventory
@@ -59,7 +61,7 @@ Apply `mq3.vm.syscall_common.pointer` while evaluating `readInventory`.
 | `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L14)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-syscalls-readranks-function-readranks-vm-address-count-src-mq3-botlib-ai-goal-selection-syscalls-ml-589389304"></a>
 ### readRanks
@@ -77,4 +79,4 @@ Apply `mq3.vm.syscall_common.pointer` while evaluating `readRanks`.
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L21)

@@ -9,7 +9,7 @@
 struct Services
 ```
 
-Stores network ingress host-service callbacks, including `connectionlessHost`, `demoFn`, `serverPacketFn`, `context`.
+Host services for connectionless client packets, optional demo recording, and server-side datagrams.
 
 
 [View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
@@ -23,8 +23,10 @@ Stores network ingress host-service callbacks, including `connectionlessHost`, `
 connectionlessHost
 ```
 
+Client connectionless service bundle used for handshake, disconnect, and other out-of-band packets.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L14)
 
 <a id="field-field-mq3-client-network-ingress-services-context-context-src-mq3-client-network-ingress-ml-1467644621"></a>
 ### context
@@ -33,8 +35,10 @@ connectionlessHost
 context
 ```
 
+Caller-owned data available as `services.context` to recorder and server-packet callbacks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L22)
 
 <a id="field-field-mq3-client-network-ingress-services-demofn-demofn-src-mq3-client-network-ingress-ml-1004431295"></a>
 ### demoFn
@@ -43,8 +47,10 @@ context
 demoFn
 ```
 
+Optional recorder callback `(services, packetState, msg, headerBytes)`; required when recording a sequenced packet. The first argument is this Services record, including its context.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L17)
 
 <a id="field-field-mq3-client-network-ingress-services-serverpacketfn-serverpacketfn-src-mq3-client-network-ingress-ml-792780651"></a>
 ### serverPacketFn
@@ -53,5 +59,7 @@ demoFn
 serverPacketFn
 ```
 
+Optional server datagram callback `(services, address, data)`; its result is returned unchanged by `receiveServer`. With no callback, server datagrams are ignored.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L20)

@@ -20,8 +20,10 @@ Reachable from entry: **no**
 const ART_BACK0 = "menu/art/back_0"
 ```
 
+Virtual shader or image asset name used for the menu's back0 artwork.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-cinematics-art-back1-const-art-back1-menu-art-back-1-src-mq3-client-ui-cinematics-ml-265206294"></a>
 ### ART_BACK1
@@ -30,8 +32,10 @@ const ART_BACK0 = "menu/art/back_0"
 const ART_BACK1 = "menu/art/back_1"
 ```
 
+Virtual shader or image asset name used for the menu's back1 artwork.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-cinematics-art-framel-const-art-framel-menu-art-frame2-l-src-mq3-client-ui-cinematics-ml-365301897"></a>
 ### ART_FRAMEL
@@ -40,8 +44,10 @@ const ART_BACK1 = "menu/art/back_1"
 const ART_FRAMEL = "menu/art/frame2_l"
 ```
 
+Virtual shader or image asset name used for the menu's framel artwork.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-cinematics-art-framer-const-art-framer-menu-art-frame1-r-src-mq3-client-ui-cinematics-ml-1512447104"></a>
 ### ART_FRAMER
@@ -50,8 +56,10 @@ const ART_FRAMEL = "menu/art/frame2_l"
 const ART_FRAMER = "menu/art/frame1_r"
 ```
 
+Virtual shader or image asset name used for the menu's framer artwork.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L24)
 
 <a id="function-function-mq3-client-ui-cinematics-backevent-function-backevent-state-event-src-mq3-client-ui-cinematics-ml-205193549"></a>
 ### backEvent
@@ -68,7 +76,7 @@ UI_CinematicsMenu_BackEvent
 | `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L95)
 
 <a id="function-function-mq3-client-ui-cinematics-cache-function-cache-state-src-mq3-client-ui-cinematics-ml-1652009565"></a>
 ### cache
@@ -84,7 +92,7 @@ UI_CinematicsMenu_Cache
 | `state` | `dynamic` | — | Mutable UI cinematics record/storage; this routine assigns `state.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L105)
 
 <a id="function-function-mq3-client-ui-cinematics-cinematicsmenu-function-cinematicsmenu-state-src-mq3-client-ui-cinematics-ml-869257725"></a>
 ### cinematicsMenu
@@ -100,7 +108,7 @@ UI_CinematicsMenu / UI_CinematicsMenu_f
 | `state` | `dynamic` | — | Mutable UI cinematics record/storage; this routine assigns `state.pushed`, `state.menuEvents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L113)
 
 <a id="function-function-mq3-client-ui-cinematics-cinematicsmenuf-function-cinematicsmenuf-state-index-src-mq3-client-ui-cinematics-ml-342854849"></a>
 ### cinematicsMenuF
@@ -117,7 +125,7 @@ Updates `state.cursor`, `state.menuEvents` during UI cinematics `cinematicsMenuF
 | `index` | `dynamic` | — | Value assigned to `state.cursor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L117)
 
 <a id="function-function-mq3-client-ui-cinematics-create-function-create-data-demoversion-retailactive-src-mq3-client-ui-cinematics-ml-1558847890"></a>
 ### create
@@ -135,7 +143,7 @@ Creates a `mq3.client.ui_cinematics.State` record. Assigns `data` from `data`, `
 | `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L84)
 
 <a id="function-function-mq3-client-ui-cinematics-emit-function-emit-state-kind-name-text-value-src-mq3-client-ui-cinematics-ml-844257530"></a>
 ### emit
@@ -155,7 +163,7 @@ Appends a UI cinematics action record to the queued engine requests. Retail-QVM 
 | `value` | `dynamic` | — | Value used by `item=Action("ui-cinematics",kind,name,text,value,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L91)
 
 <a id="constant-constant-mq3-client-ui-cinematics-id-back-const-id-back-10-src-mq3-client-ui-cinematics-ml-1814383444"></a>
 ### ID_BACK
@@ -164,8 +172,10 @@ Appends a UI cinematics action record to the queued engine requests. Retail-QVM 
 const ID_BACK = 10
 ```
 
+Native Back-control identifier exposed by the cinematics chooser for leaving cinematic selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-cinematics-id-cin-end-const-id-cin-end-20-src-mq3-client-ui-cinematics-ml-1297285553"></a>
 ### ID_CIN_END
@@ -174,8 +184,10 @@ const ID_BACK = 10
 const ID_CIN_END = 20
 ```
 
+Menu control identifier routed to the cin end action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-cinematics-id-cin-idlogo-const-id-cin-idlogo-11-src-mq3-client-ui-cinematics-ml-113619923"></a>
 ### ID_CIN_IDLOGO
@@ -184,8 +196,10 @@ const ID_CIN_END = 20
 const ID_CIN_IDLOGO = 11
 ```
 
+Menu control identifier routed to the cin idlogo action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L14)
 
 <a id="function-function-mq3-client-ui-cinematics-init-function-init-state-src-mq3-client-ui-cinematics-ml-365588285"></a>
 ### init
@@ -201,7 +215,7 @@ UI_CinematicsMenu_Init
 | `state` | `dynamic` | — | Mutable UI cinematics record/storage; this routine assigns `state.actions`, `state.menuEvents`, `state.enabled`, `state.enabled[0]` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L108)
 
 <a id="function-function-mq3-client-ui-cinematics-menuevent-function-menuevent-state-id-event-src-mq3-client-ui-cinematics-ml-1875642280"></a>
 ### menuEvent
@@ -219,7 +233,7 @@ UI_CinematicsMenu_Event
 | `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L100)
 
 <a id="constant-constant-mq3-client-ui-cinematics-qm-activated-const-qm-activated-3-src-mq3-client-ui-cinematics-ml-1678810118"></a>
 ### QM_ACTIVATED
@@ -228,7 +242,9 @@ UI_CinematicsMenu_Event
 const QM_ACTIVATED = 3
 ```
 
+Activation callback event accepted by the cinematics selection menu before it processes the selected control action.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L10)
 
 - [mq3.client.ui_cinematics.State](Type-mq3-client-ui-cinematics-state-481223309.md) — struct

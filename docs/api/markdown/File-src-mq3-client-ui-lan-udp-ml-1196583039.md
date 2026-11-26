@@ -33,7 +33,7 @@ Calls `mq3.platform.udp.close`, `mq3.platform.udp.cleanup` from UI LAN udp `aban
 | `serverSocket` | `dynamic` | — | Value used by `if serverSocket!=void then ignored=try(udp.close(serverSocket)) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L38)
 
 <a id="function-function-mq3-client-ui-lan-udp-close-function-close-context-src-mq3-client-ui-lan-udp-ml-1037887983"></a>
 ### close
@@ -49,7 +49,7 @@ Updates `context.active` during UI LAN udp `close`.
 | `context` | `dynamic` | — | Mutable UI LAN udp record/storage; this routine assigns `context.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L140)
 
 - [mq3.client.ui_lan_udp.Context](Type-mq3-client-ui-lan-udp-context-1461703758.md) — struct
 <a id="function-function-mq3-client-ui-lan-udp-dispatch-function-dispatch-context-packet-src-mq3-client-ui-lan-udp-ml-106583563"></a>
@@ -67,7 +67,7 @@ Calls `mq3.client.ui_lan_udp.isOob`, `mq3.qcommon.message.initStorage`, `mq3.cli
 | `packet` | `dynamic` | — | Record read through `packet.received`, `packet.data`, `packet.address`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L107)
 
 <a id="function-function-mq3-client-ui-lan-udp-isoob-function-isoob-data-src-mq3-client-ui-lan-udp-ml-1391967098"></a>
 ### isOob
@@ -83,7 +83,7 @@ Computes `data!=void and len(data)>=5 and data[0]==255 and data[1]==255 and data
 | `data` | `dynamic` | — | Sequence read at `data[0]`, `data[1]`, `data[2]`, `data[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L100)
 
 <a id="function-function-mq3-client-ui-lan-udp-localendpoint-function-localendpoint-context-sock-src-mq3-client-ui-lan-udp-ml-564053935"></a>
 ### localEndpoint
@@ -100,7 +100,7 @@ Adapts `mq3.platform.udp.localEndpoint` to UI LAN udp `localEndpoint`, returning
 | `sock` | `dynamic` | — | Argument 1 of `mq3.platform.udp.localEndpoint`; passed as `selectedSocket(context,sock)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L96)
 
 <a id="function-function-mq3-client-ui-lan-udp-open-function-open-ingressstate-src-mq3-client-ui-lan-udp-ml-79120454"></a>
 ### open
@@ -116,7 +116,7 @@ Calls `mq3.platform.udp.startup`, `mq3.platform.udp.open`, `mq3.client.ui_lan_ud
 | `ingressState` | `dynamic` | — | Value used by `if ingressState==void then return error(7702,"UI LAN UDP: missing ingress state") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L46)
 
 <a id="constant-constant-mq3-client-ui-lan-udp-packet-capacity-const-packet-capacity-65535-src-mq3-client-ui-lan-udp-ml-920455637"></a>
 ### PACKET_CAPACITY
@@ -125,8 +125,10 @@ Calls `mq3.platform.udp.startup`, `mq3.platform.udp.open`, `mq3.client.ui_lan_ud
 const PACKET_CAPACITY = 65535
 ```
 
+Maximum number of packet records that the bounded packet buffer can retain.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L15)
 
 <a id="function-function-mq3-client-ui-lan-udp-pump-function-pump-context-budget-src-mq3-client-ui-lan-udp-ml-2043753398"></a>
 ### pump
@@ -143,7 +145,7 @@ Drain bounded work from both Baseq3 source sockets. The NS_SERVER socket is need
 | `budget` | `dynamic` | — | Value used by `if context==void or not context.active or budget<1 then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L130)
 
 <a id="function-function-mq3-client-ui-lan-udp-pumpsocket-function-pumpsocket-context-socket-budget-src-mq3-client-ui-lan-udp-ml-1225993759"></a>
 ### pumpSocket
@@ -161,7 +163,7 @@ Calls `mq3.qcommon.net_transport.receive`, `mq3.client.ui_lan_udp.dispatch` from
 | `budget` | `dynamic` | — | Value used by `for index=0 to budget-1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L117)
 
 <a id="function-function-mq3-client-ui-lan-udp-resolveaddress-function-resolveaddress-context-name-port-src-mq3-client-ui-lan-udp-ml-2104714375"></a>
 ### resolveAddress
@@ -179,7 +181,7 @@ Calls `mq3.qcommon.net_transport.resolveIPv4` from UI LAN udp `resolveAddress`. 
 | `port` | `dynamic` | — | Value used by `result=try(transport.resolveIPv4(name,port))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L82)
 
 <a id="function-function-mq3-client-ui-lan-udp-selectedsocket-function-selectedsocket-context-sock-src-mq3-client-ui-lan-udp-ml-939718839"></a>
 ### selectedSocket
@@ -196,7 +198,7 @@ Evaluates UI LAN udp `selectedSocket` and returns `error(7702,"UI LAN UDP: inact
 | `sock` | `dynamic` | — | Value used by `if sock!=netchan.NS_CLIENT and sock!=netchan.NS_SERVER then return error(7702,"UI LAN UDP: invalid source socket") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L62)
 
 <a id="function-function-mq3-client-ui-lan-udp-sendpacket-function-sendpacket-context-sock-address-packet-src-mq3-client-ui-lan-udp-ml-1800508099"></a>
 ### sendPacket
@@ -215,7 +217,7 @@ Calls `mq3.client.ui_lan_udp.selectedSocket`, `mq3.platform.udp.sendTo`, `mq3.qc
 | `packet` | `dynamic` | — | Value used by `return udp.sendTo(socket,transport.addressToEndpoint(address),packet)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L74)
 
 <a id="function-function-mq3-client-ui-lan-udp-services-function-services-context-src-mq3-client-ui-lan-udp-ml-1039394863"></a>
 ### services
@@ -231,4 +233,4 @@ Calls `mq3.client.ui_lan_queries.services` from UI LAN udp `services`. The final
 | `context` | `dynamic` | — | Value assigned to `host.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L89)

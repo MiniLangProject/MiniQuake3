@@ -27,7 +27,7 @@ Create the audio.snd_spatialize error for `fail` with 7662 and the supplied diag
 | `message` | `dynamic` | — | Message used in `("S_SpatializeOrigin: " + message)` and `error(7662, ("S_SpatializeOrigin: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L29)
 
 <a id="function-function-mq3-audio-snd-spatialize-gains-function-gains-origin-listenerorigin-listeneraxis-mastervolume-src-mq3-audio-snd-spatialize-ml-318797539"></a>
 ### gains
@@ -46,7 +46,7 @@ Convert spatialized channel volumes into normalized left/right gains with distan
 | `masterVolume` | `dynamic` | — | Master volume passed as `masterVolume` to `mq3.audio.snd_spatialize.spatialize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L68)
 
 <a id="constant-constant-mq3-audio-snd-spatialize-sound-attenuate-const-sound-attenuate-0-0008-src-mq3-audio-snd-spatialize-ml-420647277"></a>
 ### SOUND_ATTENUATE
@@ -55,8 +55,10 @@ Convert spatialized channel volumes into normalized left/right gains with distan
 const SOUND_ATTENUATE = 0.0008
 ```
 
+Linear gain reduction per world unit beyond the full-volume distance.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L11)
 
 <a id="constant-constant-mq3-audio-snd-spatialize-sound-fullvolume-const-sound-fullvolume-80-src-mq3-audio-snd-spatialize-ml-589102647"></a>
 ### SOUND_FULLVOLUME
@@ -65,8 +67,10 @@ const SOUND_ATTENUATE = 0.0008
 const SOUND_FULLVOLUME = 80
 ```
 
+Distance in world units within which distance attenuation is not applied.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L9)
 
 <a id="function-function-mq3-audio-snd-spatialize-spatialize-function-spatialize-origin-listenerorigin-listeneraxis-mastervolume-channels-src-mq3-audio-snd-spatialize-ml-974394755"></a>
 ### spatialize
@@ -86,7 +90,7 @@ Calculate left/right gains from listener orientation, source distance, and atten
 | `channels` | `dynamic` | — | Channels used in `(channels != 1)` and `(channels != 2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L41)
 
 <a id="function-function-mq3-audio-snd-spatialize-validvector-function-validvector-value-src-mq3-audio-snd-spatialize-ml-899845965"></a>
 ### validVector
@@ -102,6 +106,6 @@ Compute audio.snd_spatialize.validVector as `((value != void) and (len(value) ==
 | `value` | `dynamic` | — | Value used in `len(value)` and `(value != void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L33)
 
 - [mq3.audio.snd_spatialize.Volumes](Type-mq3-audio-snd-spatialize-volumes-1889082757.md) — struct

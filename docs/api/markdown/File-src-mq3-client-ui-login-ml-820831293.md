@@ -32,7 +32,7 @@ Calls `mq3.client.ui_qmenu.item` from UI login `action`. The final path returns 
 | `style` | `dynamic` | — | Value assigned to `item.style`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L106)
 
 - [mq3.client.ui_login.Action](Type-mq3-client-ui-login-action-2008815967.md) — struct
 <a id="function-function-mq3-client-ui-login-create-function-create-retailactive-src-mq3-client-ui-login-ml-257190167"></a>
@@ -49,7 +49,7 @@ Creates a `mq3.client.ui_login.State` record. Assigns `retailActive` from `retai
 | `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L80)
 
 <a id="function-function-mq3-client-ui-login-emit-function-emit-state-boundary-kind-name-text-text2-src-mq3-client-ui-login-ml-110559878"></a>
 ### emit
@@ -70,7 +70,7 @@ Appends a UI login action record to the queued engine requests. Retail-QVM owner
 | `text2` | `dynamic` | — | Value used by `a=Action(boundary,kind,name,text,text2,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L88)
 
 <a id="function-function-mq3-client-ui-login-field-function-field-id-x-y-src-mq3-client-ui-login-ml-928259504"></a>
 ### field
@@ -88,7 +88,7 @@ Calls `mq3.client.ui_qmenu.item` from UI login `field`. The final path returns `
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `field`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L93)
 
 <a id="constant-constant-mq3-client-ui-login-id-cancel-const-id-cancel-105-src-mq3-client-ui-login-ml-1970332693"></a>
 ### ID_CANCEL
@@ -97,8 +97,10 @@ Calls `mq3.client.ui_qmenu.item` from UI login `field`. The final path returns `
 const ID_CANCEL = 105
 ```
 
+Menu control identifier routed to the cancel action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-login-id-login-const-id-login-104-src-mq3-client-ui-login-ml-792094188"></a>
 ### ID_LOGIN
@@ -107,8 +109,10 @@ const ID_CANCEL = 105
 const ID_LOGIN = 104
 ```
 
+Menu control identifier routed to the login action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-login-id-name-const-id-name-100-src-mq3-client-ui-login-ml-1940119360"></a>
 ### ID_NAME
@@ -117,8 +121,10 @@ const ID_LOGIN = 104
 const ID_NAME = 100
 ```
 
+Menu control identifier routed to the name action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-login-id-name-box-const-id-name-box-101-src-mq3-client-ui-login-ml-2018323777"></a>
 ### ID_NAME_BOX
@@ -127,8 +133,10 @@ const ID_NAME = 100
 const ID_NAME_BOX = 101
 ```
 
+Menu control identifier routed to the name box action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-login-id-password-const-id-password-102-src-mq3-client-ui-login-ml-571442042"></a>
 ### ID_PASSWORD
@@ -137,8 +145,10 @@ const ID_NAME_BOX = 101
 const ID_PASSWORD = 102
 ```
 
+Menu control identifier routed to the password action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-login-id-password-box-const-id-password-box-103-src-mq3-client-ui-login-ml-120075327"></a>
 ### ID_PASSWORD_BOX
@@ -147,8 +157,10 @@ const ID_PASSWORD = 102
 const ID_PASSWORD_BOX = 103
 ```
 
+Menu control identifier routed to the password box action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L16)
 
 <a id="function-function-mq3-client-ui-login-label-function-label-text-id-y-src-mq3-client-ui-login-ml-1997640101"></a>
 ### label
@@ -166,7 +178,7 @@ Calls `mq3.client.ui_qmenu.item` from UI login `label`. The final path returns `
 | `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `label`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L98)
 
 <a id="function-function-mq3-client-ui-login-login-cache-function-login-cache-state-src-mq3-client-ui-login-ml-1809301881"></a>
 ### Login_Cache
@@ -182,7 +194,7 @@ Login_Cache
 | `state` | `dynamic` | — | Shared UI login state passed to the helper calls in `Login_Cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L116)
 
 <a id="constant-constant-mq3-client-ui-login-login-frame-const-login-frame-menu-art-cut-frame-src-mq3-client-ui-login-ml-1652091207"></a>
 ### LOGIN_FRAME
@@ -191,8 +203,10 @@ Login_Cache
 const LOGIN_FRAME = "menu/art/cut_frame"
 ```
 
+Virtual asset path used to load the login frame renderer or menu resource.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L8)
 
 <a id="function-function-mq3-client-ui-login-login-menuevent-function-login-menuevent-state-id-event-src-mq3-client-ui-login-ml-706314968"></a>
 ### Login_MenuEvent
@@ -210,7 +224,7 @@ Login_MenuEvent
 | `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L111)
 
 <a id="function-function-mq3-client-ui-login-login-menuinit-function-login-menuinit-state-src-mq3-client-ui-login-ml-1252515985"></a>
 ### Login_MenuInit
@@ -226,7 +240,7 @@ Login_MenuInit
 | `state` | `dynamic` | — | Mutable UI login record/storage; this routine assigns `state.menu`, `state.actions`, `state.frame`, `state.frame.width` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L119)
 
 - [mq3.client.ui_login.State](Type-mq3-client-ui-login-state-1861023702.md) — struct
 <a id="function-function-mq3-client-ui-login-ui-loginmenu-function-ui-loginmenu-state-src-mq3-client-ui-login-ml-834644809"></a>
@@ -243,4 +257,4 @@ UI_LoginMenu
 | `state` | `dynamic` | — | Mutable UI login record/storage; this routine assigns `state.pushed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L124)

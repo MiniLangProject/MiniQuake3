@@ -12,7 +12,7 @@ struct Inventory
 Stores playable weapon inventory inventory record, including `ownedBits`, `ammo`, `selectedWeapon`, `spawnCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L49)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable weapon inventory inventory record, including `ownedBits`, `ammo`
 ammo
 ```
 
+Ammunition quantity or ammunition state associated with the selected weapon.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L54)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-inventory-ownedbits-ownedbits-src-mq3-client-playable-weapon-inventory-ml-2006079271"></a>
 ### ownedBits
@@ -33,8 +35,10 @@ ammo
 ownedBits
 ```
 
+Weapon-ownership bitset tested with one bit per weapon identifier; respawning installs the default gauntlet and machinegun loadout.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L52)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-inventory-selectedweapon-selectedweapon-src-mq3-client-playable-weapon-inventory-ml-1010838485"></a>
 ### selectedWeapon
@@ -43,8 +47,10 @@ ownedBits
 selectedWeapon
 ```
 
+When constructing this record, `create` supplies `WP_MACHINEGUN` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L56)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-inventory-spawncount-spawncount-src-mq3-client-playable-weapon-inventory-ml-2052235703"></a>
 ### spawnCount
@@ -53,5 +59,7 @@ selectedWeapon
 spawnCount
 ```
 
+Number of spawn-loadout resets applied to this weapon inventory.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L58)

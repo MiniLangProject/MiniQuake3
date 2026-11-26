@@ -29,7 +29,7 @@ R_GetTag accepts transiently oversized animation frames and clamps them to the f
 | `name` | `dynamic` | — | Input tested by `entries[i].name==name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L94)
 
 <a id="function-function-mq3-renderer-model-tags-identityaxis-function-identityaxis-src-mq3-renderer-model-tags-ml-475131076"></a>
 ### identityAxis
@@ -41,7 +41,7 @@ function identityAxis()
 Returns `[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]` for `mq3.renderer.model_tags.identityAxis`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L66)
 
 <a id="function-function-mq3-renderer-model-tags-lerptag-function-lerptag-modelvalue-startframe-endframe-frac-name-src-mq3-renderer-model-tags-ml-469679668"></a>
 ### lerpTag
@@ -61,7 +61,7 @@ R_LerpTag uses frac for the end tag and (1-frac) for the start tag, then normali
 | `name` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.model_tags.getTag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L127)
 
 <a id="function-function-mq3-renderer-model-tags-md3-function-md3-frames-mins-maxs-src-mq3-renderer-model-tags-ml-366502300"></a>
 ### md3
@@ -79,7 +79,7 @@ Constructs `mq3.renderer.model_tags.Md3` with `bounds` = `[mins,maxs]` and the s
 | `maxs` | `dynamic` | — | Input used in the result expression `Md3(frames,[mins,maxs])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L54)
 
 - [mq3.renderer.model_tags.Md3](Type-mq3-renderer-model-tags-md3-182646194.md) — struct
 <a id="function-function-mq3-renderer-model-tags-missingorientation-function-missingorientation-src-mq3-renderer-model-tags-ml-591855432"></a>
@@ -92,7 +92,7 @@ function missingOrientation()
 Constructs `mq3.renderer.model_tags.Orientation` with `found` = `false`, `origin` = `[0.0,0.0,0.0]`, `axis` = `identityAxis()`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L116)
 
 <a id="function-function-mq3-renderer-model-tags-model-function-model-brushbounds-md3value-src-mq3-renderer-model-tags-ml-987131124"></a>
 ### model
@@ -109,7 +109,7 @@ Constructs `mq3.renderer.model_tags.Model` from `brushBounds`, `md3Value`.
 | `md3Value` | `dynamic` | — | Initial value for `mq3.renderer.model_tags.Model.md3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L61)
 
 - [mq3.renderer.model_tags.Model](Type-mq3-renderer-model-tags-model-1330836601.md) — struct
 <a id="function-function-mq3-renderer-model-tags-modelbounds-function-modelbounds-modelvalue-src-mq3-renderer-model-tags-ml-570943922"></a>
@@ -126,7 +126,7 @@ Computes `modelBounds` from `[[bounds[0][0],bounds[0][1],bounds[0][2]],[bounds[1
 | `modelValue` | `dynamic` | — | Record providing `modelValue.brushBounds`, `modelValue.md3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L149)
 
 <a id="function-function-mq3-renderer-model-tags-normalize-function-normalize-value-src-mq3-renderer-model-tags-ml-2006409615"></a>
 ### normalize
@@ -142,7 +142,7 @@ Returns `copy` from `mq3.renderer.model_tags.normalize`.
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L109)
 
 - [mq3.renderer.model_tags.Orientation](Type-mq3-renderer-model-tags-orientation-257182758.md) — struct
 <a id="function-function-mq3-renderer-model-tags-tag-function-tag-name-origin-axis-src-mq3-renderer-model-tags-ml-1504637808"></a>
@@ -161,7 +161,7 @@ Constructs `mq3.renderer.model_tags.Tag` from `name`, `origin`, `axis`.
 | `axis` | `dynamic` | — | Initial value for `mq3.renderer.model_tags.Tag.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L46)
 
 - [mq3.renderer.model_tags.Tag](Type-mq3-renderer-model-tags-tag-240708516.md) — struct
 <a id="function-function-mq3-renderer-model-tags-validatetag-function-validatetag-value-src-mq3-renderer-model-tags-ml-1678396033"></a>
@@ -178,7 +178,7 @@ Returns `true` from `mq3.renderer.model_tags.validateTag`; earlier branches retu
 | `value` | `dynamic` | — | Record providing `value.name`, `value.origin`, `value.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L84)
 
 <a id="function-function-mq3-renderer-model-tags-validaxis-function-validaxis-value-src-mq3-renderer-model-tags-ml-735402655"></a>
 ### validAxis
@@ -194,7 +194,7 @@ Computes `value!=void and len(value)==3 and validVector(value[0]) and validVecto
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L78)
 
 <a id="function-function-mq3-renderer-model-tags-validvector-function-validvector-value-src-mq3-renderer-model-tags-ml-486669695"></a>
 ### validVector
@@ -210,4 +210,4 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.model_tags.validVecto
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L72)

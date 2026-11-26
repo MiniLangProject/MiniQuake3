@@ -12,7 +12,7 @@ struct ScreenLine
 Stores playable viewer screen line record, including `visible`, `a`, `b`, `clipped`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L61)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable viewer screen line record, including `visible`, `a`, `b`, `clipp
 a
 ```
 
+Alpha component controlling opacity or blending.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L65)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-b-b-src-mq3-client-playable-viewer-ml-94743379"></a>
 ### b
@@ -33,8 +35,10 @@ a
 b
 ```
 
+Blue component of the stored color.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L67)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-clipped-clipped-src-mq3-client-playable-viewer-ml-657868591"></a>
 ### clipped
@@ -43,8 +47,10 @@ b
 clipped
 ```
 
+When constructing this record, `projectLine` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L69)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-visible-visible-src-mq3-client-playable-viewer-ml-1039275755"></a>
 ### visible
@@ -53,5 +59,7 @@ clipped
 visible
 ```
 
+True when the record is eligible for the current drawing or browser-display pass.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L63)

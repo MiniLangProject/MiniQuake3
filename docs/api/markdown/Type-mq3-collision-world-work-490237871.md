@@ -12,7 +12,7 @@ struct Work
 Work record for collision.world, containing `world`, `trace`, `start`, `finish`, `mins`, `maxs`, and 14 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L195)
 
 ## Members
 
@@ -23,8 +23,10 @@ Work record for collision.world, containing `world`, `trace`, `start`, `finish`,
 boundsMax
 ```
 
+Maximum XYZ corner of the enclosing bounds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L140)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L211)
 
 <a id="field-field-mq3-collision-world-work-boundsmin-boundsmin-src-mq3-collision-world-ml-446011892"></a>
 ### boundsMin
@@ -33,8 +35,10 @@ boundsMax
 boundsMin
 ```
 
+Minimum XYZ corner of the enclosing bounds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L139)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L209)
 
 <a id="field-field-mq3-collision-world-work-brushscratch-brushscratch-src-mq3-collision-world-ml-829367892"></a>
 ### brushScratch
@@ -43,8 +47,10 @@ boundsMin
 brushScratch
 ```
 
+Reusable temporary storage for brush-clipping calculations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L151)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L233)
 
 <a id="field-field-mq3-collision-world-work-capsule-capsule-src-mq3-collision-world-ml-784377060"></a>
 ### capsule
@@ -53,8 +59,10 @@ brushScratch
 capsule
 ```
 
+True when collision testing uses a capsule instead of a box.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L141)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L213)
 
 <a id="field-field-mq3-collision-world-work-capsuleoffset-capsuleoffset-src-mq3-collision-world-ml-1664783540"></a>
 ### capsuleOffset
@@ -63,8 +71,10 @@ capsule
 capsuleOffset
 ```
 
+Offset of the capsule's end spheres from its center.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L144)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L219)
 
 <a id="field-field-mq3-collision-world-work-curves-curves-src-mq3-collision-world-ml-127256516"></a>
 ### curves
@@ -73,8 +83,10 @@ capsuleOffset
 curves
 ```
 
+True when collision tests include curved patch surfaces.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L152)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L235)
 
 <a id="field-field-mq3-collision-world-work-finish-finish-src-mq3-collision-world-ml-1150376862"></a>
 ### finish
@@ -83,8 +95,10 @@ curves
 finish
 ```
 
+Reference position requested at the end of the swept world-collision test.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L203)
 
 <a id="field-field-mq3-collision-world-work-halfheight-halfheight-src-mq3-collision-world-ml-275305896"></a>
 ### halfheight
@@ -93,8 +107,10 @@ finish
 halfheight
 ```
 
+Half of the capsule height measured along its principal axis.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L143)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L217)
 
 <a id="field-field-mq3-collision-world-work-ispoint-ispoint-src-mq3-collision-world-ml-1312704580"></a>
 ### isPoint
@@ -103,8 +119,10 @@ halfheight
 isPoint
 ```
 
+True when the trace volume has zero extent and can use point tests.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L147)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L225)
 
 <a id="field-field-mq3-collision-world-work-mask-mask-src-mq3-collision-world-ml-277629468"></a>
 ### mask
@@ -113,8 +131,10 @@ isPoint
 mask
 ```
 
+Combined contents mask selecting collidable geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L146)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L223)
 
 <a id="field-field-mq3-collision-world-work-maxs-maxs-src-mq3-collision-world-ml-1938637066"></a>
 ### maxs
@@ -123,8 +143,10 @@ mask
 maxs
 ```
 
+Maximum XYZ corner of the swept collision box relative to its reference position.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L138)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L207)
 
 <a id="field-field-mq3-collision-world-work-mins-mins-src-mq3-collision-world-ml-658286710"></a>
 ### mins
@@ -133,8 +155,10 @@ maxs
 mins
 ```
 
+Minimum XYZ corner of the swept collision box relative to its reference position.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L137)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L205)
 
 <a id="field-field-mq3-collision-world-work-modelorigin-modelorigin-src-mq3-collision-world-ml-23777904"></a>
 ### modelOrigin
@@ -143,8 +167,10 @@ mins
 modelOrigin
 ```
 
+World-space origin of the collision model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L145)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L221)
 
 <a id="field-field-mq3-collision-world-work-radius-radius-src-mq3-collision-world-ml-1230092312"></a>
 ### radius
@@ -153,8 +179,10 @@ modelOrigin
 radius
 ```
 
+Radius of the represented sphere or capsule.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L142)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L215)
 
 <a id="field-field-mq3-collision-world-work-seen-seen-src-mq3-collision-world-ml-1870508014"></a>
 ### seen
@@ -163,8 +191,10 @@ radius
 seen
 ```
 
+Visit markers preventing duplicate brush tests.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L148)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L227)
 
 <a id="field-field-mq3-collision-world-work-seenpatches-seenpatches-src-mq3-collision-world-ml-1304891120"></a>
 ### seenPatches
@@ -173,8 +203,10 @@ seen
 seenPatches
 ```
 
+Visit markers preventing duplicate patch tests.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L149)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L229)
 
 <a id="field-field-mq3-collision-world-work-start-start-src-mq3-collision-world-ml-1199481132"></a>
 ### start
@@ -183,8 +215,10 @@ seenPatches
 start
 ```
 
+Reference position at the beginning of the swept world-collision test.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L201)
 
 <a id="field-field-mq3-collision-world-work-trace-trace-src-mq3-collision-world-ml-1260732692"></a>
 ### trace
@@ -193,8 +227,10 @@ start
 trace
 ```
 
+Collision trace result or active trace state for this operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L134)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L199)
 
 <a id="field-field-mq3-collision-world-work-visitserial-visitserial-src-mq3-collision-world-ml-979335536"></a>
 ### visitSerial
@@ -203,8 +239,10 @@ trace
 visitSerial
 ```
 
+Serial number used to avoid visiting the same collision element twice.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L150)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L231)
 
 <a id="field-field-mq3-collision-world-work-world-world-src-mq3-collision-world-ml-2012854576"></a>
 ### world
@@ -213,5 +251,7 @@ visitSerial
 world
 ```
 
+Collision or navigation world used by this operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L133)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L197)

@@ -12,7 +12,7 @@ struct Reply
 `Reply` record for ai chat output, containing `keys`, `priority` and `messages`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L70)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Reply
 keys
 ```
 
+Conditions that an incoming message must satisfy for this reply.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L72)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reply-messages-messages-src-mq3-botlib-ai-chat-output-ml-327585001"></a>
 ### messages
@@ -33,8 +35,10 @@ keys
 messages
 ```
 
+Reply messages available when the key conditions match.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L76)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reply-priority-priority-src-mq3-botlib-ai-chat-output-ml-1906605033"></a>
 ### priority
@@ -43,5 +47,7 @@ messages
 priority
 ```
 
+Priority assigned to this reply-chat definition.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L74)

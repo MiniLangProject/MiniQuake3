@@ -12,7 +12,7 @@ struct Layout
 Stores base Quake III HUD layout record, including `scaleX`, `scaleY`, `ammoX`, `healthX`, `armorX`, `statusY` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L102)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores base Quake III HUD layout record, including `scaleX`, `scaleY`, `ammoX`, 
 ammoX
 ```
 
+When constructing this record, `layout` supplies `0.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L108)
 
 <a id="field-field-mq3-client-baseq3-hud-layout-armorx-armorx-src-mq3-client-baseq3-hud-ml-1101950301"></a>
 ### armorX
@@ -33,8 +35,10 @@ ammoX
 armorX
 ```
 
+When constructing this record, `layout` supplies `370.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L112)
 
 <a id="field-field-mq3-client-baseq3-hud-layout-healthx-healthx-src-mq3-client-baseq3-hud-ml-936843099"></a>
 ### healthX
@@ -43,8 +47,10 @@ armorX
 healthX
 ```
 
+When constructing this record, `layout` supplies `185.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L110)
 
 <a id="field-field-mq3-client-baseq3-hud-layout-icony-icony-src-mq3-client-baseq3-hud-ml-1831307167"></a>
 ### iconY
@@ -53,8 +59,10 @@ healthX
 iconY
 ```
 
+When constructing this record, `layout` supplies `432.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L116)
 
 <a id="field-field-mq3-client-baseq3-hud-layout-scalex-scalex-src-mq3-client-baseq3-hud-ml-863293419"></a>
 ### scaleX
@@ -63,8 +71,10 @@ iconY
 scaleX
 ```
 
+Horizontal scale used to transform virtual UI coordinates to the actual display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L104)
 
 <a id="field-field-mq3-client-baseq3-hud-layout-scaley-scaley-src-mq3-client-baseq3-hud-ml-1663310501"></a>
 ### scaleY
@@ -73,8 +83,10 @@ scaleX
 scaleY
 ```
 
+Vertical scale used to transform virtual UI coordinates to the actual display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L106)
 
 <a id="field-field-mq3-client-baseq3-hud-layout-statusy-statusy-src-mq3-client-baseq3-hud-ml-448612975"></a>
 ### statusY
@@ -83,5 +95,7 @@ scaleY
 statusY
 ```
 
+When constructing this record, `layout` supplies `432.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L114)

@@ -23,5 +23,7 @@ Data record for `mq3.renderer.md4_animation.Bone`; groups `matrix`.
 matrix
 ```
 
+Transformation matrix used to place or deform the geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)

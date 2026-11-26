@@ -12,7 +12,7 @@ struct Orientation
 Data record for `mq3.renderer.tr_main_runtime.Orientation`; groups `origin`, `axis`, `viewOrigin`, `modelMatrix`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L49)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_main_runtime.Orientation`; groups `origin`, `ax
 axis
 ```
 
+Frontend orientation basis used to construct the model matrix and local viewing origin.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L53)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-orientation-modelmatrix-modelmatrix-src-mq3-renderer-tr-main-runtime-ml-825074491"></a>
 ### modelMatrix
@@ -33,8 +35,10 @@ axis
 modelMatrix
 ```
 
+Matrix placing the model in the current view or world coordinate system.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L57)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-orientation-origin-origin-src-mq3-renderer-tr-main-runtime-ml-438882523"></a>
 ### origin
@@ -43,8 +47,10 @@ modelMatrix
 origin
 ```
 
+World-space translation associated with the frontend model transform.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L51)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-orientation-vieworigin-vieworigin-src-mq3-renderer-tr-main-runtime-ml-487546373"></a>
 ### viewOrigin
@@ -53,5 +59,7 @@ origin
 viewOrigin
 ```
 
+Camera origin expressed in the current model's coordinate system.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L55)

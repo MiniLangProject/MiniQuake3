@@ -32,7 +32,7 @@ Direct state writes: `paint elements`.
 | `rightVolume` | `dynamic` | — | Right integer operand; only its low 32 bits participate. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L159)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-adpcm-block-samples-const-adpcm-block-samples-4096-src-mq3-audio-snd-compressed-paint-ml-1349485640"></a>
 ### ADPCM_BLOCK_SAMPLES
@@ -41,8 +41,10 @@ Direct state writes: `paint elements`.
 const ADPCM_BLOCK_SAMPLES = 4096
 ```
 
+Maximum number of decoded mono samples represented by an ADPCM block.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L15)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-adpcmdecode-function-adpcmdecode-data-count-predictor-startindex-src-mq3-audio-snd-compressed-paint-ml-1903683829"></a>
 ### adpcmDecode
@@ -61,7 +63,7 @@ Decode an IMA ADPCM block into signed PCM samples while advancing predictor and 
 | `startIndex` | `dynamic` | — | Start index used in `(startIndex < 0)` and `(startIndex > 88)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L54)
 
 - [mq3.audio.snd_compressed_paint.Block](Type-mq3-audio-snd-compressed-paint-block-2083299179.md) — struct
 <a id="constant-constant-mq3-audio-snd-compressed-paint-byte-block-samples-const-byte-block-samples-2048-src-mq3-audio-snd-compressed-paint-ml-587457079"></a>
@@ -71,8 +73,10 @@ Decode an IMA ADPCM block into signed PCM samples while advancing predictor and 
 const BYTE_BLOCK_SAMPLES = 2048
 ```
 
+Maximum number of samples represented by a byte-coded sound block.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L17)
 
 - [mq3.audio.snd_compressed_paint.Compressed](Type-mq3-audio-snd-compressed-paint-compressed-853921143.md) — struct
 <a id="function-function-mq3-audio-snd-compressed-paint-daub4-function-daub4-values-size-inverse-src-mq3-audio-snd-compressed-paint-ml-1965490375"></a>
@@ -93,7 +97,7 @@ Direct state writes: `values elements`.
 | `inverse` | `dynamic` | — | Inverse operand used by `daub4`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L87)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-decodeblock-function-decodeblock-compressed-block-src-mq3-audio-snd-compressed-paint-ml-1721013612"></a>
 ### decodeBlock
@@ -110,7 +114,7 @@ Decode block in audio.snd_compressed_paint; the normal completion returns `fail(
 | `block` | `dynamic` | — | Record exposing `data`, `size`, `sample`, `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L130)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-decodedsamples-function-decodedsamples-compressed-src-mq3-audio-snd-compressed-paint-ml-1315184151"></a>
 ### decodedSamples
@@ -126,7 +130,7 @@ Compute decoded samples in audio.snd_compressed_paint; the normal completion ret
 | `compressed` | `dynamic` | — | Record exposing `blocks`, `length`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L142)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-fail-function-fail-message-src-mq3-audio-snd-compressed-paint-ml-1234420517"></a>
 ### fail
@@ -142,7 +146,7 @@ Create the audio.snd_compressed_paint error for `fail` with 7668 and the supplie
 | `message` | `dynamic` | — | Message used in `("compressed sound paint: " + message)` and `error(7668, ("compressed sound paint: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L47)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-indextable-function-indextable-src-mq3-audio-snd-compressed-paint-ml-275272408"></a>
 ### indexTable
@@ -154,7 +158,7 @@ function indexTable()
 Compute audio.snd_compressed_paint.indexTable as `[- 1, - 1, - 1, - 1, 2, 4, 6, 8, - 1, - 1, - 1, - 1, 2, 4, 6, 8]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L41)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-method-adpcm-const-method-adpcm-1-src-mq3-audio-snd-compressed-paint-ml-967669808"></a>
 ### METHOD_ADPCM
@@ -163,8 +167,10 @@ Compute audio.snd_compressed_paint.indexTable as `[- 1, - 1, - 1, - 1, 2, 4, 6, 
 const METHOD_ADPCM = 1
 ```
 
+Compression-method identifier for four-bit adaptive differential PCM.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L9)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-method-mulaw-const-method-mulaw-3-src-mq3-audio-snd-compressed-paint-ml-1338361852"></a>
 ### METHOD_MULAW
@@ -173,8 +179,10 @@ const METHOD_ADPCM = 1
 const METHOD_MULAW = 3
 ```
 
+Compression-method identifier for eight-bit mu-law sound data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L13)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-method-wavelet-const-method-wavelet-2-src-mq3-audio-snd-compressed-paint-ml-1860969783"></a>
 ### METHOD_WAVELET
@@ -183,8 +191,10 @@ const METHOD_MULAW = 3
 const METHOD_WAVELET = 2
 ```
 
+Compression-method identifier for the wavelet sound decoder.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L11)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-mulawdecode-function-mulawdecode-value-src-mq3-audio-snd-compressed-paint-ml-1483766583"></a>
 ### muLawDecode
@@ -200,7 +210,7 @@ Expand one mu-law code byte into a signed PCM amplitude.
 | `value` | `dynamic` | — | Value used in `(~ value & 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L74)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-paint-function-paint-paintbuffer-compressed-count-sampleoffset-bufferoffset-leftvol-rightvol-sndvol-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-compressed-paint-ml-464350214"></a>
 ### paint
@@ -226,7 +236,7 @@ Mirrors the three compressed S_PaintChannelFrom* entry points. Wavelet and ADPCM
 | `oldDopplerScale` | `dynamic` | — | Old doppler scale used in `(oldDopplerScale < 0.0)` and `(sampleOffset * oldDopplerScale)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L179)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-steptable-function-steptable-src-mq3-audio-snd-compressed-paint-ml-1660035460"></a>
 ### stepTable
@@ -238,7 +248,7 @@ function stepTable()
 Return the fixed IMA ADPCM quantization-step lookup table.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L43)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-waveletdecode-function-waveletdecode-data-size-src-mq3-audio-snd-compressed-paint-ml-1773595535"></a>
 ### waveletDecode
@@ -255,4 +265,4 @@ Expand compressed wavelet coefficients into the requested PCM sample block.
 | `size` | `dynamic` | — | Size used in `(size < 0)` and `(size - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L116)

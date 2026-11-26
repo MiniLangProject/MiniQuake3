@@ -31,7 +31,7 @@ Evaluates server stream `at` and returns `void`, `snapshot` according to its gua
 | `number` | `dynamic` | — | Value tested by `number<0 or number>epoch.snap.messageNum or epoch.snap.messageNum-number>=snapshots.PACKET_BACKUP`, `not snapshot.valid or snapshot.messageNum!=number` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L52)
 
 <a id="function-function-mq3-client-server-stream-attach-function-attach-protocol-demoplaying-src-mq3-client-server-stream-ml-2094686689"></a>
 ### attach
@@ -48,7 +48,7 @@ Calls `mq3.compat.textnumbers.atoi`, `mq3.shared.info.value`, `mq3.client.gamest
 | `demoPlaying` | `dynamic` | — | Value used by `pure=not demoPlaying and streamNumbers.atoi(info.value(gamestate.configString(protocol.gamestateState,1),"sv_pure"))!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L44)
 
 <a id="function-function-mq3-client-server-stream-entity-function-entity-stream-snapshot-index-src-mq3-client-server-stream-ml-1693470456"></a>
 ### entity
@@ -66,7 +66,7 @@ Adapts `mq3.client.snapshot_parse.parsedEntity` to server stream `entity`, retur
 | `index` | `dynamic` | — | Argument 2 of `mq3.client.snapshot_parse.parsedEntity`; passed as `snapshot.parseEntitiesNum+index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L65)
 
 <a id="function-function-mq3-client-server-stream-mapname-function-mapname-protocol-src-mq3-client-server-stream-ml-973920736"></a>
 ### mapName
@@ -82,7 +82,7 @@ Adapts `mq3.shared.info.value` to server stream `mapName`, returning its result 
 | `protocol` | `dynamic` | — | Record read through `protocol.gamestateState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L37)
 
 <a id="function-function-mq3-client-server-stream-ready-function-ready-protocol-src-mq3-client-server-stream-ml-1751139900"></a>
 ### ready
@@ -98,7 +98,7 @@ Evaluates server stream `ready` and returns `false`, `snap.valid and (snap.snapF
 | `protocol` | `dynamic` | — | Record read through `protocol.dispatcher.snapshotState.snap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L29)
 
 <a id="constant-constant-mq3-client-server-stream-snapflag-not-active-const-snapflag-not-active-2-src-mq3-client-server-stream-ml-266710153"></a>
 ### SNAPFLAG_NOT_ACTIVE
@@ -107,7 +107,9 @@ Evaluates server stream `ready` and returns `false`, `snap.valid and (snap.snapF
 const SNAPFLAG_NOT_ACTIVE = 2
 ```
 
+Snapshot flag indicating that the server state is not yet active for normal gameplay.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L12)
 
 - [mq3.client.server_stream.Stream](Type-mq3-client-server-stream-stream-414087547.md) — struct

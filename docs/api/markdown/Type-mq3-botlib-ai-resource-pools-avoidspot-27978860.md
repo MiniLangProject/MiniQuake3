@@ -12,7 +12,7 @@ struct AvoidSpot
 `AvoidSpot` record for ai resource pools, containing `origin`, `radius` and `type`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L109)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct AvoidSpot
 origin
 ```
 
+World-space center of the spatial region the bot should avoid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L111)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-avoidspot-radius-radius-src-mq3-botlib-ai-resource-pools-ml-262004350"></a>
 ### radius
@@ -33,8 +35,10 @@ origin
 radius
 ```
 
+Radius of the represented sphere or capsule.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L113)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-avoidspot-type-type-src-mq3-botlib-ai-resource-pools-ml-1000261250"></a>
 ### type
@@ -43,5 +47,7 @@ radius
 type
 ```
 
+Avoidance policy deciding whether this spot blocks or only influences movement.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L115)

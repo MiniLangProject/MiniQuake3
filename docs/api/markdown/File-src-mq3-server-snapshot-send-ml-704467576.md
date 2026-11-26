@@ -25,7 +25,7 @@ function client()
 Create `mq3.server.snapshot_send.Client` with state=CS_ACTIVE; reliableCommands=array(64, ""); reliableSequence=0; reliableAcknowledge=0; 11 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L91)
 
 - [mq3.server.snapshot_send.Client](Type-mq3-server-snapshot-send-client-1694397985.md) — struct
 <a id="constant-constant-mq3-server-snapshot-send-cs-active-const-cs-active-4-src-mq3-server-snapshot-send-ml-1969973901"></a>
@@ -35,8 +35,10 @@ Create `mq3.server.snapshot_send.Client` with state=CS_ACTIVE; reliableCommands=
 const CS_ACTIVE = 4
 ```
 
+Client-state value identifying a client eligible to receive a normal world snapshot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L17)
 
 <a id="function-function-mq3-server-snapshot-send-currentframe-function-currentframe-clientstate-src-mq3-server-snapshot-send-ml-768425822"></a>
 ### currentFrame
@@ -54,7 +56,7 @@ Validation failures include `snapshot send: invalid client frame ring`; `snapsho
 | `clientState` | `dynamic` | — | Record exposing `frames`, `outgoingSequence`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L161)
 
 <a id="function-function-mq3-server-snapshot-send-deltabase-function-deltabase-clientstate-serverstate-src-mq3-server-snapshot-send-ml-1018972932"></a>
 ### deltaBase
@@ -71,7 +73,7 @@ Compute delta base in server.snapshot_send; the normal completion returns `[oldF
 | `serverState` | `dynamic` | — | Record exposing `nextSnapshotEntities`, `snapshotCapacity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L171)
 
 <a id="function-function-mq3-server-snapshot-send-frame-function-frame-firstentity-numentities-areabits-playerstate-src-mq3-server-snapshot-send-ml-1906574303"></a>
 ### frame
@@ -90,7 +92,7 @@ Create `mq3.server.snapshot_send.SendFrame` with firstEntity=firstEntity; numEnt
 | `playerState` | `dynamic` | — | Initial `playerState` field stored in the returned or constructed `mq3.server.snapshot_send.SendFrame` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L52)
 
 <a id="constant-constant-mq3-server-snapshot-send-header-rate-bytes-const-header-rate-bytes-48-src-mq3-server-snapshot-send-ml-1049322973"></a>
 ### HEADER_RATE_BYTES
@@ -99,8 +101,10 @@ Create `mq3.server.snapshot_send.SendFrame` with firstEntity=firstEntity; numEnt
 const HEADER_RATE_BYTES = 48
 ```
 
+Estimated IP and transport header overhead charged when enforcing the send rate.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L27)
 
 <a id="constant-constant-mq3-server-snapshot-send-max-msglen-const-max-msglen-16384-src-mq3-server-snapshot-send-ml-870632349"></a>
 ### MAX_MSGLEN
@@ -109,8 +113,10 @@ const HEADER_RATE_BYTES = 48
 const MAX_MSGLEN = 16384
 ```
 
+Maximum byte length of a complete sequenced network message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L11)
 
 <a id="constant-constant-mq3-server-snapshot-send-packet-backup-const-packet-backup-32-src-mq3-server-snapshot-send-ml-85810832"></a>
 ### PACKET_BACKUP
@@ -119,8 +125,10 @@ const MAX_MSGLEN = 16384
 const PACKET_BACKUP = 32
 ```
 
+Number of old messages that must be kept on client and.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L13)
 
 <a id="constant-constant-mq3-server-snapshot-send-packet-mask-const-packet-mask-31-src-mq3-server-snapshot-send-ml-564952257"></a>
 ### PACKET_MASK
@@ -129,8 +137,10 @@ const PACKET_BACKUP = 32
 const PACKET_MASK = 31
 ```
 
+Mask converting a network sequence number into a circular packet-history slot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L15)
 
 <a id="function-function-mq3-server-snapshot-send-packetbytes-function-packetbytes-msg-src-mq3-server-snapshot-send-ml-1140571955"></a>
 ### packetBytes
@@ -146,7 +156,7 @@ Compute packet bytes in server.snapshot_send; the normal completion returns `res
 | `msg` | `dynamic` | — | Record exposing `cursize`, `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L220)
 
 <a id="function-function-mq3-server-snapshot-send-ratemsec-function-ratemsec-clientstate-messagesize-maxrate-src-mq3-server-snapshot-send-ml-13010948"></a>
 ### rateMsec
@@ -166,7 +176,7 @@ Validation failures include `snapshot send: invalid client rate`.
 | `maxRate` | `dynamic` | — | Max rate used in `(maxRate != 0)` and `(maxRate < 1000)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L207)
 
 <a id="function-function-mq3-server-snapshot-send-sendclientsnapshot-function-sendclientsnapshot-clientstate-serverstate-host-src-mq3-server-snapshot-send-ml-579026312"></a>
 ### sendClientSnapshot
@@ -184,7 +194,7 @@ Send client snapshot in server.snapshot_send; the normal completion returns `sen
 | `host` | `dynamic` | — | Record exposing `buildSnapshotFn`, `writeDownloadFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L253)
 
 - [mq3.server.snapshot_send.SendFrame](Type-mq3-server-snapshot-send-sendframe-1281752461.md) — struct
 <a id="function-function-mq3-server-snapshot-send-sendmessagetoclient-function-sendmessagetoclient-clientstate-serverstate-host-msg-src-mq3-server-snapshot-send-ml-1542293521"></a>
@@ -204,7 +214,7 @@ SV_SendMessageToClient plus the svc_EOF written by SV_Netchan_Transmit. `transmi
 | `msg` | `dynamic` | — | Record exposing `cursize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L232)
 
 <a id="function-function-mq3-server-snapshot-send-server-function-server-time-snapshotentities-snapshotcapacity-baselines-src-mq3-server-snapshot-send-ml-139928184"></a>
 ### server
@@ -225,7 +235,7 @@ Validation failures include `snapshot send: invalid entity ring`.
 | `baselines` | `dynamic` | — | Initial `baselines` field stored in the returned or constructed `mq3.server.snapshot_send.Server` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L125)
 
 - [mq3.server.snapshot_send.Server](Type-mq3-server-snapshot-send-server-1636242949.md) — struct
 <a id="function-function-mq3-server-snapshot-send-services-function-services-buildsnapshotfn-writedownloadfn-transmitfn-localaddressfn-lanaddressfn-context-src-mq3-server-snapshot-send-ml-1513017604"></a>
@@ -247,7 +257,7 @@ Create `mq3.server.snapshot_send.Services` with buildSnapshotFn=buildSnapshotFn;
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.server.snapshot_send.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L153)
 
 - [mq3.server.snapshot_send.Services](Type-mq3-server-snapshot-send-services-347662494.md) — struct
 <a id="constant-constant-mq3-server-snapshot-send-snapflag-not-active-const-snapflag-not-active-2-src-mq3-server-snapshot-send-ml-1556559247"></a>
@@ -257,8 +267,10 @@ Create `mq3.server.snapshot_send.Services` with buildSnapshotFn=buildSnapshotFn;
 const SNAPFLAG_NOT_ACTIVE = 2
 ```
 
+Snapshot used during connection and for zombies.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L21)
 
 <a id="constant-constant-mq3-server-snapshot-send-snapflag-rate-delayed-const-snapflag-rate-delayed-1-src-mq3-server-snapshot-send-ml-1939360838"></a>
 ### SNAPFLAG_RATE_DELAYED
@@ -267,8 +279,10 @@ const SNAPFLAG_NOT_ACTIVE = 2
 const SNAPFLAG_RATE_DELAYED = 1
 ```
 
+Snapshot flag indicating that transmission was delayed by rate limiting.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L19)
 
 <a id="function-function-mq3-server-snapshot-send-snapshotflags-function-snapshotflags-clientstate-serverstate-src-mq3-server-snapshot-send-ml-1143984664"></a>
 ### snapshotFlags
@@ -285,7 +299,7 @@ Compute snapshot flags in server.snapshot_send; the normal completion returns `f
 | `serverState` | `dynamic` | — | Record exposing `snapFlagServerBit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L183)
 
 <a id="constant-constant-mq3-server-snapshot-send-svc-eof-const-svc-eof-8-src-mq3-server-snapshot-send-ml-444305329"></a>
 ### SVC_EOF
@@ -294,8 +308,10 @@ Compute snapshot flags in server.snapshot_send; the normal completion returns `f
 const SVC_EOF = 8
 ```
 
+Server-to-client opcode marking the end of a message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L25)
 
 <a id="constant-constant-mq3-server-snapshot-send-svc-nop-const-svc-nop-1-src-mq3-server-snapshot-send-ml-1496603170"></a>
 ### SVC_NOP
@@ -304,8 +320,10 @@ const SVC_EOF = 8
 const SVC_NOP = 1
 ```
 
+Server-to-client no-operation opcode.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L23)
 
 <a id="function-function-mq3-server-snapshot-send-writesnapshottoclient-function-writesnapshottoclient-clientstate-serverstate-msg-src-mq3-server-snapshot-send-ml-2065672671"></a>
 ### writeSnapshotToClient
@@ -323,4 +341,4 @@ Write snapshot to client in server.snapshot_send; the normal completion returns 
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.server.snapshot_delta.writeSnapshotPayload`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L194)

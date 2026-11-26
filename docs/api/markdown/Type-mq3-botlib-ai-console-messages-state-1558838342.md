@@ -12,7 +12,7 @@ struct State
 `State` record for ai console messages, containing `pools`, `nodes`, `freeSlots`, `time` and `capacity`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L42)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct State
 capacity
 ```
 
+Maximum number of entries allowed in the managed collection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L52)
 
 <a id="field-field-mq3-botlib-ai-console-messages-state-freeslots-freeslots-src-mq3-botlib-ai-console-messages-ml-882648946"></a>
 ### freeSlots
@@ -33,8 +35,10 @@ capacity
 freeSlots
 ```
 
+Indexes of resource slots available for reuse.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L48)
 
 <a id="field-field-mq3-botlib-ai-console-messages-state-nodes-nodes-src-mq3-botlib-ai-console-messages-ml-1763704890"></a>
 ### nodes
@@ -43,8 +47,10 @@ freeSlots
 nodes
 ```
 
+BSP nodes used to partition the collision or navigation world.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L46)
 
 <a id="field-field-mq3-botlib-ai-console-messages-state-pools-pools-src-mq3-botlib-ai-console-messages-ml-45822258"></a>
 ### pools
@@ -53,8 +59,10 @@ nodes
 pools
 ```
 
+Managed pools containing bot chat, goal, movement, and weapon resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L44)
 
 <a id="field-field-mq3-botlib-ai-console-messages-state-time-time-src-mq3-botlib-ai-console-messages-ml-2051667836"></a>
 ### time
@@ -63,5 +71,7 @@ pools
 time
 ```
 
+Current bot-runtime timestamp assigned to newly queued messages.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L50)

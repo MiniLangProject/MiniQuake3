@@ -23,8 +23,10 @@ ChangeReport record for qcommon.msg, containing `counts`, `printFn`, `context`.
 context
 ```
 
+Caller-supplied data associated with printing statistics about changed network delta fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L18)
 
 <a id="field-field-mq3-qcommon-msg-changereport-counts-counts-src-mq3-qcommon-msg-ml-1573674147"></a>
 ### counts
@@ -33,8 +35,10 @@ context
 counts
 ```
 
+Per-field counters recording which network fields changed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L14)
 
 <a id="field-field-mq3-qcommon-msg-changereport-printfn-printfn-src-mq3-qcommon-msg-ml-457326251"></a>
 ### printFn
@@ -43,5 +47,7 @@ counts
 printFn
 ```
 
+Host callback that prints per-field delta-compression change counts.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L16)

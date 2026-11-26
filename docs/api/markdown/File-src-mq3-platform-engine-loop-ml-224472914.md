@@ -33,7 +33,7 @@ Updates `runtime.lastClientResult`, `runtime.frameCount` in `mq3.platform.engine
 | `msec` | `dynamic` | — | Argument 2 supplied to `mq3.client.frame.run`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L99)
 
 <a id="function-function-mq3-platform-engine-loop-commontick-function-commontick-runtime-time-src-mq3-platform-engine-loop-ml-1716240505"></a>
 ### commonTick
@@ -50,7 +50,7 @@ Returns `void` from `mq3.platform.engine_loop.commonTick`; earlier branches retu
 | `time` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L74)
 
 <a id="function-function-mq3-platform-engine-loop-create-function-create-inputqueue-inputhandlers-inputbudget-serverstate-serverservices-clientstate-clientservices-src-mq3-platform-engine-loop-ml-651422523"></a>
 ### create
@@ -72,7 +72,7 @@ Builds `mq3.platform.engine_loop.Runtime` for `mq3.platform.engine_loop.create`.
 | `clientServices` | `dynamic` | — | Initial value for `mq3.platform.engine_loop.Runtime.clientServices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L50)
 
 <a id="function-function-mq3-platform-engine-loop-initializeconfiguration-function-initializeconfiguration-runtime-configstate-commandstate-src-mq3-platform-engine-loop-ml-332429321"></a>
 ### initializeConfiguration
@@ -90,7 +90,7 @@ Completes the common startup portion after cvars, commands, filesystem and clien
 | `commandState` | `dynamic` | — | Value assigned to `runtime.commandState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L62)
 
 <a id="function-function-mq3-platform-engine-loop-liveservices-function-liveservices-runtime-serveringress-src-mq3-platform-engine-loop-ml-1529702480"></a>
 ### liveServices
@@ -107,7 +107,7 @@ Returns `desktopHost.liveServicesWithCommon(serverIngress,runtime,commonTick,ser
 | `serverIngress` | `dynamic` | — | Argument 1 supplied to `mq3.platform.desktop_frame_host.liveServicesWithCommon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L109)
 
 - [mq3.platform.engine_loop.Runtime](Type-mq3-platform-engine-loop-runtime-932181352.md) — struct
 <a id="function-function-mq3-platform-engine-loop-servertick-function-servertick-runtime-time-msec-src-mq3-platform-engine-loop-ml-30592809"></a>
@@ -126,4 +126,4 @@ desktop_frame_host calls this after the network pump, preserving Quake's event-b
 | `msec` | `dynamic` | — | Argument 2 supplied to `mq3.server.frame.run`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L85)

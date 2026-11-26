@@ -12,7 +12,7 @@ struct SoundServices
 SoundServices record for vm.syscall_ui_media, containing `registerFn`, `startLocalFn`, `stopBackgroundFn`, `startBackgroundFn`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L13)
 
 ## Members
 
@@ -23,8 +23,10 @@ SoundServices record for vm.syscall_ui_media, containing `registerFn`, `startLoc
 registerFn
 ```
 
+Injected callback for register; invoked through the SoundServices service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 <a id="field-field-mq3-vm-syscall-ui-media-soundservices-startbackgroundfn-startbackgroundfn-src-mq3-vm-syscall-ui-media-ml-1734230076"></a>
 ### startBackgroundFn
@@ -33,8 +35,10 @@ registerFn
 startBackgroundFn
 ```
 
+Injected callback for start background; invoked through the SoundServices service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L21)
 
 <a id="field-field-mq3-vm-syscall-ui-media-soundservices-startlocalfn-startlocalfn-src-mq3-vm-syscall-ui-media-ml-1565405882"></a>
 ### startLocalFn
@@ -43,8 +47,10 @@ startBackgroundFn
 startLocalFn
 ```
 
+Injected callback for start local; invoked through the SoundServices service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L17)
 
 <a id="field-field-mq3-vm-syscall-ui-media-soundservices-stopbackgroundfn-stopbackgroundfn-src-mq3-vm-syscall-ui-media-ml-400329536"></a>
 ### stopBackgroundFn
@@ -53,5 +59,7 @@ startLocalFn
 stopBackgroundFn
 ```
 
+Injected callback for stop background; invoked through the SoundServices service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L19)

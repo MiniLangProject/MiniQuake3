@@ -22,8 +22,10 @@ Reachable from entry: **yes**
 const AVOID_DEFAULT_TIME = 30
 ```
 
+Default interval for temporarily avoiding a selected goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-chat-goal-tail-ml-501024790"></a>
 ### AVOID_MINIMUM_TIME
@@ -32,8 +34,10 @@ const AVOID_DEFAULT_TIME = 30
 const AVOID_MINIMUM_TIME = 10
 ```
 
+Minimum interval retained for a goal-avoidance request.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L22)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-chatstate-function-chatstate-state-handle-src-mq3-botlib-ai-chat-goal-tail-ml-1612733753"></a>
 ### chatState
@@ -50,7 +54,7 @@ Apply `mq3.botlib.ai_resource_pools.chatState` while evaluating `chatState`. Ret
 | `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L43)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-create-function-create-chatprofiles-goalruntime-levelitems-src-mq3-botlib-ai-chat-goal-tail-ml-1793519771"></a>
 ### create
@@ -68,7 +72,7 @@ Create a `mq3.botlib.ai_chat_goal_tail.State` record, initializing `chatProfiles
 | `levelItems` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_goal_tail.State.levelItems`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L39)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-getchatmessage-function-getchatmessage-state-handle-size-src-mq3-botlib-ai-chat-goal-tail-ml-326452756"></a>
 ### getChatMessage
@@ -86,7 +90,7 @@ Apply `mq3.botlib.ai_chat_goal_tail.chatState` and `mq3.botlib.ai_chat_goal_tail
 | `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L66)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-numinitialchats-function-numinitialchats-state-handle-type-src-mq3-botlib-ai-chat-goal-tail-ml-1067980045"></a>
 ### numInitialChats
@@ -104,7 +108,7 @@ Apply `mq3.botlib.ai_chat_goal_tail.chatState` and `mq3.botlib.ai_chat_profiles.
 | `type` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L48)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-get-chat-message-const-op-get-chat-message-570-src-mq3-botlib-ai-chat-goal-tail-ml-1766833685"></a>
 ### OP_GET_CHAT_MESSAGE
@@ -113,8 +117,10 @@ Apply `mq3.botlib.ai_chat_goal_tail.chatState` and `mq3.botlib.ai_chat_profiles.
 const OP_GET_CHAT_MESSAGE = 570
 ```
 
+Bot-library syscall identifier for get chat message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-num-initial-chats-const-op-num-initial-chats-569-src-mq3-botlib-ai-chat-goal-tail-ml-1225477187"></a>
 ### OP_NUM_INITIAL_CHATS
@@ -123,8 +129,10 @@ const OP_GET_CHAT_MESSAGE = 570
 const OP_NUM_INITIAL_CHATS = 569
 ```
 
+Bot-library syscall identifier for number initial chats.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-predict-visible-position-const-op-predict-visible-position-572-src-mq3-botlib-ai-chat-goal-tail-ml-1855612839"></a>
 ### OP_PREDICT_VISIBLE_POSITION
@@ -133,8 +141,10 @@ const OP_NUM_INITIAL_CHATS = 569
 const OP_PREDICT_VISIBLE_POSITION = 572
 ```
 
+Bot-library syscall identifier for predict visible position.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L18)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-remove-from-avoid-goals-const-op-remove-from-avoid-goals-571-src-mq3-botlib-ai-chat-goal-tail-ml-1671513836"></a>
 ### OP_REMOVE_FROM_AVOID_GOALS
@@ -143,8 +153,10 @@ const OP_PREDICT_VISIBLE_POSITION = 572
 const OP_REMOVE_FROM_AVOID_GOALS = 571
 ```
 
+Bot-library syscall identifier for remove from avoid goals.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-set-avoid-goal-time-const-op-set-avoid-goal-time-573-src-mq3-botlib-ai-chat-goal-tail-ml-1353072954"></a>
 ### OP_SET_AVOID_GOAL_TIME
@@ -153,8 +165,10 @@ const OP_REMOVE_FROM_AVOID_GOALS = 571
 const OP_SET_AVOID_GOAL_TIME = 573
 ```
 
+Bot-library syscall identifier for set avoid goal time.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-removefromavoidgoals-function-removefromavoidgoals-state-handle-number-src-mq3-botlib-ai-chat-goal-tail-ml-1094226228"></a>
 ### removeFromAvoidGoals
@@ -172,7 +186,7 @@ Apply `mq3.botlib.ai_goal_state.removeFromAvoidGoals` while evaluating `removeFr
 | `number` | `dynamic` | — | Value used by `removeFromAvoidGoals` in `if value.avoidGoals[index]==number and value.avoidGoalTimes[index]>=now then value.avoidGoalTimes[index]=0.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L74)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-removetildes-function-removetildes-value-src-mq3-botlib-ai-chat-goal-tail-ml-1245634257"></a>
 ### removeTildes
@@ -188,7 +202,7 @@ Remove single tilde markers and unescape doubled tildes in ai chat goal tail tex
 | `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L53)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-respawntime-function-respawntime-state-number-src-mq3-botlib-ai-chat-goal-tail-ml-607116960"></a>
 ### respawnTime
@@ -205,7 +219,7 @@ Apply `mq3.botlib.ai_item_weights.ensureItems` while evaluating `respawnTime`.
 | `number` | `dynamic` | — | Value used by `respawnTime` in `if levelItem.number==number and levelItem.itemInfo>=0 and levelItem.itemInfo<len(config) then value=config[level...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L78)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-setavoidgoaltime-function-setavoidgoaltime-state-handle-number-avoidtime-src-mq3-botlib-ai-chat-goal-tail-ml-466492844"></a>
 ### setAvoidGoalTime
@@ -224,7 +238,7 @@ Apply `mq3.botlib.ai_chat_goal_tail.respawnTime` and `mq3.botlib.ai_goal_state.a
 | `avoidTime` | `dynamic` | — | Value used by `setAvoidGoalTime` in `value=avoidTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L90)
 
 - [mq3.botlib.ai_chat_goal_tail.State](Type-mq3-botlib-ai-chat-goal-tail-state-449589671.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-chat-goal-tail-ml-1652129987"></a>
@@ -241,4 +255,4 @@ Test `op==OP_NUM_INITIAL_CHATS or op==OP_GET_CHAT_MESSAGE or op==OP_REMOVE_FROM_
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L97)

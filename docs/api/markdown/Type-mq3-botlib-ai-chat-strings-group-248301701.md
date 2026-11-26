@@ -12,7 +12,7 @@ struct Group
 `Group` record for ai chat strings, containing `context` and `synonyms`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L24)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Group
 context
 ```
 
+Bit mask selecting the chat contexts in which this synonym group is applied.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-group-synonyms-synonyms-src-mq3-botlib-ai-chat-strings-ml-1869117082"></a>
 ### synonyms
@@ -33,5 +35,7 @@ context
 synonyms
 ```
 
+Alternative spellings and their replacement weights in this synonym group.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L28)

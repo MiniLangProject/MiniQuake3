@@ -12,7 +12,7 @@ struct Action
 Data record for `mq3.platform.win_snd.Action`; groups `boundary`, `kind`, `size`, `dispatched`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L20)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.platform.win_snd.Action`; groups `boundary`, `kind`, `size`
 boundary
 ```
 
+Host operation boundary at which this platform action is dispatched.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L22)
 
 <a id="field-field-mq3-platform-win-snd-action-dispatched-dispatched-src-mq3-platform-win-snd-ml-2002775461"></a>
 ### dispatched
@@ -33,8 +35,10 @@ boundary
 dispatched
 ```
 
+Whether the recorded action was delivered to its host implementation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L28)
 
 <a id="field-field-mq3-platform-win-snd-action-kind-kind-src-mq3-platform-win-snd-ml-1489966855"></a>
 ### kind
@@ -43,8 +47,10 @@ dispatched
 kind
 ```
 
+DirectSound lifecycle or buffer operation represented by this dispatch request.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L24)
 
 <a id="field-field-mq3-platform-win-snd-action-size-size-src-mq3-platform-win-snd-ml-477851725"></a>
 ### size
@@ -53,5 +59,7 @@ kind
 size
 ```
 
+Configured size or capacity used by the enclosing operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L26)

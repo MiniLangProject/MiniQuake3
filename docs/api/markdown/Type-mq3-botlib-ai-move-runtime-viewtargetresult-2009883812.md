@@ -12,7 +12,7 @@ struct ViewTargetResult
 `ViewTargetResult` record for ai move runtime, containing `found` and `target`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L246)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct ViewTargetResult
 found
 ```
 
+True when the requested lookup produced a matching entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L77)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L248)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-viewtargetresult-target-target-src-mq3-botlib-ai-move-runtime-ml-1579258558"></a>
 ### target
@@ -33,5 +35,7 @@ found
 target
 ```
 
+World-space point the bot should look toward while moving.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L77)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L250)

@@ -12,7 +12,7 @@ struct Speaker
 Stores playable ambient sounds speaker record, including `noise`, `origin`, `globalSound`, `sound`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L14)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable ambient sounds speaker record, including `noise`, `origin`, `glo
 globalSound
 ```
 
+Sound resource selected for the global event or effect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L21)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-speaker-noise-noise-src-mq3-client-playable-ambient-sounds-ml-460671910"></a>
 ### noise
@@ -33,8 +35,10 @@ globalSound
 noise
 ```
 
+When constructing this record, `loopDefinitions` supplies `path` for this member. Used by `load` and `globalLoops` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L17)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-speaker-origin-origin-src-mq3-client-playable-ambient-sounds-ml-689417110"></a>
 ### origin
@@ -43,8 +47,10 @@ noise
 origin
 ```
 
+Map-space source position used to spatialize an ambient speaker's sound.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L19)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-speaker-sound-sound-src-mq3-client-playable-ambient-sounds-ml-643532554"></a>
 ### sound
@@ -53,5 +59,7 @@ origin
 sound
 ```
 
+Decoded WAV sound data resolved for this map speaker; absent until its asset loads.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L23)

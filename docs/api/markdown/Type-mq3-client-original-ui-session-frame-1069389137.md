@@ -12,7 +12,7 @@ struct Frame
 Stores original UI session frame data, including `active`, `refreshed`, `menuOpened`, `keyEvents`, `charEvents`, `mouseEvents` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L171)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores original UI session frame data, including `active`, `refreshed`, `menuOpe
 active
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `active(state)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L173)
 
 <a id="field-field-mq3-client-original-ui-session-frame-charevents-charevents-src-mq3-client-original-ui-session-ml-1284034974"></a>
 ### charEvents
@@ -33,8 +35,10 @@ active
 charEvents
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `charEvents` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L181)
 
 <a id="field-field-mq3-client-original-ui-session-frame-commandcount-commandcount-src-mq3-client-original-ui-session-ml-896292176"></a>
 ### commandCount
@@ -43,8 +47,10 @@ charEvents
 commandCount
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `count` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L190)
 
 <a id="field-field-mq3-client-original-ui-session-frame-commandstart-commandstart-src-mq3-client-original-ui-session-ml-1354706102"></a>
 ### commandStart
@@ -53,8 +59,10 @@ commandCount
 commandStart
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `commandStart` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L185)
 
 <a id="field-field-mq3-client-original-ui-session-frame-keyevents-keyevents-src-mq3-client-original-ui-session-ml-805539040"></a>
 ### keyEvents
@@ -63,8 +71,10 @@ commandStart
 keyEvents
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `keyEvents` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L179)
 
 <a id="field-field-mq3-client-original-ui-session-frame-menuopened-menuopened-src-mq3-client-original-ui-session-ml-1214647560"></a>
 ### menuOpened
@@ -73,8 +83,10 @@ keyEvents
 menuOpened
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `menuOpened` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L177)
 
 <a id="field-field-mq3-client-original-ui-session-frame-mouseevents-mouseevents-src-mq3-client-original-ui-session-ml-1367797768"></a>
 ### mouseEvents
@@ -83,8 +95,10 @@ menuOpened
 mouseEvents
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `mouseEvents` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L183)
 
 <a id="field-field-mq3-client-original-ui-session-frame-refreshed-refreshed-src-mq3-client-original-ui-session-ml-1949998760"></a>
 ### refreshed
@@ -93,8 +107,10 @@ mouseEvents
 refreshed
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `refreshed` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L175)
 
 <a id="field-field-mq3-client-original-ui-session-frame-uicommands-uicommands-src-mq3-client-original-ui-session-ml-1208944184"></a>
 ### uiCommands
@@ -103,5 +119,7 @@ refreshed
 uiCommands
 ```
 
+When constructing this record, `finishOriginalUiFrame` supplies `count-commandStart` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L188)

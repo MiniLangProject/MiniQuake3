@@ -12,7 +12,7 @@ struct Cvars
 Data record for `mq3.platform.win_net_runtime.Cvars`; groups `noudp`, `noipx`, `socksEnabled`, `socksServer`, `socksPort`, `socksUsername`, and 4 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L43)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.platform.win_net_runtime.Cvars`; groups `noudp`, `noipx`, `
 generation
 ```
 
+Configuration generation used to detect network-setting changes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L63)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-netinterface-netinterface-src-mq3-platform-win-net-runtime-ml-360336290"></a>
 ### netInterface
@@ -33,8 +35,10 @@ generation
 netInterface
 ```
 
+Network interface or local address selected for binding.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L59)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-noipx-noipx-src-mq3-platform-win-net-runtime-ml-1892703002"></a>
 ### noipx
@@ -43,8 +47,10 @@ netInterface
 noipx
 ```
 
+Whether legacy IPX networking is disabled by configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L47)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-noudp-noudp-src-mq3-platform-win-net-runtime-ml-1699478794"></a>
 ### noudp
@@ -53,8 +59,10 @@ noipx
 noudp
 ```
 
+Whether UDP networking is disabled by configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L45)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-port-port-src-mq3-platform-win-net-runtime-ml-222551800"></a>
 ### port
@@ -63,8 +71,10 @@ noudp
 port
 ```
 
+Transport port number associated with the endpoint.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L61)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksenabled-socksenabled-src-mq3-platform-win-net-runtime-ml-324609394"></a>
 ### socksEnabled
@@ -73,8 +83,10 @@ port
 socksEnabled
 ```
 
+Whether networking is routed through a SOCKS proxy.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L49)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-sockspassword-sockspassword-src-mq3-platform-win-net-runtime-ml-10573730"></a>
 ### socksPassword
@@ -83,8 +95,10 @@ socksEnabled
 socksPassword
 ```
 
+Password supplied for SOCKS proxy authentication.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L57)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksport-socksport-src-mq3-platform-win-net-runtime-ml-870182610"></a>
 ### socksPort
@@ -93,8 +107,10 @@ socksPassword
 socksPort
 ```
 
+Transport port of the configured SOCKS proxy.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L53)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksserver-socksserver-src-mq3-platform-win-net-runtime-ml-611260130"></a>
 ### socksServer
@@ -103,8 +119,10 @@ socksPort
 socksServer
 ```
 
+Host name of the configured SOCKS proxy.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L51)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksusername-socksusername-src-mq3-platform-win-net-runtime-ml-1563826622"></a>
 ### socksUsername
@@ -113,5 +131,7 @@ socksServer
 socksUsername
 ```
 
+User name supplied for SOCKS proxy authentication.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L55)

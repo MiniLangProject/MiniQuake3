@@ -12,7 +12,7 @@ struct Group
 Group record for audio.spatial_mixer, containing `key`, `sound`, `cursor`, `step`, `sourceFrames`, `left`, and 2 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L72)
 
 ## Members
 
@@ -23,8 +23,10 @@ Group record for audio.spatial_mixer, containing `key`, `sound`, `cursor`, `step
 cursor
 ```
 
+Current playback position in source sample frames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L78)
 
 <a id="field-field-mq3-audio-spatial-mixer-group-key-key-src-mq3-audio-spatial-mixer-ml-591520562"></a>
 ### key
@@ -33,8 +35,10 @@ cursor
 key
 ```
 
+Shared-loop grouping key for these sources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L74)
 
 <a id="field-field-mq3-audio-spatial-mixer-group-left-left-src-mq3-audio-spatial-mixer-ml-1863733444"></a>
 ### left
@@ -43,8 +47,10 @@ key
 left
 ```
 
+Sum of the left-channel gains for sources in this shared loop.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L84)
 
 <a id="field-field-mq3-audio-spatial-mixer-group-right-right-src-mq3-audio-spatial-mixer-ml-192071670"></a>
 ### right
@@ -53,8 +59,10 @@ left
 right
 ```
 
+Sum of the right-channel gains for sources in this shared loop.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L86)
 
 <a id="field-field-mq3-audio-spatial-mixer-group-sound-sound-src-mq3-audio-spatial-mixer-ml-1792056106"></a>
 ### sound
@@ -63,8 +71,10 @@ right
 sound
 ```
 
+Decoded WAVE sound descriptor supplying the source PCM data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L76)
 
 <a id="field-field-mq3-audio-spatial-mixer-group-sourceframes-sourceframes-src-mq3-audio-spatial-mixer-ml-992335976"></a>
 ### sourceFrames
@@ -73,8 +83,10 @@ sound
 sourceFrames
 ```
 
+Number of sample frames in the source sound.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L82)
 
 <a id="field-field-mq3-audio-spatial-mixer-group-sourceindexes-sourceindexes-src-mq3-audio-spatial-mixer-ml-1962784478"></a>
 ### sourceIndexes
@@ -83,8 +95,10 @@ sourceFrames
 sourceIndexes
 ```
 
+Indexes of registered sources represented by this shared playback group.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L88)
 
 <a id="field-field-mq3-audio-spatial-mixer-group-step-step-src-mq3-audio-spatial-mixer-ml-774997326"></a>
 ### step
@@ -93,5 +107,7 @@ sourceIndexes
 step
 ```
 
+Fractional source-frame advance for each output frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L80)

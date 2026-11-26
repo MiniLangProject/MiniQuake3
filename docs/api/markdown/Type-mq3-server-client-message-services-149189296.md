@@ -9,10 +9,10 @@
 struct Services
 ```
 
-Services record for server.client_message, containing `clientCommandFn`, `userMoveFn`, `sendGamestateFn`, `dropFn`, `diagnosticFn`, `context`.
+Callback boundary for reliable commands, movement, gamestate resends, and invalid client messages.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L54)
 
 ## Members
 
@@ -23,8 +23,10 @@ Services record for server.client_message, containing `clientCommandFn`, `userMo
 clientCommandFn
 ```
 
+Callback `(host, clientState, msg)` that consumes a reliable command and returns true to continue. A false result stops message processing with `commandRejected`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L57)
 
 <a id="field-field-mq3-server-client-message-services-context-context-src-mq3-server-client-message-ml-1530737565"></a>
 ### context
@@ -33,8 +35,10 @@ clientCommandFn
 context
 ```
 
+Caller-owned data available to every service callback as `host.context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L68)
 
 <a id="field-field-mq3-server-client-message-services-diagnosticfn-diagnosticfn-src-mq3-server-client-message-ml-1758743987"></a>
 ### diagnosticFn
@@ -43,8 +47,10 @@ context
 diagnosticFn
 ```
 
+Optional callback `(host, clientState, opcode)` reporting an unrecognized final client-message opcode.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L66)
 
 <a id="field-field-mq3-server-client-message-services-dropfn-dropfn-src-mq3-server-client-message-ml-2108049979"></a>
 ### dropFn
@@ -53,8 +59,10 @@ diagnosticFn
 dropFn
 ```
 
+Optional callback `(host, clientState, reason)` invoked for invalid message or reliable acknowledgments.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L64)
 
 <a id="field-field-mq3-server-client-message-services-sendgamestatefn-sendgamestatefn-src-mq3-server-client-message-ml-1352578969"></a>
 ### sendGamestateFn
@@ -63,8 +71,10 @@ dropFn
 sendGamestateFn
 ```
 
+Optional callback `(host, clientState)` requesting a new gamestate after a mismatched server identifier.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L62)
 
 <a id="field-field-mq3-server-client-message-services-usermovefn-usermovefn-src-mq3-server-client-message-ml-1248475445"></a>
 ### userMoveFn
@@ -73,5 +83,7 @@ sendGamestateFn
 userMoveFn
 ```
 
+Optional callback `(host, clientState, msg, delta)` that consumes movement commands. `delta` is true for CLC_MOVE and false for CLC_MOVE_NO_DELTA; its return value is ignored.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L60)

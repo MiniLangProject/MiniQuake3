@@ -24,8 +24,10 @@ Reachable from entry: **no**
 const AWARD_MASK = 231496
 ```
 
+Player-award identifier selecting the mask reward.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L13)
 
 <a id="function-function-mq3-game-team-bonuses-awarddefense-function-awarddefense-level-attacker-src-mq3-game-team-bonuses-ml-462576133"></a>
 ### awardDefense
@@ -42,7 +44,7 @@ Increment the defender award count and set its player-state flag and two-second 
 | `attacker` | `dynamic` | — | Attacking entity; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L59)
 
 <a id="function-function-mq3-game-team-bonuses-delta-function-delta-first-second-src-mq3-game-team-bonuses-ml-146349358"></a>
 ### delta
@@ -59,7 +61,7 @@ Return a new array `[n.fsub(first[0],second[0]),n.fsub(first[1],second[1]),n.fsu
 | `second` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L53)
 
 <a id="function-function-mq3-game-team-bonuses-findclass-function-findclass-level-after-name-src-mq3-game-team-bonuses-ml-1420871411"></a>
 ### findClass
@@ -77,7 +79,7 @@ Find the next active entity with a case-insensitive class-name match for team bo
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L41)
 
 <a id="function-function-mq3-game-team-bonuses-fragbonuses-function-fragbonuses-level-targ-inflictor-attacker-src-mq3-game-team-bonuses-ml-1630771183"></a>
 ### fragBonuses
@@ -96,7 +98,7 @@ Update `attacker.client.lastfraggedcarrier`, `attacker.client.fragcarrier`, `att
 | `attacker` | `dynamic` | — | Attacking entity; accesses `client` and `r`. May update `attacker.client.lastfraggedcarrier`, `attacker.client.fragcarrier` and `attacker.client.carrierdefense` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L77)
 
 <a id="function-function-mq3-game-team-bonuses-message-function-message-level-text-src-mq3-game-team-bonuses-ml-1410032999"></a>
 ### message
@@ -113,7 +115,7 @@ Use `level.teamMessageFn` to perform `message`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L67)
 
 <a id="function-function-mq3-game-team-bonuses-otherteam-function-otherteam-team-src-mq3-game-team-bonuses-ml-1527042505"></a>
 ### otherTeam
@@ -129,7 +131,7 @@ Exchange red and blue team identifiers for team bonuses, preserving other team v
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L16)
 
 <a id="function-function-mq3-game-team-bonuses-sameteam-function-sameteam-level-first-second-src-mq3-game-team-bonuses-ml-1549869034"></a>
 ### sameTeam
@@ -147,7 +149,7 @@ Check whether two client entities share a team in a team game for team bonuses.
 | `second` | `dynamic` | — | Second record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L33)
 
 <a id="function-function-mq3-game-team-bonuses-teamname-function-teamname-team-src-mq3-game-team-bonuses-ml-1028922971"></a>
 ### teamName
@@ -163,4 +165,4 @@ Execute `if team == c.TEAM_RED then return "RED" end if if team == c.TEAM_BLUE t
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L23)

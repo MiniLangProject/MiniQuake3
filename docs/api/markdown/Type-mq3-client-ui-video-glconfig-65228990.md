@@ -12,7 +12,7 @@ struct GlConfig
 Stores UI video gl config record, including `vendor`, `version`, `renderer`, `extensions`, `colorBits`, `depthBits` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L99)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI video gl config record, including `vendor`, `version`, `renderer`, `ex
 colorBits
 ```
 
+Number of bits requested or provided for the framebuffer's color channels.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L109)
 
 <a id="field-field-mq3-client-ui-video-glconfig-depthbits-depthbits-src-mq3-client-ui-video-ml-640558956"></a>
 ### depthBits
@@ -33,8 +35,10 @@ colorBits
 depthBits
 ```
 
+Number of bits available in the graphics depth buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L111)
 
 <a id="field-field-mq3-client-ui-video-glconfig-drivertype-drivertype-src-mq3-client-ui-video-ml-505424872"></a>
 ### driverType
@@ -43,8 +47,10 @@ depthBits
 driverType
 ```
 
+Native renderer-driver category used to select compatible video-settings behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L115)
 
 <a id="field-field-mq3-client-ui-video-glconfig-extensions-extensions-src-mq3-client-ui-video-ml-217340472"></a>
 ### extensions
@@ -53,8 +59,10 @@ driverType
 extensions
 ```
 
+Graphics extension information exposed by the renderer or selected by the video-settings UI.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L107)
 
 <a id="field-field-mq3-client-ui-video-glconfig-hardwaretype-hardwaretype-src-mq3-client-ui-video-ml-709339256"></a>
 ### hardwareType
@@ -63,8 +71,10 @@ extensions
 hardwareType
 ```
 
+Native graphics-hardware category used to select compatible video-settings behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L117)
 
 <a id="field-field-mq3-client-ui-video-glconfig-renderer-renderer-src-mq3-client-ui-video-ml-49893994"></a>
 ### renderer
@@ -73,8 +83,10 @@ hardwareType
 renderer
 ```
 
+Renderer implementation name reported by the graphics driver.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L105)
 
 <a id="field-field-mq3-client-ui-video-glconfig-stencilbits-stencilbits-src-mq3-client-ui-video-ml-2085148292"></a>
 ### stencilBits
@@ -83,8 +95,10 @@ renderer
 stencilBits
 ```
 
+Number of bits available in the graphics stencil buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L113)
 
 <a id="field-field-mq3-client-ui-video-glconfig-vendor-vendor-src-mq3-client-ui-video-ml-705590112"></a>
 ### vendor
@@ -93,8 +107,10 @@ stencilBits
 vendor
 ```
 
+Renderer vendor identification string reported by the graphics driver.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L101)
 
 <a id="field-field-mq3-client-ui-video-glconfig-version-version-src-mq3-client-ui-video-ml-1101617660"></a>
 ### version
@@ -103,5 +119,7 @@ vendor
 version
 ```
 
+Graphics-driver or renderer version string exposed to the video-settings UI.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L103)

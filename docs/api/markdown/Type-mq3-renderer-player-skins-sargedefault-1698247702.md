@@ -12,7 +12,7 @@ struct SargeDefault
 Data record for `mq3.renderer.player_skins.SargeDefault`; groups `lower`, `upper`, `head`, `uniqueImages`, `scriptCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L54)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.player_skins.SargeDefault`; groups `lower`, `upper
 head
 ```
 
+Head player model or its assembled animation state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L60)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-lower-lower-src-mq3-renderer-player-skins-ml-1723774786"></a>
 ### lower
@@ -33,8 +35,10 @@ head
 lower
 ```
 
+Lower-body player model or its assembled animation state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L56)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-scriptcount-scriptcount-src-mq3-renderer-player-skins-ml-1637498282"></a>
 ### scriptCount
@@ -43,8 +47,10 @@ lower
 scriptCount
 ```
 
+Number of shader script sources loaded into the catalog.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L64)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-uniqueimages-uniqueimages-src-mq3-renderer-player-skins-ml-703192880"></a>
 ### uniqueImages
@@ -53,8 +59,10 @@ scriptCount
 uniqueImages
 ```
 
+Distinct images used by the resolved multipart player skin.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L62)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-upper-upper-src-mq3-renderer-player-skins-ml-812613254"></a>
 ### upper
@@ -63,5 +71,7 @@ uniqueImages
 upper
 ```
 
+Upper-body player model or its assembled animation state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L58)

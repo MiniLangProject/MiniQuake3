@@ -1,5 +1,10 @@
 # MiniDoc warning cleanup — 2026-11-26
 
+> Historical report for the initial warning cleanup. The later constants/fields
+> completion and semantic corrections are recorded in the
+> [current coverage and verification report](MINIDOC_COVERAGE_2026-11-26.md).
+> The category counts below describe the earlier `def02f` source revision.
+
 The original MiniDoc 0.4.8 report contained **24,889 warnings**. The completed
 strict generation reports **zero warnings and zero errors** with the same
 project source roots, target, dependency mode, contract scope, summary-quality

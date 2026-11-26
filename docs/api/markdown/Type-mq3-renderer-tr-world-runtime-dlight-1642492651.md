@@ -12,7 +12,7 @@ struct Dlight
 Data record for `mq3.renderer.tr_world_runtime.Dlight`; groups `origin`, `radius`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L32)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_world_runtime.Dlight`; groups `origin`, `radius
 origin
 ```
 
+Dynamic-light center used to classify BSP nodes and affected world surfaces.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-dlight-radius-radius-src-mq3-renderer-tr-world-runtime-ml-1112456875"></a>
 ### radius
@@ -33,5 +35,7 @@ origin
 radius
 ```
 
+Radius used for the light, sprite, beam, or bounded object.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L36)

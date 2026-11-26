@@ -38,7 +38,7 @@ Calls `mq3.qcommon.command_buffer.create`, `mq3.qcommon.command_buffer.tokenizeS
 | `text` | `dynamic` | — | Text consumed or emitted by `advertisedChecksums` in the remote pure path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L39)
 
 <a id="function-function-mq3-client-remote-pure-checksumforentry-function-checksumforentry-archive-packages-name-src-mq3-client-remote-pure-ml-383097346"></a>
 ### checksumForEntry
@@ -56,7 +56,7 @@ Calls `mq3.format.pk3.findEntry` from remote pure `checksumForEntry`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding remote pure resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L58)
 
 <a id="constant-constant-mq3-client-remote-pure-max-pure-packages-const-max-pure-packages-128-src-mq3-client-remote-pure-ml-1719307360"></a>
 ### MAX_PURE_PACKAGES
@@ -65,8 +65,10 @@ Calls `mq3.format.pk3.findEntry` from remote pure `checksumForEntry`.
 const MAX_PURE_PACKAGES = 128
 ```
 
+Capacity limit for the pure packages collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L19)
 
 - [mq3.client.remote_pure.Package](Type-mq3-client-remote-pure-package-1918540364.md) — struct
 - [mq3.client.remote_pure.Verification](Type-mq3-client-remote-pure-verification-1456252319.md) — struct
@@ -88,4 +90,4 @@ Calls `mq3.client.remote_pure.advertisedChecksums`, `mq3.shared.info.value`, `st
 | `map` | `dynamic` | — | map record passed to the remote pure helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L73)

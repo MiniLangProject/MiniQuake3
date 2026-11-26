@@ -23,8 +23,10 @@ Stores network handshake slot record, including `runtime`, `clientBound`, `serve
 clientBound
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `bindClient` and `reconcile` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L18)
 
 <a id="field-field-mq3-client-network-handshake-slot-runtime-runtime-src-mq3-client-network-handshake-ml-745164149"></a>
 ### runtime
@@ -33,8 +35,10 @@ clientBound
 runtime
 ```
 
+When constructing this record, `create` supplies `current` for this member. Used by `bindClient` and `findSlot` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L15)
 
 <a id="field-field-mq3-client-network-handshake-slot-serverbound-serverbound-src-mq3-client-network-handshake-ml-1878477401"></a>
 ### serverBound
@@ -43,8 +47,10 @@ runtime
 serverBound
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `bindServer` and `reconcile` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L21)
 
 <a id="field-field-mq3-client-network-handshake-slot-serverslot-serverslot-src-mq3-client-network-handshake-ml-1270575139"></a>
 ### serverSlot
@@ -53,5 +59,7 @@ serverBound
 serverSlot
 ```
 
+When constructing this record, `create` supplies `-1` for this member. Used by `bindServer` and `activate` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L24)

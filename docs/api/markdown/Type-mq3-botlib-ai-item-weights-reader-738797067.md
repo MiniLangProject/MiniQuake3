@@ -12,7 +12,7 @@ struct Reader
 `Reader` record for ai item weights, containing `registry` and `handle`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L85)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Reader
 handle
 ```
 
+Preprocessor source handle used to read the weight configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L89)
 
 <a id="field-field-mq3-botlib-ai-item-weights-reader-registry-registry-src-mq3-botlib-ai-item-weights-ml-1210074028"></a>
 ### registry
@@ -33,5 +35,7 @@ handle
 registry
 ```
 
+Registry used to resolve registered names, handles, or runtime definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L87)

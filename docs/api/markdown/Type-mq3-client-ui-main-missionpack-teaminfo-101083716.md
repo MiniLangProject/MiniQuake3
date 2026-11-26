@@ -12,7 +12,7 @@ struct TeamInfo
 Stores UI main missionpack team info record, including `name`, `imageName`, `teamMembers`, `cinematic`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L173)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI main missionpack team info record, including `name`, `imageName`, `tea
 cinematic
 ```
 
+When constructing this record, `teamInfo` supplies `-1` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L181)
 
 <a id="field-field-mq3-client-ui-main-missionpack-teaminfo-imagename-imagename-src-mq3-client-ui-main-missionpack-ml-2022916520"></a>
 ### imageName
@@ -33,8 +35,10 @@ cinematic
 imageName
 ```
 
+Team icon image name used by Missionpack team-selection widgets.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L177)
 
 <a id="field-field-mq3-client-ui-main-missionpack-teaminfo-name-name-src-mq3-client-ui-main-missionpack-ml-305420694"></a>
 ### name
@@ -43,8 +47,10 @@ imageName
 name
 ```
 
+Team or clan name used for selection, opponent labels, and its associated cinematic lookup.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L175)
 
 <a id="field-field-mq3-client-ui-main-missionpack-teaminfo-teammembers-teammembers-src-mq3-client-ui-main-missionpack-ml-1396463716"></a>
 ### teamMembers
@@ -53,5 +59,7 @@ name
 teamMembers
 ```
 
+When constructing this record, `teamInfo` supplies `members` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L179)

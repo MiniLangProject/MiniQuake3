@@ -12,7 +12,7 @@ struct Image
 Data record for `mq3.platform.playable_jpeg.Image`; groups `width`, `height`, `pixels`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L26)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.platform.playable_jpeg.Image`; groups `width`, `height`, `p
 height
 ```
 
+Height in pixels of the JPEG image returned by the native decoder.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L30)
 
 <a id="field-field-mq3-platform-playable-jpeg-image-pixels-pixels-src-mq3-platform-playable-jpeg-ml-705941638"></a>
 ### pixels
@@ -33,8 +35,10 @@ height
 pixels
 ```
 
+Decoded pixel data for the image or upload.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L32)
 
 <a id="field-field-mq3-platform-playable-jpeg-image-width-width-src-mq3-platform-playable-jpeg-ml-1145714528"></a>
 ### width
@@ -43,5 +47,7 @@ pixels
 width
 ```
 
+Width in pixels of the JPEG image returned by the native decoder.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L28)

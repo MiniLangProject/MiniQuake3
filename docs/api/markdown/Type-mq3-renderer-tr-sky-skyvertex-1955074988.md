@@ -12,7 +12,7 @@ struct SkyVertex
 Data record for `mq3.renderer.tr_sky.SkyVertex`; groups `xyz`, `st`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L43)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_sky.SkyVertex`; groups `xyz`, `st`.
 st
 ```
 
+Two-dimensional texture coordinates associated with the vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L47)
 
 <a id="field-field-mq3-renderer-tr-sky-skyvertex-xyz-xyz-src-mq3-renderer-tr-sky-ml-1445802328"></a>
 ### xyz
@@ -33,5 +35,7 @@ st
 xyz
 ```
 
+Three-dimensional position of this vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L45)

@@ -12,7 +12,7 @@ struct EntityInput
 Data record for `mq3.renderer.tr_surface_runtime.EntityInput`; groups `reType`, `origin`, `oldOrigin`, `radius`, `rotation`, `shaderRGBA`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L51)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_surface_runtime.EntityInput`; groups `reType`, 
 oldOrigin
 ```
 
+Previous entity position used by interpolation or beam geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L57)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-origin-origin-src-mq3-renderer-tr-surface-runtime-ml-1078997134"></a>
 ### origin
@@ -33,8 +35,10 @@ oldOrigin
 origin
 ```
 
+Entity position used when constructing sprite, beam, rail, or lightning surface geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L55)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-radius-radius-src-mq3-renderer-tr-surface-runtime-ml-1805374150"></a>
 ### radius
@@ -43,8 +47,10 @@ origin
 radius
 ```
 
+Radius used for the light, sprite, beam, or bounded object.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L59)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-retype-retype-src-mq3-renderer-tr-surface-runtime-ml-362135780"></a>
 ### reType
@@ -53,8 +59,10 @@ radius
 reType
 ```
 
+Renderer entity type selecting the model, sprite, beam, or portal path.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L53)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-rotation-rotation-src-mq3-renderer-tr-surface-runtime-ml-1532368622"></a>
 ### rotation
@@ -63,8 +71,10 @@ reType
 rotation
 ```
 
+Sprite rotation angle in degrees.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L61)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-shaderrgba-shaderrgba-src-mq3-renderer-tr-surface-runtime-ml-173030192"></a>
 ### shaderRGBA
@@ -73,5 +83,7 @@ rotation
 shaderRGBA
 ```
 
+Entity RGBA color bytes used by entity-driven shader generators.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L63)

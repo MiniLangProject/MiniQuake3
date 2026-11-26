@@ -35,7 +35,7 @@ Updates `session.persistence`, `session.notice`, `session.configLoaded`, `sessio
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.persistence`, `session.notice`, `session.configLoaded`, `session.transitionCommands` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L337)
 
 <a id="function-function-mq3-client-desktop-session-bindingtext-function-bindingtext-host-src-mq3-client-desktop-session-ml-968649684"></a>
 ### bindingText
@@ -51,7 +51,7 @@ Adapts `mq3.client.key_bindings_config.bindingText` to desktop session `bindingT
 | `host` | `dynamic` | — | Record read through `host.bindingState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L98)
 
 <a id="function-function-mq3-client-desktop-session-capture-function-capture-state-session-src-mq3-client-desktop-session-ml-1335512387"></a>
 ### capture
@@ -68,7 +68,7 @@ Updates `session.settings`, `session.settings.userinfos`, `session.settings.user
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.settings`, `session.settings.userinfos`, `session.settings.userinfos[0]`, `session.restartCommands` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L168)
 
 <a id="function-function-mq3-client-desktop-session-cinematiccommand-function-cinematiccommand-commandstate-session-src-mq3-client-desktop-session-ml-67678756"></a>
 ### cinematicCommand
@@ -85,7 +85,7 @@ Updates `session.target`, `session.cinematicNext`, `session.action` during deskt
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.target`, `session.cinematicNext`, `session.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L243)
 
 <a id="function-function-mq3-client-desktop-session-commandcvar-function-commandcvar-commandstate-name-src-mq3-client-desktop-session-ml-248160095"></a>
 ### commandCvar
@@ -102,7 +102,7 @@ Adapts `mq3.qcommon.cvar.variableString` to desktop session `commandCvar`, retur
 | `name` | `dynamic` | — | Argument 2 of `mq3.qcommon.cvar.variableString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L110)
 
 <a id="function-function-mq3-client-desktop-session-commandprint-function-commandprint-commandstate-text-src-mq3-client-desktop-session-ml-1995083625"></a>
 ### commandPrint
@@ -119,7 +119,7 @@ Adapts `mq3.engine.local_qvm_match.emitPrint` to desktop session `commandPrint`,
 | `text` | `dynamic` | — | Argument 2 of `mq3.engine.local_qvm_match.emitPrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L106)
 
 - [mq3.client.desktop_session.ConfigHost](Type-mq3-client-desktop-session-confighost-891662542.md) — struct
 <a id="function-function-mq3-client-desktop-session-configprint-function-configprint-host-text-src-mq3-client-desktop-session-ml-982196295"></a>
@@ -137,7 +137,7 @@ Adapts `mq3.engine.local_qvm_match.emitPrint` to desktop session `configPrint`, 
 | `text` | `dynamic` | — | Argument 2 of `mq3.engine.local_qvm_match.emitPrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L102)
 
 <a id="function-function-mq3-client-desktop-session-create-function-create-dataroot-src-mq3-client-desktop-session-ml-950275258"></a>
 ### create
@@ -153,7 +153,7 @@ Creates a `mq3.client.desktop_session.Session` record. Assigns `dataRoot` from `
 | `dataRoot` | `dynamic` | — | Value used to initialize `Session.dataRoot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L92)
 
 <a id="function-function-mq3-client-desktop-session-defercommandtail-function-defercommandtail-commandstate-src-mq3-client-desktop-session-ml-706785520"></a>
 ### deferCommandTail
@@ -169,7 +169,7 @@ Updates `commandState.wait` during desktop session `deferCommandTail`.
 | `commandState` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `commandState.wait`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L190)
 
 <a id="function-function-mq3-client-desktop-session-disconnectcommand-function-disconnectcommand-commandstate-session-src-mq3-client-desktop-session-ml-496682102"></a>
 ### disconnectCommand
@@ -186,7 +186,7 @@ Updates `session.action` during desktop session `disconnectCommand`.
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L235)
 
 <a id="function-function-mq3-client-desktop-session-finishcinematic-function-finishcinematic-session-src-mq3-client-desktop-session-ml-959624354"></a>
 ### finishCinematic
@@ -202,7 +202,7 @@ Updates `session.cinematicNext`, `session.action`, `session.transitionCommands` 
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.cinematicNext`, `session.action`, `session.transitionCommands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L252)
 
 <a id="extern_function-extern-function-mq3-client-desktop-session-getcurrentprocessid-extern-function-getcurrentprocessid-from-kernel32-dll-returns-u32-src-mq3-client-desktop-session-ml-1598081936"></a>
 ### GetCurrentProcessId
@@ -233,7 +233,7 @@ Updates `session.action` during desktop session `levelselectCommand`.
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L269)
 
 <a id="function-function-mq3-client-desktop-session-mapcommand-function-mapcommand-commandstate-session-src-mq3-client-desktop-session-ml-908765304"></a>
 ### mapCommand
@@ -250,7 +250,7 @@ Updates `session.singlePlayer`, `session.action`, `session.mapName` during deskt
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.singlePlayer`, `session.action`, `session.mapName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L198)
 
 <a id="extern_function-extern-function-mq3-client-desktop-session-movefileexw-extern-function-movefileexw-existingpath-as-wstr-newpath-as-wstr-flags-as-u32-from-kernel32-dll-returns-bool-src-mq3-client-desktop-session-ml-599392846"></a>
 ### MoveFileExW
@@ -287,7 +287,7 @@ Calls `mq3.qcommon.command_buffer.argc`, `mq3.qcommon.command_buffer.emit`, `mq3
 | `session` | `dynamic` | — | Accepted for compatibility with `musicCommand`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L307)
 
 <a id="function-function-mq3-client-desktop-session-quitcommand-function-quitcommand-commandstate-session-src-mq3-client-desktop-session-ml-1230812920"></a>
 ### quitCommand
@@ -304,7 +304,7 @@ Updates `session.action` during desktop session `quitCommand`.
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L278)
 
 <a id="function-function-mq3-client-desktop-session-readcommandfile-function-readcommandfile-commandstate-name-src-mq3-client-desktop-session-ml-179072883"></a>
 ### readCommandFile
@@ -321,7 +321,7 @@ Calls `mq3.client.desktop_session.readConfig` from desktop session `readCommandF
 | `name` | `dynamic` | — | Name used to select or register the corresponding desktop session resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L148)
 
 <a id="function-function-mq3-client-desktop-session-readconfig-function-readconfig-context-root-name-src-mq3-client-desktop-session-ml-934784658"></a>
 ### readConfig
@@ -339,7 +339,7 @@ Calls `mq3.engine.local_qvm_match.desktopFilePath`, `std.string.endsWith`, `std.
 | `name` | `dynamic` | — | Name used to select or register the corresponding desktop session resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L132)
 
 <a id="function-function-mq3-client-desktop-session-requestedgame-function-requestedgame-commandstate-src-mq3-client-desktop-session-ml-471365860"></a>
 ### requestedGame
@@ -355,7 +355,7 @@ Calls `mq3.qcommon.cvar.find` from desktop session `requestedGame`. The final pa
 | `commandState` | `dynamic` | — | Record read through `commandState.context.context.cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L281)
 
 <a id="function-function-mq3-client-desktop-session-restartcommand-function-restartcommand-commandstate-session-src-mq3-client-desktop-session-ml-1136544464"></a>
 ### restartCommand
@@ -372,7 +372,7 @@ Updates `session.action` during desktop session `restartCommand`.
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L227)
 
 <a id="function-function-mq3-client-desktop-session-restartfilesystem-function-restartfilesystem-commandstate-session-src-mq3-client-desktop-session-ml-1153999100"></a>
 ### restartFilesystem
@@ -389,7 +389,7 @@ Updates `session.requestedGame`, `session.action` during desktop session `restar
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.requestedGame`, `session.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L289)
 
 <a id="function-function-mq3-client-desktop-session-save-function-save-state-session-src-mq3-client-desktop-session-ml-742197919"></a>
 ### save
@@ -406,7 +406,7 @@ Updates `session.savedBindings` during desktop session `save`.
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.savedBindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L156)
 
 - [mq3.client.desktop_session.Session](Type-mq3-client-desktop-session-session-82414742.md) — struct
 <a id="function-function-mq3-client-desktop-session-stopmusiccommand-function-stopmusiccommand-commandstate-session-src-mq3-client-desktop-session-ml-962987612"></a>
@@ -424,7 +424,7 @@ Calls `mq3.engine.local_qvm_match.uiStopMusic` from desktop session `stopMusicCo
 | `session` | `dynamic` | — | Accepted for compatibility with `stopMusicCommand`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L318)
 
 <a id="function-function-mq3-client-desktop-session-streamcommand-function-streamcommand-commandstate-session-src-mq3-client-desktop-session-ml-1821891526"></a>
 ### streamCommand
@@ -441,7 +441,7 @@ Updates `session.target`, `session.action` during desktop session `streamCommand
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.target`, `session.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L326)
 
 <a id="function-function-mq3-client-desktop-session-videocommand-function-videocommand-commandstate-session-src-mq3-client-desktop-session-ml-1965584068"></a>
 ### videoCommand
@@ -458,7 +458,7 @@ Updates `session.videoRestart` during desktop session `videoCommand`.
 | `session` | `dynamic` | — | Mutable desktop session record/storage; this routine assigns `session.videoRestart`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L297)
 
 <a id="function-function-mq3-client-desktop-session-writeconfig-function-writeconfig-host-name-contents-src-mq3-client-desktop-session-ml-1345337701"></a>
 ### writeConfig
@@ -476,4 +476,4 @@ Calls `mq3.engine.local_qvm_match.desktopFilePath`, `std.string.endsWith`, `std.
 | `contents` | `dynamic` | — | Value used by `written=try(fs.writeAllText(temporary,contents))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L116)

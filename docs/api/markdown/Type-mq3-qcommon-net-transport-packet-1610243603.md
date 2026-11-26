@@ -12,7 +12,7 @@ struct Packet
 Packet record for qcommon.net_transport, containing `received`, `address`, `data`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L58)
 
 ## Members
 
@@ -23,8 +23,10 @@ Packet record for qcommon.net_transport, containing `received`, `address`, `data
 address
 ```
 
+Network address associated with the client or packet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L62)
 
 <a id="field-field-mq3-qcommon-net-transport-packet-data-data-src-mq3-qcommon-net-transport-ml-2102400057"></a>
 ### data
@@ -33,8 +35,10 @@ address
 data
 ```
 
+Datagram bytes returned by the transport receive operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L64)
 
 <a id="field-field-mq3-qcommon-net-transport-packet-received-received-src-mq3-qcommon-net-transport-ml-1228096659"></a>
 ### received
@@ -43,5 +47,7 @@ data
 received
 ```
 
+True when a valid datagram was obtained from the transport.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L60)

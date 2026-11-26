@@ -12,7 +12,7 @@ struct Services
 Callback table for `mq3.renderer.image_registry.Services`; exposes `loadFn`, `releaseFn`, `submitFn`, `diagnosticFn`, `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L115)
 
 ## Members
 
@@ -23,8 +23,10 @@ Callback table for `mq3.renderer.image_registry.Services`; exposes `loadFn`, `re
 context
 ```
 
+Image-loader and graphics-host state passed to resource loading, release, and upload callbacks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L125)
 
 <a id="field-field-mq3-renderer-image-registry-services-diagnosticfn-diagnosticfn-src-mq3-renderer-image-registry-ml-549634963"></a>
 ### diagnosticFn
@@ -33,8 +35,10 @@ context
 diagnosticFn
 ```
 
+Host callback used to perform diagnostic operations for this subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L123)
 
 <a id="field-field-mq3-renderer-image-registry-services-loadfn-loadfn-src-mq3-renderer-image-registry-ml-884562013"></a>
 ### loadFn
@@ -43,8 +47,10 @@ diagnosticFn
 loadFn
 ```
 
+Host callback used to perform load operations for this subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L117)
 
 <a id="field-field-mq3-renderer-image-registry-services-releasefn-releasefn-src-mq3-renderer-image-registry-ml-213366181"></a>
 ### releaseFn
@@ -53,8 +59,10 @@ loadFn
 releaseFn
 ```
 
+Host callback used to perform release operations for this subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L119)
 
 <a id="field-field-mq3-renderer-image-registry-services-submitfn-submitfn-src-mq3-renderer-image-registry-ml-1066900985"></a>
 ### submitFn
@@ -63,5 +71,7 @@ releaseFn
 submitFn
 ```
 
+Host callback used to perform submit operations for this subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L121)

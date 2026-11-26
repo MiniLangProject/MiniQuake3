@@ -29,7 +29,7 @@ Calls `mq3.client.download.services`, `mq3.client.server_message.create`, `mq3.c
 | `downloadServices` | `dynamic` | — | Value used by `if downloadServices==void then downloadServices=download.services() end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L55)
 
 <a id="function-function-mq3-client-protocol-runtime-downloadcommand-function-downloadcommand-dispatcher-msg-src-mq3-client-protocol-runtime-ml-1132138684"></a>
 ### downloadCommand
@@ -46,7 +46,7 @@ Calls `mq3.client.download.parseDownload` from protocol runtime `downloadCommand
 | `msg` | `dynamic` | — | Value used by `return download.parseDownload(runtime.downloadState,runtime.downloadServices,msg)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L47)
 
 <a id="function-function-mq3-client-protocol-runtime-gamestatecommand-function-gamestatecommand-dispatcher-msg-src-mq3-client-protocol-runtime-ml-1708327414"></a>
 ### gamestateCommand
@@ -63,7 +63,7 @@ Updates `dispatcher.snapshotState`, `dispatcher.serverCommandSequence`, `dispatc
 | `msg` | `dynamic` | — | Value used by `parsed=try(gamestate.parse(runtime.gamestateState,msg))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L30)
 
 <a id="function-function-mq3-client-protocol-runtime-parse-function-parse-runtime-msg-src-mq3-client-protocol-runtime-ml-962627107"></a>
 ### parse
@@ -80,6 +80,6 @@ Calls `mq3.client.server_message.parseServerMessage` from protocol runtime `pars
 | `msg` | `dynamic` | — | Value used by `return serverMessage.parseServerMessage(runtime.dispatcher,msg)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L65)
 
 - [mq3.client.protocol_runtime.Runtime](Type-mq3-client-protocol-runtime-runtime-2050442980.md) — struct

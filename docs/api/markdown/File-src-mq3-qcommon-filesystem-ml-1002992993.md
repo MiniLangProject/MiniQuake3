@@ -32,7 +32,7 @@ Add unique in qcommon.filesystem; the normal completion returns `(list + [name])
 | `name` | `dynamic` | — | Name used in `(list + [name])` and `stringEqualsIgnoreCaseAscii(old, name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L343)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L365)
 
 <a id="function-function-mq3-qcommon-filesystem-appendcapacity-function-appendcapacity-text-part-capacity-src-mq3-qcommon-filesystem-ml-2009743494"></a>
 ### appendCapacity
@@ -50,7 +50,7 @@ Append capacity in qcommon.filesystem; the normal completion returns `(text + de
 | `capacity` | `dynamic` | — | Capacity used in `(capacity - 1)` and `(capacity <= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L521)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L545)
 
 <a id="function-function-mq3-qcommon-filesystem-checksumhex-function-checksumhex-checksum-src-mq3-qcommon-filesystem-ml-2027923373"></a>
 ### checksumHex
@@ -66,7 +66,7 @@ Compute checksum hex in qcommon.filesystem; the normal completion returns `decod
 | `checksum` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L509)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L533)
 
 <a id="function-function-mq3-qcommon-filesystem-clearpakreferences-function-clearpakreferences-state-flags-src-mq3-qcommon-filesystem-ml-400221796"></a>
 ### clearPakReferences
@@ -83,7 +83,7 @@ Clear pak references in qcommon.filesystem.
 | `flags` | `dynamic` | — | Flags used in `(flags == 0)` and `(search.pak.referenced & ~ flags)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L446)
 
 <a id="function-function-mq3-qcommon-filesystem-comparepaks-function-comparepaks-state-capacity-downloadstring-serverfileexistsfn-src-mq3-qcommon-filesystem-ml-943780973"></a>
 ### comparePaks
@@ -102,7 +102,7 @@ Compute compare paks in qcommon.filesystem; the normal completion returns `PakCo
 | `serverFileExistsFn` | `dynamic` | — | Callback invoked for server file exists; the call sites below define the callback arguments. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L543)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L567)
 
 <a id="function-function-mq3-qcommon-filesystem-crcheader-function-crcheader-archive-src-mq3-qcommon-filesystem-ml-1667113826"></a>
 ### crcHeader
@@ -118,7 +118,7 @@ Compute crc header in qcommon.filesystem; the normal completion returns `result`
 | `archive` | `dynamic` | — | Record exposing `entries`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L135)
 
 <a id="function-function-mq3-qcommon-filesystem-create-function-create-feed-src-mq3-qcommon-filesystem-ml-1865965856"></a>
 ### create
@@ -134,7 +134,7 @@ Create `mq3.qcommon.filesystem.FileSystem` with paths=[]; serverPakChecksums=[];
 | `feed` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L89)
 
 <a id="function-function-mq3-qcommon-filesystem-depthandlastslash-function-depthandlastslash-name-src-mq3-qcommon-filesystem-ml-2146511779"></a>
 ### depthAndLastSlash
@@ -150,7 +150,7 @@ Compute depth and last slash in qcommon.filesystem; the normal completion return
 | `name` | `dynamic` | — | Name used in `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L354)
 
 <a id="function-function-mq3-qcommon-filesystem-discoverdirectory-function-discoverdirectory-directory-prefix-src-mq3-qcommon-filesystem-ml-1729550731"></a>
 ### discoverDirectory
@@ -167,7 +167,7 @@ Compute discover directory in qcommon.filesystem; the normal completion returns 
 | `prefix` | `dynamic` | — | Prefix used in `(prefix != "")` and `(prefix + "/")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L219)
 
 <a id="function-function-mq3-qcommon-filesystem-excludedgeneralreference-function-excludedgeneralreference-name-src-mq3-qcommon-filesystem-ml-1175306089"></a>
 ### excludedGeneralReference
@@ -183,7 +183,7 @@ Apply `mq3.qcommon.filesystem.suffix`, `std.string.indexOf` for excluded general
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.filesystem.suffix`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L302)
 
 <a id="function-function-mq3-qcommon-filesystem-filename-function-filename-path-src-mq3-qcommon-filesystem-ml-1507644021"></a>
 ### filename
@@ -199,7 +199,7 @@ Compute filename in qcommon.filesystem; the normal completion returns `decode(sl
 | `path` | `dynamic` | — | Path used in `bytes(path)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L115)
 
 - [mq3.qcommon.filesystem.FileSystem](Type-mq3-qcommon-filesystem-filesystem-607722198.md) — struct
 <a id="extern_function-extern-function-mq3-qcommon-filesystem-findclose-extern-function-findclose-handle-as-ptr-from-kernel32-dll-returns-bool-src-mq3-qcommon-filesystem-ml-294575066"></a>
@@ -218,7 +218,7 @@ Release a directory-search handle obtained from FindFirstFileW.
 
 **Returns:** Nonzero on successful closure; zero on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L85)
 
 <a id="extern_function-extern-function-mq3-qcommon-filesystem-findfirstfilew-extern-function-findfirstfilew-name-as-wstr-data-as-bytes-from-kernel32-dll-returns-ptr-src-mq3-qcommon-filesystem-ml-1444176726"></a>
 ### FindFirstFileW
@@ -237,7 +237,7 @@ Begin a Win32 directory search and fill the first matching file record.
 
 **Returns:** A search handle to close with FindClose, or INVALID_HANDLE_VALUE when no search result is available.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L76)
 
 <a id="extern_function-extern-function-mq3-qcommon-filesystem-findnextfilew-extern-function-findnextfilew-handle-as-ptr-data-as-bytes-from-kernel32-dll-returns-bool-src-mq3-qcommon-filesystem-ml-1256236813"></a>
 ### FindNextFileW
@@ -256,7 +256,7 @@ Advance an active Win32 directory search and overwrite its file record.
 
 **Returns:** Nonzero when a next entry was written; zero at the end of the search or on error.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L81)
 
 <a id="constant-constant-mq3-qcommon-filesystem-fs-cgame-ref-const-fs-cgame-ref-4-src-mq3-qcommon-filesystem-ml-227718909"></a>
 ### FS_CGAME_REF
@@ -265,8 +265,10 @@ Advance an active Win32 directory search and overwrite its file record.
 const FS_CGAME_REF = 4
 ```
 
+Package-reference bit recording use by the client-game VM.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L16)
 
 <a id="constant-constant-mq3-qcommon-filesystem-fs-general-ref-const-fs-general-ref-1-src-mq3-qcommon-filesystem-ml-1952504324"></a>
 ### FS_GENERAL_REF
@@ -275,8 +277,10 @@ const FS_CGAME_REF = 4
 const FS_GENERAL_REF = 1
 ```
 
+Package-reference bit recording ordinary asset use.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L12)
 
 <a id="constant-constant-mq3-qcommon-filesystem-fs-qagame-ref-const-fs-qagame-ref-8-src-mq3-qcommon-filesystem-ml-1395658101"></a>
 ### FS_QAGAME_REF
@@ -285,8 +289,10 @@ const FS_GENERAL_REF = 1
 const FS_QAGAME_REF = 8
 ```
 
+Package-reference bit recording use by the server game VM.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L18)
 
 <a id="constant-constant-mq3-qcommon-filesystem-fs-ui-ref-const-fs-ui-ref-2-src-mq3-qcommon-filesystem-ml-1244365939"></a>
 ### FS_UI_REF
@@ -295,8 +301,10 @@ const FS_QAGAME_REF = 8
 const FS_UI_REF = 2
 ```
 
+Package-reference bit recording use by the UI VM.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L14)
 
 <a id="extern_function-extern-function-mq3-qcommon-filesystem-getfileattributesw-extern-function-getfileattributesw-name-as-wstr-from-kernel32-dll-returns-u32-src-mq3-qcommon-filesystem-ml-1077370477"></a>
 ### GetFileAttributesW
@@ -314,7 +322,7 @@ Read Win32 file or directory attributes for qcommon.filesystem.
 
 **Returns:** The file-attribute bitmask, or INVALID_FILE_ATTRIBUTES (0xffffffff) on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L71)
 
 <a id="function-function-mq3-qcommon-filesystem-haspakchecksum-function-haspakchecksum-state-checksum-src-mq3-qcommon-filesystem-ml-1352332668"></a>
 ### hasPakChecksum
@@ -331,7 +339,7 @@ Test pak checksum in qcommon.filesystem; the normal completion returns `false`.
 | `checksum` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L531)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L555)
 
 <a id="function-function-mq3-qcommon-filesystem-hostpath-function-hostpath-search-name-src-mq3-qcommon-filesystem-ml-1122067785"></a>
 ### hostPath
@@ -348,7 +356,7 @@ Compute host path in qcommon.filesystem; the normal completion returns `((((sear
 | `name` | `dynamic` | — | Name used in `((((search.root + separator) + search.gameName) + "\\\\") + name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L294)
 
 <a id="function-function-mq3-qcommon-filesystem-idpak-function-idpak-name-base-src-mq3-qcommon-filesystem-ml-1078203416"></a>
 ### idPak
@@ -365,7 +373,7 @@ Test id pak in qcommon.filesystem; the normal completion returns `false`.
 | `base` | `dynamic` | — | Base used in `(base + "/pak")` and `((base + "/pak") + str(index))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L523)
 
 <a id="function-function-mq3-qcommon-filesystem-isbasegame-function-isbasegame-gamename-src-mq3-qcommon-filesystem-ml-1560588555"></a>
 ### isBaseGame
@@ -381,7 +389,7 @@ Return `stringEqualsIgnoreCaseAscii(gameName, "baseq3")` from `qcommon.filesyste
 | `gameName` | `dynamic` | — | Game name used in `stringEqualsIgnoreCaseAscii(gameName, "baseq3")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L434)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L456)
 
 <a id="function-function-mq3-qcommon-filesystem-joinhostpath-function-joinhostpath-left-right-src-mq3-qcommon-filesystem-ml-705139177"></a>
 ### joinHostPath
@@ -398,7 +406,7 @@ Compute join host path in qcommon.filesystem; the normal completion returns `((l
 | `right` | `dynamic` | — | Right used in `(left + right)` and `((left + "\\\\") + right)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L211)
 
 <a id="function-function-mq3-qcommon-filesystem-listcandidate-function-listcandidate-list-path-extension-name-src-mq3-qcommon-filesystem-ml-901133721"></a>
 ### listCandidate
@@ -417,7 +425,7 @@ Compute list candidate in qcommon.filesystem; the normal completion returns `add
 | `name` | `dynamic` | — | Virtual game path; leading separators, .., and :: are rejected. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L378)
 
 <a id="function-function-mq3-qcommon-filesystem-listfiles-function-listfiles-state-path-extension-src-mq3-qcommon-filesystem-ml-1586654083"></a>
 ### listFiles
@@ -435,7 +443,7 @@ Compute list files in qcommon.filesystem; the normal completion returns `result`
 | `extension` | `dynamic` | — | Extension passed as `extension` to `mq3.qcommon.filesystem.listCandidate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L394)
 
 <a id="function-function-mq3-qcommon-filesystem-loadedpakchecksums-function-loadedpakchecksums-state-src-mq3-qcommon-filesystem-ml-1700218477"></a>
 ### loadedPakChecksums
@@ -451,7 +459,7 @@ Compute loaded pak checksums in qcommon.filesystem; the normal completion return
 | `state` | `dynamic` | — | Record exposing `paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L392)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L414)
 
 <a id="function-function-mq3-qcommon-filesystem-loadedpaknames-function-loadedpaknames-state-src-mq3-qcommon-filesystem-ml-1322088569"></a>
 ### loadedPakNames
@@ -467,7 +475,7 @@ Compute loaded pak names in qcommon.filesystem; the normal completion returns `r
 | `state` | `dynamic` | — | Record exposing `paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L434)
 
 <a id="function-function-mq3-qcommon-filesystem-loadedpakpurechecksums-function-loadedpakpurechecksums-state-src-mq3-qcommon-filesystem-ml-76393041"></a>
 ### loadedPakPureChecksums
@@ -483,7 +491,7 @@ Compute loaded pak pure checksums in qcommon.filesystem; the normal completion r
 | `state` | `dynamic` | — | Record exposing `paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L402)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L424)
 
 <a id="function-function-mq3-qcommon-filesystem-loadpak-function-loadpak-path-gamename-feed-src-mq3-qcommon-filesystem-ml-227256902"></a>
 ### loadPak
@@ -501,7 +509,7 @@ Load pak in qcommon.filesystem.
 | `feed` | `dynamic` | — | Key passed as `key` to `mq3.qcommon.md4.blockChecksumKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L151)
 
 <a id="function-function-mq3-qcommon-filesystem-markreference-function-markreference-pak-name-src-mq3-qcommon-filesystem-ml-409976039"></a>
 ### markReference
@@ -520,7 +528,7 @@ Direct state writes: `pak.referenced`.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.filesystem.excludedGeneralReference`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L313)
 
 <a id="function-function-mq3-qcommon-filesystem-mountgamedirectory-function-mountgamedirectory-state-root-gamename-pakpaths-loosefiles-src-mq3-qcommon-filesystem-ml-1661359809"></a>
 ### mountGameDirectory
@@ -542,7 +550,7 @@ Direct state writes: `state.paths`.
 | `looseFiles` | `dynamic` | — | Initial `looseFiles` field stored in the returned or constructed `mq3.qcommon.filesystem.SearchPath` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L179)
 
 <a id="function-function-mq3-qcommon-filesystem-mounthostgamedirectory-function-mounthostgamedirectory-state-root-gamename-src-mq3-qcommon-filesystem-ml-764302102"></a>
 ### mountHostGameDirectory
@@ -560,7 +568,7 @@ Compute mount host game directory in qcommon.filesystem; the normal completion r
 | `gameName` | `dynamic` | — | Right passed as `right` to `mq3.qcommon.filesystem.joinHostPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L244)
 
 <a id="function-function-mq3-qcommon-filesystem-normalize-function-normalize-name-src-mq3-qcommon-filesystem-ml-1412392591"></a>
 ### normalize
@@ -578,7 +586,7 @@ Validation failures include `FS: absolute qpath`; `FS: invalid qpath`.
 | `name` | `dynamic` | — | Virtual game path; leading separators, .., and :: are rejected. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L97)
 
 - [mq3.qcommon.filesystem.Pak](Type-mq3-qcommon-filesystem-pak-1257824487.md) — struct
 - [mq3.qcommon.filesystem.PakComparison](Type-mq3-qcommon-filesystem-pakcomparison-1561833062.md) — struct
@@ -597,7 +605,7 @@ Test pak is pure in qcommon.filesystem; the normal completion returns `false`.
 | `pak` | `dynamic` | — | Record exposing `checksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L283)
 
 <a id="function-function-mq3-qcommon-filesystem-pathless-function-pathless-a-b-src-mq3-qcommon-filesystem-ml-1777136889"></a>
 ### pathLess
@@ -614,7 +622,7 @@ Compute path less in qcommon.filesystem; the normal completion returns `(len(lef
 | `b` | `dynamic` | — | Virtual game path; leading separators, .., and :: are rejected. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L159)
 
 <a id="function-function-mq3-qcommon-filesystem-qagamepakchecksum-function-qagamepakchecksum-state-src-mq3-qcommon-filesystem-ml-894768291"></a>
 ### qagamePakChecksum
@@ -630,7 +638,7 @@ Compute qagame pak checksum in qcommon.filesystem; the normal completion returns
 | `state` | `dynamic` | — | Record exposing `paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L482)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L504)
 
 <a id="function-function-mq3-qcommon-filesystem-read-function-read-state-qpath-src-mq3-qcommon-filesystem-ml-1468463973"></a>
 ### read
@@ -647,7 +655,7 @@ Read filesystem in qcommon.filesystem; the normal completion returns `error(3510
 | `qpath` | `dynamic` | — | Virtual game path; leading separators, .., and :: are rejected. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L324)
 
 <a id="function-function-mq3-qcommon-filesystem-referencedpakchecksums-function-referencedpakchecksums-state-src-mq3-qcommon-filesystem-ml-1249700361"></a>
 ### referencedPakChecksums
@@ -663,7 +671,7 @@ Compute referenced pak checksums in qcommon.filesystem; the normal completion re
 | `state` | `dynamic` | — | Record exposing `paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L440)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L462)
 
 <a id="function-function-mq3-qcommon-filesystem-referencedpaknames-function-referencedpaknames-state-src-mq3-qcommon-filesystem-ml-1704273913"></a>
 ### referencedPakNames
@@ -679,7 +687,7 @@ Compute referenced pak names in qcommon.filesystem; the normal completion return
 | `state` | `dynamic` | — | Record exposing `paths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L452)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L474)
 
 <a id="function-function-mq3-qcommon-filesystem-referencedpakpuretokens-function-referencedpakpuretokens-state-src-mq3-qcommon-filesystem-ml-555673979"></a>
 ### referencedPakPureTokens
@@ -695,7 +703,7 @@ Compute referenced pak pure tokens in qcommon.filesystem; the normal completion 
 | `state` | `dynamic` | — | Record exposing `checksumFeed`, `paths`, `fakeChecksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L464)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L486)
 
 - [mq3.qcommon.filesystem.SearchPath](Type-mq3-qcommon-filesystem-searchpath-977708430.md) — struct
 <a id="function-function-mq3-qcommon-filesystem-setpureserverpakinfo-function-setpureserverpakinfo-state-checksums-names-src-mq3-qcommon-filesystem-ml-686631393"></a>
@@ -716,7 +724,7 @@ Direct state writes: `state.serverPakChecksums`, `state.serverPakNames`.
 | `names` | `dynamic` | — | Names operand used by `setPureServerPakInfo`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L265)
 
 <a id="function-function-mq3-qcommon-filesystem-setpureserverpaks-function-setpureserverpaks-state-checksums-src-mq3-qcommon-filesystem-ml-2074985301"></a>
 ### setPureServerPaks
@@ -735,7 +743,7 @@ Direct state writes: `state.serverPakChecksums`.
 | `checksums` | `dynamic` | — | Checksums operand used by `setPureServerPaks`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L254)
 
 <a id="function-function-mq3-qcommon-filesystem-setpureserverreferencedpaks-function-setpureserverreferencedpaks-state-checksums-names-src-mq3-qcommon-filesystem-ml-284768779"></a>
 ### setPureServerReferencedPaks
@@ -755,7 +763,7 @@ Direct state writes: `state.serverReferencedPakChecksums`, `state.serverReferenc
 | `names` | `dynamic` | — | Names operand used by `setPureServerReferencedPaks`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L275)
 
 <a id="function-function-mq3-qcommon-filesystem-strippk3-function-strippk3-name-src-mq3-qcommon-filesystem-ml-1117648549"></a>
 ### stripPk3
@@ -771,7 +779,7 @@ Compute strip pk 3 in qcommon.filesystem; the normal completion returns `name`.
 | `name` | `dynamic` | — | Name used in `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L125)
 
 <a id="function-function-mq3-qcommon-filesystem-suffix-function-suffix-name-extension-src-mq3-qcommon-filesystem-ml-1390494694"></a>
 ### suffix
@@ -788,7 +796,7 @@ Apply `stringEqualsIgnoreCaseAscii`, `decode`, `slice` for suffix in qcommon.fil
 | `extension` | `dynamic` | — | Extension used in `len(extension)` and `(len(extension) == 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L346)
 
 <a id="function-function-mq3-qcommon-filesystem-wideasciiname-function-wideasciiname-data-src-mq3-qcommon-filesystem-ml-242027786"></a>
 ### wideAsciiName
@@ -806,4 +814,4 @@ Validation failures include `FS: non-ASCII host filename`.
 | `data` | `dynamic` | — | Data used in `len(data)` and `data[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L197)

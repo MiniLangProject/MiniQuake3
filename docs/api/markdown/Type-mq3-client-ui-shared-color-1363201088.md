@@ -12,7 +12,7 @@ struct Color
 Stores UI shared color, including `r`, `g`, `b`, `a`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L169)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI shared color, including `r`, `g`, `b`, `a`.
 a
 ```
 
+Alpha component controlling UI opacity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L177)
 
 <a id="field-field-mq3-client-ui-shared-color-b-b-src-mq3-client-ui-shared-ml-385568640"></a>
 ### b
@@ -33,8 +35,10 @@ a
 b
 ```
 
+Blue component of the UI color.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L175)
 
 <a id="field-field-mq3-client-ui-shared-color-g-g-src-mq3-client-ui-shared-ml-1877234276"></a>
 ### g
@@ -43,8 +47,10 @@ b
 g
 ```
 
+Green component of the UI color.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L173)
 
 <a id="field-field-mq3-client-ui-shared-color-r-r-src-mq3-client-ui-shared-ml-233622944"></a>
 ### r
@@ -53,5 +59,7 @@ g
 r
 ```
 
+Red component of the UI color.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L171)

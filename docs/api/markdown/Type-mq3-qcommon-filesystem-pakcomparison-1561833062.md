@@ -12,7 +12,7 @@ struct PakComparison
 PakComparison record for qcommon.filesystem, containing `needed`, `text`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L491)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L513)
 
 ## Members
 
@@ -23,8 +23,10 @@ PakComparison record for qcommon.filesystem, containing `needed`, `text`.
 needed
 ```
 
+Missing or mismatched packages required by the connected server.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L492)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L515)
 
 <a id="field-field-mq3-qcommon-filesystem-pakcomparison-text-text-src-mq3-qcommon-filesystem-ml-1009633194"></a>
 ### text
@@ -33,5 +35,7 @@ needed
 text
 ```
 
+Formatted package-comparison result for diagnostics or download requests.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L493)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L517)

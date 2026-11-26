@@ -12,7 +12,7 @@ struct Md4Bone
 Md4Bone record for format.qfiles, containing `matrix`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L389)
 
 ## Members
 
@@ -23,5 +23,7 @@ Md4Bone record for format.qfiles, containing `matrix`.
 matrix
 ```
 
+Bone transform matrix stored for this animation frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L391)

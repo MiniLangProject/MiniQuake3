@@ -31,7 +31,7 @@ Updates `state.armor`, `state.health`, `state.alive`, `state.deaths` and additio
 | `bypassArmor` | `dynamic` | — | Value used by `if not bypassArmor then saved=armorSave(state.armor,amount) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L194)
 
 <a id="function-function-mq3-client-playable-player-applynormaldamage-function-applynormaldamage-state-amount-now-src-mq3-client-playable-player-ml-1329402439"></a>
 ### applyNormalDamage
@@ -49,7 +49,7 @@ Adapts `mq3.client.playable_player.applyDamage` to playable player `applyNormalD
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. Forwarded to `mq3.client.playable_player.applyDamage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L211)
 
 <a id="function-function-mq3-client-playable-player-armorsave-function-armorsave-armor-damage-src-mq3-client-playable-player-ml-1713939486"></a>
 ### armorSave
@@ -66,7 +66,7 @@ Mirrors baseq3 CheckArmor: ceil(damage * 0.66), capped by available armor.
 | `damage` | `dynamic` | — | Value used by `if armor<=0 or damage<=0 then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L183)
 
 <a id="constant-constant-mq3-client-playable-player-camera-eye-height-const-camera-eye-height-48-src-mq3-client-playable-player-ml-237229485"></a>
 ### CAMERA_EYE_HEIGHT
@@ -75,8 +75,10 @@ Mirrors baseq3 CheckArmor: ceil(damage * 0.66), capped by available armor.
 const CAMERA_EYE_HEIGHT = 48
 ```
 
+Vertical camera offset above the player origin in the native preview.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L27)
 
 <a id="extern_function-extern-function-mq3-client-playable-player-ceil-extern-function-ceil-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-client-playable-player-ml-1392062964"></a>
 ### ceil
@@ -111,7 +113,7 @@ Calls `std.string.toLowerAscii`, `mq3.client.playable_player.field`, `mq3.compat
 | `classname` | `dynamic` | — | Value used by `wanted=strings.toLowerAscii(classname)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L124)
 
 <a id="function-function-mq3-client-playable-player-configure-function-configure-state-respawnmilliseconds-invulnerabilitymilliseconds-src-mq3-client-playable-player-ml-1644158026"></a>
 ### configure
@@ -129,7 +131,7 @@ Updates `state.respawnMilliseconds`, `state.invulnerabilityMilliseconds` during 
 | `invulnerabilityMilliseconds` | `dynamic` | — | Value assigned to `state.invulnerabilityMilliseconds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L161)
 
 - [mq3.client.playable_player.Damage](Type-mq3-client-playable-player-damage-1907288644.md) — struct
 <a id="constant-constant-mq3-client-playable-player-default-ammo-const-default-ammo-50-src-mq3-client-playable-player-ml-2047110222"></a>
@@ -139,8 +141,10 @@ Updates `state.respawnMilliseconds`, `state.invulnerabilityMilliseconds` during 
 const DEFAULT_AMMO = 50
 ```
 
+Fallback ammo setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-player-default-armor-const-default-armor-0-src-mq3-client-playable-player-ml-502826735"></a>
 ### DEFAULT_ARMOR
@@ -149,8 +153,10 @@ const DEFAULT_AMMO = 50
 const DEFAULT_ARMOR = 0
 ```
 
+Fallback armor setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-player-default-health-const-default-health-100-src-mq3-client-playable-player-ml-365813562"></a>
 ### DEFAULT_HEALTH
@@ -159,8 +165,10 @@ const DEFAULT_ARMOR = 0
 const DEFAULT_HEALTH = 100
 ```
 
+Fallback health setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-player-default-invulnerability-milliseconds-const-default-invulnerability-milliseconds-1000-src-mq3-client-playable-player-ml-759937026"></a>
 ### DEFAULT_INVULNERABILITY_MILLISECONDS
@@ -169,8 +177,10 @@ const DEFAULT_HEALTH = 100
 const DEFAULT_INVULNERABILITY_MILLISECONDS = 1000
 ```
 
+Default invulnerability duration in milliseconds when the caller supplies no override.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="constant-constant-mq3-client-playable-player-default-respawn-milliseconds-const-default-respawn-milliseconds-1700-src-mq3-client-playable-player-ml-1662729085"></a>
 ### DEFAULT_RESPAWN_MILLISECONDS
@@ -179,8 +189,10 @@ const DEFAULT_INVULNERABILITY_MILLISECONDS = 1000
 const DEFAULT_RESPAWN_MILLISECONDS = 1700
 ```
 
+Default respawn duration in milliseconds when the caller supplies no override.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L23)
 
 <a id="constant-constant-mq3-client-playable-player-default-weapon-const-default-weapon-weapon-machinegun-src-mq3-client-playable-player-ml-142662893"></a>
 ### DEFAULT_WEAPON
@@ -189,8 +201,10 @@ const DEFAULT_RESPAWN_MILLISECONDS = 1700
 const DEFAULT_WEAPON = "weapon_machinegun"
 ```
 
+Fallback weapon setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 <a id="function-function-mq3-client-playable-player-fail-function-fail-message-src-mq3-client-playable-player-ml-1274415877"></a>
 ### fail
@@ -206,7 +220,7 @@ Creates the playable player error `7540` with diagnostic text `"preview player: 
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview player: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L108)
 
 <a id="function-function-mq3-client-playable-player-field-function-field-fields-key-src-mq3-client-playable-player-ml-341270780"></a>
 ### field
@@ -223,7 +237,7 @@ Calls `std.string.toLowerAscii` from playable player `field`. The final path ret
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable player entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L113)
 
 <a id="function-function-mq3-client-playable-player-fromentities-function-fromentities-entities-src-mq3-client-playable-player-ml-1385562923"></a>
 ### fromEntities
@@ -239,7 +253,7 @@ Calls `mq3.client.playable_player.collectSpawns`, `mq3.client.playable_player.Sp
 | `entities` | `dynamic` | — | Value used by `if entities==void then return fail("entities are required") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L141)
 
 <a id="function-function-mq3-client-playable-player-load-function-load-map-src-mq3-client-playable-player-ml-1552807674"></a>
 ### load
@@ -255,7 +269,7 @@ Calls `mq3.format.bsp.entities`, `mq3.client.playable_player.fromEntities` from 
 | `map` | `dynamic` | — | map record passed to the playable player helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L152)
 
 <a id="function-function-mq3-client-playable-player-pollrespawn-function-pollrespawn-state-now-src-mq3-client-playable-player-ml-621441937"></a>
 ### pollRespawn
@@ -272,7 +286,7 @@ Updates `state.spawnIndex`, `state.position`, `state.yaw`, `state.health` and ad
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L216)
 
 - [mq3.client.playable_player.Respawn](Type-mq3-client-playable-player-respawn-1369727395.md) — struct
 <a id="function-function-mq3-client-playable-player-setstats-function-setstats-state-health-armor-ammo-weapon-src-mq3-client-playable-player-ml-456380390"></a>
@@ -293,7 +307,7 @@ Updates `state.health`, `state.maxHealth`, `state.armor`, `state.ammo` and addit
 | `weapon` | `dynamic` | — | Value assigned to `state.weapon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L173)
 
 - [mq3.client.playable_player.Spawn](Type-mq3-client-playable-player-spawn-644253284.md) — struct
 - [mq3.client.playable_player.State](Type-mq3-client-playable-player-state-1404687306.md) — struct

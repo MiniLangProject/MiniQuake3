@@ -51,7 +51,7 @@ Log_Close
 | `state` | `dynamic` | — | Log state; accesses `handle`, `filename`, `retailActive` and `services`. May update `state.handle` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L171)
 
 <a id="function-function-mq3-botlib-log-create-function-create-variables-serviceset-retailactive-src-mq3-botlib-log-ml-915817897"></a>
 ### create
@@ -69,7 +69,7 @@ Build the `mq3.botlib.log.State` result for `create`. Return paths include `Stat
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L100)
 
 <a id="function-function-mq3-botlib-log-emit-function-emit-state-kind-severity-filename-text-handle-src-mq3-botlib-log-ml-1326809118"></a>
 ### emit
@@ -90,7 +90,7 @@ Set `state.actions` to `state.actions+[item]` in `mq3.botlib.log.emit`. Return p
 | `handle` | `dynamic` | — | Resource handle resolved by the owning pool or host service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L120)
 
 <a id="function-function-mq3-botlib-log-filepointer-function-filepointer-state-src-mq3-botlib-log-ml-1734393563"></a>
 ### filePointer
@@ -106,7 +106,7 @@ Log_FilePointer
 | `state` | `dynamic` | — | Log state; accesses `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L197)
 
 <a id="function-function-mq3-botlib-log-floatarg-function-floatarg-value-src-mq3-botlib-log-ml-1159591809"></a>
 ### floatArg
@@ -122,7 +122,7 @@ Create a `mq3.botlib.log.FormatArg` record, initializing `kind` as `"float"` and
 | `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L109)
 
 <a id="function-function-mq3-botlib-log-floattext-function-floattext-value-token-src-mq3-botlib-log-ml-1046230018"></a>
 ### floatText
@@ -139,7 +139,7 @@ Apply `mq3.botlib.log.__stdio_common_vsprintf` while evaluating `floatText`. Ret
 | `token` | `dynamic` | — | C-style format string. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L147)
 
 <a id="function-function-mq3-botlib-log-flush-function-flush-state-src-mq3-botlib-log-ml-352483973"></a>
 ### flush
@@ -155,7 +155,7 @@ Record or dispatch `"flush"` actions in `flush`.
 | `state` | `dynamic` | — | Log state; accesses `handle`, `flushes`, `filename`, `retailActive` and `services`. May update `state.flushes` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L160)
 
 <a id="function-function-mq3-botlib-log-format-function-format-fmt-args-src-mq3-botlib-log-ml-1926501048"></a>
 ### format
@@ -172,7 +172,7 @@ Apply `mq3.botlib.log.hex32`, `mq3.botlib.log.pointerText` and `mq3.botlib.log.f
 | `args` | `dynamic` | — | Array or byte sequence accessed at `argAt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L154)
 
 - [mq3.botlib.log.FormatArg](Type-mq3-botlib-log-formatarg-777438073.md) — struct
 <a id="function-function-mq3-botlib-log-hex32-function-hex32-value-upper-src-mq3-botlib-log-ml-1110298507"></a>
@@ -190,7 +190,7 @@ Format an unsigned 32-bit value in hexadecimal without leading zeroes and with t
 | `upper` | `dynamic` | — | Value used by `hex32` in `if upper then digits="0123456789ABCDEF" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L140)
 
 <a id="function-function-mq3-botlib-log-intarg-function-intarg-value-src-mq3-botlib-log-ml-1714268161"></a>
 ### intArg
@@ -206,7 +206,7 @@ Create a `mq3.botlib.log.FormatArg` record, initializing `kind` as `"integer"` a
 | `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.i32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L106)
 
 <a id="function-function-mq3-botlib-log-logflush-function-logflush-state-src-mq3-botlib-log-ml-444937289"></a>
 ### logFlush
@@ -222,7 +222,7 @@ Log_Flush
 | `state` | `dynamic` | — | Log state; accesses `handle`, `flushes`, `filename`, `retailActive` and `services`. May update `state.flushes` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L200)
 
 <a id="constant-constant-mq3-botlib-log-max-logfilenamesize-const-max-logfilenamesize-1024-src-mq3-botlib-log-ml-2135721102"></a>
 ### MAX_LOGFILENAMESIZE
@@ -231,8 +231,10 @@ Log_Flush
 const MAX_LOGFILENAMESIZE = 1024
 ```
 
+Maximum length of a bot-library log filename.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L24)
 
 <a id="function-function-mq3-botlib-log-open-function-open-state-filename-src-mq3-botlib-log-ml-577788058"></a>
 ### open
@@ -249,7 +251,7 @@ Log_Open
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L165)
 
 <a id="function-function-mq3-botlib-log-pad-function-pad-value-width-left-zero-src-mq3-botlib-log-ml-1369415720"></a>
 ### pad
@@ -268,7 +270,7 @@ Apply `mq3.botlib.log.repeat` while evaluating `pad`. Return paths include `repe
 | `zero` | `dynamic` | — | Value used by `pad` in `if zero then fill="0" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L136)
 
 <a id="function-function-mq3-botlib-log-pointerarg-function-pointerarg-value-src-mq3-botlib-log-ml-1073782909"></a>
 ### pointerArg
@@ -284,7 +286,7 @@ Create a `mq3.botlib.log.FormatArg` record, initializing `kind` as `"pointer"` a
 | `value` | `dynamic` | — | Initial value stored in `mq3.botlib.log.FormatArg.integer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L112)
 
 <a id="function-function-mq3-botlib-log-pointertext-function-pointertext-value-src-mq3-botlib-log-ml-1245150657"></a>
 ### pointerText
@@ -300,7 +302,7 @@ Format a pointer-sized value as sixteen uppercase hexadecimal digits.
 | `value` | `dynamic` | — | Value used by `pointerText` in `while index>=0 result=result+digits[(value>>(index*4))&15]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L143)
 
 <a id="function-function-mq3-botlib-log-printmessage-function-printmessage-state-severity-text-src-mq3-botlib-log-ml-1848976813"></a>
 ### printMessage
@@ -318,7 +320,7 @@ Record or dispatch `"print"` actions in `printMessage`. Return paths include `te
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L125)
 
 <a id="constant-constant-mq3-botlib-log-prt-error-const-prt-error-3-src-mq3-botlib-log-ml-962023648"></a>
 ### PRT_ERROR
@@ -327,8 +329,10 @@ Record or dispatch `"print"` actions in `printMessage`. Return paths include `te
 const PRT_ERROR = 3
 ```
 
+Bot-library diagnostic severity for error.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L22)
 
 <a id="constant-constant-mq3-botlib-log-prt-message-const-prt-message-2-src-mq3-botlib-log-ml-1416187459"></a>
 ### PRT_MESSAGE
@@ -337,8 +341,10 @@ const PRT_ERROR = 3
 const PRT_MESSAGE = 2
 ```
 
+Bot-library diagnostic severity for message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L20)
 
 <a id="function-function-mq3-botlib-log-repeat-function-repeat-value-count-src-mq3-botlib-log-ml-106260198"></a>
 ### repeat
@@ -355,7 +361,7 @@ Repeat a formatting fragment the requested number of times, returning an empty s
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L130)
 
 <a id="function-function-mq3-botlib-log-services-function-services-src-mq3-botlib-log-ml-113846666"></a>
 ### services
@@ -367,7 +373,7 @@ function services()
 Create a `mq3.botlib.log.Services` record with the declared empty defaults.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L95)
 
 - [mq3.botlib.log.Services](Type-mq3-botlib-log-services-58467128.md) — struct
 <a id="function-function-mq3-botlib-log-shutdown-function-shutdown-state-src-mq3-botlib-log-ml-1280662573"></a>
@@ -384,7 +390,7 @@ Log_Shutdown
 | `state` | `dynamic` | — | Log state; accesses `handle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L177)
 
 - [mq3.botlib.log.State](Type-mq3-botlib-log-state-233915373.md) — struct
 <a id="function-function-mq3-botlib-log-stringarg-function-stringarg-value-src-mq3-botlib-log-ml-1670325359"></a>
@@ -401,7 +407,7 @@ Build the `mq3.botlib.log.FormatArg` result for `stringArg`. Return paths includ
 | `value` | `dynamic` | — | Initial value stored in `mq3.botlib.log.FormatArg.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L103)
 
 <a id="function-function-mq3-botlib-log-write-function-write-state-fmt-args-src-mq3-botlib-log-ml-2132181687"></a>
 ### write
@@ -419,7 +425,7 @@ Log_Write
 | `args` | `dynamic` | — | Array or byte sequence accessed at `argAt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L187)
 
 <a id="function-function-mq3-botlib-log-writetext-function-writetext-state-text-src-mq3-botlib-log-ml-125999536"></a>
 ### writeText
@@ -436,7 +442,7 @@ Record or dispatch `"write"` actions in `writeText`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L181)
 
 <a id="function-function-mq3-botlib-log-writetimestamped-function-writetimestamped-state-fmt-args-src-mq3-botlib-log-ml-459517025"></a>
 ### writeTimeStamped
@@ -454,4 +460,4 @@ Log_WriteTimeStamped
 | `args` | `dynamic` | — | Array or byte sequence accessed at `argAt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L192)

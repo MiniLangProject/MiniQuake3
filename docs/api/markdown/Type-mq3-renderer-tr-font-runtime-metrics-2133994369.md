@@ -12,7 +12,7 @@ struct Metrics
 Data record for `mq3.renderer.tr_font_runtime.Metrics`; groups `horiBearingX`, `width`, `horiBearingY`, `height`, `horiAdvance`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L27)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_font_runtime.Metrics`; groups `horiBearingX`, `
 height
 ```
 
+Glyph height in the rasterizer's 26.6 fixed-point units.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L35)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-horiadvance-horiadvance-src-mq3-renderer-tr-font-runtime-ml-1300085916"></a>
 ### horiAdvance
@@ -33,8 +35,10 @@ height
 horiAdvance
 ```
 
+Horizontal pen advance after the glyph, in 26.6 fixed-point units.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-horibearingx-horibearingx-src-mq3-renderer-tr-font-runtime-ml-1049235360"></a>
 ### horiBearingX
@@ -43,8 +47,10 @@ horiAdvance
 horiBearingX
 ```
 
+Horizontal glyph bearing from the pen origin, in 26.6 fixed-point units.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-horibearingy-horibearingy-src-mq3-renderer-tr-font-runtime-ml-633231210"></a>
 ### horiBearingY
@@ -53,8 +59,10 @@ horiBearingX
 horiBearingY
 ```
 
+Vertical glyph bearing above the baseline, in 26.6 fixed-point units.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L33)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-width-width-src-mq3-renderer-tr-font-runtime-ml-137370600"></a>
 ### width
@@ -63,5 +71,7 @@ horiBearingY
 width
 ```
 
+Glyph width in the rasterizer's 26.6 fixed-point units.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L31)

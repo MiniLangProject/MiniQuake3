@@ -12,7 +12,7 @@ struct Segment
 `Segment` record for aas client trace, containing `start`, `finish`, `nodeNum` and `planeNum`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L16)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Segment
 finish
 ```
 
+End of the remaining line segment being tested against an AAS subtree.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L20)
 
 <a id="field-field-mq3-botlib-aas-client-trace-segment-nodenum-nodenum-src-mq3-botlib-aas-client-trace-ml-1100800430"></a>
 ### nodeNum
@@ -33,8 +35,10 @@ finish
 nodeNum
 ```
 
+Index of the BSP or AAS node visited by this operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L22)
 
 <a id="field-field-mq3-botlib-aas-client-trace-segment-planenum-planenum-src-mq3-botlib-aas-client-trace-ml-1818324290"></a>
 ### planeNum
@@ -43,8 +47,10 @@ nodeNum
 planeNum
 ```
 
+Last AAS splitting plane crossed before entering this trace segment.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-client-trace-segment-start-start-src-mq3-botlib-aas-client-trace-ml-333870818"></a>
 ### start
@@ -53,5 +59,7 @@ planeNum
 start
 ```
 
+Beginning of the remaining line segment being tested against an AAS subtree.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L18)

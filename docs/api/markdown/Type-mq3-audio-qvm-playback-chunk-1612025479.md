@@ -12,7 +12,7 @@ struct Chunk
 Chunk record for audio.qvm_playback, containing `samples`, `frames`, `audibleVoices`, `audibleLoops`, `peak`, `limiterGain`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L154)
 
 ## Members
 
@@ -23,8 +23,10 @@ Chunk record for audio.qvm_playback, containing `samples`, `frames`, `audibleVoi
 audibleLoops
 ```
 
+Number of looping sources that contributed to this chunk.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L162)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-audiblevoices-audiblevoices-src-mq3-audio-qvm-playback-ml-1591504038"></a>
 ### audibleVoices
@@ -33,8 +35,10 @@ audibleLoops
 audibleVoices
 ```
 
+Number of one-shot voices that contributed to this chunk.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L160)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-frames-frames-src-mq3-audio-qvm-playback-ml-1009279062"></a>
 ### frames
@@ -43,8 +47,10 @@ audibleVoices
 frames
 ```
 
+Number of stereo sample frames contained in this output chunk.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L158)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-limitergain-limitergain-src-mq3-audio-qvm-playback-ml-1788909246"></a>
 ### limiterGain
@@ -53,8 +59,10 @@ frames
 limiterGain
 ```
 
+Gain applied to keep the mixed output within the supported sample range.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L166)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-peak-peak-src-mq3-audio-qvm-playback-ml-356544768"></a>
 ### peak
@@ -63,8 +71,10 @@ limiterGain
 peak
 ```
 
+Largest absolute mixed sample magnitude measured before output clipping.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L164)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-samples-samples-src-mq3-audio-qvm-playback-ml-1122822770"></a>
 ### samples
@@ -73,5 +83,7 @@ peak
 samples
 ```
 
+Interleaved little-endian signed 16-bit stereo PCM output bytes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L156)

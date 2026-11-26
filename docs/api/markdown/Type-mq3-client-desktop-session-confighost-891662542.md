@@ -23,8 +23,10 @@ Stores desktop session config host record, including `dataRoot`, `context`, `bin
 bindingState
 ```
 
+When constructing this record, `attach` supplies `bindings.create(context.cgameKeys)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L34)
 
 <a id="field-field-mq3-client-desktop-session-confighost-context-context-src-mq3-client-desktop-session-ml-309829661"></a>
 ### context
@@ -33,8 +35,10 @@ bindingState
 context
 ```
 
+Caller-supplied value forwarded unchanged to the service callbacks for desktop client session setup.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L31)
 
 <a id="field-field-mq3-client-desktop-session-confighost-dataroot-dataroot-src-mq3-client-desktop-session-ml-2040239901"></a>
 ### dataRoot
@@ -43,5 +47,7 @@ context
 dataRoot
 ```
 
+When constructing this record, `attach` supplies `session.dataRoot` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L28)

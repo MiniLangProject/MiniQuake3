@@ -12,7 +12,7 @@ struct Catalog
 Stores playable menu catalog record, including `assets`, `firstTextureSlot`, `textureCount`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L38)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable menu catalog record, including `assets`, `firstTextureSlot`, `te
 assets
 ```
 
+Loaded menu artwork entries used to draw the playable menu's choices and background.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L40)
 
 <a id="field-field-mq3-client-playable-menu-catalog-firsttextureslot-firsttextureslot-src-mq3-client-playable-menu-ml-453769258"></a>
 ### firstTextureSlot
@@ -33,8 +35,10 @@ assets
 firstTextureSlot
 ```
 
+First texture-cache slot reserved for this module's media resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L42)
 
 <a id="field-field-mq3-client-playable-menu-catalog-texturecount-texturecount-src-mq3-client-playable-menu-ml-705305600"></a>
 ### textureCount
@@ -43,5 +47,7 @@ firstTextureSlot
 textureCount
 ```
 
+Number of texture resources or texture-cache slots represented by this media record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L44)

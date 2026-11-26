@@ -12,7 +12,7 @@ struct State
 Stores playable player projectiles state, including `projectiles`, `trails`, `impacts`, `nextProjectileId`, `nextImpactId`, `lastTime`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L129)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable player projectiles state, including `projectiles`, `trails`, `im
 impacts
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `addImpact` and `updateWithTrace` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L138)
 
 <a id="field-field-mq3-client-playable-player-projectiles-state-lasttime-lasttime-src-mq3-client-playable-player-projectiles-ml-1788330734"></a>
 ### lastTime
@@ -33,8 +35,10 @@ impacts
 lastTime
 ```
 
+When constructing this record, `create` supplies `now` for this member. Used by `spawnProfile` and `updateWithTrace` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L147)
 
 <a id="field-field-mq3-client-playable-player-projectiles-state-nextimpactid-nextimpactid-src-mq3-client-playable-player-projectiles-ml-589806916"></a>
 ### nextImpactId
@@ -43,8 +47,10 @@ lastTime
 nextImpactId
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `addImpact` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L144)
 
 <a id="field-field-mq3-client-playable-player-projectiles-state-nextprojectileid-nextprojectileid-src-mq3-client-playable-player-projectiles-ml-475428342"></a>
 ### nextProjectileId
@@ -53,8 +59,10 @@ nextImpactId
 nextProjectileId
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `spawnProfile` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L141)
 
 <a id="field-field-mq3-client-playable-player-projectiles-state-projectiles-projectiles-src-mq3-client-playable-player-projectiles-ml-2147244556"></a>
 ### projectiles
@@ -63,8 +71,10 @@ nextProjectileId
 projectiles
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `spawnProfile` and `updateWithTrace` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L132)
 
 <a id="field-field-mq3-client-playable-player-projectiles-state-trails-trails-src-mq3-client-playable-player-projectiles-ml-566237646"></a>
 ### trails
@@ -73,5 +83,7 @@ projectiles
 trails
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `updateWithTrace` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L135)

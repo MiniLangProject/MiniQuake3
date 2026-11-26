@@ -12,7 +12,7 @@ struct Medal
 Stores client game newdraw medal record, including `accuracy`, `assists`, `defend`, `excellent`, `impressive`, `perfect` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L299)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game newdraw medal record, including `accuracy`, `assists`, `defen
 accuracy
 ```
 
+Percentage of successful weapon hits reported in the scoreboard data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L301)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-assists-assists-src-mq3-client-cgame-newdraw-ml-1024925092"></a>
 ### assists
@@ -33,8 +35,10 @@ accuracy
 assists
 ```
 
+When constructing this record, `medal` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L303)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-captures-captures-src-mq3-client-cgame-newdraw-ml-693797634"></a>
 ### captures
@@ -43,8 +47,10 @@ assists
 captures
 ```
 
+Number of flag captures credited to this player.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L315)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-defend-defend-src-mq3-client-cgame-newdraw-ml-1154425800"></a>
 ### defend
@@ -53,8 +59,10 @@ captures
 defend
 ```
 
+When constructing this record, `medal` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L305)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-excellent-excellent-src-mq3-client-cgame-newdraw-ml-2037210644"></a>
 ### excellent
@@ -63,8 +71,10 @@ defend
 excellent
 ```
 
+When constructing this record, `medal` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L307)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-gauntlet-gauntlet-src-mq3-client-cgame-newdraw-ml-1646704860"></a>
 ### gauntlet
@@ -73,8 +83,10 @@ excellent
 gauntlet
 ```
 
+When constructing this record, `medal` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L313)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-impressive-impressive-src-mq3-client-cgame-newdraw-ml-1821704906"></a>
 ### impressive
@@ -83,8 +95,10 @@ gauntlet
 impressive
 ```
 
+When constructing this record, `medal` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L309)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-perfect-perfect-src-mq3-client-cgame-newdraw-ml-1836672776"></a>
 ### perfect
@@ -93,5 +107,7 @@ impressive
 perfect
 ```
 
+True or nonzero when the player's result qualifies as a perfect game.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L311)

@@ -26,7 +26,7 @@ Return the absolute value of the numeric argument for aas optimizer.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L184)
 
 - [mq3.botlib.aas_optimizer.Action](Type-mq3-botlib-aas-optimizer-action-1500456565.md) — struct
 <a id="function-function-mq3-botlib-aas-optimizer-area-function-area-areanum-numfaces-firstface-mins-maxs-center-src-mq3-botlib-aas-optimizer-ml-2042477927"></a>
@@ -48,7 +48,7 @@ Create a `mq3.botlib.aas_optimizer.Area` record, initializing `areaNum` from `ar
 | `center` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_optimizer.Area.center`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L150)
 
 - [mq3.botlib.aas_optimizer.Area](Type-mq3-botlib-aas-optimizer-area-950683266.md) — struct
 <a id="function-function-mq3-botlib-aas-optimizer-copy3-function-copy3-value-src-mq3-botlib-aas-optimizer-ml-943860107"></a>
@@ -65,7 +65,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas opti
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L175)
 
 <a id="function-function-mq3-botlib-aas-optimizer-copyarea-function-copyarea-value-src-mq3-botlib-aas-optimizer-ml-1795427807"></a>
 ### copyArea
@@ -81,7 +81,7 @@ Create a `mq3.botlib.aas_optimizer.Area` record, initializing `areaNum` as `valu
 | `value` | `dynamic` | — | Value record; accesses `areaNum`, `numFaces`, `firstFace`, `mins` and `maxs` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L181)
 
 <a id="function-function-mq3-botlib-aas-optimizer-copyface-function-copyface-value-src-mq3-botlib-aas-optimizer-ml-1391163643"></a>
 ### copyFace
@@ -97,7 +97,7 @@ Create a `mq3.botlib.aas_optimizer.Face` record, initializing `planeNum` as `val
 | `value` | `dynamic` | — | Value record; accesses `planeNum`, `flags`, `numEdges`, `firstEdge` and `frontArea` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L178)
 
 <a id="function-function-mq3-botlib-aas-optimizer-edge-function-edge-a-b-src-mq3-botlib-aas-optimizer-ml-917045835"></a>
 ### edge
@@ -114,7 +114,7 @@ Create a `mq3.botlib.aas_optimizer.Edge` record, initializing `vertices` as `[a,
 | `b` | `dynamic` | — | Operand used to evaluate the returned expression `Edge([a,b])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L134)
 
 - [mq3.botlib.aas_optimizer.Edge](Type-mq3-botlib-aas-optimizer-edge-1105959402.md) — struct
 <a id="function-function-mq3-botlib-aas-optimizer-face-function-face-planenum-flags-numedges-firstedge-frontarea-backarea-src-mq3-botlib-aas-optimizer-ml-1410929146"></a>
@@ -136,7 +136,7 @@ Create a `mq3.botlib.aas_optimizer.Face` record, initializing `planeNum` from `p
 | `backArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_optimizer.Face.backArea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L142)
 
 - [mq3.botlib.aas_optimizer.Face](Type-mq3-botlib-aas-optimizer-face-1027663558.md) — struct
 <a id="constant-constant-mq3-botlib-aas-optimizer-face-ladder-const-face-ladder-2-src-mq3-botlib-aas-optimizer-ml-1709122265"></a>
@@ -146,8 +146,10 @@ Create a `mq3.botlib.aas_optimizer.Face` record, initializing `planeNum` from `p
 const FACE_LADDER = 2
 ```
 
+AAS face-property bit marking ladder.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L9)
 
 <a id="function-function-mq3-botlib-aas-optimizer-frommap-function-frommap-map-mapname-time-retailactive-src-mq3-botlib-aas-optimizer-ml-1339027359"></a>
 ### fromMap
@@ -166,7 +168,7 @@ Apply `mq3.format.aas.vertex`, `mq3.format.aas.edge` and `mq3.format.aas.edgeInd
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L245)
 
 <a id="function-function-mq3-botlib-aas-optimizer-keepedge-function-keepedge-value-src-mq3-botlib-aas-optimizer-ml-49513043"></a>
 ### keepEdge
@@ -182,7 +184,7 @@ AAS_KeepEdge
 | `value` | `dynamic` | — | Not read by this implementation; retained in the `keepEdge` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L192)
 
 <a id="function-function-mq3-botlib-aas-optimizer-keepface-function-keepface-value-src-mq3-botlib-aas-optimizer-ml-2103044335"></a>
 ### keepFace
@@ -198,7 +200,7 @@ AAS_KeepFace
 | `value` | `dynamic` | — | Value record; accesses `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L195)
 
 <a id="function-function-mq3-botlib-aas-optimizer-optimize-function-optimize-source-src-mq3-botlib-aas-optimizer-ml-914773489"></a>
 ### optimize
@@ -214,7 +216,7 @@ AAS_Optimize
 | `source` | `dynamic` | — | Parser source state; accesses `loaded`, `areas`, `reachability`, `retailActive` and `actions`. May update `source.actions` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L236)
 
 <a id="function-function-mq3-botlib-aas-optimizer-optimizealloc-function-optimizealloc-source-src-mq3-botlib-aas-optimizer-ml-1473690485"></a>
 ### optimizeAlloc
@@ -230,7 +232,7 @@ AAS_OptimizeAlloc
 | `source` | `dynamic` | — | Parser source state; accesses `areas`, `vertexes`, `edges` and `faces`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L199)
 
 <a id="function-function-mq3-botlib-aas-optimizer-optimizearea-function-optimizearea-source-optimized-areanum-src-mq3-botlib-aas-optimizer-ml-1490564101"></a>
 ### optimizeArea
@@ -248,7 +250,7 @@ AAS_OptimizeArea
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L223)
 
 - [mq3.botlib.aas_optimizer.Optimized](Type-mq3-botlib-aas-optimizer-optimized-1630032316.md) — struct
 <a id="function-function-mq3-botlib-aas-optimizer-optimizeedge-function-optimizeedge-source-optimized-edgenum-src-mq3-botlib-aas-optimizer-ml-1488232581"></a>
@@ -267,7 +269,7 @@ AAS_OptimizeEdge
 | `edgeNum` | `dynamic` | — | Operand used to evaluate the returned expression `0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L207)
 
 <a id="function-function-mq3-botlib-aas-optimizer-optimizeface-function-optimizeface-source-optimized-facenum-src-mq3-botlib-aas-optimizer-ml-1514190233"></a>
 ### optimizeFace
@@ -285,7 +287,7 @@ AAS_OptimizeFace
 | `faceNum` | `dynamic` | — | AAS face index. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L215)
 
 <a id="function-function-mq3-botlib-aas-optimizer-optimizestore-function-optimizestore-source-optimized-src-mq3-botlib-aas-optimizer-ml-2064786358"></a>
 ### optimizeStore
@@ -302,7 +304,7 @@ AAS_OptimizeStore
 | `optimized` | `dynamic` | — | Optimized record; accesses `vertexes`, `edges`, `edgeIndex`, `faces` and `faceIndex` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L230)
 
 <a id="function-function-mq3-botlib-aas-optimizer-reachability-function-reachability-areanum-facenum-edgenum-start-finish-traveltype-traveltime-src-mq3-botlib-aas-optimizer-ml-1556454025"></a>
 ### reachability
@@ -324,7 +326,7 @@ Create a `mq3.botlib.aas_optimizer.Reachability` record, initializing `areaNum` 
 | `travelTime` | `dynamic` | — | AAS travel-time value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L159)
 
 - [mq3.botlib.aas_optimizer.Reachability](Type-mq3-botlib-aas-optimizer-reachability-1494583068.md) — struct
 <a id="function-function-mq3-botlib-aas-optimizer-signed-function-signed-index-source-src-mq3-botlib-aas-optimizer-ml-184050119"></a>
@@ -342,7 +344,7 @@ Apply the original oriented index sign to a replacement index.
 | `source` | `dynamic` | — | Value used by `signed` in `if source<0 then return 0-index end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L188)
 
 <a id="constant-constant-mq3-botlib-aas-optimizer-travel-elevator-const-travel-elevator-11-src-mq3-botlib-aas-optimizer-ml-1885567975"></a>
 ### TRAVEL_ELEVATOR
@@ -351,8 +353,10 @@ Apply the original oriented index sign to a replacement index.
 const TRAVEL_ELEVATOR = 11
 ```
 
+Travel by elevator.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L11)
 
 <a id="constant-constant-mq3-botlib-aas-optimizer-travel-funcbob-const-travel-funcbob-19-src-mq3-botlib-aas-optimizer-ml-836324885"></a>
 ### TRAVEL_FUNCBOB
@@ -361,8 +365,10 @@ const TRAVEL_ELEVATOR = 11
 const TRAVEL_FUNCBOB = 19
 ```
 
+AAS movement-type identifier for bobbing mover.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L15)
 
 <a id="constant-constant-mq3-botlib-aas-optimizer-travel-jumppad-const-travel-jumppad-18-src-mq3-botlib-aas-optimizer-ml-1541094722"></a>
 ### TRAVEL_JUMPPAD
@@ -371,8 +377,10 @@ const TRAVEL_FUNCBOB = 19
 const TRAVEL_JUMPPAD = 18
 ```
 
+AAS movement-type identifier for jump pad.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-optimizer-traveltype-mask-const-traveltype-mask-16777215-src-mq3-botlib-aas-optimizer-ml-1473589543"></a>
 ### TRAVELTYPE_MASK
@@ -381,8 +389,10 @@ const TRAVEL_JUMPPAD = 18
 const TRAVELTYPE_MASK = 16777215
 ```
 
+Mask selecting the movement-type identifier from an encoded AAS travel type.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 <a id="function-function-mq3-botlib-aas-optimizer-world-function-world-mapname-loaded-time-vertexes-edges-edgeindex-faces-faceindex-areas-reachabilities-retailactive-src-mq3-botlib-aas-optimizer-ml-1510317441"></a>
 ### world
@@ -408,6 +418,6 @@ Create a `mq3.botlib.aas_optimizer.World` record, initializing `mapName` from `m
 | `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L172)
 
 - [mq3.botlib.aas_optimizer.World](Type-mq3-botlib-aas-optimizer-world-1897776461.md) — struct

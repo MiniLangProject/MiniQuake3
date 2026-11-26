@@ -26,7 +26,7 @@ Builds `mq3.renderer.md3_cache_index.Index` for `mq3.renderer.md3_cache_index.cr
 | `capacity` | `dynamic` | — | Argument 1 supplied to `array`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L19)
 
 <a id="function-function-mq3-renderer-md3-cache-index-first-function-first-index-hash-src-mq3-renderer-md3-cache-index-ml-1415376684"></a>
 ### first
@@ -43,7 +43,7 @@ Computes `index.heads[hash&index.mask]` for `mq3.renderer.md3_cache_index.first`
 | `hash` | `dynamic` | — | Input used in the result expression `index.heads[hash&index.mask]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L61)
 
 <a id="function-function-mq3-renderer-md3-cache-index-floatkey-function-floatkey-value-src-mq3-renderer-md3-cache-index-ml-2137583715"></a>
 ### floatKey
@@ -59,7 +59,7 @@ Returns `md3IndexNumeric.floatBits(value)` from `mq3.renderer.md3_cache_index.fl
 | `value` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.floatBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L34)
 
 <a id="function-function-mq3-renderer-md3-cache-index-framehash-function-framehash-model-surface-frame-oldframe-backlerp-src-mq3-renderer-md3-cache-index-ml-581448381"></a>
 ### frameHash
@@ -79,7 +79,7 @@ Returns `mix(hash,floatKey(backlerp))` from `mq3.renderer.md3_cache_index.frameH
 | `backlerp` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.md3_cache_index.floatKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L41)
 
 - [mq3.renderer.md3_cache_index.Index](Type-mq3-renderer-md3-cache-index-index-665026481.md) — struct
 <a id="function-function-mq3-renderer-md3-cache-index-mix-function-mix-hash-value-src-mq3-renderer-md3-cache-index-ml-1512248527"></a>
@@ -97,7 +97,7 @@ Computes `mix` from `mixed^(mixed>>16)` using `mq3.compat.numeric.i32`.
 | `value` | `dynamic` | — | Input used by `mixed=md3IndexNumeric.i32((hash^value)*16777619)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L26)
 
 <a id="function-function-mq3-renderer-md3-cache-index-next-function-next-index-slot-src-mq3-renderer-md3-cache-index-ml-2037345772"></a>
 ### next
@@ -114,7 +114,7 @@ Computes `index.links[slot]` for `mq3.renderer.md3_cache_index.next`.
 | `slot` | `dynamic` | — | Input used in the result expression `index.links[slot]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L65)
 
 <a id="function-function-mq3-renderer-md3-cache-index-store-function-store-index-slot-hash-src-mq3-renderer-md3-cache-index-ml-1876967006"></a>
 ### store
@@ -132,7 +132,7 @@ Updates `index.heads[bucket]`, `index.links[previous]`, `index.links[slot]`, `in
 | `hash` | `dynamic` | — | Input used by `bucket=hash&index.mask`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L70)
 
 <a id="function-function-mq3-renderer-md3-cache-index-transformhash-function-transformhash-model-surface-frame-oldframe-backlerp-origin-axis-src-mq3-renderer-md3-cache-index-ml-57862254"></a>
 ### transformHash
@@ -154,4 +154,4 @@ Computes `transformHash` from `frameHash(model,surface,frame,oldFrame,backlerp)`
 | `axis` | `dynamic` | — | Nested indexed data; outer entries read at `row`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L52)

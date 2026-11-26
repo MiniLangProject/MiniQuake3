@@ -12,7 +12,7 @@ struct ChatType
 `ChatType` record for ai chat profiles, containing `name` and `messages`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L58)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct ChatType
 messages
 ```
 
+Alternative messages available within this chat category.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L62)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-chattype-name-name-src-mq3-botlib-ai-chat-profiles-ml-1985375409"></a>
 ### name
@@ -33,5 +35,7 @@ messages
 name
 ```
 
+Name of the chat category selected by bot AI.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L60)

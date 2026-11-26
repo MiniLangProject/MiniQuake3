@@ -12,7 +12,7 @@ struct FaceSurface
 Data record for `mq3.renderer.surface_mesh.FaceSurface`; groups `normal`, `points`, `indexes`, `dlightBits`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L29)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.surface_mesh.FaceSurface`; groups `normal`, `point
 dlightBits
 ```
 
+Bit mask identifying dynamic lights that affect this surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L37)
 
 <a id="field-field-mq3-renderer-surface-mesh-facesurface-indexes-indexes-src-mq3-renderer-surface-mesh-ml-1703149093"></a>
 ### indexes
@@ -33,8 +35,10 @@ dlightBits
 indexes
 ```
 
+Triangle index list defining the planar face's polygon tessellation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L35)
 
 <a id="field-field-mq3-renderer-surface-mesh-facesurface-normal-normal-src-mq3-renderer-surface-mesh-ml-302969583"></a>
 ### normal
@@ -43,8 +47,10 @@ indexes
 normal
 ```
 
+Plane normal shared by the vertices of this planar face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L31)
 
 <a id="field-field-mq3-renderer-surface-mesh-facesurface-points-points-src-mq3-renderer-surface-mesh-ml-1233188127"></a>
 ### points
@@ -53,5 +59,7 @@ normal
 points
 ```
 
+Points defining the face, polygon, or clipping result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L33)

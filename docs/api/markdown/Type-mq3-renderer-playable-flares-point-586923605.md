@@ -12,7 +12,7 @@ struct Point
 Data record for `mq3.renderer.playable_flares.Point`; groups `x`, `y`, `depth`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L66)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.playable_flares.Point`; groups `x`, `y`, `depth`.
 depth
 ```
 
+Depth of the projected point or fog region in its owning coordinate system.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L72)
 
 <a id="field-field-mq3-renderer-playable-flares-point-x-x-src-mq3-renderer-playable-flares-ml-80936561"></a>
 ### x
@@ -33,8 +35,10 @@ depth
 x
 ```
 
+Horizontal screen-space coordinate of the projected or drawn point.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L68)
 
 <a id="field-field-mq3-renderer-playable-flares-point-y-y-src-mq3-renderer-playable-flares-ml-1392214573"></a>
 ### y
@@ -43,5 +47,7 @@ x
 y
 ```
 
+Vertical screen-space coordinate of the projected or drawn point.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L70)

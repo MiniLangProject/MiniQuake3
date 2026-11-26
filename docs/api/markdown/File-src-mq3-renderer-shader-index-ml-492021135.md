@@ -29,7 +29,7 @@ Builds `mq3.renderer.shader_index.Index` after updating `buckets[hash]`.
 | `text` | `dynamic` | — | Initial value for `mq3.renderer.shader_index.Index.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L69)
 
 - [mq3.renderer.shader_index.Entry](Type-mq3-renderer-shader-index-entry-1144026993.md) — struct
 <a id="function-function-mq3-renderer-shader-index-find-function-find-index-name-src-mq3-renderer-shader-index-ml-509731407"></a>
@@ -47,7 +47,7 @@ Looks up a shader by case-insensitive name within its shader-text hash bucket.
 | `name` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.shader_index.hashValue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L88)
 
 <a id="function-function-mq3-renderer-shader-index-hashvalue-function-hashvalue-name-size-src-mq3-renderer-shader-index-ml-837057394"></a>
 ### hashValue
@@ -64,7 +64,7 @@ Computes `hashValue` from `hash&(size-1)` using `or`, `mq3.compat.numeric.i32`.
 | `size` | `dynamic` | — | Input tested by `size<=0 or (size&(size-1))!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L37)
 
 - [mq3.renderer.shader_index.Index](Type-mq3-renderer-shader-index-index-1539757693.md) — struct
 <a id="constant-constant-mq3-renderer-shader-index-max-shadertext-hash-const-max-shadertext-hash-2048-src-mq3-renderer-shader-index-ml-429604045"></a>
@@ -74,8 +74,10 @@ Computes `hashValue` from `hash&(size-1)` using `or`, `mq3.compat.numeric.i32`.
 const MAX_SHADERTEXT_HASH = 2048
 ```
 
+Number of buckets used to index shader definitions by name.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L11)
 
 <a id="function-function-mq3-renderer-shader-index-skipbracedsection-function-skipbracedsection-state-src-mq3-renderer-shader-index-ml-434617231"></a>
 ### skipBracedSection
@@ -91,4 +93,4 @@ Computes `skipBracedSection` from `depth==0` using `mq3.shared.parser.parseExt`.
 | `state` | `dynamic` | — | Record providing `state.offset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L53)

@@ -26,7 +26,7 @@ Create snd raw stream in audio.snd_raw_stream; the normal completion returns `St
 | `outputRate` | `dynamic` | — | Initial `outputRate` field stored in the returned or constructed `mq3.audio.snd_raw_stream.State` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L32)
 
 <a id="function-function-mq3-audio-snd-raw-stream-enqueue-function-enqueue-state-samples-rate-width-channels-data-volume-src-mq3-audio-snd-raw-stream-ml-312154458"></a>
 ### enqueue
@@ -48,7 +48,7 @@ This follows the four conversion branches in Baseq3 S_RawSamples. Values in the 
 | `volume` | `dynamic` | — | Volume used in `(256.0 * volume)` and `numeric.trunc32((256.0 * volume))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L77)
 
 <a id="function-function-mq3-audio-snd-raw-stream-fail-function-fail-message-src-mq3-audio-snd-raw-stream-ml-639360575"></a>
 ### fail
@@ -64,7 +64,7 @@ Create the audio.snd_raw_stream error for `fail` with 7712 and the supplied diag
 | `message` | `dynamic` | — | Message used in `("S_RawSamples: " + message)` and `error(7712, ("S_RawSamples: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L28)
 
 <a id="constant-constant-mq3-audio-snd-raw-stream-max-raw-samples-const-max-raw-samples-16384-src-mq3-audio-snd-raw-stream-ml-1698501557"></a>
 ### MAX_RAW_SAMPLES
@@ -73,8 +73,10 @@ Create the audio.snd_raw_stream error for `fail` with 7712 and the supplied diag
 const MAX_RAW_SAMPLES = 16384
 ```
 
+Number of mono sample positions in each raw-stream ring buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L8)
 
 <a id="function-function-mq3-audio-snd-raw-stream-paint-function-paint-state-paint-paintedtime-count-src-mq3-audio-snd-raw-stream-ml-713937664"></a>
 ### paint
@@ -95,7 +97,7 @@ Direct state writes: `paint elements`.
 | `count` | `dynamic` | — | Count used in `(count < 0)` and `(count * 2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L111)
 
 <a id="constant-constant-mq3-audio-snd-raw-stream-raw-mask-const-raw-mask-max-raw-samples-1-src-mq3-audio-snd-raw-stream-ml-220092758"></a>
 ### RAW_MASK
@@ -104,8 +106,10 @@ Direct state writes: `paint elements`.
 const RAW_MASK = MAX_RAW_SAMPLES - 1
 ```
 
+Bit mask that wraps absolute raw-stream sample positions into the ring buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L10)
 
 <a id="function-function-mq3-audio-snd-raw-stream-setsoundtime-function-setsoundtime-state-value-src-mq3-audio-snd-raw-stream-ml-539061822"></a>
 ### setSoundTime
@@ -124,7 +128,7 @@ Direct state writes: `state.soundTime`, `state.rawEnd`.
 | `value` | `dynamic` | — | Value used in `(value < 0)` and `(state.rawEnd < value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L52)
 
 <a id="function-function-mq3-audio-snd-raw-stream-signed16-function-signed16-data-offset-src-mq3-audio-snd-raw-stream-ml-1429358529"></a>
 ### signed16
@@ -141,7 +145,7 @@ Decode a signed 16-bit little-endian PCM sample for audio.snd_raw_stream.
 | `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L40)
 
 <a id="function-function-mq3-audio-snd-raw-stream-signed8-function-signed8-value-src-mq3-audio-snd-raw-stream-ml-1293818497"></a>
 ### signed8
@@ -157,7 +161,7 @@ Decode a signed 8-bit PCM sample for audio.snd_raw_stream.
 | `value` | `dynamic` | — | Value used in `(value - 256)` and `(value >= 128)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L45)
 
 - [mq3.audio.snd_raw_stream.State](Type-mq3-audio-snd-raw-stream-state-159305234.md) — struct
 <a id="function-function-mq3-audio-snd-raw-stream-store-function-store-state-left-right-src-mq3-audio-snd-raw-stream-ml-948912280"></a>
@@ -178,4 +182,4 @@ Direct state writes: `state.rawEnd`.
 | `right` | `dynamic` | — | Right operand used by `store`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L63)

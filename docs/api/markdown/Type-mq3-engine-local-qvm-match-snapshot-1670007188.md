@@ -12,7 +12,7 @@ struct Snapshot
 Snapshot record for engine.local_qvm_match, containing `serverTime`, `playerState`, `entities`, `areaBits`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L486)
 
 ## Members
 
@@ -23,8 +23,10 @@ Snapshot record for engine.local_qvm_match, containing `serverTime`, `playerStat
 areaBits
 ```
 
+Bit mask describing the snapshot's visible or accessible areas.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L494)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-entities-entities-src-mq3-engine-local-qvm-match-ml-1694939923"></a>
 ### entities
@@ -33,8 +35,10 @@ areaBits
 entities
 ```
 
+Entity records associated with the current world, scene, or snapshot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L492)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-playerstate-playerstate-src-mq3-engine-local-qvm-match-ml-1023706877"></a>
 ### playerState
@@ -43,8 +47,10 @@ entities
 playerState
 ```
 
+Player movement and gameplay state carried by the snapshot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L490)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-servertime-servertime-src-mq3-engine-local-qvm-match-ml-1582300509"></a>
 ### serverTime
@@ -53,5 +59,7 @@ playerState
 serverTime
 ```
 
+Server timestamp of the snapshot, in milliseconds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L488)

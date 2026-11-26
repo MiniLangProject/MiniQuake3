@@ -12,7 +12,7 @@ struct Presentation
 Stores cinematic runtime presentation record, including `pixels`, `sourceWidth`, `sourceHeight`, `x`, `y`, `width` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L74)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores cinematic runtime presentation record, including `pixels`, `sourceWidth`,
 dirty
 ```
 
+When constructing this record, `presentation` supplies `draw.dirty` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L90)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-height-height-src-mq3-client-cinematic-runtime-ml-273808351"></a>
 ### height
@@ -33,8 +35,10 @@ dirty
 height
 ```
 
+Destination height passed to the cinematic presenter after any virtual-to-target scaling.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L88)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-pixels-pixels-src-mq3-client-cinematic-runtime-ml-1147798651"></a>
 ### pixels
@@ -43,8 +47,10 @@ height
 pixels
 ```
 
+When constructing this record, `presentation` supplies `draw.frame.pixels` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L76)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-sourceheight-sourceheight-src-mq3-client-cinematic-runtime-ml-44251453"></a>
 ### sourceHeight
@@ -53,8 +59,10 @@ pixels
 sourceHeight
 ```
 
+When constructing this record, `presentation` supplies `draw.frame.height` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L80)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-sourcewidth-sourcewidth-src-mq3-client-cinematic-runtime-ml-707238185"></a>
 ### sourceWidth
@@ -63,8 +71,10 @@ sourceHeight
 sourceWidth
 ```
 
+When constructing this record, `presentation` supplies `draw.frame.width` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L78)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-width-width-src-mq3-client-cinematic-runtime-ml-1752986953"></a>
 ### width
@@ -73,8 +83,10 @@ sourceWidth
 width
 ```
 
+Destination width passed to the cinematic presenter after any virtual-to-target scaling.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L86)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-x-x-src-mq3-client-cinematic-runtime-ml-605826853"></a>
 ### x
@@ -83,8 +95,10 @@ width
 x
 ```
 
+Horizontal coordinate of the scaled cinematic rectangle in target-display pixels.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L82)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-y-y-src-mq3-client-cinematic-runtime-ml-398514577"></a>
 ### y
@@ -93,5 +107,7 @@ x
 y
 ```
 
+Vertical coordinate of the scaled cinematic rectangle in target-display pixels.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L84)

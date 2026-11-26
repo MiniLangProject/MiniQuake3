@@ -12,7 +12,7 @@ struct Session
 Stores desktop session session record, including `dataRoot`, `action`, `mapName`, `singlePlayer`, `settings`, `persistence` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L37)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores desktop session session record, including `dataRoot`, `action`, `mapName`
 action
 ```
 
+When constructing this record, `create` supplies an empty string for this member. Used by `capture` and `mapCommand` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L42)
 
 <a id="field-field-mq3-client-desktop-session-session-activegame-activegame-src-mq3-client-desktop-session-ml-1667061033"></a>
 ### activeGame
@@ -33,8 +35,10 @@ action
 activeGame
 ```
 
+When constructing this record, `create` supplies an empty string for this member. Used by `videoCommand` and `attach` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L68)
 
 <a id="field-field-mq3-client-desktop-session-session-cinematicnext-cinematicnext-src-mq3-client-desktop-session-ml-1587212497"></a>
 ### cinematicNext
@@ -43,8 +47,10 @@ activeGame
 cinematicNext
 ```
 
+When constructing this record, `create` supplies an empty string for this member. Used by `cinematicCommand` and `finishCinematic` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L83)
 
 <a id="field-field-mq3-client-desktop-session-session-configloaded-configloaded-src-mq3-client-desktop-session-ml-1984381023"></a>
 ### configLoaded
@@ -53,8 +59,10 @@ cinematicNext
 configLoaded
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `attach` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L59)
 
 <a id="field-field-mq3-client-desktop-session-session-dataroot-dataroot-src-mq3-client-desktop-session-ml-879807553"></a>
 ### dataRoot
@@ -63,8 +71,10 @@ configLoaded
 dataRoot
 ```
 
+When constructing this record, `create` supplies `dataRoot` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L39)
 
 <a id="field-field-mq3-client-desktop-session-session-mapname-mapname-src-mq3-client-desktop-session-ml-485866153"></a>
 ### mapName
@@ -73,8 +83,10 @@ dataRoot
 mapName
 ```
 
+Selected map identifier retained by the desktop session configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L44)
 
 <a id="field-field-mq3-client-desktop-session-session-notice-notice-src-mq3-client-desktop-session-ml-212820697"></a>
 ### notice
@@ -83,8 +95,10 @@ mapName
 notice
 ```
 
+When constructing this record, `create` supplies an empty string for this member. Used by `attach` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L77)
 
 <a id="field-field-mq3-client-desktop-session-session-persistence-persistence-src-mq3-client-desktop-session-ml-540418049"></a>
 ### persistence
@@ -93,8 +107,10 @@ notice
 persistence
 ```
 
+When constructing this record, `create` supplies an absent (`void`) value for this member. Used by `save` and `attach` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L53)
 
 <a id="field-field-mq3-client-desktop-session-session-requestedgame-requestedgame-src-mq3-client-desktop-session-ml-47151441"></a>
 ### requestedGame
@@ -103,8 +119,10 @@ persistence
 requestedGame
 ```
 
+When constructing this record, `create` supplies an empty string for this member. Used by `restartFilesystem` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L71)
 
 <a id="field-field-mq3-client-desktop-session-session-restartcommands-restartcommands-src-mq3-client-desktop-session-ml-705826589"></a>
 ### restartCommands
@@ -113,8 +131,10 @@ requestedGame
 restartCommands
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `capture` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L65)
 
 <a id="field-field-mq3-client-desktop-session-session-savedbindings-savedbindings-src-mq3-client-desktop-session-ml-1204281857"></a>
 ### savedBindings
@@ -123,8 +143,10 @@ restartCommands
 savedBindings
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `save` and `attach` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L56)
 
 <a id="field-field-mq3-client-desktop-session-session-settings-settings-src-mq3-client-desktop-session-ml-1031145783"></a>
 ### settings
@@ -133,8 +155,10 @@ savedBindings
 settings
 ```
 
+When constructing this record, `create` supplies an absent (`void`) value for this member. Used by `capture` and `finishCinematic` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L50)
 
 <a id="field-field-mq3-client-desktop-session-session-singleplayer-singleplayer-src-mq3-client-desktop-session-ml-115410415"></a>
 ### singlePlayer
@@ -143,8 +167,10 @@ settings
 singlePlayer
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `mapCommand` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L47)
 
 <a id="field-field-mq3-client-desktop-session-session-target-target-src-mq3-client-desktop-session-ml-674784995"></a>
 ### target
@@ -153,8 +179,10 @@ singlePlayer
 target
 ```
 
+When constructing this record, `create` supplies an empty string for this member. Used by `cinematicCommand` and `streamCommand` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L74)
 
 <a id="field-field-mq3-client-desktop-session-session-transitioncommands-transitioncommands-src-mq3-client-desktop-session-ml-1418420571"></a>
 ### transitionCommands
@@ -163,8 +191,10 @@ target
 transitionCommands
 ```
 
+When constructing this record, `create` supplies an empty string for this member. Used by `capture` and `finishCinematic` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L80)
 
 <a id="field-field-mq3-client-desktop-session-session-videoheight-videoheight-src-mq3-client-desktop-session-ml-980566629"></a>
 ### videoHeight
@@ -173,8 +203,10 @@ transitionCommands
 videoHeight
 ```
 
+When constructing this record, `create` supplies `720` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L87)
 
 <a id="field-field-mq3-client-desktop-session-session-videorestart-videorestart-src-mq3-client-desktop-session-ml-1895361097"></a>
 ### videoRestart
@@ -183,8 +215,10 @@ videoHeight
 videoRestart
 ```
 
+When constructing this record, `create` supplies `false` for this member. Used by `videoCommand` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L62)
 
 <a id="field-field-mq3-client-desktop-session-session-videowidth-videowidth-src-mq3-client-desktop-session-ml-1492745087"></a>
 ### videoWidth
@@ -193,5 +227,7 @@ videoRestart
 videoWidth
 ```
 
+When constructing this record, `create` supplies `1280` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L85)

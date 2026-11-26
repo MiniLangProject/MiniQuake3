@@ -12,7 +12,7 @@ struct Services
 `Services` record for bot input, containing `challenge`, `characteristicFloatFn`, `viewFn`, `getInputFn` and `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L93)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Services
 challenge
 ```
 
+Connection challenge value associated with the client session.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L95)
 
 <a id="field-field-mq3-game-bot-input-services-characteristicfloatfn-characteristicfloatfn-src-mq3-game-bot-input-ml-100785"></a>
 ### characteristicFloatFn
@@ -33,8 +35,10 @@ challenge
 characteristicFloatFn
 ```
 
+Injected callback for characteristic float; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L97)
 
 <a id="field-field-mq3-game-bot-input-services-context-context-src-mq3-game-bot-input-ml-1038124377"></a>
 ### context
@@ -43,8 +47,10 @@ characteristicFloatFn
 context
 ```
 
+Opaque caller-supplied context available to bot characteristic, view-angle, and elementary-input callbacks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L104)
 
 <a id="field-field-mq3-game-bot-input-services-getinputfn-getinputfn-src-mq3-game-bot-input-ml-1406539157"></a>
 ### getInputFn
@@ -53,8 +59,10 @@ context
 getInputFn
 ```
 
+Injected callback for get input; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L57)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L101)
 
 <a id="field-field-mq3-game-bot-input-services-viewfn-viewfn-src-mq3-game-bot-input-ml-1204987055"></a>
 ### viewFn
@@ -63,5 +71,7 @@ getInputFn
 viewFn
 ```
 
+Injected callback for view; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L99)

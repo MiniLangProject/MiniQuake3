@@ -12,7 +12,7 @@ struct Submission
 Data record for `mq3.renderer.surface_entities.Submission`; groups `vertices`, `indexes`, `baseVertex`, `baseIndex`, `numVertexes`, `numIndexes`, and 1 further field.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L26)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.surface_entities.Submission`; groups `vertices`, `
 baseIndex
 ```
 
+First index slot used by the submitted geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L34)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-basevertex-basevertex-src-mq3-renderer-surface-entities-ml-242727235"></a>
 ### baseVertex
@@ -33,8 +35,10 @@ baseIndex
 baseVertex
 ```
 
+First vertex slot used by the submitted geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L32)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-flushed-flushed-src-mq3-renderer-surface-entities-ml-1424554289"></a>
 ### flushed
@@ -43,8 +47,10 @@ baseVertex
 flushed
 ```
 
+Whether the current batch was flushed before this geometry was appended.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L40)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-indexes-indexes-src-mq3-renderer-surface-entities-ml-2056232561"></a>
 ### indexes
@@ -53,8 +59,10 @@ flushed
 indexes
 ```
 
+Indices connecting the generated vertices of procedural entity surfaces.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L30)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-numindexes-numindexes-src-mq3-renderer-surface-entities-ml-1262927065"></a>
 ### numIndexes
@@ -63,8 +71,10 @@ indexes
 numIndexes
 ```
 
+Number of indices currently stored or submitted.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L38)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-numvertexes-numvertexes-src-mq3-renderer-surface-entities-ml-1136219097"></a>
 ### numVertexes
@@ -73,8 +83,10 @@ numIndexes
 numVertexes
 ```
 
+Number of vertices currently stored or submitted.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L36)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-vertices-vertices-src-mq3-renderer-surface-entities-ml-87081923"></a>
 ### vertices
@@ -83,5 +95,7 @@ numVertexes
 vertices
 ```
 
+Vertex records produced while expanding a sprite, beam, or other procedural entity surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L28)

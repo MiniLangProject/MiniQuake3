@@ -12,7 +12,7 @@ struct Goal
 `Goal` record for ai resource pools, containing `origin`, `areaNum`, `mins`, `maxs` and `entityNum` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L71)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Goal
 areaNum
 ```
 
+Navigation area containing the position of this bot goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L75)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-entitynum-entitynum-src-mq3-botlib-ai-resource-pools-ml-420822786"></a>
 ### entityNum
@@ -33,8 +35,10 @@ areaNum
 entityNum
 ```
 
+Number of the game entity associated with this result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L81)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-flags-flags-src-mq3-botlib-ai-resource-pools-ml-1360814854"></a>
 ### flags
@@ -43,8 +47,10 @@ entityNum
 flags
 ```
 
+Combined goal-property flags, including item, dropped, and roam markers.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L85)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-iteminfo-iteminfo-src-mq3-botlib-ai-resource-pools-ml-1348439076"></a>
 ### itemInfo
@@ -53,8 +59,10 @@ flags
 itemInfo
 ```
 
+Item-configuration index associated with this bot goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L87)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-maxs-maxs-src-mq3-botlib-ai-resource-pools-ml-1759027368"></a>
 ### maxs
@@ -63,8 +71,10 @@ itemInfo
 maxs
 ```
 
+Maximum XYZ corner of the bot goal volume relative to the goal position.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L79)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-mins-mins-src-mq3-botlib-ai-resource-pools-ml-1000913760"></a>
 ### mins
@@ -73,8 +83,10 @@ maxs
 mins
 ```
 
+Minimum XYZ corner of the bot goal volume relative to the goal position.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L77)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-number-number-src-mq3-botlib-ai-resource-pools-ml-947567632"></a>
 ### number
@@ -83,8 +95,10 @@ mins
 number
 ```
 
+Goal identifier associated with the level item or named destination.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L83)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-origin-origin-src-mq3-botlib-ai-resource-pools-ml-52859198"></a>
 ### origin
@@ -93,5 +107,7 @@ number
 origin
 ```
 
+World-space target position of this stored bot goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L73)

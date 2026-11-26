@@ -23,8 +23,10 @@ Netchan record for server.snapshot_schedule, containing `unsentFragments`, `unse
 unsentFragments
 ```
 
+True while a large outgoing message still has fragments to transmit.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L9)
 
 <a id="field-field-mq3-server-snapshot-schedule-netchan-unsentfragmentstart-unsentfragmentstart-src-mq3-server-snapshot-schedule-ml-1673382300"></a>
 ### unsentFragmentStart
@@ -33,8 +35,10 @@ unsentFragments
 unsentFragmentStart
 ```
 
+Byte offset of the next outgoing fragment within that message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L13)
 
 <a id="field-field-mq3-server-snapshot-schedule-netchan-unsentlength-unsentlength-src-mq3-server-snapshot-schedule-ml-1892823810"></a>
 ### unsentLength
@@ -43,5 +47,7 @@ unsentFragmentStart
 unsentLength
 ```
 
+Total byte length of the outgoing message being fragmented.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L11)

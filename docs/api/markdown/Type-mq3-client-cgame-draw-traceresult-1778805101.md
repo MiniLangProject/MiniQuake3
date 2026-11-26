@@ -12,7 +12,7 @@ struct TraceResult
 Stores client game draw trace result record, including `entityNum`, `fog`, `invisible`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L155)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game draw trace result record, including `entityNum`, `fog`, `invi
 entityNum
 ```
 
+Entity identifier hit by the crosshair trace, used to select a player-name display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L157)
 
 <a id="field-field-mq3-client-cgame-draw-traceresult-fog-fog-src-mq3-client-cgame-draw-ml-578115721"></a>
 ### fog
@@ -33,8 +35,10 @@ entityNum
 fog
 ```
 
+True when fog obscures the crosshair trace and player-name identification should be suppressed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L159)
 
 <a id="field-field-mq3-client-cgame-draw-traceresult-invisible-invisible-src-mq3-client-cgame-draw-ml-409244557"></a>
 ### invisible
@@ -43,5 +47,7 @@ fog
 invisible
 ```
 
+True when the traced entity is invisible and should not reveal its player name.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L161)

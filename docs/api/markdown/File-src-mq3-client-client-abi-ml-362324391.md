@@ -18,7 +18,7 @@ function activeFields()
 Lists the active fields catalog for client ABI in its declared source order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L352)
 
 <a id="function-function-mq3-client-client-abi-allrecordfields-function-allrecordfields-src-mq3-client-client-abi-ml-1564000068"></a>
 ### allRecordFields
@@ -30,7 +30,7 @@ function allRecordFields()
 Computes `snapshotFields()+["p_cmdNumber","p_serverTime","p_realtime"]+activeFields()+connectionFields()+["adr","start","time","info"]+["adr","hostName","mapName","game","netType","gameType","clients","maxCl...` for client ABI `allRecordFields`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L358)
 
 - [mq3.client.client_abi.ClientActive](Type-mq3-client-client-abi-clientactive-678688238.md) — struct
 - [mq3.client.client_abi.ClientConnection](Type-mq3-client-client-abi-clientconnection-2238508.md) — struct
@@ -46,7 +46,7 @@ function connectionFields()
 Lists the connection fields catalog for client ABI in its declared source order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L354)
 
 <a id="function-function-mq3-client-client-abi-declarationnames-function-declarationnames-src-mq3-client-client-abi-ml-549881950"></a>
 ### declarationNames
@@ -58,7 +58,7 @@ function declarationNames()
 Lists the declaration names catalog for client ABI in its declared source order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L360)
 
 <a id="function-function-mq3-client-client-abi-externalnames-function-externalnames-src-mq3-client-client-abi-ml-1151548716"></a>
 ### externalNames
@@ -70,7 +70,7 @@ function externalNames()
 Lists the external names catalog for client ABI in its declared source order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L362)
 
 - [mq3.client.client_abi.KButton](Type-mq3-client-client-abi-kbutton-1103630596.md) — struct
 <a id="constant-constant-mq3-client-client-abi-max-parse-entities-const-max-parse-entities-2048-src-mq3-client-client-abi-ml-1038820147"></a>
@@ -80,8 +80,10 @@ Lists the external names catalog for client ABI in its declared source order.
 const MAX_PARSE_ENTITIES = 2048
 ```
 
+Capacity limit for the parse entities collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L8)
 
 - [mq3.client.client_abi.OutPacket](Type-mq3-client-client-abi-outpacket-1317811593.md) — struct
 <a id="function-function-mq3-client-client-abi-parseentityslot-function-parseentityslot-sequence-src-mq3-client-client-abi-ml-734643043"></a>
@@ -98,7 +100,7 @@ Maps a nonnegative parse-entity sequence into the MAX_PARSE_ENTITIES ring, rejec
 | `sequence` | `dynamic` | — | Value used by `if sequence<0 then return error(7961,"client.h: negative parse entity sequence") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L369)
 
 - [mq3.client.client_abi.Ping](Type-mq3-client-client-abi-ping-1584983151.md) — struct
 <a id="constant-constant-mq3-client-client-abi-retransmit-timeout-const-retransmit-timeout-3000-src-mq3-client-client-abi-ml-194056962"></a>
@@ -108,8 +110,10 @@ Maps a nonnegative parse-entity sequence into the MAX_PARSE_ENTITIES ring, rejec
 const RETRANSMIT_TIMEOUT = 3000
 ```
 
+Connection-handshake retransmission interval in milliseconds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L5)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L6)
 
 <a id="function-function-mq3-client-client-abi-retransmitdue-function-retransmitdue-now-lastsent-src-mq3-client-client-abi-ml-2044323544"></a>
 ### retransmitDue
@@ -126,7 +130,7 @@ Checks whether at least RETRANSMIT_TIMEOUT milliseconds have elapsed since the l
 | `lastSent` | `dynamic` | — | Value used by `return now-lastSent>=RETRANSMIT_TIMEOUT`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L366)
 
 - [mq3.client.client_abi.ServerAddress](Type-mq3-client-client-abi-serveraddress-836391336.md) — struct
 - [mq3.client.client_abi.ServerInfo](Type-mq3-client-client-abi-serverinfo-1443235108.md) — struct
@@ -140,7 +144,7 @@ function snapshotFields()
 Lists the snapshot fields catalog for client ABI in its declared source order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L350)
 
 <a id="function-function-mq3-client-client-abi-staticfields-function-staticfields-src-mq3-client-client-abi-ml-1685488582"></a>
 ### staticFields
@@ -152,7 +156,7 @@ function staticFields()
 Lists the static fields catalog for client ABI in its declared source order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L356)
 
 <a id="function-function-mq3-client-client-abi-typenames-function-typenames-src-mq3-client-client-abi-ml-1190408346"></a>
 ### typeNames
@@ -164,7 +168,7 @@ function typeNames()
 Lists the type names catalog for client ABI in its declared source order.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L348)
 
 <a id="function-function-mq3-client-client-abi-validserverport-function-validserverport-value-src-mq3-client-client-abi-ml-2041553937"></a>
 ### validServerPort
@@ -180,4 +184,4 @@ Accepts UDP port numbers from zero through 65,535 inclusive.
 | `value` | `dynamic` | — | Value used by `return value>=0 and value<=65535`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L372)

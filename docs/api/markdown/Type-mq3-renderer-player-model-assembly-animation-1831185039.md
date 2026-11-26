@@ -12,7 +12,7 @@ struct Animation
 Data record for `mq3.renderer.player_model_assembly.Animation`; groups `frame`, `oldFrame`, `backlerp`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L19)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.player_model_assembly.Animation`; groups `frame`, 
 backlerp
 ```
 
+Interpolation weight of the previous frame: zero selects current, one selects previous.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L25)
 
 <a id="field-field-mq3-renderer-player-model-assembly-animation-frame-frame-src-mq3-renderer-player-model-assembly-ml-100082437"></a>
 ### frame
@@ -33,8 +35,10 @@ backlerp
 frame
 ```
 
+Current model animation-frame index.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L21)
 
 <a id="field-field-mq3-renderer-player-model-assembly-animation-oldframe-oldframe-src-mq3-renderer-player-model-assembly-ml-456663465"></a>
 ### oldFrame
@@ -43,5 +47,7 @@ frame
 oldFrame
 ```
 
+Previous animation frame used for interpolation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L23)

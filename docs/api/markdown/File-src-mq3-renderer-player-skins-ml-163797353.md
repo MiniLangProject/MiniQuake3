@@ -29,7 +29,7 @@ Computes `addUnique` from `names+[binding.imageName]` using `stringEqualsIgnoreC
 | `skin` | `dynamic` | — | Record providing `skin.bindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L171)
 
 - [mq3.renderer.player_skins.Binding](Type-mq3-renderer-player-skins-binding-1155315162.md) — struct
 <a id="function-function-mq3-renderer-player-skins-fail-function-fail-message-src-mq3-renderer-player-skins-ml-1246416311"></a>
@@ -46,7 +46,7 @@ Creates error `7520` with message `"player skin: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7520,"player skin: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L69)
 
 <a id="function-function-mq3-renderer-player-skins-load-function-load-archive-path-src-mq3-renderer-player-skins-ml-1369817137"></a>
 ### load
@@ -63,7 +63,7 @@ Builds `skin.path` in `mq3.renderer.player_skins.load`; returns `skin`.
 | `path` | `dynamic` | — | Value assigned to `skin.path`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L134)
 
 <a id="function-function-mq3-renderer-player-skins-loadresolved-function-loadresolved-archive-path-shaderindex-src-mq3-renderer-player-skins-ml-380292910"></a>
 ### loadResolved
@@ -81,7 +81,7 @@ Returns `resolve(archive,skin,shaderIndex)` from `mq3.renderer.player_skins.load
 | `shaderIndex` | `dynamic` | — | Value forwarded as `shaderIndex` to `mq3.renderer.player_skins.resolve`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L163)
 
 <a id="function-function-mq3-renderer-player-skins-loadsargedefault-function-loadsargedefault-archive-src-mq3-renderer-player-skins-ml-1467851746"></a>
 ### loadSargeDefault
@@ -97,7 +97,7 @@ Builds `mq3.renderer.player_skins.SargeDefault` using `mq3.renderer.playable_mat
 | `archive` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_materials.buildScriptIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L182)
 
 - [mq3.renderer.player_skins.Mapping](Type-mq3-renderer-player-skins-mapping-1412834829.md) — struct
 <a id="constant-constant-mq3-renderer-player-skins-max-qpath-const-max-qpath-64-src-mq3-renderer-player-skins-ml-1582895865"></a>
@@ -107,8 +107,10 @@ Builds `mq3.renderer.player_skins.SargeDefault` using `mq3.renderer.playable_mat
 const MAX_QPATH = 64
 ```
 
+Capacity of a Quake virtual-path buffer, including the terminating byte in the native ABI.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L9)
 
 <a id="function-function-mq3-renderer-player-skins-parse-function-parse-text-src-mq3-renderer-player-skins-ml-355326699"></a>
 ### parse
@@ -124,7 +126,7 @@ Builds `mq3.renderer.player_skins.Skin` for `mq3.renderer.player_skins.parse`.
 | `text` | `dynamic` | — | Input tested by `text==void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L114)
 
 <a id="function-function-mq3-renderer-player-skins-parseline-function-parseline-data-first-last-linenumber-mappings-tags-src-mq3-renderer-player-skins-ml-649129437"></a>
 ### parseLine
@@ -145,7 +147,7 @@ Computes `parseLine` from `[mappings+[Mapping(surface,shaderName)],tags]` using 
 | `tags` | `dynamic` | — | Input tested by `first==last`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L88)
 
 <a id="function-function-mq3-renderer-player-skins-resolve-function-resolve-archive-skin-shaderindex-src-mq3-renderer-player-skins-ml-1104093404"></a>
 ### resolve
@@ -163,7 +165,7 @@ Builds `mq3.renderer.player_skins.ResolvedSkin` using `mq3.renderer.playable_mat
 | `shaderIndex` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_materials.mappedImageName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L145)
 
 - [mq3.renderer.player_skins.ResolvedSkin](Type-mq3-renderer-player-skins-resolvedskin-455522992.md) — struct
 <a id="constant-constant-mq3-renderer-player-skins-sarge-head-const-sarge-head-models-players-sarge-head-default-skin-src-mq3-renderer-player-skins-ml-536444845"></a>
@@ -173,8 +175,10 @@ Builds `mq3.renderer.player_skins.ResolvedSkin` using `mq3.renderer.playable_mat
 const SARGE_HEAD = "models/players/sarge/head_default.skin"
 ```
 
+Default virtual path of the Sarge head MD3 model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L15)
 
 <a id="constant-constant-mq3-renderer-player-skins-sarge-lower-const-sarge-lower-models-players-sarge-lower-default-skin-src-mq3-renderer-player-skins-ml-355355752"></a>
 ### SARGE_LOWER
@@ -183,8 +187,10 @@ const SARGE_HEAD = "models/players/sarge/head_default.skin"
 const SARGE_LOWER = "models/players/sarge/lower_default.skin"
 ```
 
+Default virtual path of the Sarge lower-body MD3 model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L11)
 
 <a id="constant-constant-mq3-renderer-player-skins-sarge-upper-const-sarge-upper-models-players-sarge-upper-default-skin-src-mq3-renderer-player-skins-ml-395690911"></a>
 ### SARGE_UPPER
@@ -193,8 +199,10 @@ const SARGE_LOWER = "models/players/sarge/lower_default.skin"
 const SARGE_UPPER = "models/players/sarge/upper_default.skin"
 ```
 
+Default virtual path of the Sarge upper-body MD3 model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L13)
 
 - [mq3.renderer.player_skins.SargeDefault](Type-mq3-renderer-player-skins-sargedefault-1698247702.md) — struct
 - [mq3.renderer.player_skins.Skin](Type-mq3-renderer-player-skins-skin-223438000.md) — struct
@@ -214,4 +222,4 @@ Returns `decode(slice(data,first,last-first))` from `mq3.renderer.player_skins.t
 | `last` | `dynamic` | — | Input used by `while first<last and data[first]<=32 first=first+1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L75)

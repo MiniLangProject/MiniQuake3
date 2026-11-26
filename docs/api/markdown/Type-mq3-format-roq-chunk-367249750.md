@@ -12,7 +12,7 @@ struct Chunk
 Chunk record for format.roq, containing `id`, `size`, `flags`, `dataOffset`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L30)
 
 ## Members
 
@@ -23,8 +23,10 @@ Chunk record for format.roq, containing `id`, `size`, `flags`, `dataOffset`.
 dataOffset
 ```
 
+Byte offset of this chunk's payload within the movie file.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L38)
 
 <a id="field-field-mq3-format-roq-chunk-flags-flags-src-mq3-format-roq-ml-833315958"></a>
 ### flags
@@ -33,8 +35,10 @@ dataOffset
 flags
 ```
 
+Chunk-specific flags or predictor data from the RoQ header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L36)
 
 <a id="field-field-mq3-format-roq-chunk-id-id-src-mq3-format-roq-ml-1633816884"></a>
 ### id
@@ -43,8 +47,10 @@ flags
 id
 ```
 
+RoQ chunk-kind identifier selecting the corresponding decoder.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L32)
 
 <a id="field-field-mq3-format-roq-chunk-size-size-src-mq3-format-roq-ml-1849303348"></a>
 ### size
@@ -53,5 +59,7 @@ id
 size
 ```
 
+Byte length of the chunk payload.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L34)

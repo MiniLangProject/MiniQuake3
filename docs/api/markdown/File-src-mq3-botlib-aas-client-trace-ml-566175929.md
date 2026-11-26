@@ -29,7 +29,7 @@ Return a new array `[n.fadd(a[0],b[0]),n.fadd(a[1],b[1]),n.fadd(a[2],b[2])]` for
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L70)
 
 <a id="function-function-mq3-botlib-aas-client-trace-copy-function-copy-value-src-mq3-botlib-aas-client-trace-ml-1189074405"></a>
 ### copy
@@ -45,7 +45,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas clie
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L51)
 
 <a id="function-function-mq3-botlib-aas-client-trace-dot-function-dot-a-b-src-mq3-botlib-aas-client-trace-ml-308670499"></a>
 ### dot
@@ -62,7 +62,7 @@ Return the result of `n.fadd(n.fadd(n.fmul(a[0],b[0]),n.fmul(a[1],b[1])),n.fmul(
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L59)
 
 <a id="function-function-mq3-botlib-aas-client-trace-empty-function-empty-src-mq3-botlib-aas-client-trace-ml-281566996"></a>
 ### empty
@@ -74,7 +74,7 @@ function empty()
 Create a `mq3.botlib.aas_client_trace.Trace` record, initializing `endpos` as `[0.0,0.0,0.0]` and `normal` as `[0.0,0.0,0.0]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L72)
 
 <a id="function-function-mq3-botlib-aas-client-trace-fail-function-fail-message-src-mq3-botlib-aas-client-trace-ml-1044286339"></a>
 ### fail
@@ -90,7 +90,7 @@ Construct error `7542` with diagnostic text `"AAS client trace: "+message`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L48)
 
 <a id="function-function-mq3-botlib-aas-client-trace-hit-function-hit-runtime-start-finish-segment-nodenum-planenum-lastarea-src-mq3-botlib-aas-client-trace-ml-1432746739"></a>
 ### hit
@@ -112,7 +112,7 @@ Set `segment.start` to `add(segment.start,scale(normalized,-0.125))` in `mq3.bot
 | `lastarea` | `dynamic` | — | Value used by `hit` in `result.lastarea=lastarea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L82)
 
 <a id="function-function-mq3-botlib-aas-client-trace-length-function-length-value-src-mq3-botlib-aas-client-trace-ml-356061929"></a>
 ### length
@@ -128,7 +128,7 @@ Forward `length` to `mq3.compat.numeric.fsqrt` and return the delegated result.
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L62)
 
 <a id="function-function-mq3-botlib-aas-client-trace-scale-function-scale-value-amount-src-mq3-botlib-aas-client-trace-ml-1721523597"></a>
 ### scale
@@ -145,7 +145,7 @@ Return a new array `[n.fmul(value[0],amount),n.fmul(value[1],amount),n.fmul(valu
 | `amount` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L66)
 
 - [mq3.botlib.aas_client_trace.Segment](Type-mq3-botlib-aas-client-trace-segment-775879010.md) — struct
 <a id="function-function-mq3-botlib-aas-client-trace-sub-function-sub-a-b-src-mq3-botlib-aas-client-trace-ml-2024218593"></a>
@@ -163,7 +163,7 @@ Return a new array `[n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])]` for
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L55)
 
 <a id="function-function-mq3-botlib-aas-client-trace-trace-function-trace-runtime-start-finish-presencetype-src-mq3-botlib-aas-client-trace-ml-139957774"></a>
 ### trace
@@ -182,7 +182,7 @@ Build the `mq3.botlib.aas_client_trace.Trace` result for `trace`. Return paths i
 | `presenceType` | `dynamic` | — | AAS presence type selecting the movement bounds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L105)
 
 - [mq3.botlib.aas_client_trace.Trace](Type-mq3-botlib-aas-client-trace-trace-964334042.md) — struct
 <a id="constant-constant-mq3-botlib-aas-client-trace-trace-stack-size-const-trace-stack-size-127-src-mq3-botlib-aas-client-trace-ml-1086353703"></a>
@@ -192,8 +192,10 @@ Build the `mq3.botlib.aas_client_trace.Trace` result for `trace`. Return paths i
 const TRACE_STACK_SIZE = 127
 ```
 
+Maximum number of pending nodes retained by an iterative BSP trace.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-client-trace-traceplane-epsilon-const-traceplane-epsilon-0-125-src-mq3-botlib-aas-client-trace-ml-103936643"></a>
 ### TRACEPLANE_EPSILON
@@ -202,5 +204,7 @@ const TRACE_STACK_SIZE = 127
 const TRACEPLANE_EPSILON = 0.125
 ```
 
+Distance tolerance used to position a trace safely before an impact plane.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L11)

@@ -12,7 +12,7 @@ struct Store
 Store record for engine.user_files, containing `archive`, `root`, `files`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L28)
 
 ## Members
 
@@ -23,8 +23,10 @@ Store record for engine.user_files, containing `archive`, `root`, `files`.
 archive
 ```
 
+Asset archive used to resolve game resources by virtual path.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L30)
 
 <a id="field-field-mq3-engine-user-files-store-files-files-src-mq3-engine-user-files-ml-1829343502"></a>
 ### files
@@ -33,8 +35,10 @@ archive
 files
 ```
 
+Open VM file handles and their associated cursors.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L34)
 
 <a id="field-field-mq3-engine-user-files-store-root-root-src-mq3-engine-user-files-ml-1161975938"></a>
 ### root
@@ -43,5 +47,7 @@ files
 root
 ```
 
+Root directory under which user-file operations are resolved.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L32)

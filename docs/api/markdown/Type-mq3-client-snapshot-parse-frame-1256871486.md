@@ -12,7 +12,7 @@ struct Frame
 Stores snapshot parse frame data, including `parseEntitiesNum`, `numEntities`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L19)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores snapshot parse frame data, including `parseEntitiesNum`, `numEntities`.
 numEntities
 ```
 
+Number of entity-state entries represented by the snapshot or scene.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L23)
 
 <a id="field-field-mq3-client-snapshot-parse-frame-parseentitiesnum-parseentitiesnum-src-mq3-client-snapshot-parse-ml-83091342"></a>
 ### parseEntitiesNum
@@ -33,5 +35,7 @@ numEntities
 parseEntitiesNum
 ```
 
+Absolute position in the parsed-entity ring at which this snapshot's entities begin.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L21)

@@ -12,7 +12,7 @@ struct Deform
 Data record for `mq3.renderer.shader_parser.Deform`; groups `kind`, `spread`, `wave`, `vector`, `bulgeWidth`, `bulgeHeight`, and 1 further field.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L88)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.shader_parser.Deform`; groups `kind`, `spread`, `w
 bulgeHeight
 ```
 
+Maximum displacement produced by the bulge deformation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L101)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-bulgespeed-bulgespeed-src-mq3-renderer-shader-parser-ml-1114282188"></a>
 ### bulgeSpeed
@@ -33,8 +35,10 @@ bulgeHeight
 bulgeSpeed
 ```
 
+Rate at which the bulge deformation moves over time.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L103)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-bulgewidth-bulgewidth-src-mq3-renderer-shader-parser-ml-1844770326"></a>
 ### bulgeWidth
@@ -43,8 +47,10 @@ bulgeSpeed
 bulgeWidth
 ```
 
+Spatial frequency of the texture-coordinate-driven bulge.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L99)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-kind-kind-src-mq3-renderer-shader-parser-ml-122449624"></a>
 ### kind
@@ -53,8 +59,10 @@ bulgeWidth
 kind
 ```
 
+Vertex-deformation operation selecting wave, move, bulge, autosprite, text, or another shader deformation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L91)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-spread-spread-src-mq3-renderer-shader-parser-ml-962353510"></a>
 ### spread
@@ -63,8 +71,10 @@ kind
 spread
 ```
 
+Spatial divisor controlling the phase spread of a vertex deformation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L93)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-vector-vector-src-mq3-renderer-shader-parser-ml-1502394298"></a>
 ### vector
@@ -73,8 +83,10 @@ spread
 vector
 ```
 
+Direction and magnitude used by the deformation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L97)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-wave-wave-src-mq3-renderer-shader-parser-ml-732183806"></a>
 ### wave
@@ -83,5 +95,7 @@ vector
 wave
 ```
 
+Waveform parameters driving this texture or vertex modification.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L95)

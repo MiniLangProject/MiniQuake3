@@ -25,7 +25,7 @@ Apply `mq3.botlib.crc16.processByte` while evaluating `continueSpan`.
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L53)
 
 <a id="function-function-mq3-botlib-crc16-init-function-init-src-mq3-botlib-crc16-ml-1568837142"></a>
 ### init
@@ -37,7 +37,7 @@ function init()
 Return `INIT_VALUE` for `init`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L21)
 
 <a id="constant-constant-mq3-botlib-crc16-init-value-const-init-value-65535-src-mq3-botlib-crc16-ml-1761703869"></a>
 ### INIT_VALUE
@@ -46,8 +46,10 @@ Return `INIT_VALUE` for `init`.
 const INIT_VALUE = 65535
 ```
 
+Initial CRC-16 accumulator value before input bytes are processed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L5)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L6)
 
 <a id="function-function-mq3-botlib-crc16-processbyte-function-processbyte-crc-value-src-mq3-botlib-crc16-ml-846748941"></a>
 ### processByte
@@ -64,7 +66,7 @@ Fold one byte into the running 16-bit cyclic redundancy check.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `(((crc&0xffff)<<8)^tableValue(((crc>>8)^(value&255))&255))&0xffff`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L25)
 
 <a id="function-function-mq3-botlib-crc16-processspan-function-processspan-data-offset-count-src-mq3-botlib-crc16-ml-1478239284"></a>
 ### processSpan
@@ -82,7 +84,7 @@ Update the 16-bit cyclic redundancy check over the selected byte span.
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L34)
 
 <a id="function-function-mq3-botlib-crc16-processstring-function-processstring-text-src-mq3-botlib-crc16-ml-774249215"></a>
 ### processString
@@ -98,7 +100,7 @@ Apply `mq3.botlib.crc16.value`, `mq3.botlib.crc16.init` and `mq3.botlib.crc16.pr
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L43)
 
 <a id="function-function-mq3-botlib-crc16-tablevalue-function-tablevalue-index-src-mq3-botlib-crc16-ml-2106170528"></a>
 ### tableValue
@@ -114,7 +116,7 @@ Compute one CRC-16 lookup-table entry using polynomial 0x1021 and eight shift st
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L12)
 
 <a id="function-function-mq3-botlib-crc16-value-function-value-crc-src-mq3-botlib-crc16-ml-2027873332"></a>
 ### value
@@ -130,7 +132,7 @@ Return `(crc^XOR_VALUE)&0xffff` for `value`.
 | `crc` | `dynamic` | — | Operand used to evaluate the returned expression `(crc^XOR_VALUE)&0xffff`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L28)
 
 <a id="constant-constant-mq3-botlib-crc16-xor-value-const-xor-value-0-src-mq3-botlib-crc16-ml-1631731747"></a>
 ### XOR_VALUE
@@ -139,5 +141,7 @@ Return `(crc^XOR_VALUE)&0xffff` for `value`.
 const XOR_VALUE = 0
 ```
 
+Final XOR applied to the CRC-16 accumulator.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L8)

@@ -24,7 +24,7 @@ function artList()
 Lists the 9 UI specifyleague art list strings in their declared order, beginning with `"menu/art/frame2_l"`, `"menu/art/frame1_r"`, `"menu/art/arrows_vert_0"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L24)
 
 <a id="function-function-mq3-client-ui-specifyleague-bitmap-function-bitmap-name-id-x-y-flags-w-h-src-mq3-client-ui-specifyleague-ml-1849083367"></a>
 ### bitmap
@@ -46,7 +46,7 @@ Calls `mq3.client.ui_qmenu.item` from UI specifyleague `bitmap`. The final path 
 | `h` | `dynamic` | — | Value assigned to `item.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L142)
 
 <a id="function-function-mq3-client-ui-specifyleague-create-function-create-retailactive-src-mq3-client-ui-specifyleague-ml-1637403769"></a>
 ### create
@@ -62,7 +62,7 @@ Creates a `mq3.client.ui_specifyleague.State` record. Assigns `retailActive` fro
 | `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L103)
 
 <a id="function-function-mq3-client-ui-specifyleague-emit-function-emit-state-boundary-kind-name-text-number-src-mq3-client-ui-specifyleague-ml-197564684"></a>
 ### emit
@@ -83,7 +83,7 @@ Appends a UI specifyleague action record to the queued engine requests. Retail-Q
 | `number` | `dynamic` | — | Value used by `a=Action(boundary,kind,name,text,number,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L111)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-id-specifyleagueback-const-id-specifyleagueback-104-src-mq3-client-ui-specifyleague-ml-876619992"></a>
 ### ID_SPECIFYLEAGUEBACK
@@ -92,8 +92,10 @@ Appends a UI specifyleague action record to the queued engine requests. Retail-Q
 const ID_SPECIFYLEAGUEBACK = 104
 ```
 
+Menu control identifier routed to the specifyleagueback action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-id-specifyleaguedown-const-id-specifyleaguedown-103-src-mq3-client-ui-specifyleague-ml-2119547457"></a>
 ### ID_SPECIFYLEAGUEDOWN
@@ -102,8 +104,10 @@ const ID_SPECIFYLEAGUEBACK = 104
 const ID_SPECIFYLEAGUEDOWN = 103
 ```
 
+Menu control identifier routed to the specifyleaguedown action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-id-specifyleaguelist-const-id-specifyleaguelist-101-src-mq3-client-ui-specifyleague-ml-1924556927"></a>
 ### ID_SPECIFYLEAGUELIST
@@ -112,8 +116,10 @@ const ID_SPECIFYLEAGUEDOWN = 103
 const ID_SPECIFYLEAGUELIST = 101
 ```
 
+Menu control identifier routed to the specifyleaguelist action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-id-specifyleaguename-const-id-specifyleaguename-100-src-mq3-client-ui-specifyleague-ml-96468324"></a>
 ### ID_SPECIFYLEAGUENAME
@@ -122,8 +128,10 @@ const ID_SPECIFYLEAGUELIST = 101
 const ID_SPECIFYLEAGUENAME = 100
 ```
 
+Menu control identifier routed to the specifyleaguename action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-id-specifyleagueup-const-id-specifyleagueup-102-src-mq3-client-ui-specifyleague-ml-588737870"></a>
 ### ID_SPECIFYLEAGUEUP
@@ -132,8 +140,10 @@ const ID_SPECIFYLEAGUENAME = 100
 const ID_SPECIFYLEAGUEUP = 102
 ```
 
+Menu control identifier routed to the specifyleagueup action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-max-leaguename-const-max-leaguename-80-src-mq3-client-ui-specifyleague-ml-766806953"></a>
 ### MAX_LEAGUENAME
@@ -142,8 +152,10 @@ const ID_SPECIFYLEAGUEUP = 102
 const MAX_LEAGUENAME = 80
 ```
 
+Length limit for the legacy ranking-service league name.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-max-listboxitems-const-max-listboxitems-128-src-mq3-client-ui-specifyleague-ml-1004189256"></a>
 ### MAX_LISTBOXITEMS
@@ -152,8 +164,10 @@ const MAX_LEAGUENAME = 80
 const MAX_LISTBOXITEMS = 128
 ```
 
+Capacity limit for the listboxitems collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-specifyleague-max-listboxwidth-const-max-listboxwidth-40-src-mq3-client-ui-specifyleague-ml-707563823"></a>
 ### MAX_LISTBOXWIDTH
@@ -162,8 +176,10 @@ const MAX_LISTBOXITEMS = 128
 const MAX_LISTBOXWIDTH = 40
 ```
 
+Maximum display width reserved for a listbox entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L10)
 
 <a id="function-function-mq3-client-ui-specifyleague-prefixsame-function-prefixsame-old-newtext-src-mq3-client-ui-specifyleague-ml-701582822"></a>
 ### prefixSame
@@ -180,7 +196,7 @@ Calls `std.string.substr` from UI specifyleague `prefixSame`. The final path ret
 | `newText` | `dynamic` | — | Sequence whose length/content is inspected by `prefixSame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L125)
 
 <a id="function-function-mq3-client-ui-specifyleague-specifyleague-cache-function-specifyleague-cache-state-src-mq3-client-ui-specifyleague-ml-58601455"></a>
 ### SpecifyLeague_Cache
@@ -196,7 +212,7 @@ SpecifyLeague_Cache
 | `state` | `dynamic` | — | Shared UI specifyleague state passed to the helper calls in `SpecifyLeague_Cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L145)
 
 <a id="function-function-mq3-client-ui-specifyleague-specifyleague-event-function-specifyleague-event-state-id-event-leagues-src-mq3-client-ui-specifyleague-ml-986423788"></a>
 ### SpecifyLeague_Event
@@ -215,7 +231,7 @@ SpecifyLeague_Event
 | `leagues` | `dynamic` | — | Value used by `if id==ID_SPECIFYLEAGUENAME and event==q.QM_LOSTFOCUS and not prefixSame(state.playername,state.rankname.buffer) then SpecifyLeague_GetList(st...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L131)
 
 <a id="function-function-mq3-client-ui-specifyleague-specifyleague-getlist-function-specifyleague-getlist-state-leagues-src-mq3-client-ui-specifyleague-ml-1464876907"></a>
 ### SpecifyLeague_GetList
@@ -232,7 +248,7 @@ SpecifyLeague_GetList
 | `leagues` | `dynamic` | — | Sequence read at `leagues[i]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L119)
 
 <a id="function-function-mq3-client-ui-specifyleague-specifyleague-menuinit-function-specifyleague-menuinit-state-playername-leagues-src-mq3-client-ui-specifyleague-ml-641370087"></a>
 ### SpecifyLeague_MenuInit
@@ -250,7 +266,7 @@ SpecifyLeague_MenuInit
 | `leagues` | `dynamic` | — | Value used by `SpecifyLeague_GetList(state,leagues)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L150)
 
 - [mq3.client.ui_specifyleague.State](Type-mq3-client-ui-specifyleague-state-1121640709.md) — struct
 <a id="function-function-mq3-client-ui-specifyleague-truncate-function-truncate-text-max-src-mq3-client-ui-specifyleague-ml-1495816711"></a>
@@ -268,7 +284,7 @@ Calls `decode`, `slice` from UI specifyleague `truncate`. The final path returns
 | `max` | `dynamic` | — | Value used by `if len(data)>=max then return decode(slice(data,0,max-1)) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L115)
 
 <a id="function-function-mq3-client-ui-specifyleague-ui-specifyleaguemenu-function-ui-specifyleaguemenu-state-playername-leagues-src-mq3-client-ui-specifyleague-ml-2002314699"></a>
 ### UI_SpecifyLeagueMenu
@@ -286,4 +302,4 @@ UI_SpecifyLeagueMenu
 | `leagues` | `dynamic` | — | Value used by `SpecifyLeague_MenuInit(state,playerName,leagues)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L158)

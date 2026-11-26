@@ -12,7 +12,7 @@ struct State
 `State` record for be aas file, containing `services`, `map`, `loaded`, `initialized` and `saveFile` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L33)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct State
 bspChecksum
 ```
 
+Checksum of the BSP map associated with the navigation data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L45)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-initialized-initialized-src-mq3-botlib-be-aas-file-ml-520345188"></a>
 ### initialized
@@ -33,8 +35,10 @@ bspChecksum
 initialized
 ```
 
+Initialization status retained alongside the loaded AAS file state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L41)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-lasterror-lasterror-src-mq3-botlib-be-aas-file-ml-1493947540"></a>
 ### lastError
@@ -43,8 +47,10 @@ initialized
 lastError
 ```
 
+Most recent error code reported by this subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L47)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-loaded-loaded-src-mq3-botlib-be-aas-file-ml-2028302322"></a>
 ### loaded
@@ -53,8 +59,10 @@ lastError
 loaded
 ```
 
+True after an AAS file has been loaded and its map data accepted.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L39)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-map-map-src-mq3-botlib-be-aas-file-ml-12344132"></a>
 ### map
@@ -63,8 +71,10 @@ loaded
 map
 ```
 
+Parsed AAS map currently owned by the file subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L37)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-savefile-savefile-src-mq3-botlib-be-aas-file-ml-1897507346"></a>
 ### saveFile
@@ -73,8 +83,10 @@ map
 saveFile
 ```
 
+True when the current AAS data should be saved back to a file.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L43)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-services-services-src-mq3-botlib-be-aas-file-ml-838665396"></a>
 ### services
@@ -83,5 +95,7 @@ saveFile
 services
 ```
 
+File access and diagnostic callbacks used by the AAS loader and serializer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L35)

@@ -36,7 +36,7 @@ Return `mq3.compat.numeric.bitsFloat((n.floatBits(a) & 2147483647))` from `colli
 | `a` | `dynamic` | — | Floating-point value to narrow and reinterpret. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L276)
 
 <a id="function-function-mq3-collision-world-boxbrushes-function-boxbrushes-world-mins-maxs-capacity-src-mq3-collision-world-ml-34143928"></a>
 ### boxBrushes
@@ -55,7 +55,7 @@ Compute box brushes in collision.world; the normal completion returns `result`.
 | `capacity` | `dynamic` | — | B passed as `b` to `mq3.collision.world.min`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1272)
 
 <a id="function-function-mq3-collision-world-boxleafnums-function-boxleafnums-world-mins-maxs-capacity-src-mq3-collision-world-ml-1364229036"></a>
 ### boxLeafnums
@@ -74,7 +74,7 @@ Compute box leafnums in collision.world; the normal completion returns `result`.
 | `capacity` | `dynamic` | — | B passed as `b` to `mq3.collision.world.min`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1255)
 
 <a id="function-function-mq3-collision-world-boxside-function-boxside-mins-maxs-plane-src-mq3-collision-world-ml-2057846594"></a>
 ### boxSide
@@ -92,7 +92,7 @@ Compute box side in collision.world; the normal completion returns `result`.
 | `plane` | `dynamic` | — | Record exposing `normal`, `distance`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L697)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L785)
 
 <a id="function-function-mq3-collision-world-boxtrace-function-boxtrace-world-start-finish-mins-maxs-model-mask-capsule-src-mq3-collision-world-ml-1329755983"></a>
 ### boxTrace
@@ -115,7 +115,7 @@ Return `mq3.collision.world.trace(world, start, finish, mins, maxs, model, mask,
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1475)
 
 <a id="function-function-mq3-collision-world-boxtracenocurves-function-boxtracenocurves-world-start-finish-mins-maxs-model-mask-capsule-src-mq3-collision-world-ml-1235806715"></a>
 ### boxTraceNoCurves
@@ -138,7 +138,7 @@ Return `mq3.collision.world.trace(world, start, finish, mins, maxs, model, mask,
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1462)
 
 - [mq3.collision.world.Brush](Type-mq3-collision-world-brush-1147632650.md) — struct
 <a id="function-function-mq3-collision-world-brushpointcontents-function-brushpointcontents-point-b-src-mq3-collision-world-ml-1966375118"></a>
@@ -156,7 +156,7 @@ Compute brush point contents in collision.world; the normal completion returns `
 | `b` | `dynamic` | — | Record exposing `planes`, `contents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L586)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L674)
 
 <a id="function-function-mq3-collision-world-capsuletarget-function-capsuletarget-world-model-src-mq3-collision-world-ml-367239423"></a>
 ### capsuleTarget
@@ -173,7 +173,7 @@ Compute capsule target in collision.world; the normal completion returns `[bound
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.modelBounds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L809)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L897)
 
 <a id="function-function-mq3-collision-world-checkmodel-function-checkmodel-world-model-src-mq3-collision-world-ml-618104487"></a>
 ### checkModel
@@ -190,7 +190,7 @@ Check model in collision.world; the normal completion returns `fail("invalid mod
 | `model` | `dynamic` | — | Model used in `(model >= 0)` and `(model < len(world.models))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L533)
 
 <a id="function-function-mq3-collision-world-checktracemodel-function-checktracemodel-world-model-capsule-src-mq3-collision-world-ml-99911634"></a>
 ### checkTraceModel
@@ -208,7 +208,7 @@ Return `mq3.collision.world.checkModel(world, model)` from `collision.world.chec
 | `capsule` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L457)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L545)
 
 <a id="function-function-mq3-collision-world-checktree-function-checktree-nodes-src-mq3-collision-world-ml-1579198055"></a>
 ### checkTree
@@ -224,7 +224,7 @@ Check tree in collision.world; the normal completion returns `true`.
 | `nodes` | `dynamic` | — | Nodes used in `len(nodes)` and `nodes[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L430)
 
 <a id="function-function-mq3-collision-world-cm-boundbrush-function-cm-boundbrush-sides-src-mq3-collision-world-ml-1912966852"></a>
 ### CM_BoundBrush
@@ -240,7 +240,7 @@ Apply `mq3.collision.world.fail` for bound brush in collision.world.
 | `sides` | `dynamic` | — | Sides used in `sides[0]` and `sides[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L341)
 
 <a id="function-function-mq3-collision-world-cm-boxtrace-function-cm-boxtrace-world-start-finish-mins-maxs-model-mask-capsule-src-mq3-collision-world-ml-723231945"></a>
 ### CM_BoxTrace
@@ -263,7 +263,7 @@ Return `mq3.collision.world.boxTrace(world, start, finish, mins, maxs, model, ma
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1437)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1525)
 
 <a id="function-function-mq3-collision-world-cm-checksum-function-cm-checksum-map-src-mq3-collision-world-ml-1813192756"></a>
 ### CM_Checksum
@@ -279,7 +279,7 @@ Compute checksum in collision.world; the normal completion returns `md4.blockChe
 | `map` | `dynamic` | — | Map passed as `map` to `mq3.collision.world.CM_LumpChecksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L336)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L424)
 
 <a id="function-function-mq3-collision-world-cm-clearmap-function-cm-clearmap-state-src-mq3-collision-world-ml-91541271"></a>
 ### CM_ClearMap
@@ -297,7 +297,7 @@ Direct state writes: `state.world`, `state.name`, `state.checksum`.
 | `state` | `dynamic` | — | Updated in place: `world`, `name`, `checksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L524)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L612)
 
 <a id="function-function-mq3-collision-world-cm-cliphandletomodel-function-cm-cliphandletomodel-world-handle-src-mq3-collision-world-ml-159196456"></a>
 ### CM_ClipHandleToModel
@@ -314,7 +314,7 @@ Compute clip handle to model in collision.world; the normal completion returns `
 | `handle` | `dynamic` | — | Zero-based index into `world.models`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L475)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L563)
 
 <a id="function-function-mq3-collision-world-cm-entitystring-function-cm-entitystring-world-src-mq3-collision-world-ml-1821168140"></a>
 ### CM_EntityString
@@ -330,7 +330,7 @@ Compute entity string in collision.world; the normal completion returns `world.e
 | `world` | `dynamic` | — | Record exposing `entityString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L507)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L595)
 
 <a id="function-function-mq3-collision-world-cm-initboxhull-function-cm-initboxhull-world-src-mq3-collision-world-ml-376592762"></a>
 ### CM_InitBoxHull
@@ -348,7 +348,7 @@ Direct state writes: `world.temporary`.
 | `world` | `dynamic` | — | Record exposing `brushes`, `surfaces`. Updated in place: `temporary`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L432)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L520)
 
 <a id="function-function-mq3-collision-world-cm-inlinemodel-function-cm-inlinemodel-world-index-src-mq3-collision-world-ml-274116902"></a>
 ### CM_InlineModel
@@ -365,7 +365,7 @@ Return `mq3.collision.world.inlineModel(world, index)` from `collision.world.CM_
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.collision.world.inlineModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L498)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L586)
 
 <a id="function-function-mq3-collision-world-cm-leafarea-function-cm-leafarea-world-leaf-src-mq3-collision-world-ml-2142355562"></a>
 ### CM_LeafArea
@@ -382,7 +382,7 @@ Compute leaf area in collision.world; the normal completion returns `vis.leafAre
 | `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.visibility.leafArea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L515)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L603)
 
 <a id="function-function-mq3-collision-world-cm-leafcluster-function-cm-leafcluster-world-leaf-src-mq3-collision-world-ml-2020439662"></a>
 ### CM_LeafCluster
@@ -399,7 +399,7 @@ Compute leaf cluster in collision.world; the normal completion returns `vis.leaf
 | `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.visibility.leafCluster`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L511)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L599)
 
 <a id="function-function-mq3-collision-world-cm-loadmap-function-cm-loadmap-state-name-data-clientload-src-mq3-collision-world-ml-459322635"></a>
 ### CM_LoadMap
@@ -420,7 +420,7 @@ Direct state writes: `state.name`, `state.world`, `state.checksum`, `state.lastC
 | `clientload` | `dynamic` | — | Clientload used in `(((state.world != void) and (state.name == name)) and clientload)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L532)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L620)
 
 <a id="function-function-mq3-collision-world-cm-lumpchecksum-function-cm-lumpchecksum-map-lump-src-mq3-collision-world-ml-1325910914"></a>
 ### CM_LumpChecksum
@@ -437,7 +437,7 @@ Compute lump checksum in collision.world; the normal completion returns `md4.blo
 | `lump` | `dynamic` | — | Zero-based index into `map.offsets`, `map.lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L421)
 
 <a id="function-function-mq3-collision-world-cm-modelbounds-function-cm-modelbounds-world-model-src-mq3-collision-world-ml-303618195"></a>
 ### CM_ModelBounds
@@ -454,7 +454,7 @@ Return `mq3.collision.world.modelBounds(world, model)` from `collision.world.CM_
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.modelBounds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L486)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L574)
 
 <a id="function-function-mq3-collision-world-cm-numclusters-function-cm-numclusters-world-src-mq3-collision-world-ml-1462329550"></a>
 ### CM_NumClusters
@@ -470,7 +470,7 @@ Compute num clusters in collision.world; the normal completion returns `world.vi
 | `world` | `dynamic` | — | Record exposing `visibility`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L501)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L589)
 
 <a id="function-function-mq3-collision-world-cm-numinlinemodels-function-cm-numinlinemodels-world-src-mq3-collision-world-ml-1298426822"></a>
 ### CM_NumInlineModels
@@ -486,7 +486,7 @@ Compute num inline models in collision.world; the normal completion returns `len
 | `world` | `dynamic` | — | Record exposing `models`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L504)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L592)
 
 <a id="function-function-mq3-collision-world-cm-positiontest-function-cm-positiontest-work-src-mq3-collision-world-ml-1610616775"></a>
 ### CM_PositionTest
@@ -502,7 +502,7 @@ Return `mq3.collision.world.positionTest(work)` from `collision.world.CM_Positio
 | `work` | `dynamic` | — | Work passed as `work` to `mq3.collision.world.positionTest`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1401)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1489)
 
 <a id="function-function-mq3-collision-world-cm-tempboxmodel-function-cm-tempboxmodel-world-mins-maxs-capsule-src-mq3-collision-world-ml-2040554205"></a>
 ### CM_TempBoxModel
@@ -521,7 +521,7 @@ Return `mq3.collision.world.tempBoxModel(world, mins, maxs, capsule)` from `coll
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.tempBoxModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L440)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L528)
 
 <a id="function-function-mq3-collision-world-cm-testboundingboxincapsule-function-cm-testboundingboxincapsule-work-model-src-mq3-collision-world-ml-941002064"></a>
 ### CM_TestBoundingBoxInCapsule
@@ -538,7 +538,7 @@ Return `mq3.collision.world.testBoundingBoxInCapsule(work, model)` from `collisi
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.testBoundingBoxInCapsule`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1002)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1090)
 
 <a id="function-function-mq3-collision-world-cm-testboxinbrush-function-cm-testboxinbrush-work-value-src-mq3-collision-world-ml-812838618"></a>
 ### CM_TestBoxInBrush
@@ -555,7 +555,7 @@ Public spellings retained by the original qcommon collision API.
 | `value` | `dynamic` | — | B passed as `b` to `mq3.collision.world.testInBrush`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1394)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1482)
 
 <a id="function-function-mq3-collision-world-cm-testcapsuleincapsule-function-cm-testcapsuleincapsule-work-model-src-mq3-collision-world-ml-1693043276"></a>
 ### CM_TestCapsuleInCapsule
@@ -572,7 +572,7 @@ Return `mq3.collision.world.testCapsuleInCapsule(work, model)` from `collision.w
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.testCapsuleInCapsule`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L998)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1086)
 
 <a id="function-function-mq3-collision-world-cm-testinleaf-function-cm-testinleaf-work-leaf-src-mq3-collision-world-ml-1131045019"></a>
 ### CM_TestInLeaf
@@ -589,7 +589,7 @@ Return `mq3.collision.world.throughLeaf(work, leaf, true)` from `collision.world
 | `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.world.throughLeaf`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1398)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1486)
 
 <a id="function-function-mq3-collision-world-cm-trace-function-cm-trace-world-start-finish-mins-maxs-model-mask-capsule-curves-src-mq3-collision-world-ml-135742467"></a>
 ### CM_Trace
@@ -613,7 +613,7 @@ Return `mq3.collision.world.trace(world, start, finish, mins, maxs, model, mask,
 | `curves` | `dynamic` | — | Curves passed as `curves` to `mq3.collision.world.trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1427)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1515)
 
 <a id="function-function-mq3-collision-world-cm-traceboundingboxthroughcapsule-function-cm-traceboundingboxthroughcapsule-work-model-src-mq3-collision-world-ml-1143486242"></a>
 ### CM_TraceBoundingBoxThroughCapsule
@@ -630,7 +630,7 @@ Return `mq3.collision.world.traceBoundingBoxThroughCapsule(work, model)` from `c
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.traceBoundingBoxThroughCapsule`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1025)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1113)
 
 <a id="function-function-mq3-collision-world-cm-tracecapsulethroughcapsule-function-cm-tracecapsulethroughcapsule-work-model-src-mq3-collision-world-ml-374259786"></a>
 ### CM_TraceCapsuleThroughCapsule
@@ -647,7 +647,7 @@ Return `mq3.collision.world.traceCapsuleThroughCapsule(work, model)` from `colli
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.traceCapsuleThroughCapsule`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1021)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1109)
 
 <a id="function-function-mq3-collision-world-cm-tracethroughleaf-function-cm-tracethroughleaf-work-leaf-src-mq3-collision-world-ml-1352420925"></a>
 ### CM_TraceThroughLeaf
@@ -664,7 +664,7 @@ Return `mq3.collision.world.throughLeaf(work, leaf, false)` from `collision.worl
 | `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.world.throughLeaf`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1493)
 
 <a id="function-function-mq3-collision-world-cm-tracethroughpatch-function-cm-tracethroughpatch-work-surface-src-mq3-collision-world-ml-1346315238"></a>
 ### CM_TraceThroughPatch
@@ -681,7 +681,7 @@ Trace through patch in collision.world.
 | `surface` | `dynamic` | — | Record exposing `patch`, `flags`, `contents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1497)
 
 <a id="function-function-mq3-collision-world-cm-tracethroughsphere-function-cm-tracethroughsphere-work-origin-radius-start-finish-src-mq3-collision-world-ml-1645171458"></a>
 ### CM_TraceThroughSphere
@@ -701,7 +701,7 @@ Return `mq3.collision.world.traceThroughSphere(work, origin, radius, start, fini
 | `finish` | `dynamic` | — | Finish passed as `finish` to `mq3.collision.world.traceThroughSphere`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1009)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1097)
 
 <a id="function-function-mq3-collision-world-cm-tracethroughtree-function-cm-tracethroughtree-work-src-mq3-collision-world-ml-571723797"></a>
 ### CM_TraceThroughTree
@@ -717,7 +717,7 @@ Return `mq3.collision.world.throughTree(work)` from `collision.world.CM_TraceThr
 | `work` | `dynamic` | — | Work passed as `work` to `mq3.collision.world.throughTree`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1416)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1504)
 
 <a id="function-function-mq3-collision-world-cm-tracethroughverticalcylinder-function-cm-tracethroughverticalcylinder-work-origin-radius-halfheight-start-finish-src-mq3-collision-world-ml-2022447718"></a>
 ### CM_TraceThroughVerticalCylinder
@@ -738,7 +738,7 @@ Return `mq3.collision.world.traceThroughVerticalCylinder(work, origin, radius, h
 | `finish` | `dynamic` | — | Finish passed as `finish` to `mq3.collision.world.traceThroughVerticalCylinder`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1017)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1105)
 
 <a id="function-function-mq3-collision-world-cm-transformedboxtrace-function-cm-transformedboxtrace-world-start-finish-mins-maxs-model-mask-origin-angles-capsule-src-mq3-collision-world-ml-2047533957"></a>
 ### CM_TransformedBoxTrace
@@ -763,7 +763,7 @@ Return `mq3.collision.world.transformedTrace(world, start, finish, mins, maxs, m
 | `capsule` | `dynamic` | — | Capsule passed as `capsule` to `mq3.collision.world.transformedTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1449)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1537)
 
 <a id="function-function-mq3-collision-world-cmod-loadbrushes-function-cmod-loadbrushes-map-sides-shaders-src-mq3-collision-world-ml-1026799518"></a>
 ### CMod_LoadBrushes
@@ -781,7 +781,7 @@ Compute c mod load brushes in collision.world; the normal completion returns `va
 | `shaders` | `dynamic` | — | Shaders used in `len(shaders)` and `shaders[shaderNumber]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L349)
 
 <a id="function-function-mq3-collision-world-cmod-loadbrushsides-function-cmod-loadbrushsides-map-planes-shaders-src-mq3-collision-world-ml-1159698651"></a>
 ### CMod_LoadBrushSides
@@ -799,7 +799,7 @@ Compute c mod load brush sides in collision.world; the normal completion returns
 | `shaders` | `dynamic` | — | Shaders used in `len(shaders)` and `shaders[shaderNumber]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L336)
 
 <a id="function-function-mq3-collision-world-cmod-loadentitystring-function-cmod-loadentitystring-map-src-mq3-collision-world-ml-2044767076"></a>
 ### CMod_LoadEntityString
@@ -815,7 +815,7 @@ Return `decode(slice(map.data, map.offsets[0], map.lengths[0]))` from `collision
 | `map` | `dynamic` | — | Record exposing `data`, `offsets`, `lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L318)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L406)
 
 <a id="function-function-mq3-collision-world-cmod-loadleafbrushes-function-cmod-loadleafbrushes-map-src-mq3-collision-world-ml-188990492"></a>
 ### CMod_LoadLeafBrushes
@@ -831,7 +831,7 @@ Compute c mod load leaf brushes in collision.world; the normal completion return
 | `map` | `dynamic` | — | Record exposing `counts`, `data`, `offsets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L354)
 
 <a id="function-function-mq3-collision-world-cmod-loadleafs-function-cmod-loadleafs-map-leafbrushes-leafsurfaces-src-mq3-collision-world-ml-452037304"></a>
 ### CMod_LoadLeafs
@@ -849,7 +849,7 @@ Compute c mod load leafs in collision.world; the normal completion returns `valu
 | `leafSurfaces` | `dynamic` | — | Leaf surfaces used in `len(leafSurfaces)` and `((firstSurface + surfaceCount) > len(leafSurfaces))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L366)
 
 <a id="function-function-mq3-collision-world-cmod-loadleafsurfaces-function-cmod-loadleafsurfaces-map-src-mq3-collision-world-ml-878967716"></a>
 ### CMod_LoadLeafSurfaces
@@ -865,7 +865,7 @@ Compute c mod load leaf surfaces in collision.world; the normal completion retur
 | `map` | `dynamic` | — | Record exposing `counts`, `data`, `offsets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L359)
 
 <a id="function-function-mq3-collision-world-cmod-loadnodes-function-cmod-loadnodes-map-planes-src-mq3-collision-world-ml-371944467"></a>
 ### CMod_LoadNodes
@@ -882,7 +882,7 @@ Compute c mod load nodes in collision.world; the normal completion returns `valu
 | `planes` | `dynamic` | — | Planes used in `len(planes)` and `planes[planeNumber]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L373)
 
 <a id="function-function-mq3-collision-world-cmod-loadpatches-function-cmod-loadpatches-map-shaders-curves-src-mq3-collision-world-ml-1660563942"></a>
 ### CMod_LoadPatches
@@ -900,7 +900,7 @@ Compute c mod load patches in collision.world; the normal completion returns `su
 | `curves` | `dynamic` | — | Curves operand used by `CMod_LoadPatches`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L414)
 
 <a id="function-function-mq3-collision-world-cmod-loadplanes-function-cmod-loadplanes-map-src-mq3-collision-world-ml-1582397518"></a>
 ### CMod_LoadPlanes
@@ -916,7 +916,7 @@ Compute c mod load planes in collision.world; the normal completion returns `val
 | `map` | `dynamic` | — | Record exposing `counts`, `offsets`, `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L328)
 
 <a id="function-function-mq3-collision-world-cmod-loadshaders-function-cmod-loadshaders-map-src-mq3-collision-world-ml-758872580"></a>
 ### CMod_LoadShaders
@@ -932,7 +932,7 @@ Compute c mod load shaders in collision.world; the normal completion returns `va
 | `map` | `dynamic` | — | Record exposing `counts`, `offsets`, `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L322)
 
 <a id="function-function-mq3-collision-world-cmod-loadsubmodels-function-cmod-loadsubmodels-map-src-mq3-collision-world-ml-1756385656"></a>
 ### CMod_LoadSubmodels
@@ -948,7 +948,7 @@ Compute c mod load submodels in collision.world; the normal completion returns `
 | `map` | `dynamic` | — | Record exposing `counts`, `offsets`, `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L379)
 
 <a id="function-function-mq3-collision-world-cmod-loadvisibility-function-cmod-loadvisibility-map-src-mq3-collision-world-ml-610872384"></a>
 ### CMod_LoadVisibility
@@ -964,7 +964,7 @@ Return `mq3.collision.visibility.load(map)` from `collision.world.CMod_LoadVisib
 | `map` | `dynamic` | — | Map passed as `map` to `mq3.collision.visibility.load`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L321)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L409)
 
 <a id="function-function-mq3-collision-world-createrotationmatrix-function-createrotationmatrix-angles-src-mq3-collision-world-ml-1316376898"></a>
 ### CreateRotationMatrix
@@ -980,7 +980,7 @@ Return `mq3.collision.world.rotationMatrix(angles)` from `collision.world.Create
 | `angles` | `dynamic` | — | Angles passed as `angles` to `mq3.collision.world.rotationMatrix`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1452)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1540)
 
 <a id="function-function-mq3-collision-world-enumerateleaves-function-enumerateleaves-world-mins-maxs-src-mq3-collision-world-ml-569522512"></a>
 ### enumerateLeaves
@@ -998,7 +998,7 @@ Compute enumerate leaves in collision.world; the normal completion returns `leav
 | `maxs` | `dynamic` | — | Value passed as `value` to `mq3.collision.world.vector32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1231)
 
 <a id="function-function-mq3-collision-world-fail-function-fail-message-src-mq3-collision-world-ml-1876503333"></a>
 ### fail
@@ -1014,7 +1014,7 @@ Create the collision.world error for `fail` with 3503 and the supplied diagnosti
 | `message` | `dynamic` | — | Message used in `("Collision: " + message)` and `error(3503, ("Collision: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L256)
 
 <a id="function-function-mq3-collision-world-inlinemodel-function-inlinemodel-world-index-src-mq3-collision-world-ml-1510907838"></a>
 ### inlineModel
@@ -1031,7 +1031,7 @@ Compute inline model in collision.world; the normal completion returns `index`.
 | `index` | `dynamic` | — | Index used in `(index < 0)` and `(index >= len(world.models))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L491)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L579)
 
 <a id="function-function-mq3-collision-world-interpolate-function-interpolate-a-b-fraction-src-mq3-collision-world-ml-1595775597"></a>
 ### interpolate
@@ -1049,7 +1049,7 @@ Interpolate world in collision.world; the normal completion returns `result`.
 | `fraction` | `dynamic` | — | Left floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L755)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L843)
 
 - [mq3.collision.world.Leaf](Type-mq3-collision-world-leaf-658400430.md) — struct
 - [mq3.collision.world.LeafList](Type-mq3-collision-world-leaflist-1057216602.md) — struct
@@ -1067,7 +1067,7 @@ Return `mq3.collision.world.loadWorld(data, true)` from `collision.world.load`.
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.collision.world.loadWorld`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L550)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L638)
 
 <a id="function-function-mq3-collision-world-loadbrushworld-function-loadbrushworld-data-src-mq3-collision-world-ml-1246927618"></a>
 ### loadBrushWorld
@@ -1083,7 +1083,7 @@ Return `mq3.collision.world.loadWorld(data, false)` from `collision.world.loadBr
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.collision.world.loadWorld`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L544)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L632)
 
 - [mq3.collision.world.LoadResult](Type-mq3-collision-world-loadresult-813987899.md) — struct
 <a id="function-function-mq3-collision-world-loadworld-function-loadworld-data-curves-src-mq3-collision-world-ml-902656670"></a>
@@ -1101,7 +1101,7 @@ Load world in collision.world; the normal completion returns `world`.
 | `curves` | `dynamic` | — | Curves passed as `curves` to `mq3.collision.world.CMod_LoadPatches`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L463)
 
 <a id="function-function-mq3-collision-world-makebox-function-makebox-mins-maxs-src-mq3-collision-world-ml-1266402242"></a>
 ### makeBox
@@ -1118,7 +1118,7 @@ Compute make box in collision.world; the normal completion returns `Brush(planes
 | `maxs` | `dynamic` | — | Initial `maxs` field stored in the returned or constructed `mq3.collision.world.Brush` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L479)
 
 <a id="function-function-mq3-collision-world-mapstate-function-mapstate-curves-src-mq3-collision-world-ml-2127125190"></a>
 ### mapState
@@ -1134,7 +1134,7 @@ Create `mq3.collision.world.MapState` with world=void; name=""; checksum=0; last
 | `curves` | `dynamic` | — | Initial `curves` field stored in the returned or constructed `mq3.collision.world.MapState` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L519)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L607)
 
 - [mq3.collision.world.MapState](Type-mq3-collision-world-mapstate-676803657.md) — struct
 <a id="function-function-mq3-collision-world-markcapsulepositionhit-function-markcapsulepositionhit-work-src-mq3-collision-world-ml-874545067"></a>
@@ -1151,7 +1151,7 @@ Compute mark capsule position hit in collision.world.
 | `work` | `dynamic` | — | Record exposing `trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L825)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L913)
 
 <a id="function-function-mq3-collision-world-max-function-max-a-b-src-mq3-collision-world-ml-760584533"></a>
 ### max
@@ -1168,7 +1168,7 @@ Compute max in collision.world; the normal completion returns `b`.
 | `b` | `dynamic` | — | B used in `(a > b)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L270)
 
 <a id="function-function-mq3-collision-world-min-function-min-a-b-src-mq3-collision-world-ml-512261601"></a>
 ### min
@@ -1185,7 +1185,7 @@ Compute min in collision.world; the normal completion returns `b`.
 | `b` | `dynamic` | — | B used in `(a < b)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L263)
 
 <a id="function-function-mq3-collision-world-modelbounds-function-modelbounds-world-model-src-mq3-collision-world-ml-1489723531"></a>
 ### modelBounds
@@ -1202,7 +1202,7 @@ Compute model bounds in collision.world; the normal completion returns `[arrays.
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.checkModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L464)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L552)
 
 <a id="function-function-mq3-collision-world-modelbrushes-function-modelbrushes-world-point-model-src-mq3-collision-world-ml-1286212657"></a>
 ### modelBrushes
@@ -1220,7 +1220,7 @@ Compute model brushes in collision.world; the normal completion returns `world.m
 | `model` | `dynamic` | — | Zero-based index into `world.models`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L577)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L665)
 
 - [mq3.collision.world.Node](Type-mq3-collision-world-node-1268744198.md) — struct
 <a id="function-function-mq3-collision-world-planemetadata-function-planemetadata-normal-src-mq3-collision-world-ml-1130076203"></a>
@@ -1237,7 +1237,7 @@ Compute plane metadata in collision.world; the normal completion returns `result
 | `normal` | `dynamic` | — | Normal passed as `normal` to `mq3.collision.world.planeType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L300)
 
 <a id="function-function-mq3-collision-world-planetype-function-planetype-normal-src-mq3-collision-world-ml-836707049"></a>
 ### planeType
@@ -1253,7 +1253,7 @@ Compute plane type in collision.world; the normal completion returns `3`.
 | `normal` | `dynamic` | — | Normal used in `normal[axis]` and `(normal[axis] == 1.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L291)
 
 <a id="function-function-mq3-collision-world-pointcontents-function-pointcontents-world-point-model-src-mq3-collision-world-ml-1782986297"></a>
 ### pointContents
@@ -1271,7 +1271,7 @@ Compute point contents in collision.world; the normal completion returns `n.i32(
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.checkModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L596)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L684)
 
 <a id="function-function-mq3-collision-world-pointleafnum-function-pointleafnum-world-point-src-mq3-collision-world-ml-173991548"></a>
 ### pointLeafnum
@@ -1288,7 +1288,7 @@ Compute point leafnum in collision.world; the normal completion returns `(- 1 - 
 | `point` | `dynamic` | — | Value passed as `value` to `mq3.collision.world.vector32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L645)
 
 <a id="function-function-mq3-collision-world-positiontest-function-positiontest-work-src-mq3-collision-world-ml-1615063919"></a>
 ### positionTest
@@ -1304,7 +1304,7 @@ Compute position test in collision.world.
 | `work` | `dynamic` | — | Record exposing `start`, `mins`, `maxs`, `world`, `trace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L718)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L806)
 
 <a id="function-function-mq3-collision-world-real-function-real-data-offset-src-mq3-collision-world-ml-287112597"></a>
 ### real
@@ -1321,7 +1321,7 @@ Compute real in collision.world; the normal completion returns `n.bitsFloat(bits
 | `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L283)
 
 <a id="function-function-mq3-collision-world-reciprocalcapsulework-function-reciprocalcapsulework-work-model-src-mq3-collision-world-ml-856703692"></a>
 ### reciprocalCapsuleWork
@@ -1340,7 +1340,7 @@ Direct state writes: `work.capsule`, `work.radius`, `work.halfheight`, `work.cap
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.capsuleTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L856)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L944)
 
 - [mq3.collision.world.Result](Type-mq3-collision-world-result-1342673267.md) — struct
 <a id="function-function-mq3-collision-world-rotatepoint-function-rotatepoint-point-matrix-src-mq3-collision-world-ml-230305295"></a>
@@ -1358,7 +1358,7 @@ Return `mq3.collision.world.rotatePoint(point, matrix)` from `collision.world.Ro
 | `matrix` | `dynamic` | — | Matrix passed as `matrix` to `mq3.collision.world.rotatePoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1456)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1544)
 
 <a id="function-function-mq3-collision-world-rotatepoint-function-rotatepoint-point-matrix-src-mq3-collision-world-ml-1131526671"></a>
 ### rotatePoint
@@ -1375,7 +1375,7 @@ Compute collision.world.rotatePoint as `[q.DotProduct(matrix[0], point), q.DotPr
 | `matrix` | `dynamic` | — | Matrix used in `matrix[0]` and `matrix[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1319)
 
 <a id="function-function-mq3-collision-world-rotationmatrix-function-rotationmatrix-angles-src-mq3-collision-world-ml-1220461446"></a>
 ### rotationMatrix
@@ -1391,7 +1391,7 @@ Compute rotation matrix in collision.world; the normal completion returns `matri
 | `angles` | `dynamic` | — | Three-element [pitch, yaw, roll] array in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1308)
 
 <a id="function-function-mq3-collision-world-setplanesignbits-function-setplanesignbits-normal-src-mq3-collision-world-ml-1817958217"></a>
 ### SetPlaneSignbits
@@ -1407,7 +1407,7 @@ BSPC's local SetPlaneSignbits and the qcommon loader use the same bit order.
 | `normal` | `dynamic` | — | Normal used in `normal[axis]` and `(normal[axis] < 0.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L311)
 
 - [mq3.collision.world.Shader](Type-mq3-collision-world-shader-931638211.md) — struct
 <a id="function-function-mq3-collision-world-shadername-function-shadername-data-offset-src-mq3-collision-world-ml-129016117"></a>
@@ -1425,7 +1425,7 @@ Compute shader name in collision.world; the normal completion returns `decode(sl
 | `offset` | `dynamic` | — | Offset used in `(offset + count)` and `data[(offset + count)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L317)
 
 - [mq3.collision.world.Submodels](Type-mq3-collision-world-submodels-309237442.md) — struct
 - [mq3.collision.world.Surface](Type-mq3-collision-world-surface-1666971561.md) — struct
@@ -1446,7 +1446,7 @@ Compute temp box model in collision.world; the normal completion returns `qcommo
 | `capsule` | `dynamic` | — | Capsule operand used by `tempBoxModel`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L408)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L496)
 
 - [mq3.collision.world.Temporary](Type-mq3-collision-world-temporary-686486401.md) — struct
 <a id="function-function-mq3-collision-world-testboundingboxincapsule-function-testboundingboxincapsule-work-model-src-mq3-collision-world-ml-687257532"></a>
@@ -1464,7 +1464,7 @@ Compute test bounding box in capsule in collision.world.
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.reciprocalCapsuleWork`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L870)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L958)
 
 <a id="function-function-mq3-collision-world-testcapsuleincapsule-function-testcapsuleincapsule-work-model-src-mq3-collision-world-ml-1889349704"></a>
 ### testCapsuleInCapsule
@@ -1481,7 +1481,7 @@ Compute test capsule in capsule in collision.world.
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.capsuleTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L833)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L921)
 
 <a id="function-function-mq3-collision-world-testinbrush-function-testinbrush-work-b-src-mq3-collision-world-ml-911063321"></a>
 ### testInBrush
@@ -1498,7 +1498,7 @@ Compute test in brush in collision.world.
 | `b` | `dynamic` | — | Record exposing `maxs`, `mins`, `planes`, `contents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L623)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L711)
 
 <a id="function-function-mq3-collision-world-throughleaf-function-throughleaf-work-leaf-positiontest-src-mq3-collision-world-ml-469372154"></a>
 ### throughLeaf
@@ -1516,7 +1516,7 @@ Compute through leaf in collision.world.
 | `positionTest` | `dynamic` | — | Position test operand used by `throughLeaf`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L656)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L744)
 
 <a id="function-function-mq3-collision-world-throughtree-function-throughtree-work-src-mq3-collision-world-ml-157451657"></a>
 ### throughTree
@@ -1534,7 +1534,7 @@ Validation failures include `Collision: invalid BSP trace interval`.
 | `work` | `dynamic` | — | Record exposing `start`, `finish`, `trace`, `world`, `isPoint`, `maxs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L767)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L855)
 
 <a id="function-function-mq3-collision-world-trace-function-trace-world-start-finish-mins-maxs-model-mask-capsule-curves-src-mq3-collision-world-ml-1323450997"></a>
 ### trace
@@ -1558,7 +1558,7 @@ Return `mq3.collision.world.traceWithSphere(world, start, finish, mins, maxs, mo
 | `curves` | `dynamic` | — | Curves passed as `curves` to `mq3.collision.world.traceWithSphere`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1302)
 
 <a id="function-function-mq3-collision-world-traceboundingboxthroughcapsule-function-traceboundingboxthroughcapsule-work-model-src-mq3-collision-world-ml-1494781132"></a>
 ### traceBoundingBoxThroughCapsule
@@ -1575,7 +1575,7 @@ Trace bounding box through capsule in collision.world.
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.reciprocalCapsuleWork`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L989)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1077)
 
 <a id="function-function-mq3-collision-world-tracecapsulethroughcapsule-function-tracecapsulethroughcapsule-work-model-src-mq3-collision-world-ml-888031324"></a>
 ### traceCapsuleThroughCapsule
@@ -1592,7 +1592,7 @@ Trace capsule through capsule in collision.world.
 | `model` | `dynamic` | — | Model passed as `model` to `mq3.collision.world.capsuleTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L967)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1055)
 
 <a id="extern_function-extern-function-mq3-collision-world-tracesegmentstep-extern-function-tracesegmentstep-records-as-ptr-capacity-as-i32-offset-as-i32-axis-as-i32-nx-as-double-ny-as-double-nz-as-double-planedistance-as-double-extent-as-double-from-miniquake3-qvm-dll-symbol-mq3-trace-segment-step-returns-i32-src-mq3-collision-world-ml-807354913"></a>
 ### traceSegmentStep
@@ -1638,7 +1638,7 @@ Trace through sphere in collision.world.
 | `finish` | `dynamic` | — | Line end passed as `lineEnd` to `mq3.collision.brush.distanceFromLineSquared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L882)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L970)
 
 <a id="function-function-mq3-collision-world-tracethroughverticalcylinder-function-tracethroughverticalcylinder-work-origin-radius-halfheight-start-finish-src-mq3-collision-world-ml-1720086476"></a>
 ### traceThroughVerticalCylinder
@@ -1659,7 +1659,7 @@ Trace through vertical cylinder in collision.world.
 | `finish` | `dynamic` | — | Finish used in `finish[0]` and `finish[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L924)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1012)
 
 <a id="function-function-mq3-collision-world-tracetransformedbox-function-tracetransformedbox-world-start-finish-mins-maxs-mask-origin-src-mq3-collision-world-ml-1144927587"></a>
 ### traceTransformedBox
@@ -1681,7 +1681,7 @@ Trace transformed box in collision.world.
 | `origin` | `dynamic` | — | Origin used in `origin[0]` and `origin[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1369)
 
 <a id="extern_function-extern-function-mq3-collision-world-tracetransformedboxnative-extern-function-tracetransformedboxnative-ax-as-double-ay-as-double-az-as-double-bx-as-double-by-as-double-bz-as-double-lx-as-double-ly-as-double-lz-as-double-hx-as-double-hy-as-double-hz-as-double-ox-as-double-oy-as-double-oz-as-double-tx-as-double-ty-as-double-tz-as-double-ux-as-double-uy-as-double-uz-as-double-matchesmask-as-i32-output-as-bytes-from-miniquake3-qvm-dll-symbol-mq3-trace-transformed-box-returns-i32-src-mq3-collision-world-ml-1602816569"></a>
 ### traceTransformedBoxNative
@@ -1746,7 +1746,7 @@ Return `mq3.collision.world.traceWithSphereOrigin(world, start, finish, mins, ma
 | `sphere` | `dynamic` | — | Sphere passed as `sphere` to `mq3.collision.world.traceWithSphereOrigin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1223)
 
 <a id="function-function-mq3-collision-world-tracewithsphereorigin-function-tracewithsphereorigin-world-start-finish-mins-maxs-model-mask-capsule-curves-sphere-modelorigin-src-mq3-collision-world-ml-1204920617"></a>
 ### traceWithSphereOrigin
@@ -1772,7 +1772,7 @@ Trace with sphere origin in collision.world; the normal completion returns `Resu
 | `modelOrigin` | `dynamic` | — | Value passed as `value` to `mq3.collision.world.vector32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1039)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1127)
 
 <a id="function-function-mq3-collision-world-transformedpointcontents-function-transformedpointcontents-world-point-model-origin-angles-src-mq3-collision-world-ml-16528947"></a>
 ### transformedPointContents
@@ -1792,7 +1792,7 @@ Compute transformed point contents in collision.world; the normal completion ret
 | `angles` | `dynamic` | — | Value passed as `value` to `mq3.collision.world.vector32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1335)
 
 <a id="function-function-mq3-collision-world-transformedtrace-function-transformedtrace-world-start-finish-mins-maxs-model-mask-origin-angles-capsule-curves-src-mq3-collision-world-ml-1375918085"></a>
 ### transformedTrace
@@ -1818,7 +1818,7 @@ Compute transformed trace in collision.world; the normal completion returns `res
 | `curves` | `dynamic` | — | Curves passed as `curves` to `mq3.collision.world.traceWithSphereOrigin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1407)
 
 <a id="function-function-mq3-collision-world-transpose-function-transpose-matrix-src-mq3-collision-world-ml-444074477"></a>
 ### transpose
@@ -1834,7 +1834,7 @@ Compute collision.world.transpose as `[[matrix[0][0], matrix[1][0], matrix[2][0]
 | `matrix` | `dynamic` | — | Matrix used in `matrix[0]` and `matrix[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1325)
 
 <a id="function-function-mq3-collision-world-transposematrix-function-transposematrix-matrix-src-mq3-collision-world-ml-1249328507"></a>
 ### TransposeMatrix
@@ -1850,7 +1850,7 @@ Return `mq3.collision.world.transpose(matrix)` from `collision.world.TransposeMa
 | `matrix` | `dynamic` | — | Matrix passed as `matrix` to `mq3.collision.world.transpose`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1459)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1547)
 
 <a id="function-function-mq3-collision-world-vector32-function-vector32-value-src-mq3-collision-world-ml-1909705747"></a>
 ### vector32
@@ -1866,7 +1866,7 @@ Compute vector 32 in collision.world; the normal completion returns `result`.
 | `value` | `dynamic` | — | Value used in `len(value)` and `value[axis]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1443)
 
 - [mq3.collision.world.Work](Type-mq3-collision-world-work-490237871.md) — struct
 - [mq3.collision.world.World](Type-mq3-collision-world-world-1490011094.md) — struct
@@ -1915,4 +1915,4 @@ Write vm temporary box trace in collision.world.
 | `base` | `dynamic` | — | Byte offset of the syscall argument frame. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L1353)

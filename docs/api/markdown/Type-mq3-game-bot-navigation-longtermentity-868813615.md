@@ -12,7 +12,7 @@ struct LongTermEntity
 `LongTermEntity` record for bot navigation, containing `valid`, `origin`, `mins`, `maxs` and `angles`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L182)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct LongTermEntity
 angles
 ```
 
+Orientation angles used by the entity or movement operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L192)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-maxs-maxs-src-mq3-game-bot-navigation-ml-896719070"></a>
 ### maxs
@@ -33,8 +35,10 @@ angles
 maxs
 ```
 
+Upper local collision-bound corner of the entity considered for a long-term goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L190)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-mins-mins-src-mq3-game-bot-navigation-ml-1594066370"></a>
 ### mins
@@ -43,8 +47,10 @@ maxs
 mins
 ```
 
+Lower local collision-bound corner of the entity considered for a long-term goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L188)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-origin-origin-src-mq3-game-bot-navigation-ml-128617136"></a>
 ### origin
@@ -53,8 +59,10 @@ mins
 origin
 ```
 
+Reported world-space position of the entity considered for a long-term goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L186)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-valid-valid-src-mq3-game-bot-navigation-ml-236195916"></a>
 ### valid
@@ -63,5 +71,7 @@ origin
 valid
 ```
 
+True when entity information is available for long-term goal selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L184)

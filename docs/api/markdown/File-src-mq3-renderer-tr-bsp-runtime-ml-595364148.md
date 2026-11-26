@@ -35,7 +35,7 @@ Returns `value` from `mq3.renderer.tr_bsp_runtime.abs`; earlier branches return 
 | `value` | `dynamic` | — | Input tested by `value<0.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L219)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-basename-function-basename-path-src-mq3-renderer-tr-bsp-runtime-ml-748872135"></a>
 ### basename
@@ -51,7 +51,7 @@ Computes `basename` from `decode(slice(data,start,dot-start))`.
 | `path` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L230)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-contents-node-const-contents-node-1-src-mq3-renderer-tr-bsp-runtime-ml-448751015"></a>
 ### CONTENTS_NODE
@@ -60,8 +60,10 @@ Computes `basename` from `decode(slice(data,start,dot-start))`.
 const CONTENTS_NODE = -1
 ```
 
+Negative marker identifying an internal BSP node rather than a leaf.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L27)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-createstate-function-createstate-src-mq3-renderer-tr-bsp-runtime-ml-549652534"></a>
 ### createState
@@ -73,7 +75,7 @@ function createState()
 Constructs `mq3.renderer.tr_bsp_runtime.State` with `worldMapLoaded` = `false`, `externalVisData` = `void`, `world` = `void`, `sunDirection` = `[3.0/7.0,2.0/7.0,6.0/7.0]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L203)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-f32-function-f32-map-offset-src-mq3-renderer-tr-bsp-runtime-ml-806715183"></a>
 ### f32
@@ -90,7 +92,7 @@ Returns `n.bitsFloat(value)` from `mq3.renderer.tr_bsp_runtime.f32`; earlier bra
 | `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L211)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-fail-function-fail-text-src-mq3-renderer-tr-bsp-runtime-ml-861428431"></a>
 ### fail
@@ -106,7 +108,7 @@ Creates error `7710` with message `"tr_bsp: "+text`.
 | `text` | `dynamic` | — | Input used in the result expression `error(7710,"tr_bsp: "+text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L201)
 
 - [mq3.renderer.tr_bsp_runtime.Grid](Type-mq3-renderer-tr-bsp-runtime-grid-406766564.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-hsvtorgb-function-hsvtorgb-h-s-v-src-mq3-renderer-tr-bsp-runtime-ml-1405745009"></a>
@@ -125,7 +127,7 @@ Exact tr_bsp.c six-sector HSV development-lightmap conversion.
 | `v` | `dynamic` | — | Input used by `p=v*(1.0-s)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L246)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-i32-function-i32-map-offset-src-mq3-renderer-tr-bsp-runtime-ml-671524025"></a>
 ### i32
@@ -142,7 +144,7 @@ Returns `value` from `mq3.renderer.tr_bsp_runtime.i32`; earlier branches return 
 | `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L207)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-lightmap-by-vertex-const-lightmap-by-vertex-3-src-mq3-renderer-tr-bsp-runtime-ml-2140124617"></a>
 ### LIGHTMAP_BY_VERTEX
@@ -151,8 +153,10 @@ Returns `value` from `mq3.renderer.tr_bsp_runtime.i32`; earlier branches return 
 const LIGHTMAP_BY_VERTEX = -3
 ```
 
+Negative lightmap selector requesting vertex lighting instead of a lightmap image.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-lightmap-none-const-lightmap-none-1-src-mq3-renderer-tr-bsp-runtime-ml-613235079"></a>
 ### LIGHTMAP_NONE
@@ -161,8 +165,10 @@ const LIGHTMAP_BY_VERTEX = -3
 const LIGHTMAP_NONE = -1
 ```
 
+Negative lightmap selector for a shader that does not use baked lighting.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L33)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-lightmap-whiteimage-const-lightmap-whiteimage-2-src-mq3-renderer-tr-bsp-runtime-ml-1442244292"></a>
 ### LIGHTMAP_WHITEIMAGE
@@ -171,8 +177,10 @@ const LIGHTMAP_NONE = -1
 const LIGHTMAP_WHITEIMAGE = -2
 ```
 
+Negative lightmap selector substituting the renderer's white image.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L31)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-max-grid-size-const-max-grid-size-65-src-mq3-renderer-tr-bsp-runtime-ml-939646118"></a>
 ### MAX_GRID_SIZE
@@ -181,8 +189,10 @@ const LIGHTMAP_WHITEIMAGE = -2
 const MAX_GRID_SIZE = 65
 ```
 
+Largest tessellated patch-grid dimension accepted by the renderer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L35)
 
 - [mq3.renderer.tr_bsp_runtime.Model](Type-mq3-renderer-tr-bsp-runtime-model-2135241169.md) — struct
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-flare-const-mst-flare-4-src-mq3-renderer-tr-bsp-runtime-ml-1318233097"></a>
@@ -192,8 +202,10 @@ const MAX_GRID_SIZE = 65
 const MST_FLARE = 4
 ```
 
+BSP surface type for a map-defined light flare.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L25)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-patch-const-mst-patch-2-src-mq3-renderer-tr-bsp-runtime-ml-373143915"></a>
 ### MST_PATCH
@@ -202,8 +214,10 @@ const MST_FLARE = 4
 const MST_PATCH = 2
 ```
 
+BSP surface type for a curved control-point patch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L21)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-planar-const-mst-planar-1-src-mq3-renderer-tr-bsp-runtime-ml-266375840"></a>
 ### MST_PLANAR
@@ -212,8 +226,10 @@ const MST_PATCH = 2
 const MST_PLANAR = 1
 ```
 
+BSP surface type for a planar polygon face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L19)
 
 <a id="constant-constant-mq3-renderer-tr-bsp-runtime-mst-triangle-soup-const-mst-triangle-soup-3-src-mq3-renderer-tr-bsp-runtime-ml-856686262"></a>
 ### MST_TRIANGLE_SOUP
@@ -222,8 +238,10 @@ const MST_PLANAR = 1
 const MST_TRIANGLE_SOUP = 3
 ```
 
+BSP surface type for an indexed triangle mesh.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L23)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-nameat-function-nameat-map-offset-capacity-src-mq3-renderer-tr-bsp-runtime-ml-451389057"></a>
 ### nameAt
@@ -241,7 +259,7 @@ Returns `decode(slice(map.data,offset,count))` from `mq3.renderer.tr_bsp_runtime
 | `capacity` | `dynamic` | — | Input used by `while count<capacity and map.data[offset+count]!=0 count=count+1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L216)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-nearpoint-function-nearpoint-a-b-tolerance-src-mq3-renderer-tr-bsp-runtime-ml-1628391854"></a>
 ### nearPoint
@@ -259,7 +277,7 @@ Computes `abs(a[0]-b[0])<=tolerance and abs(a[1]-b[1])<=tolerance and abs(a[2]-b
 | `tolerance` | `dynamic` | — | Input used in the result expression `abs(a[0]-b[0])<=tolerance and abs(a[1]-b[1])<=tolerance and abs(a[2]-b[2])<=tolerance`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L224)
 
 - [mq3.renderer.tr_bsp_runtime.Node](Type-mq3-renderer-tr-bsp-runtime-node-223640768.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parseface-function-parseface-world-index-src-mq3-renderer-tr-bsp-runtime-ml-926190248"></a>
@@ -277,7 +295,7 @@ Calls `mq3.renderer.tr_bsp_runtime.parseGeometry` with `(world,index,MST_PLANAR,
 | `index` | `dynamic` | — | Value forwarded as `index` to `mq3.renderer.tr_bsp_runtime.parseGeometry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L329)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parseflare-function-parseflare-world-index-src-mq3-renderer-tr-bsp-runtime-ml-62053284"></a>
 ### ParseFlare
@@ -294,7 +312,7 @@ Builds `mq3.renderer.tr_bsp_runtime.Surface` using `mq3.renderer.playable_flares
 | `index` | `dynamic` | — | Initial value for `mq3.renderer.tr_bsp_runtime.Surface.index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L341)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parsegeometry-function-parsegeometry-world-index-expectedkind-lightmapoverride-src-mq3-renderer-tr-bsp-runtime-ml-1308587542"></a>
 ### parseGeometry
@@ -313,7 +331,7 @@ Builds `mq3.renderer.tr_bsp_runtime.Surface` using `mq3.renderer.bsp_render_data
 | `lightmapOverride` | `dynamic` | — | Input used by `lightmap=lightmapOverride`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L320)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parsemesh-function-parsemesh-world-index-src-mq3-renderer-tr-bsp-runtime-ml-1756951264"></a>
 ### ParseMesh
@@ -330,7 +348,7 @@ Calls `mq3.renderer.tr_bsp_runtime.parseGeometry` with `(world,index,MST_PATCH,v
 | `index` | `dynamic` | — | Value forwarded as `index` to `mq3.renderer.tr_bsp_runtime.parseGeometry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L333)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-parsetrisurf-function-parsetrisurf-world-index-src-mq3-renderer-tr-bsp-runtime-ml-134026484"></a>
 ### ParseTriSurf
@@ -347,7 +365,7 @@ Calls `mq3.renderer.tr_bsp_runtime.parseGeometry` with `(world,index,MST_TRIANGL
 | `index` | `dynamic` | — | Value forwarded as `index` to `mq3.renderer.tr_bsp_runtime.parseGeometry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L337)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-patch-function-patch-world-index-src-mq3-renderer-tr-bsp-runtime-ml-1500667416"></a>
 ### patch
@@ -364,7 +382,7 @@ Calls `mq3.renderer.tr_bsp_runtime.ParseMesh` with `(world,index)` and returns i
 | `index` | `dynamic` | — | Value forwarded as `index` to `mq3.renderer.tr_bsp_runtime.ParseMesh`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L349)
 
 - [mq3.renderer.tr_bsp_runtime.Plane](Type-mq3-renderer-tr-bsp-runtime-plane-1475956598.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-planetype-function-planetype-normal-src-mq3-renderer-tr-bsp-runtime-ml-455208807"></a>
@@ -381,7 +399,7 @@ Returns `3` from `mq3.renderer.tr_bsp_runtime.planeType`; earlier branches retur
 | `normal` | `dynamic` | — | Indexed input read at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L227)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-colorshiftlightingbytes-function-r-colorshiftlightingbytes-input-shift-src-mq3-renderer-tr-bsp-runtime-ml-765324234"></a>
 ### R_ColorShiftLightingBytes
@@ -398,7 +416,7 @@ Computes `R_ColorShiftLightingBytes` from `[shifted[0],shifted[1],shifted[2],alp
 | `shift` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.bsp_render_data.colorShiftLighting`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L254)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-fixsharedvertexloderror-function-r-fixsharedvertexloderror-grids-src-mq3-renderer-tr-bsp-runtime-ml-215881697"></a>
 ### R_FixSharedVertexLodError
@@ -414,7 +432,7 @@ Calls `mq3.renderer.patch_stitch.R_FixSharedVertexLodError` with `(grids)` and r
 | `grids` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.patch_stitch.R_FixSharedVertexLodError`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L451)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-fixsharedvertexloderror-r-function-r-fixsharedvertexloderror-r-grids-start-grid-src-mq3-renderer-tr-bsp-runtime-ml-1201443437"></a>
 ### R_FixSharedVertexLodError_r
@@ -432,7 +450,7 @@ Calls `mq3.renderer.patch_stitch.R_FixSharedVertexLodError_r` with `(grids,start
 | `grid` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.patch_stitch.R_FixSharedVertexLodError_r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L448)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-getentitytoken-function-r-getentitytoken-world-size-src-mq3-renderer-tr-bsp-runtime-ml-139238013"></a>
 ### R_GetEntityToken
@@ -449,7 +467,7 @@ Updates `world.entityParser` in `mq3.renderer.tr_bsp_runtime.R_GetEntityToken`; 
 | `size` | `dynamic` | — | Input tested by `world==void or world.entityParser==void or size<=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L423)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadentities-function-r-loadentities-world-src-mq3-renderer-tr-bsp-runtime-ml-226588296"></a>
 ### R_LoadEntities
@@ -465,7 +483,7 @@ Updates `world.entities`, `world.entityParser` in `mq3.renderer.tr_bsp_runtime.R
 | `world` | `dynamic` | — | Mutable record or buffer; this call updates `world.entities`, `world.entityParser`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L417)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadfogs-function-r-loadfogs-map-shaderindex-src-mq3-renderer-tr-bsp-runtime-ml-736638437"></a>
 ### R_LoadFogs
@@ -482,7 +500,7 @@ Computes `R_LoadFogs` from `playableFog.load(map,shaderIndex)` using `mq3.render
 | `shaderIndex` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.playable_fog.load`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L410)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadlightgrid-function-r-loadlightgrid-map-src-mq3-renderer-tr-bsp-runtime-ml-355707300"></a>
 ### R_LoadLightGrid
@@ -498,7 +516,7 @@ Calls `mq3.renderer.playable_light_grid.load` with `(map)` and returns its resul
 | `map` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_light_grid.load`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L413)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadlightmaps-function-r-loadlightmaps-map-mapoverbrightbits-rendereroverbrightbits-debugintensity-src-mq3-renderer-tr-bsp-runtime-ml-781094683"></a>
 ### R_LoadLightmaps
@@ -517,7 +535,7 @@ Builds `rgba[pixel*4]`, `rgba[pixel*4+1]`, `rgba[pixel*4+2]` in `mq3.renderer.tr
 | `debugIntensity` | `dynamic` | — | Input tested by `debugIntensity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L263)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadmarksurfaces-function-r-loadmarksurfaces-map-src-mq3-renderer-tr-bsp-runtime-ml-1822229846"></a>
 ### R_LoadMarksurfaces
@@ -533,7 +551,7 @@ Returns `result` from `mq3.renderer.tr_bsp_runtime.R_LoadMarksurfaces`; earlier 
 | `map` | `dynamic` | — | Record providing `map.counts`, `map.offsets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L381)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadnodesandleafs-function-r-loadnodesandleafs-map-src-mq3-renderer-tr-bsp-runtime-ml-148686958"></a>
 ### R_LoadNodesAndLeafs
@@ -549,7 +567,7 @@ Builds one indexed BSP node/leaf array and converts negative child encodings int
 | `map` | `dynamic` | — | Record providing `map.counts`, `map.offsets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L394)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadplanes-function-r-loadplanes-map-src-mq3-renderer-tr-bsp-runtime-ml-1004254614"></a>
 ### R_LoadPlanes
@@ -565,7 +583,7 @@ Loads BSP plane normals/distances and derives axial plane types and normal sign 
 | `map` | `dynamic` | — | Record providing `map.counts`, `map.offsets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L374)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadshaders-function-r-loadshaders-map-src-mq3-renderer-tr-bsp-runtime-ml-1093697096"></a>
 ### R_LoadShaders
@@ -581,7 +599,7 @@ Returns `values` from `mq3.renderer.tr_bsp_runtime.R_LoadShaders`.
 | `map` | `dynamic` | — | Record providing `map.counts`, `map.offsets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L294)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadsubmodels-function-r-loadsubmodels-world-src-mq3-renderer-tr-bsp-runtime-ml-904621630"></a>
 ### R_LoadSubmodels
@@ -597,7 +615,7 @@ Loads inline brush-model geometry and associates each submodel with its BSP surf
 | `world` | `dynamic` | — | Record providing `world.map`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L402)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadsurfaces-function-r-loadsurfaces-world-src-mq3-renderer-tr-bsp-runtime-ml-2138941328"></a>
 ### R_LoadSurfaces
@@ -613,7 +631,7 @@ Decodes every BSP surface by planar, patch, triangle-soup, or flare type and rej
 | `world` | `dynamic` | — | Record providing `world.map`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L352)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-loadvisibility-function-r-loadvisibility-map-numclusters-externalvisdata-src-mq3-renderer-tr-bsp-runtime-ml-860882360"></a>
 ### R_LoadVisibility
@@ -631,7 +649,7 @@ Builds `mq3.renderer.tr_bsp_runtime.Visibility` for `mq3.renderer.tr_bsp_runtime
 | `externalVisData` | `dynamic` | — | Input used by `data=externalVisData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L285)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-mergedheightpoints-function-r-mergedheightpoints-grid-offset-src-mq3-renderer-tr-bsp-runtime-ml-347344115"></a>
 ### R_MergedHeightPoints
@@ -648,7 +666,7 @@ Detects nearly coincident interior points along one patch-grid column using a 0.
 | `offset` | `dynamic` | — | Input used by `while j<grid.height-1 if nearPoint(grid.control[offset+i*grid.width].position,grid.control[offset+j*grid.width].position,0.1) then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L441)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-mergedwidthpoints-function-r-mergedwidthpoints-grid-offset-src-mq3-renderer-tr-bsp-runtime-ml-177230375"></a>
 ### R_MergedWidthPoints
@@ -665,7 +683,7 @@ Returns `false` from `mq3.renderer.tr_bsp_runtime.R_MergedWidthPoints`; earlier 
 | `offset` | `dynamic` | — | Input used by `while j<grid.width-1 if nearPoint(grid.control[offset+i].position,grid.control[offset+j].position,0.1) then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L435)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-movepatchsurfacestohunk-function-r-movepatchsurfacestohunk-grids-src-mq3-renderer-tr-bsp-runtime-ml-1457952159"></a>
 ### R_MovePatchSurfacesToHunk
@@ -681,7 +699,7 @@ Returns `result` from `mq3.renderer.tr_bsp_runtime.R_MovePatchSurfacesToHunk`.
 | `grids` | `dynamic` | — | Sequence traversed as `grid` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L461)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-setparent-function-r-setparent-nodes-index-parent-src-mq3-renderer-tr-bsp-runtime-ml-1883934453"></a>
 ### R_SetParent
@@ -699,7 +717,7 @@ Builds `node.parent` in `mq3.renderer.tr_bsp_runtime.R_SetParent`; returns `R_Se
 | `parent` | `dynamic` | — | Value assigned to `node.parent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L388)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-stitchallpatches-function-r-stitchallpatches-grids-src-mq3-renderer-tr-bsp-runtime-ml-2041408005"></a>
 ### R_StitchAllPatches
@@ -715,7 +733,7 @@ Calls `mq3.renderer.patch_stitch.R_StitchAllPatches` with `(grids)` and returns 
 | `grids` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.patch_stitch.R_StitchAllPatches`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L458)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-r-stitchpatches-function-r-stitchpatches-grid1-grid2-src-mq3-renderer-tr-bsp-runtime-ml-595612687"></a>
 ### R_StitchPatches
@@ -732,7 +750,7 @@ Calls `mq3.renderer.patch_stitch.R_StitchPatches` with `(grid1,grid2)` and retur
 | `grid2` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.patch_stitch.R_StitchPatches`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L455)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-re-loadworldmap-function-re-loadworldmap-state-name-data-shaderindex-src-mq3-renderer-tr-bsp-runtime-ml-1060394389"></a>
 ### RE_LoadWorldMap
@@ -751,7 +769,7 @@ Updates `state.worldMapLoaded`, `state.world` in `mq3.renderer.tr_bsp_runtime.RE
 | `shaderIndex` | `dynamic` | — | Value forwarded as `shaderIndex` to `mq3.renderer.tr_bsp_runtime.R_LoadFogs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L468)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-re-setworldvisdata-function-re-setworldvisdata-state-vis-src-mq3-renderer-tr-bsp-runtime-ml-1578561549"></a>
 ### RE_SetWorldVisData
@@ -768,7 +786,7 @@ Updates `state.externalVisData` in `mq3.renderer.tr_bsp_runtime.RE_SetWorldVisDa
 | `vis` | `dynamic` | — | Value assigned to `state.externalVisData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L280)
 
 <a id="function-function-mq3-renderer-tr-bsp-runtime-samelodgroup-function-samelodgroup-a-b-src-mq3-renderer-tr-bsp-runtime-ml-70825987"></a>
 ### sameLodGroup
@@ -785,7 +803,7 @@ Computes `a.lodRadius==b.lodRadius and a.lodOrigin==b.lodOrigin` for `mq3.render
 | `b` | `dynamic` | — | Record providing `b.lodRadius`, `b.lodOrigin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L431)
 
 - [mq3.renderer.tr_bsp_runtime.Shader](Type-mq3-renderer-tr-bsp-runtime-shader-1371725973.md) — struct
 <a id="function-function-mq3-renderer-tr-bsp-runtime-shaderforshadernum-function-shaderforshadernum-world-shadernum-lightmapnum-src-mq3-renderer-tr-bsp-runtime-ml-886658415"></a>
@@ -804,7 +822,7 @@ Builds `mq3.renderer.tr_bsp_runtime.Shader` for `mq3.renderer.tr_bsp_runtime.Sha
 | `lightmapNum` | `dynamic` | — | Initial value for `mq3.renderer.tr_bsp_runtime.Shader.lightmapIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L303)
 
 - [mq3.renderer.tr_bsp_runtime.State](Type-mq3-renderer-tr-bsp-runtime-state-1447583673.md) — struct
 - [mq3.renderer.tr_bsp_runtime.Surface](Type-mq3-renderer-tr-bsp-runtime-surface-696433887.md) — struct
@@ -823,7 +841,7 @@ Returns `[i32(world.map,offset),i32(world.map,offset+4)+1,i32(world.map,offset+8
 | `index` | `dynamic` | — | Input tested by `index<0 or index>=world.map.counts[13]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L311)
 
 - [mq3.renderer.tr_bsp_runtime.Visibility](Type-mq3-renderer-tr-bsp-runtime-visibility-987638648.md) — struct
 - [mq3.renderer.tr_bsp_runtime.World](Type-mq3-renderer-tr-bsp-runtime-world-292307360.md) — struct

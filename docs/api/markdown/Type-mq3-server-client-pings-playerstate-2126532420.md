@@ -12,7 +12,7 @@ struct PlayerState
 PlayerState record for server.client_pings, containing `ping`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L36)
 
 ## Members
 
@@ -23,5 +23,7 @@ PlayerState record for server.client_pings, containing `ping`.
 ping
 ```
 
+Estimated round-trip client latency in milliseconds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L38)

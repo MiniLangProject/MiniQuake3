@@ -20,8 +20,10 @@ Reachable from entry: **no**
 const BLOCK_SAMPLES = 4096
 ```
 
+Maximum number of mono samples encoded in one ADPCM block.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L10)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-clampindex-function-clampindex-value-src-mq3-audio-snd-adpcm-runtime-ml-990609907"></a>
 ### clampIndex
@@ -37,7 +39,7 @@ Clamp index in audio.snd_adpcm_runtime; the normal completion returns `value`.
 | `value` | `dynamic` | — | Value used in `(value < 0)` and `(value > 88)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L30)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-clampsample-function-clampsample-value-src-mq3-audio-snd-adpcm-runtime-ml-148176181"></a>
 ### clampSample
@@ -53,7 +55,7 @@ Clamp sample in audio.snd_adpcm_runtime; the normal completion returns `value`.
 | `value` | `dynamic` | — | Value used in `(value > 32767)` and `(value < - 32768)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L33)
 
 - [mq3.audio.snd_adpcm_runtime.Encoded](Type-mq3-audio-snd-adpcm-runtime-encoded-5239126.md) — struct
 <a id="constant-constant-mq3-audio-snd-adpcm-runtime-header-bytes-const-header-bytes-8-src-mq3-audio-snd-adpcm-runtime-ml-652547275"></a>
@@ -63,8 +65,10 @@ Clamp sample in audio.snd_adpcm_runtime; the normal completion returns `value`.
 const HEADER_BYTES = 8
 ```
 
+Bytes of predictor and step-index overhead reserved for each ADPCM block.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L12)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-memory-function-memory-rate-samples-dmaspeed-src-mq3-audio-snd-adpcm-runtime-ml-1417343814"></a>
 ### memory
@@ -82,7 +86,7 @@ Return `mq3.audio.snd_adpcm_runtime.S_AdpcmMemoryNeeded(rate, samples, dmaSpeed)
 | `dmaSpeed` | `dynamic` | — | Dma speed passed as `dmaSpeed` to `mq3.audio.snd_adpcm_runtime.S_AdpcmMemoryNeeded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L116)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-s-adpcmdecode-function-s-adpcmdecode-data-count-state-src-mq3-audio-snd-adpcm-runtime-ml-937322456"></a>
 ### S_AdpcmDecode
@@ -103,7 +107,7 @@ Direct state writes: `state.sample`, `state.index`.
 | `state` | `dynamic` | — | Record exposing `sample`, `index`. Updated in place: `sample`, `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L65)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-s-adpcmencode-function-s-adpcmencode-samples-state-src-mq3-audio-snd-adpcm-runtime-ml-1691659188"></a>
 ### S_AdpcmEncode
@@ -123,7 +127,7 @@ Direct state writes: `state.sample`, `state.index`.
 | `state` | `dynamic` | — | Record exposing `index`, `sample`. Updated in place: `sample`, `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L41)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-s-adpcmencodesound-function-s-adpcmencodesound-samples-src-mq3-audio-snd-adpcm-runtime-ml-960153"></a>
 ### S_AdpcmEncodeSound
@@ -141,7 +145,7 @@ Validation failures include `S_AdpcmEncodeSound: samples are required`.
 | `samples` | `dynamic` | — | Samples used in `samples[0]` and `len(samples)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L88)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-s-adpcmgetsamples-function-s-adpcmgetsamples-block-src-mq3-audio-snd-adpcm-runtime-ml-580104939"></a>
 ### S_AdpcmGetSamples
@@ -157,7 +161,7 @@ Compute adpcm get samples in audio.snd_adpcm_runtime; the normal completion retu
 | `block` | `dynamic` | — | Record exposing `sample`, `index`, `data`, `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L79)
 
 <a id="function-function-mq3-audio-snd-adpcm-runtime-s-adpcmmemoryneeded-function-s-adpcmmemoryneeded-rate-samples-dmaspeed-src-mq3-audio-snd-adpcm-runtime-ml-920232288"></a>
 ### S_AdpcmMemoryNeeded
@@ -177,6 +181,6 @@ Validation failures include `S_AdpcmMemoryNeeded: invalid format`.
 | `dmaSpeed` | `dynamic` | — | Floating-point value to narrow to binary32. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L106)
 
 - [mq3.audio.snd_adpcm_runtime.State](Type-mq3-audio-snd-adpcm-runtime-state-1551126345.md) — struct

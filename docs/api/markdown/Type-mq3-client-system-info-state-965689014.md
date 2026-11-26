@@ -23,8 +23,10 @@ Stores system info state, including `serverId`, `demoPlaying`, `connectedPure`.
 connectedPure
 ```
 
+When constructing this record, `create` supplies `0` for this member. Used by `apply` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L18)
 
 <a id="field-field-mq3-client-system-info-state-demoplaying-demoplaying-src-mq3-client-system-info-ml-1159913102"></a>
 ### demoPlaying
@@ -33,8 +35,10 @@ connectedPure
 demoPlaying
 ```
 
+True while the client receives its game data from a recorded demo.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L15)
 
 <a id="field-field-mq3-client-system-info-state-serverid-serverid-src-mq3-client-system-info-ml-1500286498"></a>
 ### serverId
@@ -43,5 +47,7 @@ demoPlaying
 serverId
 ```
 
+Server-instance identifier included in client messages to reject stale connections.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L13)

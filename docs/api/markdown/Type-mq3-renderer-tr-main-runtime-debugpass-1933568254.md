@@ -12,7 +12,7 @@ struct DebugPass
 Data record for `mq3.renderer.tr_main_runtime.DebugPass`; groups `color`, `points`, `wireframe`, `depthMin`, `depthMax`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L71)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_main_runtime.DebugPass`; groups `color`, `point
 color
 ```
 
+Uniform color selected for the filled or wireframe debug polygon pass.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L73)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-depthmax-depthmax-src-mq3-renderer-tr-main-runtime-ml-2143483073"></a>
 ### depthMax
@@ -33,8 +35,10 @@ color
 depthMax
 ```
 
+Upper bound of the depth range used by this rendering pass.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L81)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-depthmin-depthmin-src-mq3-renderer-tr-main-runtime-ml-1411391757"></a>
 ### depthMin
@@ -43,8 +47,10 @@ depthMax
 depthMin
 ```
 
+Lower bound of the depth range used by this rendering pass.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L79)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-points-points-src-mq3-renderer-tr-main-runtime-ml-1607058397"></a>
 ### points
@@ -53,8 +59,10 @@ depthMin
 points
 ```
 
+Points defining the face, polygon, or clipping result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L75)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-wireframe-wireframe-src-mq3-renderer-tr-main-runtime-ml-305352503"></a>
 ### wireframe
@@ -63,5 +71,7 @@ points
 wireframe
 ```
 
+Whether polygon edges are drawn instead of filled triangles.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L77)

@@ -9,7 +9,7 @@
 struct VM
 ```
 
-VM record for vm.interpreter, containing `code`, `addresses`, `starts`, `widths`, `needs`, `data`, and 8 further fields.
+Validated QVM image, decoded instruction metadata, mutable data memory, and execution counters.
 
 
 [View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L10)
@@ -23,8 +23,10 @@ VM record for vm.interpreter, containing `code`, `addresses`, `starts`, `widths`
 addresses
 ```
 
+Zero-based instruction-number table mapping each instruction to its code byte offset.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L15)
 
 <a id="field-field-mq3-vm-interpreter-vm-breaks-breaks-src-mq3-vm-interpreter-ml-1998597664"></a>
 ### breaks
@@ -33,8 +35,10 @@ addresses
 breaks
 ```
 
+Cumulative number of OP_BREAK instructions observed; OP_BREAK increments this counter and continues.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L39)
 
 <a id="field-field-mq3-vm-interpreter-vm-code-code-src-mq3-vm-interpreter-ml-143015542"></a>
 ### code
@@ -43,8 +47,10 @@ breaks
 code
 ```
 
+Byte-offset-indexed decoded code array: opcodes, widened immediates, and branch targets rewritten from instruction numbers to code byte offsets.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L13)
 
 <a id="field-field-mq3-vm-interpreter-vm-data-data-src-mq3-vm-interpreter-ml-1716965912"></a>
 ### data
@@ -53,8 +59,10 @@ code
 data
 ```
 
+Mutable VM data bytes containing initialized data, literals, BSS, and stack storage.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L23)
 
 <a id="field-field-mq3-vm-interpreter-vm-limit-limit-src-mq3-vm-interpreter-ml-1013571640"></a>
 ### limit
@@ -63,8 +71,10 @@ data
 limit
 ```
 
+Maximum number of interpreter steps allowed for the current VM call.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L37)
 
 <a id="field-field-mq3-vm-interpreter-vm-mask-mask-src-mq3-vm-interpreter-ml-1819227248"></a>
 ### mask
@@ -73,8 +83,10 @@ limit
 mask
 ```
 
+Bit mask used to wrap/check VM data-memory offsets.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L25)
 
 <a id="field-field-mq3-vm-interpreter-vm-nativeplan-nativeplan-src-mq3-vm-interpreter-ml-2127120852"></a>
 ### nativePlan
@@ -83,8 +95,10 @@ mask
 nativePlan
 ```
 
+Prepared native-execution plan used when the interpreter delegates supported operations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L41)
 
 <a id="field-field-mq3-vm-interpreter-vm-needs-needs-src-mq3-vm-interpreter-ml-1639675252"></a>
 ### needs
@@ -93,8 +107,10 @@ nativePlan
 needs
 ```
 
+Minimum operand-stack depth required by each opcode, indexed by instruction byte offset.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L21)
 
 <a id="field-field-mq3-vm-interpreter-vm-programstack-programstack-src-mq3-vm-interpreter-ml-1506743132"></a>
 ### programStack
@@ -103,8 +119,10 @@ needs
 programStack
 ```
 
+Byte offset of the current stack frame in QVM data memory.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L27)
 
 <a id="field-field-mq3-vm-interpreter-vm-stackbottom-stackbottom-src-mq3-vm-interpreter-ml-1425734452"></a>
 ### stackBottom
@@ -113,8 +131,10 @@ programStack
 stackBottom
 ```
 
+Exclusive lower guard boundary of the QVM program stack; the stack pointer must remain above this byte offset.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L30)
 
 <a id="field-field-mq3-vm-interpreter-vm-starts-starts-src-mq3-vm-interpreter-ml-814450446"></a>
 ### starts
@@ -123,8 +143,10 @@ stackBottom
 starts
 ```
 
+Byte-offset-indexed markers identifying valid instruction starts in the QVM code region.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L17)
 
 <a id="field-field-mq3-vm-interpreter-vm-steps-steps-src-mq3-vm-interpreter-ml-239161944"></a>
 ### steps
@@ -133,8 +155,10 @@ starts
 steps
 ```
 
+Cumulative execution-step counter across VM calls; each call measures its budget from its entry value.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L35)
 
 <a id="field-field-mq3-vm-interpreter-vm-syscall-syscall-src-mq3-vm-interpreter-ml-1284742452"></a>
 ### syscall
@@ -143,8 +167,10 @@ steps
 syscall
 ```
 
+Optional trap callback `(vm, argumentBase)` returning a value convertible to signed int32. `argumentBase` is a VM byte offset; slot zero holds the trap number and later slots hold arguments.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L33)
 
 <a id="field-field-mq3-vm-interpreter-vm-widths-widths-src-mq3-vm-interpreter-ml-83715862"></a>
 ### widths
@@ -153,5 +179,7 @@ syscall
 widths
 ```
 
+Immediate-operand byte counts (0, 1, or 4), indexed by instruction byte offset; excludes the opcode byte.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L19)

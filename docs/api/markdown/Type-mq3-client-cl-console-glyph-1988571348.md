@@ -12,7 +12,7 @@ struct Glyph
 Stores engine client console glyph record, including `x`, `y`, `ch`, `color`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L55)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores engine client console glyph record, including `x`, `y`, `ch`, `color`.
 ch
 ```
 
+When constructing this record, `lineGlyphs` supplies `ch` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L61)
 
 <a id="field-field-mq3-client-cl-console-glyph-color-color-src-mq3-client-cl-console-ml-1773872779"></a>
 ### color
@@ -33,8 +35,10 @@ ch
 color
 ```
 
+Console palette index from zero through seven encoded with this glyph character.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L63)
 
 <a id="field-field-mq3-client-cl-console-glyph-x-x-src-mq3-client-cl-console-ml-2070631863"></a>
 ### x
@@ -43,8 +47,10 @@ color
 x
 ```
 
+Horizontal coordinate of a console character in the target display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L57)
 
 <a id="field-field-mq3-client-cl-console-glyph-y-y-src-mq3-client-cl-console-ml-612353379"></a>
 ### y
@@ -53,5 +59,7 @@ x
 y
 ```
 
+Vertical coordinate of a console character in the target display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L59)

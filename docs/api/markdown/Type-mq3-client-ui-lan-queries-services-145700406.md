@@ -12,7 +12,7 @@ struct Services
 sendFn(context,sock,address,packet) owns the actual UDP socket. resolveFn returns a netchan.Address and is only needed for DNS names.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L29)
 
 ## Members
 
@@ -23,8 +23,10 @@ sendFn(context,sock,address,packet) owns the actual UDP socket. resolveFn return
 context
 ```
 
+Caller-supplied value forwarded unchanged to the service callbacks for LAN server status and ping queries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L36)
 
 <a id="field-field-mq3-client-ui-lan-queries-services-resolvefn-resolvefn-src-mq3-client-ui-lan-queries-ml-1855641213"></a>
 ### resolveFn
@@ -33,8 +35,10 @@ context
 resolveFn
 ```
 
+Host callback for the resolve operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L33)
 
 <a id="field-field-mq3-client-ui-lan-queries-services-sendfn-sendfn-src-mq3-client-ui-lan-queries-ml-602511877"></a>
 ### sendFn
@@ -43,5 +47,7 @@ resolveFn
 sendFn
 ```
 
+Host callback for the send operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L31)

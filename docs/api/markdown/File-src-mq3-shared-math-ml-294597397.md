@@ -29,7 +29,7 @@ Return `mq3.shared.math.DotProduct(a, b)` from `shared.math._DotProduct`.
 | `b` | `dynamic` | — | Right three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L407)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L417)
 
 <a id="function-function-mq3-shared-math-vectoradd-function-vectoradd-a-b-src-mq3-shared-math-ml-725041317"></a>
 ### _VectorAdd
@@ -46,7 +46,7 @@ Compute shared.math._VectorAdd as `[n.fadd(a[0], b[0]), n.fadd(a[1], b[1]), n.fa
 | `b` | `dynamic` | — | B used in `b[0]` and `b[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L415)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L425)
 
 <a id="function-function-mq3-shared-math-vectorcopy-function-vectorcopy-value-src-mq3-shared-math-ml-573446427"></a>
 ### _VectorCopy
@@ -62,7 +62,7 @@ Compute shared.math._VectorCopy as `[value[0], value[1], value[2]]`.
 | `value` | `dynamic` | — | Value used in `value[0]` and `value[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L418)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L428)
 
 <a id="function-function-mq3-shared-math-vectorma-function-vectorma-a-scale-b-src-mq3-shared-math-ml-1853722679"></a>
 ### _VectorMA
@@ -80,7 +80,7 @@ Return `mq3.shared.math.VectorMA(a, scale, b)` from `shared.math._VectorMA`.
 | `b` | `dynamic` | — | B passed as `b` to `mq3.shared.math.VectorMA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L403)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L413)
 
 <a id="function-function-mq3-shared-math-vectorscale-function-vectorscale-value-scale-src-mq3-shared-math-ml-623113615"></a>
 ### _VectorScale
@@ -97,7 +97,7 @@ Return `mq3.shared.math.VectorScale(value, scale)` from `shared.math._VectorScal
 | `scale` | `dynamic` | — | Scale passed as `scale` to `mq3.shared.math.VectorScale`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L422)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L432)
 
 <a id="function-function-mq3-shared-math-vectorsubtract-function-vectorsubtract-a-b-src-mq3-shared-math-ml-248279953"></a>
 ### _VectorSubtract
@@ -114,7 +114,7 @@ Compute shared.math._VectorSubtract as `[n.fsub(a[0], b[0]), n.fsub(a[1], b[1]),
 | `b` | `dynamic` | — | B used in `b[0]` and `b[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L411)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L421)
 
 <a id="function-function-mq3-shared-math-addpointtobounds-function-addpointtobounds-point-mins-maxs-src-mq3-shared-math-ml-1682905212"></a>
 ### AddPointToBounds
@@ -134,7 +134,7 @@ Direct state writes: `mins elements`, `maxs elements`.
 | `maxs` | `dynamic` | — | Mutable sequence written at `i`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L398)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L408)
 
 <a id="function-function-mq3-shared-math-angledelta-function-angledelta-first-second-src-mq3-shared-math-ml-1933659022"></a>
 ### AngleDelta
@@ -151,7 +151,7 @@ Return `mq3.shared.math.AngleNormalize180(n.fsub(first, second))` from `shared.m
 | `second` | `dynamic` | — | Right floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L374)
 
 <a id="function-function-mq3-shared-math-anglemod-function-anglemod-value-src-mq3-shared-math-ml-1117166953"></a>
 ### AngleMod
@@ -167,7 +167,7 @@ Return `mq3.shared.math.AngleNormalize360(value)` from `shared.math.AngleMod`.
 | `value` | `dynamic` | — | Angle passed as `angle` to `mq3.shared.math.AngleNormalize360`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L360)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L370)
 
 <a id="function-function-mq3-shared-math-anglenormalize180-function-anglenormalize180-angle-src-mq3-shared-math-ml-1573624401"></a>
 ### AngleNormalize180
@@ -216,7 +216,7 @@ Compute shared.math.AnglesSubtract as `[AngleSubtract(first[0], second[0]), Angl
 | `second` | `dynamic` | — | Second used in `second[0]` and `second[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L357)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L367)
 
 <a id="function-function-mq3-shared-math-anglestoaxis-function-anglestoaxis-angles-src-mq3-shared-math-ml-443776874"></a>
 ### AnglesToAxis
@@ -232,7 +232,7 @@ Compute angles to axis in shared.math; the normal completion returns `[vectors[0
 | `angles` | `dynamic` | — | Three-element [pitch, yaw, roll] array in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L350)
 
 <a id="function-function-mq3-shared-math-anglesubtract-function-anglesubtract-first-second-src-mq3-shared-math-ml-439132364"></a>
 ### AngleSubtract
@@ -249,7 +249,7 @@ Compute angle subtract in shared.math; the normal completion returns `value`.
 | `second` | `dynamic` | — | Right floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L353)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L363)
 
 <a id="function-function-mq3-shared-math-anglevectors-function-anglevectors-angles-src-mq3-shared-math-ml-1743136418"></a>
 ### AngleVectors
@@ -294,7 +294,7 @@ function AxisClear()
 Compute shared.math.AxisClear as `[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L352)
 
 <a id="function-function-mq3-shared-math-axiscopy-function-axiscopy-axis-src-mq3-shared-math-ml-963613663"></a>
 ### AxisCopy
@@ -310,7 +310,7 @@ Compute shared.math.AxisCopy as `[[axis[0][0], axis[0][1], axis[0][2]], [axis[1]
 | `axis` | `dynamic` | — | Axis used in `axis[0]` and `axis[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L345)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L355)
 
 <a id="function-function-mq3-shared-math-boxonplaneside-function-boxonplaneside-mins-maxs-plane-src-mq3-shared-math-ml-1826562420"></a>
 ### BoxOnPlaneSide
@@ -328,7 +328,7 @@ Classify an axis-aligned box using the axial plane shortcut or the projected-cor
 | `plane` | `dynamic` | — | Record exposing `type`, `dist`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L382)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L392)
 
 <a id="function-function-mq3-shared-math-boxonplaneside2-function-boxonplaneside2-mins-maxs-plane-src-mq3-shared-math-ml-463465598"></a>
 ### BoxOnPlaneSide2
@@ -346,7 +346,7 @@ Classify an axis-aligned box by explicitly projecting its extreme corners onto t
 | `plane` | `dynamic` | — | Record exposing `normal`, `dist`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L384)
 
 <a id="function-function-mq3-shared-math-bytetodir-function-bytetodir-index-src-mq3-shared-math-ml-773906252"></a>
 ### ByteToDir
@@ -362,7 +362,7 @@ Compute byte to dir in shared.math; the normal completion returns `[values[index
 | `index` | `dynamic` | — | Zero-based index into `values`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L275)
 
 <a id="function-function-mq3-shared-math-clampchar-function-clampchar-value-src-mq3-shared-math-ml-1385909471"></a>
 ### ClampChar
@@ -378,7 +378,7 @@ Clamp char in shared.math; the normal completion returns `value`.
 | `value` | `dynamic` | — | Value used in `(value > 127)` and `(value < - 128)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L262)
 
 <a id="function-function-mq3-shared-math-clampshort-function-clampshort-value-src-mq3-shared-math-ml-474234445"></a>
 ### ClampShort
@@ -394,7 +394,7 @@ Clamp short in shared.math; the normal completion returns `value`.
 | `value` | `dynamic` | — | Value used in `(value > 32767)` and `(value < - 32768)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L265)
 
 <a id="function-function-mq3-shared-math-clearbounds-function-clearbounds-src-mq3-shared-math-ml-1577159438"></a>
 ### ClearBounds
@@ -406,7 +406,7 @@ function ClearBounds()
 Compute shared.math.ClearBounds as `[[99999.0, 99999.0, 99999.0], [- 99999.0, - 99999.0, - 99999.0]]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L401)
 
 <a id="function-function-mq3-shared-math-colorbyte-function-colorbyte-value-src-mq3-shared-math-ml-549914135"></a>
 ### colorByte
@@ -422,7 +422,7 @@ Compute shared.math.colorByte as `(n.trunc32(n.fmul(value, 255.0)) & 255)`.
 | `value` | `dynamic` | — | Left floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L278)
 
 <a id="function-function-mq3-shared-math-colorbytes3-function-colorbytes3-r-g-b-src-mq3-shared-math-ml-868893513"></a>
 ### ColorBytes3
@@ -440,7 +440,7 @@ Compute shared.math.ColorBytes3 as `((colorByte(r) | (colorByte(g) << 8)) | (col
 | `b` | `dynamic` | — | Value passed as `value` to `mq3.shared.math.colorByte`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L283)
 
 <a id="function-function-mq3-shared-math-colorbytes4-function-colorbytes4-r-g-b-a-src-mq3-shared-math-ml-1106883768"></a>
 ### ColorBytes4
@@ -459,7 +459,7 @@ Return `mq3.compat.numeric.i32((((colorByte(r) | (colorByte(g) << 8)) | (colorBy
 | `a` | `dynamic` | — | Value passed as `value` to `mq3.shared.math.colorByte`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L289)
 
 <a id="function-function-mq3-shared-math-crossproduct-function-crossproduct-a-b-src-mq3-shared-math-ml-1712202677"></a>
 ### CrossProduct
@@ -476,7 +476,7 @@ Compute shared.math.CrossProduct as `[n.fsub(n.fmul(a[1], b[2]), n.fmul(a[2], b[
 | `b` | `dynamic` | — | B used in `b[2]` and `b[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L162)
 
 <a id="function-function-mq3-shared-math-dirtobyte-function-dirtobyte-direction-src-mq3-shared-math-ml-997475889"></a>
 ### DirToByte
@@ -492,7 +492,7 @@ Select the closest normal from the fixed Quake direction table by maximum dot pr
 | `direction` | `dynamic` | — | Left three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L268)
 
 <a id="function-function-mq3-shared-math-distance-function-distance-a-b-src-mq3-shared-math-ml-585058257"></a>
 ### Distance
@@ -509,7 +509,7 @@ Return `mq3.compat.numeric.fsqrt(DistanceSquared(a, b))` from `shared.math.Dista
 | `b` | `dynamic` | — | B passed as `b` to `mq3.shared.math.DistanceSquared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L249)
 
 <a id="function-function-mq3-shared-math-distancesquared-function-distancesquared-a-b-src-mq3-shared-math-ml-160059509"></a>
 ### DistanceSquared
@@ -526,7 +526,7 @@ Compute distance squared in shared.math; the normal completion returns `DotProdu
 | `b` | `dynamic` | — | B used in `b[0]` and `b[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L245)
 
 <a id="function-function-mq3-shared-math-dotproduct-function-dotproduct-a-as-array-b-as-array-returns-float-src-mq3-shared-math-ml-1312321842"></a>
 ### DotProduct
@@ -545,7 +545,7 @@ Compute a three-component dot product with the numeric compatibility layer.
 
 **Returns:** The dot product with the compatibility layer's binary32 rounding.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L155)
 
 <a id="function-function-mq3-shared-math-lerpangle-function-lerpangle-startangle-target-fraction-src-mq3-shared-math-ml-1372172154"></a>
 ### LerpAngle
@@ -563,7 +563,7 @@ Interpolate between angles along the shorter wraparound direction.
 | `fraction` | `dynamic` | — | Left floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L214)
 
 <a id="function-function-mq3-shared-math-makenormalvectors-function-makenormalvectors-forward-src-mq3-shared-math-ml-1180006995"></a>
 ### MakeNormalVectors
@@ -579,7 +579,7 @@ Build perpendicular right/up directions around a forward vector.
 | `forward` | `dynamic` | — | Normalized three-element forward direction. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L327)
 
 <a id="function-function-mq3-shared-math-matrixmultiply-function-matrixmultiply-left-right-src-mq3-shared-math-ml-1993395845"></a>
 ### MatrixMultiply
@@ -596,7 +596,7 @@ Compute matrix multiply in shared.math; the normal completion returns `result`.
 | `right` | `dynamic` | — | Right used in `right[0]` and `right[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L309)
 
 <a id="function-function-mq3-shared-math-normalizecolor-function-normalizecolor-input-src-mq3-shared-math-ml-1150959240"></a>
 ### NormalizeColor
@@ -612,7 +612,7 @@ Scale an RGB vector by its largest component and return [original maximum, norma
 | `input` | `dynamic` | — | Input used in `input[0]` and `input[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L292)
 
 <a id="function-function-mq3-shared-math-perpendicularvector-function-perpendicularvector-source-src-mq3-shared-math-ml-1738084845"></a>
 ### PerpendicularVector
@@ -628,7 +628,7 @@ Construct a normalized vector perpendicular to the supplied direction.
 | `source` | `dynamic` | — | Normalized nonzero three-element direction. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L321)
 
 - [mq3.shared.math.Plane](Type-mq3-shared-math-plane-122607801.md) — struct
 <a id="function-function-mq3-shared-math-planefrompoints-function-planefrompoints-a-b-c-src-mq3-shared-math-ml-324064266"></a>
@@ -647,7 +647,7 @@ Construct the normalized plane through three points, handling degenerate triangl
 | `c` | `dynamic` | — | C used in `c[0]` and `c[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L301)
 
 <a id="function-function-mq3-shared-math-planetypefornormal-function-planetypefornormal-normal-src-mq3-shared-math-ml-623361097"></a>
 ### PlaneTypeForNormal
@@ -663,7 +663,7 @@ Compute plane type for normal in shared.math; the normal completion returns `3`.
 | `normal` | `dynamic` | — | Normal used in `normal[0]` and `normal[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L432)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L442)
 
 <a id="function-function-mq3-shared-math-projectpointonplane-function-projectpointonplane-point-normal-src-mq3-shared-math-ml-212480021"></a>
 ### ProjectPointOnPlane
@@ -680,7 +680,7 @@ Project a point onto the plane through the origin using the original Quake proje
 | `normal` | `dynamic` | — | Unit plane normal; the plane passes through the origin. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L315)
 
 <a id="function-function-mq3-shared-math-q-crandom-function-q-crandom-state-src-mq3-shared-math-ml-1889018369"></a>
 ### Q_crandom
@@ -696,7 +696,7 @@ Advance the random seed and map the generated fraction to the centered random ra
 | `state` | `dynamic` | — | State passed as `state` to `mq3.shared.math.Q_random`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L131)
 
 <a id="function-function-mq3-shared-math-q-fabs-function-q-fabs-value-src-mq3-shared-math-ml-1294070601"></a>
 ### Q_fabs
@@ -712,7 +712,7 @@ Return `mq3.compat.numeric.bitsFloat((n.floatBits(value) & 2147483647))` from `s
 | `value` | `dynamic` | — | Floating-point value to narrow and reinterpret. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L147)
 
 <a id="function-function-mq3-shared-math-q-log2-function-q-log2-value-src-mq3-shared-math-ml-2140537917"></a>
 ### Q_log2
@@ -728,7 +728,7 @@ Compute log 2 in shared.math; the normal completion returns `result`.
 | `value` | `dynamic` | — | Value used in `(value >> 1)` and `(value != 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L439)
 
 <a id="function-function-mq3-shared-math-q-rand-function-q-rand-state-src-mq3-shared-math-ml-1214075257"></a>
 ### Q_rand
@@ -746,7 +746,7 @@ Direct state writes: `state.seed`.
 | `state` | `dynamic` | — | Record exposing `seed`. Updated in place: `seed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L118)
 
 <a id="function-function-mq3-shared-math-q-random-function-q-random-state-src-mq3-shared-math-ml-1033063829"></a>
 ### Q_random
@@ -762,7 +762,7 @@ Advance the random seed and scale its low bits into the original [0, 1) random r
 | `state` | `dynamic` | — | State passed as `state` to `mq3.shared.math.Q_rand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L125)
 
 <a id="function-function-mq3-shared-math-q-rsqrt-function-q-rsqrt-number-src-mq3-shared-math-ml-456821083"></a>
 ### Q_rsqrt
@@ -778,7 +778,7 @@ Approximate the reciprocal square root using the original bit estimate and Newto
 | `number` | `dynamic` | — | Left floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L137)
 
 <a id="function-function-mq3-shared-math-radiusfrombounds-function-radiusfrombounds-mins-maxs-src-mq3-shared-math-ml-1581325480"></a>
 ### RadiusFromBounds
@@ -795,7 +795,7 @@ Compute radius from bounds in shared.math; the normal completion returns `Vector
 | `maxs` | `dynamic` | — | Maxs used in `maxs[i]` and `Q_fabs(maxs[i])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L389)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L399)
 
 - [mq3.shared.math.RandomState](Type-mq3-shared-math-randomstate-976325275.md) — struct
 <a id="function-function-mq3-shared-math-rotatearounddirection-function-rotatearounddirection-axis-yaw-src-mq3-shared-math-ml-1824208410"></a>
@@ -815,7 +815,7 @@ Direct state writes: `axis elements`.
 | `yaw` | `dynamic` | — | Rotation angle in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L347)
 
 <a id="function-function-mq3-shared-math-rotatepointaroundvector-function-rotatepointaroundvector-direction-point-degrees-src-mq3-shared-math-ml-743655728"></a>
 ### RotatePointAroundVector
@@ -833,7 +833,7 @@ Rotate a point around a direction by an angle in degrees.
 | `degrees` | `dynamic` | — | Rotation angle in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L334)
 
 <a id="function-function-mq3-shared-math-setplanesignbits-function-setplanesignbits-plane-src-mq3-shared-math-ml-1078601478"></a>
 ### SetPlaneSignbits
@@ -851,7 +851,7 @@ Direct state writes: `plane.signbits`.
 | `plane` | `dynamic` | — | Record exposing `normal`. Updated in place: `signbits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L379)
 
 <a id="function-function-mq3-shared-math-snapvector-function-snapvector-v-src-mq3-shared-math-ml-621861070"></a>
 ### SnapVector
@@ -902,7 +902,7 @@ Compute shared.math.Vector4Scale as `[n.fmul(value[0], scale), n.fmul(value[1], 
 | `scale` | `dynamic` | — | Right floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L426)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L436)
 
 <a id="function-function-mq3-shared-math-vectorcompare-function-vectorcompare-a-b-src-mq3-shared-math-ml-185218089"></a>
 ### VectorCompare
@@ -919,7 +919,7 @@ Compute shared.math.VectorCompare as `(((a[0] == b[0]) and (a[1] == b[1])) and (
 | `b` | `dynamic` | — | B used in `b[0]` and `b[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L238)
 
 <a id="function-function-mq3-shared-math-vectorinverse-function-vectorinverse-v-src-mq3-shared-math-ml-1872684668"></a>
 ### VectorInverse
@@ -937,7 +937,7 @@ Direct state writes: `v elements`.
 | `v` | `dynamic` | — | Mutable sequence written at `i`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L259)
 
 <a id="function-function-mq3-shared-math-vectorlength-function-vectorlength-a-src-mq3-shared-math-ml-393753403"></a>
 ### VectorLength
@@ -953,7 +953,7 @@ Return `mq3.compat.numeric.fsqrt(DotProduct(a, a))` from `shared.math.VectorLeng
 | `a` | `dynamic` | — | Left three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L183)
 
 <a id="function-function-mq3-shared-math-vectorlengthsquared-function-vectorlengthsquared-a-src-mq3-shared-math-ml-177145343"></a>
 ### VectorLengthSquared
@@ -969,7 +969,7 @@ Return `mq3.shared.math.DotProduct(a, a)` from `shared.math.VectorLengthSquared`
 | `a` | `dynamic` | — | Left three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L241)
 
 <a id="function-function-mq3-shared-math-vectorma-function-vectorma-a-scale-b-src-mq3-shared-math-ml-1132874575"></a>
 ### VectorMA
@@ -987,7 +987,7 @@ Compute shared.math.VectorMA as `[n.fadd(a[0], n.fmul(scale, b[0])), n.fadd(a[1]
 | `b` | `dynamic` | — | B used in `b[0]` and `b[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L170)
 
 <a id="function-function-mq3-shared-math-vectornormalize-function-vectornormalize-a-src-mq3-shared-math-ml-617696759"></a>
 ### VectorNormalize
@@ -1005,7 +1005,7 @@ Direct state writes: `a elements`.
 | `a` | `dynamic` | — | Mutable sequence written at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L191)
 
 <a id="function-function-mq3-shared-math-vectornormalize2-function-vectornormalize2-a-src-mq3-shared-math-ml-876626439"></a>
 ### VectorNormalize2
@@ -1021,7 +1021,7 @@ Return a normalized vector copy while preserving the input vector.
 | `a` | `dynamic` | — | A passed as `a` to `mq3.shared.math.VectorLength`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L204)
 
 <a id="function-function-mq3-shared-math-vectornormalizefast-function-vectornormalizefast-v-src-mq3-shared-math-ml-1355596498"></a>
 ### VectorNormalizeFast
@@ -1039,7 +1039,7 @@ Direct state writes: `v elements`.
 | `v` | `dynamic` | — | Mutable sequence written at `i`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L254)
 
 <a id="function-function-mq3-shared-math-vectorrotate-function-vectorrotate-input-matrix-src-mq3-shared-math-ml-492079781"></a>
 ### VectorRotate
@@ -1056,7 +1056,7 @@ Compute shared.math.VectorRotate as `[DotProduct(input, matrix[0]), DotProduct(i
 | `matrix` | `dynamic` | — | Matrix used in `matrix[0]` and `matrix[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L349)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L359)
 
 <a id="function-function-mq3-shared-math-vectorscale-function-vectorscale-a-scale-src-mq3-shared-math-ml-1741461739"></a>
 ### VectorScale
@@ -1073,4 +1073,4 @@ Compute shared.math.VectorScale as `[n.fmul(a[0], scale), n.fmul(a[1], scale), n
 | `scale` | `dynamic` | — | Right floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L177)

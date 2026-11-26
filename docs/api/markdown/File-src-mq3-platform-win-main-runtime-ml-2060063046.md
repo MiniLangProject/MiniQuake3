@@ -29,7 +29,7 @@ Reads Unicode clipboard text as UTF-8 and truncates at newline, carriage return,
 
 **Returns:** UTF-8 byte length, or -1 if the clipboard cannot be read or converted.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L49)
 
 <a id="function-function-mq3-platform-win-main-runtime-create-function-create-src-mq3-platform-win-main-runtime-ml-507331032"></a>
 ### create
@@ -41,7 +41,7 @@ function create()
 Constructs `mq3.platform.win_main_runtime.Runtime` with `commandLine` = `""`, `events` = `array(MAX_QUED_EVENTS,void)`, `head` = `0`, `tail` = `0` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L232)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-cwdnative-extern-function-cwdnative-output-as-bytes-capacity-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-cwd-returns-i32-src-mq3-platform-win-main-runtime-ml-1875347203"></a>
 ### cwdNative
@@ -60,7 +60,7 @@ Copies the current directory as NUL-terminated UTF-8 text.
 
 **Returns:** UTF-8 byte length excluding NUL, or -1 on query/conversion failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="function-function-mq3-platform-win-main-runtime-decodefilelist-function-decodefilelist-data-size-src-mq3-platform-win-main-runtime-ml-115241125"></a>
 ### decodeFileList
@@ -77,7 +77,7 @@ Returns `result` from `mq3.platform.win_main_runtime.decodeFileList`.
 | `size` | `dynamic` | — | Input used by `for index=0 to size-1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L306)
 
 - [mq3.platform.win_main_runtime.Dll](Type-mq3-platform-win-main-runtime-dll-1708592090.md) — struct
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllattachnative-extern-function-dllattachnative-handle-as-ptr-systemcalls-as-ptr-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-attach-returns-i32-src-mq3-platform-win-main-runtime-ml-2056586367"></a>
@@ -97,7 +97,7 @@ Calls a module's dllEntry export with the engine syscall callback.
 
 **Returns:** 1 after dllEntry is called; 0 for invalid handles/callbacks or a missing export.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L93)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllloadnative-extern-function-dllloadnative-path-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-load-returns-ptr-src-mq3-platform-win-main-runtime-ml-415310635"></a>
 ### dllLoadNative
@@ -116,7 +116,7 @@ Loads a native module from a UTF-8 path.
 
 **Returns:** The module handle, or 0 if path conversion or LoadLibraryW fails.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L83)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllsymbolnative-extern-function-dllsymbolnative-handle-as-ptr-name-as-ptr-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-symbol-returns-ptr-src-mq3-platform-win-main-runtime-ml-832282803"></a>
 ### dllSymbolNative
@@ -135,7 +135,7 @@ Looks up an exported symbol in a loaded native module.
 
 **Returns:** The export address, or 0 for invalid arguments or an absent symbol.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L88)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllunloadnative-extern-function-dllunloadnative-handle-as-ptr-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-unload-returns-i32-src-mq3-platform-win-main-runtime-ml-1640381653"></a>
 ### dllUnloadNative
@@ -153,7 +153,7 @@ Releases a loaded native module reference.
 
 **Returns:** 1 when FreeLibrary succeeds; 0 otherwise.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L97)
 
 <a id="function-function-mq3-platform-win-main-runtime-emit-function-emit-state-kind-text-value-src-mq3-platform-win-main-runtime-ml-1246652025"></a>
 ### emit
@@ -172,7 +172,7 @@ Updates `state.actions` in `mq3.platform.win_main_runtime.emit`.
 | `value` | `dynamic` | — | Input used by `state.actions=state.actions+[[kind,text,value]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L243)
 
 - [mq3.platform.win_main_runtime.Event](Type-mq3-platform-win-main-runtime-event-1151323654.md) — struct
 <a id="function-function-mq3-platform-win-main-runtime-joinpath-function-joinpath-base-game-name-src-mq3-platform-win-main-runtime-ml-174494912"></a>
@@ -191,7 +191,7 @@ Returns `result+name` from `mq3.platform.win_main_runtime.joinPath`.
 | `name` | `dynamic` | — | Input used in the result expression `result+name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L375)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-listfilesnative-extern-function-listfilesnative-directory-as-ptr-directorylength-as-i32-extension-as-ptr-extensionlength-as-i32-filter-as-ptr-filterlength-as-i32-wantsubs-as-i32-output-as-bytes-capacity-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-list-files-returns-i32-src-mq3-platform-win-main-runtime-ml-821449092"></a>
 ### listFilesNative
@@ -217,7 +217,7 @@ Enumerates matching paths into a NUL-separated UTF-8 result buffer.
 
 **Returns:** Bytes used, negative required size if capacity is insufficient, or 0 for no results/conversion failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L78)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-lowmemorynative-extern-function-lowmemorynative-from-miniquake3-winmain-dll-symbol-mq3-winmain-low-physical-memory-returns-i32-src-mq3-platform-win-main-runtime-ml-1570351603"></a>
 ### lowMemoryNative
@@ -231,7 +231,7 @@ Tests the legacy low-memory threshold of at most 96 MiB total physical memory.
 
 **Returns:** 1 below or at the threshold; 0 otherwise or if the memory query fails.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L31)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-max-found-files-const-max-found-files-4096-src-mq3-platform-win-main-runtime-ml-74934640"></a>
 ### MAX_FOUND_FILES
@@ -240,8 +240,10 @@ Tests the legacy low-memory threshold of at most 96 MiB total physical memory.
 const MAX_FOUND_FILES = 4096
 ```
 
+Maximum number of filesystem search results retained by the platform adapter.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L11)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-max-qued-events-const-max-qued-events-256-src-mq3-platform-win-main-runtime-ml-519483546"></a>
 ### MAX_QUED_EVENTS
@@ -250,8 +252,10 @@ const MAX_FOUND_FILES = 4096
 const MAX_QUED_EVENTS = 256
 ```
 
+Capacity of the bounded system-event queue.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L13)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-mem-threshold-const-mem-threshold-100663296-src-mq3-platform-win-main-runtime-ml-744323022"></a>
 ### MEM_THRESHOLD
@@ -260,8 +264,10 @@ const MAX_QUED_EVENTS = 256
 const MEM_THRESHOLD = 100663296
 ```
 
+Physical-memory threshold used by the platform's low-memory startup heuristic.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L9)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-millisecondsnative-extern-function-millisecondsnative-from-miniquake3-winmain-dll-symbol-mq3-winmain-milliseconds-returns-u32-src-mq3-platform-win-main-runtime-ml-1252643997"></a>
 ### millisecondsNative
@@ -275,7 +281,7 @@ Reads the Windows multimedia clock.
 
 **Returns:** The unsigned 32-bit millisecond counter returned by timeGetTime.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-mkdirnative-extern-function-mkdirnative-path-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-mkdir-returns-i32-src-mq3-platform-win-main-runtime-ml-154117721"></a>
 ### mkdirNative
@@ -294,7 +300,7 @@ Creates a directory from a UTF-8 path.
 
 **Returns:** 1 if created or already present, 0 on creation failure, or -1 for invalid UTF-8 input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L44)
 
 <a id="function-function-mq3-platform-win-main-runtime-nativelist-function-nativelist-directory-extension-filter-wantsubs-src-mq3-platform-win-main-runtime-ml-977291299"></a>
 ### nativeList
@@ -313,7 +319,7 @@ Computes `nativeList` from `decodeFileList(output,size)` using `mq3.platform.win
 | `wantSubs` | `dynamic` | — | Input tested by `wantSubs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L318)
 
 <a id="function-function-mq3-platform-win-main-runtime-now-function-now-state-src-mq3-platform-win-main-runtime-ml-1451425981"></a>
 ### now
@@ -329,7 +335,7 @@ Returns `millisecondsNative()` from `mq3.platform.win_main_runtime.now`; earlier
 | `state` | `dynamic` | — | Record providing `state.clockFn`, `state.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L440)
 
 <a id="function-function-mq3-platform-win-main-runtime-popevent-function-popevent-state-src-mq3-platform-win-main-runtime-ml-1051158625"></a>
 ### popEvent
@@ -345,7 +351,7 @@ Updates `state.tail` in `mq3.platform.win_main_runtime.popEvent`; returns `event
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.tail`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L456)
 
 - [mq3.platform.win_main_runtime.Runtime](Type-mq3-platform-win-main-runtime-runtime-1096450402.md) — struct
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-scancdnative-extern-function-scancdnative-output-as-bytes-capacity-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-scan-cd-returns-i32-src-mq3-platform-win-main-runtime-ml-1311117002"></a>
@@ -365,7 +371,7 @@ Searches CD-ROM drives for a recognized Quake III installation directory.
 
 **Returns:** UTF-8 directory length, 0 if no installation is found, or -1 on conversion failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L54)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-char-const-se-char-2-src-mq3-platform-win-main-runtime-ml-1183054911"></a>
 ### SE_CHAR
@@ -374,8 +380,10 @@ Searches CD-ROM drives for a recognized Quake III installation directory.
 const SE_CHAR = 2
 ```
 
+System-event type carrying a character for text input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L19)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-console-const-se-console-5-src-mq3-platform-win-main-runtime-ml-376326042"></a>
 ### SE_CONSOLE
@@ -384,8 +392,10 @@ const SE_CHAR = 2
 const SE_CONSOLE = 5
 ```
 
+System-event type carrying a completed console command line.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L25)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-joystick-axis-const-se-joystick-axis-4-src-mq3-platform-win-main-runtime-ml-56219933"></a>
 ### SE_JOYSTICK_AXIS
@@ -394,8 +404,10 @@ const SE_CONSOLE = 5
 const SE_JOYSTICK_AXIS = 4
 ```
 
+System-event type carrying a joystick axis identifier and value.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L23)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-key-const-se-key-1-src-mq3-platform-win-main-runtime-ml-90342426"></a>
 ### SE_KEY
@@ -404,8 +416,10 @@ const SE_JOYSTICK_AXIS = 4
 const SE_KEY = 1
 ```
 
+System-event type carrying a key code and its press or release state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L17)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-mouse-const-se-mouse-3-src-mq3-platform-win-main-runtime-ml-1222589344"></a>
 ### SE_MOUSE
@@ -414,8 +428,10 @@ const SE_KEY = 1
 const SE_MOUSE = 3
 ```
 
+System-event type carrying relative horizontal and vertical mouse movement.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L21)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-none-const-se-none-0-src-mq3-platform-win-main-runtime-ml-10255469"></a>
 ### SE_NONE
@@ -424,8 +440,10 @@ const SE_MOUSE = 3
 const SE_NONE = 0
 ```
 
+Event-queue result indicating that no input or system event is available.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L15)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-packet-const-se-packet-6-src-mq3-platform-win-main-runtime-ml-1690933667"></a>
 ### SE_PACKET
@@ -434,8 +452,10 @@ const SE_NONE = 0
 const SE_PACKET = 6
 ```
 
+System-event type carrying a received network packet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L27)
 
 <a id="function-function-mq3-platform-win-main-runtime-spk-close-function-spk-close-state-src-mq3-platform-win-main-runtime-ml-1210033455"></a>
 ### Spk_Close
@@ -451,7 +471,7 @@ Returns `void` from `mq3.platform.win_main_runtime.Spk_Close`.
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.win_main_runtime.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L254)
 
 <a id="function-function-mq3-platform-win-main-runtime-spk-open-function-spk-open-state-name-src-mq3-platform-win-main-runtime-ml-1016680966"></a>
 ### Spk_Open
@@ -468,7 +488,7 @@ Returns `result` from `mq3.platform.win_main_runtime.Spk_Open`; earlier branches
 | `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L248)
 
 <a id="function-function-mq3-platform-win-main-runtime-spk-printf-function-spk-printf-state-text-src-mq3-platform-win-main-runtime-ml-1691994042"></a>
 ### Spk_Printf
@@ -485,7 +505,7 @@ Returns `ok` from `mq3.platform.win_main_runtime.Spk_Printf`; earlier branches r
 | `text` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L258)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-spkclosenative-extern-function-spkclosenative-from-miniquake3-winmain-dll-symbol-mq3-winmain-spk-close-returns-void-src-mq3-platform-win-main-runtime-ml-1294959200"></a>
 ### spkCloseNative
@@ -497,7 +517,7 @@ extern function spkCloseNative() from "miniquake3_winmain.dll" symbol "mq3_winma
 Closes the current diagnostic output file and clears its native handle.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L66)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-spkopennative-extern-function-spkopennative-path-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-spk-open-returns-i32-src-mq3-platform-win-main-runtime-ml-1337106103"></a>
 ### spkOpenNative
@@ -516,7 +536,7 @@ Replaces the currently open diagnostic output file with a UTF-8-selected binary 
 
 **Returns:** 1 when the output file opens; 0 on path conversion or open failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L59)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-spkwritenative-extern-function-spkwritenative-text-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-spk-write-returns-i32-src-mq3-platform-win-main-runtime-ml-613055826"></a>
 ### spkWriteNative
@@ -535,7 +555,7 @@ Writes and flushes bytes to the currently open diagnostic output file.
 
 **Returns:** 1 if every requested byte is written; 0 for invalid state/input or a short write.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L64)
 
 - [mq3.platform.win_main_runtime.Stream](Type-mq3-platform-win-main-runtime-stream-174207922.md) — struct
 - [mq3.platform.win_main_runtime.StreamRead](Type-mq3-platform-win-main-runtime-streamread-1544338586.md) — struct
@@ -554,7 +574,7 @@ Compares common string bytes and reports whether the second string first differs
 | `s1` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L337)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-beginprofiling-function-sys-beginprofiling-state-src-mq3-platform-win-main-runtime-ml-870702333"></a>
 ### Sys_BeginProfiling
@@ -570,7 +590,7 @@ Returns `void` from `mq3.platform.win_main_runtime.Sys_BeginProfiling`.
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.win_main_runtime.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L267)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-beginstreamedfile-function-sys-beginstreamedfile-state-file-readahead-context-readfn-seekfn-src-mq3-platform-win-main-runtime-ml-46284591"></a>
 ### Sys_BeginStreamedFile
@@ -591,7 +611,7 @@ Updates `state.streams` in `mq3.platform.win_main_runtime.Sys_BeginStreamedFile`
 | `seekFn` | `dynamic` | — | Value used for `mq3.platform.win_main_runtime.Stream.seekFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L413)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-checkcd-function-sys-checkcd-src-mq3-platform-win-main-runtime-ml-640671266"></a>
 ### Sys_CheckCD
@@ -603,7 +623,7 @@ function Sys_CheckCD()
 Returns `true` for the `mq3.platform.win_main_runtime.Sys_CheckCD` compatibility entry point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L359)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-cwd-function-sys-cwd-src-mq3-platform-win-main-runtime-ml-922687696"></a>
 ### Sys_Cwd
@@ -615,7 +635,7 @@ function Sys_Cwd()
 Returns `decode(slice(data,0,length))` from `mq3.platform.win_main_runtime.Sys_Cwd`; earlier branches return `""`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L297)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-defaultbasepath-function-sys-defaultbasepath-src-mq3-platform-win-main-runtime-ml-939471538"></a>
 ### Sys_DefaultBasePath
@@ -627,7 +647,7 @@ function Sys_DefaultBasePath()
 Calls `mq3.platform.win_main_runtime.Sys_Cwd` with `()` and returns its result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L301)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-defaultcdpath-function-sys-defaultcdpath-src-mq3-platform-win-main-runtime-ml-205180742"></a>
 ### Sys_DefaultCDPath
@@ -639,7 +659,7 @@ function Sys_DefaultCDPath()
 Returns `""` for the `mq3.platform.win_main_runtime.Sys_DefaultCDPath` compatibility entry point.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L299)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-endstreamedfile-function-sys-endstreamedfile-state-stream-src-mq3-platform-win-main-runtime-ml-837972185"></a>
 ### Sys_EndStreamedFile
@@ -656,7 +676,7 @@ Updates `stream.active` in `mq3.platform.win_main_runtime.Sys_EndStreamedFile`.
 | `stream` | `dynamic` | — | Mutable record or buffer; this call updates `stream.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L420)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-error-function-sys-error-state-text-src-mq3-platform-win-main-runtime-ml-291893230"></a>
 ### Sys_Error
@@ -673,7 +693,7 @@ Updates `state.fatal`, `state.errorText`, `state.printed`, `state.consoleVisible
 | `text` | `dynamic` | — | Value assigned to `state.errorText`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L272)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-freefilelist-function-sys-freefilelist-list-src-mq3-platform-win-main-runtime-ml-1729190668"></a>
 ### Sys_FreeFileList
@@ -689,7 +709,7 @@ Returns `len(list)` from `mq3.platform.win_main_runtime.Sys_FreeFileList`; earli
 | `list` | `dynamic` | — | Input tested by `list==void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L354)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-getclipboarddata-function-sys-getclipboarddata-src-mq3-platform-win-main-runtime-ml-470076584"></a>
 ### Sys_GetClipboardData
@@ -701,7 +721,7 @@ function Sys_GetClipboardData()
 Returns `decode(slice(data,0,length))` from `mq3.platform.win_main_runtime.Sys_GetClipboardData`; earlier branches return `void`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L361)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-getevent-function-sys-getevent-state-src-mq3-platform-win-main-runtime-ml-402022929"></a>
 ### Sys_GetEvent
@@ -717,7 +737,7 @@ Builds `mq3.platform.win_main_runtime.Event` using `state.pumpFn`, `state.consol
 | `state` | `dynamic` | — | Record providing `state.pumpFn`, `state.context`, `state.consoleFn`, `state.packetFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L459)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-in-restart-f-function-sys-in-restart-f-state-src-mq3-platform-win-main-runtime-ml-1939687301"></a>
 ### Sys_In_Restart_f
@@ -733,7 +753,7 @@ Updates `state.inputStarted` in `mq3.platform.win_main_runtime.Sys_In_Restart_f`
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputStarted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L345)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L469)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-init-function-sys-init-state-platform-major-build-cpuid-currentuser-src-mq3-platform-win-main-runtime-ml-2066092870"></a>
 ### Sys_Init
@@ -754,7 +774,7 @@ Updates `state.arch`, `state.cpuId`, `state.cpuString`, `state.username`, `state
 | `currentUser` | `dynamic` | — | Value assigned to `state.username`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L480)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-initstreamthread-function-sys-initstreamthread-state-src-mq3-platform-win-main-runtime-ml-991337321"></a>
 ### Sys_InitStreamThread
@@ -770,7 +790,7 @@ Updates `state.streamStarted` in `mq3.platform.win_main_runtime.Sys_InitStreamTh
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.streamStarted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L402)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-listfiles-function-sys-listfiles-directory-extension-filter-wantsubs-src-mq3-platform-win-main-runtime-ml-815686933"></a>
 ### Sys_ListFiles
@@ -789,7 +809,7 @@ Computes `Sys_ListFiles` from `nativeList(directory,wanted,"",wantSubs or direct
 | `wantSubs` | `dynamic` | — | Input used in the result expression `nativeList(directory,wanted,"",wantSubs or directories)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L347)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-listfilteredfiles-function-sys-listfilteredfiles-basedir-subdirs-filter-src-mq3-platform-win-main-runtime-ml-187056896"></a>
 ### Sys_ListFilteredFiles
@@ -807,7 +827,7 @@ Obtains filtered native file names and optionally restricts results to a case-in
 | `filter` | `dynamic` | — | Value forwarded as `filter` to `mq3.platform.win_main_runtime.nativeList`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L328)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-loaddll-function-sys-loaddll-state-name-basepath-cdpath-gamedir-systemcalls-src-mq3-platform-win-main-runtime-ml-358240253"></a>
 ### Sys_LoadDll
@@ -828,7 +848,7 @@ Updates `state.dlls` in `mq3.platform.win_main_runtime.Sys_LoadDll`.
 | `systemCalls` | `dynamic` | — | Value forwarded as `systemCalls` to `mq3.platform.win_main_runtime.dllAttachNative`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L394)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-lowphysicalmemory-function-sys-lowphysicalmemory-src-mq3-platform-win-main-runtime-ml-1719926140"></a>
 ### Sys_LowPhysicalMemory
@@ -840,7 +860,7 @@ function Sys_LowPhysicalMemory()
 Computes `lowMemoryNative()!=0` for `mq3.platform.win_main_runtime.Sys_LowPhysicalMemory`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L264)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-mkdir-function-sys-mkdir-path-src-mq3-platform-win-main-runtime-ml-1818430721"></a>
 ### Sys_Mkdir
@@ -856,7 +876,7 @@ Returns `mkdirNative(nativeBytesPtr(data),len(data))!=0` from `mq3.platform.win_
 | `path` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L295)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-net-restart-f-function-sys-net-restart-f-state-src-mq3-platform-win-main-runtime-ml-195700041"></a>
 ### Sys_Net_Restart_f
@@ -872,7 +892,7 @@ Returns `void` from `mq3.platform.win_main_runtime.Sys_Net_Restart_f`.
 | `state` | `dynamic` | — | Record providing `state.networkRestartFn`, `state.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L472)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-print-function-sys-print-state-message-src-mq3-platform-win-main-runtime-ml-1173935538"></a>
 ### Sys_Print
@@ -889,7 +909,7 @@ Updates `state.printed` in `mq3.platform.win_main_runtime.Sys_Print`; returns `t
 | `message` | `dynamic` | — | Value forwarded as `text` to `mq3.platform.win_main_runtime.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L291)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-queevent-function-sys-queevent-state-time-type-value-value2-ptrlength-data-src-mq3-platform-win-main-runtime-ml-1965425374"></a>
 ### Sys_QueEvent
@@ -911,7 +931,7 @@ Updates `state.tail`, `state.overflows`, `state.events[index]`, `state.head` in 
 | `data` | `dynamic` | — | Value used for `mq3.platform.win_main_runtime.Event.data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L325)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L449)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-quit-function-sys-quit-state-src-mq3-platform-win-main-runtime-ml-362461209"></a>
 ### Sys_Quit
@@ -927,7 +947,7 @@ Updates `state.inputStarted`, `state.quitCode` in `mq3.platform.win_main_runtime
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputStarted`, `state.quitCode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L282)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-scanforcd-function-sys-scanforcd-src-mq3-platform-win-main-runtime-ml-1652672946"></a>
 ### Sys_ScanForCD
@@ -939,7 +959,7 @@ function Sys_ScanForCD()
 Returns `decode(slice(data,0,length))` from `mq3.platform.win_main_runtime.Sys_ScanForCD`; earlier branches return `""`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L357)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-shutdownstreamthread-function-sys-shutdownstreamthread-state-src-mq3-platform-win-main-runtime-ml-513516045"></a>
 ### Sys_ShutdownStreamThread
@@ -955,7 +975,7 @@ Updates `state.streamStarted`, `state.streams` in `mq3.platform.win_main_runtime
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.streamStarted`, `state.streams`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L405)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-streamedread-function-sys-streamedread-stream-size-count-src-mq3-platform-win-main-runtime-ml-823657380"></a>
 ### Sys_StreamedRead
@@ -973,7 +993,7 @@ Builds `mq3.platform.win_main_runtime.StreamRead` using `stream.readFn`.
 | `count` | `dynamic` | — | Input tested by `stream==void or not stream.active or size<=0 or count<0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L425)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-streamseek-function-sys-streamseek-stream-offset-origin-src-mq3-platform-win-main-runtime-ml-15878081"></a>
 ### Sys_StreamSeek
@@ -991,7 +1011,7 @@ Updates `stream.position` in `mq3.platform.win_main_runtime.Sys_StreamSeek`; ret
 | `origin` | `dynamic` | — | Argument 4 supplied to `stream.seekFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L433)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-streamthread-function-sys-streamthread-state-src-mq3-platform-win-main-runtime-ml-883851793"></a>
 ### Sys_StreamThread
@@ -1007,7 +1027,7 @@ Computes `state!=void and state.streamStarted` for `mq3.platform.win_main_runtim
 | `state` | `dynamic` | — | Record providing `state.streamStarted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L436)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-unloaddll-function-sys-unloaddll-state-dll-src-mq3-platform-win-main-runtime-ml-1137417385"></a>
 ### Sys_UnloadDll
@@ -1024,7 +1044,7 @@ Updates `dll.handle`, `dll.entryPoint` in `mq3.platform.win_main_runtime.Sys_Unl
 | `dll` | `dynamic` | — | Mutable record or buffer; this call updates `dll.handle`, `dll.entryPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L366)
 
 <a id="function-function-mq3-platform-win-main-runtime-trydll-function-trydll-path-src-mq3-platform-win-main-runtime-ml-794174771"></a>
 ### tryDll
@@ -1040,7 +1060,7 @@ Builds `mq3.platform.win_main_runtime.Dll` for `mq3.platform.win_main_runtime.tr
 | `path` | `dynamic` | — | Initial value for `mq3.platform.win_main_runtime.Dll.path`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L381)
 
 <a id="function-function-mq3-platform-win-main-runtime-winmain-function-winmain-state-commandline-maxframes-src-mq3-platform-win-main-runtime-ml-1267629102"></a>
 ### WinMain
@@ -1058,4 +1078,4 @@ Updates `state.commandLine`, `state.consoleVisible`, `state.networkStarted`, `st
 | `maxFrames` | `dynamic` | — | Input tested by `state==void or maxFrames<0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L498)

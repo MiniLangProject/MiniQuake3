@@ -34,7 +34,7 @@ Set `state.routingCacheSize` to `state.routingCacheSize+size` in `mq3.botlib.be_
 | `numTravelTimes` | `dynamic` | — | Value passed as argument 1 to `array`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L246)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-alternativeroutegoals-function-aas-alternativeroutegoals-state-start-startareanum-goal-goalareanum-travelflags-maximum-type-src-mq3-botlib-be-aas-route-ml-188818320"></a>
 ### AAS_AlternativeRouteGoals
@@ -57,7 +57,7 @@ be_aas_routealt.c is exposed here as the natural companion of the routing adapte
 | `type` | `dynamic` | — | Value used by `alternativeRouteGoals` in `if (type&ALTROUTEGOAL_ALL)==0 and not (((type&ALTROUTEGOAL_CLUSTERPORTALS)!=0 and (contents&AREACONTENTS_CLUSTER...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L389)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L449)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-areacontentstravelflags-function-aas-areacontentstravelflags-state-areanum-src-mq3-botlib-be-aas-route-ml-1789596378"></a>
 ### AAS_AreaContentsTravelFlags
@@ -74,7 +74,7 @@ Forward `AAS_AreaContentsTravelFlags` to `mq3.botlib.be_aas_route.AAS_AreaConten
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L211)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-areacontentstravelflags-inline-function-aas-areacontentstravelflags-inline-state-areanum-src-mq3-botlib-be-aas-route-ml-796903454"></a>
 ### AAS_AreaContentsTravelFlags_inline
@@ -91,7 +91,7 @@ Read the precomputed area contents travel flags, returning TFL_INVALID for an in
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L207)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-areareachabilitytogoalarea-function-aas-areareachabilitytogoalarea-state-areanum-origin-goalareanum-travelflags-src-mq3-botlib-be-aas-route-ml-63759573"></a>
 ### AAS_AreaReachabilityToGoalArea
@@ -111,7 +111,7 @@ Return `AAS_AreaRouteToGoalArea(state,areaNum,origin,goalAreaNum,travelFlags).re
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L358)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-arearoutetogoalarea-function-aas-arearoutetogoalarea-state-areanum-origin-goalareanum-travelflags-src-mq3-botlib-be-aas-route-ml-2031539279"></a>
 ### AAS_AreaRouteToGoalArea
@@ -131,7 +131,7 @@ Build the `mq3.botlib.aas_routing.Route` result for `AAS_AreaRouteToGoalArea`.
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L339)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-areatraveltime-function-aas-areatraveltime-state-areanum-start-finish-src-mq3-botlib-be-aas-route-ml-161594423"></a>
 ### AAS_AreaTravelTime
@@ -150,7 +150,7 @@ Apply `mq3.botlib.be_aas_route.validState` and `mq3.botlib.aas_routing.areaTrave
 | `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L226)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-areatraveltimetogoalarea-function-aas-areatraveltimetogoalarea-state-areanum-origin-goalareanum-travelflags-src-mq3-botlib-be-aas-route-ml-671939941"></a>
 ### AAS_AreaTravelTimeToGoalArea
@@ -170,7 +170,7 @@ Return `AAS_AreaRouteToGoalArea(state,areaNum,origin,goalAreaNum,travelFlags).tr
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L351)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-areavisible-function-aas-areavisible-state-sourcearea-destinationarea-src-mq3-botlib-be-aas-route-ml-888697126"></a>
 ### AAS_AreaVisible
@@ -188,7 +188,7 @@ Use `state.services.visibleFn` to perform `AAS_AreaVisible`. Return paths includ
 | `destinationArea` | `dynamic` | — | Value passed as argument 3 to `state.services.visibleFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L410)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-bridgewalkable-function-aas-bridgewalkable-state-areanum-src-mq3-botlib-be-aas-route-ml-2119764090"></a>
 ### AAS_BridgeWalkable
@@ -205,7 +205,7 @@ Return `false` for `AAS_BridgeWalkable`.
 | `areaNum` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BridgeWalkable` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L376)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-calculateareatraveltimes-function-aas-calculateareatraveltimes-state-src-mq3-botlib-be-aas-route-ml-485351585"></a>
 ### AAS_CalculateAreaTravelTimes
@@ -221,7 +221,7 @@ Apply `mq3.botlib.be_aas_route.validState` and `mq3.botlib.be_aas_route.AAS_Crea
 | `state` | `dynamic` | — | Be AAS route state; accesses `staticTables`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L229)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-clusterareanum-function-aas-clusterareanum-state-cluster-areanum-src-mq3-botlib-be-aas-route-ml-1873070728"></a>
 ### AAS_ClusterAreaNum
@@ -239,7 +239,7 @@ Apply `mq3.botlib.be_aas_route.validState` and `mq3.botlib.aas_routing_cache.clu
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L135)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-createallroutingcache-function-aas-createallroutingcache-state-src-mq3-botlib-be-aas-route-ml-1794369895"></a>
 ### AAS_CreateAllRoutingCache
@@ -255,7 +255,7 @@ Apply `mq3.botlib.be_aas_route.validState`, `mq3.format.aas.area` and `mq3.botli
 | `state` | `dynamic` | — | Be AAS route state; accesses `router`, `runtime` and `cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L267)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-createreversedreachability-function-aas-createreversedreachability-state-src-mq3-botlib-be-aas-route-ml-76809805"></a>
 ### AAS_CreateReversedReachability
@@ -271,7 +271,7 @@ Set `state.staticTables` to `tables.create(state.router)` and `state.cache.stati
 | `state` | `dynamic` | — | Be AAS route state; accesses `staticTables`, `router` and `cache`. May update `state.staticTables` and `state.cache.staticTables` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L220)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-enableroutingarea-function-aas-enableroutingarea-state-areanum-enable-src-mq3-botlib-be-aas-route-ml-1271598181"></a>
 ### AAS_EnableRoutingArea
@@ -289,7 +289,7 @@ Apply `mq3.botlib.be_aas_route.validState`, `mq3.botlib.aas_runtime.enableRoutin
 | `enable` | `dynamic` | — | Value used by `enableRoutingArea` in `if enable<0 then return wasEnabled end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L192)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-freeallclusterareacache-function-aas-freeallclusterareacache-state-src-mq3-botlib-be-aas-route-ml-1638974505"></a>
 ### AAS_FreeAllClusterAreaCache
@@ -305,7 +305,7 @@ Set `state.cache.areaCaches` to `[]` in `mq3.botlib.be_aas_route.AAS_FreeAllClus
 | `state` | `dynamic` | — | Be AAS route state; accesses `cache`. May update `state.cache.areaCaches` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L252)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-freeallportalcache-function-aas-freeallportalcache-state-src-mq3-botlib-be-aas-route-ml-1253885841"></a>
 ### AAS_FreeAllPortalCache
@@ -321,7 +321,7 @@ Set `state.cache.portalCaches` to `[]` in `mq3.botlib.be_aas_route.AAS_FreeAllPo
 | `state` | `dynamic` | — | Be AAS route state; accesses `cache`. May update `state.cache.portalCaches` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L258)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-freeoldestcache-function-aas-freeoldestcache-state-src-mq3-botlib-be-aas-route-ml-1847717227"></a>
 ### AAS_FreeOldestCache
@@ -337,7 +337,7 @@ Apply `mq3.botlib.be_aas_route.AAS_FreeRoutingCache` while evaluating `AAS_FreeO
 | `state` | `dynamic` | — | Be AAS route state; accesses `lru`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L240)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-freeroutingcache-function-aas-freeroutingcache-state-value-src-mq3-botlib-be-aas-route-ml-1221181832"></a>
 ### AAS_FreeRoutingCache
@@ -354,7 +354,7 @@ Set `state.routingCacheSize` to `state.routingCacheSize-value.size` and `state.r
 | `value` | `dynamic` | — | Value record; accesses `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L166)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-freeroutingcaches-function-aas-freeroutingcaches-state-src-mq3-botlib-be-aas-route-ml-1290947567"></a>
 ### AAS_FreeRoutingCaches
@@ -370,7 +370,7 @@ Update `state.staticTables`, `state.areaContentTravelFlags`, `state.reachability
 | `state` | `dynamic` | — | Be AAS route state; accesses `cache`, `lru`, `staticTables`, `areaContentTravelFlags` and `reachabilityAreas` and related fields. May update `state.staticTables`, `state.areaContentTravelFlags` and `state.reachabilityAreas` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L309)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-getareacontentstravelflags-function-aas-getareacontentstravelflags-state-areanum-src-mq3-botlib-be-aas-route-ml-1387603990"></a>
 ### AAS_GetAreaContentsTravelFlags
@@ -387,7 +387,7 @@ Apply `mq3.botlib.be_aas_route.validState` and `mq3.botlib.aas_routing.areaConte
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L203)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-getarearoutingcache-function-aas-getarearoutingcache-state-cluster-areanum-travelflags-src-mq3-botlib-be-aas-route-ml-1208757423"></a>
 ### AAS_GetAreaRoutingCache
@@ -406,7 +406,7 @@ Apply `mq3.botlib.aas_routing_cache.getAreaCache` while evaluating `AAS_GetAreaR
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L321)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-getportalroutingcache-function-aas-getportalroutingcache-state-cluster-areanum-travelflags-src-mq3-botlib-be-aas-route-ml-1460007673"></a>
 ### AAS_GetPortalRoutingCache
@@ -425,7 +425,7 @@ Apply `mq3.botlib.aas_routing_cache.getPortalCache` while evaluating `AAS_GetPor
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L331)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-initareacontentstravelflags-function-aas-initareacontentstravelflags-state-src-mq3-botlib-be-aas-route-ml-1305061369"></a>
 ### AAS_InitAreaContentsTravelFlags
@@ -441,7 +441,7 @@ Set `state.areaContentTravelFlags` to `array(len(state.router.settings),0)` and 
 | `state` | `dynamic` | — | Be AAS route state; accesses `areaContentTravelFlags` and `router`. May update `state.areaContentTravelFlags` and `state.areaContentTravelFlags[areaNum]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L214)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-initclusterareacache-function-aas-initclusterareacache-state-src-mq3-botlib-be-aas-route-ml-920778241"></a>
 ### AAS_InitClusterAreaCache
@@ -457,7 +457,7 @@ Apply `mq3.botlib.be_aas_route.AAS_FreeAllClusterAreaCache` while evaluating `AA
 | `state` | `dynamic` | — | Be AAS route state; accesses `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L255)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-initportalcache-function-aas-initportalcache-state-src-mq3-botlib-be-aas-route-ml-430529701"></a>
 ### AAS_InitPortalCache
@@ -473,7 +473,7 @@ Apply `mq3.botlib.be_aas_route.AAS_FreeAllPortalCache` while evaluating `AAS_Ini
 | `state` | `dynamic` | — | Be AAS route state; accesses `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L261)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-initportalmaxtraveltimes-function-aas-initportalmaxtraveltimes-state-src-mq3-botlib-be-aas-route-ml-94186445"></a>
 ### AAS_InitPortalMaxTravelTimes
@@ -489,7 +489,7 @@ Apply `mq3.botlib.be_aas_route.validState` and `mq3.botlib.be_aas_route.AAS_Crea
 | `state` | `dynamic` | — | Be AAS route state; accesses `staticTables`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L236)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-initreachabilityareas-function-aas-initreachabilityareas-state-src-mq3-botlib-be-aas-route-ml-744449819"></a>
 ### AAS_InitReachabilityAreas
@@ -505,7 +505,7 @@ Update `state.reachabilityAreas` and `state.reachabilityAreaIndex` during `AAS_I
 | `state` | `dynamic` | — | Be AAS route state; accesses `reachabilityAreas`, `reachabilityAreaIndex` and `router`. May update `state.reachabilityAreas` and `state.reachabilityAreaIndex` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L293)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-initrouting-function-aas-initrouting-state-src-mq3-botlib-be-aas-route-ml-374570289"></a>
 ### AAS_InitRouting
@@ -521,7 +521,7 @@ Set `state.initialized` to `true` in `mq3.botlib.be_aas_route.AAS_InitRouting`.
 | `state` | `dynamic` | — | Be AAS route state; accesses `initialized`. May update `state.initialized` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L304)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-initroutingupdate-function-aas-initroutingupdate-state-src-mq3-botlib-be-aas-route-ml-1018632551"></a>
 ### AAS_InitRoutingUpdate
@@ -537,7 +537,7 @@ Return the combined number of AAS areas and portals required by routing updates.
 | `state` | `dynamic` | — | Be AAS route state; accesses `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L264)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-inittravelflagfromtype-function-aas-inittravelflagfromtype-state-src-mq3-botlib-be-aas-route-ml-318035533"></a>
 ### AAS_InitTravelFlagFromType
@@ -553,7 +553,7 @@ Return `20` for `AAS_InitTravelFlagFromType`.
 | `state` | `dynamic` | — | Not read by this implementation; retained in the `AAS_InitTravelFlagFromType` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L138)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-linkcache-function-aas-linkcache-state-value-src-mq3-botlib-be-aas-route-ml-2050719840"></a>
 ### AAS_LinkCache
@@ -570,7 +570,7 @@ Update `state.lru`, `value.linked` and `value.time` during `AAS_LinkCache`.
 | `value` | `dynamic` | — | Value record; accesses `linked` and `time`. May update `value.linked` and `value.time` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L159)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-nearesthidearea-function-aas-nearesthidearea-state-sourcenum-origin-areanum-enemynum-enemyorigin-enemyareanum-travelflags-src-mq3-botlib-be-aas-route-ml-1428440391"></a>
 ### AAS_NearestHideArea
@@ -593,7 +593,7 @@ Apply `mq3.botlib.be_aas_route.validState`, `mq3.botlib.be_aas_route.copyVector`
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L429)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-nextareareachability-function-aas-nextareareachability-state-areanum-reachnum-src-mq3-botlib-be-aas-route-ml-2118955395"></a>
 ### AAS_NextAreaReachability
@@ -611,7 +611,7 @@ Apply `mq3.botlib.aas_runtime.nextAreaReachability` while evaluating `AAS_NextAr
 | `reachNum` | `dynamic` | — | Operand used to evaluate the returned expression `reachNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L325)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L385)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-nextmodelreachability-function-aas-nextmodelreachability-state-num-modelnum-src-mq3-botlib-be-aas-route-ml-1607861228"></a>
 ### AAS_NextModelReachability
@@ -629,7 +629,7 @@ Apply `mq3.botlib.be_aas_route.validState` while evaluating `AAS_NextModelReacha
 | `modelNum` | `dynamic` | — | Value used by `AAS_NextModelReachability` in `if kind==routing.TRAVEL_ELEVATOR and reach.faceNum==modelNum then return index end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L330)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L390)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-portalmaxtraveltime-function-aas-portalmaxtraveltime-state-portalnum-src-mq3-botlib-be-aas-route-ml-214890309"></a>
 ### AAS_PortalMaxTravelTime
@@ -646,7 +646,7 @@ Apply `mq3.botlib.aas_routing_tables.portalMaxTravelTime` while evaluating `AAS_
 | `portalNum` | `dynamic` | — | Operand used to evaluate the returned expression `tables.portalMaxTravelTimes[portalNum]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L233)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-predictroute-function-aas-predictroute-state-route-areanum-origin-goalareanum-travelflags-maxareas-maxtime-stopevent-stopcontents-stoptravelflags-stopareanum-src-mq3-botlib-be-aas-route-ml-386654179"></a>
 ### AAS_PredictRoute
@@ -673,7 +673,7 @@ Apply `mq3.botlib.aas_route_extras.predictRoute` while evaluating `AAS_PredictRo
 | `stopAreaNum` | `dynamic` | — | Value used by `predictRouteCached` in `if (stopEvent&RSE_ENTERAREA)!=0 and testArea==stopAreaNum then route.stopEvent=RSE_ENTERAREA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L372)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-randomgoalarea-function-aas-randomgoalarea-state-areanum-travelflags-src-mq3-botlib-be-aas-route-ml-1166394851"></a>
 ### AAS_RandomGoalArea
@@ -691,7 +691,7 @@ Apply `mq3.botlib.be_aas_route.validState`, `mq3.botlib.aas_runtime.areaReachabi
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L402)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-reachabilityfromnum-function-aas-reachabilityfromnum-state-num-src-mq3-botlib-be-aas-route-ml-1627444199"></a>
 ### AAS_ReachabilityFromNum
@@ -708,7 +708,7 @@ Apply `mq3.botlib.aas_runtime.reachabilityFromNum` while evaluating `AAS_Reachab
 | `num` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L380)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-readcache-function-aas-readcache-state-data-src-mq3-botlib-be-aas-route-ml-260598505"></a>
 ### AAS_ReadCache
@@ -725,7 +725,7 @@ Apply `mq3.botlib.aas_routing_cache.decodeRcd` while evaluating `AAS_ReadCache`.
 | `data` | `dynamic` | — | Array or byte sequence accessed at `offset` and `offset+1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L278)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-readroutecache-function-aas-readroutecache-state-path-src-mq3-botlib-be-aas-route-ml-1265500770"></a>
 ### AAS_ReadRouteCache
@@ -742,7 +742,7 @@ Apply `mq3.botlib.aas_routing_cache.loadRcd` while evaluating `AAS_ReadRouteCach
 | `path` | `dynamic` | — | Resource path supplied to the file or parser operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L282)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-removeroutingcacheincluster-function-aas-removeroutingcacheincluster-state-cluster-src-mq3-botlib-be-aas-route-ml-1718693629"></a>
 ### AAS_RemoveRoutingCacheInCluster
@@ -759,7 +759,7 @@ Update `state.routingCacheSize` and `state.lru` during `AAS_RemoveRoutingCacheIn
 | `cluster` | `dynamic` | — | Value used by `AAS_RemoveRoutingCacheInCluster` in `for each value in state.lru if value.cluster==cluster then value.linked=false`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L172)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-removeroutingcacheusingarea-function-aas-removeroutingcacheusingarea-state-areanum-src-mq3-botlib-be-aas-route-ml-1453070368"></a>
 ### AAS_RemoveRoutingCacheUsingArea
@@ -776,7 +776,7 @@ Apply `mq3.botlib.be_aas_route.validState`, `mq3.botlib.be_aas_route.AAS_RemoveR
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L181)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-routinginfo-function-aas-routinginfo-state-src-mq3-botlib-be-aas-route-ml-817587197"></a>
 ### AAS_RoutingInfo
@@ -792,7 +792,7 @@ Apply `mq3.botlib.be_aas_route.validState` while evaluating `AAS_RoutingInfo`. R
 | `state` | `dynamic` | — | Be AAS route state; accesses `cache` and `routingCacheSize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L127)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-routingtime-function-aas-routingtime-state-src-mq3-botlib-be-aas-route-ml-720663915"></a>
 ### AAS_RoutingTime
@@ -808,7 +808,7 @@ Apply `mq3.botlib.aas_runtime.getTime` while evaluating `AAS_RoutingTime`. Retur
 | `state` | `dynamic` | — | Be AAS route state; accesses `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L198)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-travelflagfortype-function-aas-travelflagfortype-state-traveltype-src-mq3-botlib-be-aas-route-ml-1392294579"></a>
 ### AAS_TravelFlagForType
@@ -825,7 +825,7 @@ Forward `AAS_TravelFlagForType` to `mq3.botlib.be_aas_route.AAS_TravelFlagForTyp
 | `travelType` | `dynamic` | — | AAS reachability travel-type code. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L146)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-travelflagfortype-inline-function-aas-travelflagfortype-inline-state-traveltype-src-mq3-botlib-be-aas-route-ml-1858971337"></a>
 ### AAS_TravelFlagForType_inline
@@ -842,7 +842,7 @@ Forward `AAS_TravelFlagForType_inline` to `mq3.botlib.aas_routing.travelFlagForT
 | `travelType` | `dynamic` | — | AAS reachability travel-type code. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L142)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-unlinkcache-function-aas-unlinkcache-state-value-src-mq3-botlib-be-aas-route-ml-2083021802"></a>
 ### AAS_UnlinkCache
@@ -859,7 +859,7 @@ Set `state.lru` to `removeAt(state.lru,index)` and `value.linked` to `false` in 
 | `value` | `dynamic` | — | Value record; accesses `linked`. May update `value.linked` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L151)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-updatearearoutingcache-function-aas-updatearearoutingcache-state-value-src-mq3-botlib-be-aas-route-ml-1394746984"></a>
 ### AAS_UpdateAreaRoutingCache
@@ -876,7 +876,7 @@ Apply `mq3.botlib.aas_routing_cache.buildAreaCache` while evaluating `AAS_Update
 | `value` | `dynamic` | — | Value record; accesses `cluster`, `goalAreaNum` and `travelFlags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L315)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-updateportalroutingcache-function-aas-updateportalroutingcache-state-value-src-mq3-botlib-be-aas-route-ml-892875308"></a>
 ### AAS_UpdatePortalRoutingCache
@@ -893,7 +893,7 @@ Apply `mq3.botlib.aas_routing_cache.buildPortalCache` while evaluating `AAS_Upda
 | `value` | `dynamic` | — | Value record; accesses `cluster`, `goalAreaNum` and `travelFlags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L325)
 
 <a id="function-function-mq3-botlib-be-aas-route-aas-writeroutecache-function-aas-writeroutecache-state-path-src-mq3-botlib-be-aas-route-ml-1358388366"></a>
 ### AAS_WriteRouteCache
@@ -910,7 +910,7 @@ Apply `mq3.botlib.aas_routing_cache.saveRcd` while evaluating `AAS_WriteRouteCac
 | `path` | `dynamic` | — | Resource path supplied to the file or parser operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L274)
 
 <a id="function-function-mq3-botlib-be-aas-route-copyvector-function-copyvector-value-src-mq3-botlib-be-aas-route-ml-150323557"></a>
 ### copyVector
@@ -926,7 +926,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for be aas r
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L105)
 
 <a id="function-function-mq3-botlib-be-aas-route-create-function-create-runtime-maxentries-services-src-mq3-botlib-be-aas-route-ml-1144870318"></a>
 ### create
@@ -944,7 +944,7 @@ Apply `mq3.botlib.aas_routing.create`, `mq3.botlib.be_aas_route.createServices` 
 | `services` | `dynamic` | — | Initial value stored in `mq3.botlib.be_aas_route.State.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L118)
 
 <a id="function-function-mq3-botlib-be-aas-route-createservices-function-createservices-context-src-mq3-botlib-be-aas-route-ml-1973164791"></a>
 ### createServices
@@ -960,7 +960,7 @@ Create a `mq3.botlib.be_aas_route.Services` record, initializing `context` from 
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L102)
 
 <a id="function-function-mq3-botlib-be-aas-route-defaultrandom-function-defaultrandom-context-src-mq3-botlib-be-aas-route-ml-1228865879"></a>
 ### defaultRandom
@@ -976,7 +976,7 @@ Return `0.0` for `defaultRandom`.
 | `context` | `dynamic` | — | Not read by this implementation; retained in the `defaultRandom` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L99)
 
 <a id="function-function-mq3-botlib-be-aas-route-defaulttraceareas-function-defaulttraceareas-context-start-finish-maximum-src-mq3-botlib-be-aas-route-ml-423374212"></a>
 ### defaultTraceAreas
@@ -995,7 +995,7 @@ Return a new array `[]` for `defaultTraceAreas`.
 | `maximum` | `dynamic` | — | Not read by this implementation; retained in the `defaultTraceAreas` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L96)
 
 <a id="function-function-mq3-botlib-be-aas-route-defaultvisible-function-defaultvisible-context-sourcearea-destinationarea-src-mq3-botlib-be-aas-route-ml-1814585938"></a>
 ### defaultVisible
@@ -1013,7 +1013,7 @@ Return `false` for `defaultVisible`.
 | `destinationArea` | `dynamic` | — | Not read by this implementation; retained in the `defaultVisible` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L90)
 
 <a id="function-function-mq3-botlib-be-aas-route-distancepointtoline-function-distancepointtoline-v1-v2-point-src-mq3-botlib-be-aas-route-ml-1009034057"></a>
 ### DistancePointToLine
@@ -1031,7 +1031,7 @@ Calculate the distance from a point to the infinite line through two endpoints, 
 | `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L415)
 
 <a id="constant-constant-mq3-botlib-be-aas-route-max-reachability-pass-areas-const-max-reachability-pass-areas-32-src-mq3-botlib-be-aas-route-ml-1469187084"></a>
 ### MAX_REACHABILITY_PASS_AREAS
@@ -1040,8 +1040,10 @@ Calculate the distance from a point to the infinite line through two endpoints, 
 const MAX_REACHABILITY_PASS_AREAS = 32
 ```
 
+Maximum number of AAS areas collected while tracing a reachability path.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L16)
 
 <a id="function-function-mq3-botlib-be-aas-route-randomstart-function-randomstart-state-count-src-mq3-botlib-be-aas-route-ml-492490200"></a>
 ### randomStart
@@ -1058,7 +1060,7 @@ Use `state.services.randomFn` to perform `randomStart`. Return paths include `n.
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L397)
 
 - [mq3.botlib.be_aas_route.ReachabilityAreas](Type-mq3-botlib-be-aas-route-reachabilityareas-1419615598.md) — struct
 <a id="function-function-mq3-botlib-be-aas-route-removeat-function-removeat-values-index-src-mq3-botlib-be-aas-route-ml-983486602"></a>
@@ -1076,7 +1078,7 @@ Return a copy of the routing list without the specified element, preserving the 
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L112)
 
 - [mq3.botlib.be_aas_route.RoutingCache](Type-mq3-botlib-be-aas-route-routingcache-2084341335.md) — struct
 - [mq3.botlib.be_aas_route.Services](Type-mq3-botlib-be-aas-route-services-1860658199.md) — struct
@@ -1097,7 +1099,7 @@ Use `state.services.traceAreasFn` to perform `tracePassAreas`. Return paths incl
 | `finish` | `dynamic` | — | Value passed as argument 3 to `state.services.traceAreasFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L288)
 
 <a id="function-function-mq3-botlib-be-aas-route-validstate-function-validstate-state-src-mq3-botlib-be-aas-route-ml-1650419529"></a>
 ### validState
@@ -1113,4 +1115,4 @@ Test `state!=void and state.runtime!=void and state.router!=void` as the conditi
 | `state` | `dynamic` | — | Be AAS route state; accesses `runtime` and `router`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L108)

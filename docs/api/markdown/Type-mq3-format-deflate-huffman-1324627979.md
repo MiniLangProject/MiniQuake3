@@ -12,7 +12,7 @@ struct Huffman
 Huffman record for format.deflate, containing `counts`, `symbols`, `prefix`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L18)
 
 ## Members
 
@@ -23,8 +23,10 @@ Huffman record for format.deflate, containing `counts`, `symbols`, `prefix`.
 counts
 ```
 
+Number of Huffman symbols assigned to each bit length.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L20)
 
 <a id="field-field-mq3-format-deflate-huffman-prefix-prefix-src-mq3-format-deflate-ml-1821626180"></a>
 ### prefix
@@ -33,8 +35,10 @@ counts
 prefix
 ```
 
+Lookup table for resolving short Huffman prefixes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L24)
 
 <a id="field-field-mq3-format-deflate-huffman-symbols-symbols-src-mq3-format-deflate-ml-860695880"></a>
 ### symbols
@@ -43,5 +47,7 @@ prefix
 symbols
 ```
 
+Symbols ordered by canonical Huffman code.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L22)

@@ -32,7 +32,7 @@ Apply `mq3.botlib.ai_resource_pools.weaponState` and `mq3.botlib.ai_item_weights
 | `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L31)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-encodeprojectile-function-encodeprojectile-output-offset-value-src-mq3-botlib-ai-weapon-combat-ml-1398830443"></a>
 ### encodeProjectile
@@ -50,7 +50,7 @@ Apply `mq3.botlib.ai_weapon_weights.emptyProjectile`, `mq3.botlib.ai_weapon_comb
 | `value` | `dynamic` | — | Value record; accesses `name`, `model`, `flags`, `gravity` and `damage` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L89)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-encodeweaponinfo-function-encodeweaponinfo-value-src-mq3-botlib-ai-weapon-combat-ml-331370513"></a>
 ### encodeWeaponInfo
@@ -66,7 +66,7 @@ Apply `mq3.botlib.ai_weapon_combat.putI32`, `mq3.botlib.ai_weapon_combat.putStri
 | `value` | `dynamic` | — | Value record; accesses `valid`, `number`, `name`, `model` and `level` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L100)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-fail-function-fail-message-src-mq3-botlib-ai-weapon-combat-ml-1499384759"></a>
 ### fail
@@ -82,7 +82,7 @@ Construct error `7597` with diagnostic text `"AI weapon combat: "+message`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-op-choose-best-fight-weapon-const-op-choose-best-fight-weapon-558-src-mq3-botlib-ai-weapon-combat-ml-129567979"></a>
 ### OP_CHOOSE_BEST_FIGHT_WEAPON
@@ -91,8 +91,10 @@ Construct error `7597` with diagnostic text `"AI weapon combat: "+message`.
 const OP_CHOOSE_BEST_FIGHT_WEAPON = 558
 ```
 
+Bot-library syscall identifier for choose best fight weapon.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-op-get-weapon-info-const-op-get-weapon-info-559-src-mq3-botlib-ai-weapon-combat-ml-357144792"></a>
 ### OP_GET_WEAPON_INFO
@@ -101,8 +103,10 @@ const OP_CHOOSE_BEST_FIGHT_WEAPON = 558
 const OP_GET_WEAPON_INFO = 559
 ```
 
+Bot-library syscall identifier for get weapon info.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-projectile-info-size-const-projectile-info-size-208-src-mq3-botlib-ai-weapon-combat-ml-1949090425"></a>
 ### PROJECTILE_INFO_SIZE
@@ -111,8 +115,10 @@ const OP_GET_WEAPON_INFO = 559
 const PROJECTILE_INFO_SIZE = 208
 ```
 
+Byte size of the projectile info record in the bot VM ABI or serialized representation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L18)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-putf32-function-putf32-output-offset-value-src-mq3-botlib-ai-weapon-combat-ml-2075539379"></a>
 ### putF32
@@ -130,7 +136,7 @@ Store a floating-point bit pattern as a 32-bit word in the output buffer.
 | `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.floatBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L69)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-puti32-function-puti32-output-offset-value-src-mq3-botlib-ai-weapon-combat-ml-1113956443"></a>
 ### putI32
@@ -148,7 +154,7 @@ Store a signed 32-bit integer word in the output buffer at the requested byte of
 | `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.i32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L64)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-putstring-function-putstring-output-offset-value-src-mq3-botlib-ai-weapon-combat-ml-1762339411"></a>
 ### putString
@@ -166,7 +172,7 @@ Set `output[offset+count]` to `0` in `mq3.botlib.ai_weapon_combat.putString`.
 | `value` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L79)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-putvector-function-putvector-output-offset-value-src-mq3-botlib-ai-weapon-combat-ml-1402855027"></a>
 ### putVector
@@ -184,7 +190,7 @@ Apply `mq3.botlib.ai_weapon_combat.putF32` while evaluating `putVector`.
 | `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L74)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-string-field-size-const-string-field-size-80-src-mq3-botlib-ai-weapon-combat-ml-1218877769"></a>
 ### STRING_FIELD_SIZE
@@ -193,8 +199,10 @@ Apply `mq3.botlib.ai_weapon_combat.putF32` while evaluating `putVector`.
 const STRING_FIELD_SIZE = 80
 ```
 
+Byte capacity of a fixed-length string in the bot weapon ABI.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-weapon-info-size-const-weapon-info-size-552-src-mq3-botlib-ai-weapon-combat-ml-26285789"></a>
 ### WEAPON_INFO_SIZE
@@ -203,8 +211,10 @@ const STRING_FIELD_SIZE = 80
 const WEAPON_INFO_SIZE = 552
 ```
 
+Byte size of the weapon info record in the bot VM ABI or serialized representation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-weaponinfo-function-weaponinfo-runtime-statepools-handle-number-src-mq3-botlib-ai-weapon-combat-ml-1702627455"></a>
 ### weaponInfo
@@ -223,4 +233,4 @@ Apply `mq3.botlib.ai_resource_pools.weaponState` while evaluating `weaponInfo`. 
 | `number` | `dynamic` | — | Operand used to evaluate the returned expression `runtime.config.weapons[number]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat.ml#L53)

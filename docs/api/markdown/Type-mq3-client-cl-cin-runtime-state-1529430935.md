@@ -23,8 +23,10 @@ Stores engine client cin runtime state, including `runtime`, `currentHandle`, `y
 currentHandle
 ```
 
+When constructing this record, `create` supplies `-1` for this member. Used by `CIN_PlayCinematic` and `CIN_StopCinematic` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L17)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-rlltable-rlltable-src-mq3-client-cl-cin-runtime-ml-2041762086"></a>
 ### rllTable
@@ -33,8 +35,10 @@ currentHandle
 rllTable
 ```
 
+When constructing this record, `create` supplies `RllSetupTable()` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L22)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-runtime-runtime-src-mq3-client-cl-cin-runtime-ml-1447802218"></a>
 ### runtime
@@ -43,8 +47,10 @@ rllTable
 runtime
 ```
 
+When constructing this record, `create` supplies `runtime` for this member. Used by `CIN_HandleForVideo` and `CIN_PlayCinematic` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L14)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-screendraws-screendraws-src-mq3-client-cl-cin-runtime-ml-1679862550"></a>
 ### screenDraws
@@ -53,8 +59,10 @@ runtime
 screenDraws
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `SCR_DrawCinematic` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-yuvtable-yuvtable-src-mq3-client-cl-cin-runtime-ml-869728330"></a>
 ### yuvTable
@@ -63,5 +71,7 @@ screenDraws
 yuvTable
 ```
 
+When constructing this record, `create` supplies an empty list for this member. Used by `ROQ_GenYUVTables` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L20)

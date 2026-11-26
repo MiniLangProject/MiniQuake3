@@ -12,7 +12,7 @@ struct Item
 Stores client game main menu item, including `classname`, `pickupSound`, `sounds`, `icon`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L129)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game main menu item, including `classname`, `pickupSound`, `sounds
 classname
 ```
 
+Native item classname used when registering and resolving CGame item media.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L131)
 
 <a id="field-field-mq3-client-cgame-main-item-icon-icon-src-mq3-client-cgame-main-ml-817750682"></a>
 ### icon
@@ -33,8 +35,10 @@ classname
 icon
 ```
 
+Virtual shader or image name requested when registering the item's HUD icon.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L137)
 
 <a id="field-field-mq3-client-cgame-main-item-pickupsound-pickupsound-src-mq3-client-cgame-main-ml-1211434932"></a>
 ### pickupSound
@@ -43,8 +47,10 @@ icon
 pickupSound
 ```
 
+Sound resource selected for the pickup event or effect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L133)
 
 <a id="field-field-mq3-client-cgame-main-item-sounds-sounds-src-mq3-client-cgame-main-ml-453799084"></a>
 ### sounds
@@ -53,5 +59,7 @@ pickupSound
 sounds
 ```
 
+Registered sound resources associated with the player model or media group.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L135)

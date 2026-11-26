@@ -12,7 +12,7 @@ struct Plane
 Data record for `mq3.renderer.mark_fragments.Plane`; groups `normal`, `distance`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L34)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.mark_fragments.Plane`; groups `normal`, `distance`
 distance
 ```
 
+Signed distance from the plane or reference position.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L38)
 
 <a id="field-field-mq3-renderer-mark-fragments-plane-normal-normal-src-mq3-renderer-mark-fragments-ml-1945613149"></a>
 ### normal
@@ -33,5 +35,7 @@ distance
 normal
 ```
 
+Clipping-plane normal used to bound the projection volume of an impact mark.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L36)

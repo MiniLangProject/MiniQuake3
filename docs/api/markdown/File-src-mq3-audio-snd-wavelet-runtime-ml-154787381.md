@@ -20,8 +20,10 @@ Reachable from entry: **no**
 const BLOCK_SAMPLES = 2048
 ```
 
+Maximum number of mono samples encoded in one wavelet or mu-law block.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L10)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-daub4-function-daub4-values-size-isign-src-mq3-audio-snd-wavelet-runtime-ml-194747513"></a>
 ### daub4
@@ -39,7 +41,7 @@ Return `mq3.audio.snd_compressed_paint.daub4(values, size, (isign < 0))` from `a
 | `isign` | `dynamic` | — | Isign used in `(isign < 0)` and `compressed.daub4(values, size, (isign < 0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L36)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-decodemulaw-function-decodemulaw-block-src-mq3-audio-snd-wavelet-runtime-ml-1733318407"></a>
 ### decodeMuLaw
@@ -57,7 +59,7 @@ Validation failures include `decodeMuLaw: invalid block`.
 | `block` | `dynamic` | — | Record exposing `data`, `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L112)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-decodewavelet-function-decodewavelet-block-src-mq3-audio-snd-wavelet-runtime-ml-252284991"></a>
 ### decodeWavelet
@@ -73,7 +75,7 @@ Return `mq3.audio.snd_compressed_paint.waveletDecode(block.data, block.size)` fr
 | `block` | `dynamic` | — | Record exposing `data`, `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L91)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-encodemulaw-function-encodemulaw-samples-src-mq3-audio-snd-wavelet-runtime-ml-749433873"></a>
 ### encodeMuLaw
@@ -91,7 +93,7 @@ Validation failures include `encodeMuLaw: samples are required`.
 | `samples` | `dynamic` | — | Samples used in `len(samples)` and `(samples == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L97)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-encodewavelet-function-encodewavelet-samples-src-mq3-audio-snd-wavelet-runtime-ml-441856937"></a>
 ### encodeWavelet
@@ -109,7 +111,7 @@ Validation failures include `encodeWavelet: samples are required`.
 | `samples` | `dynamic` | — | Samples passed as `samples` to `mq3.audio.snd_wavelet_runtime.slicePadded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L77)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-mulawdecode-function-mulawdecode-value-src-mq3-audio-snd-wavelet-runtime-ml-744168419"></a>
 ### MuLawDecode
@@ -125,7 +127,7 @@ Return `mq3.audio.snd_compressed_paint.muLawDecode(value)` from `audio.snd_wavel
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.audio.snd_compressed_paint.muLawDecode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L31)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-mulawencode-function-mulawencode-sample-src-mq3-audio-snd-wavelet-runtime-ml-581901890"></a>
 ### MuLawEncode
@@ -141,7 +143,7 @@ Compute mu law encode in audio.snd_wavelet_runtime; the normal completion return
 | `sample` | `dynamic` | — | Sample used in `(sample >= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L21)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-nxputc-function-nxputc-stream-outputbyte-src-mq3-audio-snd-wavelet-runtime-ml-553805591"></a>
 ### NXPutc
@@ -161,7 +163,7 @@ Direct state writes: `stream.data`, `stream.count`.
 | `outputByte` | `dynamic` | — | Output byte used in `(outputByte & 255)` and `(stream.data + [(outputByte & 255)])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L58)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-slicepadded-function-slicepadded-samples-offset-count-src-mq3-audio-snd-wavelet-runtime-ml-468828931"></a>
 ### slicePadded
@@ -179,7 +181,7 @@ Compute slice padded in audio.snd_wavelet_runtime; the normal completion returns
 | `count` | `dynamic` | — | Count used in `(count - 1)` and `array(count, 0.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L67)
 
 - [mq3.audio.snd_wavelet_runtime.Stream](Type-mq3-audio-snd-wavelet-runtime-stream-1314189679.md) — struct
 <a id="function-function-mq3-audio-snd-wavelet-runtime-wt1-function-wt1-values-size-isign-src-mq3-audio-snd-wavelet-runtime-ml-824933317"></a>
@@ -200,4 +202,4 @@ Validation failures include `wt1: invalid extent`.
 | `isign` | `dynamic` | — | Isign used in `(isign >= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L44)

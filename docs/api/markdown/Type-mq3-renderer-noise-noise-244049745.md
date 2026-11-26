@@ -12,7 +12,7 @@ struct Noise
 Data record for `mq3.renderer.noise.Noise`; groups `table`, `permutation`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L13)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.noise.Noise`; groups `table`, `permutation`.
 permutation
 ```
 
+Permutation table used to decorrelate procedural noise coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L17)
 
 <a id="field-field-mq3-renderer-noise-noise-table-table-src-mq3-renderer-noise-ml-1630209145"></a>
 ### table
@@ -33,5 +35,7 @@ permutation
 table
 ```
 
+Lookup samples used by the procedural noise function.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L15)

@@ -12,7 +12,7 @@ struct Dma
 Dma record for audio.snd_local, containing `channels`, `samples`, `submission_chunk`, `samplebits`, `speed`, `buffer`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L74)
 
 ## Members
 
@@ -23,8 +23,10 @@ Dma record for audio.snd_local, containing `channels`, `samples`, `submission_ch
 buffer
 ```
 
+Raw PCM memory presented to the audio device.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L86)
 
 <a id="field-field-mq3-audio-snd-local-dma-channels-channels-src-mq3-audio-snd-local-ml-1852150165"></a>
 ### channels
@@ -33,8 +35,10 @@ buffer
 channels
 ```
 
+Number of interleaved output channels.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L76)
 
 <a id="field-field-mq3-audio-snd-local-dma-samplebits-samplebits-src-mq3-audio-snd-local-ml-378693013"></a>
 ### samplebits
@@ -43,8 +47,10 @@ channels
 samplebits
 ```
 
+Number of bits stored for each PCM sample.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L82)
 
 <a id="field-field-mq3-audio-snd-local-dma-samples-samples-src-mq3-audio-snd-local-ml-1348802065"></a>
 ### samples
@@ -53,8 +59,10 @@ samplebits
 samples
 ```
 
+Total number of mono sample positions in the DMA ring buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L78)
 
 <a id="field-field-mq3-audio-snd-local-dma-speed-speed-src-mq3-audio-snd-local-ml-783571609"></a>
 ### speed
@@ -63,8 +71,10 @@ samples
 speed
 ```
 
+DMA output sample rate in hertz.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L84)
 
 <a id="field-field-mq3-audio-snd-local-dma-submission-chunk-submission-chunk-src-mq3-audio-snd-local-ml-1505684897"></a>
 ### submission_chunk
@@ -73,5 +83,7 @@ speed
 submission_chunk
 ```
 
+Minimum number of samples submitted to the audio device at once.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L80)

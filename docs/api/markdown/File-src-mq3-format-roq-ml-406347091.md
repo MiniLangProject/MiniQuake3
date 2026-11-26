@@ -22,8 +22,10 @@ Reachable from entry: **yes**
 const CODEBOOK = 4098
 ```
 
+RoQ chunk identifier for a vector-quantization codebook update.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L13)
 
 <a id="function-function-mq3-format-roq-decodeaudio-function-decodeaudio-movie-chunk-src-mq3-format-roq-ml-380421369"></a>
 ### decodeAudio
@@ -40,7 +42,7 @@ Decode audio in format.roq; the normal completion returns `fail("unsupported aud
 | `chunk` | `dynamic` | — | Record exposing `id`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L139)
 
 <a id="function-function-mq3-format-roq-decodemono-function-decodemono-movie-chunk-src-mq3-format-roq-ml-1989606441"></a>
 ### decodeMono
@@ -57,7 +59,7 @@ Decode mono in format.roq; the normal completion returns `Audio(output, chunk.si
 | `chunk` | `dynamic` | — | Record exposing `id`, `size`, `flags`, `dataOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L116)
 
 <a id="function-function-mq3-format-roq-decodestereo-function-decodestereo-movie-chunk-src-mq3-format-roq-ml-1782604073"></a>
 ### decodeStereo
@@ -74,7 +76,7 @@ Decode stereo in format.roq; the normal completion returns `Audio(output, frame,
 | `chunk` | `dynamic` | — | Record exposing `id`, `size`, `flags`, `dataOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L126)
 
 <a id="function-function-mq3-format-roq-fail-function-fail-message-src-mq3-format-roq-ml-584879005"></a>
 ### fail
@@ -90,7 +92,7 @@ Create the format.roq error for `fail` with 7690 and the supplied diagnostic tex
 | `message` | `dynamic` | — | Message used in `("RoQ: " + message)` and `error(7690, ("RoQ: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L71)
 
 <a id="constant-constant-mq3-format-roq-magic-const-magic-4228-src-mq3-format-roq-ml-1088040373"></a>
 ### MAGIC
@@ -99,8 +101,10 @@ Create the format.roq error for `fail` with 7690 and the supplied diagnostic tex
 const MAGIC = 4228
 ```
 
+RoQ file signature identifying the video stream.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L9)
 
 <a id="constant-constant-mq3-format-roq-max-chunk-size-const-max-chunk-size-65536-src-mq3-format-roq-ml-1153367564"></a>
 ### MAX_CHUNK_SIZE
@@ -109,8 +113,10 @@ const MAGIC = 4228
 const MAX_CHUNK_SIZE = 65536
 ```
 
+Maximum payload size accepted for one RoQ video or audio chunk, in bytes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L27)
 
 - [mq3.format.roq.Movie](Type-mq3-format-roq-movie-1562250259.md) — struct
 <a id="constant-constant-mq3-format-roq-packet-const-packet-4144-src-mq3-format-roq-ml-1595011236"></a>
@@ -120,8 +126,10 @@ const MAX_CHUNK_SIZE = 65536
 const PACKET = 4144
 ```
 
+RoQ chunk identifier for an embedded packet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
 
 <a id="function-function-mq3-format-roq-parse-function-parse-data-src-mq3-format-roq-ml-562656476"></a>
 ### parse
@@ -137,7 +145,7 @@ Parse roq in format.roq; the normal completion returns `Movie(data, fps, chunks.
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.format.roq.u16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L83)
 
 <a id="constant-constant-mq3-format-roq-quad-hang-const-quad-hang-4115-src-mq3-format-roq-ml-1832401368"></a>
 ### QUAD_HANG
@@ -146,8 +154,10 @@ Parse roq in format.roq; the normal completion returns `Movie(data, fps, chunks.
 const QUAD_HANG = 4115
 ```
 
+RoQ chunk identifier that holds the previous video frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L19)
 
 <a id="constant-constant-mq3-format-roq-quad-info-const-quad-info-4097-src-mq3-format-roq-ml-799087421"></a>
 ### QUAD_INFO
@@ -156,8 +166,10 @@ const QUAD_HANG = 4115
 const QUAD_INFO = 4097
 ```
 
+RoQ chunk identifier declaring video-frame dimensions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L11)
 
 <a id="constant-constant-mq3-format-roq-quad-jpeg-const-quad-jpeg-4114-src-mq3-format-roq-ml-1719159047"></a>
 ### QUAD_JPEG
@@ -166,8 +178,10 @@ const QUAD_INFO = 4097
 const QUAD_JPEG = 4114
 ```
 
+RoQ chunk identifier for a JPEG-compressed image.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L17)
 
 <a id="constant-constant-mq3-format-roq-quad-vq-const-quad-vq-4113-src-mq3-format-roq-ml-1800191830"></a>
 ### QUAD_VQ
@@ -176,8 +190,10 @@ const QUAD_JPEG = 4114
 const QUAD_VQ = 4113
 ```
 
+RoQ chunk identifier for a vector-quantized video frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L15)
 
 <a id="function-function-mq3-format-roq-signed16-function-signed16-value-src-mq3-format-roq-ml-1738377939"></a>
 ### signed16
@@ -193,7 +209,7 @@ Compute signed 16 in format.roq; the normal completion returns `value`.
 | `value` | `dynamic` | — | Value used in `(value & 65535)` and `(value - 65536)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L101)
 
 <a id="constant-constant-mq3-format-roq-sound-mono-const-sound-mono-4128-src-mq3-format-roq-ml-1450905832"></a>
 ### SOUND_MONO
@@ -202,8 +218,10 @@ Compute signed 16 in format.roq; the normal completion returns `value`.
 const SOUND_MONO = 4128
 ```
 
+RoQ chunk identifier for mono differential-PCM audio.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L23)
 
 <a id="constant-constant-mq3-format-roq-sound-stereo-const-sound-stereo-4129-src-mq3-format-roq-ml-412989333"></a>
 ### SOUND_STEREO
@@ -212,8 +230,10 @@ const SOUND_MONO = 4128
 const SOUND_STEREO = 4129
 ```
 
+RoQ chunk identifier for stereo differential-PCM audio.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L25)
 
 <a id="function-function-mq3-format-roq-squaredelta-function-squaredelta-value-src-mq3-format-roq-ml-133476865"></a>
 ### squareDelta
@@ -229,7 +249,7 @@ Compute square delta in format.roq; the normal completion returns `(0 - (value *
 | `value` | `dynamic` | — | Value used in `(value < 128)` and `(value - 128)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L104)
 
 <a id="function-function-mq3-format-roq-u16-function-u16-data-offset-src-mq3-format-roq-ml-2050424931"></a>
 ### u16
@@ -246,7 +266,7 @@ Compute u 16 in format.roq; the normal completion returns `(data[offset] | (data
 | `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L75)
 
 <a id="function-function-mq3-format-roq-u32-function-u32-data-offset-src-mq3-format-roq-ml-46783947"></a>
 ### u32
@@ -263,7 +283,7 @@ Compute u 32 in format.roq; the normal completion returns `(((data[offset] | (da
 | `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L79)
 
 <a id="function-function-mq3-format-roq-write16-function-write16-output-offset-value-src-mq3-format-roq-ml-221044141"></a>
 ### write16
@@ -283,4 +303,4 @@ Direct state writes: `output elements`.
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.format.roq.signed16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L111)

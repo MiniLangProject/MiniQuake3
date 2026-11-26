@@ -12,7 +12,7 @@ struct FieldDef
 `FieldDef` record for l struct, containing `name`, `offset`, `type`, `maxarray` and `floatmin` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L32)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct FieldDef
 floatmax
 ```
 
+Maximum accepted numeric value for this field when range checking is enabled.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L44)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-floatmin-floatmin-src-mq3-botlib-l-struct-ml-1670553004"></a>
 ### floatmin
@@ -33,8 +35,10 @@ floatmax
 floatmin
 ```
 
+Minimum allowed value of a bounded floating-point field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L42)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-maxarray-maxarray-src-mq3-botlib-l-struct-ml-1268097658"></a>
 ### maxarray
@@ -43,8 +47,10 @@ floatmin
 maxarray
 ```
 
+Maximum array size.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L40)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-name-name-src-mq3-botlib-l-struct-ml-434998914"></a>
 ### name
@@ -53,8 +59,10 @@ maxarray
 name
 ```
 
+Name of the field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L34)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-offset-offset-src-mq3-botlib-l-struct-ml-1187120358"></a>
 ### offset
@@ -63,8 +71,10 @@ name
 offset
 ```
 
+Offset in the structure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L36)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-substruct-substruct-src-mq3-botlib-l-struct-ml-927045628"></a>
 ### substruct
@@ -73,8 +83,10 @@ offset
 substruct
 ```
 
+Descriptor of the nested structure stored in this field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L46)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-type-type-src-mq3-botlib-l-struct-ml-486651892"></a>
 ### type
@@ -83,5 +95,7 @@ substruct
 type
 ```
 
+Type of the field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L38)

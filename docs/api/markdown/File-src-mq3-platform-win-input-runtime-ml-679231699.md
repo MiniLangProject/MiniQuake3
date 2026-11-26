@@ -22,7 +22,7 @@ function create()
 Constructs `mq3.platform.win_input_runtime.Runtime` with `appActive` = `false`, `mouse` = `Mouse(false,false,false,false,0,0,0)`, `joystick` = `Joystick(false,false,0,0,false,0,0,0.15,0.02)`, `midi` = `Midi(false,false,0,1,0)` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L104)
 
 <a id="function-function-mq3-platform-win-input-runtime-directionkey-function-directionkey-index-src-mq3-platform-win-input-runtime-ml-229138200"></a>
 ### directionKey
@@ -38,7 +38,7 @@ Returns `keys[index]` from `mq3.platform.win_input_runtime.directionKey`.
 | `index` | `dynamic` | — | Input used in the result expression `keys[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L209)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-activate-function-in-activate-runtime-active-src-mq3-platform-win-input-runtime-ml-573141556"></a>
 ### IN_Activate
@@ -55,7 +55,7 @@ Updates `runtime.appActive` in `mq3.platform.win_input_runtime.IN_Activate`.
 | `active` | `dynamic` | — | Value assigned to `runtime.appActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L283)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-activatedimouse-function-in-activatedimouse-runtime-src-mq3-platform-win-input-runtime-ml-1826293860"></a>
 ### IN_ActivateDIMouse
@@ -71,7 +71,7 @@ Updates `runtime.mouse.active` in `mq3.platform.win_input_runtime.IN_ActivateDIM
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L135)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-activatemouse-function-in-activatemouse-runtime-src-mq3-platform-win-input-runtime-ml-1020629428"></a>
 ### IN_ActivateMouse
@@ -87,7 +87,7 @@ Returns `IN_ActivateWin32Mouse(runtime)` from `mq3.platform.win_input_runtime.IN
 | `runtime` | `dynamic` | — | Record providing `runtime.mouse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L141)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-activatewin32mouse-function-in-activatewin32mouse-runtime-src-mq3-platform-win-input-runtime-ml-746754406"></a>
 ### IN_ActivateWin32Mouse
@@ -103,7 +103,7 @@ Updates `runtime.mouse.active` in `mq3.platform.win_input_runtime.IN_ActivateWin
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L122)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-clearstates-function-in-clearstates-runtime-src-mq3-platform-win-input-runtime-ml-1945262132"></a>
 ### IN_ClearStates
@@ -119,7 +119,7 @@ Updates `runtime.mouse.oldButtonState` in `mq3.platform.win_input_runtime.IN_Cle
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.oldButtonState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L295)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-deactivatedimouse-function-in-deactivatedimouse-runtime-src-mq3-platform-win-input-runtime-ml-859527860"></a>
 ### IN_DeactivateDIMouse
@@ -135,7 +135,7 @@ Updates `runtime.mouse.active` in `mq3.platform.win_input_runtime.IN_DeactivateD
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L138)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-deactivatemouse-function-in-deactivatemouse-runtime-src-mq3-platform-win-input-runtime-ml-1106560980"></a>
 ### IN_DeactivateMouse
@@ -151,7 +151,7 @@ Returns `void` from `mq3.platform.win_input_runtime.IN_DeactivateMouse`.
 | `runtime` | `dynamic` | — | Record providing `runtime.mouse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L144)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-deactivatewin32mouse-function-in-deactivatewin32mouse-runtime-src-mq3-platform-win-input-runtime-ml-579753256"></a>
 ### IN_DeactivateWin32Mouse
@@ -167,7 +167,7 @@ Updates `runtime.mouse.active` in `mq3.platform.win_input_runtime.IN_DeactivateW
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L125)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-dimouse-function-in-dimouse-runtime-dx-dy-src-mq3-platform-win-input-runtime-ml-1686931573"></a>
 ### IN_DIMouse
@@ -185,7 +185,7 @@ Returns `[dx,dy]` from `mq3.platform.win_input_runtime.IN_DIMouse`; earlier bran
 | `dy` | `dynamic` | — | Input used in the result expression `[dx,dy]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L173)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-frame-function-in-frame-runtime-dx-dy-time-src-mq3-platform-win-input-runtime-ml-1301493262"></a>
 ### IN_Frame
@@ -204,7 +204,7 @@ Returns `IN_MouseMove(runtime,dx,dy,time)` from `mq3.platform.win_input_runtime.
 | `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_input_runtime.IN_MouseMove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L289)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-init-function-in-init-runtime-directinputavailable-windowavailable-src-mq3-platform-win-input-runtime-ml-471872193"></a>
 ### IN_Init
@@ -222,7 +222,7 @@ Returns `runtime` from `mq3.platform.win_input_runtime.IN_Init`.
 | `windowAvailable` | `dynamic` | — | Value forwarded as `windowAvailable` to `mq3.platform.win_input_runtime.IN_Startup`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L279)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-initdimouse-function-in-initdimouse-runtime-available-src-mq3-platform-win-input-runtime-ml-1628175499"></a>
 ### IN_InitDIMouse
@@ -239,7 +239,7 @@ Updates `runtime.mouse.directInput`, `runtime.mouse.initialized` in `mq3.platfor
 | `available` | `dynamic` | — | Value assigned to `runtime.mouse.directInput`, `runtime.mouse.initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L129)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-initwin32mouse-function-in-initwin32mouse-runtime-src-mq3-platform-win-input-runtime-ml-1334958760"></a>
 ### IN_InitWin32Mouse
@@ -255,7 +255,7 @@ Updates `runtime.mouse.directInput`, `runtime.mouse.initialized` in `mq3.platfor
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.directInput`, `runtime.mouse.initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L116)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-joymove-function-in-joymove-runtime-buttons-axes-pov-time-src-mq3-platform-win-input-runtime-ml-750091768"></a>
 ### IN_JoyMove
@@ -275,7 +275,7 @@ Builds `joy.oldButtons`, `joy.oldDirections` in `mq3.platform.win_input_runtime.
 | `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_input_runtime.queue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L219)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-mouseevent-function-in-mouseevent-runtime-mstate-time-src-mq3-platform-win-input-runtime-ml-1614069161"></a>
 ### IN_MouseEvent
@@ -293,7 +293,7 @@ Updates `runtime.mouse.oldButtonState` in `mq3.platform.win_input_runtime.IN_Mou
 | `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_input_runtime.queue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L159)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-mousemove-function-in-mousemove-runtime-dx-dy-time-src-mq3-platform-win-input-runtime-ml-595594338"></a>
 ### IN_MouseMove
@@ -312,7 +312,7 @@ Routes movement through the configured mouse path and queues a mouse event only 
 | `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_input_runtime.queue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L184)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-shutdown-function-in-shutdown-runtime-src-mq3-platform-win-input-runtime-ml-1979417952"></a>
 ### IN_Shutdown
@@ -328,7 +328,7 @@ Updates `runtime.mouse.initialized` in `mq3.platform.win_input_runtime.IN_Shutdo
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L298)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-shutdowndimouse-function-in-shutdowndimouse-runtime-src-mq3-platform-win-input-runtime-ml-2085556212"></a>
 ### IN_ShutdownDIMouse
@@ -344,7 +344,7 @@ Updates `runtime.mouse.directInput` in `mq3.platform.win_input_runtime.IN_Shutdo
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.directInput`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L132)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-shutdownmidi-function-in-shutdownmidi-runtime-src-mq3-platform-win-input-runtime-ml-2051395854"></a>
 ### IN_ShutdownMIDI
@@ -360,7 +360,7 @@ Updates `runtime.midi.active` in `mq3.platform.win_input_runtime.IN_ShutdownMIDI
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.midi.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L269)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-shutdownwin32mouse-function-in-shutdownwin32mouse-runtime-src-mq3-platform-win-input-runtime-ml-217478360"></a>
 ### IN_ShutdownWin32Mouse
@@ -376,7 +376,7 @@ Updates `runtime.mouse.active`, `runtime.mouse.initialized` in `mq3.platform.win
 | `runtime` | `dynamic` | — | Mutable record or buffer; this call updates `runtime.mouse.active`, `runtime.mouse.initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L119)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-startup-function-in-startup-runtime-directinputavailable-windowavailable-src-mq3-platform-win-input-runtime-ml-86459393"></a>
 ### IN_Startup
@@ -394,7 +394,7 @@ Returns `runtime` from `mq3.platform.win_input_runtime.IN_Startup`.
 | `windowAvailable` | `dynamic` | — | Value forwarded as `windowAvailable` to `mq3.platform.win_input_runtime.IN_StartupMouse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L274)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-startupjoystick-function-in-startupjoystick-runtime-enabled-available-buttoncount-axiscount-haspov-src-mq3-platform-win-input-runtime-ml-1643700584"></a>
 ### IN_StartupJoystick
@@ -415,7 +415,7 @@ Updates `runtime.joystick.enabled`, `runtime.joystick.available`, `runtime.joyst
 | `hasPov` | `dynamic` | — | Value assigned to `runtime.joystick.hasPov`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L202)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-startupmidi-function-in-startupmidi-runtime-enabled-device-channel-devicecount-src-mq3-platform-win-input-runtime-ml-1487829843"></a>
 ### IN_StartupMIDI
@@ -435,7 +435,7 @@ Updates `runtime.midi.enabled`, `runtime.midi.device`, `runtime.midi.channel`, `
 | `deviceCount` | `dynamic` | — | Value assigned to `runtime.midi.deviceCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L263)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-startupmouse-function-in-startupmouse-runtime-directinputavailable-windowavailable-src-mq3-platform-win-input-runtime-ml-870965749"></a>
 ### IN_StartupMouse
@@ -453,7 +453,7 @@ Updates `runtime.mouse.initialized`, `runtime.mouse.startupDelayed` in `mq3.plat
 | `windowAvailable` | `dynamic` | — | Input tested by `not windowAvailable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L149)
 
 <a id="function-function-mq3-platform-win-input-runtime-in-win32mouse-function-in-win32mouse-runtime-dx-dy-src-mq3-platform-win-input-runtime-ml-1687757973"></a>
 ### IN_Win32Mouse
@@ -471,7 +471,7 @@ Returns `[dx,dy]` from `mq3.platform.win_input_runtime.IN_Win32Mouse`; earlier b
 | `dy` | `dynamic` | — | Input used in the result expression `[dx,dy]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L178)
 
 - [mq3.platform.win_input_runtime.InputEvent](Type-mq3-platform-win-input-runtime-inputevent-1720077469.md) — struct
 - [mq3.platform.win_input_runtime.Joystick](Type-mq3-platform-win-input-runtime-joystick-764395571.md) — struct
@@ -489,7 +489,7 @@ Returns `result` from `mq3.platform.win_input_runtime.JoyToF`; earlier branches 
 | `value` | `dynamic` | — | Input used by `result=(value-32768)/32768.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L191)
 
 <a id="function-function-mq3-platform-win-input-runtime-joytoi-function-joytoi-value-src-mq3-platform-win-input-runtime-ml-605850879"></a>
 ### JoyToI
@@ -505,7 +505,7 @@ Computes `value-32768` for `mq3.platform.win_input_runtime.JoyToI`.
 | `value` | `dynamic` | — | Input used in the result expression `value-32768`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L194)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-aux1-const-k-aux1-217-src-mq3-platform-win-input-runtime-ml-441651501"></a>
 ### K_AUX1
@@ -514,8 +514,10 @@ Computes `value-32768` for `mq3.platform.win_input_runtime.JoyToI`.
 const K_AUX1 = 217
 ```
 
+Engine input key code for auxiliary input button 1.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L25)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-downarrow-const-k-downarrow-133-src-mq3-platform-win-input-runtime-ml-821046014"></a>
 ### K_DOWNARROW
@@ -524,8 +526,10 @@ const K_AUX1 = 217
 const K_DOWNARROW = 133
 ```
 
+Engine input key code for the down arrow.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L17)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-joy1-const-k-joy1-185-src-mq3-platform-win-input-runtime-ml-431438739"></a>
 ### K_JOY1
@@ -534,8 +538,10 @@ const K_DOWNARROW = 133
 const K_JOY1 = 185
 ```
 
+Engine input key code for joystick button 1.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L21)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-joy16-const-k-joy16-200-src-mq3-platform-win-input-runtime-ml-371044761"></a>
 ### K_JOY16
@@ -544,8 +550,10 @@ const K_JOY1 = 185
 const K_JOY16 = 200
 ```
 
+Engine input key code for joystick button 16.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L23)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-leftarrow-const-k-leftarrow-134-src-mq3-platform-win-input-runtime-ml-1300319831"></a>
 ### K_LEFTARROW
@@ -554,8 +562,10 @@ const K_JOY16 = 200
 const K_LEFTARROW = 134
 ```
 
+Engine input key code for the left arrow.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L11)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-mouse1-const-k-mouse1-178-src-mq3-platform-win-input-runtime-ml-2111480225"></a>
 ### K_MOUSE1
@@ -564,8 +574,10 @@ const K_LEFTARROW = 134
 const K_MOUSE1 = 178
 ```
 
+Engine input key code for mouse button 1.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-rightarrow-const-k-rightarrow-135-src-mq3-platform-win-input-runtime-ml-341130660"></a>
 ### K_RIGHTARROW
@@ -574,8 +586,10 @@ const K_MOUSE1 = 178
 const K_RIGHTARROW = 135
 ```
 
+Engine input key code for the right arrow.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L13)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-k-uparrow-const-k-uparrow-132-src-mq3-platform-win-input-runtime-ml-526268393"></a>
 ### K_UPARROW
@@ -584,8 +598,10 @@ const K_RIGHTARROW = 135
 const K_UPARROW = 132
 ```
 
+Engine input key code for the up arrow.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L15)
 
 - [mq3.platform.win_input_runtime.Midi](Type-mq3-platform-win-input-runtime-midi-1199181544.md) — struct
 <a id="function-function-mq3-platform-win-input-runtime-midi-noteoff-function-midi-noteoff-runtime-note-time-src-mq3-platform-win-input-runtime-ml-1207084631"></a>
@@ -604,7 +620,7 @@ Returns `true` from `mq3.platform.win_input_runtime.MIDI_NoteOff`; earlier branc
 | `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_input_runtime.queue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L235)
 
 <a id="function-function-mq3-platform-win-input-runtime-midi-noteon-function-midi-noteon-runtime-note-velocity-time-src-mq3-platform-win-input-runtime-ml-1918219236"></a>
 ### MIDI_NoteOn
@@ -623,7 +639,7 @@ Returns `true` from `mq3.platform.win_input_runtime.MIDI_NoteOn`; earlier branch
 | `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_input_runtime.MIDI_NoteOff`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L241)
 
 <a id="function-function-mq3-platform-win-input-runtime-midiinfo-f-function-midiinfo-f-runtime-src-mq3-platform-win-input-runtime-ml-249836768"></a>
 ### MidiInfo_f
@@ -639,7 +655,7 @@ Returns `[runtime.midi.enabled,runtime.midi.device,runtime.midi.channel,runtime.
 | `runtime` | `dynamic` | — | Record providing `runtime.midi`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L256)
 
 <a id="function-function-mq3-platform-win-input-runtime-midiinproc-function-midiinproc-runtime-message-time-src-mq3-platform-win-input-runtime-ml-1815691848"></a>
 ### MidiInProc
@@ -657,7 +673,7 @@ Filters a packed MIDI message by configured channel and dispatches note-on or no
 | `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_input_runtime.MIDI_NoteOn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L249)
 
 - [mq3.platform.win_input_runtime.Mouse](Type-mq3-platform-win-input-runtime-mouse-258179808.md) — struct
 <a id="function-function-mq3-platform-win-input-runtime-queue-function-queue-runtime-time-type-value-value2-src-mq3-platform-win-input-runtime-ml-1053549389"></a>
@@ -678,7 +694,7 @@ Updates `runtime.events` in `mq3.platform.win_input_runtime.queue`.
 | `value2` | `dynamic` | — | Value used for `mq3.platform.win_input_runtime.InputEvent.value2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L113)
 
 - [mq3.platform.win_input_runtime.Runtime](Type-mq3-platform-win-input-runtime-runtime-828973151.md) — struct
 <a id="constant-constant-mq3-platform-win-input-runtime-se-key-const-se-key-1-src-mq3-platform-win-input-runtime-ml-1659505122"></a>
@@ -688,8 +704,10 @@ Updates `runtime.events` in `mq3.platform.win_input_runtime.queue`.
 const SE_KEY = 1
 ```
 
+System-event type carrying a key code and its press or release state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L7)
 
 <a id="constant-constant-mq3-platform-win-input-runtime-se-mouse-const-se-mouse-3-src-mq3-platform-win-input-runtime-ml-810311692"></a>
 ### SE_MOUSE
@@ -698,5 +716,7 @@ const SE_KEY = 1
 const SE_MOUSE = 3
 ```
 
+System-event type carrying relative horizontal and vertical mouse movement.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L9)

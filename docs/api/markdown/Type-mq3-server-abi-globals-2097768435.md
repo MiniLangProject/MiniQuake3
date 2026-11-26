@@ -12,7 +12,7 @@ struct Globals
 Globals record for server.abi, containing `svs`, `sv`, `gvm`, `cvars`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L456)
 
 ## Members
 
@@ -23,8 +23,10 @@ Globals record for server.abi, containing `svs`, `sv`, `gvm`, `cvars`.
 cvars
 ```
 
+Configuration-variable registry consulted by this subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L161)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L464)
 
 <a id="field-field-mq3-server-abi-globals-gvm-gvm-src-mq3-server-abi-ml-1011696875"></a>
 ### gvm
@@ -33,8 +35,10 @@ cvars
 gvm
 ```
 
+Loaded game-VM instance providing server game logic.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L161)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L462)
 
 <a id="field-field-mq3-server-abi-globals-sv-sv-src-mq3-server-abi-ml-1564105893"></a>
 ### sv
@@ -43,8 +47,10 @@ gvm
 sv
 ```
 
+Map-level server state for the current world.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L161)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L460)
 
 <a id="field-field-mq3-server-abi-globals-svs-svs-src-mq3-server-abi-ml-690951723"></a>
 ### svs
@@ -53,5 +59,7 @@ sv
 svs
 ```
 
+Persistent server state shared across map loads.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L161)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L458)

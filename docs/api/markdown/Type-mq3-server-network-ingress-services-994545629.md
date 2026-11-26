@@ -12,7 +12,7 @@ struct Services
 The game-facing command and movement callbacks remain explicit host services. This lets the ingress path run before the concrete game module is installed and avoids coupling the protocol parser to game state.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L21)
 
 ## Members
 
@@ -23,8 +23,10 @@ The game-facing command and movement callbacks remain explicit host services. Th
 clientCommandFn
 ```
 
+Host callback that delivers a command to the game client interface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L29)
 
 <a id="field-field-mq3-server-network-ingress-services-clientdiagnosticfn-clientdiagnosticfn-src-mq3-server-network-ingress-ml-1306147061"></a>
 ### clientDiagnosticFn
@@ -33,8 +35,10 @@ clientCommandFn
 clientDiagnosticFn
 ```
 
+Host callback that reports diagnostics associated with one client.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L37)
 
 <a id="field-field-mq3-server-network-ingress-services-clientpacketfn-clientpacketfn-src-mq3-server-network-ingress-ml-1688485187"></a>
 ### clientPacketFn
@@ -43,8 +47,10 @@ clientDiagnosticFn
 clientPacketFn
 ```
 
+Host callback that delivers an incoming packet to the client network handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L27)
 
 <a id="field-field-mq3-server-network-ingress-services-connectionlesshost-connectionlesshost-src-mq3-server-network-ingress-ml-2091822463"></a>
 ### connectionlessHost
@@ -53,8 +59,10 @@ clientPacketFn
 connectionlessHost
 ```
 
+Host services used by the connectionless packet dispatcher.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L25)
 
 <a id="field-field-mq3-server-network-ingress-services-connectionlessruntime-connectionlessruntime-src-mq3-server-network-ingress-ml-235931125"></a>
 ### connectionlessRuntime
@@ -63,8 +71,10 @@ connectionlessHost
 connectionlessRuntime
 ```
 
+Runtime used to dispatch out-of-band packets.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L23)
 
 <a id="field-field-mq3-server-network-ingress-services-context-context-src-mq3-server-network-ingress-ml-1203797549"></a>
 ### context
@@ -73,8 +83,10 @@ connectionlessRuntime
 context
 ```
 
+Caller-supplied data associated with routing received server packets into connection and message handlers.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L44)
 
 <a id="field-field-mq3-server-network-ingress-services-disconnectfn-disconnectfn-src-mq3-server-network-ingress-ml-1824220225"></a>
 ### disconnectFn
@@ -83,8 +95,10 @@ context
 disconnectFn
 ```
 
+Host callback that processes a client disconnection through the host network lifecycle.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L39)
 
 <a id="field-field-mq3-server-network-ingress-services-dropfn-dropfn-src-mq3-server-network-ingress-ml-286292755"></a>
 ### dropFn
@@ -93,8 +107,10 @@ disconnectFn
 dropFn
 ```
 
+Host callback that disconnects a client and reports the supplied reason.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L35)
 
 <a id="field-field-mq3-server-network-ingress-services-packetdiagnosticfn-packetdiagnosticfn-src-mq3-server-network-ingress-ml-1990848331"></a>
 ### packetDiagnosticFn
@@ -103,8 +119,10 @@ dropFn
 packetDiagnosticFn
 ```
 
+Host callback that reports packet-validation diagnostics.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L41)
 
 <a id="field-field-mq3-server-network-ingress-services-sendgamestatefn-sendgamestatefn-src-mq3-server-network-ingress-ml-1997216153"></a>
 ### sendGamestateFn
@@ -113,8 +131,10 @@ packetDiagnosticFn
 sendGamestateFn
 ```
 
+Host callback that transmits the current gamestate to a client.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L33)
 
 <a id="field-field-mq3-server-network-ingress-services-usermovefn-usermovefn-src-mq3-server-network-ingress-ml-1280892273"></a>
 ### userMoveFn
@@ -123,5 +143,7 @@ sendGamestateFn
 userMoveFn
 ```
 
+Host callback that decodes and processes client movement commands.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L31)

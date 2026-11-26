@@ -31,7 +31,7 @@ Finds an image by exact name in its hash bucket and warns when cached mipmap/pic
 | `wrapClampMode` | `dynamic` | — | Input tested by `image.wrapClampMode!=wrapClampMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L332)
 
 <a id="function-function-mq3-renderer-image-registry-copypixels-function-copypixels-pixels-count-src-mq3-renderer-image-registry-ml-1020229160"></a>
 ### copyPixels
@@ -48,7 +48,7 @@ Builds `output[i]` in `mq3.renderer.image_registry.copyPixels`; returns `output`
 | `count` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L208)
 
 <a id="function-function-mq3-renderer-image-registry-create-function-create-config-host-activetexture-src-mq3-renderer-image-registry-ml-898577301"></a>
 ### create
@@ -66,7 +66,7 @@ Builds `mq3.renderer.image_registry.Registry` for `mq3.renderer.image_registry.c
 | `activeTexture` | `dynamic` | — | Initial value for `mq3.renderer.image_registry.Registry.activeTexture`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L163)
 
 <a id="function-function-mq3-renderer-image-registry-createimage-function-createimage-registry-name-pixels-width-height-mipmap-allowpicmip-wrapclampmode-src-mq3-renderer-image-registry-ml-2022738023"></a>
 ### createImage
@@ -89,7 +89,7 @@ Updates `registry.images`, `registry.buckets[hash]` in `mq3.renderer.image_regis
 | `wrapClampMode` | `dynamic` | — | Value used for `mq3.renderer.image_registry.Image.wrapClampMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L304)
 
 <a id="function-function-mq3-renderer-image-registry-downsample-function-downsample-pixels-width-height-simple-src-mq3-renderer-image-registry-ml-1666238682"></a>
 ### downsample
@@ -108,7 +108,7 @@ Returns `processing.mipMapFiltered(pixels,width,height)` from `mq3.renderer.imag
 | `simple` | `dynamic` | — | Input tested by `simple or width<2 or height<2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L241)
 
 <a id="function-function-mq3-renderer-image-registry-fail-function-fail-message-src-mq3-renderer-image-registry-ml-21445415"></a>
 ### fail
@@ -124,7 +124,7 @@ Creates error `7170` with message `"image registry: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7170,"image registry: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L143)
 
 <a id="constant-constant-mq3-renderer-image-registry-file-hash-size-const-file-hash-size-1024-src-mq3-renderer-image-registry-ml-1582681164"></a>
 ### FILE_HASH_SIZE
@@ -133,8 +133,10 @@ Creates error `7170` with message `"image registry: "+message`.
 const FILE_HASH_SIZE = 1024
 ```
 
+Number of buckets in the image-name hash table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L9)
 
 <a id="function-function-mq3-renderer-image-registry-findimagefile-function-findimagefile-registry-name-mipmap-allowpicmip-wrapclampmode-src-mq3-renderer-image-registry-ml-565322573"></a>
 ### findImageFile
@@ -154,7 +156,7 @@ Computes `findImageFile` from `cached(registry,name,mipmap,allowPicmip,wrapClamp
 | `wrapClampMode` | `dynamic` | — | Value forwarded as `wrapClampMode` to `mq3.renderer.image_registry.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L362)
 
 <a id="constant-constant-mq3-renderer-image-registry-gl-rgb4-s3tc-const-gl-rgb4-s3tc-33697-src-mq3-renderer-image-registry-ml-1392716421"></a>
 ### GL_RGB4_S3TC
@@ -163,8 +165,10 @@ Computes `findImageFile` from `cached(registry,name,mipmap,allowPicmip,wrapClamp
 const GL_RGB4_S3TC = 33697
 ```
 
+OpenGL legacy RGB4_S3TC compressed RGB texture-format selector.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="constant-constant-mq3-renderer-image-registry-gl-rgb5-const-gl-rgb5-32848-src-mq3-renderer-image-registry-ml-924601464"></a>
 ### GL_RGB5
@@ -173,8 +177,10 @@ const GL_RGB4_S3TC = 33697
 const GL_RGB5 = 32848
 ```
 
+OpenGL internal texture format with five bits per red, green, and blue component.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
 
 <a id="constant-constant-mq3-renderer-image-registry-gl-rgb8-const-gl-rgb8-32849-src-mq3-renderer-image-registry-ml-29617149"></a>
 ### GL_RGB8
@@ -183,8 +189,10 @@ const GL_RGB5 = 32848
 const GL_RGB8 = 32849
 ```
 
+OpenGL internal texture format with eight bits per red, green, and blue component.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="constant-constant-mq3-renderer-image-registry-gl-rgba4-const-gl-rgba4-32854-src-mq3-renderer-image-registry-ml-511016605"></a>
 ### GL_RGBA4
@@ -193,8 +201,10 @@ const GL_RGB8 = 32849
 const GL_RGBA4 = 32854
 ```
 
+OpenGL internal texture format with four bits per red, green, blue, and alpha component.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L25)
 
 <a id="constant-constant-mq3-renderer-image-registry-gl-rgba8-const-gl-rgba8-32856-src-mq3-renderer-image-registry-ml-311155595"></a>
 ### GL_RGBA8
@@ -203,8 +213,10 @@ const GL_RGBA4 = 32854
 const GL_RGBA8 = 32856
 ```
 
+OpenGL internal texture format with eight bits per red, green, blue, and alpha component.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)
 
 <a id="function-function-mq3-renderer-image-registry-hashvalue-function-hashvalue-name-src-mq3-renderer-image-registry-ml-1194706673"></a>
 ### hashValue
@@ -220,7 +232,7 @@ Exact generateHashValue spelling rules: ASCII case fold, slash fold, extension o
 | `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L172)
 
 <a id="function-function-mq3-renderer-image-registry-identitytable-function-identitytable-src-mq3-renderer-image-registry-ml-227752340"></a>
 ### identityTable
@@ -232,7 +244,7 @@ function identityTable()
 Builds `table[i]` in `mq3.renderer.image_registry.identityTable`; returns `table`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L146)
 
 - [mq3.renderer.image_registry.Image](Type-mq3-renderer-image-registry-image-1377316799.md) — struct
 <a id="function-function-mq3-renderer-image-registry-internalformat-function-internalformat-pixels-width-height-lightmap-texturebits-texturecompression-src-mq3-renderer-image-registry-ml-1586012538"></a>
@@ -254,7 +266,7 @@ Computes `internalFormat` from `[4,4]`.
 | `textureCompression` | `dynamic` | — | Input tested by `textureCompression==TC_S3TC`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L219)
 
 <a id="constant-constant-mq3-renderer-image-registry-max-drawimages-const-max-drawimages-2048-src-mq3-renderer-image-registry-ml-496522855"></a>
 ### MAX_DRAWIMAGES
@@ -263,8 +275,10 @@ Computes `internalFormat` from `[4,4]`.
 const MAX_DRAWIMAGES = 2048
 ```
 
+Maximum number of images retained by the renderer's image registry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L11)
 
 <a id="constant-constant-mq3-renderer-image-registry-max-qpath-const-max-qpath-64-src-mq3-renderer-image-registry-ml-1888476515"></a>
 ### MAX_QPATH
@@ -273,8 +287,10 @@ const MAX_DRAWIMAGES = 2048
 const MAX_QPATH = 64
 ```
 
+Capacity of a Quake virtual-path buffer, including the terminating byte in the native ABI.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L13)
 
 <a id="function-function-mq3-renderer-image-registry-nextpower-function-nextpower-value-src-mq3-renderer-image-registry-ml-1154342581"></a>
 ### nextPower
@@ -290,7 +306,7 @@ Returns `result` from `mq3.renderer.image_registry.nextPower`.
 | `value` | `dynamic` | — | Input used by `while result<value result=result<<1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L201)
 
 <a id="function-function-mq3-renderer-image-registry-prepareupload-function-prepareupload-pixels-width-height-mipmap-allowpicmip-lightmap-config-src-mq3-renderer-image-registry-ml-20124507"></a>
 ### prepareUpload
@@ -312,7 +328,7 @@ Produces every byte payload which Upload32 would hand to qglTexImage2D.
 | `config` | `dynamic` | — | Record providing `config.maxTextureSize`, `config.picmip`, `config.roundImagesDown`, `config.textureBits`, `config.textureCompression`, `config.simpleMipMaps`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L254)
 
 - [mq3.renderer.image_registry.Registry](Type-mq3-renderer-image-registry-registry-1291358881.md) — struct
 <a id="function-function-mq3-renderer-image-registry-services-function-services-src-mq3-renderer-image-registry-ml-78575804"></a>
@@ -325,7 +341,7 @@ function services()
 Constructs `mq3.renderer.image_registry.Services` with `loadFn` = `void`, `releaseFn` = `void`, `submitFn` = `void`, `diagnosticFn` = `void` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L157)
 
 - [mq3.renderer.image_registry.Services](Type-mq3-renderer-image-registry-services-1332376806.md) — struct
 - [mq3.renderer.image_registry.Source](Type-mq3-renderer-image-registry-source-488858519.md) — struct
@@ -343,7 +359,7 @@ Builds `mq3.renderer.image_registry.Source` using `mq3.renderer.tga.decode`.
 | `data` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.tga.decode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L194)
 
 <a id="function-function-mq3-renderer-image-registry-startslightmap-function-startslightmap-name-src-mq3-renderer-image-registry-ml-193035375"></a>
 ### startsLightmap
@@ -359,7 +375,7 @@ Returns `decode(slice(bytes(name),0,9))=="*lightmap"` from `mq3.renderer.image_r
 | `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L187)
 
 <a id="constant-constant-mq3-renderer-image-registry-tc-none-const-tc-none-0-src-mq3-renderer-image-registry-ml-2075562713"></a>
 ### TC_NONE
@@ -368,8 +384,10 @@ Returns `decode(slice(bytes(name),0,9))=="*lightmap"` from `mq3.renderer.image_r
 const TC_NONE = 0
 ```
 
+Texture-compression mode indicating that textures remain uncompressed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L17)
 
 <a id="constant-constant-mq3-renderer-image-registry-tc-s3tc-const-tc-s3tc-1-src-mq3-renderer-image-registry-ml-1558749592"></a>
 ### TC_S3TC
@@ -378,8 +396,10 @@ const TC_NONE = 0
 const TC_S3TC = 1
 ```
 
+Texture-compression mode using the S3TC extension.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L19)
 
 <a id="constant-constant-mq3-renderer-image-registry-texnum-base-const-texnum-base-1024-src-mq3-renderer-image-registry-ml-1171370244"></a>
 ### TEXNUM_BASE
@@ -388,8 +408,10 @@ const TC_S3TC = 1
 const TEXNUM_BASE = 1024
 ```
 
+First texture-object identifier reserved for registered renderer images.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L15)
 
 <a id="function-function-mq3-renderer-image-registry-uploadconfig-function-uploadconfig-src-mq3-renderer-image-registry-ml-1969623064"></a>
 ### uploadConfig
@@ -401,7 +423,7 @@ function uploadConfig()
 Builds `mq3.renderer.image_registry.UploadConfig` for `mq3.renderer.image_registry.uploadConfig`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L151)
 
 - [mq3.renderer.image_registry.UploadConfig](Type-mq3-renderer-image-registry-uploadconfig-2058784205.md) — struct
 - [mq3.renderer.image_registry.UploadLevel](Type-mq3-renderer-image-registry-uploadlevel-239060255.md) — struct
@@ -420,7 +442,7 @@ Builds `data[i]` in `mq3.renderer.image_registry.upperExtension`; returns `decod
 | `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L350)
 
 <a id="function-function-mq3-renderer-image-registry-warn-function-warn-registry-text-src-mq3-renderer-image-registry-ml-1064293824"></a>
 ### warn
@@ -437,4 +459,4 @@ Forwards an image-registry diagnostic to the optional host callback.
 | `text` | `dynamic` | — | Argument 2 supplied to `registry.services.diagnosticFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L322)

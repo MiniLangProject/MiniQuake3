@@ -12,7 +12,7 @@ struct Model
 Data record for `mq3.renderer.model_tags.Model`; groups `brushBounds`, `md3`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L26)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.model_tags.Model`; groups `brushBounds`, `md3`.
 brushBounds
 ```
 
+Axis-aligned bounds of the inline brush model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L28)
 
 <a id="field-field-mq3-renderer-model-tags-model-md3-md3-src-mq3-renderer-model-tags-ml-220192882"></a>
 ### md3
@@ -33,5 +35,7 @@ brushBounds
 md3
 ```
 
+Loaded MD3 model data used for mesh animation and bounds queries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L30)

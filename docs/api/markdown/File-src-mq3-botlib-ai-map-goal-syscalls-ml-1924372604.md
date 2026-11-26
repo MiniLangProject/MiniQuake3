@@ -21,8 +21,10 @@ Reachable from entry: **yes**
 const BOT_GOAL_SIZE = 56
 ```
 
+Byte size of the bot goal record in the bot VM ABI or serialized representation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-dispatch-function-dispatch-state-vm-base-op-src-mq3-botlib-ai-map-goal-syscalls-ml-1846804950"></a>
 ### dispatch
@@ -41,7 +43,7 @@ Apply `mq3.botlib.ai_map_goals.nextCampSpotGoal`, `mq3.vm.syscall_common.argumen
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L30)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-writeselectedgoal-function-writeselectedgoal-vm-address-goal-src-mq3-botlib-ai-map-goal-syscalls-ml-1212235518"></a>
 ### writeSelectedGoal
@@ -59,7 +61,7 @@ Apply `mq3.vm.syscall_common.pointer` and `mq3.botlib.ai_map_goal_syscalls.write
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`, `areaNum`, `mins`, `maxs` and `entityNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-ai-map-goal-syscalls-ml-1264979321"></a>
 ### writeVector
@@ -77,4 +79,4 @@ Write three float bit patterns to consecutive VM memory words for ai map goal sy
 | `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L15)

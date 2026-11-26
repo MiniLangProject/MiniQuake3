@@ -12,7 +12,7 @@ struct Dma
 Data record for `mq3.platform.win_snd.Dma`; groups `channels`, `samplebits`, `speed`, `samples`, `submissionChunk`, `bufferValid`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L31)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.platform.win_snd.Dma`; groups `channels`, `samplebits`, `sp
 bufferValid
 ```
 
+Whether the DMA sound buffer is valid and accessible.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L43)
 
 <a id="field-field-mq3-platform-win-snd-dma-channels-channels-src-mq3-platform-win-snd-ml-671443233"></a>
 ### channels
@@ -33,8 +35,10 @@ bufferValid
 channels
 ```
 
+Number of interleaved channels in the DMA audio stream.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L33)
 
 <a id="field-field-mq3-platform-win-snd-dma-samplebits-samplebits-src-mq3-platform-win-snd-ml-1815390625"></a>
 ### samplebits
@@ -43,8 +47,10 @@ channels
 samplebits
 ```
 
+Number of bits stored for each audio sample.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L35)
 
 <a id="field-field-mq3-platform-win-snd-dma-samples-samples-src-mq3-platform-win-snd-ml-1637173053"></a>
 ### samples
@@ -53,8 +59,10 @@ samplebits
 samples
 ```
 
+Number of sample slots in the DMA sound buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L39)
 
 <a id="field-field-mq3-platform-win-snd-dma-speed-speed-src-mq3-platform-win-snd-ml-689507541"></a>
 ### speed
@@ -63,8 +71,10 @@ samples
 speed
 ```
 
+DMA audio sample rate in samples per second.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L37)
 
 <a id="field-field-mq3-platform-win-snd-dma-submissionchunk-submissionchunk-src-mq3-platform-win-snd-ml-392860257"></a>
 ### submissionChunk
@@ -73,5 +83,7 @@ speed
 submissionChunk
 ```
 
+Minimum number of samples submitted to the sound backend at once.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L41)

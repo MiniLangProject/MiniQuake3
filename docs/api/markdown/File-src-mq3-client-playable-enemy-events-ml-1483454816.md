@@ -27,7 +27,7 @@ Updates `result.inputs` during playable enemy events `appendInput`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L143)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-attack-milliseconds-const-attack-milliseconds-450-src-mq3-client-playable-enemy-events-ml-375995232"></a>
 ### ATTACK_MILLISECONDS
@@ -36,8 +36,10 @@ Updates `result.inputs` during playable enemy events `appendInput`.
 const ATTACK_MILLISECONDS = 450
 ```
 
+Duration or scheduling interval in milliseconds controlling attack.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L24)
 
 <a id="function-function-mq3-client-playable-enemy-events-attacked-function-attacked-ai-index-src-mq3-client-playable-enemy-events-ml-956314784"></a>
 ### attacked
@@ -54,7 +56,7 @@ Evaluates playable enemy events `attacked` and returns `false`, `true` according
 | `index` | `dynamic` | — | Value tested by `value.attacker==index` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L97)
 
 <a id="function-function-mq3-client-playable-enemy-events-beginaction-function-beginaction-result-track-kind-index-now-emit-src-mq3-client-playable-enemy-events-ml-321866683"></a>
 ### beginAction
@@ -75,7 +77,7 @@ Updates `track.action`, `track.actionSince`, `result.events` during playable ene
 | `emit` | `dynamic` | — | Value used by `if emit then result.events=result.events+[Event(kind,index,now)] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L130)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-both-death1-const-both-death1-0-src-mq3-client-playable-enemy-events-ml-918556761"></a>
 ### BOTH_DEATH1
@@ -104,7 +106,7 @@ Creates the playable enemy events error `7550` with diagnostic text `"preview en
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview enemy events: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L76)
 
 <a id="function-function-mq3-client-playable-enemy-events-input-function-input-value-index-src-mq3-client-playable-enemy-events-ml-725041879"></a>
 ### input
@@ -121,7 +123,7 @@ Evaluates playable enemy events `input` and returns `fail("input index outside o
 | `index` | `dynamic` | — | Value tested by `value==void or index<0 or index>=len(value.inputs)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L201)
 
 - [mq3.client.playable_enemy_events.Input](Type-mq3-client-playable-enemy-events-input-1017395398.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-events-legs-idle-const-legs-idle-22-src-mq3-client-playable-enemy-events-ml-2138760597"></a>
@@ -131,8 +133,10 @@ Evaluates playable enemy events `input` and returns `fail("input index outside o
 const LEGS_IDLE = 22
 ```
 
+Native lower-body animation slot for the idle sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-legs-run-const-legs-run-15-src-mq3-client-playable-enemy-events-ml-1310938667"></a>
 ### LEGS_RUN
@@ -141,8 +145,10 @@ const LEGS_IDLE = 22
 const LEGS_RUN = 15
 ```
 
+Native lower-body animation slot for the run sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-legs-walk-const-legs-walk-14-src-mq3-client-playable-enemy-events-ml-449727320"></a>
 ### LEGS_WALK
@@ -151,8 +157,10 @@ const LEGS_RUN = 15
 const LEGS_WALK = 14
 ```
 
+Native lower-body animation slot for the walk sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L15)
 
 <a id="function-function-mq3-client-playable-enemy-events-motionaction-function-motionaction-brain-ismoving-src-mq3-client-playable-enemy-events-ml-385801668"></a>
 ### motionAction
@@ -169,7 +177,7 @@ Evaluates playable enemy events `motionAction` and returns `"idle"`, `"run"`, `"
 | `isMoving` | `dynamic` | — | Value used by `if not isMoving then return "idle" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L117)
 
 <a id="function-function-mq3-client-playable-enemy-events-moving-function-moving-track-target-brain-src-mq3-client-playable-enemy-events-ml-415254368"></a>
 ### moving
@@ -187,7 +195,7 @@ Detects chase/strafe/patrol AI modes or a changed target origin relative to the 
 | `brain` | `dynamic` | — | Record read through `brain.mode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L109)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-pain-milliseconds-const-pain-milliseconds-350-src-mq3-client-playable-enemy-events-ml-205183801"></a>
 ### PAIN_MILLISECONDS
@@ -196,8 +204,10 @@ Detects chase/strafe/patrol AI modes or a changed target origin relative to the 
 const PAIN_MILLISECONDS = 350
 ```
 
+Duration or scheduling interval in milliseconds controlling pain.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L22)
 
 <a id="function-function-mq3-client-playable-enemy-events-point-function-point-value-src-mq3-client-playable-enemy-events-ml-463508165"></a>
 ### point
@@ -213,7 +223,7 @@ Copies the X, Y and Z components into a fresh playable enemy events vector.
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L79)
 
 <a id="function-function-mq3-client-playable-enemy-events-state-function-state-targetstate-now-src-mq3-client-playable-enemy-events-ml-1422810594"></a>
 ### state
@@ -230,7 +240,7 @@ Calls `mq3.client.playable_enemy_events.Track`, `mq3.client.playable_enemy_event
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L84)
 
 - [mq3.client.playable_enemy_events.State](Type-mq3-client-playable-enemy-events-state-268949671.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-events-torso-attack-const-torso-attack-7-src-mq3-client-playable-enemy-events-ml-1338745422"></a>
@@ -240,8 +250,10 @@ Calls `mq3.client.playable_enemy_events.Track`, `mq3.client.playable_enemy_event
 const TORSO_ATTACK = 7
 ```
 
+Native upper-body animation slot for the attack sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L9)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-torso-gesture-const-torso-gesture-6-src-mq3-client-playable-enemy-events-ml-387550331"></a>
 ### TORSO_GESTURE
@@ -250,8 +262,10 @@ const TORSO_ATTACK = 7
 const TORSO_GESTURE = 6
 ```
 
+Native upper-body animation slot for the gesture sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L7)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-torso-raise-const-torso-raise-10-src-mq3-client-playable-enemy-events-ml-630035140"></a>
 ### TORSO_RAISE
@@ -260,8 +274,10 @@ const TORSO_GESTURE = 6
 const TORSO_RAISE = 10
 ```
 
+Native upper-body animation slot for the raise sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-enemy-events-torso-stand-const-torso-stand-11-src-mq3-client-playable-enemy-events-ml-278293235"></a>
 ### TORSO_STAND
@@ -270,8 +286,10 @@ const TORSO_RAISE = 10
 const TORSO_STAND = 11
 ```
 
+Native upper-body animation slot for the stand sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L13)
 
 - [mq3.client.playable_enemy_events.Track](Type-mq3-client-playable-enemy-events-track-871750161.md) — struct
 <a id="function-function-mq3-client-playable-enemy-events-update-function-update-value-targetstate-ai-now-src-mq3-client-playable-enemy-events-ml-728717881"></a>
@@ -291,4 +309,4 @@ Call after target damage/update and enemyAi.step. Events describe transitions ob
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L155)

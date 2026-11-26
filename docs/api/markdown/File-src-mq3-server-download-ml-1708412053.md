@@ -34,7 +34,7 @@ Direct state writes: `state.sendTime`, `state.clientBlock`.
 | `block` | `dynamic` | — | Block used in `(block != state.clientBlock)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L277)
 
 <a id="function-function-mq3-server-download-begindownload-function-begindownload-state-host-name-src-mq3-server-download-ml-155499394"></a>
 ### beginDownload
@@ -55,7 +55,7 @@ Direct state writes: `state.name`.
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.server.download.qpath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L147)
 
 <a id="function-function-mq3-server-download-blockcount-function-blockcount-state-maxrate-src-mq3-server-download-ml-1423307661"></a>
 ### blockCount
@@ -72,7 +72,7 @@ Compute block count in server.download; the normal completion returns `count`.
 | `maxRate` | `dynamic` | — | Max rate used in `(maxRate != 0)` and `(maxRate < 1000)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L228)
 
 <a id="function-function-mq3-server-download-close-function-close-state-host-src-mq3-server-download-ml-1756497127"></a>
 ### close
@@ -91,7 +91,7 @@ Direct state writes: `state.handle`, `state.name`.
 | `host` | `dynamic` | — | Record exposing `closeFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L126)
 
 <a id="function-function-mq3-server-download-commandruntime-function-commandruntime-state-serverstate-downloadhost-sendgamestatefn-context-src-mq3-server-download-ml-1045979583"></a>
 ### commandRuntime
@@ -111,7 +111,7 @@ Create `mq3.server.download.CommandRuntime` with state=state; serverState=server
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.server.download.CommandRuntime` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L117)
 
 - [mq3.server.download.CommandRuntime](Type-mq3-server-download-commandruntime-583942862.md) — struct
 <a id="function-function-mq3-server-download-create-function-create-name-rate-snapshotmsec-src-mq3-server-download-ml-1849929887"></a>
@@ -130,7 +130,7 @@ Create `mq3.server.download.State` with name=name; handle=void; size=0; count=0;
 | `snapshotMsec` | `dynamic` | — | Initial `snapshotMsec` field stored in the returned or constructed `mq3.server.download.State` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L52)
 
 <a id="function-function-mq3-server-download-dispatchcommand-function-dispatchcommand-dispatchhost-clientstate-name-parser-src-mq3-server-download-ml-1464656290"></a>
 ### dispatchCommand
@@ -149,7 +149,7 @@ Signature-compatible with client_command_dispatch.Services.downloadFn.
 | `parser` | `dynamic` | — | State passed as `state` to `mq3.qcommon.command_buffer.argv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L178)
 
 <a id="function-function-mq3-server-download-donedownload-function-donedownload-runtime-clientstate-src-mq3-server-download-ml-1528579450"></a>
 ### doneDownload
@@ -168,7 +168,7 @@ Validation failures include `download command: missing runtime`.
 | `clientState` | `dynamic` | — | Client state used in `runtime.sendGamestateFn(runtime, clientState)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L167)
 
 <a id="function-function-mq3-server-download-failuretext-function-failuretext-state-serverstate-idpack-missionpack-src-mq3-server-download-ml-2096731120"></a>
 ### failureText
@@ -187,7 +187,7 @@ Compute failure text in server.download; the normal completion returns `(("File 
 | `missionPack` | `dynamic` | — | Mission pack operand used by `failureText`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L193)
 
 <a id="constant-constant-mq3-server-download-max-download-blksize-const-max-download-blksize-2048-src-mq3-server-download-ml-463438019"></a>
 ### MAX_DOWNLOAD_BLKSIZE
@@ -196,8 +196,10 @@ Compute failure text in server.download; the normal completion returns `(("File 
 const MAX_DOWNLOAD_BLKSIZE = 2048
 ```
 
+2048 byte block chunks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L13)
 
 <a id="constant-constant-mq3-server-download-max-download-window-const-max-download-window-8-src-mq3-server-download-ml-694569361"></a>
 ### MAX_DOWNLOAD_WINDOW
@@ -206,8 +208,10 @@ const MAX_DOWNLOAD_BLKSIZE = 2048
 const MAX_DOWNLOAD_WINDOW = 8
 ```
 
+Max of eight download frames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L11)
 
 <a id="constant-constant-mq3-server-download-max-qpath-const-max-qpath-64-src-mq3-server-download-ml-1708417873"></a>
 ### MAX_QPATH
@@ -216,8 +220,10 @@ const MAX_DOWNLOAD_WINDOW = 8
 const MAX_QPATH = 64
 ```
 
+Maximum character capacity reserved for a Quake asset path.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L17)
 
 <a id="function-function-mq3-server-download-openifneeded-function-openifneeded-state-serverstate-host-msg-src-mq3-server-download-ml-762905714"></a>
 ### openIfNeeded
@@ -239,7 +245,7 @@ Direct state writes: `state.name`, `state.handle`, `state.size`, `state.currentB
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.writeByte`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L213)
 
 <a id="function-function-mq3-server-download-qpath-function-qpath-name-src-mq3-server-download-ml-2078477661"></a>
 ### qpath
@@ -255,7 +261,7 @@ Compute qpath in server.download; the normal completion returns `decode(slice(da
 | `name` | `dynamic` | — | Name used in `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L135)
 
 <a id="function-function-mq3-server-download-server-function-server-time-allowdownload-pure-maxrate-src-mq3-server-download-ml-1273670238"></a>
 ### server
@@ -274,7 +280,7 @@ Create `mq3.server.download.Server` with time=time; allowDownload=allowDownload;
 | `maxRate` | `dynamic` | — | Initial `maxRate` field stored in the returned or constructed `mq3.server.download.Server` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L71)
 
 - [mq3.server.download.Server](Type-mq3-server-download-server-1977836046.md) — struct
 <a id="function-function-mq3-server-download-services-function-services-idpakfn-openfn-readfn-closefn-dropfn-context-src-mq3-server-download-ml-364164795"></a>
@@ -296,7 +302,7 @@ Create `mq3.server.download.Services` with idPakFn=idPakFn; openFn=openFn; readF
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.server.download.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L94)
 
 - [mq3.server.download.Services](Type-mq3-server-download-services-2065249425.md) — struct
 - [mq3.server.download.State](Type-mq3-server-download-state-1637242474.md) — struct
@@ -317,7 +323,7 @@ Validation failures include `download command: missing state or host`.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.server.download.close`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L157)
 
 <a id="constant-constant-mq3-server-download-svc-download-const-svc-download-6-src-mq3-server-download-ml-386795511"></a>
 ### SVC_DOWNLOAD
@@ -326,8 +332,10 @@ Validation failures include `download command: missing state or host`.
 const SVC_DOWNLOAD = 6
 ```
 
+Server-to-client opcode introducing an asset download block.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L15)
 
 <a id="function-function-mq3-server-download-writetoclient-function-writetoclient-state-serverstate-host-msg-src-mq3-server-download-ml-479279476"></a>
 ### writeToClient
@@ -348,4 +356,4 @@ Direct state writes: `state.count`, `state.currentBlock`, `state.eof`, `state.xm
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.server.download.openIfNeeded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L244)

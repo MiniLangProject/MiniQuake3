@@ -12,7 +12,7 @@ struct ResolvedSkin
 Data record for `mq3.renderer.player_skins.ResolvedSkin`; groups `path`, `bindings`, `tags`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L45)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.player_skins.ResolvedSkin`; groups `path`, `bindin
 bindings
 ```
 
+Bindings associating names or handles with their backing resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L49)
 
 <a id="field-field-mq3-renderer-player-skins-resolvedskin-path-path-src-mq3-renderer-player-skins-ml-165129430"></a>
 ### path
@@ -33,8 +35,10 @@ bindings
 path
 ```
 
+Filesystem or virtual asset path associated with this record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L47)
 
 <a id="field-field-mq3-renderer-player-skins-resolvedskin-tags-tags-src-mq3-renderer-player-skins-ml-514010226"></a>
 ### tags
@@ -43,5 +47,7 @@ path
 tags
 ```
 
+Attachment tag names discovered while loading the skin or model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L51)

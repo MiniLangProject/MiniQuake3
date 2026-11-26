@@ -12,7 +12,7 @@ struct State
 `State` record for server imports, containing `clients`, `now`, `botEnable`, `gameVmActive` and `botlibReady` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L69)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct State
 botEnable
 ```
 
+True when server-side bot processing is enabled.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L75)
 
 <a id="field-field-mq3-botlib-server-imports-state-botlibready-botlibready-src-mq3-botlib-server-imports-ml-487744670"></a>
 ### botlibReady
@@ -33,8 +35,10 @@ botEnable
 botlibReady
 ```
 
+True after the bot library has been initialized successfully.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L79)
 
 <a id="field-field-mq3-botlib-server-imports-state-clients-clients-src-mq3-botlib-server-imports-ml-1790662094"></a>
 ### clients
@@ -43,8 +47,10 @@ botlibReady
 clients
 ```
 
+Server client records exposed through bot allocation and bot command imports.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L71)
 
 <a id="field-field-mq3-botlib-server-imports-state-debugpolygons-debugpolygons-src-mq3-botlib-server-imports-ml-742764134"></a>
 ### debugPolygons
@@ -53,8 +59,10 @@ clients
 debugPolygons
 ```
 
+Allocated navigation debug polygons exposed to the host renderer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L81)
 
 <a id="field-field-mq3-botlib-server-imports-state-gamevmactive-gamevmactive-src-mq3-botlib-server-imports-ml-1275761184"></a>
 ### gameVmActive
@@ -63,8 +71,10 @@ debugPolygons
 gameVmActive
 ```
 
+True when a game VM is available to service bot calls.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L77)
 
 <a id="field-field-mq3-botlib-server-imports-state-maxdebugpolys-maxdebugpolys-src-mq3-botlib-server-imports-ml-1972398554"></a>
 ### maxDebugPolys
@@ -73,8 +83,10 @@ gameVmActive
 maxDebugPolys
 ```
 
+Maximum number of host navigation debug polygons retained.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L83)
 
 <a id="field-field-mq3-botlib-server-imports-state-now-now-src-mq3-botlib-server-imports-ml-1561096278"></a>
 ### now
@@ -83,5 +95,7 @@ maxDebugPolys
 now
 ```
 
+Current time supplied to server-side bot-library services.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L73)

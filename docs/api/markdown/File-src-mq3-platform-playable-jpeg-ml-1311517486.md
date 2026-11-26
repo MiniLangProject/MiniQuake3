@@ -26,7 +26,7 @@ Builds `mq3.platform.playable_jpeg.Image` for `mq3.platform.playable_jpeg.decode
 | `data` | `dynamic` | — | Input tested by `data==void or typeof(data)!="bytes" or len(data)<4`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L37)
 
 - [mq3.platform.playable_jpeg.Image](Type-mq3-platform-playable-jpeg-image-325562269.md) — struct
 <a id="extern_function-extern-function-mq3-platform-playable-jpeg-jpegdecodenative-extern-function-jpegdecodenative-data-as-ptr-size-as-i32-rgba-as-ptr-capacity-as-i32-from-playable-window-dll-symbol-playable-window-decode-jpeg-returns-i32-src-mq3-platform-playable-jpeg-ml-8959649"></a>
@@ -77,8 +77,10 @@ Reads JPEG dimensions through the native WIC decoder.
 const MAX_DIMENSION = 4096
 ```
 
+Largest image width or height accepted by the decoder.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L21)
 
 <a id="constant-constant-mq3-platform-playable-jpeg-max-pixels-const-max-pixels-16777216-src-mq3-platform-playable-jpeg-ml-1418335596"></a>
 ### MAX_PIXELS
@@ -87,5 +89,7 @@ const MAX_DIMENSION = 4096
 const MAX_PIXELS = 16777216
 ```
 
+Maximum decoded pixel count accepted by the image loader.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L23)

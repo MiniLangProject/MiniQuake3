@@ -34,8 +34,10 @@ Reachable from entry: **no**
 const AWARD_MASK = 231496
 ```
 
+Player-award identifier selecting the mask reward.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L23)
 
 <a id="function-function-mq3-game-deaths-checkalmostcapture-function-checkalmostcapture-level-self-attacker-src-mq3-game-deaths-ml-1788149207"></a>
 ### checkAlmostCapture
@@ -53,7 +55,7 @@ Set `attacker.client.ps.persistant[c.PERS_PLAYEREVENTS]` to `attacker.client.ps.
 | `attacker` | `dynamic` | — | Attacking entity; accesses `client`. May update `attacker.client.ps.persistant[c.PERS_PLAYEREVENTS]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L47)
 
 <a id="function-function-mq3-game-deaths-checkalmostscored-function-checkalmostscored-level-self-attacker-src-mq3-game-deaths-ml-783437991"></a>
 ### checkAlmostScored
@@ -71,7 +73,7 @@ Set `self.client.ps.persistant[c.PERS_PLAYEREVENTS]` to `self.client.ps.persista
 | `attacker` | `dynamic` | — | Attacking entity; accesses `client`. May update `attacker.client.ps.persistant[c.PERS_PLAYEREVENTS]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L72)
 
 <a id="function-function-mq3-game-deaths-clearaward-function-clearaward-client-award-level-src-mq3-game-deaths-ml-1371742756"></a>
 ### clearAward
@@ -89,7 +91,7 @@ Set `client.ps.eFlags` to `(client.ps.eFlags & n.i32(~AWARD_MASK)) | award` and 
 | `level` | `dynamic` | — | Game-level state; accesses `time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L190)
 
 <a id="function-function-mq3-game-deaths-distance-function-distance-first-second-src-mq3-game-deaths-ml-1182187134"></a>
 ### distance
@@ -106,7 +108,7 @@ Calculate Euclidean distance between two three-component points for deaths.
 | `second` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L40)
 
 <a id="function-function-mq3-game-deaths-dropitem-function-dropitem-level-self-item-angle-src-mq3-game-deaths-ml-1355237816"></a>
 ### dropItem
@@ -125,7 +127,7 @@ Use `level.itemDropFn` to perform `dropItem`. Return paths include `gItems.Drop_
 | `angle` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fadd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L117)
 
 <a id="function-function-mq3-game-deaths-findclass-function-findclass-level-after-name-src-mq3-game-deaths-ml-889749183"></a>
 ### findClass
@@ -143,7 +145,7 @@ Find the next active entity with a case-insensitive class-name match for deaths.
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L28)
 
 <a id="function-function-mq3-game-deaths-modepowerupitem-function-modepowerupitem-level-powerup-src-mq3-game-deaths-ml-1268025584"></a>
 ### modePowerupItem
@@ -160,7 +162,7 @@ Apply `mq3.game.deaths.powerupItem` while evaluating `modePowerupItem`. Return p
 | `powerup` | `dynamic` | — | Operand used to evaluate the returned expression `powerup+27`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L104)
 
 <a id="function-function-mq3-game-deaths-modname-function-modname-level-mod-src-mq3-game-deaths-ml-1189746178"></a>
 ### modName
@@ -177,7 +179,7 @@ Resolve a means-of-death code to the baseq3 or Team Arena symbolic obituary name
 | `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L172)
 
 <a id="function-function-mq3-game-deaths-playerdie-function-playerdie-level-self-inflictor-attacker-damage-meansofdeath-src-mq3-game-deaths-ml-1742369275"></a>
 ### playerDie
@@ -198,7 +200,7 @@ Update `self.client.ps.pm_type`, `self.enemy`, `self.client.ps.persistant[c.PERS
 | `meansOfDeath` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L201)
 
 <a id="function-function-mq3-game-deaths-powerupitem-function-powerupitem-powerup-src-mq3-game-deaths-ml-1859840626"></a>
 ### powerupItem
@@ -214,7 +216,7 @@ Map a powerup identifier to its pickup-item index, including the red and blue fl
 | `powerup` | `dynamic` | — | Operand used to evaluate the returned expression `powerup+27`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L95)
 
 <a id="function-function-mq3-game-deaths-respawn-function-respawn-level-ent-src-mq3-game-deaths-ml-339821493"></a>
 ### respawn
@@ -231,7 +233,7 @@ Set `level.playerDieFn` to `playerDie` in `mq3.game.deaths.respawn`. Return path
 | `ent` | `dynamic` | — | Game entity; accesses `client` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L272)
 
 <a id="function-function-mq3-game-deaths-returncarriedflag-function-returncarriedflag-level-self-clear-src-mq3-game-deaths-ml-2061024955"></a>
 ### returnCarriedFlag
@@ -249,7 +251,7 @@ Apply `mq3.game.deaths.returnFlag` while evaluating `returnCarriedFlag`.
 | `clear` | `dynamic` | — | Value used by `returnCarriedFlag` in `if clear then ps.powerups[c.PW_NEUTRALFLAG] = 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L162)
 
 <a id="function-function-mq3-game-deaths-returnflag-function-returnflag-level-team-src-mq3-game-deaths-ml-1024748747"></a>
 ### returnFlag
@@ -266,7 +268,7 @@ Use `level.flagReturnFn` to perform `returnFlag`. Return paths include `itemCore
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L154)
 
 <a id="function-function-mq3-game-deaths-sameteam-function-sameteam-level-first-second-src-mq3-game-deaths-ml-410053102"></a>
 ### sameTeam
@@ -284,7 +286,7 @@ Check whether two client entities share a team in a team game for deaths.
 | `second` | `dynamic` | — | Second record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L182)
 
 <a id="function-function-mq3-game-deaths-tossclientitems-function-tossclientitems-level-self-src-mq3-game-deaths-ml-721790772"></a>
 ### tossClientItems
@@ -301,7 +303,7 @@ Drop the dying client's carried weapon and active powerup items through the leve
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `client` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L124)
 
 <a id="function-function-mq3-game-deaths-weaponitem-function-weaponitem-weapon-src-mq3-game-deaths-ml-688498706"></a>
 ### weaponItem
@@ -317,4 +319,4 @@ Map a weapon identifier to its pickup-item index, returning -1 for an unsupporte
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L85)

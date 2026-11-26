@@ -24,7 +24,7 @@ Copy wav in audio.wav; the normal completion returns `output`.
 | `count` | `dynamic` | — | Count used in `(count > 0)` and `(count - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L53)
 
 <a id="function-function-mq3-audio-wav-decode-function-decode-data-src-mq3-audio-wav-ml-1569492630"></a>
 ### decode
@@ -33,14 +33,14 @@ Copy wav in audio.wav; the normal completion returns `output`.
 function decode(data)
 ```
 
-Decode wav in audio.wav; the normal completion returns `Sound(sampleRate, channels, bits, blockAlign, byteRate, copy(data, dataOffset, dataSize))`.
+Decode a RIFF/WAVE asset into an independently owned PCM Sound. Accepts integer PCM only: one or two channels, 8 or 16 bits per channel, and sample rates from 4,000 through 192,000 Hz. Validates RIFF/chunk bounds, odd-byte padding, block alignment, byte rate, and complete sample frames. Uses the first fmt and data chunks, rejects empty data or payloads above MAX_PCM_BYTES, and reports malformed or unsupported input as error 7490. Bytes following the declared RIFF payload are not part of the decoded sound.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — | Data passed as `data` to `mq3.audio.wav.tag`. |
+| `data` | `dynamic` | — | Complete WAVE file bytes; the returned sample buffer does not alias this input. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L67)
 
 <a id="function-function-mq3-audio-wav-fail-function-fail-message-src-mq3-audio-wav-ml-2133538817"></a>
 ### fail
@@ -56,7 +56,7 @@ Create the audio.wav error for `fail` with 7490 and the supplied diagnostic text
 | `message` | `dynamic` | — | Message used in `("WAV: " + message)` and `error(7490, ("WAV: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L30)
 
 <a id="constant-constant-mq3-audio-wav-max-pcm-bytes-const-max-pcm-bytes-67108864-src-mq3-audio-wav-ml-1855906827"></a>
 ### MAX_PCM_BYTES
@@ -65,8 +65,10 @@ Create the audio.wav error for `fail` with 7490 and the supplied diagnostic text
 const MAX_PCM_BYTES = 67108864
 ```
 
+Maximum PCM payload size accepted by the WAVE loader, in bytes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L5)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L6)
 
 <a id="constant-constant-mq3-audio-wav-max-sample-rate-const-max-sample-rate-192000-src-mq3-audio-wav-ml-1176000663"></a>
 ### MAX_SAMPLE_RATE
@@ -75,8 +77,10 @@ const MAX_PCM_BYTES = 67108864
 const MAX_SAMPLE_RATE = 192000
 ```
 
+Highest WAVE sample rate accepted by the loader, in hertz.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)
 
 <a id="constant-constant-mq3-audio-wav-min-sample-rate-const-min-sample-rate-4000-src-mq3-audio-wav-ml-1816024111"></a>
 ### MIN_SAMPLE_RATE
@@ -85,8 +89,10 @@ const MAX_SAMPLE_RATE = 192000
 const MIN_SAMPLE_RATE = 4000
 ```
 
+Lowest WAVE sample rate accepted by the loader, in hertz.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L8)
 
 - [mq3.audio.wav.Sound](Type-mq3-audio-wav-sound-1863900385.md) — struct
 <a id="function-function-mq3-audio-wav-tag-function-tag-data-offset-a-b-c-d-src-mq3-audio-wav-ml-1312059589"></a>
@@ -108,7 +114,7 @@ Compute audio.wav.tag as `((((data[offset] == a) and (data[(offset + 1)] == b)) 
 | `d` | `dynamic` | — | D used in `(data[(offset + 3)] == d)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L46)
 
 <a id="function-function-mq3-audio-wav-u16-function-u16-data-offset-src-mq3-audio-wav-ml-1423243765"></a>
 ### u16
@@ -125,7 +131,7 @@ Compute audio.wav.u16 as `(data[offset] | (data[(offset + 1)] << 8))`.
 | `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L34)
 
 <a id="function-function-mq3-audio-wav-u32-function-u32-data-offset-src-mq3-audio-wav-ml-1086806745"></a>
 ### u32
@@ -142,4 +148,4 @@ Compute audio.wav.u32 as `(((data[offset] | (data[(offset + 1)] << 8)) | (data[(
 | `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L38)

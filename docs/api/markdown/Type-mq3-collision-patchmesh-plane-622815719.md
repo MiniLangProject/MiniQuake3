@@ -23,8 +23,10 @@ Plane record for collision.patchmesh, containing `normal`, `distance`, `signbits
 distance
 ```
 
+Signed distance defining the patch clipping plane.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L17)
 
 <a id="field-field-mq3-collision-patchmesh-plane-normal-normal-src-mq3-collision-patchmesh-ml-778049843"></a>
 ### normal
@@ -33,8 +35,10 @@ distance
 normal
 ```
 
+Normal of a generated patch facet or bevel clipping plane.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L15)
 
 <a id="field-field-mq3-collision-patchmesh-plane-signbits-signbits-src-mq3-collision-patchmesh-ml-1934190779"></a>
 ### signbits
@@ -43,5 +47,7 @@ normal
 signbits
 ```
 
+Signx + (signy<<1) + (signz<<2), used as lookup during collision.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L19)

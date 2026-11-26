@@ -12,7 +12,7 @@ struct SnapshotFrame
 SnapshotFrame record for server.snapshot_delta, containing `firstEntity`, `numEntities`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L16)
 
 ## Members
 
@@ -23,8 +23,10 @@ SnapshotFrame record for server.snapshot_delta, containing `firstEntity`, `numEn
 firstEntity
 ```
 
+First entity-state position for this snapshot in the shared circular snapshot buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L18)
 
 <a id="field-field-mq3-server-snapshot-delta-snapshotframe-numentities-numentities-src-mq3-server-snapshot-delta-ml-149316630"></a>
 ### numEntities
@@ -33,5 +35,7 @@ firstEntity
 numEntities
 ```
 
+Number of entity records currently represented by this state or snapshot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L20)

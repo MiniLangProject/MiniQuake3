@@ -12,7 +12,7 @@ struct State
 Stores playable enemy events state, including `tracks`, `lastTime`, `inputs`, `events`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L41)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable enemy events state, including `tracks`, `lastTime`, `inputs`, `e
 events
 ```
 
+When constructing this record, `state` supplies an empty list for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L49)
 
 <a id="field-field-mq3-client-playable-enemy-events-state-inputs-inputs-src-mq3-client-playable-enemy-events-ml-112820342"></a>
 ### inputs
@@ -33,8 +35,10 @@ events
 inputs
 ```
 
+When constructing this record, `state` supplies an empty list for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L47)
 
 <a id="field-field-mq3-client-playable-enemy-events-state-lasttime-lasttime-src-mq3-client-playable-enemy-events-ml-1597622014"></a>
 ### lastTime
@@ -43,8 +47,10 @@ inputs
 lastTime
 ```
 
+When constructing this record, `state` supplies `now` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L45)
 
 <a id="field-field-mq3-client-playable-enemy-events-state-tracks-tracks-src-mq3-client-playable-enemy-events-ml-69442808"></a>
 ### tracks
@@ -53,5 +59,7 @@ lastTime
 tracks
 ```
 
+When constructing this record, `state` supplies `tracks` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L43)

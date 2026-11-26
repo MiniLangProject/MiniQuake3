@@ -12,7 +12,7 @@ struct Submodels
 Submodels record for collision.world, containing `models`, `bounds`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L151)
 
 ## Members
 
@@ -23,8 +23,10 @@ Submodels record for collision.world, containing `models`, `bounds`.
 bounds
 ```
 
+Minimum and maximum bounds for each loaded inline model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L117)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L155)
 
 <a id="field-field-mq3-collision-world-submodels-models-models-src-mq3-collision-world-ml-157964063"></a>
 ### models
@@ -33,5 +35,7 @@ bounds
 models
 ```
 
+Submodel records associated with the loaded map.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L117)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L153)

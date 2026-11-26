@@ -36,7 +36,7 @@ Set `ent.client` to `client` and `level.clients[ent.slot]` to `client` in `mq3.g
 | `client` | `dynamic` | — | Operand used to evaluate the returned expression `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L654)
 
 <a id="function-function-mq3-game-entities-blank-function-blank-slot-r-src-mq3-game-entities-ml-1138623842"></a>
 ### blank
@@ -53,7 +53,7 @@ Create an inactive entity record with the default game, collision and event fiel
 | `r` | `dynamic` | — | Initial value stored in `mq3.game.entities.Entity.r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L349)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L634)
 
 - [mq3.game.entities.Client](Type-mq3-game-entities-client-1102521674.md) — struct
 <a id="function-function-mq3-game-entities-create-function-create-world-src-mq3-game-entities-ml-1553679680"></a>
@@ -70,7 +70,7 @@ Apply `mq3.server.world.create`, `mq3.game.cvar_maintenance.create` and `mq3.gam
 | `world` | `dynamic` | — | Initial value stored in `mq3.server.world.Scene.world`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L354)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L639)
 
 <a id="function-function-mq3-game-entities-createclient-function-createclient-state-team-cmdangles-src-mq3-game-entities-ml-977957426"></a>
 ### createClient
@@ -88,7 +88,7 @@ Create a client record with initialized player state, session data, statistics a
 | `cmdAngles` | `dynamic` | — | Initial value stored in `mq3.game.entities.Client.cmdAngles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L596)
 
 <a id="function-function-mq3-game-entities-diagnostic-function-diagnostic-level-text-src-mq3-game-entities-ml-569739761"></a>
 ### diagnostic
@@ -105,7 +105,7 @@ Use `level.gamePrintFn` to perform `diagnostic`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L484)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L769)
 
 <a id="function-function-mq3-game-entities-diagnosticargument-function-diagnosticargument-text-src-mq3-game-entities-ml-622131885"></a>
 ### diagnosticArgument
@@ -121,7 +121,7 @@ Convert a native diagnostic string to text up to its first zero byte, with a nul
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L491)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L776)
 
 <a id="function-function-mq3-game-entities-entitiesfree-function-entitiesfree-level-src-mq3-game-entities-ml-883391718"></a>
 ### entitiesFree
@@ -137,7 +137,7 @@ Check whether any non-client entity slot below the active entity limit is unused
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L691)
 
 - [mq3.game.entities.Entity](Type-mq3-game-entities-entity-1824582758.md) — struct
 <a id="function-function-mq3-game-entities-free-function-free-level-ent-src-mq3-game-entities-ml-1602485441"></a>
@@ -155,7 +155,7 @@ Unlink and release a game entity while preserving the entity-slot lifecycle rule
 | `ent` | `dynamic` | — | Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `ent.r`, `ent.s` and `ent.client` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L439)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L724)
 
 <a id="function-function-mq3-game-entities-initentity-function-initentity-ent-src-mq3-game-entities-ml-1653673953"></a>
 ### initEntity
@@ -171,7 +171,7 @@ Initialize an allocated game entity for use by the level and its collision servi
 | `ent` | `dynamic` | — | Game entity; accesses `inuse`, `classname`, `s`, `slot` and `r`. May update `ent.inuse`, `ent.classname` and `ent.s.number` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L384)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L669)
 
 - [mq3.game.entities.Level](Type-mq3-game-entities-level-1198109129.md) — struct
 <a id="function-function-mq3-game-entities-link-function-link-level-ent-src-mq3-game-entities-ml-617438733"></a>
@@ -189,7 +189,7 @@ Set `ent.s.solid` to `ent.r.solid` in `mq3.game.entities.link`.
 | `ent` | `dynamic` | — | Game entity; accesses `slot`, `s` and `r`. May update `ent.s.solid` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L424)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L709)
 
 <a id="function-function-mq3-game-entities-observe-function-observe-level-kind-ent-src-mq3-game-entities-ml-562830299"></a>
 ### observe
@@ -207,7 +207,7 @@ Use `level.observeFn` to perform `observe`.
 | `ent` | `dynamic` | — | Value passed as argument 3 to `level.observeFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L663)
 
 <a id="function-function-mq3-game-entities-picktarget-function-picktarget-level-name-src-mq3-game-entities-ml-1662904713"></a>
 ### pickTarget
@@ -224,7 +224,7 @@ Use `level.gamePrintFn` to perform `pickTarget`. Return paths include `choices[r
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L533)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L818)
 
 <a id="function-function-mq3-game-entities-random-function-random-level-src-mq3-game-entities-ml-1367170630"></a>
 ### random
@@ -240,7 +240,7 @@ Set `level.randSeed` to `n.add32(n.mul32(level.randSeed,214013),2531011)` in `mq
 | `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L525)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L810)
 
 <a id="function-function-mq3-game-entities-resetclient-function-resetclient-client-src-mq3-game-entities-ml-1828809041"></a>
 ### resetClient
@@ -256,7 +256,7 @@ Reset the existing client record to the default values used when binding a new p
 | `client` | `dynamic` | — | Client state; accesses `ps`, `team`, `cmdAngles`, `noclip` and `damage_armor` and related fields. May update `client.ps`, `client.team` and `client.cmdAngles` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L602)
 
 <a id="function-function-mq3-game-entities-runthink-function-runthink-level-ent-src-mq3-game-entities-ml-1129061705"></a>
 ### runThink
@@ -273,7 +273,7 @@ Set `ent.nextthink` to `0` in `mq3.game.entities.runThink`.
 | `ent` | `dynamic` | — | Game entity; accesses `nextthink` and `think`. May update `ent.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L465)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L750)
 
 <a id="function-function-mq3-game-entities-setorigin-function-setorigin-ent-origin-src-mq3-game-entities-ml-2031111583"></a>
 ### setOrigin
@@ -290,7 +290,7 @@ Update `ent.s.pos.trBase`, `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.s.pos
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L476)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L761)
 
 <a id="function-function-mq3-game-entities-spawn-function-spawn-level-src-mq3-game-entities-ml-1994161584"></a>
 ### spawn
@@ -306,7 +306,7 @@ Set `level.num_entities` to `level.num_entities+1` in `mq3.game.entities.spawn`.
 | `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `entities`, `startTime` and `time`. May update `level.num_entities` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L675)
 
 <a id="function-function-mq3-game-entities-syncspatial-function-syncspatial-ent-src-mq3-game-entities-ml-1744366203"></a>
 ### syncSpatial
@@ -322,7 +322,7 @@ Update `ent.r.number`, `ent.r.modelindex`, `ent.r.solid` and `ent.r.origin` and 
 | `ent` | `dynamic` | — | Game entity; accesses `r` and `s`. May update `ent.r.number`, `ent.r.modelindex` and `ent.r.solid` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L416)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L701)
 
 <a id="function-function-mq3-game-entities-tempentity-function-tempentity-level-origin-event-src-mq3-game-entities-ml-471646302"></a>
 ### tempEntity
@@ -340,7 +340,7 @@ Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.snapshot
 | `event` | `dynamic` | — | Player or entity event identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L517)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L802)
 
 <a id="function-function-mq3-game-entities-unlink-function-unlink-level-ent-src-mq3-game-entities-ml-272856193"></a>
 ### unlink
@@ -357,7 +357,7 @@ Apply `mq3.server.world.unlinkEntity` and `mq3.game.entities.observe` while eval
 | `ent` | `dynamic` | — | Game entity; accesses `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L432)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L717)
 
 <a id="function-function-mq3-game-entities-vtos-function-vtos-level-vector-src-mq3-game-entities-ml-642816193"></a>
 ### vtos
@@ -374,4 +374,4 @@ Use `level.gamePrintFn` to perform `vtos`. Return paths include `text`.
 | `vector` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L502)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L787)

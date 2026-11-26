@@ -12,7 +12,7 @@ struct State
 Stores UI input latch state, including `down`, `pulse`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L9)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI input latch state, including `down`, `pulse`.
 down
 ```
 
+When constructing this record, `create` supplies `array(keyCount,false)` for this member. Used by `observe` and `keyDown` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L12)
 
 <a id="field-field-mq3-client-ui-input-latch-state-pulse-pulse-src-mq3-client-ui-input-latch-ml-1200502314"></a>
 ### pulse
@@ -33,5 +35,7 @@ down
 pulse
 ```
 
+When constructing this record, `create` supplies `array(keyCount,false)` for this member. Used by `beginFrame` and `observe` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L15)

@@ -12,7 +12,7 @@ struct BytesResult
 BytesResult record for vm.syscall_cgame, containing `found`, `data`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L20)
 
 ## Members
 
@@ -23,8 +23,10 @@ BytesResult record for vm.syscall_cgame, containing `found`, `data`.
 data
 ```
 
+Binary result bytes to copy into the calling VM memory.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L24)
 
 <a id="field-field-mq3-vm-syscall-cgame-bytesresult-found-found-src-mq3-vm-syscall-cgame-ml-920713643"></a>
 ### found
@@ -33,5 +35,7 @@ data
 found
 ```
 
+Nonzero when the requested token, source, or resource result is available.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L22)

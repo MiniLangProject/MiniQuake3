@@ -12,7 +12,7 @@ struct TexMod
 Data record for `mq3.renderer.shader_parser.TexMod`; groups `kind`, `values`, `wave`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L78)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.shader_parser.TexMod`; groups `kind`, `values`, `w
 kind
 ```
 
+Parsed texture-coordinate operation selecting scale, scroll, rotate, transform, turbulence, or another modifier.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L81)
 
 <a id="field-field-mq3-renderer-shader-parser-texmod-values-values-src-mq3-renderer-shader-parser-ml-230014362"></a>
 ### values
@@ -33,8 +35,10 @@ kind
 values
 ```
 
+Numeric parameters interpreted according to the texture modifier's kind.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L83)
 
 <a id="field-field-mq3-renderer-shader-parser-texmod-wave-wave-src-mq3-renderer-shader-parser-ml-193639880"></a>
 ### wave
@@ -43,5 +47,7 @@ values
 wave
 ```
 
+Waveform parameters driving this texture or vertex modification.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L85)

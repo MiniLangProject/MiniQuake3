@@ -23,8 +23,10 @@ Binding record for server.network_ingress, containing `packetClient`, `messageCl
 messageClient
 ```
 
+Client record used while decoding the accepted message payload.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L15)
 
 <a id="field-field-mq3-server-network-ingress-binding-packetclient-packetclient-src-mq3-server-network-ingress-ml-411901476"></a>
 ### packetClient
@@ -33,5 +35,7 @@ messageClient
 packetClient
 ```
 
+Client record used by the packet sequence handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L13)

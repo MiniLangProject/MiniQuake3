@@ -12,7 +12,7 @@ struct RefEntity
 Stores client game localents ref entity record, including `reType`, `origin`, `lightingOrigin`, `axis`, `shaderRGBA`, `radius` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L106)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game localents ref entity record, including `reType`, `origin`, `l
 axis
 ```
 
+Three orientation basis vectors used to transform the rendered object.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L115)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-customshader-customshader-src-mq3-client-cgame-localents-ml-2116312419"></a>
 ### customShader
@@ -33,8 +35,10 @@ axis
 customShader
 ```
 
+Shader resource selected for custom rendering.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L124)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-hmodel-hmodel-src-mq3-client-cgame-localents-ml-4268877"></a>
 ### hModel
@@ -43,8 +47,10 @@ customShader
 hModel
 ```
 
+Model resource selected for the h presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L122)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-lightingorigin-lightingorigin-src-mq3-client-cgame-localents-ml-1717712483"></a>
 ### lightingOrigin
@@ -53,8 +59,10 @@ hModel
 lightingOrigin
 ```
 
+When constructing this record, `newRefEntity` supplies `[0.0,0.0,0.0]` for this member. Used by `addFragment` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L113)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-nonnormalizedaxes-nonnormalizedaxes-src-mq3-client-cgame-localents-ml-1732329611"></a>
 ### nonNormalizedAxes
@@ -63,8 +71,10 @@ lightingOrigin
 nonNormalizedAxes
 ```
 
+When constructing this record, `newRefEntity` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L131)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-origin-origin-src-mq3-client-cgame-localents-ml-1588674067"></a>
 ### origin
@@ -73,8 +83,10 @@ nonNormalizedAxes
 origin
 ```
 
+Current renderer-facing position of a local fragment, sprite, or other temporary effect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L110)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-radius-radius-src-mq3-client-cgame-localents-ml-1301113347"></a>
 ### radius
@@ -83,8 +95,10 @@ origin
 radius
 ```
 
+Current world-space sprite radius submitted for a temporary local effect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L120)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-renderfx-renderfx-src-mq3-client-cgame-localents-ml-426876779"></a>
 ### renderfx
@@ -93,8 +107,10 @@ radius
 renderfx
 ```
 
+Renderer-entity flags controlling lighting, view restrictions, depth handling, and related effects.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L129)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-retype-retype-src-mq3-client-cgame-localents-ml-1849225413"></a>
 ### reType
@@ -103,8 +119,10 @@ renderfx
 reType
 ```
 
+When constructing this record, `newRefEntity` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L108)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-shaderrgba-shaderrgba-src-mq3-client-cgame-localents-ml-962066137"></a>
 ### shaderRGBA
@@ -113,8 +131,10 @@ reType
 shaderRGBA
 ```
 
+When constructing this record, `newRefEntity` supplies `[255,255,255,255]` for this member. Used by `addFragment` and `addFadeRGB` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L118)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-shadertime-shadertime-src-mq3-client-cgame-localents-ml-343229695"></a>
 ### shaderTime
@@ -123,5 +143,7 @@ shaderRGBA
 shaderTime
 ```
 
+When constructing this record, `newRefEntity` supplies `0.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L126)

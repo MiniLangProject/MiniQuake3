@@ -33,7 +33,7 @@ Exact R_DlightBmodel point-to-expanded-bounds test after R_TransformDlights. The
 | `bounds` | `dynamic` | — | Nested indexed data; outer entries read at `0`, `1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L153)
 
 - [mq3.renderer.playable_dynamic_lights.Batch](Type-mq3-renderer-playable-dynamic-lights-batch-2087703573.md) — struct
 <a id="function-function-mq3-renderer-playable-dynamic-lights-build-function-build-renderdata-receiveflags-src-mq3-renderer-playable-dynamic-lights-ml-82331954"></a>
@@ -51,7 +51,7 @@ Builds `mq3.renderer.playable_dynamic_lights.Batch` after updating `triangles[ou
 | `receiveFlags` | `dynamic` | — | Indexed input read at `triangle.textureIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L86)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-buildoriented-function-buildoriented-renderdata-receiveflags-origins-axes-bounds-src-mq3-renderer-playable-dynamic-lights-ml-550615041"></a>
 ### buildOriented
@@ -71,7 +71,7 @@ Builds `mq3.renderer.playable_dynamic_lights.Batch` after updating `triangles[ou
 | `bounds` | `dynamic` | — | Indexed input read at `sourceIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L102)
 
 - [mq3.renderer.playable_dynamic_lights.Catalog](Type-mq3-renderer-playable-dynamic-lights-catalog-1157749806.md) — struct
 <a id="function-function-mq3-renderer-playable-dynamic-lights-createcatalog-function-createcatalog-slot-src-mq3-renderer-playable-dynamic-lights-ml-1466308552"></a>
@@ -88,7 +88,7 @@ Builds `mq3.renderer.playable_dynamic_lights.Catalog` for `mq3.renderer.playable
 | `slot` | `dynamic` | — | Initial value for `mq3.renderer.playable_dynamic_lights.Catalog.textureSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L75)
 
 <a id="constant-constant-mq3-renderer-playable-dynamic-lights-dlight-size-const-dlight-size-16-src-mq3-renderer-playable-dynamic-lights-ml-707059798"></a>
 ### DLIGHT_SIZE
@@ -97,8 +97,10 @@ Builds `mq3.renderer.playable_dynamic_lights.Catalog` for `mq3.renderer.playable
 const DLIGHT_SIZE = 16
 ```
 
+Width and height in pixels of the generated dynamic-light texture.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L12)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-draw-function-draw-batch-catalog-lights-projection-src-mq3-renderer-playable-dynamic-lights-ml-1482575391"></a>
 ### draw
@@ -117,7 +119,7 @@ Calls `mq3.renderer.playable_dynamic_lights.drawTarget` with `(batch,catalog,lig
 | `projection` | `dynamic` | — | Value forwarded as `projection` to `mq3.renderer.playable_dynamic_lights.drawTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L202)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-drawtarget-function-drawtarget-batch-catalog-lights-projection-area-src-mq3-renderer-playable-dynamic-lights-ml-2007895220"></a>
 ### drawTarget
@@ -137,7 +139,7 @@ Draws dynamic-light batches using additive projected lighting and the requested 
 | `area` | `dynamic` | — | Argument 3 supplied to `mq3.platform.playable_window.submitWorldTriangleBatchViewport`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L188)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-drawviewport-function-drawviewport-batch-catalog-lights-projection-area-src-mq3-renderer-playable-dynamic-lights-ml-885206448"></a>
 ### drawViewport
@@ -157,7 +159,7 @@ Calls `mq3.renderer.playable_dynamic_lights.drawTarget` with `(batch,catalog,lig
 | `area` | `dynamic` | — | Value forwarded as `area` to `mq3.renderer.playable_dynamic_lights.drawTarget`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L209)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-fail-function-fail-message-src-mq3-renderer-playable-dynamic-lights-ml-1959002809"></a>
 ### fail
@@ -173,7 +175,7 @@ Creates error `7630` with message `"playable dynamic lights: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7630,"playable dynamic lights: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L59)
 
 - [mq3.renderer.playable_dynamic_lights.Light](Type-mq3-renderer-playable-dynamic-lights-light-2075992717.md) — struct
 <a id="function-function-mq3-renderer-playable-dynamic-lights-localpoint-function-localpoint-point-origin-axis-src-mq3-renderer-playable-dynamic-lights-ml-1433144623"></a>
@@ -192,7 +194,7 @@ Transforms a point into an oriented light/entity frame by subtracting its origin
 | `axis` | `dynamic` | — | Nested indexed data; outer entries read at `0`, `1`, `2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L129)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-orientedvertex-function-orientedvertex-light-position-origin-axis-src-mq3-renderer-playable-dynamic-lights-ml-1451084332"></a>
 ### orientedVertex
@@ -211,7 +213,7 @@ Computes `orientedVertex` from `vertex(Light(localLight,light.radius,light.color
 | `axis` | `dynamic` | — | Value forwarded as `axis` to `mq3.renderer.playable_dynamic_lights.localPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L140)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-release-function-release-catalog-src-mq3-renderer-playable-dynamic-lights-ml-357132559"></a>
 ### release
@@ -227,7 +229,7 @@ Returns `void` from `mq3.renderer.playable_dynamic_lights.release`.
 | `catalog` | `dynamic` | — | Record providing `catalog.textureSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L81)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-textureimage-function-textureimage-src-mq3-renderer-playable-dynamic-lights-ml-503485734"></a>
 ### textureImage
@@ -239,7 +241,7 @@ function textureImage()
 Builds `pixels[offset]`, `pixels[offset+1]`, `pixels[offset+2]` in `mq3.renderer.playable_dynamic_lights.textureImage`; returns `materials.Image(DLIGHT_SIZE,DLIGHT_SIZE,pixels)`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L62)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-update-function-update-batch-catalog-light-src-mq3-renderer-playable-dynamic-lights-ml-1382313363"></a>
 ### update
@@ -257,7 +259,7 @@ Computes `update` from `batch.commands.count` using `mq3.platform.playable_windo
 | `light` | `dynamic` | — | Record providing `light.radius`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L166)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-upload-function-upload-catalog-src-mq3-renderer-playable-dynamic-lights-ml-783259181"></a>
 ### upload
@@ -273,7 +275,7 @@ Returns `1` from `mq3.renderer.playable_dynamic_lights.upload`; earlier branches
 | `catalog` | `dynamic` | — | Record providing `catalog.textureSlot`, `catalog.image`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L78)
 
 <a id="function-function-mq3-renderer-playable-dynamic-lights-vertex-function-vertex-light-position-src-mq3-renderer-playable-dynamic-lights-ml-905735821"></a>
 ### vertex
@@ -290,6 +292,6 @@ Builds `mq3.renderer.playable_dynamic_lights.VertexResult` for `mq3.renderer.pla
 | `position` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L118)
 
 - [mq3.renderer.playable_dynamic_lights.VertexResult](Type-mq3-renderer-playable-dynamic-lights-vertexresult-1266326260.md) — struct

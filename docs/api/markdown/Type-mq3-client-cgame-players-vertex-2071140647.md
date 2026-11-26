@@ -12,7 +12,7 @@ struct Vertex
 Stores client game players vertex record, including `origin`, `color`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L288)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game players vertex record, including `origin`, `color`.
 color
 ```
 
+Per-vertex RGBA modulation stored as four byte-range channel values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L73)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L292)
 
 <a id="field-field-mq3-client-cgame-players-vertex-origin-origin-src-mq3-client-cgame-players-ml-1293118675"></a>
 ### origin
@@ -33,5 +35,7 @@ color
 origin
 ```
 
+World-space vertex position for player-associated polygon geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L73)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L290)

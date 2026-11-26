@@ -12,7 +12,7 @@ struct Reachability
 `Reachability` record for aas clustering, containing `areaNum` and `travelType`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L83)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Reachability
 areaNum
 ```
 
+Destination area used when determining connected navigation clusters.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L85)
 
 <a id="field-field-mq3-botlib-aas-clustering-reachability-traveltype-traveltype-src-mq3-botlib-aas-clustering-ml-2140069788"></a>
 ### travelType
@@ -33,5 +35,7 @@ areaNum
 travelType
 ```
 
+Encoded AAS movement type required to traverse this link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L87)

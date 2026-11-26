@@ -12,7 +12,7 @@ struct Catalog
 Stores playable viewmodel catalog record, including `attachments`, `skipped`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L95)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable viewmodel catalog record, including `attachments`, `skipped`.
 attachments
 ```
 
+When constructing this record, `loadCatalog` supplies an empty list for this member. Used by `findAttachment` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L98)
 
 <a id="field-field-mq3-client-playable-viewmodel-catalog-skipped-skipped-src-mq3-client-playable-viewmodel-ml-1491404956"></a>
 ### skipped
@@ -33,5 +35,7 @@ attachments
 skipped
 ```
 
+When constructing this record, `loadCatalog` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L100)

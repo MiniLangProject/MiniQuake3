@@ -53,7 +53,7 @@ Direct state writes: `vm.steps`, `vm.breaks`, `vm.programStack`.
 | `args` | `dynamic` | — | At most ten vmMain integer arguments; omitted slots are filled with zero. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L60)
 
 <a id="constant-constant-mq3-vm-native-exec-control-bytes-const-control-bytes-1080-src-mq3-vm-native-exec-ml-486636992"></a>
 ### CONTROL_BYTES
@@ -62,8 +62,10 @@ Direct state writes: `vm.steps`, `vm.breaks`, `vm.programStack`.
 const CONTROL_BYTES = 1080
 ```
 
+Byte size used for control storage or binary layout in mq3.vm.native_exec.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L39)
 
 <a id="function-function-mq3-vm-native-exec-fail-function-fail-text-src-mq3-vm-native-exec-ml-360682263"></a>
 ### fail
@@ -79,7 +81,7 @@ Create the vm.native_exec error for `fail` with 3400 and the supplied diagnostic
 | `text` | `dynamic` | — | Text used in `("QVM: " + text)` and `error(3400, ("QVM: " + text))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L42)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-plansizenative-extern-function-plansizenative-image-as-ptr-count-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-plan-size-returns-i32-src-mq3-vm-native-exec-ml-535154572"></a>
 ### planSizeNative
@@ -114,7 +116,7 @@ Prepare native exec in vm.native_exec; the normal completion returns `plan`.
 | `image` | `dynamic` | — | Image used in `len(image)` and `nativeBytesPtr(image)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L45)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-preparenative-extern-function-preparenative-image-as-ptr-count-as-i32-plan-as-ptr-capacity-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-prepare-returns-i32-src-mq3-vm-native-exec-ml-931716567"></a>
 ### prepareNative
@@ -154,7 +156,7 @@ Direct state writes: `vm.programStack`.
 | `saved` | `dynamic` | — | Saved operand used by `restoreStack`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L54)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-runnative-extern-function-runnative-plan-as-ptr-planbytes-as-i32-data-as-ptr-databytes-as-i32-control-as-ptr-controlbytes-as-i32-value-as-i32-resume-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-run-returns-i32-src-mq3-vm-native-exec-ml-1364553667"></a>
 ### runNative

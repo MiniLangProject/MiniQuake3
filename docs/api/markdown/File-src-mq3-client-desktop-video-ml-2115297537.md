@@ -30,7 +30,7 @@ Calls `mq3.client.desktop_video.requestedMode`, `mq3.qcommon.cvar.get`, `mq3.pla
 | `toggleFullscreen` | `dynamic` | — | Value used by `mode=requestedMode(registry,toggleFullscreen)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L41)
 
 <a id="function-function-mq3-client-desktop-video-open-function-open-registry-src-mq3-client-desktop-video-ml-738329123"></a>
 ### open
@@ -46,7 +46,7 @@ Calls `mq3.client.desktop_video.requestedMode`, `mq3.platform.playable_window.op
 | `registry` | `dynamic` | — | Value used by `mode=requestedMode(registry,false)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L58)
 
 <a id="function-function-mq3-client-desktop-video-requestedmode-function-requestedmode-registry-togglefullscreen-src-mq3-client-desktop-video-ml-913823046"></a>
 ### requestedMode
@@ -63,4 +63,4 @@ Calls `mq3.qcommon.cvar.get`, `mq3.qcommon.cvar.set2`, `mq3.renderer.tr_init.get
 | `toggleFullscreen` | `dynamic` | — | Value used by `if toggleFullscreen then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L23)

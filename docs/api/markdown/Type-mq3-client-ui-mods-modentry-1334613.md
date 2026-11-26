@@ -12,7 +12,7 @@ struct ModEntry
 Stores UI mods mod entry record, including `game`, `description`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L19)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI mods mod entry record, including `game`, `description`.
 description
 ```
 
+When constructing this record, `parseInfo` supplies `description` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L23)
 
 <a id="field-field-mq3-client-ui-mods-modentry-game-game-src-mq3-client-ui-mods-ml-1991368501"></a>
 ### game
@@ -33,5 +35,7 @@ description
 game
 ```
 
+When constructing this record, `parseInfo` supplies `game` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L21)

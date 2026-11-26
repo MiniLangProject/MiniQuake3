@@ -23,8 +23,10 @@ Stores client game usercmd state, including `weapon`, `sensitivity`.
 sensitivity
 ```
 
+When constructing this record, `create` supplies `1.0` for this member. Used by `set` and `sensitivity` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L12)
 
 <a id="field-field-mq3-client-cgame-usercmd-state-weapon-weapon-src-mq3-client-cgame-usercmd-ml-499359596"></a>
 ### weapon
@@ -33,5 +35,7 @@ sensitivity
 weapon
 ```
 
+Native weapon identifier requested by the game module for subsequent user commands.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L9)

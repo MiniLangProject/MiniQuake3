@@ -12,7 +12,7 @@ struct Shot
 Stores playable weapon shot record, including `start`, `endPoint`, `hit`, `normal`, `distance`, `fraction`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L50)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable weapon shot record, including `start`, `endPoint`, `hit`, `norma
 distance
 ```
 
+When constructing this record, `shootRay` supplies `qmath.VectorLength(delta)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L61)
 
 <a id="field-field-mq3-client-playable-weapon-shot-endpoint-endpoint-src-mq3-client-playable-weapon-ml-544431363"></a>
 ### endPoint
@@ -33,8 +35,10 @@ distance
 endPoint
 ```
 
+World-space endpoint of the trace, beam, or projectile presentation segment.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L55)
 
 <a id="field-field-mq3-client-playable-weapon-shot-fraction-fraction-src-mq3-client-playable-weapon-ml-320766221"></a>
 ### fraction
@@ -43,8 +47,10 @@ endPoint
 fraction
 ```
 
+When constructing this record, `shootRay` supplies `fraction` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L63)
 
 <a id="field-field-mq3-client-playable-weapon-shot-hit-hit-src-mq3-client-playable-weapon-ml-163328285"></a>
 ### hit
@@ -53,8 +59,10 @@ fraction
 hit
 ```
 
+When constructing this record, `shootRay` supplies `hit` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L57)
 
 <a id="field-field-mq3-client-playable-weapon-shot-normal-normal-src-mq3-client-playable-weapon-ml-1723053599"></a>
 ### normal
@@ -63,8 +71,10 @@ hit
 normal
 ```
 
+World-surface normal returned by the player's hitscan trace, retained for impact presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L59)
 
 <a id="field-field-mq3-client-playable-weapon-shot-start-start-src-mq3-client-playable-weapon-ml-2079615693"></a>
 ### start
@@ -73,5 +83,7 @@ normal
 start
 ```
 
+When constructing this record, `shootRay` supplies `[startPoint[0],startPoint[1],startPoint[2]]` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L53)

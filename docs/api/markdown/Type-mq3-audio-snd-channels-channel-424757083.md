@@ -12,7 +12,7 @@ struct Channel
 Channel record for audio.snd_channels, containing `active`, `entity`, `handle`, `entchannel`, `allocTime`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L13)
 
 ## Members
 
@@ -23,8 +23,10 @@ Channel record for audio.snd_channels, containing `active`, `entity`, `handle`, 
 active
 ```
 
+True while this sound, channel, or music stream participates in playback.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
 
 <a id="field-field-mq3-audio-snd-channels-channel-alloctime-alloctime-src-mq3-audio-snd-channels-ml-395457368"></a>
 ### allocTime
@@ -33,8 +35,10 @@ active
 allocTime
 ```
 
+Timestamp at which the playback channel was allocated.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L23)
 
 <a id="field-field-mq3-audio-snd-channels-channel-entchannel-entchannel-src-mq3-audio-snd-channels-ml-1512357904"></a>
 ### entchannel
@@ -43,8 +47,10 @@ allocTime
 entchannel
 ```
 
+Entity-channel identifier used when replacing an existing sound.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L21)
 
 <a id="field-field-mq3-audio-snd-channels-channel-entity-entity-src-mq3-audio-snd-channels-ml-731033610"></a>
 ### entity
@@ -53,8 +59,10 @@ entchannel
 entity
 ```
 
+Game-entity number to which the sound source or channel belongs.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L17)
 
 <a id="field-field-mq3-audio-snd-channels-channel-handle-handle-src-mq3-audio-snd-channels-ml-624372880"></a>
 ### handle
@@ -63,5 +71,7 @@ entity
 handle
 ```
 
+Registered sound handle used to resolve the sound asset.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L19)

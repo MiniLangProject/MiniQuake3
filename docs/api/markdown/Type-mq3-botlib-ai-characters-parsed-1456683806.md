@@ -12,7 +12,7 @@ struct Parsed
 `Parsed` record for ai characters, containing `found` and `character`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L81)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Parsed
 character
 ```
 
+Bot-character definition produced by the parser.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L85)
 
 <a id="field-field-mq3-botlib-ai-characters-parsed-found-found-src-mq3-botlib-ai-characters-ml-1724001332"></a>
 ### found
@@ -33,5 +35,7 @@ character
 found
 ```
 
+True when the requested lookup produced a matching entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L83)

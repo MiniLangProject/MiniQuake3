@@ -38,7 +38,7 @@ Compute activate in qcommon.files_runtime; the normal completion returns `number
 | `unique` | `dynamic` | — | Unique operand used by `activate`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L237)
 
 <a id="function-function-mq3-qcommon-files-runtime-blankhandle-function-blankhandle-src-mq3-qcommon-files-runtime-ml-815529694"></a>
 ### blankHandle
@@ -50,7 +50,7 @@ function blankHandle()
 Create `mq3.qcommon.files_runtime.Handle` with active=false; name=""; mode=FS_READ; data=bytes(0, 0); position=0; path=""; dirty=false; sync=false; zipFile=false; unique=false.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L129)
 
 - [mq3.qcommon.files_runtime.Config](Type-mq3-qcommon-files-runtime-config-2132886302.md) — struct
 <a id="function-function-mq3-qcommon-files-runtime-contains-function-contains-values-value-src-mq3-qcommon-files-runtime-ml-1046858409"></a>
@@ -68,7 +68,7 @@ Test files runtime in qcommon.files_runtime; the normal completion returns `fals
 | `value` | `dynamic` | — | Value used in `stringEqualsIgnoreCaseAscii(old, value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L479)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L555)
 
 <a id="function-function-mq3-qcommon-files-runtime-create-function-create-basepath-homepath-cdpath-gamedir-feed-src-mq3-qcommon-files-runtime-ml-644441357"></a>
 ### create
@@ -88,7 +88,7 @@ Create files runtime in qcommon.files_runtime; the normal completion returns `Ru
 | `feed` | `dynamic` | — | Feed passed as `feed` to `mq3.qcommon.filesystem.create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L136)
 
 <a id="extern_function-extern-function-mq3-qcommon-files-runtime-createdirectoryw-extern-function-createdirectoryw-name-as-wstr-security-as-ptr-from-kernel32-dll-returns-bool-src-mq3-qcommon-files-runtime-ml-1658525771"></a>
 ### CreateDirectoryW
@@ -107,7 +107,7 @@ Create one filesystem directory through the Win32 runtime.
 
 **Returns:** Nonzero on success; zero on failure, including an already existing directory.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L116)
 
 <a id="function-function-mq3-qcommon-files-runtime-cvars-function-cvars-state-src-mq3-qcommon-files-runtime-ml-1557357001"></a>
 ### cvars
@@ -123,7 +123,7 @@ Compute qcommon.files_runtime.cvars as `state.config`.
 | `state` | `dynamic` | — | Record exposing `config`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L502)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L578)
 
 <a id="extern_function-extern-function-mq3-qcommon-files-runtime-deletefilew-extern-function-deletefilew-name-as-wstr-from-kernel32-dll-returns-bool-src-mq3-qcommon-files-runtime-ml-1674610043"></a>
 ### DeleteFileW
@@ -141,7 +141,7 @@ Request deletion of the named filesystem file.
 
 **Returns:** Nonzero when deletion is accepted; zero on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L120)
 
 <a id="function-function-mq3-qcommon-files-runtime-fclose-function-fclose-state-number-src-mq3-qcommon-files-runtime-ml-99042942"></a>
 ### fclose
@@ -158,7 +158,7 @@ Return `mq3.qcommon.files_runtime.fs_FCloseFile(state, number)` from `qcommon.fi
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.files_runtime.fs_FCloseFile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L295)
 
 <a id="function-function-mq3-qcommon-files-runtime-file-function-file-state-number-src-mq3-qcommon-files-runtime-ml-1499480502"></a>
 ### file
@@ -175,7 +175,7 @@ Return `mq3.qcommon.files_runtime.fs_FileForHandle(state, number)` from `qcommon
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.files_runtime.fs_FileForHandle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L307)
 
 - [mq3.qcommon.files_runtime.FileList](Type-mq3-qcommon-files-runtime-filelist-820562866.md) — struct
 <a id="function-function-mq3-qcommon-files-runtime-filtername-function-filtername-name-filter-src-mq3-qcommon-files-runtime-ml-489343487"></a>
@@ -193,7 +193,7 @@ Compute filter name in qcommon.files_runtime; the normal completion returns `(st
 | `filter` | `dynamic` | — | Filter used in `(filter == "")` and `(filter == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L424)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-addfiletolist-function-fs-addfiletolist-name-values-src-mq3-qcommon-files-runtime-ml-531517151"></a>
 ### fs_AddFileToList
@@ -210,7 +210,7 @@ Add file to list in qcommon.files_runtime; the normal completion returns `(value
 | `values` | `dynamic` | — | Values used in `len(values)` and `(values + [name])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L420)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-addgamedirectory-function-fs-addgamedirectory-state-path-game-src-mq3-qcommon-files-runtime-ml-1272190246"></a>
 ### fs_AddGameDirectory
@@ -228,7 +228,7 @@ Return `mq3.qcommon.filesystem.mountHostGameDirectory(state.fs, path, game)` fro
 | `game` | `dynamic` | — | Game name passed as `gameName` to `mq3.qcommon.filesystem.mountHostGameDirectory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L482)
 
 <a id="constant-constant-mq3-qcommon-files-runtime-fs-append-const-fs-append-2-src-mq3-qcommon-files-runtime-ml-40267601"></a>
 ### FS_APPEND
@@ -237,8 +237,10 @@ Return `mq3.qcommon.filesystem.mountHostGameDirectory(state.fs, path, game)` fro
 const FS_APPEND = 2
 ```
 
+File-open mode that appends writes to existing file contents.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L20)
 
 <a id="constant-constant-mq3-qcommon-files-runtime-fs-append-sync-const-fs-append-sync-3-src-mq3-qcommon-files-runtime-ml-53406606"></a>
 ### FS_APPEND_SYNC
@@ -247,8 +249,10 @@ const FS_APPEND = 2
 const FS_APPEND_SYNC = 3
 ```
 
+File-open mode that appends writes and flushes them synchronously.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-buildospath-function-fs-buildospath-base-game-qpath-src-mq3-qcommon-files-runtime-ml-256950843"></a>
 ### fs_BuildOSPath
@@ -266,7 +270,7 @@ Build os path in qcommon.files_runtime; the normal completion returns `fs_Replac
 | `qpath` | `dynamic` | — | Qpath used in `(qpath != "")` and `(result + qpath)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L189)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-clearpakreferences-function-fs-clearpakreferences-state-flags-src-mq3-qcommon-files-runtime-ml-919671504"></a>
 ### fs_ClearPakReferences
@@ -283,7 +287,7 @@ Return `mq3.qcommon.filesystem.clearPakReferences(state.fs, flags)` from `qcommo
 | `flags` | `dynamic` | — | Flags passed as `flags` to `mq3.qcommon.filesystem.clearPakReferences`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L438)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L514)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-conditionalrestart-function-fs-conditionalrestart-state-checksumfeed-src-mq3-qcommon-files-runtime-ml-1011228470"></a>
 ### fs_ConditionalRestart
@@ -300,7 +304,7 @@ Test conditional restart in qcommon.files_runtime; the normal completion returns
 | `checksumFeed` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L496)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L572)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-convertpath-function-fs-convertpath-value-src-mq3-qcommon-files-runtime-ml-360459807"></a>
 ### fs_ConvertPath
@@ -316,7 +320,7 @@ Compute convert path in qcommon.files_runtime; the normal completion returns `de
 | `value` | `dynamic` | — | Value used in `bytes(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L184)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-copyfile-function-fs-copyfile-frompath-topath-src-mq3-qcommon-files-runtime-ml-1332840749"></a>
 ### fs_CopyFile
@@ -333,7 +337,7 @@ Copy file in qcommon.files_runtime; the normal completion returns `not (typeof(r
 | `toPath` | `dynamic` | — | Os path passed as `osPath` to `mq3.qcommon.files_runtime.fs_CreatePath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L209)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-createpath-function-fs-createpath-ospath-src-mq3-qcommon-files-runtime-ml-216655577"></a>
 ### fs_CreatePath
@@ -349,7 +353,7 @@ Create path in qcommon.files_runtime; the normal completion returns `false`.
 | `osPath` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ReplaceSeparators`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L202)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-dir-f-function-fs-dir-f-state-path-extension-src-mq3-qcommon-files-runtime-ml-246540837"></a>
 ### fs_Dir_f
@@ -367,7 +371,7 @@ Return `mq3.qcommon.files_runtime.fs_ListFiles(state, path, extension)` from `qc
 | `extension` | `dynamic` | — | Extension passed as `extension` to `mq3.qcommon.files_runtime.fs_ListFiles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L508)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L584)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-fclosefile-function-fs-fclosefile-state-number-src-mq3-qcommon-files-runtime-ml-968167790"></a>
 ### fs_FCloseFile
@@ -384,7 +388,7 @@ Test f close file in qcommon.files_runtime; the normal completion returns `true`
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.files_runtime.fs_Flush`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L291)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-fileforhandle-function-fs-fileforhandle-state-number-src-mq3-qcommon-files-runtime-ml-1629855618"></a>
 ### fs_FileForHandle
@@ -403,7 +407,7 @@ Validation failures include `FS_FileForHandle: invalid handle`; `FS_FileForHandl
 | `number` | `dynamic` | — | Zero-based index into `state.handles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L173)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-fileisinpak-function-fs-fileisinpak-state-filename-src-mq3-qcommon-files-runtime-ml-500339838"></a>
 ### fs_FileIsInPAK
@@ -420,7 +424,7 @@ Compute file is in pak in qcommon.files_runtime; the normal completion returns `
 | `filename` | `dynamic` | — | Virtual game path; leading separators, .., and :: are rejected. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L382)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-filenamecompare-function-fs-filenamecompare-a-b-src-mq3-qcommon-files-runtime-ml-381726713"></a>
 ### fs_FilenameCompare
@@ -437,7 +441,7 @@ Compute qcommon.files_runtime.fs_FilenameCompare as `not stringEqualsIgnoreCaseA
 | `b` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ConvertPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L389)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-flush-function-fs-flush-state-number-src-mq3-qcommon-files-runtime-ml-526881398"></a>
 ### fs_Flush
@@ -454,7 +458,7 @@ Test flush in qcommon.files_runtime; the normal completion returns `true`.
 | `number` | `dynamic` | — | Zero-based index into `state.handles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L348)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-fopenfileappend-function-fs-fopenfileappend-state-filename-src-mq3-qcommon-files-runtime-ml-1856597350"></a>
 ### fs_FOpenFileAppend
@@ -471,7 +475,7 @@ Return `mq3.qcommon.files_runtime.openWrite(state, filename, FS_APPEND, false)` 
 | `filename` | `dynamic` | — | Filename passed as `filename` to `mq3.qcommon.files_runtime.openWrite`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L275)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-fopenfilebymode-function-fs-fopenfilebymode-state-qpath-mode-src-mq3-qcommon-files-runtime-ml-1498114258"></a>
 ### fs_FOpenFileByMode
@@ -489,7 +493,7 @@ Compute f open file by mode in qcommon.files_runtime; the normal completion retu
 | `mode` | `dynamic` | — | Mode passed as `mode` to `mq3.qcommon.files_runtime.openWrite`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L284)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-fopenfileread-function-fs-fopenfileread-state-filename-uniquefile-src-mq3-qcommon-files-runtime-ml-1006245583"></a>
 ### fs_FOpenFileRead
@@ -507,7 +511,7 @@ Compute f open file read in qcommon.files_runtime; the normal completion returns
 | `uniqueFile` | `dynamic` | — | Unique passed as `unique` to `mq3.qcommon.files_runtime.activate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L244)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-fopenfilewrite-function-fs-fopenfilewrite-state-filename-src-mq3-qcommon-files-runtime-ml-1397313200"></a>
 ### fs_FOpenFileWrite
@@ -524,7 +528,7 @@ Return `mq3.qcommon.files_runtime.openWrite(state, filename, FS_WRITE, false)` f
 | `filename` | `dynamic` | — | Filename passed as `filename` to `mq3.qcommon.files_runtime.openWrite`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L271)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-forceflush-function-fs-forceflush-state-number-src-mq3-qcommon-files-runtime-ml-136348392"></a>
 ### fs_ForceFlush
@@ -541,7 +545,7 @@ Compute force flush in qcommon.files_runtime; the normal completion returns `fs_
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.files_runtime.fs_FileForHandle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L177)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-freefile-function-fs-freefile-state-data-src-mq3-qcommon-files-runtime-ml-1754872171"></a>
 ### fs_FreeFile
@@ -560,7 +564,7 @@ Validation failures include `FS_FreeFile NULL`.
 | `data` | `dynamic` | — | Data used in `(data == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L373)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-freefilelist-function-fs-freefilelist-values-src-mq3-qcommon-files-runtime-ml-1874119216"></a>
 ### fs_FreeFileList
@@ -576,7 +580,7 @@ Compute qcommon.files_runtime.fs_FreeFileList as `0`.
 | `values` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L371)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L447)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-ftell-function-fs-ftell-state-number-src-mq3-qcommon-files-runtime-ml-1659003290"></a>
 ### fs_FTell
@@ -593,7 +597,7 @@ Compute f tell in qcommon.files_runtime; the normal completion returns `state.ha
 | `number` | `dynamic` | — | Zero-based index into `state.handles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L360)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-gamepurechecksum-function-fs-gamepurechecksum-state-src-mq3-qcommon-files-runtime-ml-978227537"></a>
 ### fs_GamePureChecksum
@@ -609,7 +613,7 @@ Compute game pure checksum in qcommon.files_runtime; the normal completion retur
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L434)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L510)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-getfilelist-function-fs-getfilelist-state-path-extension-capacity-src-mq3-qcommon-files-runtime-ml-1392928733"></a>
 ### fs_GetFileList
@@ -628,7 +632,7 @@ Get file list in qcommon.files_runtime; the normal completion returns `packList(
 | `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.qcommon.files_runtime.fs_GetModList`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L383)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L459)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-getmodlist-function-fs-getmodlist-state-capacity-src-mq3-qcommon-files-runtime-ml-1524264735"></a>
 ### fs_GetModList
@@ -645,7 +649,7 @@ Get mod list in qcommon.files_runtime; the normal completion returns `packList(v
 | `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.qcommon.files_runtime.packList`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L395)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L471)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-handleforfile-function-fs-handleforfile-state-src-mq3-qcommon-files-runtime-ml-312799819"></a>
 ### fs_HandleForFile
@@ -663,7 +667,7 @@ Validation failures include `FS_HandleForFile: none free`.
 | `state` | `dynamic` | — | Record exposing `handles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L167)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-hashfilename-function-fs-hashfilename-fname-hashsize-src-mq3-qcommon-files-runtime-ml-1601333372"></a>
 ### fs_HashFileName
@@ -682,7 +686,7 @@ Validation failures include `FS_HashFileName hash size`.
 | `hashSize` | `dynamic` | — | Hash size used in `(hashSize - 1)` and `(hashSize <= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L157)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-idpak-function-fs-idpak-pak-base-src-mq3-qcommon-files-runtime-ml-1916585543"></a>
 ### fs_idPak
@@ -699,7 +703,7 @@ Return `mq3.qcommon.filesystem.idPak(pak, base)` from `qcommon.files_runtime.fs_
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.qcommon.filesystem.idPak`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L410)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L486)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-initfilesystem-function-fs-initfilesystem-state-src-mq3-qcommon-files-runtime-ml-1879981981"></a>
 ### fs_InitFilesystem
@@ -715,7 +719,7 @@ Compute init filesystem in qcommon.files_runtime; the normal completion returns 
 | `state` | `dynamic` | — | Record exposing `config`, `initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L499)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L575)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-initialized-function-fs-initialized-state-src-mq3-qcommon-files-runtime-ml-604420735"></a>
 ### fs_Initialized
@@ -731,7 +735,7 @@ Compute qcommon.files_runtime.fs_Initialized as `((state != void) and state.init
 | `state` | `dynamic` | — | Record exposing `initialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L144)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-listfiles-function-fs-listfiles-state-path-extension-src-mq3-qcommon-files-runtime-ml-1470448113"></a>
 ### fs_ListFiles
@@ -749,7 +753,7 @@ Return `mq3.qcommon.files_runtime.fs_ListFilteredFiles(state, path, extension, "
 | `extension` | `dynamic` | — | Extension passed as `extension` to `mq3.qcommon.files_runtime.fs_ListFilteredFiles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L368)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L444)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-listfilteredfiles-function-fs-listfilteredfiles-state-path-extension-filter-src-mq3-qcommon-files-runtime-ml-1410280067"></a>
 ### fs_ListFilteredFiles
@@ -768,7 +772,7 @@ Compute list filtered files in qcommon.files_runtime; the normal completion retu
 | `filter` | `dynamic` | — | Filter passed as `filter` to `mq3.qcommon.files_runtime.filterName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L354)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L430)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-loadedpakchecksums-function-fs-loadedpakchecksums-state-src-mq3-qcommon-files-runtime-ml-2003319301"></a>
 ### fs_LoadedPakChecksums
@@ -784,7 +788,7 @@ Return `mq3.qcommon.files_runtime.joinValues(paths.loadedPakChecksums(state.fs))
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L416)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L492)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-loadedpaknames-function-fs-loadedpaknames-state-src-mq3-qcommon-files-runtime-ml-117412517"></a>
 ### fs_LoadedPakNames
@@ -800,7 +804,7 @@ Return `mq3.qcommon.files_runtime.joinValues(paths.loadedPakNames(state.fs))` fr
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L495)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-loadedpakpurechecksums-function-fs-loadedpakpurechecksums-state-src-mq3-qcommon-files-runtime-ml-370013077"></a>
 ### fs_LoadedPakPureChecksums
@@ -816,7 +820,7 @@ Return `mq3.qcommon.files_runtime.joinValues(paths.loadedPakPureChecksums(state.
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L422)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L498)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-loadstack-function-fs-loadstack-state-src-mq3-qcommon-files-runtime-ml-1528578487"></a>
 ### fs_LoadStack
@@ -832,7 +836,7 @@ Load stack in qcommon.files_runtime; the normal completion returns `state.loadSt
 | `state` | `dynamic` | — | Record exposing `loadStack`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L151)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-loadzipfile-function-fs-loadzipfile-path-basename-feed-src-mq3-qcommon-files-runtime-ml-1208774831"></a>
 ### fs_LoadZipFile
@@ -850,7 +854,7 @@ Return `mq3.qcommon.filesystem.loadPak(path, basename, feed)` from `qcommon.file
 | `feed` | `dynamic` | — | Feed passed as `feed` to `mq3.qcommon.filesystem.loadPak`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L401)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L477)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-newdir-f-function-fs-newdir-f-state-filter-src-mq3-qcommon-files-runtime-ml-770237237"></a>
 ### fs_NewDir_f
@@ -867,7 +871,7 @@ Compute new dir f in qcommon.files_runtime; the normal completion returns `fs_So
 | `filter` | `dynamic` | — | Filter passed as `filter` to `mq3.qcommon.files_runtime.fs_ListFilteredFiles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L512)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L588)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-pakispure-function-fs-pakispure-state-pak-src-mq3-qcommon-files-runtime-ml-1569070049"></a>
 ### fs_PakIsPure
@@ -884,7 +888,7 @@ Return `mq3.qcommon.filesystem.pakIsPure(state.fs, pak)` from `qcommon.files_run
 | `pak` | `dynamic` | — | Pak passed as `pak` to `mq3.qcommon.filesystem.pakIsPure`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L148)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-path-f-function-fs-path-f-state-src-mq3-qcommon-files-runtime-ml-315077591"></a>
 ### fs_Path_f
@@ -900,7 +904,7 @@ Compute path f in qcommon.files_runtime; the normal completion returns `result`.
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L515)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L591)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-pathcmp-function-fs-pathcmp-a-b-src-mq3-qcommon-files-runtime-ml-66575497"></a>
 ### fs_PathCmp
@@ -917,7 +921,7 @@ Compute path cmp in qcommon.files_runtime; the normal completion returns `0`.
 | `b` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ConvertPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L322)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L398)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-printf-function-fs-printf-state-number-text-src-mq3-qcommon-files-runtime-ml-613423687"></a>
 ### fs_Printf
@@ -935,7 +939,7 @@ Return `mq3.qcommon.files_runtime.fs_Write(state, bytes(text), number)` from `qc
 | `text` | `dynamic` | — | Text used in `bytes(text)` and `fs_Write(state, bytes(text), number)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L344)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-pureserversetloadedpaks-function-fs-pureserversetloadedpaks-state-sums-names-src-mq3-qcommon-files-runtime-ml-1058093905"></a>
 ### fs_PureServerSetLoadedPaks
@@ -953,7 +957,7 @@ Compute pure server set loaded paks in qcommon.files_runtime; the normal complet
 | `names` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.files_runtime.parseNames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L456)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L532)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-pureserversetreferencedpaks-function-fs-pureserversetreferencedpaks-state-sums-names-src-mq3-qcommon-files-runtime-ml-404845489"></a>
 ### fs_PureServerSetReferencedPaks
@@ -971,7 +975,7 @@ Compute pure server set referenced paks in qcommon.files_runtime; the normal com
 | `names` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.files_runtime.parseNames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L461)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L537)
 
 <a id="constant-constant-mq3-qcommon-files-runtime-fs-read-const-fs-read-0-src-mq3-qcommon-files-runtime-ml-76553827"></a>
 ### FS_READ
@@ -980,8 +984,10 @@ Compute pure server set referenced paks in qcommon.files_runtime; the normal com
 const FS_READ = 0
 ```
 
+File-open mode requesting read access.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L16)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-read-function-fs-read-state-count-number-src-mq3-qcommon-files-runtime-ml-1402671595"></a>
 ### fs_Read
@@ -1001,7 +1007,7 @@ Validation failures include `FS_Read invalid handle or count`.
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.files_runtime.readable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L315)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-read2-function-fs-read2-state-count-number-src-mq3-qcommon-files-runtime-ml-1348934563"></a>
 ### fs_Read2
@@ -1019,7 +1025,7 @@ Return `mq3.qcommon.files_runtime.fs_Read(state, count, number)` from `qcommon.f
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.files_runtime.fs_Read`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L323)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-readfile-function-fs-readfile-state-qpath-src-mq3-qcommon-files-runtime-ml-1767093413"></a>
 ### fs_ReadFile
@@ -1038,7 +1044,7 @@ Direct state writes: `state.loadStack`.
 | `qpath` | `dynamic` | — | Qpath passed as `qpath` to `mq3.qcommon.filesystem.read`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L367)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-referencedpakchecksums-function-fs-referencedpakchecksums-state-src-mq3-qcommon-files-runtime-ml-161383585"></a>
 ### fs_ReferencedPakChecksums
@@ -1054,7 +1060,7 @@ Return `mq3.qcommon.files_runtime.joinValues(paths.referencedPakChecksums(state.
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L425)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L501)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-referencedpaknames-function-fs-referencedpaknames-state-src-mq3-qcommon-files-runtime-ml-1623880389"></a>
 ### fs_ReferencedPakNames
@@ -1070,7 +1076,7 @@ Return `mq3.qcommon.files_runtime.joinValues(paths.referencedPakNames(state.fs))
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L428)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L504)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-referencedpakpurechecksums-function-fs-referencedpakpurechecksums-state-src-mq3-qcommon-files-runtime-ml-2117170165"></a>
 ### fs_ReferencedPakPureChecksums
@@ -1086,7 +1092,7 @@ Return `mq3.qcommon.files_runtime.joinValues(paths.referencedPakPureTokens(state
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L431)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L507)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-remove-function-fs-remove-ospath-src-mq3-qcommon-files-runtime-ml-2012813827"></a>
 ### fs_Remove
@@ -1102,7 +1108,7 @@ Return `mq3.qcommon.files_runtime.DeleteFileW(osPath)` from `qcommon.files_runti
 | `osPath` | `dynamic` | — | Null-terminated UTF-16 file path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L212)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-rename-function-fs-rename-state-fromname-toname-src-mq3-qcommon-files-runtime-ml-1068508886"></a>
 ### fs_Rename
@@ -1120,7 +1126,7 @@ Test rename in qcommon.files_runtime; the normal completion returns `false`.
 | `toName` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ValidQPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L217)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-replaceseparators-function-fs-replaceseparators-value-src-mq3-qcommon-files-runtime-ml-719848151"></a>
 ### fs_ReplaceSeparators
@@ -1136,7 +1142,7 @@ Compute replace separators in qcommon.files_runtime; the normal completion retur
 | `value` | `dynamic` | — | Value used in `bytes(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L181)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-restart-function-fs-restart-state-checksumfeed-src-mq3-qcommon-files-runtime-ml-7764800"></a>
 ### fs_Restart
@@ -1153,7 +1159,7 @@ Compute restart in qcommon.files_runtime; the normal completion returns `oldLoad
 | `checksumFeed` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L492)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L568)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-returnpath-function-fs-returnpath-name-src-mq3-qcommon-files-runtime-ml-1631468287"></a>
 ### fs_ReturnPath
@@ -1169,7 +1175,7 @@ Compute return path in qcommon.files_runtime; the normal completion returns `[le
 | `name` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ConvertPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L416)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-seek-function-fs-seek-state-number-offset-origin-src-mq3-qcommon-files-runtime-ml-1105615411"></a>
 ### fs_Seek
@@ -1188,7 +1194,7 @@ Seek files runtime in qcommon.files_runtime; the normal completion returns `0`.
 | `origin` | `dynamic` | — | Origin used in `(origin == 1)` and `(origin == 2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L354)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-setrestrictions-function-fs-setrestrictions-state-src-mq3-qcommon-files-runtime-ml-1199842855"></a>
 ### fs_SetRestrictions
@@ -1204,7 +1210,7 @@ Set restrictions in qcommon.files_runtime; the normal completion returns `true`.
 | `state` | `dynamic` | — | Record exposing `config`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L482)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L558)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-shiftedstrstr-function-fs-shiftedstrstr-text-encoded-shift-src-mq3-qcommon-files-runtime-ml-2107158943"></a>
 ### fs_ShiftedStrStr
@@ -1222,7 +1228,7 @@ Compute shifted str str in qcommon.files_runtime; the normal completion returns 
 | `shift` | `dynamic` | — | Shift used in `(data[index] + shift)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L318)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L394)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-shutdown-function-fs-shutdown-state-closemissingfile-src-mq3-qcommon-files-runtime-ml-866388101"></a>
 ### fs_Shutdown
@@ -1241,7 +1247,7 @@ Direct state writes: `state.initialized`.
 | `closeMissingFile` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L488)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L564)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-sortfilelist-function-fs-sortfilelist-values-numfiles-src-mq3-qcommon-files-runtime-ml-1993460707"></a>
 ### fs_SortFileList
@@ -1258,7 +1264,7 @@ Compute sort file list in qcommon.files_runtime; the normal completion returns `
 | `numFiles` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L409)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-startup-function-fs-startup-state-gamename-src-mq3-qcommon-files-runtime-ml-571289098"></a>
 ### fs_Startup
@@ -1277,7 +1283,7 @@ Direct state writes: `state.lastGameDir`, `state.initialized`.
 | `gameName` | `dynamic` | — | Game name used in `stringEqualsIgnoreCaseAscii(state.config.baseGame, gameName)` and `((state.config.baseGame != "") and not stringEqualsIgnoreCaseAscii(state.config.baseGame, gameName))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L468)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L544)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-sv-fileexists-function-fs-sv-fileexists-state-name-src-mq3-qcommon-files-runtime-ml-183122532"></a>
 ### fs_SV_FileExists
@@ -1294,7 +1300,7 @@ Compute sv file exists in qcommon.files_runtime; the normal completion returns `
 | `name` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ValidQPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L226)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-sv-fopenfileread-function-fs-sv-fopenfileread-state-filename-src-mq3-qcommon-files-runtime-ml-440255978"></a>
 ### fs_SV_FOpenFileRead
@@ -1311,7 +1317,7 @@ Compute sv f open file read in qcommon.files_runtime; the normal completion retu
 | `filename` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ValidQPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L250)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-sv-fopenfilewrite-function-fs-sv-fopenfilewrite-state-filename-src-mq3-qcommon-files-runtime-ml-243778750"></a>
 ### fs_SV_FOpenFileWrite
@@ -1328,7 +1334,7 @@ Return `mq3.qcommon.files_runtime.openWrite(state, filename, FS_WRITE, true)` fr
 | `filename` | `dynamic` | — | Filename passed as `filename` to `mq3.qcommon.files_runtime.openWrite`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L279)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-sv-rename-function-fs-sv-rename-state-fromname-toname-src-mq3-qcommon-files-runtime-ml-488626922"></a>
 ### fs_SV_Rename
@@ -1346,7 +1352,7 @@ Test sv rename in qcommon.files_runtime; the normal completion returns `false`.
 | `toName` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ValidQPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L222)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-touchfile-f-function-fs-touchfile-f-state-name-src-mq3-qcommon-files-runtime-ml-429241576"></a>
 ### fs_TouchFile_f
@@ -1363,7 +1369,7 @@ Compute touch file f in qcommon.files_runtime; the normal completion returns `op
 | `name` | `dynamic` | — | Filename passed as `filename` to `mq3.qcommon.files_runtime.fs_FOpenFileRead`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L519)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L595)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-validqpath-function-fs-validqpath-value-src-mq3-qcommon-files-runtime-ml-14583771"></a>
 ### fs_ValidQPath
@@ -1379,7 +1385,7 @@ Validate q path in qcommon.files_runtime; the normal completion returns `true`.
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.files_runtime.fs_ConvertPath`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L192)
 
 <a id="constant-constant-mq3-qcommon-files-runtime-fs-write-const-fs-write-1-src-mq3-qcommon-files-runtime-ml-731064802"></a>
 ### FS_WRITE
@@ -1388,8 +1394,10 @@ Validate q path in qcommon.files_runtime; the normal completion returns `true`.
 const FS_WRITE = 1
 ```
 
+File-open mode requesting replacement write access.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L18)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-write-function-fs-write-state-data-number-src-mq3-qcommon-files-runtime-ml-523069666"></a>
 ### fs_Write
@@ -1409,7 +1417,7 @@ Validation failures include `FS_Write invalid handle`.
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.files_runtime.write`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L337)
 
 <a id="function-function-mq3-qcommon-files-runtime-fs-writefile-function-fs-writefile-state-qpath-data-src-mq3-qcommon-files-runtime-ml-1653784469"></a>
 ### fs_WriteFile
@@ -1427,7 +1435,7 @@ Write file in qcommon.files_runtime; the normal completion returns `fs_FCloseFil
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.qcommon.files_runtime.fs_Write`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L378)
 
 <a id="extern_function-extern-function-mq3-qcommon-files-runtime-getfileattributesw-extern-function-getfileattributesw-name-as-wstr-from-kernel32-dll-returns-u32-src-mq3-qcommon-files-runtime-ml-1095134421"></a>
 ### GetFileAttributesW
@@ -1445,7 +1453,7 @@ Read Win32 file or directory attributes for qcommon.files_runtime.
 
 **Returns:** The file-attribute bitmask, or INVALID_FILE_ATTRIBUTES (0xffffffff) on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L111)
 
 - [mq3.qcommon.files_runtime.Handle](Type-mq3-qcommon-files-runtime-handle-381266934.md) — struct
 - [mq3.qcommon.files_runtime.InPak](Type-mq3-qcommon-files-runtime-inpak-727292637.md) — struct
@@ -1463,7 +1471,7 @@ Compute join values in qcommon.files_runtime; the normal completion returns `tex
 | `values` | `dynamic` | — | Sequence traversed as `value` by the loop in `joinValues`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L489)
 
 <a id="constant-constant-mq3-qcommon-files-runtime-max-file-handles-const-max-file-handles-64-src-mq3-qcommon-files-runtime-ml-142107717"></a>
 ### MAX_FILE_HANDLES
@@ -1472,8 +1480,10 @@ Compute join values in qcommon.files_runtime; the normal completion returns `tex
 const MAX_FILE_HANDLES = 64
 ```
 
+Maximum number of simultaneous virtual-filesystem file handles.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L14)
 
 <a id="extern_function-extern-function-mq3-qcommon-files-runtime-movefileexw-extern-function-movefileexw-oldname-as-wstr-newname-as-wstr-flags-as-u32-from-kernel32-dll-returns-bool-src-mq3-qcommon-files-runtime-ml-1201723018"></a>
 ### MoveFileExW
@@ -1493,7 +1503,7 @@ Move or replace a filesystem file with the requested Win32 move flags.
 
 **Returns:** Nonzero when the requested operation succeeds; zero on failure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L126)
 
 - [mq3.qcommon.files_runtime.OpenResult](Type-mq3-qcommon-files-runtime-openresult-2080042625.md) — struct
 <a id="function-function-mq3-qcommon-files-runtime-openwrite-function-openwrite-state-filename-mode-server-src-mq3-qcommon-files-runtime-ml-95593812"></a>
@@ -1515,7 +1525,7 @@ Validation failures include `FS write path escapes game directory`.
 | `server` | `dynamic` | — | Server operand used by `openWrite`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L262)
 
 <a id="function-function-mq3-qcommon-files-runtime-packlist-function-packlist-values-capacity-src-mq3-qcommon-files-runtime-ml-679028388"></a>
 ### packList
@@ -1532,7 +1542,7 @@ Compute pack list in qcommon.files_runtime; the normal completion returns `FileL
 | `capacity` | `dynamic` | — | Capacity used in `bytes(capacity, 0)` and `((offset + needed) > capacity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L451)
 
 <a id="function-function-mq3-qcommon-files-runtime-paksort-function-paksort-a-b-src-mq3-qcommon-files-runtime-ml-1006194477"></a>
 ### paksort
@@ -1549,7 +1559,7 @@ Return `mq3.qcommon.files_runtime.fs_PathCmp(a, b)` from `qcommon.files_runtime.
 | `b` | `dynamic` | — | B passed as `b` to `mq3.qcommon.files_runtime.fs_PathCmp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L413)
 
 <a id="function-function-mq3-qcommon-files-runtime-parsenames-function-parsenames-text-src-mq3-qcommon-files-runtime-ml-1134164729"></a>
 ### parseNames
@@ -1565,7 +1575,7 @@ Parse names in qcommon.files_runtime; the normal completion returns `result`.
 | `text` | `dynamic` | — | Text used in `strings.trim(text)` and `strings.split(strings.trim(text), " ")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L444)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L520)
 
 <a id="function-function-mq3-qcommon-files-runtime-parsenumbers-function-parsenumbers-text-src-mq3-qcommon-files-runtime-ml-154124937"></a>
 ### parseNumbers
@@ -1581,7 +1591,7 @@ Parse numbers in qcommon.files_runtime; the normal completion returns `result`.
 | `text` | `dynamic` | — | Text used in `strings.trim(text)` and `strings.split(strings.trim(text), " ")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L517)
 
 <a id="function-function-mq3-qcommon-files-runtime-pathless-function-pathless-a-b-src-mq3-qcommon-files-runtime-ml-889784877"></a>
 ### pathLess
@@ -1598,7 +1608,7 @@ Compute qcommon.files_runtime.pathLess as `(fs_PathCmp(a, b) < 0)`.
 | `b` | `dynamic` | — | B passed as `b` to `mq3.qcommon.files_runtime.fs_PathCmp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L405)
 
 <a id="function-function-mq3-qcommon-files-runtime-readable-function-readable-state-number-src-mq3-qcommon-files-runtime-ml-341598586"></a>
 ### readable
@@ -1615,7 +1625,7 @@ Compute qcommon.files_runtime.readable as `((((number > 0) and (number < MAX_FIL
 | `number` | `dynamic` | — | Zero-based index into `state.handles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L299)
 
 <a id="function-function-mq3-qcommon-files-runtime-reorderpure-function-reorderpure-state-src-mq3-qcommon-files-runtime-ml-660425765"></a>
 ### reorderPure
@@ -1631,7 +1641,7 @@ Compute reorder pure in qcommon.files_runtime; the normal completion returns `le
 | `state` | `dynamic` | — | Record exposing `fs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L447)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L523)
 
 <a id="function-function-mq3-qcommon-files-runtime-replacerange-function-replacerange-data-offset-value-src-mq3-qcommon-files-runtime-ml-1956335062"></a>
 ### replaceRange
@@ -1649,7 +1659,7 @@ Compute replace range in qcommon.files_runtime; the normal completion returns `r
 | `value` | `dynamic` | — | Value used in `len(value)` and `value[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L328)
 
 - [mq3.qcommon.files_runtime.Runtime](Type-mq3-qcommon-files-runtime-runtime-1845405028.md) — struct
 <a id="function-function-mq3-qcommon-files-runtime-sys-concatenatefilelists-function-sys-concatenatefilelists-first-second-third-src-mq3-qcommon-files-runtime-ml-1633306557"></a>
@@ -1668,7 +1678,7 @@ Compute sys concatenate file lists in qcommon.files_runtime; the normal completi
 | `third` | `dynamic` | — | Third used in `(third != void)` and `(result + third)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L467)
 
 <a id="function-function-mq3-qcommon-files-runtime-sys-countfilelist-function-sys-countfilelist-values-src-mq3-qcommon-files-runtime-ml-1165946890"></a>
 ### sys_CountFileList
@@ -1684,7 +1694,7 @@ Compute sys count file list in qcommon.files_runtime; the normal completion retu
 | `values` | `dynamic` | — | Values used in `len(values)` and `(values == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L386)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L462)
 
 <a id="function-function-mq3-qcommon-files-runtime-write-function-write-state-number-src-mq3-qcommon-files-runtime-ml-1322113344"></a>
 ### write
@@ -1701,4 +1711,4 @@ Compute qcommon.files_runtime.write as `((((number > 0) and (number < MAX_FILE_H
 | `number` | `dynamic` | — | Zero-based index into `state.handles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L303)

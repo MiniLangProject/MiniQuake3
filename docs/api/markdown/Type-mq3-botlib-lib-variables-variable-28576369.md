@@ -23,8 +23,10 @@ struct Variable
 modified
 ```
 
+Set each time the cvar is changed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L16)
 
 <a id="field-field-mq3-botlib-lib-variables-variable-name-name-src-mq3-botlib-lib-variables-ml-558440259"></a>
 ### name
@@ -33,8 +35,10 @@ modified
 name
 ```
 
+Bot-library variable name used by lookup and configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L10)
 
 <a id="field-field-mq3-botlib-lib-variables-variable-numericvalue-numericvalue-src-mq3-botlib-lib-variables-ml-241231353"></a>
 ### numericValue
@@ -43,8 +47,10 @@ name
 numericValue
 ```
 
+Cached numeric interpretation of the variable's text.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L14)
 
 <a id="field-field-mq3-botlib-lib-variables-variable-value-value-src-mq3-botlib-lib-variables-ml-1099349429"></a>
 ### value
@@ -53,5 +59,7 @@ numericValue
 value
 ```
 
+Current text value of the bot-library variable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L12)

@@ -12,7 +12,7 @@ struct SkySide
 Data record for `mq3.renderer.tr_sky.SkySide`; groups `image`, `axis`, `mesh`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L57)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_sky.SkySide`; groups `image`, `axis`, `mesh`.
 axis
 ```
 
+Skybox cube-face index used to orient this side of the sky mesh.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L61)
 
 <a id="field-field-mq3-renderer-tr-sky-skyside-image-image-src-mq3-renderer-tr-sky-ml-543944491"></a>
 ### image
@@ -33,8 +35,10 @@ axis
 image
 ```
 
+Skybox texture selected for this oriented cube face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L59)
 
 <a id="field-field-mq3-renderer-tr-sky-skyside-mesh-mesh-src-mq3-renderer-tr-sky-ml-994031009"></a>
 ### mesh
@@ -43,5 +47,7 @@ image
 mesh
 ```
 
+Vertex and index geometry prepared for the skybox face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L63)

@@ -31,7 +31,7 @@ Evaluates UI players missionpack `absolute` and returns `0-value`, `value` accor
 | `value` | `dynamic` | — | Value tested by `value<0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L335)
 
 - [mq3.client.ui_players_missionpack.Action](Type-mq3-client-ui-players-missionpack-action-845694746.md) — struct
 <a id="function-function-mq3-client-ui-players-missionpack-anglesubtract-function-anglesubtract-a-b-src-mq3-client-ui-players-missionpack-ml-52532333"></a>
@@ -49,7 +49,7 @@ Evaluates UI players missionpack `angleSubtract` and returns `value` according t
 | `b` | `dynamic` | — | Value used by `value=a-b`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L332)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-anim-togglebit-const-anim-togglebit-128-src-mq3-client-ui-players-missionpack-ml-1116551162"></a>
 ### ANIM_TOGGLEBIT
@@ -58,8 +58,10 @@ Evaluates UI players missionpack `angleSubtract` and returns `value` according t
 const ANIM_TOGGLEBIT = 128
 ```
 
+Bit toggled when restarting an animation so repeated identifiers still trigger a transition.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L35)
 
 - [mq3.client.ui_players_missionpack.Animation](Type-mq3-client-ui-players-missionpack-animation-1510277646.md) — struct
 <a id="function-function-mq3-client-ui-players-missionpack-animationtext-function-animationtext-source-path-src-mq3-client-ui-players-missionpack-ml-1063134764"></a>
@@ -77,7 +79,7 @@ Calls `mq3.client.ui_players_missionpack.same` from UI players missionpack `anim
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L319)
 
 <a id="function-function-mq3-client-ui-players-missionpack-assetsource-function-assetsource-files-animationfiles-retailactive-src-mq3-client-ui-players-missionpack-ml-855961133"></a>
 ### assetSource
@@ -95,7 +97,7 @@ Creates a `mq3.client.ui_players_missionpack.AssetSource` record. Assigns `files
 | `retailActive` | `dynamic` | — | Value used to initialize `AssetSource.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L295)
 
 - [mq3.client.ui_players_missionpack.AssetSource](Type-mq3-client-ui-players-missionpack-assetsource-2019359989.md) — struct
 <a id="constant-constant-mq3-client-ui-players-missionpack-both-death1-const-both-death1-0-src-mq3-client-ui-players-missionpack-ml-1168858269"></a>
@@ -105,8 +107,10 @@ Creates a `mq3.client.ui_players_missionpack.AssetSource` record. Assigns `files
 const BOTH_DEATH1 = 0
 ```
 
+Native whole-body animation slot for the death1 sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L39)
 
 <a id="function-function-mq3-client-ui-players-missionpack-create-function-create-src-mq3-client-ui-players-missionpack-ml-1580926680"></a>
 ### create
@@ -118,7 +122,7 @@ function create()
 Creates a `mq3.client.ui_players_missionpack.PlayerInfo` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L297)
 
 <a id="function-function-mq3-client-ui-players-missionpack-emit-function-emit-list-boundary-kind-name-detail-number-vector-retailactive-src-mq3-client-ui-players-missionpack-ml-358127989"></a>
 ### emit
@@ -141,7 +145,7 @@ Computes `list+[Action(boundary,kind,name,detail,number,vector,not retailActive)
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L307)
 
 <a id="function-function-mq3-client-ui-players-missionpack-exists-function-exists-source-path-src-mq3-client-ui-players-missionpack-ml-1311440846"></a>
 ### exists
@@ -158,7 +162,7 @@ Calls `mq3.client.ui_players_missionpack.same` from UI players missionpack `exis
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L315)
 
 <a id="function-function-mq3-client-ui-players-missionpack-flashcolor-function-flashcolor-weapon-src-mq3-client-ui-players-missionpack-ml-1632750156"></a>
 ### flashColor
@@ -174,7 +178,7 @@ Evaluates UI players missionpack `flashColor` and returns `[0.6,0.6,1.0]`, `[1.0
 | `weapon` | `dynamic` | — | Value used by `if weapon==WP_GAUNTLET or weapon==WP_LIGHTNING or weapon==WP_PLASMAGUN or weapon==WP_GRAPPLING_HOOK then return [0.6,0.6,1.0] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L347)
 
 <a id="function-function-mq3-client-ui-players-missionpack-identityaxis-function-identityaxis-src-mq3-client-ui-players-missionpack-ml-542679584"></a>
 ### identityAxis
@@ -186,7 +190,7 @@ function identityAxis()
 Creates the three orthonormal unit axes used as the identity orientation in UI players missionpack.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L288)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-jump-height-const-jump-height-56-src-mq3-client-ui-players-missionpack-ml-168940452"></a>
 ### JUMP_HEIGHT
@@ -195,8 +199,10 @@ Creates the three orthonormal unit axes used as the identity orientation in UI p
 const JUMP_HEIGHT = 56
 ```
 
+Vertical displacement used by the menu's player-model jump preview.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L33)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-legs-idle-const-legs-idle-22-src-mq3-client-ui-players-missionpack-ml-1981840013"></a>
 ### LEGS_IDLE
@@ -205,8 +211,10 @@ const JUMP_HEIGHT = 56
 const LEGS_IDLE = 22
 ```
 
+Native lower-body animation slot for the idle sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L61)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-legs-jump-const-legs-jump-18-src-mq3-client-ui-players-missionpack-ml-381293746"></a>
 ### LEGS_JUMP
@@ -215,8 +223,10 @@ const LEGS_IDLE = 22
 const LEGS_JUMP = 18
 ```
 
+Native lower-body animation slot for the jump sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L57)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-legs-land-const-legs-land-19-src-mq3-client-ui-players-missionpack-ml-981016871"></a>
 ### LEGS_LAND
@@ -225,8 +235,10 @@ const LEGS_JUMP = 18
 const LEGS_LAND = 19
 ```
 
+Native lower-body animation slot for the land sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-legs-turn-const-legs-turn-24-src-mq3-client-ui-players-missionpack-ml-1219188195"></a>
 ### LEGS_TURN
@@ -235,8 +247,10 @@ const LEGS_LAND = 19
 const LEGS_TURN = 24
 ```
 
+Native lower-body animation slot for the turn sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L63)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-legs-walkcr-const-legs-walkcr-13-src-mq3-client-ui-players-missionpack-ml-12463733"></a>
 ### LEGS_WALKCR
@@ -245,8 +259,10 @@ const LEGS_TURN = 24
 const LEGS_WALKCR = 13
 ```
 
+Native lower-body animation slot for the walkcr sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L55)
 
 <a id="function-function-mq3-client-ui-players-missionpack-lerpframe-function-lerpframe-src-mq3-client-ui-players-missionpack-ml-563050236"></a>
 ### lerpFrame
@@ -258,7 +274,7 @@ function lerpFrame()
 Creates a `mq3.client.ui_players_missionpack.LerpFrame` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L290)
 
 - [mq3.client.ui_players_missionpack.LerpFrame](Type-mq3-client-ui-players-missionpack-lerpframe-2061827178.md) — struct
 <a id="function-function-mq3-client-ui-players-missionpack-matrixmultiply-function-matrixmultiply-a-b-src-mq3-client-ui-players-missionpack-ml-2097119895"></a>
@@ -276,7 +292,7 @@ Evaluates UI players missionpack `matrixMultiply` and returns `result` according
 | `b` | `dynamic` | — | Sequence read at `b[0]`, `b[1]`, `b[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L328)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-max-animations-const-max-animations-31-src-mq3-client-ui-players-missionpack-ml-1444842123"></a>
 ### MAX_ANIMATIONS
@@ -285,8 +301,10 @@ Evaluates UI players missionpack `matrixMultiply` and returns `result` according
 const MAX_ANIMATIONS = 31
 ```
 
+Capacity limit for the animations collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L37)
 
 <a id="function-function-mq3-client-ui-players-missionpack-numberstarts-function-numberstarts-token-src-mq3-client-ui-players-missionpack-ml-2005233033"></a>
 ### numberStarts
@@ -302,7 +320,7 @@ Evaluates UI players missionpack `numberStarts` and returns `false`, `c>=48 and 
 | `token` | `dynamic` | — | Value used by `if token=="" then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L547)
 
 - [mq3.client.ui_players_missionpack.Orientation](Type-mq3-client-ui-players-missionpack-orientation-999988426.md) — struct
 - [mq3.client.ui_players_missionpack.PlayerInfo](Type-mq3-client-ui-players-missionpack-playerinfo-724093749.md) — struct
@@ -322,7 +340,7 @@ Updates `source.actions` during UI players missionpack `register`.
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L324)
 
 <a id="function-function-mq3-client-ui-players-missionpack-renderentity-function-renderentity-kind-model-skin-tag-src-mq3-client-ui-players-missionpack-ml-460855954"></a>
 ### renderEntity
@@ -341,7 +359,7 @@ Creates a `mq3.client.ui_players_missionpack.RenderEntity` record. Assigns `kind
 | `tag` | `dynamic` | — | Value used to initialize `RenderEntity.tag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L469)
 
 - [mq3.client.ui_players_missionpack.RenderEntity](Type-mq3-client-ui-players-missionpack-renderentity-7579403.md) — struct
 <a id="function-function-mq3-client-ui-players-missionpack-resetinfo-function-resetinfo-pi-src-mq3-client-ui-players-missionpack-ml-1418058629"></a>
@@ -358,7 +376,7 @@ Updates `pi.legsModel`, `pi.legsSkin`, `pi.legs`, `pi.torsoModel` and additional
 | `pi` | `dynamic` | — | Mutable UI players missionpack record/storage; this routine assigns `pi.legsModel`, `pi.legsSkin`, `pi.legs`, `pi.torsoModel` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L357)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L575)
 
 <a id="function-function-mq3-client-ui-players-missionpack-same-function-same-a-b-src-mq3-client-ui-players-missionpack-ml-388874943"></a>
 ### same
@@ -375,7 +393,7 @@ Compares two UI players missionpack names using ASCII case-insensitive equality.
 | `b` | `dynamic` | — | Argument 2 of `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L311)
 
 <a id="function-function-mq3-client-ui-players-missionpack-stripmd3-function-stripmd3-path-src-mq3-client-ui-players-missionpack-ml-1631652875"></a>
 ### stripMd3
@@ -391,7 +409,7 @@ Calls `std.string.equalsIgnoreCaseAscii`, `std.string.substr` from UI players mi
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L344)
 
 <a id="extern_function-extern-function-mq3-client-ui-players-missionpack-tan-extern-function-tan-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-client-ui-players-missionpack-ml-931830932"></a>
 ### tan
@@ -418,8 +436,10 @@ Evaluates the tangent of an angle in radians using the Windows C runtime. This b
 const TORSO_ATTACK = 7
 ```
 
+Native upper-body animation slot for the attack sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L43)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-torso-attack2-const-torso-attack2-8-src-mq3-client-ui-players-missionpack-ml-309520173"></a>
 ### TORSO_ATTACK2
@@ -428,8 +448,10 @@ const TORSO_ATTACK = 7
 const TORSO_ATTACK2 = 8
 ```
 
+Native upper-body animation slot for the attack2 sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L45)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-torso-drop-const-torso-drop-9-src-mq3-client-ui-players-missionpack-ml-485971536"></a>
 ### TORSO_DROP
@@ -438,8 +460,10 @@ const TORSO_ATTACK2 = 8
 const TORSO_DROP = 9
 ```
 
+Native upper-body animation slot for the drop sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L47)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-torso-gesture-const-torso-gesture-6-src-mq3-client-ui-players-missionpack-ml-1821024659"></a>
 ### TORSO_GESTURE
@@ -448,8 +472,10 @@ const TORSO_DROP = 9
 const TORSO_GESTURE = 6
 ```
 
+Native upper-body animation slot for the gesture sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L41)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-torso-getflag-const-torso-getflag-25-src-mq3-client-ui-players-missionpack-ml-1962889462"></a>
 ### TORSO_GETFLAG
@@ -458,8 +484,10 @@ const TORSO_GESTURE = 6
 const TORSO_GETFLAG = 25
 ```
 
+Native upper-body animation slot for the getflag sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L65)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-torso-raise-const-torso-raise-10-src-mq3-client-ui-players-missionpack-ml-957758934"></a>
 ### TORSO_RAISE
@@ -468,8 +496,10 @@ const TORSO_GETFLAG = 25
 const TORSO_RAISE = 10
 ```
 
+Native upper-body animation slot for the raise sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L49)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-torso-stand-const-torso-stand-11-src-mq3-client-ui-players-missionpack-ml-866474979"></a>
 ### TORSO_STAND
@@ -478,8 +508,10 @@ const TORSO_RAISE = 10
 const TORSO_STAND = 11
 ```
 
+Native upper-body animation slot for the stand sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L51)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-torso-stand2-const-torso-stand2-12-src-mq3-client-ui-players-missionpack-ml-847692146"></a>
 ### TORSO_STAND2
@@ -488,8 +520,10 @@ const TORSO_STAND = 11
 const TORSO_STAND2 = 12
 ```
 
+Native upper-body animation slot for the stand2 sequence.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-drawplayer-function-ui-drawplayer-source-x-y-w-h-pi-time-frametime-retailactive-src-mq3-client-ui-players-missionpack-ml-1312023888"></a>
 ### UI_DrawPlayer
@@ -513,7 +547,7 @@ UI_DrawPlayer
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L480)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-fileexists-function-ui-fileexists-source-filename-src-mq3-client-ui-players-missionpack-ml-902819966"></a>
 ### UI_FileExists
@@ -530,7 +564,7 @@ UI_FileExists
 | `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. Forwarded to `mq3.client.ui_players_missionpack.exists`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L494)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-findclientheadfile-function-ui-findclientheadfile-source-filename-length-teamname-headmodelname-headskinname-base-ext-src-mq3-client-ui-players-missionpack-ml-733662416"></a>
 ### UI_FindClientHeadFile
@@ -553,7 +587,7 @@ UI_FindClientHeadFile The C function returns qboolean and writes filename.  Retu
 | `ext` | `dynamic` | — | Value used by `candidate="models/players/"+folder+model+"/"+headSkinName+"/"+teamName+base+"_default."+ext`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L507)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-forcelegsanim-function-ui-forcelegsanim-pi-anim-src-mq3-client-ui-players-missionpack-ml-1038508394"></a>
 ### UI_ForceLegsAnim
@@ -570,7 +604,7 @@ UI_ForceLegsAnim
 | `anim` | `dynamic` | — | Value used by `pi.legsAnim=((pi.legsAnim&ANIM_TOGGLEBIT)^ANIM_TOGGLEBIT)\|anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L365)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-forcetorsoanim-function-ui-forcetorsoanim-pi-anim-src-mq3-client-ui-players-missionpack-ml-587499954"></a>
 ### UI_ForceTorsoAnim
@@ -587,7 +621,7 @@ UI_ForceTorsoAnim
 | `anim` | `dynamic` | — | Value used by `pi.torsoAnim=((pi.torsoAnim&ANIM_TOGGLEBIT)^ANIM_TOGGLEBIT)\|anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L373)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-legssequencing-function-ui-legssequencing-pi-src-mq3-client-ui-players-missionpack-ml-144399807"></a>
 ### UI_LegsSequencing
@@ -603,7 +637,7 @@ UI_LegsSequencing
 | `pi` | `dynamic` | — | Mutable UI players missionpack record/storage; this routine assigns `pi.jumpHeight`, `pi.legsAnimationTimer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L388)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-machinegunspinangle-function-ui-machinegunspinangle-pi-realtime-src-mq3-client-ui-players-missionpack-ml-2124270174"></a>
 ### UI_MachinegunSpinAngle
@@ -620,7 +654,7 @@ UI_MachinegunSpinAngle
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L453)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-movediradjustment-function-ui-movediradjustment-pi-src-mq3-client-ui-players-missionpack-ml-74804255"></a>
 ### UI_MovedirAdjustment
@@ -636,7 +670,7 @@ UI_MovedirAdjustment
 | `pi` | `dynamic` | — | Player-model preview state with model parts, animations and orientation. Record read through `pi.viewAngles`, `pi.moveAngles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L436)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-parseanimationfile-function-ui-parseanimationfile-filename-text-src-mq3-client-ui-players-missionpack-ml-1099236066"></a>
 ### UI_ParseAnimationFile
@@ -653,7 +687,7 @@ UI_ParseAnimationFile
 | `text` | `dynamic` | — | Text consumed or emitted by `UI_ParseAnimationFile` in the UI players missionpack path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L551)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-playerangles-function-ui-playerangles-pi-frametime-src-mq3-client-ui-players-missionpack-ml-137939897"></a>
 ### UI_PlayerAngles
@@ -670,7 +704,7 @@ UI_PlayerAngles
 | `frametime` | `dynamic` | — | Value used by `swung=UI_SwingAngles(torso[1],25.0,90.0,0.3,pi.torso.yawAngle,pi.torso.yawing,frametime)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L440)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-playeranimation-function-ui-playeranimation-source-pi-frametime-realtime-src-mq3-client-ui-players-missionpack-ml-1667831307"></a>
 ### UI_PlayerAnimation
@@ -689,7 +723,7 @@ UI_PlayerAnimation
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L421)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-playerfloatsprite-function-ui-playerfloatsprite-pi-origin-shader-retailactive-src-mq3-client-ui-players-missionpack-ml-1369855117"></a>
 ### UI_PlayerFloatSprite
@@ -708,7 +742,7 @@ UI_PlayerFloatSprite
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L449)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-playerinfo-setinfo-function-ui-playerinfo-setinfo-source-pi-legsanim-torsoanim-viewangles-moveangles-weaponnumber-chat-src-mq3-client-ui-players-missionpack-ml-564790557"></a>
 ### UI_PlayerInfo_SetInfo
@@ -731,7 +765,7 @@ UI_PlayerInfo_SetInfo
 | `chat` | `dynamic` | — | Value assigned to `pi.chat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L592)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-playerinfo-setmodel-function-ui-playerinfo-setmodel-source-pi-model-headmodel-teamname-src-mq3-client-ui-players-missionpack-ml-761127568"></a>
 ### UI_PlayerInfo_SetModel
@@ -751,7 +785,7 @@ UI_PlayerInfo_SetModel
 | `teamName` | `dynamic` | — | Team name used for the menu or model selection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L582)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-playerinfo-setweapon-function-ui-playerinfo-setweapon-source-pi-weaponnum-src-mq3-client-ui-players-missionpack-ml-1390909700"></a>
 ### UI_PlayerInfo_SetWeapon
@@ -769,7 +803,7 @@ UI_PlayerInfo_SetWeapon
 | `weaponNum` | `dynamic` | — | Quake III weapon identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L353)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-positionentityontag-function-ui-positionentityontag-entity-parent-orientation-src-mq3-client-ui-players-missionpack-ml-273986863"></a>
 ### UI_PositionEntityOnTag
@@ -787,7 +821,7 @@ UI_PositionEntityOnTag
 | `orientation` | `dynamic` | — | Record read through `orientation.found`, `orientation.origin`, `orientation.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L395)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-positionrotatedentityontag-function-ui-positionrotatedentityontag-entity-parent-orientation-src-mq3-client-ui-players-missionpack-ml-113978745"></a>
 ### UI_PositionRotatedEntityOnTag
@@ -805,7 +839,7 @@ UI_PositionRotatedEntityOnTag
 | `orientation` | `dynamic` | — | Record read through `orientation.found`, `orientation.origin`, `orientation.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L400)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-registerclientmodelname-function-ui-registerclientmodelname-source-pi-modelskinname-headmodelskinname-teamname-src-mq3-client-ui-players-missionpack-ml-974158192"></a>
 ### UI_RegisterClientModelname
@@ -825,7 +859,7 @@ UI_RegisterClientModelname
 | `teamName` | `dynamic` | — | Team name used for the menu or model selection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L562)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-registerclientskin-function-ui-registerclientskin-source-pi-modelname-skinname-headmodelname-headskinname-teamname-src-mq3-client-ui-players-missionpack-ml-1874510312"></a>
 ### UI_RegisterClientSkin
@@ -847,7 +881,7 @@ UI_RegisterClientSkin
 | `teamName` | `dynamic` | — | Team name used for the menu or model selection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L316)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L534)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-runlerpframe-function-ui-runlerpframe-pi-lf-newanimation-realtime-src-mq3-client-ui-players-missionpack-ml-1014240848"></a>
 ### UI_RunLerpFrame
@@ -866,7 +900,7 @@ UI_RunLerpFrame
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L411)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-setlegsanim-function-ui-setlegsanim-pi-anim-src-mq3-client-ui-players-missionpack-ml-1049735762"></a>
 ### UI_SetLegsAnim
@@ -883,7 +917,7 @@ UI_SetLegsAnim
 | `anim` | `dynamic` | — | Value used by `if pi.pendingLegsAnim!=0 then anim=pi.pendingLegsAnim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L369)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-setlerpframeanimation-function-ui-setlerpframeanimation-pi-lf-newanimation-src-mq3-client-ui-players-missionpack-ml-10302829"></a>
 ### UI_SetLerpFrameAnimation
@@ -901,7 +935,7 @@ UI_SetLerpFrameAnimation
 | `newAnimation` | `dynamic` | — | Value assigned to `lf.animationNumber`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L405)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-settorsoanim-function-ui-settorsoanim-pi-anim-src-mq3-client-ui-players-missionpack-ml-1710966212"></a>
 ### UI_SetTorsoAnim
@@ -918,7 +952,7 @@ UI_SetTorsoAnim
 | `anim` | `dynamic` | — | Value used by `if pi.pendingTorsoAnim!=0 then anim=pi.pendingTorsoAnim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L377)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-swingangles-function-ui-swingangles-destination-swingtolerance-clamptolerance-speed-angle-swinging-frametime-src-mq3-client-ui-players-missionpack-ml-850102301"></a>
 ### UI_SwingAngles
@@ -940,7 +974,7 @@ UI_SwingAngles
 | `frametime` | `dynamic` | — | Value used by `if swing>=0 then move=frametime*scale*speed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L430)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-ui-timer-attack-const-ui-timer-attack-500-src-mq3-client-ui-players-missionpack-ml-530941844"></a>
 ### UI_TIMER_ATTACK
@@ -949,8 +983,10 @@ UI_SwingAngles
 const UI_TIMER_ATTACK = 500
 ```
 
+Player-preview duration in milliseconds for the attack animation phase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-ui-timer-gesture-const-ui-timer-gesture-2300-src-mq3-client-ui-players-missionpack-ml-474466982"></a>
 ### UI_TIMER_GESTURE
@@ -959,8 +995,10 @@ const UI_TIMER_ATTACK = 500
 const UI_TIMER_GESTURE = 2300
 ```
 
+Player-preview duration in milliseconds for the gesture animation phase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-ui-timer-jump-const-ui-timer-jump-1000-src-mq3-client-ui-players-missionpack-ml-781038410"></a>
 ### UI_TIMER_JUMP
@@ -969,8 +1007,10 @@ const UI_TIMER_GESTURE = 2300
 const UI_TIMER_JUMP = 1000
 ```
 
+Player-preview duration in milliseconds for the jump animation phase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-ui-timer-land-const-ui-timer-land-130-src-mq3-client-ui-players-missionpack-ml-1671840229"></a>
 ### UI_TIMER_LAND
@@ -979,8 +1019,10 @@ const UI_TIMER_JUMP = 1000
 const UI_TIMER_LAND = 130
 ```
 
+Player-preview duration in milliseconds for the land animation phase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-ui-timer-muzzle-flash-const-ui-timer-muzzle-flash-20-src-mq3-client-ui-players-missionpack-ml-367573431"></a>
 ### UI_TIMER_MUZZLE_FLASH
@@ -989,8 +1031,10 @@ const UI_TIMER_LAND = 130
 const UI_TIMER_MUZZLE_FLASH = 20
 ```
 
+Player-preview duration in milliseconds for the muzzle flash animation phase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-ui-timer-weapon-delay-const-ui-timer-weapon-delay-250-src-mq3-client-ui-players-missionpack-ml-258352868"></a>
 ### UI_TIMER_WEAPON_DELAY
@@ -999,8 +1043,10 @@ const UI_TIMER_MUZZLE_FLASH = 20
 const UI_TIMER_WEAPON_DELAY = 250
 ```
 
+Player-preview duration in milliseconds for the weapon delay animation phase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-ui-timer-weapon-switch-const-ui-timer-weapon-switch-300-src-mq3-client-ui-players-missionpack-ml-1949773904"></a>
 ### UI_TIMER_WEAPON_SWITCH
@@ -1009,8 +1055,10 @@ const UI_TIMER_WEAPON_DELAY = 250
 const UI_TIMER_WEAPON_SWITCH = 300
 ```
 
+Player-preview duration in milliseconds for the weapon switch animation phase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L25)
 
 <a id="function-function-mq3-client-ui-players-missionpack-ui-torsosequencing-function-ui-torsosequencing-source-pi-src-mq3-client-ui-players-missionpack-ml-2033594514"></a>
 ### UI_TorsoSequencing
@@ -1027,7 +1075,7 @@ UI_TorsoSequencing
 | `pi` | `dynamic` | — | Mutable UI players missionpack record/storage; this routine assigns `pi.torsoAnimationTimer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L381)
 
 <a id="function-function-mq3-client-ui-players-missionpack-weaponpath-function-weaponpath-weapon-src-mq3-client-ui-players-missionpack-ml-1698091880"></a>
 ### weaponPath
@@ -1043,7 +1091,7 @@ Evaluates UI players missionpack `weaponPath` and returns `""`, `names[weapon]` 
 | `weapon` | `dynamic` | — | Value used by `if weapon<0 or weapon>=len(names) then return "" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L339)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-bfg-const-wp-bfg-9-src-mq3-client-ui-players-missionpack-ml-970159064"></a>
 ### WP_BFG
@@ -1052,8 +1100,10 @@ Evaluates UI players missionpack `weaponPath` and returns `""`, `names[weapon]` 
 const WP_BFG = 9
 ```
 
+Native weapon identifier selecting the BFG.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L85)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-gauntlet-const-wp-gauntlet-1-src-mq3-client-ui-players-missionpack-ml-1204237780"></a>
 ### WP_GAUNTLET
@@ -1062,8 +1112,10 @@ const WP_BFG = 9
 const WP_GAUNTLET = 1
 ```
 
+Native weapon identifier selecting the gauntlet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L69)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-grappling-hook-const-wp-grappling-hook-10-src-mq3-client-ui-players-missionpack-ml-2015208862"></a>
 ### WP_GRAPPLING_HOOK
@@ -1072,8 +1124,10 @@ const WP_GAUNTLET = 1
 const WP_GRAPPLING_HOOK = 10
 ```
 
+Native weapon identifier selecting the grappling hook.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L87)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-grenade-launcher-const-wp-grenade-launcher-4-src-mq3-client-ui-players-missionpack-ml-842205677"></a>
 ### WP_GRENADE_LAUNCHER
@@ -1082,8 +1136,10 @@ const WP_GRAPPLING_HOOK = 10
 const WP_GRENADE_LAUNCHER = 4
 ```
 
+Native weapon identifier selecting the grenade launcher.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L75)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-lightning-const-wp-lightning-6-src-mq3-client-ui-players-missionpack-ml-1419968821"></a>
 ### WP_LIGHTNING
@@ -1092,8 +1148,10 @@ const WP_GRENADE_LAUNCHER = 4
 const WP_LIGHTNING = 6
 ```
 
+Native weapon identifier selecting the lightning gun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L79)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-machinegun-const-wp-machinegun-2-src-mq3-client-ui-players-missionpack-ml-72048351"></a>
 ### WP_MACHINEGUN
@@ -1102,8 +1160,10 @@ const WP_LIGHTNING = 6
 const WP_MACHINEGUN = 2
 ```
 
+Native weapon identifier selecting the machine gun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L71)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-none-const-wp-none-0-src-mq3-client-ui-players-missionpack-ml-665097521"></a>
 ### WP_NONE
@@ -1112,8 +1172,10 @@ const WP_MACHINEGUN = 2
 const WP_NONE = 0
 ```
 
+Native weapon identifier selecting no selected weapon.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L67)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-plasmagun-const-wp-plasmagun-8-src-mq3-client-ui-players-missionpack-ml-1978123187"></a>
 ### WP_PLASMAGUN
@@ -1122,8 +1184,10 @@ const WP_NONE = 0
 const WP_PLASMAGUN = 8
 ```
 
+Native weapon identifier selecting the plasma gun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L83)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-railgun-const-wp-railgun-7-src-mq3-client-ui-players-missionpack-ml-230779784"></a>
 ### WP_RAILGUN
@@ -1132,8 +1196,10 @@ const WP_PLASMAGUN = 8
 const WP_RAILGUN = 7
 ```
 
+Native weapon identifier selecting the railgun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L81)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-rocket-launcher-const-wp-rocket-launcher-5-src-mq3-client-ui-players-missionpack-ml-1228942268"></a>
 ### WP_ROCKET_LAUNCHER
@@ -1142,8 +1208,10 @@ const WP_RAILGUN = 7
 const WP_ROCKET_LAUNCHER = 5
 ```
 
+Native weapon identifier selecting the rocket launcher.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L77)
 
 <a id="constant-constant-mq3-client-ui-players-missionpack-wp-shotgun-const-wp-shotgun-3-src-mq3-client-ui-players-missionpack-ml-1355866148"></a>
 ### WP_SHOTGUN
@@ -1152,5 +1220,7 @@ const WP_ROCKET_LAUNCHER = 5
 const WP_SHOTGUN = 3
 ```
 
+Native weapon identifier selecting the shotgun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L73)

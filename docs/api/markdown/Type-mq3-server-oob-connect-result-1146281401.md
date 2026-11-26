@@ -12,7 +12,7 @@ struct Result
 Result record for server.oob_connect, containing `accepted`, `reason`, `slot`, `challengeIndex`, `userinfo`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L156)
 
 ## Members
 
@@ -23,8 +23,10 @@ Result record for server.oob_connect, containing `accepted`, `reason`, `slot`, `
 accepted
 ```
 
+True when validation accepted the requested operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L158)
 
 <a id="field-field-mq3-server-oob-connect-result-challengeindex-challengeindex-src-mq3-server-oob-connect-ml-2072797934"></a>
 ### challengeIndex
@@ -33,8 +35,10 @@ accepted
 challengeIndex
 ```
 
+Index of the challenge-table entry used by the connection attempt.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L164)
 
 <a id="field-field-mq3-server-oob-connect-result-reason-reason-src-mq3-server-oob-connect-ml-1909117676"></a>
 ### reason
@@ -43,8 +47,10 @@ challengeIndex
 reason
 ```
 
+Diagnostic explaining the result or rejection of this operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L160)
 
 <a id="field-field-mq3-server-oob-connect-result-slot-slot-src-mq3-server-oob-connect-ml-1852389180"></a>
 ### slot
@@ -53,8 +59,10 @@ reason
 slot
 ```
 
+Index identifying this entry in its owning slot table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L162)
 
 <a id="field-field-mq3-server-oob-connect-result-userinfo-userinfo-src-mq3-server-oob-connect-ml-1399383246"></a>
 ### userinfo
@@ -63,5 +71,7 @@ slot
 userinfo
 ```
 
+Backslash-delimited client information string, including name and connection settings.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L166)

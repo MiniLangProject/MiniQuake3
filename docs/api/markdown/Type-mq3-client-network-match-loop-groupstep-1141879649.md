@@ -12,7 +12,7 @@ struct GroupStep
 Stores network match loop group step record, including `processed`, `runtimeIndex`, `step`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L71)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores network match loop group step record, including `processed`, `runtimeInde
 processed
 ```
 
+When constructing this record, `pumpGroupOnce` supplies `true` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L73)
 
 <a id="field-field-mq3-client-network-match-loop-groupstep-runtimeindex-runtimeindex-src-mq3-client-network-match-loop-ml-1344483734"></a>
 ### runtimeIndex
@@ -33,8 +35,10 @@ processed
 runtimeIndex
 ```
 
+When constructing this record, `pumpGroupOnce` supplies `index` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L75)
 
 <a id="field-field-mq3-client-network-match-loop-groupstep-step-step-src-mq3-client-network-match-loop-ml-1913438518"></a>
 ### step
@@ -43,5 +47,7 @@ runtimeIndex
 step
 ```
 
+When constructing this record, `pumpGroupOnce` supplies `step` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L77)

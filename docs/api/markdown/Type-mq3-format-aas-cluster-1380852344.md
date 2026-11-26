@@ -12,7 +12,7 @@ struct Cluster
 Cluster record for format.aas, containing `numAreas`, `numReachabilityAreas`, `numPortals`, `firstPortal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L337)
 
 ## Members
 
@@ -23,8 +23,10 @@ Cluster record for format.aas, containing `numAreas`, `numReachabilityAreas`, `n
 firstPortal
 ```
 
+First cluster portal in the index.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L134)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L345)
 
 <a id="field-field-mq3-format-aas-cluster-numareas-numareas-src-mq3-format-aas-ml-793936947"></a>
 ### numAreas
@@ -33,8 +35,10 @@ firstPortal
 numAreas
 ```
 
+Number of portal or navigation areas represented by the loaded map.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L134)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L339)
 
 <a id="field-field-mq3-format-aas-cluster-numportals-numportals-src-mq3-format-aas-ml-614413477"></a>
 ### numPortals
@@ -43,8 +47,10 @@ numAreas
 numPortals
 ```
 
+Number of cluster portals.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L134)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L343)
 
 <a id="field-field-mq3-format-aas-cluster-numreachabilityareas-numreachabilityareas-src-mq3-format-aas-ml-935968185"></a>
 ### numReachabilityAreas
@@ -53,5 +59,7 @@ numPortals
 numReachabilityAreas
 ```
 
+Number of areas with reachabilities.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L134)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L341)

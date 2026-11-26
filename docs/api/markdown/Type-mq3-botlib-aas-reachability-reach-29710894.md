@@ -12,7 +12,7 @@ struct Reach
 `Reach` record for aas reachability, containing `sourceArea`, `areaNum`, `faceNum`, `edgeNum` and `start` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L96)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Reach
 allocated
 ```
 
+True when the represented object currently owns a live allocation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L114)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-areanum-areanum-src-mq3-botlib-aas-reachability-ml-811502160"></a>
 ### areaNum
@@ -33,8 +35,10 @@ allocated
 areaNum
 ```
 
+Destination area assigned to the generated movement connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L100)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-edgenum-edgenum-src-mq3-botlib-aas-reachability-ml-949628476"></a>
 ### edgeNum
@@ -43,8 +47,10 @@ areaNum
 edgeNum
 ```
 
+Index of the AAS edge associated with the movement link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L104)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-facenum-facenum-src-mq3-botlib-aas-reachability-ml-357076652"></a>
 ### faceNum
@@ -53,8 +59,10 @@ edgeNum
 faceNum
 ```
 
+Index of the AAS face associated with the movement link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L102)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-finish-finish-src-mq3-botlib-aas-reachability-ml-523326238"></a>
 ### finish
@@ -63,8 +71,10 @@ faceNum
 finish
 ```
 
+Generated arrival point for this candidate movement connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L108)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-sourcearea-sourcearea-src-mq3-botlib-aas-reachability-ml-187160400"></a>
 ### sourceArea
@@ -73,8 +83,10 @@ finish
 sourceArea
 ```
 
+AAS area from which this reachability or route begins.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L98)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-start-start-src-mq3-botlib-aas-reachability-ml-571726672"></a>
 ### start
@@ -83,8 +95,10 @@ sourceArea
 start
 ```
 
+Generated departure point for this candidate movement connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L106)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-traveltime-traveltime-src-mq3-botlib-aas-reachability-ml-781393654"></a>
 ### travelTime
@@ -93,8 +107,10 @@ start
 travelTime
 ```
 
+AAS travel cost assigned to traversing this movement link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L112)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-traveltype-traveltype-src-mq3-botlib-aas-reachability-ml-622463228"></a>
 ### travelType
@@ -103,5 +119,7 @@ travelTime
 travelType
 ```
 
+Encoded AAS movement type required to traverse this link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L110)

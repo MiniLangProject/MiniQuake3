@@ -9,10 +9,10 @@
 struct Server
 ```
 
-Server record for server.client_message, containing `serverId`, `restartedServerId`.
+Current and restart-era server identifiers used to reject stale client message streams.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L22)
 
 ## Members
 
@@ -23,8 +23,10 @@ Server record for server.client_message, containing `serverId`, `restartedServer
 restartedServerId
 ```
 
+Server identifier retained from before the latest map restart.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L26)
 
 <a id="field-field-mq3-server-client-message-server-serverid-serverid-src-mq3-server-client-message-ml-2029974292"></a>
 ### serverId
@@ -33,5 +35,7 @@ restartedServerId
 serverId
 ```
 
+Identifier distinguishing the current server or map session.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)

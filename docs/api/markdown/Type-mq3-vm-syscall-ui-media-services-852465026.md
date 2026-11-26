@@ -12,7 +12,7 @@ struct Services
 Services record for vm.syscall_ui_media, containing `context`, `sound`, `cinematic`, `platform`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L54)
 
 ## Members
 
@@ -23,8 +23,10 @@ Services record for vm.syscall_ui_media, containing `context`, `sound`, `cinemat
 cinematic
 ```
 
+Cinematic playback service bundle used by UI media calls.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L60)
 
 <a id="field-field-mq3-vm-syscall-ui-media-services-context-context-src-mq3-vm-syscall-ui-media-ml-1911365701"></a>
 ### context
@@ -33,8 +35,10 @@ cinematic
 context
 ```
 
+Opaque caller-supplied context available to UI VM sound, cinematic, and platform services.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L56)
 
 <a id="field-field-mq3-vm-syscall-ui-media-services-platform-platform-src-mq3-vm-syscall-ui-media-ml-1190184879"></a>
 ### platform
@@ -43,8 +47,10 @@ context
 platform
 ```
 
+Platform service bundle providing operating-system operations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L62)
 
 <a id="field-field-mq3-vm-syscall-ui-media-services-sound-sound-src-mq3-vm-syscall-ui-media-ml-1034288665"></a>
 ### sound
@@ -53,5 +59,7 @@ platform
 sound
 ```
 
+Sound service bundle used by media and playback operations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L58)

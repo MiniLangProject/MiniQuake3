@@ -33,7 +33,7 @@ Wraps a UDP datagram in message storage, runs client packet processing, and reco
 | `data` | `dynamic` | — | Received UDP datagram bytes, wrapped in message storage large enough for netchan reassembly. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L131)
 
 <a id="function-function-mq3-client-network-ingress-create-function-create-connectionstate-netchanruntime-protocol-hostservices-src-mq3-client-network-ingress-ml-88483758"></a>
 ### create
@@ -42,17 +42,17 @@ Wraps a UDP datagram in message storage, runs client packet processing, and reco
 function create(connectionState, netchanRuntime, protocol, hostServices)
 ```
 
-Connects client packet, netchan and protocol state to the incoming-packet callbacks after validating all required services.
+Connect client packet handling, netchan decoding, and protocol parsing to one ingress runtime. Creates packet-event state and binds its callbacks to this runtime. All four arguments must be present, and the supplied Services must contain a connectionless service bundle; missing configuration returns error 6994.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `connectionState` | `dynamic` | — | Value used by `if connectionState==void or netchanRuntime==void or protocol==void or hostServices==void then return error(6994,"client ingress: missing confi...`. |
-| `netchanRuntime` | `dynamic` | — | Value used by `if connectionState==void or netchanRuntime==void or protocol==void or hostServices==void then return error(6994,"client ingress: missing confi...`. |
-| `protocol` | `dynamic` | — | Value used by `if connectionState==void or netchanRuntime==void or protocol==void or hostServices==void then return error(6994,"client ingress: missing confi...`. |
-| `hostServices` | `dynamic` | — | Record read through `hostServices.connectionlessHost`. |
+| `connectionState` | `dynamic` | — | Shared client connection state, including the active remote netchan channel. |
+| `netchanRuntime` | `dynamic` | — | Client netchan decoder and its reliable-command connection state. |
+| `protocol` | `dynamic` | — | Client protocol parser Runtime containing dispatcher, gamestate, and download state. |
+| `hostServices` | `dynamic` | — | Ingress Services containing connectionless support and optional recording/server callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L107)
 
 <a id="function-function-mq3-client-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-client-network-ingress-ml-583708552"></a>
 ### createPump
@@ -61,17 +61,17 @@ Connects client packet, netchan and protocol state to the incoming-packet callba
 function createPump(runtime, clientSocket, serverSocket, capacity)
 ```
 
-Calls `mq3.qcommon.network_pump.create` from network ingress `createPump`. The final path returns `networkPump.create(clientSocket,serverSocket,capacity,runtime,receiveClient,receiveServer)`.
+Create a UDP pump whose client and server callbacks are bound to this ingress runtime. Returns the pump or a missing-runtime, missing-socket, or invalid-capacity error.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — | runtime record passed to the network ingress helper calls. |
-| `clientSocket` | `dynamic` | — | Value used by `return networkPump.create(clientSocket,serverSocket,capacity,runtime,receiveClient,receiveServer)`. |
-| `serverSocket` | `dynamic` | — | Value used by `return networkPump.create(clientSocket,serverSocket,capacity,runtime,receiveClient,receiveServer)`. |
-| `capacity` | `dynamic` | — | Maximum number of entries or bytes accepted by this container. |
+| `runtime` | `dynamic` | — | Ingress runtime retained as the pump's callback context. |
+| `clientSocket` | `dynamic` | — | Open client UDP socket, or `void` to omit client-side polling. |
+| `serverSocket` | `dynamic` | — | Open server UDP socket, or `void` to omit server-side polling; at least one socket is required. |
+| `capacity` | `dynamic` | — | Receive-buffer size in bytes per endpoint, from 1 through 65,535. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L167)
 
 <a id="function-function-mq3-client-network-ingress-parse-function-parse-packethost-state-msg-src-mq3-client-network-ingress-ml-797369456"></a>
 ### parse
@@ -80,16 +80,16 @@ Calls `mq3.qcommon.network_pump.create` from network ingress `createPump`. The f
 function parse(packetHost, state, msg)
 ```
 
-Parses a server message, synchronizes snapshot and reliable-command sequence state, and records the parse result.
+Parse a server payload and synchronize snapshot sequencing and reliable server-command history. The packet-event server sequence is copied into the snapshot parser before decoding. Afterwards the decoded server-command ring is shared with the outgoing netchan XOR encoder. Returns and retains the parser result in `lastParseResult`.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `packetHost` | `dynamic` | — | Record read through `packetHost.context`. |
-| `state` | `dynamic` | — | Record read through `state.serverMessageSequence`. |
-| `msg` | `dynamic` | — | Value used by `result=protocolRuntime.parse(runtime.protocol,msg)`. |
+| `packetHost` | `dynamic` | — | Packet-event Services record whose context references this ingress runtime. |
+| `state` | `dynamic` | — | Packet-event State containing the physical server-message sequence number. |
+| `msg` | `dynamic` | — | Mutable message positioned at the server payload after netchan processing. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L73)
 
 <a id="function-function-mq3-client-network-ingress-process-function-process-packethost-state-msg-src-mq3-client-network-ingress-ml-696061568"></a>
 ### process
@@ -98,16 +98,16 @@ Parses a server message, synchronizes snapshot and reliable-command sequence sta
 function process(packetHost, state, msg)
 ```
 
-Passes a server packet to the client netchan after checking that the packet host has a configured netchan runtime.
+Pass a sequenced server packet through the client netchan decoder and return its acceptance result. Missing ingress or netchan configuration produces error 6994.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `packetHost` | `dynamic` | — | Record read through `packetHost.context`. |
-| `state` | `dynamic` | — | Record read through `state.connection.channel`. |
-| `msg` | `dynamic` | — | Value used by `return clientNetchanRuntime.process(runtime.netchanRuntime,state.connection.channel,msg)`. |
+| `packetHost` | `dynamic` | — | Packet-event Services record whose context references this ingress runtime. |
+| `state` | `dynamic` | — | Packet-event State whose connection owns the remote netchan channel. |
+| `msg` | `dynamic` | — | Mutable received message whose payload and read cursor are processed by the netchan. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L60)
 
 <a id="function-function-mq3-client-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-client-network-ingress-ml-353274470"></a>
 ### receiveClient
@@ -116,16 +116,16 @@ Passes a server packet to the client netchan after checking that the packet host
 function receiveClient(runtime, address, data)
 ```
 
-Adapts `mq3.client.network_ingress.clientPacket` to network ingress `receiveClient`, returning its result for `runtime, address, data`.
+Adapt the pump's client datagram callback to ingress packet processing. Returns the same packet-event result as `clientPacket` and updates its accounting and codec state.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — | Argument 1 of `mq3.client.network_ingress.clientPacket`. |
-| `address` | `dynamic` | — | Argument 2 of `mq3.client.network_ingress.clientPacket`. |
-| `data` | `dynamic` | — | Argument 3 of `mq3.client.network_ingress.clientPacket`. |
+| `runtime` | `dynamic` | — | Ingress runtime passed by the network pump as its callback context. |
+| `address` | `dynamic` | — | Sender's network address, checked against the connected server for sequenced traffic. |
+| `data` | `dynamic` | — | Received UDP datagram bytes. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L147)
 
 <a id="function-function-mq3-client-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-client-network-ingress-ml-1814103582"></a>
 ### receiveServer
@@ -134,16 +134,16 @@ Adapts `mq3.client.network_ingress.clientPacket` to network ingress `receiveClie
 function receiveServer(runtime, address, data)
 ```
 
-Forwards a server-side datagram to the optional server packet service, or returns void when no service is installed.
+Pass a server-side datagram to `serverPacketFn(services, address, data)` when configured. Returns the service result unchanged, or `void` when server-packet handling is disabled.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — | Record read through `runtime.services.serverPacketFn`, `runtime.services`. |
-| `address` | `dynamic` | — | Value used by `if runtime.services.serverPacketFn!=void then return runtime.services.serverPacketFn(runtime.services,address,data) end if`. |
-| `data` | `dynamic` | — | Value used by `if runtime.services.serverPacketFn!=void then return runtime.services.serverPacketFn(runtime.services,address,data) end if`. |
+| `runtime` | `dynamic` | — | Ingress runtime whose Services contains the optional server callback and context. |
+| `address` | `dynamic` | — | Sender's network address. |
+| `data` | `dynamic` | — | Received UDP datagram bytes for the server endpoint. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L156)
 
 <a id="function-function-mq3-client-network-ingress-recorddemo-function-recorddemo-packethost-state-msg-headerbytes-src-mq3-client-network-ingress-ml-998594900"></a>
 ### recordDemo
@@ -152,17 +152,17 @@ Forwards a server-side datagram to the optional server packet service, or return
 function recordDemo(packetHost, state, msg, headerBytes)
 ```
 
-Forwards a received message and its header length to the configured demo recorder.
+Forward a received server message to the installed demo recorder and return its result unchanged. The callback is `demoFn(services, state, msg, headerBytes)`; a missing recorder produces error 6994.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `packetHost` | `dynamic` | — | Record read through `packetHost.context`. |
-| `state` | `dynamic` | — | Shared network ingress state passed to the helper calls in `recordDemo`. |
-| `msg` | `dynamic` | — | Value used by `return runtime.services.demoFn(runtime.services,state,msg,headerBytes)`. |
-| `headerBytes` | `dynamic` | — | Number of transport/header bytes preceding the recorded message payload. |
+| `packetHost` | `dynamic` | — | Packet-event Services record whose context references this ingress runtime. |
+| `state` | `dynamic` | — | Packet-event State associated with the recorded server message. |
+| `msg` | `dynamic` | — | Received message after server-payload parsing; the recorder receives the same message object. |
+| `headerBytes` | `dynamic` | — | Number of transport/header bytes preceding the payload to record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L94)
 
 - [mq3.client.network_ingress.Runtime](Type-mq3-client-network-ingress-runtime-464646655.md) — struct
 <a id="function-function-mq3-client-network-ingress-services-function-services-connectionlesshost-src-mq3-client-network-ingress-ml-807274063"></a>
@@ -172,14 +172,14 @@ Forwards a received message and its header length to the configured demo recorde
 function services(connectionlessHost)
 ```
 
-Creates a `mq3.client.network_ingress.Services` record. Assigns `connectionlessHost` from `connectionlessHost`.
+Create the ingress service bundle with demo and server-packet callbacks initially unset.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `connectionlessHost` | `dynamic` | — | Value used to initialize `Services.connectionlessHost`. |
+| `connectionlessHost` | `dynamic` | — | Client connectionless service bundle required later by `create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L51)
 
 - [mq3.client.network_ingress.Services](Type-mq3-client-network-ingress-services-622981985.md) — struct
 <a id="function-function-mq3-client-network-ingress-setrealtime-function-setrealtime-runtime-realtime-src-mq3-client-network-ingress-ml-735561797"></a>
@@ -197,4 +197,4 @@ Updates both packet-event and snapshot-parser clocks to the supplied client real
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L120)

@@ -12,7 +12,7 @@ struct Special
 `Special` record for aas reachability, containing `kind`, `sourceArea`, `destinationArea`, `entity` and `model` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L117)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Special
 destinationArea
 ```
 
+AAS area reached at the end of this movement link.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L123)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-entity-entity-src-mq3-botlib-aas-reachability-ml-1333995770"></a>
 ### entity
@@ -33,8 +35,10 @@ destinationArea
 entity
 ```
 
+Game entity associated with this special movement feature.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L125)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-finish-finish-src-mq3-botlib-aas-reachability-ml-66914078"></a>
 ### finish
@@ -43,8 +47,10 @@ entity
 finish
 ```
 
+Destination position of the entity-driven movement connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L131)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-kind-kind-src-mq3-botlib-aas-reachability-ml-1539378704"></a>
 ### kind
@@ -53,8 +59,10 @@ finish
 kind
 ```
 
+Special movement feature type, such as a teleporter, jump pad, or mover.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L119)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-model-model-src-mq3-botlib-aas-reachability-ml-1446060896"></a>
 ### model
@@ -63,8 +71,10 @@ kind
 model
 ```
 
+Inline BSP model identifier associated with this movement entity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L127)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-sourcearea-sourcearea-src-mq3-botlib-aas-reachability-ml-1429605200"></a>
 ### sourceArea
@@ -73,8 +83,10 @@ model
 sourceArea
 ```
 
+AAS area from which this reachability or route begins.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L121)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-start-start-src-mq3-botlib-aas-reachability-ml-553873232"></a>
 ### start
@@ -83,8 +95,10 @@ sourceArea
 start
 ```
 
+Source position of the entity-driven movement connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L129)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-team-team-src-mq3-botlib-aas-reachability-ml-728316622"></a>
 ### team
@@ -93,8 +107,10 @@ start
 team
 ```
 
+Team restriction applied to this special movement feature.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L135)
 
 <a id="field-field-mq3-botlib-aas-reachability-special-velocity-velocity-src-mq3-botlib-aas-reachability-ml-1930546978"></a>
 ### velocity
@@ -103,5 +119,7 @@ team
 velocity
 ```
 
+World-space linear velocity associated with the moving entity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L133)

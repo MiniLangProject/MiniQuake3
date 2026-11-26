@@ -30,7 +30,7 @@ Return `mq3.vm.syscall_common.argument(vm, base, index)` from `vm.syscall_qagame
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L88)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-dispatch-function-dispatch-host-vm-base-op-src-mq3-vm-syscall-qagame-world-ml-1798047605"></a>
 ### dispatch
@@ -51,7 +51,7 @@ Validation failures include `qagame world syscall: invalid dispatcher context`.
 | `op` | `dynamic` | — | Op used in `str(op)` and `("qagame world syscall: unsupported trap " + str(op))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L230)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-entitiesinbox-function-entitiesinbox-vm-base-host-src-mq3-vm-syscall-qagame-world-ml-1405818632"></a>
 ### entitiesInBox
@@ -71,7 +71,7 @@ Validation failures include `qagame world syscall: negative entity-list capacity
 | `host` | `dynamic` | — | Record exposing `entitiesInBoxFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L186)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-entitycontact-function-entitycontact-vm-base-host-capsule-src-mq3-vm-syscall-qagame-world-ml-140877783"></a>
 ### entityContact
@@ -90,7 +90,7 @@ Compute entity contact in vm.syscall_qagame_world; the normal completion returns
 | `capsule` | `dynamic` | — | Capsule used in `host.entityContactFn(host.context, mins, maxs, entity, capsule)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L205)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-getusercmd-function-getusercmd-vm-base-host-src-mq3-vm-syscall-qagame-world-ml-112217762"></a>
 ### getUsercmd
@@ -108,7 +108,7 @@ Get usercmd in vm.syscall_qagame_world; the normal completion returns `writeUser
 | `host` | `dynamic` | — | Record exposing `getUsercmdFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L217)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-nullablevector-function-nullablevector-vm-address-label-src-mq3-vm-syscall-qagame-world-ml-2012140331"></a>
 ### nullableVector
@@ -126,7 +126,7 @@ Compute nullable vector in vm.syscall_qagame_world; the normal completion return
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_qagame_world.vector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L103)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-pointcontents-function-pointcontents-vm-base-host-src-mq3-vm-syscall-qagame-world-ml-1324183006"></a>
 ### pointContents
@@ -144,7 +144,7 @@ Compute point contents in vm.syscall_qagame_world; the normal completion returns
 | `host` | `dynamic` | — | Record exposing `pointContentsFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L175)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-requirevector-function-requirevector-value-label-src-mq3-vm-syscall-qagame-world-ml-622852605"></a>
 ### requireVector
@@ -161,7 +161,7 @@ Compute require vector in vm.syscall_qagame_world; the normal completion returns
 | `label` | `dynamic` | — | Label used in `("qagame world syscall: invalid " + label)` and `error(3422, ("qagame world syscall: invalid " + label))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L111)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-services-function-services-context-src-mq3-vm-syscall-qagame-world-ml-1390337559"></a>
 ### services
@@ -177,7 +177,7 @@ Create `mq3.vm.syscall_qagame_world.Services` with context=context; traceFn=void
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.vm.syscall_qagame_world.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L80)
 
 - [mq3.vm.syscall_qagame_world.Services](Type-mq3-vm-syscall-qagame-world-services-285424344.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-world-trace-function-trace-vm-base-host-capsule-src-mq3-vm-syscall-qagame-world-ml-793153915"></a>
@@ -197,7 +197,7 @@ Trace syscall qagame world in vm.syscall_qagame_world; the normal completion ret
 | `capsule` | `dynamic` | — | Capsule used in `host.traceFn(host.context, start, mins, maxs, finish, arg(vm, base, 6), arg(vm, base, 7), capsule)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L160)
 
 <a id="constant-constant-mq3-vm-syscall-qagame-world-trace-size-const-trace-size-56-src-mq3-vm-syscall-qagame-world-ml-1148073860"></a>
 ### TRACE_SIZE
@@ -206,8 +206,10 @@ Trace syscall qagame world in vm.syscall_qagame_world; the normal completion ret
 const TRACE_SIZE = 56
 ```
 
+Byte size used for trace storage or binary layout in mq3.vm.syscall_qagame_world.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L31)
 
 - [mq3.vm.syscall_qagame_world.TraceResult](Type-mq3-vm-syscall-qagame-world-traceresult-1924788560.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-world-unavailable-function-unavailable-name-src-mq3-vm-syscall-qagame-world-ml-1545991691"></a>
@@ -224,7 +226,7 @@ Create the vm.syscall_qagame_world error for `unavailable` with 3422 and the sup
 | `name` | `dynamic` | — | Name used in `("qagame world syscall: " + name)` and `(("qagame world syscall: " + name) + " service unavailable")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L83)
 
 <a id="constant-constant-mq3-vm-syscall-qagame-world-usercmd-size-const-usercmd-size-24-src-mq3-vm-syscall-qagame-world-ml-394438831"></a>
 ### USERCMD_SIZE
@@ -233,8 +235,10 @@ Create the vm.syscall_qagame_world error for `unavailable` with 3422 and the sup
 const USERCMD_SIZE = 24
 ```
 
+Byte size used for user command storage or binary layout in mq3.vm.syscall_qagame_world.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L33)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-usercommand-function-usercommand-servertime-angles-buttons-weapon-forwardmove-rightmove-upmove-src-mq3-vm-syscall-qagame-world-ml-913347976"></a>
 ### userCommand
@@ -256,7 +260,7 @@ Return `mq3.qcommon.message_delta.UserCommand(serverTime, angles, buttons, weapo
 | `upmove` | `dynamic` | — | Initial `upmove` field stored in the returned or constructed `mq3.qcommon.message_delta.UserCommand` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L252)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-vector-function-vector-vm-address-label-src-mq3-vm-syscall-qagame-world-ml-1845833235"></a>
 ### vector
@@ -274,7 +278,7 @@ Apply `mq3.vm.syscall_common.pointer`, `mq3.compat.numeric.bitsFloat`, `mq3.comp
 | `label` | `dynamic` | — | Label passed as `label` to `mq3.vm.syscall_common.pointer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L94)
 
 <a id="function-function-mq3-vm-syscall-qagame-world-writetrace-function-writetrace-vm-address-result-src-mq3-vm-syscall-qagame-world-ml-353747750"></a>
 ### writeTrace
@@ -294,7 +298,7 @@ Validation failures include `qagame world syscall: trace service returned no res
 | `result` | `dynamic` | — | Record exposing `endpos`, `planeNormal`, `allsolid`, `startsolid`, `planeType`, `planeSignBits`, `fraction` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L122)
 
 <a id="extern_function-extern-function-mq3-vm-syscall-qagame-world-writetracenative-extern-function-writetracenative-data-as-bytes-capacity-as-i32-offset-as-i32-allsolid-as-u32-startsolid-as-u32-fraction-as-double-x-as-double-y-as-double-z-as-double-nx-as-double-ny-as-double-nz-as-double-distance-as-double-planemetadata-as-u32-flags-as-u32-contents-as-u32-entity-as-u32-from-miniquake3-abi-dll-symbol-mq3-write-qvm-trace-returns-i32-src-mq3-vm-syscall-qagame-world-ml-401817385"></a>
 ### writeTraceNative
@@ -348,4 +352,4 @@ Validation failures include `qagame world syscall: invalid usercmd result`.
 | `command` | `dynamic` | — | Record exposing `angles`, `serverTime`, `buttons`, `weapon`, `forwardmove`, `rightmove`, `upmove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L144)

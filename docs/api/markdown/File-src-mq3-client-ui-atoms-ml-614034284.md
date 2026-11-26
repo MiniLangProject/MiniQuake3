@@ -27,7 +27,7 @@ function bannerWidths()
 Builds the UI atoms `bannerWidths` sequence from `[33,31,31,30,21,21,32,30,13,29,31,21,40,32,31,31,30,30,30,25,30,32,51,32,31,25]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L159)
 
 <a id="function-function-mq3-client-ui-atoms-clamp-function-clamp-value-low-high-src-mq3-client-ui-atoms-ml-521186499"></a>
 ### clamp
@@ -45,7 +45,7 @@ Clamps `value` to the inclusive bounds `low` and `high` for UI atoms.
 | `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L155)
 
 <a id="function-function-mq3-client-ui-atoms-com-error-function-com-error-state-level-message-src-mq3-client-ui-atoms-ml-1720550140"></a>
 ### Com_Error
@@ -63,7 +63,7 @@ Com_Error
 | `message` | `dynamic` | — | Argument 5 of `mq3.client.ui_atoms.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L168)
 
 <a id="function-function-mq3-client-ui-atoms-com-printf-function-com-printf-state-message-src-mq3-client-ui-atoms-ml-360954316"></a>
 ### Com_Printf
@@ -80,7 +80,7 @@ Com_Printf
 | `message` | `dynamic` | — | Argument 5 of `mq3.client.ui_atoms.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L172)
 
 <a id="function-function-mq3-client-ui-atoms-create-function-create-retailactive-src-mq3-client-ui-atoms-ml-2003498409"></a>
 ### create
@@ -96,7 +96,7 @@ Creates a `mq3.client.ui_atoms.State` record.
 | `retailActive` | `dynamic` | — | Value used to initialize `State.mainState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L141)
 
 <a id="function-function-mq3-client-ui-atoms-emit-function-emit-state-boundary-kind-name-text-values-color-src-mq3-client-ui-atoms-ml-558443410"></a>
 ### emit
@@ -118,7 +118,7 @@ Appends a UI atoms action record to the queued engine requests.
 | `color` | `dynamic` | — | Color value used by the UI atoms drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L150)
 
 <a id="constant-constant-mq3-client-ui-atoms-keycatch-ui-const-keycatch-ui-2-src-mq3-client-ui-atoms-ml-1368562291"></a>
 ### KEYCATCH_UI
@@ -127,8 +127,10 @@ Appends a UI atoms action record to the queued engine requests.
 const KEYCATCH_UI = 2
 ```
 
+UI keyboard-capture mask used when acquiring or releasing keyboard ownership when the base-game menu stack changes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L58)
 
 <a id="function-function-mq3-client-ui-atoms-needcdaction-function-needcdaction-state-result-src-mq3-client-ui-atoms-ml-170155824"></a>
 ### NeedCDAction
@@ -145,7 +147,7 @@ NeedCDAction
 | `result` | `dynamic` | — | Value used by `if not result then return emit(state,"command","append","quit","quit\\n",[],void) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L290)
 
 <a id="function-function-mq3-client-ui-atoms-needcdkeyaction-function-needcdkeyaction-state-result-src-mq3-client-ui-atoms-ml-561116748"></a>
 ### NeedCDKeyAction
@@ -162,7 +164,7 @@ NeedCDKeyAction
 | `result` | `dynamic` | — | Argument 2 of `mq3.client.ui_atoms.NeedCDAction`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L294)
 
 <a id="constant-constant-mq3-client-ui-atoms-prop-gap-width-const-prop-gap-width-3-src-mq3-client-ui-atoms-ml-614271526"></a>
 ### PROP_GAP_WIDTH
@@ -171,8 +173,10 @@ NeedCDKeyAction
 const PROP_GAP_WIDTH = 3
 ```
 
+Prop font metric controlling gap width in virtual UI coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L35)
 
 <a id="constant-constant-mq3-client-ui-atoms-prop-height-const-prop-height-27-src-mq3-client-ui-atoms-ml-468723724"></a>
 ### PROP_HEIGHT
@@ -181,8 +185,10 @@ const PROP_GAP_WIDTH = 3
 const PROP_HEIGHT = 27
 ```
 
+Prop font metric controlling height in virtual UI coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="constant-constant-mq3-client-ui-atoms-prop-small-size-scale-const-prop-small-size-scale-0-75-src-mq3-client-ui-atoms-ml-687434763"></a>
 ### PROP_SMALL_SIZE_SCALE
@@ -191,8 +197,10 @@ const PROP_HEIGHT = 27
 const PROP_SMALL_SIZE_SCALE = 0.75
 ```
 
+Prop font metric controlling small size scale in virtual UI coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L41)
 
 <a id="constant-constant-mq3-client-ui-atoms-prop-space-width-const-prop-space-width-8-src-mq3-client-ui-atoms-ml-520829701"></a>
 ### PROP_SPACE_WIDTH
@@ -201,8 +209,10 @@ const PROP_SMALL_SIZE_SCALE = 0.75
 const PROP_SPACE_WIDTH = 8
 ```
 
+Prop font metric controlling space width in virtual UI coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
 
 <a id="function-function-mq3-client-ui-atoms-propwidths-function-propwidths-src-mq3-client-ui-atoms-ml-1111132992"></a>
 ### propWidths
@@ -214,7 +224,7 @@ function propWidths()
 Builds the UI atoms `propWidths` sequence from `[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,8,7,14,17,18,23,18,7,8,9,18,18,7,11,6,14,17,12,17,18,19,18,18,16,17,18,7,7,14,14,14,18,22,18,18,18,1...`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L157)
 
 <a id="function-function-mq3-client-ui-atoms-quakecolor-function-quakecolor-code-src-mq3-client-ui-atoms-ml-1827287541"></a>
 ### quakeColor
@@ -230,7 +240,7 @@ Evaluates UI atoms `quakeColor` and returns `table[(code-48)&7]` according to it
 | `code` | `dynamic` | — | Value used by `return table[(code-48)&7]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L162)
 
 - [mq3.client.ui_atoms.State](Type-mq3-client-ui-atoms-state-866290361.md) — struct
 <a id="function-function-mq3-client-ui-atoms-ui-adjustfrom640-function-ui-adjustfrom640-state-x-y-w-h-src-mq3-client-ui-atoms-ml-1438436393"></a>
@@ -251,7 +261,7 @@ UI_AdjustFrom640
 | `h` | `dynamic` | — | Height in the coordinate space used by `UI_AdjustFrom640`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L340)
 
 <a id="function-function-mq3-client-ui-atoms-ui-argv-function-ui-argv-state-index-src-mq3-client-ui-atoms-ml-1750915801"></a>
 ### UI_Argv
@@ -268,7 +278,7 @@ UI_Argv
 | `index` | `dynamic` | — | Value tested by `index<0 or index>=len(state.args)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L314)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-bigfont-const-ui-bigfont-32-src-mq3-client-ui-atoms-ml-698854128"></a>
 ### UI_BIGFONT
@@ -277,8 +287,10 @@ UI_Argv
 const UI_BIGFONT = 32
 ```
 
+UI text-style flag selecting the large fixed-width font.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-blink-const-ui-blink-4096-src-mq3-client-ui-atoms-ml-800344020"></a>
 ### UI_BLINK
@@ -287,8 +299,10 @@ const UI_BIGFONT = 32
 const UI_BLINK = 4096
 ```
 
+UI text-style flag selecting periodic visibility blinking.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L29)
 
 <a id="function-function-mq3-client-ui-atoms-ui-cache-f-function-ui-cache-f-state-src-mq3-client-ui-atoms-ml-2000558861"></a>
 ### UI_Cache_f
@@ -304,7 +318,7 @@ UI_Cache_f
 | `state` | `dynamic` | — | Mutable UI atoms record/storage; this routine assigns `state.cacheNames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L321)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-center-const-ui-center-1-src-mq3-client-ui-atoms-ml-583264200"></a>
 ### UI_CENTER
@@ -313,8 +327,10 @@ UI_Cache_f
 const UI_CENTER = 1
 ```
 
+UI text-style flag selecting horizontally centered text.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L15)
 
 <a id="function-function-mq3-client-ui-atoms-ui-clampcvar-function-ui-clampcvar-minimum-maximum-value-src-mq3-client-ui-atoms-ml-1080003423"></a>
 ### UI_ClampCvar
@@ -332,7 +348,7 @@ UI_ClampCvar
 | `value` | `dynamic` | — | Argument 1 of `mq3.client.ui_atoms.clamp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L177)
 
 <a id="function-function-mq3-client-ui-atoms-ui-consolecommand-function-ui-consolecommand-state-realtime-src-mq3-client-ui-atoms-ml-578101134"></a>
 ### UI_ConsoleCommand
@@ -349,7 +365,7 @@ UI_ConsoleCommand
 | `realTime` | `dynamic` | — | Value assigned to `state.realtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L325)
 
 <a id="function-function-mq3-client-ui-atoms-ui-cursorinrect-function-ui-cursorinrect-state-x-y-width-height-src-mq3-client-ui-atoms-ml-459821125"></a>
 ### UI_CursorInRect
@@ -369,7 +385,7 @@ UI_CursorInRect
 | `height` | `dynamic` | — | Height in the coordinate space used by `UI_CursorInRect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L300)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L399)
 
 <a id="function-function-mq3-client-ui-atoms-ui-cvar-variablestring-function-ui-cvar-variablestring-state-name-src-mq3-client-ui-atoms-ml-150988614"></a>
 ### UI_Cvar_VariableString
@@ -386,7 +402,7 @@ UI_Cvar_VariableString
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI atoms resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L318)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawbannerstring-function-ui-drawbannerstring-state-x-y-text-style-color-src-mq3-client-ui-atoms-ml-58202461"></a>
 ### UI_DrawBannerString
@@ -407,7 +423,7 @@ UI_DrawBannerString
 | `color` | `dynamic` | — | Sequence read at `color[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L217)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawbannerstring2-function-ui-drawbannerstring2-state-x-y-text-color-src-mq3-client-ui-atoms-ml-1331317760"></a>
 ### UI_DrawBannerString2
@@ -427,7 +443,7 @@ UI_DrawBannerString2
 | `color` | `dynamic` | — | Color value used by the UI atoms drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L207)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawchar-function-ui-drawchar-state-x-y-ch-style-color-src-mq3-client-ui-atoms-ml-37771147"></a>
 ### UI_DrawChar
@@ -448,7 +464,7 @@ UI_DrawChar
 | `color` | `dynamic` | — | Argument 6 of `mq3.client.ui_atoms.UI_DrawString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L283)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawhandlepic-function-ui-drawhandlepic-state-x-y-w-h-shader-src-mq3-client-ui-atoms-ml-858927456"></a>
 ### UI_DrawHandlePic
@@ -469,7 +485,7 @@ UI_DrawHandlePic
 | `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L356)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawnamedpic-function-ui-drawnamedpic-state-x-y-width-height-picname-src-mq3-client-ui-atoms-ml-1358563512"></a>
 ### UI_DrawNamedPic
@@ -490,7 +506,7 @@ UI_DrawNamedPic
 | `picname` | `dynamic` | — | Value used by `emit(state,"renderer","register-shader",picname,"",[],void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L348)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawproportionalstring-function-ui-drawproportionalstring-state-x-y-text-style-color-src-mq3-client-ui-atoms-ml-1123257439"></a>
 ### UI_DrawProportionalString
@@ -511,7 +527,7 @@ UI_DrawProportionalString
 | `color` | `dynamic` | — | Sequence read at `color[3]`, `color[0]`, `color[1]`, `color[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L240)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawproportionalstring2-function-ui-drawproportionalstring2-state-x-y-text-color-sizescale-charset-src-mq3-client-ui-atoms-ml-764544791"></a>
 ### UI_DrawProportionalString2
@@ -533,7 +549,7 @@ UI_DrawProportionalString2
 | `charset` | `dynamic` | — | Value used by `if c==32 then w=PROP_SPACE_WIDTH else if w!=-1 then rows=rows+[emit(state,"renderer","proportional-glyph",charset,"",[at,y*state.scale,w*state...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L229)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawproportionalstring-autowrapped-function-ui-drawproportionalstring-autowrapped-state-x-y-xmax-ystep-text-style-color-src-mq3-client-ui-atoms-ml-2127254846"></a>
 ### UI_DrawProportionalString_AutoWrapped
@@ -556,7 +572,7 @@ UI_DrawProportionalString_AutoWrapped
 | `color` | `dynamic` | — | Color value used by the UI atoms drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L252)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawrect-function-ui-drawrect-state-x-y-width-height-color-src-mq3-client-ui-atoms-ml-535715214"></a>
 ### UI_DrawRect
@@ -577,7 +593,7 @@ UI_DrawRect
 | `color` | `dynamic` | — | Color value used by the UI atoms drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L372)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawstring-function-ui-drawstring-state-x-y-text-style-color-src-mq3-client-ui-atoms-ml-720772457"></a>
 ### UI_DrawString
@@ -598,7 +614,7 @@ UI_DrawString
 | `color` | `dynamic` | — | Sequence read at `color[0]`, `color[1]`, `color[2]`, `color[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L273)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawstring2-function-ui-drawstring2-state-x-y-text-color-charw-charh-src-mq3-client-ui-atoms-ml-251800423"></a>
 ### UI_DrawString2
@@ -620,7 +636,7 @@ UI_DrawString2
 | `charh` | `dynamic` | — | Value used by `if y<0-charh then return rows end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L263)
 
 <a id="function-function-mq3-client-ui-atoms-ui-drawtextbox-function-ui-drawtextbox-state-x-y-width-lines-src-mq3-client-ui-atoms-ml-1081081453"></a>
 ### UI_DrawTextBox
@@ -640,7 +656,7 @@ UI_DrawTextBox
 | `lines` | `dynamic` | — | Value used by `return [UI_FillRect(state,x+8,y+8,(width+1)*16,(lines+1)*16,[0.0,0.0,0.0,1.0])]+UI_DrawRect(state,x+8,y+8,(width+1)*16,(lines+1)*16,[1.0,1.0,1...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L392)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-dropshadow-const-ui-dropshadow-2048-src-mq3-client-ui-atoms-ml-410417067"></a>
 ### UI_DROPSHADOW
@@ -649,8 +665,10 @@ UI_DrawTextBox
 const UI_DROPSHADOW = 2048
 ```
 
+UI text-style flag selecting a shadow behind the text.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L27)
 
 <a id="function-function-mq3-client-ui-atoms-ui-fillrect-function-ui-fillrect-state-x-y-width-height-color-src-mq3-client-ui-atoms-ml-1146089792"></a>
 ### UI_FillRect
@@ -671,7 +689,7 @@ UI_FillRect
 | `color` | `dynamic` | — | Color value used by the UI atoms drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L364)
 
 <a id="function-function-mq3-client-ui-atoms-ui-forcemenuoff-function-ui-forcemenuoff-state-src-mq3-client-ui-atoms-ml-1952114909"></a>
 ### UI_ForceMenuOff
@@ -687,7 +705,7 @@ UI_ForceMenuOff
 | `state` | `dynamic` | — | Mutable UI atoms record/storage; this routine assigns `state.stack`, `state.activeMenu`, `state.keyCatcher`, `state.cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L194)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-formatmask-const-ui-formatmask-7-src-mq3-client-ui-atoms-ml-478207042"></a>
 ### UI_FORMATMASK
@@ -696,8 +714,10 @@ UI_ForceMenuOff
 const UI_FORMATMASK = 7
 ```
 
+UI text-style flag selecting the horizontal-alignment bits.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-giantfont-const-ui-giantfont-64-src-mq3-client-ui-atoms-ml-1486161579"></a>
 ### UI_GIANTFONT
@@ -706,8 +726,10 @@ const UI_FORMATMASK = 7
 const UI_GIANTFONT = 64
 ```
 
+UI text-style flag selecting the giant fixed-width font.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L25)
 
 <a id="function-function-mq3-client-ui-atoms-ui-init-function-ui-init-state-vidwidth-vidheight-src-mq3-client-ui-atoms-ml-875370498"></a>
 ### UI_Init
@@ -725,7 +747,7 @@ UI_Init
 | `vidHeight` | `dynamic` | — | Value assigned to `state.vidHeight`, `state.scale`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L333)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-inverse-const-ui-inverse-8192-src-mq3-client-ui-atoms-ml-1125611817"></a>
 ### UI_INVERSE
@@ -734,8 +756,10 @@ UI_Init
 const UI_INVERSE = 8192
 ```
 
+UI text-style flag selecting the subdued inverse text style.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L31)
 
 <a id="function-function-mq3-client-ui-atoms-ui-isfullscreen-function-ui-isfullscreen-state-src-mq3-client-ui-atoms-ml-348151965"></a>
 ### UI_IsFullscreen
@@ -751,7 +775,7 @@ UI_IsFullscreen
 | `state` | `dynamic` | — | Record read through `state.activeMenu`, `state.keyCatcher`, `state.activeMenu.fullscreen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L286)
 
 <a id="function-function-mq3-client-ui-atoms-ui-keyevent-function-ui-keyevent-state-key-down-src-mq3-client-ui-atoms-ml-1796184016"></a>
 ### UI_KeyEvent
@@ -769,7 +793,7 @@ UI_KeyEvent
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L303)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-left-const-ui-left-0-src-mq3-client-ui-atoms-ml-393947105"></a>
 ### UI_LEFT
@@ -778,8 +802,10 @@ UI_KeyEvent
 const UI_LEFT = 0
 ```
 
+UI text-style flag selecting left-aligned text.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L13)
 
 <a id="function-function-mq3-client-ui-atoms-ui-lerpcolor-function-ui-lerpcolor-a-b-t-src-mq3-client-ui-atoms-ml-254430557"></a>
 ### UI_LerpColor
@@ -797,7 +823,7 @@ UI_LerpColor
 | `t` | `dynamic` | — | Value used by `for i=0 to 3 result=result+[clamp(a[i]+t*(b[i]-a[i]),0.0,1.0)] end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L199)
 
 <a id="function-function-mq3-client-ui-atoms-ui-mouseevent-function-ui-mouseevent-state-dx-dy-src-mq3-client-ui-atoms-ml-1454961070"></a>
 ### UI_MouseEvent
@@ -815,7 +841,7 @@ UI_MouseEvent
 | `dy` | `dynamic` | — | Value used by `state.cursory=clamp(state.cursory+dy,0,480)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L308)
 
 <a id="function-function-mq3-client-ui-atoms-ui-popmenu-function-ui-popmenu-state-src-mq3-client-ui-atoms-ml-722237769"></a>
 ### UI_PopMenu
@@ -831,7 +857,7 @@ UI_PopMenu
 | `state` | `dynamic` | — | Mutable UI atoms record/storage; this routine assigns `state.stack`, `state.activeMenu`, `state.firstdraw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L191)
 
 <a id="function-function-mq3-client-ui-atoms-ui-proportionalsizescale-function-ui-proportionalsizescale-style-src-mq3-client-ui-atoms-ml-146720137"></a>
 ### UI_ProportionalSizeScale
@@ -847,7 +873,7 @@ UI_ProportionalSizeScale
 | `style` | `dynamic` | — | Value used by `if (style&UI_SMALLFONT)!=0 then return PROP_SMALL_SIZE_SCALE end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L232)
 
 <a id="function-function-mq3-client-ui-atoms-ui-proportionalstringwidth-function-ui-proportionalstringwidth-text-src-mq3-client-ui-atoms-ml-1629688359"></a>
 ### UI_ProportionalStringWidth
@@ -863,7 +889,7 @@ UI_ProportionalStringWidth
 | `text` | `dynamic` | — | Text consumed or emitted by `UI_ProportionalStringWidth` in the UI atoms path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L220)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-pulse-const-ui-pulse-16384-src-mq3-client-ui-atoms-ml-1863553911"></a>
 ### UI_PULSE
@@ -872,8 +898,10 @@ UI_ProportionalStringWidth
 const UI_PULSE = 16384
 ```
 
+UI text-style flag selecting a pulsing text color or brightness.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L33)
 
 <a id="function-function-mq3-client-ui-atoms-ui-pushmenu-function-ui-pushmenu-state-menu-src-mq3-client-ui-atoms-ml-161450282"></a>
 ### UI_PushMenu
@@ -890,7 +918,7 @@ UI_PushMenu
 | `menu` | `dynamic` | — | Mutable UI atoms record/storage; this routine assigns `menu.cursor`, `menu.cursor_prev`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L185)
 
 <a id="function-function-mq3-client-ui-atoms-ui-refresh-function-ui-refresh-state-realtime-src-mq3-client-ui-atoms-ml-990984336"></a>
 ### UI_Refresh
@@ -907,7 +935,7 @@ UI_Refresh
 | `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L383)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-right-const-ui-right-2-src-mq3-client-ui-atoms-ml-1812488251"></a>
 ### UI_RIGHT
@@ -916,8 +944,10 @@ UI_Refresh
 const UI_RIGHT = 2
 ```
 
+UI text-style flag selecting right-aligned text.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L17)
 
 <a id="function-function-mq3-client-ui-atoms-ui-setactivemenu-function-ui-setactivemenu-state-menu-src-mq3-client-ui-atoms-ml-1305406654"></a>
 ### UI_SetActiveMenu
@@ -934,7 +964,7 @@ UI_SetActiveMenu
 | `menu` | `dynamic` | — | Value used by `if menu==UIMENU_NONE then UI_ForceMenuOff(state) else if menu==UIMENU_MAIN then emit(state,"ui","open-menu","main","",[],void) else if menu==U...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L298)
 
 <a id="function-function-mq3-client-ui-atoms-ui-setcolor-function-ui-setcolor-state-rgba-src-mq3-client-ui-atoms-ml-802330119"></a>
 ### UI_SetColor
@@ -951,7 +981,7 @@ UI_SetColor
 | `rgba` | `dynamic` | — | Argument 7 of `mq3.client.ui_atoms.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L376)
 
 <a id="function-function-mq3-client-ui-atoms-ui-shutdown-function-ui-shutdown-state-src-mq3-client-ui-atoms-ml-1824747099"></a>
 ### UI_Shutdown
@@ -967,7 +997,7 @@ UI_Shutdown
 | `state` | `dynamic` | — | Shared UI atoms state passed to the helper calls in `UI_Shutdown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L328)
 
 <a id="constant-constant-mq3-client-ui-atoms-ui-smallfont-const-ui-smallfont-16-src-mq3-client-ui-atoms-ml-1509797396"></a>
 ### UI_SMALLFONT
@@ -976,8 +1006,10 @@ UI_Shutdown
 const UI_SMALLFONT = 16
 ```
 
+UI text-style flag selecting the small fixed-width font.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L21)
 
 <a id="function-function-mq3-client-ui-atoms-ui-startdemoloop-function-ui-startdemoloop-state-src-mq3-client-ui-atoms-ml-1840024801"></a>
 ### UI_StartDemoLoop
@@ -993,7 +1025,7 @@ UI_StartDemoLoop
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_atoms.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L180)
 
 <a id="function-function-mq3-client-ui-atoms-ui-updatescreen-function-ui-updatescreen-state-src-mq3-client-ui-atoms-ml-398362701"></a>
 ### UI_UpdateScreen
@@ -1009,7 +1041,7 @@ UI_UpdateScreen
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_atoms.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L379)
 
 <a id="constant-constant-mq3-client-ui-atoms-uimenu-bad-cd-key-const-uimenu-bad-cd-key-4-src-mq3-client-ui-atoms-ml-502097833"></a>
 ### UIMENU_BAD_CD_KEY
@@ -1018,8 +1050,10 @@ UI_UpdateScreen
 const UIMENU_BAD_CD_KEY = 4
 ```
 
+Engine-to-UI menu selector for the bad cd key screen or menu state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L51)
 
 <a id="constant-constant-mq3-client-ui-atoms-uimenu-ingame-const-uimenu-ingame-2-src-mq3-client-ui-atoms-ml-1852226763"></a>
 ### UIMENU_INGAME
@@ -1028,8 +1062,10 @@ const UIMENU_BAD_CD_KEY = 4
 const UIMENU_INGAME = 2
 ```
 
+Engine-to-UI menu selector for the ingame screen or menu state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L47)
 
 <a id="constant-constant-mq3-client-ui-atoms-uimenu-main-const-uimenu-main-1-src-mq3-client-ui-atoms-ml-258358604"></a>
 ### UIMENU_MAIN
@@ -1038,8 +1074,10 @@ const UIMENU_INGAME = 2
 const UIMENU_MAIN = 1
 ```
 
+Engine-to-UI menu selector for the main screen or menu state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L45)
 
 <a id="constant-constant-mq3-client-ui-atoms-uimenu-need-cd-const-uimenu-need-cd-3-src-mq3-client-ui-atoms-ml-1827786236"></a>
 ### UIMENU_NEED_CD
@@ -1048,8 +1086,10 @@ const UIMENU_MAIN = 1
 const UIMENU_NEED_CD = 3
 ```
 
+Engine-to-UI menu selector for the need cd screen or menu state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L49)
 
 <a id="constant-constant-mq3-client-ui-atoms-uimenu-none-const-uimenu-none-0-src-mq3-client-ui-atoms-ml-376880393"></a>
 ### UIMENU_NONE
@@ -1058,8 +1098,10 @@ const UIMENU_NEED_CD = 3
 const UIMENU_NONE = 0
 ```
 
+Engine-to-UI menu selector for the none screen or menu state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L43)
 
 <a id="constant-constant-mq3-client-ui-atoms-uimenu-postgame-const-uimenu-postgame-6-src-mq3-client-ui-atoms-ml-74526163"></a>
 ### UIMENU_POSTGAME
@@ -1068,8 +1110,10 @@ const UIMENU_NONE = 0
 const UIMENU_POSTGAME = 6
 ```
 
+Engine-to-UI menu selector for the postgame screen or menu state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L55)
 
 <a id="constant-constant-mq3-client-ui-atoms-uimenu-team-const-uimenu-team-5-src-mq3-client-ui-atoms-ml-1201885740"></a>
 ### UIMENU_TEAM
@@ -1078,5 +1122,7 @@ const UIMENU_POSTGAME = 6
 const UIMENU_TEAM = 5
 ```
 
+Engine-to-UI menu selector for the team screen or menu state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L53)

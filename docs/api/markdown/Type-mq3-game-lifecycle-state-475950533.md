@@ -23,8 +23,10 @@ struct State
 botAiFrame
 ```
 
+State scheduling and executing bot AI frames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L77)
 
 <a id="field-field-mq3-game-lifecycle-state-botallocateclientfn-botallocateclientfn-src-mq3-game-lifecycle-ml-349605528"></a>
 ### botAllocateClientFn
@@ -33,8 +35,10 @@ botAiFrame
 botAllocateClientFn
 ```
 
+Injected callback for bot allocate client; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L57)
 
 <a id="field-field-mq3-game-lifecycle-state-botclientresources-botclientresources-src-mq3-game-lifecycle-ml-910151794"></a>
 ### botClientResources
@@ -43,8 +47,10 @@ botAllocateClientFn
 botClientResources
 ```
 
+Per-bot client resource handles owned by the level.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L73)
 
 <a id="field-field-mq3-game-lifecycle-state-botclients-botclients-src-mq3-game-lifecycle-ml-1470649850"></a>
 ### botClients
@@ -53,8 +59,10 @@ botClientResources
 botClients
 ```
 
+Bot client bookkeeping and connection state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L71)
 
 <a id="field-field-mq3-game-lifecycle-state-botloadmapfn-botloadmapfn-src-mq3-game-lifecycle-ml-483725390"></a>
 ### botLoadMapFn
@@ -63,8 +71,10 @@ botClients
 botLoadMapFn
 ```
 
+Injected callback for bot load map; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L51)
 
 <a id="field-field-mq3-game-lifecycle-state-botpopulation-botpopulation-src-mq3-game-lifecycle-ml-368337108"></a>
 ### botPopulation
@@ -73,8 +83,10 @@ botLoadMapFn
 botPopulation
 ```
 
+State maintaining the configured minimum player population.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L75)
 
 <a id="field-field-mq3-game-lifecycle-state-botregistry-botregistry-src-mq3-game-lifecycle-ml-1026330636"></a>
 ### botRegistry
@@ -83,8 +95,10 @@ botPopulation
 botRegistry
 ```
 
+Registry of configured definitions and active bot slots.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L69)
 
 <a id="field-field-mq3-game-lifecycle-state-botsetupfn-botsetupfn-src-mq3-game-lifecycle-ml-1688709948"></a>
 ### botSetupFn
@@ -93,8 +107,10 @@ botRegistry
 botSetupFn
 ```
 
+Injected callback for bot setup; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L49)
 
 <a id="field-field-mq3-game-lifecycle-state-botshutdownfn-botshutdownfn-src-mq3-game-lifecycle-ml-1516629168"></a>
 ### botShutdownFn
@@ -103,8 +119,10 @@ botSetupFn
 botShutdownFn
 ```
 
+Injected callback for bot shutdown; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L55)
 
 <a id="field-field-mq3-game-lifecycle-state-botstate-botstate-src-mq3-game-lifecycle-ml-356557580"></a>
 ### botState
@@ -113,8 +131,10 @@ botShutdownFn
 botState
 ```
 
+Shared bot-AI frame state associated with the level.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L67)
 
 <a id="field-field-mq3-game-lifecycle-state-builddate-builddate-src-mq3-game-lifecycle-ml-2132113224"></a>
 ### buildDate
@@ -123,8 +143,10 @@ botState
 buildDate
 ```
 
+Build-date string exposed by game/server information commands.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L35)
 
 <a id="field-field-mq3-game-lifecycle-state-clientsbound-clientsbound-src-mq3-game-lifecycle-ml-1227443868"></a>
 ### clientsBound
@@ -133,8 +155,10 @@ buildDate
 clientsBound
 ```
 
+Nonzero after game client storage is bound to the host engine.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L39)
 
 <a id="field-field-mq3-game-lifecycle-state-closelogfn-closelogfn-src-mq3-game-lifecycle-ml-386930348"></a>
 ### closeLogFn
@@ -143,8 +167,10 @@ clientsBound
 closeLogFn
 ```
 
+Injected callback for close log; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L43)
 
 <a id="field-field-mq3-game-lifecycle-state-cvareffectfn-cvareffectfn-src-mq3-game-lifecycle-ml-902310454"></a>
 ### cvarEffectFn
@@ -153,8 +179,10 @@ closeLogFn
 cvarEffectFn
 ```
 
+Injected callback for console variable effect; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L65)
 
 <a id="field-field-mq3-game-lifecycle-state-entitiesbound-entitiesbound-src-mq3-game-lifecycle-ml-1347797480"></a>
 ### entitiesBound
@@ -163,8 +191,10 @@ cvarEffectFn
 entitiesBound
 ```
 
+Nonzero after game entity storage is bound to the host engine.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L37)
 
 <a id="field-field-mq3-game-lifecycle-state-entityobservefn-entityobservefn-src-mq3-game-lifecycle-ml-83939692"></a>
 ### entityObserveFn
@@ -173,8 +203,10 @@ entitiesBound
 entityObserveFn
 ```
 
+Injected callback for entity observe; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L63)
 
 <a id="field-field-mq3-game-lifecycle-state-initbotsfn-initbotsfn-src-mq3-game-lifecycle-ml-941310524"></a>
 ### initBotsFn
@@ -183,8 +215,10 @@ entityObserveFn
 initBotsFn
 ```
 
+Injected callback for init bots; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L53)
 
 <a id="field-field-mq3-game-lifecycle-state-integerqueryfn-integerqueryfn-src-mq3-game-lifecycle-ml-510050864"></a>
 ### integerQueryFn
@@ -193,8 +227,10 @@ initBotsFn
 integerQueryFn
 ```
 
+Injected callback for integer query; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L59)
 
 <a id="field-field-mq3-game-lifecycle-state-locatefn-locatefn-src-mq3-game-lifecycle-ml-295501160"></a>
 ### locateFn
@@ -203,8 +239,10 @@ integerQueryFn
 locateFn
 ```
 
+Injected callback for locate; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L47)
 
 <a id="field-field-mq3-game-lifecycle-state-openlogfn-openlogfn-src-mq3-game-lifecycle-ml-590926484"></a>
 ### openLogFn
@@ -213,8 +251,10 @@ locateFn
 openLogFn
 ```
 
+Injected callback for open log; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L41)
 
 <a id="field-field-mq3-game-lifecycle-state-serverinfofn-serverinfofn-src-mq3-game-lifecycle-ml-1196738014"></a>
 ### serverInfoFn
@@ -223,8 +263,10 @@ openLogFn
 serverInfoFn
 ```
 
+Injected callback for server info; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L45)
 
 <a id="field-field-mq3-game-lifecycle-state-spawneffectfn-spawneffectfn-src-mq3-game-lifecycle-ml-1249785468"></a>
 ### spawnEffectFn
@@ -233,5 +275,7 @@ serverInfoFn
 spawnEffectFn
 ```
 
+Injected callback for spawn effect; invoked through the State service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L61)

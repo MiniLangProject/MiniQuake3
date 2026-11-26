@@ -22,14 +22,14 @@ Reachable from entry: **yes**
 function connectPrefix(msg)
 ```
 
-Test connect prefix in server.connectionless; the normal completion returns `true`.
+Check whether bytes 4 through 10 of the message storage contain the case-sensitive text `connect`. Returns false for storage shorter than eleven bytes. This prefix check does not validate the OOB marker, require a word boundary, or inspect the message's cursize; `dispatch` separately validates the marker.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `msg` | `dynamic` | — | Record exposing `data`. |
+| `msg` | `dynamic` | — | Message exposing the backing data bytes used to recognize compressed connect requests. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L34)
 
 <a id="function-function-mq3-server-connectionless-dispatch-function-dispatch-runtime-host-sourceaddress-msg-src-mq3-server-connectionless-ml-1807300734"></a>
 ### dispatch
@@ -38,19 +38,17 @@ Test connect prefix in server.connectionless; the normal completion returns `tru
 function dispatch(runtime, host, sourceAddress, msg)
 ```
 
-Dispatch connectionless in server.connectionless; the normal completion returns `"unknown"`.
-
-Validation failures include `connectionless: missing state`; `connectionless: missing OOB marker`.
+Read and route one connectionless packet after validating its -1 OOB marker. Recognizes getstatus, getinfo, getchallenge, connect, ipAuthorize, rcon, and disconnect. Returns the recognized command name, or `unknown` for empty/unrecognized input; recognition does not imply that an optional callback was installed or that authentication succeeded. Command matching is case-insensitive. Connect packets with a matching lowercase raw prefix invoke the optional decompressor before tokenization. The rcon callback receives unverified text and arguments and owns authentication and command execution.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — | Runtime passed as `runtime` to `mq3.server.oob_connect.getChallenge`. |
-| `host` | `dynamic` | — | Record exposing `decompressFn`, `statusFn`, `infoFn`, `authorizeFn`, `rconFn`, `diagnosticFn`. |
-| `sourceAddress` | `dynamic` | — | Source address passed as `sourceAddress` to `mq3.server.oob_connect.getChallenge`. |
-| `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.beginReadingOob`. |
+| `runtime` | `dynamic` | — | Out-of-band connection runtime used by getchallenge and direct-connect handling. |
+| `host` | `dynamic` | — | Connectionless Services whose callbacks receive this same record as their first argument. |
+| `sourceAddress` | `dynamic` | — | Sender's network address, forwarded to connection handling and host callbacks. |
+| `msg` | `dynamic` | — | Mutable message containing the OOB marker and command bytes; its read cursor is advanced. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L58)
 
 <a id="function-function-mq3-server-connectionless-services-function-services-src-mq3-server-connectionless-ml-104543780"></a>
 ### services
@@ -59,10 +57,10 @@ Validation failures include `connectionless: missing state`; `connectionless: mi
 function services()
 ```
 
-Create `mq3.server.connectionless.Services` with statusFn=void; infoFn=void; rconFn=void; authorizeFn=void; decompressFn=void; diagnosticFn=void; context=void.
+Create a connectionless callback bundle with all callbacks and context initially unset.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L29)
 
 - [mq3.server.connectionless.Services](Type-mq3-server-connectionless-services-775299350.md) — struct
 <a id="function-function-mq3-server-connectionless-tokens-function-tokens-text-src-mq3-server-connectionless-ml-1651922383"></a>
@@ -72,11 +70,11 @@ Create `mq3.server.connectionless.Services` with statusFn=void; infoFn=void; rco
 function tokens(text)
 ```
 
-Compute tokens in server.connectionless; the normal completion returns `result`.
+Tokenize a connectionless command line with the engine's command parser. Returns an ordered array of argument strings, including the command name at index zero, or an empty array.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.tokenizeString`. |
+| `text` | `dynamic` | — | Decoded command line to parse with Quake command quoting rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L43)

@@ -29,7 +29,7 @@ Calls `mq3.client.ui_gameinfo_missionpack.contains` from UI gameinfo missionpack
 | `type` | `dynamic` | — | Value used by `if type=="" then return 1<<GT_FFA end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L144)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-contains-function-contains-text-part-src-mq3-client-ui-gameinfo-missionpack-ml-1488198672"></a>
 ### contains
@@ -46,7 +46,7 @@ Computes `strings.indexOf(text,part,0)>=0` for UI gameinfo missionpack `contains
 | `part` | `dynamic` | — | Value used by `return strings.indexOf(text,part,0)>=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L124)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-create-function-create-retailactive-src-mq3-client-ui-gameinfo-missionpack-ml-1982330297"></a>
 ### create
@@ -62,7 +62,7 @@ Creates a `mq3.client.ui_gameinfo_missionpack.State` record. Assigns `retailActi
 | `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L105)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-emit-function-emit-state-boundary-kind-name-text-number-src-mq3-client-ui-gameinfo-missionpack-ml-1673724962"></a>
 ### emit
@@ -83,7 +83,7 @@ Appends a UI gameinfo missionpack action record to the queued engine requests. R
 | `number` | `dynamic` | — | Value used by `action=Action(boundary,kind,name,text,number,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L115)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-1fctf-const-gt-1fctf-5-src-mq3-client-ui-gameinfo-missionpack-ml-2024253888"></a>
 ### GT_1FCTF
@@ -92,8 +92,10 @@ Appends a UI gameinfo missionpack action record to the queued engine requests. R
 const GT_1FCTF = 5
 ```
 
+Native game-type identifier selecting one-flag capture the flag.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-gameinfo-missionpack-ml-709921389"></a>
 ### GT_CTF
@@ -102,8 +104,10 @@ const GT_1FCTF = 5
 const GT_CTF = 4
 ```
 
+Native game-type value for capture the flag, used when building Missionpack arena game-type masks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-ffa-const-gt-ffa-0-src-mq3-client-ui-gameinfo-missionpack-ml-538229641"></a>
 ### GT_FFA
@@ -112,8 +116,10 @@ const GT_CTF = 4
 const GT_FFA = 0
 ```
 
+Native game-type identifier selecting free-for-all deathmatch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-harvester-const-gt-harvester-7-src-mq3-client-ui-gameinfo-missionpack-ml-1523922070"></a>
 ### GT_HARVESTER
@@ -122,8 +128,10 @@ const GT_FFA = 0
 const GT_HARVESTER = 7
 ```
 
+Native game-type identifier selecting Harvester.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L34)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-max-game-type-const-gt-max-game-type-8-src-mq3-client-ui-gameinfo-missionpack-ml-101962987"></a>
 ### GT_MAX_GAME_TYPE
@@ -132,8 +140,10 @@ const GT_HARVESTER = 7
 const GT_MAX_GAME_TYPE = 8
 ```
 
+Upper game-type count used to bound the Missionpack UI's game-mode tables.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L36)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-obelisk-const-gt-obelisk-6-src-mq3-client-ui-gameinfo-missionpack-ml-1405246687"></a>
 ### GT_OBELISK
@@ -142,8 +152,10 @@ const GT_MAX_GAME_TYPE = 8
 const GT_OBELISK = 6
 ```
 
+Native game-type identifier selecting Overload.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-gameinfo-missionpack-ml-1506228857"></a>
 ### GT_SINGLE_PLAYER
@@ -152,8 +164,10 @@ const GT_OBELISK = 6
 const GT_SINGLE_PLAYER = 2
 ```
 
+Single-player game-type identifier retained by the Missionpack arena metadata interface alongside its supported mode definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-team-const-gt-team-3-src-mq3-client-ui-gameinfo-missionpack-ml-600464116"></a>
 ### GT_TEAM
@@ -162,8 +176,10 @@ const GT_SINGLE_PLAYER = 2
 const GT_TEAM = 3
 ```
 
+Team-deathmatch game-type identifier retained by the Missionpack arena metadata interface alongside its supported mode definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-tournament-const-gt-tournament-1-src-mq3-client-ui-gameinfo-missionpack-ml-1768391286"></a>
 ### GT_TOURNAMENT
@@ -172,8 +188,10 @@ const GT_TEAM = 3
 const GT_TOURNAMENT = 1
 ```
 
+Native game-type value for one-on-one tournament play, used when building Missionpack arena game-type masks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L20)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-mapinfo-function-mapinfo-arena-number-src-mq3-client-ui-gameinfo-missionpack-ml-1085707844"></a>
 ### mapInfo
@@ -190,7 +208,7 @@ Calls `mq3.shared.info.value`, `mq3.client.ui_gameinfo_missionpack.MapInfo`, `mq
 | `number` | `dynamic` | — | Value used by `return MapInfo(-1,loadName,info.value(arena,"longname"),-1,"levelshots/"+loadName,arenaTypeBits(info.value(arena,"type")),number)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L158)
 
 - [mq3.client.ui_gameinfo_missionpack.MapInfo](Type-mq3-client-ui-gameinfo-missionpack-mapinfo-1573515734.md) — struct
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-max-arenas-const-max-arenas-1024-src-mq3-client-ui-gameinfo-missionpack-ml-860444878"></a>
@@ -200,8 +218,10 @@ Calls `mq3.shared.info.value`, `mq3.client.ui_gameinfo_missionpack.MapInfo`, `mq
 const MAX_ARENAS = 1024
 ```
 
+Capacity limit for the arenas collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-max-bots-const-max-bots-1024-src-mq3-client-ui-gameinfo-missionpack-ml-736222906"></a>
 ### MAX_BOTS
@@ -210,8 +230,10 @@ const MAX_ARENAS = 1024
 const MAX_BOTS = 1024
 ```
 
+Capacity limit for the bots collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-max-maps-const-max-maps-128-src-mq3-client-ui-gameinfo-missionpack-ml-782444162"></a>
 ### MAX_MAPS
@@ -220,8 +242,10 @@ const MAX_BOTS = 1024
 const MAX_MAPS = 128
 ```
 
+Capacity limit for the maps collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L11)
 
 - [mq3.client.ui_gameinfo_missionpack.State](Type-mq3-client-ui-gameinfo-missionpack-state-1482826341.md) — struct
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-sync-function-sync-state-src-mq3-client-ui-gameinfo-missionpack-ml-277824969"></a>
@@ -238,7 +262,7 @@ Updates `state.arenaInfos`, `state.botInfos`, `state.diagnostics` during UI game
 | `state` | `dynamic` | — | Mutable UI gameinfo missionpack record/storage; this routine assigns `state.arenaInfos`, `state.botInfos`, `state.diagnostics`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L120)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotinfobyname-function-ui-getbotinfobyname-state-name-src-mq3-client-ui-gameinfo-missionpack-ml-951826564"></a>
 ### UI_GetBotInfoByName
@@ -255,7 +279,7 @@ UI_GetBotInfoByName
 | `name` | `dynamic` | — | Argument 2 of `mq3.client.ui_gameinfo.UI_GetBotInfoByName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L210)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotinfobynumber-function-ui-getbotinfobynumber-state-num-src-mq3-client-ui-gameinfo-missionpack-ml-164269735"></a>
 ### UI_GetBotInfoByNumber
@@ -272,7 +296,7 @@ UI_GetBotInfoByNumber
 | `num` | `dynamic` | — | Value used by `value=base.UI_GetBotInfoByNumber(state.data,num)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L203)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotnamebynumber-function-ui-getbotnamebynumber-state-num-src-mq3-client-ui-gameinfo-missionpack-ml-1959370017"></a>
 ### UI_GetBotNameByNumber
@@ -289,7 +313,7 @@ UI_GetBotNameByNumber
 | `num` | `dynamic` | — | Value used by `bot=UI_GetBotInfoByNumber(state,num)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L219)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getnumbots-function-ui-getnumbots-state-src-mq3-client-ui-gameinfo-missionpack-ml-458822243"></a>
 ### UI_GetNumBots
@@ -305,7 +329,7 @@ UI_GetNumBots
 | `state` | `dynamic` | — | Record read through `state.botInfos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L214)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadarenas-function-ui-loadarenas-state-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-missionpack-ml-547920335"></a>
 ### UI_LoadArenas
@@ -324,7 +348,7 @@ UI_LoadArenas
 | `additionalFiles` | `dynamic` | — | Value used by `for each entry in additionalFiles UI_LoadArenasFromFile(state,entry[0],entry[1]) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L167)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadarenasfromfile-function-ui-loadarenasfromfile-state-filename-text-src-mq3-client-ui-gameinfo-missionpack-ml-433373369"></a>
 ### UI_LoadArenasFromFile
@@ -342,7 +366,7 @@ UI_LoadArenasFromFile
 | `text` | `dynamic` | — | Text consumed or emitted by `UI_LoadArenasFromFile` in the UI gameinfo missionpack path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L138)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadbots-function-ui-loadbots-state-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-missionpack-ml-743312307"></a>
 ### UI_LoadBots
@@ -361,7 +385,7 @@ UI_LoadBots
 | `additionalFiles` | `dynamic` | — | Value used by `for each entry in additionalFiles UI_LoadBotsFromFile(state,entry[0],entry[1]) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L193)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadbotsfromfile-function-ui-loadbotsfromfile-state-filename-text-src-mq3-client-ui-gameinfo-missionpack-ml-2143445149"></a>
 ### UI_LoadBotsFromFile
@@ -379,7 +403,7 @@ UI_LoadBotsFromFile
 | `text` | `dynamic` | — | Text consumed or emitted by `UI_LoadBotsFromFile` in the UI gameinfo missionpack path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L184)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-parseinfos-function-ui-parseinfos-state-text-max-src-mq3-client-ui-gameinfo-missionpack-ml-2118742308"></a>
 ### UI_ParseInfos
@@ -397,4 +421,4 @@ UI_ParseInfos
 | `max` | `dynamic` | — | Value used by `parsed=base.UI_ParseInfos(state.data,text,max)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L130)

@@ -12,7 +12,7 @@ struct Point
 Stores playable menu point record, including `x`, `y`, `depth`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L47)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable menu point record, including `x`, `y`, `depth`.
 depth
 ```
 
+When constructing this record, `point` supplies `0.0001` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L53)
 
 <a id="field-field-mq3-client-playable-menu-point-x-x-src-mq3-client-playable-menu-ml-660664269"></a>
 ### x
@@ -33,8 +35,10 @@ depth
 x
 ```
 
+Horizontal coordinate of a textured menu-artwork vertex in the target window.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L49)
 
 <a id="field-field-mq3-client-playable-menu-point-y-y-src-mq3-client-playable-menu-ml-1740943697"></a>
 ### y
@@ -43,5 +47,7 @@ x
 y
 ```
 
+Vertical coordinate of a textured menu-artwork vertex in the target window.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L51)

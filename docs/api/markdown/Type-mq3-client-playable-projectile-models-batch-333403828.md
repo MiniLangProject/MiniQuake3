@@ -12,7 +12,7 @@ struct Batch
 Stores playable projectile models batch record, including `triangles`, `fallbackSnapshots`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L120)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable projectile models batch record, including `triangles`, `fallback
 fallbackSnapshots
 ```
 
+When constructing this record, `renderSnapshots` supplies `fallback` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L124)
 
 <a id="field-field-mq3-client-playable-projectile-models-batch-triangles-triangles-src-mq3-client-playable-projectile-models-ml-837278041"></a>
 ### triangles
@@ -33,5 +35,7 @@ fallbackSnapshots
 triangles
 ```
 
+When constructing this record, `renderSnapshots` supplies `result` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L122)

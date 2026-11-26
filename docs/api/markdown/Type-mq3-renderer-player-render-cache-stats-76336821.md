@@ -12,7 +12,7 @@ struct Stats
 Data record for `mq3.renderer.player_render_cache.Stats`; groups `entries`, `hits`, `misses`, `builds`, `evictions`, `frameTargets`, and 6 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L137)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.player_render_cache.Stats`; groups `entries`, `hit
 builds
 ```
 
+Number of cache entries or batches rebuilt from source data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L145)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-entries-entries-src-mq3-renderer-player-render-cache-ml-1822309190"></a>
 ### entries
@@ -33,8 +35,10 @@ builds
 entries
 ```
 
+Number of player-render cache entries currently retained.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L139)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-evictions-evictions-src-mq3-renderer-player-render-cache-ml-185969714"></a>
 ### evictions
@@ -43,8 +47,10 @@ entries
 evictions
 ```
 
+Number of cache entries discarded to make room for newer data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L147)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-frameculled-frameculled-src-mq3-renderer-player-render-cache-ml-1373364598"></a>
 ### frameCulled
@@ -53,8 +59,10 @@ evictions
 frameCulled
 ```
 
+Number of player-model targets rejected this frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L153)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-framefar-framefar-src-mq3-renderer-player-render-cache-ml-61202118"></a>
 ### frameFar
@@ -63,8 +71,10 @@ frameCulled
 frameFar
 ```
 
+Number of player-model targets drawn at distant detail this frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L159)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-framefull-framefull-src-mq3-renderer-player-render-cache-ml-2070513246"></a>
 ### frameFull
@@ -73,8 +83,10 @@ frameFar
 frameFull
 ```
 
+Number of player-model targets drawn at full detail this frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L155)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-framemedium-framemedium-src-mq3-renderer-player-render-cache-ml-1683261978"></a>
 ### frameMedium
@@ -83,8 +95,10 @@ frameFull
 frameMedium
 ```
 
+Number of player-model targets drawn at medium detail this frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L157)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-frametargets-frametargets-src-mq3-renderer-player-render-cache-ml-822626688"></a>
 ### frameTargets
@@ -93,8 +107,10 @@ frameMedium
 frameTargets
 ```
 
+Number of model draw targets prepared during the current frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L149)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-frametriangles-frametriangles-src-mq3-renderer-player-render-cache-ml-957959598"></a>
 ### frameTriangles
@@ -103,8 +119,10 @@ frameTargets
 frameTriangles
 ```
 
+Number of triangles submitted for cached model targets this frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L151)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-hits-hits-src-mq3-renderer-player-render-cache-ml-1528578634"></a>
 ### hits
@@ -113,8 +131,10 @@ frameTriangles
 hits
 ```
 
+Number of lookups satisfied by an existing cache entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L141)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-misses-misses-src-mq3-renderer-player-render-cache-ml-1364646002"></a>
 ### misses
@@ -123,8 +143,10 @@ hits
 misses
 ```
 
+Number of lookups that required loading or rebuilding data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L143)
 
 <a id="field-field-mq3-renderer-player-render-cache-stats-sourcetriangles-sourcetriangles-src-mq3-renderer-player-render-cache-ml-1978147978"></a>
 ### sourceTriangles
@@ -133,5 +155,7 @@ misses
 sourceTriangles
 ```
 
+Number of source triangles considered when preparing the batch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L161)

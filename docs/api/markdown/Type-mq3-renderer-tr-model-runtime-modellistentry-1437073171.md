@@ -12,7 +12,7 @@ struct ModelListEntry
 Data record for `mq3.renderer.tr_model_runtime.ModelListEntry`; groups `dataSize`, `lods`, `name`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L108)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_model_runtime.ModelListEntry`; groups `dataSize
 dataSize
 ```
 
+Size in bytes of the loaded model or world data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L110)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-modellistentry-lods-lods-src-mq3-renderer-tr-model-runtime-ml-123830868"></a>
 ### lods
@@ -33,8 +35,10 @@ dataSize
 lods
 ```
 
+Number of distinct loaded level-of-detail variants for this model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L112)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-modellistentry-name-name-src-mq3-renderer-tr-model-runtime-ml-1740646030"></a>
 ### name
@@ -43,5 +47,7 @@ lods
 name
 ```
 
+Registered model name displayed beside its memory size and level-of-detail count.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L114)

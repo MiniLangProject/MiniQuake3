@@ -47,7 +47,7 @@ Update `client.ps`, `client.ps.ping`, `client.ps.persistant[index]` and `client.
 | `eventSequence` | `dynamic` | — | Value used by `clearTransient` in `client.ps.eventSequence = eventSequence`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L61)
 
 <a id="function-function-mq3-game-client-spawn-clientbegin-function-clientbegin-level-clientnum-src-mq3-game-client-spawn-ml-1005726709"></a>
 ### clientBegin
@@ -64,7 +64,7 @@ Use `level.serverCommandFn` and `level.gameLogFn` to perform `clientBegin`. Retu
 | `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L196)
 
 <a id="constant-constant-mq3-game-client-spawn-contents-body-const-contents-body-headers-contents-body-src-mq3-game-client-spawn-ml-1636033196"></a>
 ### CONTENTS_BODY
@@ -73,8 +73,10 @@ Use `level.serverCommandFn` and `level.gameLogFn` to perform `clientBegin`. Retu
 const CONTENTS_BODY = headers.CONTENTS_BODY
 ```
 
+Collision-contents bit identifying body space or objects.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L45)
 
 <a id="constant-constant-mq3-game-client-spawn-ef-kamikaze-const-ef-kamikaze-512-src-mq3-game-client-spawn-ml-1124636601"></a>
 ### EF_KAMIKAZE
@@ -83,8 +85,10 @@ const CONTENTS_BODY = headers.CONTENTS_BODY
 const EF_KAMIKAZE = 512
 ```
 
+Network entity-flag bit indicating kamikaze.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L29)
 
 <a id="constant-constant-mq3-game-client-spawn-ef-teamvoted-const-ef-teamvoted-524288-src-mq3-game-client-spawn-ml-11333160"></a>
 ### EF_TEAMVOTED
@@ -93,8 +97,10 @@ const EF_KAMIKAZE = 512
 const EF_TEAMVOTED = 524288
 ```
 
+Network entity-flag bit indicating teamvoted.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L33)
 
 <a id="constant-constant-mq3-game-client-spawn-ef-teleport-bit-const-ef-teleport-bit-4-src-mq3-game-client-spawn-ml-2146053473"></a>
 ### EF_TELEPORT_BIT
@@ -103,8 +109,10 @@ const EF_TEAMVOTED = 524288
 const EF_TELEPORT_BIT = 4
 ```
 
+Network entity-flag bit indicating teleport bit.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L27)
 
 <a id="constant-constant-mq3-game-client-spawn-ef-voted-const-ef-voted-16384-src-mq3-game-client-spawn-ml-1550173619"></a>
 ### EF_VOTED
@@ -113,8 +121,10 @@ const EF_TELEPORT_BIT = 4
 const EF_VOTED = 16384
 ```
 
+Network entity-flag bit indicating voted.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L31)
 
 <a id="constant-constant-mq3-game-client-spawn-fl-no-bots-const-fl-no-bots-8192-src-mq3-game-client-spawn-ml-1652297899"></a>
 ### FL_NO_BOTS
@@ -123,8 +133,10 @@ const EF_VOTED = 16384
 const FL_NO_BOTS = 8192
 ```
 
+Game entity-flag bit enabling or marking no bots.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L39)
 
 <a id="constant-constant-mq3-game-client-spawn-fl-no-humans-const-fl-no-humans-16384-src-mq3-game-client-spawn-ml-178910329"></a>
 ### FL_NO_HUMANS
@@ -133,8 +145,10 @@ const FL_NO_BOTS = 8192
 const FL_NO_HUMANS = 16384
 ```
 
+Game entity-flag bit enabling or marking no humans.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L41)
 
 <a id="function-function-mq3-game-client-spawn-infovalue-function-infovalue-info-key-src-mq3-game-client-spawn-ml-1049552465"></a>
 ### infoValue
@@ -151,7 +165,7 @@ Forward `infoValue` to `mq3.shared.info.value` and return the delegated result.
 | `key` | `dynamic` | — | Lookup key or field name used by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L52)
 
 <a id="constant-constant-mq3-game-client-spawn-mask-playersolid-const-mask-playersolid-33619969-src-mq3-game-client-spawn-ml-1245615391"></a>
 ### MASK_PLAYERSOLID
@@ -160,8 +174,10 @@ Forward `infoValue` to `mq3.shared.info.value` and return the delegated result.
 const MASK_PLAYERSOLID = 33619969
 ```
 
+Combined CONTENTS_* mask used for playersolid collision queries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L47)
 
 <a id="constant-constant-mq3-game-client-spawn-pmf-respawned-const-pmf-respawned-512-src-mq3-game-client-spawn-ml-736947165"></a>
 ### PMF_RESPAWNED
@@ -170,8 +186,10 @@ const MASK_PLAYERSOLID = 33619969
 const PMF_RESPAWNED = 512
 ```
 
+Player movement-state bit indicating respawned.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L37)
 
 <a id="constant-constant-mq3-game-client-spawn-pmf-time-knockback-const-pmf-time-knockback-64-src-mq3-game-client-spawn-ml-1010879917"></a>
 ### PMF_TIME_KNOCKBACK
@@ -180,8 +198,10 @@ const PMF_RESPAWNED = 512
 const PMF_TIME_KNOCKBACK = 64
 ```
 
+Player movement-state bit indicating time knockback.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L35)
 
 <a id="function-function-mq3-game-client-spawn-respawn-function-respawn-level-ent-src-mq3-game-client-spawn-ml-584292121"></a>
 ### respawn
@@ -198,7 +218,7 @@ Use `level.clientSpawnFn` to perform `respawn`.
 | `ent` | `dynamic` | — | Game entity; accesses `client` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L82)
 
 <a id="function-function-mq3-game-client-spawn-selectpoint-function-selectpoint-level-ent-client-origin-angles-src-mq3-game-client-spawn-ml-2051663460"></a>
 ### selectPoint
@@ -218,7 +238,7 @@ Set `client.initialSpawn` to `true` in `mq3.game.client_spawn.selectPoint`. Retu
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L99)
 
 <a id="function-function-mq3-game-client-spawn-spawn-function-spawn-level-ent-diefn-src-mq3-game-client-spawn-ml-48002753"></a>
 ### spawn
@@ -236,7 +256,7 @@ Update `level.playerDieFn`, `level.respawnFn`, `level.clientBeginFn` and `ent.s.
 | `dieFn` | `dynamic` | — | Value used by `spawn` in `level.playerDieFn = dieFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L121)
 
 <a id="constant-constant-mq3-game-client-spawn-svf-bot-const-svf-bot-8-src-mq3-game-client-spawn-ml-1971359301"></a>
 ### SVF_BOT
@@ -245,5 +265,7 @@ Update `level.playerDieFn`, `level.respawnFn`, `level.clientBeginFn` and `ent.s.
 const SVF_BOT = 8
 ```
 
+Server entity-flag bit controlling bot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L43)

@@ -12,7 +12,7 @@ struct Server
 Server record for server.snapshot_send, containing `time`, `snapFlagServerBit`, `snapshotEntities`, `snapshotCapacity`, `nextSnapshotEntities`, `baselines`, and 3 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L96)
 
 ## Members
 
@@ -23,8 +23,10 @@ Server record for server.snapshot_send, containing `time`, `snapFlagServerBit`, 
 baselines
 ```
 
+Baseline entity states used as initial references for delta compression.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L109)
 
 <a id="field-field-mq3-server-snapshot-send-server-lanforcerate-lanforcerate-src-mq3-server-snapshot-send-ml-118885926"></a>
 ### lanForceRate
@@ -33,8 +35,10 @@ baselines
 lanForceRate
 ```
 
+True when LAN clients bypass the normal rate limit.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L115)
 
 <a id="field-field-mq3-server-snapshot-send-server-maxrate-maxrate-src-mq3-server-snapshot-send-ml-1696907554"></a>
 ### maxRate
@@ -43,8 +47,10 @@ lanForceRate
 maxRate
 ```
 
+Upper bound on the client transmission rate, in bytes per second.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L73)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L113)
 
 <a id="field-field-mq3-server-snapshot-send-server-nextsnapshotentities-nextsnapshotentities-src-mq3-server-snapshot-send-ml-305596094"></a>
 ### nextSnapshotEntities
@@ -53,8 +59,10 @@ maxRate
 nextSnapshotEntities
 ```
 
+Next absolute insertion position in the circular snapshot-entity buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L107)
 
 <a id="field-field-mq3-server-snapshot-send-server-padpackets-padpackets-src-mq3-server-snapshot-send-ml-819215558"></a>
 ### padPackets
@@ -63,8 +71,10 @@ nextSnapshotEntities
 padPackets
 ```
 
+Additional padding requested for outgoing snapshot messages.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L72)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L111)
 
 <a id="field-field-mq3-server-snapshot-send-server-snapflagserverbit-snapflagserverbit-src-mq3-server-snapshot-send-ml-986192210"></a>
 ### snapFlagServerBit
@@ -73,8 +83,10 @@ padPackets
 snapFlagServerBit
 ```
 
+Snapshot server-count bit toggled when a new server level is spawned.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L101)
 
 <a id="field-field-mq3-server-snapshot-send-server-snapshotcapacity-snapshotcapacity-src-mq3-server-snapshot-send-ml-1038474894"></a>
 ### snapshotCapacity
@@ -83,8 +95,10 @@ snapFlagServerBit
 snapshotCapacity
 ```
 
+Number of entity states retained for snapshot delta references.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L105)
 
 <a id="field-field-mq3-server-snapshot-send-server-snapshotentities-snapshotentities-src-mq3-server-snapshot-send-ml-1317456256"></a>
 ### snapshotEntities
@@ -93,8 +107,10 @@ snapshotCapacity
 snapshotEntities
 ```
 
+Entity states retained in the server snapshot ring.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L103)
 
 <a id="field-field-mq3-server-snapshot-send-server-time-time-src-mq3-server-snapshot-send-ml-1325268956"></a>
 ### time
@@ -103,5 +119,7 @@ snapshotEntities
 time
 ```
 
+Server simulation time written into outgoing snapshots and used to schedule sends, in milliseconds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L99)

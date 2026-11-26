@@ -12,7 +12,7 @@ struct Cluster
 `Cluster` record for aas clustering, containing `numAreas`, `numReachabilityAreas`, `numPortals` and `firstPortal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L101)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Cluster
 firstPortal
 ```
 
+First cluster portal in the index.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L109)
 
 <a id="field-field-mq3-botlib-aas-clustering-cluster-numareas-numareas-src-mq3-botlib-aas-clustering-ml-1175566627"></a>
 ### numAreas
@@ -33,8 +35,10 @@ firstPortal
 numAreas
 ```
 
+Number of portal or navigation areas represented by the loaded map.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L103)
 
 <a id="field-field-mq3-botlib-aas-clustering-cluster-numportals-numportals-src-mq3-botlib-aas-clustering-ml-1030718153"></a>
 ### numPortals
@@ -43,8 +47,10 @@ numAreas
 numPortals
 ```
 
+Number of cluster portals.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L107)
 
 <a id="field-field-mq3-botlib-aas-clustering-cluster-numreachabilityareas-numreachabilityareas-src-mq3-botlib-aas-clustering-ml-1056664957"></a>
 ### numReachabilityAreas
@@ -53,5 +59,7 @@ numPortals
 numReachabilityAreas
 ```
 
+Number of areas with reachabilities.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L105)

@@ -35,7 +35,7 @@ Redirect the canonical chat file to the requested filename while forwarding all 
 | `path` | `dynamic` | — | Resource path supplied to the file or parser operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L75)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-allocconsolemessage-function-allocconsolemessage-state-src-mq3-botlib-ai-chat-runtime-ml-177213331"></a>
 ### allocConsoleMessage
@@ -51,7 +51,7 @@ Allocate a free console-message slot, initialize its timestamp and text, and ret
 | `state` | `dynamic` | — | AI chat runtime state; accesses `console`. May update `state.console.nodes[slot]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L85)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botallocchatstate-function-botallocchatstate-state-src-mq3-botlib-ai-chat-runtime-ml-491102995"></a>
 ### botAllocChatState
@@ -67,7 +67,7 @@ Forward `botAllocChatState` to `mq3.botlib.ai_resource_pools.allocChatState` and
 | `state` | `dynamic` | — | AI chat runtime state; accesses `pools`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L379)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botchatlength-function-botchatlength-state-chatstate-src-mq3-botlib-ai-chat-runtime-ml-1552092392"></a>
 ### botChatLength
@@ -84,7 +84,7 @@ Forward `botChatLength` to `mq3.botlib.ai_chat_output.chatLength` and return the
 | `chatState` | `dynamic` | — | Handle of the pooled bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L346)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botchatstatefromhandle-function-botchatstatefromhandle-state-handle-src-mq3-botlib-ai-chat-runtime-ml-1213331611"></a>
 ### botChatStateFromHandle
@@ -101,7 +101,7 @@ Forward `botChatStateFromHandle` to `mq3.botlib.ai_resource_pools.chatState` and
 | `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L383)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botcheckchatmessageintegrety-function-botcheckchatmessageintegrety-message-stringlist-src-mq3-botlib-ai-chat-runtime-ml-630138520"></a>
 ### botCheckChatMessageIntegrety
@@ -118,7 +118,7 @@ Collect distinct random-list references missing from the supplied chat string li
 | `stringList` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L236)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botcheckinitialchatintegrety-function-botcheckinitialchatintegrety-state-chat-src-mq3-botlib-ai-chat-runtime-ml-1441054411"></a>
 ### botCheckInitialChatIntegrety
@@ -135,7 +135,7 @@ Check every initial-chat message for unresolved random-list references and repor
 | `chat` | `dynamic` | — | Chat record; accesses `types`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L242)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botcheckreplychatintegrety-function-botcheckreplychatintegrety-state-replychat-src-mq3-botlib-ai-chat-runtime-ml-1155178537"></a>
 ### botCheckReplyChatIntegrety
@@ -152,7 +152,7 @@ Check reply-chat messages for unresolved random-list references and report disti
 | `replyChat` | `dynamic` | — | Value used by `botCheckReplyChatIntegrety` in `if replyChat==void then return ["missing reply chat"] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L248)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botcheckvalidreplychatkeyset-function-botcheckvalidreplychatkeyset-keys-src-mq3-botlib-ai-chat-runtime-ml-214876426"></a>
 ### botCheckValidReplyChatKeySet
@@ -168,7 +168,7 @@ Check that a reply key set contains at least one positive key without the AND or
 | `keys` | `dynamic` | — | Value used by `botCheckValidReplyChatKeySet` in `for each key in keys if (key.flags&output.KEY_AND)==0 and (key.flags&output.KEY_NOT)==0 then positive=true end i...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L260)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botchooseinitialchatmessage-function-botchooseinitialchatmessage-state-chatstate-type-src-mq3-botlib-ai-chat-runtime-ml-1237214224"></a>
 ### botChooseInitialChatMessage
@@ -186,7 +186,7 @@ Apply `mq3.botlib.ai_resource_pools.chatState`, `mq3.botlib.ai_chat_profiles.typ
 | `type` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L312)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botconstructchatmessage-function-botconstructchatmessage-state-message-variables-messagecontext-variablecontext-reply-src-mq3-botlib-ai-chat-runtime-ml-1939872094"></a>
 ### botConstructChatMessage
@@ -207,7 +207,7 @@ Forward `botConstructChatMessage` to `mq3.botlib.ai_chat_output.construct` and r
 | `reply` | `dynamic` | — | Value used by `expandOnce` in `if reply then piece=replaceReplySynonyms(state,piece,vcontext) else if vcontext!=0 and state.strings!=void then...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L307)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botdumpinitialchat-function-botdumpinitialchat-state-chat-src-mq3-botlib-ai-chat-runtime-ml-140273299"></a>
 ### botDumpInitialChat
@@ -224,7 +224,7 @@ Set `state.diagnostics` to `state.diagnostics+["initial:"+str(count)]` in `mq3.b
 | `chat` | `dynamic` | — | Chat record; accesses `messageCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L273)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botdumpmatchtemplates-function-botdumpmatchtemplates-state-templates-src-mq3-botlib-ai-chat-runtime-ml-658668488"></a>
 ### botDumpMatchTemplates
@@ -241,7 +241,7 @@ Set `state.diagnostics` to `state.diagnostics+["matches:"+str(len(templates))]` 
 | `templates` | `dynamic` | — | Sequence whose length bounds the iteration or lookup in `botDumpMatchTemplates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L191)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botdumprandomstringlist-function-botdumprandomstringlist-state-randomlist-src-mq3-botlib-ai-chat-runtime-ml-1755251110"></a>
 ### botDumpRandomStringList
@@ -258,7 +258,7 @@ Set `state.diagnostics` to `state.diagnostics+["random:"+str(count)]` in `mq3.bo
 | `randomList` | `dynamic` | — | Random list record; accesses `messages`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L174)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botdumpreplychat-function-botdumpreplychat-state-replychat-src-mq3-botlib-ai-chat-runtime-ml-1824466893"></a>
 ### botDumpReplyChat
@@ -275,7 +275,7 @@ Set `state.diagnostics` to `state.diagnostics+["replies:"+str(len(replyChat))]` 
 | `replyChat` | `dynamic` | — | Sequence whose length bounds the iteration or lookup in `botDumpReplyChat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L254)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botdumpsynonymlist-function-botdumpsynonymlist-state-synonymlist-src-mq3-botlib-ai-chat-runtime-ml-26884824"></a>
 ### botDumpSynonymList
@@ -292,7 +292,7 @@ Synonyms, random strings and matches -----------------------------------
 | `synonymList` | `dynamic` | — | Sequence whose length bounds the iteration or lookup in `botDumpSynonymList`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L146)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botenterchat-function-botenterchat-state-chatstate-clientto-sendto-src-mq3-botlib-ai-chat-runtime-ml-1240387429"></a>
 ### botEnterChat
@@ -311,7 +311,7 @@ Forward `botEnterChat` to `mq3.botlib.ai_chat_output.enterChat` and return the d
 | `sendTo` | `dynamic` | — | Value used by `enterChat` in `if sendTo==CHAT_TEAM then result=ea.command(state.actions,cs.client,"say_team "+message) else if sendTo==CHAT_TE...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L352)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botexpandchatmessage-function-botexpandchatmessage-state-message-variables-messagecontext-variablecontext-reply-src-mq3-botlib-ai-chat-runtime-ml-1450302136"></a>
 ### botExpandChatMessage
@@ -332,7 +332,7 @@ Construction, selection and delivery -----------------------------------
 | `reply` | `dynamic` | — | Value used by `expandOnce` in `if reply then piece=replaceReplySynonyms(state,piece,vcontext) else if vcontext!=0 and state.strings!=void then...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L297)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botfindmatch-function-botfindmatch-state-value-context-src-mq3-botlib-ai-chat-runtime-ml-1826238545"></a>
 ### botFindMatch
@@ -350,7 +350,7 @@ Forward `botFindMatch` to `mq3.botlib.ai_chat_matches.findMatch` and return the 
 | `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L215)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botfindstringinlist-function-botfindstringinlist-list-value-src-mq3-botlib-ai-chat-runtime-ml-1884543521"></a>
 ### botFindStringInList
@@ -367,7 +367,7 @@ Integrity and parsed chat ownership ------------------------------------
 | `value` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L225)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botfreechatfile-function-botfreechatfile-state-chatstate-src-mq3-botlib-ai-chat-runtime-ml-2053727376"></a>
 ### botFreeChatFile
@@ -384,7 +384,7 @@ Apply `mq3.botlib.ai_resource_pools.chatState` while evaluating `botFreeChatFile
 | `chatState` | `dynamic` | — | Handle of the pooled bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L282)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botfreechatstate-function-botfreechatstate-state-handle-src-mq3-botlib-ai-chat-runtime-ml-802016587"></a>
 ### botFreeChatState
@@ -401,7 +401,7 @@ Apply `mq3.botlib.ai_resource_pools.chatState`, `mq3.botlib.ai_console_messages.
 | `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L387)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botfreematchpieces-function-botfreematchpieces-pieces-src-mq3-botlib-ai-chat-runtime-ml-586778099"></a>
 ### botFreeMatchPieces
@@ -417,7 +417,7 @@ Return an empty match-piece array; the incoming array remains owned by the calle
 | `pieces` | `dynamic` | — | Not read by this implementation; retained in the `botFreeMatchPieces` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L194)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botfreematchtemplates-function-botfreematchtemplates-state-src-mq3-botlib-ai-chat-runtime-ml-528440495"></a>
 ### botFreeMatchTemplates
@@ -433,7 +433,7 @@ Forward `botFreeMatchTemplates` to `mq3.botlib.ai_chat_matches.clear` and return
 | `state` | `dynamic` | — | AI chat runtime state; accesses `matches`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L202)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botfreereplychat-function-botfreereplychat-state-src-mq3-botlib-ai-chat-runtime-ml-214081221"></a>
 ### botFreeReplyChat
@@ -449,7 +449,7 @@ Set `state.output.replies` to `[]` in `mq3.botlib.ai_chat_runtime.botFreeReplyCh
 | `state` | `dynamic` | — | AI chat runtime state; accesses `output`. May update `state.output.replies` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L257)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botgetchatmessage-function-botgetchatmessage-state-chatstate-size-src-mq3-botlib-ai-chat-runtime-ml-410627077"></a>
 ### botGetChatMessage
@@ -467,7 +467,7 @@ Consume the pending chat message, remove tildes, and truncate the returned bytes
 | `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L320)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L357)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botinitialchat-function-botinitialchat-state-chatstate-type-messagecontext-variables-src-mq3-botlib-ai-chat-runtime-ml-1134497943"></a>
 ### botInitialChat
@@ -487,7 +487,7 @@ Forward `botInitialChat` to `mq3.botlib.ai_chat_output.initialChat` and return t
 | `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L328)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadchatfile-function-botloadchatfile-state-chatstate-chatfile-chatname-src-mq3-botlib-ai-chat-runtime-ml-535120319"></a>
 ### botLoadChatFile
@@ -506,7 +506,7 @@ Forward `botLoadChatFile` to `mq3.botlib.ai_chat_profiles.loadChatFile` and retu
 | `chatName` | `dynamic` | — | Named chat profile within the chat-definition file. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L288)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadchatmessage-function-botloadchatmessage-registry-source-firsttoken-src-mq3-botlib-ai-chat-runtime-ml-499882445"></a>
 ### botLoadChatMessage
@@ -524,7 +524,7 @@ Forward `botLoadChatMessage` to `mq3.botlib.ai_chat_profiles.readMessage` and re
 | `firstToken` | `dynamic` | — | Value used by `readMessage` in `token=first`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L170)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadinitialchat-function-botloadinitialchat-state-chatfile-chatname-src-mq3-botlib-ai-chat-runtime-ml-31237822"></a>
 ### botLoadInitialChat
@@ -542,7 +542,7 @@ Forward `botLoadInitialChat` to `mq3.botlib.ai_chat_profiles.parseProfile` and r
 | `chatName` | `dynamic` | — | Named chat profile within the chat-definition file. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L278)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadmatchpieces-function-botloadmatchpieces-registry-source-firsttoken-src-mq3-botlib-ai-chat-runtime-ml-1268825941"></a>
 ### botLoadMatchPieces
@@ -560,7 +560,7 @@ Forward `botLoadMatchPieces` to `mq3.botlib.ai_chat_matches.parsePieces` and ret
 | `firstToken` | `dynamic` | — | Value used by `parsePieces` in `nextToken=firstToken`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L199)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadmatchtemplates-function-botloadmatchtemplates-state-filename-src-mq3-botlib-ai-chat-runtime-ml-201629788"></a>
 ### botLoadMatchTemplates
@@ -577,7 +577,7 @@ Forward `botLoadMatchTemplates` to `mq3.botlib.ai_chat_matches.load` and return 
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L206)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadrandomstrings-function-botloadrandomstrings-state-filename-src-mq3-botlib-ai-chat-runtime-ml-477271610"></a>
 ### botLoadRandomStrings
@@ -594,7 +594,7 @@ Set `state.output.randomLists` to `values` in `mq3.botlib.ai_chat_runtime.botLoa
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L178)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadreplychat-function-botloadreplychat-state-filename-src-mq3-botlib-ai-chat-runtime-ml-1736798174"></a>
 ### botLoadReplyChat
@@ -611,7 +611,7 @@ Set `state.output.replies` to `values` in `mq3.botlib.ai_chat_runtime.botLoadRep
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L266)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botloadsynonyms-function-botloadsynonyms-state-filename-src-mq3-botlib-ai-chat-runtime-ml-356618068"></a>
 ### botLoadSynonyms
@@ -628,7 +628,7 @@ Forward `botLoadSynonyms` to `mq3.botlib.ai_chat_strings.load` and return the de
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L150)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botmatchvariable-function-botmatchvariable-match-variable-size-src-mq3-botlib-ai-chat-runtime-ml-2124121122"></a>
 ### botMatchVariable
@@ -646,7 +646,7 @@ Forward `botMatchVariable` to `mq3.botlib.ai_chat_matches.matchVariable` and ret
 | `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L220)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botnextconsolemessage-function-botnextconsolemessage-state-chatstate-src-mq3-botlib-ai-chat-runtime-ml-1800204510"></a>
 ### botNextConsoleMessage
@@ -663,7 +663,7 @@ Forward `botNextConsoleMessage` to `mq3.botlib.ai_console_messages.next` and ret
 | `chatState` | `dynamic` | — | Handle of the pooled bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L106)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botnumconsolemessages-function-botnumconsolemessages-state-chatstate-src-mq3-botlib-ai-chat-runtime-ml-1748854986"></a>
 ### botNumConsoleMessages
@@ -680,7 +680,7 @@ Forward `botNumConsoleMessages` to `mq3.botlib.ai_console_messages.count` and re
 | `chatState` | `dynamic` | — | Handle of the pooled bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L110)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botnuminitialchats-function-botnuminitialchats-state-chatstate-type-src-mq3-botlib-ai-chat-runtime-ml-266164330"></a>
 ### botNumInitialChats
@@ -698,7 +698,7 @@ Apply `mq3.botlib.ai_resource_pools.chatState` and `mq3.botlib.ai_chat_profiles.
 | `type` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L319)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botprintreplychatkeys-function-botprintreplychatkeys-state-replychat-src-mq3-botlib-ai-chat-runtime-ml-1710393913"></a>
 ### botPrintReplyChatKeys
@@ -715,7 +715,7 @@ Set `state.diagnostics` to `state.diagnostics+["reply-keys:"+str(count)]` in `mq
 | `replyChat` | `dynamic` | — | Value used by `botPrintReplyChatKeys` in `for each reply in replyChat count=count+len(reply.keys) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L332)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botqueueconsolemessage-function-botqueueconsolemessage-state-chatstate-type-message-src-mq3-botlib-ai-chat-runtime-ml-665692047"></a>
 ### botQueueConsoleMessage
@@ -734,7 +734,7 @@ Forward `botQueueConsoleMessage` to `mq3.botlib.ai_console_messages.queue` and r
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L97)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botremoveconsolemessage-function-botremoveconsolemessage-state-chatstate-handle-src-mq3-botlib-ai-chat-runtime-ml-1927954822"></a>
 ### botRemoveConsoleMessage
@@ -752,7 +752,7 @@ Forward `botRemoveConsoleMessage` to `mq3.botlib.ai_console_messages.remove` and
 | `handle` | `dynamic` | — | Resource handle resolved by the owning pool or host service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L102)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botremovetildes-function-botremovetildes-message-src-mq3-botlib-ai-chat-runtime-ml-652196063"></a>
 ### botRemoveTildes
@@ -768,7 +768,7 @@ Forward `botRemoveTildes` to `mq3.botlib.ai_chat_output.removeTildes` and return
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L117)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botreplacereplysynonyms-function-botreplacereplysynonyms-state-value-context-src-mq3-botlib-ai-chat-runtime-ml-1085673187"></a>
 ### botReplaceReplySynonyms
@@ -786,7 +786,7 @@ Forward `botReplaceReplySynonyms` to `mq3.botlib.ai_chat_output.replaceReplySyno
 | `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L165)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botreplacesynonyms-function-botreplacesynonyms-state-value-context-src-mq3-botlib-ai-chat-runtime-ml-581446721"></a>
 ### botReplaceSynonyms
@@ -804,7 +804,7 @@ Forward `botReplaceSynonyms` to `mq3.botlib.ai_chat_strings.replaceSynonyms` and
 | `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L155)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botreplaceweightedsynonyms-function-botreplaceweightedsynonyms-state-value-context-src-mq3-botlib-ai-chat-runtime-ml-453414589"></a>
 ### botReplaceWeightedSynonyms
@@ -822,7 +822,7 @@ Forward `botReplaceWeightedSynonyms` to `mq3.botlib.ai_chat_output.replaceWeight
 | `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L160)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botreplychat-function-botreplychat-state-chatstate-message-messagecontext-variablecontext-variables-src-mq3-botlib-ai-chat-runtime-ml-276075553"></a>
 ### botReplyChat
@@ -843,7 +843,7 @@ Forward `botReplyChat` to `mq3.botlib.ai_chat_output.replyChat` and return the d
 | `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L342)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botresetchatai-function-botresetchatai-state-src-mq3-botlib-ai-chat-runtime-ml-825793621"></a>
 ### botResetChatAI
@@ -859,7 +859,7 @@ Global and per-client lifecycle ----------------------------------------
 | `state` | `dynamic` | — | AI chat runtime state; accesses `output`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L374)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botsetchatgender-function-botsetchatgender-state-chatstate-gender-src-mq3-botlib-ai-chat-runtime-ml-996898985"></a>
 ### botSetChatGender
@@ -877,7 +877,7 @@ Forward `botSetChatGender` to `mq3.botlib.ai_chat_profiles.setChatGender` and re
 | `gender` | `dynamic` | — | Chat gender identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L327)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L364)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botsetchatname-function-botsetchatname-state-chatstate-name-client-src-mq3-botlib-ai-chat-runtime-ml-701230058"></a>
 ### botSetChatName
@@ -896,7 +896,7 @@ Forward `botSetChatName` to `mq3.botlib.ai_chat_profiles.setChatName` and return
 | `client` | `dynamic` | — | Value used by `setChatName` in `chatState.client=client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L370)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botsetupchatai-function-botsetupchatai-state-nochat-consolecapacity-src-mq3-botlib-ai-chat-runtime-ml-793578661"></a>
 ### botSetupChatAI
@@ -914,7 +914,7 @@ Update `state.output.replies`, `state.output.loaded` and `state.setup` during `b
 | `consoleCapacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L357)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L394)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-botshutdownchatai-function-botshutdownchatai-state-src-mq3-botlib-ai-chat-runtime-ml-94641675"></a>
 ### botShutdownChatAI
@@ -930,7 +930,7 @@ Set `state.setup` to `false` in `mq3.botlib.ai_chat_runtime.botShutdownChatAI`.
 | `state` | `dynamic` | — | AI chat runtime state; accesses `pools`, `profiles`, `console`, `matches` and `strings` and related fields. May update `state.setup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L401)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-create-function-create-context-readfn-timefn-randomfn-actions-src-mq3-botlib-ai-chat-runtime-ml-1467457490"></a>
 ### create
@@ -950,7 +950,7 @@ Build the `mq3.botlib.ai_chat_runtime.State` result for `create`.
 | `actions` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_output.State.actions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L68)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-freeconsolemessage-function-freeconsolemessage-state-message-src-mq3-botlib-ai-chat-runtime-ml-964716510"></a>
 ### freeConsoleMessage
@@ -967,7 +967,7 @@ Apply `mq3.botlib.ai_console_messages.freeSlot` while evaluating `freeConsoleMes
 | `message` | `dynamic` | — | Message record; accesses `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L91)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-initconsolemessageheap-function-initconsolemessageheap-state-capacity-src-mq3-botlib-ai-chat-runtime-ml-1339773541"></a>
 ### initConsoleMessageHeap
@@ -984,7 +984,7 @@ Console-message heap -----------------------------------------------------
 | `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L82)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-iswhitespace-function-iswhitespace-value-src-mq3-botlib-ai-chat-runtime-ml-1353399173"></a>
 ### isWhiteSpace
@@ -1000,7 +1000,7 @@ Released string helpers -------------------------------------------------
 | `value` | `dynamic` | — | Value used by `isWhiteSpace` in `if value>=97 and value<=122 or value>=65 and value<=90 or value>=48 and value<=57 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L114)
 
 <a id="constant-constant-mq3-botlib-ai-chat-runtime-max-match-variables-const-max-match-variables-8-src-mq3-botlib-ai-chat-runtime-ml-729373249"></a>
 ### MAX_MATCH_VARIABLES
@@ -1009,8 +1009,10 @@ Released string helpers -------------------------------------------------
 const MAX_MATCH_VARIABLES = 8
 ```
 
+Maximum number of captured variables in a bot chat match.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="constant-constant-mq3-botlib-ai-chat-runtime-max-message-size-const-max-message-size-256-src-mq3-botlib-ai-chat-runtime-ml-988947254"></a>
 ### MAX_MESSAGE_SIZE
@@ -1019,8 +1021,10 @@ const MAX_MATCH_VARIABLES = 8
 const MAX_MESSAGE_SIZE = 256
 ```
 
+Maximum character capacity of a bot chat or console message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L18)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-randomreferences-function-randomreferences-message-src-mq3-botlib-ai-chat-runtime-ml-719187467"></a>
 ### randomReferences
@@ -1036,7 +1040,7 @@ Collect random-list names referenced by the parsed components of a chat message.
 | `message` | `dynamic` | — | Message record; accesses `components`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L230)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-randomstring-function-randomstring-state-name-src-mq3-botlib-ai-chat-runtime-ml-922236276"></a>
 ### randomString
@@ -1053,7 +1057,7 @@ Apply `mq3.botlib.ai_chat_output.ensureLoaded`, `mq3.botlib.ai_chat_output.rando
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L185)
 
 - [mq3.botlib.ai_chat_runtime.State](Type-mq3-botlib-ai-chat-runtime-state-867047953.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-runtime-stringcontains-function-stringcontains-value-needle-casesensitive-src-mq3-botlib-ai-chat-runtime-ml-1762846876"></a>
@@ -1072,7 +1076,7 @@ Forward `stringContains` to `mq3.botlib.ai_chat_matches.stringContains` and retu
 | `caseSensitive` | `dynamic` | — | Whether comparisons distinguish letter case. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L125)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-stringcontainsword-function-stringcontainsword-value-needle-casesensitive-src-mq3-botlib-ai-chat-runtime-ml-820848152"></a>
 ### stringContainsWord
@@ -1090,7 +1094,7 @@ Find a complete word with optional case sensitivity and return its byte offset, 
 | `caseSensitive` | `dynamic` | — | Whether comparisons distinguish letter case. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L130)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-stringreplacewords-function-stringreplacewords-value-synonym-replacement-src-mq3-botlib-ai-chat-runtime-ml-975938624"></a>
 ### stringReplaceWords
@@ -1108,7 +1112,7 @@ Forward `stringReplaceWords` to `mq3.botlib.ai_chat_strings.replaceWords` and re
 | `replacement` | `dynamic` | — | Text substituted for a matching word or token. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L141)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-stringsmatch-function-stringsmatch-pieces-match-src-mq3-botlib-ai-chat-runtime-ml-1518246150"></a>
 ### stringsMatch
@@ -1125,7 +1129,7 @@ Forward `stringsMatch` to `mq3.botlib.ai_chat_matches.stringsMatch` and return t
 | `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `string` and `lengths`. May update `match.offsets[piece.variable]` and `match.lengths[lastVariable]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L210)
 
 <a id="function-function-mq3-botlib-ai-chat-runtime-unifywhitespaces-function-unifywhitespaces-value-src-mq3-botlib-ai-chat-runtime-ml-545977289"></a>
 ### unifyWhiteSpaces
@@ -1141,4 +1145,4 @@ Forward `unifyWhiteSpaces` to `mq3.botlib.ai_chat_strings.unifyWhiteSpaces` and 
 | `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L120)

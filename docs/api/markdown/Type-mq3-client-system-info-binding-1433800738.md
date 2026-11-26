@@ -12,7 +12,7 @@ struct Binding
 Stores system info binding record, including `state`, `services`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L42)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores system info binding record, including `state`, `services`.
 services
 ```
 
+Service callbacks and context used to access the host engine from this client subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L47)
 
 <a id="field-field-mq3-client-system-info-binding-state-state-src-mq3-client-system-info-ml-2010678854"></a>
 ### state
@@ -33,5 +35,7 @@ services
 state
 ```
 
+When constructing this record, `install` supplies `state` for this member. Used by `gamestateChanged` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L45)

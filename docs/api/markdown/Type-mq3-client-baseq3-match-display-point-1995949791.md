@@ -12,7 +12,7 @@ struct Point
 Stores base Quake III match display point record, including `x`, `y`, `depth`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L93)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores base Quake III match display point record, including `x`, `y`, `depth`.
 depth
 ```
 
+When constructing this record, `point` supplies `0.001` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L99)
 
 <a id="field-field-mq3-client-baseq3-match-display-point-x-x-src-mq3-client-baseq3-match-display-ml-1473081019"></a>
 ### x
@@ -33,8 +35,10 @@ depth
 x
 ```
 
+Horizontal coordinate of a match-message font vertex in the target window.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L95)
 
 <a id="field-field-mq3-client-baseq3-match-display-point-y-y-src-mq3-client-baseq3-match-display-ml-1709245695"></a>
 ### y
@@ -43,5 +47,7 @@ x
 y
 ```
 
+Vertical coordinate of a match-message font vertex in the target window.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L97)

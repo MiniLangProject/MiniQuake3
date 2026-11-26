@@ -12,7 +12,7 @@ struct MenuSlider
 Stores UI local menu slider record, including `generic`, `minvalue`, `maxvalue`, `curvalue`, `range`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L203)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI local menu slider record, including `generic`, `minvalue`, `maxvalue`,
 curvalue
 ```
 
+Compatibility member corresponding to native `menuslider_s.curvalue`; the original declaration is `float curvalue`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L214)
 
 <a id="field-field-mq3-client-ui-local-menuslider-generic-generic-src-mq3-client-ui-local-ml-522411841"></a>
 ### generic
@@ -33,8 +35,10 @@ curvalue
 generic
 ```
 
+Common menu-item record containing the shared identity, layout, and callback data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L205)
 
 <a id="field-field-mq3-client-ui-local-menuslider-maxvalue-maxvalue-src-mq3-client-ui-local-ml-271081931"></a>
 ### maxvalue
@@ -43,8 +47,10 @@ generic
 maxvalue
 ```
 
+Compatibility member corresponding to native `menuslider_s.maxvalue`; the original declaration is `float maxvalue`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L211)
 
 <a id="field-field-mq3-client-ui-local-menuslider-minvalue-minvalue-src-mq3-client-ui-local-ml-943755631"></a>
 ### minvalue
@@ -53,8 +59,10 @@ maxvalue
 minvalue
 ```
 
+Compatibility member corresponding to native `menuslider_s.minvalue`; the original declaration is `float minvalue`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L208)
 
 <a id="field-field-mq3-client-ui-local-menuslider-range-range-src-mq3-client-ui-local-ml-1535234457"></a>
 ### range
@@ -63,5 +71,7 @@ minvalue
 range
 ```
 
+Compatibility member corresponding to native `menuslider_s.range`; the original declaration is `float range`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L217)

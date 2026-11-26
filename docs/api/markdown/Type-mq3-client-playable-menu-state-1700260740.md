@@ -12,7 +12,7 @@ struct State
 Stores playable menu state, including `selected`, `lastUp`, `lastDown`, `lastEnter`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L56)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable menu state, including `selected`, `lastUp`, `lastDown`, `lastEnt
 lastDown
 ```
 
+When constructing this record, `state` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L62)
 
 <a id="field-field-mq3-client-playable-menu-state-lastenter-lastenter-src-mq3-client-playable-menu-ml-1567032974"></a>
 ### lastEnter
@@ -33,8 +35,10 @@ lastDown
 lastEnter
 ```
 
+When constructing this record, `state` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L64)
 
 <a id="field-field-mq3-client-playable-menu-state-lastup-lastup-src-mq3-client-playable-menu-ml-48494248"></a>
 ### lastUp
@@ -43,8 +47,10 @@ lastEnter
 lastUp
 ```
 
+When constructing this record, `state` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L60)
 
 <a id="field-field-mq3-client-playable-menu-state-selected-selected-src-mq3-client-playable-menu-ml-1845973180"></a>
 ### selected
@@ -53,5 +59,7 @@ lastUp
 selected
 ```
 
+Current selection state or selected entry retained by the owning UI control.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L58)

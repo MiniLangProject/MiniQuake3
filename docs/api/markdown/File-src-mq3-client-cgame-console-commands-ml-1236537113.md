@@ -30,7 +30,7 @@ Calls `mq3.client.cgame_console_commands.emit`, `mq3.qcommon.cvar.set2`, `mq3.qc
 | `effect` | `dynamic` | — | Record read through `effect.cvarSets`, `effect.consoleCommands`, `effect.clientCommands`, `effect.prints` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L456)
 
 - [mq3.client.cgame_console_commands.Action](Type-mq3-client-cgame-console-commands-action-776542747.md) — struct
 <a id="extern_function-extern-function-mq3-client-cgame-console-commands-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-client-cgame-console-commands-ml-653712726"></a>
@@ -61,7 +61,7 @@ function baseCommands()
 Lists the 23 client game console commands base commands strings in their declared order, beginning with `"testgun"`, `"testmodel"`, `"nextframe"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L452)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L605)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-camera-f-function-cg-camera-f-runtime-src-mq3-client-cgame-console-commands-ml-246164378"></a>
 ### CG_Camera_f
@@ -77,7 +77,7 @@ CG_Camera_f
 | `runtime` | `dynamic` | — | Mutable client game console commands record/storage; this routine assigns `runtime.cameraMode`, `runtime.cameraStartTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L446)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L599)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-confirmorder-f-function-cg-confirmorder-f-runtime-src-mq3-client-cgame-console-commands-ml-1533118516"></a>
 ### CG_ConfirmOrder_f
@@ -93,7 +93,7 @@ CG_ConfirmOrder_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`, `runtime.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L381)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L534)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-consolecommand-function-cg-consolecommand-runtime-src-mq3-client-cgame-console-commands-ml-1807114690"></a>
 ### CG_ConsoleCommand
@@ -109,7 +109,7 @@ CG_ConsoleCommand
 | `runtime` | `dynamic` | — | Record read through `runtime.missionpack`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L477)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L630)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-denyorder-f-function-cg-denyorder-f-runtime-src-mq3-client-cgame-console-commands-ml-2140685968"></a>
 ### CG_DenyOrder_f
@@ -125,7 +125,7 @@ CG_DenyOrder_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`, `runtime.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L384)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L537)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-edithud-f-function-cg-edithud-f-runtime-src-mq3-client-cgame-console-commands-ml-1760717468"></a>
 ### CG_EditHud_f
@@ -141,7 +141,7 @@ CG_EditHud_f
 | `runtime` | `dynamic` | — | Mutable client game console commands record/storage; this routine assigns `runtime.eventHandling`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L594)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-initconsolecommands-function-cg-initconsolecommands-runtime-src-mq3-client-cgame-console-commands-ml-111773592"></a>
 ### CG_InitConsoleCommands
@@ -157,7 +157,7 @@ CG_InitConsoleCommands
 | `runtime` | `dynamic` | — | Mutable client game console commands record/storage; this routine assigns `runtime.registeredCommands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L619)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-loadhud-f-function-cg-loadhud-f-runtime-src-mq3-client-cgame-console-commands-ml-1842842652"></a>
 ### CG_LoadHud_f
@@ -173,7 +173,7 @@ CG_LoadHud_f
 | `runtime` | `dynamic` | — | Record read through `runtime.registry`, `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L357)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L510)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-nextorder-f-function-cg-nextorder-f-runtime-src-mq3-client-cgame-console-commands-ml-259318420"></a>
 ### CG_NextOrder_f
@@ -189,7 +189,7 @@ CG_NextOrder_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`, `runtime.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L531)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-nextteammember-f-function-cg-nextteammember-f-runtime-src-mq3-client-cgame-console-commands-ml-425794184"></a>
 ### CG_NextTeamMember_f
@@ -205,7 +205,7 @@ CG_NextTeamMember_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L525)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-prevteammember-f-function-cg-prevteammember-f-runtime-src-mq3-client-cgame-console-commands-ml-340274056"></a>
 ### CG_PrevTeamMember_f
@@ -221,7 +221,7 @@ CG_PrevTeamMember_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L528)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-scoresdown-f-function-cg-scoresdown-f-runtime-src-mq3-client-cgame-console-commands-ml-135391278"></a>
 ### CG_ScoresDown_f
@@ -237,7 +237,7 @@ CG_ScoresDown_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`, `runtime.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L491)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-scoresup-f-function-cg-scoresup-f-runtime-src-mq3-client-cgame-console-commands-ml-1968027592"></a>
 ### CG_ScoresUp_f
@@ -253,7 +253,7 @@ CG_ScoresUp_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`, `runtime.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L341)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L494)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-scrollscoresdown-f-function-cg-scrollscoresdown-f-runtime-src-mq3-client-cgame-console-commands-ml-890902888"></a>
 ### CG_scrollScoresDown_f
@@ -269,7 +269,7 @@ CG_scrollScoresDown_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L360)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L513)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-scrollscoresup-f-function-cg-scrollscoresup-f-runtime-src-mq3-client-cgame-console-commands-ml-1254128838"></a>
 ### CG_scrollScoresUp_f
@@ -285,7 +285,7 @@ CG_scrollScoresUp_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L363)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L516)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-sizedown-f-function-cg-sizedown-f-runtime-src-mq3-client-cgame-console-commands-ml-491454014"></a>
 ### CG_SizeDown_f
@@ -301,7 +301,7 @@ CG_SizeDown_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L485)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-sizeup-f-function-cg-sizeup-f-runtime-src-mq3-client-cgame-console-commands-ml-1826881748"></a>
 ### CG_SizeUp_f
@@ -317,7 +317,7 @@ CG_SizeUp_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L482)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-splose-f-function-cg-splose-f-runtime-src-mq3-client-cgame-console-commands-ml-855037256"></a>
 ### CG_spLose_f
@@ -333,7 +333,7 @@ CG_spLose_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L522)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-spwin-f-function-cg-spwin-f-runtime-src-mq3-client-cgame-console-commands-ml-411380688"></a>
 ### CG_spWin_f
@@ -349,7 +349,7 @@ CG_spWin_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L366)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L519)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-startorbit-f-function-cg-startorbit-f-runtime-src-mq3-client-cgame-console-commands-ml-2013914216"></a>
 ### CG_StartOrbit_f
@@ -365,7 +365,7 @@ CG_StartOrbit_f
 | `runtime` | `dynamic` | — | Record read through `runtime.registry`, `runtime.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L429)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L582)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-targetcommand-f-function-cg-targetcommand-f-runtime-src-mq3-client-cgame-console-commands-ml-193193576"></a>
 ### CG_TargetCommand_f
@@ -381,7 +381,7 @@ CG_TargetCommand_f
 | `runtime` | `dynamic` | — | Record read through `runtime.commandState`, `runtime.targetNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L479)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskcamp-f-function-cg-taskcamp-f-runtime-src-mq3-client-cgame-console-commands-ml-102919232"></a>
 ### CG_TaskCamp_f
@@ -397,7 +397,7 @@ CG_TaskCamp_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L396)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L549)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskdefense-f-function-cg-taskdefense-f-runtime-src-mq3-client-cgame-console-commands-ml-1574471312"></a>
 ### CG_TaskDefense_f
@@ -413,7 +413,7 @@ CG_TaskDefense_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L543)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskescort-f-function-cg-taskescort-f-runtime-src-mq3-client-cgame-console-commands-ml-491935566"></a>
 ### CG_TaskEscort_f
@@ -429,7 +429,7 @@ CG_TaskEscort_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L405)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L558)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskfollow-f-function-cg-taskfollow-f-runtime-src-mq3-client-cgame-console-commands-ml-1667072300"></a>
 ### CG_TaskFollow_f
@@ -445,7 +445,7 @@ CG_TaskFollow_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L399)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L552)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskoffense-f-function-cg-taskoffense-f-runtime-src-mq3-client-cgame-console-commands-ml-658043140"></a>
 ### CG_TaskOffense_f
@@ -461,7 +461,7 @@ CG_TaskOffense_f
 | `runtime` | `dynamic` | — | Record read through `runtime.state.gametype`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L540)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskownflag-f-function-cg-taskownflag-f-runtime-src-mq3-client-cgame-console-commands-ml-360277852"></a>
 ### CG_TaskOwnFlag_f
@@ -477,7 +477,7 @@ CG_TaskOwnFlag_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L408)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L561)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskpatrol-f-function-cg-taskpatrol-f-runtime-src-mq3-client-cgame-console-commands-ml-1862377602"></a>
 ### CG_TaskPatrol_f
@@ -493,7 +493,7 @@ CG_TaskPatrol_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L393)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L546)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taskretrieve-f-function-cg-taskretrieve-f-runtime-src-mq3-client-cgame-console-commands-ml-1530859518"></a>
 ### CG_TaskRetrieve_f
@@ -509,7 +509,7 @@ CG_TaskRetrieve_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L402)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L555)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-tasksuicide-f-function-cg-tasksuicide-f-runtime-src-mq3-client-cgame-console-commands-ml-394841584"></a>
 ### CG_TaskSuicide_f
@@ -525,7 +525,7 @@ CG_TaskSuicide_f
 | `runtime` | `dynamic` | — | Record read through `runtime.targetNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L411)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L564)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-tauntdeathinsult-f-function-cg-tauntdeathinsult-f-runtime-src-mq3-client-cgame-console-commands-ml-734503910"></a>
 ### CG_TauntDeathInsult_f
@@ -541,7 +541,7 @@ CG_TauntDeathInsult_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L423)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L576)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-tauntgauntlet-f-function-cg-tauntgauntlet-f-runtime-src-mq3-client-cgame-console-commands-ml-45852232"></a>
 ### CG_TauntGauntlet_f
@@ -557,7 +557,7 @@ CG_TauntGauntlet_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L426)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L579)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-tauntkillinsult-f-function-cg-tauntkillinsult-f-runtime-src-mq3-client-cgame-console-commands-ml-1037838636"></a>
 ### CG_TauntKillInsult_f
@@ -573,7 +573,7 @@ CG_TauntKillInsult_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L414)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L567)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-tauntpraise-f-function-cg-tauntpraise-f-runtime-src-mq3-client-cgame-console-commands-ml-1155292124"></a>
 ### CG_TauntPraise_f
@@ -589,7 +589,7 @@ CG_TauntPraise_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L417)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L570)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-taunttaunt-f-function-cg-taunttaunt-f-runtime-src-mq3-client-cgame-console-commands-ml-1978862092"></a>
 ### CG_TauntTaunt_f
@@ -605,7 +605,7 @@ CG_TauntTaunt_f
 | `runtime` | `dynamic` | — | Argument 1 of `mq3.client.cgame_console_commands.absorb`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L420)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L573)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-teammenu-f-function-cg-teammenu-f-runtime-src-mq3-client-cgame-console-commands-ml-290392168"></a>
 ### CG_TeamMenu_f
@@ -621,7 +621,7 @@ The next three bodies are disabled in the shipped source, but preserving their d
 | `runtime` | `dynamic` | — | Mutable client game console commands record/storage; this routine assigns `runtime.eventHandling`, `runtime.keyCatcher`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L436)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L589)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-tellattacker-f-function-cg-tellattacker-f-runtime-src-mq3-client-cgame-console-commands-ml-1283994288"></a>
 ### CG_TellAttacker_f
@@ -637,7 +637,7 @@ CG_TellAttacker_f
 | `runtime` | `dynamic` | — | Record read through `runtime.commandState`, `runtime.attackerNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L347)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L500)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-telltarget-f-function-cg-telltarget-f-runtime-src-mq3-client-cgame-console-commands-ml-1984956888"></a>
 ### CG_TellTarget_f
@@ -653,7 +653,7 @@ CG_TellTarget_f
 | `runtime` | `dynamic` | — | Record read through `runtime.commandState`, `runtime.targetNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L344)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L497)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-viewpos-f-function-cg-viewpos-f-runtime-src-mq3-client-cgame-console-commands-ml-2057431972"></a>
 ### CG_Viewpos_f
@@ -669,7 +669,7 @@ CG_Viewpos_f
 | `runtime` | `dynamic` | — | Record read through `runtime.viewOrigin`, `runtime.viewYaw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L335)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L488)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-voicetellattacker-f-function-cg-voicetellattacker-f-runtime-src-mq3-client-cgame-console-commands-ml-1701736776"></a>
 ### CG_VoiceTellAttacker_f
@@ -685,7 +685,7 @@ CG_VoiceTellAttacker_f
 | `runtime` | `dynamic` | — | Record read through `runtime.commandState`, `runtime.attackerNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L353)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L506)
 
 <a id="function-function-mq3-client-cgame-console-commands-cg-voicetelltarget-f-function-cg-voicetelltarget-f-runtime-src-mq3-client-cgame-console-commands-ml-139001692"></a>
 ### CG_VoiceTellTarget_f
@@ -701,7 +701,7 @@ CG_VoiceTellTarget_f
 | `runtime` | `dynamic` | — | Record read through `runtime.commandState`, `runtime.targetNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L503)
 
 <a id="function-function-mq3-client-cgame-console-commands-client-function-client-effect-text-src-mq3-client-cgame-console-commands-ml-1669452224"></a>
 ### client
@@ -718,7 +718,7 @@ Updates `effect.clientCommands` during client game console commands `client`.
 | `text` | `dynamic` | — | Text consumed or emitted by `client` in the client game console commands path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L134)
 
 <a id="function-function-mq3-client-cgame-console-commands-cmd-argv-function-cmd-argv-runtime-index-src-mq3-client-cgame-console-commands-ml-837574398"></a>
 ### Cmd_Argv
@@ -735,7 +735,7 @@ Cmd_Argv is mentioned by the original command contract and maps directly to the 
 | `index` | `dynamic` | — | Argument 2 of `mq3.qcommon.command_buffer.argv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L322)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L475)
 
 <a id="function-function-mq3-client-cgame-console-commands-confirmorder-function-confirmorder-state-time-src-mq3-client-cgame-console-commands-ml-808025716"></a>
 ### confirmOrder
@@ -752,7 +752,7 @@ Updates `state.acceptOrderTime` during client game console commands `confirmOrde
 | `time` | `dynamic` | — | Value used by `if time<state.acceptOrderTime then effect.clientCommands=effect.clientCommands+["teamtask "+str(state.acceptTask)+"\\n"]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L284)
 
 <a id="function-function-mq3-client-cgame-console-commands-console-function-console-effect-text-src-mq3-client-cgame-console-commands-ml-1352436262"></a>
 ### console
@@ -769,7 +769,7 @@ Updates `effect.consoleCommands` during client game console commands `console`.
 | `text` | `dynamic` | — | Text consumed or emitted by `console` in the client game console commands path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L130)
 
 <a id="function-function-mq3-client-cgame-console-commands-create-function-create-src-mq3-client-cgame-console-commands-ml-552388390"></a>
 ### create
@@ -781,7 +781,7 @@ function create()
 Creates a `mq3.client.cgame_console_commands.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L116)
 
 <a id="function-function-mq3-client-cgame-console-commands-createruntime-function-createruntime-registry-missionpack-retailactive-src-mq3-client-cgame-console-commands-ml-2090403739"></a>
 ### createRuntime
@@ -799,7 +799,7 @@ Creates a `mq3.client.cgame_console_commands.Runtime` record. Assigns `registry`
 | `retailActive` | `dynamic` | — | Value used to initialize `Runtime.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L439)
 
 <a id="function-function-mq3-client-cgame-console-commands-cvarset-function-cvarset-effect-name-value-src-mq3-client-cgame-console-commands-ml-183353999"></a>
 ### cvarSet
@@ -817,7 +817,7 @@ Updates `effect.cvarSets` during client game console commands `cvarSet`.
 | `value` | `dynamic` | — | Value used by `effect.cvarSets=effect.cvarSets+[[name,value]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L126)
 
 <a id="function-function-mq3-client-cgame-console-commands-delegated-function-delegated-runtime-name-src-mq3-client-cgame-console-commands-ml-660279877"></a>
 ### delegated
@@ -834,7 +834,7 @@ Calls `mq3.client.cgame_console_commands.emit`, `mq3.qcommon.command_buffer.args
 | `name` | `dynamic` | — | Name used to select or register the corresponding client game console commands resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L474)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L627)
 
 <a id="function-function-mq3-client-cgame-console-commands-denyorder-function-denyorder-state-time-src-mq3-client-cgame-console-commands-ml-1755213320"></a>
 ### denyOrder
@@ -851,7 +851,7 @@ Updates `state.acceptOrderTime` during client game console commands `denyOrder`.
 | `time` | `dynamic` | — | Value used by `if time<state.acceptOrderTime then state.acceptOrderTime=0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L291)
 
 <a id="function-function-mq3-client-cgame-console-commands-dispatchbase-function-dispatchbase-registry-commandstate-targetnum-attackernum-state-src-mq3-client-cgame-console-commands-ml-1336489186"></a>
 ### dispatchBase
@@ -871,7 +871,7 @@ Calls `std.string.toLowerAscii`, `mq3.qcommon.command_buffer.argv`, `mq3.client.
 | `state` | `dynamic` | — | Shared client game console commands state passed to the helper calls in `dispatchBase`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L346)
 
 <a id="function-function-mq3-client-cgame-console-commands-emit-function-emit-runtime-boundary-kind-name-text-text2-number-src-mq3-client-cgame-console-commands-ml-663925668"></a>
 ### emit
@@ -893,7 +893,7 @@ Appends a client game console commands action record to the queued engine reques
 | `number` | `dynamic` | — | Value used by `action=Action(boundary,kind,name,text,text2,number,not runtime.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L450)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-gt-1fctf-const-gt-1fctf-5-src-mq3-client-cgame-console-commands-ml-1256973974"></a>
 ### GT_1FCTF
@@ -902,8 +902,10 @@ Appends a client game console commands action record to the queued engine reques
 const GT_1FCTF = 5
 ```
 
+Native game-type identifier selecting one-flag capture the flag.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L34)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-console-commands-ml-976769185"></a>
 ### GT_CTF
@@ -912,8 +914,10 @@ const GT_1FCTF = 5
 const GT_CTF = 4
 ```
 
+Native game-type value for capture the flag, used when determining which team and flag commands are available.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L32)
 
 <a id="function-function-mq3-client-cgame-console-commands-isnativebasecommand-function-isnativebasecommand-name-src-mq3-client-cgame-console-commands-ml-244235199"></a>
 ### isNativeBaseCommand
@@ -929,7 +933,7 @@ Calls `std.string.toLowerAscii` from client game console commands `isNativeBaseC
 | `name` | `dynamic` | — | Name used to select or register the corresponding client game console commands resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L337)
 
 <a id="function-function-mq3-client-cgame-console-commands-loadhud-function-loadhud-state-hudfile-src-mq3-client-cgame-console-commands-ml-1751807632"></a>
 ### loadHud
@@ -946,7 +950,7 @@ Team Arena (MISSIONPACK) bodies.  Baseq3 does not register these commands, but k
 | `hudFile` | `dynamic` | — | Value assigned to `state.hudFile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L243)
 
 <a id="function-function-mq3-client-cgame-console-commands-missionpackcommands-function-missionpackcommands-src-mq3-client-cgame-console-commands-ml-1595503604"></a>
 ### missionpackCommands
@@ -958,7 +962,7 @@ function missionpackCommands()
 Lists the 24 client game console commands missionpack commands strings in their declared order, beginning with `"loadhud"`, `"nextTeamMember"`, `"prevTeamMember"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L456)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L609)
 
 <a id="function-function-mq3-client-cgame-console-commands-nextorder-function-nextorder-state-time-src-mq3-client-cgame-console-commands-ml-739486554"></a>
 ### nextOrder
@@ -975,7 +979,7 @@ Updates `state.currentOrder`, `state.orderPending`, `state.orderTime` during cli
 | `time` | `dynamic` | — | Value assigned to `state.orderTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L272)
 
 <a id="function-function-mq3-client-cgame-console-commands-nextteammember-function-nextteammember-state-src-mq3-client-cgame-console-commands-ml-1017332161"></a>
 ### nextTeamMember
@@ -991,7 +995,7 @@ Updates `state.selectedPlayer` during client game console commands `nextTeamMemb
 | `state` | `dynamic` | — | Mutable client game console commands record/storage; this routine assigns `state.selectedPlayer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L261)
 
 <a id="function-function-mq3-client-cgame-console-commands-prevteammember-function-prevteammember-state-src-mq3-client-cgame-console-commands-ml-1839387697"></a>
 ### prevTeamMember
@@ -1007,7 +1011,7 @@ Updates `state.selectedPlayer` during client game console commands `prevTeamMemb
 | `state` | `dynamic` | — | Mutable client game console commands record/storage; this routine assigns `state.selectedPlayer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L266)
 
 <a id="function-function-mq3-client-cgame-console-commands-result-function-result-handled-src-mq3-client-cgame-console-commands-ml-946718590"></a>
 ### result
@@ -1023,7 +1027,7 @@ Creates a `mq3.client.cgame_console_commands.Result` record. Assigns `handled` f
 | `handled` | `dynamic` | — | Value used to initialize `Result.handled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L121)
 
 - [mq3.client.cgame_console_commands.Result](Type-mq3-client-cgame-console-commands-result-2015927704.md) — struct
 - [mq3.client.cgame_console_commands.Runtime](Type-mq3-client-cgame-console-commands-runtime-604676639.md) — struct
@@ -1042,7 +1046,7 @@ Updates `state.scoresRequestTime`, `state.showScores`, `state.numScores` during 
 | `time` | `dynamic` | — | Value assigned to `state.scoresRequestTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L172)
 
 <a id="function-function-mq3-client-cgame-console-commands-scoresup-function-scoresup-state-time-src-mq3-client-cgame-console-commands-ml-784408824"></a>
 ### scoresUp
@@ -1059,7 +1063,7 @@ Updates `state.showScores`, `state.scoreFadeTime` during client game console com
 | `time` | `dynamic` | — | Value assigned to `state.scoreFadeTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L183)
 
 <a id="function-function-mq3-client-cgame-console-commands-scrollscores-function-scrollscores-state-down-src-mq3-client-cgame-console-commands-ml-1525395997"></a>
 ### scrollScores
@@ -1076,7 +1080,7 @@ Calls `mq3.client.cgame_console_commands.result` from client game console comman
 | `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L250)
 
 <a id="function-function-mq3-client-cgame-console-commands-servercommands-function-servercommands-src-mq3-client-cgame-console-commands-ml-1453530186"></a>
 ### serverCommands
@@ -1088,7 +1092,7 @@ function serverCommands()
 Lists the 27 client game console commands server commands strings in their declared order, beginning with `"kill"`, `"say"`, `"say_team"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L460)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L613)
 
 <a id="function-function-mq3-client-cgame-console-commands-singleplayerresult-function-singleplayerresult-won-src-mq3-client-cgame-console-commands-ml-258400104"></a>
 ### singlePlayerResult
@@ -1104,7 +1108,7 @@ Calls `mq3.client.cgame_console_commands.result` from client game console comman
 | `won` | `dynamic` | — | Value used by `if won then effect.sounds=effect.sounds+["winner"]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L255)
 
 <a id="function-function-mq3-client-cgame-console-commands-sizedown-function-sizedown-registry-src-mq3-client-cgame-console-commands-ml-115489709"></a>
 ### sizeDown
@@ -1120,7 +1124,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.qcommon.cvar.get`, `mq3.c
 | `registry` | `dynamic` | — | Value used by `value=cvar.get(registry,"cg_viewsize","100",0).integer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L153)
 
 <a id="function-function-mq3-client-cgame-console-commands-sizedownstate-function-sizedownstate-state-src-mq3-client-cgame-console-commands-ml-82113473"></a>
 ### sizeDownState
@@ -1136,7 +1140,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.client.cgame_console_comm
 | `state` | `dynamic` | — | Record read through `state.viewsize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L162)
 
 <a id="function-function-mq3-client-cgame-console-commands-sizeup-function-sizeup-registry-src-mq3-client-cgame-console-commands-ml-165169037"></a>
 ### sizeUp
@@ -1152,7 +1156,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.qcommon.cvar.get`, `mq3.c
 | `registry` | `dynamic` | — | Value used by `value=cvar.get(registry,"cg_viewsize","100",0).integer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L147)
 
 <a id="function-function-mq3-client-cgame-console-commands-sizeupstate-function-sizeupstate-state-src-mq3-client-cgame-console-commands-ml-1316105591"></a>
 ### sizeUpState
@@ -1168,7 +1172,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.client.cgame_console_comm
 | `state` | `dynamic` | — | Record read through `state.viewsize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L159)
 
 <a id="function-function-mq3-client-cgame-console-commands-startorbit-function-startorbit-registry-src-mq3-client-cgame-console-commands-ml-988283073"></a>
 ### startOrbit
@@ -1184,7 +1188,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.qcommon.cvar.get`, `mq3.c
 | `registry` | `dynamic` | — | Value used by `developer=cvar.get(registry,"developer","0",0).integer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L214)
 
 <a id="function-function-mq3-client-cgame-console-commands-startorbitstate-function-startorbitstate-registry-state-src-mq3-client-cgame-console-commands-ml-227214834"></a>
 ### startOrbitState
@@ -1201,7 +1205,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.qcommon.cvar.get`, `mq3.c
 | `state` | `dynamic` | — | Record read through `state.cameraOrbit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L226)
 
 - [mq3.client.cgame_console_commands.State](Type-mq3-client-cgame-console-commands-state-6632410.md) — struct
 <a id="function-function-mq3-client-cgame-console-commands-syncvmcvars-function-syncvmcvars-state-registry-src-mq3-client-cgame-console-commands-ml-2056382652"></a>
@@ -1219,7 +1223,7 @@ Updates `state.viewsize`, `state.cameraOrbit` during client game console command
 | `registry` | `dynamic` | — | Value used by `state.viewsize=cvar.get(registry,"cg_viewsize","100",0).integer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L234)
 
 <a id="function-function-mq3-client-cgame-console-commands-targetcommand-function-targetcommand-commandstate-targetnum-src-mq3-client-cgame-console-commands-ml-548081141"></a>
 ### targetCommand
@@ -1236,7 +1240,7 @@ CG_TargetCommand_f deliberately preserves the original !targetNum test: player z
 | `targetNum` | `dynamic` | — | Value used by `if targetNum==0 then return effect end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L140)
 
 <a id="function-function-mq3-client-cgame-console-commands-task-function-task-order-voice-src-mq3-client-cgame-console-commands-ml-379784332"></a>
 ### task
@@ -1253,7 +1257,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.client.cgame_console_comm
 | `voice` | `dynamic` | — | Value used by `console(effect,"cmd vsay_team "+voice+"\\n")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L298)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskcamp-function-taskcamp-src-mq3-client-cgame-console-commands-ml-180494002"></a>
 ### taskCamp
@@ -1265,7 +1269,7 @@ function taskCamp()
 Adapts `mq3.client.cgame_console_commands.task` to client game console commands `taskCamp`, returning its result for `TEAMTASK_CAMP, "oncamp"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L309)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskdefense-function-taskdefense-src-mq3-client-cgame-console-commands-ml-1603089328"></a>
 ### taskDefense
@@ -1277,7 +1281,7 @@ function taskDefense()
 Adapts `mq3.client.cgame_console_commands.task` to client game console commands `taskDefense`, returning its result for `TEAMTASK_DEFENSE, "ondefense"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L305)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskescort-function-taskescort-src-mq3-client-cgame-console-commands-ml-158873914"></a>
 ### taskEscort
@@ -1289,7 +1293,7 @@ function taskEscort()
 Adapts `mq3.client.cgame_console_commands.task` to client game console commands `taskEscort`, returning its result for `TEAMTASK_ESCORT, "onfollowcarrier"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L315)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskfollow-function-taskfollow-src-mq3-client-cgame-console-commands-ml-782829046"></a>
 ### taskFollow
@@ -1301,7 +1305,7 @@ function taskFollow()
 Adapts `mq3.client.cgame_console_commands.task` to client game console commands `taskFollow`, returning its result for `TEAMTASK_FOLLOW, "onfollow"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L311)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskoffense-function-taskoffense-gametype-src-mq3-client-cgame-console-commands-ml-1810763610"></a>
 ### taskOffense
@@ -1317,7 +1321,7 @@ Calls `mq3.client.cgame_console_commands.task` from client game console commands
 | `gametype` | `dynamic` | — | Quake III game-type identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L303)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskownflag-function-taskownflag-src-mq3-client-cgame-console-commands-ml-1459663596"></a>
 ### taskOwnFlag
@@ -1329,7 +1333,7 @@ function taskOwnFlag()
 Calls `mq3.client.cgame_console_commands.result`, `mq3.client.cgame_console_commands.console` from client game console commands `taskOwnFlag`. The final path returns `console(effect,"cmd vsay_team ihaveflag\n")`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L317)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskpatrol-function-taskpatrol-src-mq3-client-cgame-console-commands-ml-1586905614"></a>
 ### taskPatrol
@@ -1341,7 +1345,7 @@ function taskPatrol()
 Adapts `mq3.client.cgame_console_commands.task` to client game console commands `taskPatrol`, returning its result for `TEAMTASK_PATROL, "onpatrol"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L307)
 
 <a id="function-function-mq3-client-cgame-console-commands-taskretrieve-function-taskretrieve-src-mq3-client-cgame-console-commands-ml-762391038"></a>
 ### taskRetrieve
@@ -1353,7 +1357,7 @@ function taskRetrieve()
 Adapts `mq3.client.cgame_console_commands.task` to client game console commands `taskRetrieve`, returning its result for `TEAMTASK_RETRIEVE, "onreturnflag"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L313)
 
 <a id="function-function-mq3-client-cgame-console-commands-tasksuicide-function-tasksuicide-targetnum-src-mq3-client-cgame-console-commands-ml-1355570969"></a>
 ### taskSuicide
@@ -1369,7 +1373,7 @@ Calls `mq3.client.cgame_console_commands.result` from client game console comman
 | `targetNum` | `dynamic` | — | Value used by `if targetNum!=-1 then effect.clientCommands=effect.clientCommands+["tell "+str(targetNum)+" suicide"] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L320)
 
 <a id="function-function-mq3-client-cgame-console-commands-taunt-function-taunt-text-src-mq3-client-cgame-console-commands-ml-402599577"></a>
 ### taunt
@@ -1385,7 +1389,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.client.cgame_console_comm
 | `text` | `dynamic` | — | Text consumed or emitted by `taunt` in the client game console commands path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L323)
 
 <a id="function-function-mq3-client-cgame-console-commands-tauntdeathinsult-function-tauntdeathinsult-src-mq3-client-cgame-console-commands-ml-1522346182"></a>
 ### tauntDeathInsult
@@ -1397,7 +1401,7 @@ function tauntDeathInsult()
 Adapts `mq3.client.cgame_console_commands.taunt` to client game console commands `tauntDeathInsult`, returning its result for `"cmd vsay death_insult\n"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L331)
 
 <a id="function-function-mq3-client-cgame-console-commands-tauntgauntlet-function-tauntgauntlet-src-mq3-client-cgame-console-commands-ml-781924102"></a>
 ### tauntGauntlet
@@ -1409,7 +1413,7 @@ function tauntGauntlet()
 Adapts `mq3.client.cgame_console_commands.taunt` to client game console commands `tauntGauntlet`, returning its result for `"cmd vsay kill_guantlet\n"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L333)
 
 <a id="function-function-mq3-client-cgame-console-commands-tauntkillinsult-function-tauntkillinsult-src-mq3-client-cgame-console-commands-ml-105310820"></a>
 ### tauntKillInsult
@@ -1421,7 +1425,7 @@ function tauntKillInsult()
 Adapts `mq3.client.cgame_console_commands.taunt` to client game console commands `tauntKillInsult`, returning its result for `"cmd vsay kill_insult\n"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L325)
 
 <a id="function-function-mq3-client-cgame-console-commands-tauntpraise-function-tauntpraise-src-mq3-client-cgame-console-commands-ml-2084713578"></a>
 ### tauntPraise
@@ -1433,7 +1437,7 @@ function tauntPraise()
 Adapts `mq3.client.cgame_console_commands.taunt` to client game console commands `tauntPraise`, returning its result for `"cmd vsay praise\n"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L327)
 
 <a id="function-function-mq3-client-cgame-console-commands-taunttaunt-function-taunttaunt-src-mq3-client-cgame-console-commands-ml-288287358"></a>
 ### tauntTaunt
@@ -1445,7 +1449,7 @@ function tauntTaunt()
 Adapts `mq3.client.cgame_console_commands.taunt` to client game console commands `tauntTaunt`, returning its result for `"cmd vtaunt\n"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L329)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-teamtask-camp-const-teamtask-camp-7-src-mq3-client-cgame-console-commands-ml-867214870"></a>
 ### TEAMTASK_CAMP
@@ -1454,8 +1458,10 @@ Adapts `mq3.client.cgame_console_commands.taunt` to client game console commands
 const TEAMTASK_CAMP = 7
 ```
 
+Team-order identifier assigning the player the camp tactical role.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L29)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-teamtask-defense-const-teamtask-defense-2-src-mq3-client-cgame-console-commands-ml-1685949707"></a>
 ### TEAMTASK_DEFENSE
@@ -1464,8 +1470,10 @@ const TEAMTASK_CAMP = 7
 const TEAMTASK_DEFENSE = 2
 ```
 
+Team-order identifier assigning the player the defense tactical role.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L19)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-teamtask-escort-const-teamtask-escort-6-src-mq3-client-cgame-console-commands-ml-572763903"></a>
 ### TEAMTASK_ESCORT
@@ -1474,8 +1482,10 @@ const TEAMTASK_DEFENSE = 2
 const TEAMTASK_ESCORT = 6
 ```
 
+Team-order identifier assigning the player the escort tactical role.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-teamtask-follow-const-teamtask-follow-4-src-mq3-client-cgame-console-commands-ml-1577843729"></a>
 ### TEAMTASK_FOLLOW
@@ -1484,8 +1494,10 @@ const TEAMTASK_ESCORT = 6
 const TEAMTASK_FOLLOW = 4
 ```
 
+Team-order identifier assigning the player the follow tactical role.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-teamtask-offense-const-teamtask-offense-1-src-mq3-client-cgame-console-commands-ml-1261265388"></a>
 ### TEAMTASK_OFFENSE
@@ -1494,8 +1506,10 @@ const TEAMTASK_FOLLOW = 4
 const TEAMTASK_OFFENSE = 1
 ```
 
+Team-order identifier assigning the player the offense tactical role.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L17)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-teamtask-patrol-const-teamtask-patrol-3-src-mq3-client-cgame-console-commands-ml-831059098"></a>
 ### TEAMTASK_PATROL
@@ -1504,8 +1518,10 @@ const TEAMTASK_OFFENSE = 1
 const TEAMTASK_PATROL = 3
 ```
 
+Team-order identifier assigning the player the patrol tactical role.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L21)
 
 <a id="constant-constant-mq3-client-cgame-console-commands-teamtask-retrieve-const-teamtask-retrieve-5-src-mq3-client-cgame-console-commands-ml-78287588"></a>
 ### TEAMTASK_RETRIEVE
@@ -1514,8 +1530,10 @@ const TEAMTASK_PATROL = 3
 const TEAMTASK_RETRIEVE = 5
 ```
 
+Team-order identifier assigning the player the retrieve tactical role.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L25)
 
 <a id="function-function-mq3-client-cgame-console-commands-tell-function-tell-commandstate-clientnum-voice-src-mq3-client-cgame-console-commands-ml-2108981193"></a>
 ### tell
@@ -1533,7 +1551,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.client.cgame_console_comm
 | `voice` | `dynamic` | — | Value used by `if voice then prefix="vtell " end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L190)
 
 <a id="function-function-mq3-client-cgame-console-commands-tellattacker-function-tellattacker-commandstate-attackernum-src-mq3-client-cgame-console-commands-ml-1820204331"></a>
 ### tellAttacker
@@ -1550,7 +1568,7 @@ Adapts `mq3.client.cgame_console_commands.tell` to client game console commands 
 | `attackerNum` | `dynamic` | — | Argument 2 of `mq3.client.cgame_console_commands.tell`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L202)
 
 <a id="function-function-mq3-client-cgame-console-commands-telltarget-function-telltarget-commandstate-targetnum-src-mq3-client-cgame-console-commands-ml-268756257"></a>
 ### tellTarget
@@ -1567,7 +1585,7 @@ Adapts `mq3.client.cgame_console_commands.tell` to client game console commands 
 | `targetNum` | `dynamic` | — | Argument 2 of `mq3.client.cgame_console_commands.tell`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L198)
 
 <a id="function-function-mq3-client-cgame-console-commands-viewpos-function-viewpos-origin-yaw-src-mq3-client-cgame-console-commands-ml-687157875"></a>
 ### viewpos
@@ -1584,7 +1602,7 @@ Calls `mq3.client.cgame_console_commands.result`, `mq3.compat.numeric.trunc32` f
 | `yaw` | `dynamic` | — | Value used by `effect.prints=effect.prints+["("+str(n.trunc32(origin[0]))+" "+str(n.trunc32(origin[1]))+" "+str(n.trunc32(origin[2]))+") : "+str(n.trunc32(ya...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L166)
 
 <a id="function-function-mq3-client-cgame-console-commands-voicetellattacker-function-voicetellattacker-commandstate-attackernum-src-mq3-client-cgame-console-commands-ml-1472043307"></a>
 ### voiceTellAttacker
@@ -1601,7 +1619,7 @@ Adapts `mq3.client.cgame_console_commands.tell` to client game console commands 
 | `attackerNum` | `dynamic` | — | Argument 2 of `mq3.client.cgame_console_commands.tell`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L210)
 
 <a id="function-function-mq3-client-cgame-console-commands-voicetelltarget-function-voicetelltarget-commandstate-targetnum-src-mq3-client-cgame-console-commands-ml-1954076537"></a>
 ### voiceTellTarget
@@ -1618,4 +1636,4 @@ Adapts `mq3.client.cgame_console_commands.tell` to client game console commands 
 | `targetNum` | `dynamic` | — | Argument 2 of `mq3.client.cgame_console_commands.tell`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L206)

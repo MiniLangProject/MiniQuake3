@@ -34,7 +34,7 @@ Direct state writes: `clientState.lastUsercmd`.
 | `command` | `dynamic` | — | Command passed as `command` to `mq3.server.user_move.copyCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L127)
 
 <a id="function-function-mq3-server-user-move-copycommand-function-copycommand-command-src-mq3-server-user-move-ml-244286169"></a>
 ### copyCommand
@@ -50,7 +50,7 @@ Return `mq3.qcommon.message_delta.userCommand(command.serverTime, command.angles
 | `command` | `dynamic` | — | Record exposing `serverTime`, `angles`, `buttons`, `weapon`, `forwardmove`, `rightmove`, `upmove`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L108)
 
 <a id="function-function-mq3-server-user-move-createclient-function-createclient-src-mq3-server-user-move-ml-1115529990"></a>
 ### createClient
@@ -62,7 +62,7 @@ function createClient()
 Create `mq3.server.user_move.Client` with state=0; messageAcknowledge=0; reliableAcknowledge=0; reliableCommands=createReliableCommands(); deltaMessage=- 1; pureAuthentic=0; gotCP=false; frames=createFrames(); lastUsercmd=zeroCommand().
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L80)
 
 <a id="function-function-mq3-server-user-move-createframes-function-createframes-src-mq3-server-user-move-ml-647267622"></a>
 ### createFrames
@@ -74,7 +74,7 @@ function createFrames()
 Create frames in server.user_move; the normal completion returns `result`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L76)
 
 <a id="function-function-mq3-server-user-move-createreliablecommands-function-createreliablecommands-src-mq3-server-user-move-ml-1022825794"></a>
 ### createReliableCommands
@@ -86,7 +86,7 @@ function createReliableCommands()
 Create reliable commands in server.user_move; the normal completion returns `result`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L78)
 
 <a id="function-function-mq3-server-user-move-createserver-function-createserver-checksumfeed-time-pure-src-mq3-server-user-move-ml-1197911510"></a>
 ### createServer
@@ -104,7 +104,7 @@ Create `mq3.server.user_move.Server` with checksumFeed=checksumFeed; time=time; 
 | `pure` | `dynamic` | — | Initial `pure` field stored in the returned or constructed `mq3.server.user_move.Server` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L87)
 
 <a id="constant-constant-mq3-server-user-move-cs-active-const-cs-active-4-src-mq3-server-user-move-ml-1744502385"></a>
 ### CS_ACTIVE
@@ -113,8 +113,10 @@ Create `mq3.server.user_move.Server` with checksumFeed=checksumFeed; time=time; 
 const CS_ACTIVE = 4
 ```
 
+Client-state value identifying a client whose user commands advance its in-game entity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L18)
 
 <a id="constant-constant-mq3-server-user-move-cs-primed-const-cs-primed-3-src-mq3-server-user-move-ml-1066929928"></a>
 ### CS_PRIMED
@@ -123,8 +125,10 @@ const CS_ACTIVE = 4
 const CS_PRIMED = 3
 ```
 
+Client lifecycle state after gamestate delivery and before entering active play.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L16)
 
 <a id="function-function-mq3-server-user-move-diagnose-function-diagnose-host-clientstate-text-src-mq3-server-user-move-ml-1263898469"></a>
 ### diagnose
@@ -142,7 +146,7 @@ Compute diagnose in server.user_move.
 | `text` | `dynamic` | — | Text used in `host.diagnosticFn(host, clientState, text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L116)
 
 <a id="function-function-mq3-server-user-move-execute-function-execute-serverstate-clientstate-host-msg-isdelta-src-mq3-server-user-move-ml-587965281"></a>
 ### execute
@@ -165,7 +169,7 @@ Direct state writes: `clientState.deltaMessage`.
 | `isDelta` | `dynamic` | — | Is delta operand used by `execute`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L143)
 
 <a id="function-function-mq3-server-user-move-hashkey-function-hashkey-text-maxlength-src-mq3-server-user-move-ml-749251621"></a>
 ### hashKey
@@ -182,7 +186,7 @@ Com_HashKey uses signed char values on the pinned MSVC reference build.
 | `maxLength` | `dynamic` | — | Max length used in `(limit > maxLength)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L94)
 
 <a id="constant-constant-mq3-server-user-move-max-packet-usercmds-const-max-packet-usercmds-32-src-mq3-server-user-move-ml-535883760"></a>
 ### MAX_PACKET_USERCMDS
@@ -191,8 +195,10 @@ Com_HashKey uses signed char values on the pinned MSVC reference build.
 const MAX_PACKET_USERCMDS = 32
 ```
 
+Max number of usercmd_t in a packet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L10)
 
 <a id="constant-constant-mq3-server-user-move-max-reliable-commands-const-max-reliable-commands-64-src-mq3-server-user-move-ml-47199"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -201,8 +207,10 @@ const MAX_PACKET_USERCMDS = 32
 const MAX_RELIABLE_COMMANDS = 64
 ```
 
+Capacity of the reliable-command ring retained until acknowledgment.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L12)
 
 <a id="constant-constant-mq3-server-user-move-packet-mask-const-packet-mask-31-src-mq3-server-user-move-ml-906865821"></a>
 ### PACKET_MASK
@@ -211,8 +219,10 @@ const MAX_RELIABLE_COMMANDS = 64
 const PACKET_MASK = 31
 ```
 
+Mask converting a network sequence number into a circular packet-history slot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L14)
 
 - [mq3.server.user_move.Server](Type-mq3-server-user-move-server-1836531263.md) — struct
 <a id="function-function-mq3-server-user-move-services-function-services-src-mq3-server-user-move-ml-245697798"></a>
@@ -225,7 +235,7 @@ function services()
 Create `mq3.server.user_move.Services` with sendGamestateFn=void; enterWorldFn=void; dropFn=void; thinkFn=void; diagnosticFn=void; context=void.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L89)
 
 - [mq3.server.user_move.Services](Type-mq3-server-user-move-services-791730932.md) — struct
 <a id="function-function-mq3-server-user-move-zerocommand-function-zerocommand-src-mq3-server-user-move-ml-1222053648"></a>
@@ -238,4 +248,4 @@ function zeroCommand()
 Return `mq3.qcommon.message_delta.userCommand(0, 0, 0, 0, 0, 0, 0, 0, 0)` from `server.user_move.zeroCommand`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L74)

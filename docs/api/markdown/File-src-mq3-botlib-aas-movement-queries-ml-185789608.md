@@ -15,8 +15,10 @@ Reachable from entry: **yes**
 const CONTENTS_LAVA = 8
 ```
 
+Collision contents bit marking lava.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L7)
 
 <a id="constant-constant-mq3-botlib-aas-movement-queries-contents-slime-const-contents-slime-16-src-mq3-botlib-aas-movement-queries-ml-531105836"></a>
 ### CONTENTS_SLIME
@@ -25,8 +27,10 @@ const CONTENTS_LAVA = 8
 const CONTENTS_SLIME = 16
 ```
 
+Collision contents bit marking slime.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L9)
 
 <a id="constant-constant-mq3-botlib-aas-movement-queries-contents-water-const-contents-water-32-src-mq3-botlib-aas-movement-queries-ml-46992744"></a>
 ### CONTENTS_WATER
@@ -35,8 +39,10 @@ const CONTENTS_SLIME = 16
 const CONTENTS_WATER = 32
 ```
 
+Collision contents bit marking water.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L11)
 
 <a id="function-function-mq3-botlib-aas-movement-queries-swimming-function-swimming-context-pointcontentsfn-origin-src-mq3-botlib-aas-movement-queries-ml-219146987"></a>
 ### swimming
@@ -54,4 +60,4 @@ Test whether the point contents permit swimming under the AAS movement rules.
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L17)

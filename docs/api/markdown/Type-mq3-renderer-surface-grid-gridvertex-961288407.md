@@ -23,8 +23,10 @@ Data record for `mq3.renderer.surface_grid.GridVertex`; groups `xyz`, `normal`, 
 color
 ```
 
+Vertex color interpolated across the curved-patch control grid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L19)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-lightmap-lightmap-src-mq3-renderer-surface-grid-ml-2022651725"></a>
 ### lightmap
@@ -33,8 +35,10 @@ color
 lightmap
 ```
 
+Baked-lighting texture coordinates or resource associated with this vertex or patch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L17)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-normal-normal-src-mq3-renderer-surface-grid-ml-1908610479"></a>
 ### normal
@@ -43,8 +47,10 @@ lightmap
 normal
 ```
 
+Interpolated normal of a tessellated curved-patch vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L13)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-st-st-src-mq3-renderer-surface-grid-ml-9540763"></a>
 ### st
@@ -53,8 +59,10 @@ normal
 st
 ```
 
+Two-dimensional texture coordinates associated with the vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L15)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-xyz-xyz-src-mq3-renderer-surface-grid-ml-1433743713"></a>
 ### xyz
@@ -63,5 +71,7 @@ st
 xyz
 ```
 
+Three-dimensional position of this vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)

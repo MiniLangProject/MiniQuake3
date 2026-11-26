@@ -12,7 +12,7 @@ struct BestScore
 Stores UI gameinfo best score record, including `score`, `skill`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L74)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI gameinfo best score record, including `score`, `skill`.
 score
 ```
 
+Best recorded single-player finishing place from 1 through 8; zero means no recorded result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L76)
 
 <a id="field-field-mq3-client-ui-gameinfo-bestscore-skill-skill-src-mq3-client-ui-gameinfo-ml-929822341"></a>
 ### skill
@@ -33,5 +35,7 @@ score
 skill
 ```
 
+When constructing this record, `UI_GetBestScore` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L78)

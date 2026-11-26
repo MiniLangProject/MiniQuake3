@@ -12,7 +12,7 @@ struct OutPacket
 Stores send cmd out packet record, including `serverTime`, `realtime`, `cmdNumber`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L44)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores send cmd out packet record, including `serverTime`, `realtime`, `cmdNumbe
 cmdNumber
 ```
 
+Monotonically advancing user-command sequence number for the client.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L50)
 
 <a id="field-field-mq3-client-send-cmd-outpacket-realtime-realtime-src-mq3-client-send-cmd-ml-284500379"></a>
 ### realtime
@@ -33,8 +35,10 @@ cmdNumber
 realtime
 ```
 
+Local timestamp in milliseconds at which this outgoing user-command packet was sent.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L48)
 
 <a id="field-field-mq3-client-send-cmd-outpacket-servertime-servertime-src-mq3-client-send-cmd-ml-328457945"></a>
 ### serverTime
@@ -43,5 +47,7 @@ realtime
 serverTime
 ```
 
+Timestamp in milliseconds of the latest user command included in this outgoing packet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L46)

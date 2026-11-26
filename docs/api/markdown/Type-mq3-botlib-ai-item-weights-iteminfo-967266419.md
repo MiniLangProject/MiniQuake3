@@ -12,7 +12,7 @@ struct ItemInfo
 `ItemInfo` record for ai item weights, containing `classname`, `name`, `model`, `modelIndex` and `type` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L31)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct ItemInfo
 classname
 ```
 
+Classname of the item.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-inventoryindex-inventoryindex-src-mq3-botlib-ai-item-weights-ml-529414254"></a>
 ### inventoryIndex
@@ -33,8 +35,10 @@ classname
 inventoryIndex
 ```
 
+Index of the bot inventory value used by this item or weight rule.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L43)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-maxs-maxs-src-mq3-botlib-ai-item-weights-ml-569238792"></a>
 ### maxs
@@ -43,8 +47,10 @@ inventoryIndex
 maxs
 ```
 
+Maximum XYZ corner of the pickup volume specified by this item definition.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L49)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-mins-mins-src-mq3-botlib-ai-item-weights-ml-1820221332"></a>
 ### mins
@@ -53,8 +59,10 @@ maxs
 mins
 ```
 
+Minimum XYZ corner of the pickup volume specified by this item definition.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L47)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-model-model-src-mq3-botlib-ai-item-weights-ml-198836270"></a>
 ### model
@@ -63,8 +71,10 @@ mins
 model
 ```
 
+Model of the item.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L37)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-modelindex-modelindex-src-mq3-botlib-ai-item-weights-ml-568682100"></a>
 ### modelIndex
@@ -73,8 +83,10 @@ model
 modelIndex
 ```
 
+Model index used to associate this entity or item with registered model data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L39)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-name-name-src-mq3-botlib-ai-item-weights-ml-1538813028"></a>
 ### name
@@ -83,8 +95,10 @@ modelIndex
 name
 ```
 
+Name of the item.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L35)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-number-number-src-mq3-botlib-ai-item-weights-ml-1715246952"></a>
 ### number
@@ -93,8 +107,10 @@ name
 number
 ```
 
+Identifier of this item definition in the loaded configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L51)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-respawntime-respawntime-src-mq3-botlib-ai-item-weights-ml-1756732658"></a>
 ### respawnTime
@@ -103,8 +119,10 @@ number
 respawnTime
 ```
 
+Configured interval before this item is expected to respawn.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L45)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-type-type-src-mq3-botlib-ai-item-weights-ml-2067866046"></a>
 ### type
@@ -113,5 +131,7 @@ respawnTime
 type
 ```
 
+Configured item category used by the goal-selection rules.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L41)

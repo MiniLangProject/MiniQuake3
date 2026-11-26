@@ -23,7 +23,7 @@ Updates `requested.frameUsed`, `state.currentTextures[unit]` in `mq3.renderer.te
 | `requested` | `dynamic` | — | Mutable record or buffer; this call updates `requested.frameUsed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L112)
 
 <a id="function-function-mq3-renderer-texture-state-bindmultitexture-function-bindmultitexture-state-image0-env0-image1-env1-src-mq3-renderer-texture-state-ml-847371181"></a>
 ### bindMultitexture
@@ -43,7 +43,7 @@ Updates `image1.frameUsed`, `state.currentTextures[1]`, `image0.frameUsed`, `sta
 | `env1` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L131)
 
 <a id="function-function-mq3-renderer-texture-state-create-function-create-host-defaultimage-src-mq3-renderer-texture-state-ml-814002454"></a>
 ### create
@@ -60,7 +60,7 @@ Builds `mq3.renderer.texture_state.State` for `mq3.renderer.texture_state.create
 | `defaultImage` | `dynamic` | — | Initial value for `mq3.renderer.texture_state.State.defaultImage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L68)
 
 <a id="function-function-mq3-renderer-texture-state-emitlog-function-emitlog-state-message-src-mq3-renderer-texture-state-ml-455318900"></a>
 ### emitLog
@@ -77,7 +77,7 @@ Sends texture-state diagnostic text through the optional logging callback.
 | `message` | `dynamic` | — | Argument 2 supplied to `state.services.logFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L77)
 
 <a id="function-function-mq3-renderer-texture-state-fail-function-fail-message-src-mq3-renderer-texture-state-ml-1596140763"></a>
 ### fail
@@ -93,7 +93,7 @@ Creates error `7200` with message `"texture state: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7200,"texture state: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L58)
 
 <a id="constant-constant-mq3-renderer-texture-state-gl-texture0-arb-const-gl-texture0-arb-33984-src-mq3-renderer-texture-state-ml-1734616596"></a>
 ### GL_TEXTURE0_ARB
@@ -102,8 +102,10 @@ Creates error `7200` with message `"texture state: "+message`.
 const GL_TEXTURE0_ARB = 33984
 ```
 
+OpenGL multitexture selector for texture unit 0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L9)
 
 <a id="constant-constant-mq3-renderer-texture-state-gl-texture1-arb-const-gl-texture1-arb-33985-src-mq3-renderer-texture-state-ml-2030731451"></a>
 ### GL_TEXTURE1_ARB
@@ -112,8 +114,10 @@ const GL_TEXTURE0_ARB = 33984
 const GL_TEXTURE1_ARB = 33985
 ```
 
+OpenGL multitexture selector for texture unit 1.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 <a id="constant-constant-mq3-renderer-texture-state-gl-texture-2d-const-gl-texture-2d-3553-src-mq3-renderer-texture-state-ml-1473559641"></a>
 ### GL_TEXTURE_2D
@@ -122,8 +126,10 @@ const GL_TEXTURE1_ARB = 33985
 const GL_TEXTURE_2D = 3553
 ```
 
+OpenGL target for two-dimensional texture objects.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L7)
 
 <a id="function-function-mq3-renderer-texture-state-image-function-image-texnum-src-mq3-renderer-texture-state-ml-1971539513"></a>
 ### image
@@ -139,7 +145,7 @@ Constructs `mq3.renderer.texture_state.Image` with `frameUsed` = `0` and the sup
 | `texnum` | `dynamic` | — | Initial value for `mq3.renderer.texture_state.Image.texnum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L63)
 
 - [mq3.renderer.texture_state.Image](Type-mq3-renderer-texture-state-image-1196657097.md) — struct
 <a id="function-function-mq3-renderer-texture-state-requestedimage-function-requestedimage-state-requested-src-mq3-renderer-texture-state-ml-2028756463"></a>
@@ -157,7 +163,7 @@ Returns `state.defaultImage` from `mq3.renderer.texture_state.requestedImage`; e
 | `requested` | `dynamic` | — | Input tested by `requested!=void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L103)
 
 <a id="function-function-mq3-renderer-texture-state-selecttexture-function-selecttexture-state-unit-src-mq3-renderer-texture-state-ml-1620181749"></a>
 ### selectTexture
@@ -174,7 +180,7 @@ Updates `state.currentTmu` in `mq3.renderer.texture_state.selectTexture`; return
 | `unit` | `dynamic` | — | Value assigned to `state.currentTmu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L84)
 
 <a id="function-function-mq3-renderer-texture-state-services-function-services-src-mq3-renderer-texture-state-ml-388774650"></a>
 ### services
@@ -186,7 +192,7 @@ function services()
 Constructs `mq3.renderer.texture_state.Services` with `bindTextureFn` = `void`, `activeTextureFn` = `void`, `clientActiveTextureFn` = `void`, `logFn` = `void` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L60)
 
 - [mq3.renderer.texture_state.Services](Type-mq3-renderer-texture-state-services-1901593252.md) — struct
 - [mq3.renderer.texture_state.State](Type-mq3-renderer-texture-state-state-1178098449.md) — struct

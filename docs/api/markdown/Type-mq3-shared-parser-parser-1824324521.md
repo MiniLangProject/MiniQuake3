@@ -23,8 +23,10 @@ Parser record for shared.parser, containing `data`, `offset`, `line`.
 data
 ```
 
+Source bytes scanned by the shared token parser.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L9)
 
 <a id="field-field-mq3-shared-parser-parser-line-line-src-mq3-shared-parser-ml-409705140"></a>
 ### line
@@ -33,8 +35,10 @@ data
 line
 ```
 
+Current source line number used in diagnostics.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L13)
 
 <a id="field-field-mq3-shared-parser-parser-offset-offset-src-mq3-shared-parser-ml-2005940166"></a>
 ### offset
@@ -43,5 +47,7 @@ line
 offset
 ```
 
+Byte cursor of the next source character to scan.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L11)

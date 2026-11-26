@@ -33,7 +33,7 @@ Return the absolute value of the numeric argument for ai move runtime.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `0.0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L489)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-addtotarget-function-addtotarget-start-finish-maxdistance-travelled-target-src-mq3-botlib-ai-move-runtime-ml-763467134"></a>
 ### addToTarget
@@ -53,7 +53,7 @@ Advance a look-ahead target along a path segment and return whether the requeste
 | `target` | `dynamic` | — | Mutable three-component look-ahead target written when the requested distance falls on this segment. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L357)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-aircontrol-function-aircontrol-runtime-origin-velocity-goal-src-mq3-botlib-ai-move-runtime-ml-369501802"></a>
 ### airControl
@@ -72,7 +72,7 @@ BotAirControl integrates the original 0.1-second velocity units for up to 50 fra
 | `goal` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L488)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L681)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-anglediff-function-anglediff-first-second-src-mq3-botlib-ai-move-runtime-ml-1350599758"></a>
 ### angleDiff
@@ -89,7 +89,7 @@ Compute the signed difference between two angles and wrap it into the shortest-t
 | `second` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fsub`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L514)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L707)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-avoid-always-const-avoid-always-publicheaders-avoid-always-src-mq3-botlib-ai-move-runtime-ml-1594182771"></a>
 ### AVOID_ALWAYS
@@ -98,8 +98,10 @@ Compute the signed difference between two angles and wrap it into the shortest-t
 const AVOID_ALWAYS = publicHeaders.AVOID_ALWAYS
 ```
 
+Avoidance-spot mode that always rejects paths through the spot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L96)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-avoidreach-tries-const-avoidreach-tries-4-src-mq3-botlib-ai-move-runtime-ml-1950044373"></a>
 ### AVOIDREACH_TRIES
@@ -108,8 +110,10 @@ const AVOID_ALWAYS = publicHeaders.AVOID_ALWAYS
 const AVOIDREACH_TRIES = 4
 ```
 
+Number of failed attempts before a reachability is temporarily avoided.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L98)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-bestreachability-function-bestreachability-runtime-state-goal-travelflags-src-mq3-botlib-ai-move-runtime-ml-1060606427"></a>
 ### bestReachability
@@ -128,7 +132,7 @@ Use `runtime.services.routeTravelTimeFn` to perform `bestReachability`. Return p
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L325)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L518)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-callgroundtrace-function-callgroundtrace-runtime-origin-client-src-mq3-botlib-ai-move-runtime-ml-99486243"></a>
 ### callGroundTrace
@@ -146,7 +150,7 @@ Trace three units downward with crouching bounds through the host ground-trace c
 | `client` | `dynamic` | — | Value passed as argument 6 to `runtime.services.groundTraceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L326)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-checkbarrierjump-function-checkbarrierjump-runtime-state-direction-speed-src-mq3-botlib-ai-move-runtime-ml-137129625"></a>
 ### checkBarrierJump
@@ -165,7 +169,7 @@ BotCheckBarrierJump's callback reports only collision geometry. The runtime owns
 | `speed` | `dynamic` | — | Requested movement speed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L534)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L727)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-checkblocked-function-checkblocked-runtime-state-direction-checkbottom-result-src-mq3-botlib-ai-move-runtime-ml-1400147962"></a>
 ### checkBlocked
@@ -185,7 +189,7 @@ Set `result.blocked` to `true` and `result.blockEntity` to `trace.entity` in `mq
 | `result` | `dynamic` | — | Result record; accesses `blocked` and `blockEntity`. May update `result.blocked` and `result.blockEntity` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L478)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-checkstandingonmover-function-checkstandingonmover-runtime-state-result-src-mq3-botlib-ai-move-runtime-ml-56741670"></a>
 ### checkStandingOnMover
@@ -203,7 +207,7 @@ Update `state.lastReachNum`, `state.reachabilityTime`, `result.flags` and `resul
 | `result` | `dynamic` | — | Result record; accesses `flags`, `blocked` and `blockEntity`. May update `result.flags`, `result.blocked` and `result.blockEntity` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L788)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L981)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-contents-lava-const-contents-lava-8-src-mq3-botlib-ai-move-runtime-ml-872807255"></a>
 ### CONTENTS_LAVA
@@ -212,8 +216,10 @@ Update `state.lastReachNum`, `state.reachabilityTime`, `result.flags` and `resul
 const CONTENTS_LAVA = 8
 ```
 
+Collision contents bit marking lava.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L62)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-contents-slime-const-contents-slime-16-src-mq3-botlib-ai-move-runtime-ml-2036013090"></a>
 ### CONTENTS_SLIME
@@ -222,8 +228,10 @@ const CONTENTS_LAVA = 8
 const CONTENTS_SLIME = 16
 ```
 
+Collision contents bit marking slime.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L64)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-contents-solid-playerclip-const-contents-solid-playerclip-65537-src-mq3-botlib-ai-move-runtime-ml-527001169"></a>
 ### CONTENTS_SOLID_PLAYERCLIP
@@ -232,8 +240,10 @@ const CONTENTS_SLIME = 16
 const CONTENTS_SOLID_PLAYERCLIP = 65537
 ```
 
+Combined collision mask for solid geometry and player-only clipping volumes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L60)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-contents-water-const-contents-water-32-src-mq3-botlib-ai-move-runtime-ml-922051590"></a>
 ### CONTENTS_WATER
@@ -242,8 +252,10 @@ const CONTENTS_SOLID_PLAYERCLIP = 65537
 const CONTENTS_WATER = 32
 ```
 
+Collision contents bit marking water.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L66)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-copyvector-function-copyvector-value-src-mq3-botlib-ai-move-runtime-ml-103266047"></a>
 ### copyVector
@@ -259,7 +271,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for ai move 
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L285)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-create-function-create-pools-aas-router-host-src-mq3-botlib-ai-move-runtime-ml-1744596741"></a>
 ### create
@@ -278,7 +290,7 @@ Create a `mq3.botlib.ai_move_runtime.Runtime` record, initializing `pools` from 
 | `host` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_move_runtime.Runtime.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L282)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-distance-function-distance-a-b-src-mq3-botlib-ai-move-runtime-ml-2115820543"></a>
 ### distance
@@ -295,7 +307,7 @@ Calculate Euclidean distance between two 3D points using the original single-pre
 | `b` | `dynamic` | — | Second three-component point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L289)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-distancefromlinesquared-function-distancefromlinesquared-point-start-finish-src-mq3-botlib-ai-move-runtime-ml-754998545"></a>
 ### distanceFromLineSquared
@@ -313,7 +325,7 @@ Apply `mq3.botlib.ai_move_runtime.vectorDistanceSquared` and `mq3.botlib.ai_move
 | `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L494)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-dot-function-dot-a-b-src-mq3-botlib-ai-move-runtime-ml-1925816749"></a>
 ### dot
@@ -330,7 +342,7 @@ Return the result of `n.fadd(n.fadd(n.fmul(a[0],b[0]),n.fmul(a[1],b[1])),n.fmul(
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L565)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-elevatorstate-function-elevatorstate-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1459700302"></a>
 ### elevatorState
@@ -348,7 +360,7 @@ Use `runtime.services.elevatorStateFn` to perform `elevatorState`.
 | `reach` | `dynamic` | — | Value passed as argument 3 to `runtime.services.elevatorStateFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L524)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L717)
 
 - [mq3.botlib.ai_move_runtime.ElevatorState](Type-mq3-botlib-ai-move-runtime-elevatorstate-1949201620.md) — struct
 <a id="function-function-mq3-botlib-ai-move-runtime-emitattack-function-emitattack-runtime-state-src-mq3-botlib-ai-move-runtime-ml-1307832097"></a>
@@ -366,7 +378,7 @@ Apply `mq3.botlib.elementary_actions.attack` while evaluating `emitAttack`. Retu
 | `state` | `dynamic` | — | AI move runtime state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L433)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitcommand-function-emitcommand-runtime-state-text-src-mq3-botlib-ai-move-runtime-ml-250458504"></a>
 ### emitCommand
@@ -384,7 +396,7 @@ Apply `mq3.botlib.elementary_actions.command` while evaluating `emitCommand`. Re
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L452)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitcrouch-function-emitcrouch-runtime-state-src-mq3-botlib-ai-move-runtime-ml-14006697"></a>
 ### emitCrouch
@@ -401,7 +413,7 @@ Apply `mq3.botlib.elementary_actions.crouch` while evaluating `emitCrouch`. Retu
 | `state` | `dynamic` | — | AI move runtime state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L417)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitdelayedjump-function-emitdelayedjump-runtime-state-src-mq3-botlib-ai-move-runtime-ml-1005886563"></a>
 ### emitDelayedJump
@@ -418,7 +430,7 @@ Apply `mq3.botlib.elementary_actions.delayedJump` while evaluating `emitDelayedJ
 | `state` | `dynamic` | — | AI move runtime state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L425)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitjump-function-emitjump-runtime-state-src-mq3-botlib-ai-move-runtime-ml-430609401"></a>
 ### emitJump
@@ -435,7 +447,7 @@ Apply `mq3.botlib.elementary_actions.jump` while evaluating `emitJump`. Return p
 | `state` | `dynamic` | — | AI move runtime state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L421)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitmoveforward-function-emitmoveforward-runtime-state-src-mq3-botlib-ai-move-runtime-ml-142641847"></a>
 ### emitMoveForward
@@ -452,7 +464,7 @@ Apply `mq3.botlib.elementary_actions.moveForward` while evaluating `emitMoveForw
 | `state` | `dynamic` | — | AI move runtime state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L429)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitmovement-function-emitmovement-runtime-state-direction-speed-src-mq3-botlib-ai-move-runtime-ml-1156606861"></a>
 ### emitMovement
@@ -471,7 +483,7 @@ Send movement direction and speed to elementary actions and report whether the h
 | `speed` | `dynamic` | — | Requested movement speed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L407)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitmoveup-function-emitmoveup-runtime-state-src-mq3-botlib-ai-move-runtime-ml-1792188449"></a>
 ### emitMoveUp
@@ -488,7 +500,7 @@ Apply `mq3.botlib.elementary_actions.moveUp` while evaluating `emitMoveUp`. Retu
 | `state` | `dynamic` | — | AI move runtime state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L447)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitselectweapon-function-emitselectweapon-runtime-state-weapon-src-mq3-botlib-ai-move-runtime-ml-1343873701"></a>
 ### emitSelectWeapon
@@ -506,7 +518,7 @@ Apply `mq3.botlib.elementary_actions.selectWeapon` while evaluating `emitSelectW
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L443)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitview-function-emitview-runtime-state-angles-src-mq3-botlib-ai-move-runtime-ml-142956701"></a>
 ### emitView
@@ -524,7 +536,7 @@ Apply `mq3.botlib.elementary_actions.view` while evaluating `emitView`. Return p
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L438)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emitwalk-function-emitwalk-runtime-state-src-mq3-botlib-ai-move-runtime-ml-1704129737"></a>
 ### emitWalk
@@ -541,7 +553,7 @@ Apply `mq3.botlib.elementary_actions.walk` while evaluating `emitWalk`. Return p
 | `state` | `dynamic` | — | AI move runtime state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L413)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-emptymoveresult-function-emptymoveresult-src-mq3-botlib-ai-move-runtime-ml-1321475224"></a>
 ### emptyMoveResult
@@ -553,7 +565,7 @@ function emptyMoveResult()
 Create a `mq3.botlib.ai_move_runtime.MoveResult` record, initializing `moveDir` as `[0.0,0.0,0.0]` and `idealViewAngles` as `[0.0,0.0,0.0]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L396)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-entitynum-none-const-entitynum-none-1023-src-mq3-botlib-ai-move-runtime-ml-2100838685"></a>
 ### ENTITYNUM_NONE
@@ -562,8 +574,10 @@ Create a `mq3.botlib.ai_move_runtime.MoveResult` record, initializing `moveDir` 
 const ENTITYNUM_NONE = 1023
 ```
 
+Reserved entity number indicating that no game entity is selected.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L58)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-entitynum-world-const-entitynum-world-1022-src-mq3-botlib-ai-move-runtime-ml-1470985788"></a>
 ### ENTITYNUM_WORLD
@@ -572,8 +586,10 @@ const ENTITYNUM_NONE = 1023
 const ENTITYNUM_WORLD = 1022
 ```
 
+Reserved entity number identifying world geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L56)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-external-move-flags-const-external-move-flags-mfl-onground-mfl-waterjump-mfl-teleported-mfl-grapplepull-mfl-walk-src-mq3-botlib-ai-move-runtime-ml-591628661"></a>
 ### EXTERNAL_MOVE_FLAGS
@@ -582,8 +598,10 @@ const ENTITYNUM_WORLD = 1022
 const EXTERNAL_MOVE_FLAGS = MFL_ONGROUND | MFL_WATERJUMP | MFL_TELEPORTED | MFL_GRAPPLEPULL | MFL_WALK
 ```
 
+Combined mask of movement-state flags that callers may supply externally.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L46)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtravelbarrierjump-function-finishtravelbarrierjump-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1085750428"></a>
 ### finishTravelBarrierJump
@@ -601,7 +619,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L462)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L655)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtravelelevator-function-finishtravelelevator-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1490737688"></a>
 ### finishTravelElevator
@@ -619,7 +637,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L587)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L780)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtravelfuncbob-function-finishtravelfuncbob-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-178442484"></a>
 ### finishTravelFuncBob
@@ -637,7 +655,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L708)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L901)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtraveljump-function-finishtraveljump-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1647792096"></a>
 ### finishTravelJump
@@ -655,7 +673,7 @@ BotFinishTravel_Jump: retain maximum in-air speed until just past the landing.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L428)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L621)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtraveljumppad-function-finishtraveljumppad-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1986525396"></a>
 ### finishTravelJumpPad
@@ -673,7 +691,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L635)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L828)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtravelwalkoffledge-function-finishtravelwalkoffledge-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1779860244"></a>
 ### finishTravelWalkOffLedge
@@ -691,7 +709,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L503)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L696)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtravelwaterjump-function-finishtravelwaterjump-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1054644508"></a>
 ### finishTravelWaterJump
@@ -709,7 +727,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L668)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L861)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-finishtravelweaponjump-function-finishtravelweaponjump-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1475600144"></a>
 ### finishTravelWeaponJump
@@ -727,7 +745,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L618)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L811)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-funcbobstate-function-funcbobstate-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1356011508"></a>
 ### funcBobState
@@ -745,7 +763,7 @@ Use `runtime.services.funcBobStateFn` to perform `funcBobState`.
 | `reach` | `dynamic` | — | Value passed as argument 3 to `runtime.services.funcBobStateFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L677)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L870)
 
 - [mq3.botlib.ai_move_runtime.FuncBobState](Type-mq3-botlib-ai-move-runtime-funcbobstate-960080111.md) — struct
 <a id="function-function-mq3-botlib-ai-move-runtime-fuzzypointreachabilityarea-function-fuzzypointreachabilityarea-runtime-origin-src-mq3-botlib-ai-move-runtime-ml-1454296306"></a>
@@ -763,7 +781,7 @@ Find a reachable AAS area at or near an origin using upward and neighboring trac
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L304)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-gapdistance-function-gapdistance-runtime-state-direction-src-mq3-botlib-ai-move-runtime-ml-579777952"></a>
 ### gapDistance
@@ -781,7 +799,7 @@ Use `runtime.services.gapDistanceFn` to perform `gapDistance`. Return paths incl
 | `direction` | `dynamic` | — | Value passed as argument 3 to `runtime.services.gapDistanceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L469)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-grappleconfig-function-grappleconfig-runtime-src-mq3-botlib-ai-move-runtime-ml-159145354"></a>
 ### grappleConfig
@@ -797,7 +815,7 @@ Use `runtime.services.grappleConfigFn` to perform `grappleConfig`. Return paths 
 | `runtime` | `dynamic` | — | AI move runtime; accesses `services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L721)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L914)
 
 - [mq3.botlib.ai_move_runtime.GrappleConfig](Type-mq3-botlib-ai-move-runtime-grappleconfig-2142469774.md) — struct
 <a id="function-function-mq3-botlib-ai-move-runtime-grapplestate-function-grapplestate-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1919743172"></a>
@@ -816,7 +834,7 @@ Use `runtime.services.grappleStateFn` to perform `grappleState`.
 | `reach` | `dynamic` | — | Value passed as argument 3 to `runtime.services.grappleStateFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L728)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L921)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-gravity-function-gravity-runtime-src-mq3-botlib-ai-move-runtime-ml-1470987268"></a>
 ### gravity
@@ -832,7 +850,7 @@ Use `runtime.services.gravityFn` to perform `gravity`. Return paths include `800
 | `runtime` | `dynamic` | — | AI move runtime; accesses `services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L580)
 
 - [mq3.botlib.ai_move_runtime.GroundTrace](Type-mq3-botlib-ai-move-runtime-groundtrace-1608856495.md) — struct
 <a id="function-function-mq3-botlib-ai-move-runtime-horizontalvelocityforjump-function-horizontalvelocityforjump-runtime-zvelocity-start-finish-src-mq3-botlib-ai-move-runtime-ml-944281392"></a>
@@ -852,7 +870,7 @@ AAS_HorizontalVelocityForJump with Baseq3 default physics. A host callback can s
 | `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L379)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L572)
 
 - [mq3.botlib.ai_move_runtime.InitMove](Type-mq3-botlib-ai-move-runtime-initmove-1706906806.md) — struct
 <a id="function-function-mq3-botlib-ai-move-runtime-initmovestate-function-initmovestate-runtime-handle-init-src-mq3-botlib-ai-move-runtime-ml-1495720128"></a>
@@ -871,7 +889,7 @@ Initialize a pooled bot movement state, copy its vectors, and replace only the e
 | `init` | `dynamic` | — | Movement initialization record; accesses `origin`, `velocity`, `viewOffset`, `entityNum` and `client` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L295)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-isswimming-function-isswimming-runtime-state-src-mq3-botlib-ai-move-runtime-ml-1474001585"></a>
 ### isSwimming
@@ -888,7 +906,7 @@ Use `runtime.services.swimmingFn` to perform `isSwimming`.
 | `state` | `dynamic` | — | AI move runtime state; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L462)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-jumpreachrunstart-function-jumpreachrunstart-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-828184324"></a>
 ### jumpReachRunStart
@@ -906,7 +924,7 @@ AAS_JumpReachRunStart predicts two 0.1 second frames at speed 400 away from the 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L395)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L588)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-activegrapple-const-mfl-activegrapple-publicheaders-mfl-activegrapple-src-mq3-botlib-ai-move-runtime-ml-1154446863"></a>
 ### MFL_ACTIVEGRAPPLE
@@ -915,8 +933,10 @@ AAS_JumpReachRunStart predicts two 0.1 second frames at speed 400 away from the 
 const MFL_ACTIVEGRAPPLE = publicHeaders.MFL_ACTIVEGRAPPLE
 ```
 
+Bot is using the grapple hook.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L42)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-againstladder-const-mfl-againstladder-publicheaders-mfl-againstladder-src-mq3-botlib-ai-move-runtime-ml-460561325"></a>
 ### MFL_AGAINSTLADDER
@@ -925,8 +945,10 @@ const MFL_ACTIVEGRAPPLE = publicHeaders.MFL_ACTIVEGRAPPLE
 const MFL_AGAINSTLADDER = publicHeaders.MFL_AGAINSTLADDER
 ```
 
+Bot is against a ladder.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L32)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-barrierjump-const-mfl-barrierjump-publicheaders-mfl-barrierjump-src-mq3-botlib-ai-move-runtime-ml-609939161"></a>
 ### MFL_BARRIERJUMP
@@ -935,8 +957,10 @@ const MFL_AGAINSTLADDER = publicHeaders.MFL_AGAINSTLADDER
 const MFL_BARRIERJUMP = publicHeaders.MFL_BARRIERJUMP
 ```
 
+Bot is performing a barrier jump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L26)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-grapplepull-const-mfl-grapplepull-publicheaders-mfl-grapplepull-src-mq3-botlib-ai-move-runtime-ml-582264202"></a>
 ### MFL_GRAPPLEPULL
@@ -945,8 +969,10 @@ const MFL_BARRIERJUMP = publicHeaders.MFL_BARRIERJUMP
 const MFL_GRAPPLEPULL = publicHeaders.MFL_GRAPPLEPULL
 ```
 
+Bot is being pulled by the grapple.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L38)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-grapplereset-const-mfl-grapplereset-publicheaders-mfl-grapplereset-src-mq3-botlib-ai-move-runtime-ml-2089522038"></a>
 ### MFL_GRAPPLERESET
@@ -955,8 +981,10 @@ const MFL_GRAPPLEPULL = publicHeaders.MFL_GRAPPLEPULL
 const MFL_GRAPPLERESET = publicHeaders.MFL_GRAPPLERESET
 ```
 
+Bot has reset the grapple.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L44)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-onground-const-mfl-onground-publicheaders-mfl-onground-src-mq3-botlib-ai-move-runtime-ml-792567462"></a>
 ### MFL_ONGROUND
@@ -965,8 +993,10 @@ const MFL_GRAPPLERESET = publicHeaders.MFL_GRAPPLERESET
 const MFL_ONGROUND = publicHeaders.MFL_ONGROUND
 ```
 
+Bot is in the ground.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L28)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-swimming-const-mfl-swimming-publicheaders-mfl-swimming-src-mq3-botlib-ai-move-runtime-ml-1243091967"></a>
 ### MFL_SWIMMING
@@ -975,8 +1005,10 @@ const MFL_ONGROUND = publicHeaders.MFL_ONGROUND
 const MFL_SWIMMING = publicHeaders.MFL_SWIMMING
 ```
 
+Bot is swimming.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L30)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-teleported-const-mfl-teleported-publicheaders-mfl-teleported-src-mq3-botlib-ai-move-runtime-ml-2122021362"></a>
 ### MFL_TELEPORTED
@@ -985,8 +1017,10 @@ const MFL_SWIMMING = publicHeaders.MFL_SWIMMING
 const MFL_TELEPORTED = publicHeaders.MFL_TELEPORTED
 ```
 
+Bot is being teleported.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L36)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-walk-const-mfl-walk-publicheaders-mfl-walk-src-mq3-botlib-ai-move-runtime-ml-1664927011"></a>
 ### MFL_WALK
@@ -995,8 +1029,10 @@ const MFL_TELEPORTED = publicHeaders.MFL_TELEPORTED
 const MFL_WALK = publicHeaders.MFL_WALK
 ```
 
+Bot should walk slowly.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L40)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-mfl-waterjump-const-mfl-waterjump-publicheaders-mfl-waterjump-src-mq3-botlib-ai-move-runtime-ml-556771421"></a>
 ### MFL_WATERJUMP
@@ -1005,8 +1041,10 @@ const MFL_WALK = publicHeaders.MFL_WALK
 const MFL_WATERJUMP = publicHeaders.MFL_WATERJUMP
 ```
 
+Bot is waterjumping.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L34)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-modeltype-func-bob-const-modeltype-func-bob-2-src-mq3-botlib-ai-move-runtime-ml-1675677595"></a>
 ### MODELTYPE_FUNC_BOB
@@ -1015,8 +1053,10 @@ const MFL_WATERJUMP = publicHeaders.MFL_WATERJUMP
 const MODELTYPE_FUNC_BOB = 2
 ```
 
+Bot mover-model classification for func bob.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L50)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-modeltype-func-door-const-modeltype-func-door-3-src-mq3-botlib-ai-move-runtime-ml-171156522"></a>
 ### MODELTYPE_FUNC_DOOR
@@ -1025,8 +1065,10 @@ const MODELTYPE_FUNC_BOB = 2
 const MODELTYPE_FUNC_DOOR = 3
 ```
 
+Bot mover-model classification for func door.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L52)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-modeltype-func-plat-const-modeltype-func-plat-1-src-mq3-botlib-ai-move-runtime-ml-2058523656"></a>
 ### MODELTYPE_FUNC_PLAT
@@ -1035,8 +1077,10 @@ const MODELTYPE_FUNC_DOOR = 3
 const MODELTYPE_FUNC_PLAT = 1
 ```
 
+Bot mover-model classification for func plat.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L48)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-modeltype-func-static-const-modeltype-func-static-4-src-mq3-botlib-ai-move-runtime-ml-1341408819"></a>
 ### MODELTYPE_FUNC_STATIC
@@ -1045,8 +1089,10 @@ const MODELTYPE_FUNC_PLAT = 1
 const MODELTYPE_FUNC_STATIC = 4
 ```
 
+Bot mover-model classification for func static.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L54)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-move-crouch-const-move-crouch-publicheaders-move-crouch-src-mq3-botlib-ai-move-runtime-ml-2073805504"></a>
 ### MOVE_CROUCH
@@ -1055,8 +1101,10 @@ const MODELTYPE_FUNC_STATIC = 4
 const MOVE_CROUCH = publicHeaders.MOVE_CROUCH
 ```
 
+Bot movement-mode identifier for crouch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L70)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-move-jump-const-move-jump-publicheaders-move-jump-src-mq3-botlib-ai-move-runtime-ml-7225530"></a>
 ### MOVE_JUMP
@@ -1065,8 +1113,10 @@ const MOVE_CROUCH = publicHeaders.MOVE_CROUCH
 const MOVE_JUMP = publicHeaders.MOVE_JUMP
 ```
 
+Bot movement-mode identifier for jump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L72)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-move-walk-const-move-walk-publicheaders-move-walk-src-mq3-botlib-ai-move-runtime-ml-1680339735"></a>
 ### MOVE_WALK
@@ -1075,8 +1125,10 @@ const MOVE_JUMP = publicHeaders.MOVE_JUMP
 const MOVE_WALK = publicHeaders.MOVE_WALK
 ```
 
+Bot movement-mode identifier for walk.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L68)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-moveindirection-function-moveindirection-runtime-handle-direction-speed-type-src-mq3-botlib-ai-move-runtime-ml-1929481504"></a>
 ### moveInDirection
@@ -1096,7 +1148,7 @@ Use `runtime.services.walkDirectionFn` to perform `moveInDirection`. Return path
 | `type` | `dynamic` | — | Value passed as argument 5 to `runtime.services.walkDirectionFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L893)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L1086)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-moveingoalarea-function-moveingoalarea-runtime-state-goal-src-mq3-botlib-ai-move-runtime-ml-1761577376"></a>
 ### moveInGoalArea
@@ -1114,7 +1166,7 @@ Update `state.lastReachNum`, `state.lastAreaNum`, `state.lastGoalAreaNum` and `s
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `origin` and `areaNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L772)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L965)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-movementviewtarget-function-movementviewtarget-runtime-handle-goal-travelflags-lookahead-target-src-mq3-botlib-ai-move-runtime-ml-132569159"></a>
 ### movementViewTarget
@@ -1135,7 +1187,7 @@ Follow route reachabilities to find a look-ahead view target, stopping at specia
 | `target` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L382)
 
 - [mq3.botlib.ai_move_runtime.MoveResult](Type-mq3-botlib-ai-move-runtime-moveresult-1165725401.md) — struct
 <a id="constant-constant-mq3-botlib-ai-move-runtime-moveresult-blockedbyavoidspot-const-moveresult-blockedbyavoidspot-publicheaders-moveresult-blockedbyavoidspot-src-mq3-botlib-ai-move-runtime-ml-2119590339"></a>
@@ -1145,8 +1197,10 @@ Follow route reachabilities to find a look-ahead view target, stopping at specia
 const MOVERESULT_BLOCKEDBYAVOIDSPOT = publicHeaders.MOVERESULT_BLOCKEDBYAVOIDSPOT
 ```
 
+Bot is blocked by an avoid spot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L86)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-moveresult-movementview-const-moveresult-movementview-publicheaders-moveresult-movementview-src-mq3-botlib-ai-move-runtime-ml-2099968109"></a>
 ### MOVERESULT_MOVEMENTVIEW
@@ -1155,8 +1209,10 @@ const MOVERESULT_BLOCKEDBYAVOIDSPOT = publicHeaders.MOVERESULT_BLOCKEDBYAVOIDSPO
 const MOVERESULT_MOVEMENTVIEW = publicHeaders.MOVERESULT_MOVEMENTVIEW
 ```
 
+Bot uses view for movement.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L74)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-moveresult-movementviewset-const-moveresult-movementviewset-publicheaders-moveresult-movementviewset-src-mq3-botlib-ai-move-runtime-ml-708633795"></a>
 ### MOVERESULT_MOVEMENTVIEWSET
@@ -1165,8 +1221,10 @@ const MOVERESULT_MOVEMENTVIEW = publicHeaders.MOVERESULT_MOVEMENTVIEW
 const MOVERESULT_MOVEMENTVIEWSET = publicHeaders.MOVERESULT_MOVEMENTVIEWSET
 ```
 
+Bot has set the view in movement code.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L80)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-moveresult-movementweapon-const-moveresult-movementweapon-publicheaders-moveresult-movementweapon-src-mq3-botlib-ai-move-runtime-ml-1782836312"></a>
 ### MOVERESULT_MOVEMENTWEAPON
@@ -1175,8 +1233,10 @@ const MOVERESULT_MOVEMENTVIEWSET = publicHeaders.MOVERESULT_MOVEMENTVIEWSET
 const MOVERESULT_MOVEMENTWEAPON = publicHeaders.MOVERESULT_MOVEMENTWEAPON
 ```
 
+Bot uses weapon for movement.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L82)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-moveresult-ontopofobstacle-const-moveresult-ontopofobstacle-publicheaders-moveresult-ontopofobstacle-src-mq3-botlib-ai-move-runtime-ml-200430183"></a>
 ### MOVERESULT_ONTOPOFOBSTACLE
@@ -1185,8 +1245,10 @@ const MOVERESULT_MOVEMENTWEAPON = publicHeaders.MOVERESULT_MOVEMENTWEAPON
 const MOVERESULT_ONTOPOFOBSTACLE = publicHeaders.MOVERESULT_ONTOPOFOBSTACLE
 ```
 
+Bot is ontop of obstacle.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L84)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-moveresult-swimview-const-moveresult-swimview-publicheaders-moveresult-swimview-src-mq3-botlib-ai-move-runtime-ml-685495724"></a>
 ### MOVERESULT_SWIMVIEW
@@ -1195,8 +1257,10 @@ const MOVERESULT_ONTOPOFOBSTACLE = publicHeaders.MOVERESULT_ONTOPOFOBSTACLE
 const MOVERESULT_SWIMVIEW = publicHeaders.MOVERESULT_SWIMVIEW
 ```
 
+Bot uses view for swimming.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L76)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-moveresult-waiting-const-moveresult-waiting-publicheaders-moveresult-waiting-src-mq3-botlib-ai-move-runtime-ml-763238470"></a>
 ### MOVERESULT_WAITING
@@ -1205,8 +1269,10 @@ const MOVERESULT_SWIMVIEW = publicHeaders.MOVERESULT_SWIMVIEW
 const MOVERESULT_WAITING = publicHeaders.MOVERESULT_WAITING
 ```
 
+Bot is waiting for something.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L78)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-movetogoal-function-movetogoal-runtime-handle-goal-travelflags-src-mq3-botlib-ai-move-runtime-ml-864810454"></a>
 ### moveToGoal
@@ -1225,7 +1291,7 @@ Use `runtime.services.againstLadderFn` to perform `moveToGoal`.
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L824)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L1017)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-nextreachability-function-nextreachability-runtime-state-origin-areanum-goal-travelflags-lastareanum-src-mq3-botlib-ai-move-runtime-ml-2133533861"></a>
 ### nextReachability
@@ -1247,7 +1313,7 @@ Choose the next route edge through host callbacks or the local AAS router, prese
 | `lastAreaNum` | `dynamic` | — | Previously visited AAS area number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L370)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-normalize-function-normalize-value-src-mq3-botlib-ai-move-runtime-ml-613622321"></a>
 ### normalize
@@ -1263,7 +1329,7 @@ Return a vector's length and normalized components, using a zero vector when the
 | `value` | `dynamic` | — | Second three-component point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L399)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-onground-function-onground-runtime-state-src-mq3-botlib-ai-move-runtime-ml-248779849"></a>
 ### onGround
@@ -1280,7 +1346,7 @@ Use `runtime.services.onGroundFn` to perform `onGround`. Return paths include `(
 | `state` | `dynamic` | — | AI move runtime state; accesses `origin`, `presenceType`, `entityNum` and `moveFlags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L456)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-op-init-move-state-const-op-init-move-state-557-src-mq3-botlib-ai-move-runtime-ml-2058572358"></a>
 ### OP_INIT_MOVE_STATE
@@ -1289,8 +1355,10 @@ Use `runtime.services.onGroundFn` to perform `onGround`. Return paths include `(
 const OP_INIT_MOVE_STATE = 557
 ```
 
+Bot-library syscall identifier for init move state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-op-move-in-direction-const-op-move-in-direction-550-src-mq3-botlib-ai-move-runtime-ml-620804837"></a>
 ### OP_MOVE_IN_DIRECTION
@@ -1299,8 +1367,10 @@ const OP_INIT_MOVE_STATE = 557
 const OP_MOVE_IN_DIRECTION = 550
 ```
 
+Bot-library syscall identifier for move in direction.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L18)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-op-move-to-goal-const-op-move-to-goal-549-src-mq3-botlib-ai-move-runtime-ml-1022897155"></a>
 ### OP_MOVE_TO_GOAL
@@ -1309,8 +1379,10 @@ const OP_MOVE_IN_DIRECTION = 550
 const OP_MOVE_TO_GOAL = 549
 ```
 
+Bot-library syscall identifier for move to goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-op-movement-view-target-const-op-movement-view-target-554-src-mq3-botlib-ai-move-runtime-ml-506498585"></a>
 ### OP_MOVEMENT_VIEW_TARGET
@@ -1319,8 +1391,10 @@ const OP_MOVE_TO_GOAL = 549
 const OP_MOVEMENT_VIEW_TARGET = 554
 ```
 
+Bot-library syscall identifier for movement view target.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L22)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-op-reachability-area-const-op-reachability-area-553-src-mq3-botlib-ai-move-runtime-ml-914729588"></a>
 ### OP_REACHABILITY_AREA
@@ -1329,8 +1403,10 @@ const OP_MOVEMENT_VIEW_TARGET = 554
 const OP_REACHABILITY_AREA = 553
 ```
 
+Bot-library syscall identifier for area reachability area.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-pointcontents-function-pointcontents-runtime-point-src-mq3-botlib-ai-move-runtime-ml-545864916"></a>
 ### pointContents
@@ -1347,7 +1423,7 @@ Use `runtime.services.pointContentsFn` to perform `pointContents`.
 | `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L646)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L839)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-reachabilityarea-function-reachabilityarea-runtime-origin-client-src-mq3-botlib-ai-move-runtime-ml-78405339"></a>
 ### reachabilityArea
@@ -1365,7 +1441,7 @@ Resolve the movement area beneath a bot, including elevators, bobbing movers, sw
 | `client` | `dynamic` | — | Value passed as argument 6 to `runtime.services.groundTraceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L334)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-reachabilitytime-function-reachabilitytime-reach-src-mq3-botlib-ai-move-runtime-ml-471805713"></a>
 ### reachabilityTime
@@ -1381,7 +1457,7 @@ Choose the movement timeout for the reachability travel type, including special 
 | `reach` | `dynamic` | — | AAS reachability record; accesses `travelType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L341)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L534)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-reachavoided-function-reachavoided-state-reach-origin-src-mq3-botlib-ai-move-runtime-ml-1918995032"></a>
 ### reachAvoided
@@ -1399,7 +1475,7 @@ Apply `mq3.botlib.ai_move_runtime.distanceFromLineSquared` and `mq3.botlib.ai_mo
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L504)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-resetgrapple-function-resetgrapple-runtime-state-src-mq3-botlib-ai-move-runtime-ml-1030653865"></a>
 ### resetGrapple
@@ -1416,7 +1492,7 @@ Set `state.moveFlags` to `state.moveFlags&(~MFL_ACTIVEGRAPPLE)` and `state.grapp
 | `state` | `dynamic` | — | AI move runtime state; accesses `lastReachNum`, `moveFlags` and `grappleVisibleTime`. May update `state.moveFlags` and `state.grappleVisibleTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L734)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L927)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-resulttype-badgrapplepath-const-resulttype-badgrapplepath-publicheaders-resulttype-badgrapplepath-src-mq3-botlib-ai-move-runtime-ml-1795534443"></a>
 ### RESULTTYPE_BADGRAPPLEPATH
@@ -1425,8 +1501,10 @@ Set `state.moveFlags` to `state.moveFlags&(~MFL_ACTIVEGRAPPLE)` and `state.grapp
 const RESULTTYPE_BADGRAPPLEPATH = publicHeaders.RESULTTYPE_BADGRAPPLEPATH
 ```
 
+Grapple path is obstructed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L92)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-resulttype-elevatorup-const-resulttype-elevatorup-publicheaders-resulttype-elevatorup-src-mq3-botlib-ai-move-runtime-ml-2142609165"></a>
 ### RESULTTYPE_ELEVATORUP
@@ -1435,8 +1513,10 @@ const RESULTTYPE_BADGRAPPLEPATH = publicHeaders.RESULTTYPE_BADGRAPPLEPATH
 const RESULTTYPE_ELEVATORUP = publicHeaders.RESULTTYPE_ELEVATORUP
 ```
 
+Elevator is up.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L88)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-resulttype-insolidarea-const-resulttype-insolidarea-publicheaders-resulttype-insolidarea-src-mq3-botlib-ai-move-runtime-ml-1451592037"></a>
 ### RESULTTYPE_INSOLIDAREA
@@ -1445,8 +1525,10 @@ const RESULTTYPE_ELEVATORUP = publicHeaders.RESULTTYPE_ELEVATORUP
 const RESULTTYPE_INSOLIDAREA = publicHeaders.RESULTTYPE_INSOLIDAREA
 ```
 
+Stuck in solid area, this is bad.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L94)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-resulttype-waitforfuncbobbing-const-resulttype-waitforfuncbobbing-publicheaders-resulttype-waitforfuncbobbing-src-mq3-botlib-ai-move-runtime-ml-279925265"></a>
 ### RESULTTYPE_WAITFORFUNCBOBBING
@@ -1455,8 +1537,10 @@ const RESULTTYPE_INSOLIDAREA = publicHeaders.RESULTTYPE_INSOLIDAREA
 const RESULTTYPE_WAITFORFUNCBOBBING = publicHeaders.RESULTTYPE_WAITFORFUNCBOBBING
 ```
 
+Waiting for func bobbing to arrive.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L90)
 
 - [mq3.botlib.ai_move_runtime.Runtime](Type-mq3-botlib-ai-move-runtime-runtime-945081511.md) — struct
 <a id="function-function-mq3-botlib-ai-move-runtime-services-function-services-context-src-mq3-botlib-ai-move-runtime-ml-755952669"></a>
@@ -1473,7 +1557,7 @@ Create a `mq3.botlib.ai_move_runtime.Services` record, initializing `context` fr
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L276)
 
 - [mq3.botlib.ai_move_runtime.Services](Type-mq3-botlib-ai-move-runtime-services-49942585.md) — struct
 <a id="function-function-mq3-botlib-ai-move-runtime-signedrandom-function-signedrandom-runtime-src-mq3-botlib-ai-move-runtime-ml-467566224"></a>
@@ -1490,7 +1574,7 @@ Use `runtime.services.randomFn` to perform `signedRandom`. Return paths include 
 | `runtime` | `dynamic` | — | AI move runtime; accesses `services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L642)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L835)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-stopgrapple-function-stopgrapple-runtime-state-config-src-mq3-botlib-ai-move-runtime-ml-196550677"></a>
 ### stopGrapple
@@ -1508,7 +1592,7 @@ Set `state.moveFlags` to `(state.moveFlags&(~MFL_ACTIVEGRAPPLE))|MFL_GRAPPLERESE
 | `config` | `dynamic` | — | Configuration record; accesses `offhand` and `offCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L742)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L935)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-move-runtime-ml-169953587"></a>
 ### supportsTrap
@@ -1524,7 +1608,7 @@ Test `op==OP_MOVE_TO_GOAL or op==OP_MOVE_IN_DIRECTION or op==OP_REACHABILITY_ARE
 | `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L906)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L1099)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelbarrierjump-function-travelbarrierjump-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-751989150"></a>
 ### travelBarrierJump
@@ -1542,7 +1626,7 @@ BotTravel_BarrierJump and its airborne finish path.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L450)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L643)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelcrouch-function-travelcrouch-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1020778532"></a>
 ### travelCrouch
@@ -1560,7 +1644,7 @@ BotTravel_Crouch: always crouch and move horizontally towards the reach end.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L558)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelelevator-function-travelelevator-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1692220956"></a>
 ### travelElevator
@@ -1578,7 +1662,7 @@ BotTravel_Elevator depends on live mover bounds/origin and entity tracing. Missi
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L553)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L746)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelfuncbob-function-travelfuncbob-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1984710090"></a>
 ### travelFuncBob
@@ -1596,7 +1680,7 @@ Set `state.reachabilityTime` to `0.0` in `mq3.botlib.ai_move_runtime.travelFuncB
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L685)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L878)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelgrapple-function-travelgrapple-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-892003882"></a>
 ### travelGrapple
@@ -1614,7 +1698,7 @@ Update `state.moveFlags`, `state.grappleVisibleTime`, `state.lastGrappleDist` an
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish` and `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L749)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L942)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-traveljump-function-traveljump-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-2107854028"></a>
 ### travelJump
@@ -1632,7 +1716,7 @@ BotTravel_Jump, including its ten-unit gap scan and jump/delayed-jump thresholds
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L403)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L596)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-traveljumppad-function-traveljumppad-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-916212670"></a>
 ### travelJumpPad
@@ -1650,7 +1734,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L627)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L820)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelladder-function-travelladder-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-323737460"></a>
 ### travelLadder
@@ -1668,7 +1752,7 @@ BotTravel_Ladder: face along the vertically weighted ladder direction and use th
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L440)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L633)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelswim-function-travelswim-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-233855088"></a>
 ### travelSwim
@@ -1686,7 +1770,7 @@ BotTravel_Swim is shared by the grounded and airborne switches.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L651)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L844)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelteleport-function-travelteleport-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-687162316"></a>
 ### travelTeleport
@@ -1704,7 +1788,7 @@ BotTravel_Teleport. The airborne finish case is an intentional no-op in BotMoveT
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L543)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L736)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelwalk-function-travelwalk-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-261089188"></a>
 ### travelWalk
@@ -1722,7 +1806,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start`, `finish` and `areaNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L541)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelwalkoffledge-function-travelwalkoffledge-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1188212200"></a>
 ### travelWalkOffLedge
@@ -1740,7 +1824,7 @@ BotTravel_WalkOffLedge selects a careful vertical drop speed or the ballistic ho
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L472)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L665)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelwaterjump-function-travelwaterjump-runtime-state-reach-src-mq3-botlib-ai-move-runtime-ml-1741001034"></a>
 ### travelWaterJump
@@ -1758,7 +1842,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult`, `mq3.botlib.ai_move_runtime.
 | `reach` | `dynamic` | — | AAS reachability record; accesses `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L659)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L852)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-travelweaponjump-function-travelweaponjump-runtime-state-reach-weapon-src-mq3-botlib-ai-move-runtime-ml-1390896692"></a>
 ### travelWeaponJump
@@ -1777,7 +1861,7 @@ Shared source body for BotTravel_RocketJump and BotTravel_BFGJump.
 | `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L598)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L791)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-unsupportedtravel-function-unsupportedtravel-reach-src-mq3-botlib-ai-move-runtime-ml-1374214695"></a>
 ### unsupportedTravel
@@ -1793,7 +1877,7 @@ Apply `mq3.botlib.ai_move_runtime.emptyMoveResult` while evaluating `unsupported
 | `reach` | `dynamic` | — | AAS reachability record; accesses `travelType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L781)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L974)
 
 <a id="function-function-mq3-botlib-ai-move-runtime-vectordistancesquared-function-vectordistancesquared-a-b-src-mq3-botlib-ai-move-runtime-ml-62805857"></a>
 ### vectorDistanceSquared
@@ -1810,7 +1894,7 @@ Calculate squared Euclidean distance between two three-component points for ai m
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L486)
 
 - [mq3.botlib.ai_move_runtime.ViewTargetResult](Type-mq3-botlib-ai-move-runtime-viewtargetresult-2009883812.md) — struct
 <a id="constant-constant-mq3-botlib-ai-move-runtime-weapon-bfg-const-weapon-bfg-9-src-mq3-botlib-ai-move-runtime-ml-1421360106"></a>
@@ -1820,8 +1904,10 @@ Calculate squared Euclidean distance between two three-component points for ai m
 const WEAPON_BFG = 9
 ```
 
+Weapon identifier used when planning a BFG-assisted jump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L124)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-weapon-grapple-const-weapon-grapple-10-src-mq3-botlib-ai-move-runtime-ml-1163723134"></a>
 ### WEAPON_GRAPPLE
@@ -1830,8 +1916,10 @@ const WEAPON_BFG = 9
 const WEAPON_GRAPPLE = 10
 ```
 
+Weapon identifier used to fire the grappling hook.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L126)
 
 <a id="constant-constant-mq3-botlib-ai-move-runtime-weapon-rocket-launcher-const-weapon-rocket-launcher-5-src-mq3-botlib-ai-move-runtime-ml-1852194754"></a>
 ### WEAPON_ROCKET_LAUNCHER
@@ -1840,5 +1928,7 @@ const WEAPON_GRAPPLE = 10
 const WEAPON_ROCKET_LAUNCHER = 5
 ```
 
+Weapon identifier used when planning a rocket-assisted jump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L60)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L122)

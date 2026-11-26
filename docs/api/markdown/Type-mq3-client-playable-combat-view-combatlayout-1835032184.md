@@ -12,7 +12,7 @@ struct CombatLayout
 Stores playable combat view combat layout record, including `centerX`, `centerY`, `weaponX`, `weaponY`, `weaponWidth`, `weaponHeight`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L66)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable combat view combat layout record, including `centerX`, `centerY`
 centerX
 ```
 
+When constructing this record, `layout` supplies `width/2` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L68)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-centery-centery-src-mq3-client-playable-combat-view-ml-1169275575"></a>
 ### centerY
@@ -33,8 +35,10 @@ centerX
 centerY
 ```
 
+When constructing this record, `layout` supplies `height/2` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L70)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weaponheight-weaponheight-src-mq3-client-playable-combat-view-ml-623050753"></a>
 ### weaponHeight
@@ -43,8 +47,10 @@ centerY
 weaponHeight
 ```
 
+When constructing this record, `layout` supplies `weaponHeight` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L78)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weaponwidth-weaponwidth-src-mq3-client-playable-combat-view-ml-163462139"></a>
 ### weaponWidth
@@ -53,8 +59,10 @@ weaponHeight
 weaponWidth
 ```
 
+When constructing this record, `layout` supplies `weaponWidth` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L76)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weaponx-weaponx-src-mq3-client-playable-combat-view-ml-664579599"></a>
 ### weaponX
@@ -63,8 +71,10 @@ weaponWidth
 weaponX
 ```
 
+When constructing this record, `layout` supplies `width/2-weaponWidth/2` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L72)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weapony-weapony-src-mq3-client-playable-combat-view-ml-1477719499"></a>
 ### weaponY
@@ -73,5 +83,7 @@ weaponX
 weaponY
 ```
 
+When constructing this record, `layout` supplies `height-weaponHeight` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L74)

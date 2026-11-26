@@ -12,7 +12,7 @@ struct Runtime
 Data record for `mq3.platform.win_input_runtime.Runtime`; groups `appActive`, `mouse`, `joystick`, `midi`, `events`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L90)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.platform.win_input_runtime.Runtime`; groups `appActive`, `m
 appActive
 ```
 
+Whether the application has focus and may acquire input devices.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L92)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-events-events-src-mq3-platform-win-input-runtime-ml-686134057"></a>
 ### events
@@ -33,8 +35,10 @@ appActive
 events
 ```
 
+Pending input or system events awaiting delivery.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L100)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-joystick-joystick-src-mq3-platform-win-input-runtime-ml-1867915267"></a>
 ### joystick
@@ -43,8 +47,10 @@ events
 joystick
 ```
 
+Joystick device state and previous input samples.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L96)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-midi-midi-src-mq3-platform-win-input-runtime-ml-1513812981"></a>
 ### midi
@@ -53,8 +59,10 @@ joystick
 midi
 ```
 
+MIDI device selection and input state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L98)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-mouse-mouse-src-mq3-platform-win-input-runtime-ml-1878604775"></a>
 ### mouse
@@ -63,5 +71,7 @@ midi
 mouse
 ```
 
+Mouse device state and pending relative input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L94)

@@ -12,7 +12,7 @@ struct Node
 Node record for qcommon.huffman, containing `code`, `weight`, `next`, `prev`, `parent`, `left`, and 2 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L13)
 
 ## Members
 
@@ -23,8 +23,10 @@ Node record for qcommon.huffman, containing `code`, `weight`, `next`, `prev`, `p
 code
 ```
 
+Symbol identifier or internal-node marker represented by this node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L15)
 
 <a id="field-field-mq3-qcommon-huffman-node-head-head-src-mq3-qcommon-huffman-ml-2002769213"></a>
 ### head
@@ -33,8 +35,10 @@ code
 head
 ```
 
+Highest ranked node in block.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L29)
 
 <a id="field-field-mq3-qcommon-huffman-node-left-left-src-mq3-qcommon-huffman-ml-57343603"></a>
 ### left
@@ -43,8 +47,10 @@ head
 left
 ```
 
+Index of the child selected by a zero bit.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L25)
 
 <a id="field-field-mq3-qcommon-huffman-node-next-next-src-mq3-qcommon-huffman-ml-1216785475"></a>
 ### next
@@ -53,8 +59,10 @@ left
 next
 ```
 
+Next node in the adaptive Huffman weight-order list.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L19)
 
 <a id="field-field-mq3-qcommon-huffman-node-parent-parent-src-mq3-qcommon-huffman-ml-1770627737"></a>
 ### parent
@@ -63,8 +71,10 @@ next
 parent
 ```
 
+Index of the parent Huffman tree node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L23)
 
 <a id="field-field-mq3-qcommon-huffman-node-prev-prev-src-mq3-qcommon-huffman-ml-1617485275"></a>
 ### prev
@@ -73,8 +83,10 @@ parent
 prev
 ```
 
+Previous node in the adaptive Huffman weight-order list.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L21)
 
 <a id="field-field-mq3-qcommon-huffman-node-right-right-src-mq3-qcommon-huffman-ml-745428569"></a>
 ### right
@@ -83,8 +95,10 @@ prev
 right
 ```
 
+Index of the child selected by a one bit.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L27)
 
 <a id="field-field-mq3-qcommon-huffman-node-weight-weight-src-mq3-qcommon-huffman-ml-937712713"></a>
 ### weight
@@ -93,5 +107,7 @@ right
 weight
 ```
 
+Occurrence count used to order nodes in the adaptive Huffman tree.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L17)

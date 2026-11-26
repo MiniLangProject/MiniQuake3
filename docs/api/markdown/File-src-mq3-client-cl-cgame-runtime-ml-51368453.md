@@ -37,7 +37,7 @@ Calls `state.host.addCommandFn` from engine client client game runtime `CL_AddCg
 | `cmdName` | `dynamic` | — | Value used by `if state==void or cmdName==void then return fail("invalid command") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L241)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-adjusttimedelta-function-cl-adjusttimedelta-state-src-mq3-client-cl-cgame-runtime-ml-1071581913"></a>
 ### CL_AdjustTimeDelta
@@ -53,7 +53,7 @@ Calls `mq3.client.cgame_time.adjustTimeDelta` from engine client client game run
 | `state` | `dynamic` | — | Record read through `state.timing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L352)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cgameerror-function-cl-cgameerror-state-text-src-mq3-client-cl-cgame-runtime-ml-2106570848"></a>
 ### CL_CgameError
@@ -70,7 +70,7 @@ Calls `state.host.errorFn` from engine client client game runtime `CL_CgameError
 | `text` | `dynamic` | — | Text consumed or emitted by `CL_CgameError` in the engine client client game runtime path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L245)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cgamerendering-function-cl-cgamerendering-state-stereo-src-mq3-client-cl-cgame-runtime-ml-815099127"></a>
 ### CL_CGameRendering
@@ -87,7 +87,7 @@ Calls `mq3.client.cgame_vm.drawActiveFrame` from engine client client game runti
 | `stereo` | `dynamic` | — | Value used by `return cgameVm.drawActiveFrame(state.vm,state.timing.serverTime,stereo,state.demoPlaying)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L346)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cgamesystemcalls-function-cl-cgamesystemcalls-state-base-src-mq3-client-cl-cgame-runtime-ml-70939966"></a>
 ### CL_CgameSystemCalls
@@ -104,7 +104,7 @@ Calls `mq3.vm.syscall_cgame.dispatch` from engine client client game runtime `CL
 | `base` | `dynamic` | — | Value used by `return cgameSyscall.dispatch(state.syscallHost,state.syscallVm,base)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L330)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cm-loadmap-function-cl-cm-loadmap-state-mapname-src-mq3-client-cl-cgame-runtime-ml-872321206"></a>
 ### CL_CM_LoadMap
@@ -121,7 +121,7 @@ Updates `state.mapChecksum` during engine client client game runtime `CL_CM_Load
 | `mapname` | `dynamic` | — | Value used by `if state==void or mapname==void then return fail("invalid map") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L317)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-configstringmodified-function-cl-configstringmodified-state-index-value-src-mq3-client-cl-cgame-runtime-ml-1235629768"></a>
 ### CL_ConfigstringModified
@@ -139,7 +139,7 @@ Calls `mq3.client.cl_cgame_runtime.rebuildGameState` from engine client client g
 | `value` | `dynamic` | — | Value used by `return rebuildGameState(state,index,value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L273)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-firstsnapshot-function-cl-firstsnapshot-state-src-mq3-client-cl-cgame-runtime-ml-1726194637"></a>
 ### CL_FirstSnapshot
@@ -155,7 +155,7 @@ Calls `mq3.client.cgame_time.firstSnapshot` from engine client client game runti
 | `state` | `dynamic` | — | Record read through `state.timing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L355)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-gamecommand-function-cl-gamecommand-state-src-mq3-client-cl-cgame-runtime-ml-1403197937"></a>
 ### CL_GameCommand
@@ -171,7 +171,7 @@ Calls `mq3.client.cgame_vm.consoleCommand` from engine client client game runtim
 | `state` | `dynamic` | — | Record read through `state.vm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L342)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getcurrentcmdnumber-function-cl-getcurrentcmdnumber-state-src-mq3-client-cl-cgame-runtime-ml-898207197"></a>
 ### CL_GetCurrentCmdNumber
@@ -187,7 +187,7 @@ Evaluates engine client client game runtime `CL_GetCurrentCmdNumber` and returns
 | `state` | `dynamic` | — | Record read through `state.cmdNumber`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L181)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getcurrentsnapshotnumber-function-cl-getcurrentsnapshotnumber-state-src-mq3-client-cl-cgame-runtime-ml-1545689277"></a>
 ### CL_GetCurrentSnapshotNumber
@@ -203,7 +203,7 @@ Calls `mq3.vm.syscall_cgame.SnapshotNumber` from engine client client game runti
 | `state` | `dynamic` | — | Record read through `state.snapshots.snap.messageNum`, `state.snapshots.snap.serverTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L194)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getgamestate-function-cl-getgamestate-state-src-mq3-client-cl-cgame-runtime-ml-858766159"></a>
 ### CL_GetGameState
@@ -219,7 +219,7 @@ Calls `mq3.client.cl_cgame_runtime.copyData` from engine client client game runt
 | `state` | `dynamic` | — | Record read through `state.gameState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L157)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getglconfig-function-cl-getglconfig-state-src-mq3-client-cl-cgame-runtime-ml-848016633"></a>
 ### CL_GetGlconfig
@@ -235,7 +235,7 @@ Calls `mq3.client.cl_cgame_runtime.copyData` from engine client client game runt
 | `state` | `dynamic` | — | Record read through `state.glconfig`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L160)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getparseentitystate-function-cl-getparseentitystate-state-parseentitynumber-src-mq3-client-cl-cgame-runtime-ml-1701638340"></a>
 ### CL_GetParseEntityState
@@ -252,7 +252,7 @@ Calls `mq3.client.cl_cgame_runtime.EntityResult` from engine client client game 
 | `parseEntityNumber` | `dynamic` | — | Value used by `if parseEntityNumber>=parsed.parseEntitiesNum then return fail("future parse entity") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L186)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getservercommand-function-cl-getservercommand-state-servercommandnumber-src-mq3-client-cl-cgame-runtime-ml-1698996452"></a>
 ### CL_GetServerCommand
@@ -269,7 +269,7 @@ Updates `state.lastExecutedServerCommand` during engine client client game runti
 | `serverCommandNumber` | `dynamic` | — | Value used by `result=serverCommands.get(state.commandStream,host,serverCommandNumber)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L307)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getsnapshot-function-cl-getsnapshot-state-snapshotnumber-src-mq3-client-cl-cgame-runtime-ml-1928416"></a>
 ### CL_GetSnapshot
@@ -286,7 +286,7 @@ Calls `mq3.vm.syscall_cgame.BytesResult`, `mq3.client.cl_cgame_runtime.snapshotB
 | `snapshotNumber` | `dynamic` | — | Value used by `if snapshotNumber>current.messageNum then return fail("future snapshot") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L223)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getusercmd-function-cl-getusercmd-state-cmdnumber-src-mq3-client-cl-cgame-runtime-ml-510619590"></a>
 ### CL_GetUserCmd
@@ -303,7 +303,7 @@ Calls `mq3.client.command_ring.get`, `mq3.vm.syscall_cgame.BytesResult`, `mq3.cl
 | `cmdNumber` | `dynamic` | — | Value used by `value=commandRing.get(state.commands,state.cmdNumber,cmdNumber)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L173)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-initcgame-function-cl-initcgame-state-src-mq3-client-cl-cgame-runtime-ml-473607661"></a>
 ### CL_InitCGame
@@ -319,7 +319,7 @@ Calls `mq3.client.cgame_vm.initialize` from engine client client game runtime `C
 | `state` | `dynamic` | — | Record read through `state.vm`, `state.serverMessageSequence`, `state.lastExecutedServerCommand`, `state.clientNum` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L336)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-setcgametime-function-cl-setcgametime-state-src-mq3-client-cl-cgame-runtime-ml-517417929"></a>
 ### CL_SetCGameTime
@@ -335,7 +335,7 @@ Calls `mq3.client.cgame_time.setCGameTime` from engine client client game runtim
 | `state` | `dynamic` | — | Record read through `state.timing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L358)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-setusercmdvalue-function-cl-setusercmdvalue-state-usercmdvalue-sensitivityscale-src-mq3-client-cl-cgame-runtime-ml-2121790548"></a>
 ### CL_SetUserCmdValue
@@ -353,7 +353,7 @@ Calls `mq3.client.cgame_usercmd.set` from engine client client game runtime `CL_
 | `sensitivityScale` | `dynamic` | — | Value used by `return cgameUsercmd.set(state.usercmd,userCmdValue,sensitivityScale)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L237)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-shutdowncgame-function-cl-shutdowncgame-state-src-mq3-client-cl-cgame-runtime-ml-891191309"></a>
 ### CL_ShutdownCGame
@@ -369,7 +369,7 @@ Calls `mq3.client.cgame_vm.shutdown` from engine client client game runtime `CL_
 | `state` | `dynamic` | — | Record read through `state.vm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L323)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-cmd-backup-const-cmd-backup-64-src-mq3-client-cl-cgame-runtime-ml-1056211241"></a>
 ### CMD_BACKUP
@@ -378,8 +378,10 @@ Calls `mq3.client.cgame_vm.shutdown` from engine client client game runtime `CL_
 const CMD_BACKUP = 64
 ```
 
+Number of recent user commands retained in the command-history ring.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L21)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-copydata-function-copydata-value-src-mq3-client-cl-cgame-runtime-ml-638219329"></a>
 ### copyData
@@ -395,7 +397,7 @@ Calls `copyBytes` from engine client client game runtime `copyData`. The final p
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `copyData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L135)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-create-function-create-host-vmstate-timingstate-syscallhost-syscallvm-src-mq3-client-cl-cgame-runtime-ml-568123128"></a>
 ### create
@@ -415,7 +417,7 @@ Calls `mq3.client.cl_cgame_runtime.services`, `mq3.client.snapshot_command.creat
 | `syscallVm` | `dynamic` | — | Value used by `return State(host,defaultGameState(),bytes(cgameSyscall.GLCONFIG_SIZE,0),configstrings,commandRing.create(),0,snapshots,stream,cgameUsercmd.cr...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L148)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-cs-systeminfo-const-cs-systeminfo-1-src-mq3-client-cl-cgame-runtime-ml-493024408"></a>
 ### CS_SYSTEMINFO
@@ -424,8 +426,10 @@ Calls `mq3.client.cl_cgame_runtime.services`, `mq3.client.snapshot_command.creat
 const CS_SYSTEMINFO = 1
 ```
 
+Server configuration-string index for systeminfo; shared by the client and game protocol.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L34)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-defaultgamestate-function-defaultgamestate-src-mq3-client-cl-cgame-runtime-ml-1337913882"></a>
 ### defaultGameState
@@ -437,7 +441,7 @@ function defaultGameState()
 Calls `mq3.compat.numeric.writeU32` from engine client client game runtime `defaultGameState`. The final path returns `output`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L140)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-encodesnapshot-function-encodesnapshot-snapshots-value-output-src-mq3-client-cl-cgame-runtime-ml-2138111045"></a>
 ### encodeSnapshot
@@ -455,7 +459,7 @@ Calls `fillBytes`, `mq3.compat.numeric.writeU32`, `copyBytes` and additional hel
 | `output` | `dynamic` | — | Sequence whose length/content is inspected by `encodeSnapshot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L207)
 
 - [mq3.client.cl_cgame_runtime.EntityResult](Type-mq3-client-cl-cgame-runtime-entityresult-75123767.md) — struct
 <a id="function-function-mq3-client-cl-cgame-runtime-fail-function-fail-message-src-mq3-client-cl-cgame-runtime-ml-683619787"></a>
@@ -472,7 +476,7 @@ Creates the engine client client game runtime error `7760` with diagnostic text 
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"cl_cgame: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L130)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-floatasint-function-floatasint-value-src-mq3-client-cl-cgame-runtime-ml-773324149"></a>
 ### FloatAsInt
@@ -488,7 +492,7 @@ Adapts `mq3.compat.numeric.i32` to engine client client game runtime `FloatAsInt
 | `value` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.i32`; passed as `n.floatBits(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L326)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-configstrings-const-max-configstrings-1024-src-mq3-client-cl-cgame-runtime-ml-2133110194"></a>
 ### MAX_CONFIGSTRINGS
@@ -497,8 +501,10 @@ Adapts `mq3.compat.numeric.i32` to engine client client game runtime `FloatAsInt
 const MAX_CONFIGSTRINGS = 1024
 ```
 
+Capacity limit for the configstrings collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L30)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-entities-in-snapshot-const-max-entities-in-snapshot-256-src-mq3-client-cl-cgame-runtime-ml-722545178"></a>
 ### MAX_ENTITIES_IN_SNAPSHOT
@@ -507,8 +513,10 @@ const MAX_CONFIGSTRINGS = 1024
 const MAX_ENTITIES_IN_SNAPSHOT = 256
 ```
 
+Capacity limit for the entities in snapshot collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L28)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-gamestate-chars-const-max-gamestate-chars-16000-src-mq3-client-cl-cgame-runtime-ml-1839155974"></a>
 ### MAX_GAMESTATE_CHARS
@@ -517,8 +525,10 @@ const MAX_ENTITIES_IN_SNAPSHOT = 256
 const MAX_GAMESTATE_CHARS = 16000
 ```
 
+Capacity of the packed server configuration-string character storage.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L32)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-parse-entities-const-max-parse-entities-2048-src-mq3-client-cl-cgame-runtime-ml-1754286235"></a>
 ### MAX_PARSE_ENTITIES
@@ -527,8 +537,10 @@ const MAX_GAMESTATE_CHARS = 16000
 const MAX_PARSE_ENTITIES = 2048
 ```
 
+Capacity limit for the parse entities collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L25)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-packet-backup-const-packet-backup-32-src-mq3-client-cl-cgame-runtime-ml-1308431776"></a>
 ### PACKET_BACKUP
@@ -537,8 +549,10 @@ const MAX_PARSE_ENTITIES = 2048
 const PACKET_BACKUP = 32
 ```
 
+Number of packet records retained in the client packet-history ring.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L23)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-packgamestate-function-packgamestate-state-src-mq3-client-cl-cgame-runtime-ml-1397593309"></a>
 ### packGameState
@@ -554,7 +568,7 @@ Updates `state.gameState` during engine client client game runtime `packGameStat
 | `state` | `dynamic` | — | Mutable engine client client game runtime record/storage; this routine assigns `state.gameState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L252)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-rebuildgamestate-function-rebuildgamestate-state-index-value-src-mq3-client-cl-cgame-runtime-ml-58510184"></a>
 ### rebuildGameState
@@ -572,7 +586,7 @@ Updates `state.configstrings[index]` during engine client client game runtime `r
 | `value` | `dynamic` | — | Value tested by `if state.configstrings[index]==value` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L264)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-services-function-services-src-mq3-client-cl-cgame-runtime-ml-695559202"></a>
 ### services
@@ -584,7 +598,7 @@ function services()
 Creates a `mq3.client.cl_cgame_runtime.Services` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L132)
 
 - [mq3.client.cl_cgame_runtime.Services](Type-mq3-client-cl-cgame-runtime-services-364554929.md) — struct
 <a id="function-function-mq3-client-cl-cgame-runtime-snapshotbytes-function-snapshotbytes-state-value-src-mq3-client-cl-cgame-runtime-ml-59239514"></a>
@@ -602,7 +616,7 @@ Adapts `mq3.client.cl_cgame_runtime.encodeSnapshot` to engine client client game
 | `value` | `dynamic` | — | Argument 2 of `mq3.client.cl_cgame_runtime.encodeSnapshot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L217)
 
 - [mq3.client.cl_cgame_runtime.State](Type-mq3-client-cl-cgame-runtime-state-717532426.md) — struct
 <a id="function-function-mq3-client-cl-cgame-runtime-streamclearcommands-function-streamclearcommands-state-src-mq3-client-cl-cgame-runtime-ml-888827079"></a>
@@ -619,7 +633,7 @@ Adapts `mq3.client.command_ring.clear` to engine client client game runtime `str
 | `state` | `dynamic` | — | Record read through `state.commands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L284)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamclearnotify-function-streamclearnotify-state-src-mq3-client-cl-cgame-runtime-ml-1925827725"></a>
 ### streamClearNotify
@@ -635,7 +649,7 @@ Calls `state.host.clearNotifyFn` from engine client client game runtime `streamC
 | `state` | `dynamic` | — | Record read through `state.host.clearNotifyFn`, `state.host.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L287)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamcloseconsole-function-streamcloseconsole-state-src-mq3-client-cl-cgame-runtime-ml-972541553"></a>
 ### streamCloseConsole
@@ -651,7 +665,7 @@ Calls `state.host.closeConsoleFn` from engine client client game runtime `stream
 | `state` | `dynamic` | — | Record read through `state.host.closeConsoleFn`, `state.host.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L293)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamconfig-function-streamconfig-state-index-value-src-mq3-client-cl-cgame-runtime-ml-2112751240"></a>
 ### streamConfig
@@ -669,7 +683,7 @@ Calls `mq3.client.cl_cgame_runtime.packGameState`, `state.host.systemInfoFn` fro
 | `value` | `dynamic` | — | Accepted for compatibility with `streamConfig`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L278)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamqueueconsole-function-streamqueueconsole-state-text-src-mq3-client-cl-cgame-runtime-ml-22057198"></a>
 ### streamQueueConsole
@@ -686,7 +700,7 @@ Calls `state.host.queueConsoleFn` from engine client client game runtime `stream
 | `text` | `dynamic` | — | Text consumed or emitted by `streamQueueConsole` in the engine client client game runtime path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L300)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallcommandnumber-function-syscallcommandnumber-state-src-mq3-client-cl-cgame-runtime-ml-832738517"></a>
 ### syscallCommandNumber
@@ -702,7 +716,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_GetCurrentCmdNumber` to engine client cli
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_cgame_runtime.CL_GetCurrentCmdNumber`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L318)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L379)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallgamestate-function-syscallgamestate-state-src-mq3-client-cl-cgame-runtime-ml-421962221"></a>
 ### syscallGameState
@@ -718,7 +732,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_GetGameState` to engine client client gam
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_cgame_runtime.CL_GetGameState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L362)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallglconfig-function-syscallglconfig-state-src-mq3-client-cl-cgame-runtime-ml-409763469"></a>
 ### syscallGlconfig
@@ -734,7 +748,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_GetGlconfig` to engine client client game
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_cgame_runtime.CL_GetGlconfig`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L365)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallservercommand-function-syscallservercommand-state-number-src-mq3-client-cl-cgame-runtime-ml-572492448"></a>
 ### syscallServerCommand
@@ -751,7 +765,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_GetServerCommand` to engine client client
 | `number` | `dynamic` | — | Argument 2 of `mq3.client.cl_cgame_runtime.CL_GetServerCommand`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L376)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallsetusercmd-function-syscallsetusercmd-state-value-sensitivity-src-mq3-client-cl-cgame-runtime-ml-101994233"></a>
 ### syscallSetUserCmd
@@ -769,7 +783,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_SetUserCmdValue` to engine client client 
 | `sensitivity` | `dynamic` | — | Argument 3 of `mq3.client.cl_cgame_runtime.CL_SetUserCmdValue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L327)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L388)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallsnapshot-function-syscallsnapshot-state-number-src-mq3-client-cl-cgame-runtime-ml-1561507286"></a>
 ### syscallSnapshot
@@ -786,7 +800,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_GetSnapshot` to engine client client game
 | `number` | `dynamic` | — | Argument 2 of `mq3.client.cl_cgame_runtime.CL_GetSnapshot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L372)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallsnapshotnumber-function-syscallsnapshotnumber-state-src-mq3-client-cl-cgame-runtime-ml-899102133"></a>
 ### syscallSnapshotNumber
@@ -802,7 +816,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_GetCurrentSnapshotNumber` to engine clien
 | `state` | `dynamic` | — | Argument 1 of `mq3.client.cl_cgame_runtime.CL_GetCurrentSnapshotNumber`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L368)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallusercmd-function-syscallusercmd-state-number-src-mq3-client-cl-cgame-runtime-ml-1416995660"></a>
 ### syscallUserCmd
@@ -819,7 +833,7 @@ Adapts `mq3.client.cl_cgame_runtime.CL_GetUserCmd` to engine client client game 
 | `number` | `dynamic` | — | Argument 2 of `mq3.client.cl_cgame_runtime.CL_GetUserCmd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L322)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L383)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-usercmdbytes-function-usercmdbytes-command-src-mq3-client-cl-cgame-runtime-ml-874934473"></a>
 ### usercmdBytes
@@ -835,7 +849,7 @@ Calls `mq3.compat.numeric.writeU32` from engine client client game runtime `user
 | `command` | `dynamic` | — | Record read through `command.serverTime`, `command.angles`, `command.buttons`, `command.weapon` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L164)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-wiresyscalls-function-wiresyscalls-state-host-machine-src-mq3-client-cl-cgame-runtime-ml-573712430"></a>
 ### wireSyscalls
@@ -853,7 +867,7 @@ Updates `host.context`, `host.getGameStateFn`, `host.getGlconfigFn`, `host.getCu
 | `machine` | `dynamic` | — | Value assigned to `state.syscallVm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L393)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-writewords-function-writewords-output-offset-words-src-mq3-client-cl-cgame-runtime-ml-1533018715"></a>
 ### writeWords
@@ -871,4 +885,4 @@ Calls `mq3.compat.numeric.writeU32` from engine client client game runtime `writ
 | `words` | `dynamic` | — | Sequence read at `words[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L202)

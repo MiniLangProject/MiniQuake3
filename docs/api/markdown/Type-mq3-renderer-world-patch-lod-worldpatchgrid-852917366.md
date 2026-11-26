@@ -12,7 +12,7 @@ struct WorldPatchGrid
 Data record for `mq3.renderer.world_patch_lod.WorldPatchGrid`; groups `control`, `width`, `height`, `widthLodError`, `heightLodError`, `lodOrigin`, and 3 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L29)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.world_patch_lod.WorldPatchGrid`; groups `control`,
 control
 ```
 
+Original control-point grid retained for patch retessellation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L31)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-height-height-src-mq3-renderer-world-patch-lod-ml-709352909"></a>
 ### height
@@ -33,8 +35,10 @@ control
 height
 ```
 
+Number of rows in the patch vertex grid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L35)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-heightloderror-heightloderror-src-mq3-renderer-world-patch-lod-ml-462257015"></a>
 ### heightLodError
@@ -43,8 +47,10 @@ height
 heightLodError
 ```
 
+Per-row geometric error used when selecting patch detail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L39)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodfixed-lodfixed-src-mq3-renderer-world-patch-lod-ml-2037571841"></a>
 ### lodFixed
@@ -53,8 +59,10 @@ heightLodError
 lodFixed
 ```
 
+Whether patch edge detail has been reconciled with neighboring patches.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L45)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodorigin-lodorigin-src-mq3-renderer-world-patch-lod-ml-429608735"></a>
 ### lodOrigin
@@ -63,8 +71,10 @@ lodFixed
 lodOrigin
 ```
 
+Reference origin used when evaluating patch level of detail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L41)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodradius-lodradius-src-mq3-renderer-world-patch-lod-ml-1697486551"></a>
 ### lodRadius
@@ -73,8 +83,10 @@ lodOrigin
 lodRadius
 ```
 
+Reference radius used when evaluating patch level of detail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L43)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodstitched-lodstitched-src-mq3-renderer-world-patch-lod-ml-996486203"></a>
 ### lodStitched
@@ -83,8 +95,10 @@ lodRadius
 lodStitched
 ```
 
+Whether the patch grid has been stitched to adjacent geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L47)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-width-width-src-mq3-renderer-world-patch-lod-ml-996080991"></a>
 ### width
@@ -93,8 +107,10 @@ lodStitched
 width
 ```
 
+Number of columns in the patch vertex grid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L33)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-widthloderror-widthloderror-src-mq3-renderer-world-patch-lod-ml-1096152407"></a>
 ### widthLodError
@@ -103,5 +119,7 @@ width
 widthLodError
 ```
 
+Per-column geometric error used when selecting patch detail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L37)

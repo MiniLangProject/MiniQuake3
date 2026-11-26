@@ -23,8 +23,10 @@ Reachable from entry: **no**
 const ARENAS_PER_TIER = 4
 ```
 
+Number of arenas grouped into one single-player progression tier.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-award-perfect-const-award-perfect-5-src-mq3-client-ui-gameinfo-ml-407832074"></a>
 ### AWARD_PERFECT
@@ -33,8 +35,10 @@ const ARENAS_PER_TIER = 4
 const AWARD_PERFECT = 5
 ```
 
+Postgame award identifier selecting the perfect award category.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L26)
 
 - [mq3.client.ui_gameinfo.BestScore](Type-mq3-client-ui-gameinfo-bestscore-1866157436.md) — struct
 <a id="function-function-mq3-client-ui-gameinfo-create-function-create-src-mq3-client-ui-gameinfo-ml-944916814"></a>
@@ -47,7 +51,7 @@ function create()
 Creates a `mq3.client.ui_gameinfo.GameInfo` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L82)
 
 <a id="function-function-mq3-client-ui-gameinfo-cvar-function-cvar-value-name-src-mq3-client-ui-gameinfo-ml-1008951368"></a>
 ### cvar
@@ -64,7 +68,7 @@ Evaluates UI gameinfo `cvar` and returns `value.cvars[index][1]`, `""` according
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI gameinfo resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L89)
 
 <a id="function-function-mq3-client-ui-gameinfo-diagnostic-function-diagnostic-value-text-src-mq3-client-ui-gameinfo-ml-1525353816"></a>
 ### diagnostic
@@ -81,7 +85,7 @@ Updates `value.diagnostics` during UI gameinfo `diagnostic`.
 | `text` | `dynamic` | — | Text consumed or emitted by `diagnostic` in the UI gameinfo path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L102)
 
 - [mq3.client.ui_gameinfo.GameInfo](Type-mq3-client-ui-gameinfo-gameinfo-1477501930.md) — struct
 <a id="function-function-mq3-client-ui-gameinfo-gametypebits-function-gametypebits-text-src-mq3-client-ui-gameinfo-ml-153888371"></a>
@@ -98,7 +102,7 @@ Start-server type matcher fed by the arena type strings loaded here.
 | `text` | `dynamic` | — | Text consumed or emitted by `GametypeBits` in the UI gameinfo path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L186)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-gameinfo-ml-1233866237"></a>
 ### GT_CTF
@@ -107,8 +111,10 @@ Start-server type matcher fed by the arena type strings loaded here.
 const GT_CTF = 4
 ```
 
+Native game-type value for capture the flag, used when building arena game-type masks for single-player and multiplayer selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L41)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-gt-ffa-const-gt-ffa-0-src-mq3-client-ui-gameinfo-ml-310416425"></a>
 ### GT_FFA
@@ -117,8 +123,10 @@ const GT_CTF = 4
 const GT_FFA = 0
 ```
 
+Native game-type identifier selecting free-for-all deathmatch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-gameinfo-ml-702790873"></a>
 ### GT_SINGLE_PLAYER
@@ -127,8 +135,10 @@ const GT_FFA = 0
 const GT_SINGLE_PLAYER = 2
 ```
 
+Native game-type value for single-player arena progression, used when building arena game-type masks for single-player and multiplayer selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L35)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-gt-team-const-gt-team-3-src-mq3-client-ui-gameinfo-ml-477731368"></a>
 ### GT_TEAM
@@ -137,8 +147,10 @@ const GT_SINGLE_PLAYER = 2
 const GT_TEAM = 3
 ```
 
+Native game-type value for team deathmatch, used when building arena game-type masks for single-player and multiplayer selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L38)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-gt-tournament-const-gt-tournament-1-src-mq3-client-ui-gameinfo-ml-133292638"></a>
 ### GT_TOURNAMENT
@@ -147,8 +159,10 @@ const GT_TEAM = 3
 const GT_TOURNAMENT = 1
 ```
 
+Native game-type value for one-on-one tournament play, used when building arena game-type masks for single-player and multiplayer selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L32)
 
 <a id="function-function-mq3-client-ui-gameinfo-has-function-has-text-part-src-mq3-client-ui-gameinfo-ml-389695812"></a>
 ### has
@@ -165,7 +179,7 @@ Computes `strings.indexOf(text,part,0)>=0` for UI gameinfo `has`.
 | `part` | `dynamic` | — | Value used by `return strings.indexOf(text,part,0)>=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L153)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-max-arenas-const-max-arenas-1024-src-mq3-client-ui-gameinfo-ml-1086636230"></a>
 ### MAX_ARENAS
@@ -174,8 +188,10 @@ Computes `strings.indexOf(text,part,0)>=0` for UI gameinfo `has`.
 const MAX_ARENAS = 1024
 ```
 
+Capacity limit for the arenas collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-max-arenas-text-const-max-arenas-text-8192-src-mq3-client-ui-gameinfo-ml-543147933"></a>
 ### MAX_ARENAS_TEXT
@@ -184,8 +200,10 @@ const MAX_ARENAS = 1024
 const MAX_ARENAS_TEXT = 8192
 ```
 
+Maximum text size accepted when loading arena-definition data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-max-bots-const-max-bots-1024-src-mq3-client-ui-gameinfo-ml-1315971698"></a>
 ### MAX_BOTS
@@ -194,8 +212,10 @@ const MAX_ARENAS_TEXT = 8192
 const MAX_BOTS = 1024
 ```
 
+Capacity limit for the bots collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-max-bots-text-const-max-bots-text-8192-src-mq3-client-ui-gameinfo-ml-1487876857"></a>
 ### MAX_BOTS_TEXT
@@ -204,8 +224,10 @@ const MAX_BOTS = 1024
 const MAX_BOTS_TEXT = 8192
 ```
 
+Maximum text size accepted when loading bot-definition data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-poolsize-const-poolsize-131072-src-mq3-client-ui-gameinfo-ml-1467961713"></a>
 ### POOLSIZE
@@ -214,8 +236,10 @@ const MAX_BOTS_TEXT = 8192
 const POOLSIZE = 131072
 ```
 
+Byte capacity of the bounded UI game-info allocation pool.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L14)
 
 <a id="function-function-mq3-client-ui-gameinfo-same-function-same-left-right-src-mq3-client-ui-gameinfo-ml-1810185885"></a>
 ### same
@@ -232,7 +256,7 @@ Compares two UI gameinfo names using ASCII case-insensitive equality.
 | `right` | `dynamic` | — | Argument 2 of `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L157)
 
 <a id="function-function-mq3-client-ui-gameinfo-setcvar-function-setcvar-value-name-text-src-mq3-client-ui-gameinfo-ml-809232733"></a>
 ### setCvar
@@ -250,7 +274,7 @@ Updates `value.cvars`, `value.writes` during UI gameinfo `setCvar`.
 | `text` | `dynamic` | — | Text consumed or emitted by `setCvar` in the UI gameinfo path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L96)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-alloc-function-ui-alloc-value-size-src-mq3-client-ui-gameinfo-ml-1001140782"></a>
 ### UI_Alloc
@@ -267,7 +291,7 @@ UI_Alloc
 | `size` | `dynamic` | — | Value tested by `value.allocPoint+size>POOLSIZE` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L107)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-canshowtiervideo-function-ui-canshowtiervideo-value-tier-src-mq3-client-ui-gameinfo-ml-352115387"></a>
 ### UI_CanShowTierVideo
@@ -284,7 +308,7 @@ UI_CanShowTierVideo
 | `tier` | `dynamic` | — | Value used by `if tier==0 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L295)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getarenainfobymap-function-ui-getarenainfobymap-value-map-src-mq3-client-ui-gameinfo-ml-1751852765"></a>
 ### UI_GetArenaInfoByMap
@@ -301,7 +325,7 @@ UI_GetArenaInfoByMap
 | `map` | `dynamic` | — | map record passed to the UI gameinfo helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L203)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getarenainfobynumber-function-ui-getarenainfobynumber-value-num-src-mq3-client-ui-gameinfo-ml-1337937931"></a>
 ### UI_GetArenaInfoByNumber
@@ -318,7 +342,7 @@ UI_GetArenaInfoByNumber
 | `num` | `dynamic` | — | Value used by `if num<0 or num>=len(value.arenas) then diagnostic(value,"^1Invalid arena number: "+str(num)+"\\n")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L195)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getawardlevel-function-ui-getawardlevel-value-award-src-mq3-client-ui-gameinfo-ml-688167536"></a>
 ### UI_GetAwardLevel
@@ -335,7 +359,7 @@ UI_GetAwardLevel
 | `award` | `dynamic` | — | Argument 1 of `mq3.compat.textnumbers.atoi`; passed as `info.value(cvar(value,"g_spAwards"),"a"+str(award))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L274)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getbestscore-function-ui-getbestscore-value-level-src-mq3-client-ui-gameinfo-ml-1119447527"></a>
 ### UI_GetBestScore
@@ -352,7 +376,7 @@ UI_GetBestScore
 | `level` | `dynamic` | — | Value used by `if level<0 or level>len(value.arenas) then return BestScore(0,0) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L250)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getbotinfobyname-function-ui-getbotinfobyname-value-name-src-mq3-client-ui-gameinfo-ml-1384024964"></a>
 ### UI_GetBotInfoByName
@@ -369,7 +393,7 @@ UI_GetBotInfoByName
 | `name` | `dynamic` | — | Name used to select or register the corresponding UI gameinfo resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L243)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getbotinfobynumber-function-ui-getbotinfobynumber-value-num-src-mq3-client-ui-gameinfo-ml-1232138295"></a>
 ### UI_GetBotInfoByNumber
@@ -386,7 +410,7 @@ UI_GetBotInfoByNumber
 | `num` | `dynamic` | — | Value used by `if num<0 or num>=len(value.bots) then diagnostic(value,"^1Invalid bot number: "+str(num)+"\\n")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L236)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getcurrentgame-function-ui-getcurrentgame-value-src-mq3-client-ui-gameinfo-ml-1688968573"></a>
 ### UI_GetCurrentGame
@@ -402,7 +426,7 @@ UI_GetCurrentGame
 | `value` | `dynamic` | — | Record read through `value.numSinglePlayerArenas`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L301)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getnumarenas-function-ui-getnumarenas-value-src-mq3-client-ui-gameinfo-ml-270945595"></a>
 ### UI_GetNumArenas
@@ -418,7 +442,7 @@ UI_GetNumArenas / UI_GetNumSPArenas / UI_GetNumSPTiers / UI_GetNumBots
 | `value` | `dynamic` | — | Record read through `value.arenas`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L314)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getnumbots-function-ui-getnumbots-value-src-mq3-client-ui-gameinfo-ml-7541603"></a>
 ### UI_GetNumBots
@@ -434,7 +458,7 @@ Returns the element/byte count of `value.bots` for UI gameinfo `UI_GetNumBots`.
 | `value` | `dynamic` | — | Record read through `value.bots`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L323)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getnumsparenas-function-ui-getnumsparenas-value-src-mq3-client-ui-gameinfo-ml-1094437293"></a>
 ### UI_GetNumSPArenas
@@ -450,7 +474,7 @@ Reads `value.numSinglePlayerArenas` for UI gameinfo `UI_GetNumSPArenas`.
 | `value` | `dynamic` | — | Record read through `value.numSinglePlayerArenas`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L317)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getnumsptiers-function-ui-getnumsptiers-value-src-mq3-client-ui-gameinfo-ml-1139531745"></a>
 ### UI_GetNumSPTiers
@@ -466,7 +490,7 @@ Adapts `mq3.compat.numeric.trunc32` to UI gameinfo `UI_GetNumSPTiers`, returning
 | `value` | `dynamic` | — | Record read through `value.numSinglePlayerArenas`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L320)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-getspecialarenainfo-function-ui-getspecialarenainfo-value-tag-src-mq3-client-ui-gameinfo-ml-1445686391"></a>
 ### UI_GetSpecialArenaInfo
@@ -483,7 +507,7 @@ UI_GetSpecialArenaInfo
 | `tag` | `dynamic` | — | Value used by `for each arena in value.arenas if same(info.value(arena,"special"),tag) then return arena end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L210)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-initgameinfo-function-ui-initgameinfo-value-arenaname-arenatext-arenafiles-botname-bottext-botfiles-fsrestrict-src-mq3-client-ui-gameinfo-ml-1462961604"></a>
 ### UI_InitGameinfo
@@ -506,7 +530,7 @@ UI_InitGameinfo
 | `fsRestrict` | `dynamic` | — | Value assigned to `value.demoversion`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L346)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-initmemory-function-ui-initmemory-value-src-mq3-client-ui-gameinfo-ml-1659676177"></a>
 ### UI_InitMemory
@@ -522,7 +546,7 @@ UI_InitMemory
 | `value` | `dynamic` | — | Mutable UI gameinfo record/storage; this routine assigns `value.allocPoint`, `value.outOfMemory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L113)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-loadarenas-function-ui-loadarenas-value-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-ml-1524890775"></a>
 ### UI_LoadArenas
@@ -541,7 +565,7 @@ UI_LoadArenas
 | `additionalFiles` | `dynamic` | — | Value used by `for each entry in additionalFiles UI_LoadArenasFromFile(value,entry[0],entry[1]) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L164)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-loadarenasfromfile-function-ui-loadarenasfromfile-value-filename-text-src-mq3-client-ui-gameinfo-ml-86109605"></a>
 ### UI_LoadArenasFromFile
@@ -559,7 +583,7 @@ UI_LoadArenasFromFile
 | `text` | `dynamic` | — | Text consumed or emitted by `UI_LoadArenasFromFile` in the UI gameinfo path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L143)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-loadbots-function-ui-loadbots-value-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-ml-1576693779"></a>
 ### UI_LoadBots
@@ -578,7 +602,7 @@ UI_LoadBots
 | `additionalFiles` | `dynamic` | — | Value used by `for each entry in additionalFiles UI_LoadBotsFromFile(value,entry[0],entry[1]) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L229)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-loadbotsfromfile-function-ui-loadbotsfromfile-value-filename-text-src-mq3-client-ui-gameinfo-ml-669328481"></a>
 ### UI_LoadBotsFromFile
@@ -596,7 +620,7 @@ UI_LoadBotsFromFile
 | `text` | `dynamic` | — | Text consumed or emitted by `UI_LoadBotsFromFile` in the UI gameinfo path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L218)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-logawarddata-function-ui-logawarddata-value-award-data-src-mq3-client-ui-gameinfo-ml-921804968"></a>
 ### UI_LogAwardData
@@ -614,7 +638,7 @@ UI_LogAwardData
 | `data` | `dynamic` | — | Value used by `if data==0 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L267)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-newgame-function-ui-newgame-value-src-mq3-client-ui-gameinfo-ml-115179669"></a>
 ### UI_NewGame
@@ -630,7 +654,7 @@ UI_NewGame
 | `value` | `dynamic` | — | Value used by `for skill=1 to 5 setCvar(value,"g_spScores"+str(skill),"") end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L308)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-parseinfos-function-ui-parseinfos-value-text-max-src-mq3-client-ui-gameinfo-ml-66411732"></a>
 ### UI_ParseInfos
@@ -648,7 +672,7 @@ UI_ParseInfos
 | `max` | `dynamic` | — | Value used by `if len(parsed)==max then diagnostic(value,"Max infos exceeded\\n")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L119)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-setbestscore-function-ui-setbestscore-value-level-score-src-mq3-client-ui-gameinfo-ml-218431387"></a>
 ### UI_SetBestScore
@@ -666,7 +690,7 @@ UI_SetBestScore
 | `score` | `dynamic` | — | Value used by `if score<1 or score>8 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L259)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-showtiervideo-function-ui-showtiervideo-value-tier-src-mq3-client-ui-gameinfo-ml-691714241"></a>
 ### UI_ShowTierVideo
@@ -683,7 +707,7 @@ UI_ShowTierVideo
 | `tier` | `dynamic` | — | Value used by `if tier<=0 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L288)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-spunlock-f-function-ui-spunlock-f-value-src-mq3-client-ui-gameinfo-ml-614005575"></a>
 ### UI_SPUnlock_f
@@ -699,7 +723,7 @@ UI_SPUnlock_f
 | `value` | `dynamic` | — | Mutable UI gameinfo record/storage; this routine assigns `value.levelMenuReinitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L327)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-spunlockmedals-f-function-ui-spunlockmedals-f-value-src-mq3-client-ui-gameinfo-ml-698429799"></a>
 ### UI_SPUnlockMedals_f
@@ -715,7 +739,7 @@ UI_SPUnlockMedals_f
 | `value` | `dynamic` | — | Value used by `awards=cvar(value,"g_spAwards")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L333)
 
 <a id="function-function-mq3-client-ui-gameinfo-ui-tiercompleted-function-ui-tiercompleted-value-levelwon-src-mq3-client-ui-gameinfo-ml-1141770031"></a>
 ### UI_TierCompleted
@@ -732,4 +756,4 @@ UI_TierCompleted
 | `levelWon` | `dynamic` | — | Value used by `tier=numeric.trunc32(levelWon/ARENAS_PER_TIER)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo.ml#L279)

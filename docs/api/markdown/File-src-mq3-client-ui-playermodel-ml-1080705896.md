@@ -25,7 +25,7 @@ function artList()
 Lists the 10 UI playermodel art list strings in their declared order, beginning with `"menu/art/back_0"`, `"menu/art/back_1"`, `"menu/art/opponents_select"`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L83)
 
 <a id="function-function-mq3-client-ui-playermodel-bitmap-function-bitmap-name-id-x-y-flags-w-h-src-mq3-client-ui-playermodel-ml-606258743"></a>
 ### bitmap
@@ -47,7 +47,7 @@ Calls `mq3.client.ui_qmenu.item` from UI playermodel `bitmap`. The final path re
 | `h` | `dynamic` | — | Value assigned to `value.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L210)
 
 <a id="function-function-mq3-client-ui-playermodel-clean-function-clean-text-src-mq3-client-ui-playermodel-ml-2015112541"></a>
 ### clean
@@ -63,7 +63,7 @@ Calls `decode` from UI playermodel `clean`. The final path returns `result`.
 | `text` | `dynamic` | — | Text consumed or emitted by `clean` in the UI playermodel path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L113)
 
 <a id="function-function-mq3-client-ui-playermodel-create-function-create-source-src-mq3-client-ui-playermodel-ml-1040469489"></a>
 ### create
@@ -79,7 +79,7 @@ Creates a `mq3.client.ui_playermodel.State` record. Assigns `source` from `sourc
 | `source` | `dynamic` | — | Value used to initialize `State.source`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L86)
 
 <a id="function-function-mq3-client-ui-playermodel-current-function-current-value-src-mq3-client-ui-playermodel-ml-2100150727"></a>
 ### current
@@ -95,7 +95,7 @@ Adapts `mq3.client.ui_qmenu.Menu_ItemAtCursor` to UI playermodel `current`, retu
 | `value` | `dynamic` | — | Record read through `value.menu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L156)
 
 <a id="function-function-mq3-client-ui-playermodel-emit-function-emit-value-boundary-kind-name-detail-number-retailactive-src-mq3-client-ui-playermodel-ml-1442539583"></a>
 ### emit
@@ -117,7 +117,7 @@ Appends a UI playermodel action record to the queued engine requests.
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L95)
 
 <a id="function-function-mq3-client-ui-playermodel-ends-function-ends-text-suffix-src-mq3-client-ui-playermodel-ml-957445254"></a>
 ### ends
@@ -134,7 +134,7 @@ Calls `mq3.client.ui_playermodel.lower`, `std.string.substr` from UI playermodel
 | `suffix` | `dynamic` | — | Sequence whose length/content is inspected by `ends`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L106)
 
 <a id="function-function-mq3-client-ui-playermodel-iconparts-function-iconparts-path-src-mq3-client-ui-playermodel-ml-1361138669"></a>
 ### iconParts
@@ -150,7 +150,7 @@ Calls `mq3.client.ui_playermodel.starts`, `std.string.substr`, `std.string.index
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L126)
 
 <a id="constant-constant-mq3-client-ui-playermodel-id-back-const-id-back-102-src-mq3-client-ui-playermodel-ml-1794712502"></a>
 ### ID_BACK
@@ -159,8 +159,10 @@ Calls `mq3.client.ui_playermodel.starts`, `std.string.substr`, `std.string.index
 const ID_BACK = 102
 ```
 
+Event identifier of the Back control used to leave the player-model and skin selection menu and return to its parent menu.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-playermodel-id-nextpage-const-id-nextpage-101-src-mq3-client-ui-playermodel-ml-1267214409"></a>
 ### ID_NEXTPAGE
@@ -169,8 +171,10 @@ const ID_BACK = 102
 const ID_NEXTPAGE = 101
 ```
 
+Menu control identifier routed to the nextpage action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-playermodel-id-prevpage-const-id-prevpage-100-src-mq3-client-ui-playermodel-ml-343637632"></a>
 ### ID_PREVPAGE
@@ -179,8 +183,10 @@ const ID_NEXTPAGE = 101
 const ID_PREVPAGE = 100
 ```
 
+Menu control identifier routed to the prevpage action by the menu event handler.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-playermodel-low-memory-const-low-memory-5242880-src-mq3-client-ui-playermodel-ml-1170759310"></a>
 ### LOW_MEMORY
@@ -189,8 +195,10 @@ const ID_PREVPAGE = 100
 const LOW_MEMORY = 5242880
 ```
 
+Memory threshold below which client media loading should be deferred or reduced.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L12)
 
 <a id="function-function-mq3-client-ui-playermodel-lower-function-lower-text-src-mq3-client-ui-playermodel-ml-542426369"></a>
 ### lower
@@ -206,7 +214,7 @@ Adapts `std.string.toLowerAscii` to UI playermodel `lower`, returning its result
 | `text` | `dynamic` | — | Argument 1 of `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L98)
 
 <a id="constant-constant-mq3-client-ui-playermodel-max-modelsperpage-const-max-modelsperpage-16-src-mq3-client-ui-playermodel-ml-1067335200"></a>
 ### MAX_MODELSPERPAGE
@@ -215,8 +223,10 @@ Adapts `std.string.toLowerAscii` to UI playermodel `lower`, returning its result
 const MAX_MODELSPERPAGE = 16
 ```
 
+Capacity limit for the modelsperpage collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-playermodel-max-playermodels-const-max-playermodels-256-src-mq3-client-ui-playermodel-ml-39560624"></a>
 ### MAX_PLAYERMODELS
@@ -225,8 +235,10 @@ const MAX_MODELSPERPAGE = 16
 const MAX_PLAYERMODELS = 256
 ```
 
+Capacity limit for the playermodels collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-playermodel-playergrid-cols-const-playergrid-cols-4-src-mq3-client-ui-playermodel-ml-1157085249"></a>
 ### PLAYERGRID_COLS
@@ -235,8 +247,10 @@ const MAX_PLAYERMODELS = 256
 const PLAYERGRID_COLS = 4
 ```
 
+Number of model-preview columns shown on one player-selection page.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-playermodel-playergrid-rows-const-playergrid-rows-4-src-mq3-client-ui-playermodel-ml-1568520065"></a>
 ### PLAYERGRID_ROWS
@@ -245,8 +259,10 @@ const PLAYERGRID_COLS = 4
 const PLAYERGRID_ROWS = 4
 ```
 
+Number of model-preview rows shown on one player-selection page.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L16)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-buildlist-function-playermodel-buildlist-value-files-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-1176503616"></a>
 ### PlayerModel_BuildList
@@ -265,7 +281,7 @@ PlayerModel_BuildList
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L189)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-cache-function-playermodel-cache-value-files-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-547573308"></a>
 ### PlayerModel_Cache
@@ -284,7 +300,7 @@ PlayerModel_Cache
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L230)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-drawplayer-function-playermodel-drawplayer-value-realtime-frametime-retailactive-src-mq3-client-ui-playermodel-ml-666708217"></a>
 ### PlayerModel_DrawPlayer
@@ -303,7 +319,7 @@ PlayerModel_DrawPlayer
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L183)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-menuevent-function-playermodel-menuevent-value-id-event-retailactive-src-mq3-client-ui-playermodel-ml-1837097769"></a>
 ### PlayerModel_MenuEvent
@@ -322,7 +338,7 @@ PlayerModel_MenuEvent
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L153)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-menuinit-function-playermodel-menuinit-value-files-playername-model-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-880164951"></a>
 ### PlayerModel_MenuInit
@@ -343,7 +359,7 @@ PlayerModel_MenuInit
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L218)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-menukey-function-playermodel-menukey-value-key-cursorx-cursory-retailactive-src-mq3-client-ui-playermodel-ml-216643776"></a>
 ### PlayerModel_MenuKey
@@ -363,7 +379,7 @@ PlayerModel_MenuKey
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L163)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-picevent-function-playermodel-picevent-value-id-event-memoryremaining-src-mq3-client-ui-playermodel-ml-1855853749"></a>
 ### PlayerModel_PicEvent
@@ -382,7 +398,7 @@ PlayerModel_PicEvent
 | `memoryRemaining` | `dynamic` | — | Value used by `if memoryRemaining>LOW_MEMORY then PlayerModel_UpdateModel(value) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L175)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-savechanges-function-playermodel-savechanges-value-retailactive-src-mq3-client-ui-playermodel-ml-2078331382"></a>
 ### PlayerModel_SaveChanges
@@ -399,7 +415,7 @@ PlayerModel_SaveChanges
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L147)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-setmenuitems-function-playermodel-setmenuitems-value-playername-model-src-mq3-client-ui-playermodel-ml-848512848"></a>
 ### PlayerModel_SetMenuItems
@@ -417,7 +433,7 @@ PlayerModel_SetMenuItems
 | `model` | `dynamic` | — | Model handle, asset or preview record used by this UI playermodel operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L199)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-updategrid-function-playermodel-updategrid-value-src-mq3-client-ui-playermodel-ml-68009257"></a>
 ### PlayerModel_UpdateGrid
@@ -433,7 +449,7 @@ PlayerModel_UpdateGrid
 | `value` | `dynamic` | — | Mutable UI playermodel record/storage; this routine assigns `value.pics[i].name`, `value.picbuttons[i].flags`, `value.pics[i].flags`, `value.pics[i].shader` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L136)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-updatemodel-function-playermodel-updatemodel-value-src-mq3-client-ui-playermodel-ml-465509883"></a>
 ### PlayerModel_UpdateModel
@@ -449,7 +465,7 @@ PlayerModel_UpdateModel
 | `value` | `dynamic` | — | Mutable UI playermodel record/storage; this routine assigns `value.playerinfo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L143)
 
 <a id="function-function-mq3-client-ui-playermodel-setlabels-function-setlabels-value-path-src-mq3-client-ui-playermodel-ml-1493643124"></a>
 ### setLabels
@@ -466,7 +482,7 @@ Updates `value.modelskin`, `value.modelname`, `value.skinname` during UI playerm
 | `path` | `dynamic` | — | File or asset path used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L130)
 
 <a id="function-function-mq3-client-ui-playermodel-starts-function-starts-text-prefix-src-mq3-client-ui-playermodel-ml-1110555387"></a>
 ### starts
@@ -483,7 +499,7 @@ Calls `mq3.client.ui_playermodel.lower`, `std.string.substr` from UI playermodel
 | `prefix` | `dynamic` | — | Sequence whose length/content is inspected by `starts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L102)
 
 - [mq3.client.ui_playermodel.State](Type-mq3-client-ui-playermodel-state-996669413.md) — struct
 <a id="function-function-mq3-client-ui-playermodel-truncate-function-truncate-text-max-src-mq3-client-ui-playermodel-ml-1215525847"></a>
@@ -501,7 +517,7 @@ Calls `decode`, `slice` from UI playermodel `truncate`. The final path returns `
 | `max` | `dynamic` | — | Value used by `if len(bytes(text))>=max then return decode(slice(bytes(text),0,max-1)) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L110)
 
 <a id="function-function-mq3-client-ui-playermodel-ui-playermodelmenu-function-ui-playermodelmenu-value-files-playername-model-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-764329235"></a>
 ### UI_PlayerModelMenu
@@ -522,4 +538,4 @@ UI_PlayerModelMenu
 | `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L238)

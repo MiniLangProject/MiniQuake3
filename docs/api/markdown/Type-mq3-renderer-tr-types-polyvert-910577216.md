@@ -12,7 +12,7 @@ struct PolyVert
 Data record for `mq3.renderer.tr_types.PolyVert`; groups `xyz`, `st`, `modulate`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L86)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_types.PolyVert`; groups `xyz`, `st`, `modulate`
 modulate
 ```
 
+Per-vertex RGBA color bytes that modulate the sampled texture.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L92)
 
 <a id="field-field-mq3-renderer-tr-types-polyvert-st-st-src-mq3-renderer-tr-types-ml-1099446306"></a>
 ### st
@@ -33,8 +35,10 @@ modulate
 st
 ```
 
+Two-dimensional texture coordinates associated with the vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L90)
 
 <a id="field-field-mq3-renderer-tr-types-polyvert-xyz-xyz-src-mq3-renderer-tr-types-ml-167212484"></a>
 ### xyz
@@ -43,5 +47,7 @@ st
 xyz
 ```
 
+Three-dimensional position of this vertex.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L88)

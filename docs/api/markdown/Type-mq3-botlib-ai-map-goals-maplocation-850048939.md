@@ -12,7 +12,7 @@ struct MapLocation
 `MapLocation` record for ai map goals, containing `name` and `goal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L20)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct MapLocation
 goal
 ```
 
+Bot goal record describing the location to reach.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-map-goals-maplocation-name-name-src-mq3-botlib-ai-map-goals-ml-1873198388"></a>
 ### name
@@ -33,5 +35,7 @@ goal
 name
 ```
 
+Map-authored name used to find this location goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L22)

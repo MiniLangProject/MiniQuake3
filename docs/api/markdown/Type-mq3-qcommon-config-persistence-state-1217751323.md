@@ -12,7 +12,7 @@ struct State
 State record for qcommon.config_persistence, containing `registry`, `services`, `fullyInitialized`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L25)
 
 ## Members
 
@@ -23,8 +23,10 @@ State record for qcommon.config_persistence, containing `registry`, `services`, 
 fullyInitialized
 ```
 
+True when initialization is complete and automatic configuration writes are allowed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L31)
 
 <a id="field-field-mq3-qcommon-config-persistence-state-registry-registry-src-mq3-qcommon-config-persistence-ml-540318672"></a>
 ### registry
@@ -33,8 +35,10 @@ fullyInitialized
 registry
 ```
 
+Registry used to resolve registered names, handles, or runtime definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L27)
 
 <a id="field-field-mq3-qcommon-config-persistence-state-services-services-src-mq3-qcommon-config-persistence-ml-1442456938"></a>
 ### services
@@ -43,5 +47,7 @@ registry
 services
 ```
 
+File-writing, binding-serialization, and diagnostic services used to save configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L29)

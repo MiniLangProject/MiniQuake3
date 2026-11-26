@@ -12,7 +12,7 @@ struct Plane
 Data record for `mq3.renderer.tr_world_runtime.Plane`; groups `normal`, `dist`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L25)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_world_runtime.Plane`; groups `normal`, `dist`.
 dist
 ```
 
+Signed plane distance measured along its normal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-plane-normal-normal-src-mq3-renderer-tr-world-runtime-ml-760483149"></a>
 ### normal
@@ -33,5 +35,7 @@ dist
 normal
 ```
 
+World partition-plane normal used during BSP traversal and surface culling.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L27)

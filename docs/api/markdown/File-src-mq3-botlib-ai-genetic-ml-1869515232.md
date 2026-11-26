@@ -19,8 +19,10 @@ Reachable from entry: **yes**
 const MAX_RANKS = 256
 ```
 
+Maximum number of fitness ranks processed by genetic parent and child selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L9)
 
 <a id="function-function-mq3-botlib-ai-genetic-parentsandchild-function-parentsandchild-runtime-numranks-ranks-src-mq3-botlib-ai-genetic-ml-1513347306"></a>
 ### parentsAndChild
@@ -38,7 +40,7 @@ Apply `mq3.botlib.ai_genetic.selection` while evaluating `parentsAndChild`. Retu
 | `ranks` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L44)
 
 <a id="function-function-mq3-botlib-ai-genetic-randomfloat-function-randomfloat-runtime-src-mq3-botlib-ai-genetic-ml-888286542"></a>
 ### randomFloat
@@ -54,7 +56,7 @@ Update `runtime.randomSeed` during `randomFloat`. Return paths include `geneticN
 | `runtime` | `dynamic` | — | AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L13)
 
 <a id="function-function-mq3-botlib-ai-genetic-selection-function-selection-runtime-numranks-rankings-src-mq3-botlib-ai-genetic-ml-683098552"></a>
 ### selection
@@ -72,4 +74,4 @@ Apply `mq3.botlib.ai_genetic.randomFloat` while evaluating `selection`.
 | `rankings` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L24)

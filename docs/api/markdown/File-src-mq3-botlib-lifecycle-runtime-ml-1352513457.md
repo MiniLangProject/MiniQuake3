@@ -20,8 +20,10 @@ Reachable from entry: **yes**
 const BLERR_INVALIDENTITYNUMBER = 2
 ```
 
+Bot-library error indicating an out-of-range entity number.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="constant-constant-mq3-botlib-lifecycle-runtime-blerr-librarynotsetup-const-blerr-librarynotsetup-1-src-mq3-botlib-lifecycle-runtime-ml-1004667460"></a>
 ### BLERR_LIBRARYNOTSETUP
@@ -30,8 +32,10 @@ const BLERR_INVALIDENTITYNUMBER = 2
 const BLERR_LIBRARYNOTSETUP = 1
 ```
 
+Bot-library error indicating that setup has not completed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L11)
 
 <a id="constant-constant-mq3-botlib-lifecycle-runtime-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-lifecycle-runtime-ml-1303065883"></a>
 ### BLERR_NOERROR
@@ -40,8 +44,10 @@ const BLERR_LIBRARYNOTSETUP = 1
 const BLERR_NOERROR = 0
 ```
 
+Bot-library status indicating successful completion.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L9)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-create-function-create-src-mq3-botlib-lifecycle-runtime-ml-870927670"></a>
 ### create
@@ -53,7 +59,7 @@ function create()
 Create a `mq3.botlib.lifecycle_runtime.State` record, initializing `maxclients` as `128` and `maxentities` as `1024`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L42)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-integervariable-function-integervariable-state-name-fallback-src-mq3-botlib-lifecycle-runtime-ml-2037091256"></a>
 ### integerVariable
@@ -71,7 +77,7 @@ Apply `mq3.botlib.lifecycle_runtime.varGet` while evaluating `integerVariable`. 
 | `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L94)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-loadmap-function-loadmap-state-mapname-src-mq3-botlib-lifecycle-runtime-ml-587696076"></a>
 ### loadMap
@@ -88,7 +94,7 @@ Set `state.mapName` to `mapName` and `state.mapLoads` to `state.mapLoads+1` in `
 | `mapName` | `dynamic` | — | Value used by `loadMap` in `if mapName==void then mapName="" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L126)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-setup-function-setup-state-src-mq3-botlib-lifecycle-runtime-ml-1557795449"></a>
 ### setup
@@ -104,7 +110,7 @@ Update `state.maxclients`, `state.maxentities`, `state.setup` and `state.mapName
 | `state` | `dynamic` | — | Lifecycle runtime state; accesses `maxclients`, `maxentities`, `setup`, `mapName` and `mapLoads` and related fields. May update `state.maxclients`, `state.maxentities` and `state.setup` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L101)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-shutdown-function-shutdown-state-src-mq3-botlib-lifecycle-runtime-ml-601336231"></a>
 ### shutdown
@@ -120,7 +126,7 @@ Set `state.setup` to `false` and `state.mapName` to `""` in `mq3.botlib.lifecycl
 | `state` | `dynamic` | — | Lifecycle runtime state; accesses `setup` and `mapName`. May update `state.setup` and `state.mapName` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L112)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-startframe-function-startframe-state-time-src-mq3-botlib-lifecycle-runtime-ml-1918970480"></a>
 ### startFrame
@@ -137,7 +143,7 @@ Set `state.time` to `time` and `state.frames` to `state.frames+1` in `mq3.botlib
 | `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L119)
 
 - [mq3.botlib.lifecycle_runtime.State](Type-mq3-botlib-lifecycle-runtime-state-889245960.md) — struct
 <a id="function-function-mq3-botlib-lifecycle-runtime-updateentity-function-updateentity-state-entity-present-src-mq3-botlib-lifecycle-runtime-ml-1106690493"></a>
@@ -156,7 +162,7 @@ Set `state.entityUpdates` to `state.entityUpdates+1` and `state.removedEntities`
 | `present` | `dynamic` | — | Value used by `updateEntity` in `if not present then state.removedEntities=state.removedEntities+1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L135)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varchanged-function-varchanged-state-name-src-mq3-botlib-lifecycle-runtime-ml-175641138"></a>
 ### varChanged
@@ -173,7 +179,7 @@ Forward `varChanged` to `mq3.botlib.lib_variables.changed` and return the delega
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L85)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-vardefault-function-vardefault-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-1461882287"></a>
 ### varDefault
@@ -191,7 +197,7 @@ Forward `varDefault` to `mq3.botlib.lib_variables.variable` and return the deleg
 | `value` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L71)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varget-function-varget-state-name-src-mq3-botlib-lifecycle-runtime-ml-855526846"></a>
 ### varGet
@@ -208,7 +214,7 @@ Forward `varGet` to `mq3.botlib.lib_variables.getString` and return the delegate
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L60)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-vargetvalue-function-vargetvalue-state-name-src-mq3-botlib-lifecycle-runtime-ml-944485354"></a>
 ### varGetValue
@@ -225,7 +231,7 @@ Forward `varGetValue` to `mq3.botlib.lib_variables.getValue` and return the dele
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L66)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-variableindex-function-variableindex-state-name-src-mq3-botlib-lifecycle-runtime-ml-1773160874"></a>
 ### variableIndex
@@ -242,7 +248,7 @@ Forward `variableIndex` to `mq3.botlib.lib_variables.indexOf` and return the del
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L46)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varset-function-varset-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-446558523"></a>
 ### varSet
@@ -260,7 +266,7 @@ Apply `mq3.botlib.lib_variables.set` while evaluating `varSet`. Return paths inc
 | `value` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L53)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varsetnotmodified-function-varsetnotmodified-state-name-src-mq3-botlib-lifecycle-runtime-ml-25094044"></a>
 ### varSetNotModified
@@ -277,7 +283,7 @@ Forward `varSetNotModified` to `mq3.botlib.lib_variables.setNotModified` and ret
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L89)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varstring-function-varstring-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-1187307455"></a>
 ### varString
@@ -295,7 +301,7 @@ Forward `varString` to `mq3.botlib.lib_variables.variableString` and return the 
 | `value` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L76)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varvalue-function-varvalue-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-112179903"></a>
 ### varValue
@@ -313,4 +319,4 @@ Forward `varValue` to `mq3.botlib.lib_variables.variableValue` and return the de
 | `value` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L81)

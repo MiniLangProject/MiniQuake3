@@ -30,7 +30,7 @@ Append a chat-message fragment and reject text reaching the fixed message-buffer
 | `piece` | `dynamic` | — | Value used by `appendChecked` in `value=text+piece`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L135)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-blerr-cannotloadichat-const-blerr-cannotloadichat-publicheaders-blerr-cannotloadichat-src-mq3-botlib-ai-chat-profiles-ml-1687316334"></a>
 ### BLERR_CANNOTLOADICHAT
@@ -39,8 +39,10 @@ Append a chat-message fragment and reject text reaching the fixed message-buffer
 const BLERR_CANNOTLOADICHAT = publicHeaders.BLERR_CANNOTLOADICHAT
 ```
 
+Bot-library error indicating that an initial-chat script could not be loaded.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L20)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-blerr-noerror-const-blerr-noerror-publicheaders-blerr-noerror-src-mq3-botlib-ai-chat-profiles-ml-1092420923"></a>
 ### BLERR_NOERROR
@@ -49,8 +51,10 @@ const BLERR_CANNOTLOADICHAT = publicHeaders.BLERR_CANNOTLOADICHAT
 const BLERR_NOERROR = publicHeaders.BLERR_NOERROR
 ```
 
+Bot-library status indicating successful completion.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L18)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-botpath-function-botpath-name-src-mq3-botlib-ai-chat-profiles-ml-1416474883"></a>
 ### botPath
@@ -66,7 +70,7 @@ Normalize a ai chat profiles resource path by removing leading slashes and ensur
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L119)
 
 - [mq3.botlib.ai_chat_profiles.Cached](Type-mq3-botlib-ai-chat-profiles-cached-416331736.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-profiles-cachedprofile-function-cachedprofile-state-filename-chatname-src-mq3-botlib-ai-chat-profiles-ml-627699675"></a>
@@ -85,7 +89,7 @@ Find a cached chat profile by case-insensitive filename and profile name.
 | `chatName` | `dynamic` | — | Named chat profile within the chat-definition file. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L219)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-chat-genderfemale-const-chat-genderfemale-publicheaders-chat-genderfemale-src-mq3-botlib-ai-chat-profiles-ml-813431034"></a>
 ### CHAT_GENDERFEMALE
@@ -94,8 +98,10 @@ Find a cached chat profile by case-insensitive filename and profile name.
 const CHAT_GENDERFEMALE = publicHeaders.CHAT_GENDERFEMALE
 ```
 
+Chat gender selector for female pronoun choices.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-chat-genderless-const-chat-genderless-publicheaders-chat-genderless-src-mq3-botlib-ai-chat-profiles-ml-1324900677"></a>
 ### CHAT_GENDERLESS
@@ -104,8 +110,10 @@ const CHAT_GENDERFEMALE = publicHeaders.CHAT_GENDERFEMALE
 const CHAT_GENDERLESS = publicHeaders.CHAT_GENDERLESS
 ```
 
+Chat gender selector for neutral or unspecified pronoun choices.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L22)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-chat-gendermale-const-chat-gendermale-publicheaders-chat-gendermale-src-mq3-botlib-ai-chat-profiles-ml-1129552525"></a>
 ### CHAT_GENDERMALE
@@ -114,8 +122,10 @@ const CHAT_GENDERLESS = publicHeaders.CHAT_GENDERLESS
 const CHAT_GENDERMALE = publicHeaders.CHAT_GENDERMALE
 ```
 
+Chat gender selector for male pronoun choices.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L26)
 
 - [mq3.botlib.ai_chat_profiles.ChatType](Type-mq3-botlib-ai-chat-profiles-chattype-897042392.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-profiles-clearcache-function-clearcache-state-src-mq3-botlib-ai-chat-profiles-ml-485682533"></a>
@@ -132,7 +142,7 @@ Set `state.cache` to `[]` in `mq3.botlib.ai_chat_profiles.clearCache`.
 | `state` | `dynamic` | — | AI chat profiles state; accesses `cache`. May update `state.cache` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L262)
 
 - [mq3.botlib.ai_chat_profiles.Component](Type-mq3-botlib-ai-chat-profiles-component-399226877.md) — struct
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-component-fixed-const-component-fixed-1-src-mq3-botlib-ai-chat-profiles-ml-113256772"></a>
@@ -142,8 +152,10 @@ Set `state.cache` to `[]` in `mq3.botlib.ai_chat_profiles.clearCache`.
 const COMPONENT_FIXED = 1
 ```
 
+Chat-template component containing literal text.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L33)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-component-random-const-component-random-3-src-mq3-botlib-ai-chat-profiles-ml-1602466990"></a>
 ### COMPONENT_RANDOM
@@ -152,8 +164,10 @@ const COMPONENT_FIXED = 1
 const COMPONENT_RANDOM = 3
 ```
 
+Chat-template component selecting a named random-text list.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L37)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-component-variable-const-component-variable-2-src-mq3-botlib-ai-chat-profiles-ml-2076940765"></a>
 ### COMPONENT_VARIABLE
@@ -162,8 +176,10 @@ const COMPONENT_RANDOM = 3
 const COMPONENT_VARIABLE = 2
 ```
 
+Chat-template component substituting a captured match variable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L35)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-create-function-create-resourcepools-context-readfn-src-mq3-botlib-ai-chat-profiles-ml-307114986"></a>
 ### create
@@ -181,7 +197,7 @@ Create a `mq3.botlib.ai_chat_profiles.State` record, initializing `pools` from `
 | `readFn` | `dynamic` | — | Callback that loads a named resource through the supplied context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L112)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-fail-function-fail-message-src-mq3-botlib-ai-chat-profiles-ml-1981254663"></a>
 ### fail
@@ -197,7 +213,7 @@ Construct error `7570` with diagnostic text `"AI chat: "+message`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L107)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-loadchatfile-function-loadchatfile-state-handle-filename-chatname-src-mq3-botlib-ai-chat-profiles-ml-799955511"></a>
 ### loadChatFile
@@ -216,7 +232,7 @@ Set `state.cache` to `state.cache+[Cached(filename,chatName,profile)]` in `mq3.b
 | `chatName` | `dynamic` | — | Named chat profile within the chat-definition file. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L228)
 
 - [mq3.botlib.ai_chat_profiles.Loader](Type-mq3-botlib-ai-chat-profiles-loader-1934258233.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-profiles-loadtext-function-loadtext-loader-name-src-mq3-botlib-ai-chat-profiles-ml-1455325212"></a>
@@ -234,7 +250,7 @@ Set `loader.state.fileReads` to `loader.state.fileReads+1` in `mq3.botlib.ai_cha
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L126)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-marker-function-marker-src-mq3-botlib-ai-chat-profiles-ml-727875724"></a>
 ### marker
@@ -246,7 +262,7 @@ function marker()
 Return the result of `decode(bytes(1,1))` for `marker`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L131)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-max-chat-name-const-max-chat-name-32-src-mq3-botlib-ai-chat-profiles-ml-1022498206"></a>
 ### MAX_CHAT_NAME
@@ -255,8 +271,10 @@ Return the result of `decode(bytes(1,1))` for `marker`.
 const MAX_CHAT_NAME = 32
 ```
 
+Maximum length of a bot name used by the chat subsystem.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L30)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-max-message-size-const-max-message-size-publicheaders-max-message-size-src-mq3-botlib-ai-chat-profiles-ml-1030760066"></a>
 ### MAX_MESSAGE_SIZE
@@ -265,8 +283,10 @@ const MAX_CHAT_NAME = 32
 const MAX_MESSAGE_SIZE = publicHeaders.MAX_MESSAGE_SIZE
 ```
 
+Maximum character capacity of a bot chat or console message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L28)
 
 - [mq3.botlib.ai_chat_profiles.Message](Type-mq3-botlib-ai-chat-profiles-message-1986615917.md) — struct
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-op-load-chat-file-const-op-load-chat-file-522-src-mq3-botlib-ai-chat-profiles-ml-645099120"></a>
@@ -276,8 +296,10 @@ const MAX_MESSAGE_SIZE = publicHeaders.MAX_MESSAGE_SIZE
 const OP_LOAD_CHAT_FILE = 522
 ```
 
+Bot-library syscall identifier for load chat file.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-op-set-chat-gender-const-op-set-chat-gender-523-src-mq3-botlib-ai-chat-profiles-ml-432394397"></a>
 ### OP_SET_CHAT_GENDER
@@ -286,8 +308,10 @@ const OP_LOAD_CHAT_FILE = 522
 const OP_SET_CHAT_GENDER = 523
 ```
 
+Bot-library syscall identifier for set chat gender.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-chat-profiles-op-set-chat-name-const-op-set-chat-name-524-src-mq3-botlib-ai-chat-profiles-ml-369737078"></a>
 ### OP_SET_CHAT_NAME
@@ -296,8 +320,10 @@ const OP_SET_CHAT_GENDER = 523
 const OP_SET_CHAT_NAME = 524
 ```
 
+Bot-library syscall identifier for set chat name.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L16)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-parseprofile-function-parseprofile-state-filename-wantedname-src-mq3-botlib-ai-chat-profiles-ml-1224733952"></a>
 ### parseProfile
@@ -315,7 +341,7 @@ Apply `mq3.vm.pc_parser.create`, `mq3.vm.pc_parser.load` and `mq3.vm.pc_parser.r
 | `wantedName` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L201)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-parseselectedchat-function-parseselectedchat-registry-source-filename-chatname-src-mq3-botlib-ai-chat-profiles-ml-1665261154"></a>
 ### parseSelectedChat
@@ -334,7 +360,7 @@ Build the `mq3.botlib.ai_chat_profiles.Profile` result for `parseSelectedChat`.
 | `chatName` | `dynamic` | — | Named chat profile within the chat-definition file. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L188)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-parsetype-function-parsetype-registry-source-src-mq3-botlib-ai-chat-profiles-ml-806363952"></a>
 ### parseType
@@ -351,7 +377,7 @@ Build the `mq3.botlib.ai_chat_profiles.ChatType` result for `parseType`. Return 
 | `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L171)
 
 - [mq3.botlib.ai_chat_profiles.Profile](Type-mq3-botlib-ai-chat-profiles-profile-2065744819.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-profiles-readmessage-function-readmessage-registry-source-first-src-mq3-botlib-ai-chat-profiles-ml-925377962"></a>
@@ -370,7 +396,7 @@ Build the `mq3.botlib.ai_chat_profiles.Message` result for `readMessage`. Return
 | `first` | `dynamic` | — | Value used by `readMessage` in `token=first`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L142)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-setchatgender-function-setchatgender-state-handle-gender-src-mq3-botlib-ai-chat-profiles-ml-1535195464"></a>
 ### setChatGender
@@ -388,7 +414,7 @@ Apply `mq3.botlib.ai_resource_pools.chatState` while evaluating `setChatGender`.
 | `gender` | `dynamic` | — | Chat gender identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L240)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-setchatname-function-setchatname-state-handle-name-client-src-mq3-botlib-ai-chat-profiles-ml-559149717"></a>
 ### setChatName
@@ -407,7 +433,7 @@ Apply `mq3.botlib.ai_resource_pools.chatState` while evaluating `setChatName`.
 | `client` | `dynamic` | — | Value used by `setChatName` in `chatState.client=client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L249)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-setreload-function-setreload-state-value-src-mq3-botlib-ai-chat-profiles-ml-1283853004"></a>
 ### setReload
@@ -424,7 +450,7 @@ Set `state.reload` to `value!=0` in `mq3.botlib.ai_chat_profiles.setReload`.
 | `value` | `dynamic` | — | Value used by `setReload` in `if state!=void then state.reload=value!=0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L116)
 
 <a id="function-function-mq3-botlib-ai-chat-profiles-skipblock-function-skipblock-registry-source-src-mq3-botlib-ai-chat-profiles-ml-1684126462"></a>
 ### skipBlock
@@ -441,7 +467,7 @@ Apply `mq3.vm.pc_parser.read` while evaluating `skipBlock`.
 | `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L165)
 
 - [mq3.botlib.ai_chat_profiles.State](Type-mq3-botlib-ai-chat-profiles-state-192328531.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-profiles-typebyname-function-typebyname-profile-name-src-mq3-botlib-ai-chat-profiles-ml-1357555370"></a>
@@ -459,4 +485,4 @@ Find a chat message type by an ASCII case-insensitive name, returning void when 
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L257)

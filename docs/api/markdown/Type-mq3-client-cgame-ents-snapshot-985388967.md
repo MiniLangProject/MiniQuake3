@@ -12,7 +12,7 @@ struct Snapshot
 Stores client game ents snapshot metadata and contents, including `serverTime`, `playerState`, `entities`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L137)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game ents snapshot metadata and contents, including `serverTime`, 
 entities
 ```
 
+Entity-state or renderer-entity entries represented by the current snapshot or scene.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L143)
 
 <a id="field-field-mq3-client-cgame-ents-snapshot-playerstate-playerstate-src-mq3-client-cgame-ents-ml-192767463"></a>
 ### playerState
@@ -33,8 +35,10 @@ entities
 playerState
 ```
 
+Player-state record associated with this client snapshot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L141)
 
 <a id="field-field-mq3-client-cgame-ents-snapshot-servertime-servertime-src-mq3-client-cgame-ents-ml-1112917027"></a>
 ### serverTime
@@ -43,5 +47,7 @@ playerState
 serverTime
 ```
 
+Server simulation timestamp in milliseconds used when interpolating rendered entity snapshots.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L139)

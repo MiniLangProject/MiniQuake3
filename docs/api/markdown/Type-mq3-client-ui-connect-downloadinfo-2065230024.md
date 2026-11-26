@@ -12,7 +12,7 @@ struct DownloadInfo
 Stores UI connect download info record, including `name`, `percent`, `downloaded`, `total`, `estimate`, `copied` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L88)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI connect download info record, including `name`, `percent`, `downloaded
 copied
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `copied` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L100)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-downloaded-downloaded-src-mq3-client-ui-connect-ml-1200827475"></a>
 ### downloaded
@@ -33,8 +35,10 @@ copied
 downloaded
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `downloaded` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L94)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-estimate-estimate-src-mq3-client-ui-connect-ml-177346849"></a>
 ### estimate
@@ -43,8 +47,10 @@ downloaded
 estimate
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `estimate` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L98)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-leftwidth-leftwidth-src-mq3-client-ui-connect-ml-522494157"></a>
 ### leftWidth
@@ -53,8 +59,10 @@ estimate
 leftWidth
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `left` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L106)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-name-name-src-mq3-client-ui-connect-ml-1229541079"></a>
 ### name
@@ -63,8 +71,10 @@ leftWidth
 name
 ```
 
+Virtual filename of the package or file currently being downloaded.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L90)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-percent-percent-src-mq3-client-ui-connect-ml-1334264693"></a>
 ### percent
@@ -73,8 +83,10 @@ name
 percent
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `percent` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L92)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-ratetext-ratetext-src-mq3-client-ui-connect-ml-1109136267"></a>
 ### rateText
@@ -83,8 +95,10 @@ percent
 rateText
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `rateText` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L104)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-total-total-src-mq3-client-ui-connect-ml-1696707065"></a>
 ### total
@@ -93,8 +107,10 @@ rateText
 total
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `total` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L96)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-transferrate-transferrate-src-mq3-client-ui-connect-ml-462824511"></a>
 ### transferRate
@@ -103,5 +119,7 @@ total
 transferRate
 ```
 
+When constructing this record, `displayDownloadInfo` supplies `rate` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L102)

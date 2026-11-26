@@ -12,7 +12,7 @@ struct Grid
 Grid record for collision.patchmesh, containing `columns`, `wrapWidth`, `wrapHeight`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L44)
 
 ## Members
 
@@ -23,8 +23,10 @@ Grid record for collision.patchmesh, containing `columns`, `wrapWidth`, `wrapHei
 columns
 ```
 
+Control-point columns of the subdivided patch grid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L46)
 
 <a id="field-field-mq3-collision-patchmesh-grid-wrapheight-wrapheight-src-mq3-collision-patchmesh-ml-1864820075"></a>
 ### wrapHeight
@@ -33,8 +35,10 @@ columns
 wrapHeight
 ```
 
+True when the vertical grid endpoints form a closed seam.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L50)
 
 <a id="field-field-mq3-collision-patchmesh-grid-wrapwidth-wrapwidth-src-mq3-collision-patchmesh-ml-665891937"></a>
 ### wrapWidth
@@ -43,5 +47,7 @@ wrapHeight
 wrapWidth
 ```
 
+True when the horizontal grid endpoints form a closed seam.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L48)

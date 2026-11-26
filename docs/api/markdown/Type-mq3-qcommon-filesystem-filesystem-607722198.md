@@ -12,7 +12,7 @@ struct FileSystem
 FileSystem record for qcommon.filesystem, containing `paths`, `serverPakChecksums`, `serverPakNames`, `serverReferencedPakChecksums`, `serverReferencedPakNames`, `checksumFeed`, and 1 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L51)
 
 ## Members
 
@@ -23,8 +23,10 @@ FileSystem record for qcommon.filesystem, containing `paths`, `serverPakChecksum
 checksumFeed
 ```
 
+Server-supplied feed value used to calculate pure-package checksums.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L63)
 
 <a id="field-field-mq3-qcommon-filesystem-filesystem-fakechecksum-fakechecksum-src-mq3-qcommon-filesystem-ml-327348096"></a>
 ### fakeChecksum
@@ -33,8 +35,10 @@ checksumFeed
 fakeChecksum
 ```
 
+Fallback checksum used when loose-file access affects pure validation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L65)
 
 <a id="field-field-mq3-qcommon-filesystem-filesystem-paths-paths-src-mq3-qcommon-filesystem-ml-775898972"></a>
 ### paths
@@ -43,8 +47,10 @@ fakeChecksum
 paths
 ```
 
+Mounted search paths in asset lookup precedence order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L53)
 
 <a id="field-field-mq3-qcommon-filesystem-filesystem-serverpakchecksums-serverpakchecksums-src-mq3-qcommon-filesystem-ml-1643931474"></a>
 ### serverPakChecksums
@@ -53,8 +59,10 @@ paths
 serverPakChecksums
 ```
 
+Package checksums approved by the connected pure server.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L55)
 
 <a id="field-field-mq3-qcommon-filesystem-filesystem-serverpaknames-serverpaknames-src-mq3-qcommon-filesystem-ml-1796979798"></a>
 ### serverPakNames
@@ -63,8 +71,10 @@ serverPakChecksums
 serverPakNames
 ```
 
+Package names approved by the connected pure server.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L57)
 
 <a id="field-field-mq3-qcommon-filesystem-filesystem-serverreferencedpakchecksums-serverreferencedpakchecksums-src-mq3-qcommon-filesystem-ml-1550328776"></a>
 ### serverReferencedPakChecksums
@@ -73,8 +83,10 @@ serverPakNames
 serverReferencedPakChecksums
 ```
 
+Checksums of packages referenced by the connected server.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L59)
 
 <a id="field-field-mq3-qcommon-filesystem-filesystem-serverreferencedpaknames-serverreferencedpaknames-src-mq3-qcommon-filesystem-ml-1714908316"></a>
 ### serverReferencedPakNames
@@ -83,5 +95,7 @@ serverReferencedPakChecksums
 serverReferencedPakNames
 ```
 
+Names of packages referenced by the connected server.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L61)

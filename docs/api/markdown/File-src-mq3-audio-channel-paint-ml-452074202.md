@@ -32,7 +32,7 @@ Direct state writes: `paint elements`.
 | `rightVolume` | `dynamic` | — | Right channel scale, shifted right by eight after multiplication. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L39)
 
 <a id="function-function-mq3-audio-channel-paint-fail-function-fail-message-src-mq3-audio-channel-paint-ml-1432295113"></a>
 ### fail
@@ -48,7 +48,7 @@ Create the audio.channel_paint error for `fail` with 7250 and the supplied diagn
 | `message` | `dynamic` | — | Message used in `("audio channel paint: " + message)` and `error(7250, ("audio channel paint: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L12)
 
 <a id="function-function-mq3-audio-channel-paint-paint16-function-paint16-samples-count-sampleoffset-bufferoffset-leftvol-rightvol-sndvol-doppler-dopplerscale-olddopplerscale-paint-src-mq3-audio-channel-paint-ml-483640766"></a>
 ### paint16
@@ -74,7 +74,7 @@ paint is interleaved [left,right,...]. samples represents the linked 1024 sample
 | `paint` | `dynamic` | — | Mutable interleaved left/right accumulator with room for (bufferOffset + count) * 2 entries. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L59)
 
 <a id="constant-constant-mq3-audio-channel-paint-snd-chunk-size-const-snd-chunk-size-1024-src-mq3-audio-channel-paint-ml-1345138142"></a>
 ### SND_CHUNK_SIZE
@@ -83,8 +83,10 @@ paint is interleaved [left,right,...]. samples represents the linked 1024 sample
 const SND_CHUNK_SIZE = 1024
 ```
 
+Number of signed 16-bit mono samples stored in one sound-memory chunk.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L8)
 
 <a id="function-function-mq3-audio-channel-paint-sourceindex-function-sourceindex-samples-index-src-mq3-audio-channel-paint-ml-706419273"></a>
 ### sourceIndex
@@ -101,7 +103,7 @@ Wrap a source sample index into the cyclic PCM array, including negative indices
 | `index` | `dynamic` | — | Logical sample index before modulo wrapping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L25)
 
 <a id="function-function-mq3-audio-channel-paint-validsamples-function-validsamples-samples-src-mq3-audio-channel-paint-ml-323786333"></a>
 ### validSamples
@@ -117,4 +119,4 @@ Check that channel PCM contains a nonempty integral number of 1024-sample chunks
 | `samples` | `dynamic` | — | PCM sample array representing the cyclic sndBuffer chunk chain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L18)

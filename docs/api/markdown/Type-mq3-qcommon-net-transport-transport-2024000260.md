@@ -12,7 +12,7 @@ struct Transport
 Transport record for qcommon.net_transport, containing `socket`, `loopbacks`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L51)
 
 ## Members
 
@@ -23,8 +23,10 @@ Transport record for qcommon.net_transport, containing `socket`, `loopbacks`.
 loopbacks
 ```
 
+In-process queues used when the destination is a loopback address.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L55)
 
 <a id="field-field-mq3-qcommon-net-transport-transport-socket-socket-src-mq3-qcommon-net-transport-ml-153507994"></a>
 ### socket
@@ -33,5 +35,7 @@ loopbacks
 socket
 ```
 
+Host UDP socket used for datagram transport.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L53)

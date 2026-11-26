@@ -30,7 +30,7 @@ Return `mq3.qcommon.message.beginReading(msg)` from `qcommon.msg.MSG_BeginReadin
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.beginReading`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L46)
 
 <a id="function-function-mq3-qcommon-msg-msg-beginreadingoob-function-msg-beginreadingoob-msg-src-mq3-qcommon-msg-ml-1061087037"></a>
 ### MSG_BeginReadingOOB
@@ -46,7 +46,7 @@ Return `mq3.qcommon.message.beginReadingOob(msg)` from `qcommon.msg.MSG_BeginRea
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.beginReadingOob`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L49)
 
 <a id="function-function-mq3-qcommon-msg-msg-bitstream-function-msg-bitstream-msg-src-mq3-qcommon-msg-ml-662861"></a>
 ### MSG_Bitstream
@@ -62,7 +62,7 @@ Return `mq3.qcommon.message.bitstream(msg)` from `qcommon.msg.MSG_Bitstream`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.bitstream`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L43)
 
 <a id="function-function-mq3-qcommon-msg-msg-clear-function-msg-clear-msg-src-mq3-qcommon-msg-ml-644996945"></a>
 ### MSG_Clear
@@ -78,7 +78,7 @@ Return `mq3.qcommon.message.clear(msg)` from `qcommon.msg.MSG_Clear`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.clear`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L40)
 
 <a id="function-function-mq3-qcommon-msg-msg-copy-function-msg-copy-source-length-src-mq3-qcommon-msg-ml-1810715965"></a>
 ### MSG_Copy
@@ -95,7 +95,7 @@ Return `mq3.qcommon.message.copy(source, length)` from `qcommon.msg.MSG_Copy`.
 | `length` | `dynamic` | — | Length passed as `length` to `mq3.qcommon.message.copy`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L53)
 
 <a id="function-function-mq3-qcommon-msg-msg-init-function-msg-init-data-length-src-mq3-qcommon-msg-ml-1480542152"></a>
 ### MSG_Init
@@ -112,7 +112,7 @@ Compute init in qcommon.msg; the normal completion returns `message.initStorage(
 | `length` | `dynamic` | — | Length passed as `length` to `mq3.qcommon.message.initStorage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L33)
 
 <a id="function-function-mq3-qcommon-msg-msg-inithuffman-function-msg-inithuffman-src-mq3-qcommon-msg-ml-1369336802"></a>
 ### MSG_initHuffman
@@ -124,7 +124,7 @@ function MSG_initHuffman()
 Baseq3 trains the global compressor and decompressor identically. Messages own immutable equivalents in MiniLang, avoiding process-global mutation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L235)
 
 <a id="function-function-mq3-qcommon-msg-msg-initoob-function-msg-initoob-data-length-src-mq3-qcommon-msg-ml-999567916"></a>
 ### MSG_InitOOB
@@ -141,7 +141,7 @@ Compute init oob in qcommon.msg; the normal completion returns `message.initStor
 | `length` | `dynamic` | — | Length passed as `length` to `mq3.qcommon.message.initStorage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L37)
 
 <a id="function-function-mq3-qcommon-msg-msg-nuinithuffman-function-msg-nuinithuffman-data-src-mq3-qcommon-msg-ml-647759960"></a>
 ### MSG_NUinitHuffman
@@ -159,7 +159,7 @@ Validation failures include `MSG_NUinitHuffman: missing sample`.
 | `data` | `dynamic` | — | Data used in `(data == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L240)
 
 <a id="function-function-mq3-qcommon-msg-msg-readangle16-function-msg-readangle16-msg-src-mq3-qcommon-msg-ml-1339373575"></a>
 ### MSG_ReadAngle16
@@ -175,7 +175,7 @@ Return `mq3.qcommon.message.readAngle16(msg)` from `qcommon.msg.MSG_ReadAngle16`
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readAngle16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L133)
 
 <a id="function-function-mq3-qcommon-msg-msg-readbigstring-function-msg-readbigstring-msg-src-mq3-qcommon-msg-ml-420617897"></a>
 ### MSG_ReadBigString
@@ -191,7 +191,7 @@ Return `mq3.qcommon.message.readBigCString(msg)` from `qcommon.msg.MSG_ReadBigSt
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readBigCString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L127)
 
 <a id="function-function-mq3-qcommon-msg-msg-readbits-function-msg-readbits-msg-bits-src-mq3-qcommon-msg-ml-2968463"></a>
 ### MSG_ReadBits
@@ -208,7 +208,7 @@ Return `mq3.qcommon.message.readBits(msg, bits)` from `qcommon.msg.MSG_ReadBits`
 | `bits` | `dynamic` | — | Bits passed as `bits` to `mq3.qcommon.message.readBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L63)
 
 <a id="function-function-mq3-qcommon-msg-msg-readbyte-function-msg-readbyte-msg-src-mq3-qcommon-msg-ml-1523403315"></a>
 ### MSG_ReadByte
@@ -224,7 +224,7 @@ Return `mq3.qcommon.message.readU8(msg)` from `qcommon.msg.MSG_ReadByte`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readU8`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L112)
 
 <a id="function-function-mq3-qcommon-msg-msg-readchar-function-msg-readchar-msg-src-mq3-qcommon-msg-ml-657779555"></a>
 ### MSG_ReadChar
@@ -240,7 +240,7 @@ Return `mq3.qcommon.message.readI8(msg)` from `qcommon.msg.MSG_ReadChar`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readI8`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L109)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdata-function-msg-readdata-msg-length-src-mq3-qcommon-msg-ml-133600947"></a>
 ### MSG_ReadData
@@ -257,7 +257,7 @@ Return `mq3.qcommon.message.readData(msg, length)` from `qcommon.msg.MSG_ReadDat
 | `length` | `dynamic` | — | Length passed as `length` to `mq3.qcommon.message.readData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L137)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdelta-function-msg-readdelta-msg-oldvalue-bits-src-mq3-qcommon-msg-ml-1864898913"></a>
 ### MSG_ReadDelta
@@ -275,7 +275,7 @@ Return `mq3.qcommon.message_delta.readDelta(msg, oldValue, bits)` from `qcommon.
 | `bits` | `dynamic` | — | Bits passed as `bits` to `mq3.qcommon.message_delta.readDelta`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L149)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdeltaentity-function-msg-readdeltaentity-msg-fromvalue-number-src-mq3-qcommon-msg-ml-1567165477"></a>
 ### MSG_ReadDeltaEntity
@@ -293,7 +293,7 @@ Return `mq3.qcommon.message_state_delta.readDeltaEntity(msg, fromValue, number)`
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.qcommon.message_state_delta.readDeltaEntity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L214)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdeltafloat-function-msg-readdeltafloat-msg-oldvalue-src-mq3-qcommon-msg-ml-451726981"></a>
 ### MSG_ReadDeltaFloat
@@ -310,7 +310,7 @@ Return `mq3.qcommon.message_delta.readDeltaFloat(msg, oldValue)` from `qcommon.m
 | `oldValue` | `dynamic` | — | Old v passed as `oldV` to `mq3.qcommon.message_delta.readDeltaFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L158)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdeltakey-function-msg-readdeltakey-msg-key-oldvalue-bits-src-mq3-qcommon-msg-ml-1117263378"></a>
 ### MSG_ReadDeltaKey
@@ -329,7 +329,7 @@ Return `mq3.qcommon.message_delta.readDeltaKey(msg, key, oldValue, bits)` from `
 | `bits` | `dynamic` | — | Bits passed as `bits` to `mq3.qcommon.message_delta.readDeltaKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L171)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdeltakeyfloat-function-msg-readdeltakeyfloat-msg-key-oldvalue-src-mq3-qcommon-msg-ml-437528952"></a>
 ### MSG_ReadDeltaKeyFloat
@@ -347,7 +347,7 @@ Return `mq3.qcommon.message_delta.readDeltaKeyFloat(msg, key, oldValue)` from `q
 | `oldValue` | `dynamic` | — | Old v passed as `oldV` to `mq3.qcommon.message_delta.readDeltaKeyFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L182)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdeltaplayerstate-function-msg-readdeltaplayerstate-msg-fromvalue-src-mq3-qcommon-msg-ml-2073223026"></a>
 ### MSG_ReadDeltaPlayerstate
@@ -364,7 +364,7 @@ Return `mq3.qcommon.message_state_delta.readDeltaPlayerstate(msg, fromValue)` fr
 | `fromValue` | `dynamic` | — | Base state passed as `baseState` to `mq3.qcommon.message_state_delta.readDeltaPlayerstate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L223)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdeltausercmd-function-msg-readdeltausercmd-msg-fromvalue-src-mq3-qcommon-msg-ml-824248314"></a>
 ### MSG_ReadDeltaUsercmd
@@ -381,7 +381,7 @@ Return `mq3.qcommon.message_delta.readDeltaUsercmd(msg, fromValue)` from `qcommo
 | `fromValue` | `dynamic` | — | Previous passed as `previous` to `mq3.qcommon.message_delta.readDeltaUsercmd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L191)
 
 <a id="function-function-mq3-qcommon-msg-msg-readdeltausercmdkey-function-msg-readdeltausercmdkey-msg-key-fromvalue-src-mq3-qcommon-msg-ml-123873171"></a>
 ### MSG_ReadDeltaUsercmdKey
@@ -399,7 +399,7 @@ Return `mq3.qcommon.message_delta.readDeltaUsercmdKey(msg, key, fromValue)` from
 | `fromValue` | `dynamic` | — | Previous passed as `previous` to `mq3.qcommon.message_delta.readDeltaUsercmdKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L202)
 
 <a id="function-function-mq3-qcommon-msg-msg-readfloat-function-msg-readfloat-msg-src-mq3-qcommon-msg-ml-450888507"></a>
 ### MSG_ReadFloat
@@ -415,7 +415,7 @@ Return `mq3.qcommon.message.readFloat(msg)` from `qcommon.msg.MSG_ReadFloat`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L121)
 
 <a id="function-function-mq3-qcommon-msg-msg-readlong-function-msg-readlong-msg-src-mq3-qcommon-msg-ml-420685355"></a>
 ### MSG_ReadLong
@@ -431,7 +431,7 @@ Return `mq3.qcommon.message.readI32(msg)` from `qcommon.msg.MSG_ReadLong`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L118)
 
 <a id="function-function-mq3-qcommon-msg-msg-readshort-function-msg-readshort-msg-src-mq3-qcommon-msg-ml-1762783419"></a>
 ### MSG_ReadShort
@@ -447,7 +447,7 @@ Return `mq3.qcommon.message.readI16(msg)` from `qcommon.msg.MSG_ReadShort`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readI16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L115)
 
 <a id="function-function-mq3-qcommon-msg-msg-readstring-function-msg-readstring-msg-src-mq3-qcommon-msg-ml-883549787"></a>
 ### MSG_ReadString
@@ -463,7 +463,7 @@ Return `mq3.qcommon.message.readCString(msg)` from `qcommon.msg.MSG_ReadString`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readCString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L124)
 
 <a id="function-function-mq3-qcommon-msg-msg-readstringline-function-msg-readstringline-msg-src-mq3-qcommon-msg-ml-936492211"></a>
 ### MSG_ReadStringLine
@@ -479,7 +479,7 @@ Return `mq3.qcommon.message.readCStringLine(msg)` from `qcommon.msg.MSG_ReadStri
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.readCStringLine`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L130)
 
 <a id="function-function-mq3-qcommon-msg-msg-reportchangevectors-f-function-msg-reportchangevectors-f-report-src-mq3-qcommon-msg-ml-901878448"></a>
 ### MSG_ReportChangeVectors_f
@@ -495,7 +495,7 @@ Compute report change vectors f in qcommon.msg; the normal completion returns `r
 | `report` | `dynamic` | — | Record exposing `counts`, `printFn`, `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L227)
 
 <a id="function-function-mq3-qcommon-msg-msg-writeangle-function-msg-writeangle-msg-value-src-mq3-qcommon-msg-ml-216764506"></a>
 ### MSG_WriteAngle
@@ -512,7 +512,7 @@ Return `mq3.qcommon.message.writeAngle(msg, value)` from `qcommon.msg.MSG_WriteA
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.message.writeAngle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L102)
 
 <a id="function-function-mq3-qcommon-msg-msg-writeangle16-function-msg-writeangle16-msg-value-src-mq3-qcommon-msg-ml-1994547234"></a>
 ### MSG_WriteAngle16
@@ -529,7 +529,7 @@ Return `mq3.qcommon.message.writeAngle16(msg, value)` from `qcommon.msg.MSG_Writ
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.message.writeAngle16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L106)
 
 <a id="function-function-mq3-qcommon-msg-msg-writebigstring-function-msg-writebigstring-msg-value-src-mq3-qcommon-msg-ml-106645658"></a>
 ### MSG_WriteBigString
@@ -546,7 +546,7 @@ Return `mq3.qcommon.message.writeBigString(msg, value)` from `qcommon.msg.MSG_Wr
 | `value` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.message.writeBigString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L98)
 
 <a id="function-function-mq3-qcommon-msg-msg-writebits-function-msg-writebits-msg-value-bits-src-mq3-qcommon-msg-ml-2101834328"></a>
 ### MSG_WriteBits
@@ -564,7 +564,7 @@ Return `mq3.qcommon.message.writeBits(msg, value, bits)` from `qcommon.msg.MSG_W
 | `bits` | `dynamic` | — | Bits passed as `bits` to `mq3.qcommon.message.writeBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L59)
 
 <a id="function-function-mq3-qcommon-msg-msg-writebyte-function-msg-writebyte-msg-value-src-mq3-qcommon-msg-ml-689158112"></a>
 ### MSG_WriteByte
@@ -581,7 +581,7 @@ Return `mq3.qcommon.message.writeByte(msg, value)` from `qcommon.msg.MSG_WriteBy
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.message.writeByte`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L71)
 
 <a id="function-function-mq3-qcommon-msg-msg-writechar-function-msg-writechar-msg-value-src-mq3-qcommon-msg-ml-1549317528"></a>
 ### MSG_WriteChar
@@ -598,7 +598,7 @@ Return `mq3.qcommon.message.writeChar(msg, value)` from `qcommon.msg.MSG_WriteCh
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.message.writeChar`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L67)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedata-function-msg-writedata-msg-data-length-src-mq3-qcommon-msg-ml-1584882121"></a>
 ### MSG_WriteData
@@ -618,7 +618,7 @@ Validation failures include `MSG_WriteData: invalid length`.
 | `length` | `dynamic` | — | Length used in `(length < 0)` and `(length > len(data))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L78)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedelta-function-msg-writedelta-msg-oldvalue-newvalue-bits-src-mq3-qcommon-msg-ml-1171149186"></a>
 ### MSG_WriteDelta
@@ -637,7 +637,7 @@ Return `mq3.qcommon.message_delta.writeDelta(msg, oldValue, newValue, bits)` fro
 | `bits` | `dynamic` | — | Bits passed as `bits` to `mq3.qcommon.message_delta.writeDelta`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L144)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedeltaentity-function-msg-writedeltaentity-msg-fromvalue-tovalue-force-src-mq3-qcommon-msg-ml-2070636495"></a>
 ### MSG_WriteDeltaEntity
@@ -656,7 +656,7 @@ Return `mq3.qcommon.message_state_delta.writeDeltaEntity(msg, fromValue, toValue
 | `force` | `dynamic` | — | Force passed as `force` to `mq3.qcommon.message_state_delta.writeDeltaEntity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L209)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedeltafloat-function-msg-writedeltafloat-msg-oldvalue-newvalue-src-mq3-qcommon-msg-ml-886310000"></a>
 ### MSG_WriteDeltaFloat
@@ -674,7 +674,7 @@ Return `mq3.qcommon.message_delta.writeDeltaFloat(msg, oldValue, newValue)` from
 | `newValue` | `dynamic` | — | New v passed as `newV` to `mq3.qcommon.message_delta.writeDeltaFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L154)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedeltakey-function-msg-writedeltakey-msg-key-oldvalue-newvalue-bits-src-mq3-qcommon-msg-ml-294315209"></a>
 ### MSG_WriteDeltaKey
@@ -694,7 +694,7 @@ Return `mq3.qcommon.message_delta.writeDeltaKey(msg, key, oldValue, newValue, bi
 | `bits` | `dynamic` | — | Bits passed as `bits` to `mq3.qcommon.message_delta.writeDeltaKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L165)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedeltakeyfloat-function-msg-writedeltakeyfloat-msg-key-oldvalue-newvalue-src-mq3-qcommon-msg-ml-2016875261"></a>
 ### MSG_WriteDeltaKeyFloat
@@ -713,7 +713,7 @@ Return `mq3.qcommon.message_delta.writeDeltaKeyFloat(msg, key, oldValue, newValu
 | `newValue` | `dynamic` | — | New v passed as `newV` to `mq3.qcommon.message_delta.writeDeltaKeyFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L177)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedeltaplayerstate-function-msg-writedeltaplayerstate-msg-fromvalue-tovalue-src-mq3-qcommon-msg-ml-1009670308"></a>
 ### MSG_WriteDeltaPlayerstate
@@ -731,7 +731,7 @@ Return `mq3.qcommon.message_state_delta.writeDeltaPlayerstate(msg, fromValue, to
 | `toValue` | `dynamic` | — | Next state passed as `nextState` to `mq3.qcommon.message_state_delta.writeDeltaPlayerstate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L219)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedeltausercmd-function-msg-writedeltausercmd-msg-fromvalue-tovalue-src-mq3-qcommon-msg-ml-669649790"></a>
 ### MSG_WriteDeltaUsercmd
@@ -749,7 +749,7 @@ Return `mq3.qcommon.message_delta.writeDeltaUsercmd(msg, fromValue, toValue)` fr
 | `toValue` | `dynamic` | — | Current passed as `current` to `mq3.qcommon.message_delta.writeDeltaUsercmd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L187)
 
 <a id="function-function-mq3-qcommon-msg-msg-writedeltausercmdkey-function-msg-writedeltausercmdkey-msg-key-fromvalue-tovalue-src-mq3-qcommon-msg-ml-598034301"></a>
 ### MSG_WriteDeltaUsercmdKey
@@ -768,7 +768,7 @@ Return `mq3.qcommon.message_delta.writeDeltaUsercmdKey(msg, key, fromValue, toVa
 | `toValue` | `dynamic` | — | Current passed as `current` to `mq3.qcommon.message_delta.writeDeltaUsercmdKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L197)
 
 <a id="function-function-mq3-qcommon-msg-msg-writefloat-function-msg-writefloat-msg-value-src-mq3-qcommon-msg-ml-336867282"></a>
 ### MSG_WriteFloat
@@ -785,7 +785,7 @@ Return `mq3.qcommon.message.writeFloat(msg, value)` from `qcommon.msg.MSG_WriteF
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.message.writeFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L90)
 
 <a id="function-function-mq3-qcommon-msg-msg-writelong-function-msg-writelong-msg-value-src-mq3-qcommon-msg-ml-446486640"></a>
 ### MSG_WriteLong
@@ -802,7 +802,7 @@ Return `mq3.qcommon.message.writeLong(msg, value)` from `qcommon.msg.MSG_WriteLo
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.message.writeLong`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L86)
 
 <a id="function-function-mq3-qcommon-msg-msg-writeshort-function-msg-writeshort-msg-value-src-mq3-qcommon-msg-ml-1103723722"></a>
 ### MSG_WriteShort
@@ -819,7 +819,7 @@ Return `mq3.qcommon.message.writeShort(msg, value)` from `qcommon.msg.MSG_WriteS
 | `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.message.writeShort`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L82)
 
 <a id="function-function-mq3-qcommon-msg-msg-writestring-function-msg-writestring-msg-value-src-mq3-qcommon-msg-ml-1577332602"></a>
 ### MSG_WriteString
@@ -836,6 +836,6 @@ Return `mq3.qcommon.message.writeString(msg, value)` from `qcommon.msg.MSG_Write
 | `value` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.message.writeString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L94)
 
 - [mq3.qcommon.msg.NUHuffman](Type-mq3-qcommon-msg-nuhuffman-45583967.md) — struct

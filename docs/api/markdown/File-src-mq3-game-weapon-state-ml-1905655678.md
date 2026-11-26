@@ -22,6 +22,6 @@ Update `level.weaponState` during `get`. Return paths include `level.weaponState
 | `level` | `dynamic` | — | Game-level state; accesses `weaponState`. May update `level.weaponState` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L30)
 
 - [mq3.game.weapon_state.State](Type-mq3-game-weapon-state-state-1484693631.md) — struct

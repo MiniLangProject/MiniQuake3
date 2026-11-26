@@ -12,7 +12,7 @@ struct Light
 Data record for `mq3.renderer.playable_dynamic_lights.Light`; groups `origin`, `radius`, `color`, `additive`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L46)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.playable_dynamic_lights.Light`; groups `origin`, `
 additive
 ```
 
+Whether the dynamic light contributes additively rather than modulating the surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L54)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-light-color-color-src-mq3-renderer-playable-dynamic-lights-ml-2140149343"></a>
 ### color
@@ -33,8 +35,10 @@ additive
 color
 ```
 
+RGB intensity of the light projected onto affected world or model triangles.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L52)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-light-origin-origin-src-mq3-renderer-playable-dynamic-lights-ml-1189791455"></a>
 ### origin
@@ -43,8 +47,10 @@ color
 origin
 ```
 
+World-space light center used when projecting dynamic lighting onto triangle vertices.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L48)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-light-radius-radius-src-mq3-renderer-playable-dynamic-lights-ml-1255942735"></a>
 ### radius
@@ -53,5 +59,7 @@ origin
 radius
 ```
 
+Radius used for the light, sprite, beam, or bounded object.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L50)

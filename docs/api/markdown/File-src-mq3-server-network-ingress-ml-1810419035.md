@@ -32,7 +32,7 @@ Validation failures include `server ingress: invalid client binding`.
 | `messageClient` | `dynamic` | — | Initial `messageClient` field stored in the returned or constructed `mq3.server.network_ingress.Binding` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L74)
 
 - [mq3.server.network_ingress.Binding](Type-mq3-server-network-ingress-binding-1863188906.md) — struct
 <a id="function-function-mq3-server-network-ingress-create-function-create-serverstate-bindings-hostservices-src-mq3-server-network-ingress-ml-978198232"></a>
@@ -53,7 +53,7 @@ Validation failures include `server ingress: missing configuration`; `server ing
 | `hostServices` | `dynamic` | — | Record exposing `connectionlessRuntime`, `connectionlessHost`, `context`, `clientCommandFn`, `userMoveFn`, `sendGamestateFn`, `dropFn` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L142)
 
 <a id="function-function-mq3-server-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-server-network-ingress-ml-1795197464"></a>
 ### createPump
@@ -74,7 +74,7 @@ Validation failures include `server ingress: missing runtime`.
 | `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.qcommon.network_pump.create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L210)
 
 <a id="function-function-mq3-server-network-ingress-disconnect-function-disconnect-packethost-address-text-src-mq3-server-network-ingress-ml-1208567347"></a>
 ### disconnect
@@ -94,7 +94,7 @@ Validation failures include `server ingress: missing disconnect service`.
 | `text` | `dynamic` | — | Text used in `runtime.services.disconnectFn(runtime.services, address, text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L120)
 
 <a id="function-function-mq3-server-network-ingress-executeclient-function-executeclient-packethost-packetclient-msg-src-mq3-server-network-ingress-ml-485836762"></a>
 ### executeClient
@@ -115,7 +115,7 @@ Direct state writes: `packetClient.state`.
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.server.client_message.execute`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L101)
 
 <a id="function-function-mq3-server-network-ingress-findbinding-function-findbinding-runtime-packetclient-src-mq3-server-network-ingress-ml-1007899529"></a>
 ### findBinding
@@ -132,7 +132,7 @@ Find binding in server.network_ingress.
 | `packetClient` | `dynamic` | — | Packet client used in `(current.packetClient == packetClient)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L87)
 
 <a id="function-function-mq3-server-network-ingress-packetdiagnostic-function-packetdiagnostic-packethost-packetclient-address-src-mq3-server-network-ingress-ml-1331730677"></a>
 ### packetDiagnostic
@@ -150,7 +150,7 @@ Compute packet diagnostic in server.network_ingress.
 | `address` | `dynamic` | — | Address used in `runtime.services.packetDiagnosticFn(runtime.services, packetClient, address)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L130)
 
 <a id="function-function-mq3-server-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-server-network-ingress-ml-1673744334"></a>
 ### receiveClient
@@ -168,7 +168,7 @@ Receive client in server.network_ingress.
 | `data` | `dynamic` | — | Data used in `runtime.services.clientPacketFn(runtime.services, address, data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L190)
 
 <a id="function-function-mq3-server-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-server-network-ingress-ml-1089833030"></a>
 ### receiveServer
@@ -186,7 +186,7 @@ Return `mq3.server.network_ingress.serverPacket(runtime, address, data)` from `s
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.server.network_ingress.serverPacket`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L199)
 
 - [mq3.server.network_ingress.Runtime](Type-mq3-server-network-ingress-runtime-956979395.md) — struct
 <a id="function-function-mq3-server-network-ingress-serverpacket-function-serverpacket-runtime-address-data-src-mq3-server-network-ingress-ml-1505597234"></a>
@@ -208,7 +208,7 @@ Direct state writes: `runtime.lastPacketResult`, `runtime.packetCount`.
 | `data` | `dynamic` | — | Data passed as `data` to `mq3.qcommon.message.initStorage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L178)
 
 <a id="function-function-mq3-server-network-ingress-services-function-services-src-mq3-server-network-ingress-ml-825236030"></a>
 ### services
@@ -220,7 +220,7 @@ function services()
 Create `mq3.server.network_ingress.Services` with connectionlessRuntime=void; connectionlessHost=void; clientPacketFn=void; clientCommandFn=void; 7 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L80)
 
 - [mq3.server.network_ingress.Services](Type-mq3-server-network-ingress-services-994545629.md) — struct
 <a id="function-function-mq3-server-network-ingress-settime-function-settime-runtime-time-src-mq3-server-network-ingress-ml-59637469"></a>
@@ -240,4 +240,4 @@ Validation failures include `server ingress: missing runtime`.
 | `time` | `dynamic` | — | Time operand used by `setTime`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L166)

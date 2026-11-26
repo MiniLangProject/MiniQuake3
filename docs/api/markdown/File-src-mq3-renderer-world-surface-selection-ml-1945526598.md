@@ -37,7 +37,7 @@ Returns `a.faceIndex<b.faceIndex` from `mq3.renderer.world_surface_selection.bef
 | `b` | `dynamic` | — | Record providing `b.importance`, `b.faceIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L347)
 
 <a id="function-function-mq3-renderer-world-surface-selection-buildcache-function-buildcache-map-patcherror-src-mq3-renderer-world-surface-selection-ml-1873613148"></a>
 ### buildCache
@@ -54,7 +54,7 @@ Calls `mq3.renderer.world_surface_selection.buildCacheForPatches` with `(map,pat
 | `patchError` | `dynamic` | — | Value forwarded as `patchError` to `mq3.renderer.world_surface_selection.buildCacheForPatches`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L382)
 
 <a id="function-function-mq3-renderer-world-surface-selection-buildcacheforpatches-function-buildcacheforpatches-map-patcherror-withvariants-src-mq3-renderer-world-surface-selection-ml-1001698622"></a>
 ### buildCacheForPatches
@@ -72,7 +72,7 @@ Builds `mq3.renderer.world_surface_selection.WorldCache` after updating `byFace[
 | `withVariants` | `dynamic` | — | Input tested by `withVariants`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L387)
 
 <a id="function-function-mq3-renderer-world-surface-selection-cachedrenderdata-function-cachedrenderdata-cache-chosen-src-mq3-renderer-world-surface-selection-ml-1032202606"></a>
 ### cachedRenderData
@@ -89,7 +89,7 @@ Builds `triangles[offset]` in `mq3.renderer.world_surface_selection.cachedRender
 | `chosen` | `dynamic` | — | Record providing `chosen.faceIndexes`, `chosen.selectedSurfaceCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L558)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L686)
 
 <a id="function-function-mq3-renderer-world-surface-selection-cachedvisiblefaces-function-cachedvisiblefaces-cache-map-cameracluster-pvsused-areamask-src-mq3-renderer-world-surface-selection-ml-1106354136"></a>
 ### cachedVisibleFaces
@@ -109,7 +109,7 @@ Updates `cache.areaMask`, `cache.pvsFaces`, `cache.nativeVisible`, `cache.pvsFac
 | `areaMask` | `dynamic` | — | Value assigned to `cache.areaMask`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L541)
 
 - [mq3.renderer.world_surface_selection.Candidate](Type-mq3-renderer-world-surface-selection-candidate-23504485.md) — struct
 <a id="function-function-mq3-renderer-world-surface-selection-choose-function-choose-map-camera-cfg-src-mq3-renderer-world-surface-selection-ml-477805165"></a>
@@ -128,7 +128,7 @@ Calls `mq3.renderer.world_surface_selection.chooseCore` with `(map,camera,cfg,vo
 | `cfg` | `dynamic` | — | Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.chooseCore`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L512)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L640)
 
 <a id="function-function-mq3-renderer-world-surface-selection-choosecached-function-choosecached-cache-camera-cfg-src-mq3-renderer-world-surface-selection-ml-357183457"></a>
 ### chooseCached
@@ -146,7 +146,7 @@ Computes `chooseCached` from `chooseCore(cache.map,camera,cfg,cache)` using `mq3
 | `cfg` | `dynamic` | — | Record providing `cfg.patchError`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L517)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L645)
 
 <a id="function-function-mq3-renderer-world-surface-selection-choosecore-function-choosecore-map-camera-cfg-cache-src-mq3-renderer-world-surface-selection-ml-1054402237"></a>
 ### chooseCore
@@ -165,7 +165,7 @@ Calls `mq3.renderer.world_surface_selection.chooseCorePvs` with `(map,camera,cam
 | `cache` | `dynamic` | — | Value forwarded as `cache` to `mq3.renderer.world_surface_selection.chooseCorePvs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L507)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L635)
 
 <a id="function-function-mq3-renderer-world-surface-selection-choosecorepvs-function-choosecorepvs-map-camera-pvsorigin-cfg-cache-src-mq3-renderer-world-surface-selection-ml-1093313030"></a>
 ### chooseCorePvs
@@ -185,7 +185,7 @@ Builds `mq3.renderer.world_surface_selection.Selection` after updating `cache.na
 | `cache` | `dynamic` | — | Mutable record or buffer; this call updates `cache.nativeVisible[slot]`, `cache.nativeSelected`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L431)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L559)
 
 <a id="function-function-mq3-renderer-world-surface-selection-choosepatchlod-function-choosepatchlod-cache-chosen-camera-cfg-src-mq3-renderer-world-surface-selection-ml-1955512591"></a>
 ### choosePatchLod
@@ -204,7 +204,7 @@ Updates `chosen.estimatedTriangleCount`, `chosen.faceIndexes` in `mq3.renderer.w
 | `cfg` | `dynamic` | — | Record providing `cfg.lodCurveError`, `cfg.runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L538)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L666)
 
 <a id="function-function-mq3-renderer-world-surface-selection-chooseportalcached-function-chooseportalcached-cache-camera-pvsorigin-cfg-src-mq3-renderer-world-surface-selection-ml-1156234062"></a>
 ### choosePortalCached
@@ -223,7 +223,7 @@ Computes `choosePortalCached` from `chooseCorePvs(cache.map,camera,pvsOrigin,cfg
 | `cfg` | `dynamic` | — | Record providing `cfg.patchError`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L527)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L655)
 
 <a id="function-function-mq3-renderer-world-surface-selection-config-function-config-width-height-horizontalfov-neardistance-fardistance-trianglebudget-backfacecull-patcherror-src-mq3-renderer-world-surface-selection-ml-628827150"></a>
 ### config
@@ -246,7 +246,7 @@ Builds `mq3.renderer.world_surface_selection.SelectionConfig` for `mq3.renderer.
 | `patchError` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L211)
 
 <a id="function-function-mq3-renderer-world-surface-selection-contains-function-contains-values-wanted-src-mq3-renderer-world-surface-selection-ml-1220122685"></a>
 ### contains
@@ -263,7 +263,7 @@ Returns `false` from `mq3.renderer.world_surface_selection.contains`; earlier br
 | `wanted` | `dynamic` | — | Input used by `for each value in values if value==wanted then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L273)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-cull-back-const-cull-back-2-src-mq3-renderer-world-surface-selection-ml-214991123"></a>
 ### CULL_BACK
@@ -272,8 +272,10 @@ Returns `false` from `mq3.renderer.world_surface_selection.contains`; earlier br
 const CULL_BACK = 2
 ```
 
+Culling mode that keeps back-facing surfaces and rejects their front faces.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L38)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-cull-front-const-cull-front-0-src-mq3-renderer-world-surface-selection-ml-1143790259"></a>
 ### CULL_FRONT
@@ -282,8 +284,10 @@ const CULL_BACK = 2
 const CULL_FRONT = 0
 ```
 
+Culling mode that keeps front-facing surfaces and rejects their back faces.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L34)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-cull-two-sided-const-cull-two-sided-1-src-mq3-renderer-world-surface-selection-ml-128119490"></a>
 ### CULL_TWO_SIDED
@@ -292,8 +296,10 @@ const CULL_FRONT = 0
 const CULL_TWO_SIDED = 1
 ```
 
+Culling mode that accepts both sides of a surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L36)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-default-far-distance-const-default-far-distance-8192-src-mq3-renderer-world-surface-selection-ml-1735216101"></a>
 ### DEFAULT_FAR_DISTANCE
@@ -302,8 +308,10 @@ const CULL_TWO_SIDED = 1
 const DEFAULT_FAR_DISTANCE = 8192
 ```
 
+Default distance of the camera's far clipping plane.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-default-horizontal-fov-const-default-horizontal-fov-100-src-mq3-renderer-world-surface-selection-ml-200237460"></a>
 ### DEFAULT_HORIZONTAL_FOV
@@ -312,8 +320,10 @@ const DEFAULT_FAR_DISTANCE = 8192
 const DEFAULT_HORIZONTAL_FOV = 100
 ```
 
+Default horizontal camera field of view, in degrees.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L26)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-default-near-distance-const-default-near-distance-1-src-mq3-renderer-world-surface-selection-ml-1110468422"></a>
 ### DEFAULT_NEAR_DISTANCE
@@ -322,8 +332,10 @@ const DEFAULT_HORIZONTAL_FOV = 100
 const DEFAULT_NEAR_DISTANCE = 1
 ```
 
+Default distance of the camera's near clipping plane.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L28)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-default-triangle-budget-const-default-triangle-budget-12000-src-mq3-renderer-world-surface-selection-ml-1201025384"></a>
 ### DEFAULT_TRIANGLE_BUDGET
@@ -332,8 +344,10 @@ const DEFAULT_NEAR_DISTANCE = 1
 const DEFAULT_TRIANGLE_BUDGET = 12000
 ```
 
+Default limit on triangles retained by visible-world surface selection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
 
 <a id="function-function-mq3-renderer-world-surface-selection-defaults-function-defaults-width-height-src-mq3-renderer-world-surface-selection-ml-1709826523"></a>
 ### defaults
@@ -350,7 +364,7 @@ Calls `mq3.renderer.world_surface_selection.config` with `(width,height,DEFAULT_
 | `height` | `dynamic` | — | Value forwarded as `height` to `mq3.renderer.world_surface_selection.config`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L222)
 
 <a id="function-function-mq3-renderer-world-surface-selection-equalareamask-function-equalareamask-left-right-src-mq3-renderer-world-surface-selection-ml-990148731"></a>
 ### equalAreaMask
@@ -367,7 +381,7 @@ Compares optional area-mask buffers by presence, length, and every byte.
 | `right` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L502)
 
 <a id="function-function-mq3-renderer-world-surface-selection-f32-function-f32-map-offset-src-mq3-renderer-world-surface-selection-ml-1567785235"></a>
 ### f32
@@ -384,7 +398,7 @@ Returns `n.bitsFloat(value)` from `mq3.renderer.world_surface_selection.f32`; ea
 | `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L199)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-face-plane-epsilon-const-face-plane-epsilon-8-src-mq3-renderer-world-surface-selection-ml-1790744445"></a>
 ### FACE_PLANE_EPSILON
@@ -393,8 +407,10 @@ Returns `n.bitsFloat(value)` from `mq3.renderer.world_surface_selection.f32`; ea
 const FACE_PLANE_EPSILON = 8
 ```
 
+Tolerance used when classifying the camera against a planar face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L40)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-face-stride-const-face-stride-104-src-mq3-renderer-world-surface-selection-ml-935261030"></a>
 ### FACE_STRIDE
@@ -403,8 +419,10 @@ const FACE_PLANE_EPSILON = 8
 const FACE_STRIDE = 104
 ```
 
+Byte stride of one face record in the BSP surface lump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L24)
 
 <a id="function-function-mq3-renderer-world-surface-selection-facebounds-function-facebounds-map-faceoffset-src-mq3-renderer-world-surface-selection-ml-1591916730"></a>
 ### faceBounds
@@ -421,7 +439,7 @@ Builds `positions[index]`, `center[axis]` in `mq3.renderer.world_surface_selecti
 | `faceOffset` | `dynamic` | — | Input used by `first=i32(map,faceOffset+12)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L293)
 
 <a id="function-function-mq3-renderer-world-surface-selection-facetrianglecount-function-facetrianglecount-map-faceoffset-patcherror-src-mq3-renderer-world-surface-selection-ml-815665558"></a>
 ### faceTriangleCount
@@ -439,7 +457,7 @@ Builds `control[index]` in `mq3.renderer.world_surface_selection.faceTriangleCou
 | `patchError` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.bsp_render_data.subdividePatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L279)
 
 <a id="function-function-mq3-renderer-world-surface-selection-fail-function-fail-text-src-mq3-renderer-world-surface-selection-ml-582632267"></a>
 ### fail
@@ -455,7 +473,7 @@ Creates error `7490` with message `"World surface selection: "+text`.
 | `text` | `dynamic` | — | Input used in the result expression `error(7490,"World surface selection: "+text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L173)
 
 <a id="function-function-mq3-renderer-world-surface-selection-forview-function-forview-cfg-refdef-src-mq3-renderer-world-surface-selection-ml-1130389828"></a>
 ### forView
@@ -472,7 +490,7 @@ Constructs `mq3.renderer.world_surface_selection.SelectionConfig` with `width` =
 | `refdef` | `dynamic` | — | Record providing `refdef.fovX`, `refdef.viewaxis`, `refdef.fovY`, `refdef.areaMask`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L233)
 
 - [mq3.renderer.world_surface_selection.Frustum](Type-mq3-renderer-world-surface-selection-frustum-417074958.md) — struct
 <a id="function-function-mq3-renderer-world-surface-selection-i32-function-i32-map-offset-src-mq3-renderer-world-surface-selection-ml-1098214521"></a>
@@ -490,7 +508,7 @@ Returns `value` from `mq3.renderer.world_surface_selection.i32`; earlier branche
 | `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L193)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-leaf-stride-const-leaf-stride-48-src-mq3-renderer-world-surface-selection-ml-254689493"></a>
 ### LEAF_STRIDE
@@ -499,8 +517,10 @@ Returns `value` from `mq3.renderer.world_surface_selection.i32`; earlier branche
 const LEAF_STRIDE = 48
 ```
 
+Byte stride of one leaf record in the BSP leaf lump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L22)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-node-stride-const-node-stride-36-src-mq3-renderer-world-surface-selection-ml-507024484"></a>
 ### NODE_STRIDE
@@ -509,8 +529,10 @@ const LEAF_STRIDE = 48
 const NODE_STRIDE = 36
 ```
 
+Byte stride of one node record in the BSP node lump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L18)
 
 <a id="constant-constant-mq3-renderer-world-surface-selection-plane-stride-const-plane-stride-16-src-mq3-renderer-world-surface-selection-ml-57026688"></a>
 ### PLANE_STRIDE
@@ -519,8 +541,10 @@ const NODE_STRIDE = 36
 const PLANE_STRIDE = 16
 ```
 
+Byte stride of one plane record in the BSP plane lump.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L20)
 
 <a id="function-function-mq3-renderer-world-surface-selection-pointleaf-function-pointleaf-map-point-src-mq3-renderer-world-surface-selection-ml-2132743310"></a>
 ### pointLeaf
@@ -537,7 +561,7 @@ This is CM_PointLeafnum's BSP walk, kept here so selection needs no loaded colli
 | `point` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L241)
 
 <a id="function-function-mq3-renderer-world-surface-selection-prepare-function-prepare-map-camera-cfg-src-mq3-renderer-world-surface-selection-ml-1706441687"></a>
 ### prepare
@@ -555,7 +579,7 @@ Builds `mq3.renderer.world_surface_selection.PreparedWorld` using `mq3.renderer.
 | `cfg` | `dynamic` | — | Record providing `cfg.triangleBudget`, `cfg.patchError`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L626)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L754)
 
 <a id="function-function-mq3-renderer-world-surface-selection-preparecached-function-preparecached-cache-camera-cfg-src-mq3-renderer-world-surface-selection-ml-1820073903"></a>
 ### prepareCached
@@ -573,7 +597,7 @@ Builds `mq3.renderer.world_surface_selection.PreparedWorld` for `mq3.renderer.wo
 | `cfg` | `dynamic` | — | Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.chooseCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L574)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L702)
 
 <a id="function-function-mq3-renderer-world-surface-selection-preparecachedretained-function-preparecachedretained-cache-camera-cfg-previous-src-mq3-renderer-world-surface-selection-ml-40087724"></a>
 ### prepareCachedRetained
@@ -592,7 +616,7 @@ Keep the already-flattened triangle stream when camera motion does not alter the
 | `previous` | `dynamic` | — | Record providing `previous.selection`, `previous.renderData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L586)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L714)
 
 - [mq3.renderer.world_surface_selection.PreparedWorld](Type-mq3-renderer-world-surface-selection-preparedworld-1392584475.md) — struct
 <a id="function-function-mq3-renderer-world-surface-selection-preparefrustum-function-preparefrustum-cfg-src-mq3-renderer-world-surface-selection-ml-708756000"></a>
@@ -609,7 +633,7 @@ Builds `mq3.renderer.world_surface_selection.Frustum` using `mq3.client.playable
 | `cfg` | `dynamic` | — | Record providing `cfg.width`, `cfg.horizontalFov`, `cfg.height`, `cfg.verticalFov`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L306)
 
 <a id="function-function-mq3-renderer-world-surface-selection-preparepatches-function-preparepatches-patches-byface-counts-nativefaces-centers-radii-normals-src-mq3-renderer-world-surface-selection-ml-394386848"></a>
 ### preparePatches
@@ -631,7 +655,7 @@ Updates `byFace[patch.face]`, `counts[patch.face]` in `mq3.renderer.world_surfac
 | `normals` | `dynamic` | — | Indexed input read at `patch.face`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L360)
 
 <a id="function-function-mq3-renderer-world-surface-selection-prepareportalcached-function-prepareportalcached-cache-camera-pvsorigin-cfg-src-mq3-renderer-world-surface-selection-ml-1316254124"></a>
 ### preparePortalCached
@@ -650,7 +674,7 @@ Builds `mq3.renderer.world_surface_selection.PreparedWorld` for `mq3.renderer.wo
 | `cfg` | `dynamic` | — | Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.selectPortalCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L606)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L734)
 
 <a id="function-function-mq3-renderer-world-surface-selection-pvscontains-function-pvscontains-map-cluster-other-src-mq3-renderer-world-surface-selection-ml-1341792464"></a>
 ### pvsContains
@@ -668,7 +692,7 @@ Computes `pvsContains` from `(map.data[at]&(1<<(other&7)))!=0` using `mq3.render
 | `other` | `dynamic` | — | Input tested by `clusters is error or rowBytes is error or rowBytes<=0 or cluster<0 or cluster>=clusters or other<0 or other>=clusters`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L260)
 
 <a id="function-function-mq3-renderer-world-surface-selection-samefaces-function-samefaces-left-right-src-mq3-renderer-world-surface-selection-ml-1305766669"></a>
 ### sameFaces
@@ -685,7 +709,7 @@ Camera checks run regularly, but rebuilding retained material commands is only n
 | `right` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L615)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L743)
 
 - [mq3.renderer.world_surface_selection.Selection](Type-mq3-renderer-world-surface-selection-selection-1519185222.md) — struct
 - [mq3.renderer.world_surface_selection.SelectionConfig](Type-mq3-renderer-world-surface-selection-selectionconfig-1943524416.md) — struct
@@ -706,7 +730,7 @@ Returns `choosePatchLod(cache,chosen,camera,cfg)` from `mq3.renderer.world_surfa
 | `cfg` | `dynamic` | — | Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.choosePortalCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L597)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L725)
 
 <a id="function-function-mq3-renderer-world-surface-selection-setcullmodes-function-setcullmodes-cache-modes-src-mq3-renderer-world-surface-selection-ml-945539620"></a>
 ### setCullModes
@@ -723,7 +747,7 @@ Updates `cache.cullModes` in `mq3.renderer.world_surface_selection.setCullModes`
 | `modes` | `dynamic` | — | Value assigned to `cache.cullModes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L462)
 
 <a id="function-function-mq3-renderer-world-surface-selection-setindexedculling-function-setindexedculling-cache-index-src-mq3-renderer-world-surface-selection-ml-887389670"></a>
 ### setIndexedCulling
@@ -740,7 +764,7 @@ Builds `modes[textureIndex]` in `mq3.renderer.world_surface_selection.setIndexed
 | `index` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.shader_parser.parseIndexed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L360)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L488)
 
 <a id="function-function-mq3-renderer-world-surface-selection-settwosidedtextures-function-settwosidedtextures-cache-flags-src-mq3-renderer-world-surface-selection-ml-1998847875"></a>
 ### setTwoSidedTextures
@@ -757,7 +781,7 @@ Builds `modes[index]` in `mq3.renderer.world_surface_selection.setTwoSidedTextur
 | `flags` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L478)
 
 <a id="function-function-mq3-renderer-world-surface-selection-setview-function-setview-cfg-refdef-src-mq3-renderer-world-surface-selection-ml-1259409694"></a>
 ### setView
@@ -774,7 +798,7 @@ Updates `cfg.horizontalFov`, `cfg.verticalFov`, `cfg.runtime`, `cfg.areaMask` in
 | `refdef` | `dynamic` | — | Record providing `refdef.fovX`, `refdef.fovY`, `refdef.viewaxis`, `refdef.areaMask`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L226)
 
 <a id="function-function-mq3-renderer-world-surface-selection-validmap-function-validmap-map-src-mq3-renderer-world-surface-selection-ml-1520801640"></a>
 ### validMap
@@ -790,7 +814,7 @@ Computes `map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(
 | `map` | `dynamic` | — | Record providing `map.data`, `map.offsets`, `map.counts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L176)
 
 <a id="function-function-mq3-renderer-world-surface-selection-viewpointaxes-function-viewpointaxes-camera-point-axes-src-mq3-renderer-world-surface-selection-ml-1738806488"></a>
 ### viewPointAxes
@@ -808,7 +832,7 @@ Computes `viewPointAxes` from `[qmath.DotProduct(delta,axes[1]),qmath.DotProduct
 | `axes` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L340)
 
 <a id="function-function-mq3-renderer-world-surface-selection-visiblefaces-function-visiblefaces-map-cameracluster-pvsused-areamask-src-mq3-renderer-world-surface-selection-ml-315361598"></a>
 ### visibleFaces
@@ -827,7 +851,7 @@ Builds `seenFaces[face]` in `mq3.renderer.world_surface_selection.visibleFaces`;
 | `areaMask` | `dynamic` | — | Indexed input read at `area>>3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L515)
 
 <a id="function-function-mq3-renderer-world-surface-selection-visibleinfrustum-function-visibleinfrustum-local-radius-cfg-src-mq3-renderer-world-surface-selection-ml-809168897"></a>
 ### visibleInFrustum
@@ -845,7 +869,7 @@ Returns `visibleInPreparedFrustum(local,radius,cfg,frustum)` from `mq3.renderer.
 | `cfg` | `dynamic` | — | Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.prepareFrustum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L332)
 
 <a id="function-function-mq3-renderer-world-surface-selection-visibleinpreparedfrustum-function-visibleinpreparedfrustum-local-radius-cfg-frustum-src-mq3-renderer-world-surface-selection-ml-1493210501"></a>
 ### visibleInPreparedFrustum
@@ -864,7 +888,7 @@ Computes `visibleInPreparedFrustum` from `local[0]>=0.0-horizontal and local[0]<
 | `frustum` | `dynamic` | — | Record providing `frustum.slopeX`, `frustum.radiusScaleX`, `frustum.slopeY`, `frustum.radiusScaleY`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L320)
 
 - [mq3.renderer.world_surface_selection.WorldCache](Type-mq3-renderer-world-surface-selection-worldcache-2022446870.md) — struct
 <a id="function-function-mq3-renderer-world-surface-selection-worldsurfacerange-function-worldsurfacerange-map-src-mq3-renderer-world-surface-selection-ml-280131744"></a>
@@ -881,4 +905,4 @@ tr_bsp.c loads model 0 as the static world. Retail q3dm0 also lists the *12/*13 
 | `map` | `dynamic` | — | Record providing `map.counts`, `map.data`, `map.offsets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L184)

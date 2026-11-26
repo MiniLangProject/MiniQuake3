@@ -12,7 +12,7 @@ struct SpawnEntry
 `SpawnEntry` record for bot clients, containing `clientNum` and `spawnTime`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L19)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct SpawnEntry
 clientNum
 ```
 
+Client slot number represented by this player state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L21)
 
 <a id="field-field-mq3-game-bot-clients-spawnentry-spawntime-spawntime-src-mq3-game-bot-clients-ml-1655196008"></a>
 ### spawnTime
@@ -33,5 +35,7 @@ clientNum
 spawnTime
 ```
 
+Timestamp used to schedule a bot/client spawn.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L23)

@@ -42,7 +42,7 @@ Updates `live.lastAccepted`, `live.outgoing.lastPacketSentTime`, `live.sendHost`
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L348)
 
 <a id="function-function-mq3-client-remote-play-appendcommand-function-appendcommand-live-command-src-mq3-client-remote-play-ml-2097436221"></a>
 ### appendCommand
@@ -59,7 +59,7 @@ Calls `mq3.client.command_ring.store`, `mq3.client.send_cmd.commandCopy` from re
 | `command` | `dynamic` | — | Value used by `remoteCommands.store(outgoing.commands,outgoing.cmdNumber,remoteSend.commandCopy(command))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L253)
 
 <a id="function-function-mq3-client-remote-play-approvedarchive-function-approvedarchive-live-src-mq3-client-remote-play-ml-1021690626"></a>
 ### approvedArchive
@@ -75,7 +75,7 @@ Reads `live.verifiedArchive` for remote play `approvedArchive`.
 | `live` | `dynamic` | — | Record read through `live.verifiedArchive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L213)
 
 <a id="function-function-mq3-client-remote-play-checkservercommands-function-checkservercommands-live-src-mq3-client-remote-play-ml-198608966"></a>
 ### checkServerCommands
@@ -91,7 +91,7 @@ Updates `live.lastCommandSequence` during remote play `checkServerCommands`.
 | `live` | `dynamic` | — | Mutable remote play record/storage; this routine assigns `live.lastCommandSequence`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L317)
 
 <a id="function-function-mq3-client-remote-play-close-function-close-live-now-src-mq3-client-remote-play-ml-1816778960"></a>
 ### close
@@ -108,7 +108,7 @@ Updates `live.socket`, `live.sendHost`, `live.connection.connectionState` during
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L442)
 
 <a id="function-function-mq3-client-remote-play-closesocket-function-closesocket-socket-src-mq3-client-remote-play-ml-995307255"></a>
 ### closeSocket
@@ -124,7 +124,7 @@ Calls `mq3.platform.udp.close`, `mq3.platform.udp.cleanup` from remote play `clo
 | `socket` | `dynamic` | — | Value used by `if socket!=void then ignored=try(remoteUdp.close(socket)) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L155)
 
 <a id="constant-constant-mq3-client-remote-play-connect-timeout-ms-const-connect-timeout-ms-12000-src-mq3-client-remote-play-ml-1043205220"></a>
 ### CONNECT_TIMEOUT_MS
@@ -133,8 +133,10 @@ Calls `mq3.platform.udp.close`, `mq3.platform.udp.cleanup` from remote play `clo
 const CONNECT_TIMEOUT_MS = 12000
 ```
 
+Duration or timeout in milliseconds controlling connect timeout.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L27)
 
 - [mq3.client.remote_play.ConnectionHost](Type-mq3-client-remote-play-connectionhost-1726380738.md) — struct
 <a id="function-function-mq3-client-remote-play-create-function-create-serveraddress-userinfo-now-src-mq3-client-remote-play-ml-592338632"></a>
@@ -153,7 +155,7 @@ Calls `mq3.client.remote_play.parseEndpoint`, `mq3.platform.udp.startup`, `mq3.q
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L164)
 
 <a id="constant-constant-mq3-client-remote-play-cs-serverinfo-const-cs-serverinfo-0-src-mq3-client-remote-play-ml-670671105"></a>
 ### CS_SERVERINFO
@@ -162,8 +164,10 @@ Calls `mq3.client.remote_play.parseEndpoint`, `mq3.platform.udp.startup`, `mq3.q
 const CS_SERVERINFO = 0
 ```
 
+Server configuration-string index for serverinfo; shared by the client and game protocol.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L21)
 
 <a id="constant-constant-mq3-client-remote-play-cs-systeminfo-const-cs-systeminfo-1-src-mq3-client-remote-play-ml-1885161058"></a>
 ### CS_SYSTEMINFO
@@ -172,8 +176,10 @@ const CS_SERVERINFO = 0
 const CS_SYSTEMINFO = 1
 ```
 
+Server configuration-string index for systeminfo; shared by the client and game protocol.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L23)
 
 <a id="function-function-mq3-client-remote-play-entergamestate-function-entergamestate-live-now-src-mq3-client-remote-play-ml-1820433300"></a>
 ### enterGamestate
@@ -190,7 +196,7 @@ Updates `live.verifiedArchive`, `live.epoch`, `live.map`, `live.game` and additi
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L276)
 
 <a id="function-function-mq3-client-remote-play-gamedirectory-function-gamedirectory-live-src-mq3-client-remote-play-ml-1827128082"></a>
 ### gameDirectory
@@ -206,7 +212,7 @@ Reads `live.game` for remote play `gameDirectory`.
 | `live` | `dynamic` | — | Record read through `live.game`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L210)
 
 - [mq3.client.remote_play.Live](Type-mq3-client-remote-play-live-330645626.md) — struct
 <a id="function-function-mq3-client-remote-play-mapname-function-mapname-live-src-mq3-client-remote-play-ml-1070061570"></a>
@@ -223,7 +229,7 @@ Reads `live.map` for remote play `mapName`.
 | `live` | `dynamic` | — | Record read through `live.map`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L207)
 
 <a id="function-function-mq3-client-remote-play-parseendpoint-function-parseendpoint-address-src-mq3-client-remote-play-ml-776130406"></a>
 ### parseEndpoint
@@ -239,7 +245,7 @@ Calls `std.string.indexOf`, `std.string.substr`, `mq3.client.remote_play.ServerE
 | `address` | `dynamic` | — | Sequence whose length/content is inspected by `parseEndpoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L103)
 
 <a id="function-function-mq3-client-remote-play-primed-function-primed-live-src-mq3-client-remote-play-ml-1893259632"></a>
 ### primed
@@ -255,7 +261,7 @@ Computes `live!=void and live.connection.connectionState==remoteConnectionless.C
 | `live` | `dynamic` | — | Record read through `live.connection.connectionState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L201)
 
 <a id="function-function-mq3-client-remote-play-pump-function-pump-live-now-budget-src-mq3-client-remote-play-ml-651900507"></a>
 ### pump
@@ -273,7 +279,7 @@ Calls `mq3.client.network_ingress.setRealtime`, `mq3.qcommon.net_transport.recei
 | `budget` | `dynamic` | — | Value used by `if budget<1 or budget>64 then return error(7822,"Invalid UDP receive budget") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L375)
 
 <a id="function-function-mq3-client-remote-play-queuereliable-function-queuereliable-live-text-src-mq3-client-remote-play-ml-1311593251"></a>
 ### queueReliable
@@ -290,7 +296,7 @@ Evaluates remote play `queueReliable` and returns `error(7823,"There is no serve
 | `text` | `dynamic` | — | Text consumed or emitted by `queueReliable` in the remote play path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L339)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L403)
 
 <a id="function-function-mq3-client-remote-play-readuserinfo-function-readuserinfo-host-state-src-mq3-client-remote-play-ml-66635275"></a>
 ### readUserinfo
@@ -307,7 +313,7 @@ Reads `host.context.userinfo` for remote play `readUserinfo`.
 | `state` | `dynamic` | — | Accepted for compatibility with `readUserinfo`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L151)
 
 <a id="function-function-mq3-client-remote-play-sendoob-function-sendoob-host-state-address-text-src-mq3-client-remote-play-ml-1155473068"></a>
 ### sendOob
@@ -326,7 +332,7 @@ Adapts `mq3.qcommon.net_transport.outOfBandPrint` to remote play `sendOob`, retu
 | `text` | `dynamic` | — | Argument 3 of `mq3.qcommon.net_transport.outOfBandPrint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L135)
 
 <a id="function-function-mq3-client-remote-play-sendoobdata-function-sendoobdata-host-state-address-data-src-mq3-client-remote-play-ml-597328209"></a>
 ### sendOobData
@@ -345,7 +351,7 @@ Adapts `mq3.qcommon.net_transport.outOfBandData` to remote play `sendOobData`, r
 | `data` | `dynamic` | — | Argument 3 of `mq3.qcommon.net_transport.outOfBandData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L144)
 
 <a id="constant-constant-mq3-client-remote-play-server-timeout-ms-const-server-timeout-ms-30000-src-mq3-client-remote-play-ml-1093972604"></a>
 ### SERVER_TIMEOUT_MS
@@ -354,8 +360,10 @@ Adapts `mq3.qcommon.net_transport.outOfBandData` to remote play `sendOobData`, r
 const SERVER_TIMEOUT_MS = 30000
 ```
 
+Duration or timeout in milliseconds controlling server timeout.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L29)
 
 - [mq3.client.remote_play.ServerEndpoint](Type-mq3-client-remote-play-serverendpoint-997725670.md) — struct
 <a id="function-function-mq3-client-remote-play-setbasepackages-function-setbasepackages-live-basedirectory-src-mq3-client-remote-play-ml-2052180312"></a>
@@ -373,7 +381,7 @@ Updates `live.baseDirectory` during remote play `setBasePackages`.
 | `baseDirectory` | `dynamic` | — | Value assigned to `live.baseDirectory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L217)
 
 <a id="constant-constant-mq3-client-remote-play-snapflag-not-active-const-snapflag-not-active-2-src-mq3-client-remote-play-ml-1133634727"></a>
 ### SNAPFLAG_NOT_ACTIVE
@@ -382,8 +390,10 @@ Updates `live.baseDirectory` during remote play `setBasePackages`.
 const SNAPFLAG_NOT_ACTIVE = 2
 ```
 
+Snapshot flag indicating that the server state is not yet active for normal gameplay.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L25)
 
 <a id="function-function-mq3-client-remote-play-status-function-status-live-src-mq3-client-remote-play-ml-1047095072"></a>
 ### status
@@ -399,7 +409,7 @@ Evaluates remote play `status` and returns `"Receiving " + live.map`, `"Awaiting
 | `live` | `dynamic` | — | Record read through `live.map`, `live.sendHost`, `live.connection.connectionState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L224)
 
 <a id="function-function-mq3-client-remote-play-updatesendstate-function-updatesendstate-live-now-src-mq3-client-remote-play-ml-916121120"></a>
 ### updateSendState
@@ -416,7 +426,7 @@ Evaluates remote play `updateSendState` and returns `void` according to its guar
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L234)
 
 <a id="function-function-mq3-client-remote-play-updateserversysteminfo-function-updateserversysteminfo-live-systeminfo-src-mq3-client-remote-play-ml-650668167"></a>
 ### updateServerSystemInfo
@@ -433,7 +443,7 @@ Updates `live.outgoing.serverId` during remote play `updateServerSystemInfo`.
 | `systemInfo` | `dynamic` | — | Value used by `serverId=remoteInfo.value(systemInfo,"sv_serverid")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L309)
 
 <a id="function-function-mq3-client-remote-play-updateuserinfo-function-updateuserinfo-live-userinfo-src-mq3-client-remote-play-ml-1888079025"></a>
 ### updateUserinfo
@@ -450,7 +460,7 @@ Updates `live.connectionHost.context.userinfo` during remote play `updateUserinf
 | `userinfo` | `dynamic` | — | Value assigned to `live.connectionHost.context.userinfo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L420)
 
 <a id="function-function-mq3-client-remote-play-writeframe-function-writeframe-live-command-now-src-mq3-client-remote-play-ml-2079946341"></a>
 ### writeFrame
@@ -468,7 +478,7 @@ Calls `mq3.client.remote_play.primed`, `mq3.client.remote_play.appendCommand`, `
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L433)
 
 <a id="function-function-mq3-client-remote-play-writepacket-function-writepacket-live-now-force-src-mq3-client-remote-play-ml-1142715367"></a>
 ### writePacket
@@ -486,4 +496,4 @@ Calls `mq3.client.remote_play.updateSendState`, `mq3.client.send_cmd.ready`, `mq
 | `force` | `dynamic` | — | Value used by `if not force and not remoteSend.ready(live.outgoing,live.sendHost) then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L264)

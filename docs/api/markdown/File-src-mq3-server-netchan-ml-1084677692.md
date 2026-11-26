@@ -29,7 +29,7 @@ Create `mq3.server.netchan.Client` with challenge=challenge; lastClientCommandSt
 | `channel` | `dynamic` | — | Initial `channel` field stored in the returned or constructed `mq3.server.netchan.Client` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L37)
 
 - [mq3.server.netchan.Client](Type-mq3-server-netchan-client-1487942333.md) — struct
 <a id="function-function-mq3-server-netchan-clonemessage-function-clonemessage-source-src-mq3-server-netchan-ml-1814923741"></a>
@@ -46,7 +46,7 @@ Compute clone message in server.netchan; the normal completion returns `target`.
 | `source` | `dynamic` | — | Record exposing `maxsize`, `allowoverflow`, `overflowed`, `oob`, `cursize`, `readcount`, `bit` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L53)
 
 <a id="function-function-mq3-server-netchan-commandbyte-function-commandbyte-raw-index-src-mq3-server-netchan-ml-172155614"></a>
 ### commandByte
@@ -63,7 +63,7 @@ Compute command byte in server.netchan; the normal completion returns `[value, (
 | `index` | `dynamic` | — | Zero-based index into `raw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L64)
 
 <a id="function-function-mq3-server-netchan-decode-function-decode-clientstate-msg-src-mq3-server-netchan-ml-932391113"></a>
 ### decode
@@ -80,7 +80,7 @@ Return `mq3.server.netchan.decodeMessage(clientState, msg)` from `server.netchan
 | `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.server.netchan.decodeMessage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L121)
 
 <a id="function-function-mq3-server-netchan-decodemessage-function-decodemessage-clientstate-msg-src-mq3-server-netchan-ml-845423083"></a>
 ### decodeMessage
@@ -97,7 +97,7 @@ The three compressed client header longs remain logically unread by the caller. 
 | `msg` | `dynamic` | — | Record exposing `readcount`, `bit`, `oob`, `cursize`, `data`. Updated in place: `oob`, `bit`, `readcount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L97)
 
 <a id="function-function-mq3-server-netchan-encode-function-encode-clientstate-msg-src-mq3-server-netchan-ml-823417689"></a>
 ### encode
@@ -114,7 +114,7 @@ First four physical bytes remain clear. The initial compressed long is read only
 | `msg` | `dynamic` | — | Record exposing `cursize`, `readcount`, `bit`, `oob`, `data`. Updated in place: `bit`, `readcount`, `oob`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L76)
 
 <a id="constant-constant-mq3-server-netchan-max-reliable-commands-const-max-reliable-commands-64-src-mq3-server-netchan-ml-524522555"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -123,8 +123,10 @@ First four physical bytes remain clear. The initial compressed long is read only
 const MAX_RELIABLE_COMMANDS = 64
 ```
 
+Capacity of the reliable-command ring retained until acknowledgment.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L10)
 
 <a id="function-function-mq3-server-netchan-process-function-process-clientstate-data-maxsize-src-mq3-server-netchan-ml-1302344345"></a>
 ### process
@@ -142,7 +144,7 @@ Process netchan in server.netchan; the normal completion returns `net.ProcessRes
 | `maxsize` | `dynamic` | — | Maxsize passed as `maxsize` to `mq3.qcommon.netchan.process`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L183)
 
 <a id="function-function-mq3-server-netchan-requireclient-function-requireclient-clientstate-src-mq3-server-netchan-ml-462414806"></a>
 ### requireClient
@@ -160,7 +162,7 @@ Validation failures include `server netchan: invalid client`; `server netchan: i
 | `clientState` | `dynamic` | — | Record exposing `channel`, `reliableCommands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L45)
 
 <a id="constant-constant-mq3-server-netchan-sv-decode-start-const-sv-decode-start-12-src-mq3-server-netchan-ml-108245914"></a>
 ### SV_DECODE_START
@@ -169,8 +171,10 @@ Validation failures include `server netchan: invalid client`; `server netchan: i
 const SV_DECODE_START = 12
 ```
 
+Byte offset at which client-to-server payload decoding begins.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L14)
 
 <a id="constant-constant-mq3-server-netchan-sv-encode-start-const-sv-encode-start-4-src-mq3-server-netchan-ml-729837553"></a>
 ### SV_ENCODE_START
@@ -179,8 +183,10 @@ const SV_DECODE_START = 12
 const SV_ENCODE_START = 4
 ```
 
+Byte offset at which server-to-client payload obfuscation begins.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L12)
 
 <a id="constant-constant-mq3-server-netchan-svc-eof-const-svc-eof-8-src-mq3-server-netchan-ml-880207625"></a>
 ### SVC_EOF
@@ -189,8 +195,10 @@ const SV_ENCODE_START = 4
 const SVC_EOF = 8
 ```
 
+Server-to-client opcode marking the end of a message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L16)
 
 <a id="function-function-mq3-server-netchan-transmit-function-transmit-runtime-clientstate-msg-src-mq3-server-netchan-ml-935185241"></a>
 ### transmit
@@ -210,7 +218,7 @@ Validation failures include `server netchan: queue is not initialized`.
 | `msg` | `dynamic` | — | Record exposing `cursize`, `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L129)
 
 <a id="function-function-mq3-server-netchan-transmitnextfragment-function-transmitnextfragment-runtime-clientstate-src-mq3-server-netchan-ml-1992000058"></a>
 ### transmitNextFragment
@@ -229,7 +237,7 @@ Validation failures include `server netchan: queue is not initialized after frag
 | `clientState` | `dynamic` | — | Record exposing `channel`, `queueInitialized`, `queue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L165)
 
 <a id="function-function-mq3-server-netchan-transmitpayload-function-transmitpayload-runtime-clientstate-payload-src-mq3-server-netchan-ml-1500947300"></a>
 ### transmitPayload
@@ -247,4 +255,4 @@ Snapshot construction already appends svc_EOF before reaching the netchan bounda
 | `payload` | `dynamic` | — | Payload used in `len(payload)` and `(payload == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L148)

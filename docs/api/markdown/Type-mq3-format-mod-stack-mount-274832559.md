@@ -12,7 +12,7 @@ struct Mount
 Mount record for format.mod_stack, containing `game`, `dataRoot`, `archive`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L31)
 
 ## Members
 
@@ -23,8 +23,10 @@ Mount record for format.mod_stack, containing `game`, `dataRoot`, `archive`.
 archive
 ```
 
+PK3 archive mounted at this stack entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L37)
 
 <a id="field-field-mq3-format-mod-stack-mount-dataroot-dataroot-src-mq3-format-mod-stack-ml-483205364"></a>
 ### dataRoot
@@ -33,8 +35,10 @@ archive
 dataRoot
 ```
 
+Filesystem root used to resolve this game directory.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L35)
 
 <a id="field-field-mq3-format-mod-stack-mount-game-game-src-mq3-format-mod-stack-ml-1124107316"></a>
 ### game
@@ -43,5 +47,7 @@ dataRoot
 game
 ```
 
+Game directory whose assets are mounted at this stack entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L33)

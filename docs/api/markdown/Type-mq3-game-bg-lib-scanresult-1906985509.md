@@ -12,7 +12,7 @@ struct ScanResult
 `ScanResult` record for bg lib, containing `count`, `values` and `next`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L43)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct ScanResult
 count
 ```
 
+Number of conversions successfully matched by the scanner.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L45)
 
 <a id="field-field-mq3-game-bg-lib-scanresult-next-next-src-mq3-game-bg-lib-ml-1703995661"></a>
 ### next
@@ -33,8 +35,10 @@ count
 next
 ```
 
+Position immediately after the consumed input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L49)
 
 <a id="field-field-mq3-game-bg-lib-scanresult-values-values-src-mq3-game-bg-lib-ml-564716271"></a>
 ### values
@@ -43,5 +47,7 @@ next
 values
 ```
 
+Values captured by successful format conversions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L47)

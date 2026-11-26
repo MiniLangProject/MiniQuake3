@@ -12,7 +12,7 @@ struct Respawn
 Stores playable player respawn record, including `respawned`, `spawnIndex`, `position`, `yaw`, `invulnerableUntil`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L93)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable player respawn record, including `respawned`, `spawnIndex`, `pos
 invulnerableUntil
 ```
 
+When constructing this record, `pollRespawn` supplies `state.invulnerableUntil` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L103)
 
 <a id="field-field-mq3-client-playable-player-respawn-position-position-src-mq3-client-playable-player-ml-1937255601"></a>
 ### position
@@ -33,8 +35,10 @@ invulnerableUntil
 position
 ```
 
+When constructing this record, `pollRespawn` supplies `state.position` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L99)
 
 <a id="field-field-mq3-client-playable-player-respawn-respawned-respawned-src-mq3-client-playable-player-ml-1693877487"></a>
 ### respawned
@@ -43,8 +47,10 @@ position
 respawned
 ```
 
+When constructing this record, `pollRespawn` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L95)
 
 <a id="field-field-mq3-client-playable-player-respawn-spawnindex-spawnindex-src-mq3-client-playable-player-ml-329757933"></a>
 ### spawnIndex
@@ -53,8 +59,10 @@ respawned
 spawnIndex
 ```
 
+When constructing this record, `pollRespawn` supplies `state.spawnIndex` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L97)
 
 <a id="field-field-mq3-client-playable-player-respawn-yaw-yaw-src-mq3-client-playable-player-ml-2084216919"></a>
 ### yaw
@@ -63,5 +71,7 @@ spawnIndex
 yaw
 ```
 
+When constructing this record, `pollRespawn` supplies `state.yaw` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L101)

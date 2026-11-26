@@ -42,7 +42,7 @@ Calls `mq3.renderer.surface_trails.railCoreRaw` with `(start,finish,up,lengthVal
 | `color` | `dynamic` | — | Argument 6 supplied to `mq3.renderer.surface_trails.railCoreRaw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L157)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-doraildiscs-function-doraildiscs-numsegments-start-direction-right-up-spanwidth-color-src-mq3-renderer-tr-surface-runtime-ml-856726287"></a>
 ### DoRailDiscs
@@ -64,7 +64,7 @@ Calls `mq3.renderer.surface_trails.railDiscs` with `(numSegments,start,direction
 | `color` | `dynamic` | — | Argument 7 supplied to `mq3.renderer.surface_trails.railDiscs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L166)
 
 - [mq3.renderer.tr_surface_runtime.EntityInput](Type-mq3-renderer-tr-surface-runtime-entityinput-1793166827.md) — struct
 <a id="function-function-mq3-renderer-tr-surface-runtime-fail-function-fail-text-src-mq3-renderer-tr-surface-runtime-ml-546563735"></a>
@@ -81,7 +81,7 @@ Creates error `7780` with message `"tr_surface: "+text`.
 | `text` | `dynamic` | — | Input used in the result expression `error(7780,"tr_surface: "+text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L77)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-lerpmeshvertexes-function-lerpmeshvertexes-surface-frame-oldframe-backlerp-src-mq3-renderer-tr-surface-runtime-ml-1173653232"></a>
 ### LerpMeshVertexes
@@ -100,7 +100,7 @@ Calls `mq3.renderer.surface_md3.lerpVertexes` with `(surface,frame,oldFrame,back
 | `backlerp` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.surface_md3.lerpVertexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L200)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-loderrorforvolume-function-loderrorforvolume-local-radius-lodcurveerror-entityorigin-entityaxis-vieworigin-viewforward-src-mq3-renderer-tr-surface-runtime-ml-1812568435"></a>
 ### LodErrorForVolume
@@ -122,7 +122,7 @@ Exact LodErrorForVolume transform and clamp.  axis rows are the entity's local b
 | `viewForward` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.tr_surface_runtime.valid3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L236)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-addquadstamp-function-rb-addquadstamp-origin-left-up-color-viewforward-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-tr-surface-runtime-ml-104506631"></a>
 ### RB_AddQuadStamp
@@ -146,7 +146,7 @@ Calls `mq3.renderer.surface_entities.addQuadStamp` with `(origin,left,up,color,v
 | `maxIndexes` | `dynamic` | — | Argument 9 supplied to `mq3.renderer.surface_entities.addQuadStamp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L117)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-addquadstampext-function-rb-addquadstampext-origin-left-up-color-viewforward-s1-t1-s2-t2-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-tr-surface-runtime-ml-1475033327"></a>
 ### RB_AddQuadStampExt
@@ -174,7 +174,7 @@ Calls `mq3.renderer.surface_entities.addQuadStampExt` with `(origin,left,up,colo
 | `maxIndexes` | `dynamic` | — | Argument 13 supplied to `mq3.renderer.surface_entities.addQuadStampExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L104)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-checkoverflow-function-rb-checkoverflow-buffer-vertexes-indexes-src-mq3-renderer-tr-surface-runtime-ml-858613316"></a>
 ### RB_CheckOverflow
@@ -192,7 +192,7 @@ Calls `mq3.renderer.surface_polychain.checkOverflow` with `(buffer,vertexes,inde
 | `indexes` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.surface_polychain.checkOverflow`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L89)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfaceaxis-function-rb-surfaceaxis-src-mq3-renderer-tr-surface-runtime-ml-824448928"></a>
 ### RB_SurfaceAxis
@@ -204,7 +204,7 @@ function RB_SurfaceAxis()
 Original null-model diagnostic geometry: three 16-unit colored axes.  It is exposed only for RT_MODEL fallback diagnostics and never substitutes a BSP, MD3 or generated entity surface in the productive renderer.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L269)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacebad-function-rb-surfacebad-surface-src-mq3-renderer-tr-surface-runtime-ml-828023445"></a>
 ### RB_SurfaceBad
@@ -220,7 +220,7 @@ Calls `mq3.renderer.tr_surface_runtime.fail` with `("bad surface tessellated")` 
 | `surface` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L294)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacebeam-function-rb-surfacebeam-entity-src-mq3-renderer-tr-surface-runtime-ml-1302221475"></a>
 ### RB_SurfaceBeam
@@ -236,7 +236,7 @@ Returns `beam.build(entity.origin,entity.oldOrigin)` from `mq3.renderer.tr_surfa
 | `entity` | `dynamic` | — | Record providing `entity.origin`, `entity.oldOrigin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L149)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacedisplaylist-function-rb-surfacedisplaylist-surface-src-mq3-renderer-tr-surface-runtime-ml-1637238675"></a>
 ### RB_SurfaceDisplayList
@@ -252,7 +252,7 @@ Display lists are a real legacy backend command, retained as a typed command so 
 | `surface` | `dynamic` | — | Record providing `surface.listNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L303)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfaceentity-function-rb-surfaceentity-entity-view-currentvertexes-currentindexes-maxvertexes-maxindexes-railsegmentlength-railwidth-railcorewidth-src-mq3-renderer-tr-surface-runtime-ml-1649729136"></a>
 ### RB_SurfaceEntity
@@ -276,7 +276,7 @@ Complete procedural entity dispatch from RB_SurfaceEntity.
 | `railCoreWidth` | `dynamic` | — | Value forwarded as `spanWidth` to `mq3.renderer.tr_surface_runtime.RB_SurfaceRailCore`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L283)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfaceface-function-rb-surfaceface-surface-smpframe-needsnormal-currentvertexes-currentindexes-maxvertexes-maxindexes-currentdlightbits-src-mq3-renderer-tr-surface-runtime-ml-542460159"></a>
 ### RB_SurfaceFace
@@ -299,7 +299,7 @@ Calls `mq3.renderer.surface_mesh.submitFace` with `(surface,smpFrame,needsNormal
 | `currentDlightBits` | `dynamic` | — | Argument 8 supplied to `mq3.renderer.surface_mesh.submitFace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L223)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfaceflare-function-rb-surfaceflare-surface-src-mq3-renderer-tr-surface-runtime-ml-1736206895"></a>
 ### RB_SurfaceFlare
@@ -315,7 +315,7 @@ The active Baseq3 build intentionally makes flares a no-op in tr_surface.c; flar
 | `surface` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L299)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacegrid-function-rb-surfacegrid-surface-lodorigin-lodradius-lodcurveerror-entityorigin-entityaxis-vieworigin-viewforward-maxvertexes-maxindexes-needsnormal-dlightbits-src-mq3-renderer-tr-surface-runtime-ml-1413555919"></a>
 ### RB_SurfaceGrid
@@ -342,7 +342,7 @@ Computes `RB_SurfaceGrid` from `grid.submit(surface,value,maxVertexes,maxIndexes
 | `dlightBits` | `dynamic` | — | Argument 6 supplied to `mq3.renderer.surface_grid.submit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L261)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacelightningbolt-function-rb-surfacelightningbolt-entity-view-src-mq3-renderer-tr-surface-runtime-ml-238250176"></a>
 ### RB_SurfaceLightningBolt
@@ -359,7 +359,7 @@ Returns `trails.lightning(entity.origin,entity.oldOrigin,view.origin,entity.shad
 | `view` | `dynamic` | — | Record providing `view.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L180)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacemesh-function-rb-surfacemesh-surface-frame-oldframe-backlerp-currentvertexes-currentindexes-maxvertexes-maxindexes-dlightbits-src-mq3-renderer-tr-surface-runtime-ml-1193131730"></a>
 ### RB_SurfaceMesh
@@ -383,7 +383,7 @@ Calls `mq3.renderer.surface_md3.submit` with `(surface,frame,oldFrame,backlerp,c
 | `dlightBits` | `dynamic` | — | Argument 9 supplied to `mq3.renderer.surface_md3.submit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L211)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacepolychain-function-rb-surfacepolychain-buffer-vertices-src-mq3-renderer-tr-surface-runtime-ml-897663031"></a>
 ### RB_SurfacePolychain
@@ -400,7 +400,7 @@ Calls `mq3.renderer.surface_polychain.append` with `(buffer,vertices)` and retur
 | `vertices` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.surface_polychain.append`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L134)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacerailcore-function-rb-surfacerailcore-entity-view-spanwidth-src-mq3-renderer-tr-surface-runtime-ml-728085654"></a>
 ### RB_SurfaceRailCore
@@ -418,7 +418,7 @@ Returns `trails.railCore(entity.oldOrigin,entity.origin,view.origin,spanWidth,en
 | `spanWidth` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.surface_trails.railCore`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L176)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacerailrings-function-rb-surfacerailrings-entity-segmentlength-spanwidth-src-mq3-renderer-tr-surface-runtime-ml-1565011470"></a>
 ### RB_SurfaceRailRings
@@ -436,7 +436,7 @@ Returns `trails.railRings(entity.oldOrigin,entity.origin,segmentLength,spanWidth
 | `spanWidth` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.surface_trails.railRings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L171)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfaceskip-function-rb-surfaceskip-surface-src-mq3-renderer-tr-surface-runtime-ml-1179258531"></a>
 ### RB_SurfaceSkip
@@ -452,7 +452,7 @@ Returns `void` for the `mq3.renderer.tr_surface_runtime.RB_SurfaceSkip` compatib
 | `surface` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L306)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacesprite-function-rb-surfacesprite-entity-view-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-tr-surface-runtime-ml-1778376832"></a>
 ### RB_SurfaceSprite
@@ -473,7 +473,7 @@ Builds a camera-facing sprite using the view axes, mirror state, entity color, a
 | `maxIndexes` | `dynamic` | — | Argument 12 supplied to `mq3.renderer.surface_entities.surfaceSprite`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L127)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-rb-surfacetriangles-function-rb-surfacetriangles-surface-smpframe-needsnormal-currentvertexes-currentindexes-maxvertexes-maxindexes-currentdlightbits-src-mq3-renderer-tr-surface-runtime-ml-1461777441"></a>
 ### RB_SurfaceTriangles
@@ -496,7 +496,7 @@ Calls `mq3.renderer.surface_mesh.submitTriangles` with `(surface,smpFrame,needsN
 | `currentDlightBits` | `dynamic` | — | Argument 8 supplied to `mq3.renderer.surface_mesh.submitTriangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L144)
 
 <a id="constant-constant-mq3-renderer-tr-surface-runtime-rt-beam-const-rt-beam-3-src-mq3-renderer-tr-surface-runtime-ml-873822690"></a>
 ### RT_BEAM
@@ -505,8 +505,10 @@ Calls `mq3.renderer.surface_mesh.submitTriangles` with `(surface,smpFrame,needsN
 const RT_BEAM = 3
 ```
 
+Renderer entity type for a beam between two endpoints.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L21)
 
 <a id="constant-constant-mq3-renderer-tr-surface-runtime-rt-lightning-const-rt-lightning-6-src-mq3-renderer-tr-surface-runtime-ml-239808959"></a>
 ### RT_LIGHTNING
@@ -515,8 +517,10 @@ const RT_BEAM = 3
 const RT_LIGHTNING = 6
 ```
 
+Renderer entity type for the lightning-gun beam.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)
 
 <a id="constant-constant-mq3-renderer-tr-surface-runtime-rt-rail-core-const-rt-rail-core-4-src-mq3-renderer-tr-surface-runtime-ml-699168801"></a>
 ### RT_RAIL_CORE
@@ -525,8 +529,10 @@ const RT_LIGHTNING = 6
 const RT_RAIL_CORE = 4
 ```
 
+Renderer entity type for the core of a railgun trail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L23)
 
 <a id="constant-constant-mq3-renderer-tr-surface-runtime-rt-rail-rings-const-rt-rail-rings-5-src-mq3-renderer-tr-surface-runtime-ml-827379116"></a>
 ### RT_RAIL_RINGS
@@ -535,8 +541,10 @@ const RT_RAIL_CORE = 4
 const RT_RAIL_RINGS = 5
 ```
 
+Renderer entity type for rings around a railgun trail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L25)
 
 <a id="constant-constant-mq3-renderer-tr-surface-runtime-rt-sprite-const-rt-sprite-2-src-mq3-renderer-tr-surface-runtime-ml-894443159"></a>
 ### RT_SPRITE
@@ -545,8 +553,10 @@ const RT_RAIL_RINGS = 5
 const RT_SPRITE = 2
 ```
 
+Renderer entity type for a camera-facing sprite.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L19)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-valid3-function-valid3-value-src-mq3-renderer-tr-surface-runtime-ml-71101521"></a>
 ### valid3
@@ -562,7 +572,7 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.tr_surface_runtime.va
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L80)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-validaxis-function-validaxis-value-src-mq3-renderer-tr-surface-runtime-ml-680912835"></a>
 ### validAxis
@@ -578,7 +588,7 @@ Computes `value!=void and len(value)==3 and valid3(value[0]) and valid3(value[1]
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L83)
 
 <a id="function-function-mq3-renderer-tr-surface-runtime-vectorarraynormalize-function-vectorarraynormalize-normals-count-src-mq3-renderer-tr-surface-runtime-ml-140401887"></a>
 ### VectorArrayNormalize
@@ -595,6 +605,6 @@ The C routine mutates vec4_t rows.  Returning normalized vec3 rows gives callers
 | `count` | `dynamic` | — | Input tested by `normals==void or count<0 or count>len(normals)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L186)
 
 - [mq3.renderer.tr_surface_runtime.ViewInput](Type-mq3-renderer-tr-surface-runtime-viewinput-821329301.md) — struct

@@ -12,7 +12,7 @@ struct Registry
 Registry record for qcommon.cvar, containing `variables`, `modifiedFlags`, `numIndexes`, `indexes`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L73)
 
 ## Members
 
@@ -23,8 +23,10 @@ Registry record for qcommon.cvar, containing `variables`, `modifiedFlags`, `numI
 indexes
 ```
 
+Stable index table used to resolve VM-visible variable handles.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L81)
 
 <a id="field-field-mq3-qcommon-cvar-registry-modifiedflags-modifiedflags-src-mq3-qcommon-cvar-ml-384652272"></a>
 ### modifiedFlags
@@ -33,8 +35,10 @@ indexes
 modifiedFlags
 ```
 
+Bit mask of configuration-variable categories modified since the last clear.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L77)
 
 <a id="field-field-mq3-qcommon-cvar-registry-numindexes-numindexes-src-mq3-qcommon-cvar-ml-1303432136"></a>
 ### numIndexes
@@ -43,8 +47,10 @@ modifiedFlags
 numIndexes
 ```
 
+Number of index elements describing this surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L79)
 
 <a id="field-field-mq3-qcommon-cvar-registry-variables-variables-src-mq3-qcommon-cvar-ml-1117855412"></a>
 ### variables
@@ -53,5 +59,7 @@ numIndexes
 variables
 ```
 
+Registered configuration-variable records.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L75)

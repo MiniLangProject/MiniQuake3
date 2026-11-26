@@ -12,7 +12,7 @@ struct ChoiceList
 Stores UI video choice list record, including `name`, `values`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L91)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI video choice list record, including `name`, `values`.
 name
 ```
 
+Caption for a graphics choice group, such as video mode, color depth, or texture quality.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L93)
 
 <a id="field-field-mq3-client-ui-video-choicelist-values-values-src-mq3-client-ui-video-ml-96866878"></a>
 ### values
@@ -33,5 +35,7 @@ name
 values
 ```
 
+When constructing this record, `graphicsChoices` supplies `["High Quality","Normal","Fast","Fastest","Custom"]` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L96)

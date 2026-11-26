@@ -23,7 +23,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_CDDialog` compatibility ent
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L147)
 
 <a id="function-function-mq3-platform-null-runtime-cl-cdkeyvalidate-function-cl-cdkeyvalidate-key-checksum-src-mq3-platform-null-runtime-ml-420314408"></a>
 ### CL_CDKeyValidate
@@ -40,7 +40,7 @@ Returns `true` for the `mq3.platform.null_runtime.CL_CDKeyValidate` compatibilit
 | `checksum` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L99)
 
 <a id="function-function-mq3-platform-null-runtime-cl-charevent-function-cl-charevent-state-key-src-mq3-platform-null-runtime-ml-1058630898"></a>
 ### CL_CharEvent
@@ -57,7 +57,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_CharEvent` compatibility en
 | `key` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L112)
 
 <a id="function-function-mq3-platform-null-runtime-cl-consoleprint-function-cl-consoleprint-state-text-src-mq3-platform-null-runtime-ml-1316280094"></a>
 ### CL_ConsolePrint
@@ -74,7 +74,7 @@ Updates `state.consoleText` in `mq3.platform.null_runtime.CL_ConsolePrint`.
 | `text` | `dynamic` | — | Input used by `state.consoleText=state.consoleText+text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L103)
 
 <a id="function-function-mq3-platform-null-runtime-cl-disconnect-function-cl-disconnect-state-showmainmenu-src-mq3-platform-null-runtime-ml-946229586"></a>
 ### CL_Disconnect
@@ -91,7 +91,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_Disconnect` compatibility e
 | `showMainMenu` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L116)
 
 <a id="function-function-mq3-platform-null-runtime-cl-flushmemory-function-cl-flushmemory-state-src-mq3-platform-null-runtime-ml-1431977169"></a>
 ### CL_FlushMemory
@@ -107,7 +107,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_FlushMemory` compatibility 
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L150)
 
 <a id="function-function-mq3-platform-null-runtime-cl-forwardcommandtoserver-function-cl-forwardcommandtoserver-state-text-src-mq3-platform-null-runtime-ml-1265795814"></a>
 ### CL_ForwardCommandToServer
@@ -124,7 +124,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_ForwardCommandToServer` com
 | `text` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L141)
 
 <a id="function-function-mq3-platform-null-runtime-cl-frame-function-cl-frame-state-msec-src-mq3-platform-null-runtime-ml-1032731153"></a>
 ### CL_Frame
@@ -141,7 +141,7 @@ Updates `state.frames` in `mq3.platform.null_runtime.CL_Frame`.
 | `msec` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L89)
 
 <a id="function-function-mq3-platform-null-runtime-cl-gamecommand-function-cl-gamecommand-state-src-mq3-platform-null-runtime-ml-316130337"></a>
 ### CL_GameCommand
@@ -157,7 +157,7 @@ Returns `false` for the `mq3.platform.null_runtime.CL_GameCommand` compatibility
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L92)
 
 <a id="function-function-mq3-platform-null-runtime-cl-init-function-cl-init-state-src-mq3-platform-null-runtime-ml-1476503425"></a>
 ### CL_Init
@@ -173,7 +173,7 @@ Updates `state.clientInitialized` in `mq3.platform.null_runtime.CL_Init`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.clientInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L79)
 
 <a id="function-function-mq3-platform-null-runtime-cl-initkeycommands-function-cl-initkeycommands-state-src-mq3-platform-null-runtime-ml-790922033"></a>
 ### CL_InitKeyCommands
@@ -189,7 +189,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_InitKeyCommands` compatibil
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L144)
 
 <a id="function-function-mq3-platform-null-runtime-cl-joystickevent-function-cl-joystickevent-state-axis-value-time-src-mq3-platform-null-runtime-ml-180179118"></a>
 ### CL_JoystickEvent
@@ -208,7 +208,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_JoystickEvent` compatibilit
 | `time` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L137)
 
 <a id="function-function-mq3-platform-null-runtime-cl-keyevent-function-cl-keyevent-state-key-down-time-src-mq3-platform-null-runtime-ml-410432505"></a>
 ### CL_KeyEvent
@@ -227,7 +227,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_KeyEvent` compatibility ent
 | `time` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L125)
 
 <a id="function-function-mq3-platform-null-runtime-cl-maploading-function-cl-maploading-state-src-mq3-platform-null-runtime-ml-1812597065"></a>
 ### CL_MapLoading
@@ -243,7 +243,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_MapLoading` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L119)
 
 <a id="function-function-mq3-platform-null-runtime-cl-mouseevent-function-cl-mouseevent-state-dx-dy-time-src-mq3-platform-null-runtime-ml-628105765"></a>
 ### CL_MouseEvent
@@ -262,7 +262,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_MouseEvent` compatibility e
 | `time` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L131)
 
 <a id="function-function-mq3-platform-null-runtime-cl-packetevent-function-cl-packetevent-state-source-message-src-mq3-platform-null-runtime-ml-1747412805"></a>
 ### CL_PacketEvent
@@ -280,7 +280,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_PacketEvent` compatibility 
 | `message` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L108)
 
 <a id="function-function-mq3-platform-null-runtime-cl-shutdown-function-cl-shutdown-state-src-mq3-platform-null-runtime-ml-1653480189"></a>
 ### CL_Shutdown
@@ -296,7 +296,7 @@ Updates `state.clientInitialized` in `mq3.platform.null_runtime.CL_Shutdown`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.clientInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L82)
 
 <a id="function-function-mq3-platform-null-runtime-cl-shutdownall-function-cl-shutdownall-state-src-mq3-platform-null-runtime-ml-1244749521"></a>
 ### CL_ShutdownAll
@@ -312,7 +312,7 @@ Calls `mq3.platform.null_runtime.CL_Shutdown` with `(state)` and returns its res
 | `state` | `dynamic` | — | Value forwarded as `state` to `mq3.platform.null_runtime.CL_Shutdown`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L85)
 
 <a id="function-function-mq3-platform-null-runtime-cl-starthunkusers-function-cl-starthunkusers-state-src-mq3-platform-null-runtime-ml-1856709453"></a>
 ### CL_StartHunkUsers
@@ -328,7 +328,7 @@ Returns `void` for the `mq3.platform.null_runtime.CL_StartHunkUsers` compatibili
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L153)
 
 <a id="function-function-mq3-platform-null-runtime-create-function-create-src-mq3-platform-null-runtime-ml-660297822"></a>
 ### create
@@ -340,7 +340,7 @@ function create()
 Constructs `mq3.platform.null_runtime.State` with `clientInitialized` = `false`, `inputInitialized` = `false`, `glInitialized` = `false`, `qglInitialized` = `false` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L75)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-enablelogging-function-glimp-enablelogging-state-enabled-src-mq3-platform-null-runtime-ml-739822680"></a>
 ### GLimp_EnableLogging
@@ -357,7 +357,7 @@ Updates `state.logging` in `mq3.platform.null_runtime.GLimp_EnableLogging`.
 | `enabled` | `dynamic` | — | Value assigned to `state.logging`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L171)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-endframe-function-glimp-endframe-state-src-mq3-platform-null-runtime-ml-863471277"></a>
 ### GLimp_EndFrame
@@ -373,7 +373,7 @@ Updates `state.glFrames` in `mq3.platform.null_runtime.GLimp_EndFrame`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.glFrames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L167)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-init-function-glimp-init-state-src-mq3-platform-null-runtime-ml-510010701"></a>
 ### GLimp_Init
@@ -389,7 +389,7 @@ Updates `state.glInitialized` in `mq3.platform.null_runtime.GLimp_Init`; returns
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.glInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L161)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-logcomment-function-glimp-logcomment-state-comment-src-mq3-platform-null-runtime-ml-1177069120"></a>
 ### GLimp_LogComment
@@ -406,7 +406,7 @@ Updates `state.consoleText` in `mq3.platform.null_runtime.GLimp_LogComment`.
 | `comment` | `dynamic` | — | Input tested by `state.logging`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L175)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-shutdown-function-glimp-shutdown-state-src-mq3-platform-null-runtime-ml-266676917"></a>
 ### GLimp_Shutdown
@@ -422,7 +422,7 @@ Updates `state.glInitialized` in `mq3.platform.null_runtime.GLimp_Shutdown`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.glInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L164)
 
 <a id="function-function-mq3-platform-null-runtime-headlessmain-function-headlessmain-state-framecount-framefn-context-src-mq3-platform-null-runtime-ml-515220201"></a>
 ### headlessMain
@@ -441,7 +441,7 @@ Bounded equivalent of the original endless headless main loop.
 | `context` | `dynamic` | — | Argument 1 supplied to `frameFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L322)
 
 <a id="function-function-mq3-platform-null-runtime-in-frame-function-in-frame-state-src-mq3-platform-null-runtime-ml-354527425"></a>
 ### IN_Frame
@@ -457,7 +457,7 @@ Updates `state.inputFrames` in `mq3.platform.null_runtime.IN_Frame`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputFrames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L189)
 
 <a id="function-function-mq3-platform-null-runtime-in-init-function-in-init-state-src-mq3-platform-null-runtime-ml-974523577"></a>
 ### IN_Init
@@ -473,7 +473,7 @@ Updates `state.inputInitialized` in `mq3.platform.null_runtime.IN_Init`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L186)
 
 <a id="function-function-mq3-platform-null-runtime-in-shutdown-function-in-shutdown-state-src-mq3-platform-null-runtime-ml-646849077"></a>
 ### IN_Shutdown
@@ -489,7 +489,7 @@ Updates `state.inputInitialized` in `mq3.platform.null_runtime.IN_Shutdown`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.inputInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L192)
 
 <a id="function-function-mq3-platform-null-runtime-key-writebindings-function-key-writebindings-state-file-src-mq3-platform-null-runtime-ml-1789738045"></a>
 ### Key_WriteBindings
@@ -506,7 +506,7 @@ Returns `void` for the `mq3.platform.null_runtime.Key_WriteBindings` compatibili
 | `file` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L157)
 
 <a id="function-function-mq3-platform-null-runtime-macnetsymbols-function-macnetsymbols-src-mq3-platform-null-runtime-ml-2042372864"></a>
 ### macNetSymbols
@@ -518,7 +518,7 @@ function macNetSymbols()
 Lists the 3 declared names for `mq3.platform.null_runtime.macNetSymbols`, including `NET_StringToAdr`, `Sys_GetPacket`, `Sys_SendPacket`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L60)
 
 <a id="constant-constant-mq3-platform-null-runtime-na-bad-const-na-bad-1-src-mq3-platform-null-runtime-ml-315302280"></a>
 ### NA_BAD
@@ -527,8 +527,10 @@ Lists the 3 declared names for `mq3.platform.null_runtime.macNetSymbols`, includ
 const NA_BAD = 1
 ```
 
+Network-address sentinel identifying an invalid or unresolved address.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L55)
 
 <a id="constant-constant-mq3-platform-null-runtime-na-loopback-const-na-loopback-2-src-mq3-platform-null-runtime-ml-718578639"></a>
 ### NA_LOOPBACK
@@ -537,8 +539,10 @@ const NA_BAD = 1
 const NA_LOOPBACK = 2
 ```
 
+Network-address type for in-process loopback transport.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L57)
 
 <a id="function-function-mq3-platform-null-runtime-net-stringtoadr-function-net-stringtoadr-text-src-mq3-platform-null-runtime-ml-1930757579"></a>
 ### NET_StringToAdr
@@ -554,7 +558,7 @@ Returns `void` from `mq3.platform.null_runtime.NET_StringToAdr`; earlier branche
 | `text` | `dynamic` | — | Input tested by `text=="localhost"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L199)
 
 <a id="function-function-mq3-platform-null-runtime-nullclientsymbols-function-nullclientsymbols-src-mq3-platform-null-runtime-ml-939236084"></a>
 ### nullClientSymbols
@@ -566,7 +570,7 @@ function nullClientSymbols()
 Lists the 21 declared names for `mq3.platform.null_runtime.nullClientSymbols`, including `CL_CDDialog`, `CL_CDKeyValidate`, `CL_CharEvent`, `CL_ConsolePrint`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L62)
 
 <a id="function-function-mq3-platform-null-runtime-nullglimpsymbols-function-nullglimpsymbols-src-mq3-platform-null-runtime-ml-851279426"></a>
 ### nullGlimpSymbols
@@ -578,7 +582,7 @@ function nullGlimpSymbols()
 Lists the 7 declared names for `mq3.platform.null_runtime.nullGlimpSymbols`, including `GLimp_EnableLogging`, `GLimp_EndFrame`, `GLimp_Init`, `GLimp_LogComment`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L64)
 
 <a id="function-function-mq3-platform-null-runtime-nullinputsymbols-function-nullinputsymbols-src-mq3-platform-null-runtime-ml-1804178494"></a>
 ### nullInputSymbols
@@ -590,7 +594,7 @@ function nullInputSymbols()
 Lists the 4 declared names for `mq3.platform.null_runtime.nullInputSymbols`, including `IN_Frame`, `IN_Init`, `IN_Shutdown`, `Sys_SendKeyEvents`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L66)
 
 <a id="function-function-mq3-platform-null-runtime-nullmainsymbols-function-nullmainsymbols-src-mq3-platform-null-runtime-ml-1548706380"></a>
 ### nullMainSymbols
@@ -602,7 +606,7 @@ function nullMainSymbols()
 Lists the 18 declared names for `mq3.platform.null_runtime.nullMainSymbols`, including `Sys_BeginStreamedFile`, `Sys_EarlyOutput`, `Sys_EndStreamedFile`, `Sys_Error`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L68)
 
 <a id="function-function-mq3-platform-null-runtime-nullnetsymbols-function-nullnetsymbols-src-mq3-platform-null-runtime-ml-221741378"></a>
 ### nullNetSymbols
@@ -614,7 +618,7 @@ function nullNetSymbols()
 Lists the 3 declared names for `mq3.platform.null_runtime.nullNetSymbols`, including `NET_StringToAdr`, `Sys_GetPacket`, `Sys_SendPacket`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L70)
 
 <a id="function-function-mq3-platform-null-runtime-nullsoundsymbols-function-nullsoundsymbols-src-mq3-platform-null-runtime-ml-486927650"></a>
 ### nullSoundSymbols
@@ -626,7 +630,7 @@ function nullSoundSymbols()
 Lists the 8 declared names for `mq3.platform.null_runtime.nullSoundSymbols`, including `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L72)
 
 - [mq3.platform.null_runtime.Packet](Type-mq3-platform-null-runtime-packet-607746055.md) — struct
 <a id="function-function-mq3-platform-null-runtime-qgl-init-function-qgl-init-state-dllname-src-mq3-platform-null-runtime-ml-437375330"></a>
@@ -644,7 +648,7 @@ Updates `state.qglInitialized` in `mq3.platform.null_runtime.QGL_Init`; returns 
 | `dllname` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L179)
 
 <a id="function-function-mq3-platform-null-runtime-qgl-shutdown-function-qgl-shutdown-state-src-mq3-platform-null-runtime-ml-1040270065"></a>
 ### QGL_Shutdown
@@ -660,7 +664,7 @@ Updates `state.qglInitialized` in `mq3.platform.null_runtime.QGL_Shutdown`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.qglInitialized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L182)
 
 <a id="function-function-mq3-platform-null-runtime-s-clearsoundbuffer-function-s-clearsoundbuffer-state-src-mq3-platform-null-runtime-ml-496517461"></a>
 ### S_ClearSoundBuffer
@@ -676,7 +680,7 @@ Returns `void` for the `mq3.platform.null_runtime.S_ClearSoundBuffer` compatibil
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L243)
 
 <a id="function-function-mq3-platform-null-runtime-s-registersound-function-s-registersound-state-name-compressed-src-mq3-platform-null-runtime-ml-1776897231"></a>
 ### S_RegisterSound
@@ -694,7 +698,7 @@ Updates `state.soundRegistrations` in `mq3.platform.null_runtime.S_RegisterSound
 | `compressed` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L235)
 
 <a id="function-function-mq3-platform-null-runtime-s-startlocalsound-function-s-startlocalsound-state-handle-channel-src-mq3-platform-null-runtime-ml-1074736548"></a>
 ### S_StartLocalSound
@@ -712,7 +716,7 @@ Updates `state.localSounds` in `mq3.platform.null_runtime.S_StartLocalSound`.
 | `channel` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L240)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-beginpainting-function-snddma-beginpainting-state-src-mq3-platform-null-runtime-ml-1947349041"></a>
 ### SNDDMA_BeginPainting
@@ -728,7 +732,7 @@ Returns `void` for the `mq3.platform.null_runtime.SNDDMA_BeginPainting` compatib
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L227)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-getdmapos-function-snddma-getdmapos-state-src-mq3-platform-null-runtime-ml-251548345"></a>
 ### SNDDMA_GetDMAPos
@@ -744,7 +748,7 @@ Returns `0` for the `mq3.platform.null_runtime.SNDDMA_GetDMAPos` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L221)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-init-function-snddma-init-state-src-mq3-platform-null-runtime-ml-1869731661"></a>
 ### SNDDMA_Init
@@ -760,7 +764,7 @@ Returns `false` for the `mq3.platform.null_runtime.SNDDMA_Init` compatibility en
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L218)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-shutdown-function-snddma-shutdown-state-src-mq3-platform-null-runtime-ml-1008890585"></a>
 ### SNDDMA_Shutdown
@@ -776,7 +780,7 @@ Returns `void` for the `mq3.platform.null_runtime.SNDDMA_Shutdown` compatibility
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L224)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-submit-function-snddma-submit-state-src-mq3-platform-null-runtime-ml-131095965"></a>
 ### SNDDMA_Submit
@@ -792,7 +796,7 @@ Returns `void` for the `mq3.platform.null_runtime.SNDDMA_Submit` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L230)
 
 - [mq3.platform.null_runtime.State](Type-mq3-platform-null-runtime-state-476158860.md) — struct
 <a id="function-function-mq3-platform-null-runtime-sys-beginstreamedfile-function-sys-beginstreamedfile-state-file-readahead-src-mq3-platform-null-runtime-ml-1692226054"></a>
@@ -811,7 +815,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_BeginStreamedFile` compati
 | `readAhead` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L249)
 
 <a id="function-function-mq3-platform-null-runtime-sys-earlyoutput-function-sys-earlyoutput-state-text-src-mq3-platform-null-runtime-ml-139767926"></a>
 ### Sys_EarlyOutput
@@ -828,7 +832,7 @@ Updates `state.consoleText` in `mq3.platform.null_runtime.Sys_EarlyOutput`.
 | `text` | `dynamic` | — | Input used by `state.consoleText=state.consoleText+text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L315)
 
 <a id="function-function-mq3-platform-null-runtime-sys-endstreamedfile-function-sys-endstreamedfile-state-file-src-mq3-platform-null-runtime-ml-7042607"></a>
 ### Sys_EndStreamedFile
@@ -845,7 +849,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_EndStreamedFile` compatibi
 | `file` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L253)
 
 <a id="function-function-mq3-platform-null-runtime-sys-error-function-sys-error-state-message-src-mq3-platform-null-runtime-ml-811884334"></a>
 ### Sys_Error
@@ -862,7 +866,7 @@ Updates `state.errors` in `mq3.platform.null_runtime.Sys_Error`; returns `error(
 | `message` | `dynamic` | — | Input used by `state.errors=state.errors+[message]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L278)
 
 <a id="function-function-mq3-platform-null-runtime-sys-findclose-function-sys-findclose-state-src-mq3-platform-null-runtime-ml-1762945547"></a>
 ### Sys_FindClose
@@ -878,7 +882,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_FindClose` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L308)
 
 <a id="function-function-mq3-platform-null-runtime-sys-findfirst-function-sys-findfirst-state-path-musthave-canthave-src-mq3-platform-null-runtime-ml-538987691"></a>
 ### Sys_FindFirst
@@ -897,7 +901,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_FindFirst` compatibility e
 | `cantHave` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L300)
 
 <a id="function-function-mq3-platform-null-runtime-sys-findnext-function-sys-findnext-state-musthave-canthave-src-mq3-platform-null-runtime-ml-1769512850"></a>
 ### Sys_FindNext
@@ -915,7 +919,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_FindNext` compatibility en
 | `cantHave` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L305)
 
 <a id="function-function-mq3-platform-null-runtime-sys-getclipboarddata-function-sys-getclipboarddata-state-src-mq3-platform-null-runtime-ml-506921761"></a>
 ### Sys_GetClipboardData
@@ -931,7 +935,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_GetClipboardData` compatib
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L291)
 
 <a id="function-function-mq3-platform-null-runtime-sys-getgameapi-function-sys-getgameapi-state-parameters-src-mq3-platform-null-runtime-ml-1181311845"></a>
 ### Sys_GetGameAPI
@@ -948,7 +952,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_GetGameAPI` compatibility 
 | `parameters` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L288)
 
 <a id="function-function-mq3-platform-null-runtime-sys-getpacket-function-sys-getpacket-state-src-mq3-platform-null-runtime-ml-1773277933"></a>
 ### Sys_GetPacket
@@ -964,7 +968,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_GetPacket` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L214)
 
 <a id="function-function-mq3-platform-null-runtime-sys-init-function-sys-init-state-src-mq3-platform-null-runtime-ml-1737972105"></a>
 ### Sys_Init
@@ -980,7 +984,7 @@ Computes `state` for `mq3.platform.null_runtime.Sys_Init`.
 | `state` | `dynamic` | — | Input used in the result expression `state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L311)
 
 <a id="function-function-mq3-platform-null-runtime-sys-milliseconds-function-sys-milliseconds-state-src-mq3-platform-null-runtime-ml-403292617"></a>
 ### Sys_Milliseconds
@@ -996,7 +1000,7 @@ Returns `0` for the `mq3.platform.null_runtime.Sys_Milliseconds` compatibility e
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L294)
 
 <a id="function-function-mq3-platform-null-runtime-sys-mkdir-function-sys-mkdir-state-path-src-mq3-platform-null-runtime-ml-314771108"></a>
 ### Sys_Mkdir
@@ -1013,7 +1017,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_Mkdir` compatibility entry
 | `path` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L274)
 
 <a id="function-function-mq3-platform-null-runtime-sys-mkdir-function-sys-mkdir-state-path-src-mq3-platform-null-runtime-ml-2133351588"></a>
 ### Sys_mkdir
@@ -1030,7 +1034,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_mkdir` compatibility entry
 | `path` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L270)
 
 <a id="function-function-mq3-platform-null-runtime-sys-quit-function-sys-quit-state-src-mq3-platform-null-runtime-ml-111745245"></a>
 ### Sys_Quit
@@ -1046,7 +1050,7 @@ Updates `state.quitRequested` in `mq3.platform.null_runtime.Sys_Quit`.
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.quitRequested`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L281)
 
 <a id="function-function-mq3-platform-null-runtime-sys-sendkeyevents-function-sys-sendkeyevents-state-src-mq3-platform-null-runtime-ml-777645217"></a>
 ### Sys_SendKeyEvents
@@ -1062,7 +1066,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_SendKeyEvents` compatibili
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L195)
 
 <a id="function-function-mq3-platform-null-runtime-sys-sendpacket-function-sys-sendpacket-state-length-data-destination-src-mq3-platform-null-runtime-ml-459277901"></a>
 ### Sys_SendPacket
@@ -1081,7 +1085,7 @@ Updates `state.sentPackets` in `mq3.platform.null_runtime.Sys_SendPacket`.
 | `destination` | `dynamic` | — | Value used for `mq3.platform.null_runtime.Packet.destination`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L208)
 
 <a id="function-function-mq3-platform-null-runtime-sys-streamedread-function-sys-streamedread-state-buffer-size-count-file-src-mq3-platform-null-runtime-ml-1049121329"></a>
 ### Sys_StreamedRead
@@ -1101,7 +1105,7 @@ Returns `0` for the `mq3.platform.null_runtime.Sys_StreamedRead` compatibility e
 | `file` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L260)
 
 <a id="function-function-mq3-platform-null-runtime-sys-streamseek-function-sys-streamseek-state-file-offset-origin-src-mq3-platform-null-runtime-ml-1916675842"></a>
 ### Sys_StreamSeek
@@ -1120,7 +1124,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_StreamSeek` compatibility 
 | `origin` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L266)
 
 <a id="function-function-mq3-platform-null-runtime-sys-unloadgame-function-sys-unloadgame-state-src-mq3-platform-null-runtime-ml-931122669"></a>
 ### Sys_UnloadGame
@@ -1136,7 +1140,7 @@ Returns `void` for the `mq3.platform.null_runtime.Sys_UnloadGame` compatibility 
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L284)
 
 <a id="function-function-mq3-platform-null-runtime-ui-gamecommand-function-ui-gamecommand-state-src-mq3-platform-null-runtime-ml-904735909"></a>
 ### UI_GameCommand
@@ -1152,4 +1156,4 @@ Returns `false` for the `mq3.platform.null_runtime.UI_GameCommand` compatibility
 | `state` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L95)

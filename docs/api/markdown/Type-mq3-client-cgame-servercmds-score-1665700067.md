@@ -12,7 +12,7 @@ struct Score
 Stores client game servercmds score record, including `client`, `score`, `ping`, `time`, `scoreFlags`, `powerups` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L108)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game servercmds score record, including `client`, `score`, `ping`,
 accuracy
 ```
 
+Percentage of successful weapon hits reported in the scoreboard data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L122)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-assist-assist-src-mq3-client-cgame-servercmds-ml-979755989"></a>
 ### assist
@@ -33,8 +35,10 @@ accuracy
 assist
 ```
 
+When constructing this record, `parseScores` supplies `integer(args,base+11)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L132)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-captures-captures-src-mq3-client-cgame-servercmds-ml-1265314609"></a>
 ### captures
@@ -43,8 +47,10 @@ assist
 captures
 ```
 
+Number of flag captures credited to this player.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L136)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-client-client-src-mq3-client-cgame-servercmds-ml-2031865653"></a>
 ### client
@@ -53,8 +59,10 @@ captures
 client
 ```
 
+Player slot associated with this score or client-side record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L110)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-defend-defend-src-mq3-client-cgame-servercmds-ml-1642773931"></a>
 ### defend
@@ -63,8 +71,10 @@ client
 defend
 ```
 
+When constructing this record, `parseScores` supplies `integer(args,base+10)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L130)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-excellent-excellent-src-mq3-client-cgame-servercmds-ml-277847835"></a>
 ### excellent
@@ -73,8 +83,10 @@ defend
 excellent
 ```
 
+When constructing this record, `parseScores` supplies `integer(args,base+8)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L126)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-gauntlet-gauntlet-src-mq3-client-cgame-servercmds-ml-2133066663"></a>
 ### gauntlet
@@ -83,8 +95,10 @@ excellent
 gauntlet
 ```
 
+When constructing this record, `parseScores` supplies `integer(args,base+9)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L128)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-impressive-impressive-src-mq3-client-cgame-servercmds-ml-664209141"></a>
 ### impressive
@@ -93,8 +107,10 @@ gauntlet
 impressive
 ```
 
+When constructing this record, `parseScores` supplies `integer(args,base+7)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L124)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-perfect-perfect-src-mq3-client-cgame-servercmds-ml-1872979967"></a>
 ### perfect
@@ -103,8 +119,10 @@ impressive
 perfect
 ```
 
+True or nonzero when the player's result qualifies as a perfect game.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L134)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-ping-ping-src-mq3-client-cgame-servercmds-ml-1573714411"></a>
 ### ping
@@ -113,8 +131,10 @@ perfect
 ping
 ```
 
+Player ping in milliseconds parsed from the server score command; -1 marks a connecting player.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L114)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-powerups-powerups-src-mq3-client-cgame-servercmds-ml-417074813"></a>
 ### powerups
@@ -123,8 +143,10 @@ ping
 powerups
 ```
 
+Powerup bitmask reported for this player by the server score command.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L120)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-score-score-src-mq3-client-cgame-servercmds-ml-1912664507"></a>
 ### score
@@ -133,8 +155,10 @@ powerups
 score
 ```
 
+Player score parsed from the server score command.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L112)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-scoreflags-scoreflags-src-mq3-client-cgame-servercmds-ml-72650725"></a>
 ### scoreFlags
@@ -143,8 +167,10 @@ score
 scoreFlags
 ```
 
+Flags supplied with the server's scoreboard entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L118)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-team-team-src-mq3-client-cgame-servercmds-ml-2094243533"></a>
 ### team
@@ -153,8 +179,10 @@ scoreFlags
 team
 ```
 
+Team assigned to this parsed score entry from the corresponding client information.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L138)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-time-time-src-mq3-client-cgame-servercmds-ml-1847551669"></a>
 ### time
@@ -163,5 +191,7 @@ team
 time
 ```
 
+Elapsed player connection time reported by the server for scoreboard presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L116)

@@ -23,8 +23,10 @@ Data record for `mq3.renderer.world_patch_lod.WorldLodPatch`; groups `face`, `te
 face
 ```
 
+Source BSP face index identifying this patch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-fog-fog-src-mq3-renderer-world-patch-lod-ml-1358478734"></a>
 ### fog
@@ -33,8 +35,10 @@ face
 fog
 ```
 
+Renderer fog index for this patch; zero means no fog volume.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L22)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-grid-grid-src-mq3-renderer-world-patch-lod-ml-546090986"></a>
 ### grid
@@ -43,8 +47,10 @@ fog
 grid
 ```
 
+Tessellated curved-patch grid and its detail-selection data.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L24)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-lightmap-lightmap-src-mq3-renderer-world-patch-lod-ml-1429914658"></a>
 ### lightmap
@@ -53,8 +59,10 @@ grid
 lightmap
 ```
 
+BSP lightmap index assigned to the patch, or a negative no-lightmap selector.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L20)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-texture-texture-src-mq3-renderer-world-patch-lod-ml-1392026234"></a>
 ### texture
@@ -63,8 +71,10 @@ lightmap
 texture
 ```
 
+BSP shader index assigned to the patch surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L18)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-variants-variants-src-mq3-renderer-world-patch-lod-ml-491172054"></a>
 ### variants
@@ -73,5 +83,7 @@ texture
 variants
 ```
 
+Cached tessellation variants for different patch detail thresholds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L26)

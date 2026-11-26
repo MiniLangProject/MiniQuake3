@@ -20,10 +20,10 @@ Reachable from entry: **yes**
 function createClient()
 ```
 
-Create `mq3.server.client_command.Client` with state=0; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
+Create an initially inactive client with no consumed reliable commands and no flood deadline.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L45)
 
 <a id="constant-constant-mq3-server-client-command-cs-active-const-cs-active-4-src-mq3-server-client-command-ml-1308717357"></a>
 ### CS_ACTIVE
@@ -32,8 +32,10 @@ Create `mq3.server.client_command.Client` with state=0; name=""; lastClientComma
 const CS_ACTIVE = 4
 ```
 
+Client-state value identifying a client whose commands may be dispatched as active gameplay commands.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L9)
 
 <a id="function-function-mq3-server-client-command-execute-function-execute-host-clientstate-msg-src-mq3-server-client-command-ml-1750153017"></a>
 ### execute
@@ -42,19 +44,16 @@ const CS_ACTIVE = 4
 function execute(host, clientState, msg)
 ```
 
-Consume one reliable client command, discard retransmissions, reject sequence gaps, and apply the flood interval before dispatch.
-
-Validation failures include `client command: missing state`.
-Direct state writes: `clientState.nextReliableTime`, `clientState.lastClientCommand`, `clientState.lastClientCommandString`.
+Consume one reliable client command and return whether its sequence stream can continue. Duplicate or older sequences return true without callbacks or state updates. A forward sequence gap invokes the optional drop callback and returns false. For the next sequence, the execute callback receives a `clientOk` flag indicating whether game-command flood policy permits dispatch. Even when that flag is false, the sequence and text are retained and the deadline becomes `host.time + 1000`. Returns true after consuming the next command, or error 6981 for missing input state.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — | Server command callbacks, flood policy, and current millisecond clock. |
-| `clientState` | `dynamic` | — | Mutable client sequencing record; accepted commands update its sequence, text, and next reliable-command time. |
-| `msg` | `dynamic` | — | Network message read at the current cursor: an int32 sequence followed by a C string. |
+| `host` | `dynamic` | — | Runtime with a millisecond clock, flood policy, and optional execute/drop/diagnostic callbacks. |
+| `clientState` | `dynamic` | — | Mutable client sequence, last command text, lifecycle state, and flood deadline. |
+| `msg` | `dynamic` | — | Mutable network message positioned at an int32 sequence followed by a zero-terminated command string. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L64)
 
 <a id="function-function-mq3-server-client-command-runtime-function-runtime-src-mq3-server-client-command-ml-413634544"></a>
 ### runtime
@@ -63,9 +62,9 @@ Direct state writes: `clientState.nextReliableTime`, `clientState.lastClientComm
 function runtime()
 ```
 
-Create `mq3.server.client_command.Runtime` with time=0; floodProtect=true; clientRunning=false; executeFn=void; dropFn=void; diagnosticFn=void; context=void.
+Create reliable-command processing services with flood protection enabled and callbacks unset. The server clock starts at zero and no local client is assumed to be running.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L51)
 
 - [mq3.server.client_command.Runtime](Type-mq3-server-client-command-runtime-180684606.md) — struct

@@ -12,7 +12,7 @@ struct Bot
 `Bot` record for ai team, containing `client`, `cs`, `teamleader`, `entergameTime` and `askteamleaderTime` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L85)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Bot
 askteamleaderTime
 ```
 
+Deadline for the bot next request for a team leader.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L95)
 
 <a id="field-field-mq3-game-ai-team-bot-becometeamleadertime-becometeamleadertime-src-mq3-game-ai-team-ml-1863511664"></a>
 ### becometeamleaderTime
@@ -33,8 +35,10 @@ askteamleaderTime
 becometeamleaderTime
 ```
 
+Time controlling when the bot may volunteer as team leader.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L97)
 
 <a id="field-field-mq3-game-ai-team-bot-blueflagstatus-blueflagstatus-src-mq3-game-ai-team-ml-1626526632"></a>
 ### blueflagstatus
@@ -43,8 +47,10 @@ becometeamleaderTime
 blueflagstatus
 ```
 
+Bot-tracked status of the blue flag.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L109)
 
 <a id="field-field-mq3-game-ai-team-bot-client-client-src-mq3-game-ai-team-ml-1131957362"></a>
 ### client
@@ -53,8 +59,10 @@ blueflagstatus
 client
 ```
 
+Client slot of the bot participating in team-strategy decisions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L87)
 
 <a id="field-field-mq3-game-ai-team-bot-cs-cs-src-mq3-game-ai-team-ml-1046252100"></a>
 ### cs
@@ -63,8 +71,10 @@ client
 cs
 ```
 
+Botlib chat-state handle owned by this bot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L89)
 
 <a id="field-field-mq3-game-ai-team-bot-ctfstrategy-ctfstrategy-src-mq3-game-ai-team-ml-1337352136"></a>
 ### ctfstrategy
@@ -73,8 +83,10 @@ cs
 ctfstrategy
 ```
 
+Selected capture-the-flag team strategy.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L103)
 
 <a id="field-field-mq3-game-ai-team-bot-entergametime-entergametime-src-mq3-game-ai-team-ml-1838021124"></a>
 ### entergameTime
@@ -83,8 +95,10 @@ ctfstrategy
 entergameTime
 ```
 
+Timestamp at which this bot entered the game.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L93)
 
 <a id="field-field-mq3-game-ai-team-bot-flagcarrier-flagcarrier-src-mq3-game-ai-team-ml-317384272"></a>
 ### flagcarrier
@@ -93,8 +107,10 @@ entergameTime
 flagcarrier
 ```
 
+Client/entity currently carrying the flag of interest.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L101)
 
 <a id="field-field-mq3-game-ai-team-bot-flagstatuschanged-flagstatuschanged-src-mq3-game-ai-team-ml-699994636"></a>
 ### flagstatuschanged
@@ -103,8 +119,10 @@ flagcarrier
 flagstatuschanged
 ```
 
+Nonzero after a tracked flag status changes and needs processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L111)
 
 <a id="field-field-mq3-game-ai-team-bot-forceorders-forceorders-src-mq3-game-ai-team-ml-1117407568"></a>
 ### forceorders
@@ -113,8 +131,10 @@ flagstatuschanged
 forceorders
 ```
 
+Nonzero when the team leader must issue new orders.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L60)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L113)
 
 <a id="field-field-mq3-game-ai-team-bot-lastflagcapturetime-lastflagcapturetime-src-mq3-game-ai-team-ml-1699093956"></a>
 ### lastflagcaptureTime
@@ -123,8 +143,10 @@ forceorders
 lastflagcaptureTime
 ```
 
+Timestamp of the last flag capture observed by the bot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L117)
 
 <a id="field-field-mq3-game-ai-team-bot-neutralflagstatus-neutralflagstatus-src-mq3-game-ai-team-ml-1504409380"></a>
 ### neutralflagstatus
@@ -133,8 +155,10 @@ lastflagcaptureTime
 neutralflagstatus
 ```
 
+Bot-tracked status of the neutral flag.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L105)
 
 <a id="field-field-mq3-game-ai-team-bot-numteammates-numteammates-src-mq3-game-ai-team-ml-1137524966"></a>
 ### numteammates
@@ -143,8 +167,10 @@ neutralflagstatus
 numteammates
 ```
 
+Number of teammates considered by the team decision logic.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L99)
 
 <a id="field-field-mq3-game-ai-team-bot-redflagstatus-redflagstatus-src-mq3-game-ai-team-ml-743539932"></a>
 ### redflagstatus
@@ -153,8 +179,10 @@ numteammates
 redflagstatus
 ```
 
+Bot-tracked status of the red flag.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L57)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L107)
 
 <a id="field-field-mq3-game-ai-team-bot-teamgiveorderstime-teamgiveorderstime-src-mq3-game-ai-team-ml-1943163440"></a>
 ### teamgiveordersTime
@@ -163,8 +191,10 @@ redflagstatus
 teamgiveordersTime
 ```
 
+Next time at which the bot team leader should issue orders.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L115)
 
 <a id="field-field-mq3-game-ai-team-bot-teamleader-teamleader-src-mq3-game-ai-team-ml-698320816"></a>
 ### teamleader
@@ -173,5 +203,7 @@ teamgiveordersTime
 teamleader
 ```
 
+Name or identifier of the current bot-team leader.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L91)

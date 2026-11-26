@@ -12,7 +12,7 @@ struct Client
 Client record for server.snapshot_schedule, containing `state`, `nextSnapshotTime`, `rate`, `netchan`, `slot`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L21)
 
 ## Members
 
@@ -23,8 +23,10 @@ Client record for server.snapshot_schedule, containing `state`, `nextSnapshotTim
 netchan
 ```
 
+Sequenced network channel used to exchange this client's packets.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L30)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-nextsnapshottime-nextsnapshottime-src-mq3-server-snapshot-schedule-ml-1666931574"></a>
 ### nextSnapshotTime
@@ -33,8 +35,10 @@ netchan
 nextSnapshotTime
 ```
 
+Earliest server timestamp for sending the next snapshot, in milliseconds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L26)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-rate-rate-src-mq3-server-snapshot-schedule-ml-215174318"></a>
 ### rate
@@ -43,8 +47,10 @@ nextSnapshotTime
 rate
 ```
 
+Maximum client download and snapshot transfer rate, in bytes per second.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L28)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-slot-slot-src-mq3-server-snapshot-schedule-ml-1786646002"></a>
 ### slot
@@ -53,8 +59,10 @@ rate
 slot
 ```
 
+Index identifying this entry in its owning slot table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L32)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-state-state-src-mq3-server-snapshot-schedule-ml-289610250"></a>
 ### state
@@ -63,5 +71,7 @@ slot
 state
 ```
 
+Connection lifecycle value that controls whether snapshots or pending packet fragments may be scheduled.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L24)

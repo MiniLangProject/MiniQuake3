@@ -30,7 +30,7 @@ Create `mq3.server.oob_connect.Address` with type=type; ip=ip; port=port.
 | `port` | `dynamic` | — | Initial `port` field stored in the returned or constructed `mq3.server.oob_connect.Address` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L35)
 
 - [mq3.server.oob_connect.Address](Type-mq3-server-oob-connect-address-1718501184.md) — struct
 <a id="function-function-mq3-server-oob-connect-atoi-function-atoi-text-src-mq3-server-oob-connect-ml-1662370743"></a>
@@ -47,7 +47,7 @@ Compute atoi in server.oob_connect; the normal completion returns `(value * sign
 | `text` | `dynamic` | — | Text used in `len(text)` and `bytes(text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L251)
 
 <a id="constant-constant-mq3-server-oob-connect-authorize-timeout-const-authorize-timeout-5000-src-mq3-server-oob-connect-ml-966274156"></a>
 ### AUTHORIZE_TIMEOUT
@@ -56,8 +56,10 @@ Compute atoi in server.oob_connect; the normal completion returns `(value * sign
 const AUTHORIZE_TIMEOUT = 5000
 ```
 
+Wait limit before the connection policy stops waiting for authorization.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L12)
 
 <a id="function-function-mq3-server-oob-connect-authorizediagnostic-function-authorizediagnostic-runtime-text-src-mq3-server-oob-connect-ml-715940559"></a>
 ### authorizeDiagnostic
@@ -74,7 +76,7 @@ Compute authorize diagnostic in server.oob_connect.
 | `text` | `dynamic` | — | Text used in `runtime.diagnosticFn(runtime, text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L218)
 
 <a id="function-function-mq3-server-oob-connect-authorizeippacket-function-authorizeippacket-runtime-sourceaddress-args-fsrestrict-src-mq3-server-oob-connect-ml-1094388953"></a>
 ### authorizeIpPacket
@@ -93,7 +95,7 @@ Compute authorize ip packet in server.oob_connect; the normal completion returns
 | `fsRestrict` | `dynamic` | — | Fs restrict used in `(fsRestrict != 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L224)
 
 - [mq3.server.oob_connect.Challenge](Type-mq3-server-oob-connect-challenge-1873285401.md) — struct
 - [mq3.server.oob_connect.Client](Type-mq3-server-oob-connect-client-143521231.md) — struct
@@ -107,7 +109,7 @@ function config()
 Create `mq3.server.oob_connect.Config` with singlePlayer=false; reconnectLimit=3; minPing=0; maxPing=0; privateClients=0; privatePassword="".
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L108)
 
 - [mq3.server.oob_connect.Config](Type-mq3-server-oob-connect-config-1608169934.md) — struct
 <a id="function-function-mq3-server-oob-connect-create-function-create-maxclients-settings-src-mq3-server-oob-connect-ml-1483751239"></a>
@@ -127,7 +129,7 @@ Validation failures include `oob connect: invalid maxclients`.
 | `settings` | `dynamic` | — | Initial `config` field stored in the returned or constructed `mq3.server.oob_connect.Runtime` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L149)
 
 <a id="constant-constant-mq3-server-oob-connect-cs-connected-const-cs-connected-2-src-mq3-server-oob-connect-ml-39802061"></a>
 ### CS_CONNECTED
@@ -136,8 +138,10 @@ Validation failures include `oob connect: invalid maxclients`.
 const CS_CONNECTED = 2
 ```
 
+Client lifecycle state after connection but before gamestate priming.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L18)
 
 <a id="constant-constant-mq3-server-oob-connect-cs-free-const-cs-free-0-src-mq3-server-oob-connect-ml-1347887709"></a>
 ### CS_FREE
@@ -146,8 +150,10 @@ const CS_CONNECTED = 2
 const CS_FREE = 0
 ```
 
+Client-state value identifying a vacant slot available for accepting a new connection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L16)
 
 <a id="function-function-mq3-server-oob-connect-directconnect-function-directconnect-runtime-sourceaddress-userinfo-src-mq3-server-oob-connect-ml-688304548"></a>
 ### directConnect
@@ -165,7 +171,7 @@ Compute direct connect in server.oob_connect; the normal completion returns `res
 | `userinfo` | `dynamic` | — | Info passed as `info` to `mq3.shared.info.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L262)
 
 <a id="function-function-mq3-server-oob-connect-emptychallenge-function-emptychallenge-src-mq3-server-oob-connect-ml-1391999654"></a>
 ### emptyChallenge
@@ -177,7 +183,7 @@ function emptyChallenge()
 Create `mq3.server.oob_connect.Challenge` with address=void; challenge=0; time=0; pingTime=0; firstTime=0; connected=false.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L61)
 
 <a id="function-function-mq3-server-oob-connect-emptyclient-function-emptyclient-src-mq3-server-oob-connect-ml-1853200326"></a>
 ### emptyClient
@@ -189,7 +195,7 @@ function emptyClient()
 Create `mq3.server.oob_connect.Client` with state=CS_FREE; address=void; qport=0; lastConnectTime=0; reliableAcknowledge=0; reliableSequence=0; challenge=0; userinfo=""; nextSnapshotTime=0; lastPacketTime=0; gamestateMessageNum=0; bot=false.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L91)
 
 <a id="function-function-mq3-server-oob-connect-getchallenge-function-getchallenge-runtime-sourceaddress-src-mq3-server-oob-connect-ml-1904587623"></a>
 ### getChallenge
@@ -206,7 +212,7 @@ Get challenge in server.oob_connect; the normal completion returns `c`.
 | `sourceAddress` | `dynamic` | — | A passed as `a` to `mq3.server.oob_connect.sameAddress`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L198)
 
 <a id="function-function-mq3-server-oob-connect-islan-function-islan-runtime-sourceaddress-src-mq3-server-oob-connect-ml-1128095929"></a>
 ### isLan
@@ -223,7 +229,7 @@ Test lan in server.oob_connect; the normal completion returns `runtime.lanFn(run
 | `sourceAddress` | `dynamic` | — | Source address used in `runtime.lanFn(runtime, sourceAddress)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L179)
 
 <a id="function-function-mq3-server-oob-connect-islocal-function-islocal-runtime-sourceaddress-src-mq3-server-oob-connect-ml-617653041"></a>
 ### isLocal
@@ -240,7 +246,7 @@ Test local in server.oob_connect; the normal completion returns `runtime.localFn
 | `sourceAddress` | `dynamic` | — | Source address used in `runtime.localFn(runtime, sourceAddress)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L183)
 
 <a id="function-function-mq3-server-oob-connect-matchingclient-function-matchingclient-client-sourceaddress-qport-src-mq3-server-oob-connect-ml-245028872"></a>
 ### matchingClient
@@ -258,7 +264,7 @@ Compute server.oob_connect.matchingClient as `(((client.state != CS_FREE) and sa
 | `qport` | `dynamic` | — | Qport used in `(client.qport == qport)` and `((client.qport == qport) or (sourceAddress.port == client.address.port))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L256)
 
 <a id="constant-constant-mq3-server-oob-connect-max-challenges-const-max-challenges-1024-src-mq3-server-oob-connect-ml-1781854878"></a>
 ### MAX_CHALLENGES
@@ -267,8 +273,10 @@ Compute server.oob_connect.matchingClient as `(((client.state != CS_FREE) and sa
 const MAX_CHALLENGES = 1024
 ```
 
+Number of pending connection-challenge entries retained by the server.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L10)
 
 <a id="constant-constant-mq3-server-oob-connect-na-bot-const-na-bot-0-src-mq3-server-oob-connect-ml-1566922161"></a>
 ### NA_BOT
@@ -277,8 +285,10 @@ const MAX_CHALLENGES = 1024
 const NA_BOT = 0
 ```
 
+Network-address kind reserved for an in-process bot client.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L20)
 
 <a id="constant-constant-mq3-server-oob-connect-protocol-version-const-protocol-version-68-src-mq3-server-oob-connect-ml-1306746683"></a>
 ### PROTOCOL_VERSION
@@ -287,8 +297,10 @@ const NA_BOT = 0
 const PROTOCOL_VERSION = 68
 ```
 
+Protocol version placed in Quake III connection and discovery messages.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L14)
 
 <a id="function-function-mq3-server-oob-connect-randomvalue-function-randomvalue-runtime-src-mq3-server-oob-connect-ml-1606370782"></a>
 ### randomValue
@@ -306,7 +318,7 @@ Validation failures include `oob connect: missing random service`.
 | `runtime` | `dynamic` | — | Record exposing `randFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L193)
 
 <a id="function-function-mq3-server-oob-connect-result-function-result-ok-reason-slot-index-userinfo-src-mq3-server-oob-connect-ml-1117917873"></a>
 ### result
@@ -326,7 +338,7 @@ Create `mq3.server.oob_connect.Result` with accepted=ok; reason=reason; slot=slo
 | `userinfo` | `dynamic` | — | Initial `userinfo` field stored in the returned or constructed `mq3.server.oob_connect.Result` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L174)
 
 - [mq3.server.oob_connect.Result](Type-mq3-server-oob-connect-result-1146281401.md) — struct
 - [mq3.server.oob_connect.Runtime](Type-mq3-server-oob-connect-runtime-3013588.md) — struct
@@ -345,7 +357,7 @@ Compute server.oob_connect.sameAddress as `(sameBase(a, b) and (a.port == b.port
 | `b` | `dynamic` | — | Record exposing `port`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L43)
 
 <a id="function-function-mq3-server-oob-connect-samebase-function-samebase-a-b-src-mq3-server-oob-connect-ml-721127311"></a>
 ### sameBase
@@ -362,7 +374,7 @@ Compute server.oob_connect.sameBase as `((((a != void) and (b != void)) and (a.t
 | `b` | `dynamic` | — | Record exposing `type`, `ip`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L39)
 
 <a id="function-function-mq3-server-oob-connect-send-function-send-runtime-targetaddress-text-src-mq3-server-oob-connect-ml-143958822"></a>
 ### send
@@ -380,7 +392,7 @@ Send oob connect in server.oob_connect.
 | `text` | `dynamic` | — | Text used in `runtime.sendFn(runtime, targetAddress, text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L188)
 
 <a id="function-function-mq3-server-oob-connect-sv-authorizeippacket-function-sv-authorizeippacket-runtime-sourceaddress-args-fsrestrict-src-mq3-server-oob-connect-ml-1445611829"></a>
 ### SV_AuthorizeIpPacket
@@ -399,4 +411,4 @@ Return `mq3.server.oob_connect.authorizeIpPacket(runtime, sourceAddress, args, f
 | `fsRestrict` | `dynamic` | — | Fs restrict passed as `fsRestrict` to `mq3.server.oob_connect.authorizeIpPacket`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L247)

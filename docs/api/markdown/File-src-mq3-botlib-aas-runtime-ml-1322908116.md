@@ -28,7 +28,7 @@ Return the absolute value of the numeric argument for aas runtime.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `0.0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L209)
 
 <a id="function-function-mq3-botlib-aas-runtime-appendunique-function-appendunique-values-value-maximum-src-mq3-botlib-aas-runtime-ml-873775471"></a>
 ### appendUnique
@@ -46,7 +46,7 @@ Append a positive area number only when it is absent and the result list has rem
 | `maximum` | `dynamic` | — | Upper bound applied by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L202)
 
 <a id="constant-constant-mq3-botlib-aas-runtime-area-disabled-const-area-disabled-8-src-mq3-botlib-aas-runtime-ml-1469355053"></a>
 ### AREA_DISABLED
@@ -55,8 +55,10 @@ Append a positive area number only when it is absent and the result list has rem
 const AREA_DISABLED = 8
 ```
 
+Area is disabled for routing when set.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
 
 <a id="function-function-mq3-botlib-aas-runtime-areainfo-function-areainfo-runtime-areanum-src-mq3-botlib-aas-runtime-ml-5597887"></a>
 ### areaInfo
@@ -73,7 +75,7 @@ Build the `mq3.botlib.aas_runtime.AreaInfo` result for `areaInfo`.
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L113)
 
 - [mq3.botlib.aas_runtime.AreaInfo](Type-mq3-botlib-aas-runtime-areainfo-1589905451.md) — struct
 <a id="function-function-mq3-botlib-aas-runtime-areareachability-function-areareachability-runtime-areanum-src-mq3-botlib-aas-runtime-ml-302353975"></a>
@@ -91,7 +93,7 @@ Apply `mq3.botlib.aas_runtime.validArea` and `mq3.format.aas.areaSettings` while
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L122)
 
 <a id="function-function-mq3-botlib-aas-runtime-areavolume-function-areavolume-runtime-areanum-src-mq3-botlib-aas-runtime-ml-900869567"></a>
 ### areaVolume
@@ -108,7 +110,7 @@ Apply `mq3.botlib.aas_runtime.validArea`, `mq3.format.aas.area` and `mq3.format.
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L156)
 
 <a id="function-function-mq3-botlib-aas-runtime-bboxareas-function-bboxareas-runtime-mins-maxs-maximum-src-mq3-botlib-aas-runtime-ml-2009694552"></a>
 ### bboxAreas
@@ -127,7 +129,7 @@ Apply `mq3.botlib.aas_runtime.appendUnique`, `mq3.format.aas.node` and `mq3.form
 | `maximum` | `dynamic` | — | Upper bound applied by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L215)
 
 <a id="function-function-mq3-botlib-aas-runtime-create-function-create-map-src-mq3-botlib-aas-runtime-ml-103902840"></a>
 ### create
@@ -143,7 +145,7 @@ Build the `mq3.botlib.aas_runtime.Runtime` result for `create`.
 | `map` | `dynamic` | — | Map record; accesses `counts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L63)
 
 <a id="function-function-mq3-botlib-aas-runtime-dot-function-dot-point-normal-src-mq3-botlib-aas-runtime-ml-365263563"></a>
 ### dot
@@ -160,7 +162,7 @@ Return `point[0]*normal[0]+point[1]*normal[1]+point[2]*normal[2]` for `dot`.
 | `normal` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L76)
 
 <a id="function-function-mq3-botlib-aas-runtime-enableroutingarea-function-enableroutingarea-runtime-areanum-enable-src-mq3-botlib-aas-runtime-ml-1683837510"></a>
 ### enableRoutingArea
@@ -178,7 +180,7 @@ Set `runtime.disabled[areaNum]` to `not (enable!=0)` and `runtime.cacheInvalidat
 | `enable` | `dynamic` | — | Value used by `enableRoutingArea` in `if enable<0 then return wasEnabled end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L193)
 
 <a id="function-function-mq3-botlib-aas-runtime-facearea-function-facearea-runtime-facenum-src-mq3-botlib-aas-runtime-ml-114550183"></a>
 ### faceArea
@@ -195,7 +197,7 @@ Apply `mq3.format.aas.face`, `mq3.format.aas.edgeIndex` and `mq3.format.aas.edge
 | `faceNum` | `dynamic` | — | AAS face index. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L139)
 
 <a id="function-function-mq3-botlib-aas-runtime-fail-function-fail-message-src-mq3-botlib-aas-runtime-ml-722626567"></a>
 ### fail
@@ -211,7 +213,7 @@ Construct error `7520` with diagnostic text `"AAS runtime: "+message`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L60)
 
 <a id="function-function-mq3-botlib-aas-runtime-gettime-function-gettime-runtime-src-mq3-botlib-aas-runtime-ml-244166980"></a>
 ### getTime
@@ -227,7 +229,7 @@ Return the AAS runtime time, or zero when the runtime is absent.
 | `runtime` | `dynamic` | — | AAS runtime; accesses `time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L238)
 
 <a id="function-function-mq3-botlib-aas-runtime-nextareareachability-function-nextareareachability-runtime-areanum-reachnum-src-mq3-botlib-aas-runtime-ml-1010725056"></a>
 ### nextAreaReachability
@@ -245,7 +247,7 @@ Apply `mq3.botlib.aas_runtime.validArea` and `mq3.format.aas.areaSettings` while
 | `reachNum` | `dynamic` | — | Operand used to evaluate the returned expression `reachNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L176)
 
 <a id="function-function-mq3-botlib-aas-runtime-pointareanum-function-pointareanum-runtime-point-src-mq3-botlib-aas-runtime-ml-2034106588"></a>
 ### pointAreaNum
@@ -262,7 +264,7 @@ Traverse the AAS BSP nodes to locate the area containing the supplied point.
 | `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L80)
 
 <a id="function-function-mq3-botlib-aas-runtime-pointpresencetype-function-pointpresencetype-runtime-point-src-mq3-botlib-aas-runtime-ml-1335026198"></a>
 ### pointPresenceType
@@ -279,7 +281,7 @@ Apply `mq3.botlib.aas_runtime.pointAreaNum` and `mq3.format.aas.areaSettings` wh
 | `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L100)
 
 <a id="constant-constant-mq3-botlib-aas-runtime-presence-crouch-const-presence-crouch-4-src-mq3-botlib-aas-runtime-ml-885450937"></a>
 ### PRESENCE_CROUCH
@@ -288,8 +290,10 @@ Apply `mq3.botlib.aas_runtime.pointAreaNum` and `mq3.format.aas.areaSettings` wh
 const PRESENCE_CROUCH = 4
 ```
 
+AAS presence-mask value selecting crouch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-runtime-presence-normal-const-presence-normal-2-src-mq3-botlib-aas-runtime-ml-1023069479"></a>
 ### PRESENCE_NORMAL
@@ -298,8 +302,10 @@ const PRESENCE_CROUCH = 4
 const PRESENCE_NORMAL = 2
 ```
 
+AAS presence-mask value selecting normal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L11)
 
 <a id="function-function-mq3-botlib-aas-runtime-presencetypeboundingbox-function-presencetypeboundingbox-presencetype-src-mq3-botlib-aas-runtime-ml-1903546129"></a>
 ### presenceTypeBoundingBox
@@ -315,7 +321,7 @@ Return standing or crouching player bounds for the presence type and reject unsu
 | `presenceType` | `dynamic` | — | AAS presence type selecting the movement bounds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L105)
 
 <a id="function-function-mq3-botlib-aas-runtime-reachabilityfromnum-function-reachabilityfromnum-runtime-reachnum-src-mq3-botlib-aas-runtime-ml-342539303"></a>
 ### reachabilityFromNum
@@ -332,7 +338,7 @@ Apply `mq3.format.aas.reachability` while evaluating `reachabilityFromNum`. Retu
 | `reachNum` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L185)
 
 - [mq3.botlib.aas_runtime.Runtime](Type-mq3-botlib-aas-runtime-runtime-1457431506.md) — struct
 <a id="function-function-mq3-botlib-aas-runtime-settime-function-settime-runtime-value-src-mq3-botlib-aas-runtime-ml-1967406547"></a>
@@ -350,7 +356,7 @@ Set `runtime.time` to `value` in `mq3.botlib.aas_runtime.setTime`.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L235)
 
 <a id="function-function-mq3-botlib-aas-runtime-validarea-function-validarea-runtime-areanum-src-mq3-botlib-aas-runtime-ml-1667646997"></a>
 ### validArea
@@ -367,7 +373,7 @@ Test `runtime!=void and runtime.initialized and areaNum>0 and areaNum<runtime.ma
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L72)
 
 <a id="function-function-mq3-botlib-aas-runtime-vectorcross-function-vectorcross-a-b-src-mq3-botlib-aas-runtime-ml-605056689"></a>
 ### vectorCross
@@ -384,7 +390,7 @@ Return a new array `[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L132)
 
 <a id="function-function-mq3-botlib-aas-runtime-vectorlength-function-vectorlength-value-src-mq3-botlib-aas-runtime-ml-1694955825"></a>
 ### vectorLength
@@ -400,7 +406,7 @@ Forward `vectorLength` to `mq3.compat.numeric.fsqrt` and return the delegated re
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L135)
 
 <a id="function-function-mq3-botlib-aas-runtime-vectorsubtract-function-vectorsubtract-a-b-src-mq3-botlib-aas-runtime-ml-1431325423"></a>
 ### vectorSubtract
@@ -417,4 +423,4 @@ Return a new array `[a[0]-b[0],a[1]-b[1],a[2]-b[2]]` for `vectorSubtract`.
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L128)

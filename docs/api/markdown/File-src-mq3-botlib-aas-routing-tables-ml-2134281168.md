@@ -30,7 +30,7 @@ Read the precomputed travel time between the requested incoming and outgoing are
 | `incomingOffset` | `dynamic` | — | Operand used to evaluate the returned expression `row[incomingOffset]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L86)
 
 <a id="function-function-mq3-botlib-aas-routing-tables-create-function-create-router-src-mq3-botlib-aas-routing-tables-ml-645791741"></a>
 ### create
@@ -46,7 +46,7 @@ Build the `mq3.botlib.aas_routing_tables.Tables` result for `create`. Return pat
 | `router` | `dynamic` | — | AAS routing state; accesses `runtime`, `settings` and `reaches`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L42)
 
 <a id="function-function-mq3-botlib-aas-routing-tables-empty-function-empty-router-src-mq3-botlib-aas-routing-tables-ml-1109838279"></a>
 ### empty
@@ -62,7 +62,7 @@ Create a `mq3.botlib.aas_routing_tables.Tables` record, initializing `router` fr
 | `router` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_routing_tables.Tables.router`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L39)
 
 <a id="function-function-mq3-botlib-aas-routing-tables-incoming-function-incoming-tables-areanum-src-mq3-botlib-aas-routing-tables-ml-1665051576"></a>
 ### incoming
@@ -79,7 +79,7 @@ Read the reversed reachability list for an area, returning an empty list for inv
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L80)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tables-max-area-reachabilities-const-max-area-reachabilities-128-src-mq3-botlib-aas-routing-tables-ml-693402598"></a>
 ### MAX_AREA_REACHABILITIES
@@ -88,8 +88,10 @@ Read the reversed reachability list for an area, returning an empty list for inv
 const MAX_AREA_REACHABILITIES = 128
 ```
 
+Maximum outgoing reachabilities represented in an area travel-time table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L10)
 
 <a id="function-function-mq3-botlib-aas-routing-tables-portalmaxtraveltime-function-portalmaxtraveltime-tables-portalnum-src-mq3-botlib-aas-routing-tables-ml-977661235"></a>
 ### portalMaxTravelTime
@@ -106,7 +108,7 @@ Read a portal maximum-travel-time entry, returning zero when the table or index 
 | `portalNum` | `dynamic` | — | Operand used to evaluate the returned expression `tables.portalMaxTravelTimes[portalNum]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L92)
 
 - [mq3.botlib.aas_routing_tables.ReverseLink](Type-mq3-botlib-aas-routing-tables-reverselink-216415502.md) — struct
 - [mq3.botlib.aas_routing_tables.Tables](Type-mq3-botlib-aas-routing-tables-tables-348828821.md) — struct

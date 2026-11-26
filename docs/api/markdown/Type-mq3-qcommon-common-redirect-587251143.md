@@ -12,7 +12,7 @@ struct Redirect
 Redirect record for qcommon.common, containing `capacity`, `text`, `flushFn`, `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L102)
 
 ## Members
 
@@ -23,8 +23,10 @@ Redirect record for qcommon.common, containing `capacity`, `text`, `flushFn`, `c
 capacity
 ```
 
+Maximum number of entries allowed in the managed collection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L104)
 
 <a id="field-field-mq3-qcommon-common-redirect-context-context-src-mq3-qcommon-common-ml-1458675299"></a>
 ### context
@@ -33,8 +35,10 @@ capacity
 context
 ```
 
+Caller-supplied data associated with flushing a completed redirected console-output buffer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L110)
 
 <a id="field-field-mq3-qcommon-common-redirect-flushfn-flushfn-src-mq3-qcommon-common-ml-893611843"></a>
 ### flushFn
@@ -43,8 +47,10 @@ context
 flushFn
 ```
 
+Host callback that flushes buffered text to its host destination.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L108)
 
 <a id="field-field-mq3-qcommon-common-redirect-text-text-src-mq3-qcommon-common-ml-1450971829"></a>
 ### text
@@ -53,5 +59,7 @@ flushFn
 text
 ```
 
+Buffered console output awaiting delivery to the redirect callback.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L106)

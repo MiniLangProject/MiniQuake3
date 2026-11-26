@@ -310,6 +310,7 @@ suite was run, nor does it prove binary identity with an older build.
 ## Documentation
 
 - [MiniDoc API reference](docs/api/markdown/README.md)
+- [Current documentation coverage and semantic verification](docs/verification/MINIDOC_COVERAGE_2026-11-26.md)
 - [MiniDoc warning cleanup and verification](docs/verification/MINIDOC_WARNINGS_2026-11-26.md)
 - [Audit corrections and validation scope](docs/AUDIT_FIXES_2026-11-17.md)
 - [Port plan](docs/PORTPLAN.md) and [current parity audit](docs/PARITY_AUDIT.md)
@@ -323,15 +324,26 @@ suite was run, nor does it prove binary identity with an older build.
 
 MiniDoc runs in strict mode through `minidoc.toml`: missing API summaries,
 parameter/return contracts, license headers, and summary-quality warnings fail
-the command. Keep MiniDoc and MiniLangCompilerML as sibling checkouts and run:
+the command. Use MiniDoc 0.4.9 or newer for indexed relation-graph rendering on
+this large source tree. Keep MiniDoc and MiniLangCompilerML as sibling checkouts
+and run:
 
 ```powershell
-..\MiniDoc\build\minidoc.exe --config .\minidoc.toml
+$SourceRevision = git rev-parse HEAD
+..\MiniDoc\build\minidoc.exe --config .\minidoc.toml --revision $SourceRevision
+python docs/verification/verify_minidoc.py --revision $SourceRevision
 ```
 
-On Linux, use `../MiniDoc/build/minidoc --config minidoc.toml`. Add `--check`
-to validate without rewriting the generated HTML and Markdown. Commit source
-documentation changes together with their regenerated reference pages.
+On Linux, use `../MiniDoc/build/minidoc --config minidoc.toml --revision "$(git rev-parse HEAD)"`
+and run the same Python verifier. Add `--check` to MiniDoc to validate without
+rewriting the generated HTML and Markdown. The Python verifier checks both output
+manifests, local links, anchors, search-result targets, and complete HTML/SVG/JSON
+files. Commit source documentation changes and their regenerated reference pages.
+
+The [coverage report](docs/verification/MINIDOC_COVERAGE_2026-11-26.md) separates
+comment coverage from semantic review: a comment on every declaration does not
+prove that every description is correct. Source contracts and generated pages
+must continue to be reviewed against their implementations.
 
 Some historical engineering documents are still in German. This README is
 the English entry point; the detailed reports retain their original evidence

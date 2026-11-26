@@ -12,7 +12,7 @@ struct ShaderSource
 Data record for `mq3.renderer.shader_runtime.ShaderSource`; groups `name`, `text`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L36)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.shader_runtime.ShaderSource`; groups `name`, `text
 name
 ```
 
+Shader script source name retained with the text supplied for indexing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-shader-runtime-shadersource-text-text-src-mq3-renderer-shader-runtime-ml-1156084245"></a>
 ### text
@@ -33,5 +35,7 @@ name
 text
 ```
 
+Text payload, script source, or message associated with this record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L40)

@@ -12,7 +12,7 @@ struct Config
 Stores input command config record, including `forwardSpeed`, `sideSpeed`, `upSpeed`, `yawSpeed`, `pitchSpeed`, `angleSpeedKey` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L35)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores input command config record, including `forwardSpeed`, `sideSpeed`, `upSp
 angleSpeedKey
 ```
 
+When constructing this record, `defaults` supplies `1.5` for this member. Used by `adjustAngles` and `joystickMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L50)
 
 <a id="field-field-mq3-client-input-command-config-filter-filter-src-mq3-client-input-command-ml-933589515"></a>
 ### filter
@@ -33,8 +35,10 @@ angleSpeedKey
 filter
 ```
 
+When constructing this record, `defaults` supplies `false` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L56)
 
 <a id="field-field-mq3-client-input-command-config-forwardspeed-forwardspeed-src-mq3-client-input-command-ml-348441735"></a>
 ### forwardSpeed
@@ -43,8 +47,10 @@ filter
 forwardSpeed
 ```
 
+When constructing this record, `defaults` supplies `127.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L37)
 
 <a id="field-field-mq3-client-input-command-config-freelook-freelook-src-mq3-client-input-command-ml-49836617"></a>
 ### freelook
@@ -53,8 +59,10 @@ forwardSpeed
 freelook
 ```
 
+When constructing this record, `defaults` supplies `true` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L77)
 
 <a id="field-field-mq3-client-input-command-config-mouseaccel-mouseaccel-src-mq3-client-input-command-ml-569362361"></a>
 ### mouseAccel
@@ -63,8 +71,10 @@ freelook
 mouseAccel
 ```
 
+When constructing this record, `defaults` supplies `0.0` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L62)
 
 <a id="field-field-mq3-client-input-command-config-mouseforward-mouseforward-src-mq3-client-input-command-ml-776370119"></a>
 ### mouseForward
@@ -73,8 +83,10 @@ mouseAccel
 mouseForward
 ```
 
+When constructing this record, `defaults` supplies `0.25` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L71)
 
 <a id="field-field-mq3-client-input-command-config-mousepitch-mousepitch-src-mq3-client-input-command-ml-1998140529"></a>
 ### mousePitch
@@ -83,8 +95,10 @@ mouseForward
 mousePitch
 ```
 
+When constructing this record, `defaults` supplies `0.022` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L68)
 
 <a id="field-field-mq3-client-input-command-config-mouseside-mouseside-src-mq3-client-input-command-ml-284325091"></a>
 ### mouseSide
@@ -93,8 +107,10 @@ mousePitch
 mouseSide
 ```
 
+When constructing this record, `defaults` supplies `0.25` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L74)
 
 <a id="field-field-mq3-client-input-command-config-mouseyaw-mouseyaw-src-mq3-client-input-command-ml-1018038679"></a>
 ### mouseYaw
@@ -103,8 +119,10 @@ mouseSide
 mouseYaw
 ```
 
+When constructing this record, `defaults` supplies `0.022` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L65)
 
 <a id="field-field-mq3-client-input-command-config-pitchspeed-pitchspeed-src-mq3-client-input-command-ml-129291605"></a>
 ### pitchSpeed
@@ -113,8 +131,10 @@ mouseYaw
 pitchSpeed
 ```
 
+When constructing this record, `defaults` supplies `140.0` for this member. Used by `adjustAngles` and `joystickMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L47)
 
 <a id="field-field-mq3-client-input-command-config-run-run-src-mq3-client-input-command-ml-2082717071"></a>
 ### run
@@ -123,8 +143,10 @@ pitchSpeed
 run
 ```
 
+When constructing this record, `defaults` supplies `true` for this member. Used by `keyMove` and `joystickMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L53)
 
 <a id="field-field-mq3-client-input-command-config-sensitivity-sensitivity-src-mq3-client-input-command-ml-966569315"></a>
 ### sensitivity
@@ -133,8 +155,10 @@ run
 sensitivity
 ```
 
+When constructing this record, `defaults` supplies `5.0` for this member. Used by `mouseMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L59)
 
 <a id="field-field-mq3-client-input-command-config-sidespeed-sidespeed-src-mq3-client-input-command-ml-1399986455"></a>
 ### sideSpeed
@@ -143,8 +167,10 @@ sensitivity
 sideSpeed
 ```
 
+When constructing this record, `defaults` supplies `127.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L39)
 
 <a id="field-field-mq3-client-input-command-config-upspeed-upspeed-src-mq3-client-input-command-ml-2114174723"></a>
 ### upSpeed
@@ -153,8 +179,10 @@ sideSpeed
 upSpeed
 ```
 
+When constructing this record, `defaults` supplies `127.0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L41)
 
 <a id="field-field-mq3-client-input-command-config-yawspeed-yawspeed-src-mq3-client-input-command-ml-1627317827"></a>
 ### yawSpeed
@@ -163,5 +191,7 @@ upSpeed
 yawSpeed
 ```
 
+When constructing this record, `defaults` supplies `140.0` for this member. Used by `adjustAngles` and `joystickMove` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L44)

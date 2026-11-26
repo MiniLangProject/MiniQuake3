@@ -12,7 +12,7 @@ struct Menu
 Stores UI system config menu, including `wrapAround`, `fullscreen`, `items`, `assets`, `actions`, `pushed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L38)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI system config menu, including `wrapAround`, `fullscreen`, `items`, `as
 actions
 ```
 
+Host requests queued while opening graphics, display, sound, and network option screens, retained in request order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L52)
 
 <a id="field-field-mq3-client-ui-system-config-menu-assets-assets-src-mq3-client-ui-system-config-ml-1917868306"></a>
 ### assets
@@ -33,8 +35,10 @@ actions
 assets
 ```
 
+Media resources retained for registering and drawing the artwork used by the system-configuration submenu.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L49)
 
 <a id="field-field-mq3-client-ui-system-config-menu-fullscreen-fullscreen-src-mq3-client-ui-system-config-ml-2091881450"></a>
 ### fullscreen
@@ -43,8 +47,10 @@ assets
 fullscreen
 ```
 
+Whether the system-configuration menu covers the entire UI instead of appearing over the underlying game view.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L44)
 
 <a id="field-field-mq3-client-ui-system-config-menu-items-items-src-mq3-client-ui-system-config-ml-1741239364"></a>
 ### items
@@ -53,8 +59,10 @@ fullscreen
 items
 ```
 
+Ordered child items participating in this menu's rendering and navigation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L46)
 
 <a id="field-field-mq3-client-ui-system-config-menu-pushed-pushed-src-mq3-client-ui-system-config-ml-353745858"></a>
 ### pushed
@@ -63,8 +71,10 @@ items
 pushed
 ```
 
+Records that the system-configuration submenu has been opened on the active menu stack.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L54)
 
 <a id="field-field-mq3-client-ui-system-config-menu-wraparound-wraparound-src-mq3-client-ui-system-config-ml-700927170"></a>
 ### wrapAround
@@ -73,5 +83,7 @@ pushed
 wrapAround
 ```
 
+Enables cyclic keyboard-focus navigation among the selectable entries of the system-configuration submenu.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L41)

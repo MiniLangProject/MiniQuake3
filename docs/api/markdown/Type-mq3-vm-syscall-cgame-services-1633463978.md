@@ -12,7 +12,7 @@ struct Services
 Services record for vm.syscall_cgame, containing `shared`, `context`, `addCommandFn`, `removeCommandFn`, `sendClientCommandFn`, `updateScreenFn`, and 18 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L35)
 
 ## Members
 
@@ -23,8 +23,10 @@ Services record for vm.syscall_cgame, containing `shared`, `context`, `addComman
 addCommandFn
 ```
 
+Injected callback for add command; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L42)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-clearscenefn-clearscenefn-src-mq3-vm-syscall-cgame-ml-1053170627"></a>
 ### clearSceneFn
@@ -33,8 +35,10 @@ addCommandFn
 clearSceneFn
 ```
 
+Injected callback for clear scene; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L60)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-context-context-src-mq3-vm-syscall-cgame-ml-1992979853"></a>
 ### context
@@ -43,8 +47,10 @@ clearSceneFn
 context
 ```
 
+Opaque caller-supplied context available to client-game VM rendering, snapshots, input commands, and registration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L40)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-extendedfn-extendedfn-src-mq3-vm-syscall-cgame-ml-1095121043"></a>
 ### extendedFn
@@ -53,8 +59,10 @@ context
 extendedFn
 ```
 
+Injected callback for extended; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L85)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-getcurrentcmdnumberfn-getcurrentcmdnumberfn-src-mq3-vm-syscall-cgame-ml-633953661"></a>
 ### getCurrentCmdNumberFn
@@ -63,8 +71,10 @@ extendedFn
 getCurrentCmdNumberFn
 ```
 
+Injected callback for get current cmd number; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L73)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-getcurrentsnapshotnumberfn-getcurrentsnapshotnumberfn-src-mq3-vm-syscall-cgame-ml-1807444377"></a>
 ### getCurrentSnapshotNumberFn
@@ -73,8 +83,10 @@ getCurrentCmdNumberFn
 getCurrentSnapshotNumberFn
 ```
 
+Injected callback for get current snapshot number; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L67)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-getgamestatefn-getgamestatefn-src-mq3-vm-syscall-cgame-ml-859939911"></a>
 ### getGameStateFn
@@ -83,8 +95,10 @@ getCurrentSnapshotNumberFn
 getGameStateFn
 ```
 
+Injected callback for get game state; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L64)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-getglconfigfn-getglconfigfn-src-mq3-vm-syscall-cgame-ml-536089025"></a>
 ### getGlconfigFn
@@ -93,8 +107,10 @@ getGameStateFn
 getGlconfigFn
 ```
 
+Injected callback for get glconfig; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L62)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-getservercommandfn-getservercommandfn-src-mq3-vm-syscall-cgame-ml-932523065"></a>
 ### getServerCommandFn
@@ -103,8 +119,10 @@ getGlconfigFn
 getServerCommandFn
 ```
 
+Injected callback for get server command; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L71)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-getsnapshotfn-getsnapshotfn-src-mq3-vm-syscall-cgame-ml-1863180721"></a>
 ### getSnapshotFn
@@ -113,8 +131,10 @@ getServerCommandFn
 getSnapshotFn
 ```
 
+Injected callback for get snapshot; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L69)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-getusercmdfn-getusercmdfn-src-mq3-vm-syscall-cgame-ml-1102776107"></a>
 ### getUserCmdFn
@@ -123,8 +143,10 @@ getSnapshotFn
 getUserCmdFn
 ```
 
+Injected callback for get user cmd; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L75)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-keyservices-keyservices-src-mq3-vm-syscall-cgame-ml-843881489"></a>
 ### keyServices
@@ -133,8 +155,10 @@ getUserCmdFn
 keyServices
 ```
 
+Keyboard-state and key-binding service bundle.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L81)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-loadworldfn-loadworldfn-src-mq3-vm-syscall-cgame-ml-605967677"></a>
 ### loadWorldFn
@@ -143,8 +167,10 @@ keyServices
 loadWorldFn
 ```
 
+Injected callback for load world; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L50)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-memoryremainingfn-memoryremainingfn-src-mq3-vm-syscall-cgame-ml-946597869"></a>
 ### memoryRemainingFn
@@ -153,8 +179,10 @@ loadWorldFn
 memoryRemainingFn
 ```
 
+Injected callback for memory remaining; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L79)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-pcservices-pcservices-src-mq3-vm-syscall-cgame-ml-1253713051"></a>
 ### pcServices
@@ -163,8 +191,10 @@ memoryRemainingFn
 pcServices
 ```
 
+Preprocessor/token-source service bundle used by parser syscalls.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L83)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-registermodelfn-registermodelfn-src-mq3-vm-syscall-cgame-ml-2057985389"></a>
 ### registerModelFn
@@ -173,8 +203,10 @@ pcServices
 registerModelFn
 ```
 
+Injected callback for register model; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L52)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-registershaderfn-registershaderfn-src-mq3-vm-syscall-cgame-ml-300678137"></a>
 ### registerShaderFn
@@ -183,8 +215,10 @@ registerModelFn
 registerShaderFn
 ```
 
+Injected callback for register shader; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L56)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-registershadernomipfn-registershadernomipfn-src-mq3-vm-syscall-cgame-ml-995899145"></a>
 ### registerShaderNoMipFn
@@ -193,8 +227,10 @@ registerShaderFn
 registerShaderNoMipFn
 ```
 
+Injected callback for register shader no mip; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L58)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-registerskinfn-registerskinfn-src-mq3-vm-syscall-cgame-ml-539885021"></a>
 ### registerSkinFn
@@ -203,8 +239,10 @@ registerShaderNoMipFn
 registerSkinFn
 ```
 
+Injected callback for register skin; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L54)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-removecommandfn-removecommandfn-src-mq3-vm-syscall-cgame-ml-196077677"></a>
 ### removeCommandFn
@@ -213,8 +251,10 @@ registerSkinFn
 removeCommandFn
 ```
 
+Injected callback for remove command; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L44)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-sendclientcommandfn-sendclientcommandfn-src-mq3-vm-syscall-cgame-ml-1260743845"></a>
 ### sendClientCommandFn
@@ -223,8 +263,10 @@ removeCommandFn
 sendClientCommandFn
 ```
 
+Injected callback for send client command; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L46)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-setusercmdvaluefn-setusercmdvaluefn-src-mq3-vm-syscall-cgame-ml-1188484941"></a>
 ### setUserCmdValueFn
@@ -233,8 +275,10 @@ sendClientCommandFn
 setUserCmdValueFn
 ```
 
+Injected callback for set user cmd value; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L77)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-shared-shared-src-mq3-vm-syscall-cgame-ml-990282183"></a>
 ### shared
@@ -243,8 +287,10 @@ setUserCmdValueFn
 shared
 ```
 
+Shared host service bundle used by the VM syscall adapters.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L37)
 
 <a id="field-field-mq3-vm-syscall-cgame-services-updatescreenfn-updatescreenfn-src-mq3-vm-syscall-cgame-ml-1173622343"></a>
 ### updateScreenFn
@@ -253,5 +299,7 @@ shared
 updateScreenFn
 ```
 
+Injected callback for update screen; invoked through the Services service/state record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L48)

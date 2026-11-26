@@ -12,7 +12,7 @@ struct Field
 Stores UI mfield field record, including `buffer`, `cursor`, `scroll`, `widthInChars`, `maxchars`, `overstrike` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L39)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI mfield field record, including `buffer`, `cursor`, `scroll`, `widthInC
 actions
 ```
 
+Host requests queued while editing a text field and drawing its visible text and cursor, retained in request order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L56)
 
 <a id="field-field-mq3-client-ui-mfield-field-buffer-buffer-src-mq3-client-ui-mfield-ml-112823187"></a>
 ### buffer
@@ -33,8 +35,10 @@ actions
 buffer
 ```
 
+When constructing this record, `field` supplies an empty string for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L41)
 
 <a id="field-field-mq3-client-ui-mfield-field-clipboard-clipboard-src-mq3-client-ui-mfield-ml-1874335303"></a>
 ### clipboard
@@ -43,8 +47,10 @@ buffer
 clipboard
 ```
 
+When constructing this record, `field` supplies an empty string for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L53)
 
 <a id="field-field-mq3-client-ui-mfield-field-cursor-cursor-src-mq3-client-ui-mfield-ml-1607744583"></a>
 ### cursor
@@ -53,8 +59,10 @@ clipboard
 cursor
 ```
 
+When constructing this record, `field` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L43)
 
 <a id="field-field-mq3-client-ui-mfield-field-maxchars-maxchars-src-mq3-client-ui-mfield-ml-1643173925"></a>
 ### maxchars
@@ -63,8 +71,10 @@ cursor
 maxchars
 ```
 
+When constructing this record, `field` supplies `maxchars` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L49)
 
 <a id="field-field-mq3-client-ui-mfield-field-overstrike-overstrike-src-mq3-client-ui-mfield-ml-720979863"></a>
 ### overstrike
@@ -73,8 +83,10 @@ maxchars
 overstrike
 ```
 
+When constructing this record, `field` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L51)
 
 <a id="field-field-mq3-client-ui-mfield-field-scroll-scroll-src-mq3-client-ui-mfield-ml-1466073089"></a>
 ### scroll
@@ -83,8 +95,10 @@ overstrike
 scroll
 ```
 
+When constructing this record, `field` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L45)
 
 <a id="field-field-mq3-client-ui-mfield-field-widthinchars-widthinchars-src-mq3-client-ui-mfield-ml-245464951"></a>
 ### widthInChars
@@ -93,5 +107,7 @@ scroll
 widthInChars
 ```
 
+Number of character columns visible in the editable text or console field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L47)

@@ -12,7 +12,7 @@ struct Bot
 Stores UI start server bot record, including `name`, `model`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L58)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI start server bot record, including `name`, `model`.
 model
 ```
 
+Model resource selected for rendering the object.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L62)
 
 <a id="field-field-mq3-client-ui-start-server-bot-name-name-src-mq3-client-ui-start-server-ml-959677058"></a>
 ### name
@@ -33,5 +35,7 @@ model
 name
 ```
 
+Bot identity offered by server setup for assignment to a bot player slot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L60)

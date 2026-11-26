@@ -12,7 +12,7 @@ struct BufferedVoice
 Stores client game servercmds buffered voice record, including `clientNum`, `sound`, `voiceOnly`, `cmd`, `message`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L197)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client game servercmds buffered voice record, including `clientNum`, `sou
 clientNum
 ```
 
+Client slot of the speaker associated with this queued voice-chat message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L199)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-cmd-cmd-src-mq3-client-cgame-servercmds-ml-100657176"></a>
 ### cmd
@@ -33,8 +35,10 @@ clientNum
 cmd
 ```
 
+When constructing this record, `voiceChatLocal` supplies `cmd` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L205)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-message-message-src-mq3-client-cgame-servercmds-ml-1247521920"></a>
 ### message
@@ -43,8 +47,10 @@ cmd
 message
 ```
 
+When constructing this record, `voiceChatLocal` supplies `message` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L207)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-sound-sound-src-mq3-client-cgame-servercmds-ml-1283977360"></a>
 ### sound
@@ -53,8 +59,10 @@ message
 sound
 ```
 
+Voice sound resource queued together with its speaker and chat message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L201)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-voiceonly-voiceonly-src-mq3-client-cgame-servercmds-ml-899615568"></a>
 ### voiceOnly
@@ -63,5 +71,7 @@ sound
 voiceOnly
 ```
 
+When constructing this record, `voiceChatLocal` supplies `voiceOnly` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L203)

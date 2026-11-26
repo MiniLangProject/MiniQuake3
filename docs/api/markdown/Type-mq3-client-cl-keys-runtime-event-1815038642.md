@@ -12,7 +12,7 @@ struct Event
 Stores engine client keys runtime event record, including `kind`, `key`, `down`, `text`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L57)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores engine client keys runtime event record, including `kind`, `key`, `down`,
 down
 ```
 
+When constructing this record, `event` supplies `down` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L64)
 
 <a id="field-field-mq3-client-cl-keys-runtime-event-key-key-src-mq3-client-cl-keys-runtime-ml-1590750113"></a>
 ### key
@@ -33,8 +35,10 @@ down
 key
 ```
 
+When constructing this record, `event` supplies `key` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L62)
 
 <a id="field-field-mq3-client-cl-keys-runtime-event-kind-kind-src-mq3-client-cl-keys-runtime-ml-666874621"></a>
 ### kind
@@ -43,8 +47,10 @@ key
 kind
 ```
 
+Keyboard-routing event category identifying the destination or action recorded for a key or character event.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L60)
 
 <a id="field-field-mq3-client-cl-keys-runtime-event-text-text-src-mq3-client-cl-keys-runtime-ml-1726210635"></a>
 ### text
@@ -53,5 +59,7 @@ kind
 text
 ```
 
+Console feedback or expanded key-binding command carried by the keyboard runtime event.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L66)

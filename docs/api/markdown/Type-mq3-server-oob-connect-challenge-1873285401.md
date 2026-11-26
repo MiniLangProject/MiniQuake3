@@ -12,7 +12,7 @@ struct Challenge
 Challenge record for server.oob_connect, containing `address`, `challenge`, `time`, `pingTime`, `firstTime`, `connected`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L46)
 
 ## Members
 
@@ -23,8 +23,10 @@ Challenge record for server.oob_connect, containing `address`, `challenge`, `tim
 address
 ```
 
+Network address associated with the client or packet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L48)
 
 <a id="field-field-mq3-server-oob-connect-challenge-challenge-challenge-src-mq3-server-oob-connect-ml-1383776500"></a>
 ### challenge
@@ -33,8 +35,10 @@ address
 challenge
 ```
 
+Challenge value used to authenticate a connection attempt.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L50)
 
 <a id="field-field-mq3-server-oob-connect-challenge-connected-connected-src-mq3-server-oob-connect-ml-1683628220"></a>
 ### connected
@@ -43,8 +47,10 @@ challenge
 connected
 ```
 
+True after the connection challenge has been accepted by a client.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L58)
 
 <a id="field-field-mq3-server-oob-connect-challenge-firsttime-firsttime-src-mq3-server-oob-connect-ml-1222359292"></a>
 ### firstTime
@@ -53,8 +59,10 @@ connected
 firstTime
 ```
 
+Server timestamp when this challenge address was first registered.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L56)
 
 <a id="field-field-mq3-server-oob-connect-challenge-pingtime-pingtime-src-mq3-server-oob-connect-ml-698225902"></a>
 ### pingTime
@@ -63,8 +71,10 @@ firstTime
 pingTime
 ```
 
+Server timestamp of the challenge response used to measure connection latency.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L54)
 
 <a id="field-field-mq3-server-oob-connect-challenge-time-time-src-mq3-server-oob-connect-ml-1169300938"></a>
 ### time
@@ -73,5 +83,7 @@ pingTime
 time
 ```
 
+Server timestamp when this challenge entry was assigned, used to select the oldest reusable entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L52)

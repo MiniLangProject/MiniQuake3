@@ -20,8 +20,10 @@ Reachable from entry: **yes**
 const BYTE_SIZE = 208
 ```
 
+Byte size used for byte storage or binary layout in mq3.game.entitystate.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L8)
 
 <a id="function-function-mq3-game-entitystate-copy-function-copy-source-src-mq3-game-entitystate-ml-172337713"></a>
 ### copy
@@ -37,7 +39,7 @@ Apply `mq3.game.entitystate.create` while evaluating `copy`. Return paths includ
 | `source` | `dynamic` | — | Parser source state; accesses `number`, `eType`, `eFlags`, `pos` and `apos` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L165)
 
 <a id="function-function-mq3-game-entitystate-create-function-create-src-mq3-game-entitystate-ml-1222851506"></a>
 ### create
@@ -49,7 +51,7 @@ function create()
 Create a `mq3.game.entitystate.EntityState` record, initializing `pos` as `tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0])`, `apos` as `tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0])` and `origin` as `[0.0,0.0,0.0]`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L71)
 
 - [mq3.game.entitystate.EntityState](Type-mq3-game-entitystate-entitystate-2108234152.md) — struct
 <a id="function-function-mq3-game-entitystate-load-function-load-data-offset-src-mq3-game-entitystate-ml-212007151"></a>
@@ -67,7 +69,7 @@ Populate an entity state from its ordered snapshot-word representation.
 | `offset` | `dynamic` | — | Offset into the buffer or sequence used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L78)
 
 <a id="function-function-mq3-game-entitystate-words-function-words-state-src-mq3-game-entitystate-ml-2096263879"></a>
 ### words
@@ -83,4 +85,4 @@ Serialize an entity state into the ordered 32-bit words used by Quake III snapsh
 | `state` | `dynamic` | — | Entitystate state; accesses `number`, `eType`, `eFlags`, `pos` and `apos` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L122)

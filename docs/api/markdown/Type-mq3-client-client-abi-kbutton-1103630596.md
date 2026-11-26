@@ -12,7 +12,7 @@ struct KButton
 Stores client ABI k button record, including `down`, `downtime`, `msec`, `active`, `wasPressed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L335)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores client ABI k button record, including `down`, `downtime`, `msec`, `active
 active
 ```
 
+True while at least one physical key holds the logical button down.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L343)
 
 <a id="field-field-mq3-client-client-abi-kbutton-down-down-src-mq3-client-client-abi-ml-846213458"></a>
 ### down
@@ -33,8 +35,10 @@ active
 down
 ```
 
+Physical keys currently holding this logical button down.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L337)
 
 <a id="field-field-mq3-client-client-abi-kbutton-downtime-downtime-src-mq3-client-client-abi-ml-834113516"></a>
 ### downtime
@@ -43,8 +47,10 @@ down
 downtime
 ```
 
+Timestamp at which the logical button first became pressed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L339)
 
 <a id="field-field-mq3-client-client-abi-kbutton-msec-msec-src-mq3-client-client-abi-ml-351044414"></a>
 ### msec
@@ -53,8 +59,10 @@ downtime
 msec
 ```
 
+Accumulated milliseconds for which the logical button was held during the frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L341)
 
 <a id="field-field-mq3-client-client-abi-kbutton-waspressed-waspressed-src-mq3-client-client-abi-ml-1134256728"></a>
 ### wasPressed
@@ -63,5 +71,7 @@ msec
 wasPressed
 ```
 
+Latched press event retained until user-command generation consumes it.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L345)

@@ -12,7 +12,7 @@ struct Bot
 Stores UI sp level bot record, including `name`, `picture`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L75)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI sp level bot record, including `name`, `picture`.
 name
 ```
 
+Opponent name shown in the selected single-player arena's bot lineup.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L77)
 
 <a id="field-field-mq3-client-ui-sp-level-bot-picture-picture-src-mq3-client-ui-sp-level-ml-259680528"></a>
 ### picture
@@ -33,5 +35,7 @@ name
 picture
 ```
 
+When constructing this record, `setBots` supplies `picture` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L79)

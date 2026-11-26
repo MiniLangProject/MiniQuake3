@@ -12,7 +12,7 @@ struct Bitmap
 Data record for `mq3.renderer.tr_font_runtime.Bitmap`; groups `width`, `rows`, `pitch`, `pixelMode`, `buffer`, `numGrays`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L57)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_font_runtime.Bitmap`; groups `width`, `rows`, `
 buffer
 ```
 
+Rasterized glyph coverage bytes arranged by scanline pitch.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L67)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-numgrays-numgrays-src-mq3-renderer-tr-font-runtime-ml-1322369042"></a>
 ### numGrays
@@ -33,8 +35,10 @@ buffer
 numGrays
 ```
 
+Number of gray levels represented by the glyph bitmap.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L69)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-pitch-pitch-src-mq3-renderer-tr-font-runtime-ml-293694258"></a>
 ### pitch
@@ -43,8 +47,10 @@ numGrays
 pitch
 ```
 
+Signed number of bytes between successive bitmap scanlines.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L63)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-pixelmode-pixelmode-src-mq3-renderer-tr-font-runtime-ml-2076931110"></a>
 ### pixelMode
@@ -53,8 +59,10 @@ pitch
 pixelMode
 ```
 
+Rasterizer pixel format used by the glyph bitmap.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L65)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-rows-rows-src-mq3-renderer-tr-font-runtime-ml-30788924"></a>
 ### rows
@@ -63,8 +71,10 @@ pixelMode
 rows
 ```
 
+Number of rasterized glyph scanlines.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L61)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-width-width-src-mq3-renderer-tr-font-runtime-ml-750354726"></a>
 ### width
@@ -73,5 +83,7 @@ rows
 width
 ```
 
+Width of the rasterized coverage bitmap, in pixels.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L59)

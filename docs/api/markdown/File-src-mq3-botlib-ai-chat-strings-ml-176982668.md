@@ -27,7 +27,7 @@ Normalize a ai chat strings resource path by removing leading slashes and ensuri
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L58)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-boundary-function-boundary-value-src-mq3-botlib-ai-chat-strings-ml-321088693"></a>
 ### boundary
@@ -43,7 +43,7 @@ Test `value==32 or value==46 or value==44 or value==33` as the condition for `bo
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `value==32 or value==46 or value==44 or value==33`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L164)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-clear-function-clear-state-src-mq3-botlib-ai-chat-strings-ml-892248795"></a>
 ### clear
@@ -59,7 +59,7 @@ Set `state.groups` to `[]` and `state.loaded` to `false` in `mq3.botlib.ai_chat_
 | `state` | `dynamic` | — | AI chat strings state; accesses `groups` and `loaded`. May update `state.groups` and `state.loaded` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L137)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-create-function-create-context-readfn-src-mq3-botlib-ai-chat-strings-ml-631454887"></a>
 ### create
@@ -76,7 +76,7 @@ Create a `mq3.botlib.ai_chat_strings.State` record, initializing `context` from 
 | `readFn` | `dynamic` | — | Callback that loads a named resource through the supplied context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L55)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-ensureloaded-function-ensureloaded-state-src-mq3-botlib-ai-chat-strings-ml-836462845"></a>
 ### ensureLoaded
@@ -92,7 +92,7 @@ Apply `mq3.botlib.ai_chat_strings.load` while evaluating `ensureLoaded`. Return 
 | `state` | `dynamic` | — | AI chat strings state; accesses `loaded` and `groups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L132)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-expect-function-expect-registry-source-text-src-mq3-botlib-ai-chat-strings-ml-1960644145"></a>
 ### expect
@@ -110,7 +110,7 @@ Apply `mq3.botlib.ai_chat_strings.take` while evaluating `expect`. Return paths 
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L77)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-fail-function-fail-message-src-mq3-botlib-ai-chat-strings-ml-1188082487"></a>
 ### fail
@@ -126,7 +126,7 @@ Construct error `7595` with diagnostic text `"AI chat strings: "+message`.
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L51)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-findword-function-findword-value-wordvalue-start-src-mq3-botlib-ai-chat-strings-ml-675628104"></a>
 ### findWord
@@ -144,7 +144,7 @@ Apply `mq3.botlib.ai_chat_strings.boundary` and `mq3.botlib.ai_chat_strings.matc
 | `start` | `dynamic` | — | Value used by `findWord` in `if len(word)==0 or start<0 then return -1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L177)
 
 - [mq3.botlib.ai_chat_strings.Group](Type-mq3-botlib-ai-chat-strings-group-248301701.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-strings-iswhitespace-function-iswhitespace-value-src-mq3-botlib-ai-chat-strings-ml-633914033"></a>
@@ -161,7 +161,7 @@ Classify separators according to the released bot-chat character rules, which pr
 | `value` | `dynamic` | — | Value used by `isWhiteSpace` in `if value>=97 and value<=122 or value>=65 and value<=90 or value>=48 and value<=57 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L141)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-load-function-load-state-filename-src-mq3-botlib-ai-chat-strings-ml-280133518"></a>
 ### load
@@ -178,7 +178,7 @@ Set `state.groups` to `groups` and `state.loaded` to `true` in `mq3.botlib.ai_ch
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L126)
 
 - [mq3.botlib.ai_chat_strings.Loader](Type-mq3-botlib-ai-chat-strings-loader-157619677.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-strings-loadtext-function-loadtext-loader-name-src-mq3-botlib-ai-chat-strings-ml-86561266"></a>
@@ -196,7 +196,7 @@ Set `loader.state.fileReads` to `loader.state.fileReads+1` in `mq3.botlib.ai_cha
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L65)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-lower-function-lower-value-src-mq3-botlib-ai-chat-strings-ml-1862599675"></a>
 ### lower
@@ -212,7 +212,7 @@ Convert an ASCII uppercase letter to lowercase while preserving other byte value
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `value+32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L161)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-matchesat-function-matchesat-data-word-at-src-mq3-botlib-ai-chat-strings-ml-1464872409"></a>
 ### matchesAt
@@ -230,7 +230,7 @@ Apply `mq3.botlib.ai_chat_strings.lower` while evaluating `matchesAt`.
 | `at` | `dynamic` | — | Value used by `matchesAt` in `if at<0 or at+len(word)>len(data) then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L169)
 
 <a id="constant-constant-mq3-botlib-ai-chat-strings-max-message-size-const-max-message-size-256-src-mq3-botlib-ai-chat-strings-ml-392347090"></a>
 ### MAX_MESSAGE_SIZE
@@ -239,8 +239,10 @@ Apply `mq3.botlib.ai_chat_strings.lower` while evaluating `matchesAt`.
 const MAX_MESSAGE_SIZE = 256
 ```
 
+Maximum character capacity of a bot chat or console message.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-chat-strings-op-replace-synonyms-const-op-replace-synonyms-521-src-mq3-botlib-ai-chat-strings-ml-1422786995"></a>
 ### OP_REPLACE_SYNONYMS
@@ -249,8 +251,10 @@ const MAX_MESSAGE_SIZE = 256
 const OP_REPLACE_SYNONYMS = 521
 ```
 
+Bot-library syscall identifier for replace synonyms.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-chat-strings-op-unify-white-spaces-const-op-unify-white-spaces-520-src-mq3-botlib-ai-chat-strings-ml-1036907216"></a>
 ### OP_UNIFY_WHITE_SPACES
@@ -259,8 +263,10 @@ const OP_REPLACE_SYNONYMS = 521
 const OP_UNIFY_WHITE_SPACES = 520
 ```
 
+Bot-library syscall identifier for unify white spaces.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-parse-function-parse-state-filename-src-mq3-botlib-ai-chat-strings-ml-920490488"></a>
 ### parse
@@ -277,7 +283,7 @@ Apply `mq3.vm.pc_parser.create`, `mq3.vm.pc_parser.load` and `mq3.botlib.ai_chat
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L103)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-parsegroup-function-parsegroup-registry-source-context-src-mq3-botlib-ai-chat-strings-ml-353618665"></a>
 ### parseGroup
@@ -295,7 +301,7 @@ Build the `mq3.botlib.ai_chat_strings.Group` result for `parseGroup`. Return pat
 | `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L84)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-replacerange-function-replacerange-value-at-count-replacement-src-mq3-botlib-ai-chat-strings-ml-2131545949"></a>
 ### replaceRange
@@ -314,7 +320,7 @@ Replace a byte range in a string while preserving its prefix and suffix.
 | `replacement` | `dynamic` | — | Text substituted for a matching word or token. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L194)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-replacesynonyms-function-replacesynonyms-state-value-context-src-mq3-botlib-ai-chat-strings-ml-1048737193"></a>
 ### replaceSynonyms
@@ -332,7 +338,7 @@ Apply `mq3.botlib.ai_chat_strings.ensureLoaded` and `mq3.botlib.ai_chat_strings.
 | `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L220)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-replacewords-function-replacewords-value-synonym-replacement-src-mq3-botlib-ai-chat-strings-ml-1398205812"></a>
 ### replaceWords
@@ -350,7 +356,7 @@ Apply `mq3.botlib.ai_chat_strings.findWord` and `mq3.botlib.ai_chat_strings.repl
 | `replacement` | `dynamic` | — | Text substituted for a matching word or token. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L203)
 
 - [mq3.botlib.ai_chat_strings.State](Type-mq3-botlib-ai-chat-strings-state-573645047.md) — struct
 - [mq3.botlib.ai_chat_strings.Synonym](Type-mq3-botlib-ai-chat-strings-synonym-1217201239.md) — struct
@@ -369,7 +375,7 @@ Forward `take` to `mq3.vm.pc_parser.read` and return the delegated result.
 | `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L72)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-unifywhitespaces-function-unifywhitespaces-value-src-mq3-botlib-ai-chat-strings-ml-771593789"></a>
 ### unifyWhiteSpaces
@@ -385,4 +391,4 @@ Apply `mq3.botlib.ai_chat_strings.isWhiteSpace` while evaluating `unifyWhiteSpac
 | `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L147)

@@ -12,7 +12,7 @@ struct Triangle
 Data record for `mq3.renderer.qvm_2d_batch.Triangle`; groups `positions`, `texCoords`, `colors`, `commandIndex`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L45)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.qvm_2d_batch.Triangle`; groups `positions`, `texCo
 colors
 ```
 
+Per-corner modulation colors retained after splitting a 2D command into triangles.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-commandindex-commandindex-src-mq3-renderer-qvm-2d-batch-ml-584765333"></a>
 ### commandIndex
@@ -33,8 +35,10 @@ colors
 commandIndex
 ```
 
+Index of the original drawing command that produced this primitive.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L53)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-positions-positions-src-mq3-renderer-qvm-2d-batch-ml-1339143843"></a>
 ### positions
@@ -43,8 +47,10 @@ commandIndex
 positions
 ```
 
+Three screen-space corners produced when triangulating a two-dimensional drawing command.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L47)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-texcoords-texcoords-src-mq3-renderer-qvm-2d-batch-ml-113587299"></a>
 ### texCoords
@@ -53,5 +59,7 @@ positions
 texCoords
 ```
 
+Three interpolated texture coordinates of a triangle produced from a 2D drawing rectangle.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L49)

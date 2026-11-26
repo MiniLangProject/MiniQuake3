@@ -12,7 +12,7 @@ struct Action
 `Action` record for aas sample, containing `boundary`, `kind`, `subject`, `detail` and `dispatched`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L79)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Action
 boundary
 ```
 
+Subsystem boundary at which this host action must be dispatched.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L81)
 
 <a id="field-field-mq3-botlib-aas-sample-action-detail-detail-src-mq3-botlib-aas-sample-ml-129160709"></a>
 ### detail
@@ -33,8 +35,10 @@ boundary
 detail
 ```
 
+Additional diagnostic information about the recorded operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L87)
 
 <a id="field-field-mq3-botlib-aas-sample-action-dispatched-dispatched-src-mq3-botlib-aas-sample-ml-996993269"></a>
 ### dispatched
@@ -43,8 +47,10 @@ detail
 dispatched
 ```
 
+True after the recorded action has been delivered to the host.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L89)
 
 <a id="field-field-mq3-botlib-aas-sample-action-kind-kind-src-mq3-botlib-aas-sample-ml-1604033319"></a>
 ### kind
@@ -53,8 +59,10 @@ dispatched
 kind
 ```
 
+Discriminator identifying the recorded area-linking operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L83)
 
 <a id="field-field-mq3-botlib-aas-sample-action-subject-subject-src-mq3-botlib-aas-sample-ml-2049730183"></a>
 ### subject
@@ -63,5 +71,7 @@ kind
 subject
 ```
 
+Entity or area identifier affected by the recorded operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L85)

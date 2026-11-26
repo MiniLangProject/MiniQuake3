@@ -35,7 +35,7 @@ Updates `output.materials`, `output.textures`, `output.nextTextureSlot` in `mq3.
 | `endSlot` | `dynamic` | — | Input tested by `output.nextTextureSlot>=endSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L269)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-addprojectionshadowmaterial-function-addprojectionshadowmaterial-output-endslot-src-mq3-renderer-qvm-scene-materials-ml-297044232"></a>
 ### addProjectionShadowMaterial
@@ -52,7 +52,7 @@ Updates `output.materials`, `output.textures`, `output.nextTextureSlot` in `mq3.
 | `endSlot` | `dynamic` | — | Input tested by `output.nextTextureSlot>=endSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L285)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-addtextures-function-addtextures-texturelist-stages-src-mq3-renderer-qvm-scene-materials-ml-1551897042"></a>
 ### addTextures
@@ -69,7 +69,7 @@ Computes `addTextures` from `textureList` using `mq3.renderer.qvm_scene_material
 | `stages` | `dynamic` | — | Sequence traversed as `stage` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L249)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-beamstage-function-beamstage-image-slot-src-mq3-renderer-qvm-scene-materials-ml-690474333"></a>
 ### beamStage
@@ -86,7 +86,7 @@ Forwards `beamStage` to `mq3.renderer.playable_materials.RuntimeStage` and retur
 | `slot` | `dynamic` | — | Native texture slot holding the white image. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L263)
 
 - [mq3.renderer.qvm_scene_materials.Binding](Type-mq3-renderer-qvm-scene-materials-binding-852468044.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-materials-bindingmatchesregistry-function-bindingmatchesregistry-output-index-triangle-assets-kinds-src-mq3-renderer-qvm-scene-materials-ml-1155425241"></a>
@@ -107,7 +107,7 @@ Computes `bindingMatchesRegistry` from `stringEqualsIgnoreCaseAscii(output.mater
 | `kinds` | `dynamic` | — | Value forwarded as `kinds` to `mq3.renderer.qvm_scene_materials.typedName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L339)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-bindtriangle-function-bindtriangle-output-triangle-outputindex-archive-assets-kinds-endslot-src-mq3-renderer-qvm-scene-materials-ml-1067447431"></a>
 ### bindTriangle
@@ -129,7 +129,7 @@ Updates `output.unresolvedTriangles`, `output.loadedSkins`, `output.nextTextureS
 | `endSlot` | `dynamic` | — | Value forwarded as `endSlot` to `mq3.renderer.qvm_scene_materials.addBeamMaterial`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L396)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-build-function-build-archive-triangles-assets-kinds-firsttextureslot-maxtextureslots-shaderremaps-src-mq3-renderer-qvm-scene-materials-ml-652066653"></a>
 ### build
@@ -151,7 +151,7 @@ Returns `buildIndexed(archive,triangles,assets,kinds,firstTextureSlot,maxTexture
 | `shaderRemaps` | `dynamic` | — | Value forwarded as `shaderRemaps` to `mq3.renderer.qvm_scene_materials.buildIndexed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L367)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L453)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-buildindexed-function-buildindexed-archive-triangles-assets-kinds-firsttextureslot-maxtextureslots-shaderremaps-scripts-src-mq3-renderer-qvm-scene-materials-ml-171463873"></a>
 ### buildIndexed
@@ -174,7 +174,7 @@ Validates asset/script inputs and binds each triangle into a material catalog wi
 | `scripts` | `dynamic` | — | Indexed input read at `0`, `1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L436)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-materials-builtin-beam-const-builtin-beam-mq3-beam-src-mq3-renderer-qvm-scene-materials-ml-1718575050"></a>
 ### BUILTIN_BEAM
@@ -183,8 +183,10 @@ Validates asset/script inputs and binds each triangle into a material catalog wi
 const BUILTIN_BEAM = "$mq3/beam"
 ```
 
+Builtin material selector used to draw beam geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L114)
 
 <a id="constant-constant-mq3-renderer-qvm-scene-materials-builtin-projection-shadow-const-builtin-projection-shadow-mq3-projectionshadow-src-mq3-renderer-qvm-scene-materials-ml-1596514760"></a>
 ### BUILTIN_PROJECTION_SHADOW
@@ -193,8 +195,10 @@ const BUILTIN_BEAM = "$mq3/beam"
 const BUILTIN_PROJECTION_SHADOW = "$mq3/projectionShadow"
 ```
 
+Builtin material selector used to draw projection-shadow geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L116)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-cachedbinding-function-cachedbinding-output-triangle-src-mq3-renderer-qvm-scene-materials-ml-527984559"></a>
 ### cachedBinding
@@ -211,7 +215,7 @@ Updates `output.recentBinding` in `mq3.renderer.qvm_scene_materials.cachedBindin
 | `triangle` | `dynamic` | — | Value forwarded as `triangle` to `mq3.renderer.qvm_scene_materials.sameBinding`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L327)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-cachedskin-function-cachedskin-cache-handle-src-mq3-renderer-qvm-scene-materials-ml-1279240924"></a>
 ### cachedSkin
@@ -228,7 +232,7 @@ Returns `void` from `mq3.renderer.qvm_scene_materials.cachedSkin`; earlier branc
 | `handle` | `dynamic` | — | Input used by `for each item in cache if item.handle==handle then return item.skin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L142)
 
 - [mq3.renderer.qvm_scene_materials.Catalog](Type-mq3-renderer-qvm-scene-materials-catalog-1883568014.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-materials-fail-function-fail-message-src-mq3-renderer-qvm-scene-materials-ml-1562401085"></a>
@@ -245,7 +249,7 @@ Creates error `7680` with message `"QVM scene materials: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7680,"QVM scene materials: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L120)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-hasimage-function-hasimage-stages-src-mq3-renderer-qvm-scene-materials-ml-2014278059"></a>
 ### hasImage
@@ -261,7 +265,7 @@ Returns `false` from `mq3.renderer.qvm_scene_materials.hasImage`; earlier branch
 | `stages` | `dynamic` | — | Sequence traversed as `stage` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L294)
 
 - [mq3.renderer.qvm_scene_materials.LoadedSkin](Type-mq3-renderer-qvm-scene-materials-loadedskin-432822455.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-materials-loadskin-function-loadskin-archive-assets-kinds-cache-handle-src-mq3-renderer-qvm-scene-materials-ml-1639226378"></a>
@@ -282,7 +286,7 @@ Computes `loadSkin` from `[skin,cache+[LoadedSkin(handle,skin)]]` using `mq3.ren
 | `handle` | `dynamic` | — | Value forwarded as `handle` to `mq3.renderer.qvm_scene_materials.cachedSkin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L152)
 
 - [mq3.renderer.qvm_scene_materials.Material](Type-mq3-renderer-qvm-scene-materials-material-2048413338.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-materials-materialindex-function-materialindex-materiallist-name-src-mq3-renderer-qvm-scene-materials-ml-1030758846"></a>
@@ -300,7 +304,7 @@ Returns `-1` from `mq3.renderer.qvm_scene_materials.materialIndex`; earlier bran
 | `name` | `dynamic` | — | Argument 2 supplied to `stringEqualsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L241)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-projectionshadoweligible-function-projectionshadoweligible-output-triangle-outputindex-src-mq3-renderer-qvm-scene-materials-ml-1983088340"></a>
 ### projectionShadowEligible
@@ -318,7 +322,7 @@ R_AddMD3Surfaces only submits a projection-shadow draw surface when the source s
 | `outputIndex` | `dynamic` | — | Input tested by `triangle.fogIndex>0 or outputIndex<=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L365)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-projectionshadowstage-function-projectionshadowstage-image-slot-src-mq3-renderer-qvm-scene-materials-ml-1490556657"></a>
 ### projectionShadowStage
@@ -335,7 +339,7 @@ Forwards `projectionShadowStage` to `mq3.renderer.playable_materials.RuntimeStag
 | `slot` | `dynamic` | — | Native texture slot holding the white image. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L279)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-refresh-function-refresh-catalog-archive-triangles-assets-kinds-endtextureslot-src-mq3-renderer-qvm-scene-materials-ml-870030964"></a>
 ### refresh
@@ -356,7 +360,7 @@ Rebinds moving geometry while retaining decoded images and shader programs. Newl
 | `endTextureSlot` | `dynamic` | — | Value forwarded as `endSlot` to `mq3.renderer.qvm_scene_materials.bindTriangle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L380)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L466)
 
 - [mq3.renderer.qvm_scene_materials.ResolvedTriangle](Type-mq3-renderer-qvm-scene-materials-resolvedtriangle-666729175.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-materials-resolveshadername-function-resolveshadername-triangle-archive-assets-kinds-skincache-src-mq3-renderer-qvm-scene-materials-ml-330970149"></a>
@@ -377,7 +381,7 @@ Computes `resolveShaderName` from `[triangle.shaderName,skinCache]` using `mq3.r
 | `skinCache` | `dynamic` | — | Value forwarded as `cache` to `mq3.renderer.qvm_scene_materials.loadSkin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L304)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-samebinding-function-samebinding-binding-triangle-src-mq3-renderer-qvm-scene-materials-ml-295725233"></a>
 ### sameBinding
@@ -394,7 +398,7 @@ Compares shader handle, custom skin, normalized shader name, and surface name ag
 | `triangle` | `dynamic` | — | Record providing `triangle.shaderName`, `triangle.surfaceName`, `triangle.shaderHandle`, `triangle.customSkin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L319)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-skinshader-function-skinshader-skin-surfacename-src-mq3-renderer-qvm-scene-materials-ml-1003941281"></a>
 ### skinShader
@@ -411,7 +415,7 @@ Returns `""` from `mq3.renderer.qvm_scene_materials.skinShader`; earlier branche
 | `surfaceName` | `dynamic` | — | Argument 2 supplied to `stringEqualsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L233)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-storebinding-function-storebinding-output-triangle-index-src-mq3-renderer-qvm-scene-materials-ml-952343677"></a>
 ### storeBinding
@@ -429,7 +433,7 @@ Updates `output.recentBinding`, `output.bindings` in `mq3.renderer.qvm_scene_mat
 | `index` | `dynamic` | — | Value assigned to `binding.materialIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L350)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-storeresolvedtriangle-function-storeresolvedtriangle-output-outputindex-triangle-materialindex-src-mq3-renderer-qvm-scene-materials-ml-1070786157"></a>
 ### storeResolvedTriangle
@@ -448,7 +452,7 @@ The mutable catalog owns these short-lived bindings. Prepared scene batches copy
 | `materialIndex` | `dynamic` | — | Value assigned to `resolved.materialIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L381)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-strippedname-function-strippedname-name-src-mq3-renderer-qvm-scene-materials-ml-1269757667"></a>
 ### strippedName
@@ -464,7 +468,7 @@ R_FindShader strips the extension before consulting shader text.
 | `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L123)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-textkey-function-textkey-value-src-mq3-renderer-qvm-scene-materials-ml-419918743"></a>
 ### textKey
@@ -480,7 +484,7 @@ Returns `value` from `mq3.renderer.qvm_scene_materials.textKey`; earlier branche
 | `value` | `dynamic` | — | Input tested by `value==void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L315)
 
 - [mq3.renderer.qvm_scene_materials.Texture](Type-mq3-renderer-qvm-scene-materials-texture-922016754.md) — struct
 <a id="function-function-mq3-renderer-qvm-scene-materials-typedname-function-typedname-assets-kinds-handle-kinda-kindb-src-mq3-renderer-qvm-scene-materials-ml-964554193"></a>
@@ -501,7 +505,7 @@ Returns `assets[handle-1]` from `mq3.renderer.qvm_scene_materials.typedName`; ea
 | `kindB` | `dynamic` | — | Input tested by `kinds[handle-1]!=kindA and kinds[handle-1]!=kindB`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L134)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-warmregisteredplayerskins-function-warmregisteredplayerskins-catalog-archive-assets-kinds-src-mq3-renderer-qvm-scene-materials-ml-310023707"></a>
 ### warmRegisteredPlayerSkins
@@ -520,7 +524,7 @@ Skin registration in Quake resolves its mapped shaders before the first visible 
 | `kinds` | `dynamic` | — | Value forwarded as `kinds` to `mq3.renderer.qvm_scene_materials.typedName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L167)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-warmservermodelimages-function-warmservermodelimages-catalog-archive-assets-kinds-modelassets-configstrings-src-mq3-renderer-qvm-scene-materials-ml-920057209"></a>
 ### warmServerModelImages
@@ -541,7 +545,7 @@ CG_RegisterGraphics registers the server's CS_MODELS before play. Decode their M
 | `configstrings` | `dynamic` | — | Indexed input read at `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L196)
 
 <a id="function-function-mq3-renderer-qvm-scene-materials-whiteimage-function-whiteimage-src-mq3-renderer-qvm-scene-materials-ml-1494697098"></a>
 ### whiteImage
@@ -553,4 +557,4 @@ function whiteImage()
 Calls `mq3.renderer.playable_materials.Image` with `(1,1,bytes(4,255))` and returns its result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L259)

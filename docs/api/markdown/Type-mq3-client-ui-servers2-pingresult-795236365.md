@@ -12,7 +12,7 @@ struct PingResult
 Stores UI servers2 ping result record, including `slot`, `address`, `time`, `infoText`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L163)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI servers2 ping result record, including `slot`, `address`, `time`, `inf
 address
 ```
 
+Network-address string identifying the server that answered the ping request.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L167)
 
 <a id="field-field-mq3-client-ui-servers2-pingresult-infotext-infotext-src-mq3-client-ui-servers2-ml-788962926"></a>
 ### infoText
@@ -33,8 +35,10 @@ address
 infoText
 ```
 
+Server information string associated with the browser query result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L171)
 
 <a id="field-field-mq3-client-ui-servers2-pingresult-slot-slot-src-mq3-client-ui-servers2-ml-534583516"></a>
 ### slot
@@ -43,8 +47,10 @@ infoText
 slot
 ```
 
+Ping-request slot associated with the browser latency result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L165)
 
 <a id="field-field-mq3-client-ui-servers2-pingresult-time-time-src-mq3-client-ui-servers2-ml-859724442"></a>
 ### time
@@ -53,5 +59,7 @@ slot
 time
 ```
 
+Ping timing value used to record latency or completion of the browser request.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L169)

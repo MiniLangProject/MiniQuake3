@@ -12,7 +12,7 @@ struct Waypoint
 `Waypoint` record for bot navigation, containing `name`, `goal`, `next` and `prev`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L195)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Waypoint
 goal
 ```
 
+Navigation or activation goal associated with the current task.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L199)
 
 <a id="field-field-mq3-game-bot-navigation-waypoint-name-name-src-mq3-game-bot-navigation-ml-198285834"></a>
 ### name
@@ -33,8 +35,10 @@ goal
 name
 ```
 
+Name used to refer to this navigation goal or waypoint in bot orders.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L197)
 
 <a id="field-field-mq3-game-bot-navigation-waypoint-next-next-src-mq3-game-bot-navigation-ml-368031686"></a>
 ### next
@@ -43,8 +47,10 @@ name
 next
 ```
 
+Next waypoint in the linked navigation route.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L201)
 
 <a id="field-field-mq3-game-bot-navigation-waypoint-prev-prev-src-mq3-game-bot-navigation-ml-1117553950"></a>
 ### prev
@@ -53,5 +59,7 @@ next
 prev
 ```
 
+Previous waypoint in the linked navigation route.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L203)

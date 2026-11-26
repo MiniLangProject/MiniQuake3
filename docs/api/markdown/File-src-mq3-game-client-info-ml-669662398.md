@@ -32,7 +32,7 @@ Use `level.userinfoFn`, `level.serverCommandFn` and `level.gameLogFn` to perform
 | `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L83)
 
 <a id="function-function-mq3-game-client-info-cleanname-function-cleanname-text-capacity-src-mq3-game-client-info-ml-814238207"></a>
 ### cleanName
@@ -49,7 +49,7 @@ Apply `mq3.shared.info.textBytes` and `mq3.shared.info.copy` while evaluating `c
 | `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L25)
 
 <a id="function-function-mq3-game-client-info-infoclientlimit-function-infoclientlimit-level-src-mq3-game-client-info-ml-572875024"></a>
 ### infoClientLimit
@@ -65,7 +65,7 @@ Validate the client limit used for userinfo team selection.
 | `level` | `dynamic` | — | Game-level state; accesses `maxclients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L53)
 
 <a id="function-function-mq3-game-client-info-leadervalue-function-leadervalue-client-src-mq3-game-client-info-ml-114999143"></a>
 ### leaderValue
@@ -81,7 +81,7 @@ Normalize a client's team-leader value to the integer representation written int
 | `client` | `dynamic` | — | Client state; accesses `teamLeader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L15)
 
 <a id="function-function-mq3-game-client-info-pickteam-function-pickteam-level-ignoreclientnum-src-mq3-game-client-info-ml-485592713"></a>
 ### pickTeam
@@ -98,7 +98,7 @@ Apply `mq3.game.tournament.teamCount` while evaluating `pickTeam`. Return paths 
 | `ignoreClientNum` | `dynamic` | — | Value used by `teamCount` in `if slot == ignoreClientNum then continue end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L72)
 
 <a id="constant-constant-mq3-game-client-info-svf-bot-const-svf-bot-8-src-mq3-game-client-info-ml-1187945169"></a>
 ### SVF_BOT
@@ -107,8 +107,10 @@ Apply `mq3.game.tournament.teamCount` while evaluating `pickTeam`. Return paths 
 const SVF_BOT = 8
 ```
 
+Server entity-flag bit controlling bot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L12)
 
 <a id="function-function-mq3-game-client-info-teamleader-function-teamleader-level-team-src-mq3-game-client-info-ml-721760443"></a>
 ### teamLeader
@@ -125,4 +127,4 @@ Apply `mq3.game.client_info.infoClientLimit` while evaluating `teamLeader`. Retu
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_info.ml#L60)

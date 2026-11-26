@@ -40,7 +40,7 @@ Return `query(cache,areaNum,origin,goalAreaNum,travelFlags).reachNum` for `areaR
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L413)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L573)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-areatraveltimetogoalarea-function-areatraveltimetogoalarea-cache-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-699147080"></a>
 ### areaTravelTimeToGoalArea
@@ -60,7 +60,7 @@ Return `query(cache,areaNum,origin,goalAreaNum,travelFlags).travelTime` for `are
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L566)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-bits-function-bits-origin-src-mq3-botlib-aas-routing-cache-ml-981601680"></a>
 ### bits
@@ -76,7 +76,7 @@ Encode the origin coordinates as their three float bit patterns, using zero word
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L226)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-buildareacache-function-buildareacache-cache-cluster-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-2134718229"></a>
 ### buildAreaCache
@@ -95,7 +95,7 @@ Set `cache.areaUpdates` to `cache.areaUpdates+1` in `mq3.botlib.aas_routing_cach
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L313)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-builddestinationcosts-function-builddestinationcosts-cache-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-1421973345"></a>
 ### buildDestinationCosts
@@ -113,7 +113,7 @@ Store the cost of the route after each incoming reach. Travel between reaches de
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L464)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-buildportalcache-function-buildportalcache-cache-cluster-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-895996769"></a>
 ### buildPortalCache
@@ -132,7 +132,7 @@ Set `cache.portalUpdates` to `cache.portalUpdates+1` in `mq3.botlib.aas_routing_
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L361)
 
 - [mq3.botlib.aas_routing_cache.Cache](Type-mq3-botlib-aas-routing-cache-cache-275212243.md) — struct
 <a id="constant-constant-mq3-botlib-aas-routing-cache-cache-area-const-cache-area-1-src-mq3-botlib-aas-routing-cache-ml-177282666"></a>
@@ -142,8 +142,10 @@ Set `cache.portalUpdates` to `cache.portalUpdates+1` in `mq3.botlib.aas_routing_
 const CACHE_AREA = 1
 ```
 
+Routing-cache type identifier for routes within an AAS cluster.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L18)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-cache-portal-const-cache-portal-2-src-mq3-botlib-aas-routing-cache-ml-1393296533"></a>
 ### CACHE_PORTAL
@@ -152,8 +154,10 @@ const CACHE_AREA = 1
 const CACHE_PORTAL = 2
 ```
 
+Routing-cache type identifier for routes between cluster portals.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L20)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-clear-function-clear-cache-src-mq3-botlib-aas-routing-cache-ml-557896644"></a>
 ### clear
@@ -169,7 +173,7 @@ Update `cache.areaCaches`, `cache.portalCaches`, `cache.generation` and `cache.s
 | `cache` | `dynamic` | — | Routing cache state; accesses `areaCaches`, `portalCaches`, `areaIndex`, `portalIndex` and `generation` and related fields. May update `cache.areaCaches`, `cache.portalCaches` and `cache.generation` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L484)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L644)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-clearrouteentries-function-clearrouteentries-cache-src-mq3-botlib-aas-routing-cache-ml-285624090"></a>
 ### clearRouteEntries
@@ -185,7 +189,7 @@ Set `cache.destinationCosts[slot]` to `void` in `mq3.botlib.aas_routing_cache.cl
 | `cache` | `dynamic` | — | Routing cache state; accesses `entries`, `routeIndex`, `routeLru`, `destinationLru` and `destinationCosts`. May update `cache.destinationCosts[slot]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L257)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-clusterareanum-function-clusterareanum-cache-cluster-areanum-src-mq3-botlib-aas-routing-cache-ml-969330361"></a>
 ### clusterAreaNum
@@ -203,7 +207,7 @@ Apply `mq3.botlib.aas_routing_cache.portalForArea` while evaluating `clusterArea
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L196)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-crc16span-function-crc16span-data-offset-count-src-mq3-botlib-aas-routing-cache-ml-1941140528"></a>
 ### crc16Span
@@ -221,7 +225,7 @@ AAS_WriteRouteCache writes a stable 32-byte RCD v2 header.  The original payload
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L492)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L652)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-create-function-create-router-maxentries-src-mq3-botlib-aas-routing-cache-ml-1565632635"></a>
 ### create
@@ -238,7 +242,7 @@ Build the `mq3.botlib.aas_routing_cache.Cache` result for `create`.
 | `maxEntries` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_routing_cache.Cache.maxEntries`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L179)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-decodercd-function-decodercd-cache-data-src-mq3-botlib-aas-routing-cache-ml-373427252"></a>
 ### decodeRcd
@@ -255,7 +259,7 @@ Update `cache.portalCaches`, `cache.areaCaches`, `cache.generation` and `cache.s
 | `data` | `dynamic` | — | Array or byte sequence accessed at `offset` and `offset+1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L557)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L717)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-decoderecord-function-decoderecord-cache-data-offset-expectedtype-generation-serial-src-mq3-botlib-aas-routing-cache-ml-885052441"></a>
 ### decodeRecord
@@ -276,7 +280,7 @@ Apply `mq3.format.aas.cluster` and `mq3.botlib.aas_routing_cache.getU16` while e
 | `serial` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_routing_cache.PortalCache.serial`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L543)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L703)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-default-max-entries-const-default-max-entries-4096-src-mq3-botlib-aas-routing-cache-ml-1317866074"></a>
 ### DEFAULT_MAX_ENTRIES
@@ -285,8 +289,10 @@ Apply `mq3.format.aas.cluster` and `mq3.botlib.aas_routing_cache.getU16` while e
 const DEFAULT_MAX_ENTRIES = 4096
 ```
 
+Default maximum number of routing-cache entries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L22)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-encodercd-function-encodercd-cache-src-mq3-botlib-aas-routing-cache-ml-1875622764"></a>
 ### encodeRcd
@@ -302,7 +308,7 @@ Apply `mq3.botlib.aas_routing_cache.sync`, `mq3.botlib.aas_routing_cache.recordS
 | `cache` | `dynamic` | — | Routing cache state; accesses `router`, `portalCaches` and `areaCaches`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L526)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L686)
 
 - [mq3.botlib.aas_routing_cache.Entry](Type-mq3-botlib-aas-routing-cache-entry-1478553641.md) — struct
 <a id="function-function-mq3-botlib-aas-routing-cache-getareacache-function-getareacache-cache-cluster-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-1851181757"></a>
@@ -322,7 +328,7 @@ Update `cache.areaHits`, `cache.serial`, `cache.areaMisses` and `cache.areaCache
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L347)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-getportalcache-function-getportalcache-cache-cluster-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-672523857"></a>
 ### getPortalCache
@@ -341,7 +347,7 @@ Update `cache.portalHits`, `cache.serial`, `cache.portalMisses` and `cache.porta
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L406)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-getu16-function-getu16-data-offset-src-mq3-botlib-aas-routing-cache-ml-537394723"></a>
 ### getU16
@@ -358,7 +364,7 @@ Test `data[offset]|(data[offset+1]<<8)` as the condition for `getU16`.
 | `offset` | `dynamic` | — | Offset into the buffer or sequence used by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L510)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L670)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-itemquery-function-itemquery-cache-area-origin-flags-src-mq3-botlib-aas-routing-cache-ml-1443009164"></a>
 ### itemQuery
@@ -377,7 +383,7 @@ Build the `mq3.botlib.aas_routing_cache.ItemQuery` result for `itemQuery`. Retur
 | `flags` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_routing_cache.ItemQuery.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L457)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L617)
 
 - [mq3.botlib.aas_routing_cache.ItemQuery](Type-mq3-botlib-aas-routing-cache-itemquery-1438569692.md) — struct
 <a id="function-function-mq3-botlib-aas-routing-cache-itemquerytraveltime-function-itemquerytraveltime-query-goal-src-mq3-botlib-aas-routing-cache-ml-1142501865"></a>
@@ -395,7 +401,7 @@ Update `query.times` and `query.enterTimes` during `itemQueryTravelTime`.
 | `goal` | `dynamic` | — | Destination AAS area number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L465)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L625)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-itemtraveltime-function-itemtraveltime-cache-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-1827019288"></a>
 ### itemTravelTime
@@ -415,7 +421,7 @@ Apply `mq3.botlib.aas_routing_cache.routeType`, `mq3.botlib.aas_routing_cache.we
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L444)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L604)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-loadrcd-function-loadrcd-cache-path-src-mq3-botlib-aas-routing-cache-ml-2062640161"></a>
 ### loadRcd
@@ -432,7 +438,7 @@ Apply `mq3.botlib.aas_routing_cache.decodeRcd` while evaluating `loadRcd`. Retur
 | `path` | `dynamic` | — | Resource path supplied to the file or parser operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L584)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L744)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-mapcrc-function-mapcrc-cache-lump-src-mq3-botlib-aas-routing-cache-ml-532262924"></a>
 ### mapCrc
@@ -449,7 +455,7 @@ Apply `mq3.botlib.aas_routing_cache.crc16Span` while evaluating `mapCrc`. Return
 | `lump` | `dynamic` | — | Operand used to evaluate the returned expression `crc16Span(map.data,map.offsets[lump],map.lengths[lump])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L498)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L658)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-normalizedflags-function-normalizedflags-cache-areanum-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-839327006"></a>
 ### normalizedFlags
@@ -468,7 +474,7 @@ Permit DONOTENTER routing when either endpoint itself lies in a DONOTENTER area.
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L219)
 
 - [mq3.botlib.aas_routing_cache.PortalCache](Type-mq3-botlib-aas-routing-cache-portalcache-1688852037.md) — struct
 <a id="function-function-mq3-botlib-aas-routing-cache-portalforarea-function-portalforarea-cache-areanum-src-mq3-botlib-aas-routing-cache-ml-745434369"></a>
@@ -486,7 +492,7 @@ Apply `mq3.format.aas.portal` while evaluating `portalForArea`. Return paths inc
 | `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L188)
 
 - [mq3.botlib.aas_routing_cache.PortalUpdate](Type-mq3-botlib-aas-routing-cache-portalupdate-808334932.md) — struct
 <a id="function-function-mq3-botlib-aas-routing-cache-propagatedportalroute-function-propagatedportalroute-cache-goalcluster-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-2091118193"></a>
@@ -508,7 +514,7 @@ Build the `mq3.botlib.aas_routing.Route` result for `propagatedPortalRoute`. Ret
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L436)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-propagatedroute-function-propagatedroute-cache-cluster-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-560662752"></a>
 ### propagatedRoute
@@ -529,7 +535,7 @@ Build the `mq3.botlib.aas_routing.Route` result for `propagatedRoute`. Return pa
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L422)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-putu16-function-putu16-data-offset-value-src-mq3-botlib-aas-routing-cache-ml-1872972412"></a>
 ### putU16
@@ -547,7 +553,7 @@ Set `data[offset]` to `value&255` and `data[offset+1]` to `(value>>8)&255` in `m
 | `value` | `dynamic` | — | Value used by `putU16` in `data[offset]=value&255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L506)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L666)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-query-function-query-cache-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-348597008"></a>
 ### query
@@ -567,7 +573,7 @@ Update `cache.hits`, `cache.serial`, `cache.misses` and `cache.evictions` during
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L376)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L536)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-rcd-header-size-const-rcd-header-size-32-src-mq3-botlib-aas-routing-cache-ml-714437972"></a>
 ### RCD_HEADER_SIZE
@@ -576,8 +582,10 @@ Update `cache.hits`, `cache.serial`, `cache.misses` and `cache.evictions` during
 const RCD_HEADER_SIZE = 32
 ```
 
+Byte size of the legacy routing-cache file header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-rcd-ident-const-rcd-ident-1129465165-src-mq3-botlib-aas-routing-cache-ml-1790859035"></a>
 ### RCD_IDENT
@@ -586,8 +594,10 @@ const RCD_HEADER_SIZE = 32
 const RCD_IDENT = 1129465165
 ```
 
+Magic value identifying the routing-cache file header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L24)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-rcd-payload-ident-const-rcd-payload-ident-1296847427-src-mq3-botlib-aas-routing-cache-ml-777175637"></a>
 ### RCD_PAYLOAD_IDENT
@@ -596,8 +606,10 @@ const RCD_IDENT = 1129465165
 const RCD_PAYLOAD_IDENT = 1296847427
 ```
 
+Magic value identifying the managed routing-cache payload.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-rcd-payload-version-const-rcd-payload-version-1-src-mq3-botlib-aas-routing-cache-ml-1741014832"></a>
 ### RCD_PAYLOAD_VERSION
@@ -606,8 +618,10 @@ const RCD_PAYLOAD_IDENT = 1296847427
 const RCD_PAYLOAD_VERSION = 1
 ```
 
+Serialized format or interface version expected by AAS routing cache.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L32)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-rcd-record-header-size-const-rcd-record-header-size-24-src-mq3-botlib-aas-routing-cache-ml-1503392503"></a>
 ### RCD_RECORD_HEADER_SIZE
@@ -616,8 +630,10 @@ const RCD_PAYLOAD_VERSION = 1
 const RCD_RECORD_HEADER_SIZE = 24
 ```
 
+Byte size of the fixed header preceding one routing-cache record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L34)
 
 <a id="constant-constant-mq3-botlib-aas-routing-cache-rcd-version-const-rcd-version-2-src-mq3-botlib-aas-routing-cache-ml-1709470517"></a>
 ### RCD_VERSION
@@ -626,8 +642,10 @@ const RCD_RECORD_HEADER_SIZE = 24
 const RCD_VERSION = 2
 ```
 
+Serialized format or interface version expected by AAS routing cache.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L26)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-recordsize-function-recordsize-value-src-mq3-botlib-aas-routing-cache-ml-1523957207"></a>
 ### recordSize
@@ -643,7 +661,7 @@ Return `RCD_RECORD_HEADER_SIZE+len(value.travelTimes)*3` for `recordSize`.
 | `value` | `dynamic` | — | Value record; accesses `travelTimes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L513)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L673)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-resetlru-function-resetlru-cache-src-mq3-botlib-aas-routing-cache-ml-23894526"></a>
 ### resetLru
@@ -659,7 +677,7 @@ Apply `mq3.botlib.cache_lru.clear` while evaluating `resetLru`.
 | `cache` | `dynamic` | — | Routing cache state; accesses `routeLru`, `areaLru` and `portalLru`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L305)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-routekey-function-routekey-type-cluster-areanum-goalareanum-travelflags-hasorigin-originbits-src-mq3-botlib-aas-routing-cache-ml-17353588"></a>
 ### routeKey
@@ -681,7 +699,7 @@ Encode routing type, cluster, endpoints, travel flags and optional origin bits i
 | `originBits` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L237)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-routetype-function-routetype-cache-areanum-goalareanum-src-mq3-botlib-aas-routing-cache-ml-1271936785"></a>
 ### routeType
@@ -699,7 +717,7 @@ Apply `mq3.botlib.aas_routing_cache.portalForArea` while evaluating `routeType`.
 | `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L205)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-savercd-function-savercd-cache-path-src-mq3-botlib-aas-routing-cache-ml-1902633471"></a>
 ### saveRcd
@@ -716,7 +734,7 @@ Apply `mq3.botlib.aas_routing_cache.encodeRcd` while evaluating `saveRcd`. Retur
 | `path` | `dynamic` | — | Resource path supplied to the file or parser operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L580)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L740)
 
 - [mq3.botlib.aas_routing_cache.Scratch](Type-mq3-botlib-aas-routing-cache-scratch-1634636235.md) — struct
 <a id="function-function-mq3-botlib-aas-routing-cache-scratchfor-function-scratchfor-cache-src-mq3-botlib-aas-routing-cache-ml-709361098"></a>
@@ -733,7 +751,7 @@ Set `cache.scratch` to `value` and `cache.scratchBuilds` to `cache.scratchBuilds
 | `cache` | `dynamic` | — | Routing cache state; accesses `router`, `scratch` and `scratchBuilds`. May update `cache.scratch` and `cache.scratchBuilds` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L294)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-sync-function-sync-cache-src-mq3-botlib-aas-routing-cache-ml-1447308970"></a>
 ### sync
@@ -749,7 +767,7 @@ Update `cache.areaCaches`, `cache.portalCaches`, `cache.generation` and `cache.i
 | `cache` | `dynamic` | — | Routing cache state; accesses `router`, `generation`, `areaCaches`, `portalCaches` and `areaIndex` and related fields. May update `cache.areaCaches`, `cache.portalCaches` and `cache.generation` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L251)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-tablekey-function-tablekey-cluster-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-57352473"></a>
 ### tableKey
@@ -767,7 +785,7 @@ Encode cluster, goal area and travel flags into a fixed 12-byte routing-table ca
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L246)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-weightedquery-function-weightedquery-cache-areanum-origin-goalareanum-travelflags-timeonly-src-mq3-botlib-aas-routing-cache-ml-1087316739"></a>
 ### weightedQuery
@@ -788,7 +806,7 @@ Build the `mq3.botlib.aas_routing.Route` result for `weightedQuery`. Return path
 | `timeOnly` | `dynamic` | — | Value used by `weightedRoute` in `if not tied or timeOnly then return routing.Route(bestTime,best) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L421)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L581)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-weightedroute-function-weightedroute-cache-areanum-origin-goalareanum-travelflags-timeonly-src-mq3-botlib-aas-routing-cache-ml-1156162801"></a>
 ### weightedRoute
@@ -809,7 +827,7 @@ Set `cache.destinationCosts[slot]` to `buildDestinationCosts(cache,goalAreaNum,t
 | `timeOnly` | `dynamic` | — | Value used by `weightedRoute` in `if not tied or timeOnly then return routing.Route(bestTime,best) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L341)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L501)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-weightedtraveltime-function-weightedtraveltime-cache-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-cache-ml-563193108"></a>
 ### weightedTravelTime
@@ -829,7 +847,7 @@ Return `weightedQuery(cache,areaNum,origin,goalAreaNum,travelFlags,true).travelT
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L435)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L595)
 
 <a id="function-function-mq3-botlib-aas-routing-cache-writerecord-function-writerecord-data-offset-type-value-src-mq3-botlib-aas-routing-cache-ml-1324540484"></a>
 ### writeRecord
@@ -848,4 +866,4 @@ Set `data[offset+RCD_RECORD_HEADER_SIZE+count*2+index]` to `value.reachabilities
 | `value` | `dynamic` | — | Value record; accesses `travelTimes`, `cluster`, `goalAreaNum`, `travelFlags` and `reachabilities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L519)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L679)

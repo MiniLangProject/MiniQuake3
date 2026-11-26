@@ -12,7 +12,7 @@ struct EndCounters
 Data record for `mq3.renderer.tr_shade_runtime.EndCounters`; groups `shaders`, `vertexes`, `indexes`, `totalIndexes`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L141)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_shade_runtime.EndCounters`; groups `shaders`, `
 indexes
 ```
 
+Number of indices represented by the completed surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L147)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-endcounters-shaders-shaders-src-mq3-renderer-tr-shade-runtime-ml-158185637"></a>
 ### shaders
@@ -33,8 +35,10 @@ indexes
 shaders
 ```
 
+Number of shader batches represented by the completed surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L143)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-endcounters-totalindexes-totalindexes-src-mq3-renderer-tr-shade-runtime-ml-750310701"></a>
 ### totalIndexes
@@ -43,8 +47,10 @@ shaders
 totalIndexes
 ```
 
+Total number of indices processed across all material passes.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L149)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-endcounters-vertexes-vertexes-src-mq3-renderer-tr-shade-runtime-ml-81795541"></a>
 ### vertexes
@@ -53,5 +59,7 @@ totalIndexes
 vertexes
 ```
 
+Number of vertices represented by the completed surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L145)

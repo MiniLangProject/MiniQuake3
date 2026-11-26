@@ -12,7 +12,7 @@ struct Node
 Data record for `mq3.renderer.tr_world_runtime.Node`; groups `contents`, `mins`, `maxs`, `plane`, `children`, `parent`, and 4 further fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L60)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_world_runtime.Node`; groups `contents`, `mins`,
 area
 ```
 
+BSP area number used when applying area-visibility masking.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L76)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-children-children-src-mq3-renderer-tr-world-runtime-ml-348801913"></a>
 ### children
@@ -33,8 +35,10 @@ area
 children
 ```
 
+Child node or leaf references of the BSP partition.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L70)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-cluster-cluster-src-mq3-renderer-tr-world-runtime-ml-904939863"></a>
 ### cluster
@@ -43,8 +47,10 @@ children
 cluster
 ```
 
+Visibility cluster containing the BSP leaf.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L74)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-contents-contents-src-mq3-renderer-tr-world-runtime-ml-1085670327"></a>
 ### contents
@@ -53,8 +59,10 @@ cluster
 contents
 ```
 
+BSP node marker or collision-content bits for this record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L62)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-marks-marks-src-mq3-renderer-tr-world-runtime-ml-1666850359"></a>
 ### marks
@@ -63,8 +71,10 @@ contents
 marks
 ```
 
+Surface references associated with the BSP leaf.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L78)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-maxs-maxs-src-mq3-renderer-tr-world-runtime-ml-21362485"></a>
 ### maxs
@@ -73,8 +83,10 @@ marks
 maxs
 ```
 
+Maximum horizontal texture coordinate reached on the clipped sky face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L66)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-mins-mins-src-mq3-renderer-tr-world-runtime-ml-750372017"></a>
 ### mins
@@ -83,8 +95,10 @@ maxs
 mins
 ```
 
+Minimum horizontal texture coordinate reached on the clipped sky face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L64)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-parent-parent-src-mq3-renderer-tr-world-runtime-ml-177800023"></a>
 ### parent
@@ -93,8 +107,10 @@ mins
 parent
 ```
 
+Parent node in the BSP hierarchy.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L72)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-plane-plane-src-mq3-renderer-tr-world-runtime-ml-701504407"></a>
 ### plane
@@ -103,8 +119,10 @@ parent
 plane
 ```
 
+Splitting or clipping plane associated with the BSP node or surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L68)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-node-visframe-visframe-src-mq3-renderer-tr-world-runtime-ml-1471648825"></a>
 ### visframe
@@ -113,5 +131,7 @@ plane
 visframe
 ```
 
+Visibility generation in which the BSP node was marked visible.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L80)

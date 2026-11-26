@@ -29,7 +29,7 @@ Apply `mq3.botlib.l_struct.nextToken` and `mq3.botlib.l_struct.unreadToken` whil
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L134)
 
 <a id="function-function-mq3-botlib-l-struct-createfieldvalue-function-createfieldvalue-fd-src-mq3-botlib-l-struct-ml-1202716166"></a>
 ### createFieldValue
@@ -45,7 +45,7 @@ Build the `mq3.botlib.l_struct.FieldValue` result for `createFieldValue`. Return
 | `fd` | `dynamic` | — | Fd record; accesses `type` and `maxarray`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L159)
 
 <a id="function-function-mq3-botlib-l-struct-createstructure-function-createstructure-def-src-mq3-botlib-l-struct-ml-434725629"></a>
 ### createStructure
@@ -61,7 +61,7 @@ Build the `mq3.botlib.l_struct.Structure` result for `createStructure`. Return p
 | `def` | `dynamic` | — | Def record; accesses `fields`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L166)
 
 <a id="function-function-mq3-botlib-l-struct-definition-function-definition-size-fields-src-mq3-botlib-l-struct-ml-947929636"></a>
 ### definition
@@ -78,7 +78,7 @@ Create a `mq3.botlib.l_struct.StructDef` record, initializing `size` from `size`
 | `fields` | `dynamic` | — | Initial value stored in `mq3.botlib.l_struct.StructDef.fields`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L103)
 
 <a id="function-function-mq3-botlib-l-struct-expecttoken-function-expecttoken-reader-text-src-mq3-botlib-l-struct-ml-1781927832"></a>
 ### expectToken
@@ -95,7 +95,7 @@ Apply `mq3.botlib.l_struct.nextToken` while evaluating `expectToken`. Return pat
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L127)
 
 <a id="function-function-mq3-botlib-l-struct-fail-function-fail-reader-message-src-mq3-botlib-l-struct-ml-1185243382"></a>
 ### fail
@@ -112,7 +112,7 @@ Set `reader.diagnostics` to `reader.diagnostics+[message]` in `mq3.botlib.l_stru
 | `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L87)
 
 <a id="function-function-mq3-botlib-l-struct-field-function-field-name-offset-type-maxarray-floatmin-floatmax-substruct-src-mq3-botlib-l-struct-ml-1759792528"></a>
 ### field
@@ -134,7 +134,7 @@ Create a `mq3.botlib.l_struct.FieldDef` record, initializing `name` from `name`,
 | `substruct` | `dynamic` | — | Initial value stored in `mq3.botlib.l_struct.FieldDef.substruct`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L99)
 
 - [mq3.botlib.l_struct.FieldDef](Type-mq3-botlib-l-struct-fielddef-151438485.md) — struct
 <a id="function-function-mq3-botlib-l-struct-fieldvalue-function-fieldvalue-structure-name-src-mq3-botlib-l-struct-ml-955122074"></a>
@@ -152,7 +152,7 @@ Apply `mq3.botlib.l_struct.valueIndex` while evaluating `fieldValue`. Return pat
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L182)
 
 - [mq3.botlib.l_struct.FieldValue](Type-mq3-botlib-l-struct-fieldvalue-1462248639.md) — struct
 <a id="function-function-mq3-botlib-l-struct-findfield-function-findfield-defs-name-src-mq3-botlib-l-struct-ml-1848212829"></a>
@@ -170,7 +170,7 @@ FindField
 | `name` | `dynamic` | — | Lookup text matched against `candidate.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L142)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-array-const-ft-array-256-src-mq3-botlib-l-struct-ml-1702881112"></a>
 ### FT_ARRAY
@@ -179,8 +179,10 @@ FindField
 const FT_ARRAY = 256
 ```
 
+Structure-reader modifier identifying an array field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L25)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-bounded-const-ft-bounded-512-src-mq3-botlib-l-struct-ml-734449879"></a>
 ### FT_BOUNDED
@@ -189,8 +191,10 @@ const FT_ARRAY = 256
 const FT_BOUNDED = 512
 ```
 
+Structure-reader modifier enforcing numeric minimum and maximum bounds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L27)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-char-const-ft-char-1-src-mq3-botlib-l-struct-ml-2087336708"></a>
 ### FT_CHAR
@@ -199,8 +203,10 @@ const FT_BOUNDED = 512
 const FT_CHAR = 1
 ```
 
+Structure-reader type code for a character-sized integer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L13)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-float-const-ft-float-3-src-mq3-botlib-l-struct-ml-935474442"></a>
 ### FT_FLOAT
@@ -209,8 +215,10 @@ const FT_CHAR = 1
 const FT_FLOAT = 3
 ```
 
+Structure-reader type code for a floating-point field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L17)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-int-const-ft-int-2-src-mq3-botlib-l-struct-ml-747281565"></a>
 ### FT_INT
@@ -219,8 +227,10 @@ const FT_FLOAT = 3
 const FT_INT = 2
 ```
 
+Structure-reader type code for an integer field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L15)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-string-const-ft-string-4-src-mq3-botlib-l-struct-ml-1809894005"></a>
 ### FT_STRING
@@ -229,8 +239,10 @@ const FT_INT = 2
 const FT_STRING = 4
 ```
 
+Structure-reader type code for a fixed-size string field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L19)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-struct-const-ft-struct-6-src-mq3-botlib-l-struct-ml-1218513243"></a>
 ### FT_STRUCT
@@ -239,8 +251,10 @@ const FT_STRING = 4
 const FT_STRUCT = 6
 ```
 
+Structure-reader type code for a nested structure.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-type-const-ft-type-255-src-mq3-botlib-l-struct-ml-200610049"></a>
 ### FT_TYPE
@@ -249,8 +263,10 @@ const FT_STRUCT = 6
 const FT_TYPE = 255
 ```
 
+Mask selecting the base field type in a structure-reader descriptor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L23)
 
 <a id="constant-constant-mq3-botlib-l-struct-ft-unsigned-const-ft-unsigned-1024-src-mq3-botlib-l-struct-ml-1724301764"></a>
 ### FT_UNSIGNED
@@ -259,8 +275,10 @@ const FT_TYPE = 255
 const FT_UNSIGNED = 1024
 ```
 
+Structure-reader modifier selecting unsigned integer interpretation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L29)
 
 <a id="constant-constant-mq3-botlib-l-struct-max-stringfield-const-max-stringfield-80-src-mq3-botlib-l-struct-ml-293614893"></a>
 ### MAX_STRINGFIELD
@@ -269,8 +287,10 @@ const FT_UNSIGNED = 1024
 const MAX_STRINGFIELD = 80
 ```
 
+Character capacity of a fixed-size botlib ABI string field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L11)
 
 <a id="function-function-mq3-botlib-l-struct-nexttoken-function-nexttoken-reader-src-mq3-botlib-l-struct-ml-1491004371"></a>
 ### nextToken
@@ -286,7 +306,7 @@ Set `reader.pending` to `void` in `mq3.botlib.l_struct.nextToken`. Return paths 
 | `reader` | `dynamic` | — | Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L114)
 
 <a id="function-function-mq3-botlib-l-struct-precompilerreader-function-precompilerreader-registry-sourcehandle-src-mq3-botlib-l-struct-ml-1489896626"></a>
 ### precompilerReader
@@ -303,7 +323,7 @@ Create a `mq3.botlib.l_struct.Reader` record, initializing `registry` from `regi
 | `sourceHandle` | `dynamic` | — | Initial value stored in `mq3.botlib.l_struct.Reader.sourceHandle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L111)
 
 <a id="function-function-mq3-botlib-l-struct-readchar-function-readchar-reader-fd-src-mq3-botlib-l-struct-ml-1398643533"></a>
 ### ReadChar
@@ -320,7 +340,7 @@ ReadChar
 | `fd` | `dynamic` | — | Fd record; accesses `type`, `floatmin` and `floatmax`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L239)
 
 - [mq3.botlib.l_struct.Reader](Type-mq3-botlib-l-struct-reader-2083030309.md) — struct
 <a id="function-function-mq3-botlib-l-struct-readfieldscalar-function-readfieldscalar-reader-fd-src-mq3-botlib-l-struct-ml-2088786361"></a>
@@ -338,7 +358,7 @@ Apply `mq3.botlib.l_struct.ReadChar`, `mq3.botlib.l_struct.ReadNumber` and `mq3.
 | `fd` | `dynamic` | — | Fd record; accesses `type` and `substruct`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L257)
 
 <a id="function-function-mq3-botlib-l-struct-readnumber-function-readnumber-reader-fd-src-mq3-botlib-l-struct-ml-25598385"></a>
 ### ReadNumber
@@ -355,7 +375,7 @@ ReadNumber
 | `fd` | `dynamic` | — | Fd record; accesses `type`, `floatmin` and `floatmax`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L202)
 
 <a id="function-function-mq3-botlib-l-struct-readstring-function-readstring-reader-fd-src-mq3-botlib-l-struct-ml-2043881213"></a>
 ### ReadString
@@ -372,7 +392,7 @@ ReadString
 | `fd` | `dynamic` | — | Not read by this implementation; retained in the `ReadString` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L248)
 
 <a id="function-function-mq3-botlib-l-struct-readstructure-function-readstructure-reader-def-structure-src-mq3-botlib-l-struct-ml-523461265"></a>
 ### ReadStructure
@@ -390,7 +410,7 @@ ReadStructure
 | `structure` | `dynamic` | — | Structure record; accesses `fields`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L273)
 
 <a id="function-function-mq3-botlib-l-struct-scalardefault-function-scalardefault-fd-src-mq3-botlib-l-struct-ml-2110461164"></a>
 ### scalarDefault
@@ -406,7 +426,7 @@ Apply `mq3.botlib.l_struct.createStructure` while evaluating `scalarDefault`.
 | `fd` | `dynamic` | — | Fd record; accesses `type` and `substruct`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L150)
 
 <a id="function-function-mq3-botlib-l-struct-setvalue-function-setvalue-structure-name-index-newvalue-src-mq3-botlib-l-struct-ml-1135058905"></a>
 ### setValue
@@ -425,7 +445,7 @@ Apply `mq3.botlib.l_struct.fieldValue` while evaluating `setValue`.
 | `newValue` | `dynamic` | — | Value used by `setValue` in `stored.values[index]=newValue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L195)
 
 <a id="function-function-mq3-botlib-l-struct-sourcereader-function-sourcereader-name-text-src-mq3-botlib-l-struct-ml-410516416"></a>
 ### sourceReader
@@ -442,7 +462,7 @@ Create a `mq3.botlib.l_struct.Reader` record, initializing `source` as `pc.Sourc
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L107)
 
 - [mq3.botlib.l_struct.StructDef](Type-mq3-botlib-l-struct-structdef-1373631726.md) — struct
 - [mq3.botlib.l_struct.Structure](Type-mq3-botlib-l-struct-structure-115795747.md) — struct
@@ -461,7 +481,7 @@ Set `reader.pending` to `token` in `mq3.botlib.l_struct.unreadToken`.
 | `token` | `dynamic` | — | Value used by `unreadToken` in `if token!=void then reader.pending=token end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L123)
 
 <a id="function-function-mq3-botlib-l-struct-value-function-value-structure-name-index-src-mq3-botlib-l-struct-ml-1722796776"></a>
 ### value
@@ -479,7 +499,7 @@ Apply `mq3.botlib.l_struct.fieldValue` while evaluating `value`. Return paths in
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L187)
 
 <a id="function-function-mq3-botlib-l-struct-valueindex-function-valueindex-structure-name-src-mq3-botlib-l-struct-ml-575371742"></a>
 ### valueIndex
@@ -496,7 +516,7 @@ Find the stored field-value index by definition name, returning -1 for a missing
 | `name` | `dynamic` | — | Lookup text matched against `structure.fields[index].definition.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L174)
 
 <a id="function-function-mq3-botlib-l-struct-writefloat-function-writefloat-value-src-mq3-botlib-l-struct-ml-1286741897"></a>
 ### WriteFloat
@@ -512,7 +532,7 @@ WriteFloat
 | `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L302)
 
 <a id="function-function-mq3-botlib-l-struct-writeindent-function-writeindent-indent-src-mq3-botlib-l-struct-ml-1763454900"></a>
 ### WriteIndent
@@ -528,7 +548,7 @@ WriteIndent
 | `indent` | `dynamic` | — | Value used by `WriteIndent` in `while indent>0 text=text+"\\t"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L296)
 
 <a id="function-function-mq3-botlib-l-struct-writescalar-function-writescalar-fd-stored-index-indent-src-mq3-botlib-l-struct-ml-1668901019"></a>
 ### writeScalar
@@ -547,7 +567,7 @@ Apply `mq3.botlib.l_struct.WriteFloat` and `mq3.botlib.l_struct.WriteStructWithI
 | `indent` | `dynamic` | — | Value used by `WriteIndent` in `while indent>0 text=text+"\\t"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L313)
 
 <a id="function-function-mq3-botlib-l-struct-writestructure-function-writestructure-def-structure-src-mq3-botlib-l-struct-ml-554338508"></a>
 ### WriteStructure
@@ -564,7 +584,7 @@ WriteStructure
 | `structure` | `dynamic` | — | Structure record; accesses `fields`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L343)
 
 <a id="function-function-mq3-botlib-l-struct-writestructwithindent-function-writestructwithindent-def-structure-indent-src-mq3-botlib-l-struct-ml-1409297546"></a>
 ### WriteStructWithIndent
@@ -582,4 +602,4 @@ WriteStructWithIndent
 | `indent` | `dynamic` | — | Value used by `WriteIndent` in `while indent>0 text=text+"\\t"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L327)

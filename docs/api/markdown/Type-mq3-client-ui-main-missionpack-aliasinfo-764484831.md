@@ -12,7 +12,7 @@ struct AliasInfo
 Stores UI main missionpack alias info record, including `name`, `ai`, `action`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L197)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI main missionpack alias info record, including `name`, `ai`, `action`.
 action
 ```
 
+When constructing this record, `Alias_Parse` supplies `tokens[at+3]` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L203)
 
 <a id="field-field-mq3-client-ui-main-missionpack-aliasinfo-ai-ai-src-mq3-client-ui-main-missionpack-ml-1717197007"></a>
 ### ai
@@ -33,8 +35,10 @@ action
 ai
 ```
 
+When constructing this record, `Alias_Parse` supplies `tokens[at+2]` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L201)
 
 <a id="field-field-mq3-client-ui-main-missionpack-aliasinfo-name-name-src-mq3-client-ui-main-missionpack-ml-618977877"></a>
 ### name
@@ -43,5 +47,7 @@ ai
 name
 ```
 
+Public bot alias matched without case sensitivity and translated to its associated AI profile.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L199)

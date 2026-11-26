@@ -30,7 +30,7 @@ Updates `state.cooldownRemaining` during playable weapon `advance`.
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L126)
 
 <a id="function-function-mq3-client-playable-weapon-configure-function-configure-state-classname-src-mq3-client-playable-weapon-ml-898212118"></a>
 ### configure
@@ -47,7 +47,7 @@ Stock Baseq3 weapon timing and direct-hit damage. The playable app turns Rocket,
 | `classname` | `dynamic` | — | Value assigned to `state.classname`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L99)
 
 <a id="function-function-mq3-client-playable-weapon-create-function-create-world-src-mq3-client-playable-weapon-ml-17321782"></a>
 ### create
@@ -63,7 +63,7 @@ Calls `mq3.client.playable_weapon.createWithTrace`, `mq3.client.playable_weapon.
 | `world` | `dynamic` | — | world record passed to the playable weapon helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L117)
 
 <a id="function-function-mq3-client-playable-weapon-createwithtrace-function-createwithtrace-tracefn-context-ammo-cooldownmilliseconds-range-automatic-src-mq3-client-playable-weapon-ml-1272842135"></a>
 ### createWithTrace
@@ -84,7 +84,7 @@ Calls `mq3.client.playable_weapon.Weapon`, `mq3.compat.numeric.f32` from playabl
 | `automatic` | `dynamic` | — | Value used by `return Weapon(traceFn,context,ammo,ammo,cooldownMilliseconds,0,numeric.f32(range),automatic,false,0,"weapon_machinegun",34,false)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L87)
 
 <a id="constant-constant-mq3-client-playable-weapon-default-ammo-const-default-ammo-10-src-mq3-client-playable-weapon-ml-1842450602"></a>
 ### DEFAULT_AMMO
@@ -93,8 +93,10 @@ Calls `mq3.client.playable_weapon.Weapon`, `mq3.compat.numeric.f32` from playabl
 const DEFAULT_AMMO = 10
 ```
 
+Fallback ammo setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-weapon-default-cooldown-milliseconds-const-default-cooldown-milliseconds-900-src-mq3-client-playable-weapon-ml-474553550"></a>
 ### DEFAULT_COOLDOWN_MILLISECONDS
@@ -103,8 +105,10 @@ const DEFAULT_AMMO = 10
 const DEFAULT_COOLDOWN_MILLISECONDS = 900
 ```
 
+Default cooldown duration in milliseconds when the caller supplies no override.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-weapon-default-range-const-default-range-8192-src-mq3-client-playable-weapon-ml-1228929809"></a>
 ### DEFAULT_RANGE
@@ -113,8 +117,10 @@ const DEFAULT_COOLDOWN_MILLISECONDS = 900
 const DEFAULT_RANGE = 8192
 ```
 
+Fallback range setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L17)
 
 <a id="function-function-mq3-client-playable-weapon-muzzlepoint-function-muzzlepoint-camera-src-mq3-client-playable-weapon-ml-1839715509"></a>
 ### muzzlePoint
@@ -130,7 +136,7 @@ Calls `mq3.client.playable_viewer.cameraBasis`, `mq3.shared.math.VectorMA`, `mq3
 | `camera` | `dynamic` | — | Camera state used to transform/project the scene. Record read through `camera.position`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L176)
 
 <a id="function-function-mq3-client-playable-weapon-reload-function-reload-state-amount-src-mq3-client-playable-weapon-ml-93681801"></a>
 ### reload
@@ -147,7 +153,7 @@ Updates `state.ammo` during playable weapon `reload`.
 | `amount` | `dynamic` | — | Value tested by `state==void or amount<0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L200)
 
 <a id="function-function-mq3-client-playable-weapon-shootray-function-shootray-state-startpoint-direction-src-mq3-client-playable-weapon-ml-550586722"></a>
 ### shootRay
@@ -165,7 +171,7 @@ Calls `mq3.client.playable_weapon.validVector`, `mq3.compat.numeric.f32`, `mq3.s
 | `direction` | `dynamic` | — | Direction vector used by the spatial calculation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L138)
 
 - [mq3.client.playable_weapon.Shot](Type-mq3-client-playable-weapon-shot-1833206318.md) — struct
 <a id="constant-constant-mq3-client-playable-weapon-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-weapon-ml-1593232607"></a>
@@ -175,8 +181,10 @@ Calls `mq3.client.playable_weapon.validVector`, `mq3.compat.numeric.f32`, `mq3.s
 const SHOT_MASK = 100663297
 ```
 
+Combined collision-content mask used when tracing a weapon shot.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L11)
 
 <a id="function-function-mq3-client-playable-weapon-step-function-step-state-camera-triggerdown-deltamilliseconds-src-mq3-client-playable-weapon-ml-654505108"></a>
 ### step
@@ -195,7 +203,7 @@ Calls `mq3.client.playable_weapon.muzzlePoint`, `mq3.client.playable_viewer.came
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L191)
 
 <a id="function-function-mq3-client-playable-weapon-stepray-function-stepray-state-startpoint-direction-triggerdown-deltamilliseconds-src-mq3-client-playable-weapon-ml-286465246"></a>
 ### stepRay
@@ -215,7 +223,7 @@ Returns a Shot only when this frame fires. A semi-automatic weapon requires a ne
 | `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L159)
 
 <a id="function-function-mq3-client-playable-weapon-validvector-function-validvector-value-src-mq3-client-playable-weapon-ml-1135230035"></a>
 ### validVector
@@ -231,7 +239,7 @@ Computes `typeof(value)=="array" and len(value)==3` for playable weapon `validVe
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `validVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L76)
 
 - [mq3.client.playable_weapon.Weapon](Type-mq3-client-playable-weapon-weapon-233817222.md) — struct
 <a id="function-function-mq3-client-playable-weapon-worldpointtrace-function-worldpointtrace-state-startpoint-endpoint-src-mq3-client-playable-weapon-ml-444912590"></a>
@@ -250,4 +258,4 @@ Adapts `mq3.collision.world.boxTrace` to playable weapon `worldPointTrace`, retu
 | `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L70)

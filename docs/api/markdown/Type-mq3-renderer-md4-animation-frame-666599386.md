@@ -12,7 +12,7 @@ struct Frame
 Data record for `mq3.renderer.md4_animation.Frame`; groups `bones`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L42)
 
 ## Members
 
@@ -23,5 +23,7 @@ Data record for `mq3.renderer.md4_animation.Frame`; groups `bones`.
 bones
 ```
 
+Bone transformation matrices for one skeletal animation frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L44)

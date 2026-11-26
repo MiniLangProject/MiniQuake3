@@ -12,7 +12,7 @@ struct Result
 `Result` record for aas trace areas, containing `areas` and `points`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L21)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Result
 areas
 ```
 
+Area records or area assignments used by navigation and visibility queries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L23)
 
 <a id="field-field-mq3-botlib-aas-trace-areas-result-points-points-src-mq3-botlib-aas-trace-areas-ml-1157537014"></a>
 ### points
@@ -33,5 +35,7 @@ areas
 points
 ```
 
+XYZ points defining the debug shape, polygon, or winding.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L25)

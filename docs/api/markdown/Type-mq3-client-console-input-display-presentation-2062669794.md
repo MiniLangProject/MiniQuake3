@@ -23,8 +23,10 @@ Stores console input display presentation record, including `active`, `kind`, `t
 active
 ```
 
+When constructing this record, `present` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L14)
 
 <a id="field-field-mq3-client-console-input-display-presentation-kind-kind-src-mq3-client-console-input-display-ml-1761437853"></a>
 ### kind
@@ -33,8 +35,10 @@ active
 kind
 ```
 
+Drawing primitive or presentation category selecting how this record is rendered.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L16)
 
 <a id="field-field-mq3-client-console-input-display-presentation-panelbottom-panelbottom-src-mq3-client-console-input-display-ml-422020205"></a>
 ### panelBottom
@@ -43,8 +47,10 @@ kind
 panelBottom
 ```
 
+When constructing this record, `present` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L26)
 
 <a id="field-field-mq3-client-console-input-display-presentation-paneltop-paneltop-src-mq3-client-console-input-display-ml-2048357867"></a>
 ### panelTop
@@ -53,8 +59,10 @@ panelBottom
 panelTop
 ```
 
+When constructing this record, `present` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L24)
 
 <a id="field-field-mq3-client-console-input-display-presentation-text-text-src-mq3-client-console-input-display-ml-1473996803"></a>
 ### text
@@ -63,8 +71,10 @@ panelTop
 text
 ```
 
+Visible console or chat input string, including the prompt and cursor marker.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L18)
 
 <a id="field-field-mq3-client-console-input-display-presentation-x-x-src-mq3-client-console-input-display-ml-1165159933"></a>
 ### x
@@ -73,8 +83,10 @@ text
 x
 ```
 
+Horizontal coordinate of the visible console or chat input text in the target display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L20)
 
 <a id="field-field-mq3-client-console-input-display-presentation-y-y-src-mq3-client-console-input-display-ml-2145181937"></a>
 ### y
@@ -83,5 +95,7 @@ x
 y
 ```
 
+Vertical coordinate of the visible console or chat input text in the target display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L22)

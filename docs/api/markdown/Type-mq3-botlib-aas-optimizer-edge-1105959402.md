@@ -12,7 +12,7 @@ struct Edge
 `Edge` record for aas optimizer, containing `vertices`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
 
 ## Members
 
@@ -23,5 +23,7 @@ struct Edge
 vertices
 ```
 
+XYZ vertices defining the navigation or map geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L22)

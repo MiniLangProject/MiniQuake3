@@ -12,7 +12,7 @@ struct Button
 Stores input command button record, including `down0`, `down1`, `downtime`, `msec`, `active`, `wasPressed`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L20)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores input command button record, including `down0`, `down1`, `downtime`, `mse
 active
 ```
 
+When constructing this record, `button` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L30)
 
 <a id="field-field-mq3-client-input-command-button-down0-down0-src-mq3-client-input-command-ml-1040535093"></a>
 ### down0
@@ -33,8 +35,10 @@ active
 down0
 ```
 
+When constructing this record, `button` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L22)
 
 <a id="field-field-mq3-client-input-command-button-down1-down1-src-mq3-client-input-command-ml-1080557085"></a>
 ### down1
@@ -43,8 +47,10 @@ down0
 down1
 ```
 
+When constructing this record, `button` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L24)
 
 <a id="field-field-mq3-client-input-command-button-downtime-downtime-src-mq3-client-input-command-ml-1380269623"></a>
 ### downtime
@@ -53,8 +59,10 @@ down1
 downtime
 ```
 
+When constructing this record, `button` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L26)
 
 <a id="field-field-mq3-client-input-command-button-msec-msec-src-mq3-client-input-command-ml-945587633"></a>
 ### msec
@@ -63,8 +71,10 @@ downtime
 msec
 ```
 
+When constructing this record, `button` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L28)
 
 <a id="field-field-mq3-client-input-command-button-waspressed-waspressed-src-mq3-client-input-command-ml-1816687883"></a>
 ### wasPressed
@@ -73,5 +83,7 @@ msec
 wasPressed
 ```
 
+When constructing this record, `button` supplies `false` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L32)

@@ -12,7 +12,7 @@ struct PingRequest
 Stores UI servers2 ping request record, including `address`, `start`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L156)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI servers2 ping request record, including `address`, `start`.
 address
 ```
 
+When constructing this record, `browserState` supplies an empty string for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L158)
 
 <a id="field-field-mq3-client-ui-servers2-pingrequest-start-start-src-mq3-client-ui-servers2-ml-702475552"></a>
 ### start
@@ -33,5 +35,7 @@ address
 start
 ```
 
+When constructing this record, `browserState` supplies `0` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L160)

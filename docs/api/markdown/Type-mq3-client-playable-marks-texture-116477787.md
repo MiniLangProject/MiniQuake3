@@ -12,7 +12,7 @@ struct Texture
 Stores playable marks texture record, including `kind`, `name`, `image`, `slot`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L34)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable marks texture record, including `kind`, `name`, `image`, `slot`.
 image
 ```
 
+When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload` during subsequent processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L41)
 
 <a id="field-field-mq3-client-playable-marks-texture-kind-kind-src-mq3-client-playable-marks-ml-1929592816"></a>
 ### kind
@@ -33,8 +35,10 @@ image
 kind
 ```
 
+Effect or media category selecting the matching geometry, texture, or presentation behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L36)
 
 <a id="field-field-mq3-client-playable-marks-texture-name-name-src-mq3-client-playable-marks-ml-600133282"></a>
 ### name
@@ -43,8 +47,10 @@ kind
 name
 ```
 
+Virtual resource or definition name used to locate this entry in the client asset catalog.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L38)
 
 <a id="field-field-mq3-client-playable-marks-texture-slot-slot-src-mq3-client-playable-marks-ml-1340912828"></a>
 ### slot
@@ -53,5 +59,7 @@ name
 slot
 ```
 
+Texture or media-cache slot assigned to this asset for renderer submission.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L43)

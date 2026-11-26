@@ -30,7 +30,7 @@ Evaluates playable targets `activeCount` and returns `0`, `count` according to i
 | `state` | `dynamic` | — | Record read through `state.targets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L134)
 
 <a id="function-function-mq3-client-playable-targets-applydefaultshot-function-applydefaultshot-state-shot-now-src-mq3-client-playable-targets-ml-467187407"></a>
 ### applyDefaultShot
@@ -48,7 +48,7 @@ Adapts `mq3.client.playable_targets.applyShot` to playable targets `applyDefault
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. Forwarded to `mq3.client.playable_targets.applyShot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L204)
 
 <a id="function-function-mq3-client-playable-targets-applyshot-function-applyshot-state-shot-damage-now-src-mq3-client-playable-targets-ml-1090787728"></a>
 ### applyShot
@@ -67,7 +67,7 @@ The Shot endpoint already contains the BSP world hit, so targets behind a wall c
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L175)
 
 <a id="constant-constant-mq3-client-playable-targets-default-damage-const-default-damage-34-src-mq3-client-playable-targets-ml-2042600152"></a>
 ### DEFAULT_DAMAGE
@@ -76,8 +76,10 @@ The Shot endpoint already contains the BSP world hit, so targets behind a wall c
 const DEFAULT_DAMAGE = 34
 ```
 
+Fallback damage setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-targets-default-health-const-default-health-100-src-mq3-client-playable-targets-ml-1849089210"></a>
 ### DEFAULT_HEALTH
@@ -86,8 +88,10 @@ const DEFAULT_DAMAGE = 34
 const DEFAULT_HEALTH = 100
 ```
 
+Fallback health setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L12)
 
 <a id="constant-constant-mq3-client-playable-targets-default-max-z-const-default-max-z-32-src-mq3-client-playable-targets-ml-220775498"></a>
 ### DEFAULT_MAX_Z
@@ -96,8 +100,10 @@ const DEFAULT_HEALTH = 100
 const DEFAULT_MAX_Z = 32
 ```
 
+Fallback max z setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="constant-constant-mq3-client-playable-targets-default-min-z-const-default-min-z-24-src-mq3-client-playable-targets-ml-1022808558"></a>
 ### DEFAULT_MIN_Z
@@ -106,8 +112,10 @@ const DEFAULT_MAX_Z = 32
 const DEFAULT_MIN_Z = -24
 ```
 
+Fallback min z setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L18)
 
 <a id="constant-constant-mq3-client-playable-targets-default-patrol-radius-const-default-patrol-radius-24-src-mq3-client-playable-targets-ml-1185464435"></a>
 ### DEFAULT_PATROL_RADIUS
@@ -116,8 +124,10 @@ const DEFAULT_MIN_Z = -24
 const DEFAULT_PATROL_RADIUS = 24
 ```
 
+Fallback patrol radius setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L25)
 
 <a id="constant-constant-mq3-client-playable-targets-default-radius-const-default-radius-15-src-mq3-client-playable-targets-ml-1660248597"></a>
 ### DEFAULT_RADIUS
@@ -126,8 +136,10 @@ const DEFAULT_PATROL_RADIUS = 24
 const DEFAULT_RADIUS = 15
 ```
 
+Fallback radius setting used when constructing the native client simulation or effect configuration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L16)
 
 <a id="constant-constant-mq3-client-playable-targets-default-respawn-milliseconds-const-default-respawn-milliseconds-3000-src-mq3-client-playable-targets-ml-1676292644"></a>
 ### DEFAULT_RESPAWN_MILLISECONDS
@@ -136,8 +148,10 @@ const DEFAULT_RADIUS = 15
 const DEFAULT_RESPAWN_MILLISECONDS = 3000
 ```
 
+Default respawn duration in milliseconds when the caller supplies no override.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 <a id="function-function-mq3-client-playable-targets-fail-function-fail-message-src-mq3-client-playable-targets-ml-1040443375"></a>
 ### fail
@@ -153,7 +167,7 @@ Creates the playable targets error `7520` with diagnostic text `"preview targets
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview targets: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L90)
 
 <a id="function-function-mq3-client-playable-targets-field-function-field-fields-key-src-mq3-client-playable-targets-ml-969172396"></a>
 ### field
@@ -170,7 +184,7 @@ Calls `std.string.toLowerAscii` from playable targets `field`. The final path re
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable targets entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L95)
 
 <a id="function-function-mq3-client-playable-targets-fromentities-function-fromentities-entities-playerspawnindex-src-mq3-client-playable-targets-ml-1037707139"></a>
 ### fromEntities
@@ -187,7 +201,7 @@ Calls `std.string.toLowerAscii`, `mq3.client.playable_targets.field`, `mq3.compa
 | `playerSpawnIndex` | `dynamic` | — | Value used by `if entities==void or playerSpawnIndex< -1 then return fail("entities and a valid player spawn index are required") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L106)
 
 - [mq3.client.playable_targets.Hit](Type-mq3-client-playable-targets-hit-1354902781.md) — struct
 <a id="function-function-mq3-client-playable-targets-load-function-load-map-playerspawnindex-src-mq3-client-playable-targets-ml-368232594"></a>
@@ -205,7 +219,7 @@ Calls `mq3.format.bsp.entities`, `mq3.client.playable_targets.fromEntities` from
 | `playerSpawnIndex` | `dynamic` | — | Value used by `return fromEntities(entities,playerSpawnIndex)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L127)
 
 <a id="function-function-mq3-client-playable-targets-segmentfraction-function-segmentfraction-startpoint-endpoint-target-radius-minz-maxz-src-mq3-client-playable-targets-ml-691799380"></a>
 ### segmentFraction
@@ -226,7 +240,7 @@ Returns the normalized entry fraction for a segment/AABB hit, or -1 on miss.
 | `maxZ` | `dynamic` | — | Value used by `high=target.origin[2]+maxZ end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L147)
 
 - [mq3.client.playable_targets.State](Type-mq3-client-playable-targets-state-348587645.md) — struct
 - [mq3.client.playable_targets.Target](Type-mq3-client-playable-targets-target-163499649.md) — struct
@@ -245,4 +259,4 @@ Absolute-time motion makes previews and contract captures reproducible.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L211)

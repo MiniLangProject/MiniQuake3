@@ -12,7 +12,7 @@ struct DrawSurf
 Data record for `mq3.renderer.tr_local.DrawSurf`; groups `sort`, `surface`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L103)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_local.DrawSurf`; groups `sort`, `surface`.
 sort
 ```
 
+Packed draw-order key containing the shader, entity, fog, and dynamic-light selectors.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L105)
 
 <a id="field-field-mq3-renderer-tr-local-drawsurf-surface-surface-src-mq3-renderer-tr-local-ml-1463835045"></a>
 ### surface
@@ -33,5 +35,7 @@ sort
 surface
 ```
 
+Surface record, handle, or identifier associated with the drawing operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L107)

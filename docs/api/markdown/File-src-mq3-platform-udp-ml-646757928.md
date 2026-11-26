@@ -27,7 +27,7 @@ Computes `bind` from `localEndpoint(socket)` using `mq3.platform.udp.mq3_udp_bin
 | `endpoint` | `dynamic` | — | Record providing `endpoint.port`, `endpoint.address`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L162)
 
 <a id="function-function-mq3-platform-udp-cleanup-function-cleanup-src-mq3-platform-udp-ml-828815130"></a>
 ### cleanup
@@ -39,7 +39,7 @@ function cleanup()
 Returns `void` from `mq3.platform.udp.cleanup`; earlier branches return `error(6962,"udp: WSACleanup failed "+str(code))`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L128)
 
 <a id="function-function-mq3-platform-udp-close-function-close-socket-src-mq3-platform-udp-ml-581475673"></a>
 ### close
@@ -55,7 +55,7 @@ Returns `void` from `mq3.platform.udp.close`; earlier branches return `error(696
 | `socket` | `dynamic` | — | Value forwarded as `socket` to `mq3.platform.udp.mq3_udp_close`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L204)
 
 - [mq3.platform.udp.Datagram](Type-mq3-platform-udp-datagram-1988638889.md) — struct
 - [mq3.platform.udp.Endpoint](Type-mq3-platform-udp-endpoint-1058196963.md) — struct
@@ -73,7 +73,7 @@ Computes `errorName` from `decode(slice(output,0,endAt))` using `mq3.platform.ud
 | `code` | `dynamic` | — | Value forwarded as `code` to `mq3.platform.udp.mq3_udp_error_name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L135)
 
 <a id="function-function-mq3-platform-udp-ipv4-function-ipv4-a-b-c-d-src-mq3-platform-udp-ml-299983986"></a>
 ### ipv4
@@ -92,7 +92,7 @@ Returns `(a<<24)|(b<<16)|(c<<8)|d` from `mq3.platform.udp.ipv4`; earlier branche
 | `d` | `dynamic` | — | Input tested by `a<0 or a>255 or b<0 or b>255 or c<0 or c>255 or d<0 or d>255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L116)
 
 <a id="function-function-mq3-platform-udp-lasterror-function-lasterror-src-mq3-platform-udp-ml-1051196978"></a>
 ### lastError
@@ -104,7 +104,7 @@ function lastError()
 Calls `mq3.platform.udp.mq3_udp_last_error` with `()` and returns its result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L132)
 
 <a id="function-function-mq3-platform-udp-localendpoint-function-localendpoint-socket-src-mq3-platform-udp-ml-466470309"></a>
 ### localEndpoint
@@ -120,7 +120,7 @@ Builds `mq3.platform.udp.Endpoint` for `mq3.platform.udp.localEndpoint`.
 | `socket` | `dynamic` | — | Value forwarded as `socket` to `mq3.platform.udp.mq3_udp_local_port`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L168)
 
 <a id="function-function-mq3-platform-udp-localipv4-function-localipv4-src-mq3-platform-udp-ml-71136206"></a>
 ### localIPv4
@@ -132,7 +132,7 @@ function localIPv4()
 Returns up to sixteen host-order local IPv4 addresses from the native resolver.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L228)
 
 <a id="extern_function-extern-function-mq3-platform-udp-mq3-udp-bind-extern-function-mq3-udp-bind-socket-as-ptr-address-as-u32-port-as-u32-from-miniquake3-udp-dll-returns-i32-src-mq3-platform-udp-ml-1355450123"></a>
 ### mq3_udp_bind
@@ -440,7 +440,7 @@ Returns `[(address>>24)&255,(address>>16)&255,(address>>8)&255,address&255]` for
 | `address` | `dynamic` | — | Input used in the result expression `[(address>>24)&255,(address>>16)&255,(address>>8)&255,address&255]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L122)
 
 <a id="function-function-mq3-platform-udp-open-function-open-src-mq3-platform-udp-ml-1259769686"></a>
 ### open
@@ -452,7 +452,7 @@ function open()
 Returns `socket` from `mq3.platform.udp.open`; earlier branches return `error(6963,"udp: socket failed")`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L140)
 
 <a id="function-function-mq3-platform-udp-opensocks5-function-opensocks5-server-port-username-password-udpport-src-mq3-platform-udp-ml-742482031"></a>
 ### openSocks5
@@ -472,7 +472,7 @@ Builds `mq3.platform.udp.Socks5` for `mq3.platform.udp.openSocks5`.
 | `udpPort` | `dynamic` | — | Value forwarded as `udpPort` to `mq3.platform.udp.mq3_udp_socks5_open`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L214)
 
 <a id="function-function-mq3-platform-udp-receivefrom-function-receivefrom-socket-capacity-src-mq3-platform-udp-ml-858968139"></a>
 ### receiveFrom
@@ -489,7 +489,7 @@ Returns `receiveFromBuffered(socket,bytes(capacity,0),bytes(8,0),capacity)` from
 | `capacity` | `dynamic` | — | Value forwarded as `capacity` to `mq3.platform.udp.receiveFromBuffered`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L198)
 
 <a id="function-function-mq3-platform-udp-receivefrombuffered-function-receivefrombuffered-socket-data-metadata-capacity-src-mq3-platform-udp-ml-1150660198"></a>
 ### receiveFromBuffered
@@ -508,7 +508,7 @@ Builds `mq3.platform.udp.Datagram` for `mq3.platform.udp.receiveFromBuffered`.
 | `capacity` | `dynamic` | — | Value forwarded as `capacity` to `mq3.platform.udp.mq3_udp_recv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L188)
 
 <a id="function-function-mq3-platform-udp-resolveipv4-function-resolveipv4-name-src-mq3-platform-udp-ml-613942589"></a>
 ### resolveIPv4
@@ -524,7 +524,7 @@ Computes `resolveIPv4` from `n.readU32(address,0)` using `mq3.platform.udp.mq3_u
 | `name` | `dynamic` | — | Value forwarded as `name` to `mq3.platform.udp.mq3_udp_resolve_ipv4`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L153)
 
 <a id="function-function-mq3-platform-udp-sendto-function-sendto-socket-endpoint-data-src-mq3-platform-udp-ml-1016723078"></a>
 ### sendTo
@@ -542,7 +542,7 @@ Computes `sendTo` from `mq3_udp_s` using `mq3.platform.udp.mq3_udp_send`.
 | `data` | `dynamic` | — | Input tested by `socket==void or endpoint==void or data==void or endpoint.port<0 or endpoint.port>65535`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L176)
 
 <a id="function-function-mq3-platform-udp-setbroadcast-function-setbroadcast-socket-enabled-src-mq3-platform-udp-ml-369796000"></a>
 ### setBroadcast
@@ -559,7 +559,7 @@ Applies the socket broadcast flag and converts a Winsock failure into error 6969
 | `enabled` | `dynamic` | — | Input tested by `enabled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L146)
 
 - [mq3.platform.udp.Socks5](Type-mq3-platform-udp-socks5-1071302358.md) — struct
 <a id="function-function-mq3-platform-udp-startup-function-startup-src-mq3-platform-udp-ml-1039365000"></a>
@@ -572,7 +572,7 @@ function startup()
 Returns `void` from `mq3.platform.udp.startup`; earlier branches return `error(6961,"udp: WSAStartup failed "+str(code))`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L124)
 
 <a id="function-function-mq3-platform-udp-waitreadable-function-waitreadable-socket-milliseconds-src-mq3-platform-udp-ml-1321458523"></a>
 ### waitReadable
@@ -589,4 +589,4 @@ Computes `waitReadable` from `result>0` using `mq3.platform.udp.mq3_udp_wait_rea
 | `milliseconds` | `dynamic` | — | Value forwarded as `milliseconds` to `mq3.platform.udp.mq3_udp_wait_readable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L223)

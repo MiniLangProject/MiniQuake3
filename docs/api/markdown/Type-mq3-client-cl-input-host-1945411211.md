@@ -12,7 +12,7 @@ struct Host
 The callbacks are the only VM/host boundary in this module.  Supplying void suppresses the corresponding side effect, which makes deterministic native and headless clients use the same input state machine as the windowed host.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L20)
 
 ## Members
 
@@ -23,8 +23,10 @@ The callbacks are the only VM/host boundary in this module.  Supplying void supp
 cgameMouseFn
 ```
 
+Host callback for the cgame mouse operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L26)
 
 <a id="field-field-mq3-client-cl-input-host-context-context-src-mq3-client-cl-input-ml-1317652041"></a>
 ### context
@@ -33,8 +35,10 @@ cgameMouseFn
 context
 ```
 
+Caller-supplied value forwarded unchanged to the service callbacks for engine input sampling and user-command construction.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L34)
 
 <a id="field-field-mq3-client-cl-input-host-debuggraphfn-debuggraphfn-src-mq3-client-cl-input-ml-1972624779"></a>
 ### debugGraphFn
@@ -43,8 +47,10 @@ context
 debugGraphFn
 ```
 
+Host callback for the debug graph operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L29)
 
 <a id="field-field-mq3-client-cl-input-host-printfn-printfn-src-mq3-client-cl-input-ml-1335469969"></a>
 ### printFn
@@ -53,8 +59,10 @@ debugGraphFn
 printFn
 ```
 
+Host callback for the print operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L31)
 
 <a id="field-field-mq3-client-cl-input-host-uimousefn-uimousefn-src-mq3-client-cl-input-ml-94167853"></a>
 ### uiMouseFn
@@ -63,5 +71,7 @@ printFn
 uiMouseFn
 ```
 
+Host callback for the ui mouse operation; an unset callback leaves that host operation unavailable.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L23)

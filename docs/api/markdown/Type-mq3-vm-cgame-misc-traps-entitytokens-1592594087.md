@@ -12,7 +12,7 @@ struct EntityTokens
 EntityTokens record for vm.cgame_misc_traps, containing `source`, `parser`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L23)
 
 ## Members
 
@@ -23,8 +23,10 @@ EntityTokens record for vm.cgame_misc_traps, containing `source`, `parser`.
 parser
 ```
 
+Parser state retained for subsequent token-reading operations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L27)
 
 <a id="field-field-mq3-vm-cgame-misc-traps-entitytokens-source-source-src-mq3-vm-cgame-misc-traps-ml-570170820"></a>
 ### source
@@ -33,5 +35,7 @@ parser
 source
 ```
 
+Token source supplying the BSP entity string to game parsing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L25)

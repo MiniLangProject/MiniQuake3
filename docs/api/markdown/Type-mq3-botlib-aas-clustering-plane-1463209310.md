@@ -12,7 +12,7 @@ struct Plane
 `Plane` record for aas clustering, containing `normal` and `dist`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L32)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Plane
 dist
 ```
 
+Distance of the plane (normal vector * distance = point in plane).
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-clustering-plane-normal-normal-src-mq3-botlib-aas-clustering-ml-1600339429"></a>
 ### normal
@@ -33,5 +35,7 @@ dist
 normal
 ```
 
+Navigation plane normal used while analyzing cluster boundaries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L34)

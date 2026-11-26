@@ -30,7 +30,7 @@ Apply `mq3.game.syscall_qagame_host.context` and `mq3.game.syscalls.dllEntry` wh
 | `base` | `dynamic` | — | Initial value stored in `mq3.game.syscall_qagame_host.Context.base`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L49)
 
 <a id="function-function-mq3-game-syscall-qagame-host-context-function-context-services-vm-base-src-mq3-game-syscall-qagame-host-ml-480638576"></a>
 ### context
@@ -48,7 +48,7 @@ Build the `mq3.game.syscall_qagame_host.Context` result for `context`. Return pa
 | `base` | `dynamic` | — | Initial value stored in `mq3.game.syscall_qagame_host.Context.base`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L24)
 
 - [mq3.game.syscall_qagame_host.Context](Type-mq3-game-syscall-qagame-host-context-942569630.md) — struct
 <a id="function-function-mq3-game-syscall-qagame-host-invoke-function-invoke-value-opcode-arguments-src-mq3-game-syscall-qagame-host-ml-2096303493"></a>
@@ -67,4 +67,4 @@ Apply `mq3.vm.syscall_qagame.dispatch` while evaluating `invoke`. Return paths i
 | `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L34)

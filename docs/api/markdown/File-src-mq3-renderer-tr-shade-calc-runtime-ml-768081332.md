@@ -36,7 +36,7 @@ Calls `mq3.renderer.playable_world_batch.autosprite2Quad` with `(pass,triangleIn
 | `forward` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_world_batch.autosprite2Quad`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L176)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-autospritedeform-function-autospritedeform-pass-triangleindex-leftdirection-updirection-src-mq3-renderer-tr-shade-calc-runtime-ml-328648547"></a>
 ### AutospriteDeform
@@ -55,7 +55,7 @@ Calls `mq3.renderer.playable_world_batch.autospriteQuad` with `(pass,triangleInd
 | `upDirection` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.playable_world_batch.autospriteQuad`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L171)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-copy2-function-copy2-values-src-mq3-renderer-tr-shade-calc-runtime-ml-228426402"></a>
 ### copy2
@@ -71,7 +71,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.copy2`.
 | `values` | `dynamic` | — | Sequence traversed as `value` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L55)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-copy3-function-copy3-values-src-mq3-renderer-tr-shade-calc-runtime-ml-1985136156"></a>
 ### copy3
@@ -87,7 +87,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.copy3`.
 | `values` | `dynamic` | — | Sequence traversed as `value` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L58)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-deformtext-function-deformtext-text-corners-normal-src-mq3-renderer-tr-shade-calc-runtime-ml-1614157106"></a>
 ### DeformText
@@ -105,7 +105,7 @@ The original text deformation converts one four-corner surface into atlas quads.
 | `normal` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L184)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-evalwaveform-function-evalwaveform-wave-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-234394449"></a>
 ### EvalWaveForm
@@ -122,7 +122,7 @@ Returns `materials.waveSample(wave,nowMilliseconds)` from `mq3.renderer.tr_shade
 | `nowMilliseconds` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.playable_materials.waveSample`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L47)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-evalwaveformclamped-function-evalwaveformclamped-wave-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-169067571"></a>
 ### EvalWaveFormClamped
@@ -139,7 +139,7 @@ Returns `value` from `mq3.renderer.tr_shade_calc_runtime.EvalWaveFormClamped`; e
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.tr_shade_calc_runtime.EvalWaveForm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L51)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-fogmodulate-function-fogmodulate-colors-densities-mode-src-mq3-renderer-tr-shade-calc-runtime-ml-1725427909"></a>
 ### fogModulate
@@ -157,7 +157,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.fogModulate`.
 | `mode` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_materials.modulateForFog`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L256)
 
 <a id="constant-constant-mq3-renderer-tr-shade-calc-runtime-functable-mask-const-functable-mask-1023-src-mq3-renderer-tr-shade-calc-runtime-ml-256703663"></a>
 ### FUNCTABLE_MASK
@@ -166,8 +166,10 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.fogModulate`.
 const FUNCTABLE_MASK = 1023
 ```
 
+Mask that wraps waveform-table indices to the power-of-two table size.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L22)
 
 <a id="constant-constant-mq3-renderer-tr-shade-calc-runtime-functable-size-const-functable-size-1024-src-mq3-renderer-tr-shade-calc-runtime-ml-425877164"></a>
 ### FUNCTABLE_SIZE
@@ -176,8 +178,10 @@ const FUNCTABLE_MASK = 1023
 const FUNCTABLE_SIZE = 1024
 ```
 
+Number of samples in the periodic shader waveform lookup table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L20)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-globalvectortolocal-function-globalvectortolocal-value-axes-src-mq3-renderer-tr-shade-calc-runtime-ml-1724841922"></a>
 ### GlobalVectorToLocal
@@ -194,7 +198,7 @@ Returns `[qmath.DotProduct(value,axes[0]),qmath.DotProduct(value,axes[1]),qmath.
 | `axes` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L165)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-myftol-function-myftol-value-src-mq3-renderer-tr-shade-calc-runtime-ml-1559369985"></a>
 ### myftol
@@ -210,7 +214,7 @@ Calls `mq3.compat.numeric.trunc32` with `(value)` and returns its result.
 | `value` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.trunc32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L37)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcalphafromentity-function-rb-calcalphafromentity-colors-entitycolor-src-mq3-renderer-tr-shade-calc-runtime-ml-1144582288"></a>
 ### RB_CalcAlphaFromEntity
@@ -227,7 +231,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcAlphaFromEntity
 | `entityColor` | `dynamic` | — | Indexed input read at `3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L232)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcalphafromoneminusentity-function-rb-calcalphafromoneminusentity-colors-entitycolor-src-mq3-renderer-tr-shade-calc-runtime-ml-597464924"></a>
 ### RB_CalcAlphaFromOneMinusEntity
@@ -244,7 +248,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcAlphaFromOneMin
 | `entityColor` | `dynamic` | — | Indexed input read at `3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L236)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcbulgevertexes-function-rb-calcbulgevertexes-deform-positions-normals-coords-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-650464959"></a>
 ### RB_CalcBulgeVertexes
@@ -264,7 +268,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcBulgeVertexes`.
 | `nowMilliseconds` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.playable_world_batch.deformedPosition`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L143)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calccolorfromentity-function-rb-calccolorfromentity-entitycolor-count-src-mq3-renderer-tr-shade-calc-runtime-ml-406826025"></a>
 ### RB_CalcColorFromEntity
@@ -281,7 +285,7 @@ Calls `mq3.renderer.tr_shade_calc_runtime.repeatColor` with `(entityColor,count)
 | `count` | `dynamic` | — | Value forwarded as `count` to `mq3.renderer.tr_shade_calc_runtime.repeatColor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L224)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calccolorfromoneminusentity-function-rb-calccolorfromoneminusentity-entitycolor-count-src-mq3-renderer-tr-shade-calc-runtime-ml-274731841"></a>
 ### RB_CalcColorFromOneMinusEntity
@@ -298,7 +302,7 @@ Calls `mq3.renderer.tr_shade_calc_runtime.repeatColor` with `([255-entityColor[0
 | `count` | `dynamic` | — | Value forwarded as `count` to `mq3.renderer.tr_shade_calc_runtime.repeatColor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L228)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcdeformnormals-function-rb-calcdeformnormals-deform-positions-normals-nowmilliseconds-noise-src-mq3-renderer-tr-shade-calc-runtime-ml-1197929053"></a>
 ### RB_CalcDeformNormals
@@ -318,7 +322,7 @@ Applies the specified time-dependent normal deformation, creating deterministic 
 | `noise` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.playable_world_batch.deformedNormal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L159)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcdeformvertexes-function-rb-calcdeformvertexes-deform-positions-normals-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-1000231067"></a>
 ### RB_CalcDeformVertexes
@@ -337,7 +341,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcDeformVertexes`
 | `nowMilliseconds` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.playable_world_batch.deformedPosition`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L134)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcdiffusecolor-function-rb-calcdiffusecolor-sample-normals-src-mq3-renderer-tr-shade-calc-runtime-ml-137960102"></a>
 ### RB_CalcDiffuseColor
@@ -354,7 +358,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcDiffuseColor`.
 | `normals` | `dynamic` | — | Sequence traversed as `normal` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L278)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcenvironmenttexcoords-function-rb-calcenvironmenttexcoords-positions-normals-vieworigin-src-mq3-renderer-tr-shade-calc-runtime-ml-1524306483"></a>
 ### RB_CalcEnvironmentTexCoords
@@ -372,7 +376,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcEnvironmentTexC
 | `viewOrigin` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_materials.environmentUV`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L117)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcfogtexcoords-function-rb-calcfogtexcoords-fog-positions-vieworigin-forward-src-mq3-renderer-tr-shade-calc-runtime-ml-2062181232"></a>
 ### RB_CalcFogTexCoords
@@ -391,7 +395,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcFogTexCoords`.
 | `forward` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.playable_fog.coordinates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L125)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcmodulatealphasbyfog-function-rb-calcmodulatealphasbyfog-colors-densities-src-mq3-renderer-tr-shade-calc-runtime-ml-151153734"></a>
 ### RB_CalcModulateAlphasByFog
@@ -408,7 +412,7 @@ Calls `mq3.renderer.tr_shade_calc_runtime.fogModulate` with `(colors,densities,"
 | `densities` | `dynamic` | — | Value forwarded as `densities` to `mq3.renderer.tr_shade_calc_runtime.fogModulate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L264)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcmodulatecolorsbyfog-function-rb-calcmodulatecolorsbyfog-colors-densities-src-mq3-renderer-tr-shade-calc-runtime-ml-1085587654"></a>
 ### RB_CalcModulateColorsByFog
@@ -425,7 +429,7 @@ Calls `mq3.renderer.tr_shade_calc_runtime.fogModulate` with `(colors,densities,"
 | `densities` | `dynamic` | — | Value forwarded as `densities` to `mq3.renderer.tr_shade_calc_runtime.fogModulate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L260)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcmodulatergbasbyfog-function-rb-calcmodulatergbasbyfog-colors-densities-src-mq3-renderer-tr-shade-calc-runtime-ml-1589613156"></a>
 ### RB_CalcModulateRGBAsByFog
@@ -442,7 +446,7 @@ Calls `mq3.renderer.tr_shade_calc_runtime.fogModulate` with `(colors,densities,"
 | `densities` | `dynamic` | — | Value forwarded as `densities` to `mq3.renderer.tr_shade_calc_runtime.fogModulate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L268)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcmovevertexes-function-rb-calcmovevertexes-deform-positions-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-162520697"></a>
 ### RB_CalcMoveVertexes
@@ -460,7 +464,7 @@ Moves every vertex along a deformation vector scaled by the current waveform val
 | `nowMilliseconds` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.playable_materials.waveSample`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L150)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcrotatetexcoords-function-rb-calcrotatetexcoords-degreespersecond-coords-shadertimeseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-1988642559"></a>
 ### RB_CalcRotateTexCoords
@@ -478,7 +482,7 @@ Rotates texture coordinates around the texture center using the time-scaled angl
 | `shaderTimeSeconds` | `dynamic` | — | Input used by `index=n.trunc32((0.0-degreesPerSecond*shaderTimeSeconds)*(FUNCTABLE_SIZE/360.0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L99)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcscaletexcoords-function-rb-calcscaletexcoords-scale-coords-src-mq3-renderer-tr-shade-calc-runtime-ml-654365088"></a>
 ### RB_CalcScaleTexCoords
@@ -495,7 +499,7 @@ Calls `mq3.renderer.tr_shade_calc_runtime.RB_CalcTransformTexCoords` with `([[sc
 | `coords` | `dynamic` | — | Value forwarded as `coords` to `mq3.renderer.tr_shade_calc_runtime.RB_CalcTransformTexCoords`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L86)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcscrolltexcoords-function-rb-calcscrolltexcoords-speed-coords-shadertimeseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-565947428"></a>
 ### RB_CalcScrollTexCoords
@@ -513,7 +517,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcScrollTexCoords
 | `shaderTimeSeconds` | `dynamic` | — | Input used by `s=speed[0]*shaderTimeSeconds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L91)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcspecularalpha-function-rb-calcspecularalpha-colors-positions-normals-vieworigin-src-mq3-renderer-tr-shade-calc-runtime-ml-323177251"></a>
 ### RB_CalcSpecularAlpha
@@ -532,7 +536,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcSpecularAlpha`.
 | `viewOrigin` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_world_batch.specularAlpha`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L274)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcstretchtexcoords-function-rb-calcstretchtexcoords-wave-coords-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-776576175"></a>
 ### RB_CalcStretchTexCoords
@@ -550,7 +554,7 @@ Returns `RB_CalcTransformTexCoords([[p,0.0],[0.0,p]],[offset,offset],coords)` fr
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.tr_shade_calc_runtime.EvalWaveForm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L79)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calctransformtexcoords-function-rb-calctransformtexcoords-matrix-translate-coords-src-mq3-renderer-tr-shade-calc-runtime-ml-17426145"></a>
 ### RB_CalcTransformTexCoords
@@ -568,7 +572,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcTransformTexCoo
 | `coords` | `dynamic` | — | Sequence traversed as `uv` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L70)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcturbulenttexcoords-function-rb-calcturbulenttexcoords-wave-coords-positions-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-1207658845"></a>
 ### RB_CalcTurbulentTexCoords
@@ -587,7 +591,7 @@ Adds position- and time-dependent sine turbulence to each texture-coordinate pai
 | `nowMilliseconds` | `dynamic` | — | Input used by `now=wave.phase+nowMilliseconds*0.001*wave.frequency`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L108)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcwavealpha-function-rb-calcwavealpha-wave-colors-nowmilliseconds-src-mq3-renderer-tr-shade-calc-runtime-ml-381393261"></a>
 ### RB_CalcWaveAlpha
@@ -605,7 +609,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.RB_CalcWaveAlpha`.
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.tr_shade_calc_runtime.EvalWaveFormClamped`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L251)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-calcwavecolor-function-rb-calcwavecolor-wave-count-nowmilliseconds-identitylight-noise-src-mq3-renderer-tr-shade-calc-runtime-ml-305748448"></a>
 ### RB_CalcWaveColor
@@ -625,7 +629,7 @@ Computes `RB_CalcWaveColor` from `repeatColor([value,value,value,255],count)` us
 | `noise` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.noise.get4f`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L243)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-rb-deformtessgeometry-function-rb-deformtessgeometry-deforms-positions-normals-coords-nowmilliseconds-noise-src-mq3-renderer-tr-shade-calc-runtime-ml-1411085296"></a>
 ### RB_DeformTessGeometry
@@ -646,7 +650,7 @@ Computes `RB_DeformTessGeometry` from `[outputPositions,outputNormals]` using `m
 | `noise` | `dynamic` | — | Value forwarded as `noise` to `mq3.renderer.tr_shade_calc_runtime.RB_CalcDeformNormals`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L205)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-repeatcolor-function-repeatcolor-color-count-src-mq3-renderer-tr-shade-calc-runtime-ml-996173408"></a>
 ### repeatColor
@@ -663,7 +667,7 @@ Returns `result` from `mq3.renderer.tr_shade_calc_runtime.repeatColor`.
 | `count` | `dynamic` | — | Input used by `for index=0 to count-1 result=result+[[color[0],color[1],color[2],color[3]]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L220)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-sinindex-function-sinindex-index-src-mq3-renderer-tr-shade-calc-runtime-ml-225198718"></a>
 ### sinIndex
@@ -679,7 +683,7 @@ Returns `materials.waveSignal(wave,0)` from `mq3.renderer.tr_shade_calc_runtime.
 | `index` | `dynamic` | — | Input used by `wave=shaderParser.Wave(1,0.0,1.0,n.fdiv(n.f32(index&FUNCTABLE_MASK),1024.0),0.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L61)
 
 <a id="function-function-mq3-renderer-tr-shade-calc-runtime-tableforfunc-function-tableforfunc-func-src-mq3-renderer-tr-shade-calc-runtime-ml-1592178404"></a>
 ### TableForFunc
@@ -695,6 +699,6 @@ Returns `func` from `mq3.renderer.tr_shade_calc_runtime.TableForFunc`; earlier b
 | `func` | `dynamic` | — | Input tested by `func<1 or func>5`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L40)
 
 - [mq3.renderer.tr_shade_calc_runtime.TextGeometry](Type-mq3-renderer-tr-shade-calc-runtime-textgeometry-970259013.md) — struct

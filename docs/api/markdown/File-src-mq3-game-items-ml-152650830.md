@@ -47,7 +47,7 @@ Set `ent.client.ps.ammo[weapon]` to `n.add32(ent.client.ps.ammo[weapon],count)` 
 | `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L321)
 
 <a id="function-function-mq3-game-items-addteamscore-function-addteamscore-level-origin-team-score-src-mq3-game-items-ml-1650219801"></a>
 ### addTeamScore
@@ -66,7 +66,7 @@ Set `level.teamScores[team]` to `n.add32(level.teamScores[team],score)` in `mq3.
 | `score` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.add32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L383)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L389)
 
 <a id="constant-constant-mq3-game-items-award-mask-const-award-mask-231496-src-mq3-game-items-ml-1748135906"></a>
 ### AWARD_MASK
@@ -75,8 +75,10 @@ Set `level.teamScores[team]` to `n.add32(level.teamScores[team],score)` in `mq3.
 const AWARD_MASK = 231496
 ```
 
+Player-award identifier selecting the mask reward.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L37)
 
 <a id="function-function-mq3-game-items-bounce-function-bounce-level-ent-hit-src-mq3-game-items-ml-1467144814"></a>
 ### bounce
@@ -94,7 +96,7 @@ Update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]`, `hit.endpos[2]` and `ent.
 | `hit` | `dynamic` | — | Hit record; accesses `trace`, `endpos` and `entityNum`. May update `hit.endpos[2]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L776)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L782)
 
 <a id="function-function-mq3-game-items-cangrab-function-cangrab-gametype-ent-state-src-mq3-game-items-ml-570626090"></a>
 ### canGrab
@@ -112,7 +114,7 @@ Apply `mq3.game.spawn_tables.items`, `mq3.game.constants.missionpackItemType` an
 | `state` | `dynamic` | — | Items state; accesses `ammo`, `stats`, `persistant` and `powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L211)
 
 <a id="function-function-mq3-game-items-captureflagsound-function-captureflagsound-level-ent-team-src-mq3-game-items-ml-1710861568"></a>
 ### captureFlagSound
@@ -130,7 +132,7 @@ Apply `mq3.game.entities.tempEntity` while evaluating `captureFlagSound`.
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L428)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L434)
 
 <a id="function-function-mq3-game-items-centeredrandom-function-centeredrandom-level-src-mq3-game-items-ml-1464189536"></a>
 ### centeredRandom
@@ -146,7 +148,7 @@ Return `2.0*(n.fdiv(game.random(level),32767)-0.5)` for `centeredRandom`.
 | `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L109)
 
 <a id="function-function-mq3-game-items-checkdropped-function-checkdropped-level-dropped-src-mq3-game-items-ml-437498442"></a>
 ### checkDropped
@@ -163,7 +165,7 @@ Apply `mq3.game.items.modeItemTag` and `mq3.game.items.setFlagStatus` while eval
 | `dropped` | `dynamic` | — | Dropped record; accesses `item`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L570)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L576)
 
 <a id="function-function-mq3-game-items-checkteamitems-function-checkteamitems-level-src-mq3-game-items-ml-883833716"></a>
 ### checkTeamItems
@@ -179,7 +181,7 @@ Apply `mq3.game.items.initTeamGame`, `mq3.game.items.itemInitializationPrint` an
 | `level` | `dynamic` | — | Game-level state; accesses `spawner` and `itemRegistered`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L179)
 
 <a id="function-function-mq3-game-items-clearregistered-function-clearregistered-level-src-mq3-game-items-ml-1511988234"></a>
 ### clearRegistered
@@ -195,7 +197,7 @@ Set `level.itemRegistered[index]` to `0` in `mq3.game.items.clearRegistered`.
 | `level` | `dynamic` | — | Game-level state; accesses `itemRegistered` and `spawner`. May update `level.itemRegistered[index]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L131)
 
 <a id="function-function-mq3-game-items-drop-function-drop-level-ent-item-angle-src-mq3-game-items-ml-2047254707"></a>
 ### drop
@@ -214,7 +216,7 @@ Apply `mq3.game.movement.copy`, `mq3.game.items.centeredRandom` and `mq3.game.it
 | `angle` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fadd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L766)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L772)
 
 <a id="function-function-mq3-game-items-droppedflagthink-function-droppedflagthink-level-ent-src-mq3-game-items-ml-940351711"></a>
 ### droppedFlagThink
@@ -231,7 +233,7 @@ Apply `mq3.game.items.modeItemTag`, `mq3.game.items.returnFlagSound` and `mq3.ga
 | `ent` | `dynamic` | — | Game entity; accesses `item`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L735)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L741)
 
 <a id="function-function-mq3-game-items-findclass-function-findclass-level-after-name-src-mq3-game-items-ml-777522933"></a>
 ### findClass
@@ -249,7 +251,7 @@ Find the next active entity with a case-insensitive class-name match for items.
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L670)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L676)
 
 <a id="function-function-mq3-game-items-finishspawning-function-finishspawning-level-ent-src-mq3-game-items-ml-1275622787"></a>
 ### finishSpawning
@@ -266,7 +268,7 @@ Update `ent.r.mins`, `ent.r.maxs`, `ent.s.eType` and `ent.s.modelindex` and rela
 | `ent` | `dynamic` | — | Game entity; accesses `item`, `r`, `s`, `touch` and `use` and related fields. May update `ent.r.mins`, `ent.r.maxs` and `ent.s.eType` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L617)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L623)
 
 <a id="constant-constant-mq3-game-items-fl-dropped-item-const-fl-dropped-item-4096-src-mq3-game-items-ml-1275240674"></a>
 ### FL_DROPPED_ITEM
@@ -275,8 +277,10 @@ Update `ent.r.mins`, `ent.r.maxs`, `ent.s.eType` and `ent.s.modelindex` and rela
 const FL_DROPPED_ITEM = 4096
 ```
 
+Game entity-flag bit enabling or marking dropped item.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L27)
 
 <a id="constant-constant-mq3-game-items-fl-force-gesture-const-fl-force-gesture-32768-src-mq3-game-items-ml-1412434183"></a>
 ### FL_FORCE_GESTURE
@@ -285,8 +289,10 @@ const FL_DROPPED_ITEM = 4096
 const FL_FORCE_GESTURE = 32768
 ```
 
+Game entity-flag bit enabling or marking force gesture.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L29)
 
 <a id="constant-constant-mq3-game-items-flag-atbase-const-flag-atbase-0-src-mq3-game-items-ml-1903841837"></a>
 ### FLAG_ATBASE
@@ -295,8 +301,10 @@ const FL_FORCE_GESTURE = 32768
 const FLAG_ATBASE = 0
 ```
 
+Capture-the-flag status identifier representing atbase.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L31)
 
 <a id="constant-constant-mq3-game-items-flag-dropped-const-flag-dropped-4-src-mq3-game-items-ml-625112733"></a>
 ### FLAG_DROPPED
@@ -305,8 +313,10 @@ const FLAG_ATBASE = 0
 const FLAG_DROPPED = 4
 ```
 
+Capture-the-flag status identifier representing dropped.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L35)
 
 <a id="constant-constant-mq3-game-items-flag-taken-const-flag-taken-1-src-mq3-game-items-ml-542537512"></a>
 ### FLAG_TAKEN
@@ -315,8 +325,10 @@ const FLAG_DROPPED = 4
 const FLAG_TAKEN = 1
 ```
 
+Capture-the-flag status identifier representing taken.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L33)
 
 <a id="function-function-mq3-game-items-forcegesture-function-forcegesture-level-team-src-mq3-game-items-ml-1416868247"></a>
 ### forceGesture
@@ -333,7 +345,7 @@ Set the forced-gesture flag on every active client belonging to the selected tea
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L406)
 
 <a id="function-function-mq3-game-items-initteamgame-function-initteamgame-level-src-mq3-game-items-ml-104231560"></a>
 ### initTeamGame
@@ -349,7 +361,7 @@ Update `level.lastFlagCapture`, `level.lastCaptureTeam`, `level.redFlagStatus` a
 | `level` | `dynamic` | — | Game-level state; accesses `lastFlagCapture`, `lastCaptureTeam`, `redFlagStatus`, `blueFlagStatus` and `neutralFlagStatus` and related fields. May update `level.lastFlagCapture`, `level.lastCaptureTeam` and `level.redFlagStatus` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L161)
 
 <a id="function-function-mq3-game-items-iteminitializationprint-function-iteminitializationprint-level-text-src-mq3-game-items-ml-772366405"></a>
 ### itemInitializationPrint
@@ -366,7 +378,7 @@ Use `level.gamePrintFn` to perform `itemInitializationPrint`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L143)
 
 <a id="function-function-mq3-game-items-itemname-function-itemname-index-src-mq3-game-items-ml-1693447782"></a>
 ### itemName
@@ -382,7 +394,7 @@ Return `tables.items()[requireItem(index)]` for `itemName`.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L52)
 
 <a id="function-function-mq3-game-items-itemquantity-function-itemquantity-index-src-mq3-game-items-ml-1153289734"></a>
 ### itemQuantity
@@ -398,7 +410,7 @@ Apply `mq3.game.items.requireItem` and `mq3.game.constants.itemQuantity` while e
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L67)
 
 <a id="function-function-mq3-game-items-itemtag-function-itemtag-index-src-mq3-game-items-ml-2137092172"></a>
 ### itemTag
@@ -414,7 +426,7 @@ Apply `mq3.game.items.requireItem` and `mq3.game.constants.itemTag` while evalua
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L62)
 
 <a id="function-function-mq3-game-items-itemtype-function-itemtype-index-src-mq3-game-items-ml-1816840130"></a>
 ### itemType
@@ -430,7 +442,7 @@ Apply `mq3.game.items.requireItem` and `mq3.game.constants.itemType` while evalu
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L57)
 
 <a id="function-function-mq3-game-items-launch-function-launch-level-item-origin-velocity-src-mq3-game-items-ml-118364562"></a>
 ### launch
@@ -449,7 +461,7 @@ Apply `mq3.game.items.requireModeItem`, `mq3.game.entities.spawn` and `mq3.game.
 | `velocity` | `dynamic` | — | Three-component movement velocity. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L746)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L752)
 
 <a id="function-function-mq3-game-items-missionpack-function-missionpack-level-src-mq3-game-items-ml-1351554606"></a>
 ### missionpack
@@ -465,7 +477,7 @@ Test `level != void and level.spawner != void and level.spawner.missionpack` as 
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L72)
 
 <a id="function-function-mq3-game-items-modeitemname-function-modeitemname-level-index-src-mq3-game-items-ml-1108544"></a>
 ### modeItemName
@@ -482,7 +494,7 @@ Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.ga
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L86)
 
 <a id="function-function-mq3-game-items-modeitemquantity-function-modeitemquantity-level-index-src-mq3-game-items-ml-920410420"></a>
 ### modeItemQuantity
@@ -499,7 +511,7 @@ Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.ga
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L104)
 
 <a id="function-function-mq3-game-items-modeitemtag-function-modeitemtag-level-index-src-mq3-game-items-ml-295452176"></a>
 ### modeItemTag
@@ -516,7 +528,7 @@ Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.ga
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L98)
 
 <a id="function-function-mq3-game-items-modeitemtype-function-modeitemtype-level-index-src-mq3-game-items-ml-1114185736"></a>
 ### modeItemType
@@ -533,7 +545,7 @@ Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.ga
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L92)
 
 <a id="function-function-mq3-game-items-pickupammo-function-pickupammo-level-ent-other-src-mq3-game-items-ml-803528847"></a>
 ### pickupAmmo
@@ -551,7 +563,7 @@ Apply `mq3.game.items.modeItemQuantity`, `mq3.game.items.addAmmo` and `mq3.game.
 | `other` | `dynamic` | — | Game entity; accesses `client`. May update `other.client.ps.ammo[weapon]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L330)
 
 <a id="function-function-mq3-game-items-pickuparmor-function-pickuparmor-level-ent-other-src-mq3-game-items-ml-166727021"></a>
 ### pickupArmor
@@ -569,7 +581,7 @@ Set `other.client.ps.stats[c.STAT_ARMOR]` to `value` in `mq3.game.items.pickupAr
 | `other` | `dynamic` | — | Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_ARMOR]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L370)
 
 <a id="function-function-mq3-game-items-pickuphealth-function-pickuphealth-level-ent-other-src-mq3-game-items-ml-483808959"></a>
 ### pickupHealth
@@ -587,7 +599,7 @@ Update `other.health` and `other.client.ps.stats[c.STAT_HEALTH]` during `pickupH
 | `other` | `dynamic` | — | Other record; accesses `client` and `health`. May update `other.health` and `other.client.ps.stats[c.STAT_HEALTH]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L350)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L356)
 
 <a id="function-function-mq3-game-items-pickupholdable-function-pickupholdable-level-ent-other-src-mq3-game-items-ml-1524125111"></a>
 ### pickupHoldable
@@ -605,7 +617,7 @@ Set `other.client.ps.stats[c.STAT_HOLDABLE_ITEM]` to `ent.item` and `other.clien
 | `other` | `dynamic` | — | Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_HOLDABLE_ITEM]` and `other.client.ps.eFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L312)
 
 <a id="function-function-mq3-game-items-pickuppersistantpowerup-function-pickuppersistantpowerup-level-ent-other-src-mq3-game-items-ml-670138089"></a>
 ### pickupPersistantPowerup
@@ -623,7 +635,7 @@ Update `other.client.ps.stats[7]`, `other.client.persistantPowerup`, `other.heal
 | `other` | `dynamic` | — | Other record; accesses `client` and `health`. May update `other.client.ps.stats[7]`, `other.client.persistantPowerup` and `other.health` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L270)
 
 <a id="function-function-mq3-game-items-pickuppowerup-function-pickuppowerup-level-ent-other-src-mq3-game-items-ml-172727803"></a>
 ### pickupPowerup
@@ -641,7 +653,7 @@ Apply `mq3.game.items.modeItemTag`, `mq3.game.items.modeItemQuantity` and `mq3.g
 | `other` | `dynamic` | — | Other record; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L289)
 
 <a id="function-function-mq3-game-items-pickupteam-function-pickupteam-level-ent-other-src-mq3-game-items-ml-2094974231"></a>
 ### pickupTeam
@@ -659,7 +671,7 @@ Apply `mq3.game.items.teamMessage`, `mq3.game.items.touchOurFlag` and `mq3.game.
 | `other` | `dynamic` | — | Other record; accesses `slot` and `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L495)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L501)
 
 <a id="function-function-mq3-game-items-pickupweapon-function-pickupweapon-level-ent-other-src-mq3-game-items-ml-1038016751"></a>
 ### pickupWeapon
@@ -677,7 +689,7 @@ Set `other.client.ps.stats[c.STAT_WEAPONS]` to `other.client.ps.stats[c.STAT_WEA
 | `other` | `dynamic` | — | Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_WEAPONS]` and `other.client.ps.ammo[tag]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L338)
 
 <a id="function-function-mq3-game-items-predictableevent-function-predictableevent-level-ent-event-parm-src-mq3-game-items-ml-286193555"></a>
 ### predictableEvent
@@ -696,7 +708,7 @@ Append an item event and parameter to the two-slot player-state event ring.
 | `parm` | `dynamic` | — | Integer parameter stored alongside the emitted event. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L202)
 
 <a id="function-function-mq3-game-items-register-function-register-level-item-src-mq3-game-items-ml-1052804565"></a>
 ### register
@@ -713,7 +725,7 @@ Set `level.itemRegistered[item]` to `1` in `mq3.game.items.register`.
 | `item` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L116)
 
 <a id="function-function-mq3-game-items-requireitem-function-requireitem-index-src-mq3-game-items-ml-786196190"></a>
 ### requireItem
@@ -729,7 +741,7 @@ Apply `mq3.game.items.validItem` while evaluating `requireItem`. Return paths in
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L46)
 
 <a id="function-function-mq3-game-items-requiremodeitem-function-requiremodeitem-level-index-src-mq3-game-items-ml-173365034"></a>
 ### requireModeItem
@@ -746,7 +758,7 @@ Apply `mq3.game.spawn_tables.items`, `mq3.game.items.missionpack` and `mq3.game.
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L78)
 
 <a id="function-function-mq3-game-items-resetflag-function-resetflag-level-team-src-mq3-game-items-ml-1924854209"></a>
 ### resetFlag
@@ -763,7 +775,7 @@ Apply `mq3.game.items.findClass`, `mq3.game.entities.free` and `mq3.game.items.r
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L682)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L688)
 
 <a id="function-function-mq3-game-items-resetflags-function-resetflags-level-src-mq3-game-items-ml-1321949576"></a>
 ### resetFlags
@@ -779,7 +791,7 @@ Apply `mq3.game.items.resetFlag` while evaluating `resetFlags`.
 | `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L436)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L442)
 
 <a id="function-function-mq3-game-items-respawn-function-respawn-level-ent-src-mq3-game-items-ml-731508059"></a>
 ### respawn
@@ -796,7 +808,7 @@ Update `ent.r.contents`, `ent.s.eFlags`, `ent.r.svFlags` and `ent.nextthink` dur
 | `ent` | `dynamic` | — | Game entity; accesses `item`, `team`, `teammaster`, `r` and `s` and related fields. May update `ent.r.contents`, `ent.s.eFlags` and `ent.r.svFlags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L580)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L586)
 
 <a id="function-function-mq3-game-items-returnflag-function-returnflag-level-team-src-mq3-game-items-ml-841478751"></a>
 ### returnFlag
@@ -813,7 +825,7 @@ Use `level.teamMessageFn` to perform `returnFlag`.
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L715)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L721)
 
 <a id="function-function-mq3-game-items-returnflagsound-function-returnflagsound-level-ent-team-src-mq3-game-items-ml-1434628518"></a>
 ### returnFlagSound
@@ -831,7 +843,7 @@ Use `level.gamePrintFn` to perform `returnFlagSound`.
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L702)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L708)
 
 <a id="function-function-mq3-game-items-run-function-run-level-ent-src-mq3-game-items-ml-222478425"></a>
 ### run
@@ -848,7 +860,7 @@ Update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` during `
 | `ent` | `dynamic` | — | Game entity; accesses `item`, `physicsObject`, `s`, `clipmask` and `r`. May update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L797)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L803)
 
 <a id="function-function-mq3-game-items-saveregistered-function-saveregistered-level-src-mq3-game-items-ml-1905839832"></a>
 ### saveRegistered
@@ -864,7 +876,7 @@ Apply `mq3.game.spawn_tables.items`, `mq3.game.items.missionpack` and `mq3.game.
 | `level` | `dynamic` | — | Game-level state; accesses `itemRegistered` and `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L149)
 
 <a id="function-function-mq3-game-items-setflagstatus-function-setflagstatus-level-team-status-src-mq3-game-items-ml-69767377"></a>
 ### setFlagStatus
@@ -882,7 +894,7 @@ Update `level.redFlagStatus`, `level.blueFlagStatus` and `level.neutralFlagStatu
 | `status` | `dynamic` | — | Value used by `setFlagStatus` in `if status < 0 or status > 4 then return error(497,"Invalid flag status") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L546)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L552)
 
 <a id="function-function-mq3-game-items-spawnitem-function-spawnitem-level-ent-item-src-mq3-game-items-ml-914186626"></a>
 ### spawnItem
@@ -900,7 +912,7 @@ Update `ent.random`, `ent.wait`, `ent.item` and `ent.nextthink` and related stat
 | `item` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L652)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L658)
 
 <a id="function-function-mq3-game-items-takeflagsound-function-takeflagsound-level-ent-team-src-mq3-game-items-ml-974912188"></a>
 ### takeFlagSound
@@ -918,7 +930,7 @@ Set `level.blueTakenTime` to `level.time` and `level.redTakenTime` to `level.tim
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L411)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L417)
 
 <a id="function-function-mq3-game-items-teamfree-function-teamfree-level-ent-src-mq3-game-items-ml-1771347227"></a>
 ### teamFree
@@ -935,7 +947,7 @@ Apply `mq3.game.items.modeItemTag` and `mq3.game.items.returnFlag` while evaluat
 | `ent` | `dynamic` | — | Game entity; accesses `item`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L725)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L731)
 
 <a id="function-function-mq3-game-items-teammessage-function-teammessage-level-recipient-text-src-mq3-game-items-ml-1477040340"></a>
 ### teamMessage
@@ -953,7 +965,7 @@ Use `level.teamMessageFn` to perform `teamMessage`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L380)
 
 <a id="function-function-mq3-game-items-touch-function-touch-level-ent-other-trace-src-mq3-game-items-ml-1643932484"></a>
 ### touch
@@ -972,7 +984,7 @@ Update `ent.r.svFlags`, `ent.s.eFlags`, `ent.r.contents` and `ent.unlinkAfterEve
 | `trace` | `dynamic` | — | Not read by this implementation; retained in the `touch` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L508)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L514)
 
 <a id="function-function-mq3-game-items-touchenemyflag-function-touchenemyflag-level-ent-other-team-src-mq3-game-items-ml-1658598564"></a>
 ### touchEnemyFlag
@@ -991,7 +1003,7 @@ Apply `mq3.game.items.teamMessage`, `mq3.game.team_bonuses.teamName` and `mq3.ga
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L484)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L490)
 
 <a id="function-function-mq3-game-items-touchourflag-function-touchourflag-level-ent-other-team-src-mq3-game-items-ml-1065943288"></a>
 ### touchOurFlag
@@ -1010,7 +1022,7 @@ Set `level.lastFlagCapture` to `n.f32(level.time)` and `level.lastCaptureTeam` t
 | `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L445)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L451)
 
 <a id="function-function-mq3-game-items-use-function-use-level-ent-other-activator-src-mq3-game-items-ml-457893442"></a>
 ### use
@@ -1029,7 +1041,7 @@ Forward `use` to `mq3.game.items.respawn` and return the delegated result.
 | `activator` | `dynamic` | — | Not read by this implementation; retained in the `use` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L611)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L617)
 
 <a id="function-function-mq3-game-items-userhandicap-function-userhandicap-level-other-src-mq3-game-items-ml-291227894"></a>
 ### userHandicap
@@ -1046,7 +1058,7 @@ Use `level.userinfoFn` to perform `userHandicap`. Return paths include `handicap
 | `other` | `dynamic` | — | Other record; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L258)
 
 <a id="function-function-mq3-game-items-validitem-function-validitem-index-src-mq3-game-items-ml-1734051572"></a>
 ### validItem
@@ -1062,4 +1074,4 @@ Test `typeof(index) == "int" and index > 0 and index < len(tables.items())` as t
 | `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L41)

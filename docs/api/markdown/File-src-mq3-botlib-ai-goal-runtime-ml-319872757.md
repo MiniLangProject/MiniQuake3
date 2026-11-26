@@ -32,7 +32,7 @@ Set `state.levelItems.levelItems` to `[item]+state.levelItems.levelItems` in `mq
 | `item` | `dynamic` | — | Value used by `addLevelItemToList` in `if item==void then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L176)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-alloclevelitem-function-alloclevelitem-state-src-mq3-botlib-ai-goal-runtime-ml-1278811363"></a>
 ### allocLevelItem
@@ -48,7 +48,7 @@ Set `state.freeLevelItems` to `state.freeLevelItems-1` in `mq3.botlib.ai_goal_ru
 | `state` | `dynamic` | — | AI goal runtime state; accesses `freeLevelItems`. May update `state.freeLevelItems` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L160)
 
 <a id="constant-constant-mq3-botlib-ai-goal-runtime-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-goal-runtime-ml-271818558"></a>
 ### AVOID_DEFAULT_TIME
@@ -57,8 +57,10 @@ Set `state.freeLevelItems` to `state.freeLevelItems-1` in `mq3.botlib.ai_goal_ru
 const AVOID_DEFAULT_TIME = 30
 ```
 
+Default interval for temporarily avoiding a selected goal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-goal-runtime-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-goal-runtime-ml-913931930"></a>
 ### AVOID_MINIMUM_TIME
@@ -67,8 +69,10 @@ const AVOID_DEFAULT_TIME = 30
 const AVOID_MINIMUM_TIME = 10
 ```
 
+Minimum interval retained for a goal-avoidance request.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L14)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-bindworld-function-bindworld-state-aasentities-aas-bspentities-gametype-placefn-src-mq3-botlib-ai-goal-runtime-ml-1564530241"></a>
 ### bindWorld
@@ -89,7 +93,7 @@ Update `state.aasEntities`, `state.aas`, `state.bspEntities` and `state.gameType
 | `placeFn` | `dynamic` | — | Value used by `bind` in `state.placeFn=placeFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L98)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botaddtoavoidgoals-function-botaddtoavoidgoals-state-goalstate-number-avoidtime-src-mq3-botlib-ai-goal-runtime-ml-1225406542"></a>
 ### botAddToAvoidGoals
@@ -108,7 +112,7 @@ Forward `botAddToAvoidGoals` to `mq3.botlib.ai_goal_state.addToAvoidGoals` and r
 | `avoidTime` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fadd`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L219)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botallocgoalstate-function-botallocgoalstate-state-client-src-mq3-botlib-ai-goal-runtime-ml-570717474"></a>
 ### botAllocGoalState
@@ -125,7 +129,7 @@ Forward `botAllocGoalState` to `mq3.botlib.ai_resource_pools.allocGoalState` and
 | `client` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_resource_pools.GoalState.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L142)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botavoidgoaltime-function-botavoidgoaltime-state-goalstate-number-src-mq3-botlib-ai-goal-runtime-ml-699749328"></a>
 ### botAvoidGoalTime
@@ -143,7 +147,7 @@ Forward `botAvoidGoalTime` to `mq3.botlib.ai_goal_state.avoidGoalTime` and retur
 | `number` | `dynamic` | — | Value used by `avoidGoalTime` in `if value.avoidGoals[index]==number and value.avoidGoalTimes[index]>=now then return goalNumeric.fsub(value.avoid...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L229)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botchooseltgitem-function-botchooseltgitem-state-goalstate-origin-inventory-travelflags-src-mq3-botlib-ai-goal-runtime-ml-975299416"></a>
 ### botChooseLTGItem
@@ -163,7 +167,7 @@ Forward `botChooseLTGItem` to `mq3.botlib.ai_goal_selection.chooseLTGItem` and r
 | `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L291)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botchoosenbgitem-function-botchoosenbgitem-state-goalstate-origin-inventory-travelflags-longtermgoal-maxtime-src-mq3-botlib-ai-goal-runtime-ml-1852327512"></a>
 ### botChooseNBGItem
@@ -185,7 +189,7 @@ Forward `botChooseNBGItem` to `mq3.botlib.ai_goal_selection.chooseNBGItem` and r
 | `maxTime` | `dynamic` | — | Upper limit on the route travel-time value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L300)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botdumpavoidgoals-function-botdumpavoidgoals-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-1617610867"></a>
 ### botDumpAvoidGoals
@@ -202,7 +206,7 @@ Forward `botDumpAvoidGoals` to `mq3.botlib.ai_goal_state.dumpAvoidGoals` and ret
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L213)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botdumpgoalstack-function-botdumpgoalstack-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-804892691"></a>
 ### botDumpGoalStack
@@ -219,7 +223,7 @@ Forward `botDumpGoalStack` to `mq3.botlib.ai_goal_state.dumpGoalStack` and retur
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L244)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botemptygoalstack-function-botemptygoalstack-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-2134928673"></a>
 ### botEmptyGoalStack
@@ -236,7 +240,7 @@ Forward `botEmptyGoalStack` to `mq3.botlib.ai_goal_state.emptyGoalStack` and ret
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L257)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botfindentityforlevelitem-function-botfindentityforlevelitem-state-item-src-mq3-botlib-ai-goal-runtime-ml-278467636"></a>
 ### botFindEntityForLevelItem
@@ -253,7 +257,7 @@ Apply `mq3.botlib.ai_level_items.update` while evaluating `botFindEntityForLevel
 | `item` | `dynamic` | — | Item record; accesses `number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L199)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botfreegoalstate-function-botfreegoalstate-state-handle-src-mq3-botlib-ai-goal-runtime-ml-700287941"></a>
 ### botFreeGoalState
@@ -270,7 +274,7 @@ Apply `mq3.botlib.ai_goal_runtime.botFreeItemWeights` and `mq3.botlib.ai_resourc
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L146)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botfreeinfoentities-function-botfreeinfoentities-state-src-mq3-botlib-ai-goal-runtime-ml-1133622347"></a>
 ### botFreeInfoEntities
@@ -286,7 +290,7 @@ Map/static/dropped entity population -----------------------------------
 | `state` | `dynamic` | — | AI goal runtime state; accesses `mapGoals`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L180)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botfreeitemweights-function-botfreeitemweights-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-1721186191"></a>
 ### botFreeItemWeights
@@ -303,7 +307,7 @@ Forward `botFreeItemWeights` to `mq3.botlib.ai_item_weights.freeItemWeights` and
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L138)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botgetlevelitemgoal-function-botgetlevelitemgoal-state-index-name-goal-src-mq3-botlib-ai-goal-runtime-ml-820047617"></a>
 ### botGetLevelItemGoal
@@ -322,7 +326,7 @@ Selection, visibility, routing and map goals ---------------------------
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `areaNum`, `origin`, `entityNum`, `mins` and `maxs` and related fields. May update `goal.areaNum`, `goal.origin` and `goal.entityNum` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L276)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botgetmaplocationgoal-function-botgetmaplocationgoal-state-name-src-mq3-botlib-ai-goal-runtime-ml-744103948"></a>
 ### botGetMapLocationGoal
@@ -339,7 +343,7 @@ Forward `botGetMapLocationGoal` to `mq3.botlib.ai_map_goals.mapLocationGoal` and
 | `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L280)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botgetnextcampspotgoal-function-botgetnextcampspotgoal-state-number-src-mq3-botlib-ai-goal-runtime-ml-1238973300"></a>
 ### botGetNextCampSpotGoal
@@ -356,7 +360,7 @@ Forward `botGetNextCampSpotGoal` to `mq3.botlib.ai_map_goals.nextCampSpotGoal` a
 | `number` | `dynamic` | — | Operand used to evaluate the returned expression `CampResult(number+1,state.campSpots[index].goal)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L284)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botgetsecondgoal-function-botgetsecondgoal-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-782787171"></a>
 ### botGetSecondGoal
@@ -373,7 +377,7 @@ Forward `botGetSecondGoal` to `mq3.botlib.ai_goal_state.secondGoal` and return t
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L265)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botgettopgoal-function-botgettopgoal-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-296042697"></a>
 ### botGetTopGoal
@@ -390,7 +394,7 @@ Forward `botGetTopGoal` to `mq3.botlib.ai_goal_state.topGoal` and return the del
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L261)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botgoalname-function-botgoalname-state-number-size-src-mq3-botlib-ai-goal-runtime-ml-986445989"></a>
 ### botGoalName
@@ -408,7 +412,7 @@ Apply `mq3.botlib.ai_level_items.goalName` while evaluating `botGoalName`. Retur
 | `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L193)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botgoalstatefromhandle-function-botgoalstatefromhandle-state-handle-src-mq3-botlib-ai-goal-runtime-ml-1627109749"></a>
 ### botGoalStateFromHandle
@@ -425,7 +429,7 @@ Fuzzy weights and goal-state lifecycle ---------------------------------
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L105)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botinitinfoentities-function-botinitinfoentities-state-src-mq3-botlib-ai-goal-runtime-ml-1410356723"></a>
 ### botInitInfoEntities
@@ -441,7 +445,7 @@ Forward `botInitInfoEntities` to `mq3.botlib.ai_map_goals.initialize` and return
 | `state` | `dynamic` | — | AI goal runtime state; accesses `mapGoals`, `aas` and `bspEntities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L183)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botinitlevelitems-function-botinitlevelitems-state-src-mq3-botlib-ai-goal-runtime-ml-1437461589"></a>
 ### botInitLevelItems
@@ -457,7 +461,7 @@ Set `state.freeLevelItems` to `state.levelItems.maxLevelItems-len(state.levelIte
 | `state` | `dynamic` | — | AI goal runtime state; accesses `levelItems` and `freeLevelItems`. May update `state.freeLevelItems` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L186)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botinterbreedgoalfuzzylogic-function-botinterbreedgoalfuzzylogic-state-parent1-parent2-child-src-mq3-botlib-ai-goal-runtime-ml-252721066"></a>
 ### botInterbreedGoalFuzzyLogic
@@ -476,7 +480,7 @@ Forward `botInterbreedGoalFuzzyLogic` to `mq3.botlib.ai_goal_selection.interbree
 | `child` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L111)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botitemgoalinvisbutnotvisible-function-botitemgoalinvisbutnotvisible-state-viewer-eye-viewangles-goal-src-mq3-botlib-ai-goal-runtime-ml-186315136"></a>
 ### botItemGoalInVisButNotVisible
@@ -496,7 +500,7 @@ Forward `botItemGoalInVisButNotVisible` to `mq3.botlib.ai_goal_selection.itemGoa
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `flags`, `origin`, `mins` and `entityNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L307)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botloaditemweights-function-botloaditemweights-state-goalstate-filename-src-mq3-botlib-ai-goal-runtime-ml-934203688"></a>
 ### botLoadItemWeights
@@ -514,7 +518,7 @@ Forward `botLoadItemWeights` to `mq3.botlib.ai_item_weights.loadItemWeights` and
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L134)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botmutategoalfuzzylogic-function-botmutategoalfuzzylogic-state-goalstate-range-src-mq3-botlib-ai-goal-runtime-ml-1139774096"></a>
 ### botMutateGoalFuzzyLogic
@@ -532,7 +536,7 @@ Forward `botMutateGoalFuzzyLogic` to `mq3.botlib.ai_goal_selection.mutateGoalFuz
 | `range` | `dynamic` | — | Value passed as argument 3 to `mq3.botlib.ai_goal_selection.mutateGoalFuzzyLogic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L121)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botpopgoal-function-botpopgoal-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-836309267"></a>
 ### botPopGoal
@@ -549,7 +553,7 @@ Forward `botPopGoal` to `mq3.botlib.ai_goal_state.popGoal` and return the delega
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L253)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botpushgoal-function-botpushgoal-state-goalstate-goal-src-mq3-botlib-ai-goal-runtime-ml-963539358"></a>
 ### botPushGoal
@@ -567,7 +571,7 @@ Forward `botPushGoal` to `mq3.botlib.ai_goal_state.pushGoal` and return the dele
 | `goal` | `dynamic` | — | Value record; accesses `origin`, `areaNum`, `mins`, `maxs` and `entityNum` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L249)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botremovefromavoidgoals-function-botremovefromavoidgoals-state-goalstate-number-src-mq3-botlib-ai-goal-runtime-ml-1407865352"></a>
 ### botRemoveFromAvoidGoals
@@ -585,7 +589,7 @@ Forward `botRemoveFromAvoidGoals` to `mq3.botlib.ai_goal_state.removeFromAvoidGo
 | `number` | `dynamic` | — | Value used by `removeFromAvoidGoals` in `if value.avoidGoals[index]==number and value.avoidGoalTimes[index]>=now then value.avoidGoalTimes[index]=0.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L224)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botresetavoidgoals-function-botresetavoidgoals-state-goalstate-src-mq3-botlib-ai-goal-runtime-ml-1494581563"></a>
 ### botResetAvoidGoals
@@ -602,7 +606,7 @@ Avoid-goal table and stack ---------------------------------------------
 | `goalState` | `dynamic` | — | Handle of the pooled bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L209)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botresetgoalstate-function-botresetgoalstate-state-handle-src-mq3-botlib-ai-goal-runtime-ml-461968305"></a>
 ### botResetGoalState
@@ -619,7 +623,7 @@ Forward `botResetGoalState` to `mq3.botlib.ai_resource_pools.resetGoalState` and
 | `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L150)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botsavegoalfuzzylogic-function-botsavegoalfuzzylogic-state-goalstate-filename-src-mq3-botlib-ai-goal-runtime-ml-1402426786"></a>
 ### botSaveGoalFuzzyLogic
@@ -637,7 +641,7 @@ Forward `botSaveGoalFuzzyLogic` to `mq3.botlib.ai_goal_selection.saveGoalFuzzyLo
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L116)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botsetavoidgoaltime-function-botsetavoidgoaltime-state-goalstate-number-avoidtime-src-mq3-botlib-ai-goal-runtime-ml-1883805314"></a>
 ### botSetAvoidGoalTime
@@ -656,7 +660,7 @@ Apply `mq3.botlib.ai_item_weights.ensureItems` and `mq3.botlib.ai_goal_state.add
 | `avoidTime` | `dynamic` | — | Value used by `botSetAvoidGoalTime` in `value=avoidTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L235)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botsetupgoalai-function-botsetupgoalai-state-itemconfigfile-gametype-droppedweight-src-mq3-botlib-ai-goal-runtime-ml-560802980"></a>
 ### botSetupGoalAI
@@ -675,7 +679,7 @@ File-level setup/shutdown ----------------------------------------------
 | `droppedWeight` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L314)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botshutdowngoalai-function-botshutdowngoalai-state-src-mq3-botlib-ai-goal-runtime-ml-658239235"></a>
 ### botShutdownGoalAI
@@ -691,7 +695,7 @@ Set `state.freeLevelItems` to `0` and `state.setup` to `false` in `mq3.botlib.ai
 | `state` | `dynamic` | — | AI goal runtime state; accesses `pools`, `levelItems`, `itemWeights`, `freeLevelItems` and `setup`. May update `state.freeLevelItems` and `state.setup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L319)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-bottouchinggoal-function-bottouchinggoal-origin-goal-src-mq3-botlib-ai-goal-runtime-ml-1052547411"></a>
 ### botTouchingGoal
@@ -708,7 +712,7 @@ Forward `botTouchingGoal` to `mq3.botlib.ai_goal_state.touchingGoal` and return 
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `mins`, `origin` and `maxs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L269)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-botupdateentityitems-function-botupdateentityitems-state-src-mq3-botlib-ai-goal-runtime-ml-2088427111"></a>
 ### botUpdateEntityItems
@@ -724,7 +728,7 @@ Forward `botUpdateEntityItems` to `mq3.botlib.ai_level_items.update` and return 
 | `state` | `dynamic` | — | AI goal runtime state; accesses `levelItems`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L204)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-create-function-create-context-readfn-timefn-logfn-printfn-services-src-mq3-botlib-ai-goal-runtime-ml-17998897"></a>
 ### create
@@ -745,7 +749,7 @@ Build the `mq3.botlib.ai_goal_runtime.State` result for `create`.
 | `services` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_goal_selection.Runtime.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L87)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-freelevelitem-function-freelevelitem-state-item-src-mq3-botlib-ai-goal-runtime-ml-918385940"></a>
 ### freeLevelItem
@@ -762,7 +766,7 @@ Set `state.freeLevelItems` to `state.freeLevelItems+1` and `state.freeLevelItems
 | `item` | `dynamic` | — | Value used by `removeLevelItemFromList` in `for each candidate in state.levelItems.levelItems if not removed and candidate==item then removed=true else valu...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L172)
 
 - [mq3.botlib.ai_goal_runtime.Host](Type-mq3-botlib-ai-goal-runtime-host-1286832985.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-runtime-hostlog-function-hostlog-host-text-src-mq3-botlib-ai-goal-runtime-ml-1365299861"></a>
@@ -780,7 +784,7 @@ Use `host.logFn` to perform `hostLog`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L73)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-hostname-function-hostname-host-number-src-mq3-botlib-ai-goal-runtime-ml-365823763"></a>
 ### hostName
@@ -797,7 +801,7 @@ Apply `mq3.botlib.ai_level_items.goalName` while evaluating `hostName`. Return p
 | `number` | `dynamic` | — | Value used by `goalName` in `for each levelItem in state.levelItems if levelItem.number==number then return items[levelItem.itemInfo].name en...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L69)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-hostprint-function-hostprint-host-level-text-src-mq3-botlib-ai-goal-runtime-ml-114716715"></a>
 ### hostPrint
@@ -815,7 +819,7 @@ Use `host.printFn` to perform `hostPrint`.
 | `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L78)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-hosttime-function-hosttime-host-src-mq3-botlib-ai-goal-runtime-ml-1736028560"></a>
 ### hostTime
@@ -831,7 +835,7 @@ Use `host.timeFn` to perform `hostTime`. Return paths include `host.timeFn(host.
 | `host` | `dynamic` | — | Host service configuration; accesses `timeFn` and `userContext`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L65)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-initlevelitemheap-function-initlevelitemheap-state-capacity-src-mq3-botlib-ai-goal-runtime-ml-1928990205"></a>
 ### initLevelItemHeap
@@ -848,7 +852,7 @@ Level-item heap/list ownership -----------------------------------------
 | `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L155)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-itemweightindex-function-itemweightindex-weightconfig-itemconfig-src-mq3-botlib-ai-goal-runtime-ml-1614667733"></a>
 ### itemWeightIndex
@@ -865,7 +869,7 @@ Forward `itemWeightIndex` to `mq3.botlib.ai_item_weights.itemWeightIndex` and re
 | `itemConfig` | `dynamic` | — | Value used by `itemWeightIndex` in `for each item in items result=result+[findWeight(config,item.classname)] end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L129)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-loaditemconfig-function-loaditemconfig-state-filename-src-mq3-botlib-ai-goal-runtime-ml-1943599524"></a>
 ### loadItemConfig
@@ -882,7 +886,7 @@ Set `state.itemWeights.items` to `value` in `mq3.botlib.ai_goal_runtime.loadItem
 | `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L125)
 
 <a id="function-function-mq3-botlib-ai-goal-runtime-removelevelitemfromlist-function-removelevelitemfromlist-state-item-src-mq3-botlib-ai-goal-runtime-ml-1601744100"></a>
 ### removeLevelItemFromList
@@ -899,6 +903,6 @@ Set `state.levelItems.levelItems` to `values` in `mq3.botlib.ai_goal_runtime.rem
 | `item` | `dynamic` | — | Value used by `removeLevelItemFromList` in `for each candidate in state.levelItems.levelItems if not removed and candidate==item then removed=true else valu...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L166)
 
 - [mq3.botlib.ai_goal_runtime.State](Type-mq3-botlib-ai-goal-runtime-state-423927872.md) — struct

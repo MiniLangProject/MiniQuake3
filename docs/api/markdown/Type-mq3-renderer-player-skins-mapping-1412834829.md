@@ -12,7 +12,7 @@ struct Mapping
 Data record for `mq3.renderer.player_skins.Mapping`; groups `surface`, `shaderName`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L18)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.player_skins.Mapping`; groups `surface`, `shaderNa
 shaderName
 ```
 
+Shader assigned by the skin file to its named model surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
 
 <a id="field-field-mq3-renderer-player-skins-mapping-surface-surface-src-mq3-renderer-player-skins-ml-1444455143"></a>
 ### surface
@@ -33,5 +35,7 @@ shaderName
 surface
 ```
 
+Model-surface name to which the skin assigns its shader.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L20)

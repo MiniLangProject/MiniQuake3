@@ -33,7 +33,7 @@ Forward `AAS_Accelerate` to `mq3.botlib.aas_client_movement.accelerate` and retu
 | `acceleration` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L232)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-againstladder-function-aas-againstladder-runtime-origin-src-mq3-botlib-be-aas-move-ml-780065788"></a>
 ### AAS_AgainstLadder
@@ -50,7 +50,7 @@ Use `runtime.againstLadderFn` to perform `AAS_AgainstLadder`. Return paths inclu
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L159)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-aircontrol-function-aas-aircontrol-start-finish-velocity-commandmove-src-mq3-botlib-be-aas-move-ml-895322494"></a>
 ### AAS_AirControl
@@ -69,7 +69,7 @@ Apply `mq3.botlib.be_aas_move.subtract` while evaluating `AAS_AirControl`.
 | `commandMove` | `dynamic` | — | Not read by this implementation; retained in the `AAS_AirControl` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L240)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-applyfriction-function-aas-applyfriction-velocity-friction-stopspeed-frametime-src-mq3-botlib-be-aas-move-ml-1625936474"></a>
 ### AAS_ApplyFriction
@@ -88,7 +88,7 @@ Forward `AAS_ApplyFriction` to `mq3.botlib.aas_client_movement.applyFriction` an
 | `frameTime` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L249)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-bfgjumpzvelocity-function-aas-bfgjumpzvelocity-runtime-origin-src-mq3-botlib-be-aas-move-ml-721337410"></a>
 ### AAS_BFGJumpZVelocity
@@ -105,7 +105,7 @@ Forward `AAS_BFGJumpZVelocity` to `mq3.botlib.be_aas_move.AAS_WeaponJumpZVelocit
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L224)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-clientmovementhitbbox-function-aas-clientmovementhitbbox-runtime-entitynum-origin-presencetype-onground-velocity-commandmove-commandframes-maxframes-frametime-mins-maxs-visualize-src-mq3-botlib-be-aas-move-ml-260032548"></a>
 ### AAS_ClientMovementHitBBox
@@ -133,7 +133,7 @@ Forward `AAS_ClientMovementHitBBox` to `mq3.botlib.be_aas_move.AAS_ClientMovemen
 | `visualize` | `dynamic` | — | Value passed as argument 15 to `mq3.botlib.aas_client_movement.predictWithBBox`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L311)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-clientmovementprediction-function-aas-clientmovementprediction-runtime-entitynum-origin-presencetype-onground-velocity-commandmove-commandframes-maxframes-frametime-stopevent-stopareanum-mins-maxs-visualize-src-mq3-botlib-be-aas-move-ml-709321799"></a>
 ### AAS_ClientMovementPrediction
@@ -163,7 +163,7 @@ Forward `AAS_ClientMovementPrediction` to `mq3.botlib.aas_client_movement.predic
 | `visualize` | `dynamic` | — | Value passed as argument 15 to `mq3.botlib.aas_client_movement.predictWithBBox`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L277)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-cliptobbox-function-aas-cliptobbox-start-finish-presencetype-mins-maxs-src-mq3-botlib-be-aas-move-ml-260516552"></a>
 ### AAS_ClipToBBox
@@ -183,7 +183,7 @@ Forward `AAS_ClipToBBox` to `mq3.botlib.aas_client_movement.clipToBBox` and retu
 | `maxs` | `dynamic` | — | Maximum coordinates of the axis-aligned bounds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L258)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-droptofloor-function-aas-droptofloor-runtime-origin-mins-maxs-src-mq3-botlib-be-aas-move-ml-1778142316"></a>
 ### AAS_DropToFloor
@@ -202,7 +202,7 @@ Set `origin[axis]` to `trace.endpos[axis]` in `mq3.botlib.be_aas_move.AAS_DropTo
 | `maxs` | `dynamic` | — | Not read by this implementation; retained in the `AAS_DropToFloor` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L148)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-horizontalvelocityforjump-function-aas-horizontalvelocityforjump-runtime-zvelocity-start-finish-src-mq3-botlib-be-aas-move-ml-1180066620"></a>
 ### AAS_HorizontalVelocityForJump
@@ -221,7 +221,7 @@ Apply `mq3.botlib.be_aas_move.subtract` while evaluating `AAS_HorizontalVelocity
 | `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L329)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-initsettings-function-aas-initsettings-src-mq3-botlib-be-aas-move-ml-1289301418"></a>
 ### AAS_InitSettings
@@ -233,7 +233,7 @@ function AAS_InitSettings()
 Create a `mq3.botlib.be_aas_move.Settings` record, initializing `gravityDirection` as `[0.0,0.0,-1.0]`, `friction` as `6.0` and `stopSpeed` as `100.0`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L105)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-jumpreachrunstart-function-aas-jumpreachrunstart-runtime-reach-src-mq3-botlib-be-aas-move-ml-1947220811"></a>
 ### AAS_JumpReachRunStart
@@ -250,7 +250,7 @@ Apply `mq3.botlib.be_aas_move.normalize`, `mq3.botlib.be_aas_move.copy` and `mq3
 | `reach` | `dynamic` | — | AAS reachability record; accesses `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L189)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-onground-function-aas-onground-runtime-origin-presencetype-passentity-src-mq3-botlib-be-aas-move-ml-83817059"></a>
 ### AAS_OnGround
@@ -269,7 +269,7 @@ Forward `AAS_OnGround` to `mq3.botlib.aas_client_movement.onGround` and return t
 | `passEntity` | `dynamic` | — | Value passed as argument 5 to `s.traceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L169)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-predictclientmovement-function-aas-predictclientmovement-runtime-entitynum-origin-presencetype-onground-velocity-commandmove-commandframes-maxframes-frametime-stopevent-stopareanum-visualize-src-mq3-botlib-be-aas-move-ml-762221507"></a>
 ### AAS_PredictClientMovement
@@ -297,7 +297,7 @@ Forward `AAS_PredictClientMovement` to `mq3.botlib.aas_client_movement.predict` 
 | `visualize` | `dynamic` | — | Value passed as argument 15 to `mq3.botlib.aas_client_movement.predictWithBBox`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L294)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-rocketjumpzvelocity-function-aas-rocketjumpzvelocity-runtime-origin-src-mq3-botlib-be-aas-move-ml-1061566492"></a>
 ### AAS_RocketJumpZVelocity
@@ -314,7 +314,7 @@ Forward `AAS_RocketJumpZVelocity` to `mq3.botlib.be_aas_move.AAS_WeaponJumpZVelo
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L220)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-setmovedir-function-aas-setmovedir-angles-src-mq3-botlib-be-aas-move-ml-221708926"></a>
 ### AAS_SetMovedir
@@ -330,7 +330,7 @@ Convert angles to a movement direction, recognizing the original straight-up and
 | `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L180)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-swimming-function-aas-swimming-runtime-origin-src-mq3-botlib-be-aas-move-ml-1506305754"></a>
 ### AAS_Swimming
@@ -347,7 +347,7 @@ Forward `AAS_Swimming` to `mq3.botlib.aas_client_movement.swimming` and return t
 | `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L176)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-testmovementprediction-function-aas-testmovementprediction-runtime-entitynum-origin-direction-src-mq3-botlib-be-aas-move-ml-681352440"></a>
 ### AAS_TestMovementPrediction
@@ -366,7 +366,7 @@ Use `runtime.debugClearFn` to perform `AAS_TestMovementPrediction`.
 | `direction` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L319)
 
 <a id="function-function-mq3-botlib-be-aas-move-aas-weaponjumpzvelocity-function-aas-weaponjumpzvelocity-runtime-origin-radiusdamage-src-mq3-botlib-be-aas-move-ml-1795328117"></a>
 ### AAS_WeaponJumpZVelocity
@@ -384,7 +384,7 @@ Use `runtime.services.traceFn` to perform `AAS_WeaponJumpZVelocity`.
 | `radiusDamage` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.fsub`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L203)
 
 <a id="function-function-mq3-botlib-be-aas-move-add-function-add-a-b-src-mq3-botlib-be-aas-move-ml-2025490461"></a>
 ### add
@@ -401,7 +401,7 @@ Return a new array `[n.fadd(a[0],b[0]),n.fadd(a[1],b[1]),n.fadd(a[2],b[2])]` for
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L128)
 
 <a id="function-function-mq3-botlib-be-aas-move-copy-function-copy-value-src-mq3-botlib-be-aas-move-ml-1736691095"></a>
 ### copy
@@ -417,7 +417,7 @@ Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for be aas m
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L120)
 
 <a id="function-function-mq3-botlib-be-aas-move-create-function-create-services-src-mq3-botlib-be-aas-move-ml-1208736530"></a>
 ### create
@@ -433,7 +433,7 @@ Create a `mq3.botlib.be_aas_move.Runtime` record, initializing `services` from `
 | `services` | `dynamic` | — | Initial value stored in `mq3.botlib.be_aas_move.Runtime.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L114)
 
 <a id="function-function-mq3-botlib-be-aas-move-length-function-length-value-src-mq3-botlib-be-aas-move-ml-2070494755"></a>
 ### length
@@ -449,7 +449,7 @@ Forward `length` to `mq3.compat.numeric.fsqrt` and return the delegated result.
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L135)
 
 <a id="function-function-mq3-botlib-be-aas-move-normalize-function-normalize-value-src-mq3-botlib-be-aas-move-ml-1615402201"></a>
 ### normalize
@@ -465,7 +465,7 @@ Apply `mq3.botlib.be_aas_move.length` and `mq3.botlib.be_aas_move.scale` while e
 | `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L138)
 
 - [mq3.botlib.be_aas_move.Runtime](Type-mq3-botlib-be-aas-move-runtime-1181401265.md) — struct
 <a id="function-function-mq3-botlib-be-aas-move-scale-function-scale-value-factor-src-mq3-botlib-be-aas-move-ml-1873118550"></a>
@@ -483,7 +483,7 @@ Return a new array `[n.fmul(value[0],factor),n.fmul(value[1],factor),n.fmul(valu
 | `factor` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L132)
 
 - [mq3.botlib.be_aas_move.Settings](Type-mq3-botlib-be-aas-move-settings-79851474.md) — struct
 <a id="function-function-mq3-botlib-be-aas-move-subtract-function-subtract-a-b-src-mq3-botlib-be-aas-move-ml-694074187"></a>
@@ -501,4 +501,4 @@ Return a new array `[n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])]` for
 | `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L124)

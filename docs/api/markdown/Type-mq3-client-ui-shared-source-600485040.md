@@ -12,7 +12,7 @@ struct Source
 Stores UI shared source record, including `scan`, `name`, `warnings`, `errors`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L180)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI shared source record, including `scan`, `name`, `warnings`, `errors`.
 errors
 ```
 
+Diagnostic messages collected while parsing or processing the input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L188)
 
 <a id="field-field-mq3-client-ui-shared-source-name-name-src-mq3-client-ui-shared-ml-407053338"></a>
 ### name
@@ -33,8 +35,10 @@ errors
 name
 ```
 
+Source name included in parser diagnostics.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L184)
 
 <a id="field-field-mq3-client-ui-shared-source-scan-scan-src-mq3-client-ui-shared-ml-979426726"></a>
 ### scan
@@ -43,8 +47,10 @@ name
 scan
 ```
 
+Token-scanner state used to read the menu or script source.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L182)
 
 <a id="field-field-mq3-client-ui-shared-source-warnings-warnings-src-mq3-client-ui-shared-ml-220985574"></a>
 ### warnings
@@ -53,5 +59,7 @@ scan
 warnings
 ```
 
+Nonfatal diagnostic messages collected while processing the input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L186)

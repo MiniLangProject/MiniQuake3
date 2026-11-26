@@ -12,7 +12,7 @@ struct Packet
 Data record for `mq3.platform.null_runtime.Packet`; groups `destination`, `data`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L16)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.platform.null_runtime.Packet`; groups `destination`, `data`
 data
 ```
 
+Payload bytes carried by the queued headless-platform packet.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L20)
 
 <a id="field-field-mq3-platform-null-runtime-packet-destination-destination-src-mq3-platform-null-runtime-ml-1046660139"></a>
 ### destination
@@ -33,5 +35,7 @@ data
 destination
 ```
 
+Network endpoint to which the packet will be sent.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L18)

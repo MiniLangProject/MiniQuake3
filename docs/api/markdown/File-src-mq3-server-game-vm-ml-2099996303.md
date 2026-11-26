@@ -19,8 +19,10 @@ Reachable from entry: **yes**
 const BOTAI_START_FRAME = gpublic.BOTAI_START_FRAME
 ```
 
+Game-VM export identifier used to begin bot AI work for a frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L28)
 
 <a id="function-function-mq3-server-game-vm-botstartframe-function-botstartframe-state-time-src-mq3-server-game-vm-ml-363876168"></a>
 ### botStartFrame
@@ -37,7 +39,7 @@ Return `mq3.server.game_vm.invoke(state, [BOTAI_START_FRAME, time])` from `serve
 | `time` | `dynamic` | — | Time used in `invoke(state, [BOTAI_START_FRAME, time])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L232)
 
 <a id="function-function-mq3-server-game-vm-clientbegin-function-clientbegin-state-clientnum-src-mq3-server-game-vm-ml-1911289052"></a>
 ### clientBegin
@@ -54,7 +56,7 @@ Return `mq3.server.game_vm.invoke(state, [GAME_CLIENT_BEGIN, clientNum])` from `
 | `clientNum` | `dynamic` | — | Client num used in `invoke(state, [GAME_CLIENT_BEGIN, clientNum])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L205)
 
 <a id="function-function-mq3-server-game-vm-clientcommand-function-clientcommand-state-clientnum-src-mq3-server-game-vm-ml-224550596"></a>
 ### clientCommand
@@ -71,7 +73,7 @@ Return `mq3.server.game_vm.invoke(state, [GAME_CLIENT_COMMAND, clientNum])` from
 | `clientNum` | `dynamic` | — | Client num used in `invoke(state, [GAME_CLIENT_COMMAND, clientNum])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L217)
 
 <a id="function-function-mq3-server-game-vm-clientconnect-function-clientconnect-state-clientnum-firsttime-isbot-src-mq3-server-game-vm-ml-1787140466"></a>
 ### clientConnect
@@ -90,7 +92,7 @@ Compute client connect in server.game_vm; the normal completion returns `invoke(
 | `isBot` | `dynamic` | — | Is bot operand used by `clientConnect`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L198)
 
 <a id="function-function-mq3-server-game-vm-clientdisconnect-function-clientdisconnect-state-clientnum-src-mq3-server-game-vm-ml-210481968"></a>
 ### clientDisconnect
@@ -107,7 +109,7 @@ Return `mq3.server.game_vm.invoke(state, [GAME_CLIENT_DISCONNECT, clientNum])` f
 | `clientNum` | `dynamic` | — | Client num used in `invoke(state, [GAME_CLIENT_DISCONNECT, clientNum])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L213)
 
 <a id="function-function-mq3-server-game-vm-clientthink-function-clientthink-state-clientnum-src-mq3-server-game-vm-ml-1097927302"></a>
 ### clientThink
@@ -124,7 +126,7 @@ Return `mq3.server.game_vm.invoke(state, [GAME_CLIENT_THINK, clientNum])` from `
 | `clientNum` | `dynamic` | — | Client num used in `invoke(state, [GAME_CLIENT_THINK, clientNum])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L221)
 
 <a id="function-function-mq3-server-game-vm-clientuserinfochanged-function-clientuserinfochanged-state-clientnum-src-mq3-server-game-vm-ml-1384716708"></a>
 ### clientUserinfoChanged
@@ -141,7 +143,7 @@ Return `mq3.server.game_vm.invoke(state, [GAME_CLIENT_USERINFO_CHANGED, clientNu
 | `clientNum` | `dynamic` | — | Client num used in `invoke(state, [GAME_CLIENT_USERINFO_CHANGED, clientNum])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L209)
 
 <a id="function-function-mq3-server-game-vm-consolecommand-function-consolecommand-state-src-mq3-server-game-vm-ml-93360595"></a>
 ### consoleCommand
@@ -157,7 +159,7 @@ Return `mq3.server.game_vm.invoke(state, [GAME_CONSOLE_COMMAND])` from `server.g
 | `state` | `dynamic` | — | State passed as `state` to `mq3.server.game_vm.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L228)
 
 <a id="function-function-mq3-server-game-vm-create-function-create-host-src-mq3-server-game-vm-ml-161339800"></a>
 ### create
@@ -175,7 +177,7 @@ Validation failures include `game VM: missing runtime service`.
 | `host` | `dynamic` | — | Record exposing `machineRuntime`, `syscall`, `loadFn`, `callFn`, `restartFn`, `freeFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L91)
 
 <a id="constant-constant-mq3-server-game-vm-game-client-begin-const-game-client-begin-gpublic-game-client-begin-src-mq3-server-game-vm-ml-793566067"></a>
 ### GAME_CLIENT_BEGIN
@@ -184,8 +186,10 @@ Validation failures include `game VM: missing runtime service`.
 const GAME_CLIENT_BEGIN = gpublic.GAME_CLIENT_BEGIN
 ```
 
+Game-VM export identifier for client begin.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L14)
 
 <a id="constant-constant-mq3-server-game-vm-game-client-command-const-game-client-command-gpublic-game-client-command-src-mq3-server-game-vm-ml-635724519"></a>
 ### GAME_CLIENT_COMMAND
@@ -194,8 +198,10 @@ const GAME_CLIENT_BEGIN = gpublic.GAME_CLIENT_BEGIN
 const GAME_CLIENT_COMMAND = gpublic.GAME_CLIENT_COMMAND
 ```
 
+Game-VM export identifier for client command.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L20)
 
 <a id="constant-constant-mq3-server-game-vm-game-client-connect-const-game-client-connect-gpublic-game-client-connect-src-mq3-server-game-vm-ml-190435700"></a>
 ### GAME_CLIENT_CONNECT
@@ -204,8 +210,10 @@ const GAME_CLIENT_COMMAND = gpublic.GAME_CLIENT_COMMAND
 const GAME_CLIENT_CONNECT = gpublic.GAME_CLIENT_CONNECT
 ```
 
+Game-VM export identifier for client connect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L12)
 
 <a id="constant-constant-mq3-server-game-vm-game-client-disconnect-const-game-client-disconnect-gpublic-game-client-disconnect-src-mq3-server-game-vm-ml-1504075784"></a>
 ### GAME_CLIENT_DISCONNECT
@@ -214,8 +222,10 @@ const GAME_CLIENT_CONNECT = gpublic.GAME_CLIENT_CONNECT
 const GAME_CLIENT_DISCONNECT = gpublic.GAME_CLIENT_DISCONNECT
 ```
 
+Game-VM export identifier for client disconnect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L18)
 
 <a id="constant-constant-mq3-server-game-vm-game-client-think-const-game-client-think-gpublic-game-client-think-src-mq3-server-game-vm-ml-1956820026"></a>
 ### GAME_CLIENT_THINK
@@ -224,8 +234,10 @@ const GAME_CLIENT_DISCONNECT = gpublic.GAME_CLIENT_DISCONNECT
 const GAME_CLIENT_THINK = gpublic.GAME_CLIENT_THINK
 ```
 
+Game-VM export identifier for client think.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L22)
 
 <a id="constant-constant-mq3-server-game-vm-game-client-userinfo-changed-const-game-client-userinfo-changed-gpublic-game-client-userinfo-changed-src-mq3-server-game-vm-ml-367339542"></a>
 ### GAME_CLIENT_USERINFO_CHANGED
@@ -234,8 +246,10 @@ const GAME_CLIENT_THINK = gpublic.GAME_CLIENT_THINK
 const GAME_CLIENT_USERINFO_CHANGED = gpublic.GAME_CLIENT_USERINFO_CHANGED
 ```
 
+Game-VM export identifier for client user information changed.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L16)
 
 <a id="constant-constant-mq3-server-game-vm-game-console-command-const-game-console-command-gpublic-game-console-command-src-mq3-server-game-vm-ml-1124266619"></a>
 ### GAME_CONSOLE_COMMAND
@@ -244,8 +258,10 @@ const GAME_CLIENT_USERINFO_CHANGED = gpublic.GAME_CLIENT_USERINFO_CHANGED
 const GAME_CONSOLE_COMMAND = gpublic.GAME_CONSOLE_COMMAND
 ```
 
+Game-VM export identifier for console command.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L26)
 
 <a id="constant-constant-mq3-server-game-vm-game-init-const-game-init-gpublic-game-init-src-mq3-server-game-vm-ml-1231343152"></a>
 ### GAME_INIT
@@ -254,8 +270,10 @@ const GAME_CONSOLE_COMMAND = gpublic.GAME_CONSOLE_COMMAND
 const GAME_INIT = gpublic.GAME_INIT
 ```
 
+Game-VM export identifier for init.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L8)
 
 <a id="constant-constant-mq3-server-game-vm-game-run-frame-const-game-run-frame-gpublic-game-run-frame-src-mq3-server-game-vm-ml-1124556579"></a>
 ### GAME_RUN_FRAME
@@ -264,8 +282,10 @@ const GAME_INIT = gpublic.GAME_INIT
 const GAME_RUN_FRAME = gpublic.GAME_RUN_FRAME
 ```
 
+Game-VM export identifier for run frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L24)
 
 <a id="constant-constant-mq3-server-game-vm-game-shutdown-const-game-shutdown-gpublic-game-shutdown-src-mq3-server-game-vm-ml-720573976"></a>
 ### GAME_SHUTDOWN
@@ -274,8 +294,10 @@ const GAME_RUN_FRAME = gpublic.GAME_RUN_FRAME
 const GAME_SHUTDOWN = gpublic.GAME_SHUTDOWN
 ```
 
+Game-VM export identifier for shutdown.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L10)
 
 <a id="function-function-mq3-server-game-vm-initialize-function-initialize-state-leveltime-maxclients-src-mq3-server-game-vm-ml-1679926632"></a>
 ### initialize
@@ -296,7 +318,7 @@ Direct state writes: `state.botEnable`, `state.slot`, `state.active`.
 | `maxClients` | `dynamic` | — | Max clients passed as `maxClients` to `mq3.server.game_vm.initializeVm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L146)
 
 <a id="function-function-mq3-server-game-vm-initializevm-function-initializevm-state-leveltime-maxclients-restart-src-mq3-server-game-vm-ml-990697631"></a>
 ### initializeVm
@@ -318,7 +340,7 @@ Direct state writes: `state.entityParsePoint`.
 | `restart` | `dynamic` | — | Restart operand used by `initializeVm`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L127)
 
 <a id="function-function-mq3-server-game-vm-invoke-function-invoke-state-arguments-src-mq3-server-game-vm-ml-317852643"></a>
 ### invoke
@@ -338,7 +360,7 @@ Direct state writes: `state.callCount`, `state.lastExport`, `state.lastArgs`.
 | `arguments` | `dynamic` | — | Arguments used in `arguments[0]` and `len(arguments)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L111)
 
 <a id="function-function-mq3-server-game-vm-requireactive-function-requireactive-state-src-mq3-server-game-vm-ml-1164685649"></a>
 ### requireActive
@@ -356,7 +378,7 @@ Validation failures include `game VM: module is not active`.
 | `state` | `dynamic` | — | Record exposing `active`, `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L100)
 
 <a id="function-function-mq3-server-game-vm-restart-function-restart-state-leveltime-maxclients-src-mq3-server-game-vm-ml-1346892674"></a>
 ### restart
@@ -377,7 +399,7 @@ Direct state writes: `state.slot`, `state.active`, `state.entityParsePoint`.
 | `maxClients` | `dynamic` | — | Max clients passed as `maxClients` to `mq3.server.game_vm.initializeVm`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L165)
 
 <a id="function-function-mq3-server-game-vm-runframe-function-runframe-state-leveltime-src-mq3-server-game-vm-ml-628895402"></a>
 ### runFrame
@@ -394,7 +416,7 @@ Return `mq3.server.game_vm.invoke(state, [GAME_RUN_FRAME, levelTime])` from `ser
 | `levelTime` | `dynamic` | — | Level time used in `invoke(state, [GAME_RUN_FRAME, levelTime])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L225)
 
 <a id="function-function-mq3-server-game-vm-services-function-services-machineruntime-syscall-loadfn-callfn-restartfn-freefn-src-mq3-server-game-vm-ml-1924673957"></a>
 ### services
@@ -415,7 +437,7 @@ Create `mq3.server.game_vm.Services` with machineRuntime=machineRuntime; syscall
 | `freeFn` | `dynamic` | — | Initial `freeFn` field stored in the returned or constructed `mq3.server.game_vm.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L83)
 
 - [mq3.server.game_vm.Services](Type-mq3-server-game-vm-services-352231525.md) — struct
 <a id="function-function-mq3-server-game-vm-shutdown-function-shutdown-state-src-mq3-server-game-vm-ml-1146187267"></a>
@@ -435,6 +457,6 @@ Direct state writes: `state.slot`, `state.active`, `state.entityParsePoint`.
 | `state` | `dynamic` | — | Record exposing `active`, `host`, `slot`. Updated in place: `slot`, `active`, `entityParsePoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L184)
 
 - [mq3.server.game_vm.State](Type-mq3-server-game-vm-state-1588325990.md) — struct

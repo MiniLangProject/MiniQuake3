@@ -12,7 +12,7 @@ struct OpenResult
 OpenResult record for qcommon.files_runtime, containing `length`, `handle`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L48)
 
 ## Members
 
@@ -23,8 +23,10 @@ OpenResult record for qcommon.files_runtime, containing `length`, `handle`.
 handle
 ```
 
+Managed file handle returned by the open operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L52)
 
 <a id="field-field-mq3-qcommon-files-runtime-openresult-length-length-src-mq3-qcommon-files-runtime-ml-266612980"></a>
 ### length
@@ -33,5 +35,7 @@ handle
 length
 ```
 
+Length of the opened file in bytes, or an error sentinel.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L50)

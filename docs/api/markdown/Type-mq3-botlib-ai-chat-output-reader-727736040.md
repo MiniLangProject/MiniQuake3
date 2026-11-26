@@ -12,7 +12,7 @@ struct Reader
 `Reader` record for ai chat output, containing `registry`, `source` and `pending`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L79)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Reader
 pending
 ```
 
+Saved token or command awaiting consumption by the next operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L85)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reader-registry-registry-src-mq3-botlib-ai-chat-output-ml-575987516"></a>
 ### registry
@@ -33,8 +35,10 @@ pending
 registry
 ```
 
+Registry used to resolve registered names, handles, or runtime definitions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L81)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reader-source-source-src-mq3-botlib-ai-chat-output-ml-978422764"></a>
 ### source
@@ -43,5 +47,7 @@ registry
 source
 ```
 
+Preprocessor source handle supplying the reply or random-chat script.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L83)

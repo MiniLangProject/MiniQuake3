@@ -23,5 +23,7 @@ RandomState record for shared.math, containing `seed`.
 seed
 ```
 
+Current pseudo-random generator state, updated whenever a random value is drawn.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L110)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L111)

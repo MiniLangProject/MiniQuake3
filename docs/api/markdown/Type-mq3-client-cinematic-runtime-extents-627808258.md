@@ -12,7 +12,7 @@ struct Extents
 Stores cinematic runtime extents record, including `x`, `y`, `width`, `height`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L33)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores cinematic runtime extents record, including `x`, `y`, `width`, `height`.
 height
 ```
 
+Requested cinematic destination height, interpreted in virtual screen units for non-shader playback.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L45)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-width-width-src-mq3-client-cinematic-runtime-ml-1642379986"></a>
 ### width
@@ -33,8 +35,10 @@ height
 width
 ```
 
+Requested cinematic destination width, interpreted in virtual screen units for non-shader playback.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L42)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-x-x-src-mq3-client-cinematic-runtime-ml-240205902"></a>
 ### x
@@ -43,8 +47,10 @@ width
 x
 ```
 
+Horizontal coordinate of the requested cinematic rectangle before conversion to target-display coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-y-y-src-mq3-client-cinematic-runtime-ml-522215746"></a>
 ### y
@@ -53,5 +59,7 @@ x
 y
 ```
 
+Vertical coordinate of the requested cinematic rectangle before conversion to target-display coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L39)

@@ -31,7 +31,7 @@ Updates `state.serverId`, `state.connectedPure` during system info `apply`.
 | `systemInfo` | `dynamic` | — | Value used by `state.serverId=textnumbers.atoi(info.value(systemInfo,"sv_serverid"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L72)
 
 - [mq3.client.system_info.Binding](Type-mq3-client-system-info-binding-1433800738.md) — struct
 <a id="function-function-mq3-client-system-info-create-function-create-src-mq3-client-system-info-ml-122528206"></a>
@@ -44,7 +44,7 @@ function create()
 Creates a `mq3.client.system_info.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L51)
 
 <a id="function-function-mq3-client-system-info-gamestatechanged-function-gamestatechanged-gamestate-src-mq3-client-system-info-ml-1956102561"></a>
 ### gamestateChanged
@@ -60,7 +60,7 @@ Calls `mq3.client.system_info.apply`, `mq3.client.gamestate.configString` from s
 | `gameState` | `dynamic` | — | Record read through `gameState.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L93)
 
 <a id="function-function-mq3-client-system-info-install-function-install-gamestate-state-host-src-mq3-client-system-info-ml-673591242"></a>
 ### install
@@ -78,7 +78,7 @@ Updates `gameState.context`, `gameState.systemInfoFn` during system info `instal
 | `host` | `dynamic` | — | host record passed to the system info helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L103)
 
 <a id="function-function-mq3-client-system-info-pairs-function-pairs-systeminfo-src-mq3-client-system-info-ml-1618875903"></a>
 ### pairs
@@ -94,7 +94,7 @@ Calls `std.string.split` from system info `pairs`. The final path returns `resul
 | `systemInfo` | `dynamic` | — | Value used by `fields=strings.split(systemInfo,"\\\\")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L57)
 
 <a id="function-function-mq3-client-system-info-services-function-services-src-mq3-client-system-info-ml-354141090"></a>
 ### services
@@ -106,7 +106,7 @@ function services()
 Creates a `mq3.client.system_info.Services` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L53)
 
 - [mq3.client.system_info.Services](Type-mq3-client-system-info-services-378977525.md) — struct
 - [mq3.client.system_info.State](Type-mq3-client-system-info-state-965689014.md) — struct

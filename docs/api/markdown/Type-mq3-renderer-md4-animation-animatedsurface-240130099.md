@@ -12,7 +12,7 @@ struct AnimatedSurface
 Data record for `mq3.renderer.md4_animation.AnimatedSurface`; groups `positions`, `normals`, `texCoords`, `indexes`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L58)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.md4_animation.AnimatedSurface`; groups `positions`
 indexes
 ```
 
+Skeletal surface triangle indices referencing the bone-transformed position array.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L66)
 
 <a id="field-field-mq3-renderer-md4-animation-animatedsurface-normals-normals-src-mq3-renderer-md4-animation-ml-1976524707"></a>
 ### normals
@@ -33,8 +35,10 @@ indexes
 normals
 ```
 
+Vertex normals used when lighting or transforming the geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L62)
 
 <a id="field-field-mq3-renderer-md4-animation-animatedsurface-positions-positions-src-mq3-renderer-md4-animation-ml-1038571999"></a>
 ### positions
@@ -43,8 +47,10 @@ normals
 positions
 ```
 
+Vertex positions obtained by accumulating the weighted bone transformations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L60)
 
 <a id="field-field-mq3-renderer-md4-animation-animatedsurface-texcoords-texcoords-src-mq3-renderer-md4-animation-ml-1561468559"></a>
 ### texCoords
@@ -53,5 +59,7 @@ positions
 texCoords
 ```
 
+Texture-coordinate array paired with the bone-transformed surface vertices.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L64)

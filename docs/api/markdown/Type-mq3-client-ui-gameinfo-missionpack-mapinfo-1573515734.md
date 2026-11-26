@@ -12,7 +12,7 @@ struct MapInfo
 Stores UI gameinfo missionpack map info record, including `cinematic`, `mapLoadName`, `mapName`, `levelShot`, `imageName`, `typeBits` and additional values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L39)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI gameinfo missionpack map info record, including `cinematic`, `mapLoadN
 cinematic
 ```
 
+When constructing this record, `mapInfo` supplies `-1` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L41)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-imagename-imagename-src-mq3-client-ui-gameinfo-missionpack-ml-622017119"></a>
 ### imageName
@@ -33,8 +35,10 @@ cinematic
 imageName
 ```
 
+Levelshot image name associated with this Missionpack arena entry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L49)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-levelshot-levelshot-src-mq3-client-ui-gameinfo-missionpack-ml-1690999983"></a>
 ### levelShot
@@ -43,8 +47,10 @@ imageName
 levelShot
 ```
 
+True while producing the menu screenshot for the current level.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L47)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-maploadname-maploadname-src-mq3-client-ui-gameinfo-missionpack-ml-492733819"></a>
 ### mapLoadName
@@ -53,8 +59,10 @@ levelShot
 mapLoadName
 ```
 
+When constructing this record, `mapInfo` supplies `loadName` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L43)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-mapname-mapname-src-mq3-client-ui-gameinfo-missionpack-ml-1455547511"></a>
 ### mapName
@@ -63,8 +71,10 @@ mapLoadName
 mapName
 ```
 
+Virtual map name used to identify and launch this arena definition.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L45)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-skirmishnumber-skirmishnumber-src-mq3-client-ui-gameinfo-missionpack-ml-1850333197"></a>
 ### skirmishNumber
@@ -73,8 +83,10 @@ mapName
 skirmishNumber
 ```
 
+When constructing this record, `mapInfo` supplies `number` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L54)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-typebits-typebits-src-mq3-client-ui-gameinfo-missionpack-ml-239374235"></a>
 ### typeBits
@@ -83,5 +95,7 @@ skirmishNumber
 typeBits
 ```
 
+When constructing this record, `mapInfo` supplies `arenaTypeBits(info.value(arena,"type"))` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L52)

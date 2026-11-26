@@ -12,7 +12,7 @@ struct ChoiceList
 Stores UI servers2 choice list record, including `name`, `values`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L190)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores UI servers2 choice list record, including `name`, `values`.
 name
 ```
 
+Caption for a server-browser choice group, such as server source, game type, or sort order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L192)
 
 <a id="field-field-mq3-client-ui-servers2-choicelist-values-values-src-mq3-client-ui-servers2-ml-1953756394"></a>
 ### values
@@ -33,5 +35,7 @@ name
 values
 ```
 
+When constructing this record, `browserChoices` supplies `["Local","Internet","Favorites"]` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L195)

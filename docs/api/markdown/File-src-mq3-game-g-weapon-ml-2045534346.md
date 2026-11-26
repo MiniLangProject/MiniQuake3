@@ -39,7 +39,7 @@ Return `n.trunc32(value*(65536.0/360.0))&65535` for `angleToShort`.
 | `value` | `dynamic` | — | Operand used to evaluate the returned expression `n.trunc32(value*(65536.0/360.0))&65535`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L294)
 
 <a id="function-function-mq3-game-g-weapon-bfg-fire-function-bfg-fire-level-ent-src-mq3-game-g-weapon-ml-197827115"></a>
 ### BFG_Fire
@@ -56,7 +56,7 @@ Forward `BFG_Fire` to `mq3.game.weapons.bfg` and return the delegated result.
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L73)
 
 <a id="function-function-mq3-game-g-weapon-bullet-fire-function-bullet-fire-level-ent-spread-damage-src-mq3-game-g-weapon-ml-1507077631"></a>
 ### Bullet_Fire
@@ -75,7 +75,7 @@ Forward `Bullet_Fire` to `mq3.game.weapon_hitscan.bullet` and return the delegat
 | `damage` | `dynamic` | — | Damage amount before the current operation applies its rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L69)
 
 <a id="function-function-mq3-game-g-weapon-calcmuzzlepoint-function-calcmuzzlepoint-ent-forward-right-up-muzzlepoint-src-mq3-game-g-weapon-ml-1871172490"></a>
 ### CalcMuzzlePoint
@@ -95,7 +95,7 @@ Forward `CalcMuzzlePoint` to `mq3.game.weapons.calcMuzzlePoint` and return the d
 | `muzzlePoint` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L134)
 
 <a id="function-function-mq3-game-g-weapon-calcmuzzlepointorigin-function-calcmuzzlepointorigin-ent-origin-forward-right-up-muzzlepoint-src-mq3-game-g-weapon-ml-2086620884"></a>
 ### CalcMuzzlePointOrigin
@@ -116,7 +116,7 @@ Forward `CalcMuzzlePointOrigin` to `mq3.game.weapons.calcMuzzlePointOrigin` and 
 | `muzzlePoint` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L142)
 
 <a id="function-function-mq3-game-g-weapon-centeredrandom-function-centeredrandom-level-src-mq3-game-g-weapon-ml-203220254"></a>
 ### centeredRandom
@@ -132,7 +132,7 @@ Return `2.0*(randomFloat(level)-0.5)` for `centeredRandom`.
 | `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L149)
 
 <a id="function-function-mq3-game-g-weapon-checkgauntletattack-function-checkgauntletattack-level-ent-src-mq3-game-g-weapon-ml-1778788683"></a>
 ### CheckGauntletAttack
@@ -149,7 +149,7 @@ Forward `CheckGauntletAttack` to `mq3.game.weapons.checkGauntlet` and return the
 | `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L59)
 
 <a id="constant-constant-mq3-game-g-weapon-damage-no-protection-const-damage-no-protection-8-src-mq3-game-g-weapon-ml-581667109"></a>
 ### DAMAGE_NO_PROTECTION
@@ -158,8 +158,10 @@ Forward `CheckGauntletAttack` to `mq3.game.weapons.checkGauntlet` and return the
 const DAMAGE_NO_PROTECTION = 8
 ```
 
+Damage-processing flag enabling no protection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L40)
 
 <a id="constant-constant-mq3-game-g-weapon-damage-no-team-protection-const-damage-no-team-protection-16-src-mq3-game-g-weapon-ml-2121490032"></a>
 ### DAMAGE_NO_TEAM_PROTECTION
@@ -168,8 +170,10 @@ const DAMAGE_NO_PROTECTION = 8
 const DAMAGE_NO_TEAM_PROTECTION = 16
 ```
 
+Damage-processing flag enabling no team protection.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L42)
 
 <a id="constant-constant-mq3-game-g-weapon-damage-radius-const-damage-radius-1-src-mq3-game-g-weapon-ml-1655137992"></a>
 ### DAMAGE_RADIUS
@@ -178,8 +182,10 @@ const DAMAGE_NO_TEAM_PROTECTION = 16
 const DAMAGE_RADIUS = 1
 ```
 
+Damage-processing flag enabling radius.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L38)
 
 <a id="function-function-mq3-game-g-weapon-edgedistance-function-edgedistance-origin-ent-src-mq3-game-g-weapon-ml-1111962151"></a>
 ### edgeDistance
@@ -196,7 +202,7 @@ Calculate the shortest distance from an origin to an entity's axis-aligned absol
 | `ent` | `dynamic` | — | Game entity; accesses `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L241)
 
 <a id="constant-constant-mq3-game-g-weapon-ef-kamikaze-const-ef-kamikaze-512-src-mq3-game-g-weapon-ml-220177177"></a>
 ### EF_KAMIKAZE
@@ -205,8 +211,10 @@ Calculate the shortest distance from an origin to an entity's axis-aligned absol
 const EF_KAMIKAZE = 512
 ```
 
+Network entity-flag bit indicating kamikaze.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L36)
 
 <a id="function-function-mq3-game-g-weapon-firenail-function-firenail-level-self-start-forward-right-up-src-mq3-game-g-weapon-ml-788744500"></a>
 ### fireNail
@@ -227,7 +235,7 @@ Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.g_weapon
 | `up` | `dynamic` | — | Value passed as argument 3 to `mq3.shared.math.VectorMA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L158)
 
 <a id="function-function-mq3-game-g-weapon-fireprox-function-fireprox-level-self-start-direction-src-mq3-game-g-weapon-ml-625333649"></a>
 ### fireProx
@@ -246,7 +254,7 @@ Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.snapshot
 | `direction` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L177)
 
 <a id="function-function-mq3-game-g-weapon-fireweapon-function-fireweapon-level-ent-missionpack-doubler-src-mq3-game-g-weapon-ml-1242718011"></a>
 ### FireWeapon
@@ -265,7 +273,7 @@ Apply `mq3.game.weapons.fire`, `mq3.game.weapons.weaponClient` and `mq3.game.wea
 | `doubler` | `dynamic` | — | Value used by `FireWeapon` in `if doubler then state.quadFactor = n.fmul(state.quadFactor,2.0) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L210)
 
 <a id="function-function-mq3-game-g-weapon-g-bounceprojectile-function-g-bounceprojectile-start-impact-dir-endout-src-mq3-game-g-weapon-ml-686062366"></a>
 ### G_BounceProjectile
@@ -284,7 +292,7 @@ Forward `G_BounceProjectile` to `mq3.game.weapons.bounceProjectile` and return t
 | `endout` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L51)
 
 <a id="function-function-mq3-game-g-weapon-g-startkamikaze-function-g-startkamikaze-level-ent-src-mq3-game-g-weapon-ml-602838337"></a>
 ### G_StartKamikaze
@@ -301,7 +309,7 @@ Set `ent.s.eFlags` to `ent.s.eFlags&~EF_KAMIKAZE` in `mq3.game.g_weapon.G_StartK
 | `ent` | `dynamic` | — | Game entity; accesses `client`, `activator` and `s`. May update `ent.s.eFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L315)
 
 <a id="function-function-mq3-game-g-weapon-kamikazedamage-function-kamikazedamage-level-self-src-mq3-game-g-weapon-ml-976126704"></a>
 ### KamikazeDamage
@@ -318,7 +326,7 @@ Update `self.count`, `self.nextthink` and `self.movedir` during `KamikazeDamage`
 | `self` | `dynamic` | — | Entity receiving the callback; accesses `count`, `s`, `activator`, `nextthink` and `movedir`. May update `self.count`, `self.nextthink` and `self.movedir` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L298)
 
 <a id="function-function-mq3-game-g-weapon-kamikazeradiusdamage-function-kamikazeradiusdamage-level-origin-attacker-damage-radius-src-mq3-game-g-weapon-ml-2075367432"></a>
 ### KamikazeRadiusDamage
@@ -338,7 +346,7 @@ Apply `mq3.game.weapon_state.get`, `mq3.server.world.areaEntities` and `mq3.game
 | `radius` | `dynamic` | — | Radius used by the spatial or damage query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L256)
 
 <a id="function-function-mq3-game-g-weapon-kamikazeshockwave-function-kamikazeshockwave-level-origin-attacker-damage-push-radius-src-mq3-game-g-weapon-ml-2107732112"></a>
 ### KamikazeShockWave
@@ -359,7 +367,7 @@ Apply `mq3.game.weapon_state.get`, `mq3.server.world.areaEntities` and `mq3.game
 | `radius` | `dynamic` | — | Radius used by the spatial or damage query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L277)
 
 <a id="function-function-mq3-game-g-weapon-logaccuracyhit-function-logaccuracyhit-level-target-attacker-src-mq3-game-g-weapon-ml-722654108"></a>
 ### LogAccuracyHit
@@ -377,7 +385,7 @@ Forward `LogAccuracyHit` to `mq3.game.combat.logAccuracyHit` and return the dele
 | `attacker` | `dynamic` | — | Entity credited with the attack. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L127)
 
 <a id="constant-constant-mq3-game-g-weapon-mask-shot-const-mask-shot-100663297-src-mq3-game-g-weapon-ml-1476739603"></a>
 ### MASK_SHOT
@@ -386,8 +394,10 @@ Forward `LogAccuracyHit` to `mq3.game.combat.logAccuracyHit` and return the dele
 const MASK_SHOT = 100663297
 ```
 
+Combined CONTENTS_* mask used for shot collision queries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L44)
 
 <a id="constant-constant-mq3-game-g-weapon-mod-chaingun-const-mod-chaingun-25-src-mq3-game-g-weapon-ml-1374888844"></a>
 ### MOD_CHAINGUN
@@ -396,8 +406,10 @@ const MASK_SHOT = 100663297
 const MOD_CHAINGUN = 25
 ```
 
+Cause-of-death identifier attributing damage or a kill to chaingun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L30)
 
 <a id="constant-constant-mq3-game-g-weapon-mod-kamikaze-const-mod-kamikaze-27-src-mq3-game-g-weapon-ml-255465094"></a>
 ### MOD_KAMIKAZE
@@ -406,8 +418,10 @@ const MOD_CHAINGUN = 25
 const MOD_KAMIKAZE = 27
 ```
 
+Cause-of-death identifier attributing damage or a kill to kamikaze.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L34)
 
 <a id="constant-constant-mq3-game-g-weapon-mod-nail-const-mod-nail-24-src-mq3-game-g-weapon-ml-464741283"></a>
 ### MOD_NAIL
@@ -416,8 +430,10 @@ const MOD_KAMIKAZE = 27
 const MOD_NAIL = 24
 ```
 
+Cause-of-death identifier attributing damage or a kill to nail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L28)
 
 <a id="constant-constant-mq3-game-g-weapon-mod-proximity-mine-const-mod-proximity-mine-26-src-mq3-game-g-weapon-ml-475770343"></a>
 ### MOD_PROXIMITY_MINE
@@ -426,8 +442,10 @@ const MOD_NAIL = 24
 const MOD_PROXIMITY_MINE = 26
 ```
 
+Cause-of-death identifier attributing damage or a kill to proximity mine.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L32)
 
 <a id="function-function-mq3-game-g-weapon-randomfloat-function-randomfloat-level-src-mq3-game-g-weapon-ml-788957480"></a>
 ### randomFloat
@@ -443,7 +461,7 @@ Forward `randomFloat` to `mq3.compat.numeric.fdiv` and return the delegated resu
 | `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L146)
 
 <a id="function-function-mq3-game-g-weapon-shotgunpattern-function-shotgunpattern-level-origin-origin2-seed-ent-src-mq3-game-g-weapon-ml-1714987886"></a>
 ### ShotgunPattern
@@ -463,7 +481,7 @@ Forward `ShotgunPattern` to `mq3.game.weapon_hitscan.shotgunPattern` and return 
 | `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.accuracy_hits` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L86)
 
 <a id="function-function-mq3-game-g-weapon-shotgunpellet-function-shotgunpellet-level-start-finish-ent-src-mq3-game-g-weapon-ml-949066330"></a>
 ### ShotgunPellet
@@ -482,7 +500,7 @@ Forward `ShotgunPellet` to `mq3.game.weapon_hitscan.shotgunPellet` and return th
 | `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L79)
 
 <a id="function-function-mq3-game-g-weapon-snapvectortowards-function-snapvectortowards-value-towards-src-mq3-game-g-weapon-ml-301681509"></a>
 ### SnapVectorTowards
@@ -499,7 +517,7 @@ Forward `SnapVectorTowards` to `mq3.game.missiles.snapTowards` and return the de
 | `towards` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L63)
 
 <a id="function-function-mq3-game-g-weapon-weapon-gauntlet-function-weapon-gauntlet-level-ent-src-mq3-game-g-weapon-ml-389817945"></a>
 ### Weapon_Gauntlet
@@ -516,7 +534,7 @@ Forward `Weapon_Gauntlet` to `mq3.game.weapons.gauntlet` and return the delegate
 | `ent` | `dynamic` | — | Value passed as argument 2 to `mq3.game.weapons.gauntlet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L55)
 
 <a id="function-function-mq3-game-g-weapon-weapon-grapplinghook-fire-function-weapon-grapplinghook-fire-level-ent-src-mq3-game-g-weapon-ml-554800361"></a>
 ### Weapon_GrapplingHook_Fire
@@ -533,7 +551,7 @@ Forward `Weapon_GrapplingHook_Fire` to `mq3.game.weapons.grapple` and return the
 | `ent` | `dynamic` | — | Game entity; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L110)
 
 <a id="function-function-mq3-game-g-weapon-weapon-grenadelauncher-fire-function-weapon-grenadelauncher-fire-level-ent-src-mq3-game-g-weapon-ml-1136599051"></a>
 ### weapon_grenadelauncher_fire
@@ -550,7 +568,7 @@ Forward `weapon_grenadelauncher_fire` to `mq3.game.weapons.grenade` and return t
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L94)
 
 <a id="function-function-mq3-game-g-weapon-weapon-hookfree-function-weapon-hookfree-level-ent-src-mq3-game-g-weapon-ml-2021116151"></a>
 ### Weapon_HookFree
@@ -567,7 +585,7 @@ Forward `Weapon_HookFree` to `mq3.game.missiles.hookFree` and return the delegat
 | `ent` | `dynamic` | — | Game entity; accesses `parent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L114)
 
 <a id="function-function-mq3-game-g-weapon-weapon-hookthink-function-weapon-hookthink-level-ent-src-mq3-game-g-weapon-ml-2100676523"></a>
 ### Weapon_HookThink
@@ -584,7 +602,7 @@ Forward `Weapon_HookThink` to `mq3.game.missiles.hookThink` and return the deleg
 | `ent` | `dynamic` | — | Game entity; accesses `enemy` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L118)
 
 <a id="function-function-mq3-game-g-weapon-weapon-lightningfire-function-weapon-lightningfire-level-ent-src-mq3-game-g-weapon-ml-908791699"></a>
 ### Weapon_LightningFire
@@ -601,7 +619,7 @@ Forward `Weapon_LightningFire` to `mq3.game.weapon_hitscan.lightning` and return
 | `ent` | `dynamic` | — | Game entity; accesses `s` and `client`. May update `ent.client.accuracy_hits` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L122)
 
 <a id="function-function-mq3-game-g-weapon-weapon-nailgun-fire-function-weapon-nailgun-fire-level-ent-src-mq3-game-g-weapon-ml-1431713995"></a>
 ### Weapon_Nailgun_Fire
@@ -618,7 +636,7 @@ Apply `mq3.game.weapon_state.get` and `mq3.game.g_weapon.fireNail` while evaluat
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L189)
 
 <a id="function-function-mq3-game-g-weapon-weapon-plasmagun-fire-function-weapon-plasmagun-fire-level-ent-src-mq3-game-g-weapon-ml-1387183955"></a>
 ### Weapon_Plasmagun_Fire
@@ -635,7 +653,7 @@ Forward `Weapon_Plasmagun_Fire` to `mq3.game.weapons.plasma` and return the dele
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L102)
 
 <a id="function-function-mq3-game-g-weapon-weapon-proxlauncher-fire-function-weapon-proxlauncher-fire-level-ent-src-mq3-game-g-weapon-ml-1897083703"></a>
 ### weapon_proxlauncher_fire
@@ -652,7 +670,7 @@ Apply `mq3.game.weapon_state.get` and `mq3.game.g_weapon.fireProx` while evaluat
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s` and `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L200)
 
 <a id="function-function-mq3-game-g-weapon-weapon-railgun-fire-function-weapon-railgun-fire-level-ent-src-mq3-game-g-weapon-ml-1157013483"></a>
 ### weapon_railgun_fire
@@ -669,7 +687,7 @@ Forward `weapon_railgun_fire` to `mq3.game.weapon_hitscan.rail` and return the d
 | `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L106)
 
 <a id="function-function-mq3-game-g-weapon-weapon-rocketlauncher-fire-function-weapon-rocketlauncher-fire-level-ent-src-mq3-game-g-weapon-ml-1805610411"></a>
 ### Weapon_RocketLauncher_Fire
@@ -686,7 +704,7 @@ Forward `Weapon_RocketLauncher_Fire` to `mq3.game.weapons.rocket` and return the
 | `ent` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L98)
 
 <a id="function-function-mq3-game-g-weapon-weapon-supershotgun-fire-function-weapon-supershotgun-fire-level-ent-src-mq3-game-g-weapon-ml-644829051"></a>
 ### weapon_supershotgun_fire
@@ -703,7 +721,7 @@ Forward `weapon_supershotgun_fire` to `mq3.game.weapon_hitscan.shotgun` and retu
 | `ent` | `dynamic` | — | Game entity; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L90)
 
 <a id="constant-constant-mq3-game-g-weapon-wp-chaingun-const-wp-chaingun-13-src-mq3-game-g-weapon-ml-1223646845"></a>
 ### WP_CHAINGUN
@@ -712,8 +730,10 @@ Forward `weapon_supershotgun_fire` to `mq3.game.weapon_hitscan.shotgun` and retu
 const WP_CHAINGUN = 13
 ```
 
+Weapon identifier selecting chaingun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L26)
 
 <a id="constant-constant-mq3-game-g-weapon-wp-nailgun-const-wp-nailgun-11-src-mq3-game-g-weapon-ml-322209349"></a>
 ### WP_NAILGUN
@@ -722,8 +742,10 @@ const WP_CHAINGUN = 13
 const WP_NAILGUN = 11
 ```
 
+Weapon identifier selecting nailgun.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L22)
 
 <a id="constant-constant-mq3-game-g-weapon-wp-prox-launcher-const-wp-prox-launcher-12-src-mq3-game-g-weapon-ml-2081719782"></a>
 ### WP_PROX_LAUNCHER
@@ -732,5 +754,7 @@ const WP_NAILGUN = 11
 const WP_PROX_LAUNCHER = 12
 ```
 
+Weapon identifier selecting prox launcher.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_weapon.ml#L24)

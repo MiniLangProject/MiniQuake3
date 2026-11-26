@@ -22,7 +22,7 @@ Updates `state.pulse[index]` during UI input latch `beginFrame`.
 | `state` | `dynamic` | — | Mutable UI input latch record/storage; this routine assigns `state.pulse[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L27)
 
 <a id="function-function-mq3-client-ui-input-latch-create-function-create-keycount-src-mq3-client-ui-input-latch-ml-1584435428"></a>
 ### create
@@ -38,7 +38,7 @@ Calls `mq3.client.ui_input_latch.State` from UI input latch `create`. The final 
 | `keyCount` | `dynamic` | — | Value used by `if typeof(keyCount)!="int" or keyCount<1 then return error(7703,"UI input latch: invalid key capacity") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-input-latch-input-key-const-input-key-1-src-mq3-client-ui-input-latch-ml-455511196"></a>
 ### INPUT_KEY
@@ -47,8 +47,10 @@ Calls `mq3.client.ui_input_latch.State` from UI input latch `create`. The final 
 const INPUT_KEY = 1
 ```
 
+Platform input-event tag selecting a key press or release.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L5)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L6)
 
 <a id="function-function-mq3-client-ui-input-latch-keydown-function-keydown-state-key-src-mq3-client-ui-input-latch-ml-567883264"></a>
 ### keyDown
@@ -65,7 +67,7 @@ Tests the held or one-frame pulse state for a valid key; invalid keys return fal
 | `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI input latch entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L48)
 
 <a id="function-function-mq3-client-ui-input-latch-observe-function-observe-state-type-key-value-src-mq3-client-ui-input-latch-ml-1647633929"></a>
 ### observe
@@ -84,6 +86,6 @@ Updates `state.down[key]`, `state.pulse[key]` during UI input latch `observe`.
 | `value` | `dynamic` | — | Value used by `down=value!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L38)
 
 - [mq3.client.ui_input_latch.State](Type-mq3-client-ui-input-latch-state-116436234.md) — struct

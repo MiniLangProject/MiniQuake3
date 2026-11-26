@@ -12,7 +12,7 @@ struct Start
 Start record for audio.snd_channels, containing `accepted`, `slot`, `replaced`, `reason`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L37)
 
 ## Members
 
@@ -23,8 +23,10 @@ Start record for audio.snd_channels, containing `accepted`, `slot`, `replaced`, 
 accepted
 ```
 
+True when a channel was assigned to the requested sound.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L39)
 
 <a id="field-field-mq3-audio-snd-channels-start-reason-reason-src-mq3-audio-snd-channels-ml-371430379"></a>
 ### reason
@@ -33,8 +35,10 @@ accepted
 reason
 ```
 
+Explanation of the allocation or rejection decision.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L45)
 
 <a id="field-field-mq3-audio-snd-channels-start-replaced-replaced-src-mq3-audio-snd-channels-ml-1957065003"></a>
 ### replaced
@@ -43,8 +47,10 @@ reason
 replaced
 ```
 
+True when accepting the sound displaced an existing channel.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L43)
 
 <a id="field-field-mq3-audio-snd-channels-start-slot-slot-src-mq3-audio-snd-channels-ml-253696331"></a>
 ### slot
@@ -53,5 +59,7 @@ replaced
 slot
 ```
 
+Index of the channel slot allocated for this playback voice.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L41)

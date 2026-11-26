@@ -29,7 +29,7 @@ CG_PositionRotatedEntityOnTag, including the view weapon's uniform scale.
 | `attachment` | `dynamic` | — | Record read through `attachment.origin`, `attachment.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L130)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-classnames-function-classnames-src-mq3-client-playable-muzzle-flash-ml-647291762"></a>
 ### classnames
@@ -41,7 +41,7 @@ function classnames()
 Calls `mq3.client.playable_muzzle_flash.definitions` from playable muzzle flash `classnames`. The final path returns `result`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L68)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-definition-function-definition-classname-src-mq3-client-playable-muzzle-flash-ml-747150259"></a>
 ### definition
@@ -57,7 +57,7 @@ Calls `mq3.client.playable_muzzle_flash.definitions`, `stringEqualsIgnoreCaseAsc
 | `classname` | `dynamic` | — | Value used by `for each value in definitions() if stringEqualsIgnoreCaseAscii(value.weaponClass,classname) then return value end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L62)
 
 - [mq3.client.playable_muzzle_flash.Definition](Type-mq3-client-playable-muzzle-flash-definition-1390755383.md) — struct
 <a id="function-function-mq3-client-playable-muzzle-flash-definitions-function-definitions-src-mq3-client-playable-muzzle-flash-ml-503162098"></a>
@@ -70,7 +70,7 @@ function definitions()
 Builds the playable muzzle flash `definitions` sequence from `[ Definition("weapon_gauntlet","flash_gauntlet","models/weapons2/gauntlet/gauntlet_flash.md3",true,153,153,255), Definition("weapon_machinegun","flash_machinegun","models/weapons2/machinegun/machin...`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L46)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-dynamiclight-function-dynamiclight-catalog-weaponclass-guntransform-lastfire-now-triggerheld-src-mq3-client-playable-muzzle-flash-ml-1213793118"></a>
 ### dynamicLight
@@ -91,7 +91,7 @@ Calls `mq3.client.playable_muzzle_flash.definition`, `mq3.client.playable_muzzle
 | `triggerHeld` | `dynamic` | — | Value used by `if def==void or not visible(def,lastFire,now,triggerHeld) or catalog==void or gunTransform==void then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L156)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-fail-function-fail-message-src-mq3-client-playable-muzzle-flash-ml-233693159"></a>
 ### fail
@@ -107,7 +107,7 @@ Creates the playable muzzle flash error `7610` with diagnostic text `"playable m
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"playable muzzle flash: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L43)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-lightcolor-function-lightcolor-value-src-mq3-client-playable-muzzle-flash-ml-712941773"></a>
 ### lightColor
@@ -123,7 +123,7 @@ Evaluates playable muzzle flash `lightColor` and returns `[0.0,0.0,0.0]`, `[0.6,
 | `value` | `dynamic` | — | Record read through `value.weaponClass`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L74)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-lightradius-function-lightradius-now-src-mq3-client-playable-muzzle-flash-ml-1902499602"></a>
 ### lightRadius
@@ -139,7 +139,7 @@ Baseq3 uses 300 + (rand() & 31). Keep that exact radius range while deriving the
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L87)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-multiplyaxis-function-multiplyaxis-left-right-src-mq3-client-playable-muzzle-flash-ml-374768145"></a>
 ### multiplyAxis
@@ -156,7 +156,7 @@ Evaluates playable muzzle flash `multiplyAxis` and returns `result` according to
 | `right` | `dynamic` | — | Sequence read at `right[0]`, `right[1]`, `right[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L117)
 
 <a id="constant-constant-mq3-client-playable-muzzle-flash-muzzle-flash-time-const-muzzle-flash-time-20-src-mq3-client-playable-muzzle-flash-ml-552795175"></a>
 ### MUZZLE_FLASH_TIME
@@ -165,8 +165,10 @@ Evaluates playable muzzle flash `multiplyAxis` and returns `result` according to
 const MUZZLE_FLASH_TIME = 20
 ```
 
+Milliseconds for which a weapon muzzle flash remains visible.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L10)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-muzzletransform-function-muzzletransform-catalog-weaponclass-guntransform-src-mq3-client-playable-muzzle-flash-ml-1865068029"></a>
 ### muzzleTransform
@@ -184,7 +186,7 @@ Resolve the weapon's retail tag_flash independently of flash visibility so proje
 | `gunTransform` | `dynamic` | — | Value used by `if catalog==void or gunTransform==void then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L142)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-render-function-render-catalog-weaponclass-guntransform-lastfire-now-triggerheld-maxtriangles-src-mq3-client-playable-muzzle-flash-ml-934653947"></a>
 ### render
@@ -206,7 +208,7 @@ Calls `mq3.client.playable_muzzle_flash.definition`, `mq3.client.playable_muzzle
 | `maxTriangles` | `dynamic` | — | Upper bound on emitted render triangles. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L170)
 
 - [mq3.client.playable_muzzle_flash.Rendered](Type-mq3-client-playable-muzzle-flash-rendered-462901155.md) — struct
 <a id="function-function-mq3-client-playable-muzzle-flash-tag-function-tag-model-name-src-mq3-client-playable-muzzle-flash-ml-135983860"></a>
@@ -224,7 +226,7 @@ Calls `stringEqualsIgnoreCaseAscii` from playable muzzle flash `tag`. The final 
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable muzzle flash resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L108)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-visible-function-visible-value-lastfire-now-triggerheld-src-mq3-client-playable-muzzle-flash-ml-1943424552"></a>
 ### visible
@@ -243,4 +245,4 @@ CG_AddPlayerWeapon keeps Lightning/Gauntlet flashes while EF_FIRING is set; all 
 | `triggerHeld` | `dynamic` | — | Value used by `if value.continuous and triggerHeld then return true end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L98)

@@ -33,7 +33,7 @@ Builds `mq3.renderer.portal_clip.SceneVertex` using `mq3.shared.math.VectorNorma
 | `db` | `dynamic` | — | Input used by `t=da/(da-db)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L152)
 
 <a id="function-function-mq3-renderer-portal-clip-clippedvertex-function-clippedvertex-a-b-da-db-src-mq3-renderer-portal-clip-ml-1304551482"></a>
 ### clippedVertex
@@ -88,7 +88,7 @@ Clips scene triangles against a plane, interpolates crossing attributes, and inv
 | `dist` | `dynamic` | — | Value forwarded as `dist` to `mq3.renderer.portal_clip.distance`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L175)
 
 <a id="function-function-mq3-renderer-portal-clip-clipscenevertices-function-clipscenevertices-vertices-normal-dist-src-mq3-renderer-portal-clip-ml-692626376"></a>
 ### clipSceneVertices
@@ -106,7 +106,7 @@ Builds `output[count]` in `mq3.renderer.portal_clip.clipSceneVertices`; returns 
 | `dist` | `dynamic` | — | Value forwarded as `dist` to `mq3.renderer.portal_clip.distance`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L157)
 
 <a id="function-function-mq3-renderer-portal-clip-clipselection-function-clipselection-cache-chosen-normal-dist-src-mq3-renderer-portal-clip-ml-1857404443"></a>
 ### clipSelection
@@ -125,7 +125,7 @@ Updates `cache.byFace`, `cache.normal`, `cache.dist`, `cache.byFace[face]` in `m
 | `dist` | `dynamic` | — | Value assigned to `cache.dist`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L102)
 
 <a id="function-function-mq3-renderer-portal-clip-cliptriangles-function-cliptriangles-input-normal-dist-src-mq3-renderer-portal-clip-ml-1216810685"></a>
 ### clipTriangles
@@ -177,7 +177,7 @@ Constructs `mq3.renderer.portal_clip.FaceCache` with `normal` = `void`, `dist` =
 | `world` | `dynamic` | — | Initial value for `mq3.renderer.portal_clip.FaceCache.world`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L96)
 
 <a id="function-function-mq3-renderer-portal-clip-distance-function-distance-point-normal-dist-src-mq3-renderer-portal-clip-ml-1873566945"></a>
 ### distance
@@ -285,7 +285,7 @@ Forwards `sceneTriangle` to `mq3.renderer.qvm_scene_geometry.Triangle` and retur
 | `c` | `dynamic` | — | Record providing `c.position`, `c.texCoord`, `c.normal`, `c.color`, `c.lightmapCoord`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L168)
 
 <a id="function-function-mq3-renderer-portal-clip-scenevertex-function-scenevertex-triangle-corner-src-mq3-renderer-portal-clip-ml-1081874421"></a>
 ### sceneVertex
@@ -302,6 +302,6 @@ Constructs `mq3.renderer.portal_clip.SceneVertex` with `position` = `triangle.po
 | `corner` | `dynamic` | — | Vertex index used consistently across the triangle position/UV/normal/color arrays. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L146)
 
 - [mq3.renderer.portal_clip.SceneVertex](Type-mq3-renderer-portal-clip-scenevertex-2075721610.md) — struct

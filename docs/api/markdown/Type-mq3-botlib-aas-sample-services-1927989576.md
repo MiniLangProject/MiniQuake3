@@ -12,7 +12,7 @@ struct Services
 `Services` record for aas sample, containing `entityCollisionFn`, `pointContentsFn` and `context`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L44)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Services
 context
 ```
 
+Caller-supplied data associated with dynamic entity collisions and contents sampling around the navigation mesh.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L51)
 
 <a id="field-field-mq3-botlib-aas-sample-services-entitycollisionfn-entitycollisionfn-src-mq3-botlib-aas-sample-ml-625321337"></a>
 ### entityCollisionFn
@@ -33,8 +35,10 @@ context
 entityCollisionFn
 ```
 
+Host callback that tests collision against a game entity.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-sample-services-pointcontentsfn-pointcontentsfn-src-mq3-botlib-aas-sample-ml-1469339873"></a>
 ### pointContentsFn
@@ -43,5 +47,7 @@ entityCollisionFn
 pointContentsFn
 ```
 
+Host callback that queries world contents at a supplied point.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L48)

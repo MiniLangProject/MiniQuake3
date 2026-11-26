@@ -12,7 +12,7 @@ struct Plane
 Data record for `mq3.renderer.tr_main_runtime.Plane`; groups `normal`, `dist`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L42)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_main_runtime.Plane`; groups `normal`, `dist`.
 dist
 ```
 
+Signed plane distance measured along its normal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L46)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-plane-normal-normal-src-mq3-renderer-tr-main-runtime-ml-273685185"></a>
 ### normal
@@ -33,5 +35,7 @@ dist
 normal
 ```
 
+Frontend frustum-plane normal used to classify model and surface bounds.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L44)

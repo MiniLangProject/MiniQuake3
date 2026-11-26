@@ -36,7 +36,7 @@ Updates `state.puffs` during playable projectile fx `addPuff`.
 | `p` | `dynamic` | — | Record read through `p.lifetime`, `p.radius`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L172)
 
 <a id="function-function-mq3-client-playable-projectile-fx-alignednext-function-alignednext-time-src-mq3-client-playable-projectile-fx-ml-15990219"></a>
 ### alignedNext
@@ -52,7 +52,7 @@ Computes `numeric.trunc32((time+TRAIL_STEP_MILLISECONDS)/TRAIL_STEP_MILLISECONDS
 | `time` | `dynamic` | — | Value used by `return numeric.trunc32((time+TRAIL_STEP_MILLISECONDS)/TRAIL_STEP_MILLISECONDS)*TRAIL_STEP_MILLISECONDS`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L153)
 
 <a id="function-function-mq3-client-playable-projectile-fx-command-function-command-kind-center-radius-red-green-blue-src-mq3-client-playable-projectile-fx-ml-429677765"></a>
 ### command
@@ -73,7 +73,7 @@ Creates a `mq3.client.playable_projectile_fx.Command` record. Assigns `kind` fro
 | `blue` | `dynamic` | — | Value used to initialize `Command.blue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L253)
 
 - [mq3.client.playable_projectile_fx.Command](Type-mq3-client-playable-projectile-fx-command-191431529.md) — struct
 <a id="constant-constant-mq3-client-playable-projectile-fx-command-light-const-command-light-2-src-mq3-client-playable-projectile-fx-ml-256699631"></a>
@@ -83,8 +83,10 @@ Creates a `mq3.client.playable_projectile_fx.Command` record. Assigns `kind` fro
 const COMMAND_LIGHT = 2
 ```
 
+Effect command kind selecting the light rendering operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L33)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-command-puff-const-command-puff-1-src-mq3-client-playable-projectile-fx-ml-1209481980"></a>
 ### COMMAND_PUFF
@@ -93,8 +95,10 @@ const COMMAND_LIGHT = 2
 const COMMAND_PUFF = 1
 ```
 
+Effect command kind selecting the puff rendering operation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L31)
 
 <a id="function-function-mq3-client-playable-projectile-fx-copy3-function-copy3-value-src-mq3-client-playable-projectile-fx-ml-1123774849"></a>
 ### copy3
@@ -110,7 +114,7 @@ Copies three vector components with float32 rounding for playable projectile fx.
 | `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L125)
 
 <a id="function-function-mq3-client-playable-projectile-fx-create-function-create-src-mq3-client-playable-projectile-fx-ml-410173668"></a>
 ### create
@@ -122,7 +126,7 @@ function create()
 Creates a `mq3.client.playable_projectile_fx.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L140)
 
 <a id="function-function-mq3-client-playable-projectile-fx-diamond-function-diamond-center-radius-red-green-blue-src-mq3-client-playable-projectile-fx-ml-908135993"></a>
 ### diamond
@@ -142,7 +146,7 @@ Calls `mq3.platform.playable_window.drawLine`, `mq3.client.playable_projectile_f
 | `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L318)
 
 <a id="function-function-mq3-client-playable-projectile-fx-draw-function-draw-commands-src-mq3-client-playable-projectile-fx-ml-1504234834"></a>
 ### draw
@@ -158,7 +162,7 @@ Screen-space rings approximate R_AddLightToScene in the current software raster 
 | `commands` | `dynamic` | — | Value used by `for each entry in commands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L329)
 
 <a id="function-function-mq3-client-playable-projectile-fx-drawpuffs-function-drawpuffs-commands-src-mq3-client-playable-projectile-fx-ml-1983388986"></a>
 ### drawPuffs
@@ -174,7 +178,7 @@ Calls `mq3.client.playable_projectile_fx.diamond` from playable projectile fx `d
 | `commands` | `dynamic` | — | Value used by `for each entry in commands if entry.kind==COMMAND_PUFF then diamond(entry.center,entry.radius,entry.red,entry.green,entry.blue)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L343)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-explosion-dlight-radius-const-explosion-dlight-radius-300-src-mq3-client-playable-projectile-fx-ml-1727529466"></a>
 ### EXPLOSION_DLIGHT_RADIUS
@@ -183,8 +187,10 @@ Calls `mq3.client.playable_projectile_fx.diamond` from playable projectile fx `d
 const EXPLOSION_DLIGHT_RADIUS = 300
 ```
 
+World-space radius of the dynamic light emitted by an explosion.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)
 
 <a id="function-function-mq3-client-playable-projectile-fx-fail-function-fail-message-src-mq3-client-playable-projectile-fx-ml-1288355603"></a>
 ### fail
@@ -200,7 +206,7 @@ Creates the playable projectile fx error `7610` with diagnostic text `"preview p
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview projectile fx: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L119)
 
 <a id="function-function-mq3-client-playable-projectile-fx-framecommands-function-framecommands-state-camera-snapshots-now-width-height-horizontalfovdegrees-neardistance-src-mq3-client-playable-projectile-fx-ml-1501948671"></a>
 ### frameCommands
@@ -223,7 +229,7 @@ Calls `mq3.client.playable_viewer.projectPoint`, `mq3.client.playable_projectile
 | `nearDistance` | `dynamic` | — | Distance from the camera to the near clipping plane. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L281)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-grenade-trail-milliseconds-const-grenade-trail-milliseconds-700-src-mq3-client-playable-projectile-fx-ml-403027280"></a>
 ### GRENADE_TRAIL_MILLISECONDS
@@ -232,8 +238,10 @@ Calls `mq3.client.playable_viewer.projectPoint`, `mq3.client.playable_projectile
 const GRENADE_TRAIL_MILLISECONDS = 700
 ```
 
+Duration or scheduling interval in milliseconds controlling grenade trail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-grenade-trail-radius-const-grenade-trail-radius-32-src-mq3-client-playable-projectile-fx-ml-332947792"></a>
 ### GRENADE_TRAIL_RADIUS
@@ -242,8 +250,10 @@ const GRENADE_TRAIL_MILLISECONDS = 700
 const GRENADE_TRAIL_RADIUS = 32
 ```
 
+Radius used by the grenade's smoke-trail effect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L23)
 
 <a id="function-function-mq3-client-playable-projectile-fx-impactstart-function-impactstart-snapshot-src-mq3-client-playable-projectile-fx-ml-1936277212"></a>
 ### impactStart
@@ -259,7 +269,7 @@ Computes `snapshot.eventAt-(numeric.i32(snapshot.entityId*97+snapshot.eventAt*17
 | `snapshot` | `dynamic` | — | Record read through `snapshot.eventAt`, `snapshot.entityId`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L256)
 
 <a id="function-function-mq3-client-playable-projectile-fx-interpolate-function-interpolate-a-b-fraction-src-mq3-client-playable-projectile-fx-ml-177554507"></a>
 ### interpolate
@@ -277,7 +287,7 @@ Builds the playable projectile fx `interpolate` sequence from `[a[0]+(b[0]-a[0])
 | `fraction` | `dynamic` | — | Interpolation or blend fraction between the endpoint values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L161)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-max-puffs-const-max-puffs-512-src-mq3-client-playable-projectile-fx-ml-471092441"></a>
 ### MAX_PUFFS
@@ -286,8 +296,10 @@ Builds the playable projectile fx `interpolate` sequence from `[a[0]+(b[0]-a[0])
 const MAX_PUFFS = 512
 ```
 
+Capacity limit for the puffs collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L35)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-plasma-trail-milliseconds-const-plasma-trail-milliseconds-600-src-mq3-client-playable-projectile-fx-ml-96414615"></a>
 ### PLASMA_TRAIL_MILLISECONDS
@@ -296,8 +308,10 @@ const MAX_PUFFS = 512
 const PLASMA_TRAIL_MILLISECONDS = 600
 ```
 
+Duration or scheduling interval in milliseconds controlling plasma trail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-plasma-trail-radius-const-plasma-trail-radius-4-src-mq3-client-playable-projectile-fx-ml-224370421"></a>
 ### PLASMA_TRAIL_RADIUS
@@ -306,8 +320,10 @@ const PLASMA_TRAIL_MILLISECONDS = 600
 const PLASMA_TRAIL_RADIUS = 4
 ```
 
+Radius used by the plasma projectile's trail effect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="function-function-mq3-client-playable-projectile-fx-point-function-point-center-x-y-src-mq3-client-playable-projectile-fx-ml-943507790"></a>
 ### point
@@ -325,7 +341,7 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable projectile fx `point
 | `y` | `dynamic` | — | Argument 2 of `mq3.client.playable_viewer.ScreenPoint`; passed as `center.y+y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L311)
 
 <a id="function-function-mq3-client-playable-projectile-fx-profile-function-profile-style-src-mq3-client-playable-projectile-fx-ml-857860615"></a>
 ### profile
@@ -341,7 +357,7 @@ Values are taken from CG_RegisterWeapon, CG_RocketTrail, CG_PlasmaTrail and CG_M
 | `style` | `dynamic` | — | Value used by `if style==projectileView.STYLE_ROCKET then return Profile(true,ROCKET_TRAIL_RADIUS,ROCKET_TRAIL_MILLISECONDS,ROCKET_DLIGHT_RADIUS,EXPLOSION_DL...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L131)
 
 - [mq3.client.playable_projectile_fx.Profile](Type-mq3-client-playable-projectile-fx-profile-59277573.md) — struct
 <a id="function-function-mq3-client-playable-projectile-fx-projectedradius-function-projectedradius-worldradius-depth-width-src-mq3-client-playable-projectile-fx-ml-441382561"></a>
@@ -360,7 +376,7 @@ Calls `mq3.compat.numeric.trunc32` from playable projectile fx `projectedRadius`
 | `width` | `dynamic` | — | Width in the coordinate space used by `projectedRadius`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L240)
 
 - [mq3.client.playable_projectile_fx.Puff](Type-mq3-client-playable-projectile-fx-puff-2111551975.md) — struct
 <a id="function-function-mq3-client-playable-projectile-fx-pufffraction-function-pufffraction-puff-now-src-mq3-client-playable-projectile-fx-ml-138737329"></a>
@@ -378,7 +394,7 @@ Returns a smoke puff's remaining lifetime fraction, or zero before its birth and
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L231)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-rocket-dlight-radius-const-rocket-dlight-radius-200-src-mq3-client-playable-projectile-fx-ml-1940360841"></a>
 ### ROCKET_DLIGHT_RADIUS
@@ -387,8 +403,10 @@ Returns a smoke puff's remaining lifetime fraction, or zero before its birth and
 const ROCKET_DLIGHT_RADIUS = 200
 ```
 
+World-space radius of the dynamic light attached to a rocket.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-rocket-trail-milliseconds-const-rocket-trail-milliseconds-2000-src-mq3-client-playable-projectile-fx-ml-1211965083"></a>
 ### ROCKET_TRAIL_MILLISECONDS
@@ -397,8 +415,10 @@ const ROCKET_DLIGHT_RADIUS = 200
 const ROCKET_TRAIL_MILLISECONDS = 2000
 ```
 
+Duration or scheduling interval in milliseconds controlling rocket trail.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-rocket-trail-radius-const-rocket-trail-radius-64-src-mq3-client-playable-projectile-fx-ml-149575511"></a>
 ### ROCKET_TRAIL_RADIUS
@@ -407,8 +427,10 @@ const ROCKET_TRAIL_MILLISECONDS = 2000
 const ROCKET_TRAIL_RADIUS = 64
 ```
 
+Radius used by the rocket's smoke-trail effect.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L21)
 
 <a id="function-function-mq3-client-playable-projectile-fx-sampleflight-function-sampleflight-state-snapshot-now-src-mq3-client-playable-projectile-fx-ml-2009096939"></a>
 ### sampleFlight
@@ -426,7 +448,7 @@ Updates `state.trackers` during playable projectile fx `sampleFlight`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L182)
 
 - [mq3.client.playable_projectile_fx.State](Type-mq3-client-playable-projectile-fx-state-936042933.md) — struct
 - [mq3.client.playable_projectile_fx.Tracker](Type-mq3-client-playable-projectile-fx-tracker-1578326684.md) — struct
@@ -445,7 +467,7 @@ Evaluates playable projectile fx `trackerIndex` and returns `-1`, `index` accord
 | `entityId` | `dynamic` | — | Value used by `for index=0 to len(state.trackers)-1 if state.trackers[index].entityId==entityId then return index end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L145)
 
 <a id="constant-constant-mq3-client-playable-projectile-fx-trail-step-milliseconds-const-trail-step-milliseconds-50-src-mq3-client-playable-projectile-fx-ml-781431858"></a>
 ### TRAIL_STEP_MILLISECONDS
@@ -454,8 +476,10 @@ Evaluates playable projectile fx `trackerIndex` and returns `-1`, `index` accord
 const TRAIL_STEP_MILLISECONDS = 50
 ```
 
+Duration or scheduling interval in milliseconds controlling trail step.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L13)
 
 <a id="function-function-mq3-client-playable-projectile-fx-update-function-update-state-snapshots-now-src-mq3-client-playable-projectile-fx-ml-808568762"></a>
 ### update
@@ -473,7 +497,7 @@ Updates `state.puffs`, `state.trackers` during playable projectile fx `update`.
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L218)
 
 <a id="function-function-mq3-client-playable-projectile-fx-valid3-function-valid3-value-src-mq3-client-playable-projectile-fx-ml-1977187145"></a>
 ### valid3
@@ -489,7 +513,7 @@ Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable
 | `value` | `dynamic` | — | Sequence whose length/content is inspected by `valid3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L122)
 
 <a id="function-function-mq3-client-playable-projectile-fx-worldlights-function-worldlights-snapshots-now-src-mq3-client-playable-projectile-fx-ml-1575941545"></a>
 ### worldLights
@@ -506,4 +530,4 @@ Calls `mq3.client.playable_projectile_fx.profile`, `mq3.client.playable_projecti
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L261)

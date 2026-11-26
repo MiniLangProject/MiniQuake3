@@ -31,7 +31,7 @@ Return `mq3.vm.syscall_common.argument(vm, base, index)` from `vm.cgame_pc_traps
 | `index` | `dynamic` | — | Index passed as `index` to `mq3.vm.syscall_common.argument`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L97)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-callback-function-callback-host-src-mq3-vm-cgame-pc-traps-ml-372673652"></a>
 ### callback
@@ -47,7 +47,7 @@ Apply `mq3.vm.cgame_pc_traps.dispatch` for callback in vm.cgame_pc_traps.
 | `host` | `dynamic` | — | Host passed as `host` to `mq3.vm.cgame_pc_traps.dispatch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L172)
 
 <a id="constant-constant-mq3-vm-cgame-pc-traps-cg-pc-add-global-define-const-cg-pc-add-global-define-64-src-mq3-vm-cgame-pc-traps-ml-1385293457"></a>
 ### CG_PC_ADD_GLOBAL_DEFINE
@@ -56,8 +56,10 @@ Apply `mq3.vm.cgame_pc_traps.dispatch` for callback in vm.cgame_pc_traps.
 const CG_PC_ADD_GLOBAL_DEFINE = 64
 ```
 
+Client-game syscall number selecting the host pc add global define service.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L12)
 
 <a id="constant-constant-mq3-vm-cgame-pc-traps-cg-pc-free-source-const-cg-pc-free-source-66-src-mq3-vm-cgame-pc-traps-ml-2018428675"></a>
 ### CG_PC_FREE_SOURCE
@@ -66,8 +68,10 @@ const CG_PC_ADD_GLOBAL_DEFINE = 64
 const CG_PC_FREE_SOURCE = 66
 ```
 
+Client-game syscall number selecting the host pc free source service.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L16)
 
 <a id="constant-constant-mq3-vm-cgame-pc-traps-cg-pc-load-source-const-cg-pc-load-source-65-src-mq3-vm-cgame-pc-traps-ml-1682499112"></a>
 ### CG_PC_LOAD_SOURCE
@@ -76,8 +80,10 @@ const CG_PC_FREE_SOURCE = 66
 const CG_PC_LOAD_SOURCE = 65
 ```
 
+Client-game syscall number selecting the host pc load source service.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L14)
 
 <a id="constant-constant-mq3-vm-cgame-pc-traps-cg-pc-read-token-const-cg-pc-read-token-67-src-mq3-vm-cgame-pc-traps-ml-748534214"></a>
 ### CG_PC_READ_TOKEN
@@ -86,8 +92,10 @@ const CG_PC_LOAD_SOURCE = 65
 const CG_PC_READ_TOKEN = 67
 ```
 
+Client-game syscall number selecting the host pc read token service.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L18)
 
 <a id="constant-constant-mq3-vm-cgame-pc-traps-cg-pc-source-file-and-line-const-cg-pc-source-file-and-line-68-src-mq3-vm-cgame-pc-traps-ml-2012300675"></a>
 ### CG_PC_SOURCE_FILE_AND_LINE
@@ -96,8 +104,10 @@ const CG_PC_READ_TOKEN = 67
 const CG_PC_SOURCE_FILE_AND_LINE = 68
 ```
 
+Client-game syscall number selecting the host pc source file and line service.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-dispatch-function-dispatch-host-vm-base-src-mq3-vm-cgame-pc-traps-ml-1389878708"></a>
 ### dispatch
@@ -115,7 +125,7 @@ Dispatch cgame pc traps in vm.cgame_pc_traps; the normal completion returns `fai
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.vm.cgame_pc_traps.arg`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L157)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-fail-function-fail-message-src-mq3-vm-cgame-pc-traps-ml-1518517991"></a>
 ### fail
@@ -131,7 +141,7 @@ Create the vm.cgame_pc_traps error for `fail` with 7490 and the supplied diagnos
 | `message` | `dynamic` | — | Message used in `("cgame PC traps: " + message)` and `error(7490, ("cgame PC traps: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L89)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-precomplocation-function-precomplocation-runtime-handle-src-mq3-vm-cgame-pc-traps-ml-1633593708"></a>
 ### precompLocation
@@ -148,7 +158,7 @@ Compute precomp location in vm.cgame_pc_traps; the normal completion returns `So
 | `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.botlib.l_precomp.PC_SourceFileAndLine`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L79)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-precompservices-function-precompservices-runtime-src-mq3-vm-cgame-pc-traps-ml-1676291368"></a>
 ### precompServices
@@ -164,7 +174,7 @@ Compute precomp services in vm.cgame_pc_traps; the normal completion returns `ho
 | `runtime` | `dynamic` | — | Context passed as `context` to `mq3.vm.cgame_pc_traps.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L84)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-readprecomptoken-function-readprecomptoken-runtime-handle-src-mq3-vm-cgame-pc-traps-ml-662229330"></a>
 ### readPrecompToken
@@ -181,7 +191,7 @@ Full botlib l_precomp.c ownership adapter. This keeps the existing QVM ABI while
 | `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.botlib.l_precomp.PC_ReadTokenHandle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L72)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-readregistrytoken-function-readregistrytoken-registry-handle-src-mq3-vm-cgame-pc-traps-ml-707431495"></a>
 ### readRegistryToken
@@ -198,7 +208,7 @@ Read registry token in vm.cgame_pc_traps; the normal completion returns `TokenRe
 | `handle` | `dynamic` | — | Source handle passed as `sourceHandle` to `mq3.vm.pc_parser.read`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L102)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-readtoken-function-readtoken-host-vm-base-src-mq3-vm-cgame-pc-traps-ml-67102234"></a>
 ### readToken
@@ -216,7 +226,7 @@ Read token in vm.cgame_pc_traps; the normal completion returns `1`.
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.vm.cgame_pc_traps.arg`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L131)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-registrylocation-function-registrylocation-registry-handle-src-mq3-vm-cgame-pc-traps-ml-161910523"></a>
 ### registryLocation
@@ -233,7 +243,7 @@ Compute registry location in vm.cgame_pc_traps; the normal completion returns `S
 | `handle` | `dynamic` | — | Handle passed as `handle` to `mq3.vm.pc_parser.location`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L111)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-registryservices-function-registryservices-registry-src-mq3-vm-cgame-pc-traps-ml-323717305"></a>
 ### registryServices
@@ -249,7 +259,7 @@ Compute registry services in vm.cgame_pc_traps; the normal completion returns `h
 | `registry` | `dynamic` | — | Context passed as `context` to `mq3.vm.cgame_pc_traps.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L63)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-services-function-services-context-src-mq3-vm-cgame-pc-traps-ml-880764391"></a>
 ### services
@@ -265,7 +275,7 @@ Create `mq3.vm.cgame_pc_traps.Services` with context=context; addDefineFn=void; 
 | `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.vm.cgame_pc_traps.Services` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L60)
 
 - [mq3.vm.cgame_pc_traps.Services](Type-mq3-vm-cgame-pc-traps-services-1432547857.md) — struct
 <a id="constant-constant-mq3-vm-cgame-pc-traps-source-name-size-const-source-name-size-64-src-mq3-vm-cgame-pc-traps-ml-1781313097"></a>
@@ -275,8 +285,10 @@ Create `mq3.vm.cgame_pc_traps.Services` with context=context; addDefineFn=void; 
 const SOURCE_NAME_SIZE = 64
 ```
 
+Byte size used for source name storage or binary layout in mq3.vm.cgame_pc_traps.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L24)
 
 <a id="function-function-mq3-vm-cgame-pc-traps-sourceline-function-sourceline-host-vm-base-src-mq3-vm-cgame-pc-traps-ml-1871382876"></a>
 ### sourceLine
@@ -294,7 +306,7 @@ Compute source line in vm.cgame_pc_traps; the normal completion returns `1`.
 | `base` | `dynamic` | — | Base passed as `base` to `mq3.vm.cgame_pc_traps.arg`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L144)
 
 - [mq3.vm.cgame_pc_traps.SourceLocation](Type-mq3-vm-cgame-pc-traps-sourcelocation-667073731.md) — struct
 <a id="function-function-mq3-vm-cgame-pc-traps-stringcall-function-stringcall-host-vm-base-callback-name-src-mq3-vm-cgame-pc-traps-ml-946145416"></a>
@@ -315,7 +327,7 @@ Compute string call in vm.cgame_pc_traps; the normal completion returns `callbac
 | `name` | `dynamic` | — | Name passed as `name` to `mq3.vm.cgame_pc_traps.unavailable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L122)
 
 <a id="constant-constant-mq3-vm-cgame-pc-traps-token-size-const-token-size-1040-src-mq3-vm-cgame-pc-traps-ml-1270001136"></a>
 ### TOKEN_SIZE
@@ -324,8 +336,10 @@ Compute string call in vm.cgame_pc_traps; the normal completion returns `callbac
 const TOKEN_SIZE = 1040
 ```
 
+Byte size used for token storage or binary layout in mq3.vm.cgame_pc_traps.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L22)
 
 - [mq3.vm.cgame_pc_traps.TokenResult](Type-mq3-vm-cgame-pc-traps-tokenresult-157190231.md) — struct
 <a id="function-function-mq3-vm-cgame-pc-traps-unavailable-function-unavailable-name-src-mq3-vm-cgame-pc-traps-ml-30205177"></a>
@@ -342,4 +356,4 @@ Return `mq3.vm.cgame_pc_traps.fail((name + " service unavailable"))` from `vm.cg
 | `name` | `dynamic` | — | Name used in `(name + " service unavailable")` and `fail((name + " service unavailable"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L92)

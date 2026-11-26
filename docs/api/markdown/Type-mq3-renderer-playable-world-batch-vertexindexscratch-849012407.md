@@ -12,7 +12,7 @@ struct VertexIndexScratch
 Data record for `mq3.renderer.playable_world_batch.VertexIndexScratch`; groups `visited`, `slots`, `serial`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L58)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.playable_world_batch.VertexIndexScratch`; groups `
 serial
 ```
 
+Generation number used to invalidate earlier visitation or cache markers.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L64)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexindexscratch-slots-slots-src-mq3-renderer-playable-world-batch-ml-1960057679"></a>
 ### slots
@@ -33,8 +35,10 @@ serial
 slots
 ```
 
+Resource slots or backing arrays retained by this record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L62)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexindexscratch-visited-visited-src-mq3-renderer-playable-world-batch-ml-2029860387"></a>
 ### visited
@@ -43,5 +47,7 @@ slots
 visited
 ```
 
+Per-vertex visitation markers used to avoid repeated work.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L60)

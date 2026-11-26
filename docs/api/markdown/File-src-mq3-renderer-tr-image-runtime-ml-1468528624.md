@@ -33,7 +33,7 @@ Builds `output[i]` in `mq3.renderer.tr_image_runtime.cloneByteData`; returns `ou
 | `data` | `dynamic` | — | Indexed input read at `i`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L119)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-commaparse-function-commaparse-text-offset-src-mq3-renderer-tr-image-runtime-ml-700210584"></a>
 ### CommaParse
@@ -50,7 +50,7 @@ Computes `CommaParse` from `[decode(slice(data,start,offset-start)),offset]` usi
 | `offset` | `dynamic` | — | Input tested by `text==void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L293)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-create-function-create-imageregistry-host-src-mq3-renderer-tr-image-runtime-ml-1184426040"></a>
 ### create
@@ -67,7 +67,7 @@ Builds `mq3.renderer.tr_image_runtime.State` using `mq3.renderer.image_registry.
 | `host` | `dynamic` | — | Initial value for `mq3.renderer.tr_image_runtime.State.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L101)
 
 - [mq3.renderer.tr_image_runtime.Destination](Type-mq3-renderer-tr-image-runtime-destination-1695831404.md) — struct
 <a id="function-function-mq3-renderer-tr-image-runtime-empty-output-buffer-function-empty-output-buffer-destination-src-mq3-renderer-tr-image-runtime-ml-1679091156"></a>
@@ -84,7 +84,7 @@ Computes `destination!=void and destination.used<destination.capacity` for `mq3.
 | `destination` | `dynamic` | — | Record providing `destination.used`, `destination.capacity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L344)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-fog-table-size-const-fog-table-size-256-src-mq3-renderer-tr-image-runtime-ml-1269088726"></a>
 ### FOG_TABLE_SIZE
@@ -93,8 +93,10 @@ Computes `destination!=void and destination.used<destination.capacity` for `mq3.
 const FOG_TABLE_SIZE = 256
 ```
 
+Number of samples in the fog-density lookup table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L20)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-generatehashvalue-function-generatehashvalue-name-src-mq3-renderer-tr-image-runtime-ml-1231286039"></a>
 ### generateHashValue
@@ -110,7 +112,7 @@ Calls `mq3.renderer.image_registry.hashValue` with `(name)` and returns its resu
 | `name` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.image_registry.hashValue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L165)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-gl-clamp-const-gl-clamp-10496-src-mq3-renderer-tr-image-runtime-ml-82632549"></a>
 ### GL_CLAMP
@@ -119,8 +121,10 @@ Calls `mq3.renderer.image_registry.hashValue` with `(name)` and returns its resu
 const GL_CLAMP = 10496
 ```
 
+OpenGL legacy texture-wrap mode that clamps coordinates at the image border.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L18)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-gl-repeat-const-gl-repeat-10497-src-mq3-renderer-tr-image-runtime-ml-1510563464"></a>
 ### GL_REPEAT
@@ -129,8 +133,10 @@ const GL_CLAMP = 10496
 const GL_REPEAT = 10497
 ```
 
+OpenGL texture-wrap mode that periodically repeats the image.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L16)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-gl-texturemode-function-gl-texturemode-state-name-src-mq3-renderer-tr-image-runtime-ml-1521465782"></a>
 ### GL_TextureMode
@@ -147,7 +153,7 @@ Updates `state.filterName`, `state.filterMin`, `state.filterMax` in `mq3.rendere
 | `name` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.tr_image_runtime.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L232)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-init-destination-function-init-destination-destination-src-mq3-renderer-tr-image-runtime-ml-713381220"></a>
 ### init_destination
@@ -163,7 +169,7 @@ Updates `destination.used` in `mq3.renderer.tr_image_runtime.init_destination`; 
 | `destination` | `dynamic` | — | Mutable record or buffer; this call updates `destination.used`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L341)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-jpegdest-function-jpegdest-capacity-src-mq3-renderer-tr-image-runtime-ml-1340045860"></a>
 ### jpegDest
@@ -179,7 +185,7 @@ Builds `mq3.renderer.tr_image_runtime.Destination` for `mq3.renderer.tr_image_ru
 | `capacity` | `dynamic` | — | Initial value for `mq3.renderer.tr_image_runtime.Destination.capacity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L338)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadbmp-function-loadbmp-data-src-mq3-renderer-tr-image-runtime-ml-1704073002"></a>
 ### LoadBMP
@@ -195,7 +201,7 @@ Builds `output[target]`, `output[target+1]`, `output[target+2]`, `output[target+
 | `data` | `dynamic` | — | Value forwarded as `data` to `mq3.renderer.tr_image_runtime.u32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L129)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadjpg-function-loadjpg-data-src-mq3-renderer-tr-image-runtime-ml-1156702430"></a>
 ### LoadJPG
@@ -211,7 +217,7 @@ Returns `registry.Source(decoded.width,decoded.height,decoded.pixels)` from `mq3
 | `data` | `dynamic` | — | Argument 1 supplied to `mq3.platform.playable_jpeg.decode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L126)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadpcx-function-loadpcx-data-src-mq3-renderer-tr-image-runtime-ml-1317154614"></a>
 ### LoadPCX
@@ -227,7 +233,7 @@ Builds `indexes[target]`, `output[dst]`, `output[dst+1]`, `output[dst+2]`, `outp
 | `data` | `dynamic` | — | Value forwarded as `data` to `mq3.renderer.tr_image_runtime.u16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L141)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadpcx32-function-loadpcx32-data-src-mq3-renderer-tr-image-runtime-ml-1681529000"></a>
 ### LoadPCX32
@@ -243,7 +249,7 @@ Calls `mq3.renderer.tr_image_runtime.LoadPCX` with `(data)` and returns its resu
 | `data` | `dynamic` | — | Value forwarded as `data` to `mq3.renderer.tr_image_runtime.LoadPCX`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L157)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadtga-function-loadtga-data-src-mq3-renderer-tr-image-runtime-ml-36450400"></a>
 ### LoadTGA
@@ -259,7 +265,7 @@ Returns `registry.Source(decoded.width,decoded.height,decoded.pixels)` from `mq3
 | `data` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.tga.decode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L123)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-lower-function-lower-value-src-mq3-renderer-tr-image-runtime-ml-349835263"></a>
 ### lower
@@ -275,7 +281,7 @@ Calls `std.string.toLowerAscii` with `(value)` and returns its result.
 | `value` | `dynamic` | — | Argument 1 supplied to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L108)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-max-skins-const-max-skins-1024-src-mq3-renderer-tr-image-runtime-ml-1570003540"></a>
 ### MAX_SKINS
@@ -284,8 +290,10 @@ Calls `std.string.toLowerAscii` with `(value)` and returns its result.
 const MAX_SKINS = 1024
 ```
 
+Maximum number of registered skin definitions retained by the renderer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-blendovertexture-function-r-blendovertexture-data-pixelcount-blend-src-mq3-renderer-tr-image-runtime-ml-935153154"></a>
 ### R_BlendOverTexture
@@ -303,7 +311,7 @@ Updates `data[at]`, `data[at+1]`, `data[at+2]` in `mq3.renderer.tr_image_runtime
 | `blend` | `dynamic` | — | Indexed input read at `3`, `0`, `1`, `2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L194)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createbuiltinimages-function-r-createbuiltinimages-state-src-mq3-renderer-tr-image-runtime-ml-118926349"></a>
 ### R_CreateBuiltinImages
@@ -319,7 +327,7 @@ Updates `state.whiteImage`, `state.identityLightImage`, `state.scratchImages` in
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.whiteImage`, `state.identityLightImage`, `state.scratchImages`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L263)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createdefaultimage-function-r-createdefaultimage-state-src-mq3-renderer-tr-image-runtime-ml-280633889"></a>
 ### R_CreateDefaultImage
@@ -335,7 +343,7 @@ Updates `state.defaultImage` in `mq3.renderer.tr_image_runtime.R_CreateDefaultIm
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.defaultImage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L254)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createdlightimage-function-r-createdlightimage-state-src-mq3-renderer-tr-image-runtime-ml-1234660053"></a>
 ### R_CreateDlightImage
@@ -351,7 +359,7 @@ Updates `state.dlightImage` in `mq3.renderer.tr_image_runtime.R_CreateDlightImag
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.dlightImage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L257)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createfogimage-function-r-createfogimage-state-src-mq3-renderer-tr-image-runtime-ml-1861691221"></a>
 ### R_CreateFogImage
@@ -367,7 +375,7 @@ Updates `state.fogImage` in `mq3.renderer.tr_image_runtime.R_CreateFogImage`; re
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.fogImage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L260)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createimage-function-r-createimage-state-name-data-width-height-mipmap-allowpicmip-wrapclampmode-src-mq3-renderer-tr-image-runtime-ml-1400085392"></a>
 ### R_CreateImage
@@ -390,7 +398,7 @@ Calls `mq3.renderer.image_registry.createImage` with `(state.images,name,data,wi
 | `wrapClampMode` | `dynamic` | — | Argument 8 supplied to `mq3.renderer.image_registry.createImage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L216)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-deletetextures-function-r-deletetextures-state-src-mq3-renderer-tr-image-runtime-ml-594158905"></a>
 ### R_DeleteTextures
@@ -406,7 +414,7 @@ Updates `state.images.images`, `state.images.buckets` in `mq3.renderer.tr_image_
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.images.images`, `state.images.buckets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L288)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-findimagefile-function-r-findimagefile-state-name-mipmap-allowpicmip-wrapclampmode-src-mq3-renderer-tr-image-runtime-ml-377599237"></a>
 ### R_FindImageFile
@@ -426,7 +434,7 @@ Calls `mq3.renderer.image_registry.findImageFile` with `(state.images,name,mipma
 | `wrapClampMode` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.image_registry.findImageFile`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L223)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-fogfactor-function-r-fogfactor-state-s-t-src-mq3-renderer-tr-image-runtime-ml-2093600562"></a>
 ### R_FogFactor
@@ -444,7 +452,7 @@ Returns `state.fogTable[index]` from `mq3.renderer.tr_image_runtime.R_FogFactor`
 | `t` | `dynamic` | — | Input tested by `s<0.0 or t<1.0/32.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L251)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-gammacorrect-function-r-gammacorrect-state-data-src-mq3-renderer-tr-image-runtime-ml-516366985"></a>
 ### R_GammaCorrect
@@ -461,7 +469,7 @@ Builds `output[i]` in `mq3.renderer.tr_image_runtime.R_GammaCorrect`; returns `o
 | `data` | `dynamic` | — | Value forwarded as `data` to `mq3.renderer.tr_image_runtime.cloneByteData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L227)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-getskinbyhandle-function-r-getskinbyhandle-state-handle-src-mq3-renderer-tr-image-runtime-ml-1872996497"></a>
 ### R_GetSkinByHandle
@@ -478,7 +486,7 @@ Returns `state.skins[handle]` from `mq3.renderer.tr_image_runtime.R_GetSkinByHan
 | `handle` | `dynamic` | — | Input tested by `handle<1 or handle>=len(state.skins)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L331)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-imagelist-f-function-r-imagelist-f-state-src-mq3-renderer-tr-image-runtime-ml-1044195847"></a>
 ### R_ImageList_f
@@ -494,7 +502,7 @@ Returns `result` from `mq3.renderer.tr_image_runtime.R_ImageList_f`.
 | `state` | `dynamic` | — | Record providing `state.images`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L242)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-initfogtable-function-r-initfogtable-state-src-mq3-renderer-tr-image-runtime-ml-1641980761"></a>
 ### R_InitFogTable
@@ -510,7 +518,7 @@ Updates `state.fogTable` in `mq3.renderer.tr_image_runtime.R_InitFogTable`; retu
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.fogTable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L246)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-initimages-function-r-initimages-state-overbright-gamma-intensity-fullscreen-colorbits-src-mq3-renderer-tr-image-runtime-ml-1707832679"></a>
 ### R_InitImages
@@ -531,7 +539,7 @@ Updates `state.images.images`, `state.images.buckets` in `mq3.renderer.tr_image_
 | `colorBits` | `dynamic` | — | Value forwarded as `colorBits` to `mq3.renderer.tr_image_runtime.R_SetColorMappings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L285)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-initskins-function-r-initskins-state-src-mq3-renderer-tr-image-runtime-ml-1821072015"></a>
 ### R_InitSkins
@@ -547,7 +555,7 @@ Updates `state.skins` in `mq3.renderer.tr_image_runtime.R_InitSkins`; returns `t
 | `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.skins`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L315)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-lightscaletexture-function-r-lightscaletexture-state-data-width-height-onlygamma-src-mq3-renderer-tr-image-runtime-ml-1989800379"></a>
 ### R_LightScaleTexture
@@ -567,7 +575,7 @@ Calls `mq3.renderer.image_processing.lightScale` with `(data,width,height,onlyGa
 | `onlyGamma` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.image_processing.lightScale`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L179)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-loadimage-function-r-loadimage-data-name-src-mq3-renderer-tr-image-runtime-ml-1720158919"></a>
 ### R_LoadImage
@@ -584,7 +592,7 @@ Selects the TGA, JPEG, PCX, or BMP decoder from the case-insensitive filename ex
 | `name` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.tr_image_runtime.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L161)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-mipmap-function-r-mipmap-data-width-height-src-mq3-renderer-tr-image-runtime-ml-1557542575"></a>
 ### R_MipMap
@@ -602,7 +610,7 @@ Calls `mq3.renderer.image_processing.mipMapSimple` with `(data,width,height)` an
 | `height` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.image_processing.mipMapSimple`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L184)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-mipmap2-function-r-mipmap2-data-width-height-src-mq3-renderer-tr-image-runtime-ml-148339529"></a>
 ### R_MipMap2
@@ -620,7 +628,7 @@ Calls `mq3.renderer.image_processing.mipMapFiltered` with `(data,width,height)` 
 | `height` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.image_processing.mipMapFiltered`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L189)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-setcolormappings-function-r-setcolormappings-state-overbright-gamma-intensity-fullscreen-colorbits-src-mq3-renderer-tr-image-runtime-ml-1613485495"></a>
 ### R_SetColorMappings
@@ -641,7 +649,7 @@ Updates `state.overbrightBits`, `state.identityLight`, `state.identityLightByte`
 | `colorBits` | `dynamic` | — | Input tested by `colorBits>16 and overbright>2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L271)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-skinlist-f-function-r-skinlist-f-state-src-mq3-renderer-tr-image-runtime-ml-1093164057"></a>
 ### R_SkinList_f
@@ -657,7 +665,7 @@ Returns `result` from `mq3.renderer.tr_image_runtime.R_SkinList_f`.
 | `state` | `dynamic` | — | Record providing `state.skins`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L334)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-sumofusedimages-function-r-sumofusedimages-state-framecount-src-mq3-renderer-tr-image-runtime-ml-216058037"></a>
 ### R_SumOfUsedImages
@@ -674,7 +682,7 @@ Returns `total` from `mq3.renderer.tr_image_runtime.R_SumOfUsedImages`.
 | `frameCount` | `dynamic` | — | Input used by `for each image in state.images.images if image.frameUsed==frameCount then total=total+image.uploadWidth*image.uploadHeight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L239)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-re-registerskin-function-re-registerskin-state-name-src-mq3-renderer-tr-image-runtime-ml-1786403602"></a>
 ### RE_RegisterSkin
@@ -691,7 +699,7 @@ Updates `state.skins` in `mq3.renderer.tr_image_runtime.RE_RegisterSkin`; return
 | `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L319)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-resampletexture-function-resampletexture-data-inwidth-inheight-outwidth-outheight-src-mq3-renderer-tr-image-runtime-ml-1350500368"></a>
 ### ResampleTexture
@@ -711,7 +719,7 @@ Calls `mq3.renderer.image_processing.resample` with `(data,inWidth,inHeight,outW
 | `outHeight` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.image_processing.resample`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L172)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-savejpg-function-savejpg-state-filename-quality-width-height-pixels-src-mq3-renderer-tr-image-runtime-ml-537509397"></a>
 ### SaveJPG
@@ -732,7 +740,7 @@ Returns `state.services.writeJpegFn(state.services.context,filename,quality,widt
 | `pixels` | `dynamic` | — | Argument 6 supplied to `state.services.writeJpegFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L288)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L356)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-services-function-services-src-mq3-renderer-tr-image-runtime-ml-32781840"></a>
 ### services
@@ -744,7 +752,7 @@ function services()
 Constructs `mq3.renderer.tr_image_runtime.Services` with `skinLoadFn` = `void`, `writeJpegFn` = `void`, `deleteTextureFn` = `void`, `gammaFn` = `void` and the supplied remaining values.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L97)
 
 - [mq3.renderer.tr_image_runtime.Services](Type-mq3-renderer-tr-image-runtime-services-1588385876.md) — struct
 - [mq3.renderer.tr_image_runtime.SkinRecord](Type-mq3-renderer-tr-image-runtime-skinrecord-367827300.md) — struct
@@ -764,7 +772,7 @@ Updates `destination.used` in `mq3.renderer.tr_image_runtime.term_destination`; 
 | `used` | `dynamic` | — | Value assigned to `destination.used`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L348)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-u16-function-u16-data-at-src-mq3-renderer-tr-image-runtime-ml-999798245"></a>
 ### u16
@@ -781,7 +789,7 @@ Returns `data[at]|(data[at+1]<<8)` from `mq3.renderer.tr_image_runtime.u16`; ear
 | `at` | `dynamic` | — | Input tested by `at<0 or at+2>len(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L112)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-u32-function-u32-data-at-src-mq3-renderer-tr-image-runtime-ml-358064545"></a>
 ### u32
@@ -798,7 +806,7 @@ Returns `n.i32(data[at]|(data[at+1]<<8)|(data[at+2]<<16)|(data[at+3]<<24))` from
 | `at` | `dynamic` | — | Input tested by `at<0 or at+4>len(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L116)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-upload32-function-upload32-state-data-width-height-mipmap-allowpicmip-lightmap-src-mq3-renderer-tr-image-runtime-ml-1976337253"></a>
 ### Upload32
@@ -820,7 +828,7 @@ Calls `mq3.renderer.image_registry.prepareUpload` with `(data,width,height,mipma
 | `lightMap` | `dynamic` | — | Argument 6 supplied to `mq3.renderer.image_registry.prepareUpload`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L206)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-warn-function-warn-state-text-src-mq3-renderer-tr-image-runtime-ml-1534089878"></a>
 ### warn
@@ -837,4 +845,4 @@ Returns `void` from `mq3.renderer.tr_image_runtime.warn`.
 | `text` | `dynamic` | — | Argument 2 supplied to `state.services.diagnosticFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L105)

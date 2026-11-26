@@ -21,16 +21,16 @@ Reachable from entry: **yes**
 function edge(value, sourceSize, targetSize)
 ```
 
-Returns `numeric.trunc32(scaled)` from `mq3.renderer.qvm_viewport.edge`; earlier branches return `fail("scaled viewport edge exceeds native integer range")`.
+Scale one viewport edge and truncate it toward zero, rejecting signed-32-bit overflow.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — | Input used by `scaled=value*targetSize/sourceSize`. |
-| `sourceSize` | `dynamic` | — | Input used by `scaled=value*targetSize/sourceSize`. |
-| `targetSize` | `dynamic` | — | Input used by `scaled=value*targetSize/sourceSize`. |
+| `value` | `dynamic` | — | Signed edge coordinate in source pixels; negative offscreen edges are preserved. |
+| `sourceSize` | `dynamic` | — | Positive source dimension in pixels, validated by prepare. |
+| `targetSize` | `dynamic` | — | Positive target dimension in pixels, validated by prepare. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L24)
 
 <a id="function-function-mq3-renderer-qvm-viewport-fail-function-fail-message-src-mq3-renderer-qvm-viewport-ml-758355279"></a>
 ### fail
@@ -46,7 +46,7 @@ Creates error `7691` with message `"QVM viewport: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7691,"QVM viewport: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L19)
 
 <a id="function-function-mq3-renderer-qvm-viewport-prepare-function-prepare-refdef-sourcewidth-sourceheight-targetwidth-targetheight-src-mq3-renderer-qvm-viewport-ml-625616116"></a>
 ### prepare
@@ -55,18 +55,18 @@ Creates error `7691` with message `"QVM viewport: "+message`.
 function prepare(refdef, sourceWidth, sourceHeight, targetWidth, targetHeight)
 ```
 
-Builds `mq3.renderer.qvm_viewport.Prepared` using `mq3.platform.playable_window.viewport`, `mq3.client.playable_viewer.focalLength`.
+Scale a QVM refdef rectangle into a native viewport and construct its camera projection. Scales the four edges independently without clipping offscreen portions, so an offscreen UI model keeps its original projection. Converts Quake's forward/left/up basis to the viewer's right-facing screen basis and uses separate horizontal and vertical fields of view. Returns Prepared or the viewport/projection error; the projection's near distance is one world unit.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `refdef` | `dynamic` | — | Record providing `refdef.width`, `refdef.height`, `refdef.x`, `refdef.y`, `refdef.vieworg`, `refdef.viewaxis`. |
-| `sourceWidth` | `dynamic` | — | Value forwarded as `sourceSize` to `mq3.renderer.qvm_viewport.edge`. |
-| `sourceHeight` | `dynamic` | — | Value forwarded as `sourceSize` to `mq3.renderer.qvm_viewport.edge`. |
-| `targetWidth` | `dynamic` | — | Value forwarded as `targetSize` to `mq3.renderer.qvm_viewport.edge`. |
-| `targetHeight` | `dynamic` | — | Value forwarded as `targetSize` to `mq3.renderer.qvm_viewport.edge`. |
+| `refdef` | `dynamic` | — | Source-pixel x/y/width/height, world-space vieworg, forward/left/up viewaxis, and fovX/fovY in degrees. |
+| `sourceWidth` | `dynamic` | — | Positive width of the QVM drawable coordinate space in pixels. |
+| `sourceHeight` | `dynamic` | — | Positive height of the QVM drawable coordinate space in pixels. |
+| `targetWidth` | `dynamic` | — | Positive native framebuffer width in pixels. |
+| `targetHeight` | `dynamic` | — | Positive native framebuffer height in pixels. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L44)
 
 - [mq3.renderer.qvm_viewport.Prepared](Type-mq3-renderer-qvm-viewport-prepared-444055731.md) — struct
 <a id="function-function-mq3-renderer-qvm-viewport-validvector-function-validvector-value-src-mq3-renderer-qvm-viewport-ml-1724720243"></a>
@@ -83,4 +83,4 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.qvm_viewport.validVec
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L31)

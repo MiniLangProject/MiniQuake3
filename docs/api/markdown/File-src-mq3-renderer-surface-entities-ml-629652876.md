@@ -35,7 +35,7 @@ Calls `mq3.renderer.surface_entities.addQuadStampExt` with `(origin,left,up,colo
 | `maxIndexes` | `dynamic` | — | Value forwarded as `maxIndexes` to `mq3.renderer.surface_entities.addQuadStampExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L120)
 
 <a id="function-function-mq3-renderer-surface-entities-addquadstampext-function-addquadstampext-origin-left-up-color-viewforward-s1-t1-s2-t2-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-surface-entities-ml-364475863"></a>
 ### addQuadStampExt
@@ -63,7 +63,7 @@ RB_AddQuadStampExt emits two triangles. RB_CheckOverflow flushes even when the r
 | `maxIndexes` | `dynamic` | — | Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L91)
 
 <a id="function-function-mq3-renderer-surface-entities-bytecolor-function-bytecolor-value-src-mq3-renderer-surface-entities-ml-156425295"></a>
 ### byteColor
@@ -79,7 +79,7 @@ Validates four RGBA components in the byte range and returns their masked byte v
 | `value` | `dynamic` | — | Indexed input read at `i`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L48)
 
 <a id="constant-constant-mq3-renderer-surface-entities-pi-const-pi-3-141593-src-mq3-renderer-surface-entities-ml-1385727875"></a>
 ### PI
@@ -88,8 +88,10 @@ Validates four RGBA components in the byte range and returns their masked byte v
 const PI = 3.141593
 ```
 
+Ratio of a circle's circumference to its diameter, used for angle conversion.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L10)
 
 - [mq3.renderer.surface_entities.Submission](Type-mq3-renderer-surface-entities-submission-617997860.md) — struct
 <a id="function-function-mq3-renderer-surface-entities-surfacesprite-function-surfacesprite-origin-radius-rotation-color-viewleft-viewup-viewforward-ismirror-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-surface-entities-ml-332203652"></a>
@@ -117,7 +119,7 @@ RB_SurfaceSprite rotates the camera-facing left/up basis around the view axis, m
 | `maxIndexes` | `dynamic` | — | Value forwarded as `maxIndexes` to `mq3.renderer.surface_entities.addQuadStamp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L138)
 
 <a id="function-function-mq3-renderer-surface-entities-valid3-function-valid3-value-src-mq3-renderer-surface-entities-ml-693347057"></a>
 ### valid3
@@ -133,7 +135,7 @@ Computes `value!=void and len(value)==3` for `mq3.renderer.surface_entities.vali
 | `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L45)
 
 <a id="function-function-mq3-renderer-surface-entities-vecadd-function-vecadd-a-b-src-mq3-renderer-surface-entities-ml-1135128959"></a>
 ### vecAdd
@@ -150,7 +152,7 @@ Returns `[numeric.fadd(a[0],b[0]),numeric.fadd(a[1],b[1]),numeric.fadd(a[2],b[2]
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L66)
 
 <a id="function-function-mq3-renderer-surface-entities-vecscale-function-vecscale-value-scale-src-mq3-renderer-surface-entities-ml-765590081"></a>
 ### vecScale
@@ -167,7 +169,7 @@ Returns `[numeric.fmul(value[0],scale),numeric.fmul(value[1],scale),numeric.fmul
 | `scale` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L60)
 
 <a id="function-function-mq3-renderer-surface-entities-vecsub-function-vecsub-a-b-src-mq3-renderer-surface-entities-ml-2011145759"></a>
 ### vecSub
@@ -184,6 +186,6 @@ Returns `[numeric.fsub(a[0],b[0]),numeric.fsub(a[1],b[1]),numeric.fsub(a[2],b[2]
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L72)
 
 - [mq3.renderer.surface_entities.Vertex](Type-mq3-renderer-surface-entities-vertex-1719953646.md) — struct

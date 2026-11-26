@@ -29,7 +29,7 @@ The support point is consumed by one dot product. Keep the coordinates scalar so
 | `maxs` | `array` | — | Maxs used in `maxs[0]` and `maxs[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L141)
 
 <a id="extern_function-extern-function-mq3-collision-brush-clipconvexnative-extern-function-clipconvexnative-planes-as-ptr-planebytes-as-i32-ax-as-double-ay-as-double-az-as-double-bx-as-double-by-as-double-bz-as-double-lx-as-double-ly-as-double-lz-as-double-hx-as-double-hy-as-double-hz-as-double-limit-as-double-output-as-bytes-from-miniquake3-qvm-dll-symbol-mq3-trace-convex-brush-returns-i32-src-mq3-collision-brush-ml-572409977"></a>
 ### clipConvexNative
@@ -81,7 +81,7 @@ Return `mq3.collision.brush.distanceFromLineSquared(point, lineStart, lineEnd, d
 | `direction` | `dynamic` | — | Direction passed as `direction` to `mq3.collision.brush.distanceFromLineSquared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L127)
 
 <a id="function-function-mq3-collision-brush-cm-projectpointontovector-function-cm-projectpointontovector-point-start-direction-src-mq3-collision-brush-ml-938090851"></a>
 ### CM_ProjectPointOntoVector
@@ -99,7 +99,7 @@ Return `mq3.collision.brush.projectPointOntoVector(point, start, direction)` fro
 | `direction` | `dynamic` | — | Direction passed as `direction` to `mq3.collision.brush.projectPointOntoVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L121)
 
 <a id="function-function-mq3-collision-brush-cm-tracethroughbrush-function-cm-tracethroughbrush-trace-planes-contents-start-finish-mins-maxs-capsule-radius-capsuleoffset-src-mq3-collision-brush-ml-973708860"></a>
 ### CM_TraceThroughBrush
@@ -124,7 +124,7 @@ Return `mq3.collision.brush.traceThroughBrush(trace, planes, contents, start, fi
 | `capsuleOffset` | `dynamic` | — | Capsule offset passed as `capsuleOffset` to `mq3.collision.brush.traceThroughBrush`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L292)
 
 <a id="function-function-mq3-collision-brush-cm-vectordistancesquared-function-cm-vectordistancesquared-a-b-src-mq3-collision-brush-ml-1968195173"></a>
 ### CM_VectorDistanceSquared
@@ -141,7 +141,7 @@ Return `mq3.collision.brush.vectorDistanceSquared(a, b)` from `collision.brush.C
 | `b` | `dynamic` | — | B passed as `b` to `mq3.collision.brush.vectorDistanceSquared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L131)
 
 <a id="function-function-mq3-collision-brush-distancefromlinesquared-function-distancefromlinesquared-point-linestart-lineend-direction-src-mq3-collision-brush-ml-704297218"></a>
 ### distanceFromLineSquared
@@ -150,17 +150,17 @@ Return `mq3.collision.brush.vectorDistanceSquared(a, b)` from `collision.brush.C
 function distanceFromLineSquared(point, lineStart, lineEnd, direction)
 ```
 
-Compute distance from line squared in collision.brush; the normal completion returns `q.DotProduct(delta, delta)`.
+Return squared distance from a point to the finite segment between lineStart and lineEnd. Projects onto the line, then selects the nearer endpoint when the projection lies outside the segment. The caller supplies its matching unit direction.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `point` | `dynamic` | — | Point passed as `point` to `mq3.collision.brush.projectPointOntoVector`. |
-| `lineStart` | `dynamic` | — | Start passed as `start` to `mq3.collision.brush.projectPointOntoVector`. |
-| `lineEnd` | `dynamic` | — | Line end used in `lineEnd[axis]` and `lineEnd[outside]`. |
-| `direction` | `dynamic` | — | Direction passed as `direction` to `mq3.collision.brush.projectPointOntoVector`. |
+| `point` | `dynamic` | — | Three-component query position in world units. |
+| `lineStart` | `dynamic` | — | Three-component start of the segment. |
+| `lineEnd` | `dynamic` | — | Three-component end of the segment. |
+| `direction` | `dynamic` | — | Normalized direction of the segment, used without renormalization. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L90)
 
 <a id="function-function-mq3-collision-brush-emptytrace-function-emptytrace-src-mq3-collision-brush-ml-1896061566"></a>
 ### emptyTrace
@@ -172,7 +172,7 @@ function emptyTrace()
 Create `mq3.collision.brush.Trace` with fraction=n.f32(1); normal=[0.0, 0.0, 0.0]; distance=0.0; surfaceFlags=0; contents=0; startsolid=false; allsolid=false; planeMetadata=0.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L59)
 
 <a id="function-function-mq3-collision-brush-packplanes-function-packplanes-planes-src-mq3-collision-brush-ml-1958392161"></a>
 ### packPlanes
@@ -188,7 +188,7 @@ Compute pack planes in collision.brush; the normal completion returns `result`.
 | `planes` | `dynamic` | — | Planes used in `len(planes)` and `(len(planes) * 16)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L167)
 
 - [mq3.collision.brush.Plane](Type-mq3-collision-brush-plane-61311760.md) — struct
 <a id="function-function-mq3-collision-brush-projectpointontovector-function-projectpointontovector-point-start-direction-src-mq3-collision-brush-ml-530301161"></a>
@@ -198,16 +198,16 @@ Compute pack planes in collision.brush; the normal completion returns `result`.
 function projectPointOntoVector(point, start, direction)
 ```
 
-BASIC MATH from cm_trace.c.  These stay here beside the brush kernel so capsule primitives and their differential tests share the exact binary32 operation ordering of the original C translation unit.
+Project a point onto the infinite line through start along a unit direction. Uses the original collision kernel's binary32 operation order; it does not normalize direction or clamp the result to a line segment.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `point` | `dynamic` | — | Point used in `point[0]` and `point[1]`. |
-| `start` | `dynamic` | — | A passed as `a` to `mq3.shared.math.VectorMA`. |
-| `direction` | `dynamic` | — | Right three-element vector. |
+| `point` | `dynamic` | — | Three-component point in world coordinates. |
+| `start` | `dynamic` | — | Three-component origin of the projection line. |
+| `direction` | `dynamic` | — | Unit-length three-component line direction, supplied by the caller. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L69)
 
 <a id="function-function-mq3-collision-brush-settraceplane-function-settraceplane-trace-plane-src-mq3-collision-brush-ml-214399169"></a>
 ### setTracePlane
@@ -216,17 +216,15 @@ BASIC MATH from cm_trace.c.  These stay here beside the brush kernel so capsule 
 function setTracePlane(trace, plane)
 ```
 
-Set trace plane in collision.brush; updates `trace.normal`, `trace.distance`, `trace.surfaceFlags`.
-
-Direct state writes: `trace.normal`, `trace.distance`, `trace.surfaceFlags`, `trace.planeMetadata`.
+Store an impact plane and its packed classification in a mutable trace. Retains the plane's normal vector by reference, copies distance and surface flags, and encodes axial type plus three negative-component sign bits.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `trace` | `dynamic` | — | Updated in place: `normal`, `distance`, `surfaceFlags`, `planeMetadata`. |
-| `plane` | `dynamic` | — | Record exposing `normal`, `distance`, `flags`. |
+| `trace` | `dynamic` | — | Trace whose normal, distance, surfaceFlags, and planeMetadata are replaced. |
+| `plane` | `dynamic` | — | Brush Plane supplying the normal, signed distance, and surface flags. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L154)
 
 <a id="function-function-mq3-collision-brush-squarerootfloat-function-squarerootfloat-number-src-mq3-collision-brush-ml-1920655653"></a>
 ### SquareRootFloat
@@ -242,7 +240,7 @@ Return `mq3.collision.brush.squareRootFloat(number)` from `collision.brush.Squar
 | `number` | `dynamic` | — | Number passed as `number` to `mq3.collision.brush.squareRootFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L134)
 
 <a id="function-function-mq3-collision-brush-squarerootfloat-function-squarerootfloat-number-src-mq3-collision-brush-ml-1835943013"></a>
 ### squareRootFloat
@@ -258,7 +256,7 @@ Compute square root float in collision.brush; the normal completion returns `n.f
 | `number` | `dynamic` | — | Left floating-point operand. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L106)
 
 - [mq3.collision.brush.Trace](Type-mq3-collision-brush-trace-408474163.md) — struct
 <a id="function-function-mq3-collision-brush-tracepacked-function-tracepacked-trace-planes-packed-contents-start-finish-mins-maxs-scratch-src-mq3-collision-brush-ml-2102787561"></a>
@@ -285,7 +283,7 @@ Direct state writes: `trace.startsolid`, `trace.allsolid`, `trace.fraction`, `tr
 | `scratch` | `dynamic` | — | Writable buffer for the binary32 collision fraction when a hit is reported. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L190)
 
 <a id="function-function-mq3-collision-brush-tracethroughbrush-function-tracethroughbrush-trace-planes-contents-start-finish-mins-maxs-capsule-radius-capsuleoffset-src-mq3-collision-brush-ml-216415844"></a>
 ### traceThroughBrush
@@ -294,25 +292,23 @@ Direct state writes: `trace.startsolid`, `trace.allsolid`, `trace.fraction`, `tr
 function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, capsule, radius, capsuleOffset)
 ```
 
-Trace through brush in collision.brush; the normal completion returns `trace`.
-
-Direct state writes: `trace.startsolid`, `trace.allsolid`, `trace.fraction`, `trace.contents`.
+Sweep a box or capsule against a convex brush, updating and returning the existing trace. A nearer entering hit replaces the fraction, contents, and impact plane. Starting inside sets startsolid; remaining inside also sets allsolid and a zero fraction. Starting inside but exiting does not replace the hit fraction. Empty brushes and separating planes leave the trace unchanged.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `trace` | `dynamic` | — | Record exposing `fraction`. Updated in place: `startsolid`, `allsolid`, `fraction`, `contents`. |
-| `planes` | `dynamic` | — | Planes used in `len(planes)` and `(len(planes) == 0)`. |
-| `contents` | `dynamic` | — | Contents operand used by `traceThroughBrush`; its reads are shown in the implementation. |
-| `start` | `dynamic` | — | Left three-element vector. |
-| `finish` | `dynamic` | — | Left three-element vector. |
-| `mins` | `dynamic` | — | Mins passed as `mins` to `mq3.collision.brush.boxSupportDot`. |
-| `maxs` | `dynamic` | — | Maxs passed as `maxs` to `mq3.collision.brush.boxSupportDot`. |
-| `capsule` | `dynamic` | — | Capsule operand used by `traceThroughBrush`; its reads are shown in the implementation. |
-| `radius` | `dynamic` | — | Right floating-point operand. |
-| `capsuleOffset` | `dynamic` | — | Right three-element vector. |
+| `trace` | `dynamic` | — | Accumulated nearest-hit result, mutated in place; its fraction limits new entering hits. |
+| `planes` | `dynamic` | — | Brush boundary Plane records with outward unit normals in the sweep coordinate system. |
+| `contents` | `dynamic` | — | Brush contents bitmask reported on an entering hit or an allsolid result. |
+| `start` | `dynamic` | — | Three-component sweep start position in world units. |
+| `finish` | `dynamic` | — | Three-component sweep end position in the same coordinate system. |
+| `mins` | `dynamic` | — | Box minimum corner relative to the moving origin; used only when capsule is false. |
+| `maxs` | `dynamic` | — | Box maximum corner relative to the moving origin; used only when capsule is false. |
+| `capsule` | `dynamic` | — | True selects capsule support; false selects axis-aligned box support. |
+| `radius` | `dynamic` | — | Capsule end-sphere radius in world units; used only for capsule sweeps. |
+| `capsuleOffset` | `dynamic` | — | Vector from the capsule center to one end-sphere center; used only for capsule sweeps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L219)
 
 <a id="function-function-mq3-collision-brush-vectordistancesquared-function-vectordistancesquared-a-b-src-mq3-collision-brush-ml-2055336091"></a>
 ### vectorDistanceSquared
@@ -329,4 +325,4 @@ Compute vector distance squared in collision.brush; the normal completion return
 | `b` | `dynamic` | — | B used in `b[0]` and `b[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L78)

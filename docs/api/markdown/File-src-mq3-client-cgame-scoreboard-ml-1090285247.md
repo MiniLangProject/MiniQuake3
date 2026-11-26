@@ -27,7 +27,7 @@ Updates `value.commands` during client game scoreboard `append`.
 | `command` | `dynamic` | — | Value used by `value.commands=value.commands+[command]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L208)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-bigchar-height-const-bigchar-height-16-src-mq3-client-cgame-scoreboard-ml-1643848712"></a>
 ### BIGCHAR_HEIGHT
@@ -36,8 +36,10 @@ Updates `value.commands` during client game scoreboard `append`.
 const BIGCHAR_HEIGHT = 16
 ```
 
+Bigchar font metric controlling height in virtual UI coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L44)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-bigchar-width-const-bigchar-width-16-src-mq3-client-cgame-scoreboard-ml-1572764710"></a>
 ### BIGCHAR_WIDTH
@@ -46,8 +48,10 @@ const BIGCHAR_HEIGHT = 16
 const BIGCHAR_WIDTH = 16
 ```
 
+Bigchar font metric controlling width in virtual UI coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L42)
 
 <a id="function-function-mq3-client-cgame-scoreboard-centergiantline-function-centergiantline-y-text-src-mq3-client-cgame-scoreboard-ml-481888180"></a>
 ### centerGiantLine
@@ -64,7 +68,7 @@ CG_CenterGiantLine
 | `text` | `dynamic` | — | Argument 2, 6 of `mq3.client.cgame_scoreboard.draw`; passed as `(640-GIANT_WIDTH*printableLength(text))/2`, `text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L316)
 
 <a id="function-function-mq3-client-cgame-scoreboard-client-function-client-name-team-src-mq3-client-cgame-scoreboard-ml-1705253140"></a>
 ### client
@@ -81,7 +85,7 @@ Creates a `mq3.client.cgame_scoreboard.Client` record. Assigns `name` from `name
 | `team` | `dynamic` | — | Value used to initialize `Client.team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L184)
 
 - [mq3.client.cgame_scoreboard.Client](Type-mq3-client-cgame-scoreboard-client-577185952.md) — struct
 <a id="function-function-mq3-client-cgame-scoreboard-draw-function-draw-kind-x-y-width-height-text-alpha-red-green-blue-clientnum-team-large-src-mq3-client-cgame-scoreboard-ml-1454894454"></a>
@@ -110,7 +114,7 @@ Creates a `mq3.client.cgame_scoreboard.Draw` record. Assigns `kind` from `kind`,
 | `large` | `dynamic` | — | Value used to initialize `Draw.large`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L201)
 
 - [mq3.client.cgame_scoreboard.Draw](Type-mq3-client-cgame-scoreboard-draw-39659597.md) — struct
 <a id="function-function-mq3-client-cgame-scoreboard-drawclientscore-function-drawclientscore-value-y-entry-fade-largeformat-src-mq3-client-cgame-scoreboard-ml-1059609034"></a>
@@ -131,7 +135,7 @@ CG_DrawClientScore
 | `largeFormat` | `dynamic` | — | Value used by `if largeFormat then iconY=y-8`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L243)
 
 <a id="function-function-mq3-client-cgame-scoreboard-drawoldscoreboard-function-drawoldscoreboard-value-src-mq3-client-cgame-scoreboard-ml-1698690215"></a>
 ### drawOldScoreboard
@@ -147,7 +151,7 @@ CG_DrawOldScoreboard
 | `value` | `dynamic` | — | Mutable client game scoreboard record/storage; this routine assigns `value.deferredPlayerLoading`, `value.killerName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L284)
 
 <a id="function-function-mq3-client-cgame-scoreboard-drawoldtourneyscoreboard-function-drawoldtourneyscoreboard-value-src-mq3-client-cgame-scoreboard-ml-316814165"></a>
 ### drawOldTourneyScoreboard
@@ -163,7 +167,7 @@ CG_DrawOldTourneyScoreboard
 | `value` | `dynamic` | — | Mutable client game scoreboard record/storage; this routine assigns `value.scoresRequestTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L320)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-fade-time-const-fade-time-200-src-mq3-client-cgame-scoreboard-ml-2012495239"></a>
 ### FADE_TIME
@@ -172,8 +176,10 @@ CG_DrawOldTourneyScoreboard
 const FADE_TIME = 200
 ```
 
+Duration in milliseconds of the standard CGame presentation fade.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L50)
 
 <a id="function-function-mq3-client-cgame-scoreboard-fadealpha-function-fadealpha-statevalue-src-mq3-client-cgame-scoreboard-ml-352665916"></a>
 ### fadeAlpha
@@ -189,7 +195,7 @@ Evaluates client game scoreboard `fadeAlpha` and returns `0.0`, `(FADE_TIME-elap
 | `stateValue` | `dynamic` | — | Record read through `stateValue.time`, `stateValue.scoreFadeTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L227)
 
 <a id="function-function-mq3-client-cgame-scoreboard-frame-function-frame-drawn-src-mq3-client-cgame-scoreboard-ml-2070318674"></a>
 ### frame
@@ -205,7 +211,7 @@ Creates a `mq3.client.cgame_scoreboard.Frame` record. Assigns `drawn` from `draw
 | `drawn` | `dynamic` | — | Value used to initialize `Frame.drawn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L204)
 
 - [mq3.client.cgame_scoreboard.Frame](Type-mq3-client-cgame-scoreboard-frame-549841652.md) — struct
 <a id="constant-constant-mq3-client-cgame-scoreboard-giant-height-const-giant-height-48-src-mq3-client-cgame-scoreboard-ml-570988095"></a>
@@ -215,8 +221,10 @@ Creates a `mq3.client.cgame_scoreboard.Frame` record. Assigns `drawn` from `draw
 const GIANT_HEIGHT = 48
 ```
 
+Height of a giant-font character in virtual screen coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L48)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-giant-width-const-giant-width-32-src-mq3-client-cgame-scoreboard-ml-672136752"></a>
 ### GIANT_WIDTH
@@ -225,8 +233,10 @@ const GIANT_HEIGHT = 48
 const GIANT_WIDTH = 32
 ```
 
+Width of a giant-font character in virtual screen coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L46)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-gt-single-player-const-gt-single-player-2-src-mq3-client-cgame-scoreboard-ml-272210325"></a>
 ### GT_SINGLE_PLAYER
@@ -235,8 +245,10 @@ const GIANT_WIDTH = 32
 const GT_SINGLE_PLAYER = 2
 ```
 
+Native game-type value for single-player arena progression, used when choosing team grouping and single-player scoreboard behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L17)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-gt-team-const-gt-team-3-src-mq3-client-cgame-scoreboard-ml-2027502642"></a>
 ### GT_TEAM
@@ -245,8 +257,10 @@ const GT_SINGLE_PLAYER = 2
 const GT_TEAM = 3
 ```
 
+Native game-type value for team deathmatch, used when choosing team grouping and single-player scoreboard behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L20)
 
 <a id="function-function-mq3-client-cgame-scoreboard-padleft-function-padleft-value-width-src-mq3-client-cgame-scoreboard-ml-664432577"></a>
 ### padLeft
@@ -263,7 +277,7 @@ Evaluates client game scoreboard `padLeft` and returns `text` according to its g
 | `width` | `dynamic` | — | Width in the coordinate space used by `padLeft`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L233)
 
 <a id="function-function-mq3-client-cgame-scoreboard-placestring-function-placestring-rank-src-mq3-client-cgame-scoreboard-ml-1839883584"></a>
 ### placeString
@@ -279,7 +293,7 @@ Evaluates client game scoreboard `placeString` and returns `"Tied for "+text`, `
 | `rank` | `dynamic` | — | Value used by `tied=(rank & RANK_TIED_FLAG)!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L220)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-pm-dead-const-pm-dead-3-src-mq3-client-cgame-scoreboard-ml-293227478"></a>
 ### PM_DEAD
@@ -288,8 +302,10 @@ Evaluates client game scoreboard `placeString` and returns `"Tied for "+text`, `
 const PM_DEAD = 3
 ```
 
+Player-movement mode selecting dead input and physics behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L22)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-pm-intermission-const-pm-intermission-5-src-mq3-client-cgame-scoreboard-ml-2089693976"></a>
 ### PM_INTERMISSION
@@ -298,8 +314,10 @@ const PM_DEAD = 3
 const PM_INTERMISSION = 5
 ```
 
+Player-movement mode selecting intermission input and physics behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L24)
 
 <a id="function-function-mq3-client-cgame-scoreboard-printablelength-function-printablelength-text-src-mq3-client-cgame-scoreboard-ml-1829043883"></a>
 ### printableLength
@@ -315,7 +333,7 @@ Evaluates client game scoreboard `printableLength` and returns `count` according
 | `text` | `dynamic` | — | Text consumed or emitted by `printableLength` in the client game scoreboard path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L211)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-rank-tied-flag-const-rank-tied-flag-16384-src-mq3-client-cgame-scoreboard-ml-69180123"></a>
 ### RANK_TIED_FLAG
@@ -324,8 +342,10 @@ Evaluates client game scoreboard `printableLength` and returns `count` according
 const RANK_TIED_FLAG = 16384
 ```
 
+Bit marking that the stored rank is tied with another player's rank.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L26)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-sb-header-const-sb-header-86-src-mq3-client-cgame-scoreboard-ml-1306396957"></a>
 ### SB_HEADER
@@ -334,8 +354,10 @@ const RANK_TIED_FLAG = 16384
 const SB_HEADER = 86
 ```
 
+Virtual-screen Y coordinate of the scoreboard header.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L28)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-sb-inter-height-const-sb-inter-height-16-src-mq3-client-cgame-scoreboard-ml-2009511194"></a>
 ### SB_INTER_HEIGHT
@@ -344,8 +366,10 @@ const SB_HEADER = 86
 const SB_INTER_HEIGHT = 16
 ```
 
+Height of one scoreboard player row in the compact intermission layout.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L36)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-sb-maxclients-inter-const-sb-maxclients-inter-17-src-mq3-client-cgame-scoreboard-ml-57423179"></a>
 ### SB_MAXCLIENTS_INTER
@@ -354,8 +378,10 @@ const SB_INTER_HEIGHT = 16
 const SB_MAXCLIENTS_INTER = 17
 ```
 
+Maximum player rows displayed by the compact intermission scoreboard layout.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L40)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-sb-maxclients-normal-const-sb-maxclients-normal-7-src-mq3-client-cgame-scoreboard-ml-156474884"></a>
 ### SB_MAXCLIENTS_NORMAL
@@ -364,8 +390,10 @@ const SB_MAXCLIENTS_INTER = 17
 const SB_MAXCLIENTS_NORMAL = 7
 ```
 
+Maximum player rows displayed by the ordinary scoreboard layout.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L38)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-sb-normal-height-const-sb-normal-height-40-src-mq3-client-cgame-scoreboard-ml-378427735"></a>
 ### SB_NORMAL_HEIGHT
@@ -374,8 +402,10 @@ const SB_MAXCLIENTS_NORMAL = 7
 const SB_NORMAL_HEIGHT = 40
 ```
 
+Height of one scoreboard player row in the ordinary layout.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L34)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-sb-statusbar-const-sb-statusbar-420-src-mq3-client-cgame-scoreboard-ml-1187546883"></a>
 ### SB_STATUSBAR
@@ -384,8 +414,10 @@ const SB_NORMAL_HEIGHT = 40
 const SB_STATUSBAR = 420
 ```
 
+Virtual-screen Y coordinate of the scoreboard's status-bar boundary.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-sb-top-const-sb-top-118-src-mq3-client-cgame-scoreboard-ml-1836646787"></a>
 ### SB_TOP
@@ -394,8 +426,10 @@ const SB_STATUSBAR = 420
 const SB_TOP = 118
 ```
 
+Virtual-screen Y coordinate at which scoreboard player rows begin.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
 
 <a id="function-function-mq3-client-cgame-scoreboard-score-function-score-client-points-ping-time-src-mq3-client-cgame-scoreboard-ml-1119368343"></a>
 ### score
@@ -414,7 +448,7 @@ Creates a `mq3.client.cgame_scoreboard.Score` record. Assigns `client` from `cli
 | `time` | `dynamic` | — | Value used to initialize `Score.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L180)
 
 - [mq3.client.cgame_scoreboard.Score](Type-mq3-client-cgame-scoreboard-score-1835543747.md) — struct
 <a id="function-function-mq3-client-cgame-scoreboard-state-function-state-src-mq3-client-cgame-scoreboard-ml-1633129108"></a>
@@ -427,7 +461,7 @@ function state()
 Creates a `mq3.client.cgame_scoreboard.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L186)
 
 - [mq3.client.cgame_scoreboard.State](Type-mq3-client-cgame-scoreboard-state-423630336.md) — struct
 <a id="constant-constant-mq3-client-cgame-scoreboard-team-blue-const-team-blue-2-src-mq3-client-cgame-scoreboard-ml-89247283"></a>
@@ -437,8 +471,10 @@ Creates a `mq3.client.cgame_scoreboard.State` record. Initializes the record wit
 const TEAM_BLUE = 2
 ```
 
+Native team identifier for blue, used by player and team presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L12)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-team-free-const-team-free-0-src-mq3-client-cgame-scoreboard-ml-1996183673"></a>
 ### TEAM_FREE
@@ -447,8 +483,10 @@ const TEAM_BLUE = 2
 const TEAM_FREE = 0
 ```
 
+Native team identifier for free, used by player and team presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L8)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-team-red-const-team-red-1-src-mq3-client-cgame-scoreboard-ml-1565434272"></a>
 ### TEAM_RED
@@ -457,8 +495,10 @@ const TEAM_FREE = 0
 const TEAM_RED = 1
 ```
 
+Native team identifier for red, used by player and team presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L10)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-team-spectator-const-team-spectator-3-src-mq3-client-cgame-scoreboard-ml-390687050"></a>
 ### TEAM_SPECTATOR
@@ -467,8 +507,10 @@ const TEAM_RED = 1
 const TEAM_SPECTATOR = 3
 ```
 
+Native team identifier for spectator, used by player and team presentation.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L14)
 
 <a id="function-function-mq3-client-cgame-scoreboard-teamscoreboard-function-teamscoreboard-value-y-team-fade-maxclients-lineheight-src-mq3-client-cgame-scoreboard-ml-57246262"></a>
 ### teamScoreboard
@@ -489,4 +531,4 @@ CG_TeamScoreboard
 | `lineHeight` | `dynamic` | — | Value used by `part=drawClientScore(value,y+lineHeight*count,entry,fade,lineHeight==SB_NORMAL_HEIGHT)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L271)

@@ -12,7 +12,7 @@ struct State
 `State` record for server bridge, containing `clients`, `now` and `lastFrameTime`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L41)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct State
 clients
 ```
 
+Mirrored server clients used to transfer bot commands and client input state.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L43)
 
 <a id="field-field-mq3-botlib-server-bridge-state-lastframetime-lastframetime-src-mq3-botlib-server-bridge-ml-1025730238"></a>
 ### lastFrameTime
@@ -33,8 +35,10 @@ clients
 lastFrameTime
 ```
 
+Timestamp retained from the preceding server-side bot frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L47)
 
 <a id="field-field-mq3-botlib-server-bridge-state-now-now-src-mq3-botlib-server-bridge-ml-652964502"></a>
 ### now
@@ -43,5 +47,7 @@ lastFrameTime
 now
 ```
 
+Timestamp supplied by the current server-side bot frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L45)

@@ -23,8 +23,10 @@ struct State
 context
 ```
 
+Caller-supplied data associated with saving fuzzy-weight files and choosing genetic mutations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-diagnostics-diagnostics-src-mq3-botlib-ai-weight-runtime-ml-482218528"></a>
 ### diagnostics
@@ -33,8 +35,10 @@ context
 diagnostics
 ```
 
+Diagnostics collected while processing the subsystem's requests.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L22)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-randomfn-randomfn-src-mq3-botlib-ai-weight-runtime-ml-2133383310"></a>
 ### randomFn
@@ -43,8 +47,10 @@ diagnostics
 randomFn
 ```
 
+Host callback that supplies the random values used by bot selection and fuzzy logic.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-weights-weights-src-mq3-botlib-ai-weight-runtime-ml-744203456"></a>
 ### weights
@@ -53,8 +59,10 @@ randomFn
 weights
 ```
 
+Fuzzy-weight configurations registered with the combined weight runtime.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L14)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-writefn-writefn-src-mq3-botlib-ai-weight-runtime-ml-1235478644"></a>
 ### writeFn
@@ -63,5 +71,7 @@ weights
 writeFn
 ```
 
+Host callback that writes data through the host output interface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L18)

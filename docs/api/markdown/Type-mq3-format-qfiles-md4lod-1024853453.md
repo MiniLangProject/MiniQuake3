@@ -12,7 +12,7 @@ struct Md4Lod
 Md4Lod record for format.qfiles, containing `numSurfaces`, `ofsSurfaces`, `ofsEnd`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L405)
 
 ## Members
 
@@ -23,8 +23,10 @@ Md4Lod record for format.qfiles, containing `numSurfaces`, `ofsSurfaces`, `ofsEn
 numSurfaces
 ```
 
+Number of surfaces described by this model or file record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L119)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L407)
 
 <a id="field-field-mq3-format-qfiles-md4lod-ofsend-ofsend-src-mq3-format-qfiles-ml-958100291"></a>
 ### ofsEnd
@@ -33,8 +35,10 @@ numSurfaces
 ofsEnd
 ```
 
+Byte offset of the end of this serialized record, relative to its start.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L119)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L411)
 
 <a id="field-field-mq3-format-qfiles-md4lod-ofssurfaces-ofssurfaces-src-mq3-format-qfiles-ml-411740501"></a>
 ### ofsSurfaces
@@ -43,5 +47,7 @@ ofsEnd
 ofsSurfaces
 ```
 
+Byte offset from this LOD header to its first mesh surface.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L119)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L409)

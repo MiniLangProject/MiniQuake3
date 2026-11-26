@@ -12,7 +12,7 @@ struct Entity
 Data record for `mq3.renderer.tr_backend_runtime.Entity`; groups `shaderTime`, `renderfx`, `needDlights`, `modelMatrix`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L115)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_backend_runtime.Entity`; groups `shaderTime`, `
 modelMatrix
 ```
 
+Matrix placing the model in the current view or world coordinate system.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L123)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-entity-needdlights-needdlights-src-mq3-renderer-tr-backend-runtime-ml-119714654"></a>
 ### needDlights
@@ -33,8 +35,10 @@ modelMatrix
 needDlights
 ```
 
+Whether the entity must receive dynamic-light processing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L121)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-entity-renderfx-renderfx-src-mq3-renderer-tr-backend-runtime-ml-751819606"></a>
 ### renderfx
@@ -43,8 +47,10 @@ needDlights
 renderfx
 ```
 
+Bit mask of entity rendering options, such as depth hack or shadow suppression.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L119)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-entity-shadertime-shadertime-src-mq3-renderer-tr-backend-runtime-ml-258617234"></a>
 ### shaderTime
@@ -53,5 +59,7 @@ renderfx
 shaderTime
 ```
 
+Time offset in seconds subtracted from the view time for entity shader effects.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L117)

@@ -12,7 +12,7 @@ struct Runtime
 `Runtime` record for ai goal state, containing `pools`, `context`, `timeFn`, `goalNameFn` and `logFn` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L35)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Runtime
 context
 ```
 
+Caller-supplied data associated with goal timing, goal-name lookup, logging, and goal-stack diagnostics.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-goalnamefn-goalnamefn-src-mq3-botlib-ai-goal-state-ml-798793085"></a>
 ### goalNameFn
@@ -33,8 +35,10 @@ context
 goalNameFn
 ```
 
+Host callback that resolves a bot goal to its display name.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L44)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-logfn-logfn-src-mq3-botlib-ai-goal-state-ml-1022651013"></a>
 ### logFn
@@ -43,8 +47,10 @@ goalNameFn
 logFn
 ```
 
+Host callback that writes a bot-runtime message to the host log.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L46)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-pools-pools-src-mq3-botlib-ai-goal-state-ml-1402175301"></a>
 ### pools
@@ -53,8 +59,10 @@ logFn
 pools
 ```
 
+Managed pools containing bot chat, goal, movement, and weapon resources.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L37)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-printfn-printfn-src-mq3-botlib-ai-goal-state-ml-813334221"></a>
 ### printFn
@@ -63,8 +71,10 @@ pools
 printFn
 ```
 
+Host callback that prints goal-stack and goal-state diagnostic output.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L48)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-timefn-timefn-src-mq3-botlib-ai-goal-state-ml-1308526995"></a>
 ### timeFn
@@ -73,5 +83,7 @@ printFn
 timeFn
 ```
 
+Host callback that supplies the current time used by the bot runtime.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L42)

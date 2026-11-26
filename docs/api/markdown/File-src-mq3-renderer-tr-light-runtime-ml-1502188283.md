@@ -31,7 +31,7 @@ Constructs `mq3.renderer.tr_light_runtime.Dlight` with `transformed` = `[0.0,0.0
 | `color` | `dynamic` | — | Initial value for `mq3.renderer.tr_light_runtime.Dlight.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L139)
 
 - [mq3.renderer.tr_light_runtime.Dlight](Type-mq3-renderer-tr-light-runtime-dlight-1093256819.md) — struct
 <a id="constant-constant-mq3-renderer-tr-light-runtime-dlight-at-radius-const-dlight-at-radius-16-src-mq3-renderer-tr-light-runtime-ml-1219406766"></a>
@@ -41,8 +41,10 @@ Constructs `mq3.renderer.tr_light_runtime.Dlight` with `transformed` = `[0.0,0.0
 const DLIGHT_AT_RADIUS = 16
 ```
 
+Dynamic-light contribution used at a distance equal to the light's radius.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L23)
 
 <a id="constant-constant-mq3-renderer-tr-light-runtime-dlight-minimum-radius-const-dlight-minimum-radius-16-src-mq3-renderer-tr-light-runtime-ml-1959686938"></a>
 ### DLIGHT_MINIMUM_RADIUS
@@ -51,8 +53,10 @@ const DLIGHT_AT_RADIUS = 16
 const DLIGHT_MINIMUM_RADIUS = 16
 ```
 
+Lower bound applied to dynamic-light radius calculations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L25)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-dot3-function-dot3-a-b-src-mq3-renderer-tr-light-runtime-ml-816332313"></a>
 ### dot3
@@ -69,7 +73,7 @@ Computes `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `mq3.renderer.tr_light_runtime.dot3
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L110)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-entity-function-entity-origin-src-mq3-renderer-tr-light-runtime-ml-547343524"></a>
 ### entity
@@ -85,7 +89,7 @@ Constructs `mq3.renderer.tr_light_runtime.RefEntity` with `lightingOrigin` = `[0
 | `origin` | `dynamic` | — | Initial value for `mq3.renderer.tr_light_runtime.RefEntity.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L128)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-identityaxis-function-identityaxis-src-mq3-renderer-tr-light-runtime-ml-624492502"></a>
 ### identityAxis
@@ -97,7 +101,7 @@ function identityAxis()
 Returns `[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]` for `mq3.renderer.tr_light_runtime.identityAxis`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L102)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-length3-function-length3-a-src-mq3-renderer-tr-light-runtime-ml-1447699833"></a>
 ### length3
@@ -113,7 +117,7 @@ Calls `mq3.compat.transcendental.sqrt` with `(a[0]*a[0]+a[1]*a[1]+a[2]*a[2])` an
 | `a` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L122)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-lightorigin-function-lightorigin-ent-src-mq3-renderer-tr-light-runtime-ml-2147061177"></a>
 ### lightOrigin
@@ -129,7 +133,7 @@ Returns `ent.origin` from `mq3.renderer.tr_light_runtime.lightOrigin`; earlier b
 | `ent` | `dynamic` | — | Record providing `ent.renderfx`, `ent.lightingOrigin`, `ent.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L169)
 
 - [mq3.renderer.tr_light_runtime.LightResult](Type-mq3-renderer-tr-light-runtime-lightresult-37242048.md) — struct
 <a id="function-function-mq3-renderer-tr-light-runtime-loglight-function-loglight-ent-src-mq3-renderer-tr-light-runtime-ml-338840365"></a>
@@ -146,7 +150,7 @@ Preserves the original function's else-if quirk: Z is tested only when Y did not
 | `ent` | `dynamic` | — | Record providing `ent.renderfx`, `ent.ambientLight`, `ent.directedLight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L182)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-ma3-function-ma3-a-s-b-src-mq3-renderer-tr-light-runtime-ml-650815124"></a>
 ### ma3
@@ -164,7 +168,7 @@ Returns `[a[0]+s*b[0],a[1]+s*b[1],a[2]+s*b[2]]` for `mq3.renderer.tr_light_runti
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L119)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-normalize3-function-normalize3-a-src-mq3-renderer-tr-light-runtime-ml-669152239"></a>
 ### normalize3
@@ -180,7 +184,7 @@ Updates `a[0]`, `a[1]`, `a[2]` in `mq3.renderer.tr_light_runtime.normalize3`; re
 | `a` | `dynamic` | — | Mutable record or buffer; this call updates `a[0]`, `a[1]`, `a[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L125)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-orientation-function-orientation-origin-axis-src-mq3-renderer-tr-light-runtime-ml-302084961"></a>
 ### orientation
@@ -197,7 +201,7 @@ Constructs `mq3.renderer.tr_light_runtime.Orientation` from `origin`, `axis`.
 | `axis` | `dynamic` | — | Initial value for `mq3.renderer.tr_light_runtime.Orientation.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L134)
 
 - [mq3.renderer.tr_light_runtime.Orientation](Type-mq3-renderer-tr-light-runtime-orientation-498460619.md) — struct
 <a id="function-function-mq3-renderer-tr-light-runtime-packambient-function-packambient-value-src-mq3-renderer-tr-light-runtime-ml-1443147391"></a>
@@ -214,7 +218,7 @@ Returns `red|(green<<8)|(blue<<16)|(255<<24)` from `mq3.renderer.tr_light_runtim
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L191)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-r-dlightbmodel-function-r-dlightbmodel-model-lights-orient-smpframe-currententity-src-mq3-renderer-tr-light-runtime-ml-195708460"></a>
 ### R_DlightBmodel
@@ -234,7 +238,7 @@ Updates `currentEntity.needDlights` in `mq3.renderer.tr_light_runtime.R_DlightBm
 | `currentEntity` | `dynamic` | — | Mutable record or buffer; this call updates `currentEntity.needDlights`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L157)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-r-lightforpoint-function-r-lightforpoint-grid-point-ambientscale-directedscale-src-mq3-renderer-tr-light-runtime-ml-1833908096"></a>
 ### R_LightForPoint
@@ -253,7 +257,7 @@ Builds `mq3.renderer.tr_light_runtime.LightResult` for `mq3.renderer.tr_light_ru
 | `directedScale` | `dynamic` | — | Value forwarded as `directedScale` to `mq3.renderer.tr_light_runtime.R_SetupEntityLightingGrid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L223)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-r-setupentitylighting-function-r-setupentitylighting-refdef-grid-ent-identitylight-identitylightbyte-sundirection-ambientscale-directedscale-debuglight-src-mq3-renderer-tr-light-runtime-ml-978347097"></a>
 ### R_SetupEntityLighting
@@ -277,7 +281,7 @@ Updates `ent.lightingCalculated`, `ent.ambientLight`, `ent.directedLight`, `ent.
 | `debugLight` | `dynamic` | — | Input tested by `debugLight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L205)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-r-setupentitylightinggrid-function-r-setupentitylightinggrid-grid-ent-ambientscale-directedscale-src-mq3-renderer-tr-light-runtime-ml-1431937891"></a>
 ### R_SetupEntityLightingGrid
@@ -296,7 +300,7 @@ Updates `ent.ambientLight`, `ent.directedLight`, `ent.lightDir` in `mq3.renderer
 | `directedScale` | `dynamic` | — | Value forwarded as `s` to `mq3.renderer.tr_light_runtime.scale3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L175)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-r-transformdlights-function-r-transformdlights-count-lights-orient-src-mq3-renderer-tr-light-runtime-ml-798038163"></a>
 ### R_TransformDlights
@@ -314,7 +318,7 @@ Updates `lights[index].transformed` in `mq3.renderer.tr_light_runtime.R_Transfor
 | `orient` | `dynamic` | — | Record providing `orient.origin`, `orient.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L145)
 
 <a id="constant-constant-mq3-renderer-tr-light-runtime-rdf-noworldmodel-const-rdf-noworldmodel-1-src-mq3-renderer-tr-light-runtime-ml-1963859620"></a>
 ### RDF_NOWORLDMODEL
@@ -323,8 +327,10 @@ Updates `lights[index].transformed` in `mq3.renderer.tr_light_runtime.R_Transfor
 const RDF_NOWORLDMODEL = 1
 ```
 
+View flag that renders submitted entities without the BSP world model.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L15)
 
 - [mq3.renderer.tr_light_runtime.Refdef](Type-mq3-renderer-tr-light-runtime-refdef-1826625023.md) — struct
 - [mq3.renderer.tr_light_runtime.RefEntity](Type-mq3-renderer-tr-light-runtime-refentity-33327011.md) — struct
@@ -335,8 +341,10 @@ const RDF_NOWORLDMODEL = 1
 const RF_FIRST_PERSON = 4
 ```
 
+Entity-rendering flag that draws the entity only in first-person views.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L11)
 
 <a id="constant-constant-mq3-renderer-tr-light-runtime-rf-lighting-origin-const-rf-lighting-origin-128-src-mq3-renderer-tr-light-runtime-ml-140856232"></a>
 ### RF_LIGHTING_ORIGIN
@@ -345,8 +353,10 @@ const RF_FIRST_PERSON = 4
 const RF_LIGHTING_ORIGIN = 128
 ```
 
+Entity-rendering flag selecting the supplied alternate lighting origin.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L13)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-scale3-function-scale3-a-s-src-mq3-renderer-tr-light-runtime-ml-275333226"></a>
 ### scale3
@@ -363,7 +373,7 @@ Returns `[a[0]*s,a[1]*s,a[2]*s]` for `mq3.renderer.tr_light_runtime.scale3`.
 | `s` | `dynamic` | — | Input used in the result expression `[a[0]*s,a[1]*s,a[2]*s]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L114)
 
 <a id="constant-constant-mq3-renderer-tr-light-runtime-sf-face-const-sf-face-1-src-mq3-renderer-tr-light-runtime-ml-653856"></a>
 ### SF_FACE
@@ -372,8 +382,10 @@ Returns `[a[0]*s,a[1]*s,a[2]*s]` for `mq3.renderer.tr_light_runtime.scale3`.
 const SF_FACE = 1
 ```
 
+Surface-dispatch tag identifying a planar BSP face.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L17)
 
 <a id="constant-constant-mq3-renderer-tr-light-runtime-sf-grid-const-sf-grid-2-src-mq3-renderer-tr-light-runtime-ml-85917039"></a>
 ### SF_GRID
@@ -382,8 +394,10 @@ const SF_FACE = 1
 const SF_GRID = 2
 ```
 
+Surface-dispatch tag identifying a tessellated curved-patch grid.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L19)
 
 <a id="constant-constant-mq3-renderer-tr-light-runtime-sf-triangles-const-sf-triangles-3-src-mq3-renderer-tr-light-runtime-ml-1462969698"></a>
 ### SF_TRIANGLES
@@ -392,8 +406,10 @@ const SF_GRID = 2
 const SF_TRIANGLES = 3
 ```
 
+Surface-dispatch tag identifying indexed triangle geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L21)
 
 <a id="function-function-mq3-renderer-tr-light-runtime-sub3-function-sub3-a-b-src-mq3-renderer-tr-light-runtime-ml-1893492249"></a>
 ### sub3
@@ -410,6 +426,6 @@ Returns `[a[0]-b[0],a[1]-b[1],a[2]-b[2]]` for `mq3.renderer.tr_light_runtime.sub
 | `b` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L106)
 
 - [mq3.renderer.tr_light_runtime.Surface](Type-mq3-renderer-tr-light-runtime-surface-240110498.md) — struct

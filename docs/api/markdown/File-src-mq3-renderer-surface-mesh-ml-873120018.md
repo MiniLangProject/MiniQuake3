@@ -30,7 +30,7 @@ Builds `mq3.renderer.surface_mesh.Submission` for `mq3.renderer.surface_mesh.bui
 | `aggregateDlights` | `dynamic` | — | Initial value for `mq3.renderer.surface_mesh.Submission.dlightBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L141)
 
 <a id="function-function-mq3-renderer-surface-mesh-checkcapacity-function-checkcapacity-vertexcount-indexcount-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-surface-mesh-ml-2076813100"></a>
 ### checkCapacity
@@ -51,7 +51,7 @@ Computes `checkCapacity` from `currentVertexes+vertexCount>=maxVertexes or curre
 | `maxIndexes` | `dynamic` | — | Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L124)
 
 <a id="function-function-mq3-renderer-surface-mesh-checkindexes-function-checkindexes-indexes-count-src-mq3-renderer-surface-mesh-ml-1093433563"></a>
 ### checkIndexes
@@ -68,7 +68,7 @@ Requires a nonempty triangle-index sequence whose every vertex index lies below 
 | `count` | `dynamic` | — | Input tested by `index<0 or index>=count`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L110)
 
 <a id="function-function-mq3-renderer-surface-mesh-face-function-face-normal-points-indexes-dlightbits-src-mq3-renderer-surface-mesh-ml-531333392"></a>
 ### face
@@ -87,7 +87,7 @@ Constructs `mq3.renderer.surface_mesh.FaceSurface` from `normal`, `points`, `ind
 | `dlightBits` | `dynamic` | — | Initial value for `mq3.renderer.surface_mesh.FaceSurface.dlightBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L86)
 
 - [mq3.renderer.surface_mesh.FaceSurface](Type-mq3-renderer-surface-mesh-facesurface-1567681718.md) — struct
 <a id="function-function-mq3-renderer-surface-mesh-lightbits-function-lightbits-value-smpframe-src-mq3-renderer-surface-mesh-ml-1027168848"></a>
@@ -105,7 +105,7 @@ Returns `value[smpFrame]` from `mq3.renderer.surface_mesh.lightBits`; earlier br
 | `smpFrame` | `dynamic` | — | Input tested by `smpFrame<0 or smpFrame>1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L102)
 
 - [mq3.renderer.surface_mesh.Submission](Type-mq3-renderer-surface-mesh-submission-1480450414.md) — struct
 <a id="function-function-mq3-renderer-surface-mesh-submitface-function-submitface-value-smpframe-needsnormal-currentvertexes-currentindexes-maxvertexes-maxindexes-currentdlightbits-src-mq3-renderer-surface-mesh-ml-550713881"></a>
@@ -129,7 +129,7 @@ RB_SurfaceFace checks overflow first and then adds its dlight mask. Every point 
 | `currentDlightBits` | `dynamic` | — | Input used by `aggregate=currentDlightBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L189)
 
 <a id="function-function-mq3-renderer-surface-mesh-submittriangles-function-submittriangles-value-smpframe-needsnormal-currentvertexes-currentindexes-maxvertexes-maxindexes-currentdlightbits-src-mq3-renderer-surface-mesh-ml-1583444427"></a>
 ### submitTriangles
@@ -152,7 +152,7 @@ RB_SurfaceTriangles ORs its dlight mask before RB_CHECKOVERFLOW. Therefore a flu
 | `currentDlightBits` | `dynamic` | — | Input used by `aggregate=currentDlightBits\|bits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L168)
 
 <a id="function-function-mq3-renderer-surface-mesh-triangles-function-triangles-verts-indexes-dlightbits-src-mq3-renderer-surface-mesh-ml-344608170"></a>
 ### triangles
@@ -170,7 +170,7 @@ Constructs `mq3.renderer.surface_mesh.TriangleSurface` from `verts`, `indexes`, 
 | `dlightBits` | `dynamic` | — | Initial value for `mq3.renderer.surface_mesh.TriangleSurface.dlightBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L80)
 
 - [mq3.renderer.surface_mesh.TriangleSurface](Type-mq3-renderer-surface-mesh-trianglesurface-948185961.md) — struct
 <a id="function-function-mq3-renderer-surface-mesh-valid2-function-valid2-v-src-mq3-renderer-surface-mesh-ml-1369998682"></a>
@@ -187,7 +187,7 @@ Computes `v!=void and len(v)==2` for `mq3.renderer.surface_mesh.valid2`.
 | `v` | `dynamic` | — | Input used in the result expression `v!=void and len(v)==2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L89)
 
 <a id="function-function-mq3-renderer-surface-mesh-valid3-function-valid3-v-src-mq3-renderer-surface-mesh-ml-2106039158"></a>
 ### valid3
@@ -203,7 +203,7 @@ Computes `v!=void and len(v)==3` for `mq3.renderer.surface_mesh.valid3`.
 | `v` | `dynamic` | — | Input used in the result expression `v!=void and len(v)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L92)
 
 <a id="function-function-mq3-renderer-surface-mesh-valid4-function-valid4-v-src-mq3-renderer-surface-mesh-ml-338879926"></a>
 ### valid4
@@ -219,7 +219,7 @@ Computes `v!=void and len(v)==4` for `mq3.renderer.surface_mesh.valid4`.
 | `v` | `dynamic` | — | Input used in the result expression `v!=void and len(v)==4`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L95)
 
 <a id="function-function-mq3-renderer-surface-mesh-validvertex-function-validvertex-v-src-mq3-renderer-surface-mesh-ml-1497254106"></a>
 ### validVertex
@@ -235,7 +235,7 @@ Computes `v!=void and valid3(v.xyz) and valid3(v.normal) and valid2(v.st) and va
 | `v` | `dynamic` | — | Record providing `v.xyz`, `v.normal`, `v.st`, `v.lightmap`, `v.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L98)
 
 <a id="function-function-mq3-renderer-surface-mesh-vertex-function-vertex-xyz-normal-st-lightmap-color-src-mq3-renderer-surface-mesh-ml-352625164"></a>
 ### vertex
@@ -255,6 +255,6 @@ Constructs `mq3.renderer.surface_mesh.Vertex` with `color` = `[color[0]&255,colo
 | `color` | `dynamic` | — | Indexed input read at `0`, `1`, `2`, `3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L73)
 
 - [mq3.renderer.surface_mesh.Vertex](Type-mq3-renderer-surface-mesh-vertex-1006104640.md) — struct

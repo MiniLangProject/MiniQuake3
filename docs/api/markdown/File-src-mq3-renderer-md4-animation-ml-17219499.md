@@ -26,7 +26,7 @@ R_AddAnimSurfaces: MD4 has one LOD and submits every surface with fog zero and n
 | `surfaces` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L101)
 
 - [mq3.renderer.md4_animation.AnimatedSurface](Type-mq3-renderer-md4-animation-animatedsurface-240130099.md) — struct
 <a id="function-function-mq3-renderer-md4-animation-blendbone-function-blendbone-current-old-frontlerp-backlerp-src-mq3-renderer-md4-animation-ml-1885994812"></a>
@@ -46,7 +46,7 @@ Builds `mq3.renderer.md4_animation.Bone` for `mq3.renderer.md4_animation.blendBo
 | `backlerp` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.fmul`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L111)
 
 <a id="function-function-mq3-renderer-md4-animation-bone-function-bone-matrix-src-mq3-renderer-md4-animation-ml-67541969"></a>
 ### bone
@@ -62,7 +62,7 @@ Builds `mq3.renderer.md4_animation.Bone` for `mq3.renderer.md4_animation.bone`.
 | `matrix` | `dynamic` | — | Initial value for `mq3.renderer.md4_animation.Bone.matrix`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L74)
 
 - [mq3.renderer.md4_animation.Bone](Type-mq3-renderer-md4-animation-bone-1953028571.md) — struct
 <a id="function-function-mq3-renderer-md4-animation-dotrow-function-dotrow-row-value-src-mq3-renderer-md4-animation-ml-2067492545"></a>
@@ -80,7 +80,7 @@ Calls `mq3.compat.numeric.fadd` with `(n.fadd(n.fmul(row[0],value[0]),n.fmul(row
 | `value` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L119)
 
 - [mq3.renderer.md4_animation.DrawSurface](Type-mq3-renderer-md4-animation-drawsurface-1647736162.md) — struct
 <a id="function-function-mq3-renderer-md4-animation-fail-function-fail-message-src-mq3-renderer-md4-animation-ml-395822841"></a>
@@ -97,7 +97,7 @@ Creates error `7760` with message `"MD4 animation: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7760,"MD4 animation: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L71)
 
 <a id="function-function-mq3-renderer-md4-animation-frame-function-frame-bones-src-mq3-renderer-md4-animation-ml-465927987"></a>
 ### frame
@@ -113,7 +113,7 @@ Constructs `mq3.renderer.md4_animation.Frame` from `bones`.
 | `bones` | `dynamic` | — | Initial value for `mq3.renderer.md4_animation.Frame.bones`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L96)
 
 - [mq3.renderer.md4_animation.Frame](Type-mq3-renderer-md4-animation-frame-666599386.md) — struct
 <a id="function-function-mq3-renderer-md4-animation-surface-function-surface-shaderindex-triangles-vertices-src-mq3-renderer-md4-animation-ml-2083903825"></a>
@@ -132,7 +132,7 @@ Constructs `mq3.renderer.md4_animation.Surface` from `shaderIndex`, `triangles`,
 | `vertices` | `dynamic` | — | Initial value for `mq3.renderer.md4_animation.Surface.vertices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L93)
 
 - [mq3.renderer.md4_animation.Surface](Type-mq3-renderer-md4-animation-surface-1098907824.md) — struct
 <a id="function-function-mq3-renderer-md4-animation-surfaceanim-function-surfaceanim-value-currentframe-oldframe-backlerp-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-md4-animation-ml-1572700343"></a>
@@ -156,7 +156,7 @@ RB_SurfaceAnim: blend all 3x4 bone matrices, then skin positions and normals by 
 | `maxIndexes` | `dynamic` | — | Input tested by `currentVertexes+len(value.vertices)>maxVertexes or currentIndexes+len(value.triangles)>maxIndexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L131)
 
 <a id="function-function-mq3-renderer-md4-animation-vertex-function-vertex-normal-texcoords-weights-src-mq3-renderer-md4-animation-ml-1234814163"></a>
 ### vertex
@@ -174,7 +174,7 @@ Constructs `mq3.renderer.md4_animation.Vertex` from `normal`, `texCoords`, `weig
 | `weights` | `dynamic` | — | Initial value for `mq3.renderer.md4_animation.Vertex.weights`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L88)
 
 - [mq3.renderer.md4_animation.Vertex](Type-mq3-renderer-md4-animation-vertex-982072027.md) — struct
 <a id="function-function-mq3-renderer-md4-animation-weight-function-weight-index-value-offset-src-mq3-renderer-md4-animation-ml-1904683500"></a>
@@ -193,6 +193,6 @@ Constructs `mq3.renderer.md4_animation.Weight` with `boneWeight` = `n.f32(value)
 | `offset` | `dynamic` | — | Initial value for `mq3.renderer.md4_animation.Weight.offset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L83)
 
 - [mq3.renderer.md4_animation.Weight](Type-mq3-renderer-md4-animation-weight-651948989.md) — struct

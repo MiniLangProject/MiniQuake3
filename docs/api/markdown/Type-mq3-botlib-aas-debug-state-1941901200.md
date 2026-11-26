@@ -12,7 +12,7 @@ struct State
 `State` record for aas debug, containing `lines`, `visible`, `polygons`, `numDebugLines` and `nextLine` and related fields.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L178)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct State
 actions
 ```
 
+Recorded debug drawing requests, including line and polygon handles and geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L200)
 
 <a id="field-field-mq3-botlib-aas-debug-state-lastareanum-lastareanum-src-mq3-botlib-aas-debug-ml-1420867102"></a>
 ### lastAreaNum
@@ -33,8 +35,10 @@ actions
 lastAreaNum
 ```
 
+Last area the bot was in.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L194)
 
 <a id="field-field-mq3-botlib-aas-debug-state-lasttime-lasttime-src-mq3-botlib-aas-debug-ml-1849320712"></a>
 ### lastTime
@@ -43,8 +47,10 @@ lastAreaNum
 lastTime
 ```
 
+Timestamp retained for pacing debug reachability display.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L196)
 
 <a id="field-field-mq3-botlib-aas-debug-state-lines-lines-src-mq3-botlib-aas-debug-ml-2004032450"></a>
 ### lines
@@ -53,8 +59,10 @@ lastTime
 lines
 ```
 
+Allocated navigation debug-line records.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L180)
 
 <a id="field-field-mq3-botlib-aas-debug-state-nextline-nextline-src-mq3-botlib-aas-debug-ml-1136709420"></a>
 ### nextLine
@@ -63,8 +71,10 @@ lines
 nextLine
 ```
 
+Identifier assigned to the next debug line.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L188)
 
 <a id="field-field-mq3-botlib-aas-debug-state-nextpolygon-nextpolygon-src-mq3-botlib-aas-debug-ml-1792643466"></a>
 ### nextPolygon
@@ -73,8 +83,10 @@ nextLine
 nextPolygon
 ```
 
+Identifier assigned to the next debug polygon.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L190)
 
 <a id="field-field-mq3-botlib-aas-debug-state-numdebuglines-numdebuglines-src-mq3-botlib-aas-debug-ml-634310982"></a>
 ### numDebugLines
@@ -83,8 +95,10 @@ nextPolygon
 numDebugLines
 ```
 
+Number of debug lines represented by this record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L186)
 
 <a id="field-field-mq3-botlib-aas-debug-state-polygons-polygons-src-mq3-botlib-aas-debug-ml-2133337136"></a>
 ### polygons
@@ -93,8 +107,10 @@ numDebugLines
 polygons
 ```
 
+Allocated navigation debug-polygon records.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L184)
 
 <a id="field-field-mq3-botlib-aas-debug-state-reach-reach-src-mq3-botlib-aas-debug-ml-1231984718"></a>
 ### reach
@@ -103,8 +119,10 @@ polygons
 reach
 ```
 
+Reachability currently selected for debug drawing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L198)
 
 <a id="field-field-mq3-botlib-aas-debug-state-reachindex-reachindex-src-mq3-botlib-aas-debug-ml-1173576628"></a>
 ### reachIndex
@@ -113,8 +131,10 @@ reach
 reachIndex
 ```
 
+Current reachability position used by interactive debug iteration.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L192)
 
 <a id="field-field-mq3-botlib-aas-debug-state-retailactive-retailactive-src-mq3-botlib-aas-debug-ml-2118936124"></a>
 ### retailActive
@@ -123,8 +143,10 @@ reachIndex
 retailActive
 ```
 
+Indicates whether the host-backed retail-compatible runtime path is active.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L202)
 
 <a id="field-field-mq3-botlib-aas-debug-state-visible-visible-src-mq3-botlib-aas-debug-ml-547954134"></a>
 ### visible
@@ -133,5 +155,7 @@ retailActive
 visible
 ```
 
+Visibility state of the managed debug primitives.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L182)

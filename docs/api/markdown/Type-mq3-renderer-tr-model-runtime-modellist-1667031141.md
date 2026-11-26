@@ -12,7 +12,7 @@ struct ModelList
 Data record for `mq3.renderer.tr_model_runtime.ModelList`; groups `entries`, `total`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L117)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.tr_model_runtime.ModelList`; groups `entries`, `to
 entries
 ```
 
+Records currently stored in this index, registry, or cache.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L119)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-modellist-total-total-src-mq3-renderer-tr-model-runtime-ml-342179706"></a>
 ### total
@@ -33,5 +35,7 @@ entries
 total
 ```
 
+Total size in bytes of the loaded model data represented by the listing.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L121)

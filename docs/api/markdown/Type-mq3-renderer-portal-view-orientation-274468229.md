@@ -12,7 +12,7 @@ struct Orientation
 Data record for `mq3.renderer.portal_view.Orientation`; groups `origin`, `axis`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L15)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.portal_view.Orientation`; groups `origin`, `axis`.
 axis
 ```
 
+Portal-frame basis used to project source vectors into the destination camera frame.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L19)
 
 <a id="field-field-mq3-renderer-portal-view-orientation-origin-origin-src-mq3-renderer-portal-view-ml-56295497"></a>
 ### origin
@@ -33,5 +35,7 @@ axis
 origin
 ```
 
+Reference point of a portal coordinate frame used to map positions between the surface and camera.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L17)

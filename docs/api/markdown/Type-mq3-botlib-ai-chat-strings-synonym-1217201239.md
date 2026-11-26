@@ -12,7 +12,7 @@ struct Synonym
 `Synonym` record for ai chat strings, containing `value` and `weight`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L17)
 
 ## Members
 
@@ -23,8 +23,10 @@ struct Synonym
 value
 ```
 
+Text spelling used as a synonym or replacement in the group.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-synonym-weight-weight-src-mq3-botlib-ai-chat-strings-ml-135284896"></a>
 ### weight
@@ -33,5 +35,7 @@ value
 weight
 ```
 
+Selection weight stored with this synonym in the chat synonym table.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L21)

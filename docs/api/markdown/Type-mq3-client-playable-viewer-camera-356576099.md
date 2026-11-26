@@ -12,7 +12,7 @@ struct Camera
 Stores playable viewer camera record, including `position`, `yaw`, `pitch`, `moveSpeed`, `mouseSensitivity`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L19)
 
 ## Members
 
@@ -23,8 +23,10 @@ Stores playable viewer camera record, including `position`, `yaw`, `pitch`, `mov
 mouseSensitivity
 ```
 
+When constructing this record, `camera` supplies `numeric.f32(mouseSensitivity)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L30)
 
 <a id="field-field-mq3-client-playable-viewer-camera-movespeed-movespeed-src-mq3-client-playable-viewer-ml-1023590986"></a>
 ### moveSpeed
@@ -33,8 +35,10 @@ mouseSensitivity
 moveSpeed
 ```
 
+When constructing this record, `camera` supplies `numeric.f32(moveSpeed)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L28)
 
 <a id="field-field-mq3-client-playable-viewer-camera-pitch-pitch-src-mq3-client-playable-viewer-ml-550624070"></a>
 ### pitch
@@ -43,8 +47,10 @@ moveSpeed
 pitch
 ```
 
+When constructing this record, `camera` supplies `numeric.f32(pitch)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewer-camera-position-position-src-mq3-client-playable-viewer-ml-1614740188"></a>
 ### position
@@ -53,8 +59,10 @@ pitch
 position
 ```
 
+When constructing this record, `camera` supplies `[numeric.f32(position[0]),numeric.f32(position[1]),numeric.f32(position[2])]` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L22)
 
 <a id="field-field-mq3-client-playable-viewer-camera-yaw-yaw-src-mq3-client-playable-viewer-ml-1330788890"></a>
 ### yaw
@@ -63,5 +71,7 @@ position
 yaw
 ```
 
+When constructing this record, `camera` supplies `numeric.f32(yaw)` for this member.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L24)

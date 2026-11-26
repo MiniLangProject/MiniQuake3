@@ -41,7 +41,7 @@ Calls `mq3.client.playable_explosions.worldPoint`, `mq3.platform.playable_window
 | `intensity` | `dynamic` | — | Value used by `color=[intensity,intensity,intensity,255]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L148)
 
 - [mq3.client.playable_explosions.Catalog](Type-mq3-client-playable-explosions-catalog-1120408645.md) — struct
 <a id="function-function-mq3-client-playable-explosions-draw-function-draw-catalog-snapshots-camera-projection-now-src-mq3-client-playable-explosions-ml-1305050096"></a>
@@ -62,7 +62,7 @@ Calls `mq3.platform.playable_window.createTriangleBatch`, `mq3.platform.playable
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L213)
 
 <a id="function-function-mq3-client-playable-explosions-drawplasma-function-drawplasma-catalog-batch-snapshot-p-projection-now-src-mq3-client-playable-explosions-ml-1135310388"></a>
 ### drawPlasma
@@ -83,7 +83,7 @@ Calls `mq3.client.playable_explosions.timing`, `mq3.format.md3.renderTriangles`,
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L198)
 
 <a id="function-function-mq3-client-playable-explosions-drawsprite-function-drawsprite-catalog-batch-snapshot-p-camera-projection-now-src-mq3-client-playable-explosions-ml-1744933799"></a>
 ### drawSprite
@@ -105,7 +105,7 @@ Calls `mq3.client.playable_explosions.timing`, `mq3.compat.numeric.trunc32`, `mq
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L162)
 
 <a id="function-function-mq3-client-playable-explosions-fail-function-fail-message-src-mq3-client-playable-explosions-ml-1273503911"></a>
 ### fail
@@ -121,7 +121,7 @@ Creates the playable explosions error `7650` with diagnostic text `"playable exp
 | `message` | `dynamic` | — | Argument 2 of `error`; passed as `"playable explosions: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L65)
 
 <a id="function-function-mq3-client-playable-explosions-fraction-function-fraction-value-src-mq3-client-playable-explosions-ml-1432132477"></a>
 ### fraction
@@ -137,7 +137,7 @@ Computes `value-numeric.trunc32(value)` for playable explosions `fraction`.
 | `value` | `dynamic` | — | Value used by `return value-numeric.trunc32(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L103)
 
 <a id="function-function-mq3-client-playable-explosions-load-function-load-archive-firsttextureslot-maxtextureslots-src-mq3-client-playable-explosions-ml-1928305055"></a>
 ### load
@@ -155,7 +155,7 @@ Calls `mq3.client.playable_explosions.profile`, `mq3.renderer.playable_materials
 | `maxTextureSlots` | `dynamic` | — | Maximum number of texture slots available to the renderer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L84)
 
 <a id="constant-constant-mq3-client-playable-explosions-max-textures-const-max-textures-15-src-mq3-client-playable-explosions-ml-43664843"></a>
 ### MAX_TEXTURES
@@ -164,8 +164,10 @@ Calls `mq3.client.playable_explosions.profile`, `mq3.renderer.playable_materials
 const MAX_TEXTURES = 15
 ```
 
+Capacity limit for the textures collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L18)
 
 <a id="constant-constant-mq3-client-playable-explosions-max-triangles-const-max-triangles-4096-src-mq3-client-playable-explosions-ml-1912082810"></a>
 ### MAX_TRIANGLES
@@ -174,8 +176,10 @@ const MAX_TEXTURES = 15
 const MAX_TRIANGLES = 4096
 ```
 
+Capacity limit for the triangles collection or bounded storage used by this client module.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L20)
 
 <a id="constant-constant-mq3-client-playable-explosions-pi-const-pi-3-141593-src-mq3-client-playable-explosions-ml-1068471483"></a>
 ### PI
@@ -184,8 +188,10 @@ const MAX_TRIANGLES = 4096
 const PI = 3.141593
 ```
 
+Circle constant used to convert or evaluate angles in trigonometric calculations.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L22)
 
 <a id="function-function-mq3-client-playable-explosions-plasmaaxes-function-plasmaaxes-snapshot-src-mq3-client-playable-explosions-ml-2091629270"></a>
 ### plasmaAxes
@@ -201,7 +207,7 @@ Calls `mq3.shared.math.VectorNormalize`, `mq3.shared.math.CrossProduct`, `mq3.cl
 | `snapshot` | `dynamic` | — | Record read through `snapshot.normal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L173)
 
 <a id="function-function-mq3-client-playable-explosions-plasmauv-function-plasmauv-uv-elapsed-src-mq3-client-playable-explosions-ml-1498155285"></a>
 ### plasmaUv
@@ -218,7 +224,7 @@ Calls `mq3.client.playable_explosions.triangleWave`, `mq3.compat.transcendental.
 | `elapsed` | `dynamic` | — | Value used by `wave=0.6+0.1*triangleWave(elapsed*8.0/1000.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L188)
 
 <a id="function-function-mq3-client-playable-explosions-profile-function-profile-style-src-mq3-client-playable-explosions-ml-1245803483"></a>
 ### profile
@@ -234,7 +240,7 @@ Calls `mq3.client.playable_explosions.Profile` from playable explosions `profile
 | `style` | `dynamic` | — | Value used by `if style==view.STYLE_ROCKET then return Profile(style,8.0,["models/weaphits/rlboom/rlboom_1","models/weaphits/rlboom/rlboom_2","models/weaphit...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L68)
 
 - [mq3.client.playable_explosions.Profile](Type-mq3-client-playable-explosions-profile-2071711251.md) — struct
 <a id="function-function-mq3-client-playable-explosions-randomoffset-function-randomoffset-snapshot-src-mq3-client-playable-explosions-ml-280186482"></a>
@@ -251,7 +257,7 @@ Computes `numeric.i32(snapshot.entityId*97+snapshot.eventAt*17) & 63` for playab
 | `snapshot` | `dynamic` | — | Record read through `snapshot.entityId`, `snapshot.eventAt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L106)
 
 <a id="function-function-mq3-client-playable-explosions-release-function-release-catalog-src-mq3-client-playable-explosions-ml-1366411093"></a>
 ### release
@@ -267,7 +273,7 @@ Calls `mq3.platform.playable_window.releaseTexture` from playable explosions `re
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.textures`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L99)
 
 <a id="function-function-mq3-client-playable-explosions-rotatepair-function-rotatepair-right-up-degrees-src-mq3-client-playable-explosions-ml-364387302"></a>
 ### rotatePair
@@ -285,7 +291,7 @@ Calls `mq3.compat.transcendental.sin`, `mq3.compat.transcendental.cos` from play
 | `degrees` | `dynamic` | — | Value used by `radians=degrees*PI/180.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L129)
 
 <a id="function-function-mq3-client-playable-explosions-rotation-function-rotation-snapshot-src-mq3-client-playable-explosions-ml-1196614882"></a>
 ### rotation
@@ -301,7 +307,7 @@ Computes `numeric.i32(snapshot.entityId*53+snapshot.eventAt*29) % 360` for playa
 | `snapshot` | `dynamic` | — | Record read through `snapshot.entityId`, `snapshot.eventAt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L109)
 
 <a id="function-function-mq3-client-playable-explosions-spriteradius-function-spriteradius-endtime-starttime-now-src-mq3-client-playable-explosions-ml-654830987"></a>
 ### spriteRadius
@@ -319,7 +325,7 @@ Evaluates playable explosions `spriteRadius` and returns `42.0*(1.0-c)+30.0` acc
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L122)
 
 - [mq3.client.playable_explosions.Texture](Type-mq3-client-playable-explosions-texture-1560609649.md) — struct
 <a id="function-function-mq3-client-playable-explosions-texturefor-function-texturefor-catalog-name-src-mq3-client-playable-explosions-ml-903495558"></a>
@@ -337,7 +343,7 @@ Calls `stringEqualsIgnoreCaseAscii` from playable explosions `textureFor`.
 | `name` | `dynamic` | — | Name used to select or register the corresponding playable explosions resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L78)
 
 <a id="function-function-mq3-client-playable-explosions-timing-function-timing-snapshot-p-now-src-mq3-client-playable-explosions-ml-590474578"></a>
 ### timing
@@ -355,7 +361,7 @@ Calls `mq3.client.playable_explosions.randomOffset` from playable explosions `ti
 | `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L114)
 
 <a id="function-function-mq3-client-playable-explosions-transformpoint-function-transformpoint-origin-axes-point-src-mq3-client-playable-explosions-ml-336335619"></a>
 ### transformPoint
@@ -373,7 +379,7 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable explosions `transfor
 | `point` | `dynamic` | — | Argument 1, 2, 3 of `mq3.client.playable_viewer.ScreenPoint`; passed as `origin[0]+axes[0][0]*point[0]+axes[1][0]*point[1]+axes[2][0]*point[2]`, `origin[1]+axes[0][1]*point[0]+axes[1][1]*point[1]+axes[2][1]*point[2]`, `origin[2]+axes[0][2]*point[0]+axes[1][2]*point[1]+axes[2][2]*point[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L181)
 
 <a id="function-function-mq3-client-playable-explosions-trianglewave-function-trianglewave-value-src-mq3-client-playable-explosions-ml-1807228745"></a>
 ### triangleWave
@@ -389,7 +395,7 @@ Calls `mq3.client.playable_explosions.fraction` from playable explosions `triang
 | `value` | `dynamic` | — | Value used by `f=fraction(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L184)
 
 <a id="function-function-mq3-client-playable-explosions-upload-function-upload-catalog-src-mq3-client-playable-explosions-ml-1389473479"></a>
 ### upload
@@ -405,7 +411,7 @@ Calls `mq3.platform.playable_window.uploadTextureNoMip` from playable explosions
 | `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.textures`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L96)
 
 <a id="function-function-mq3-client-playable-explosions-worldpoint-function-worldpoint-center-right-up-x-y-src-mq3-client-playable-explosions-ml-137559943"></a>
 ### worldPoint
@@ -425,4 +431,4 @@ Adapts `mq3.client.playable_viewer.ScreenPoint` to playable explosions `worldPoi
 | `y` | `dynamic` | — | Argument 1, 2, 3 of `mq3.client.playable_viewer.ScreenPoint`; passed as `center[0]+right[0]*x+up[0]*y`, `center[1]+right[1]*x+up[1]*y`, `center[2]+right[2]*x+up[2]*y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L139)

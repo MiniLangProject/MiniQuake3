@@ -12,7 +12,7 @@ struct Md3XyzNormal
 Md3XyzNormal record for format.qfiles, containing `xyz`, `normal`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L303)
 
 ## Members
 
@@ -23,8 +23,10 @@ Md3XyzNormal record for format.qfiles, containing `xyz`, `normal`.
 normal
 ```
 
+Packed 16-bit latitude and longitude encoding of this MD3 vertex normal.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L307)
 
 <a id="field-field-mq3-format-qfiles-md3xyznormal-xyz-xyz-src-mq3-format-qfiles-ml-490617709"></a>
 ### xyz
@@ -33,5 +35,7 @@ normal
 xyz
 ```
 
+XYZ position components stored by this vertex record.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L305)

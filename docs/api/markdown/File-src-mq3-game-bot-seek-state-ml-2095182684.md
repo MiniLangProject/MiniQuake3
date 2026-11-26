@@ -31,7 +31,7 @@ Update `bot.tfl`, `bot.enemy`, `bot.activateGoalHeap[bot.activateStackIndex].tim
 | `bot` | `dynamic` | — | Bot AI state; accesses `tfl`, `enemy`, `activateStackIndex`, `activateGoalHeap` and `curPs` and related fields. May update `bot.tfl`, `bot.enemy` and `bot.activateGoalHeap[bot.activateStackIndex].time` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L303)
 
 <a id="constant-constant-mq3-game-bot-seek-state-bfl-idealviewset-const-bfl-idealviewset-32-src-mq3-game-bot-seek-state-ml-1426956866"></a>
 ### BFL_IDEALVIEWSET
@@ -40,8 +40,10 @@ Update `bot.tfl`, `bot.enemy`, `bot.activateGoalHeap[bot.activateStackIndex].tim
 const BFL_IDEALVIEWSET = 32
 ```
 
+Bot-state flag marking idealviewset.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L26)
 
 <a id="function-function-mq3-game-bot-seek-state-clearactivation-function-clearactivation-services-bot-src-mq3-game-bot-seek-state-ml-1447576575"></a>
 ### clearActivation
@@ -58,7 +60,7 @@ Use `services.clearActivateFn` to perform `clearActivation`.
 | `bot` | `dynamic` | — | Bot AI state; accesses `activateStackIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L238)
 
 <a id="function-function-mq3-game-bot-seek-state-create-function-create-fightservices-navigationservices-src-mq3-game-bot-seek-state-ml-1894012860"></a>
 ### create
@@ -75,7 +77,7 @@ Create a `mq3.game.bot_seek_state.Services` record, initializing `fightServices`
 | `navigationServices` | `dynamic` | — | Initial value stored in `mq3.game.bot_seek_state.Services.navigationServices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L162)
 
 <a id="function-function-mq3-game-bot-seek-state-enteractivate-function-enteractivate-services-bot-reason-src-mq3-game-bot-seek-state-ml-434431075"></a>
 ### enterActivate
@@ -93,7 +95,7 @@ Set `bot.aiNode` to `NODE_ACTIVATE` in `mq3.game.bot_seek_state.enterActivate`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L245)
 
 <a id="function-function-mq3-game-bot-seek-state-enterintermission-function-enterintermission-services-bot-reason-src-mq3-game-bot-seek-state-ml-1166557973"></a>
 ### enterIntermission
@@ -111,7 +113,7 @@ Set `bot.aiNode` to `NODE_INTERMISSION` in `mq3.game.bot_seek_state.enterIntermi
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L211)
 
 <a id="function-function-mq3-game-bot-seek-state-enterobserver-function-enterobserver-services-bot-reason-src-mq3-game-bot-seek-state-ml-633724421"></a>
 ### enterObserver
@@ -129,7 +131,7 @@ Set `bot.aiNode` to `NODE_OBSERVER` in `mq3.game.bot_seek_state.enterObserver`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L204)
 
 <a id="function-function-mq3-game-bot-seek-state-enterrespawn-function-enterrespawn-services-bot-reason-src-mq3-game-bot-seek-state-ml-765175861"></a>
 ### enterRespawn
@@ -147,7 +149,7 @@ Update `bot.respawnTime`, `bot.respawnChatTime`, `bot.respawnWait` and `bot.aiNo
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L227)
 
 <a id="function-function-mq3-game-bot-seek-state-enterseek-function-enterseek-services-bot-reason-src-mq3-game-bot-seek-state-ml-736531669"></a>
 ### enterSeek
@@ -165,7 +167,7 @@ Set `bot.aiNode` to `NODE_SEEK` in `mq3.game.bot_seek_state.enterSeek`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L177)
 
 <a id="function-function-mq3-game-bot-seek-state-enterseeknbg-function-enterseeknbg-services-bot-reason-src-mq3-game-bot-seek-state-ml-485444437"></a>
 ### enterSeekNbg
@@ -183,7 +185,7 @@ Set `bot.aiNode` to `NODE_SEEK_NBG` in `mq3.game.bot_seek_state.enterSeekNbg`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L196)
 
 <a id="function-function-mq3-game-bot-seek-state-enterstand-function-enterstand-services-bot-reason-src-mq3-game-bot-seek-state-ml-1837161445"></a>
 ### enterStand
@@ -201,7 +203,7 @@ Update `bot.standFindEnemyTime` and `bot.aiNode` during `enterStand`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L220)
 
 <a id="function-function-mq3-game-bot-seek-state-intermissionnode-function-intermissionnode-services-bot-src-mq3-game-bot-seek-state-ml-1025197913"></a>
 ### intermissionNode
@@ -218,7 +220,7 @@ Set `bot.standTime` to `n.fadd(time,services.chatTimeFn(services,bot))` and `bot
 | `bot` | `dynamic` | — | Bot AI state; accesses `standTime`. May update `bot.standTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L252)
 
 <a id="function-function-mq3-game-bot-seek-state-longtermgoal-function-longtermgoal-services-bot-goal-src-mq3-game-bot-seek-state-ml-532117710"></a>
 ### longTermGoal
@@ -236,7 +238,7 @@ Use `services.longTermGoalFn` to perform `longTermGoal`. Return paths include `n
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L288)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L360)
 
 <a id="constant-constant-mq3-game-bot-seek-state-ltg-defendkeyarea-const-ltg-defendkeyarea-3-src-mq3-game-bot-seek-state-ml-259386258"></a>
 ### LTG_DEFENDKEYAREA
@@ -245,8 +247,10 @@ Use `services.longTermGoalFn` to perform `longTermGoal`. Return paths include `n
 const LTG_DEFENDKEYAREA = 3
 ```
 
+Long-term bot goal identifier selecting defend a key area behavior.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L38)
 
 <a id="constant-constant-mq3-game-bot-seek-state-moveresult-movementview-const-moveresult-movementview-1-src-mq3-game-bot-seek-state-ml-678340776"></a>
 ### MOVERESULT_MOVEMENTVIEW
@@ -255,8 +259,10 @@ const LTG_DEFENDKEYAREA = 3
 const MOVERESULT_MOVEMENTVIEW = 1
 ```
 
+Bot movement-result flag reporting movementview.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L28)
 
 <a id="constant-constant-mq3-game-bot-seek-state-moveresult-movementviewset-const-moveresult-movementviewset-8-src-mq3-game-bot-seek-state-ml-503289241"></a>
 ### MOVERESULT_MOVEMENTVIEWSET
@@ -265,8 +271,10 @@ const MOVERESULT_MOVEMENTVIEW = 1
 const MOVERESULT_MOVEMENTVIEWSET = 8
 ```
 
+Bot movement-result flag reporting movementviewset.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L34)
 
 <a id="constant-constant-mq3-game-bot-seek-state-moveresult-movementweapon-const-moveresult-movementweapon-16-src-mq3-game-bot-seek-state-ml-172333340"></a>
 ### MOVERESULT_MOVEMENTWEAPON
@@ -275,8 +283,10 @@ const MOVERESULT_MOVEMENTVIEWSET = 8
 const MOVERESULT_MOVEMENTWEAPON = 16
 ```
 
+Bot movement-result flag reporting movementweapon.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L36)
 
 <a id="constant-constant-mq3-game-bot-seek-state-moveresult-swimview-const-moveresult-swimview-2-src-mq3-game-bot-seek-state-ml-616704283"></a>
 ### MOVERESULT_SWIMVIEW
@@ -285,8 +295,10 @@ const MOVERESULT_MOVEMENTWEAPON = 16
 const MOVERESULT_SWIMVIEW = 2
 ```
 
+Bot movement-result flag reporting swimview.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L30)
 
 <a id="constant-constant-mq3-game-bot-seek-state-moveresult-waiting-const-moveresult-waiting-4-src-mq3-game-bot-seek-state-ml-1475995647"></a>
 ### MOVERESULT_WAITING
@@ -295,8 +307,10 @@ const MOVERESULT_SWIMVIEW = 2
 const MOVERESULT_WAITING = 4
 ```
 
+Bot movement-result flag reporting waiting.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L32)
 
 <a id="constant-constant-mq3-game-bot-seek-state-node-activate-const-node-activate-11-src-mq3-game-bot-seek-state-ml-1998809055"></a>
 ### NODE_ACTIVATE
@@ -305,8 +319,10 @@ const MOVERESULT_WAITING = 4
 const NODE_ACTIVATE = 11
 ```
 
+Bot decision-state identifier for the activate node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L24)
 
 <a id="constant-constant-mq3-game-bot-seek-state-node-intermission-const-node-intermission-6-src-mq3-game-bot-seek-state-ml-123757391"></a>
 ### NODE_INTERMISSION
@@ -315,8 +331,10 @@ const NODE_ACTIVATE = 11
 const NODE_INTERMISSION = 6
 ```
 
+Bot decision-state identifier for the intermission node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L18)
 
 <a id="constant-constant-mq3-game-bot-seek-state-node-observer-const-node-observer-5-src-mq3-game-bot-seek-state-ml-222029872"></a>
 ### NODE_OBSERVER
@@ -325,8 +343,10 @@ const NODE_INTERMISSION = 6
 const NODE_OBSERVER = 5
 ```
 
+Bot decision-state identifier for the observer node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L16)
 
 <a id="constant-constant-mq3-game-bot-seek-state-node-respawn-const-node-respawn-7-src-mq3-game-bot-seek-state-ml-2076700790"></a>
 ### NODE_RESPAWN
@@ -335,8 +355,10 @@ const NODE_OBSERVER = 5
 const NODE_RESPAWN = 7
 ```
 
+Bot decision-state identifier for the respawn node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L20)
 
 <a id="constant-constant-mq3-game-bot-seek-state-node-seek-const-node-seek-3-src-mq3-game-bot-seek-state-ml-1081815802"></a>
 ### NODE_SEEK
@@ -345,8 +367,10 @@ const NODE_RESPAWN = 7
 const NODE_SEEK = 3
 ```
 
+Bot decision-state identifier for the seek node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L12)
 
 <a id="constant-constant-mq3-game-bot-seek-state-node-seek-nbg-const-node-seek-nbg-10-src-mq3-game-bot-seek-state-ml-1323777622"></a>
 ### NODE_SEEK_NBG
@@ -355,8 +379,10 @@ const NODE_SEEK = 3
 const NODE_SEEK_NBG = 10
 ```
 
+Bot decision-state identifier for the seek nbg node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L22)
 
 <a id="constant-constant-mq3-game-bot-seek-state-node-stand-const-node-stand-4-src-mq3-game-bot-seek-state-ml-1590425781"></a>
 ### NODE_STAND
@@ -365,8 +391,10 @@ const NODE_SEEK_NBG = 10
 const NODE_STAND = 4
 ```
 
+Bot decision-state identifier for the stand node.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L14)
 
 <a id="function-function-mq3-game-bot-seek-state-observernode-function-observernode-services-bot-src-mq3-game-bot-seek-state-ml-446282205"></a>
 ### observerNode
@@ -383,7 +411,7 @@ Use `services.observerFn` to perform `observerNode`.
 | `bot` | `dynamic` | — | Bot AI state; accesses `standFindEnemyTime` and `aiNode`. May update `bot.standFindEnemyTime` and `bot.aiNode` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L263)
 
 <a id="function-function-mq3-game-bot-seek-state-predictobstacles-function-predictobstacles-services-bot-goal-src-mq3-game-bot-seek-state-ml-1600610694"></a>
 ### predictObstacles
@@ -401,7 +429,7 @@ Use `services.predictObstaclesFn` to perform `predictObstacles`. Return paths in
 | `goal` | `dynamic` | — | Bot navigation goal; accesses `areanum` and `entitynum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L296)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L368)
 
 <a id="function-function-mq3-game-bot-seek-state-recordentry-function-recordentry-services-bot-name-goal-reason-src-mq3-game-bot-seek-state-ml-1849041507"></a>
 ### recordEntry
@@ -421,7 +449,7 @@ Use `services.recordNodeFn` to perform `recordEntry`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L189)
 
 <a id="function-function-mq3-game-bot-seek-state-respawnnode-function-respawnnode-services-bot-src-mq3-game-bot-seek-state-ml-504642349"></a>
 ### respawnNode
@@ -438,7 +466,7 @@ Set `bot.respawnWait` to `true` and `bot.enemy` to `-1` in `mq3.game.bot_seek_st
 | `bot` | `dynamic` | — | Bot AI state; accesses `respawnWait`, `client`, `respawnTime`, `respawnChatTime` and `chatto` and related fields. May update `bot.respawnWait` and `bot.enemy` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L285)
 
 <a id="function-function-mq3-game-bot-seek-state-runnode-function-runnode-services-bot-src-mq3-game-bot-seek-state-ml-512322811"></a>
 ### runNode
@@ -455,7 +483,7 @@ Use `services.activationNodeFn` to perform `runNode`. Return paths include `figh
 | `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L396)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L468)
 
 <a id="function-function-mq3-game-bot-seek-state-seeknbgnode-function-seeknbgnode-services-bot-src-mq3-game-bot-seek-state-ml-1849108947"></a>
 ### seekNbgNode
@@ -472,7 +500,7 @@ Update `bot.tfl`, `bot.enemy`, `bot.nbgTime` and `bot.checkTime` and related sta
 | `bot` | `dynamic` | — | Bot AI state; accesses `tfl`, `enemy`, `gs`, `nbgTime` and `checkTime` and related fields. May update `bot.tfl`, `bot.enemy` and `bot.nbgTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L358)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L430)
 
 <a id="function-function-mq3-game-bot-seek-state-seeknode-function-seeknode-services-bot-src-mq3-game-bot-seek-state-ml-1936074009"></a>
 ### seekNode
@@ -489,7 +517,7 @@ Update `bot.standTime`, `bot.tfl`, `bot.enemy` and `bot.checkTime` and related s
 | `bot` | `dynamic` | — | Bot AI state; accesses `standTime`, `tfl`, `enemy`, `killedEnemyTime` and `thinktime` and related fields. May update `bot.standTime`, `bot.tfl` and `bot.enemy` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L382)
 
 - [mq3.game.bot_seek_state.Services](Type-mq3-game-bot-seek-state-services-1489276516.md) — struct
 <a id="function-function-mq3-game-bot-seek-state-setupmovement-function-setupmovement-services-bot-src-mq3-game-bot-seek-state-ml-1751242557"></a>
@@ -507,7 +535,7 @@ Use `services.setupMovementFn` to perform `setupMovement`. Return paths include 
 | `bot` | `dynamic` | — | Bot AI state; accesses `curPs`, `entitynum`, `client`, `thinktime` and `viewangles` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L375)
 
 <a id="function-function-mq3-game-bot-seek-state-standnode-function-standnode-services-bot-src-mq3-game-bot-seek-state-ml-570144725"></a>
 ### standNode
@@ -524,7 +552,7 @@ Update `bot.standFindEnemyTime` and `bot.standTime` during `standNode`.
 | `bot` | `dynamic` | — | Bot AI state; accesses `lastframeHealth`, `inventory`, `standFindEnemyTime`, `standTime` and `client` and related fields. May update `bot.standFindEnemyTime` and `bot.standTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L269)
 
 <a id="constant-constant-mq3-game-bot-seek-state-tfl-default-const-tfl-default-18616254-src-mq3-game-bot-seek-state-ml-24148902"></a>
 ### TFL_DEFAULT
@@ -533,8 +561,10 @@ Update `bot.standFindEnemyTime` and `bot.standTime` during `standNode`.
 const TFL_DEFAULT = 18616254
 ```
 
+Default combination of permitted AAS travel types used by bot movement queries.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L40)
 
 <a id="constant-constant-mq3-game-bot-seek-state-tfl-grapplehook-const-tfl-grapplehook-16384-src-mq3-game-bot-seek-state-ml-509402601"></a>
 ### TFL_GRAPPLEHOOK
@@ -543,8 +573,10 @@ const TFL_DEFAULT = 18616254
 const TFL_GRAPPLEHOOK = 16384
 ```
 
+AAS travel-mask bit allowing the grapplehook travel category.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L44)
 
 <a id="constant-constant-mq3-game-bot-seek-state-tfl-lava-const-tfl-lava-4194304-src-mq3-game-bot-seek-state-ml-1309007632"></a>
 ### TFL_LAVA
@@ -553,8 +585,10 @@ const TFL_GRAPPLEHOOK = 16384
 const TFL_LAVA = 4194304
 ```
 
+AAS travel-mask bit allowing the lava travel category.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L48)
 
 <a id="constant-constant-mq3-game-bot-seek-state-tfl-rocketjump-const-tfl-rocketjump-4096-src-mq3-game-bot-seek-state-ml-530482152"></a>
 ### TFL_ROCKETJUMP
@@ -563,8 +597,10 @@ const TFL_LAVA = 4194304
 const TFL_ROCKETJUMP = 4096
 ```
 
+AAS travel-mask bit allowing the rocketjump travel category.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L42)
 
 <a id="constant-constant-mq3-game-bot-seek-state-tfl-slime-const-tfl-slime-2097152-src-mq3-game-bot-seek-state-ml-1281841815"></a>
 ### TFL_SLIME
@@ -573,8 +609,10 @@ const TFL_ROCKETJUMP = 4096
 const TFL_SLIME = 2097152
 ```
 
+AAS travel-mask bit allowing the slime travel category.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L46)
 
 <a id="function-function-mq3-game-bot-seek-state-transition-function-transition-services-bot-node-reason-src-mq3-game-bot-seek-state-ml-1898709981"></a>
 ### transition
@@ -593,4 +631,4 @@ Set `bot.aiNode` to `node` in `mq3.game.bot_seek_state.transition`.
 | `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L170)

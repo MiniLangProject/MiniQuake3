@@ -18,7 +18,7 @@ function create()
 Creates a `mq3.client.cgame_usercmd.State` record. Initializes the record with the defaults written in this constructor.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L16)
 
 <a id="function-function-mq3-client-cgame-usercmd-scalemouse-function-scalemouse-state-value-src-mq3-client-cgame-usercmd-ml-1195851312"></a>
 ### scaleMouse
@@ -35,7 +35,7 @@ Computes `value*sensitivity(state)` for client game usercmd `scaleMouse`.
 | `value` | `dynamic` | — | Value used by `return value*sensitivity(state)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L37)
 
 <a id="function-function-mq3-client-cgame-usercmd-sensitivity-function-sensitivity-state-src-mq3-client-cgame-usercmd-ml-743805927"></a>
 ### sensitivity
@@ -51,7 +51,7 @@ Evaluates client game usercmd `sensitivity` and returns `1.0`, `state.sensitivit
 | `state` | `dynamic` | — | Record read through `state.sensitivity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L33)
 
 <a id="function-function-mq3-client-cgame-usercmd-set-function-set-state-weapon-sensitivity-src-mq3-client-cgame-usercmd-ml-103749958"></a>
 ### set
@@ -69,7 +69,7 @@ CL_SetUserCmdValue stores both values verbatim.  The weapon is truncated only wh
 | `sensitivity` | `dynamic` | — | Value assigned to `state.sensitivity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L23)
 
 - [mq3.client.cgame_usercmd.State](Type-mq3-client-cgame-usercmd-state-1256089009.md) — struct
 <a id="function-function-mq3-client-cgame-usercmd-weapon-function-weapon-state-src-mq3-client-cgame-usercmd-ml-1461092213"></a>
@@ -86,4 +86,4 @@ Evaluates client game usercmd `weapon` and returns `0`, `state.weapon` according
 | `state` | `dynamic` | — | Record read through `state.weapon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L30)

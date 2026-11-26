@@ -12,7 +12,7 @@ struct SkyParms
 Data record for `mq3.renderer.shader_runtime.SkyParms`; groups `outerBox`, `cloudHeight`, `innerBox`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L43)
 
 ## Members
 
@@ -23,8 +23,10 @@ Data record for `mq3.renderer.shader_runtime.SkyParms`; groups `outerBox`, `clou
 cloudHeight
 ```
 
+Height used to project moving cloud texture coordinates.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L47)
 
 <a id="field-field-mq3-renderer-shader-runtime-skyparms-innerbox-innerbox-src-mq3-renderer-shader-runtime-ml-1002773285"></a>
 ### innerBox
@@ -33,8 +35,10 @@ cloudHeight
 innerBox
 ```
 
+Six images forming the inner skybox layer.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L49)
 
 <a id="field-field-mq3-renderer-shader-runtime-skyparms-outerbox-outerbox-src-mq3-renderer-shader-runtime-ml-811577643"></a>
 ### outerBox
@@ -43,5 +47,7 @@ innerBox
 outerBox
 ```
 
+Six images forming the outer skybox.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L45)

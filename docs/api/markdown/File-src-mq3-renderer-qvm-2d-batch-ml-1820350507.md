@@ -37,7 +37,7 @@ Computes `addStageTextures` from `textureList` using `mq3.renderer.qvm_2d_batch.
 | `noMipMaps` | `dynamic` | — | Value used for `mq3.renderer.qvm_2d_batch.Texture.noMipMaps`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L298)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-build-function-build-archive-queuecommands-assets-kinds-firsttextureslot-maxtextureslots-sourcewidth-sourceheight-targetwidth-targetheight-shaderremaps-src-mq3-renderer-qvm-2d-batch-ml-1772064625"></a>
 ### build
@@ -63,7 +63,7 @@ Builds a shared shader-script index and creates the scaled QVM 2D draw catalog f
 | `shaderRemaps` | `dynamic` | — | Value forwarded as `shaderRemaps` to `mq3.renderer.qvm_2d_batch.buildIndexed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L369)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L503)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-buildindexed-function-buildindexed-archive-queuecommands-assets-kinds-firsttextureslot-maxtextureslots-sourcewidth-sourceheight-targetwidth-targetheight-shaderremaps-scripts-src-mq3-renderer-qvm-2d-batch-ml-260226985"></a>
 ### buildIndexed
@@ -90,7 +90,7 @@ Builds `material.noMipMaps`, `material.timeOffset`, `catalog.nextTextureSlot`, `
 | `scripts` | `dynamic` | — | Indexed input read at `0`, `1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L330)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L464)
 
 - [mq3.renderer.qvm_2d_batch.Catalog](Type-mq3-renderer-qvm-2d-batch-catalog-105112054.md) — struct
 <a id="function-function-mq3-renderer-qvm-2d-batch-checkerimage-function-checkerimage-src-mq3-renderer-qvm-2d-batch-ml-83292098"></a>
@@ -103,7 +103,7 @@ function checkerImage()
 Builds `pixels[1]`, `pixels[3]`, `pixels[4]`, `pixels[5]`, `pixels[6]` in `mq3.renderer.qvm_2d_batch.checkerImage`; returns `materials.Image(2,2,pixels)`.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L271)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-colorbytes-function-colorbytes-rgba-src-mq3-renderer-qvm-2d-batch-ml-421155924"></a>
 ### colorBytes
@@ -119,7 +119,7 @@ Returns `[n.trunc32(rgba[0]*255.0),n.trunc32(rgba[1]*255.0),n.trunc32(rgba[2]*25
 | `rgba` | `dynamic` | — | Indexed input read at `0`, `1`, `2`, `3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L177)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-createpass-function-createpass-stage-triangles-timeoffset-clamptime-src-mq3-renderer-qvm-2d-batch-ml-380930125"></a>
 ### createPass
@@ -138,7 +138,7 @@ Calls `mq3.renderer.qvm_2d_batch.createPassReusable` with `(stage,triangles,time
 | `clampTime` | `dynamic` | — | Value forwarded as `clampTime` to `mq3.renderer.qvm_2d_batch.createPassReusable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L358)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-createpassreusable-function-createpassreusable-stage-triangles-timeoffset-clamptime-previous-src-mq3-renderer-qvm-2d-batch-ml-976614020"></a>
 ### createPassReusable
@@ -158,7 +158,7 @@ Builds `mq3.renderer.qvm_2d_batch.StagePass` using `mq3.platform.playable_window
 | `previous` | `dynamic` | — | Record providing `previous.batch`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L337)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-createrun-function-createrun-materialindexvalue-handle-material-quads-src-mq3-renderer-qvm-2d-batch-ml-1778818427"></a>
 ### createRun
@@ -177,7 +177,7 @@ Calls `mq3.renderer.qvm_2d_batch.createRunReusable` with `(materialIndexValue,ha
 | `quads` | `dynamic` | — | Value forwarded as `quads` to `mq3.renderer.qvm_2d_batch.createRunReusable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L377)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-createrunreusable-function-createrunreusable-materialindexvalue-handle-material-quads-previous-src-mq3-renderer-qvm-2d-batch-ml-2136620632"></a>
 ### createRunReusable
@@ -197,7 +197,7 @@ Builds `mq3.renderer.qvm_2d_batch.Run` using `triangleList.addAll`, `triangleLis
 | `previous` | `dynamic` | — | Record providing `previous.materialIndex`, `previous.shaderHandle`, `previous.triangleCount`, `previous.passes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L365)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-directstage-function-directstage-imagename-image-slot-src-mq3-renderer-qvm-2d-batch-ml-1487107219"></a>
 ### directStage
@@ -215,7 +215,7 @@ Forwards `directStage` to `mq3.renderer.playable_materials.RuntimeStage` and ret
 | `slot` | `dynamic` | — | Native texture slot assigned to that image. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L279)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-draw-function-draw-catalog-nowmilliseconds-src-mq3-renderer-qvm-2d-batch-ml-1709221605"></a>
 ### draw
@@ -232,7 +232,7 @@ Updates and draws each 2D shader pass, then restores clamp, alpha-test, and opaq
 | `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.qvm_2d_batch.updatePass`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L546)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-dynamicstage-function-dynamicstage-stage-src-mq3-renderer-qvm-2d-batch-ml-1505002230"></a>
 ### dynamicStage
@@ -248,7 +248,7 @@ Identifies 2D stages with animation, UV modifiers, nontexture coordinate generat
 | `stage` | `dynamic` | — | Record providing `stage.slots`, `stage.uvMods`, `stage.tcGen`, `stage.rgbGen`, `stage.alphaGen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L222)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-extract-function-extract-queuecommands-assets-kinds-sourcewidth-sourceheight-targetwidth-targetheight-src-mq3-renderer-qvm-2d-batch-ml-669948509"></a>
 ### extract
@@ -270,7 +270,7 @@ Builds `mq3.renderer.qvm_2d_batch.Extracted` using `quadList.add`, `quadList.toA
 | `targetHeight` | `dynamic` | — | Initial value for `mq3.renderer.qvm_2d_batch.Extracted.targetHeight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L235)
 
 - [mq3.renderer.qvm_2d_batch.Extracted](Type-mq3-renderer-qvm-2d-batch-extracted-1202872729.md) — struct
 <a id="function-function-mq3-renderer-qvm-2d-batch-fail-function-fail-message-src-mq3-renderer-qvm-2d-batch-ml-270796047"></a>
@@ -287,7 +287,7 @@ Creates error `7683` with message `"QVM 2D batch: "+message`.
 | `message` | `dynamic` | — | Input used in the result expression `error(7683,"QVM 2D batch: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L174)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-loadmaterial-function-loadmaterial-archive-index-quad-nextslot-endslot-src-mq3-renderer-qvm-2d-batch-ml-619237997"></a>
 ### loadMaterial
@@ -307,7 +307,7 @@ Computes `loadMaterial` from `[Material(quad.shaderHandle,name,stages,noMip,0.0,
 | `endSlot` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.playable_materials.runtimeStages`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L312)
 
 - [mq3.renderer.qvm_2d_batch.Material](Type-mq3-renderer-qvm-2d-batch-material-1663811394.md) — struct
 <a id="function-function-mq3-renderer-qvm-2d-batch-materialindex-function-materialindex-materiallist-handle-src-mq3-renderer-qvm-2d-batch-ml-321835775"></a>
@@ -325,7 +325,7 @@ Returns `-1` from `mq3.renderer.qvm_2d_batch.materialIndex`; earlier branches re
 | `handle` | `dynamic` | — | Input used by `for index=0 to len(materialList)-1 if materialList[index].shaderHandle==handle then return index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L285)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-materialmatches-function-materialmatches-material-name-src-mq3-renderer-qvm-2d-batch-ml-126189980"></a>
 ### materialMatches
@@ -342,7 +342,7 @@ Computes `material!=void and stringEqualsIgnoreCaseAscii(material.shaderName,nam
 | `name` | `dynamic` | — | Argument 2 supplied to `stringEqualsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L293)
 
 - [mq3.renderer.qvm_2d_batch.Point](Type-mq3-renderer-qvm-2d-batch-point-1849827523.md) — struct
 - [mq3.renderer.qvm_2d_batch.Quad](Type-mq3-renderer-qvm-2d-batch-quad-949498652.md) — struct
@@ -367,7 +367,7 @@ Rebuild only the changing quad/run buffers.  Shader parsing, PK3 image decoding 
 | `targetHeight` | `dynamic` | — | Value assigned to `catalog.targetHeight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L420)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-refreshstatictopology-function-refreshstatictopology-catalog-queuecommands-sourcewidth-sourceheight-targetwidth-targetheight-src-mq3-renderer-qvm-2d-batch-ml-1313836848"></a>
 ### refreshStaticTopology
@@ -388,7 +388,7 @@ Updates `catalog.lastCommands`, `catalog.sourceWidth`, `catalog.sourceHeight`, `
 | `targetHeight` | `dynamic` | — | Value assigned to `catalog.targetHeight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L386)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-release-function-release-catalog-src-mq3-renderer-qvm-2d-batch-ml-309093829"></a>
 ### release
@@ -404,7 +404,7 @@ Returns `void` from `mq3.renderer.qvm_2d_batch.release`.
 | `catalog` | `dynamic` | — | Record providing `catalog.textures`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L392)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L526)
 
 - [mq3.renderer.qvm_2d_batch.Run](Type-mq3-renderer-qvm-2d-batch-run-1128412860.md) — struct
 <a id="function-function-mq3-renderer-qvm-2d-batch-samecommands-function-samecommands-left-right-src-mq3-renderer-qvm-2d-batch-ml-541404109"></a>
@@ -422,7 +422,7 @@ Compares command count, command IDs, shaders, and all associated command values.
 | `right` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L209)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-sametopology-function-sametopology-left-right-src-mq3-renderer-qvm-2d-batch-ml-367066377"></a>
 ### sameTopology
@@ -439,7 +439,7 @@ Compares only command count, IDs, and shaders to determine whether 2D batch topo
 | `right` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L216)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-samevalues-function-samevalues-left-right-src-mq3-renderer-qvm-2d-batch-ml-206195597"></a>
 ### sameValues
@@ -456,7 +456,7 @@ Returns `true` from `mq3.renderer.qvm_2d_batch.sameValues`; earlier branches ret
 | `right` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L202)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-scaledpoint-function-scaledpoint-x-y-scalex-scaley-src-mq3-renderer-qvm-2d-batch-ml-1015396554"></a>
 ### scaledPoint
@@ -475,7 +475,7 @@ Constructs `mq3.renderer.qvm_2d_batch.Point` with `x` = `x*scaleX`, `y` = `y*sca
 | `scaleY` | `dynamic` | — | Input used in the result expression `Point(x*scaleX,y*scaleY,SCREEN_DEPTH)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L198)
 
 <a id="constant-constant-mq3-renderer-qvm-2d-batch-screen-depth-const-screen-depth-0-001-src-mq3-renderer-qvm-2d-batch-ml-1326404104"></a>
 ### SCREEN_DEPTH
@@ -484,8 +484,10 @@ Constructs `mq3.renderer.qvm_2d_batch.Point` with `x` = `x*scaleX`, `y` = `y*sca
 const SCREEN_DEPTH = 0.001
 ```
 
+Fixed depth assigned to two-dimensional screen geometry.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L18)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-shadername-function-shadername-assets-kinds-handle-src-mq3-renderer-qvm-2d-batch-ml-300246634"></a>
 ### shaderName
@@ -503,7 +505,7 @@ Returns `assets[handle-1]` from `mq3.renderer.qvm_2d_batch.shaderName`; earlier 
 | `handle` | `dynamic` | — | Input tested by `handle<=0 or handle>len(assets) or handle>len(kinds)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L184)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-shadernomip-function-shadernomip-kinds-handle-src-mq3-renderer-qvm-2d-batch-ml-362552093"></a>
 ### shaderNoMip
@@ -520,7 +522,7 @@ Computes `handle>0 and handle<=len(kinds) and kinds[handle-1]=="shaderNoMip"` fo
 | `handle` | `dynamic` | — | Input used in the result expression `handle>0 and handle<=len(kinds) and kinds[handle-1]=="shaderNoMip"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L192)
 
 - [mq3.renderer.qvm_2d_batch.StagePass](Type-mq3-renderer-qvm-2d-batch-stagepass-1079493082.md) — struct
 - [mq3.renderer.qvm_2d_batch.Texture](Type-mq3-renderer-qvm-2d-batch-texture-689632650.md) — struct
@@ -540,7 +542,7 @@ Splits a HUD quad into two triangles while preserving UVs, RGBA modulation, and 
 | `materialIndex` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L260)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-updatepass-function-updatepass-pass-nowmilliseconds-src-mq3-renderer-qvm-2d-batch-ml-1338294385"></a>
 ### updatePass
@@ -557,7 +559,7 @@ Updates `pass.initialized` in `mq3.renderer.qvm_2d_batch.updatePass`; returns `s
 | `nowMilliseconds` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_materials.shaderMilliseconds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L397)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L531)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-upload-function-upload-catalog-src-mq3-renderer-qvm-2d-batch-ml-1964842803"></a>
 ### upload
@@ -573,7 +575,7 @@ Calls `mq3.renderer.qvm_2d_batch.uploadFrom` with `(catalog,0)` and returns its 
 | `catalog` | `dynamic` | — | Value forwarded as `catalog` to `mq3.renderer.qvm_2d_batch.uploadFrom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L389)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L523)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-uploadfrom-function-uploadfrom-catalog-first-src-mq3-renderer-qvm-2d-batch-ml-2060906149"></a>
 ### uploadFrom
@@ -590,7 +592,7 @@ Computes `uploadFrom` from `len(catalog.textures)` using `mq3.platform.playable_
 | `first` | `dynamic` | — | Input tested by `first<0 or first>len(catalog.textures)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L377)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L511)
 
 <a id="function-function-mq3-renderer-qvm-2d-batch-whiteimage-function-whiteimage-src-mq3-renderer-qvm-2d-batch-ml-340282714"></a>
 ### whiteImage
@@ -602,4 +604,4 @@ function whiteImage()
 Calls `mq3.renderer.playable_materials.Image` with `(1,1,bytes(4,255))` and returns its result.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L267)
