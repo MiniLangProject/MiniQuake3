@@ -8,71 +8,68 @@ import mq3.client.packet_event as clientPacketEvent
 import mq3.client.netchan as clientNetchanRuntime
 import mq3.client.protocol_runtime as protocolRuntime
 
-/// Stores network ingress host-service callbacks, including `connectionlessHost`, `demoFn`, `serverPacketFn`, `context`.
+/// Host services for connectionless client packets, optional demo recording, and server-side datagrams.
 struct Services
-  /// When constructing this record, `services` supplies `connectionlessHost` for this member.
+  /// Client connectionless service bundle used for handshake, disconnect, and other out-of-band packets.
   connectionlessHost
-  /// Host callback for the demo operation; an unset callback leaves that host operation unavailable.
+  /// Optional recorder callback `(services, packetState, msg, headerBytes)`; required when recording
+  /// a sequenced packet. The first argument is this Services record, including its context.
   demoFn
-  /// Host callback for the server packet operation; an unset callback leaves that host operation
-  /// unavailable.
+  /// Optional server datagram callback `(services, address, data)`; its result is returned unchanged
+  /// by `receiveServer`. With no callback, server datagrams are ignored.
   serverPacketFn
-  /// Caller-supplied value forwarded unchanged to the service callbacks for client packet ingestion.
+  /// Caller-owned data available as `services.context` to recorder and server-packet callbacks.
   context
 end struct
 
-/// Stores network ingress runtime wiring and state, including `connection`, `packetState`, `packetHost`, `netchanRuntime`, `protocol`, `services` and additional values.
+/// Wiring between UDP datagrams, connection state, netchan reassembly, and the client protocol parser.
 struct Runtime
-  /// When constructing this record, `create` supplies `connectionState` for this member. Used by
-  /// `process` during subsequent processing.
+  /// Shared client connection and remote-channel state retained by the packet-event handler.
   connection
-  /// When constructing this record, `create` supplies `packetState` for this member. Used by
-  /// `setRealtime` and `clientPacket` during subsequent processing.
+  /// Packet-event state holding client time, received server sequence, and demo-recording flags.
   packetState
-  /// When constructing this record, `create` supplies `packetHost` for this member. Used by
-  /// `clientPacket` during subsequent processing.
+  /// Packet-event service bundle whose process, parse, and demo callbacks are bound to this runtime.
   packetHost
-  /// When constructing this record, `create` supplies `netchanRuntime` for this member. Used by
-  /// `process` and `parse` during subsequent processing.
+  /// Client netchan runtime for sequenced-packet validation, reassembly, and payload decoding.
   netchanRuntime
-  /// Network protocol version advertised or required by the client connection.
+  /// Parser runtime shared with packet ingestion; owns the server-message dispatcher, gamestate, and downloads.
   protocol
   /// Service callbacks and context used to access the host engine from this client subsystem.
   services
-  /// When constructing this record, `create` supplies an empty string for this member. Used by
-  /// `clientPacket` during subsequent processing.
+  /// Most recent packet-event disposition, such as `oob`, `sequenced`, or a rejection reason; initially empty.
   lastPacketResult
-  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
-  /// `parse` during subsequent processing.
+  /// Most recent server-message parser result, or `void` before parsing any server payload.
   lastParseResult
-  /// When constructing this record, `create` supplies `0` for this member. Used by `clientPacket`
-  /// during subsequent processing.
+  /// Number of calls that completed packet-event dispatch, including ignored or rejected packets.
   packetCount
-  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
-  /// `clientPacket` during subsequent processing.
+  /// Reused message codec, allocated on the first incoming datagram and retained for later receives.
   codec
 end struct
 
-/// Creates a `mq3.client.network_ingress.Services` record. Assigns `connectionlessHost` from `connectionlessHost`.
-/// @param connectionlessHost Value used to initialize `Services.connectionlessHost`.
+/// Create the ingress service bundle with demo and server-packet callbacks initially unset.
+/// @param connectionlessHost Client connectionless service bundle required later by `create`.
 function services(connectionlessHost)
   return Services(connectionlessHost,void,void,void)
 end function
 
-/// Passes a server packet to the client netchan after checking that the packet host has a configured netchan runtime.
-/// @param packetHost Record read through `packetHost.context`.
-/// @param state Record read through `state.connection.channel`.
-/// @param msg Value used by `return clientNetchanRuntime.process(runtime.netchanRuntime,state.connection.channel,msg)`.
+/// Pass a sequenced server packet through the client netchan decoder and return its acceptance result.
+/// Missing ingress or netchan configuration produces error 6994.
+/// @param packetHost Packet-event Services record whose context references this ingress runtime.
+/// @param state Packet-event State whose connection owns the remote netchan channel.
+/// @param msg Mutable received message whose payload and read cursor are processed by the netchan.
 function process(packetHost,state,msg)
   runtime=packetHost.context
   if runtime==void or runtime.netchanRuntime==void then return error(6994,"client ingress: missing netchan runtime") end if
   return clientNetchanRuntime.process(runtime.netchanRuntime,state.connection.channel,msg)
 end function
 
-/// Parses a server message, synchronizes snapshot and reliable-command sequence state, and records the parse result.
-/// @param packetHost Record read through `packetHost.context`.
-/// @param state Record read through `state.serverMessageSequence`.
-/// @param msg Value used by `result=protocolRuntime.parse(runtime.protocol,msg)`.
+/// Parse a server payload and synchronize snapshot sequencing and reliable server-command history.
+/// The packet-event server sequence is copied into the snapshot parser before decoding. Afterwards the
+/// decoded server-command ring is shared with the outgoing netchan XOR encoder. Returns and retains
+/// the parser result in `lastParseResult`.
+/// @param packetHost Packet-event Services record whose context references this ingress runtime.
+/// @param state Packet-event State containing the physical server-message sequence number.
+/// @param msg Mutable message positioned at the server payload after netchan processing.
 function parse(packetHost,state,msg)
   runtime=packetHost.context
   if runtime==void or runtime.protocol==void then return error(6994,"client ingress: missing protocol runtime") end if
@@ -88,22 +85,25 @@ function parse(packetHost,state,msg)
   return result
 end function
 
-/// Forwards a received message and its header length to the configured demo recorder.
-/// @param packetHost Record read through `packetHost.context`.
-/// @param state Shared network ingress state passed to the helper calls in `recordDemo`.
-/// @param msg Value used by `return runtime.services.demoFn(runtime.services,state,msg,headerBytes)`.
-/// @param headerBytes Number of transport/header bytes preceding the recorded message payload.
+/// Forward a received server message to the installed demo recorder and return its result unchanged.
+/// The callback is `demoFn(services, state, msg, headerBytes)`; a missing recorder produces error 6994.
+/// @param packetHost Packet-event Services record whose context references this ingress runtime.
+/// @param state Packet-event State associated with the recorded server message.
+/// @param msg Received message after server-payload parsing; the recorder receives the same message object.
+/// @param headerBytes Number of transport/header bytes preceding the payload to record.
 function recordDemo(packetHost,state,msg,headerBytes)
   runtime=packetHost.context
   if runtime==void or runtime.services.demoFn==void then return error(6994,"client ingress: missing demo service") end if
   return runtime.services.demoFn(runtime.services,state,msg,headerBytes)
 end function
 
-/// Connects client packet, netchan and protocol state to the incoming-packet callbacks after validating all required services.
-/// @param connectionState Value used by `if connectionState==void or netchanRuntime==void or protocol==void or hostServices==void then return error(6994,"client ingress: missing confi...`.
-/// @param netchanRuntime Value used by `if connectionState==void or netchanRuntime==void or protocol==void or hostServices==void then return error(6994,"client ingress: missing confi...`.
-/// @param protocol Value used by `if connectionState==void or netchanRuntime==void or protocol==void or hostServices==void then return error(6994,"client ingress: missing confi...`.
-/// @param hostServices Record read through `hostServices.connectionlessHost`.
+/// Connect client packet handling, netchan decoding, and protocol parsing to one ingress runtime.
+/// Creates packet-event state and binds its callbacks to this runtime. All four arguments must be present,
+/// and the supplied Services must contain a connectionless service bundle; missing configuration returns error 6994.
+/// @param connectionState Shared client connection state, including the active remote netchan channel.
+/// @param netchanRuntime Client netchan decoder and its reliable-command connection state.
+/// @param protocol Client protocol parser Runtime containing dispatcher, gamestate, and download state.
+/// @param hostServices Ingress Services containing connectionless support and optional recording/server callbacks.
 function create(connectionState,netchanRuntime,protocol,hostServices)
   if connectionState==void or netchanRuntime==void or protocol==void or hostServices==void then return error(6994,"client ingress: missing configuration") end if
   if hostServices.connectionlessHost==void then return error(6994,"client ingress: missing connectionless services") end if
@@ -139,28 +139,31 @@ function clientPacket(runtime,address,data)
   return result
 end function
 
-/// Adapts `mq3.client.network_ingress.clientPacket` to network ingress `receiveClient`, returning its result for `runtime, address, data`.
-/// @param runtime Argument 1 of `mq3.client.network_ingress.clientPacket`.
-/// @param address Argument 2 of `mq3.client.network_ingress.clientPacket`.
-/// @param data Argument 3 of `mq3.client.network_ingress.clientPacket`.
+/// Adapt the pump's client datagram callback to ingress packet processing.
+/// Returns the same packet-event result as `clientPacket` and updates its accounting and codec state.
+/// @param runtime Ingress runtime passed by the network pump as its callback context.
+/// @param address Sender's network address, checked against the connected server for sequenced traffic.
+/// @param data Received UDP datagram bytes.
 function receiveClient(runtime,address,data)
   return clientPacket(runtime,address,data)
 end function
 
-/// Forwards a server-side datagram to the optional server packet service, or returns void when no service is installed.
-/// @param runtime Record read through `runtime.services.serverPacketFn`, `runtime.services`.
-/// @param address Value used by `if runtime.services.serverPacketFn!=void then return runtime.services.serverPacketFn(runtime.services,address,data) end if`.
-/// @param data Value used by `if runtime.services.serverPacketFn!=void then return runtime.services.serverPacketFn(runtime.services,address,data) end if`.
+/// Pass a server-side datagram to `serverPacketFn(services, address, data)` when configured.
+/// Returns the service result unchanged, or `void` when server-packet handling is disabled.
+/// @param runtime Ingress runtime whose Services contains the optional server callback and context.
+/// @param address Sender's network address.
+/// @param data Received UDP datagram bytes for the server endpoint.
 function receiveServer(runtime,address,data)
   if runtime.services.serverPacketFn!=void then return runtime.services.serverPacketFn(runtime.services,address,data) end if
   return void
 end function
 
-/// Calls `mq3.qcommon.network_pump.create` from network ingress `createPump`. The final path returns `networkPump.create(clientSocket,serverSocket,capacity,runtime,receiveClient,receiveServer)`.
-/// @param runtime runtime record passed to the network ingress helper calls.
-/// @param clientSocket Value used by `return networkPump.create(clientSocket,serverSocket,capacity,runtime,receiveClient,receiveServer)`.
-/// @param serverSocket Value used by `return networkPump.create(clientSocket,serverSocket,capacity,runtime,receiveClient,receiveServer)`.
-/// @param capacity Maximum number of entries or bytes accepted by this container.
+/// Create a UDP pump whose client and server callbacks are bound to this ingress runtime.
+/// Returns the pump or a missing-runtime, missing-socket, or invalid-capacity error.
+/// @param runtime Ingress runtime retained as the pump's callback context.
+/// @param clientSocket Open client UDP socket, or `void` to omit client-side polling.
+/// @param serverSocket Open server UDP socket, or `void` to omit server-side polling; at least one socket is required.
+/// @param capacity Receive-buffer size in bytes per endpoint, from 1 through 65,535.
 function createPump(runtime,clientSocket,serverSocket,capacity)
   if runtime==void then return error(6994,"client ingress: missing runtime") end if
   return networkPump.create(clientSocket,serverSocket,capacity,runtime,receiveClient,receiveServer)

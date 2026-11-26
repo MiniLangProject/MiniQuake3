@@ -304,7 +304,8 @@ struct Client
   downloadSendTime
   /// Acknowledged snapshot message selected as the base for delta compression.
   deltaMessage
-  /// Earliest server timestamp when another reliable client command is accepted.
+  /// Millisecond deadline used by active-client command flood protection. Commands received before
+  /// it can still advance reliable sequencing while game-command dispatch is denied.
   nextReliableTime
   /// Server timestamp of the most recently received client packet, in milliseconds.
   lastPacketTime

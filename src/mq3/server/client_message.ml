@@ -18,14 +18,14 @@ const CLC_CLIENT_COMMAND=4
 /// Client-to-server opcode marking the end of a message.
 const CLC_EOF=5
 
-/// Server record for server.client_message, containing `serverId`, `restartedServerId`.
+/// Current and restart-era server identifiers used to reject stale client message streams.
 struct Server
   /// Identifier distinguishing the current server or map session.
   serverId
   /// Server identifier retained from before the latest map restart.
   restartedServerId
 end struct
-/// Client record for server.client_message, containing `state`, `messageAcknowledge`, `reliableAcknowledge`, `reliableSequence`, `gamestateMessageNum`, `downloadName`, and 4 further fields.
+/// Client acknowledgment, reliable-command, download, and lifecycle state used during message dispatch.
 struct Client
   /// Connection lifecycle value that controls which decoded commands and movement messages are
   /// accepted.
@@ -46,43 +46,48 @@ struct Client
   lastClientCommand
   /// Text of the last processed reliable client command.
   lastClientCommandString
-  /// Earliest server timestamp when another reliable client command is accepted.
+  /// Millisecond deadline used by active-client command flood protection. Commands received before
+  /// it can still advance reliable sequencing while game-command dispatch is denied.
   nextReliableTime
 end struct
-/// Services record for server.client_message, containing `clientCommandFn`, `userMoveFn`, `sendGamestateFn`, `dropFn`, `diagnosticFn`, `context`.
+/// Callback boundary for reliable commands, movement, gamestate resends, and invalid client messages.
 struct Services
-  /// Host callback that delivers a command to the game client interface.
+  /// Callback `(host, clientState, msg)` that consumes a reliable command and returns true to continue.
+  /// A false result stops message processing with `commandRejected`.
   clientCommandFn
-  /// Host callback that decodes and processes client movement commands.
+  /// Optional callback `(host, clientState, msg, delta)` that consumes movement commands. `delta` is
+  /// true for CLC_MOVE and false for CLC_MOVE_NO_DELTA; its return value is ignored.
   userMoveFn
-  /// Host callback that transmits the current gamestate to a client.
+  /// Optional callback `(host, clientState)` requesting a new gamestate after a mismatched server identifier.
   sendGamestateFn
-  /// Host callback that disconnects a client and reports the supplied reason.
+  /// Optional callback `(host, clientState, reason)` invoked for invalid message or reliable acknowledgments.
   dropFn
-  /// Host callback that reports subsystem diagnostics to the host.
+  /// Optional callback `(host, clientState, opcode)` reporting an unrecognized final client-message opcode.
   diagnosticFn
-  /// Caller-supplied data associated with client command decoding, movement dispatch, and gamestate
-  /// resends.
+  /// Caller-owned data available to every service callback as `host.context`.
   context
 end struct
 
-/// Create `mq3.server.client_message.Server` with serverId=serverId; restartedServerId=restartedServerId.
-/// @param serverId Initial `serverId` field stored in the returned or constructed `mq3.server.client_message.Server` record.
-/// @param restartedServerId Initial `restartedServerId` field stored in the returned or constructed `mq3.server.client_message.Server` record.
+/// Create the server identifier pair used for stale-message and restart checks.
+/// @param serverId Identifier of the current server/map session.
+/// @param restartedServerId Lower boundary of server identifiers associated with the latest restart.
 function createServer(serverId,restartedServerId) return Server(serverId,restartedServerId) end function
-/// Create `mq3.server.client_message.Client` with state=0; messageAcknowledge=0; reliableAcknowledge=0; reliableSequence=0; gamestateMessageNum=0; downloadName=""; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
+/// Create empty client message state with zero acknowledgments and no active download or command text.
 function createClient() return Client(0,0,0,0,0,"","",0,"",0) end function
-/// Create `mq3.server.client_message.Services` with clientCommandFn=void; userMoveFn=void; sendGamestateFn=void; dropFn=void; diagnosticFn=void; context=void.
+/// Create client-message services with all callbacks and their shared context initially unset.
 function services() return Services(void,void,void,void,void,void) end function
 
-/// Execute client message in server.client_message; the normal completion returns `"eof"`.
-///
-/// Validation failures include `client message: missing state`.
-/// Direct state writes: `clientState.messageAcknowledge`, `clientState.reliableAcknowledge`.
-/// @param serverState Record exposing `serverId`, `restartedServerId`.
-/// @param clientState Record exposing `messageAcknowledge`, `reliableAcknowledge`, `reliableSequence`, `lastClientCommandString`, `downloadName`, `gamestateMessageNum`, `state`. Updated in place: `messageAcknowledge`, `reliableAcknowledge`.
-/// @param host Record exposing `dropFn`, `sendGamestateFn`, `clientCommandFn`, `userMoveFn`, `diagnosticFn`.
-/// @param msg Msg passed as `msg` to `mq3.qcommon.message.bitstream`.
+/// Decode client acknowledgments, consume reliable commands, and dispatch the final movement opcode.
+/// Returns `move`, `moveNoDelta`, or `eof` for the corresponding final opcode. Rejected or stale input returns
+/// `negativeMessageAck`, `staleReliableAck`, `oldServerId`, `resendGamestate`, `wrongServerId`,
+/// `commandRejected`, `zombie`, or `badCommand`; missing input state produces error 6980.
+/// Acknowledgments are stored as they are read. A stale reliable acknowledgment is reset to the current
+/// server reliable sequence before returning. Recognized movement/gamestate paths report their disposition
+/// even when their optional callback is absent; callback return values other than clientCommandFn are ignored.
+/// @param serverState Current server identifier and restart boundary used to validate the client session.
+/// @param clientState Mutable client acknowledgment, reliable sequence, download, and lifecycle state.
+/// @param host Services for command consumption, movement decoding, gamestate resends, and diagnostics.
+/// @param msg Mutable network message positioned at the decoded client payload; reading switches to bitstream mode.
 function execute(serverState,clientState,host,msg)
   if serverState==void or clientState==void or host==void or msg==void then return error(6980,"client message: missing state") end if
   msgio.bitstream(msg)

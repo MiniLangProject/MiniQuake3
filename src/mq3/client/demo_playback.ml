@@ -23,7 +23,7 @@ const MAX_FRAME_PACKETS=128
 
 /// Stores demo playback playback record, including `protocol`, `mapName`, `completed`, `handle`, `archiveData`, `offset` and additional values.
 struct Playback
-  /// Network protocol version advertised or required by the client connection.
+  /// Client protocol parser runtime that decodes recorded server messages and retains their gamestate and snapshots.
   protocol
   /// Map name extracted from the demo's initial game state.
   mapName

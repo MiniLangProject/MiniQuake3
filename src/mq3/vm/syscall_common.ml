@@ -14,9 +14,9 @@ const ABI_QAGAME = 0
 const ABI_CGAME = 1
 /// ABI selector for the user-interface VM.
 const ABI_UI = 2
-/// Upper bound on VM string represented by mq3.vm.syscall_common.
+/// Maximum number of VM bytes inspected for a string, including its required zero terminator.
 const MAX_VM_STRING = 8192
-/// Byte size used for VM console variable storage or binary layout in mq3.vm.syscall_common.
+/// Legacy vmCvar_t size: four 32-bit header fields followed by 256 bytes of zero-terminated string storage.
 const VM_CVAR_SIZE = 272
 
 /// Round down to the greatest integral double no larger than the input.
@@ -32,44 +32,44 @@ extern function ceil(value as double) from "ucrtbase.dll" returns double
 /// @returns The principal angle in radians, with C-runtime domain handling outside [-1, 1].
 extern function acos(value as double) from "ucrtbase.dll" returns double
 
-/// Services record for vm.syscall_common, containing `cvars`, `commands`, `context`, `printFn`, `errorFn`, `millisecondsFn`, and 5 further fields.
+/// Shared QVM host services; callbacks receive the stored context rather than the Services record.
 struct Services
-  /// Console-variable registry or pending console-variable updates used by the module.
+  /// Host cvar registry used by QVM registration, lookup, mutation, and vmCvar_t synchronization.
   cvars
-  /// Registered console commands exposed by the module.
+  /// Command-buffer state whose currently tokenized command supplies argc, argv, and args traps.
   commands
   /// Opaque caller-supplied context available to shared QVM console, clock, and file-system services.
   context
-  /// Injected callback for print; invoked through the Services service/state record.
+  /// Optional callback `(context, text)` for ordinary console output; its return value is ignored.
   printFn
-  /// Injected callback for error; invoked through the Services service/state record.
+  /// Optional callback `(context, text)` for VM error reporting; the trap returns zero if the callback returns.
   errorFn
-  /// Injected callback for milliseconds; invoked through the Services service/state record.
+  /// Optional callback `(context)` returning the host millisecond clock.
   millisecondsFn
-  /// Injected callback for console; invoked through the Services service/state record.
+  /// Optional callback `(context, executionMode, text)` for a console command; its return value is ignored.
   consoleFn
-  /// Injected callback for open; invoked through the Services service/state record.
+  /// Optional callback `(context, path, mode)` returning OpenResult(handle, length), or `void` for failure.
   openFn
-  /// Injected callback for read; invoked through the Services service/state record.
+  /// Optional callback `(context, handle, count)` returning at least `count` bytes; short results fail the trap.
   readFn
-  /// Injected callback for write; invoked through the Services service/state record.
+  /// Optional callback `(context, handle, data)` receiving the requested byte slice; its return value is ignored.
   writeFn
-  /// Injected callback for close; invoked through the Services service/state record.
+  /// Optional callback `(context, handle)` releasing a file handle; its return value is ignored.
   closeFn
 end struct
 
-/// OpenResult record for vm.syscall_common, containing `handle`, `length`.
+/// Host file-open result copied into the QVM handle slot and returned as the open trap result.
 struct OpenResult
   /// Host file handle returned by the open operation.
   handle
-  /// File length reported by the host open operation.
+  /// File length or mode-specific status returned by the host; an absent open result becomes -1.
   length
 end struct
 
-/// Create `mq3.vm.syscall_common.Services` with cvars=registry; commands=commands; context=context; printFn=void; errorFn=void; millisecondsFn=void; consoleFn=void; openFn=void; readFn=void; writeFn=void; closeFn=void.
-/// @param registry Initial `cvars` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record.
-/// @param commands Initial `commands` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record.
-/// @param context Initial `context` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record.
+/// Create shared QVM services with all host callbacks initially unset.
+/// @param registry Host cvar registry used by cvar traps, or `void` until configured.
+/// @param commands Command-buffer state supplying the current tokenized command, or `void` until configured.
+/// @param context Opaque value passed unchanged as the first argument to host callbacks.
 function services(registry,commands,context)
   return Services(registry,commands,context,void,void,void,void,void,void,void,void)
 end function
@@ -78,21 +78,25 @@ end function
 /// @param message Message used in `("QVM syscall: " + message)` and `error(3420, ("QVM syscall: " + message))`.
 function fail(message) return error(3420,"QVM syscall: "+message) end function
 
-/// Compute argument in vm.syscall_common; the normal completion returns `n.readI32(vm.data, at)`.
-/// @param vm Record exposing `data`.
-/// @param address Address used in `(address < 0)` and `(at < address)`.
-/// @param index Index used in `(index * 4)` and `(index < 0)`.
+/// Read one signed little-endian 32-bit slot from a QVM syscall argument vector.
+/// Slot zero contains the trap number; subsequent slots contain arguments. Rejects negative offsets or
+/// indexes, address overflow, and reads beyond VM data memory. The argument-vector address is not masked.
+/// @param vm VM exposing its data-memory byte buffer.
+/// @param address Byte offset of the first argument-vector slot in VM memory.
+/// @param index Zero-based slot index, with each slot occupying four bytes.
 function argument(vm,address as int,index as int)
   at=address+index*4
   if address<0 or index<0 or at<address or at+4>len(vm.data) then return fail("argument vector outside VM memory") end if
   return n.readI32(vm.data,at)
 end function
 
-/// Compute pointer in vm.syscall_common; the normal completion returns `at`.
-/// @param vm Record exposing `mask`, `data`.
-/// @param value Value used in `(value == 0)` and `(value & vm.mask)`.
-/// @param size Size used in `(size < 0)` and `(size > (len(vm.data) - at))`.
-/// @param label Label used in `(label + " is NULL")` and `fail((label + " is NULL"))`.
+/// Convert a nonzero QVM pointer value to a checked byte offset for a contiguous memory span.
+/// Applies `value & vm.mask` before checking the span against VM data memory. Rejects a zero original
+/// pointer, negative size, or an out-of-bounds span; a zero-length request still requires a nonzero pointer.
+/// @param vm VM supplying the data buffer and its address mask.
+/// @param value QVM pointer value to mask and validate, not a native host address.
+/// @param size Required contiguous span length in bytes.
+/// @param label Name of the accessed value, included in validation diagnostics.
 function pointer(vm,value,size,label)
   if value==0 then return fail(label+" is NULL") end if
   if size<0 then return fail(label+" has negative size") end if
@@ -101,9 +105,11 @@ function pointer(vm,value,size,label)
   return at
 end function
 
-/// Read string in vm.syscall_common; the normal completion returns `decode(slice(vm.data, at, (stop - at)))`.
-/// @param vm Record exposing `data`.
-/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// Decode a zero-terminated string from QVM memory.
+/// The terminator must occur within the first MAX_VM_STRING bytes or before the end of VM memory,
+/// whichever comes first. A missing terminator or invalid pointer produces a syscall error.
+/// @param vm VM whose data-memory buffer contains the string.
+/// @param value Nonzero QVM pointer value for the first string byte; masked by the VM address mask.
 function readString(vm,value)
   at=pointer(vm,value,1,"string");limit=at+MAX_VM_STRING
   if limit>len(vm.data) then limit=len(vm.data) end if
@@ -113,12 +119,15 @@ function readString(vm,value)
   return decode(slice(vm.data,at,stop-at))
 end function
 
-/// Write buffer in vm.syscall_common; the normal completion returns `count`.
-/// @param vm Record exposing `data`.
-/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
-/// @param capacity Size passed as `size` to `mq3.vm.syscall_common.pointer`.
-/// @param data Data used in `bytes(data)` and `copyBytes(vm.data, at, source, 0, count)`.
-/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
+/// Write a bounded zero-terminated byte string to QVM memory and return its payload byte count.
+/// Copies at most `capacity - 1` bytes and appends a zero byte. Zero capacity returns zero without
+/// accessing or validating the pointer; negative capacity and invalid positive-capacity spans fail.
+/// Truncation is byte-based and may split a multibyte encoded character.
+/// @param vm VM whose data memory receives the string and terminator.
+/// @param value Destination QVM pointer value, validated only when capacity is positive.
+/// @param capacity Total destination capacity in bytes, including space for the zero terminator.
+/// @param data Value converted by `bytes(data)` before copying, typically text or a byte buffer.
+/// @param label Destination name included in validation diagnostics.
 function writeBuffer(vm,value,capacity,data,label)
   if capacity<0 then return fail(label+" has negative capacity") end if
   if capacity==0 then return 0 end if
@@ -128,12 +137,14 @@ function writeBuffer(vm,value,capacity,data,label)
   return count
 end function
 
-/// Write raw in vm.syscall_common.
-/// @param vm Record exposing `data`.
-/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
-/// @param data Data used in `len(data)` and `(len(data) < count)`.
-/// @param count Size passed as `size` to `mq3.vm.syscall_common.pointer`.
-/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
+/// Copy exactly `count` bytes into QVM memory without appending a terminator.
+/// Returns `void` on success. Rejects negative lengths, invalid destinations, and source buffers shorter
+/// than the requested count. A zero count still validates the destination pointer.
+/// @param vm VM whose data memory receives the raw bytes.
+/// @param value Nonzero destination QVM pointer value, masked and checked for the requested span.
+/// @param data Source byte buffer containing at least `count` bytes.
+/// @param count Number of source bytes to copy.
+/// @param label Output name included in pointer and short-source diagnostics.
 function writeRaw(vm,value,data,count,label)
   if count<0 then return fail(label+" has negative length") end if
   at=pointer(vm,value,count,label)
@@ -149,10 +160,13 @@ function requireCvars(host)
   return host.cvars
 end function
 
-/// Write vm cvar in vm.syscall_common.
-/// @param vm Record exposing `data`.
-/// @param address Value passed as `value` to `mq3.vm.syscall_common.pointer`.
-/// @param variable Record exposing `index`, `modificationCount`, `value`, `integer`, `string`.
+/// Serialize a host cvar into the 272-byte legacy vmCvar_t layout and return `void`.
+/// Writes the index, modification count, float32 value bits, and integer at byte offsets 0, 4, 8, and 12.
+/// The following 256 bytes contain the string with zero padding; encoded string payloads above 255 bytes
+/// fail validation after the four header fields have already been written.
+/// @param vm VM whose data memory contains the destination structure.
+/// @param address Nonzero QVM pointer to at least VM_CVAR_SIZE writable bytes.
+/// @param variable Host cvar exposing index, modificationCount, value, integer, and string.
 function writeVmCvar(vm,address,variable)
   at=pointer(vm,address,VM_CVAR_SIZE,"vmCvar_t")
   n.writeU32(vm.data,at,variable.index);n.writeU32(vm.data,at+4,variable.modificationCount)
@@ -276,10 +290,13 @@ function argsText(vm,base,host)
   writeBuffer(vm,argument(vm,base,1),argument(vm,base,2),command.args(host.commands),"args output");return 0
 end function
 
-/// Open syscall common in vm.syscall_common; the normal completion returns `result.length`.
-/// @param vm Record exposing `data`, `mask`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
-/// @param host Record exposing `openFn`, `context`, `closeFn`.
+/// Open a host file and return the callback's length/status result to the VM.
+/// Reads argument slots 1..3 as path pointer, optional handle-output pointer, and open mode.
+/// A `void` callback result becomes handle 0 and result -1. With no handle-output pointer, a nonzero
+/// opened handle is closed when `closeFn` is available; the length/status result is still returned.
+/// @param vm VM providing the path string and an optional writable four-byte handle slot.
+/// @param base Byte offset of the syscall argument vector, whose slot zero holds the trap number.
+/// @param host Services with `openFn(context, path, mode)` and optional `closeFn(context, handle)`.
 function fsOpen(vm,base,host)
   if host.openFn==void then return fail("file open service unavailable") end if
   target=argument(vm,base,2);if target!=0 then pointer(vm,target,4,"file handle output") end if
@@ -293,30 +310,35 @@ function fsOpen(vm,base,host)
   return result.length
 end function
 
-/// Read syscall common in vm.syscall_common; the normal completion returns `0`.
-/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
-/// @param host Record exposing `readFn`, `context`.
+/// Read an exact byte count from a host file into VM memory and return zero.
+/// Argument slots 1..3 contain destination pointer, requested byte count, and file handle.
+/// The callback must return at least the requested count; a short result is a syscall error.
+/// @param vm VM containing the writable destination span and syscall argument vector.
+/// @param base Byte offset of the syscall argument vector.
+/// @param host Services with `readFn(context, handle, count)` returning source bytes.
 function fsRead(vm,base,host)
   if host.readFn==void then return fail("file read service unavailable") end if
   count=argument(vm,base,2);data=host.readFn(host.context,argument(vm,base,3),count)
   writeRaw(vm,argument(vm,base,1),data,count,"file read output");return 0
 end function
 
-/// Write syscall common in vm.syscall_common; the normal completion returns `0`.
-/// @param vm Record exposing `data`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
-/// @param host Record exposing `writeFn`, `context`.
+/// Pass a checked byte slice from VM memory to the host file writer and return zero.
+/// Argument slots 1..3 contain source pointer, byte count, and file handle. The callback's return value
+/// is ignored; this trap does not return a partial-write count.
+/// @param vm VM containing the source byte span and syscall argument vector.
+/// @param base Byte offset of the syscall argument vector.
+/// @param host Services with `writeFn(context, handle, data)` handling the outgoing bytes.
 function fsWrite(vm,base,host)
   if host.writeFn==void then return fail("file write service unavailable") end if
   count=argument(vm,base,2);at=pointer(vm,argument(vm,base,1),count,"file write input")
   host.writeFn(host.context,argument(vm,base,3),slice(vm.data,at,count));return 0
 end function
 
-/// Close syscall common in vm.syscall_common; the normal completion returns `0`.
-/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
-/// @param host Record exposing `closeFn`, `context`.
+/// Close the host file handle in argument slot one and return zero.
+/// A missing close callback produces a syscall error.
+/// @param vm VM containing the syscall argument vector.
+/// @param base Byte offset of the syscall argument vector.
+/// @param host Services with `closeFn(context, handle)`; its result is ignored.
 function fsClose(vm,base,host)
   if host.closeFn==void then return fail("file close service unavailable") end if
   host.closeFn(host.context,argument(vm,base,1));return 0
@@ -343,9 +365,11 @@ function executeConsole(vm,base,host)
   host.consoleFn(host.context,argument(vm,base,1),readString(vm,argument(vm,base,2)));return 0
 end function
 
-/// Compute libc memset in vm.syscall_common; the normal completion returns `destination`.
-/// @param vm Record exposing `data`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// Fill a checked VM memory span with the low eight bits of the requested value.
+/// Argument slots 1..3 contain destination pointer, fill value, and byte count. Returns the original
+/// destination pointer value; even a zero count requires a valid nonzero pointer.
+/// @param vm VM whose data-memory bytes are modified.
+/// @param base Byte offset of the memset syscall argument vector.
 function libcMemset(vm,base)
   destination=argument(vm,base,1);value=argument(vm,base,2)&255;count=argument(vm,base,3)
   at=pointer(vm,destination,count,"memset destination")
@@ -353,9 +377,11 @@ function libcMemset(vm,base)
   return destination
 end function
 
-/// Compute libc memcpy in vm.syscall_common; the normal completion returns `destination`.
-/// @param vm Record exposing `data`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// Copy a checked VM memory span through a temporary byte buffer, preserving overlapping-source data.
+/// Argument slots 1..3 contain destination pointer, source pointer, and byte count. Returns the original
+/// destination pointer value after copying exactly the requested number of bytes.
+/// @param vm VM containing both memory spans.
+/// @param base Byte offset of the memcpy syscall argument vector.
 function libcMemcpy(vm,base)
   destination=argument(vm,base,1);source=argument(vm,base,2);count=argument(vm,base,3)
   target=pointer(vm,destination,count,"memcpy destination");sourceAt=pointer(vm,source,count,"memcpy source")
@@ -365,9 +391,12 @@ function libcMemcpy(vm,base)
   return destination
 end function
 
-/// Compute libc strncpy in vm.syscall_common; the normal completion returns `destination`.
-/// @param vm Record exposing `data`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// Copy up to a fixed number of bytes from a VM string, zero-padding after the first terminator.
+/// Argument slots 1..3 contain destination pointer, source pointer, and byte count. Returns the original
+/// destination pointer. If no zero byte occurs within the count, the output has no added terminator.
+/// Both pointers are validated even when the count is zero; the source is checked as each byte is read.
+/// @param vm VM containing the source string and destination span.
+/// @param base Byte offset of the strncpy syscall argument vector.
 function libcStrncpy(vm,base)
   destination=argument(vm,base,1);source=argument(vm,base,2);count=argument(vm,base,3)
   target=pointer(vm,destination,count,"strncpy destination");sourceAt=pointer(vm,source,1,"strncpy source")
@@ -387,11 +416,12 @@ end function
 /// @param value Floating-point value to narrow and reinterpret.
 function floatResult(value) return n.i32(n.floatBits(value)) end function
 
-/// Read float vector in vm.syscall_common; the normal completion returns `result`.
-/// @param vm Record exposing `data`.
-/// @param address Value passed as `value` to `mq3.vm.syscall_common.pointer`.
-/// @param count Count used in `(count * 4)` and `(index < count)`.
-/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
+/// Read consecutive little-endian float32 values from VM memory into a MiniLang numeric array.
+/// The checked memory span occupies `count * 4` bytes.
+/// @param vm VM whose data memory contains the packed float32 values.
+/// @param address Nonzero QVM pointer to the first component.
+/// @param count Number of float32 components to read, not a byte count.
+/// @param label Vector name included in memory-validation diagnostics.
 function readFloatVector(vm,address,count,label)
   at=pointer(vm,address,count*4,label);result=array(count,0.0)
   index=0
@@ -400,11 +430,13 @@ function readFloatVector(vm,address,count,label)
   end while
   return result
 end function
-/// Write float vector in vm.syscall_common.
-/// @param vm Record exposing `data`.
-/// @param address Value passed as `value` to `mq3.vm.syscall_common.pointer`.
-/// @param values Values used in `len(values)` and `values[index]`.
-/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
+/// Write a numeric array as consecutive little-endian float32 values and return `void`.
+/// An address of zero intentionally skips the write, allowing optional vector outputs such as AngleVectors.
+/// Otherwise the destination must hold four bytes per input component.
+/// @param vm VM whose data-memory buffer receives the packed components.
+/// @param address Optional output QVM pointer; zero means no output requested.
+/// @param values Numeric components narrowed to float32 before serialization.
+/// @param label Vector name included in memory-validation diagnostics.
 function writeFloatVector(vm,address,values,label)
   if address==0 then return void end if
   at=pointer(vm,address,len(values)*4,label);for index=0 to len(values)-1 n.writeU32(vm.data,at+index*4,n.floatBits(values[index])) end for;return void
@@ -438,11 +470,13 @@ function perpendicularVector(vm,base)
   if length!=0.0 then values=[values[0]/length,values[1]/length,values[2]/length] end if;writeFloatVector(vm,argument(vm,base,1),values,"perpendicular output");return 0
 end function
 
-/// Dispatch libc in vm.syscall_common; the normal completion returns `fail(("unsupported VM libc trap " + str(op)))`.
-/// @param abi Abi used in `(abi == ABI_CGAME)` and `(abi == ABI_QAGAME)`.
-/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.libcMemset`.
-/// @param base Base passed as `base` to `mq3.vm.syscall_common.libcMemset`.
-/// @param op Op used in `str(op)` and `(op == 107)`.
+/// Dispatch a QVM memory, scalar-math, or vector-math compatibility trap.
+/// Opcodes 100..106 share the memory/trigonometry mappings. Later opcodes depend on the selected ABI;
+/// floating results are returned as signed int32 containers of float32 bits. Unsupported combinations fail.
+/// @param abi ABI_QAGAME, ABI_CGAME, or ABI_UI, selecting the ABI-specific tail of the trap table.
+/// @param vm VM whose argument vector and memory spans are consumed by the selected trap.
+/// @param base Byte offset of the syscall argument vector.
+/// @param op Trap number already read from argument slot zero.
 function dispatchLibc(abi,vm,base,op)
   switch op
     case 100 return libcMemset(vm,base) end case
@@ -465,11 +499,13 @@ function dispatchLibc(abi,vm,base,op)
   return fail("unsupported VM libc trap "+str(op))
 end function
 
-/// Dispatch qagame in vm.syscall_common; the normal completion returns `fail(("unsupported qagame trap " + str(op)))`.
-/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.emitPrint`.
-/// @param base Base passed as `base` to `mq3.vm.syscall_common.emitPrint`.
-/// @param host Record exposing `millisecondsFn`, `context`.
-/// @param op Op used in `str(op)` and `("unsupported qagame trap " + str(op))`.
+/// Dispatch a shared server-game console, cvar, command, clock, or file-system trap.
+/// Returns the selected service's ABI result: zero for side-effect traps, an integer/bit-pattern value,
+/// or a file-open length/status result. Unknown trap numbers produce a subsystem-specific syscall error.
+/// @param vm VM containing the argument vector and any input/output memory spans.
+/// @param base Byte offset of the syscall argument vector.
+/// @param host Shared Services providing the registry, command parser, and callbacks needed by the trap.
+/// @param op Server-game trap number already read from argument slot zero.
 function dispatchQagame(vm,base,host,op)
   switch op
     case 0 return emitPrint(vm,base,host,false) end case
@@ -491,11 +527,13 @@ function dispatchQagame(vm,base,host,op)
   return fail("unsupported qagame trap "+str(op))
 end function
 
-/// Dispatch cgame in vm.syscall_common; the normal completion returns `fail(("unsupported cgame trap " + str(op)))`.
-/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.dispatchQagame`.
-/// @param base Base passed as `base` to `mq3.vm.syscall_common.dispatchQagame`.
-/// @param host Host passed as `host` to `mq3.vm.syscall_common.dispatchQagame`.
-/// @param op Op passed as `op` to `mq3.vm.syscall_common.dispatchQagame`.
+/// Dispatch a shared client-game console, cvar, command, clock, or file-system trap.
+/// Returns the selected service's ABI result: zero for side-effect traps, an integer/bit-pattern value,
+/// or a file-open length/status result. Unknown trap numbers produce a subsystem-specific syscall error.
+/// @param vm VM containing the argument vector and any input/output memory spans.
+/// @param base Byte offset of the syscall argument vector.
+/// @param host Shared Services providing the registry, command parser, and callbacks needed by the trap.
+/// @param op Client-game trap number already read from argument slot zero.
 function dispatchCgame(vm,base,host,op)
   if op<=5 then return dispatchQagame(vm,base,host,op) end if
   switch op
@@ -512,11 +550,13 @@ function dispatchCgame(vm,base,host,op)
   return fail("unsupported cgame trap "+str(op))
 end function
 
-/// Dispatch ui in vm.syscall_common; the normal completion returns `fail(("unsupported UI trap " + str(op)))`.
-/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.emitPrint`.
-/// @param base Base passed as `base` to `mq3.vm.syscall_common.emitPrint`.
-/// @param host Record exposing `millisecondsFn`, `context`.
-/// @param op Op used in `str(op)` and `("unsupported UI trap " + str(op))`.
+/// Dispatch a shared user-interface console, cvar, command, clock, or file-system trap.
+/// Returns the selected service's ABI result: zero for side-effect traps, an integer/bit-pattern value,
+/// or a file-open length/status result. Unknown trap numbers produce a subsystem-specific syscall error.
+/// @param vm VM containing the argument vector and any input/output memory spans.
+/// @param base Byte offset of the syscall argument vector.
+/// @param host Shared Services providing the registry, command parser, and callbacks needed by the trap.
+/// @param op User-interface trap number already read from argument slot zero.
 function dispatchUi(vm,base,host,op)
   switch op
     case 0 return emitPrint(vm,base,host,true) end case
@@ -542,11 +582,14 @@ function dispatchUi(vm,base,host,op)
   return fail("unsupported UI trap "+str(op))
 end function
 
-/// Dispatch syscall common in vm.syscall_common; the normal completion returns `fail("unknown ABI")`.
-/// @param abi Abi passed as `abi` to `mq3.vm.syscall_common.dispatchLibc`.
-/// @param host Host passed as `host` to `mq3.vm.syscall_common.dispatchQagame`.
-/// @param vm Record exposing `data`.
-/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// Read a QVM trap number and route it to the shared libc or selected subsystem dispatcher.
+/// Validates the host/VM context and argument-vector access first. Opcodes 100..113 use the libc table;
+/// other opcodes use the selected server-game, client-game, or UI table. Returns that trap's ABI result
+/// or a syscall error for missing services, invalid memory, or unsupported dispatch.
+/// @param abi ABI selector expected to be ABI_QAGAME, ABI_CGAME, or ABI_UI.
+/// @param host Shared Services whose callbacks receive `host.context` as their first argument.
+/// @param vm VM exposing a data-memory byte buffer and pointer mask.
+/// @param base Byte offset of the syscall vector; slot zero is the trap number, followed by four-byte arguments.
 function dispatch(abi,host,vm,base)
   if host==void or vm==void or typeof(vm.data)!="bytes" then return fail("invalid dispatcher context") end if
   op=argument(vm,base,0)
@@ -557,9 +600,10 @@ function dispatch(abi,host,vm,base)
   return fail("unknown ABI")
 end function
 
-/// Apply `mq3.vm.syscall_common.dispatch` for callback in vm.syscall_common.
-/// @param abi Abi passed as `abi` to `mq3.vm.syscall_common.dispatch`.
-/// @param host Host passed as `host` to `mq3.vm.syscall_common.dispatch`.
+/// Capture an ABI and service bundle in a VM-compatible syscall callback.
+/// Returns a function `(vm, base)` that forwards to `dispatch`; `base` is a byte offset inside VM memory.
+/// @param abi ABI_QAGAME, ABI_CGAME, or ABI_UI for the loaded module.
+/// @param host Shared Services retained by the returned callback.
 function callback(abi,host)
   return function(vm,base) => dispatch(abi,host,vm,base)
 end function

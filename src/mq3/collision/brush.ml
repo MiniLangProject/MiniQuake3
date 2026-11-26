@@ -51,7 +51,7 @@ struct Trace
   startsolid
   /// True when the entire trace begins and remains within solid geometry.
   allsolid
-  /// Auxiliary classification and surface data for the impact plane.
+  /// Packed impact-plane type in the low byte (0..2 axial, 3 nonaxial) and normal sign bits starting at bit 8.
   planeMetadata
 end struct
 
@@ -60,12 +60,12 @@ function emptyTrace()
   return Trace(n.f32(1), [0.0,0.0,0.0], 0.0, 0, 0, false, false,0)
 end function
 
-// BASIC MATH from cm_trace.c.  These stay here beside the brush kernel so
-// capsule primitives and their differential tests share the exact binary32
-// operation ordering of the original C translation unit.
-/// @param point Point used in `point[0]` and `point[1]`.
-/// @param start A passed as `a` to `mq3.shared.math.VectorMA`.
-/// @param direction Right three-element vector.
+/// Project a point onto the infinite line through start along a unit direction.
+/// Uses the original collision kernel's binary32 operation order; it does not
+/// normalize direction or clamp the result to a line segment.
+/// @param point Three-component point in world coordinates.
+/// @param start Three-component origin of the projection line.
+/// @param direction Unit-length three-component line direction, supplied by the caller.
 function projectPointOntoVector(point, start, direction)
   delta = [n.fsub(point[0],start[0]),n.fsub(point[1],start[1]),n.fsub(point[2],start[2])]
   scale = q.DotProduct(delta,direction)
@@ -80,11 +80,13 @@ function vectorDistanceSquared(a,b)
   return q.DotProduct(delta,delta)
 end function
 
-/// Compute distance from line squared in collision.brush; the normal completion returns `q.DotProduct(delta, delta)`.
-/// @param point Point passed as `point` to `mq3.collision.brush.projectPointOntoVector`.
-/// @param lineStart Start passed as `start` to `mq3.collision.brush.projectPointOntoVector`.
-/// @param lineEnd Line end used in `lineEnd[axis]` and `lineEnd[outside]`.
-/// @param direction Direction passed as `direction` to `mq3.collision.brush.projectPointOntoVector`.
+/// Return squared distance from a point to the finite segment between lineStart and lineEnd.
+/// Projects onto the line, then selects the nearer endpoint when the projection
+/// lies outside the segment. The caller supplies its matching unit direction.
+/// @param point Three-component query position in world units.
+/// @param lineStart Three-component start of the segment.
+/// @param lineEnd Three-component end of the segment.
+/// @param direction Normalized direction of the segment, used without renormalization.
 function distanceFromLineSquared(point,lineStart,lineEnd,direction)
   projected = projectPointOntoVector(point,lineStart,direction)
   outside = -1
@@ -144,11 +146,11 @@ function boxSupportDot(normal as array,mins as array,maxs as array)
   return n.dot3(x,y,z,normal[0],normal[1],normal[2])
 end function
 
-/// Set trace plane in collision.brush; updates `trace.normal`, `trace.distance`, `trace.surfaceFlags`.
-///
-/// Direct state writes: `trace.normal`, `trace.distance`, `trace.surfaceFlags`, `trace.planeMetadata`.
-/// @param trace Updated in place: `normal`, `distance`, `surfaceFlags`, `planeMetadata`.
-/// @param plane Record exposing `normal`, `distance`, `flags`.
+/// Store an impact plane and its packed classification in a mutable trace.
+/// Retains the plane's normal vector by reference, copies distance and surface
+/// flags, and encodes axial type plus three negative-component sign bits.
+/// @param trace Trace whose normal, distance, surfaceFlags, and planeMetadata are replaced.
+/// @param plane Brush Plane supplying the normal, signed distance, and surface flags.
 function setTracePlane(trace,plane)
   trace.normal=plane.normal;trace.distance=plane.distance;trace.surfaceFlags=plane.flags
   kind=3;signbits=0
@@ -199,19 +201,21 @@ function tracePacked(trace,planes,packed,contents,start,finish,mins,maxs,scratch
   return trace
 end function
 
-/// Trace through brush in collision.brush; the normal completion returns `trace`.
-///
-/// Direct state writes: `trace.startsolid`, `trace.allsolid`, `trace.fraction`, `trace.contents`.
-/// @param trace Record exposing `fraction`. Updated in place: `startsolid`, `allsolid`, `fraction`, `contents`.
-/// @param planes Planes used in `len(planes)` and `(len(planes) == 0)`.
-/// @param contents Contents operand used by `traceThroughBrush`; its reads are shown in the implementation.
-/// @param start Left three-element vector.
-/// @param finish Left three-element vector.
-/// @param mins Mins passed as `mins` to `mq3.collision.brush.boxSupportDot`.
-/// @param maxs Maxs passed as `maxs` to `mq3.collision.brush.boxSupportDot`.
-/// @param capsule Capsule operand used by `traceThroughBrush`; its reads are shown in the implementation.
-/// @param radius Right floating-point operand.
-/// @param capsuleOffset Right three-element vector.
+/// Sweep a box or capsule against a convex brush, updating and returning the existing trace.
+/// A nearer entering hit replaces the fraction, contents, and impact plane.
+/// Starting inside sets startsolid; remaining inside also sets allsolid and a
+/// zero fraction. Starting inside but exiting does not replace the hit fraction.
+/// Empty brushes and separating planes leave the trace unchanged.
+/// @param trace Accumulated nearest-hit result, mutated in place; its fraction limits new entering hits.
+/// @param planes Brush boundary Plane records with outward unit normals in the sweep coordinate system.
+/// @param contents Brush contents bitmask reported on an entering hit or an allsolid result.
+/// @param start Three-component sweep start position in world units.
+/// @param finish Three-component sweep end position in the same coordinate system.
+/// @param mins Box minimum corner relative to the moving origin; used only when capsule is false.
+/// @param maxs Box maximum corner relative to the moving origin; used only when capsule is false.
+/// @param capsule True selects capsule support; false selects axis-aligned box support.
+/// @param radius Capsule end-sphere radius in world units; used only for capsule sweeps.
+/// @param capsuleOffset Vector from the capsule center to one end-sphere center; used only for capsule sweeps.
 function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, capsule, radius, capsuleOffset)
   if len(planes) == 0 then return trace end if
   enterFraction = n.f32(-1)

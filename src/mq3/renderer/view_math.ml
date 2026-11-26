@@ -30,9 +30,9 @@ struct Orientation
 end struct
 /// Data record for `mq3.renderer.view_math.ClipWindow`; groups `normalized`, `window`.
 struct ClipWindow
-  /// Position expressed in normalized device coordinates after projection.
+  /// Perspective-divided X/Y and depth Z remapped to the usual zero-to-one range; components are not clamped.
   normalized
-  /// Position expressed in viewport pixel coordinates after projection.
+  /// Viewport-relative pixel X/Y followed by the same remapped depth Z; only X/Y are rounded.
   window
 end struct
 
@@ -126,10 +126,13 @@ function transformModelToClip(source,modelMatrix,projectionMatrix)
   return [eye,matrixVector4(eye,projectionMatrix)]
 end function
 
-/// Builds `mq3.renderer.view_math.ClipWindow` for `mq3.renderer.view_math.transformClipToWindow`.
-/// @param clip Value forwarded as `value` to `mq3.renderer.view_math.valid4`.
-/// @param viewportWidth Argument 2 supplied to `mq3.compat.numeric.fmul`.
-/// @param viewportHeight Argument 2 supplied to `mq3.compat.numeric.fmul`.
+/// Perspective-divide a clip-space point and map it to viewport-relative pixel coordinates.
+/// Stores X/W, Y/W, and (Z+W)/(2W) in normalized; window contains the mapped
+/// pixel X/Y and the same depth. Pixel components use trunc(value + 0.5).
+/// This operation does not clip the point, clamp depth, or add a viewport origin.
+/// @param clip Four-component homogeneous point; the caller must supply a nonzero W component.
+/// @param viewportWidth Nonnegative viewport width in pixels.
+/// @param viewportHeight Nonnegative viewport height in pixels.
 function transformClipToWindow(clip,viewportWidth,viewportHeight)
   if not valid4(clip) then return error(7388,"clip point needs four components") end if
   if viewportWidth<0 or viewportHeight<0 then return error(7389,"negative renderer viewport") end if
@@ -201,13 +204,13 @@ function cullLocalBox(bounds,value,frustum,noCull)
   return CULL_CLIP
 end function
 
-// R_SetupFrustum constructs the four side planes from the current refdef.
-// Quake's view axes are forward, left and up, so the signed cosine terms
-// intentionally follow the original renderer rather than a right-vector API.
-/// @param origin Value forwarded as `origin` to `mq3.renderer.view_math.orientation`.
-/// @param axis Value forwarded as `axis` to `mq3.renderer.view_math.orientation`.
-/// @param fovX Argument 1 supplied to `mq3.compat.numeric.fdiv`.
-/// @param fovY Argument 1 supplied to `mq3.compat.numeric.fdiv`.
+/// Construct the left, right, top, and bottom world-space frustum planes for a Quake camera.
+/// Returns four side planes in that order; no near or far plane is added.
+/// Malformed vector dimensions or a field of view outside (0, 180) produce errors.
+/// @param origin Three-component camera origin in world units.
+/// @param axis Camera basis in forward, left, up order, expected to be orthonormal.
+/// @param fovX Full horizontal field of view in degrees, strictly between zero and 180.
+/// @param fovY Full vertical field of view in degrees, strictly between zero and 180.
 function setupFrustum(origin,axis,fovX,fovY)
   value=orientation(origin,axis);valid=validateOrientation(value);if valid is error then return valid end if
   if fovX<=0.0 or fovX>=180.0 or fovY<=0.0 or fovY>=180.0 then return error(7393,"renderer frustum needs valid fields of view") end if

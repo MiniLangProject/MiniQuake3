@@ -147,7 +147,7 @@ end struct
 struct StreamSource
   /// Transport state passed to the live-network pump or the timed demo-advancement path.
   transport
-  /// Network protocol version advertised or required by the client connection.
+  /// Client protocol parser runtime shared with the live connection or demo playback source.
   protocol
   /// True when this source advances a recorded demo instead of pumping a live server connection.
   demo

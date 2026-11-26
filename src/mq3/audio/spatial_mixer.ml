@@ -20,7 +20,7 @@ const MAX_FRAMES=4096
 struct Source
   /// Caller-supplied identifier used to find or update this sound source.
   id
-  /// Grouping key identifying sources that share a loop and playback cursor.
+  /// Candidate loop-sharing key; render also requires the same sound record and playback cursor before grouping.
   key
   /// World-space XYZ position of the sound source.
   origin
@@ -32,7 +32,7 @@ struct Source
   globalSound
   /// Current playback position in source sample frames.
   cursor
-  /// True when this registered source is included in the next mixing pass.
+  /// Whether render considers this source; disabled sources retain their current playback cursor.
   enabled
 end struct
 /// State record for audio.spatial_mixer, containing `outputRate`, `chunkFrames`, `sources`.
@@ -50,7 +50,7 @@ struct Chunk
   samples
   /// Number of stereo sample frames contained in this output chunk.
   frames
-  /// Number of enabled sources that contributed audible output.
+  /// Number of enabled sources with a positive left or right gain; counted even when their current PCM samples are silent.
   audibleSources
   /// Largest absolute mixed sample magnitude measured before output clipping.
   peak
@@ -92,25 +92,25 @@ end struct
 /// @param message Message used in `("spatial mixer: " + message)` and `error(7620, ("spatial mixer: " + message))`.
 function fail(message) return error(7620,"spatial mixer: "+message) end function
 
-/// Create spatial mixer in audio.spatial_mixer; the normal completion returns `State(outputRate, chunkFrames, [])`.
-/// @param outputRate Initial `outputRate` field stored in the returned or constructed `mq3.audio.spatial_mixer.State` record.
-/// @param chunkFrames Initial `chunkFrames` field stored in the returned or constructed `mq3.audio.spatial_mixer.State` record.
+/// Create an empty loop mixer, or report error 7620 for an unsupported rate or chunk size.
+/// @param outputRate Stereo output sample rate in hertz, from 4,000 through 192,000.
+/// @param chunkFrames Output frames per render call, from 1 through MAX_FRAMES; each frame occupies four PCM bytes.
 function create(outputRate,chunkFrames)
   if outputRate<4000 or outputRate>192000 then return fail("invalid output rate") end if
   if chunkFrames<1 or chunkFrames>MAX_FRAMES then return fail("invalid chunk size") end if
   return State(outputRate,chunkFrames,[])
 end function
 
-/// Add shared loop in audio.spatial_mixer; the normal completion returns `(len(state.sources) - 1)`.
-///
-/// Direct state writes: `state.sources`.
-/// @param state Record exposing `sources`. Updated in place: `sources`.
-/// @param id Initial `id` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
-/// @param key Initial `key` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
-/// @param origin Origin used in `origin[0]` and `origin[1]`.
-/// @param sound Record exposing `samples`, `blockAlign`.
-/// @param volume Initial `volume` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
-/// @param globalSound Initial `globalSound` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
+/// Register an enabled looping source at cursor zero and return its zero-based source index.
+/// Copies the origin vector but retains the supplied sound record. Rejects duplicate
+/// identifiers, invalid PCM/gain, or registrations beyond MAX_SOURCES with error 7620.
+/// @param state Mixer whose sources collection is extended in place.
+/// @param id Caller identifier, unique among sources currently registered in this mixer.
+/// @param key String used to group sources only when sound and playback cursor also compare equal.
+/// @param origin Three-component source position in world units; copied into the source.
+/// @param sound Decoded WAVE Sound containing at least one complete sample frame; retained without copying PCM.
+/// @param volume Linear source gain from zero through one before distance attenuation and stereo panning.
+/// @param globalSound True gives both output channels the full source gain, bypassing spatial attenuation and panning.
 function addSharedLoop(state,id,key,origin,sound,volume,globalSound)
   if state==void or sound==void or origin==void or len(origin)!=3 then return fail("invalid source") end if
   if typeof(key)!="string" then return fail("invalid source key") end if
@@ -129,21 +129,26 @@ end function
 /// @param globalSound Global sound passed as `globalSound` to `mq3.audio.spatial_mixer.addSharedLoop`.
 function addLoop(state,id,origin,sound,volume,globalSound) return addSharedLoop(state,id,"#"+str(id),origin,sound,volume,globalSound) end function
 
-/// Set enabled in audio.spatial_mixer; the normal completion returns `false`.
-/// @param state Record exposing `sources`.
-/// @param id Id used in `(source.id == id)`.
-/// @param enabled Enabled operand used by `setEnabled`; its reads are shown in the implementation.
+/// Change a registered source's enabled flag, returning true when found or false for an unknown identifier.
+/// Disabling a source preserves its playback cursor until it contributes to a later render call.
+/// @param state Mixer containing the source to update.
+/// @param id Caller identifier supplied when registering the source.
+/// @param enabled Whether subsequent render calls should consider the source.
 function setEnabled(state,id,enabled)
   for each source in state.sources if source.id==id then source.enabled=enabled;return true end if end for
   return false
 end function
 
-/// Compute spatialize in audio.spatial_mixer; the normal completion returns `Spatial(left, rightGain, distance, attenuation)`.
-/// @param origin Origin used in `origin[0]` and `origin[1]`.
-/// @param listener Listener used in `listener[0]` and `listener[1]`.
-/// @param right Left three-element vector.
-/// @param volume Initial `left` field stored in the returned or constructed `mq3.audio.spatial_mixer.Spatial` record.
-/// @param globalSound Global sound operand used by `spatialize`; its reads are shown in the implementation.
+/// Compute stereo gains using linear distance attenuation and the listener's right-axis projection.
+/// Local sources have full distance gain through SOUND_FULLVOLUME world units;
+/// panning divides that gain between left and right. Global sources receive the
+/// full volume in both channels, with reported distance zero and attenuation one.
+/// A nonpositive volume returns zero gains, distance, and attenuation.
+/// @param origin Source XYZ position in world units.
+/// @param listener Listener XYZ position in the same coordinate system.
+/// @param right Listener's normalized three-component right vector; positive projection favors the right channel.
+/// @param volume Linear source gain before attenuation and panning.
+/// @param globalSound Whether to bypass positional attenuation and panning.
 function spatialize(origin,listener,right,volume,globalSound)
   if volume<=0.0 then return Spatial(0.0,0.0,0.0,0.0) end if
   if globalSound then return Spatial(volume,volume,0.0,1.0) end if
@@ -193,10 +198,15 @@ function write16(output,offset,value)
   output[offset]=integer&255;output[offset+1]=(integer>>8)&255;return void
 end function
 
-/// Render spatial mixer in audio.spatial_mixer; the normal completion returns `Chunk(output, state.chunkFrames, audible, peak, limiter)`.
-/// @param state Record exposing `chunkFrames`, `sources`, `outputRate`.
-/// @param listener Listener passed as `listener` to `mq3.audio.spatial_mixer.spatialize`.
-/// @param right A passed as `a` to `mq3.shared.math.VectorLength`.
+/// Mix one stereo PCM chunk, advancing only enabled sources with a positive spatial gain.
+/// Matching key, sound, and cursor values share resampling work. Source PCM is
+/// downmixed to mono before panning; fractional source positions select the
+/// preceding frame. A single chunk-wide limiter scales peaks above 32767 before
+/// signed 16-bit output conversion. Disabled and fully attenuated sources keep
+/// their cursors. Returns a Chunk or error 7620 for invalid listener data.
+/// @param state Mixer supplying chunkFrames and outputRate; audible source cursors are updated in place.
+/// @param listener Three-component listener position in world units.
+/// @param right Listener's right vector; its length must lie from 0.99 through 1.01.
 function render(state,listener,right)
   if state==void or listener==void or right==void or len(listener)!=3 or len(right)!=3 then return fail("invalid listener") end if
   rightLength=qmath.VectorLength(right);if rightLength<0.99 or rightLength>1.01 then return fail("listener right vector is not normalized") end if

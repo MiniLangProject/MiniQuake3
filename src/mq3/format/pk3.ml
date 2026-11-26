@@ -12,7 +12,7 @@ import std.string as strings
 
 /// Entry record for format.pk3, containing `name`, `version`, `versionNeeded`, `flags`, `method`, `dosDate`, and 12 further fields.
 struct Entry
-  /// Normalized path of the archive entry used for asset lookup.
+  /// Entry path exactly as decoded from ZIP metadata; lookup ignores ASCII case but does not rewrite separators.
   name
   /// ZIP creator version recorded in the central-directory entry.
   version
@@ -24,19 +24,19 @@ struct Entry
   method
   /// Packed MS-DOS date and time of the ZIP entry.
   dosDate
-  /// Checksum used to validate or identify the represented data.
+  /// CRC-32 of the uncompressed ZIP entry, checked by readEntry for archive-backed data.
   checksum
   /// Length of the compressed ZIP entry data in bytes.
   compressedSize
   /// Length of the uncompressed entry data in bytes.
   size
-  /// Byte offset of the entry's local header.
+  /// Absolute byte offset of the local header in sourcePath, including any prefix before the ZIP data.
   localOffset
-  /// Byte offset of its central-directory record.
+  /// Absolute byte offset of this entry's central-directory record in sourcePath.
   centralOffset
   /// Extra-field bytes stored in the central-directory record.
   centralExtra
-  /// Comment text stored with the archive, entry, or model metadata.
+  /// Per-entry ZIP comment decoded from the central-directory record.
   comment
   /// Disk number containing the start of this ZIP entry.
   diskStart
@@ -44,15 +44,15 @@ struct Entry
   internalAttributes
   /// External platform-specific ZIP file-attribute bits.
   externalAttributes
-  /// Path of the archive file containing this entry.
+  /// Filesystem path of the containing PK3, or of the file itself for a loose-file entry.
   sourcePath
-  /// Byte offset of the source archive's central directory.
+  /// Absolute byte offset of the source PK3's central directory; -1 identifies a loose file.
   sourceDirectoryOffset
 end struct
 
 /// Archive record for format.pk3, containing `path`, `entries`, `directoryOffset`, `directorySize`, `endOffset`, `comment`, and 3 further fields.
 struct Archive
-  /// Filesystem path of the opened PK3 archive.
+  /// PK3 filename for a single archive, or the caller's root directory for a merged search view.
   path
   /// Central-directory entries available for asset lookup.
   entries
@@ -62,13 +62,13 @@ struct Archive
   directorySize
   /// Byte offset of the end-of-central-directory record.
   endOffset
-  /// Comment text stored with the archive, entry, or model metadata.
+  /// Archive-wide ZIP comment; empty for synthetic merged search views.
   comment
-  /// Byte prefix preceding the ZIP data in a self-extracting or embedded archive.
+  /// Number of bytes preceding the ZIP data in a self-extracting or embedded archive.
   byteBeforeZip
   /// Hash buckets accelerating entry lookup by normalized name.
   nameBuckets
-  /// True when the archive belongs to a mounted game modification.
+  /// Active-game Archive retained by overlay; void when no separate mod archive is attached.
   modArchive
 end struct
 
@@ -124,8 +124,12 @@ function u16(data, offset)
   return data[offset] | (data[offset + 1] << 8)
 end function
 
-/// Open pk 3 in format.pk3.
-/// @param path Path passed as `path` to `mq3.platform.file.readRange`.
+/// Read a PK3's ZIP directory and build a case-insensitive name index without extracting file payloads.
+/// Rejects malformed directory bounds, inconsistent entry counts, and multi-disk
+/// archives. Adjusts local-header offsets for any prefix before the ZIP data.
+/// Compression support, local-header agreement, and payload CRCs are checked
+/// when an entry is read. Returns an Archive or the encountered file/PK3 error.
+/// @param path Filesystem path of the PK3 file to index.
 function open(path)
   size = fs.fileSize(path)
   tailSize = size
@@ -185,11 +189,13 @@ function openStandard(baseDirectory)
   return openPackages(baseDirectory,true)
 end function
 
-// Layers are already in search order. High-numbered PK3s take priority
-// within a game directory and the active game takes priority over Baseq3.
-/// @param path Initial `path` field stored in the returned or constructed `mq3.format.pk3.Archive` record.
-/// @param archives Sequence traversed as `archive` by the loop in `mergeLayers`.
-/// @param modArchive Initial `modArchive` field stored in the returned or constructed `mq3.format.pk3.Archive` record.
+/// Merge archive search layers, retaining the first entry for each ASCII-case-insensitive path.
+/// Layers are supplied in priority order: later duplicates are discarded.
+/// The result retains the selected Entry records and their original source paths;
+/// it does not copy payloads or write a new archive.
+/// @param path Root path recorded on the synthetic Archive.
+/// @param archives Archive records ordered from highest to lowest search priority.
+/// @param modArchive Active-game Archive to retain on the result, or void.
 function mergeLayers(path,archives,modArchive)
   totalEntries=0
   for each archive in archives totalEntries=totalEntries+len(archive.entries) end for
@@ -267,7 +273,10 @@ function pk3NameLess(left,right)
   return len(a)<len(b)
 end function
 
-/// Compute local info in format.pk3; the normal completion returns `[variableEnd, slice(localFields, nameLength, extraLength)]`.
+/// Validate an entry's local ZIP header and return its absolute payload offset and local extra-field bytes.
+/// Checks compression method, flags, filename, and bounds against the source
+/// central directory. Local sizes and CRC must also agree unless flag bit 3
+/// indicates a data descriptor. Returns a PK3 error on disagreement.
 /// @param archive Reserved argument; this implementation does not read its value.
 /// @param entry Record exposing `localOffset`, `sourceDirectoryOffset`, `sourcePath`, `flags`, `method`, `checksum`, `compressedSize` and further fields.
 function localInfo(archive,entry)
@@ -287,9 +296,12 @@ function localInfo(archive,entry)
   return [variableEnd,slice(localFields,nameLength,extraLength)]
 end function
 
-/// Read entry in format.pk3; the normal completion returns `data`.
-/// @param archive Archive passed as `archive` to `mq3.format.pk3.localInfo`.
-/// @param entry Record exposing `sourceDirectoryOffset`, `sourcePath`, `flags`, `method`, `compressedSize`, `size`, `checksum`.
+/// Load an entry's bytes, decompressing and checking its size and CRC for archive-backed entries.
+/// Supports stored and raw-DEFLATE ZIP entries and rejects encrypted data.
+/// A loose-file entry is read directly from sourcePath without ZIP validation.
+/// Returns the loaded byte buffer or the encountered file, PK3, or inflate error.
+/// @param archive Archive passed to the local-header helper; each Entry retains its actual source file.
+/// @param entry Indexed ZIP entry or looseEntry record to read.
 function readEntry(archive, entry)
   if entry.sourceDirectoryOffset==-1 then return fs.readAllBytes(entry.sourcePath) end if
   if (entry.flags & 1) != 0 then return fail("encrypted entry") end if
@@ -305,9 +317,10 @@ function readEntry(archive, entry)
   return data
 end function
 
-/// Find entry in format.pk3.
-/// @param archive Record exposing `nameBuckets`, `entries`.
-/// @param name Name passed as `name` to `mq3.format.pk3.nameHash`.
+/// Find an indexed entry by ASCII-case-insensitive path, returning void when no match is available.
+/// A missing archive/index, non-string name, or empty name also returns void.
+/// @param archive Archive with populated nameBuckets and entries.
+/// @param name Entry path using the separators stored in the archive; separators are not normalized here.
 function findEntry(archive,name)
   if archive==void or archive.nameBuckets==void or typeof(name)!="string" or name=="" then return void end if
   bucket=archive.nameBuckets[nameHash(name)]
@@ -320,9 +333,10 @@ end function
 /// @param archive Archive passed as `archive` to `mq3.format.pk3.findEntry`.
 /// @param name Name passed as `name` to `mq3.format.pk3.findEntry`.
 function has(archive,name) return findEntry(archive,name)!=void end function
-/// Read pk 3 in format.pk3; the normal completion returns `fail(("file not found " + name))`.
-/// @param archive Archive passed as `archive` to `mq3.format.pk3.findEntry`.
-/// @param name Name passed as `name` to `mq3.format.pk3.findEntry`.
+/// Resolve an entry path and return its loaded bytes; missing entries produce PK3 error 3501.
+/// File access, ZIP validation, and decompression failures propagate from readEntry.
+/// @param archive Single archive or merged search view with a name index.
+/// @param name Entry path matched without regard to ASCII letter case.
 function read(archive,name)
   entry=findEntry(archive,name)
   if entry!=void then return readEntry(archive,entry) end if

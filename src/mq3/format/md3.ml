@@ -49,7 +49,7 @@ struct Frame
   maxs
   /// Model-local center used for the frame bounding sphere.
   localOrigin
-  /// Radius of the represented sphere or capsule.
+  /// Model-local bounding-sphere radius stored for this animation frame.
   radius
   /// Frame name retained from the MD3 animation record.
   name
@@ -67,7 +67,7 @@ end struct
 struct Surface
   /// Model surface name used by skin and shader lookup.
   name
-  /// Shader definitions associated with this model surface.
+  /// Shader-name strings read from this surface's MD3 shader records; shader definitions are resolved separately.
   shaders
   /// Triangle geometry and per-frame vertices for this surface.
   mesh
@@ -88,16 +88,16 @@ struct Model
   numSkins
   /// Animation-frame bounds and origin data.
   frames
-  /// Attachment transforms for each model frame.
+  /// Attachment Tag records indexed first by animation frame, then by tag number within that frame.
   tags
   /// Surface meshes and their shader assignments.
   surfaces
-  /// Minimum and maximum corners of the loaded model bounds.
+  /// Model-local minimum and maximum corners spanning the bounds of every animation frame.
   bounds
 end struct
 /// RenderTriangle record for format.md3, containing `positions`, `texCoords`, `normals`, `surfaceIndex`, `shaderName`.
 struct RenderTriangle
-  /// Three world- or model-space positions of the generated triangle.
+  /// Three interpolated model-local vertex positions; renderTrianglesCached does not apply a world transform.
   positions
   /// Texture coordinates associated with the represented vertex or triangle.
   texCoords
@@ -164,16 +164,24 @@ function normalizeSurfaceNames(model)
   return model
 end function
 
-// Both representations pass through the identical complete parser/validation.
-// Public load keeps its eagerly decoded reference frames unchanged.
-/// @param data Data passed as `data` to `mq3.format.md3.loadMode`.
+/// Parse a version-15 MD3 and materialize PackedVertex records for every surface frame.
+/// Returns the validated Model, including tag-only models with no surfaces,
+/// or a format error. Positions remain quantized in the surface frame records
+/// until renderer interpolation converts them to model-space coordinates.
+/// @param data Complete MD3 file bytes.
 function load(data) return loadMode(data,false) end function
-/// Return `mq3.format.md3.loadMode(data, true)` from `format.md3.loadPacked`.
-/// @param data Data passed as `data` to `mq3.format.md3.loadMode`.
+/// Parse the same MD3 format while retaining surface frames as packed byte buffers.
+/// Performs the same header, span, count, and triangle-index validation as load,
+/// but leaves the per-frame vertex-record slots empty for lazy reference access
+/// and native rendering. Model bounds, tags, shader names, and UVs are still parsed.
+/// @param data Complete MD3 file bytes.
 function loadPacked(data) return loadMode(data,true) end function
-/// Load mode in format.md3; the normal completion returns `Model(name, flags, numFrames, numTags, numSurfaces, numSkins, frames, tags, surfaces, [boundsMin, boundsMax])`.
-/// @param data Data passed as `data` to `mq3.format.md3.i32`.
-/// @param packedOnly Packed only operand used by `loadMode`; its reads are shown in the implementation.
+/// Validate MD3 model and surface sections and build the requested surface-frame representation.
+/// Checks count limits, header-relative spans, surface-frame agreement, vertex
+/// indices, and the final surface-chain endpoint. Model sections use offsets from
+/// the file header; each surface section uses offsets from its own surface header.
+/// @param data Complete MD3 byte buffer; bytes beyond the declared ofsEnd are not part of the model.
+/// @param packedOnly True stores surface frames in packedFrames; false creates PackedVertex arrays in frames.
 function loadMode(data,packedOnly)
   if data==void or typeof(data)!="bytes" or len(data)<HEADER_SIZE then return fail("truncated header") end if
   if i32(data,0)!=MD3_IDENT then return fail("invalid signature") end if

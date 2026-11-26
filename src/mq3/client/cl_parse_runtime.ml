@@ -12,7 +12,7 @@ import mq3.client.system_info as systemInfo
 
 /// Stores engine client parse runtime runtime wiring and state, including `protocol`, `systemState`, `systemServices`.
 struct Runtime
-  /// Network protocol version advertised or required by the client connection.
+  /// Client protocol parser runtime, including server-message dispatch, gamestate, and download state.
   protocol
   /// When constructing this record, `create` supplies `systemState` for this member.
   systemState

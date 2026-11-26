@@ -8,7 +8,7 @@ import mq3.qcommon.message as message
 /// commands.
 const CS_ACTIVE=4
 
-/// Client record for server.client_command, containing `state`, `name`, `lastClientCommand`, `lastClientCommandString`, `nextReliableTime`.
+/// Per-client reliable-command sequence, most recent command text, and flood-control deadline.
 struct Client
   /// Connection lifecycle value that gates dispatch of commands that require an active game client.
   state
@@ -18,45 +18,49 @@ struct Client
   lastClientCommand
   /// Text of the last processed reliable client command.
   lastClientCommandString
-  /// Earliest server timestamp when another reliable client command is accepted.
+  /// Millisecond deadline used by active-client command flood protection. Commands received before
+  /// it can still advance reliable sequencing while game-command dispatch is denied.
   nextReliableTime
 end struct
-/// Runtime record for server.client_command, containing `time`, `floodProtect`, `clientRunning`, `executeFn`, `dropFn`, `diagnosticFn`, and 1 further fields.
+/// Server clock, flood policy, and host callbacks used when consuming reliable client commands.
 struct Runtime
   /// Server time used to enforce reliable-command flood protection, in milliseconds.
   time
-  /// True when repeated client commands are rate limited.
+  /// Enables the game-command flood interval for active clients when no local client is running.
   floodProtect
-  /// True while a local client is available to process commands.
+  /// True when a local client is running; this bypasses the active-client flood interval.
   clientRunning
-  /// Host callback that executes a routed command or operation on the host.
+  /// Optional callback `(host, clientState, text, clientOk)` invoked for each next-in-sequence command.
+  /// `clientOk` is false when flood policy denies game-command dispatch; the return value is ignored.
   executeFn
-  /// Host callback that disconnects a client and reports the supplied reason.
+  /// Optional callback `(host, clientState, reason)` used to disconnect a client after a sequence gap.
   dropFn
-  /// Host callback that reports subsystem diagnostics to the host.
+  /// Optional callback `(host, clientState, sequence, text)` called for nonduplicate commands before gap validation.
   diagnosticFn
-  /// Caller-supplied data associated with reliable client command execution and flood-control
-  /// diagnostics.
+  /// Caller-owned data accessible through the first callback argument as `host.context`.
   context
 end struct
 
-/// Create `mq3.server.client_command.Client` with state=0; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
+/// Create an initially inactive client with no consumed reliable commands and no flood deadline.
 function createClient()
   return Client(0,"",0,"",0)
 end function
 
-/// Create `mq3.server.client_command.Runtime` with time=0; floodProtect=true; clientRunning=false; executeFn=void; dropFn=void; diagnosticFn=void; context=void.
+/// Create reliable-command processing services with flood protection enabled and callbacks unset.
+/// The server clock starts at zero and no local client is assumed to be running.
 function runtime()
   return Runtime(0,true,false,void,void,void,void)
 end function
 
-/// Consume one reliable client command, discard retransmissions, reject sequence gaps, and apply the flood interval before dispatch.
-///
-/// Validation failures include `client command: missing state`.
-/// Direct state writes: `clientState.nextReliableTime`, `clientState.lastClientCommand`, `clientState.lastClientCommandString`.
-/// @param host Server command callbacks, flood policy, and current millisecond clock.
-/// @param clientState Mutable client sequencing record; accepted commands update its sequence, text, and next reliable-command time.
-/// @param msg Network message read at the current cursor: an int32 sequence followed by a C string.
+/// Consume one reliable client command and return whether its sequence stream can continue.
+/// Duplicate or older sequences return true without callbacks or state updates. A forward sequence gap
+/// invokes the optional drop callback and returns false. For the next sequence, the execute callback
+/// receives a `clientOk` flag indicating whether game-command flood policy permits dispatch.
+/// Even when that flag is false, the sequence and text are retained and the deadline becomes `host.time + 1000`.
+/// Returns true after consuming the next command, or error 6981 for missing input state.
+/// @param host Runtime with a millisecond clock, flood policy, and optional execute/drop/diagnostic callbacks.
+/// @param clientState Mutable client sequence, last command text, lifecycle state, and flood deadline.
+/// @param msg Mutable network message positioned at an int32 sequence followed by a zero-terminated command string.
 function execute(host,clientState,msg)
   if host==void or clientState==void or msg==void then return error(6981,"client command: missing state") end if
   sequence=message.readI32(msg)

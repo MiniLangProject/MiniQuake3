@@ -26,7 +26,8 @@ struct Client
   lastClientCommandString
   /// Sequence number of the last processed reliable client command.
   lastClientCommand
-  /// Earliest server timestamp when another reliable client command is accepted.
+  /// Millisecond deadline used by active-client command flood protection. Commands received before
+  /// it can still advance reliable sequencing while game-command dispatch is denied.
   nextReliableTime
   /// Reliable command entries retained until the peer acknowledges them.
   reliableCommands

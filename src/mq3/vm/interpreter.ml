@@ -6,17 +6,18 @@ import mq3.compat.numeric as n
 import mq3.format.qfiles as qfiles
 import mq3.vm.native_exec as nativeExec
 
-/// VM record for vm.interpreter, containing `code`, `addresses`, `starts`, `widths`, `needs`, `data`, and 8 further fields.
+/// Validated QVM image, decoded instruction metadata, mutable data memory, and execution counters.
 struct VM
-  /// Raw QVM instruction bytes loaded from the image code section.
+  /// Byte-offset-indexed decoded code array: opcodes, widened immediates, and branch targets rewritten
+  /// from instruction numbers to code byte offsets.
   code
-  /// Per-instruction execution addresses prepared for bytecode dispatch.
+  /// Zero-based instruction-number table mapping each instruction to its code byte offset.
   addresses
   /// Byte-offset-indexed markers identifying valid instruction starts in the QVM code region.
   starts
-  /// Encoded byte length of each decoded QVM instruction.
+  /// Immediate-operand byte counts (0, 1, or 4), indexed by instruction byte offset; excludes the opcode byte.
   widths
-  /// Operand-stack requirements recorded for each decoded instruction.
+  /// Minimum operand-stack depth required by each opcode, indexed by instruction byte offset.
   needs
   /// Mutable VM data bytes containing initialized data, literals, BSS, and stack storage.
   data
@@ -27,19 +28,20 @@ struct VM
   /// Exclusive lower guard boundary of the QVM program stack; the stack pointer must remain above this
   /// byte offset.
   stackBottom
-  /// Callback used to dispatch a QVM system call to its host implementation.
+  /// Optional trap callback `(vm, argumentBase)` returning a value convertible to signed int32.
+  /// `argumentBase` is a VM byte offset; slot zero holds the trap number and later slots hold arguments.
   syscall
-  /// Number of bytecode instructions executed by the current VM call.
+  /// Cumulative execution-step counter across VM calls; each call measures its budget from its entry value.
   steps
   /// Maximum number of interpreter steps allowed for the current VM call.
   limit
-  /// Count of break instructions observed during execution.
+  /// Cumulative number of OP_BREAK instructions observed; OP_BREAK increments this counter and continues.
   breaks
   /// Prepared native-execution plan used when the interpreter delegates supported operations.
   nativePlan
 end struct
 
-/// ImageLayout record for vm.interpreter, containing `count`, `codeOffset`, `codeLength`, `dataOffset`, `dataLength`, `litLength`, and 1 further fields.
+/// Validated QVM header offsets and section lengths, before VM memory is rounded up to a power of two.
 struct ImageLayout
   /// Number of QVM instructions declared by the image header.
   count
@@ -53,12 +55,13 @@ struct ImageLayout
   dataLength
   /// Length in bytes of the read-only literal region appended to VM data.
   litLength
-  /// Total byte capacity allocated for the VM data region and its runtime storage.
+  /// Sum of initialized-data, literal, and BSS byte lengths from the header; `load` rounds this up
+  /// to a power of two and reserves the highest 65,536 bytes for the program stack.
   memorySize
 end struct
 
-/// Create the vm.interpreter error for `fail` with 3400 and the supplied diagnostic text.
-/// @param message Message used in `("QVM: " + message)` and `error(3400, ("QVM: " + message))`.
+/// Create an interpreter error with code 3400 and the `QVM: ` prefix.
+/// @param message Diagnostic text appended after the subsystem prefix.
 function fail(message)
   return error(3400, "QVM: " + message)
 end function
@@ -67,7 +70,9 @@ end function
 // pointer into a static forty-space string; MiniLang returns the equivalent
 // immutable suffix.  Stack traces retain the original frame layout:
 // [return pc, previous program stack] at offsets 0 and 4.
-/// @param callLevel Call level used in `(callLevel < 0)` and `(callLevel > 20)`.
+/// Return two indentation spaces per call level, clamped to forty spaces above level twenty.
+/// Negative levels produce an interpreter error.
+/// @param callLevel Nonnegative stack-trace nesting depth.
 function VM_Indent(callLevel)
   value = "                                        "
   if callLevel > 20 then return value end if
@@ -76,12 +81,15 @@ function VM_Indent(callLevel)
   return decode(slice(bytes(value), offset, 40 - offset))
 end function
 
-/// Compute stack trace in vm.interpreter; the normal completion returns `lines`.
-/// @param data Data passed as `data` to `mq3.compat.numeric.readI32`.
-/// @param programCounter Program counter used in `str(programCounter)` and `(programCounter == - 1)`.
-/// @param programStack Offset passed as `offset` to `mq3.compat.numeric.readI32`.
-/// @param symbolFn Callback invoked for symbol; the call sites below define the callback arguments.
-/// @param context Context used in `symbolFn(context, programCounter)`.
+/// Collect at most 32 stack frames from QVM data memory, starting with the current frame.
+/// Each frame contributes either its numeric program counter or the symbol callback's result.
+/// Frame links use the previous program stack at offset 4 and the return counter at offset 0;
+/// a return counter of -1 terminates the trace. Out-of-bounds frame links produce an error.
+/// @param data VM data-memory bytes containing the linked stack frames.
+/// @param programCounter Initial code position to report before following the first frame link.
+/// @param programStack Byte offset of the current frame in `data`.
+/// @param symbolFn Optional callback `(context, programCounter)` whose result becomes the trace entry.
+/// @param context Opaque value passed unchanged as the first argument to `symbolFn`.
 function VM_StackTrace(data, programCounter, programStack, symbolFn, context)
   if typeof(data) != "bytes" then return fail("stack trace data missing") end if
   lines = []
@@ -101,24 +109,29 @@ function VM_StackTrace(data, programCounter, programStack, symbolFn, context)
   return lines
 end function
 
-/// Compute immediate size in vm.interpreter; the normal completion returns `0`.
-/// @param op Op used in `(op == 3)` and `(op == 4)`.
+/// Return an opcode's immediate-operand length in bytes: 4, 1, or 0, excluding the opcode byte.
+/// This helper classifies the opcode only; `load` separately rejects invalid opcode numbers.
+/// @param op Numeric QVM opcode.
 function immediateSize(op)
   if op == 3 or op == 4 or op == 8 or op == 9 or (op >= 11 and op <= 26) or op == 34 then return 4 end if
   if op == 33 then return 1 end if
   return 0
 end function
 
-/// Compute stack need in vm.interpreter; the normal completion returns `0`.
-/// @param op Op used in `(op == 5)` and `(op == 7)`.
+/// Return the minimum operand-stack depth required before executing a QVM opcode.
+/// The result is 0, 1, or 2 and does not describe the opcode's net stack-size change.
+/// @param op Numeric QVM opcode whose input operands are being checked.
 function stackNeed(op)
   if op == 5 or op == 7 or op == 10 or (op >= 27 and op <= 29) or op == 33 or (op >= 35 and op <= 37) or op == 49 or op == 53 or op == 58 or op == 59 then return 1 end if
   if (op >= 11 and op <= 26) or (op >= 30 and op <= 32) or op == 34 or (op >= 38 and op <= 48) or (op >= 50 and op <= 52) or (op >= 54 and op <= 57) then return 2 end if
   return 0
 end function
 
-/// Compute image layout in vm.interpreter; the normal completion returns `ImageLayout(count, codeOffset, codeLength, dataOffset, dataLength, litLength, memorySize)`.
-/// @param image Data passed as `data` to `mq3.compat.numeric.readU32`.
+/// Validate the QVM header and return its section offsets, lengths, and declared memory size.
+/// Accepts VM_MAGIC images with positive instruction/code counts, nonoverlapping code and data,
+/// four-byte-aligned initialized data, and total data/literal/BSS storage from 65,536 through
+/// 268,435,456 bytes. Invalid or truncated sections produce an interpreter error.
+/// @param image Complete QVM file as a byte buffer, including the 32-byte header.
 function imageLayout(image)
   if typeof(image) != "bytes" or len(image) < 32 then return fail("truncated header") end if
   if n.readU32(image, 0) != qfiles.VM_MAGIC then return fail("unsupported magic") end if
@@ -138,9 +151,13 @@ function imageLayout(image)
   return ImageLayout(count, codeOffset, codeLength, dataOffset, dataLength, litLength, memorySize)
 end function
 
-/// Load interpreter in vm.interpreter.
-/// @param image Image passed as `image` to `mq3.vm.interpreter.imageLayout`.
-/// @param callback Initial `syscall` field stored in the returned or constructed `mq3.vm.interpreter.VM` record.
+/// Decode and validate a QVM image, allocate zeroed data memory, and prepare native execution metadata.
+/// Instruction numbers map to code byte offsets; immediate branches are rewritten to those offsets.
+/// Initialized data and literals are copied into power-of-two memory, leaving BSS and remaining bytes zero.
+/// Returns a VM with a 65,536-byte program-stack region and a default 50,000,000-step call budget,
+/// or an image-validation/native-plan error. A missing callback is allowed until the VM executes a trap.
+/// @param image Complete QVM file bytes whose header and instructions will be validated.
+/// @param callback Optional host syscall callback `(vm, argumentBase)`; the base is a VM byte offset.
 function load(image, callback)
   layout = try(imageLayout(image))
   if layout is error then return layout end if
@@ -199,24 +216,28 @@ end function
 // Keep the MiniLang interpreter as the executable reference implementation.
 // Production dispatch runs the same validated plan in bounded native code and
 // yields back to MiniLang at each trap without crossing a callback ABI.
-/// @param vm Record exposing `nativePlan`.
-/// @param args Args passed as `args` to `mq3.vm.interpreter.call`.
+/// Execute vmMain through the prepared native plan, falling back to `call` when no plan is present.
+/// Both paths accept the same VM argument vector and return the VM result or an execution error.
+/// @param vm Loaded interpreter VM with mutable memory, counters, and optional native plan.
+/// @param args Up to ten integer argument slots, including the vmMain command selector.
 function callFast(vm,args)
   if vm.nativePlan==void then return call(vm,args) end if
   return nativeExec.call(vm,args)
 end function
 
-/// Compute target address in vm.interpreter; the normal completion returns `vm.addresses[target]`.
-/// @param vm Record exposing `addresses`.
-/// @param target Zero-based index into `vm.addresses`.
+/// Resolve a zero-based QVM instruction number to its decoded code byte offset.
+/// Negative targets and instruction numbers outside the address table produce an interpreter error.
+/// @param vm Loaded VM containing the instruction-number-to-byte-offset table.
+/// @param target Zero-based instruction number supplied by a call or computed jump.
 function targetAddress(vm, target)
   if target < 0 or target >= len(vm.addresses) then return fail("jump outside code") end if
   return vm.addresses[target]
 end function
 
-/// Compute signed divide in vm.interpreter; the normal completion returns `value`.
-/// @param a A passed as `a` to `mq3.compat.numeric.quotient`.
-/// @param b B passed as `b` to `mq3.compat.numeric.quotient`.
+/// Divide signed 32-bit operands with truncation toward zero.
+/// Zero divisors and INT32_MIN divided by -1 produce interpreter errors.
+/// @param a Signed 32-bit dividend.
+/// @param b Signed 32-bit divisor.
 function signedDivide(a, b)
   if b == 0 then return fail("integer divide by zero") end if
   if a == -2147483648 and b == -1 then return fail("signed division overflow") end if
@@ -228,18 +249,21 @@ function signedDivide(a, b)
   return value
 end function
 
-/// Update `vm.programStack` in vm.interpreter.
-/// @param vm Updated in place: `programStack`.
-/// @param saved Saved operand used by `restoreStack`; its reads are shown in the implementation.
+/// Restore the VM program-stack pointer saved before a call.
+/// Used by the deferred cleanup so normal returns and execution errors restore the caller's stack pointer.
+/// @param vm Mutable VM whose `programStack` is restored.
+/// @param saved Program-stack byte offset captured at call entry.
 function restoreStack(vm, saved)
   vm.programStack = saved
 end function
 
-/// Update `vm.steps`, `vm.breaks`, `vm.programStack` in vm.interpreter.
-///
-/// Direct state writes: `vm.steps`, `vm.breaks`, `vm.programStack`.
-/// @param vm Record exposing `programStack`, `steps`, `stackBottom`, `data`, `limit`, `code`, `starts` and further fields. Updated in place: `steps`, `breaks`, `programStack`.
-/// @param args Args used in `len(args)` and `args[index]`.
+/// Run vmMain in the reference bytecode interpreter and return its single integer result.
+/// Reserves a 48-byte entry frame, zero-fills unused argument slots, and enforces code, operand-stack,
+/// program-stack, and per-call instruction-budget checks. The saved program-stack pointer is restored
+/// on exit; VM data writes and cumulative step/break counters remain visible to the caller.
+/// Trap calls invoke `vm.syscall(vm, argumentBase)` and convert its result to signed int32.
+/// @param vm Loaded VM containing decoded instructions, mutable data memory, limits, and syscall handler.
+/// @param args Up to ten integer slots written after the entry-frame header; slot zero conventionally selects the vmMain command.
 function call(vm, args)
   if len(args) > 10 then return fail("vmMain accepts at most ten arguments") end if
   originalStack = vm.programStack

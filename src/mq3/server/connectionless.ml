@@ -7,48 +7,54 @@ import mq3.qcommon.command_buffer as commandBuffer
 import mq3.server.oob_connect as oobConnect
 import std.string as strings
 
-/// Services record for server.connectionless, containing `statusFn`, `infoFn`, `rconFn`, `authorizeFn`, `decompressFn`, `diagnosticFn`, and 1 further fields.
+/// Host callbacks for connectionless packets; callbacks receive this record and can access its context.
 struct Services
-  /// Host callback that handles a connectionless server-status request.
+  /// Optional callback `(host, sourceAddress, args)` for a tokenized getstatus request.
   statusFn
-  /// Host callback that handles a connectionless server-information request.
+  /// Optional callback `(host, sourceAddress, args)` for a tokenized getinfo request.
   infoFn
-  /// Host callback that handles an authenticated remote-console request.
+  /// Optional callback `(host, sourceAddress, msg, text, args)` receiving an unverified rcon request.
+  /// The callback must perform any password checks and rate limiting before executing its command.
   rconFn
-  /// Host callback that performs the host-side client authorization exchange.
+  /// Optional callback `(host, sourceAddress, args)` for ipAuthorize packets; this dispatcher does not\n+  /// validate the authorization source before invoking it.
   authorizeFn
-  /// Host callback that decompresses a received packet payload.
+  /// Optional callback `(host, msg, offset)` decompressing a connect packet in place from byte offset 12.
   decompressFn
-  /// Host callback that reports subsystem diagnostics to the host.
+  /// Optional callback `(host, sourceAddress, text)` for an unrecognized connectionless command.
   diagnosticFn
-  /// Caller-supplied data associated with connectionless status, information, remote-console, and
-  /// authorization handling.
+  /// Caller-owned data accessible inside the callbacks through `host.context`.
   context
 end struct
-/// Create `mq3.server.connectionless.Services` with statusFn=void; infoFn=void; rconFn=void; authorizeFn=void; decompressFn=void; diagnosticFn=void; context=void.
+/// Create a connectionless callback bundle with all callbacks and context initially unset.
 function services() return Services(void,void,void,void,void,void,void) end function
-/// Test connect prefix in server.connectionless; the normal completion returns `true`.
-/// @param msg Record exposing `data`.
+/// Check whether bytes 4 through 10 of the message storage contain the case-sensitive text `connect`.
+/// Returns false for storage shorter than eleven bytes. This prefix check does not validate the OOB marker,
+/// require a word boundary, or inspect the message's cursize; `dispatch` separately validates the marker.
+/// @param msg Message exposing the backing data bytes used to recognize compressed connect requests.
 function connectPrefix(msg)
   if len(msg.data)<11 then return false end if
   expected=bytes("connect")
   for index=0 to 6 if msg.data[index+4]!=expected[index] then return false end if end for
   return true
 end function
-/// Compute tokens in server.connectionless; the normal completion returns `result`.
-/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.tokenizeString`.
+/// Tokenize a connectionless command line with the engine's command parser.
+/// Returns an ordered array of argument strings, including the command name at index zero, or an empty array.
+/// @param text Decoded command line to parse with Quake command quoting rules.
 function tokens(text)
   parser=commandBuffer.create();commandBuffer.tokenizeString(parser,text);result=[]
   if commandBuffer.argc(parser)>0 then for index=0 to commandBuffer.argc(parser)-1 result=result+[commandBuffer.argv(parser,index)] end for end if
   return result
 end function
-/// Dispatch connectionless in server.connectionless; the normal completion returns `"unknown"`.
-///
-/// Validation failures include `connectionless: missing state`; `connectionless: missing OOB marker`.
-/// @param runtime Runtime passed as `runtime` to `mq3.server.oob_connect.getChallenge`.
-/// @param host Record exposing `decompressFn`, `statusFn`, `infoFn`, `authorizeFn`, `rconFn`, `diagnosticFn`.
-/// @param sourceAddress Source address passed as `sourceAddress` to `mq3.server.oob_connect.getChallenge`.
-/// @param msg Msg passed as `msg` to `mq3.qcommon.message.beginReadingOob`.
+/// Read and route one connectionless packet after validating its -1 OOB marker.
+/// Recognizes getstatus, getinfo, getchallenge, connect, ipAuthorize, rcon, and disconnect. Returns the
+/// recognized command name, or `unknown` for empty/unrecognized input; recognition does not imply that
+/// an optional callback was installed or that authentication succeeded. Command matching is case-insensitive.
+/// Connect packets with a matching lowercase raw prefix invoke the optional decompressor before tokenization.
+/// The rcon callback receives unverified text and arguments and owns authentication and command execution.
+/// @param runtime Out-of-band connection runtime used by getchallenge and direct-connect handling.
+/// @param host Connectionless Services whose callbacks receive this same record as their first argument.
+/// @param sourceAddress Sender's network address, forwarded to connection handling and host callbacks.
+/// @param msg Mutable message containing the OOB marker and command bytes; its read cursor is advanced.
 function dispatch(runtime,host,sourceAddress,msg)
   if runtime==void or host==void or sourceAddress==void or msg==void then return error(6930,"connectionless: missing state") end if
   message.beginReadingOob(msg);marker=message.readI32(msg)

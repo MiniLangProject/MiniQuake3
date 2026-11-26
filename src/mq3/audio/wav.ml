@@ -9,7 +9,7 @@ const MIN_SAMPLE_RATE=4000
 /// Highest WAVE sample rate accepted by the loader, in hertz.
 const MAX_SAMPLE_RATE=192000
 
-/// Sound record for audio.wav, containing `sampleRate`, `channels`, `bitsPerSample`, `blockAlign`, `byteRate`, `samples`.
+/// Decoded integer PCM sound with interleaved sample data and its validated WAVE format.
 struct Sound
   /// Source sample rate in hertz.
   sampleRate
@@ -21,7 +21,7 @@ struct Sound
   blockAlign
   /// PCM byte rate computed from sample rate and block alignment.
   byteRate
-  /// Raw PCM bytes extracted from the WAVE data chunk.
+  /// Independent copy of the first WAVE data chunk; unsigned 8-bit or little-endian signed 16-bit PCM.
   samples
 end struct
 
@@ -56,8 +56,14 @@ function copy(data,offset,count)
   return output
 end function
 
-/// Decode wav in audio.wav; the normal completion returns `Sound(sampleRate, channels, bits, blockAlign, byteRate, copy(data, dataOffset, dataSize))`.
-/// @param data Data passed as `data` to `mq3.audio.wav.tag`.
+/// Decode a RIFF/WAVE asset into an independently owned PCM Sound.
+/// Accepts integer PCM only: one or two channels, 8 or 16 bits per channel,
+/// and sample rates from 4,000 through 192,000 Hz. Validates RIFF/chunk bounds,
+/// odd-byte padding, block alignment, byte rate, and complete sample frames.
+/// Uses the first fmt and data chunks, rejects empty data or payloads above
+/// MAX_PCM_BYTES, and reports malformed or unsupported input as error 7490.
+/// Bytes following the declared RIFF payload are not part of the decoded sound.
+/// @param data Complete WAVE file bytes; the returned sample buffer does not alias this input.
 function decode(data)
   if data==void or len(data)<12 then return fail("truncated RIFF header") end if
   if not tag(data,0,82,73,70,70) then return fail("missing RIFF signature") end if

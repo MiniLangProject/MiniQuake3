@@ -13,7 +13,7 @@ const SNAPFLAG_NOT_ACTIVE = 2
 
 /// Stores server stream stream record, including `protocol`, `epoch`, `demoPlaying`, `pure`.
 struct Stream
-  /// Network protocol version advertised or required by the client connection.
+  /// Client protocol parser runtime whose gamestate and snapshot history back this stream.
   protocol
   /// When constructing this record, `attach` supplies `protocol.dispatcher.snapshotState` for this
   /// member. Used by `at` and `entity` during subsequent processing.

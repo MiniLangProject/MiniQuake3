@@ -55,7 +55,7 @@ struct Live
   /// When constructing this record, `create` supplies `input` for this member. Used by
   /// `updateSendState` and `acceptPacket` during subsequent processing.
   ingress
-  /// Network protocol version advertised or required by the client connection.
+  /// Parser runtime for this live connection; supplies decoded gamestate, snapshots, and server commands.
   protocol
   /// When constructing this record, `create` supplies `outgoing` for this member. Used by
   /// `updateSendState` and `appendCommand` during subsequent processing.
