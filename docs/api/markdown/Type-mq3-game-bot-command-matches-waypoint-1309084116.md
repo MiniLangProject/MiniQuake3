@@ -9,8 +9,10 @@
 struct Waypoint
 ```
 
+`Waypoint` record for bot command matches, containing `name` and `goal`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L121)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 ## Members
 
@@ -22,7 +24,7 @@ goal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 <a id="field-field-mq3-game-bot-command-matches-waypoint-name-name-src-mq3-game-bot-command-matches-ml-1331379612"></a>
 ### name
@@ -32,4 +34,4 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)

@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.texture_state.State`; groups `currentTextures`, `currentTmu`, `defaultImage`, `dlightImage`, `noBind`, `frameCount`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ currentTextures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 <a id="field-field-mq3-renderer-texture-state-state-currenttmu-currenttmu-src-mq3-renderer-texture-state-ml-4231778"></a>
 ### currentTmu
@@ -32,7 +34,7 @@ currentTmu
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 <a id="field-field-mq3-renderer-texture-state-state-defaultimage-defaultimage-src-mq3-renderer-texture-state-ml-1435791712"></a>
 ### defaultImage
@@ -42,7 +44,7 @@ defaultImage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 <a id="field-field-mq3-renderer-texture-state-state-dlightimage-dlightimage-src-mq3-renderer-texture-state-ml-66320548"></a>
 ### dlightImage
@@ -52,7 +54,7 @@ dlightImage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 <a id="field-field-mq3-renderer-texture-state-state-framecount-framecount-src-mq3-renderer-texture-state-ml-589089156"></a>
 ### frameCount
@@ -62,7 +64,7 @@ frameCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 <a id="field-field-mq3-renderer-texture-state-state-nobind-nobind-src-mq3-renderer-texture-state-ml-651755756"></a>
 ### noBind
@@ -72,7 +74,7 @@ noBind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 <a id="field-field-mq3-renderer-texture-state-state-services-services-src-mq3-renderer-texture-state-ml-612851140"></a>
 ### services
@@ -82,4 +84,4 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)

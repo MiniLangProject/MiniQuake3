@@ -9,8 +9,10 @@
 struct PlayerSample
 ```
 
+PlayerSample record for format.player_animation, containing `lower`, `upper`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ lower
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L39)
 
 <a id="field-field-mq3-format-player-animation-playersample-upper-upper-src-mq3-format-player-animation-ml-1604223282"></a>
 ### upper
@@ -32,4 +34,4 @@ upper
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L39)

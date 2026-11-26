@@ -9,8 +9,10 @@
 struct Bitmap
 ```
 
+Data record for `mq3.renderer.tr_font_runtime.Bitmap`; groups `width`, `rows`, `pitch`, `pixelMode`, `buffer`, `numGrays`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ buffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-numgrays-numgrays-src-mq3-renderer-tr-font-runtime-ml-1322369042"></a>
 ### numGrays
@@ -32,7 +34,7 @@ numGrays
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-pitch-pitch-src-mq3-renderer-tr-font-runtime-ml-293694258"></a>
 ### pitch
@@ -42,7 +44,7 @@ pitch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-pixelmode-pixelmode-src-mq3-renderer-tr-font-runtime-ml-2076931110"></a>
 ### pixelMode
@@ -52,7 +54,7 @@ pixelMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-rows-rows-src-mq3-renderer-tr-font-runtime-ml-30788924"></a>
 ### rows
@@ -62,7 +64,7 @@ rows
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-bitmap-width-width-src-mq3-renderer-tr-font-runtime-ml-750354726"></a>
 ### width
@@ -72,4 +74,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)

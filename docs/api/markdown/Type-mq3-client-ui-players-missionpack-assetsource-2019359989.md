@@ -9,8 +9,10 @@
 struct AssetSource
 ```
 
+Stores UI players missionpack asset source record, including `files`, `animationFiles`, `actions`, `retailActive`, `diagnostics`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L61)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-missionpack-assetsource-animationfiles-animationfiles-src-mq3-client-ui-players-missionpack-ml-1647631520"></a>
 ### animationFiles
@@ -32,7 +34,7 @@ animationFiles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-missionpack-assetsource-diagnostics-diagnostics-src-mq3-client-ui-players-missionpack-ml-1628006290"></a>
 ### diagnostics
@@ -42,7 +44,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-missionpack-assetsource-files-files-src-mq3-client-ui-players-missionpack-ml-2044773974"></a>
 ### files
@@ -52,7 +54,7 @@ files
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-missionpack-assetsource-retailactive-retailactive-src-mq3-client-ui-players-missionpack-ml-688320260"></a>
 ### retailActive
@@ -62,4 +64,4 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L61)

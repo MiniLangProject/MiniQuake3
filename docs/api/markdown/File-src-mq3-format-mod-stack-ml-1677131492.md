@@ -23,12 +23,14 @@ Reachable from entry: **yes**
 function fail(message)
 ```
 
+Create the format.mod_stack error for `fail` with 7689 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("Mod: " + message)` and `error(7689, ("Mod: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L29)
 
 <a id="constant-constant-mq3-format-mod-stack-file-attribute-directory-const-file-attribute-directory-16-src-mq3-format-mod-stack-ml-989558874"></a>
 ### FILE_ATTRIBUTE_DIRECTORY
@@ -38,7 +40,7 @@ const FILE_ATTRIBUTE_DIRECTORY = 16
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L17)
 
 <a id="constant-constant-mq3-format-mod-stack-file-attribute-reparse-point-const-file-attribute-reparse-point-1024-src-mq3-format-mod-stack-ml-229209666"></a>
 ### FILE_ATTRIBUTE_REPARSE_POINT
@@ -48,7 +50,7 @@ const FILE_ATTRIBUTE_REPARSE_POINT = 1024
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L18)
 
 <a id="extern_function-extern-function-mq3-format-mod-stack-fileattributes-extern-function-fileattributes-path-as-wstr-from-kernel32-dll-symbol-getfileattributesw-returns-u32-src-mq3-format-mod-stack-ml-11531579"></a>
 ### fileAttributes
@@ -57,12 +59,16 @@ const FILE_ATTRIBUTE_REPARSE_POINT = 1024
 extern function fileAttributes(path as wstr) from "kernel32.dll" symbol "GetFileAttributesW" returns u32
 ```
 
+Read Win32 file or directory attributes for format.mod_stack.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `path` | `wstr` | — |  |
+| `path` | `wstr` | — | Null-terminated UTF-16 filesystem path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L12)
+**Returns:** The file-attribute bitmask, or INVALID_FILE_ATTRIBUTES (0xffffffff) on failure.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L15)
 
 <a id="constant-constant-mq3-format-mod-stack-invalid-attributes-const-invalid-attributes-4294967295-src-mq3-format-mod-stack-ml-1576706354"></a>
 ### INVALID_ATTRIBUTES
@@ -72,7 +78,7 @@ const INVALID_ATTRIBUTES = 4294967295
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L19)
 
 <a id="constant-constant-mq3-format-mod-stack-max-loose-depth-const-max-loose-depth-16-src-mq3-format-mod-stack-ml-1581194146"></a>
 ### MAX_LOOSE_DEPTH
@@ -82,7 +88,7 @@ const MAX_LOOSE_DEPTH = 16
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L21)
 
 <a id="constant-constant-mq3-format-mod-stack-max-loose-files-const-max-loose-files-65536-src-mq3-format-mod-stack-ml-1055149672"></a>
 ### MAX_LOOSE_FILES
@@ -92,7 +98,7 @@ const MAX_LOOSE_FILES = 65536
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L20)
 
 <a id="constant-constant-mq3-format-mod-stack-max-qvm-image-const-max-qvm-image-16777216-src-mq3-format-mod-stack-ml-1617457022"></a>
 ### MAX_QVM_IMAGE
@@ -102,7 +108,7 @@ const MAX_QVM_IMAGE = 16777216
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L22)
 
 <a id="function-function-mq3-format-mod-stack-mount-function-mount-basearchive-installroot-requestedgame-src-mq3-format-mod-stack-ml-1712967866"></a>
 ### mount
@@ -111,14 +117,16 @@ const MAX_QVM_IMAGE = 16777216
 function mount(baseArchive, installRoot, requestedGame)
 ```
 
+Compute mount in format.mod_stack; the normal completion returns `Mount(requestedGame, directory, pk3.overlay(directory, baseArchive, gameArchive))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `baseArchive` | `dynamic` | — |  |
-| `installRoot` | `dynamic` | — |  |
-| `requestedGame` | `dynamic` | — |  |
+| `baseArchive` | `dynamic` | — | Initial `archive` field stored in the returned or constructed `mq3.format.mod_stack.Mount` record. |
+| `installRoot` | `dynamic` | — | Install root used in `(installRoot == "")` and `fs.joinPath(installRoot, "baseq3")`. |
+| `requestedGame` | `dynamic` | — | Name passed as `name` to `mq3.format.mod_stack.validName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L115)
 
 - [mq3.format.mod_stack.Mount](Type-mq3-format-mod-stack-mount-274832559.md) — struct
 <a id="function-function-mq3-format-mod-stack-regulardirectory-function-regulardirectory-path-src-mq3-format-mod-stack-ml-29598739"></a>
@@ -128,12 +136,14 @@ function mount(baseArchive, installRoot, requestedGame)
 function regularDirectory(path)
 ```
 
+Apply `mq3.format.mod_stack.fileAttributes` for regular directory in format.mod_stack.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `path` | `dynamic` | — |  |
+| `path` | `dynamic` | — | Null-terminated UTF-16 filesystem path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L43)
 
 <a id="function-function-mq3-format-mod-stack-scanloose-function-scanloose-directory-prefix-depth-entries-src-mq3-format-mod-stack-ml-1176983612"></a>
 ### scanLoose
@@ -142,15 +152,17 @@ function regularDirectory(path)
 function scanLoose(directory, prefix, depth, entries)
 ```
 
+Test scan loose in format.mod_stack; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `directory` | `dynamic` | — |  |
-| `prefix` | `dynamic` | — |  |
-| `depth` | `dynamic` | — |  |
-| `entries` | `dynamic` | — |  |
+| `directory` | `dynamic` | — | Directory used in `fs.listDir(directory)` and `try(fs.listDir(directory))`. |
+| `prefix` | `dynamic` | — | Prefix used in `(prefix + name)`. |
+| `depth` | `dynamic` | — | Depth used in `(depth + 1)` and `(depth < MAX_LOOSE_DEPTH)`. |
+| `entries` | `dynamic` | — | Record exposing `len`, `add`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L53)
 
 <a id="function-function-mq3-format-mod-stack-validname-function-validname-name-src-mq3-format-mod-stack-ml-853179145"></a>
 ### validName
@@ -159,12 +171,14 @@ function scanLoose(directory, prefix, depth, entries)
 function validName(name)
 ```
 
+Validate name in format.mod_stack; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used in `len(name)` and `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L33)
 
 <a id="function-function-mq3-format-mod-stack-verifymodules-function-verifymodules-gamearchive-names-src-mq3-format-mod-stack-ml-1756570734"></a>
 ### verifyModules
@@ -173,13 +187,15 @@ function validName(name)
 function verifyModules(gameArchive, names)
 ```
 
+Test verify modules in format.mod_stack; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gameArchive` | `dynamic` | — |  |
-| `names` | `dynamic` | — |  |
+| `gameArchive` | `dynamic` | — | Archive passed as `archive` to `mq3.format.pk3.findEntry`. |
+| `names` | `dynamic` | — | Sequence traversed as `name` by the loop in `verifyModules`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L91)
 
 <a id="function-function-mq3-format-mod-stack-verifypackages-function-verifypackages-directory-names-src-mq3-format-mod-stack-ml-235643853"></a>
 ### verifyPackages
@@ -188,10 +204,12 @@ function verifyModules(gameArchive, names)
 function verifyPackages(directory, names)
 ```
 
+Test verify packages in format.mod_stack; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `directory` | `dynamic` | — |  |
-| `names` | `dynamic` | — |  |
+| `directory` | `dynamic` | — | Directory used in `fs.joinPath(directory, name)` and `fileAttributes(fs.joinPath(directory, name))`. |
+| `names` | `dynamic` | — | Sequence traversed as `name` by the loop in `verifyPackages`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L79)

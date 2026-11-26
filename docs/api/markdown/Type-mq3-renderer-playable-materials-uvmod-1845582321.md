@@ -9,8 +9,10 @@
 struct UvMod
 ```
 
+Data record for `mq3.renderer.playable_materials.UvMod`; groups `kind`, `a`, `b`, `c`, `d`, `e`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 ## Members
 
@@ -22,7 +24,7 @@ a
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-b-b-src-mq3-renderer-playable-materials-ml-1047275986"></a>
 ### b
@@ -32,7 +34,7 @@ b
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-c-c-src-mq3-renderer-playable-materials-ml-569379878"></a>
 ### c
@@ -42,7 +44,7 @@ c
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-d-d-src-mq3-renderer-playable-materials-ml-184234802"></a>
 ### d
@@ -52,7 +54,7 @@ d
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-e-e-src-mq3-renderer-playable-materials-ml-1716380598"></a>
 ### e
@@ -62,7 +64,7 @@ e
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-f-f-src-mq3-renderer-playable-materials-ml-1694346498"></a>
 ### f
@@ -72,7 +74,7 @@ f
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-kind-kind-src-mq3-renderer-playable-materials-ml-204949222"></a>
 ### kind
@@ -82,7 +84,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-uvmod-wave-wave-src-mq3-renderer-playable-materials-ml-283576520"></a>
 ### wave
@@ -92,4 +94,4 @@ wave
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)

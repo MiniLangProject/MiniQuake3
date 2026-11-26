@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for vm.syscall_qagame_world, containing `context`, `traceFn`, `pointContentsFn`, `entitiesInBoxFn`, `entityContactFn`, `getUsercmdFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L49)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L50)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-entitiesinboxfn-entitiesinboxfn-src-mq3-vm-syscall-qagame-world-ml-372378253"></a>
 ### entitiesInBoxFn
@@ -32,7 +34,7 @@ entitiesInBoxFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L53)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-entitycontactfn-entitycontactfn-src-mq3-vm-syscall-qagame-world-ml-1228834425"></a>
 ### entityContactFn
@@ -42,7 +44,7 @@ entityContactFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L54)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-getusercmdfn-getusercmdfn-src-mq3-vm-syscall-qagame-world-ml-55524859"></a>
 ### getUsercmdFn
@@ -52,7 +54,7 @@ getUsercmdFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L55)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-pointcontentsfn-pointcontentsfn-src-mq3-vm-syscall-qagame-world-ml-1555090777"></a>
 ### pointContentsFn
@@ -62,7 +64,7 @@ pointContentsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L52)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-services-tracefn-tracefn-src-mq3-vm-syscall-qagame-world-ml-1116410145"></a>
 ### traceFn
@@ -72,4 +74,4 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L51)

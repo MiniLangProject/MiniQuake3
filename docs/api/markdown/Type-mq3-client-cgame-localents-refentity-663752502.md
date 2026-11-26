@@ -9,8 +9,10 @@
 struct RefEntity
 ```
 
+Stores client game localents ref entity record, including `reType`, `origin`, `lightingOrigin`, `axis`, `shaderRGBA`, `radius` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-customshader-customshader-src-mq3-client-cgame-localents-ml-2116312419"></a>
 ### customShader
@@ -32,7 +34,7 @@ customShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-hmodel-hmodel-src-mq3-client-cgame-localents-ml-4268877"></a>
 ### hModel
@@ -42,7 +44,7 @@ hModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-lightingorigin-lightingorigin-src-mq3-client-cgame-localents-ml-1717712483"></a>
 ### lightingOrigin
@@ -52,7 +54,7 @@ lightingOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-nonnormalizedaxes-nonnormalizedaxes-src-mq3-client-cgame-localents-ml-1732329611"></a>
 ### nonNormalizedAxes
@@ -62,7 +64,7 @@ nonNormalizedAxes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-origin-origin-src-mq3-client-cgame-localents-ml-1588674067"></a>
 ### origin
@@ -72,7 +74,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-radius-radius-src-mq3-client-cgame-localents-ml-1301113347"></a>
 ### radius
@@ -82,7 +84,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-renderfx-renderfx-src-mq3-client-cgame-localents-ml-426876779"></a>
 ### renderfx
@@ -92,7 +94,7 @@ renderfx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-retype-retype-src-mq3-client-cgame-localents-ml-1849225413"></a>
 ### reType
@@ -102,7 +104,7 @@ reType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-shaderrgba-shaderrgba-src-mq3-client-cgame-localents-ml-962066137"></a>
 ### shaderRGBA
@@ -112,7 +114,7 @@ shaderRGBA
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
 
 <a id="field-field-mq3-client-cgame-localents-refentity-shadertime-shadertime-src-mq3-client-cgame-localents-ml-343229695"></a>
 ### shaderTime
@@ -122,4 +124,4 @@ shaderTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)

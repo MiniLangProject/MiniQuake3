@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores engine client console state, including `initialized`, `text`, `current`, `x`, `display`, `linewidth` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientRunning
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-color-color-src-mq3-client-cl-console-ml-1118744794"></a>
 ### color
@@ -32,7 +34,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-commands-commands-src-mq3-client-cl-console-ml-1016938834"></a>
 ### commands
@@ -42,7 +44,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-connectionstate-connectionstate-src-mq3-client-cl-console-ml-357445286"></a>
 ### connectionState
@@ -52,7 +54,7 @@ connectionState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-consoleinput-consoleinput-src-mq3-client-cl-console-ml-402659888"></a>
 ### consoleInput
@@ -62,7 +64,7 @@ consoleInput
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-conspeed-conspeed-src-mq3-client-cl-console-ml-56710496"></a>
 ### conSpeed
@@ -72,7 +74,7 @@ conSpeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-current-current-src-mq3-client-cl-console-ml-111122286"></a>
 ### current
@@ -82,7 +84,7 @@ current
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-display-display-src-mq3-client-cl-console-ml-1310572150"></a>
 ### display
@@ -92,7 +94,7 @@ display
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-displayfrac-displayfrac-src-mq3-client-cl-console-ml-1490798566"></a>
 ### displayFrac
@@ -102,7 +104,7 @@ displayFrac
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-finalfrac-finalfrac-src-mq3-client-cl-console-ml-763414650"></a>
 ### finalFrac
@@ -112,7 +114,7 @@ finalFrac
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-host-host-src-mq3-client-cl-console-ml-1521577322"></a>
 ### host
@@ -122,7 +124,7 @@ host
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-initialized-initialized-src-mq3-client-cl-console-ml-1780677862"></a>
 ### initialized
@@ -132,7 +134,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-intermission-intermission-src-mq3-client-cl-console-ml-1707356486"></a>
 ### intermission
@@ -142,7 +144,7 @@ intermission
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-keycatchers-keycatchers-src-mq3-client-cl-console-ml-2027278406"></a>
 ### keyCatchers
@@ -152,7 +154,7 @@ keyCatchers
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-linewidth-linewidth-src-mq3-client-cl-console-ml-921735310"></a>
 ### linewidth
@@ -162,7 +164,7 @@ linewidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-noprint-noprint-src-mq3-client-cl-console-ml-561072262"></a>
 ### noPrint
@@ -172,7 +174,7 @@ noPrint
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-notifytime-notifytime-src-mq3-client-cl-console-ml-2084138726"></a>
 ### notifyTime
@@ -182,7 +184,7 @@ notifyTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-realframetime-realframetime-src-mq3-client-cl-console-ml-1963342034"></a>
 ### realFrametime
@@ -192,7 +194,7 @@ realFrametime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-realtime-realtime-src-mq3-client-cl-console-ml-1445526536"></a>
 ### realtime
@@ -202,7 +204,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-text-text-src-mq3-client-cl-console-ml-1913244368"></a>
 ### text
@@ -212,7 +214,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-times-times-src-mq3-client-cl-console-ml-484834758"></a>
 ### times
@@ -222,7 +224,7 @@ times
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-totallines-totallines-src-mq3-client-cl-console-ml-2124762700"></a>
 ### totallines
@@ -232,7 +234,7 @@ totallines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-uiorcgamecatcher-uiorcgamecatcher-src-mq3-client-cl-console-ml-1401636502"></a>
 ### uiOrCgameCatcher
@@ -242,7 +244,7 @@ uiOrCgameCatcher
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-vislines-vislines-src-mq3-client-cl-console-ml-479360880"></a>
 ### vislines
@@ -252,7 +254,7 @@ vislines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-x-x-src-mq3-client-cl-console-ml-905898742"></a>
 ### x
@@ -262,7 +264,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)
 
 <a id="field-field-mq3-client-cl-console-state-xadjust-xadjust-src-mq3-client-cl-console-ml-1026932490"></a>
 ### xadjust
@@ -272,4 +274,4 @@ xadjust
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L38)

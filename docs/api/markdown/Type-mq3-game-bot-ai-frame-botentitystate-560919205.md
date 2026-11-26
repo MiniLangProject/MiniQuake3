@@ -9,8 +9,10 @@
 struct BotEntityState
 ```
 
+`BotEntityState` record for bot ai frame, containing `origin`, `angles`, `oldOrigin`, `mins` and `maxs` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ angles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L41)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-event-event-src-mq3-game-bot-ai-frame-ml-549252380"></a>
 ### event
@@ -32,7 +34,7 @@ event
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L52)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-eventparm-eventparm-src-mq3-game-bot-ai-frame-ml-607022556"></a>
 ### eventParm
@@ -42,7 +44,7 @@ eventParm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L53)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-flags-flags-src-mq3-game-bot-ai-frame-ml-134629252"></a>
 ### flags
@@ -52,7 +54,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L46)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-frame-frame-src-mq3-game-bot-ai-frame-ml-1495277688"></a>
 ### frame
@@ -62,7 +64,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L51)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-groundent-groundent-src-mq3-game-bot-ai-frame-ml-1961043088"></a>
 ### groundent
@@ -72,7 +74,7 @@ groundent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L48)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-legsanim-legsanim-src-mq3-game-bot-ai-frame-ml-102722604"></a>
 ### legsAnim
@@ -82,7 +84,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L55)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-maxs-maxs-src-mq3-game-bot-ai-frame-ml-1309533494"></a>
 ### maxs
@@ -92,7 +94,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L44)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-mins-mins-src-mq3-game-bot-ai-frame-ml-876499114"></a>
 ### mins
@@ -102,7 +104,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L43)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-modelindex-modelindex-src-mq3-game-bot-ai-frame-ml-1812819018"></a>
 ### modelindex
@@ -112,7 +114,7 @@ modelindex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L49)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-modelindex2-modelindex2-src-mq3-game-bot-ai-frame-ml-1492995028"></a>
 ### modelindex2
@@ -122,7 +124,7 @@ modelindex2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L50)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-oldorigin-oldorigin-src-mq3-game-bot-ai-frame-ml-284083140"></a>
 ### oldOrigin
@@ -132,7 +134,7 @@ oldOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L42)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-origin-origin-src-mq3-game-bot-ai-frame-ml-965945376"></a>
 ### origin
@@ -142,7 +144,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L40)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-powerups-powerups-src-mq3-game-bot-ai-frame-ml-919252094"></a>
 ### powerups
@@ -152,7 +154,7 @@ powerups
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L54)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-solid-solid-src-mq3-game-bot-ai-frame-ml-2053336564"></a>
 ### solid
@@ -162,7 +164,7 @@ solid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L47)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-torsoanim-torsoanim-src-mq3-game-bot-ai-frame-ml-267175676"></a>
 ### torsoAnim
@@ -172,7 +174,7 @@ torsoAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L56)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-type-type-src-mq3-game-bot-ai-frame-ml-597438012"></a>
 ### type
@@ -182,7 +184,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L45)
 
 <a id="field-field-mq3-game-bot-ai-frame-botentitystate-weapon-weapon-src-mq3-game-bot-ai-frame-ml-2094222908"></a>
 ### weapon
@@ -192,4 +194,4 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L57)

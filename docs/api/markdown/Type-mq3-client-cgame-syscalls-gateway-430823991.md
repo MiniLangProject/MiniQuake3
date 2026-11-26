@@ -9,8 +9,10 @@
 struct Gateway
 ```
 
+Stores client game syscalls gateway record, including `context`, `syscallFn`, `retailActive`, `calls`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L108)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L110)
 
 ## Members
 
@@ -22,7 +24,7 @@ calls
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L110)
 
 <a id="field-field-mq3-client-cgame-syscalls-gateway-context-context-src-mq3-client-cgame-syscalls-ml-594784651"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L110)
 
 <a id="field-field-mq3-client-cgame-syscalls-gateway-retailactive-retailactive-src-mq3-client-cgame-syscalls-ml-1545653481"></a>
 ### retailActive
@@ -42,7 +44,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L110)
 
 <a id="field-field-mq3-client-cgame-syscalls-gateway-syscallfn-syscallfn-src-mq3-client-cgame-syscalls-ml-638221791"></a>
 ### syscallFn
@@ -52,4 +54,4 @@ syscallFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L110)

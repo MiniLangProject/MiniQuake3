@@ -9,8 +9,10 @@
 struct StreamRead
 ```
 
+Data record for `mq3.platform.win_main_runtime.StreamRead`; groups `data`, `count`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L96)
 
 ## Members
 
@@ -22,7 +24,7 @@ count
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L96)
 
 <a id="field-field-mq3-platform-win-main-runtime-streamread-data-data-src-mq3-platform-win-main-runtime-ml-896337797"></a>
 ### data
@@ -32,4 +34,4 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L96)

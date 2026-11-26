@@ -20,12 +20,14 @@ Reachable from entry: **yes**
 function acceptsInput(state)
 ```
 
+Computes `active(state) and (keyCatcher(state)&KEYCATCH_CONSOLE)==0` for original UI session `acceptsInput`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared original UI session state passed to the helper calls in `acceptsInput`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L117)
 
 <a id="function-function-mq3-client-original-ui-session-active-function-active-state-src-mq3-client-original-ui-session-ml-1402113373"></a>
 ### active
@@ -34,12 +36,14 @@ function acceptsInput(state)
 function active(state)
 ```
 
+Computes `(keyCatcher(state)&KEYCATCH_UI)!=0` for original UI session `active`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared original UI session state passed to the helper calls in `active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L114)
 
 <a id="function-function-mq3-client-original-ui-session-binding-function-binding-virtualkey-quakekey-normalchar-shiftedchar-src-mq3-client-original-ui-session-ml-1123066254"></a>
 ### binding
@@ -48,15 +52,17 @@ function active(state)
 function binding(virtualKey, quakeKey, normalChar, shiftedChar)
 ```
 
+Creates a `mq3.client.original_ui_session.Binding` record. Assigns `virtualKey` from `virtualKey`, `quakeKey` from `quakeKey`, `normalChar` from `normalChar`, `shiftedChar` from `shiftedChar`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `virtualKey` | `dynamic` | — |  |
-| `quakeKey` | `dynamic` | — |  |
-| `normalChar` | `dynamic` | — |  |
-| `shiftedChar` | `dynamic` | — |  |
+| `virtualKey` | `dynamic` | — | Value used to initialize `Binding.virtualKey`. |
+| `quakeKey` | `dynamic` | — | Value used to initialize `Binding.quakeKey`. |
+| `normalChar` | `dynamic` | — | Value used to initialize `Binding.normalChar`. |
+| `shiftedChar` | `dynamic` | — | Value used to initialize `Binding.shiftedChar`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L88)
 
 - [mq3.client.original_ui_session.Binding](Type-mq3-client-original-ui-session-binding-2074068013.md) — struct
 <a id="function-function-mq3-client-original-ui-session-bindings-function-bindings-src-mq3-client-original-ui-session-ml-769254578"></a>
@@ -66,8 +72,10 @@ function binding(virtualKey, quakeKey, normalChar, shiftedChar)
 function bindings()
 ```
 
+Calls `mq3.client.original_ui_session.binding` from original UI session `bindings`. The final path returns `result`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L90)
 
 <a id="function-function-mq3-client-original-ui-session-close-function-close-state-src-mq3-client-original-ui-session-ml-1513097161"></a>
 ### close
@@ -76,12 +84,14 @@ function bindings()
 function close(state)
 ```
 
+Adapts `mq3.client.original_ui_session.setMenu` to original UI session `close`, returning its result for `state, UIMENU_NONE`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.original_ui_session.setMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L145)
 
 <a id="function-function-mq3-client-original-ui-session-create-function-create-serviceset-inputcontext-keydownfn-mousedeltafn-src-mq3-client-original-ui-session-ml-436160596"></a>
 ### create
@@ -90,15 +100,17 @@ function close(state)
 function create(serviceSet, inputContext, keyDownFn, mouseDeltaFn)
 ```
 
+Calls `mq3.client.original_ui_session.bindings`, `mq3.client.original_ui_session.State` from original UI session `create`. The final path returns `State(serviceSet,inputContext,keyDownFn,mouseDeltaFn,mapped,array(len(mapped),false),0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `serviceSet` | `dynamic` | — |  |
-| `inputContext` | `dynamic` | — |  |
-| `keyDownFn` | `dynamic` | — |  |
-| `mouseDeltaFn` | `dynamic` | — |  |
+| `serviceSet` | `dynamic` | — | Record read through `serviceSet.catcherFn`, `serviceSet.keyEventFn`, `serviceSet.mouseEventFn`, `serviceSet.refreshFn` and additional values. |
+| `inputContext` | `dynamic` | — | Value used by `return State(serviceSet,inputContext,keyDownFn,mouseDeltaFn,mapped,array(len(mapped),false),0)`. |
+| `keyDownFn` | `dynamic` | — | Callback invoked by `create` for key down. |
+| `mouseDeltaFn` | `dynamic` | — | Callback invoked by `create` for mouse delta. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L104)
 
 <a id="function-function-mq3-client-original-ui-session-dispatchkey-function-dispatchkey-state-key-down-character-shifted-src-mq3-client-original-ui-session-ml-207897704"></a>
 ### dispatchKey
@@ -107,16 +119,18 @@ function create(serviceSet, inputContext, keyDownFn, mouseDeltaFn)
 function dispatchKey(state, key, down, character, shifted)
 ```
 
+Calls `mq3.client.original_ui_session.active`, `mq3.client.original_ui_session.openIngame`, `mq3.client.original_ui_session.acceptsInput` and additional helpers from original UI session `dispatchKey`. The final path returns `sent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `down` | `dynamic` | — |  |
-| `character` | `dynamic` | — |  |
-| `shifted` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services.keyEventFn`, `state.services.context`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding original UI session entry. |
+| `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
+| `character` | `dynamic` | — | Value used by `if down and character>0 then`. |
+| `shifted` | `dynamic` | — | Value used by `if shifted then value=shifted end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L160)
 
 <a id="function-function-mq3-client-original-ui-session-drawconnectscreen-function-drawconnectscreen-state-overlay-src-mq3-client-original-ui-session-ml-120874711"></a>
 ### drawConnectScreen
@@ -125,13 +139,15 @@ function dispatchKey(state, key, down, character, shifted)
 function drawConnectScreen(state, overlay)
 ```
 
+Calls `state.services.connectFn` from original UI session `drawConnectScreen`. The final path returns `state.services.connectFn(state.services.context,overlay)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `overlay` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services.connectFn`, `state.services.context`. |
+| `overlay` | `dynamic` | — | Value used by `return state.services.connectFn(state.services.context,overlay)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L149)
 
 <a id="function-function-mq3-client-original-ui-session-fail-function-fail-message-src-mq3-client-original-ui-session-ml-1423018083"></a>
 ### fail
@@ -140,12 +156,14 @@ function drawConnectScreen(state, overlay)
 function fail(message)
 ```
 
+Creates the original UI session error `7686` with diagnostic text `"original UI session: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"original UI session: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L71)
 
 <a id="function-function-mq3-client-original-ui-session-finishoriginaluiframe-function-finishoriginaluiframe-state-now-menuopened-keyevents-charevents-mouseevents-src-mq3-client-original-ui-session-ml-1939843834"></a>
 ### finishOriginalUiFrame
@@ -154,17 +172,19 @@ function fail(message)
 function finishOriginalUiFrame(state, now, menuOpened, keyEvents, charEvents, mouseEvents)
 ```
 
+Updates `state.frameCount` during original UI session `finishOriginalUiFrame`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `menuOpened` | `dynamic` | — |  |
-| `keyEvents` | `dynamic` | — |  |
-| `charEvents` | `dynamic` | — |  |
-| `mouseEvents` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable original UI session record/storage; this routine assigns `state.frameCount`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `menuOpened` | `dynamic` | — | Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`. |
+| `keyEvents` | `dynamic` | — | Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`. |
+| `charEvents` | `dynamic` | — | Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`. |
+| `mouseEvents` | `dynamic` | — | Value used by `return Frame(active(state),refreshed,menuOpened,keyEvents,charEvents,mouseEvents,commandStart,count-commandStart,count)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L206)
 
 <a id="function-function-mq3-client-original-ui-session-frame-function-frame-state-now-src-mq3-client-original-ui-session-ml-421186389"></a>
 ### frame
@@ -173,13 +193,15 @@ function finishOriginalUiFrame(state, now, menuOpened, keyEvents, charEvents, mo
 function frame(state, now)
 ```
 
+Updates `state.down[index]` during original UI session `frame`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable original UI session record/storage; this routine assigns `state.down[index]`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L177)
 
 - [mq3.client.original_ui_session.Frame](Type-mq3-client-original-ui-session-frame-1069389137.md) — struct
 <a id="function-function-mq3-client-original-ui-session-framequeued-function-framequeued-state-now-events-src-mq3-client-original-ui-session-ml-921993220"></a>
@@ -193,12 +215,12 @@ Win32 supplies key transitions, text and pointer deltas in message order. Keep p
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `events` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services.stateEventFn`, `state.services.context`, `state.services.keyEventFn`, `state.services.mouseEventFn`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `events` | `dynamic` | — | Value used by `for each event in events`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L220)
 
 <a id="constant-constant-mq3-client-original-ui-session-k-alt-const-k-alt-q3keys-k-alt-src-mq3-client-original-ui-session-ml-845657898"></a>
 ### K_ALT
@@ -417,12 +439,14 @@ const KEYCATCH_UI = 2
 function keyCatcher(state)
 ```
 
+Adapts `state.services.catcherFn` to original UI session `keyCatcher`, returning its result for `state.services.context`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services.catcherFn`, `state.services.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L111)
 
 <a id="function-function-mq3-client-original-ui-session-openbadcdkey-function-openbadcdkey-state-src-mq3-client-original-ui-session-ml-2027256801"></a>
 ### openBadCdKey
@@ -431,12 +455,14 @@ function keyCatcher(state)
 function openBadCdKey(state)
 ```
 
+Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openBadCdKey`, returning its result for `state, UIMENU_BAD_CD_KEY`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.original_ui_session.setMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L136)
 
 <a id="function-function-mq3-client-original-ui-session-openingame-function-openingame-state-src-mq3-client-original-ui-session-ml-1591789433"></a>
 ### openIngame
@@ -445,12 +471,14 @@ function openBadCdKey(state)
 function openIngame(state)
 ```
 
+Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openIngame`, returning its result for `state, UIMENU_INGAME`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.original_ui_session.setMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L130)
 
 <a id="function-function-mq3-client-original-ui-session-openmain-function-openmain-state-src-mq3-client-original-ui-session-ml-827953921"></a>
 ### openMain
@@ -459,12 +487,14 @@ function openIngame(state)
 function openMain(state)
 ```
 
+Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openMain`, returning its result for `state, UIMENU_MAIN`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.original_ui_session.setMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L127)
 
 <a id="function-function-mq3-client-original-ui-session-openneedcd-function-openneedcd-state-src-mq3-client-original-ui-session-ml-1302177205"></a>
 ### openNeedCd
@@ -473,12 +503,14 @@ function openMain(state)
 function openNeedCd(state)
 ```
 
+Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openNeedCd`, returning its result for `state, UIMENU_NEED_CD`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.original_ui_session.setMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L133)
 
 <a id="function-function-mq3-client-original-ui-session-openpostgame-function-openpostgame-state-src-mq3-client-original-ui-session-ml-840971573"></a>
 ### openPostgame
@@ -487,12 +519,14 @@ function openNeedCd(state)
 function openPostgame(state)
 ```
 
+Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openPostgame`, returning its result for `state, UIMENU_POSTGAME`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.original_ui_session.setMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L142)
 
 <a id="function-function-mq3-client-original-ui-session-openteam-function-openteam-state-src-mq3-client-original-ui-session-ml-1583707557"></a>
 ### openTeam
@@ -501,12 +535,14 @@ function openPostgame(state)
 function openTeam(state)
 ```
 
+Adapts `mq3.client.original_ui_session.setMenu` to original UI session `openTeam`, returning its result for `state, UIMENU_TEAM`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.original_ui_session.setMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L139)
 
 <a id="function-function-mq3-client-original-ui-session-services-function-services-context-catcherfn-keyeventfn-mouseeventfn-refreshfn-menufn-commandcountfn-src-mq3-client-original-ui-session-ml-840669915"></a>
 ### services
@@ -515,18 +551,20 @@ function openTeam(state)
 function services(context, catcherFn, keyEventFn, mouseEventFn, refreshFn, menuFn, commandCountFn)
 ```
 
+Creates a `mq3.client.original_ui_session.Services` record. Assigns `context` from `context`, `catcherFn` from `catcherFn`, `keyEventFn` from `keyEventFn`, `mouseEventFn` from `mouseEventFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `catcherFn` | `dynamic` | — |  |
-| `keyEventFn` | `dynamic` | — |  |
-| `mouseEventFn` | `dynamic` | — |  |
-| `refreshFn` | `dynamic` | — |  |
-| `menuFn` | `dynamic` | — |  |
-| `commandCountFn` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Value used to initialize `Services.context`. |
+| `catcherFn` | `dynamic` | — | Value used to initialize `Services.catcherFn`. |
+| `keyEventFn` | `dynamic` | — | Value used to initialize `Services.keyEventFn`. |
+| `mouseEventFn` | `dynamic` | — | Value used to initialize `Services.mouseEventFn`. |
+| `refreshFn` | `dynamic` | — | Value used to initialize `Services.refreshFn`. |
+| `menuFn` | `dynamic` | — | Value used to initialize `Services.menuFn`. |
+| `commandCountFn` | `dynamic` | — | Value used to initialize `Services.commandCountFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L80)
 
 - [mq3.client.original_ui_session.Services](Type-mq3-client-original-ui-session-services-1297413020.md) — struct
 <a id="function-function-mq3-client-original-ui-session-setmenu-function-setmenu-state-menu-src-mq3-client-original-ui-session-ml-2099302558"></a>
@@ -536,13 +574,15 @@ function services(context, catcherFn, keyEventFn, mouseEventFn, refreshFn, menuF
 function setMenu(state, menu)
 ```
 
+Calls `state.services.menuFn` from original UI session `setMenu`. The final path returns `state.services.menuFn(state.services.context,menu)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `menu` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services.menuFn`, `state.services.context`. |
+| `menu` | `dynamic` | — | Value used by `if state==void or menu<UIMENU_NONE or menu>UIMENU_POSTGAME then return fail("invalid active menu") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L121)
 
 - [mq3.client.original_ui_session.State](Type-mq3-client-original-ui-session-state-289426633.md) — struct
 <a id="constant-constant-mq3-client-original-ui-session-uimenu-bad-cd-key-const-uimenu-bad-cd-key-4-src-mq3-client-original-ui-session-ml-2087223497"></a>

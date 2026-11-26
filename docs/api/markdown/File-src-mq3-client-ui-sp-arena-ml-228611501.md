@@ -42,16 +42,18 @@ const EXEC_APPEND = 2
 function services(context, variableValueFn, setValueFn, numTiersFn, executeTextFn)
 ```
 
+Creates a `mq3.client.ui_sp_arena.Services` record. Assigns `context` from `context`, `variableValueFn` from `variableValueFn`, `setValueFn` from `setValueFn`, `numTiersFn` from `numTiersFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `variableValueFn` | `dynamic` | — |  |
-| `setValueFn` | `dynamic` | — |  |
-| `numTiersFn` | `dynamic` | — |  |
-| `executeTextFn` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Value used to initialize `Services.context`. |
+| `variableValueFn` | `dynamic` | — | Value used to initialize `Services.variableValueFn`. |
+| `setValueFn` | `dynamic` | — | Value used to initialize `Services.setValueFn`. |
+| `numTiersFn` | `dynamic` | — | Value used to initialize `Services.numTiersFn`. |
+| `executeTextFn` | `dynamic` | — | Value used to initialize `Services.executeTextFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L24)
 
 - [mq3.client.ui_sp_arena.Services](Type-mq3-client-ui-sp-arena-services-942175455.md) — struct
 <a id="function-function-mq3-client-ui-sp-arena-start-function-start-host-infotext-src-mq3-client-ui-sp-arena-ml-934303825"></a>
@@ -65,8 +67,8 @@ UI_SPArena_Start. Host callbacks are the four original trap/UI boundaries.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `infoText` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.variableValueFn`, `host.setValueFn`, `host.numTiersFn`, `host.executeTextFn` and additional values. |
+| `infoText` | `dynamic` | — | Value used by `level=textNumbers.atoi(arenaInfo.value(infoText,"num"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L31)

@@ -9,8 +9,10 @@
 struct Animation
 ```
 
+Stores UI players missionpack animation record, including `firstFrame`, `numFrames`, `loopFrames`, `frameLerp`, `initialLerp`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L57)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-missionpack-animation-framelerp-framelerp-src-mq3-client-ui-players-missionpack-ml-393800619"></a>
 ### frameLerp
@@ -32,7 +34,7 @@ frameLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-missionpack-animation-initiallerp-initiallerp-src-mq3-client-ui-players-missionpack-ml-2110461719"></a>
 ### initialLerp
@@ -42,7 +44,7 @@ initialLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-missionpack-animation-loopframes-loopframes-src-mq3-client-ui-players-missionpack-ml-427009503"></a>
 ### loopFrames
@@ -52,7 +54,7 @@ loopFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-missionpack-animation-numframes-numframes-src-mq3-client-ui-players-missionpack-ml-2110626479"></a>
 ### numFrames
@@ -62,4 +64,4 @@ numFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L57)

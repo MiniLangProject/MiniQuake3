@@ -9,8 +9,10 @@
 struct Surface
 ```
 
+Data record for `mq3.renderer.portal_render_pass.Surface`; groups `normal`, `dist`, `faceIndex`, `textureIndex`, `distanceSquared`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ dist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-distancesquared-distancesquared-src-mq3-renderer-portal-render-pass-ml-719678036"></a>
 ### distanceSquared
@@ -32,7 +34,7 @@ distanceSquared
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-faceindex-faceindex-src-mq3-renderer-portal-render-pass-ml-759566072"></a>
 ### faceIndex
@@ -42,7 +44,7 @@ faceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-normal-normal-src-mq3-renderer-portal-render-pass-ml-82289370"></a>
 ### normal
@@ -52,7 +54,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-render-pass-surface-textureindex-textureindex-src-mq3-renderer-portal-render-pass-ml-1357438862"></a>
 ### textureIndex
@@ -62,4 +64,4 @@ textureIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L16)

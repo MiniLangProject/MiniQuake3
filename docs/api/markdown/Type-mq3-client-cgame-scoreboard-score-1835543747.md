@@ -9,8 +9,10 @@
 struct Score
 ```
 
+Stores client game scoreboard score record, including `client`, `score`, `ping`, `time`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
 
 <a id="field-field-mq3-client-cgame-scoreboard-score-ping-ping-src-mq3-client-cgame-scoreboard-ml-912821431"></a>
 ### ping
@@ -32,7 +34,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
 
 <a id="field-field-mq3-client-cgame-scoreboard-score-score-score-src-mq3-client-cgame-scoreboard-ml-1037827975"></a>
 ### score
@@ -42,7 +44,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
 
 <a id="field-field-mq3-client-cgame-scoreboard-score-time-time-src-mq3-client-cgame-scoreboard-ml-355629173"></a>
 ### time
@@ -52,4 +54,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)

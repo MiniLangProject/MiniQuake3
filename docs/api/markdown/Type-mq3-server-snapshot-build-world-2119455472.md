@@ -9,8 +9,10 @@
 struct World
 ```
 
+World record for server.snapshot_build, containing `active`, `snapshotCounter`, `entities`, `ring`, `ringCapacity`, `nextSnapshotEntities`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L26)
 
 <a id="field-field-mq3-server-snapshot-build-world-entities-entities-src-mq3-server-snapshot-build-ml-299091115"></a>
 ### entities
@@ -32,7 +34,7 @@ entities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L26)
 
 <a id="field-field-mq3-server-snapshot-build-world-nextsnapshotentities-nextsnapshotentities-src-mq3-server-snapshot-build-ml-1670057821"></a>
 ### nextSnapshotEntities
@@ -42,7 +44,7 @@ nextSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L26)
 
 <a id="field-field-mq3-server-snapshot-build-world-ring-ring-src-mq3-server-snapshot-build-ml-314733749"></a>
 ### ring
@@ -52,7 +54,7 @@ ring
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L26)
 
 <a id="field-field-mq3-server-snapshot-build-world-ringcapacity-ringcapacity-src-mq3-server-snapshot-build-ml-1366379389"></a>
 ### ringCapacity
@@ -62,7 +64,7 @@ ringCapacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L26)
 
 <a id="field-field-mq3-server-snapshot-build-world-snapshotcounter-snapshotcounter-src-mq3-server-snapshot-build-ml-1948865013"></a>
 ### snapshotCounter
@@ -72,4 +74,4 @@ snapshotCounter
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L26)

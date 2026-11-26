@@ -9,8 +9,10 @@
 struct Medal
 ```
 
+Stores client game newdraw medal record, including `accuracy`, `assists`, `defend`, `excellent`, `impressive`, `perfect` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 ## Members
 
@@ -22,7 +24,7 @@ accuracy
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-assists-assists-src-mq3-client-cgame-newdraw-ml-1024925092"></a>
 ### assists
@@ -32,7 +34,7 @@ assists
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-captures-captures-src-mq3-client-cgame-newdraw-ml-693797634"></a>
 ### captures
@@ -42,7 +44,7 @@ captures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-defend-defend-src-mq3-client-cgame-newdraw-ml-1154425800"></a>
 ### defend
@@ -52,7 +54,7 @@ defend
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-excellent-excellent-src-mq3-client-cgame-newdraw-ml-2037210644"></a>
 ### excellent
@@ -62,7 +64,7 @@ excellent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-gauntlet-gauntlet-src-mq3-client-cgame-newdraw-ml-1646704860"></a>
 ### gauntlet
@@ -72,7 +74,7 @@ gauntlet
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-impressive-impressive-src-mq3-client-cgame-newdraw-ml-1821704906"></a>
 ### impressive
@@ -82,7 +84,7 @@ impressive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
 
 <a id="field-field-mq3-client-cgame-newdraw-medal-perfect-perfect-src-mq3-client-cgame-newdraw-ml-1836672776"></a>
 ### perfect
@@ -92,4 +94,4 @@ perfect
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)

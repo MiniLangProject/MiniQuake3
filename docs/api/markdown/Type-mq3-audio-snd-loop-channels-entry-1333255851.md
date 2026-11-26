@@ -9,8 +9,10 @@
 struct Entry
 ```
 
+Entry record for audio.snd_loop_channels, containing `id`, `handle`, `origin`, `realLoop`, `doppler`, `dopplerScale`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-loop-channels-entry-doppler-doppler-src-mq3-audio-snd-loop-channels-ml-542983483"></a>
 ### doppler
@@ -32,7 +34,7 @@ doppler
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-loop-channels-entry-dopplerscale-dopplerscale-src-mq3-audio-snd-loop-channels-ml-759977639"></a>
 ### dopplerScale
@@ -42,7 +44,7 @@ dopplerScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-loop-channels-entry-handle-handle-src-mq3-audio-snd-loop-channels-ml-1524776371"></a>
 ### handle
@@ -52,7 +54,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-loop-channels-entry-id-id-src-mq3-audio-snd-loop-channels-ml-1022978149"></a>
 ### id
@@ -62,7 +64,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-loop-channels-entry-olddopplerscale-olddopplerscale-src-mq3-audio-snd-loop-channels-ml-1205736903"></a>
 ### oldDopplerScale
@@ -72,7 +74,7 @@ oldDopplerScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-loop-channels-entry-origin-origin-src-mq3-audio-snd-loop-channels-ml-1169524871"></a>
 ### origin
@@ -82,7 +84,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-loop-channels-entry-realloop-realloop-src-mq3-audio-snd-loop-channels-ml-571264531"></a>
 ### realLoop
@@ -92,4 +94,4 @@ realLoop
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L10)

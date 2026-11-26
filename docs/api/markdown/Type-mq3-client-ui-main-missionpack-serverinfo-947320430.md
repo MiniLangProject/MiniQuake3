@@ -9,8 +9,10 @@
 struct ServerInfo
 ```
 
+Stores UI main missionpack server info record, including `address`, `hostname`, `mapname`, `clients`, `maxClients`, `gametype` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-clients-clients-src-mq3-client-ui-main-missionpack-ml-777454502"></a>
 ### clients
@@ -32,7 +34,7 @@ clients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-favorite-favorite-src-mq3-client-ui-main-missionpack-ml-26417718"></a>
 ### favorite
@@ -42,7 +44,7 @@ favorite
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-gametype-gametype-src-mq3-client-ui-main-missionpack-ml-276514466"></a>
 ### gametype
@@ -52,7 +54,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-hostname-hostname-src-mq3-client-ui-main-missionpack-ml-2030069184"></a>
 ### hostname
@@ -62,7 +64,7 @@ hostname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-mapname-mapname-src-mq3-client-ui-main-missionpack-ml-1677653986"></a>
 ### mapname
@@ -72,7 +74,7 @@ mapname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-maxclients-maxclients-src-mq3-client-ui-main-missionpack-ml-443529938"></a>
 ### maxClients
@@ -82,7 +84,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-nettype-nettype-src-mq3-client-ui-main-missionpack-ml-780447638"></a>
 ### nettype
@@ -92,7 +94,7 @@ nettype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-ping-ping-src-mq3-client-ui-main-missionpack-ml-1918858510"></a>
 ### ping
@@ -102,7 +104,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-punkbuster-punkbuster-src-mq3-client-ui-main-missionpack-ml-109091468"></a>
 ### punkbuster
@@ -112,7 +114,7 @@ punkbuster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)
 
 <a id="field-field-mq3-client-ui-main-missionpack-serverinfo-visible-visible-src-mq3-client-ui-main-missionpack-ml-1816297050"></a>
 ### visible
@@ -122,4 +124,4 @@ visible
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L76)

@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Data record for `mq3.platform.win_wndproc_runtime.Runtime`; groups `activeApp`, `isMinimized`, `fullscreen`, `altTabDisabled`, `windowCreated`, `inputActive`, and 9 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 ## Members
 
@@ -22,7 +24,7 @@ activeApp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-alttabdisabled-alttabdisabled-src-mq3-platform-win-wndproc-runtime-ml-783347517"></a>
 ### altTabDisabled
@@ -32,7 +34,7 @@ altTabDisabled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-clearstatecount-clearstatecount-src-mq3-platform-win-wndproc-runtime-ml-1633922521"></a>
 ### clearStateCount
@@ -42,7 +44,7 @@ clearStateCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-events-events-src-mq3-platform-win-wndproc-runtime-ml-2123097183"></a>
 ### events
@@ -52,7 +54,7 @@ events
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-fullscreen-fullscreen-src-mq3-platform-win-wndproc-runtime-ml-400117627"></a>
 ### fullscreen
@@ -62,7 +64,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-inputactive-inputactive-src-mq3-platform-win-wndproc-runtime-ml-882707317"></a>
 ### inputActive
@@ -72,7 +74,7 @@ inputActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-isminimized-isminimized-src-mq3-platform-win-wndproc-runtime-ml-1875028377"></a>
 ### isMinimized
@@ -82,7 +84,7 @@ isMinimized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-logitechflip-logitechflip-src-mq3-platform-win-wndproc-runtime-ml-1741781829"></a>
 ### logitechFlip
@@ -92,7 +94,7 @@ logitechFlip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-mousebuttons-mousebuttons-src-mq3-platform-win-wndproc-runtime-ml-788960417"></a>
 ### mouseButtons
@@ -102,7 +104,7 @@ mouseButtons
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-quitrequested-quitrequested-src-mq3-platform-win-wndproc-runtime-ml-217879321"></a>
 ### quitRequested
@@ -112,7 +114,7 @@ quitRequested
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-soundactivations-soundactivations-src-mq3-platform-win-wndproc-runtime-ml-1621946689"></a>
 ### soundActivations
@@ -122,7 +124,7 @@ soundActivations
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-videorestart-videorestart-src-mq3-platform-win-wndproc-runtime-ml-107075581"></a>
 ### videoRestart
@@ -132,7 +134,7 @@ videoRestart
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-vidx-vidx-src-mq3-platform-win-wndproc-runtime-ml-327946195"></a>
 ### vidX
@@ -142,7 +144,7 @@ vidX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-vidy-vidy-src-mq3-platform-win-wndproc-runtime-ml-2021775229"></a>
 ### vidY
@@ -152,7 +154,7 @@ vidY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-runtime-windowcreated-windowcreated-src-mq3-platform-win-wndproc-runtime-ml-717787125"></a>
 ### windowCreated
@@ -162,4 +164,4 @@ windowCreated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)

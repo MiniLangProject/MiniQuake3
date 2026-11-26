@@ -9,8 +9,10 @@
 struct SndBuffer
 ```
 
+SndBuffer record for audio.snd_local, containing `sndChunk`, `next`, `size`, `adpcm`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ adpcm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
 
 <a id="field-field-mq3-audio-snd-local-sndbuffer-next-next-src-mq3-audio-snd-local-ml-383076610"></a>
 ### next
@@ -32,7 +34,7 @@ next
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
 
 <a id="field-field-mq3-audio-snd-local-sndbuffer-size-size-src-mq3-audio-snd-local-ml-1887442862"></a>
 ### size
@@ -42,7 +44,7 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
 
 <a id="field-field-mq3-audio-snd-local-sndbuffer-sndchunk-sndchunk-src-mq3-audio-snd-local-ml-27060728"></a>
 ### sndChunk
@@ -52,4 +54,4 @@ sndChunk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)

@@ -9,8 +9,10 @@
 struct Separator
 ```
 
+`Separator` record for ai item weights, containing `inventoryIndex`, `value`, `type`, `weight` and `minWeight` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ child
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-item-weights-separator-inventoryindex-inventoryindex-src-mq3-botlib-ai-item-weights-ml-610187458"></a>
 ### inventoryIndex
@@ -32,7 +34,7 @@ inventoryIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-item-weights-separator-maxweight-maxweight-src-mq3-botlib-ai-item-weights-ml-815583922"></a>
 ### maxWeight
@@ -42,7 +44,7 @@ maxWeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-item-weights-separator-minweight-minweight-src-mq3-botlib-ai-item-weights-ml-141611982"></a>
 ### minWeight
@@ -52,7 +54,7 @@ minWeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-item-weights-separator-type-type-src-mq3-botlib-ai-item-weights-ml-1621724658"></a>
 ### type
@@ -62,7 +64,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-item-weights-separator-value-value-src-mq3-botlib-ai-item-weights-ml-1260179902"></a>
 ### value
@@ -72,7 +74,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-item-weights-separator-weight-weight-src-mq3-botlib-ai-item-weights-ml-1678333602"></a>
 ### weight
@@ -82,4 +84,4 @@ weight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)

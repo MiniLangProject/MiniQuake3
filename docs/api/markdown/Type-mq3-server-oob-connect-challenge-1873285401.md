@@ -9,8 +9,10 @@
 struct Challenge
 ```
 
+Challenge record for server.oob_connect, containing `address`, `challenge`, `time`, `pingTime`, `firstTime`, `connected`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
 
 <a id="field-field-mq3-server-oob-connect-challenge-challenge-challenge-src-mq3-server-oob-connect-ml-1383776500"></a>
 ### challenge
@@ -32,7 +34,7 @@ challenge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
 
 <a id="field-field-mq3-server-oob-connect-challenge-connected-connected-src-mq3-server-oob-connect-ml-1683628220"></a>
 ### connected
@@ -42,7 +44,7 @@ connected
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
 
 <a id="field-field-mq3-server-oob-connect-challenge-firsttime-firsttime-src-mq3-server-oob-connect-ml-1222359292"></a>
 ### firstTime
@@ -52,7 +54,7 @@ firstTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
 
 <a id="field-field-mq3-server-oob-connect-challenge-pingtime-pingtime-src-mq3-server-oob-connect-ml-698225902"></a>
 ### pingTime
@@ -62,7 +64,7 @@ pingTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)
 
 <a id="field-field-mq3-server-oob-connect-challenge-time-time-src-mq3-server-oob-connect-ml-1169300938"></a>
 ### time
@@ -72,4 +74,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L33)

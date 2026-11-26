@@ -9,8 +9,10 @@
 struct MenuCommon
 ```
 
+Stores UI local menu common record, including `type`, `name`, `id`, `x`, `y`, `left` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 ## Members
 
@@ -22,7 +24,7 @@ bottom
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-callback-callback-src-mq3-client-ui-local-ml-1424592171"></a>
 ### callback
@@ -32,7 +34,7 @@ callback
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-flags-flags-src-mq3-client-ui-local-ml-991695541"></a>
 ### flags
@@ -42,7 +44,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-id-id-src-mq3-client-ui-local-ml-1266492351"></a>
 ### id
@@ -52,7 +54,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-left-left-src-mq3-client-ui-local-ml-1162800431"></a>
 ### left
@@ -62,7 +64,7 @@ left
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-menuposition-menuposition-src-mq3-client-ui-local-ml-642918653"></a>
 ### menuPosition
@@ -72,7 +74,7 @@ menuPosition
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-name-name-src-mq3-client-ui-local-ml-884933403"></a>
 ### name
@@ -82,7 +84,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-ownerdraw-ownerdraw-src-mq3-client-ui-local-ml-450579833"></a>
 ### ownerdraw
@@ -92,7 +94,7 @@ ownerdraw
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-parent-parent-src-mq3-client-ui-local-ml-1888086269"></a>
 ### parent
@@ -102,7 +104,7 @@ parent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-right-right-src-mq3-client-ui-local-ml-1074723781"></a>
 ### right
@@ -112,7 +114,7 @@ right
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-statusbar-statusbar-src-mq3-client-ui-local-ml-1831877797"></a>
 ### statusbar
@@ -122,7 +124,7 @@ statusbar
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-top-top-src-mq3-client-ui-local-ml-1071372013"></a>
 ### top
@@ -132,7 +134,7 @@ top
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-type-type-src-mq3-client-ui-local-ml-143361661"></a>
 ### type
@@ -142,7 +144,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-x-x-src-mq3-client-ui-local-ml-1819301869"></a>
 ### x
@@ -152,7 +154,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menucommon-y-y-src-mq3-client-ui-local-ml-920715289"></a>
 ### y
@@ -162,4 +164,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)

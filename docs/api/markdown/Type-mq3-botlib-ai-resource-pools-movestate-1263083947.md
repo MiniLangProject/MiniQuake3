@@ -9,8 +9,10 @@
 struct MoveState
 ```
 
+`MoveState` record for ai resource pools, containing `origin`, `velocity`, `viewOffset`, `entityNum` and `client` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-avoidreach-avoidreach-src-mq3-botlib-ai-resource-pools-ml-1804866805"></a>
 ### avoidReach
@@ -32,7 +34,7 @@ avoidReach
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-avoidreachtimes-avoidreachtimes-src-mq3-botlib-ai-resource-pools-ml-924348981"></a>
 ### avoidReachTimes
@@ -42,7 +44,7 @@ avoidReachTimes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-avoidreachtries-avoidreachtries-src-mq3-botlib-ai-resource-pools-ml-1119487217"></a>
 ### avoidReachTries
@@ -52,7 +54,7 @@ avoidReachTries
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-avoidspots-avoidspots-src-mq3-botlib-ai-resource-pools-ml-544240701"></a>
 ### avoidSpots
@@ -62,7 +64,7 @@ avoidSpots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-client-client-src-mq3-botlib-ai-resource-pools-ml-1989368115"></a>
 ### client
@@ -72,7 +74,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-entitynum-entitynum-src-mq3-botlib-ai-resource-pools-ml-1986338465"></a>
 ### entityNum
@@ -82,7 +84,7 @@ entityNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-grapplevisibletime-grapplevisibletime-src-mq3-botlib-ai-resource-pools-ml-786812517"></a>
 ### grappleVisibleTime
@@ -92,7 +94,7 @@ grappleVisibleTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-jumpreach-jumpreach-src-mq3-botlib-ai-resource-pools-ml-1116005285"></a>
 ### jumpReach
@@ -102,7 +104,7 @@ jumpReach
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-lastareanum-lastareanum-src-mq3-botlib-ai-resource-pools-ml-736002125"></a>
 ### lastAreaNum
@@ -112,7 +114,7 @@ lastAreaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-lastgoalareanum-lastgoalareanum-src-mq3-botlib-ai-resource-pools-ml-807459381"></a>
 ### lastGoalAreaNum
@@ -122,7 +124,7 @@ lastGoalAreaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-lastgrappledist-lastgrappledist-src-mq3-botlib-ai-resource-pools-ml-1360961705"></a>
 ### lastGrappleDist
@@ -132,7 +134,7 @@ lastGrappleDist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-lastorigin-lastorigin-src-mq3-botlib-ai-resource-pools-ml-1324953093"></a>
 ### lastOrigin
@@ -142,7 +144,7 @@ lastOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-lastreachnum-lastreachnum-src-mq3-botlib-ai-resource-pools-ml-393311843"></a>
 ### lastReachNum
@@ -152,7 +154,7 @@ lastReachNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-moveflags-moveflags-src-mq3-botlib-ai-resource-pools-ml-1265499961"></a>
 ### moveFlags
@@ -162,7 +164,7 @@ moveFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-numavoidspots-numavoidspots-src-mq3-botlib-ai-resource-pools-ml-1274346349"></a>
 ### numAvoidSpots
@@ -172,7 +174,7 @@ numAvoidSpots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-origin-origin-src-mq3-botlib-ai-resource-pools-ml-1780803201"></a>
 ### origin
@@ -182,7 +184,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-presencetype-presencetype-src-mq3-botlib-ai-resource-pools-ml-370890415"></a>
 ### presenceType
@@ -192,7 +194,7 @@ presenceType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-reachabilitytime-reachabilitytime-src-mq3-botlib-ai-resource-pools-ml-531727501"></a>
 ### reachabilityTime
@@ -202,7 +204,7 @@ reachabilityTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-reachareanum-reachareanum-src-mq3-botlib-ai-resource-pools-ml-2138442745"></a>
 ### reachAreaNum
@@ -212,7 +214,7 @@ reachAreaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-thinktime-thinktime-src-mq3-botlib-ai-resource-pools-ml-1501620425"></a>
 ### thinkTime
@@ -222,7 +224,7 @@ thinkTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-velocity-velocity-src-mq3-botlib-ai-resource-pools-ml-1036084883"></a>
 ### velocity
@@ -232,7 +234,7 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-viewangles-viewangles-src-mq3-botlib-ai-resource-pools-ml-290065943"></a>
 ### viewAngles
@@ -242,7 +244,7 @@ viewAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-movestate-viewoffset-viewoffset-src-mq3-botlib-ai-resource-pools-ml-858605617"></a>
 ### viewOffset
@@ -252,4 +254,4 @@ viewOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)

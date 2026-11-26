@@ -9,8 +9,10 @@
 struct EffectCommand
 ```
 
+Stores playable projectile view effect command record, including `kind`, `a`, `b`, `radius`, `red`, `green` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ a
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-view-effectcommand-b-b-src-mq3-client-playable-projectile-view-ml-183454199"></a>
 ### b
@@ -32,7 +34,7 @@ b
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-view-effectcommand-blue-blue-src-mq3-client-playable-projectile-view-ml-830358463"></a>
 ### blue
@@ -42,7 +44,7 @@ blue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-view-effectcommand-green-green-src-mq3-client-playable-projectile-view-ml-211441671"></a>
 ### green
@@ -52,7 +54,7 @@ green
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-view-effectcommand-kind-kind-src-mq3-client-playable-projectile-view-ml-1117227819"></a>
 ### kind
@@ -62,7 +64,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-view-effectcommand-radius-radius-src-mq3-client-playable-projectile-view-ml-330772195"></a>
 ### radius
@@ -72,7 +74,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-view-effectcommand-red-red-src-mq3-client-playable-projectile-view-ml-1303293699"></a>
 ### red
@@ -82,4 +84,4 @@ red
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_view.ml#L26)

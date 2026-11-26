@@ -9,8 +9,10 @@
 struct WorldLodPatch
 ```
 
+Data record for `mq3.renderer.world_patch_lod.WorldLodPatch`; groups `face`, `texture`, `lightmap`, `fog`, `grid`, `variants`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ face
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-fog-fog-src-mq3-renderer-world-patch-lod-ml-1358478734"></a>
 ### fog
@@ -32,7 +34,7 @@ fog
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-grid-grid-src-mq3-renderer-world-patch-lod-ml-546090986"></a>
 ### grid
@@ -42,7 +44,7 @@ grid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-lightmap-lightmap-src-mq3-renderer-world-patch-lod-ml-1429914658"></a>
 ### lightmap
@@ -52,7 +54,7 @@ lightmap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-texture-texture-src-mq3-renderer-world-patch-lod-ml-1392026234"></a>
 ### texture
@@ -62,7 +64,7 @@ texture
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodpatch-variants-variants-src-mq3-renderer-world-patch-lod-ml-491172054"></a>
 ### variants
@@ -72,4 +74,4 @@ variants
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)

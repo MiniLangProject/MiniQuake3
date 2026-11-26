@@ -9,8 +9,10 @@
 struct Settings
 ```
 
+Stores playable viewmodel settings record, including `horizontalFov`, `gunX`, `gunY`, `gunZ`, `modelScale`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ gunX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-guny-guny-src-mq3-client-playable-viewmodel-ml-1661144712"></a>
 ### gunY
@@ -32,7 +34,7 @@ gunY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-gunz-gunz-src-mq3-client-playable-viewmodel-ml-750277550"></a>
 ### gunZ
@@ -42,7 +44,7 @@ gunZ
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-horizontalfov-horizontalfov-src-mq3-client-playable-viewmodel-ml-1322536318"></a>
 ### horizontalFov
@@ -52,7 +54,7 @@ horizontalFov
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
 
 <a id="field-field-mq3-client-playable-viewmodel-settings-modelscale-modelscale-src-mq3-client-playable-viewmodel-ml-167526760"></a>
 ### modelScale
@@ -62,4 +64,4 @@ modelScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)

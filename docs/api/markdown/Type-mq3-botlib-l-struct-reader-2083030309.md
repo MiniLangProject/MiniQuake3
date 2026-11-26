@@ -12,7 +12,7 @@ struct Reader
 A reader can consume either a raw pc_parser Source or a precompiled handle. pending is local because l_struct.c needs exactly one-token pushback.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L31)
 
 ## Members
 
@@ -24,7 +24,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L31)
 
 <a id="field-field-mq3-botlib-l-struct-reader-pending-pending-src-mq3-botlib-l-struct-ml-1072831132"></a>
 ### pending
@@ -34,7 +34,7 @@ pending
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L31)
 
 <a id="field-field-mq3-botlib-l-struct-reader-registry-registry-src-mq3-botlib-l-struct-ml-47657038"></a>
 ### registry
@@ -44,7 +44,7 @@ registry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L31)
 
 <a id="field-field-mq3-botlib-l-struct-reader-source-source-src-mq3-botlib-l-struct-ml-2146095886"></a>
 ### source
@@ -54,7 +54,7 @@ source
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L31)
 
 <a id="field-field-mq3-botlib-l-struct-reader-sourcehandle-sourcehandle-src-mq3-botlib-l-struct-ml-244512098"></a>
 ### sourceHandle
@@ -64,4 +64,4 @@ sourceHandle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L31)

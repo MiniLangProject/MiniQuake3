@@ -9,8 +9,10 @@
 struct VmCvar
 ```
 
+VmCvar record for qcommon.cvar, containing `handle`, `modificationCount`, `value`, `integer`, `string`, `copyGeneration`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L57)
 
 ## Members
 
@@ -22,7 +24,7 @@ copyGeneration
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L63)
 
 <a id="field-field-mq3-qcommon-cvar-vmcvar-handle-handle-src-mq3-qcommon-cvar-ml-1292940160"></a>
 ### handle
@@ -32,7 +34,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L58)
 
 <a id="field-field-mq3-qcommon-cvar-vmcvar-integer-integer-src-mq3-qcommon-cvar-ml-1280281376"></a>
 ### integer
@@ -42,7 +44,7 @@ integer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L61)
 
 <a id="field-field-mq3-qcommon-cvar-vmcvar-modificationcount-modificationcount-src-mq3-qcommon-cvar-ml-1988875620"></a>
 ### modificationCount
@@ -52,7 +54,7 @@ modificationCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L59)
 
 <a id="field-field-mq3-qcommon-cvar-vmcvar-string-string-src-mq3-qcommon-cvar-ml-427168874"></a>
 ### string
@@ -62,7 +64,7 @@ string
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L62)
 
 <a id="field-field-mq3-qcommon-cvar-vmcvar-value-value-src-mq3-qcommon-cvar-ml-1174185116"></a>
 ### value
@@ -72,4 +74,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L60)

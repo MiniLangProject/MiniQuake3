@@ -23,13 +23,15 @@ Reachable from entry: **yes**
 function call0(fn, host)
 ```
 
+Compute call 0 in server.frame.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fn` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `fn` | `dynamic` | — | Fn used in `fn(host)` and `(fn != void)`. |
+| `host` | `dynamic` | — | Host used in `fn(host)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L33)
 
 <a id="constant-constant-mq3-server-frame-cs-serverinfo-const-cs-serverinfo-0-src-mq3-server-frame-ml-402189561"></a>
 ### CS_SERVERINFO
@@ -78,14 +80,16 @@ const CVAR_SYSTEMINFO = 8
 function cvarSet(host, name, value)
 ```
 
+Compute cvar set in server.frame.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record exposing `cvarSetFn`. |
+| `name` | `dynamic` | — | Name used in `host.cvarSetFn(host, name, value)`. |
+| `value` | `dynamic` | — | Value used in `host.cvarSetFn(host, name, value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L38)
 
 <a id="function-function-mq3-server-frame-run-function-run-state-msec-host-src-mq3-server-frame-ml-716877157"></a>
 ### run
@@ -98,12 +102,12 @@ Runs one outer server frame. All platform/VM effects are explicit services; ping
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msec` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `killServer`, `running`, `pauseClients`, `clPaused`, `svPaused`, `fps`, `timeResidual` and further fields. Updated in place: `killServer`, `svPaused`, `fps`, `timeResidual`, `restartTime`, `modifiedFlags` and further fields. |
+| `msec` | `dynamic` | — | Right integer operand; only its low 32 bits participate. |
+| `host` | `dynamic` | — | Record exposing `shutdownFn`, `pauseObservedFn`, `botFrameFn`, `sleepFn`, `commandFn`, `infoStringFn`, `setConfigstringFn` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L45)
 
 <a id="function-function-mq3-server-frame-runtime-function-runtime-src-mq3-server-frame-ml-832790798"></a>
 ### runtime
@@ -112,8 +116,10 @@ Runs one outer server frame. All platform/VM effects are explicit services; ping
 function runtime()
 ```
 
+Create `mq3.server.frame.Runtime` with killServer=0; running=0; clPaused=0; svPaused=0; 16 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L19)
 
 - [mq3.server.frame.Runtime](Type-mq3-server-frame-runtime-733694840.md) — struct
 <a id="function-function-mq3-server-frame-services-function-services-src-mq3-server-frame-ml-408716694"></a>
@@ -123,7 +129,9 @@ function runtime()
 function services()
 ```
 
+Create `mq3.server.frame.Services` with shutdownFn=void; cvarSetFn=void; botFrameFn=void; sleepFn=void; 13 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L26)
 
 - [mq3.server.frame.Services](Type-mq3-server-frame-services-969691596.md) — struct

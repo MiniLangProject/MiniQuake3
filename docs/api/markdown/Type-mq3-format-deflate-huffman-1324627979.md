@@ -9,8 +9,10 @@
 struct Huffman
 ```
 
+Huffman record for format.deflate, containing `counts`, `symbols`, `prefix`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ counts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L15)
 
 <a id="field-field-mq3-format-deflate-huffman-prefix-prefix-src-mq3-format-deflate-ml-1821626180"></a>
 ### prefix
@@ -32,7 +34,7 @@ prefix
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L17)
 
 <a id="field-field-mq3-format-deflate-huffman-symbols-symbols-src-mq3-format-deflate-ml-860695880"></a>
 ### symbols
@@ -42,4 +44,4 @@ symbols
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L16)

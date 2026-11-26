@@ -9,8 +9,10 @@
 struct VideoCvars
 ```
 
+Stores UI video video cvars record, including `mode`, `fullscreen`, `allowExtensions`, `picmip`, `vertexLight`, `textureBits` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ allowExtensions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-colorbits-colorbits-src-mq3-client-ui-video-ml-1788891629"></a>
 ### colorBits
@@ -32,7 +34,7 @@ colorBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-fullscreen-fullscreen-src-mq3-client-ui-video-ml-185412607"></a>
 ### fullscreen
@@ -42,7 +44,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-gldriver-gldriver-src-mq3-client-ui-video-ml-400600419"></a>
 ### glDriver
@@ -52,7 +54,7 @@ glDriver
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-lodbias-lodbias-src-mq3-client-ui-video-ml-1004510693"></a>
 ### lodBias
@@ -62,7 +64,7 @@ lodBias
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-mode-mode-src-mq3-client-ui-video-ml-1556341711"></a>
 ### mode
@@ -72,7 +74,7 @@ mode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-picmip-picmip-src-mq3-client-ui-video-ml-360401525"></a>
 ### picmip
@@ -82,7 +84,7 @@ picmip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-subdivisions-subdivisions-src-mq3-client-ui-video-ml-1492599261"></a>
 ### subdivisions
@@ -92,7 +94,7 @@ subdivisions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-texturebits-texturebits-src-mq3-client-ui-video-ml-248281097"></a>
 ### textureBits
@@ -102,7 +104,7 @@ textureBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-texturemode-texturemode-src-mq3-client-ui-video-ml-125576405"></a>
 ### textureMode
@@ -112,7 +114,7 @@ textureMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)
 
 <a id="field-field-mq3-client-ui-video-videocvars-vertexlight-vertexlight-src-mq3-client-ui-video-ml-257850581"></a>
 ### vertexLight
@@ -122,4 +124,4 @@ vertexLight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L34)

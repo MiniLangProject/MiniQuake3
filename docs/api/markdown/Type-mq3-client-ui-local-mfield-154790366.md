@@ -9,8 +9,10 @@
 struct MField
 ```
 
+Stores UI local m field record, including `cursor`, `scroll`, `widthInChars`, `buffer`, `maxchars`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 ## Members
 
@@ -22,7 +24,7 @@ buffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-mfield-cursor-cursor-src-mq3-client-ui-local-ml-532912316"></a>
 ### cursor
@@ -32,7 +34,7 @@ cursor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-mfield-maxchars-maxchars-src-mq3-client-ui-local-ml-1729081798"></a>
 ### maxchars
@@ -42,7 +44,7 @@ maxchars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-mfield-scroll-scroll-src-mq3-client-ui-local-ml-1888316750"></a>
 ### scroll
@@ -52,7 +54,7 @@ scroll
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-mfield-widthinchars-widthinchars-src-mq3-client-ui-local-ml-438903828"></a>
 ### widthInChars
@@ -62,4 +64,4 @@ widthInChars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)

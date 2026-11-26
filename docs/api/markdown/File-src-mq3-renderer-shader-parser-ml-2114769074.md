@@ -23,8 +23,10 @@ Reachable from entry: **yes**
 function blankStage()
 ```
 
+Constructs `mq3.renderer.shader_parser.Stage` with `active` = `true`, `mapMode` = `""`, `images` = `[]`, `animationSpeed` = `0.0` and the supplied remaining values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L177)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L212)
 
 <a id="function-function-mq3-renderer-shader-parser-blankwave-function-blankwave-src-mq3-renderer-shader-parser-ml-219695804"></a>
 ### blankWave
@@ -33,8 +35,10 @@ function blankStage()
 function blankWave()
 ```
 
+Constructs `mq3.renderer.shader_parser.Wave` with `func` = `0`, `base` = `0.0`, `amplitude` = `0.0`, `phase` = `0.0` and the supplied remaining values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L55)
 
 - [mq3.renderer.shader_parser.Deform](Type-mq3-renderer-shader-parser-deform-2039441621.md) — struct
 <a id="constant-constant-mq3-renderer-shader-parser-gls-atest-ge-80-const-gls-atest-ge-80-1073741824-src-mq3-renderer-shader-parser-ml-185965558"></a>
@@ -264,13 +268,15 @@ const GLS_SRCBLEND_ZERO = 1
 function hasValue(values, wanted)
 ```
 
+Returns `false` from `mq3.renderer.shader_parser.hasValue`; earlier branches return `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `wanted` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Sequence traversed as `value` while producing this result. |
+| `wanted` | `dynamic` | — | Input used by `for each value in values if value==wanted then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L59)
 
 <a id="function-function-mq3-renderer-shader-parser-lower-function-lower-text-src-mq3-renderer-shader-parser-ml-570270137"></a>
 ### lower
@@ -279,12 +285,14 @@ function hasValue(values, wanted)
 function lower(text)
 ```
 
+Calls `std.string.toLowerAscii` with `(text)` and returns its result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Argument 1 supplied to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L50)
 
 <a id="constant-constant-mq3-renderer-shader-parser-max-image-animations-const-max-image-animations-8-src-mq3-renderer-shader-parser-ml-219968291"></a>
 ### MAX_IMAGE_ANIMATIONS
@@ -313,12 +321,14 @@ const MAX_SHADER_STAGES = 8
 function nameToAFunc(name)
 ```
 
+Returns `0` from `mq3.renderer.shader_parser.nameToAFunc`; earlier branches return `GLS_ATEST_GT_0`, `GLS_ATEST_LT_80`, `GLS_ATEST_GE_80`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value forwarded as `text` to `mq3.renderer.shader_parser.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L63)
 
 <a id="function-function-mq3-renderer-shader-parser-nametodstblendmode-function-nametodstblendmode-name-src-mq3-renderer-shader-parser-ml-739405355"></a>
 ### nameToDstBlendMode
@@ -327,12 +337,14 @@ function nameToAFunc(name)
 function nameToDstBlendMode(name)
 ```
 
+Maps a case-insensitive OpenGL destination-blend token to packed shader state, defaulting to GL_ONE.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value forwarded as `text` to `mq3.renderer.shader_parser.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L89)
 
 <a id="function-function-mq3-renderer-shader-parser-nametogenfunc-function-nametogenfunc-name-src-mq3-renderer-shader-parser-ml-1744452087"></a>
 ### nameToGenFunc
@@ -341,12 +353,14 @@ function nameToDstBlendMode(name)
 function nameToGenFunc(name)
 ```
 
+Maps sine, square, triangle, sawtooth, inverse-sawtooth, or noise names to waveform IDs, defaulting to sine.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value forwarded as `text` to `mq3.renderer.shader_parser.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L104)
 
 <a id="function-function-mq3-renderer-shader-parser-nametosrcblendmode-function-nametosrcblendmode-name-src-mq3-renderer-shader-parser-ml-1697780947"></a>
 ### nameToSrcBlendMode
@@ -355,12 +369,14 @@ function nameToGenFunc(name)
 function nameToSrcBlendMode(name)
 ```
 
+Maps a case-insensitive OpenGL source-blend token to packed shader state, defaulting to GL_ONE.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value forwarded as `text` to `mq3.renderer.shader_parser.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L73)
 
 <a id="function-function-mq3-renderer-shader-parser-number-function-number-text-src-mq3-renderer-shader-parser-ml-493458139"></a>
 ### number
@@ -369,12 +385,14 @@ function nameToSrcBlendMode(name)
 function number(text)
 ```
 
+Calls `mq3.compat.numeric.f32` with `(numbers.atof(text))` and returns its result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Argument 1 supplied to `mq3.compat.textnumbers.atof`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L53)
 
 <a id="function-function-mq3-renderer-shader-parser-parse-function-parse-state-name-src-mq3-renderer-shader-parser-ml-912717154"></a>
 ### parse
@@ -383,13 +401,15 @@ function number(text)
 function parse(state, name)
 ```
 
+Builds `shader.stages`, `shader.portalRange`, `shader.cloudHeight`, `shader.surfaceParms`, `shader.noMipMaps` in `mq3.renderer.shader_parser.parse`; returns `shader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 supplied to `mq3.shared.parser.parseExt`. |
+| `name` | `dynamic` | — | Value used for `mq3.renderer.shader_parser.Shader.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L292)
 
 <a id="function-function-mq3-renderer-shader-parser-parsedeform-function-parsedeform-state-src-mq3-renderer-shader-parser-ml-708020069"></a>
 ### parseDeform
@@ -398,12 +418,14 @@ function parse(state, name)
 function parseDeform(state)
 ```
 
+Builds `mq3.renderer.shader_parser.Deform` using `mq3.shared.parser.parseExt`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 supplied to `mq3.shared.parser.parseExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L165)
 
 <a id="function-function-mq3-renderer-shader-parser-parseindexed-function-parseindexed-index-name-src-mq3-renderer-shader-parser-ml-1537275215"></a>
 ### parseIndexed
@@ -412,13 +434,15 @@ function parseDeform(state)
 function parseIndexed(index, name)
 ```
 
+Builds `state.offset` in `mq3.renderer.shader_parser.parseIndexed`; returns `parse(state,entry.name)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Record providing `index.text`. |
+| `name` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.shader_index.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L335)
 
 <a id="function-function-mq3-renderer-shader-parser-parsestage-function-parsestage-state-src-mq3-renderer-shader-parser-ml-94946657"></a>
 ### parseStage
@@ -427,12 +451,14 @@ function parseIndexed(index, name)
 function parseStage(state)
 ```
 
+Builds `stage.mapMode`, `stage.images`, `stage.isLightmap`, `stage.animationSpeed`, `stage.alphaFunc` in `mq3.renderer.shader_parser.parseStage`; returns `stage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 supplied to `mq3.shared.parser.parseExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L218)
 
 <a id="function-function-mq3-renderer-shader-parser-parsetexmod-function-parsetexmod-tokens-src-mq3-renderer-shader-parser-ml-1947215672"></a>
 ### parseTexMod
@@ -441,12 +467,14 @@ function parseStage(state)
 function parseTexMod(tokens)
 ```
 
+Builds `mq3.renderer.shader_parser.TexMod` for `mq3.renderer.shader_parser.parseTexMod`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `tokens` | `dynamic` | — |  |
+| `tokens` | `dynamic` | — | Indexed input read at `0`, `1`, `2`, `3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L191)
 
 <a id="function-function-mq3-renderer-shader-parser-parsetext-function-parsetext-text-name-src-mq3-renderer-shader-parser-ml-475080574"></a>
 ### parseText
@@ -455,13 +483,15 @@ function parseTexMod(tokens)
 function parseText(text, name)
 ```
 
+Calls `mq3.renderer.shader_parser.parse` with `(parser.create(text),name)` and returns its result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Argument 1 supplied to `mq3.shared.parser.create`. |
+| `name` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.shader_parser.parse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L331)
 
 <a id="function-function-mq3-renderer-shader-parser-parsevector-function-parsevector-state-count-src-mq3-renderer-shader-parser-ml-314142626"></a>
 ### parseVector
@@ -470,13 +500,15 @@ function parseText(text, name)
 function parseVector(state, count)
 ```
 
+Parses a parenthesized vector with the requested component count and reports missing tokens or delimiters.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 supplied to `mq3.shared.parser.parseExt`. |
+| `count` | `dynamic` | — | Input used by `for index=0 to count-1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L142)
 
 <a id="function-function-mq3-renderer-shader-parser-parsewave-function-parsewave-state-src-mq3-renderer-shader-parser-ml-1628150597"></a>
 ### parseWave
@@ -485,12 +517,14 @@ function parseVector(state, count)
 function parseWave(state)
 ```
 
+Builds `mq3.renderer.shader_parser.Wave` using `mq3.shared.parser.parseExt`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 supplied to `mq3.shared.parser.parseExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L133)
 
 <a id="function-function-mq3-renderer-shader-parser-restofline-function-restofline-state-src-mq3-renderer-shader-parser-ml-1917163149"></a>
 ### restOfLine
@@ -499,12 +533,14 @@ function parseWave(state)
 function restOfLine(state)
 ```
 
+Returns `values` from `mq3.renderer.shader_parser.restOfLine`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 supplied to `mq3.shared.parser.parseExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L155)
 
 - [mq3.renderer.shader_parser.Shader](Type-mq3-renderer-shader-parser-shader-1518855685.md) — struct
 <a id="function-function-mq3-renderer-shader-parser-skipline-function-skipline-state-src-mq3-renderer-shader-parser-ml-518163397"></a>
@@ -514,12 +550,14 @@ function restOfLine(state)
 function skipLine(state)
 ```
 
+Returns `1` from `mq3.renderer.shader_parser.skipLine`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.shader_parser.restOfLine`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L287)
 
 <a id="function-function-mq3-renderer-shader-parser-sortvalue-function-sortvalue-name-src-mq3-renderer-shader-parser-ml-480984821"></a>
 ### sortValue
@@ -528,12 +566,14 @@ function skipLine(state)
 function sortValue(name)
 ```
 
+Computes `sortValue` from `number(name)` using `mq3.renderer.shader_parser.lower`, `mq3.renderer.shader_parser.number`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value forwarded as `text` to `mq3.renderer.shader_parser.lower`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L117)
 
 - [mq3.renderer.shader_parser.Stage](Type-mq3-renderer-shader-parser-stage-1079226850.md) — struct
 - [mq3.renderer.shader_parser.TexMod](Type-mq3-renderer-shader-parser-texmod-1184446339.md) — struct

@@ -25,13 +25,15 @@ Reachable from entry: **no**
 function camera(level, ent)
 ```
 
+Update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.s.clientNum` during `camera`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r` and `s`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.s.clientNum` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L68)
 
 <a id="function-function-mq3-game-portals-locatecamera-function-locatecamera-level-ent-src-mq3-game-portals-ml-1504841795"></a>
 ### locateCamera
@@ -40,13 +42,15 @@ function camera(level, ent)
 function locateCamera(level, ent)
 ```
 
+Update `ent.r.ownerNum`, `ent.s.frame`, `ent.s.powerups` and `ent.s.clientNum` and related state during `locateCamera`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `target`, `r` and `s`. May update `ent.r.ownerNum`, `ent.s.frame` and `ent.s.powerups` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L16)
 
 <a id="function-function-mq3-game-portals-surface-function-surface-level-ent-src-mq3-game-portals-ml-1855125617"></a>
 ### surface
@@ -55,10 +59,12 @@ function locateCamera(level, ent)
 function surface(level, ent)
 ```
 
+Update `ent.r.mins[axis]`, `ent.r.maxs[axis]`, `ent.r.svFlags` and `ent.s.eType` and related state during `surface`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`, `s`, `target`, `think` and `nextthink`. May update `ent.r.mins[axis]`, `ent.r.maxs[axis]` and `ent.r.svFlags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L48)

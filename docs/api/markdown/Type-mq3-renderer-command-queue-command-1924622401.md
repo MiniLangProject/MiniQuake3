@@ -9,8 +9,10 @@
 struct Command
 ```
 
+Data record for `mq3.renderer.command_queue.Command`; groups `id`, `bytes`, `values`, `shader`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ bytes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-command-id-id-src-mq3-renderer-command-queue-ml-1534085958"></a>
 ### id
@@ -32,7 +34,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-command-shader-shader-src-mq3-renderer-command-queue-ml-48912690"></a>
 ### shader
@@ -42,7 +44,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-command-values-values-src-mq3-renderer-command-queue-ml-841531384"></a>
 ### values
@@ -52,4 +54,4 @@ values
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)

@@ -9,8 +9,10 @@
 struct Arena
 ```
 
+Stores UI start server arena record, including `map`, `type`, `bots`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ bots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
 
 <a id="field-field-mq3-client-ui-start-server-arena-map-map-src-mq3-client-ui-start-server-ml-903212250"></a>
 ### map
@@ -32,7 +34,7 @@ map
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
 
 <a id="field-field-mq3-client-ui-start-server-arena-type-type-src-mq3-client-ui-start-server-ml-1972046922"></a>
 ### type
@@ -42,4 +44,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)

@@ -25,12 +25,12 @@ Catalog is intentionally structural: both qvm_scene_materials.Catalog and qvm_2d
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.qvm_video_materials.bindStages`. |
+| `catalog` | `dynamic` | — | Record providing `catalog.materials`. |
+| `now` | `dynamic` | — | Value forwarded as `now` to `mq3.renderer.qvm_video_materials.bindStages`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L68)
 
 - [mq3.renderer.qvm_video_materials.Binding](Type-mq3-renderer-qvm-video-materials-binding-1368471411.md) — struct
 <a id="function-function-mq3-renderer-qvm-video-materials-bindingfor-function-bindingfor-state-path-src-mq3-renderer-qvm-video-materials-ml-1828604228"></a>
@@ -40,13 +40,15 @@ Catalog is intentionally structural: both qvm_scene_materials.Catalog and qvm_2d
 function bindingFor(state, path)
 ```
 
+Returns `void` from `mq3.renderer.qvm_video_materials.bindingFor`; earlier branches return `binding`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `path` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.bindings`. |
+| `path` | `dynamic` | — | Argument 2 supplied to `stringEqualsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L33)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-bindstage-function-bindstage-state-stage-now-src-mq3-renderer-qvm-video-materials-ml-1848578709"></a>
 ### bindStage
@@ -55,14 +57,16 @@ function bindingFor(state, path)
 function bindStage(state, stage, now)
 ```
 
+Updates `state.failedBindings`, `state.bindings`, `stage.slots` in `mq3.renderer.qvm_video_materials.bindStage`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `stage` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.failedBindings`, `state.bindings`. |
+| `stage` | `dynamic` | — | Mutable record or buffer; this call updates `stage.slots`. |
+| `now` | `dynamic` | — | Argument 8 supplied to `mq3.client.cinematic_runtime.play`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L41)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-bindstages-function-bindstages-state-stages-now-src-mq3-renderer-qvm-video-materials-ml-119984940"></a>
 ### bindStages
@@ -71,14 +75,16 @@ function bindStage(state, stage, now)
 function bindStages(state, stages, now)
 ```
 
+Registers video-backed material stages and returns how many stage bindings were created.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `stages` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.qvm_video_materials.bindStage`. |
+| `stages` | `dynamic` | — | Sequence traversed as `stage` while producing this result. |
+| `now` | `dynamic` | — | Value forwarded as `now` to `mq3.renderer.qvm_video_materials.bindStage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L59)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-close-function-close-state-src-mq3-renderer-qvm-video-materials-ml-514153837"></a>
 ### close
@@ -87,12 +93,14 @@ function bindStages(state, stages, now)
 function close(state)
 ```
 
+Updates `state.bindings` in `mq3.renderer.qvm_video_materials.close`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.bindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L104)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-create-function-create-cinematicstate-firstscratchslot-scratchslotcount-src-mq3-renderer-qvm-video-materials-ml-793977623"></a>
 ### create
@@ -101,14 +109,16 @@ function close(state)
 function create(cinematicState, firstScratchSlot, scratchSlotCount)
 ```
 
+Builds `mq3.renderer.qvm_video_materials.State` for `mq3.renderer.qvm_video_materials.create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `cinematicState` | `dynamic` | — |  |
-| `firstScratchSlot` | `dynamic` | — |  |
-| `scratchSlotCount` | `dynamic` | — |  |
+| `cinematicState` | `dynamic` | — | Initial value for `mq3.renderer.qvm_video_materials.State.cinematics`. |
+| `firstScratchSlot` | `dynamic` | — | Initial value for `mq3.renderer.qvm_video_materials.State.firstScratchSlot`. |
+| `scratchSlotCount` | `dynamic` | — | Initial value for `mq3.renderer.qvm_video_materials.State.scratchSlotCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L26)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-fail-function-fail-message-src-mq3-renderer-qvm-video-materials-ml-56022007"></a>
 ### fail
@@ -117,12 +127,14 @@ function create(cinematicState, firstScratchSlot, scratchSlotCount)
 function fail(message)
 ```
 
+Creates error `7694` with message `"QVM video materials: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Input used in the result expression `error(7694,"QVM video materials: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L21)
 
 <a id="constant-constant-mq3-renderer-qvm-video-materials-scratch-height-const-scratch-height-256-src-mq3-renderer-qvm-video-materials-ml-1501043290"></a>
 ### SCRATCH_HEIGHT
@@ -151,12 +163,14 @@ const SCRATCH_WIDTH = 256
 function scratchPixels(frame)
 ```
 
+Builds `output[target]`, `output[target+1]`, `output[target+2]`, `output[target+3]` in `mq3.renderer.qvm_video_materials.scratchPixels`; returns `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `frame` | `dynamic` | — |  |
+| `frame` | `dynamic` | — | Record providing `frame.width`, `frame.height`, `frame.pixels`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L75)
 
 - [mq3.renderer.qvm_video_materials.State](Type-mq3-renderer-qvm-video-materials-state-845008115.md) — struct
 <a id="function-function-mq3-renderer-qvm-video-materials-update-function-update-state-now-src-mq3-renderer-qvm-video-materials-ml-1174890167"></a>
@@ -166,12 +180,14 @@ function scratchPixels(frame)
 function update(state, now)
 ```
 
+Advances bound cinematics and returns resized scratch-texture uploads for dirty video frames.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.bindings`, `state.cinematics`. |
+| `now` | `dynamic` | — | Argument 3 supplied to `mq3.client.cinematic_runtime.run`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L92)
 
 - [mq3.renderer.qvm_video_materials.Upload](Type-mq3-renderer-qvm-video-materials-upload-1782071811.md) — struct

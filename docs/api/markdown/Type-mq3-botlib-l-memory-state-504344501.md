@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for l memory, containing `blocks`, `nextHandle`, `headerSize`, `allocatedmemory` and `totalmemorysize` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-allocatedmemory-allocatedmemory-src-mq3-botlib-l-memory-ml-454727722"></a>
 ### allocatedmemory
@@ -32,7 +34,7 @@ allocatedmemory
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-availablebytes-availablebytes-src-mq3-botlib-l-memory-ml-1923020966"></a>
 ### availableBytes
@@ -42,7 +44,7 @@ availableBytes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-blocks-blocks-src-mq3-botlib-l-memory-ml-742873242"></a>
 ### blocks
@@ -52,7 +54,7 @@ blocks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-diagnostics-diagnostics-src-mq3-botlib-l-memory-ml-1282197666"></a>
 ### diagnostics
@@ -62,7 +64,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-headersize-headersize-src-mq3-botlib-l-memory-ml-76368514"></a>
 ### headerSize
@@ -72,7 +74,7 @@ headerSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-memorymanager-memorymanager-src-mq3-botlib-l-memory-ml-907769218"></a>
 ### memoryManager
@@ -82,7 +84,7 @@ memoryManager
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-nexthandle-nexthandle-src-mq3-botlib-l-memory-ml-538902344"></a>
 ### nextHandle
@@ -92,7 +94,7 @@ nextHandle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-numblocks-numblocks-src-mq3-botlib-l-memory-ml-1335538898"></a>
 ### numblocks
@@ -102,7 +104,7 @@ numblocks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)
 
 <a id="field-field-mq3-botlib-l-memory-state-totalmemorysize-totalmemorysize-src-mq3-botlib-l-memory-ml-704473390"></a>
 ### totalmemorysize
@@ -112,4 +114,4 @@ totalmemorysize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L14)

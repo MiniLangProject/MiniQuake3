@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.snapshot_schedule, containing `state`, `nextSnapshotTime`, `rate`, `netchan`, `slot`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ netchan
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-nextsnapshottime-nextsnapshottime-src-mq3-server-snapshot-schedule-ml-1666931574"></a>
 ### nextSnapshotTime
@@ -32,7 +34,7 @@ nextSnapshotTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-rate-rate-src-mq3-server-snapshot-schedule-ml-215174318"></a>
 ### rate
@@ -42,7 +44,7 @@ rate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-slot-slot-src-mq3-server-snapshot-schedule-ml-1786646002"></a>
 ### slot
@@ -52,7 +54,7 @@ slot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)
 
 <a id="field-field-mq3-server-snapshot-schedule-client-state-state-src-mq3-server-snapshot-schedule-ml-289610250"></a>
 ### state
@@ -62,4 +64,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L14)

@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for vm.syscall_common, containing `cvars`, `commands`, `context`, `printFn`, `errorFn`, `millisecondsFn`, and 5 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ closeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L42)
 
 <a id="field-field-mq3-vm-syscall-common-services-commands-commands-src-mq3-vm-syscall-common-ml-1456203837"></a>
 ### commands
@@ -32,7 +34,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L33)
 
 <a id="field-field-mq3-vm-syscall-common-services-consolefn-consolefn-src-mq3-vm-syscall-common-ml-631088341"></a>
 ### consoleFn
@@ -42,7 +44,7 @@ consoleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L38)
 
 <a id="field-field-mq3-vm-syscall-common-services-context-context-src-mq3-vm-syscall-common-ml-692994341"></a>
 ### context
@@ -52,7 +54,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L34)
 
 <a id="field-field-mq3-vm-syscall-common-services-cvars-cvars-src-mq3-vm-syscall-common-ml-561106537"></a>
 ### cvars
@@ -62,7 +64,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L32)
 
 <a id="field-field-mq3-vm-syscall-common-services-errorfn-errorfn-src-mq3-vm-syscall-common-ml-1072097549"></a>
 ### errorFn
@@ -72,7 +74,7 @@ errorFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L36)
 
 <a id="field-field-mq3-vm-syscall-common-services-millisecondsfn-millisecondsfn-src-mq3-vm-syscall-common-ml-641172077"></a>
 ### millisecondsFn
@@ -82,7 +84,7 @@ millisecondsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L37)
 
 <a id="field-field-mq3-vm-syscall-common-services-openfn-openfn-src-mq3-vm-syscall-common-ml-1459803417"></a>
 ### openFn
@@ -92,7 +94,7 @@ openFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L39)
 
 <a id="field-field-mq3-vm-syscall-common-services-printfn-printfn-src-mq3-vm-syscall-common-ml-543154621"></a>
 ### printFn
@@ -102,7 +104,7 @@ printFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L35)
 
 <a id="field-field-mq3-vm-syscall-common-services-readfn-readfn-src-mq3-vm-syscall-common-ml-1162967453"></a>
 ### readFn
@@ -112,7 +114,7 @@ readFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L40)
 
 <a id="field-field-mq3-vm-syscall-common-services-writefn-writefn-src-mq3-vm-syscall-common-ml-845174169"></a>
 ### writeFn
@@ -122,4 +124,4 @@ writeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L41)

@@ -9,8 +9,10 @@
 struct Row
 ```
 
+`Row` record for cvars, containing `vmName`, `name`, `defaultString`, `flags` and `modificationCount` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ defaultString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L12)
 
 <a id="field-field-mq3-game-cvars-row-flags-flags-src-mq3-game-cvars-ml-231857583"></a>
 ### flags
@@ -32,7 +34,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L13)
 
 <a id="field-field-mq3-game-cvars-row-modificationcount-modificationcount-src-mq3-game-cvars-ml-1355774587"></a>
 ### modificationCount
@@ -42,7 +44,7 @@ modificationCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L14)
 
 <a id="field-field-mq3-game-cvars-row-name-name-src-mq3-game-cvars-ml-1520065673"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L11)
 
 <a id="field-field-mq3-game-cvars-row-teamshader-teamshader-src-mq3-game-cvars-ml-1937704111"></a>
 ### teamShader
@@ -62,7 +64,7 @@ teamShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L16)
 
 <a id="field-field-mq3-game-cvars-row-trackchange-trackchange-src-mq3-game-cvars-ml-795146891"></a>
 ### trackChange
@@ -72,7 +74,7 @@ trackChange
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L15)
 
 <a id="field-field-mq3-game-cvars-row-vm-vm-src-mq3-game-cvars-ml-278243621"></a>
 ### vm
@@ -82,7 +84,7 @@ vm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L17)
 
 <a id="field-field-mq3-game-cvars-row-vmname-vmname-src-mq3-game-cvars-ml-2027417259"></a>
 ### vmName
@@ -92,4 +94,4 @@ vmName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L10)

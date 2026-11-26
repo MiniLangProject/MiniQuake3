@@ -9,8 +9,10 @@
 struct CombatPulse
 ```
 
+Stores playable combat view combat pulse record, including `recoil`, `muzzle`, `hit`, `damage`, `kill`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ damage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-hit-hit-src-mq3-client-playable-combat-view-ml-500564018"></a>
 ### hit
@@ -32,7 +34,7 @@ hit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-kill-kill-src-mq3-client-playable-combat-view-ml-1655862218"></a>
 ### kill
@@ -42,7 +44,7 @@ kill
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-muzzle-muzzle-src-mq3-client-playable-combat-view-ml-1526994340"></a>
 ### muzzle
@@ -52,7 +54,7 @@ muzzle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)
 
 <a id="field-field-mq3-client-playable-combat-view-combatpulse-recoil-recoil-src-mq3-client-playable-combat-view-ml-1003455402"></a>
 ### recoil
@@ -62,4 +64,4 @@ recoil
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L18)

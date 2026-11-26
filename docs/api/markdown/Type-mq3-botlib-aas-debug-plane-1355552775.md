@@ -9,8 +9,10 @@
 struct Plane
 ```
 
+`Plane` record for aas debug, containing `normal` and `dist`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 ## Members
 
@@ -22,7 +24,7 @@ dist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-plane-normal-normal-src-mq3-botlib-aas-debug-ml-244126999"></a>
 ### normal
@@ -32,4 +34,4 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)

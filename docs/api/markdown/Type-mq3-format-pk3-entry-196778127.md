@@ -9,8 +9,10 @@
 struct Entry
 ```
 
+Entry record for format.pk3, containing `name`, `version`, `versionNeeded`, `flags`, `method`, `dosDate`, and 12 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ centralExtra
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L26)
 
 <a id="field-field-mq3-format-pk3-entry-centraloffset-centraloffset-src-mq3-format-pk3-ml-1618252407"></a>
 ### centralOffset
@@ -32,7 +34,7 @@ centralOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L25)
 
 <a id="field-field-mq3-format-pk3-entry-checksum-checksum-src-mq3-format-pk3-ml-127014181"></a>
 ### checksum
@@ -42,7 +44,7 @@ checksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L21)
 
 <a id="field-field-mq3-format-pk3-entry-comment-comment-src-mq3-format-pk3-ml-1816313115"></a>
 ### comment
@@ -52,7 +54,7 @@ comment
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L27)
 
 <a id="field-field-mq3-format-pk3-entry-compressedsize-compressedsize-src-mq3-format-pk3-ml-460328823"></a>
 ### compressedSize
@@ -62,7 +64,7 @@ compressedSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L22)
 
 <a id="field-field-mq3-format-pk3-entry-diskstart-diskstart-src-mq3-format-pk3-ml-782579843"></a>
 ### diskStart
@@ -72,7 +74,7 @@ diskStart
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L28)
 
 <a id="field-field-mq3-format-pk3-entry-dosdate-dosdate-src-mq3-format-pk3-ml-1458153015"></a>
 ### dosDate
@@ -82,7 +84,7 @@ dosDate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L20)
 
 <a id="field-field-mq3-format-pk3-entry-externalattributes-externalattributes-src-mq3-format-pk3-ml-1453543103"></a>
 ### externalAttributes
@@ -92,7 +94,7 @@ externalAttributes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L30)
 
 <a id="field-field-mq3-format-pk3-entry-flags-flags-src-mq3-format-pk3-ml-241394919"></a>
 ### flags
@@ -102,7 +104,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L18)
 
 <a id="field-field-mq3-format-pk3-entry-internalattributes-internalattributes-src-mq3-format-pk3-ml-1680007255"></a>
 ### internalAttributes
@@ -112,7 +114,7 @@ internalAttributes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L29)
 
 <a id="field-field-mq3-format-pk3-entry-localoffset-localoffset-src-mq3-format-pk3-ml-1115577231"></a>
 ### localOffset
@@ -122,7 +124,7 @@ localOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L24)
 
 <a id="field-field-mq3-format-pk3-entry-method-method-src-mq3-format-pk3-ml-304300829"></a>
 ### method
@@ -132,7 +134,7 @@ method
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L19)
 
 <a id="field-field-mq3-format-pk3-entry-name-name-src-mq3-format-pk3-ml-1402328065"></a>
 ### name
@@ -142,7 +144,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L15)
 
 <a id="field-field-mq3-format-pk3-entry-size-size-src-mq3-format-pk3-ml-1037092069"></a>
 ### size
@@ -152,7 +154,7 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L23)
 
 <a id="field-field-mq3-format-pk3-entry-sourcedirectoryoffset-sourcedirectoryoffset-src-mq3-format-pk3-ml-1811552327"></a>
 ### sourceDirectoryOffset
@@ -162,7 +164,7 @@ sourceDirectoryOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L32)
 
 <a id="field-field-mq3-format-pk3-entry-sourcepath-sourcepath-src-mq3-format-pk3-ml-153377515"></a>
 ### sourcePath
@@ -172,7 +174,7 @@ sourcePath
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L31)
 
 <a id="field-field-mq3-format-pk3-entry-version-version-src-mq3-format-pk3-ml-756469275"></a>
 ### version
@@ -182,7 +184,7 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L16)
 
 <a id="field-field-mq3-format-pk3-entry-versionneeded-versionneeded-src-mq3-format-pk3-ml-674118419"></a>
 ### versionNeeded
@@ -192,4 +194,4 @@ versionNeeded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L17)

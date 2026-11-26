@@ -9,8 +9,10 @@
 struct Model
 ```
 
+Model record for format.md3, containing `name`, `flags`, `numFrames`, `numTags`, `numSurfaces`, `numSkins`, and 4 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 ## Members
 
@@ -22,7 +24,7 @@ bounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-flags-flags-src-mq3-format-md3-ml-1544786422"></a>
 ### flags
@@ -32,7 +34,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-frames-frames-src-mq3-format-md3-ml-1681532110"></a>
 ### frames
@@ -42,7 +44,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-name-name-src-mq3-format-md3-ml-882597840"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-numframes-numframes-src-mq3-format-md3-ml-1025178558"></a>
 ### numFrames
@@ -62,7 +64,7 @@ numFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-numskins-numskins-src-mq3-format-md3-ml-602817910"></a>
 ### numSkins
@@ -72,7 +74,7 @@ numSkins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-numsurfaces-numsurfaces-src-mq3-format-md3-ml-552396886"></a>
 ### numSurfaces
@@ -82,7 +84,7 @@ numSurfaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-numtags-numtags-src-mq3-format-md3-ml-274752382"></a>
 ### numTags
@@ -92,7 +94,7 @@ numTags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-surfaces-surfaces-src-mq3-format-md3-ml-521059038"></a>
 ### surfaces
@@ -102,7 +104,7 @@ surfaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
 
 <a id="field-field-mq3-format-md3-model-tags-tags-src-mq3-format-md3-ml-1737686620"></a>
 ### tags
@@ -112,4 +114,4 @@ tags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)

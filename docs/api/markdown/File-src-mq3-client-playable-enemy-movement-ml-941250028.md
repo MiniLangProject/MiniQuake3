@@ -21,14 +21,16 @@ Reachable from entry: **yes**
 function configure(traceFn, context, origin)
 ```
 
+Calls `mq3.game.movement.create`, `mq3.compat.numeric.f32` from playable enemy movement `configure`. The final path returns `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `traceFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `traceFn` | `dynamic` | — | Collision-trace callback used to test the requested movement or visibility segment. |
+| `context` | `dynamic` | — | context record passed to the playable enemy movement helper calls. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L39)
 
 <a id="function-function-mq3-client-playable-enemy-movement-establishground-function-establishground-state-src-mq3-client-playable-enemy-movement-ml-39538349"></a>
 ### establishGround
@@ -37,12 +39,14 @@ function configure(traceFn, context, origin)
 function establishGround(state)
 ```
 
+Updates `state.groundPlane`, `state.walking`, `state.groundNormal`, `state.groundFlags` during playable enemy movement `establishGround`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable playable enemy movement record/storage; this routine assigns `state.groundPlane`, `state.walking`, `state.groundNormal`, `state.groundFlags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L49)
 
 <a id="function-function-mq3-client-playable-enemy-movement-fail-function-fail-message-src-mq3-client-playable-enemy-movement-ml-1028072407"></a>
 ### fail
@@ -51,12 +55,14 @@ function establishGround(state)
 function fail(message)
 ```
 
+Creates the playable enemy movement error `7550` with diagnostic text `"preview enemy movement: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview enemy movement: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-enemy-movement-ground-normal-const-ground-normal-0-7-src-mq3-client-playable-enemy-movement-ml-11415198"></a>
 ### GROUND_NORMAL
@@ -85,14 +91,16 @@ const GROUND_PROBE = 24
 function moveOrigin(world, origin, desiredDelta)
 ```
 
+Calls `mq3.client.playable_enemy_movement.moveOriginWithTrace` from playable enemy movement `moveOrigin`. The final path returns `moveOriginWithTrace(worldTrace,world,origin,desiredDelta)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `desiredDelta` | `dynamic` | — |  |
+| `world` | `dynamic` | — | world record passed to the playable enemy movement helper calls. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `desiredDelta` | `dynamic` | — | Value used by `return moveOriginWithTrace(worldTrace,world,origin,desiredDelta)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L98)
 
 <a id="function-function-mq3-client-playable-enemy-movement-moveoriginwithtrace-function-moveoriginwithtrace-tracefn-context-origin-desireddelta-src-mq3-client-playable-enemy-movement-ml-109436888"></a>
 ### moveOriginWithTrace
@@ -105,13 +113,13 @@ Move by a desired world-space displacement. The shared movement kernel slides al
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `traceFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `desiredDelta` | `dynamic` | — |  |
+| `traceFn` | `dynamic` | — | Collision-trace callback used to test the requested movement or visibility segment. |
+| `context` | `dynamic` | — | context record passed to the playable enemy movement helper calls. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `desiredDelta` | `dynamic` | — | Sequence read at `desiredDelta[0]`, `desiredDelta[1]`, `desiredDelta[2]`, `desiredDelta[axis]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L69)
 
 <a id="function-function-mq3-client-playable-enemy-movement-movetarget-function-movetarget-world-target-desireddelta-src-mq3-client-playable-enemy-movement-ml-778281481"></a>
 ### moveTarget
@@ -120,14 +128,16 @@ Move by a desired world-space displacement. The shared movement kernel slides al
 function moveTarget(world, target, desiredDelta)
 ```
 
+Calls `mq3.client.playable_enemy_movement.moveTargetWithTrace` from playable enemy movement `moveTarget`. The final path returns `moveTargetWithTrace(worldTrace,world,target,desiredDelta)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-| `desiredDelta` | `dynamic` | — |  |
+| `world` | `dynamic` | — | world record passed to the playable enemy movement helper calls. |
+| `target` | `dynamic` | — | Value used by `return moveTargetWithTrace(worldTrace,world,target,desiredDelta)`. |
+| `desiredDelta` | `dynamic` | — | Value used by `return moveTargetWithTrace(worldTrace,world,target,desiredDelta)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L119)
 
 <a id="function-function-mq3-client-playable-enemy-movement-movetargetwithtrace-function-movetargetwithtrace-tracefn-context-target-desireddelta-src-mq3-client-playable-enemy-movement-ml-1718379451"></a>
 ### moveTargetWithTrace
@@ -140,13 +150,13 @@ Adapter used by preview code: target only needs a three-component origin.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `traceFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-| `desiredDelta` | `dynamic` | — |  |
+| `traceFn` | `dynamic` | — | Collision-trace callback used to test the requested movement or visibility segment. |
+| `context` | `dynamic` | — | context record passed to the playable enemy movement helper calls. |
+| `target` | `dynamic` | — | Mutable playable enemy movement record/storage; this routine assigns `target.origin`. |
+| `desiredDelta` | `dynamic` | — | Value used by `result=moveOriginWithTrace(traceFn,context,target.origin,desiredDelta)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L108)
 
 <a id="constant-constant-mq3-client-playable-enemy-movement-player-mask-const-player-mask-33619969-src-mq3-client-playable-enemy-movement-ml-1814085169"></a>
 ### PLAYER_MASK
@@ -176,12 +186,14 @@ const STEP_HEIGHT = 18
 function validVector(value)
 ```
 
+Computes `typeof(value)=="array" and len(value)==3` for playable enemy movement `validVector`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence whose length/content is inspected by `validVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L22)
 
 <a id="function-function-mq3-client-playable-enemy-movement-worldtrace-function-worldtrace-state-startpoint-endpoint-src-mq3-client-playable-enemy-movement-ml-371769428"></a>
 ### worldTrace
@@ -190,11 +202,13 @@ function validVector(value)
 function worldTrace(state, startPoint, endPoint)
 ```
 
+Calls `mq3.collision.world.boxTrace`, `mq3.game.movement.Collision` from playable enemy movement `worldTrace`. The final path returns `movement.Collision(hit.trace,hit.endpos,entity)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `startPoint` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.context`, `state.mins`, `state.maxs`, `state.mask`. |
+| `startPoint` | `dynamic` | — | Starting world-space point of the segment or trace. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_movement.ml#L28)

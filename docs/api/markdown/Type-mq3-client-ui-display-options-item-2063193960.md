@@ -9,8 +9,10 @@
 struct Item
 ```
 
+Stores UI display options menu item, including `id`, `kind`, `name`, `x`, `y`, `minValue` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-id-id-src-mq3-client-ui-display-options-ml-145062996"></a>
 ### id
@@ -32,7 +34,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-kind-kind-src-mq3-client-ui-display-options-ml-1055908730"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-maxvalue-maxvalue-src-mq3-client-ui-display-options-ml-82716360"></a>
 ### maxValue
@@ -52,7 +54,7 @@ maxValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-minvalue-minvalue-src-mq3-client-ui-display-options-ml-325363184"></a>
 ### minValue
@@ -62,7 +64,7 @@ minValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-name-name-src-mq3-client-ui-display-options-ml-2076949652"></a>
 ### name
@@ -72,7 +74,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-value-value-src-mq3-client-ui-display-options-ml-1129077750"></a>
 ### value
@@ -82,7 +84,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-x-x-src-mq3-client-ui-display-options-ml-801903210"></a>
 ### x
@@ -92,7 +94,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)
 
 <a id="field-field-mq3-client-ui-display-options-item-y-y-src-mq3-client-ui-display-options-ml-1537788246"></a>
 ### y
@@ -102,4 +104,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L16)

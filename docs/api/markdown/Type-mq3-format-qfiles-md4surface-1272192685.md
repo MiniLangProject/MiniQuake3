@@ -9,8 +9,10 @@
 struct Md4Surface
 ```
 
+Md4Surface record for format.qfiles, containing `ident`, `name`, `shader`, `shaderIndex`, `ofsHeader`, `numVerts`, and 6 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 ## Members
 
@@ -22,7 +24,7 @@ ident
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-name-name-src-mq3-format-qfiles-ml-377681295"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-numbonereferences-numbonereferences-src-mq3-format-qfiles-ml-459669889"></a>
 ### numBoneReferences
@@ -42,7 +44,7 @@ numBoneReferences
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-numtriangles-numtriangles-src-mq3-format-qfiles-ml-1968019251"></a>
 ### numTriangles
@@ -52,7 +54,7 @@ numTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-numverts-numverts-src-mq3-format-qfiles-ml-371027473"></a>
 ### numVerts
@@ -62,7 +64,7 @@ numVerts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-ofsbonereferences-ofsbonereferences-src-mq3-format-qfiles-ml-409549345"></a>
 ### ofsBoneReferences
@@ -72,7 +74,7 @@ ofsBoneReferences
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-ofsend-ofsend-src-mq3-format-qfiles-ml-97121263"></a>
 ### ofsEnd
@@ -82,7 +84,7 @@ ofsEnd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-ofsheader-ofsheader-src-mq3-format-qfiles-ml-1802390625"></a>
 ### ofsHeader
@@ -92,7 +94,7 @@ ofsHeader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-ofstriangles-ofstriangles-src-mq3-format-qfiles-ml-917511051"></a>
 ### ofsTriangles
@@ -102,7 +104,7 @@ ofsTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-ofsverts-ofsverts-src-mq3-format-qfiles-ml-319520757"></a>
 ### ofsVerts
@@ -112,7 +114,7 @@ ofsVerts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-shader-shader-src-mq3-format-qfiles-ml-712328871"></a>
 ### shader
@@ -122,7 +124,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-md4surface-shaderindex-shaderindex-src-mq3-format-qfiles-ml-490917165"></a>
 ### shaderIndex
@@ -132,4 +134,4 @@ shaderIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)

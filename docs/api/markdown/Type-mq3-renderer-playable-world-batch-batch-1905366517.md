@@ -9,8 +9,10 @@
 struct Batch
 ```
 
+Data record for `mq3.renderer.playable_world_batch.Batch`; groups `commands`, `sourceTriangles`, `drawableTriangles`, `skippedSky`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-batch-drawabletriangles-drawabletriangles-src-mq3-renderer-playable-world-batch-ml-849893873"></a>
 ### drawableTriangles
@@ -32,7 +34,7 @@ drawableTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-batch-skippedsky-skippedsky-src-mq3-renderer-playable-world-batch-ml-1419347999"></a>
 ### skippedSky
@@ -42,7 +44,7 @@ skippedSky
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-batch-sourcetriangles-sourcetriangles-src-mq3-renderer-playable-world-batch-ml-1279938697"></a>
 ### sourceTriangles
@@ -52,4 +54,4 @@ sourceTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)

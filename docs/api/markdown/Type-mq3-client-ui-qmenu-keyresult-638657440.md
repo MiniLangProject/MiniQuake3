@@ -9,8 +9,10 @@
 struct KeyResult
 ```
 
+Stores UI qmenu key result record, including `sound`, `key`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L119)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L127)
 
 ## Members
 
@@ -22,7 +24,7 @@ key
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L127)
 
 <a id="field-field-mq3-client-ui-qmenu-keyresult-sound-sound-src-mq3-client-ui-qmenu-ml-183854927"></a>
 ### sound
@@ -32,4 +34,4 @@ sound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L127)

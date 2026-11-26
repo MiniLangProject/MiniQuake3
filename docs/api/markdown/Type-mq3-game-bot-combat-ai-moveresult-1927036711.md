@@ -9,8 +9,10 @@
 struct MoveResult
 ```
 
+`MoveResult` record for bot combat ai, containing `failure`, `flags`, `weapon`, `movedir` and `idealViewangles`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L72)
 
 ## Members
 
@@ -22,7 +24,7 @@ failure
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L72)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-flags-flags-src-mq3-game-bot-combat-ai-ml-21953981"></a>
 ### flags
@@ -32,7 +34,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L72)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-idealviewangles-idealviewangles-src-mq3-game-bot-combat-ai-ml-290602961"></a>
 ### idealViewangles
@@ -42,7 +44,7 @@ idealViewangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L72)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-movedir-movedir-src-mq3-game-bot-combat-ai-ml-2072049049"></a>
 ### movedir
@@ -52,7 +54,7 @@ movedir
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L72)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-weapon-weapon-src-mq3-game-bot-combat-ai-ml-596007197"></a>
 ### weapon
@@ -62,4 +64,4 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L72)

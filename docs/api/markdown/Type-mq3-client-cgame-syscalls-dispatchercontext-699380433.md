@@ -9,8 +9,10 @@
 struct DispatcherContext
 ```
 
+Stores client game syscalls dispatcher context record, including `host`, `vm`, `base`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L109)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L112)
 
 ## Members
 
@@ -22,7 +24,7 @@ base
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L112)
 
 <a id="field-field-mq3-client-cgame-syscalls-dispatchercontext-host-host-src-mq3-client-cgame-syscalls-ml-1797759077"></a>
 ### host
@@ -32,7 +34,7 @@ host
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L112)
 
 <a id="field-field-mq3-client-cgame-syscalls-dispatchercontext-vm-vm-src-mq3-client-cgame-syscalls-ml-1436984035"></a>
 ### vm
@@ -42,4 +44,4 @@ vm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L112)

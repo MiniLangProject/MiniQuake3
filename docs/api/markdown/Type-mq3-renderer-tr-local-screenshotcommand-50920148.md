@@ -9,8 +9,10 @@
 struct ScreenshotCommand
 ```
 
+Data record for `mq3.renderer.tr_local.ScreenshotCommand`; groups `commandId`, `x`, `y`, `width`, `height`, `fileName`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
 
 ## Members
 
@@ -22,7 +24,7 @@ commandId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
 
 <a id="field-field-mq3-renderer-tr-local-screenshotcommand-filename-filename-src-mq3-renderer-tr-local-ml-323487204"></a>
 ### fileName
@@ -32,7 +34,7 @@ fileName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
 
 <a id="field-field-mq3-renderer-tr-local-screenshotcommand-height-height-src-mq3-renderer-tr-local-ml-2064125152"></a>
 ### height
@@ -42,7 +44,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
 
 <a id="field-field-mq3-renderer-tr-local-screenshotcommand-jpeg-jpeg-src-mq3-renderer-tr-local-ml-754459150"></a>
 ### jpeg
@@ -52,7 +54,7 @@ jpeg
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
 
 <a id="field-field-mq3-renderer-tr-local-screenshotcommand-width-width-src-mq3-renderer-tr-local-ml-1168540850"></a>
 ### width
@@ -62,7 +64,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
 
 <a id="field-field-mq3-renderer-tr-local-screenshotcommand-x-x-src-mq3-renderer-tr-local-ml-1203120110"></a>
 ### x
@@ -72,7 +74,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
 
 <a id="field-field-mq3-renderer-tr-local-screenshotcommand-y-y-src-mq3-renderer-tr-local-ml-1440727026"></a>
 ### y
@@ -82,4 +84,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)

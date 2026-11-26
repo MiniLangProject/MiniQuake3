@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI LAN ingress state, including `browser`, `realtime`, `pingUpdateSource`, `masterNum`, `pendingPings`, `pendingStatuses`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ browser
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)
 
 <a id="field-field-mq3-client-ui-lan-ingress-state-masternum-masternum-src-mq3-client-ui-lan-ingress-ml-199041694"></a>
 ### masterNum
@@ -32,7 +34,7 @@ masterNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)
 
 <a id="field-field-mq3-client-ui-lan-ingress-state-pendingpings-pendingpings-src-mq3-client-ui-lan-ingress-ml-404236306"></a>
 ### pendingPings
@@ -42,7 +44,7 @@ pendingPings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)
 
 <a id="field-field-mq3-client-ui-lan-ingress-state-pendingstatuses-pendingstatuses-src-mq3-client-ui-lan-ingress-ml-798687702"></a>
 ### pendingStatuses
@@ -52,7 +54,7 @@ pendingStatuses
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)
 
 <a id="field-field-mq3-client-ui-lan-ingress-state-pingupdatesource-pingupdatesource-src-mq3-client-ui-lan-ingress-ml-689190458"></a>
 ### pingUpdateSource
@@ -62,7 +64,7 @@ pingUpdateSource
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)
 
 <a id="field-field-mq3-client-ui-lan-ingress-state-realtime-realtime-src-mq3-client-ui-lan-ingress-ml-1415163792"></a>
 ### realtime
@@ -72,4 +74,4 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)

@@ -9,8 +9,10 @@
 struct WorldLodAxis
 ```
 
+Data record for `mq3.renderer.world_patch_lod.WorldLodAxis`; groups `minimum`, `columns`, `rows`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ columns
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L20)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodaxis-minimum-minimum-src-mq3-renderer-world-patch-lod-ml-774648495"></a>
 ### minimum
@@ -32,7 +34,7 @@ minimum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L20)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodaxis-rows-rows-src-mq3-renderer-world-patch-lod-ml-600726369"></a>
 ### rows
@@ -42,4 +44,4 @@ rows
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L20)

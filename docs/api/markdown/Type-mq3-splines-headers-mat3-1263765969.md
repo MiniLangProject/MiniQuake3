@@ -9,8 +9,10 @@
 struct Mat3
 ```
 
+Mat3 record for splines.headers, containing `rows`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L21)
 
 ## Members
 
@@ -22,4 +24,4 @@ rows
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L21)

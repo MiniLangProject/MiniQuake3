@@ -9,8 +9,10 @@
 struct Noise
 ```
 
+Data record for `mq3.renderer.noise.Noise`; groups `table`, `permutation`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ permutation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L11)
 
 <a id="field-field-mq3-renderer-noise-noise-table-table-src-mq3-renderer-noise-ml-1630209145"></a>
 ### table
@@ -32,4 +34,4 @@ table
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L11)

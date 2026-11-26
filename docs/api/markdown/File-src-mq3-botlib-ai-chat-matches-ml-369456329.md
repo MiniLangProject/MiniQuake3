@@ -21,12 +21,14 @@ Reachable from entry: **yes**
 function botPath(name)
 ```
 
+Normalize a ai chat matches resource path by removing leading slashes and ensuring the botfiles prefix.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L40)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-clear-function-clear-state-src-mq3-botlib-ai-chat-matches-ml-652726285"></a>
 ### clear
@@ -35,12 +37,14 @@ function botPath(name)
 function clear(state)
 ```
 
+Set `state.templates` to `[]` and `state.loaded` to `false` in `mq3.botlib.ai_chat_matches.clear`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat matches state; accesses `templates` and `loaded`. May update `state.templates` and `state.loaded` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L147)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-create-function-create-context-readfn-src-mq3-botlib-ai-chat-matches-ml-380043725"></a>
 ### create
@@ -49,13 +53,15 @@ function clear(state)
 function create(context, readFn)
 ```
 
+Create a `mq3.botlib.ai_chat_matches.State` record, initializing `context` from `context` and `readFn` from `readFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `readFn` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
+| `readFn` | `dynamic` | — | Callback that loads a named resource through the supplied context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L34)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-emptymatch-function-emptymatch-value-src-mq3-botlib-ai-chat-matches-ml-1367188807"></a>
 ### emptyMatch
@@ -64,12 +70,14 @@ function create(context, readFn)
 function emptyMatch(value)
 ```
 
+Create a `mq3.botlib.ai_chat_matches.Match` record, initializing `string` from `value`, `offsets` as `[-1,-1,-1,-1,-1,-1,-1,-1]` and `lengths` as `[0,0,0,0,0,0,0,0]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_matches.Match.string`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L37)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-ensureloaded-function-ensureloaded-state-src-mq3-botlib-ai-chat-matches-ml-577849351"></a>
 ### ensureLoaded
@@ -78,12 +86,14 @@ function emptyMatch(value)
 function ensureLoaded(state)
 ```
 
+Apply `mq3.botlib.ai_chat_matches.load` while evaluating `ensureLoaded`. Return paths include `load(state,"match.c")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat matches state; accesses `loaded` and `templates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L144)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-expectinteger-function-expectinteger-registry-source-label-src-mq3-botlib-ai-chat-matches-ml-1757003670"></a>
 ### expectInteger
@@ -92,14 +102,16 @@ function ensureLoaded(state)
 function expectInteger(registry, source, label)
 ```
 
+Apply `mq3.botlib.ai_chat_matches.take` and `mq3.botlib.ai_chat_matches.expectText` while evaluating `expectInteger`. Return paths include `fail("unsupported $evalint operator "+part.text)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place. |
+| `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
+| `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L67)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-expecttext-function-expecttext-registry-source-value-src-mq3-botlib-ai-chat-matches-ml-1811088845"></a>
 ### expectText
@@ -108,14 +120,16 @@ function expectInteger(registry, source, label)
 function expectText(registry, source, value)
 ```
 
+Apply `mq3.botlib.ai_chat_matches.take` while evaluating `expectText`. Return paths include `token`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place. |
+| `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `fail("expected "+value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L59)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-fail-function-fail-message-src-mq3-botlib-ai-chat-matches-ml-65165713"></a>
 ### fail
@@ -124,12 +138,14 @@ function expectText(registry, source, value)
 function fail(message)
 ```
 
+Construct error `7597` with diagnostic text `"AI chat matches: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L30)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-findmatch-function-findmatch-state-value-context-src-mq3-botlib-ai-chat-matches-ml-70702011"></a>
 ### findMatch
@@ -138,14 +154,16 @@ function fail(message)
 function findMatch(state, value, context)
 ```
 
+Apply `mq3.botlib.ai_chat_matches.ensureLoaded`, `mq3.botlib.ai_chat_matches.emptyMatch` and `mq3.botlib.ai_chat_matches.trimEnters` while evaluating `findMatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat matches state; accesses `templates`. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L198)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-load-function-load-state-filename-src-mq3-botlib-ai-chat-matches-ml-878644588"></a>
 ### load
@@ -154,13 +172,15 @@ function findMatch(state, value, context)
 function load(state, filename)
 ```
 
+Set `state.templates` to `templates` and `state.loaded` to `true` in `mq3.botlib.ai_chat_matches.load`. Return paths include `len(templates)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat matches state; accesses `templates` and `loaded`. May update `state.templates` and `state.loaded` in place. |
+| `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L138)
 
 - [mq3.botlib.ai_chat_matches.Loader](Type-mq3-botlib-ai-chat-matches-loader-1375810372.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-matches-loadtext-function-loadtext-loader-name-src-mq3-botlib-ai-chat-matches-ml-2024573378"></a>
@@ -170,13 +190,15 @@ function load(state, filename)
 function loadText(loader, name)
 ```
 
+Set `loader.state.fileReads` to `loader.state.fileReads+1` in `mq3.botlib.ai_chat_matches.loadText`. Return paths include `loader.state.readFn(loader.state.context,botPath(name))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `loader` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `loader` | `dynamic` | — | Loader record; accesses `state`. May update `loader.state.fileReads` in place. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L47)
 
 - [mq3.botlib.ai_chat_matches.Match](Type-mq3-botlib-ai-chat-matches-match-1783988752.md) — struct
 <a id="constant-constant-mq3-botlib-ai-chat-matches-match-abi-size-const-match-abi-size-328-src-mq3-botlib-ai-chat-matches-ml-2109965710"></a>
@@ -196,14 +218,16 @@ const MATCH_ABI_SIZE = 328
 function matchVariable(match, variable, size)
 ```
 
+Extract a matched chat variable and truncate it to the supplied buffer capacity minus its terminator.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `match` | `dynamic` | — |  |
-| `variable` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `lengths` and `string`. |
+| `variable` | `dynamic` | — | Operand used to evaluate the returned expression `decode(slice(bytes(match.string),match.offsets[variable],count))`. |
+| `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L212)
 
 <a id="constant-constant-mq3-botlib-ai-chat-matches-max-match-variables-const-max-match-variables-8-src-mq3-botlib-ai-chat-matches-ml-1585129891"></a>
 ### MAX_MATCH_VARIABLES
@@ -262,13 +286,15 @@ const OP_STRING_CONTAINS = 517
 function parse(state, filename)
 ```
 
+Apply `mq3.vm.pc_parser.create`, `mq3.vm.pc_parser.load` and `mq3.botlib.ai_chat_matches.take` while evaluating `parse`. Return paths include `templates.toArray()`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_matches.Loader.state`. |
+| `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L113)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-parsepieces-function-parsepieces-registry-source-firsttoken-src-mq3-botlib-ai-chat-matches-ml-25827569"></a>
 ### parsePieces
@@ -277,14 +303,16 @@ function parse(state, filename)
 function parsePieces(registry, source, firstToken)
 ```
 
+Apply `mq3.botlib.ai_chat_matches.take` while evaluating `parsePieces`. Return paths include `fail("expected match piece separator, found "+separator.text)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `firstToken` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place. |
+| `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
+| `firstToken` | `dynamic` | — | Value used by `parsePieces` in `nextToken=firstToken`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L86)
 
 - [mq3.botlib.ai_chat_matches.Piece](Type-mq3-botlib-ai-chat-matches-piece-1020623727.md) — struct
 - [mq3.botlib.ai_chat_matches.State](Type-mq3-botlib-ai-chat-matches-state-1467600216.md) — struct
@@ -295,14 +323,16 @@ function parsePieces(registry, source, firstToken)
 function stringContains(value, needle, caseSensitive)
 ```
 
+Apply `mq3.botlib.ai_chat_matches.upper` while evaluating `stringContains`. Return paths include `-1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `needle` | `dynamic` | — |  |
-| `caseSensitive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `needle` | `dynamic` | — | Text or value to search for. |
+| `caseSensitive` | `dynamic` | — | Whether comparisons distinguish letter case. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L156)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-stringsmatch-function-stringsmatch-pieces-match-src-mq3-botlib-ai-chat-matches-ml-460764268"></a>
 ### stringsMatch
@@ -311,13 +341,15 @@ function stringContains(value, needle, caseSensitive)
 function stringsMatch(pieces, match)
 ```
 
+Update `match.offsets[piece.variable]` and `match.lengths[lastVariable]` during `stringsMatch`. Return paths include `position==len(bytes(match.string))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pieces` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
+| `pieces` | `dynamic` | — | Value used by `stringsMatch` in `for each piece in pieces`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `string` and `lengths`. May update `match.offsets[piece.variable]` and `match.lengths[lastVariable]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L170)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-suffix-function-suffix-value-start-src-mq3-botlib-ai-chat-matches-ml-539675639"></a>
 ### suffix
@@ -326,13 +358,15 @@ function stringsMatch(pieces, match)
 function suffix(value, start)
 ```
 
+Return the text suffix beginning at the supplied byte offset, or an empty string beyond the end.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `start` | `dynamic` | — | Value passed as argument 2 to `slice`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L166)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-take-function-take-registry-source-src-mq3-botlib-ai-chat-matches-ml-457733388"></a>
 ### take
@@ -341,13 +375,15 @@ function suffix(value, start)
 function take(registry, source)
 ```
 
+Forward `take` to `mq3.vm.pc_parser.read` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place. |
+| `source` | `dynamic` | — | Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L54)
 
 - [mq3.botlib.ai_chat_matches.Template](Type-mq3-botlib-ai-chat-matches-template-825433973.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-matches-trimenters-function-trimenters-value-src-mq3-botlib-ai-chat-matches-ml-1216999263"></a>
@@ -357,12 +393,14 @@ function take(registry, source)
 function trimEnters(value)
 ```
 
+Remove trailing line-feed bytes from chat text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L193)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-upper-function-upper-value-src-mq3-botlib-ai-chat-matches-ml-806226135"></a>
 ### upper
@@ -371,9 +409,11 @@ function trimEnters(value)
 function upper(value)
 ```
 
+Convert an ASCII lowercase letter to uppercase while preserving other byte values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value-32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L151)

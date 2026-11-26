@@ -31,14 +31,16 @@ const AAS_CLIENTMOVE_SIZE = 84
 function dispatch(services, vm, base)
 ```
 
+Apply `mq3.vm.syscall_common.pointer`, `mq3.vm.syscall_common.argument` and `mq3.vm.syscall_common.readFloatVector` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
+| `services` | `dynamic` | — | S record; accesses `settings`. |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L19)
 
 <a id="function-function-mq3-botlib-aas-client-movement-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-aas-client-movement-syscalls-ml-1333138845"></a>
 ### writeVector
@@ -47,11 +49,13 @@ function dispatch(services, vm, base)
 function writeVector(data, address, value)
 ```
 
+Write three float bit patterns to consecutive VM memory words for aas client movement syscalls.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.writeU32`. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L14)

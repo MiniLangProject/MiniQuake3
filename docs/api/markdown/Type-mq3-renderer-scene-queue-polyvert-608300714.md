@@ -9,8 +9,10 @@
 struct PolyVert
 ```
 
+Data record for `mq3.renderer.scene_queue.PolyVert`; groups `xyz`, `st`, `modulate`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ modulate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)
 
 <a id="field-field-mq3-renderer-scene-queue-polyvert-st-st-src-mq3-renderer-scene-queue-ml-159355294"></a>
 ### st
@@ -32,7 +34,7 @@ st
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)
 
 <a id="field-field-mq3-renderer-scene-queue-polyvert-xyz-xyz-src-mq3-renderer-scene-queue-ml-1784702544"></a>
 ### xyz
@@ -42,4 +44,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)

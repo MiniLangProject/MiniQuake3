@@ -9,8 +9,10 @@
 struct SnapshotFrame
 ```
 
+SnapshotFrame record for server.snapshot_delta, containing `firstEntity`, `numEntities`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstEntity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L14)
 
 <a id="field-field-mq3-server-snapshot-delta-snapshotframe-numentities-numentities-src-mq3-server-snapshot-delta-ml-149316630"></a>
 ### numEntities
@@ -32,4 +34,4 @@ numEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L15)

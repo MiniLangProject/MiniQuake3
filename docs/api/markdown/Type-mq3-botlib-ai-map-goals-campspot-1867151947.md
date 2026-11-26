@@ -9,8 +9,10 @@
 struct CampSpot
 ```
 
+`CampSpot` record for ai map goals, containing `name`, `range`, `weight`, `wait` and `random` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ goal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-map-goals-campspot-name-name-src-mq3-botlib-ai-map-goals-ml-589646780"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-map-goals-campspot-random-random-src-mq3-botlib-ai-map-goals-ml-1575891660"></a>
 ### random
@@ -42,7 +44,7 @@ random
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-map-goals-campspot-range-range-src-mq3-botlib-ai-map-goals-ml-1098874786"></a>
 ### range
@@ -52,7 +54,7 @@ range
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-map-goals-campspot-wait-wait-src-mq3-botlib-ai-map-goals-ml-1058544232"></a>
 ### wait
@@ -62,7 +64,7 @@ wait
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-map-goals-campspot-weight-weight-src-mq3-botlib-ai-map-goals-ml-65529698"></a>
 ### weight
@@ -72,4 +74,4 @@ weight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)

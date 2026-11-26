@@ -9,8 +9,10 @@
 struct MapSlot
 ```
 
+Stores UI sp level map slot record, including `active`, `grayed`, `x`, `y`, `map`, `longname` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-grayed-grayed-src-mq3-client-ui-sp-level-ml-1871899447"></a>
 ### grayed
@@ -32,7 +34,7 @@ grayed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-longname-longname-src-mq3-client-ui-sp-level-ml-1637064729"></a>
 ### longname
@@ -42,7 +44,7 @@ longname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-map-map-src-mq3-client-ui-sp-level-ml-1256153023"></a>
 ### map
@@ -52,7 +54,7 @@ map
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-picture-picture-src-mq3-client-ui-sp-level-ml-1821971263"></a>
 ### picture
@@ -62,7 +64,7 @@ picture
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-score-score-src-mq3-client-ui-sp-level-ml-2020305511"></a>
 ### score
@@ -72,7 +74,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-skill-skill-src-mq3-client-ui-sp-level-ml-18950115"></a>
 ### skill
@@ -82,7 +84,7 @@ skill
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-x-x-src-mq3-client-ui-sp-level-ml-325330623"></a>
 ### x
@@ -92,7 +94,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)
 
 <a id="field-field-mq3-client-ui-sp-level-mapslot-y-y-src-mq3-client-ui-sp-level-ml-253098387"></a>
 ### y
@@ -102,4 +104,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L33)

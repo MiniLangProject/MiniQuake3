@@ -9,8 +9,10 @@
 struct Facet
 ```
 
+Facet record for collision.patchmesh, containing `surface`, `borders`, `inward`, `noAdjust`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ borders
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L21)
 
 <a id="field-field-mq3-collision-patchmesh-facet-inward-inward-src-mq3-collision-patchmesh-ml-123677868"></a>
 ### inward
@@ -32,7 +34,7 @@ inward
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L22)
 
 <a id="field-field-mq3-collision-patchmesh-facet-noadjust-noadjust-src-mq3-collision-patchmesh-ml-1067677246"></a>
 ### noAdjust
@@ -42,7 +44,7 @@ noAdjust
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L23)
 
 <a id="field-field-mq3-collision-patchmesh-facet-surface-surface-src-mq3-collision-patchmesh-ml-1644434350"></a>
 ### surface
@@ -52,4 +54,4 @@ surface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L20)

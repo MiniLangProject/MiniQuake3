@@ -9,8 +9,10 @@
 struct Tracker
 ```
 
+Stores playable projectile fx tracker record, including `entityId`, `style`, `position`, `sampledAt`, `nextPuffAt`, `seenAt`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ entityId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L30)
 
 <a id="field-field-mq3-client-playable-projectile-fx-tracker-nextpuffat-nextpuffat-src-mq3-client-playable-projectile-fx-ml-1114792011"></a>
 ### nextPuffAt
@@ -32,7 +34,7 @@ nextPuffAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L30)
 
 <a id="field-field-mq3-client-playable-projectile-fx-tracker-position-position-src-mq3-client-playable-projectile-fx-ml-702668087"></a>
 ### position
@@ -42,7 +44,7 @@ position
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L30)
 
 <a id="field-field-mq3-client-playable-projectile-fx-tracker-sampledat-sampledat-src-mq3-client-playable-projectile-fx-ml-845137989"></a>
 ### sampledAt
@@ -52,7 +54,7 @@ sampledAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L30)
 
 <a id="field-field-mq3-client-playable-projectile-fx-tracker-seenat-seenat-src-mq3-client-playable-projectile-fx-ml-2097787601"></a>
 ### seenAt
@@ -62,7 +64,7 @@ seenAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L30)
 
 <a id="field-field-mq3-client-playable-projectile-fx-tracker-style-style-src-mq3-client-playable-projectile-fx-ml-519921085"></a>
 ### style
@@ -72,4 +74,4 @@ style
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L30)

@@ -9,8 +9,10 @@
 struct Sample
 ```
 
+Data record for `mq3.renderer.playable_light_grid.Sample`; groups `ambient`, `directed`, `direction`, `totalFactor`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ ambient
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L26)
 
 <a id="field-field-mq3-renderer-playable-light-grid-sample-directed-directed-src-mq3-renderer-playable-light-grid-ml-377779023"></a>
 ### directed
@@ -32,7 +34,7 @@ directed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L26)
 
 <a id="field-field-mq3-renderer-playable-light-grid-sample-direction-direction-src-mq3-renderer-playable-light-grid-ml-351802483"></a>
 ### direction
@@ -42,7 +44,7 @@ direction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L26)
 
 <a id="field-field-mq3-renderer-playable-light-grid-sample-totalfactor-totalfactor-src-mq3-renderer-playable-light-grid-ml-1431000075"></a>
 ### totalFactor
@@ -52,4 +54,4 @@ totalFactor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L26)

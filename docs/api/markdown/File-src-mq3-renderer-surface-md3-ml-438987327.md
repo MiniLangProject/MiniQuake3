@@ -22,12 +22,14 @@ Reachable from entry: **yes**
 function decodeNormal(packed)
 ```
 
+Decodes an MD3 packed latitude/longitude normal using the renderer's sine lookup table.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `packed` | `dynamic` | — |  |
+| `packed` | `dynamic` | — | Input used by `bits=packed&0xffff`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L125)
 
 <a id="function-function-mq3-renderer-surface-md3-decodenormalcached-function-decodenormalcached-packed-table-src-mq3-renderer-surface-md3-ml-2057380308"></a>
 ### decodeNormalCached
@@ -36,13 +38,15 @@ function decodeNormal(packed)
 function decodeNormalCached(packed, table)
 ```
 
+Decodes a packed MD3 normal using a supplied sine table, falling back when its size is invalid.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `packed` | `dynamic` | — |  |
-| `table` | `dynamic` | — |  |
+| `packed` | `dynamic` | — | Value forwarded as `packed` to `mq3.renderer.surface_md3.decodeNormal`. |
+| `table` | `dynamic` | — | Indexed input read at `(lat+256)&FUNCTABLE_MASK`, `lng&FUNCTABLE_MASK`, `lat&FUNCTABLE_MASK`, `(lng+256)&FUNCTABLE_MASK`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L137)
 
 <a id="function-function-mq3-renderer-surface-md3-framevertices-function-framevertices-value-frame-src-mq3-renderer-surface-md3-ml-1466810556"></a>
 ### frameVertices
@@ -55,11 +59,11 @@ Reference access to a packed-only asset is intentionally transient. Never popula
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record providing `value.numFrames`, `value.frames`, `value.packedFrames`, `value.numVerts`. |
+| `frame` | `dynamic` | — | Input tested by `frame<0 or frame>=value.numFrames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L60)
 
 <a id="constant-constant-mq3-renderer-surface-md3-functable-mask-const-functable-mask-1023-src-mq3-renderer-surface-md3-ml-315014495"></a>
 ### FUNCTABLE_MASK
@@ -88,15 +92,17 @@ const FUNCTABLE_SIZE = 1024
 function lerpVertexes(value, frame, oldFrame, backlerp)
 ```
 
+Returns `lerpVertexesTrusted(value,frame,oldFrame,backlerp)` from `mq3.renderer.surface_md3.lerpVertexes`; earlier branches return `valid`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `oldFrame` | `dynamic` | — |  |
-| `backlerp` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.surface_md3.validate`. |
+| `frame` | `dynamic` | — | Value forwarded as `frame` to `mq3.renderer.surface_md3.lerpVertexesTrusted`. |
+| `oldFrame` | `dynamic` | — | Value forwarded as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexesTrusted`. |
+| `backlerp` | `dynamic` | — | Value forwarded as `backlerp` to `mq3.renderer.surface_md3.lerpVertexesTrusted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L198)
 
 <a id="function-function-mq3-renderer-surface-md3-lerpvertexescached-function-lerpvertexescached-value-frame-oldframe-backlerp-table-src-mq3-renderer-surface-md3-ml-2029592882"></a>
 ### lerpVertexesCached
@@ -109,14 +115,14 @@ LerpMeshVertexes selects the new frame directly when backlerp is zero. With inte
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `oldFrame` | `dynamic` | — |  |
-| `backlerp` | `dynamic` | — |  |
-| `table` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record providing `value.numFrames`, `value.numVerts`. |
+| `frame` | `dynamic` | — | Value forwarded as `frame` to `mq3.renderer.surface_md3.frameVertices`. |
+| `oldFrame` | `dynamic` | — | Value forwarded as `frame` to `mq3.renderer.surface_md3.frameVertices`. |
+| `backlerp` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.f32`. |
+| `table` | `dynamic` | — | Value forwarded as `table` to `mq3.renderer.surface_md3.decodeNormalCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L157)
 
 <a id="function-function-mq3-renderer-surface-md3-lerpvertexespacked-function-lerpvertexespacked-value-frame-oldframe-backlerp-table-src-mq3-renderer-surface-md3-ml-324083878"></a>
 ### lerpVertexesPacked
@@ -125,16 +131,18 @@ LerpMeshVertexes selects the new frame directly when backlerp is zero. With inte
 function lerpVertexesPacked(value, frame, oldFrame, backlerp, table)
 ```
 
+Computes `lerpVertexesPacked` from `nativeMd3.lerp(fresh,old,table,value.numVerts,backlerp)` using `mq3.renderer.surface_md3.packedFrame`, `mq3.renderer.native_md3.lerp`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `oldFrame` | `dynamic` | — |  |
-| `backlerp` | `dynamic` | — |  |
-| `table` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record providing `value.numFrames`, `value.numVerts`. |
+| `frame` | `dynamic` | — | Value forwarded as `frame` to `mq3.renderer.surface_md3.packedFrame`. |
+| `oldFrame` | `dynamic` | — | Value forwarded as `frame` to `mq3.renderer.surface_md3.packedFrame`. |
+| `backlerp` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.native_md3.lerp`. |
+| `table` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.native_md3.lerp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L77)
 
 <a id="function-function-mq3-renderer-surface-md3-lerpvertexestrusted-function-lerpvertexestrusted-value-frame-oldframe-backlerp-src-mq3-renderer-surface-md3-ml-863493012"></a>
 ### lerpVertexesTrusted
@@ -143,15 +151,17 @@ function lerpVertexesPacked(value, frame, oldFrame, backlerp, table)
 function lerpVertexesTrusted(value, frame, oldFrame, backlerp)
 ```
 
+Calls `mq3.renderer.surface_md3.lerpVertexesCached` with `(value,frame,oldFrame,backlerp,void)` and returns its result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `oldFrame` | `dynamic` | — |  |
-| `backlerp` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value forwarded as `value` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
+| `frame` | `dynamic` | — | Value forwarded as `frame` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
+| `oldFrame` | `dynamic` | — | Value forwarded as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
+| `backlerp` | `dynamic` | — | Value forwarded as `backlerp` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L192)
 
 <a id="constant-constant-mq3-renderer-surface-md3-md3-xyz-scale-const-md3-xyz-scale-0-015625-src-mq3-renderer-surface-md3-ml-313969306"></a>
 ### MD3_XYZ_SCALE
@@ -171,12 +181,14 @@ const MD3_XYZ_SCALE = 0.015625
 function normalizeFast(value)
 ```
 
+Returns `[numeric.fmul(value[0],inverse),numeric.fmul(value[1],inverse),numeric.fmul(value[2],inverse)]` from `mq3.renderer.surface_md3.normalizeFast`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 supplied to `mq3.shared.math.DotProduct`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L145)
 
 <a id="function-function-mq3-renderer-surface-md3-normaltable-function-normaltable-src-mq3-renderer-surface-md3-ml-142075720"></a>
 ### normalTable
@@ -185,8 +197,10 @@ function normalizeFast(value)
 function normalTable()
 ```
 
+Builds `result[index]` in `mq3.renderer.surface_md3.normalTable`; returns `result`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L97)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L131)
 
 <a id="function-function-mq3-renderer-surface-md3-packedframe-function-packedframe-value-frame-src-mq3-renderer-surface-md3-ml-893748650"></a>
 ### packedFrame
@@ -195,13 +209,15 @@ function normalTable()
 function packedFrame(value, frame)
 ```
 
+Updates `value.packedFrames[frame]` in `mq3.renderer.surface_md3.packedFrame`; returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable record or buffer; this call updates `value.packedFrames[frame]`. |
+| `frame` | `dynamic` | — | Input tested by `value.packedFrames[frame]!=void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L45)
 
 - [mq3.renderer.surface_md3.PackedVertex](Type-mq3-renderer-surface-md3-packedvertex-1501421155.md) — struct
 - [mq3.renderer.surface_md3.Submission](Type-mq3-renderer-surface-md3-submission-1186498249.md) — struct
@@ -216,18 +232,18 @@ RB_CHECKOVERFLOW ends the current tessellation before this surface when the comb
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `oldFrame` | `dynamic` | — |  |
-| `backlerp` | `dynamic` | — |  |
-| `currentVertexes` | `dynamic` | — |  |
-| `currentIndexes` | `dynamic` | — |  |
-| `maxVertexes` | `dynamic` | — |  |
-| `maxIndexes` | `dynamic` | — |  |
-| `dlightBits` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record providing `value.numTriangles`, `value.numVerts`, `value.triangles`, `value.texCoords`. |
+| `frame` | `dynamic` | — | Value forwarded as `frame` to `mq3.renderer.surface_md3.lerpVertexes`. |
+| `oldFrame` | `dynamic` | — | Value forwarded as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexes`. |
+| `backlerp` | `dynamic` | — | Input used by `effectiveBacklerp=backlerp`. |
+| `currentVertexes` | `dynamic` | — | Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`. |
+| `currentIndexes` | `dynamic` | — | Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`. |
+| `maxVertexes` | `dynamic` | — | Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`. |
+| `maxIndexes` | `dynamic` | — | Input tested by `currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1`. |
+| `dlightBits` | `dynamic` | — | Input used by `outputDlightBits=dlightBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L214)
 
 <a id="function-function-mq3-renderer-surface-md3-surface-function-surface-numframes-numverts-numtriangles-triangles-texcoords-frames-src-mq3-renderer-surface-md3-ml-206483445"></a>
 ### surface
@@ -236,17 +252,19 @@ RB_CHECKOVERFLOW ends the current tessellation before this surface when the comb
 function surface(numFrames, numVerts, numTriangles, triangles, texCoords, frames)
 ```
 
+Constructs `mq3.renderer.surface_md3.MeshSurface` with `packedFrames` = `array(numFrames,void)` and the supplied remaining values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `numFrames` | `dynamic` | — |  |
-| `numVerts` | `dynamic` | — |  |
-| `numTriangles` | `dynamic` | — |  |
-| `triangles` | `dynamic` | — |  |
-| `texCoords` | `dynamic` | — |  |
-| `frames` | `dynamic` | — |  |
+| `numFrames` | `dynamic` | — | Initial value for `mq3.renderer.surface_md3.MeshSurface.numFrames`. |
+| `numVerts` | `dynamic` | — | Initial value for `mq3.renderer.surface_md3.MeshSurface.numVerts`. |
+| `numTriangles` | `dynamic` | — | Initial value for `mq3.renderer.surface_md3.MeshSurface.numTriangles`. |
+| `triangles` | `dynamic` | — | Initial value for `mq3.renderer.surface_md3.MeshSurface.triangles`. |
+| `texCoords` | `dynamic` | — | Initial value for `mq3.renderer.surface_md3.MeshSurface.texCoords`. |
+| `frames` | `dynamic` | — | Initial value for `mq3.renderer.surface_md3.MeshSurface.frames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L38)
 
 <a id="function-function-mq3-renderer-surface-md3-tablevalue-function-tablevalue-index-src-mq3-renderer-surface-md3-ml-1341735552"></a>
 ### tableValue
@@ -259,10 +277,10 @@ R_Init builds this 1024-entry table with a 1023 divisor. Preserve the float oper
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Input used by `step=numeric.fdiv(numeric.fmul(index&FUNCTABLE_MASK,360.0),1023.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L118)
 
 <a id="function-function-mq3-renderer-surface-md3-valid3-function-valid3-value-src-mq3-renderer-surface-md3-ml-2029105415"></a>
 ### valid3
@@ -271,12 +289,14 @@ R_Init builds this 1024-entry table with a 1023 divisor. Preserve the float oper
 function valid3(value)
 ```
 
+Computes `value!=void and len(value)==3` for `mq3.renderer.surface_md3.valid3`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `value!=void and len(value)==3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L85)
 
 <a id="function-function-mq3-renderer-surface-md3-validate-function-validate-value-src-mq3-renderer-surface-md3-ml-1460876095"></a>
 ### validate
@@ -285,12 +305,14 @@ function valid3(value)
 function validate(value)
 ```
 
+Validates MD3 frame/vertex/triangle counts, index ranges, coordinates, and per-frame vertex storage.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record providing `value.numFrames`, `value.numVerts`, `value.numTriangles`, `value.triangles`, `value.texCoords`, `value.frames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L88)
 
 <a id="function-function-mq3-renderer-surface-md3-vertex-function-vertex-x-y-z-packednormal-src-mq3-renderer-surface-md3-ml-1499996548"></a>
 ### vertex
@@ -299,12 +321,14 @@ function validate(value)
 function vertex(x, y, z, packedNormal)
 ```
 
+Constructs `mq3.renderer.surface_md3.PackedVertex` with `xyz` = `[numeric.i16(x),numeric.i16(y),numeric.i16(z)]`, `packedNormal` = `packedNormal&0xffff`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `z` | `dynamic` | — |  |
-| `packedNormal` | `dynamic` | — |  |
+| `x` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.i16`. |
+| `y` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.i16`. |
+| `z` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.i16`. |
+| `packedNormal` | `dynamic` | — | Input used in the result expression `PackedVertex([numeric.i16(x),numeric.i16(y),numeric.i16(z)],packedNormal&0xffff)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L27)

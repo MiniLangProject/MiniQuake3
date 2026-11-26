@@ -9,8 +9,10 @@
 struct Shader
 ```
 
+Data record for `mq3.renderer.tr_bsp_runtime.Shader`; groups `name`, `surfaceFlags`, `contentFlags`, `lightmapIndex`, `defaultShader`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ contentFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-shader-defaultshader-defaultshader-src-mq3-renderer-tr-bsp-runtime-ml-150054110"></a>
 ### defaultShader
@@ -32,7 +34,7 @@ defaultShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-shader-lightmapindex-lightmapindex-src-mq3-renderer-tr-bsp-runtime-ml-1948124370"></a>
 ### lightmapIndex
@@ -42,7 +44,7 @@ lightmapIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-shader-name-name-src-mq3-renderer-tr-bsp-runtime-ml-914099424"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-shader-surfaceflags-surfaceflags-src-mq3-renderer-tr-bsp-runtime-ml-1791727194"></a>
 ### surfaceFlags
@@ -62,4 +64,4 @@ surfaceFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)

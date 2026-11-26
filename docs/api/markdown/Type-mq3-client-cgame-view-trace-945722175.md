@@ -9,8 +9,10 @@
 struct Trace
 ```
 
+Stores client game view trace record, including `fraction`, `endpos`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L58)
 
 ## Members
 
@@ -22,7 +24,7 @@ endpos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L58)
 
 <a id="field-field-mq3-client-cgame-view-trace-fraction-fraction-src-mq3-client-cgame-view-ml-1674881138"></a>
 ### fraction
@@ -32,4 +34,4 @@ fraction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L58)

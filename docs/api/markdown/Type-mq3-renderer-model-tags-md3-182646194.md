@@ -9,8 +9,10 @@
 struct Md3
 ```
 
+Data record for `mq3.renderer.model_tags.Md3`; groups `frames`, `bounds`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ bounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L12)
 
 <a id="field-field-mq3-renderer-model-tags-md3-frames-frames-src-mq3-renderer-model-tags-ml-958381751"></a>
 ### frames
@@ -32,4 +34,4 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L12)

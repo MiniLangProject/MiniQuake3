@@ -9,8 +9,10 @@
 struct CinematicServices
 ```
 
+CinematicServices record for vm.syscall_ui_media, containing `playFn`, `stopFn`, `runFn`, `drawFn`, `setExtentsFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ drawFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-playfn-playfn-src-mq3-vm-syscall-ui-media-ml-615760310"></a>
 ### playFn
@@ -32,7 +34,7 @@ playFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-runfn-runfn-src-mq3-vm-syscall-ui-media-ml-429200734"></a>
 ### runFn
@@ -42,7 +44,7 @@ runFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-setextentsfn-setextentsfn-src-mq3-vm-syscall-ui-media-ml-529225660"></a>
 ### setExtentsFn
@@ -52,7 +54,7 @@ setExtentsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-media-cinematicservices-stopfn-stopfn-src-mq3-vm-syscall-ui-media-ml-110873858"></a>
 ### stopFn
@@ -62,4 +64,4 @@ stopFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L13)

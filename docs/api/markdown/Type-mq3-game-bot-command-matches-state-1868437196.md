@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for bot command matches, containing `teamplay`, `missionpack`, `gametype`, `now` and `randomValue` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-blueflag-blueflag-src-mq3-game-bot-command-matches-ml-1100614830"></a>
 ### blueFlag
@@ -32,7 +34,7 @@ blueFlag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-blueobelisk-blueobelisk-src-mq3-game-bot-command-matches-ml-2107804106"></a>
 ### blueObelisk
@@ -42,7 +44,7 @@ blueObelisk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-configs-configs-src-mq3-game-bot-command-matches-ml-1491927942"></a>
 ### configs
@@ -52,7 +54,7 @@ configs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-entityinfos-entityinfos-src-mq3-game-bot-command-matches-ml-624627082"></a>
 ### entityInfos
@@ -62,7 +64,7 @@ entityInfos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-gametype-gametype-src-mq3-game-bot-command-matches-ml-1984516542"></a>
 ### gametype
@@ -72,7 +74,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-hostactionfn-hostactionfn-src-mq3-game-bot-command-matches-ml-1553501022"></a>
 ### hostActionFn
@@ -82,7 +84,7 @@ hostActionFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-itemgoals-itemgoals-src-mq3-game-bot-command-matches-ml-1147665854"></a>
 ### itemGoals
@@ -92,7 +94,7 @@ itemGoals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-matchstate-matchstate-src-mq3-game-bot-command-matches-ml-289559678"></a>
 ### matchState
@@ -102,7 +104,7 @@ matchState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-maxclients-maxclients-src-mq3-game-bot-command-matches-ml-471999566"></a>
 ### maxclients
@@ -112,7 +114,7 @@ maxclients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-missionpack-missionpack-src-mq3-game-bot-command-matches-ml-51352966"></a>
 ### missionpack
@@ -122,7 +124,7 @@ missionpack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-names-names-src-mq3-game-bot-command-matches-ml-745792110"></a>
 ### names
@@ -132,7 +134,7 @@ names
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-neutralflag-neutralflag-src-mq3-game-bot-command-matches-ml-637364994"></a>
 ### neutralFlag
@@ -142,7 +144,7 @@ neutralFlag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-neutralobelisk-neutralobelisk-src-mq3-game-bot-command-matches-ml-732246178"></a>
 ### neutralObelisk
@@ -152,7 +154,7 @@ neutralObelisk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-notleader-notleader-src-mq3-game-bot-command-matches-ml-2013760202"></a>
 ### notleader
@@ -162,7 +164,7 @@ notleader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-now-now-src-mq3-game-bot-command-matches-ml-409502698"></a>
 ### now
@@ -172,7 +174,7 @@ now
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-pointareas-pointareas-src-mq3-game-bot-command-matches-ml-812574258"></a>
 ### pointAreas
@@ -182,7 +184,7 @@ pointAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-preferencenames-preferencenames-src-mq3-game-bot-command-matches-ml-1734867642"></a>
 ### preferenceNames
@@ -192,7 +194,7 @@ preferenceNames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-randomvalue-randomvalue-src-mq3-game-bot-command-matches-ml-1229546038"></a>
 ### randomValue
@@ -202,7 +204,7 @@ randomValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-redflag-redflag-src-mq3-game-bot-command-matches-ml-590477214"></a>
 ### redFlag
@@ -212,7 +214,7 @@ redFlag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-redobelisk-redobelisk-src-mq3-game-bot-command-matches-ml-2057331462"></a>
 ### redObelisk
@@ -222,7 +224,7 @@ redObelisk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-taskpreferences-taskpreferences-src-mq3-game-bot-command-matches-ml-1479984434"></a>
 ### taskPreferences
@@ -232,7 +234,7 @@ taskPreferences
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-teamplay-teamplay-src-mq3-game-bot-command-matches-ml-1512696800"></a>
 ### teamplay
@@ -242,7 +244,7 @@ teamplay
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-teams-teams-src-mq3-game-bot-command-matches-ml-931550750"></a>
 ### teams
@@ -252,7 +254,7 @@ teams
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-tracevisiblefn-tracevisiblefn-src-mq3-game-bot-command-matches-ml-340540380"></a>
 ### traceVisibleFn
@@ -262,7 +264,7 @@ traceVisibleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)
 
 <a id="field-field-mq3-game-bot-command-matches-state-traveltimefn-traveltimefn-src-mq3-game-bot-command-matches-ml-1639728908"></a>
 ### travelTimeFn
@@ -272,4 +274,4 @@ travelTimeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L131)

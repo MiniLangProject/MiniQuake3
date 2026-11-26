@@ -9,8 +9,10 @@
 struct TriangleSurface
 ```
 
+Data record for `mq3.renderer.surface_mesh.TriangleSurface`; groups `verts`, `indexes`, `dlightBits`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-mesh-trianglesurface-indexes-indexes-src-mq3-renderer-surface-mesh-ml-561681580"></a>
 ### indexes
@@ -32,7 +34,7 @@ indexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-mesh-trianglesurface-verts-verts-src-mq3-renderer-surface-mesh-ml-1643168648"></a>
 ### verts
@@ -42,4 +44,4 @@ verts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L9)

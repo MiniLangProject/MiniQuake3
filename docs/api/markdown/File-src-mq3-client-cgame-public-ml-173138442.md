@@ -1206,8 +1206,10 @@ const MAX_ENTITIES_IN_SNAPSHOT = 256
 function typeNames()
 ```
 
+Lists the type names catalog for client game public in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L131)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L133)
 
 <a id="function-function-mq3-client-cgame-public-validcommandnumber-function-validcommandnumber-current-requested-src-mq3-client-cgame-public-ml-527157575"></a>
 ### validCommandNumber
@@ -1216,13 +1218,15 @@ function typeNames()
 function validCommandNumber(current, requested)
 ```
 
+Computes `requested>current-CMD_BACKUP and requested<=current` for client game public `validCommandNumber`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `current` | `dynamic` | — |  |
-| `requested` | `dynamic` | — |  |
+| `current` | `dynamic` | — | Value used by `return requested>current-CMD_BACKUP and requested<=current`. |
+| `requested` | `dynamic` | — | Value used by `return requested>current-CMD_BACKUP and requested<=current`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L140)
 
 <a id="function-function-mq3-client-cgame-public-valideventhandling-function-valideventhandling-value-src-mq3-client-cgame-public-ml-1465816601"></a>
 ### validEventHandling
@@ -1231,12 +1235,14 @@ function validCommandNumber(current, requested)
 function validEventHandling(value)
 ```
 
+Computes `value>=CGAME_EVENT_NONE and value<=CGAME_EVENT_EDITHUD` for client game public `validEventHandling`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `return value>=CGAME_EVENT_NONE and value<=CGAME_EVENT_EDITHUD`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L143)
 
 <a id="function-function-mq3-client-cgame-public-validsnapshotentitycount-function-validsnapshotentitycount-count-src-mq3-client-cgame-public-ml-1519252191"></a>
 ### validSnapshotEntityCount
@@ -1245,9 +1251,11 @@ function validEventHandling(value)
 function validSnapshotEntityCount(count)
 ```
 
+Computes `count>=0 and count<=MAX_ENTITIES_IN_SNAPSHOT` for client game public `validSnapshotEntityCount`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `count` | `dynamic` | — |  |
+| `count` | `dynamic` | — | Value used by `return count>=0 and count<=MAX_ENTITIES_IN_SNAPSHOT`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_public.ml#L136)

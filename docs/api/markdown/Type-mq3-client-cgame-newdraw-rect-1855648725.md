@@ -9,8 +9,10 @@
 struct Rect
 ```
 
+Stores client game newdraw rectangle, including `x`, `y`, `w`, `h`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
 
 ## Members
 
@@ -22,7 +24,7 @@ h
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
 
 <a id="field-field-mq3-client-cgame-newdraw-rect-w-w-src-mq3-client-cgame-newdraw-ml-479593743"></a>
 ### w
@@ -32,7 +34,7 @@ w
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
 
 <a id="field-field-mq3-client-cgame-newdraw-rect-x-x-src-mq3-client-cgame-newdraw-ml-762044203"></a>
 ### x
@@ -42,7 +44,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
 
 <a id="field-field-mq3-client-cgame-newdraw-rect-y-y-src-mq3-client-cgame-newdraw-ml-1000164495"></a>
 ### y
@@ -52,4 +54,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)

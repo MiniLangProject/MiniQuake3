@@ -9,8 +9,10 @@
 struct Cent
 ```
 
+Stores client game ents cent record, including `currentState`, `nextState`, `interpolate`, `lerpOrigin`, `lerpAngles`, `miscTime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L43)
 
 ## Members
 
@@ -22,7 +24,7 @@ currentState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L43)
 
 <a id="field-field-mq3-client-cgame-ents-cent-interpolate-interpolate-src-mq3-client-cgame-ents-ml-399750213"></a>
 ### interpolate
@@ -32,7 +34,7 @@ interpolate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L43)
 
 <a id="field-field-mq3-client-cgame-ents-cent-lerpangles-lerpangles-src-mq3-client-cgame-ents-ml-1511203391"></a>
 ### lerpAngles
@@ -42,7 +44,7 @@ lerpAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L43)
 
 <a id="field-field-mq3-client-cgame-ents-cent-lerporigin-lerporigin-src-mq3-client-cgame-ents-ml-1581753751"></a>
 ### lerpOrigin
@@ -52,7 +54,7 @@ lerpOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L43)
 
 <a id="field-field-mq3-client-cgame-ents-cent-misctime-misctime-src-mq3-client-cgame-ents-ml-1740970651"></a>
 ### miscTime
@@ -62,7 +64,7 @@ miscTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L43)
 
 <a id="field-field-mq3-client-cgame-ents-cent-nextstate-nextstate-src-mq3-client-cgame-ents-ml-2091732085"></a>
 ### nextState
@@ -72,4 +74,4 @@ nextState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L43)

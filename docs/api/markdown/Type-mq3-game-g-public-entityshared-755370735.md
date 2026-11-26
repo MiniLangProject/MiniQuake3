@@ -9,8 +9,10 @@
 struct EntityShared
 ```
 
+`EntityShared` record for g public, containing `s`, `linked`, `linkcount`, `svFlags` and `singleClient` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ absmax
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-absmin-absmin-src-mq3-game-g-public-ml-844271349"></a>
 ### absmin
@@ -32,7 +34,7 @@ absmin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-bmodel-bmodel-src-mq3-game-g-public-ml-1539952647"></a>
 ### bmodel
@@ -42,7 +44,7 @@ bmodel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-contents-contents-src-mq3-game-g-public-ml-314736533"></a>
 ### contents
@@ -52,7 +54,7 @@ contents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-currentangles-currentangles-src-mq3-game-g-public-ml-239537181"></a>
 ### currentAngles
@@ -62,7 +64,7 @@ currentAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-currentorigin-currentorigin-src-mq3-game-g-public-ml-900940757"></a>
 ### currentOrigin
@@ -72,7 +74,7 @@ currentOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-linkcount-linkcount-src-mq3-game-g-public-ml-302955821"></a>
 ### linkcount
@@ -82,7 +84,7 @@ linkcount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-linked-linked-src-mq3-game-g-public-ml-924985571"></a>
 ### linked
@@ -92,7 +94,7 @@ linked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-maxs-maxs-src-mq3-game-g-public-ml-399412159"></a>
 ### maxs
@@ -102,7 +104,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-mins-mins-src-mq3-game-g-public-ml-1826489579"></a>
 ### mins
@@ -112,7 +114,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-ownernum-ownernum-src-mq3-game-g-public-ml-1611151815"></a>
 ### ownerNum
@@ -122,7 +124,7 @@ ownerNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-s-s-src-mq3-game-g-public-ml-1130676369"></a>
 ### s
@@ -132,7 +134,7 @@ s
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-singleclient-singleclient-src-mq3-game-g-public-ml-461907047"></a>
 ### singleClient
@@ -142,7 +144,7 @@ singleClient
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-entityshared-svflags-svflags-src-mq3-game-g-public-ml-1024437329"></a>
 ### svFlags
@@ -152,4 +154,4 @@ svFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)

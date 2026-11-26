@@ -9,8 +9,10 @@
 struct Area
 ```
 
+`Area` record for aas clustering, containing `numFaces` and `firstFace`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstFace
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-clustering-area-numfaces-numfaces-src-mq3-botlib-aas-clustering-ml-1085608866"></a>
 ### numFaces
@@ -32,4 +34,4 @@ numFaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)

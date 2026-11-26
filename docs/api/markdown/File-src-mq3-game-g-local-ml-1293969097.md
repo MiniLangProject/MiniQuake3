@@ -36,8 +36,10 @@ const CARNAGE_REWARD_TIME = 3000
 function clientFieldNames()
 ```
 
+Return the ordered client field names table for g local: 32 entries beginning with `"ps"` and `"pers"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L73)
 
 - [mq3.game.g_local.ClientPersistant](Type-mq3-game-g-local-clientpersistant-183067153.md) — struct
 - [mq3.game.g_local.ClientSession](Type-mq3-game-g-local-clientsession-83131860.md) — struct
@@ -128,12 +130,14 @@ const DAMAGE_RADIUS = 1
 function damageUsesArmor(flags)
 ```
 
+Test `(flags&DAMAGE_NO_ARMOR)==0 and (flags&DAMAGE_NO_PROTECTION)==0` as the condition for `damageUsesArmor`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flags` | `dynamic` | — |  |
+| `flags` | `dynamic` | — | Operand used to evaluate the returned expression `(flags&DAMAGE_NO_ARMOR)==0 and (flags&DAMAGE_NO_PROTECTION)==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L85)
 
 <a id="function-function-mq3-game-g-local-declarationnames-function-declarationnames-src-mq3-game-g-local-ml-423205330"></a>
 ### declarationNames
@@ -145,7 +149,7 @@ function declarationNames()
 Complete declaration inventory for static parity checks. Calls are routed to their owning game, syscall, bot or AAS module rather than duplicated here.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L105)
 
 <a id="function-function-mq3-game-g-local-entityfieldnames-function-entityfieldnames-src-mq3-game-g-local-ml-1456149142"></a>
 ### entityFieldNames
@@ -154,8 +158,10 @@ Complete declaration inventory for static parity checks. Calls are routed to the
 function entityFieldNames()
 ```
 
+Return the ordered entity field names table for g local: 69 entries beginning with `"s"` and `"r"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L71)
 
 <a id="constant-constant-mq3-game-g-local-fl-dropped-item-const-fl-dropped-item-4096-src-mq3-game-g-local-ml-1686861914"></a>
 ### FL_DROPPED_ITEM
@@ -244,12 +250,14 @@ const FL_TEAMSLAVE = 1024
 function FOFS(fieldName)
 ```
 
+Apply `mq3.game.g_local.entityFieldNames` while evaluating `FOFS`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fieldName` | `dynamic` | — |  |
+| `fieldName` | `dynamic` | — | Value used by `FOFS` in `if fields[index]==fieldName then return index end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L95)
 
 <a id="constant-constant-mq3-game-g-local-follow-active1-const-follow-active1-1-src-mq3-game-g-local-ml-30522503"></a>
 ### FOLLOW_ACTIVE1
@@ -318,12 +326,14 @@ const INTERMISSION_DELAY_TIME = 1000
 function isFollowSentinel(clientNum)
 ```
 
+Test `clientNum==FOLLOW_ACTIVE1 or clientNum==FOLLOW_ACTIVE2` as the condition for `isFollowSentinel`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clientNum` | `dynamic` | — |  |
+| `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L82)
 
 <a id="function-function-mq3-game-g-local-levelfieldnames-function-levelfieldnames-src-mq3-game-g-local-ml-1591622750"></a>
 ### levelFieldNames
@@ -332,8 +342,10 @@ function isFollowSentinel(clientNum)
 function levelFieldNames()
 ```
 
+Return the ordered level field names table for g local: 51 entries beginning with `"clients"` and `"gentities"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L75)
 
 <a id="constant-constant-mq3-game-g-local-max-filepath-const-max-filepath-144-src-mq3-game-g-local-ml-1462853418"></a>
 ### MAX_FILEPATH
@@ -432,12 +444,14 @@ const MOVER_POS2 = 1
 function nextBodyQueueSlot(slot)
 ```
 
+Advance a valid body-queue slot with circular wraparound and reject an out-of-range slot.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `slot` | `dynamic` | — |  |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L92)
 
 - [mq3.game.g_local.PlayerTeamState](Type-mq3-game-g-local-playerteamstate-1913452256.md) — struct
 <a id="constant-constant-mq3-game-g-local-reward-sprite-time-const-reward-sprite-time-2000-src-mq3-game-g-local-ml-17954315"></a>
@@ -537,8 +551,10 @@ const TEAM_BEGIN = 0
 function typeNames()
 ```
 
+Return the ordered type names table for g local: 11 entries beginning with `"moverState_t"` and `"gentity_t"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L69)
 
 <a id="function-function-mq3-game-g-local-validmoverstate-function-validmoverstate-state-src-mq3-game-g-local-ml-1037133999"></a>
 ### validMoverState
@@ -547,12 +563,14 @@ function typeNames()
 function validMoverState(state)
 ```
 
+Test `state>=MOVER_POS1 and state<=MOVER_2TO1` as the condition for `validMoverState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Operand used to evaluate the returned expression `state>=MOVER_POS1 and state<=MOVER_2TO1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L79)
 
 <a id="function-function-mq3-game-g-local-validspawnstorage-function-validspawnstorage-paircount-charcount-src-mq3-game-g-local-ml-1263938536"></a>
 ### validSpawnStorage
@@ -561,10 +579,12 @@ function validMoverState(state)
 function validSpawnStorage(pairCount, charCount)
 ```
 
+Test `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS` as the condition for `validSpawnStorage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pairCount` | `dynamic` | — |  |
-| `charCount` | `dynamic` | — |  |
+| `pairCount` | `dynamic` | — | Operand used to evaluate the returned expression `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS`. |
+| `charCount` | `dynamic` | — | Operand used to evaluate the returned expression `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L89)

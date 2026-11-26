@@ -26,12 +26,14 @@ Reachable from entry: **no**
 function chatClient(ent)
 ```
 
+Require and return a client state for a chat command.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ent` | `dynamic` | — |  |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L24)
 
 <a id="function-function-mq3-game-chat-commands-chatclientlimit-function-chatclientlimit-level-src-mq3-game-chat-commands-ml-1920074454"></a>
 ### chatClientLimit
@@ -40,12 +42,14 @@ function chatClient(ent)
 function chatClientLimit(level)
 ```
 
+Validate the chat client range against the native sixty-four-client capacity.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L36)
 
 <a id="function-function-mq3-game-chat-commands-chatformattedcopy-function-chatformattedcopy-level-text-capacity-src-mq3-game-chat-commands-ml-1992924257"></a>
 ### chatFormattedCopy
@@ -54,14 +58,16 @@ function chatClientLimit(level)
 function chatFormattedCopy(level, text, capacity)
 ```
 
+Apply `mq3.shared.info.textBytes`, `mq3.game.chat_commands.chatPrint` and `mq3.shared.info.copy` while evaluating `chatFormattedCopy`. Return paths include `infoStrings.copy(text,capacity)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L66)
 
 <a id="function-function-mq3-game-chat-commands-chatgametype-function-chatgametype-level-src-mq3-game-chat-commands-ml-1199592538"></a>
 ### chatGametype
@@ -70,12 +76,14 @@ function chatFormattedCopy(level, text, capacity)
 function chatGametype(level)
 ```
 
+Require the game spawner and return its game type for chat routing.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L30)
 
 <a id="function-function-mq3-game-chat-commands-chatlog-function-chatlog-level-text-src-mq3-game-chat-commands-ml-373871719"></a>
 ### chatLog
@@ -84,13 +92,15 @@ function chatGametype(level)
 function chatLog(level, text)
 ```
 
+Use `level.gameLogFn` to perform `chatLog`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gameLogFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L51)
 
 <a id="function-function-mq3-game-chat-commands-chatprint-function-chatprint-level-text-src-mq3-game-chat-commands-ml-1897474657"></a>
 ### chatPrint
@@ -99,13 +109,15 @@ function chatLog(level, text)
 function chatPrint(level, text)
 ```
 
+Use `level.gamePrintFn` to perform `chatPrint`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L58)
 
 <a id="function-function-mq3-game-chat-commands-chatservercommand-function-chatservercommand-level-slot-text-src-mq3-game-chat-commands-ml-861444847"></a>
 ### chatServerCommand
@@ -114,14 +126,16 @@ function chatPrint(level, text)
 function chatServerCommand(level, slot, text)
 ```
 
+Use `level.serverCommandFn` to perform `chatServerCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `serverCommandFn`. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L44)
 
 <a id="function-function-mq3-game-chat-commands-chatvoiceonly-function-chatvoiceonly-value-src-mq3-game-chat-commands-ml-3612887"></a>
 ### chatVoiceOnly
@@ -130,12 +144,14 @@ function chatServerCommand(level, slot, text)
 function chatVoiceOnly(value)
 ```
 
+Preserve an integer voice-only value or convert a truth value to one or zero.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L158)
 
 <a id="constant-constant-mq3-game-chat-commands-color-cyan-const-color-cyan-53-src-mq3-game-chat-commands-ml-732598489"></a>
 ### COLOR_CYAN
@@ -174,14 +190,16 @@ const COLOR_MAGENTA = 54
 function gameCommand(level, ent, argv)
 ```
 
+Apply `mq3.game.command_args.argument` and `mq3.game.chat_commands.say` while evaluating `gameCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L272)
 
 <a id="function-function-mq3-game-chat-commands-say-function-say-level-ent-target-mode-chattext-src-mq3-game-chat-commands-ml-1044532284"></a>
 ### say
@@ -190,16 +208,18 @@ function gameCommand(level, ent, argv)
 function say(level, ent, target, mode, chatText)
 ```
 
+Apply `mq3.game.chat_commands.chatClient`, `mq3.game.chat_commands.chatGametype` and `mq3.shared.info.textBytes` while evaluating `say`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `chatText` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `dedicated` and `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. |
+| `target` | `dynamic` | — | Target record; accesses `client`. |
+| `mode` | `dynamic` | — | Value used by `sayTo` in `if mode == SAY_TEAM and not teamBonuses.sameTeam(level,ent,other) then return void end if`. |
+| `chatText` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L96)
 
 <a id="constant-constant-mq3-game-chat-commands-say-all-const-say-all-0-src-mq3-game-chat-commands-ml-956398927"></a>
 ### SAY_ALL
@@ -238,16 +258,18 @@ const SAY_TELL = 2
 function sayCommand(level, ent, argv, mode, arg0)
 ```
 
+Apply `mq3.game.chat_commands.say` and `mq3.game.command_args.concat` while evaluating `sayCommand`. Return paths include `say(level,ent,void,mode,commandArgs.concat(argv,start))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `arg0` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `dedicated` and `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
+| `mode` | `dynamic` | — | Value used by `sayTo` in `if mode == SAY_TEAM and not teamBonuses.sameTeam(level,ent,other) then return void end if`. |
+| `arg0` | `dynamic` | — | Value used by `sayCommand` in `if len(argv) < 2 and not arg0 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L134)
 
 <a id="function-function-mq3-game-chat-commands-sayto-function-sayto-level-ent-other-mode-color-name-message-src-mq3-game-chat-commands-ml-144419241"></a>
 ### sayTo
@@ -256,18 +278,20 @@ function sayCommand(level, ent, argv, mode, arg0)
 function sayTo(level, ent, other, mode, color, name, message)
 ```
 
+Apply `mq3.game.team_bonuses.sameTeam`, `mq3.game.chat_commands.chatGametype` and `mq3.game.chat_commands.chatClient` while evaluating `sayTo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `ent` | `dynamic` | — | First record; accesses `client`. |
+| `other` | `dynamic` | — | Other record; accesses `inuse`, `client` and `slot`. |
+| `mode` | `dynamic` | — | Value used by `sayTo` in `if mode == SAY_TEAM and not teamBonuses.sameTeam(level,ent,other) then return void end if`. |
+| `color` | `dynamic` | — | Operand used to evaluate the returned expression `chatServerCommand(level,other.slot,command+" \\""+name+"^"+decode(bytes([color & 255]))+message+"\\"")`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L80)
 
 <a id="constant-constant-mq3-game-chat-commands-svf-bot-const-svf-bot-8-src-mq3-game-chat-commands-ml-1444810447"></a>
 ### SVF_BOT
@@ -286,14 +310,16 @@ const SVF_BOT = 8
 function tellCommand(level, ent, argv)
 ```
 
+Apply `mq3.game.command_args.argument`, `mq3.game.chat_commands.chatClientLimit` and `mq3.game.command_args.concat` while evaluating `tellCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L144)
 
 <a id="function-function-mq3-game-chat-commands-voice-function-voice-level-ent-target-mode-id-voiceonly-src-mq3-game-chat-commands-ml-274338416"></a>
 ### voice
@@ -302,17 +328,19 @@ function tellCommand(level, ent, argv)
 function voice(level, ent, target, mode, id, voiceOnly)
 ```
 
+Apply `mq3.game.chat_commands.chatGametype`, `mq3.shared.info.textBytes` and `mq3.game.chat_commands.voiceTo` while evaluating `voice`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `voiceOnly` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `dedicated` and `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`. |
+| `target` | `dynamic` | — | Other record; accesses `inuse`, `client` and `slot`. |
+| `mode` | `dynamic` | — | Value used by `voiceTo` in `if mode == SAY_TEAM and not teamBonuses.sameTeam(level,ent,other) then return void end if`. |
+| `id` | `dynamic` | — | Text to parse, format or deliver. |
+| `voiceOnly` | `dynamic` | — | Whether to emit voice without the accompanying text message. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L189)
 
 <a id="function-function-mq3-game-chat-commands-voicecommand-function-voicecommand-level-ent-argv-mode-arg0-voiceonly-src-mq3-game-chat-commands-ml-514798186"></a>
 ### voiceCommand
@@ -321,17 +349,19 @@ function voice(level, ent, target, mode, id, voiceOnly)
 function voiceCommand(level, ent, argv, mode, arg0, voiceOnly)
 ```
 
+Apply `mq3.game.chat_commands.voice` and `mq3.game.command_args.concat` while evaluating `voiceCommand`. Return paths include `voice(level,ent,void,mode,commandArgs.concat(argv,start),voiceOnly)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `arg0` | `dynamic` | — |  |
-| `voiceOnly` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `dedicated` and `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
+| `mode` | `dynamic` | — | Value used by `voiceTo` in `if mode == SAY_TEAM and not teamBonuses.sameTeam(level,ent,other) then return void end if`. |
+| `arg0` | `dynamic` | — | Value used by `voiceCommand` in `if len(argv) < 2 and not arg0 then return void end if`. |
+| `voiceOnly` | `dynamic` | — | Whether to emit voice without the accompanying text message. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L207)
 
 <a id="function-function-mq3-game-chat-commands-voicetaunt-function-voicetaunt-level-ent-src-mq3-game-chat-commands-ml-43043627"></a>
 ### voiceTaunt
@@ -340,13 +370,15 @@ function voiceCommand(level, ent, argv, mode, arg0, voiceOnly)
 function voiceTaunt(level, ent)
 ```
 
+Set `ent.enemy` to `void` and `ent.client.lastkilled_client` to `-1` in `mq3.game.chat_commands.voiceTaunt`. Return paths include `voice(level,ent,void,SAY_ALL,"taunt",false)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities` and `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `enemy`, `s` and `r`. May update `ent.enemy` and `ent.client.lastkilled_client` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L233)
 
 <a id="function-function-mq3-game-chat-commands-voicetellcommand-function-voicetellcommand-level-ent-argv-voiceonly-src-mq3-game-chat-commands-ml-2094996945"></a>
 ### voiceTellCommand
@@ -355,15 +387,17 @@ function voiceTaunt(level, ent)
 function voiceTellCommand(level, ent, argv, voiceOnly)
 ```
 
+Apply `mq3.game.command_args.argument`, `mq3.game.chat_commands.chatClientLimit` and `mq3.game.command_args.concat` while evaluating `voiceTellCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
-| `voiceOnly` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
+| `voiceOnly` | `dynamic` | — | Whether to emit voice without the accompanying text message. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L218)
 
 <a id="function-function-mq3-game-chat-commands-voiceto-function-voiceto-level-ent-other-mode-id-voiceonly-src-mq3-game-chat-commands-ml-2069680053"></a>
 ### voiceTo
@@ -372,17 +406,19 @@ function voiceTellCommand(level, ent, argv, voiceOnly)
 function voiceTo(level, ent, other, mode, id, voiceOnly)
 ```
 
+Apply `mq3.game.team_bonuses.sameTeam`, `mq3.game.chat_commands.chatGametype` and `mq3.game.chat_commands.chatServerCommand` while evaluating `voiceTo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `voiceOnly` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`. |
+| `other` | `dynamic` | — | Other record; accesses `inuse`, `client` and `slot`. |
+| `mode` | `dynamic` | — | Value used by `voiceTo` in `if mode == SAY_TEAM and not teamBonuses.sameTeam(level,ent,other) then return void end if`. |
+| `id` | `dynamic` | — | Operand used to evaluate the returned expression `chatServerCommand(level,other.slot,command+" "+str(chatVoiceOnly(voiceOnly))+" "+str(n.i32(ent.s.number))+" "+str(color)+" "+id)`. |
+| `voiceOnly` | `dynamic` | — | Whether to emit voice without the accompanying text message. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L171)
 
 <a id="function-function-mq3-game-chat-commands-where-function-where-level-ent-src-mq3-game-chat-commands-ml-1327730689"></a>
 ### where
@@ -391,10 +427,12 @@ function voiceTo(level, ent, other, mode, id, voiceOnly)
 function where(level, ent)
 ```
 
+Apply `mq3.game.entities.vtos` and `mq3.game.chat_commands.chatServerCommand` while evaluating `where`. Return paths include `chatServerCommand(level,ent.slot,"print \""+text+"\n\"")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s` and `slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L284)

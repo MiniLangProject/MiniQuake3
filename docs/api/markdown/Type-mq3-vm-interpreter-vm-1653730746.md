@@ -9,8 +9,10 @@
 struct VM
 ```
 
+VM record for vm.interpreter, containing `code`, `addresses`, `starts`, `widths`, `needs`, `data`, and 8 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ addresses
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L12)
 
 <a id="field-field-mq3-vm-interpreter-vm-breaks-breaks-src-mq3-vm-interpreter-ml-1998597664"></a>
 ### breaks
@@ -32,7 +34,7 @@ breaks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L23)
 
 <a id="field-field-mq3-vm-interpreter-vm-code-code-src-mq3-vm-interpreter-ml-143015542"></a>
 ### code
@@ -42,7 +44,7 @@ code
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L11)
 
 <a id="field-field-mq3-vm-interpreter-vm-data-data-src-mq3-vm-interpreter-ml-1716965912"></a>
 ### data
@@ -52,7 +54,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L16)
 
 <a id="field-field-mq3-vm-interpreter-vm-limit-limit-src-mq3-vm-interpreter-ml-1013571640"></a>
 ### limit
@@ -62,7 +64,7 @@ limit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L22)
 
 <a id="field-field-mq3-vm-interpreter-vm-mask-mask-src-mq3-vm-interpreter-ml-1819227248"></a>
 ### mask
@@ -72,7 +74,7 @@ mask
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L17)
 
 <a id="field-field-mq3-vm-interpreter-vm-nativeplan-nativeplan-src-mq3-vm-interpreter-ml-2127120852"></a>
 ### nativePlan
@@ -82,7 +84,7 @@ nativePlan
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L24)
 
 <a id="field-field-mq3-vm-interpreter-vm-needs-needs-src-mq3-vm-interpreter-ml-1639675252"></a>
 ### needs
@@ -92,7 +94,7 @@ needs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L15)
 
 <a id="field-field-mq3-vm-interpreter-vm-programstack-programstack-src-mq3-vm-interpreter-ml-1506743132"></a>
 ### programStack
@@ -102,7 +104,7 @@ programStack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L18)
 
 <a id="field-field-mq3-vm-interpreter-vm-stackbottom-stackbottom-src-mq3-vm-interpreter-ml-1425734452"></a>
 ### stackBottom
@@ -112,7 +114,7 @@ stackBottom
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L19)
 
 <a id="field-field-mq3-vm-interpreter-vm-starts-starts-src-mq3-vm-interpreter-ml-814450446"></a>
 ### starts
@@ -122,7 +124,7 @@ starts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L13)
 
 <a id="field-field-mq3-vm-interpreter-vm-steps-steps-src-mq3-vm-interpreter-ml-239161944"></a>
 ### steps
@@ -132,7 +134,7 @@ steps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L21)
 
 <a id="field-field-mq3-vm-interpreter-vm-syscall-syscall-src-mq3-vm-interpreter-ml-1284742452"></a>
 ### syscall
@@ -142,7 +144,7 @@ syscall
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L20)
 
 <a id="field-field-mq3-vm-interpreter-vm-widths-widths-src-mq3-vm-interpreter-ml-83715862"></a>
 ### widths
@@ -152,4 +154,4 @@ widths
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L14)

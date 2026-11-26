@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for vm.runtime, containing `loadFn`, `symbolFn`, `developerFn`, `diagnosticFn`, `registerCvarFn`, `addCommandFn`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ addCommandFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 <a id="field-field-mq3-vm-runtime-services-context-context-src-mq3-vm-runtime-ml-474816809"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 <a id="field-field-mq3-vm-runtime-services-developerfn-developerfn-src-mq3-vm-runtime-ml-920036913"></a>
 ### developerFn
@@ -42,7 +44,7 @@ developerFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 <a id="field-field-mq3-vm-runtime-services-diagnosticfn-diagnosticfn-src-mq3-vm-runtime-ml-978583251"></a>
 ### diagnosticFn
@@ -52,7 +54,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 <a id="field-field-mq3-vm-runtime-services-loadfn-loadfn-src-mq3-vm-runtime-ml-420152529"></a>
 ### loadFn
@@ -62,7 +64,7 @@ loadFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 <a id="field-field-mq3-vm-runtime-services-logfn-logfn-src-mq3-vm-runtime-ml-675450289"></a>
 ### logFn
@@ -72,7 +74,7 @@ logFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 <a id="field-field-mq3-vm-runtime-services-registercvarfn-registercvarfn-src-mq3-vm-runtime-ml-1364273875"></a>
 ### registerCvarFn
@@ -82,7 +84,7 @@ registerCvarFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 <a id="field-field-mq3-vm-runtime-services-symbolfn-symbolfn-src-mq3-vm-runtime-ml-500913425"></a>
 ### symbolFn
@@ -92,4 +94,4 @@ symbolFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)

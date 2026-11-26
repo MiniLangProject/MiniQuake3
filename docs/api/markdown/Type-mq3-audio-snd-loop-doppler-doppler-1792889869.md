@@ -9,8 +9,10 @@
 struct Doppler
 ```
 
+Doppler record for audio.snd_loop_doppler, containing `active`, `scale`, `oldScale`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L9)
 
 <a id="field-field-mq3-audio-snd-loop-doppler-doppler-oldscale-oldscale-src-mq3-audio-snd-loop-doppler-ml-1695325559"></a>
 ### oldScale
@@ -32,7 +34,7 @@ oldScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L9)
 
 <a id="field-field-mq3-audio-snd-loop-doppler-doppler-scale-scale-src-mq3-audio-snd-loop-doppler-ml-1384288725"></a>
 ### scale
@@ -42,4 +44,4 @@ scale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L9)

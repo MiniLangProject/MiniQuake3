@@ -12,7 +12,7 @@ struct Host
 Platform-specific I/O remains explicit. The native state changes are always performed; actionFn is skipped when a retail QVM already owns the operation.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 ## Members
 
@@ -24,7 +24,7 @@ actionFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-allocfn-allocfn-src-mq3-client-client-main-ml-1454279107"></a>
 ### allocFn
@@ -34,7 +34,7 @@ allocFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-closefn-closefn-src-mq3-client-client-main-ml-1030173935"></a>
 ### closeFn
@@ -44,7 +44,7 @@ closeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-context-context-src-mq3-client-client-main-ml-710155931"></a>
 ### context
@@ -54,7 +54,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-existsfn-existsfn-src-mq3-client-client-main-ml-750699503"></a>
 ### existsFn
@@ -64,7 +64,7 @@ existsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-freefn-freefn-src-mq3-client-client-main-ml-1513196763"></a>
 ### freeFn
@@ -74,7 +74,7 @@ freeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-millisecondsfn-millisecondsfn-src-mq3-client-client-main-ml-331666259"></a>
 ### millisecondsFn
@@ -84,7 +84,7 @@ millisecondsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-readfn-readfn-src-mq3-client-client-main-ml-55477651"></a>
 ### readFn
@@ -94,7 +94,7 @@ readFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)
 
 <a id="field-field-mq3-client-client-main-host-writefn-writefn-src-mq3-client-client-main-ml-1628270591"></a>
 ### writeFn
@@ -104,4 +104,4 @@ writeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L50)

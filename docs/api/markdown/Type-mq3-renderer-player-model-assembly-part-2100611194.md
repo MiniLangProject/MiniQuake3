@@ -9,8 +9,10 @@
 struct Part
 ```
 
+Data record for `mq3.renderer.player_model_assembly.Part`; groups `kind`, `name`, `model`, `animation`, `transform`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ animation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L22)
 
 <a id="field-field-mq3-renderer-player-model-assembly-part-kind-kind-src-mq3-renderer-player-model-assembly-ml-152218796"></a>
 ### kind
@@ -32,7 +34,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L22)
 
 <a id="field-field-mq3-renderer-player-model-assembly-part-model-model-src-mq3-renderer-player-model-assembly-ml-323653596"></a>
 ### model
@@ -42,7 +44,7 @@ model
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L22)
 
 <a id="field-field-mq3-renderer-player-model-assembly-part-name-name-src-mq3-renderer-player-model-assembly-ml-1354474522"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L22)
 
 <a id="field-field-mq3-renderer-player-model-assembly-part-transform-transform-src-mq3-renderer-player-model-assembly-ml-862008892"></a>
 ### transform
@@ -62,4 +64,4 @@ transform
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L22)

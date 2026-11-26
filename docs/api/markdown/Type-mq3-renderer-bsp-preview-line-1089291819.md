@@ -9,8 +9,10 @@
 struct Line
 ```
 
+Data record for `mq3.renderer.bsp_preview.Line`; groups `a`, `b`, `face`, `triangle`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ a
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L10)
 
 <a id="field-field-mq3-renderer-bsp-preview-line-b-b-src-mq3-renderer-bsp-preview-ml-2129715043"></a>
 ### b
@@ -32,7 +34,7 @@ b
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L10)
 
 <a id="field-field-mq3-renderer-bsp-preview-line-face-face-src-mq3-renderer-bsp-preview-ml-1784335173"></a>
 ### face
@@ -42,7 +44,7 @@ face
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L10)
 
 <a id="field-field-mq3-renderer-bsp-preview-line-triangle-triangle-src-mq3-renderer-bsp-preview-ml-2104687555"></a>
 ### triangle
@@ -52,4 +54,4 @@ triangle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L10)

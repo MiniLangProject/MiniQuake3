@@ -32,12 +32,14 @@ const CA_CONNECTED = 5
 function create(game)
 ```
 
+Creates a `mq3.client.ui_spreset.Reset` record. Assigns `game` from `game`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `game` | `dynamic` | — |  |
+| `game` | `dynamic` | — | Value used to initialize `Reset.game`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L20)
 
 <a id="function-function-mq3-client-ui-spreset-draw-function-draw-kind-x-y-w-h-text-style-color-asset-src-mq3-client-ui-spreset-ml-1866641539"></a>
 ### draw
@@ -46,20 +48,22 @@ function create(game)
 function draw(kind, x, y, w, h, text, style, color, asset)
 ```
 
+Builds the UI spreset `draw` sequence from `[kind,x,y,w,h,text,style,color,asset]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `kind` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `asset` | `dynamic` | — |  |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `draw`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `draw`. |
+| `w` | `dynamic` | — | Width in the coordinate space used by `draw`. |
+| `h` | `dynamic` | — | Height in the coordinate space used by `draw`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `draw` in the UI spreset path. |
+| `style` | `dynamic` | — | Value used by `return [kind,x,y,w,h,text,style,color,asset]`. |
+| `color` | `dynamic` | — | Color value used by the UI spreset drawing or interpolation operation. |
+| `asset` | `dynamic` | — | Value used by `return [kind,x,y,w,h,text,style,color,asset]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-spreset-id-no-const-id-no-100-src-mq3-client-ui-spreset-ml-324471700"></a>
 ### ID_NO
@@ -92,7 +96,7 @@ function Reset_Cache()
 Reset_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L64)
 
 <a id="function-function-mq3-client-ui-spreset-reset-menudraw-function-reset-menudraw-value-realtime-src-mq3-client-ui-spreset-ml-1315880376"></a>
 ### Reset_MenuDraw
@@ -105,11 +109,11 @@ Reset_MenuDraw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI spreset record/storage; this routine assigns `value.drawRows`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L59)
 
 <a id="function-function-mq3-client-ui-spreset-reset-menuevent-function-reset-menuevent-value-id-event-src-mq3-client-ui-spreset-ml-1084441138"></a>
 ### Reset_MenuEvent
@@ -122,12 +126,12 @@ Reset_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI spreset record/storage; this routine assigns `value.popped`, `value.popCount`, `value.cvarWrites`, `value.levelMenuOpened`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_NO then return true end if`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L37)
 
 <a id="function-function-mq3-client-ui-spreset-reset-menukey-function-reset-menukey-value-key-cursorx-cursory-src-mq3-client-ui-spreset-ml-102937423"></a>
 ### Reset_MenuKey
@@ -140,13 +144,13 @@ Reset_MenuKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `cursorx` | `dynamic` | — |  |
-| `cursory` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.menu`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI spreset entry. |
+| `cursorx` | `dynamic` | — | Value used by `return qmenu.Menu_DefaultKey(value.menu,key,cursorx,cursory)`. |
+| `cursory` | `dynamic` | — | Value used by `return qmenu.Menu_DefaultKey(value.menu,key,cursorx,cursory)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L46)
 
 <a id="function-function-mq3-client-ui-spreset-ui-resetmenu-function-ui-resetmenu-game-connectionstate-src-mq3-client-ui-spreset-ml-1865268047"></a>
 ### UI_ResetMenu
@@ -159,8 +163,8 @@ UI_ResetMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `game` | `dynamic` | — |  |
-| `connectionState` | `dynamic` | — |  |
+| `game` | `dynamic` | — | Value used by `value=create(game)`. |
+| `connectionState` | `dynamic` | — | Value assigned to `value.menu.fullscreen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L69)

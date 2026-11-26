@@ -18,7 +18,7 @@ function cache()
 UI_SetupMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L39)
 
 <a id="function-function-mq3-client-ui-setup-event-function-event-menu-id-eventcode-src-mq3-client-ui-setup-ml-1451175135"></a>
 ### event
@@ -31,12 +31,12 @@ UI_SetupMenu_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI setup record/storage; this routine assigns `menu.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_CUSTOMIZEPLAYER then menu.actions=menu.actions+["playerSettings"]`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-setup-id-back-const-id-back-18-src-mq3-client-ui-setup-ml-1122189580"></a>
 ### ID_BACK
@@ -119,10 +119,10 @@ UI_SetupMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `paused` | `dynamic` | — |  |
+| `paused` | `dynamic` | — | Value used by `if not paused then items=items+[SetupItem(ID_DEFAULTS,"DEFAULTS",304)] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L42)
 
 <a id="function-function-mq3-client-ui-setup-open-function-open-paused-src-mq3-client-ui-setup-ml-537575684"></a>
 ### open
@@ -135,10 +135,10 @@ UI_SetupMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `paused` | `dynamic` | — |  |
+| `paused` | `dynamic` | — | Value used by `menu=init(paused)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L50)
 
 <a id="constant-constant-mq3-client-ui-setup-qm-activated-const-qm-activated-3-src-mq3-client-ui-setup-ml-1581072936"></a>
 ### QM_ACTIVATED
@@ -161,11 +161,11 @@ Setup_ResetDefaults_Action
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI setup record/storage; this routine assigns `menu.commands`. |
+| `result` | `dynamic` | — | Value used by `if result then menu.commands=menu.commands+["exec default.cfg\\n","cvar_restart\\n","vid_restart\\n"] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L20)
 
 <a id="function-function-mq3-client-ui-setup-resetdefaultsdraw-function-resetdefaultsdraw-src-mq3-client-ui-setup-ml-491392836"></a>
 ### resetDefaultsDraw
@@ -177,7 +177,7 @@ function resetDefaultsDraw()
 Setup_ResetDefaults_Draw
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L22)
 
 - [mq3.client.ui_setup.SetupItem](Type-mq3-client-ui-setup-setupitem-266284445.md) — struct
 - [mq3.client.ui_setup.SetupMenu](Type-mq3-client-ui-setup-setupmenu-335050865.md) — struct

@@ -25,14 +25,16 @@ Reachable from entry: **no**
 function AIEnter_Battle_Chase(services, bot, reason)
 ```
 
+Forward `AIEnter_Battle_Chase` to `mq3.game.bot_fight_state.enterChase` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `chaseTime` and `aiNode`. May update `bot.chaseTime` and `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L369)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-battle-fight-function-aienter-battle-fight-services-bot-reason-src-mq3-game-ai-dmnet-ml-102341825"></a>
 ### AIEnter_Battle_Fight
@@ -41,14 +43,16 @@ function AIEnter_Battle_Chase(services, bot, reason)
 function AIEnter_Battle_Fight(services, bot, reason)
 ```
 
+Forward `AIEnter_Battle_Fight` to `mq3.game.bot_fight_state.enterFight` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ms` and `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L355)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-battle-nbg-function-aienter-battle-nbg-services-bot-reason-src-mq3-game-ai-dmnet-ml-1358199085"></a>
 ### AIEnter_Battle_NBG
@@ -57,14 +61,16 @@ function AIEnter_Battle_Fight(services, bot, reason)
 function AIEnter_Battle_NBG(services, bot, reason)
 ```
 
+Forward `AIEnter_Battle_NBG` to `mq3.game.bot_fight_state.enterNbg` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L387)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-battle-retreat-function-aienter-battle-retreat-services-bot-reason-src-mq3-game-ai-dmnet-ml-1931621837"></a>
 ### AIEnter_Battle_Retreat
@@ -73,14 +79,16 @@ function AIEnter_Battle_NBG(services, bot, reason)
 function AIEnter_Battle_Retreat(services, bot, reason)
 ```
 
+Forward `AIEnter_Battle_Retreat` to `mq3.game.bot_fight_state.enterRetreat` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L378)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-battle-suicidalfight-function-aienter-battle-suicidalfight-services-bot-reason-src-mq3-game-ai-dmnet-ml-2113386617"></a>
 ### AIEnter_Battle_SuicidalFight
@@ -89,14 +97,16 @@ function AIEnter_Battle_Retreat(services, bot, reason)
 function AIEnter_Battle_SuicidalFight(services, bot, reason)
 ```
 
+Forward `AIEnter_Battle_SuicidalFight` to `mq3.game.bot_fight_state.enterSuicidalFight` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `combatFlags`. May update `bot.combatFlags` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L360)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-intermission-function-aienter-intermission-services-bot-reason-src-mq3-game-ai-dmnet-ml-163975121"></a>
 ### AIEnter_Intermission
@@ -105,14 +115,16 @@ function AIEnter_Battle_SuicidalFight(services, bot, reason)
 function AIEnter_Intermission(services, bot, reason)
 ```
 
+Forward `AIEnter_Intermission` to `mq3.game.bot_seek_state.enterIntermission` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `chatto` and `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L257)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-observer-function-aienter-observer-services-bot-reason-src-mq3-game-ai-dmnet-ml-1215355437"></a>
 ### AIEnter_Observer
@@ -121,14 +133,16 @@ function AIEnter_Intermission(services, bot, reason)
 function AIEnter_Observer(services, bot, reason)
 ```
 
+Forward `AIEnter_Observer` to `mq3.game.bot_seek_state.enterObserver` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L266)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-respawn-function-aienter-respawn-services-bot-reason-src-mq3-game-ai-dmnet-ml-482959979"></a>
 ### AIEnter_Respawn
@@ -137,14 +151,16 @@ function AIEnter_Observer(services, bot, reason)
 function AIEnter_Respawn(services, bot, reason)
 ```
 
+Forward `AIEnter_Respawn` to `mq3.game.bot_seek_state.enterRespawn` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ms`, `gs`, `respawnTime`, `respawnChatTime` and `respawnWait` and related fields. May update `bot.respawnTime`, `bot.respawnChatTime` and `bot.respawnWait` and additional fields in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L284)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-seek-activateentity-function-aienter-seek-activateentity-services-bot-reason-src-mq3-game-ai-dmnet-ml-1769813025"></a>
 ### AIEnter_Seek_ActivateEntity
@@ -153,14 +169,16 @@ function AIEnter_Respawn(services, bot, reason)
 function AIEnter_Seek_ActivateEntity(services, bot, reason)
 ```
 
+Forward `AIEnter_Seek_ActivateEntity` to `mq3.game.bot_seek_state.enterActivate` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L328)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-seek-ltg-function-aienter-seek-ltg-services-bot-reason-src-mq3-game-ai-dmnet-ml-206226385"></a>
 ### AIEnter_Seek_LTG
@@ -169,14 +187,16 @@ function AIEnter_Seek_ActivateEntity(services, bot, reason)
 function AIEnter_Seek_LTG(services, bot, reason)
 ```
 
+Forward `AIEnter_Seek_LTG` to `mq3.game.bot_seek_state.enterSeek` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `gs` and `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L346)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-seek-nbg-function-aienter-seek-nbg-services-bot-reason-src-mq3-game-ai-dmnet-ml-1346534237"></a>
 ### AIEnter_Seek_NBG
@@ -185,14 +205,16 @@ function AIEnter_Seek_LTG(services, bot, reason)
 function AIEnter_Seek_NBG(services, bot, reason)
 ```
 
+Forward `AIEnter_Seek_NBG` to `mq3.game.bot_seek_state.enterSeekNbg` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `gs` and `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L337)
 
 <a id="function-function-mq3-game-ai-dmnet-aienter-stand-function-aienter-stand-services-bot-reason-src-mq3-game-ai-dmnet-ml-1218143891"></a>
 ### AIEnter_Stand
@@ -201,14 +223,16 @@ function AIEnter_Seek_NBG(services, bot, reason)
 function AIEnter_Stand(services, bot, reason)
 ```
 
+Forward `AIEnter_Stand` to `mq3.game.bot_seek_state.enterStand` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `standFindEnemyTime` and `aiNode`. May update `bot.standFindEnemyTime` and `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L275)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-battle-chase-function-ainode-battle-chase-services-bot-src-mq3-game-ai-dmnet-ml-130864561"></a>
 ### AINode_Battle_Chase
@@ -217,13 +241,15 @@ function AIEnter_Stand(services, bot, reason)
 function AINode_Battle_Chase(services, bot)
 ```
 
+Forward `AINode_Battle_Chase` to `mq3.game.bot_fight_state.chaseNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `entitynum`, `eye`, `viewangles` and `lastEnemyAreaNum` and related fields. May update `bot.tfl`, `bot.chaseTime` and `bot.checkTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L373)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-battle-fight-function-ainode-battle-fight-services-bot-src-mq3-game-ai-dmnet-ml-127466025"></a>
 ### AINode_Battle_Fight
@@ -232,13 +258,15 @@ function AINode_Battle_Chase(services, bot)
 function AINode_Battle_Fight(services, bot)
 ```
 
+Forward `AINode_Battle_Fight` to `mq3.game.bot_fight_state.fightNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `enemyDeathTime`, `enemySuicide`, `lastKilledPlayer` and `standTime` and related fields. May update `bot.enemyDeathTime`, `bot.standTime` and `bot.ltgTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L364)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-battle-nbg-function-ainode-battle-nbg-services-bot-src-mq3-game-ai-dmnet-ml-1430825679"></a>
 ### AINode_Battle_NBG
@@ -247,13 +275,15 @@ function AINode_Battle_Fight(services, bot)
 function AINode_Battle_NBG(services, bot)
 ```
 
+Forward `AINode_Battle_NBG` to `mq3.game.bot_fight_state.nbgNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `tfl`, `entitynum`, `eye` and `viewangles` and related fields. May update `bot.tfl`, `bot.enemyVisibleTime` and `bot.lastEnemyOrigin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L391)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-battle-retreat-function-ainode-battle-retreat-services-bot-src-mq3-game-ai-dmnet-ml-532863807"></a>
 ### AINode_Battle_Retreat
@@ -262,13 +292,15 @@ function AINode_Battle_NBG(services, bot)
 function AINode_Battle_Retreat(services, bot)
 ```
 
+Forward `AINode_Battle_Retreat` to `mq3.game.bot_fight_state.retreatNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `fightServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `tfl`, `gs`, `entitynum` and `eye` and related fields. May update `bot.tfl`, `bot.enemyVisibleTime` and `bot.lastEnemyOrigin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L382)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-intermission-function-ainode-intermission-services-bot-src-mq3-game-ai-dmnet-ml-1709756127"></a>
 ### AINode_Intermission
@@ -277,13 +309,15 @@ function AINode_Battle_Retreat(services, bot)
 function AINode_Intermission(services, bot)
 ```
 
+Forward `AINode_Intermission` to `mq3.game.bot_seek_state.intermissionNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `standTime`. May update `bot.standTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L261)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-observer-function-ainode-observer-services-bot-src-mq3-game-ai-dmnet-ml-944643287"></a>
 ### AINode_Observer
@@ -292,13 +326,15 @@ function AINode_Intermission(services, bot)
 function AINode_Observer(services, bot)
 ```
 
+Forward `AINode_Observer` to `mq3.game.bot_seek_state.observerNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `standFindEnemyTime` and `aiNode`. May update `bot.standFindEnemyTime` and `bot.aiNode` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L270)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-respawn-function-ainode-respawn-services-bot-src-mq3-game-ai-dmnet-ml-1170937405"></a>
 ### AINode_Respawn
@@ -307,13 +343,15 @@ function AINode_Observer(services, bot)
 function AINode_Respawn(services, bot)
 ```
 
+Forward `AINode_Respawn` to `mq3.game.bot_seek_state.respawnNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `respawnWait`, `client`, `respawnTime`, `respawnChatTime` and `chatto` and related fields. May update `bot.respawnWait` and `bot.enemy` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L288)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-seek-activateentity-function-ainode-seek-activateentity-services-bot-src-mq3-game-ai-dmnet-ml-405566145"></a>
 ### AINode_Seek_ActivateEntity
@@ -322,13 +360,15 @@ function AINode_Respawn(services, bot)
 function AINode_Seek_ActivateEntity(services, bot)
 ```
 
+Forward `AINode_Seek_ActivateEntity` to `mq3.game.bot_seek_state.activateNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `tfl`, `enemy`, `activateStackIndex`, `activateGoalHeap` and `curPs` and related fields. May update `bot.tfl`, `bot.enemy` and `bot.activateGoalHeap[bot.activateStackIndex].time` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L332)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-seek-ltg-function-ainode-seek-ltg-services-bot-src-mq3-game-ai-dmnet-ml-1974373579"></a>
 ### AINode_Seek_LTG
@@ -337,13 +377,15 @@ function AINode_Seek_ActivateEntity(services, bot)
 function AINode_Seek_LTG(services, bot)
 ```
 
+Forward `AINode_Seek_LTG` to `mq3.game.bot_seek_state.seekNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `standTime`, `tfl`, `enemy`, `killedEnemyTime` and `thinktime` and related fields. May update `bot.standTime`, `bot.tfl` and `bot.enemy` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L350)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-seek-nbg-function-ainode-seek-nbg-services-bot-src-mq3-game-ai-dmnet-ml-1994967975"></a>
 ### AINode_Seek_NBG
@@ -352,13 +394,15 @@ function AINode_Seek_LTG(services, bot)
 function AINode_Seek_NBG(services, bot)
 ```
 
+Forward `AINode_Seek_NBG` to `mq3.game.bot_seek_state.seekNbgNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `tfl`, `enemy`, `gs`, `nbgTime` and `checkTime` and related fields. May update `bot.tfl`, `bot.enemy` and `bot.nbgTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L341)
 
 <a id="function-function-mq3-game-ai-dmnet-ainode-stand-function-ainode-stand-services-bot-src-mq3-game-ai-dmnet-ml-999361517"></a>
 ### AINode_Stand
@@ -367,13 +411,15 @@ function AINode_Seek_NBG(services, bot)
 function AINode_Stand(services, bot)
 ```
 
+Forward `AINode_Stand` to `mq3.game.bot_seek_state.standNode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `seekServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lastframeHealth`, `inventory`, `standFindEnemyTime`, `standTime` and `client` and related fields. May update `bot.standFindEnemyTime` and `bot.standTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L279)
 
 <a id="function-function-mq3-game-ai-dmnet-botclearpath-function-botclearpath-services-bot-movement-src-mq3-game-ai-dmnet-ml-874994080"></a>
 ### BotClearPath
@@ -382,14 +428,16 @@ function AINode_Stand(services, bot)
 function BotClearPath(services, bot, movement)
 ```
 
+Set `bot.blockedByAvoidSpotTime` to `n.fadd(now(services),5.0)` in `mq3.game.ai_dmnet.BotClearPath`. Return paths include `movement`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `movement` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `entityStateFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `kamikazeBody`, `blockedByAvoidSpotTime`, `proxMines`, `origin` and `inventory`. May update `bot.blockedByAvoidSpotTime` in place. |
+| `movement` | `dynamic` | — | Movement record; accesses `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L313)
 
 <a id="function-function-mq3-game-ai-dmnet-botdumpnodeswitches-function-botdumpnodeswitches-services-bot-src-mq3-game-ai-dmnet-ml-2095747351"></a>
 ### BotDumpNodeSwitches
@@ -398,13 +446,15 @@ function BotClearPath(services, bot, movement)
 function BotDumpNodeSwitches(services, bot)
 ```
 
+Record or dispatch `"node-overflow"` and `"node-history"` actions in `BotDumpNodeSwitches`. Return paths include `len(services.nodeSwitches)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `nodeSwitches`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L108)
 
 <a id="function-function-mq3-game-ai-dmnet-botgetairgoal-function-botgetairgoal-services-bot-goal-src-mq3-game-ai-dmnet-ml-1278149994"></a>
 ### BotGetAirGoal
@@ -413,14 +463,16 @@ function BotDumpNodeSwitches(services, bot)
 function BotGetAirGoal(services, bot, goal)
 ```
 
+Forward `BotGetAirGoal` to `mq3.game.bot_navigation.getAirGoal` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `origin` and `entitynum`. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`, `areanum`, `mins`, `maxs` and `flags` and related fields. May update `goal.origin`, `goal.areanum` and `goal.mins` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L118)
 
 <a id="function-function-mq3-game-ai-dmnet-botgetitemlongtermgoal-function-botgetitemlongtermgoal-services-bot-tfl-goal-src-mq3-game-ai-dmnet-ml-2007641768"></a>
 ### BotGetItemLongTermGoal
@@ -429,15 +481,17 @@ function BotGetAirGoal(services, bot, goal)
 function BotGetItemLongTermGoal(services, bot, tfl, goal)
 ```
 
+Forward `BotGetItemLongTermGoal` to `mq3.game.bot_navigation.getItemLongTermGoal` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `gs`, `ltgTime`, `origin`, `inventory` and `ms`. May update `bot.ltgTime` in place. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `goal` | `dynamic` | — | Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `goal.areanum`, `goal.entitynum` and `goal.origin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L143)
 
 <a id="function-function-mq3-game-ai-dmnet-botgetlongtermgoal-function-botgetlongtermgoal-services-bot-tfl-retreat-goal-src-mq3-game-ai-dmnet-ml-133524055"></a>
 ### BotGetLongTermGoal
@@ -446,16 +500,18 @@ function BotGetItemLongTermGoal(services, bot, tfl, goal)
 function BotGetLongTermGoal(services, bot, tfl, retreat, goal)
 ```
 
+Apply `mq3.game.ai_dmnet.missionLongTermGoal` and `mq3.game.bot_navigation.getLongTermGoal` while evaluating `BotGetLongTermGoal`. Return paths include `navigation.getLongTermGoal(services.navigationServices,bot,tfl,retreat,goal)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `retreat` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgtype`, `teamgoalTime`, `attackawayTime`, `origin` and `harvestawayTime`. May update `bot.ltgtype`, `bot.attackawayTime` and `bot.harvestawayTime` in place. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `retreat` | `dynamic` | — | Value used by `getLongTermGoal` in `if bot.ltgtype==LTG_TEAMHELP and not retreat then`. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L232)
 
 <a id="function-function-mq3-game-ai-dmnet-botgoforair-function-botgoforair-services-bot-tfl-ltg-range-src-mq3-game-ai-dmnet-ml-1553559741"></a>
 ### BotGoForAir
@@ -464,16 +520,18 @@ function BotGetLongTermGoal(services, bot, tfl, retreat, goal)
 function BotGoForAir(services, bot, tfl, ltg, range)
 ```
 
+Forward `BotGoForAir` to `mq3.game.bot_navigation.goForAir` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `ltg` | `dynamic` | — |  |
-| `range` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lastairTime`, `gs`, `origin` and `inventory`. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `ltg` | `dynamic` | — | Value passed as argument 6 to `services.chooseNbgFn`. |
+| `range` | `dynamic` | — | Value passed as argument 7 to `services.chooseNbgFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L125)
 
 <a id="function-function-mq3-game-ai-dmnet-botlongtermgoal-function-botlongtermgoal-services-bot-tfl-retreat-goal-src-mq3-game-ai-dmnet-ml-1049836759"></a>
 ### BotLongTermGoal
@@ -482,16 +540,18 @@ function BotGoForAir(services, bot, tfl, ltg, range)
 function BotLongTermGoal(services, bot, tfl, retreat, goal)
 ```
 
+Update `bot.leadTime`, `bot.leadmessageTime`, `bot.leadvisibleTime` and `bot.leadbackupTime` and related state during `BotLongTermGoal`. Return paths include `BotGetLongTermGoal(services,bot,tfl,retreat,goal)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `retreat` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `leadTime`, `leadTeammate`, `leadmessageTime`, `leadTeamGoal` and `entitynum` and related fields. May update `bot.leadTime`, `bot.leadmessageTime` and `bot.leadvisibleTime` and additional fields in place. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `retreat` | `dynamic` | — | Value used by `getLongTermGoal` in `if bot.ltgtype==LTG_TEAMHELP and not retreat then`. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L242)
 
 <a id="function-function-mq3-game-ai-dmnet-botname-function-botname-services-bot-src-mq3-game-ai-dmnet-ml-1679809821"></a>
 ### botName
@@ -500,13 +560,15 @@ function BotLongTermGoal(services, bot, tfl, retreat, goal)
 function botName(services, bot)
 ```
 
+Use `services.nameFn` to perform `botName`. Return paths include `+str(bot.client)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `nameFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L89)
 
 <a id="function-function-mq3-game-ai-dmnet-botnearbygoal-function-botnearbygoal-services-bot-tfl-ltg-range-src-mq3-game-ai-dmnet-ml-1841825803"></a>
 ### BotNearbyGoal
@@ -515,16 +577,18 @@ function botName(services, bot)
 function BotNearbyGoal(services, bot, tfl, ltg, range)
 ```
 
+Forward `BotNearbyGoal` to `mq3.game.bot_navigation.nearbyGoal` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `ltg` | `dynamic` | — |  |
-| `range` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `areanum`, `origin`, `teamGoal`, `gs` and `inventory`. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `ltg` | `dynamic` | — | Value passed as argument 6 to `services.chooseNbgFn`. |
+| `range` | `dynamic` | — | Value passed as argument 7 to `services.chooseNbgFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L132)
 
 <a id="function-function-mq3-game-ai-dmnet-botreachedgoal-function-botreachedgoal-services-bot-goal-src-mq3-game-ai-dmnet-ml-1187692674"></a>
 ### BotReachedGoal
@@ -533,14 +597,16 @@ function BotNearbyGoal(services, bot, tfl, ltg, range)
 function BotReachedGoal(services, bot, goal)
 ```
 
+Forward `BotReachedGoal` to `mq3.game.bot_navigation.reachedGoal` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `origin`, `gs`, `entitynum`, `eye` and `viewangles` and related fields. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `flags`, `number`, `areanum`, `origin` and `mins` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L137)
 
 <a id="function-function-mq3-game-ai-dmnet-botrecordnodeswitch-function-botrecordnodeswitch-services-bot-node-detail-source-src-mq3-game-ai-dmnet-ml-174021941"></a>
 ### BotRecordNodeSwitch
@@ -549,16 +615,18 @@ function BotReachedGoal(services, bot, goal)
 function BotRecordNodeSwitch(services, bot, node, detail, source)
 ```
 
+Record or dispatch `"node-switch"` actions in `BotRecordNodeSwitch`. Return paths include `record`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `node` | `dynamic` | — |  |
-| `detail` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `nodeSwitches`. May update `services.nodeSwitches` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `node` | `dynamic` | — | Initial value stored in `mq3.game.ai_dmnet.NodeSwitch.node`. |
+| `detail` | `dynamic` | — | Initial value stored in `mq3.game.ai_dmnet.NodeSwitch.detail`. |
+| `source` | `dynamic` | — | Initial value stored in `mq3.game.ai_dmnet.NodeSwitch.source`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L100)
 
 <a id="function-function-mq3-game-ai-dmnet-botresetnodeswitches-function-botresetnodeswitches-services-src-mq3-game-ai-dmnet-ml-669119802"></a>
 ### BotResetNodeSwitches
@@ -567,12 +635,14 @@ function BotRecordNodeSwitch(services, bot, node, detail, source)
 function BotResetNodeSwitches(services)
 ```
 
+Set `services.nodeSwitches` to `[]` in `mq3.game.ai_dmnet.BotResetNodeSwitches`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `nodeSwitches`. May update `services.nodeSwitches` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L93)
 
 <a id="function-function-mq3-game-ai-dmnet-botselectactivateweapon-function-botselectactivateweapon-services-bot-src-mq3-game-ai-dmnet-ml-136660761"></a>
 ### BotSelectActivateWeapon
@@ -581,13 +651,15 @@ function BotResetNodeSwitches(services)
 function BotSelectActivateWeapon(services, bot)
 ```
 
+Choose the first available weapon with ammunition from the activation-weapon priority order.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `mission`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `inventory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L293)
 
 <a id="function-function-mq3-game-ai-dmnet-copymissiongoal-function-copymissiongoal-goal-value-src-mq3-game-ai-dmnet-ml-1464504796"></a>
 ### copyMissionGoal
@@ -596,13 +668,15 @@ function BotSelectActivateWeapon(services, bot)
 function copyMissionGoal(goal, value)
 ```
 
+Apply `mq3.game.bot_navigation.copyGoalInto` while evaluating `copyMissionGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `goal` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `goal` | `dynamic` | — | Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `goal.areanum`, `goal.entitynum` and `goal.origin` and additional fields in place. |
+| `value` | `dynamic` | — | Parser source state; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L188)
 
 <a id="function-function-mq3-game-ai-dmnet-create-function-create-fightservices-seekservices-navigationservices-src-mq3-game-ai-dmnet-ml-702546316"></a>
 ### create
@@ -611,14 +685,16 @@ function copyMissionGoal(goal, value)
 function create(fightServices, seekServices, navigationServices)
 ```
 
+Update `fightServices.missionEnemyTargetFn`, `fightServices.missionNearbyRangeFn`, `fightServices.dmnetServices` and `seekServices.missionNearbyRangeFn` and related state during `create`. Return paths include `services`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fightServices` | `dynamic` | — |  |
-| `seekServices` | `dynamic` | — |  |
-| `navigationServices` | `dynamic` | — |  |
+| `fightServices` | `dynamic` | — | Fight services record; accesses `missionEnemyTargetFn`, `missionNearbyRangeFn` and `dmnetServices`. May update `fightServices.missionEnemyTargetFn`, `fightServices.missionNearbyRangeFn` and `fightServices.dmnetServices` in place. |
+| `seekServices` | `dynamic` | — | Seek services record; accesses `missionNearbyRangeFn` and `dmnetServices`. May update `seekServices.missionNearbyRangeFn` and `seekServices.dmnetServices` in place. |
+| `navigationServices` | `dynamic` | — | Initial value stored in `mq3.game.ai_dmnet.Services.navigationServices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L67)
 
 <a id="function-function-mq3-game-ai-dmnet-emit-function-emit-services-kind-subject-detail-src-mq3-game-ai-dmnet-ml-1959875783"></a>
 ### emit
@@ -627,15 +703,17 @@ function create(fightServices, seekServices, navigationServices)
 function emit(services, kind, subject, detail)
 ```
 
+Set `services.actions` to `services.actions+[event]` in `mq3.game.ai_dmnet.emit`. Return paths include `event`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `subject` | `dynamic` | — |  |
-| `detail` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `retailActive`, `actions` and `printFn`. May update `services.actions` in place. |
+| `kind` | `dynamic` | — | Initial value stored in `mq3.game.ai_dmnet.Action.kind`. |
+| `subject` | `dynamic` | — | Initial value stored in `mq3.game.ai_dmnet.Action.subject`. |
+| `detail` | `dynamic` | — | Initial value stored in `mq3.game.ai_dmnet.Action.detail`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L79)
 
 <a id="function-function-mq3-game-ai-dmnet-goharvest-function-goharvest-services-bot-src-mq3-game-ai-dmnet-ml-1347761851"></a>
 ### goHarvest
@@ -644,13 +722,15 @@ function emit(services, kind, subject, detail)
 function goHarvest(services, bot)
 ```
 
+Set `bot.ltgtype` to `LTG_HARVEST` and `bot.teamgoalTime` to `n.fadd(now(services),120.0)` in `mq3.game.ai_dmnet.goHarvest`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `mission`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgtype` and `teamgoalTime`. May update `bot.ltgtype` and `bot.teamgoalTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L202)
 
 <a id="constant-constant-mq3-game-ai-dmnet-gt-1fctf-const-gt-1fctf-5-src-mq3-game-ai-dmnet-ml-290202594"></a>
 ### GT_1FCTF
@@ -929,14 +1009,16 @@ const MAX_NODESWITCHES = 50
 function missionAlternate(services, bot, goal)
 ```
 
+Use `services.mission.alternateRouteFn` to perform `missionAlternate`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `mission` and `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `altRouteGoal`, `reachedAltRouteGoalTime`, `areanum`, `origin` and `tfl`. May update `bot.reachedAltRouteGoalTime` in place. |
+| `goal` | `dynamic` | — | Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `goal.areanum`, `goal.entitynum` and `goal.origin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L193)
 
 <a id="function-function-mq3-game-ai-dmnet-missionenemytarget-function-missionenemytarget-fightservices-bot-target-src-mq3-game-ai-dmnet-ml-529770896"></a>
 ### missionEnemyTarget
@@ -945,14 +1027,16 @@ function missionAlternate(services, bot, goal)
 function missionEnemyTarget(fightServices, bot, target)
 ```
 
+Raise the aim point for Team Arena obelisk targets by sixteen units and preserve other targets.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fightServices` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
+| `fightServices` | `dynamic` | — | Fight services record; accesses `dmnetServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`. |
+| `target` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L161)
 
 <a id="function-function-mq3-game-ai-dmnet-missiongoal-function-missiongoal-services-bot-kind-src-mq3-game-ai-dmnet-ml-248675997"></a>
 ### missionGoal
@@ -961,14 +1045,16 @@ function missionEnemyTarget(fightServices, bot, target)
 function missionGoal(services, bot, kind)
 ```
 
+Select a neutral or enemy objective through Team Arena callbacks according to the bot team.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `mission`. |
+| `bot` | `dynamic` | — | Value passed as argument 2 to `ms.teamFn`. |
+| `kind` | `dynamic` | — | Value used by `missionGoal` in `if kind=="neutral-flag" then return ms.neutralFlagGoalFn(ms,bot) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L149)
 
 <a id="function-function-mq3-game-ai-dmnet-missionlongtermgoal-function-missionlongtermgoal-services-bot-tfl-goal-src-mq3-game-ai-dmnet-ml-965022698"></a>
 ### missionLongTermGoal
@@ -977,15 +1063,17 @@ function missionGoal(services, bot, kind)
 function missionLongTermGoal(services, bot, tfl, goal)
 ```
 
+Update `bot.ltgtype`, `bot.attackawayTime` and `bot.harvestawayTime` during `missionLongTermGoal`. Return paths include `[false,false]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `mission` and `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgtype`, `teamgoalTime`, `attackawayTime`, `origin` and `harvestawayTime`. May update `bot.ltgtype`, `bot.attackawayTime` and `bot.harvestawayTime` in place. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L209)
 
 <a id="function-function-mq3-game-ai-dmnet-missionnearbyrange-function-missionnearbyrange-nodeservices-bot-range-src-mq3-game-ai-dmnet-ml-1918681900"></a>
 ### missionNearbyRange
@@ -994,14 +1082,16 @@ function missionLongTermGoal(services, bot, tfl, goal)
 function missionNearbyRange(nodeServices, bot, range)
 ```
 
+Reduce nearby-goal search distance while carrying a neutral flag or Harvester cubes.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `nodeServices` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `range` | `dynamic` | — |  |
+| `nodeServices` | `dynamic` | — | Node services record; accesses `dmnetServices`. |
+| `bot` | `dynamic` | — | Value passed as argument 2 to `services.mission.carryingNeutralFn`. |
+| `range` | `dynamic` | — | Operand used to evaluate the returned expression `range`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L170)
 
 <a id="function-function-mq3-game-ai-dmnet-missionnotify-function-missionnotify-services-bot-event-src-mq3-game-ai-dmnet-ml-919533043"></a>
 ### missionNotify
@@ -1010,14 +1100,16 @@ function missionNearbyRange(nodeServices, bot, range)
 function missionNotify(services, bot, event)
 ```
 
+Set `bot.teammessageTime` to `0.0` in `mq3.game.ai_dmnet.missionNotify`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teammessageTime`. May update `bot.teammessageTime` in place. |
+| `event` | `dynamic` | — | Player or entity event identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L179)
 
 - [mq3.game.ai_dmnet.MissionServices](Type-mq3-game-ai-dmnet-missionservices-554096973.md) — struct
 <a id="function-function-mq3-game-ai-dmnet-missiontimedmessage-function-missiontimedmessage-services-bot-event-src-mq3-game-ai-dmnet-ml-325377625"></a>
@@ -1027,14 +1119,16 @@ function missionNotify(services, bot, event)
 function missionTimedMessage(services, bot, event)
 ```
 
+Apply `mq3.game.ai_dmnet.now` and `mq3.game.ai_dmnet.missionNotify` while evaluating `missionTimedMessage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `timeFn` and `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teammessageTime`. |
+| `event` | `dynamic` | — | Player or entity event identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L184)
 
 <a id="function-function-mq3-game-ai-dmnet-missiontouch-function-missiontouch-services-bot-goal-src-mq3-game-ai-dmnet-ml-832614838"></a>
 ### missionTouch
@@ -1043,14 +1137,16 @@ function missionTimedMessage(services, bot, event)
 function missionTouch(services, bot, goal)
 ```
 
+Return the result of `services.navigationServices.touchingGoalFn(services.navigationServices,bot.origin,goal)` for `missionTouch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `navigationServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `origin`. |
+| `goal` | `dynamic` | — | Value passed as argument 3 to `services.navigationServices.touchingGoalFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L198)
 
 <a id="constant-constant-mq3-game-ai-dmnet-moveresult-blockedbyavoidspot-const-moveresult-blockedbyavoidspot-256-src-mq3-game-ai-dmnet-ml-1085235910"></a>
 ### MOVERESULT_BLOCKEDBYAVOIDSPOT
@@ -1090,12 +1186,14 @@ const MOVERESULT_MOVEMENTWEAPON = 16
 function now(services)
 ```
 
+Use `services.timeFn` and `services.navigationServices.floatTimeFn` to perform `now`. Return paths include `services.navigationServices.floatTimeFn(services.navigationServices)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `timeFn` and `navigationServices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L85)
 
 - [mq3.game.ai_dmnet.Services](Type-mq3-game-ai-dmnet-services-1039703329.md) — struct
 <a id="function-function-mq3-game-ai-dmnet-shootobstacle-function-shootobstacle-services-bot-movement-entity-zoffset-weapon-src-mq3-game-ai-dmnet-ml-1172882454"></a>
@@ -1105,17 +1203,19 @@ function now(services)
 function shootObstacle(services, bot, movement, entity, zoffset, weapon)
 ```
 
+Update `movement.idealViewangles`, `movement.weapon` and `movement.flags` during `shootObstacle`. Return paths include `movement`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `movement` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `zoffset` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `entityStateFn`, `inFovFn`, `traceFn` and `attackFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `eye`, `curPs`, `viewangles`, `entitynum` and `client`. |
+| `movement` | `dynamic` | — | Movement record; accesses `idealViewangles`, `weapon` and `flags`. May update `movement.idealViewangles`, `movement.weapon` and `movement.flags` in place. |
+| `entity` | `dynamic` | — | Value passed as argument 2 to `services.entityStateFn`. |
+| `zoffset` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fadd`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L305)
 
 <a id="constant-constant-mq3-game-ai-dmnet-team-blue-const-team-blue-2-src-mq3-game-ai-dmnet-ml-25910891"></a>
 ### TEAM_BLUE

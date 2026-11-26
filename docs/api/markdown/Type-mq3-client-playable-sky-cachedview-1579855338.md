@@ -9,8 +9,10 @@
 struct CachedView
 ```
 
+Stores playable sky cached view record, including `basis`, `left`, `top`, `width`, `height`, `source` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)
 
 ## Members
 
@@ -22,7 +24,7 @@ basis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)
 
 <a id="field-field-mq3-client-playable-sky-cachedview-batch-batch-src-mq3-client-playable-sky-ml-861906970"></a>
 ### batch
@@ -32,7 +34,7 @@ batch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)
 
 <a id="field-field-mq3-client-playable-sky-cachedview-height-height-src-mq3-client-playable-sky-ml-1704465196"></a>
 ### height
@@ -42,7 +44,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)
 
 <a id="field-field-mq3-client-playable-sky-cachedview-left-left-src-mq3-client-playable-sky-ml-1911311100"></a>
 ### left
@@ -52,7 +54,7 @@ left
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)
 
 <a id="field-field-mq3-client-playable-sky-cachedview-source-source-src-mq3-client-playable-sky-ml-1255893760"></a>
 ### source
@@ -62,7 +64,7 @@ source
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)
 
 <a id="field-field-mq3-client-playable-sky-cachedview-top-top-src-mq3-client-playable-sky-ml-676255530"></a>
 ### top
@@ -72,7 +74,7 @@ top
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)
 
 <a id="field-field-mq3-client-playable-sky-cachedview-width-width-src-mq3-client-playable-sky-ml-789314958"></a>
 ### width
@@ -82,4 +84,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L68)

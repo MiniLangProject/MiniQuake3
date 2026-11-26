@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI atoms state, including `scale`, `bias`, `vidWidth`, `vidHeight`, `realtime`, `frametime` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-activemenu-activemenu-src-mq3-client-ui-atoms-ml-47959908"></a>
 ### activeMenu
@@ -32,7 +34,7 @@ activeMenu
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-args-args-src-mq3-client-ui-atoms-ml-1030064768"></a>
 ### args
@@ -42,7 +44,7 @@ args
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-bias-bias-src-mq3-client-ui-atoms-ml-1496397460"></a>
 ### bias
@@ -52,7 +54,7 @@ bias
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-cachenames-cachenames-src-mq3-client-ui-atoms-ml-1173878890"></a>
 ### cacheNames
@@ -62,7 +64,7 @@ cacheNames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-cursorshader-cursorshader-src-mq3-client-ui-atoms-ml-485214640"></a>
 ### cursorShader
@@ -72,7 +74,7 @@ cursorShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-cursorx-cursorx-src-mq3-client-ui-atoms-ml-1106870806"></a>
 ### cursorx
@@ -82,7 +84,7 @@ cursorx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-cursory-cursory-src-mq3-client-ui-atoms-ml-837543882"></a>
 ### cursory
@@ -92,7 +94,7 @@ cursory
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-cvars-cvars-src-mq3-client-ui-atoms-ml-72274570"></a>
 ### cvars
@@ -102,7 +104,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-entersound-entersound-src-mq3-client-ui-atoms-ml-1566873816"></a>
 ### enterSound
@@ -112,7 +114,7 @@ enterSound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-firstdraw-firstdraw-src-mq3-client-ui-atoms-ml-259957450"></a>
 ### firstdraw
@@ -122,7 +124,7 @@ firstdraw
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-frametime-frametime-src-mq3-client-ui-atoms-ml-707587582"></a>
 ### frametime
@@ -132,7 +134,7 @@ frametime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-keycatcher-keycatcher-src-mq3-client-ui-atoms-ml-1607131992"></a>
 ### keyCatcher
@@ -142,7 +144,7 @@ keyCatcher
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-mainstate-mainstate-src-mq3-client-ui-atoms-ml-1055323606"></a>
 ### mainState
@@ -152,7 +154,7 @@ mainState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-menubacknologoshader-menubacknologoshader-src-mq3-client-ui-atoms-ml-1036569476"></a>
 ### menuBackNoLogoShader
@@ -162,7 +164,7 @@ menuBackNoLogoShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-menubackshader-menubackshader-src-mq3-client-ui-atoms-ml-1274515672"></a>
 ### menuBackShader
@@ -172,7 +174,7 @@ menuBackShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-realtime-realtime-src-mq3-client-ui-atoms-ml-213006856"></a>
 ### realtime
@@ -182,7 +184,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-scale-scale-src-mq3-client-ui-atoms-ml-1275258454"></a>
 ### scale
@@ -192,7 +194,7 @@ scale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-stack-stack-src-mq3-client-ui-atoms-ml-1016765562"></a>
 ### stack
@@ -202,7 +204,7 @@ stack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-vidheight-vidheight-src-mq3-client-ui-atoms-ml-34578662"></a>
 ### vidHeight
@@ -212,7 +214,7 @@ vidHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-vidwidth-vidwidth-src-mq3-client-ui-atoms-ml-1543336708"></a>
 ### vidWidth
@@ -222,7 +224,7 @@ vidWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)
 
 <a id="field-field-mq3-client-ui-atoms-state-whiteshader-whiteshader-src-mq3-client-ui-atoms-ml-1630866178"></a>
 ### whiteShader
@@ -232,4 +234,4 @@ whiteShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L39)

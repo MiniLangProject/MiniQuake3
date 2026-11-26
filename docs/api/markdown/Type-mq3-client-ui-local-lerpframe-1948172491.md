@@ -9,8 +9,10 @@
 struct LerpFrame
 ```
 
+Stores UI local lerp frame record, including `oldFrame`, `oldFrameTime`, `frame`, `frameTime`, `backlerp`, `yawAngle` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 ## Members
 
@@ -22,7 +24,7 @@ animation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-animationnumber-animationnumber-src-mq3-client-ui-local-ml-1390480571"></a>
 ### animationNumber
@@ -32,7 +34,7 @@ animationNumber
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-animationtime-animationtime-src-mq3-client-ui-local-ml-573733975"></a>
 ### animationTime
@@ -42,7 +44,7 @@ animationTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-backlerp-backlerp-src-mq3-client-ui-local-ml-1934842871"></a>
 ### backlerp
@@ -52,7 +54,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-frame-frame-src-mq3-client-ui-local-ml-1022705695"></a>
 ### frame
@@ -62,7 +64,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-frametime-frametime-src-mq3-client-ui-local-ml-376492395"></a>
 ### frameTime
@@ -72,7 +74,7 @@ frameTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-oldframe-oldframe-src-mq3-client-ui-local-ml-1585904091"></a>
 ### oldFrame
@@ -82,7 +84,7 @@ oldFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-oldframetime-oldframetime-src-mq3-client-ui-local-ml-1467033341"></a>
 ### oldFrameTime
@@ -92,7 +94,7 @@ oldFrameTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-pitchangle-pitchangle-src-mq3-client-ui-local-ml-889260133"></a>
 ### pitchAngle
@@ -102,7 +104,7 @@ pitchAngle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-pitching-pitching-src-mq3-client-ui-local-ml-1848597683"></a>
 ### pitching
@@ -112,7 +114,7 @@ pitching
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-yawangle-yawangle-src-mq3-client-ui-local-ml-1773124427"></a>
 ### yawAngle
@@ -122,7 +124,7 @@ yawAngle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)
 
 <a id="field-field-mq3-client-ui-local-lerpframe-yawing-yawing-src-mq3-client-ui-local-ml-415017033"></a>
 ### yawing
@@ -132,4 +134,4 @@ yawing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L81)

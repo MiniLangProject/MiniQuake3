@@ -9,8 +9,10 @@
 struct PendingPing
 ```
 
+Stores UI LAN ingress pending ping record, including `address`, `start`, `queueIndex`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
 
 <a id="field-field-mq3-client-ui-lan-ingress-pendingping-queueindex-queueindex-src-mq3-client-ui-lan-ingress-ml-544839550"></a>
 ### queueIndex
@@ -32,7 +34,7 @@ queueIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)
 
 <a id="field-field-mq3-client-ui-lan-ingress-pendingping-start-start-src-mq3-client-ui-lan-ingress-ml-1478363084"></a>
 ### start
@@ -42,4 +44,4 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L19)

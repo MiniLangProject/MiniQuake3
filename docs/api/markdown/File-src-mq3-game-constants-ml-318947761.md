@@ -1375,12 +1375,14 @@ const IT_WEAPON = 1
 function itemQuantity(index)
 ```
 
+Read the baseq3 pickup quantity from the pinned item table, rejecting an invalid item index.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L277)
 
 <a id="function-function-mq3-game-constants-itemtag-function-itemtag-index-src-mq3-game-constants-ml-1340256458"></a>
 ### itemTag
@@ -1389,12 +1391,14 @@ function itemQuantity(index)
 function itemTag(index)
 ```
 
+Read the baseq3 weapon, powerup or holdable tag from the pinned item table, rejecting an invalid item index.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L285)
 
 <a id="function-function-mq3-game-constants-itemtype-function-itemtype-index-src-mq3-game-constants-ml-1582368900"></a>
 ### itemType
@@ -1403,12 +1407,14 @@ function itemTag(index)
 function itemType(index)
 ```
 
+Read the baseq3 item category from the pinned item table, rejecting an invalid item index.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L269)
 
 <a id="constant-constant-mq3-game-constants-legs-back-const-legs-back-16-src-mq3-game-constants-ml-62708690"></a>
 ### LEGS_BACK
@@ -1577,12 +1583,14 @@ const MAX_TOTALANIMATIONS = 37
 function missionpackItemQuantity(index)
 ```
 
+Read the Team Arena pickup quantity from the pinned item table, rejecting an invalid item index.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L300)
 
 <a id="function-function-mq3-game-constants-missionpackitemtag-function-missionpackitemtag-index-src-mq3-game-constants-ml-1559007256"></a>
 ### missionpackItemTag
@@ -1591,12 +1599,14 @@ function missionpackItemQuantity(index)
 function missionpackItemTag(index)
 ```
 
+Read the Team Arena weapon, powerup or holdable tag from the pinned item table, rejecting an invalid item index.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L307)
 
 <a id="function-function-mq3-game-constants-missionpackitemtype-function-missionpackitemtype-index-src-mq3-game-constants-ml-2109970224"></a>
 ### missionpackItemType
@@ -1605,12 +1615,14 @@ function missionpackItemTag(index)
 function missionpackItemType(index)
 ```
 
+Read the Team Arena item category from the pinned item table, rejecting an invalid item index.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/constants.ml#L293)
 
 <a id="constant-constant-mq3-game-constants-mod-bfg-const-mod-bfg-12-src-mq3-game-constants-ml-716451134"></a>
 ### MOD_BFG

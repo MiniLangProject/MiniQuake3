@@ -9,8 +9,10 @@
 struct Menu
 ```
 
+Stores UI system config menu, including `wrapAround`, `fullscreen`, `items`, `assets`, `actions`, `pushed`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
 
 <a id="field-field-mq3-client-ui-system-config-menu-assets-assets-src-mq3-client-ui-system-config-ml-1917868306"></a>
 ### assets
@@ -32,7 +34,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
 
 <a id="field-field-mq3-client-ui-system-config-menu-fullscreen-fullscreen-src-mq3-client-ui-system-config-ml-2091881450"></a>
 ### fullscreen
@@ -42,7 +44,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
 
 <a id="field-field-mq3-client-ui-system-config-menu-items-items-src-mq3-client-ui-system-config-ml-1741239364"></a>
 ### items
@@ -52,7 +54,7 @@ items
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
 
 <a id="field-field-mq3-client-ui-system-config-menu-pushed-pushed-src-mq3-client-ui-system-config-ml-353745858"></a>
 ### pushed
@@ -62,7 +64,7 @@ pushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)
 
 <a id="field-field-mq3-client-ui-system-config-menu-wraparound-wraparound-src-mq3-client-ui-system-config-ml-700927170"></a>
 ### wrapAround
@@ -72,4 +74,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L15)

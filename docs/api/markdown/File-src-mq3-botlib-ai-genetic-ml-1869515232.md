@@ -29,14 +29,16 @@ const MAX_RANKS = 256
 function parentsAndChild(runtime, numRanks, ranks)
 ```
 
+Apply `mq3.botlib.ai_genetic.selection` while evaluating `parentsAndChild`. Return paths include `[1,parent1,parent2,child]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `numRanks` | `dynamic` | — |  |
-| `ranks` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
+| `numRanks` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fmul`. |
+| `ranks` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L43)
 
 <a id="function-function-mq3-botlib-ai-genetic-randomfloat-function-randomfloat-runtime-src-mq3-botlib-ai-genetic-ml-888286542"></a>
 ### randomFloat
@@ -45,12 +47,14 @@ function parentsAndChild(runtime, numRanks, ranks)
 function randomFloat(runtime)
 ```
 
+Update `runtime.randomSeed` during `randomFloat`. Return paths include `geneticNumeric.fdiv((geneticNumeric.u32(runtime.randomSeed)>>16)&32767,32767.0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L12)
 
 <a id="function-function-mq3-botlib-ai-genetic-selection-function-selection-runtime-numranks-rankings-src-mq3-botlib-ai-genetic-ml-683098552"></a>
 ### selection
@@ -59,11 +63,13 @@ function randomFloat(runtime)
 function selection(runtime, numRanks, rankings)
 ```
 
+Apply `mq3.botlib.ai_genetic.randomFloat` while evaluating `selection`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `numRanks` | `dynamic` | — |  |
-| `rankings` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
+| `numRanks` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fmul`. |
+| `rankings` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L23)

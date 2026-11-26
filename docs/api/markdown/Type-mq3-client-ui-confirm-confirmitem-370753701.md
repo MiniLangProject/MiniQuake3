@@ -9,8 +9,10 @@
 struct ConfirmItem
 ```
 
+Stores UI confirm confirm item record, including `id`, `label`, `x`, `y`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L13)
 
 <a id="field-field-mq3-client-ui-confirm-confirmitem-label-label-src-mq3-client-ui-confirm-ml-549308072"></a>
 ### label
@@ -32,7 +34,7 @@ label
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L13)
 
 <a id="field-field-mq3-client-ui-confirm-confirmitem-x-x-src-mq3-client-ui-confirm-ml-449123192"></a>
 ### x
@@ -42,7 +44,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L13)
 
 <a id="field-field-mq3-client-ui-confirm-confirmitem-y-y-src-mq3-client-ui-confirm-ml-985330460"></a>
 ### y
@@ -52,4 +54,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L13)

@@ -32,13 +32,15 @@ const CODEBOOK = 4098
 function decodeAudio(movie, chunk)
 ```
 
+Decode audio in format.roq; the normal completion returns `fail("unsupported audio chunk")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `movie` | `dynamic` | — |  |
-| `chunk` | `dynamic` | — |  |
+| `movie` | `dynamic` | — | Movie passed as `movie` to `mq3.format.roq.decodeMono`. |
+| `chunk` | `dynamic` | — | Record exposing `id`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L96)
 
 <a id="function-function-mq3-format-roq-decodemono-function-decodemono-movie-chunk-src-mq3-format-roq-ml-1989606441"></a>
 ### decodeMono
@@ -47,13 +49,15 @@ function decodeAudio(movie, chunk)
 function decodeMono(movie, chunk)
 ```
 
+Decode mono in format.roq; the normal completion returns `Audio(output, chunk.size, 22050, 2, 16, 4)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `movie` | `dynamic` | — |  |
-| `chunk` | `dynamic` | — |  |
+| `movie` | `dynamic` | — | Record exposing `data`. |
+| `chunk` | `dynamic` | — | Record exposing `id`, `size`, `flags`, `dataOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L73)
 
 <a id="function-function-mq3-format-roq-decodestereo-function-decodestereo-movie-chunk-src-mq3-format-roq-ml-1782604073"></a>
 ### decodeStereo
@@ -62,13 +66,15 @@ function decodeMono(movie, chunk)
 function decodeStereo(movie, chunk)
 ```
 
+Decode stereo in format.roq; the normal completion returns `Audio(output, frame, 22050, 2, 16, 4)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `movie` | `dynamic` | — |  |
-| `chunk` | `dynamic` | — |  |
+| `movie` | `dynamic` | — | Record exposing `data`. |
+| `chunk` | `dynamic` | — | Record exposing `id`, `size`, `flags`, `dataOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L83)
 
 <a id="function-function-mq3-format-roq-fail-function-fail-message-src-mq3-format-roq-ml-584879005"></a>
 ### fail
@@ -77,12 +83,14 @@ function decodeStereo(movie, chunk)
 function fail(message)
 ```
 
+Create the format.roq error for `fail` with 7690 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("RoQ: " + message)` and `error(7690, ("RoQ: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L28)
 
 <a id="constant-constant-mq3-format-roq-magic-const-magic-4228-src-mq3-format-roq-ml-1088040373"></a>
 ### MAGIC
@@ -122,12 +130,14 @@ const PACKET = 4144
 function parse(data)
 ```
 
+Parse roq in format.roq; the normal completion returns `Movie(data, fps, chunks.toArray(), videoFrames, audioChunks)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.format.roq.u16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L40)
 
 <a id="constant-constant-mq3-format-roq-quad-hang-const-quad-hang-4115-src-mq3-format-roq-ml-1832401368"></a>
 ### QUAD_HANG
@@ -176,12 +186,14 @@ const QUAD_VQ = 4113
 function signed16(value)
 ```
 
+Compute signed 16 in format.roq; the normal completion returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `(value & 65535)` and `(value - 65536)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L58)
 
 <a id="constant-constant-mq3-format-roq-sound-mono-const-sound-mono-4128-src-mq3-format-roq-ml-1450905832"></a>
 ### SOUND_MONO
@@ -210,12 +222,14 @@ const SOUND_STEREO = 4129
 function squareDelta(value)
 ```
 
+Compute square delta in format.roq; the normal completion returns `(0 - (value * value))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `(value < 128)` and `(value - 128)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L61)
 
 <a id="function-function-mq3-format-roq-u16-function-u16-data-offset-src-mq3-format-roq-ml-2050424931"></a>
 ### u16
@@ -224,13 +238,15 @@ function squareDelta(value)
 function u16(data, offset)
 ```
 
+Compute u 16 in format.roq; the normal completion returns `(data[offset] | (data[(offset + 1)] << 8))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[offset]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L32)
 
 <a id="function-function-mq3-format-roq-u32-function-u32-data-offset-src-mq3-format-roq-ml-46783947"></a>
 ### u32
@@ -239,13 +255,15 @@ function u16(data, offset)
 function u32(data, offset)
 ```
 
+Compute u 32 in format.roq; the normal completion returns `(((data[offset] | (data[(offset + 1)] << 8)) | (data[(offset + 2)] << 16)) | (data[(offset + 3)] << 24))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[offset]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L36)
 
 <a id="function-function-mq3-format-roq-write16-function-write16-output-offset-value-src-mq3-format-roq-ml-221044141"></a>
 ### write16
@@ -254,11 +272,15 @@ function u32(data, offset)
 function write16(output, offset, value)
 ```
 
+Write 16 in format.roq; updates `output entries`.
+
+Direct state writes: `output elements`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `output` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `output` | `dynamic` | — | Mutable sequence written at `offset`, `(offset + 1)`. |
+| `offset` | `dynamic` | — | Offset used in `(offset + 1)`. |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.format.roq.signed16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L68)

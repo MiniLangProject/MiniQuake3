@@ -19,17 +19,21 @@ Reachable from entry: **yes**
 function create(clientSocket, serverSocket, capacity, context, clientPacketFn, serverPacketFn)
 ```
 
+Create network pump in qcommon.network_pump.
+
+Validation failures include `network pump: no sockets`; `network pump: invalid capacity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clientSocket` | `dynamic` | — |  |
-| `serverSocket` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `clientPacketFn` | `dynamic` | — |  |
-| `serverPacketFn` | `dynamic` | — |  |
+| `clientSocket` | `dynamic` | — | Initial `clientSocket` field stored in the returned or constructed `mq3.qcommon.network_pump.Runtime` record. |
+| `serverSocket` | `dynamic` | — | Initial `serverSocket` field stored in the returned or constructed `mq3.qcommon.network_pump.Runtime` record. |
+| `capacity` | `dynamic` | — | Initial `capacity` field stored in the returned or constructed `mq3.qcommon.network_pump.Runtime` record. |
+| `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.qcommon.network_pump.Runtime` record. |
+| `clientPacketFn` | `dynamic` | — | Initial `clientPacketFn` field stored in the returned or constructed `mq3.qcommon.network_pump.Runtime` record. |
+| `serverPacketFn` | `dynamic` | — | Initial `serverPacketFn` field stored in the returned or constructed `mq3.qcommon.network_pump.Runtime` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L23)
 
 <a id="function-function-mq3-qcommon-network-pump-drain-function-drain-runtime-maxpackets-src-mq3-qcommon-network-pump-ml-2080990963"></a>
 ### drain
@@ -42,11 +46,11 @@ Drain currently available datagrams up to an explicit per-frame budget. A zero b
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `maxPackets` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Runtime passed as `runtime` to `mq3.qcommon.network_pump.pumpOnce`. |
+| `maxPackets` | `dynamic` | — | Max packets used in `(maxPackets < 0)` and `(count < maxPackets)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L64)
 
 <a id="function-function-mq3-qcommon-network-pump-pumponce-function-pumponce-runtime-src-mq3-qcommon-network-pump-ml-271500050"></a>
 ### pumpOnce
@@ -59,10 +63,10 @@ Consume at most one datagram.  When both queues are ready, alternate the first s
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `nextSide`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L53)
 
 <a id="function-function-mq3-qcommon-network-pump-receiveside-function-receiveside-runtime-side-src-mq3-qcommon-network-pump-ml-1670796535"></a>
 ### receiveSide
@@ -71,13 +75,17 @@ Consume at most one datagram.  When both queues are ready, alternate the first s
 function receiveSide(runtime, side)
 ```
 
+Receive side in qcommon.network_pump; the normal completion returns `Step(true, side, packet.address, packet.data)`.
+
+Direct state writes: `runtime.nextSide`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `side` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `clientSocket`, `serverSocket`, `clientBuffer`, `clientMetadata`, `serverBuffer`, `serverMetadata`, `capacity` and further fields. Updated in place: `nextSide`. |
+| `side` | `dynamic` | — | Initial `side` field stored in the returned or constructed `mq3.qcommon.network_pump.Step` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L34)
 
 - [mq3.qcommon.network_pump.Runtime](Type-mq3-qcommon-network-pump-runtime-1753198241.md) — struct
 <a id="constant-constant-mq3-qcommon-network-pump-side-client-const-side-client-0-src-mq3-qcommon-network-pump-ml-1155793613"></a>

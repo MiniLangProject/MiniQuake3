@@ -16,8 +16,10 @@ Reachable from entry: **yes**
 function allRecordFields()
 ```
 
+List the 52 names in audio.snd_local.allRecordFields, beginning with `left`, `right`, `sample`, `index`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L35)
 
 - [mq3.audio.snd_local.Channel](Type-mq3-audio-snd-local-channel-48098440.md) — struct
 <a id="function-function-mq3-audio-snd-local-chunkcount-function-chunkcount-samples-src-mq3-audio-snd-local-ml-824962833"></a>
@@ -27,12 +29,16 @@ function allRecordFields()
 function chunkCount(samples)
 ```
 
+Compute chunk count in audio.snd_local; the normal completion returns `(((samples + SND_CHUNK_SIZE) - 1) / SND_CHUNK_SIZE)`.
+
+Validation failures include `snd_local.h: negative sample count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `samples` | `dynamic` | — |  |
+| `samples` | `dynamic` | — | Samples used in `(samples < 0)` and `(samples == 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L44)
 
 <a id="function-function-mq3-audio-snd-local-clampvolume-function-clampvolume-value-src-mq3-audio-snd-local-ml-738618669"></a>
 ### clampVolume
@@ -41,12 +47,14 @@ function chunkCount(samples)
 function clampVolume(value)
 ```
 
+Clamp volume in audio.snd_local; the normal completion returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `(value < 0)` and `(value > 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L47)
 
 <a id="function-function-mq3-audio-snd-local-declarationnames-function-declarationnames-src-mq3-audio-snd-local-ml-1594599424"></a>
 ### declarationNames
@@ -55,8 +63,10 @@ function clampVolume(value)
 function declarationNames()
 ```
 
+List the 20 names in audio.snd_local.declarationNames, beginning with `SNDDMA_Init`, `SNDDMA_GetDMAPos`, `SNDDMA_Shutdown`, `SNDDMA_BeginPainting`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L37)
 
 - [mq3.audio.snd_local.Dma](Type-mq3-audio-snd-local-dma-858754229.md) — struct
 <a id="function-function-mq3-audio-snd-local-externalnames-function-externalnames-src-mq3-audio-snd-local-ml-343884398"></a>
@@ -66,8 +76,10 @@ function declarationNames()
 function externalNames()
 ```
 
+List the 21 names in audio.snd_local.externalNames, beginning with `s_channels`, `loop_channels`, `numLoopChannels`, `s_paintedtime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L39)
 
 - [mq3.audio.snd_local.LoopSound](Type-mq3-audio-snd-local-loopsound-1501385974.md) — struct
 <a id="constant-constant-mq3-audio-snd-local-max-channels-const-max-channels-96-src-mq3-audio-snd-local-ml-604442264"></a>
@@ -118,12 +130,16 @@ const PAINTBUFFER_SIZE = 4096
 function rawSampleSlot(sample)
 ```
 
+Compute raw sample slot in audio.snd_local; the normal completion returns `(sample % MAX_RAW_SAMPLES)`.
+
+Validation failures include `snd_local.h: negative raw sample`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sample` | `dynamic` | — |  |
+| `sample` | `dynamic` | — | Sample used in `(sample < 0)` and `(sample % MAX_RAW_SAMPLES)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L52)
 
 <a id="constant-constant-mq3-audio-snd-local-sentinel-mulaw-four-bit-run-const-sentinel-mulaw-four-bit-run-126-src-mq3-audio-snd-local-ml-14686150"></a>
 ### SENTINEL_MULAW_FOUR_BIT_RUN
@@ -194,8 +210,10 @@ const START_SAMPLE_IMMEDIATE = 2147483647
 function typeNames()
 ```
 
+List the 8 names in audio.snd_local.typeNames, beginning with `portable_samplepair_t`, `adpcm_state_t`, `sndBuffer`, `sfx_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L33)
 
 <a id="constant-constant-mq3-audio-snd-local-wav-format-pcm-const-wav-format-pcm-1-src-mq3-audio-snd-local-ml-810359038"></a>
 ### WAV_FORMAT_PCM

@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI atoms missionpack queued engine action, including `kind`, `arguments`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ arguments
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-action-dispatched-dispatched-src-mq3-client-ui-atoms-missionpack-ml-825758677"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-action-kind-kind-src-mq3-client-ui-atoms-missionpack-ml-789308703"></a>
 ### kind
@@ -42,4 +44,4 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L24)

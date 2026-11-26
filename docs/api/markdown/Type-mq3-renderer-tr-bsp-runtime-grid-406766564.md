@@ -9,8 +9,10 @@
 struct Grid
 ```
 
+Data record for `mq3.renderer.tr_bsp_runtime.Grid`; groups `control`, `width`, `height`, `widthLodError`, `heightLodError`, `lodOrigin`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 ## Members
 
@@ -22,7 +24,7 @@ control
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-height-height-src-mq3-renderer-tr-bsp-runtime-ml-881755771"></a>
 ### height
@@ -32,7 +34,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-heightloderror-heightloderror-src-mq3-renderer-tr-bsp-runtime-ml-1092144537"></a>
 ### heightLodError
@@ -42,7 +44,7 @@ heightLodError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-lodfixed-lodfixed-src-mq3-renderer-tr-bsp-runtime-ml-1078328759"></a>
 ### lodFixed
@@ -52,7 +54,7 @@ lodFixed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-lodorigin-lodorigin-src-mq3-renderer-tr-bsp-runtime-ml-985642897"></a>
 ### lodOrigin
@@ -62,7 +64,7 @@ lodOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-lodradius-lodradius-src-mq3-renderer-tr-bsp-runtime-ml-743487249"></a>
 ### lodRadius
@@ -72,7 +74,7 @@ lodRadius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-lodstitched-lodstitched-src-mq3-renderer-tr-bsp-runtime-ml-2063725637"></a>
 ### lodStitched
@@ -82,7 +84,7 @@ lodStitched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-width-width-src-mq3-renderer-tr-bsp-runtime-ml-1671694641"></a>
 ### width
@@ -92,7 +94,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-grid-widthloderror-widthloderror-src-mq3-renderer-tr-bsp-runtime-ml-584355833"></a>
 ### widthLodError
@@ -102,4 +104,4 @@ widthLodError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L41)

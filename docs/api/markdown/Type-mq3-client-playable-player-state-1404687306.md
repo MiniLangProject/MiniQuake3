@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores playable player state, including `spawns`, `spawnIndex`, `position`, `yaw`, `health`, `maxHealth` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ alive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-ammo-ammo-src-mq3-client-playable-player-ml-1398271650"></a>
 ### ammo
@@ -32,7 +34,7 @@ ammo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-armor-armor-src-mq3-client-playable-player-ml-1702245918"></a>
 ### armor
@@ -42,7 +44,7 @@ armor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-deaths-deaths-src-mq3-client-playable-player-ml-327158476"></a>
 ### deaths
@@ -52,7 +54,7 @@ deaths
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-health-health-src-mq3-client-playable-player-ml-253065050"></a>
 ### health
@@ -62,7 +64,7 @@ health
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-invulnerabilitymilliseconds-invulnerabilitymilliseconds-src-mq3-client-playable-player-ml-1542385590"></a>
 ### invulnerabilityMilliseconds
@@ -72,7 +74,7 @@ invulnerabilityMilliseconds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-invulnerableuntil-invulnerableuntil-src-mq3-client-playable-player-ml-1056601702"></a>
 ### invulnerableUntil
@@ -82,7 +84,7 @@ invulnerableUntil
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-maxhealth-maxhealth-src-mq3-client-playable-player-ml-30539786"></a>
 ### maxHealth
@@ -92,7 +94,7 @@ maxHealth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-position-position-src-mq3-client-playable-player-ml-1480306728"></a>
 ### position
@@ -102,7 +104,7 @@ position
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-respawnat-respawnat-src-mq3-client-playable-player-ml-651642326"></a>
 ### respawnAt
@@ -112,7 +114,7 @@ respawnAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-respawnmilliseconds-respawnmilliseconds-src-mq3-client-playable-player-ml-1889100578"></a>
 ### respawnMilliseconds
@@ -122,7 +124,7 @@ respawnMilliseconds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-spawnindex-spawnindex-src-mq3-client-playable-player-ml-1856840372"></a>
 ### spawnIndex
@@ -132,7 +134,7 @@ spawnIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-spawns-spawns-src-mq3-client-playable-player-ml-1254688846"></a>
 ### spawns
@@ -142,7 +144,7 @@ spawns
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-weapon-weapon-src-mq3-client-playable-player-ml-1650307922"></a>
 ### weapon
@@ -152,7 +154,7 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)
 
 <a id="field-field-mq3-client-playable-player-state-yaw-yaw-src-mq3-client-playable-player-ml-507045278"></a>
 ### yaw
@@ -162,4 +164,4 @@ yaw
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L25)

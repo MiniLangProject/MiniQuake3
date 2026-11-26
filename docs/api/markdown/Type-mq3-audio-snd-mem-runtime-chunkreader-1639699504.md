@@ -9,8 +9,10 @@
 struct ChunkReader
 ```
 
+ChunkReader record for audio.snd_mem_runtime, containing `data`, `dataPos`, `iffEnd`, `lastChunk`, `iffData`, `chunkLen`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ chunkLen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-chunkreader-data-data-src-mq3-audio-snd-mem-runtime-ml-1513699421"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-chunkreader-datapos-datapos-src-mq3-audio-snd-mem-runtime-ml-833267545"></a>
 ### dataPos
@@ -42,7 +44,7 @@ dataPos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-chunkreader-iffdata-iffdata-src-mq3-audio-snd-mem-runtime-ml-1199932489"></a>
 ### iffData
@@ -52,7 +54,7 @@ iffData
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-chunkreader-iffend-iffend-src-mq3-audio-snd-mem-runtime-ml-225632353"></a>
 ### iffEnd
@@ -62,7 +64,7 @@ iffEnd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-chunkreader-lastchunk-lastchunk-src-mq3-audio-snd-mem-runtime-ml-518820917"></a>
 ### lastChunk
@@ -72,4 +74,4 @@ lastChunk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)

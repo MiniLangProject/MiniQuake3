@@ -9,8 +9,10 @@
 struct SwapBuffersCommand
 ```
 
+Data record for `mq3.renderer.tr_local.SwapBuffersCommand`; groups `commandId`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L63)
 
 ## Members
 
@@ -22,4 +24,4 @@ commandId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L63)

@@ -35,14 +35,19 @@ const AUTHORIZE_TIMEOUT = 5000
 function bindGameInterface(mapState, persistentState, target)
 ```
 
+Update `target.gentities`, `target.gentitySize`, `target.numEntities`, `target.gameClients` in server.abi; the normal completion returns `target`.
+
+Validation failures include `server ABI: missing game binding`.
+Direct state writes: `target.gentities`, `target.gentitySize`, `target.numEntities`, `target.gameClients`, `target.gameClientSize`, `target.maxClients`, `target.serverState`, `target.clients` and further fields.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mapState` | `dynamic` | — |  |
-| `persistentState` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
+| `mapState` | `dynamic` | — | Record exposing `gentities`, `gentitySize`, `numEntities`, `gameClients`, `gameClientSize`, `state`, `svEntities`. |
+| `persistentState` | `dynamic` | — | Record exposing `clients`. |
+| `target` | `dynamic` | — | Record exposing `clients`, `svEntities`. Updated in place: `gentities`, `gentitySize`, `numEntities`, `gameClients`, `gameClientSize`, `maxClients` and further fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L206)
 
 <a id="function-function-mq3-server-abi-challenge-function-challenge-src-mq3-server-abi-ml-1842982276"></a>
 ### challenge
@@ -51,8 +56,10 @@ function bindGameInterface(mapState, persistentState, target)
 function challenge()
 ```
 
+Create `mq3.server.abi.Challenge` with address=void; challenge=0; time=0; pingTime=0; firstTime=0; connected=false.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L140)
 
 - [mq3.server.abi.Challenge](Type-mq3-server-abi-challenge-1945353050.md) — struct
 <a id="function-function-mq3-server-abi-challengelayout-function-challengelayout-src-mq3-server-abi-ml-1124335796"></a>
@@ -62,8 +69,10 @@ function challenge()
 function challengeLayout()
 ```
 
+Return `mq3.server.abi.layout("challenge_t", 40, ["adr", "challenge", "time", "pingTime", "firstTime", "connected"], [0, 20, 24, 28, 32, 36], [], [])` from `server.abi.challengeLayout`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L65)
 
 <a id="function-function-mq3-server-abi-client-function-client-src-mq3-server-abi-ml-1761737538"></a>
 ### client
@@ -72,8 +81,10 @@ function challengeLayout()
 function client()
 ```
 
+Apply `mq3.server.abi.clientSnapshot`, `mq3.server.abi.Client`, `mq3.qcommon.message_delta.userCommand` for client in server.abi.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L95)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L132)
 
 - [mq3.server.abi.Client](Type-mq3-server-abi-client-966821330.md) — struct
 <a id="function-function-mq3-server-abi-clientlayout-function-clientlayout-src-mq3-server-abi-ml-521658270"></a>
@@ -83,8 +94,10 @@ function client()
 function clientLayout()
 ```
 
+Delegate `clientLayout` to `mq3.server.abi.layout` and return its result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L63)
 
 <a id="function-function-mq3-server-abi-clientsnapshot-function-clientsnapshot-src-mq3-server-abi-ml-1425837534"></a>
 ### clientSnapshot
@@ -93,8 +106,10 @@ function clientLayout()
 function clientSnapshot()
 ```
 
+Create `mq3.server.abi.ClientSnapshot` with areabytes=0; areabits=bytes(MAX_MAP_AREA_BYTES, 0); ps=playerstate.create(); numEntities=0; firstEntity=0; messageSent=0; messageAcked=0; messageSize=0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L89)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L121)
 
 - [mq3.server.abi.ClientSnapshot](Type-mq3-server-abi-clientsnapshot-1234231006.md) — struct
 <a id="function-function-mq3-server-abi-clientsnapshotlayout-function-clientsnapshotlayout-src-mq3-server-abi-ml-848180290"></a>
@@ -104,8 +119,10 @@ function clientSnapshot()
 function clientSnapshotLayout()
 ```
 
+Return `mq3.server.abi.layout("clientSnapshot_t", 524, ["areabytes", "areabits", "ps", "num_entities", "first_entity", "messageSent", "messageAcked", "messageSize"], [0, 4, 36, 504, 508, 512, 516, 520], ["areabits"], [32])` from `server.abi.clientSnapshotLayout`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L59)
 
 <a id="function-function-mq3-server-abi-clusters-function-clusters-value-src-mq3-server-abi-ml-1797973371"></a>
 ### clusters
@@ -114,12 +131,14 @@ function clientSnapshotLayout()
 function clusters(value)
 ```
 
+Compute clusters in server.abi; the normal completion returns `arrays.slice(value.clusternums, 0, count)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record exposing `numClusters`, `clusternums`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L104)
 
 <a id="constant-constant-mq3-server-abi-cs-active-const-cs-active-4-src-mq3-server-abi-ml-434032683"></a>
 ### CS_ACTIVE
@@ -181,7 +200,7 @@ function cvarNames()
 The declarations below are part of server.h's public surface even though MiniLang stores cvars in the managed Cvars value and dispatches functions from their owning modules.  Keeping the original spelling/order here gives ABI tooling a single canonical manifest without introducing duplicate stubs.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L75)
 
 <a id="function-function-mq3-server-abi-cvars-function-cvars-src-mq3-server-abi-ml-1889587008"></a>
 ### cvars
@@ -190,8 +209,10 @@ The declarations below are part of server.h's public surface even though MiniLan
 function cvars()
 ```
 
+Create `mq3.server.abi.Cvars` with fps=void; timeout=void; zombietime=void; rconPassword=void; 21 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L159)
 
 - [mq3.server.abi.Cvars](Type-mq3-server-abi-cvars-51168696.md) — struct
 <a id="function-function-mq3-server-abi-globals-function-globals-maxclients-numsnapshotentities-src-mq3-server-abi-ml-1596234743"></a>
@@ -201,13 +222,15 @@ function cvars()
 function globals(maxClients, numSnapshotEntities)
 ```
 
+Create `mq3.server.abi.Globals` with svs=serverStatic(maxClients, numSnapshotEntities); sv=server(); gvm=void; cvars=cvars().
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxClients` | `dynamic` | — |  |
-| `numSnapshotEntities` | `dynamic` | — |  |
+| `maxClients` | `dynamic` | — | Max clients passed as `maxClients` to `mq3.server.abi.serverStatic`. |
+| `numSnapshotEntities` | `dynamic` | — | Num snapshot entities passed as `numSnapshotEntities` to `mq3.server.abi.serverStatic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L165)
 
 - [mq3.server.abi.Globals](Type-mq3-server-abi-globals-2097768435.md) — struct
 <a id="function-function-mq3-server-abi-layout-function-layout-name-size-fields-offsets-arrayfields-arraycounts-src-mq3-server-abi-ml-1506505768"></a>
@@ -217,17 +240,19 @@ function globals(maxClients, numSnapshotEntities)
 function layout(name, size, fields, offsets, arrayFields, arrayCounts)
 ```
 
+Create `mq3.server.abi.Layout` with name=name; size=size; fields=fields; offsets=offsets; arrayFields=arrayFields; arrayCounts=arrayCounts.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `fields` | `dynamic` | — |  |
-| `offsets` | `dynamic` | — |  |
-| `arrayFields` | `dynamic` | — |  |
-| `arrayCounts` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Initial `name` field stored in the returned or constructed `mq3.server.abi.Layout` record. |
+| `size` | `dynamic` | — | Initial `size` field stored in the returned or constructed `mq3.server.abi.Layout` record. |
+| `fields` | `dynamic` | — | Initial `fields` field stored in the returned or constructed `mq3.server.abi.Layout` record. |
+| `offsets` | `dynamic` | — | Initial `offsets` field stored in the returned or constructed `mq3.server.abi.Layout` record. |
+| `arrayFields` | `dynamic` | — | Initial `arrayFields` field stored in the returned or constructed `mq3.server.abi.Layout` record. |
+| `arrayCounts` | `dynamic` | — | Initial `arrayCounts` field stored in the returned or constructed `mq3.server.abi.Layout` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L53)
 
 - [mq3.server.abi.Layout](Type-mq3-server-abi-layout-1689550659.md) — struct
 <a id="function-function-mq3-server-abi-layouts-function-layouts-src-mq3-server-abi-ml-879658108"></a>
@@ -237,8 +262,10 @@ function layout(name, size, fields, offsets, arrayFields, arrayCounts)
 function layouts()
 ```
 
+Compute server.abi.layouts as `[svEntityLayout(), serverLayout(), clientSnapshotLayout(), netchanBufferLayout(), clientLayout(), challengeLayout(), serverStaticLayout()]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L69)
 
 <a id="constant-constant-mq3-server-abi-max-challenges-const-max-challenges-1024-src-mq3-server-abi-ml-1517842310"></a>
 ### MAX_CHALLENGES
@@ -397,12 +424,14 @@ const MAX_STRING_CHARS = 1024
 function netchanBuffer(msg)
 ```
 
+Create `mq3.server.abi.NetchanBuffer` with msg=msg; msgBuffer=bytes(MAX_MSGLEN, 0); next=void.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `msg` | `dynamic` | — |  |
+| `msg` | `dynamic` | — | Initial `msg` field stored in the returned or constructed `mq3.server.abi.NetchanBuffer` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L127)
 
 - [mq3.server.abi.NetchanBuffer](Type-mq3-server-abi-netchanbuffer-1585573798.md) — struct
 <a id="function-function-mq3-server-abi-netchanbufferlayout-function-netchanbufferlayout-src-mq3-server-abi-ml-1599708340"></a>
@@ -412,8 +441,10 @@ function netchanBuffer(msg)
 function netchanBufferLayout()
 ```
 
+Return `mq3.server.abi.layout("netchan_buffer_t", 16420, ["msg", "msgBuffer", "next"], [0, 32, 16416], ["msgBuffer"], [16384])` from `server.abi.netchanBufferLayout`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L61)
 
 <a id="constant-constant-mq3-server-abi-packet-backup-const-packet-backup-32-src-mq3-server-abi-ml-1557840544"></a>
 ### PACKET_BACKUP
@@ -442,8 +473,10 @@ const PERS_SCORE = 0
 function prototypeNames()
 ```
 
+List the 60 names in server.abi.prototypeNames, beginning with `SV_FinalMessage`, `SV_SendServerCommand`, `SV_AddOperatorCommands`, `SV_RemoveOperatorCommands`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L79)
 
 <a id="function-function-mq3-server-abi-server-function-server-src-mq3-server-abi-ml-458776754"></a>
 ### server
@@ -452,8 +485,10 @@ function prototypeNames()
 function server()
 ```
 
+Apply `mq3.server.abi.svEntity`, `mq3.server.abi.Server` for server in server.abi.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L83)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L113)
 
 - [mq3.server.abi.Server](Type-mq3-server-abi-server-1363816382.md) — struct
 <a id="function-function-mq3-server-abi-serverlayout-function-serverlayout-src-mq3-server-abi-ml-1449230166"></a>
@@ -463,8 +498,10 @@ function server()
 function serverLayout()
 ```
 
+Delegate `serverLayout` to `mq3.server.abi.layout` and return its result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L57)
 
 <a id="function-function-mq3-server-abi-serverstatic-function-serverstatic-maxclients-numsnapshotentities-src-mq3-server-abi-ml-2104554503"></a>
 ### serverStatic
@@ -473,13 +510,17 @@ function serverLayout()
 function serverStatic(maxClients, numSnapshotEntities)
 ```
 
+Apply `mq3.server.abi.client`, `mq3.server.abi.challenge`, `mq3.server.abi.ServerStatic` for server static in server.abi.
+
+Validation failures include `server ABI: invalid persistent sizes`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxClients` | `dynamic` | — |  |
-| `numSnapshotEntities` | `dynamic` | — |  |
+| `maxClients` | `dynamic` | — | Max clients used in `(maxClients < 0)` and `(maxClients - 1)`. |
+| `numSnapshotEntities` | `dynamic` | — | Initial `numSnapshotEntities` field stored in the returned or constructed `mq3.server.abi.ServerStatic` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L149)
 
 - [mq3.server.abi.ServerStatic](Type-mq3-server-abi-serverstatic-951087980.md) — struct
 <a id="function-function-mq3-server-abi-serverstaticlayout-function-serverstaticlayout-src-mq3-server-abi-ml-1660925134"></a>
@@ -489,8 +530,10 @@ function serverStatic(maxClients, numSnapshotEntities)
 function serverStaticLayout()
 ```
 
+Delegate `serverStaticLayout` to `mq3.server.abi.layout` and return its result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L67)
 
 <a id="function-function-mq3-server-abi-setclusters-function-setclusters-value-clusters-lastcluster-src-mq3-server-abi-ml-1319810992"></a>
 ### setClusters
@@ -499,14 +542,19 @@ function serverStaticLayout()
 function setClusters(value, clusters, lastCluster)
 ```
 
+Set clusters in server.abi; the normal completion returns `value`.
+
+Validation failures include `server ABI: invalid cluster set`.
+Direct state writes: `value.numClusters`, `value.clusternums`, `value.lastCluster`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `clusters` | `dynamic` | — |  |
-| `lastCluster` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record exposing `clusternums`. Updated in place: `numClusters`, `clusternums`, `lastCluster`. |
+| `clusters` | `dynamic` | — | Clusters used in `len(clusters)` and `clusters[index]`. |
+| `lastCluster` | `dynamic` | — | Last cluster operand used by `setClusters`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L96)
 
 <a id="constant-constant-mq3-server-abi-ss-dead-const-ss-dead-0-src-mq3-server-abi-ml-1726092543"></a>
 ### SS_DEAD
@@ -545,8 +593,10 @@ const SS_LOADING = 1
 function svEntity()
 ```
 
+Create `mq3.server.abi.SvEntity` with worldSector=void; nextEntityInWorldSector=void; baseline=entitystate.create(); numClusters=0; clusternums=array(MAX_ENT_CLUSTERS, 0); lastCluster=0; areanum=0; areanum2=0; snapshotCounter=0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L86)
 
 - [mq3.server.abi.SvEntity](Type-mq3-server-abi-sventity-1246905027.md) — struct
 <a id="function-function-mq3-server-abi-sventitylayout-function-sventitylayout-src-mq3-server-abi-ml-11838474"></a>
@@ -556,8 +606,10 @@ function svEntity()
 function svEntityLayout()
 ```
 
+Delegate `svEntityLayout` to `mq3.server.abi.layout` and return its result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L55)
 
 <a id="function-function-mq3-server-abi-tosnapshotentity-function-tosnapshotentity-value-linked-svflags-singleclient-src-mq3-server-abi-ml-999379851"></a>
 ### toSnapshotEntity
@@ -570,13 +622,13 @@ Productive projections. They deliberately preserve the canonical fixed-size ring
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `linked` | `dynamic` | — |  |
-| `svFlags` | `dynamic` | — |  |
-| `singleClient` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record exposing `baseline`, `lastCluster`, `areanum`, `areanum2`. |
+| `linked` | `dynamic` | — | Linked passed as `linked` to `mq3.server.snapshot_build.snapshotEntity`. |
+| `svFlags` | `dynamic` | — | Sv flags passed as `svFlags` to `mq3.server.snapshot_build.snapshotEntity`. |
+| `singleClient` | `dynamic` | — | Single client passed as `singleClient` to `mq3.server.snapshot_build.snapshotEntity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L173)
 
 <a id="function-function-mq3-server-abi-tosnapshotframe-function-tosnapshotframe-value-src-mq3-server-abi-ml-2142218043"></a>
 ### toSnapshotFrame
@@ -585,12 +637,16 @@ Productive projections. They deliberately preserve the canonical fixed-size ring
 function toSnapshotFrame(value)
 ```
 
+Compute to snapshot frame in server.abi; the normal completion returns `result`.
+
+Validation failures include `server ABI: missing clientSnapshot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record exposing `areabytes`, `areabits`, `ps`, `numEntities`, `firstEntity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L181)
 
 <a id="function-function-mq3-server-abi-tosnapshotserver-function-tosnapshotserver-mapstate-persistentstate-padpackets-maxrate-lanforcerate-src-mq3-server-abi-ml-1733708259"></a>
 ### toSnapshotServer
@@ -599,13 +655,17 @@ function toSnapshotFrame(value)
 function toSnapshotServer(mapState, persistentState, padPackets, maxRate, lanForceRate)
 ```
 
+Compute to snapshot server in server.abi; the normal completion returns `result`.
+
+Validation failures include `server ABI: invalid snapshot server`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mapState` | `dynamic` | — |  |
-| `persistentState` | `dynamic` | — |  |
-| `padPackets` | `dynamic` | — |  |
-| `maxRate` | `dynamic` | — |  |
-| `lanForceRate` | `dynamic` | — |  |
+| `mapState` | `dynamic` | — | Record exposing `svEntities`. |
+| `persistentState` | `dynamic` | — | Record exposing `numSnapshotEntities`, `time`, `snapshotEntities`, `snapFlagServerBit`, `nextSnapshotEntities`. |
+| `padPackets` | `dynamic` | — | Pad packets operand used by `toSnapshotServer`; its reads are shown in the implementation. |
+| `maxRate` | `dynamic` | — | Max rate operand used by `toSnapshotServer`; its reads are shown in the implementation. |
+| `lanForceRate` | `dynamic` | — | Lan force rate operand used by `toSnapshotServer`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L193)

@@ -9,8 +9,10 @@
 struct Cent
 ```
 
+Stores client game snapshot cent record, including `currentState`, `nextState`, `currentValid`, `interpolate`, `previousEvent`, `trailTime` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ currentState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-currentvalid-currentvalid-src-mq3-client-cgame-snapshot-ml-416896219"></a>
 ### currentValid
@@ -32,7 +34,7 @@ currentValid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-events-events-src-mq3-client-cgame-snapshot-ml-1564448987"></a>
 ### events
@@ -42,7 +44,7 @@ events
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-interpolate-interpolate-src-mq3-client-cgame-snapshot-ml-1694509613"></a>
 ### interpolate
@@ -52,7 +54,7 @@ interpolate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-lerpangles-lerpangles-src-mq3-client-cgame-snapshot-ml-1534437647"></a>
 ### lerpAngles
@@ -62,7 +64,7 @@ lerpAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-lerporigin-lerporigin-src-mq3-client-cgame-snapshot-ml-482647103"></a>
 ### lerpOrigin
@@ -72,7 +74,7 @@ lerpOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-nextstate-nextstate-src-mq3-client-cgame-snapshot-ml-1377170861"></a>
 ### nextState
@@ -82,7 +84,7 @@ nextState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-playerresets-playerresets-src-mq3-client-cgame-snapshot-ml-148372967"></a>
 ### playerResets
@@ -92,7 +94,7 @@ playerResets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-previousevent-previousevent-src-mq3-client-cgame-snapshot-ml-1507247753"></a>
 ### previousEvent
@@ -102,7 +104,7 @@ previousEvent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-snapshottime-snapshottime-src-mq3-client-cgame-snapshot-ml-1708335603"></a>
 ### snapShotTime
@@ -112,7 +114,7 @@ snapShotTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
 
 <a id="field-field-mq3-client-cgame-snapshot-cent-trailtime-trailtime-src-mq3-client-cgame-snapshot-ml-819155005"></a>
 ### trailTime
@@ -122,4 +124,4 @@ trailTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)

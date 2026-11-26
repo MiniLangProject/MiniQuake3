@@ -20,14 +20,16 @@ Reachable from entry: **yes**
 function action(state, client, bits)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` while evaluating `action`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `bits` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `bits` | `dynamic` | — | Value used by `action` in `value.actionflags=value.actionflags\|bits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L150)
 
 <a id="constant-constant-mq3-botlib-elementary-actions-action-affirmative-const-action-affirmative-publicheaders-action-affirmative-src-mq3-botlib-elementary-actions-ml-365011741"></a>
 ### ACTION_AFFIRMATIVE
@@ -258,13 +260,15 @@ const ACTION_WALK = publicHeaders.ACTION_WALK
 function attack(state, client)
 ```
 
+Forward `attack` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L162)
 
 <a id="function-function-mq3-botlib-elementary-actions-command-function-command-state-client-text-src-mq3-botlib-elementary-actions-ml-876164887"></a>
 ### command
@@ -273,14 +277,16 @@ function attack(state, client)
 function command(state, client, text)
 ```
 
+Forward `command` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L118)
 
 <a id="function-function-mq3-botlib-elementary-actions-copyinput-function-copyinput-value-src-mq3-botlib-elementary-actions-ml-1553776003"></a>
 ### copyInput
@@ -289,12 +295,14 @@ function command(state, client, text)
 function copyInput(value)
 ```
 
+Create a `mq3.botlib.elementary_actions.ElementaryInput` record, initializing `thinktime` as `value.thinktime`, `dir` as `[value.dir[0],value.dir[1],value.dir[2]]` and `speed` as `value.speed`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `thinktime`, `dir`, `speed`, `viewangles` and `actionflags` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L74)
 
 <a id="function-function-mq3-botlib-elementary-actions-create-function-create-maxclients-commandfn-context-src-mq3-botlib-elementary-actions-ml-1343425978"></a>
 ### create
@@ -303,14 +311,16 @@ function copyInput(value)
 function create(maxClients, commandFn, context)
 ```
 
+Build the `mq3.botlib.elementary_actions.State` result for `create`. Return paths include `State(true,maxClients,values,commandFn,context,0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxClients` | `dynamic` | — |  |
-| `commandFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
+| `maxClients` | `dynamic` | — | Initial value stored in `mq3.botlib.elementary_actions.State.maxClients`. |
+| `commandFn` | `dynamic` | — | Initial value stored in `mq3.botlib.elementary_actions.State.commandFn`. |
+| `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L79)
 
 <a id="function-function-mq3-botlib-elementary-actions-crouch-function-crouch-state-client-src-mq3-botlib-elementary-actions-ml-434639250"></a>
 ### crouch
@@ -319,13 +329,15 @@ function create(maxClients, commandFn, context)
 function crouch(state, client)
 ```
 
+Forward `crouch` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L174)
 
 <a id="function-function-mq3-botlib-elementary-actions-delayedjump-function-delayedjump-state-client-src-mq3-botlib-elementary-actions-ml-1837756402"></a>
 ### delayedJump
@@ -334,13 +346,15 @@ function crouch(state, client)
 function delayedJump(state, client)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` while evaluating `delayedJump`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L218)
 
 <a id="function-function-mq3-botlib-elementary-actions-dropinv-function-dropinv-state-client-inventory-src-mq3-botlib-elementary-actions-ml-403291562"></a>
 ### dropInv
@@ -349,14 +363,16 @@ function delayedJump(state, client)
 function dropInv(state, client, inventory)
 ```
 
+Forward `dropInv` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L144)
 
 <a id="function-function-mq3-botlib-elementary-actions-dropitem-function-dropitem-state-client-item-src-mq3-botlib-elementary-actions-ml-267739021"></a>
 ### dropItem
@@ -365,14 +381,16 @@ function dropInv(state, client, inventory)
 function dropItem(state, client, item)
 ```
 
+Forward `dropItem` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `item` | `dynamic` | — | Operand used to evaluate the returned expression `emit(state,client,"drop "+item)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L134)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-action-function-ea-action-state-client-bits-src-mq3-botlib-elementary-actions-ml-18117004"></a>
 ### EA_Action
@@ -381,14 +399,16 @@ function dropItem(state, client, item)
 function EA_Action(state, client, bits)
 ```
 
+Forward `EA_Action` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `bits` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `bits` | `dynamic` | — | Value used by `action` in `value.actionflags=value.actionflags\|bits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L373)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-attack-function-ea-attack-state-client-src-mq3-botlib-elementary-actions-ml-739688792"></a>
 ### EA_Attack
@@ -397,13 +417,15 @@ function EA_Action(state, client, bits)
 function EA_Attack(state, client)
 ```
 
+Forward `EA_Attack` to `mq3.botlib.elementary_actions.attack` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L340)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-command-function-ea-command-state-client-text-src-mq3-botlib-elementary-actions-ml-1994612929"></a>
 ### EA_Command
@@ -412,14 +434,16 @@ function EA_Attack(state, client)
 function EA_Command(state, client, text)
 ```
 
+Forward `EA_Command` to `mq3.botlib.elementary_actions.command` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L331)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-crouch-function-ea-crouch-state-client-src-mq3-botlib-elementary-actions-ml-334017424"></a>
 ### EA_Crouch
@@ -428,13 +452,15 @@ function EA_Command(state, client, text)
 function EA_Crouch(state, client)
 ```
 
+Forward `EA_Crouch` to `mq3.botlib.elementary_actions.crouch` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L364)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-delayedjump-function-ea-delayedjump-state-client-src-mq3-botlib-elementary-actions-ml-261236726"></a>
 ### EA_DelayedJump
@@ -443,13 +469,15 @@ function EA_Crouch(state, client)
 function EA_DelayedJump(state, client)
 ```
 
+Forward `EA_DelayedJump` to `mq3.botlib.elementary_actions.delayedJump` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L360)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-dropinv-function-ea-dropinv-state-client-inventory-src-mq3-botlib-elementary-actions-ml-1539945886"></a>
 ### EA_DropInv
@@ -458,14 +486,16 @@ function EA_DelayedJump(state, client)
 function EA_DropInv(state, client, inventory)
 ```
 
+Forward `EA_DropInv` to `mq3.botlib.elementary_actions.dropInv` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L322)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-dropitem-function-ea-dropitem-state-client-item-src-mq3-botlib-elementary-actions-ml-1516185259"></a>
 ### EA_DropItem
@@ -474,14 +504,16 @@ function EA_DropInv(state, client, inventory)
 function EA_DropItem(state, client, item)
 ```
 
+Forward `EA_DropItem` to `mq3.botlib.elementary_actions.dropItem` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `item` | `dynamic` | — | Operand used to evaluate the returned expression `emit(state,client,"drop "+item)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L312)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-endregular-function-ea-endregular-state-client-thinktime-src-mq3-botlib-elementary-actions-ml-1459021343"></a>
 ### EA_EndRegular
@@ -490,14 +522,16 @@ function EA_DropItem(state, client, item)
 function EA_EndRegular(state, client, thinktime)
 ```
 
+Forward `EA_EndRegular` to `mq3.botlib.elementary_actions.endRegular` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `thinktime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value passed as argument 1 to `mq3.botlib.elementary_actions.endRegular`. |
+| `client` | `dynamic` | — | Value passed as argument 2 to `mq3.botlib.elementary_actions.endRegular`. |
+| `thinktime` | `dynamic` | — | Bot thinking interval in seconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L413)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-gesture-function-ea-gesture-state-client-src-mq3-botlib-elementary-actions-ml-1909090490"></a>
 ### EA_Gesture
@@ -506,13 +540,15 @@ function EA_EndRegular(state, client, thinktime)
 function EA_Gesture(state, client)
 ```
 
+Forward `EA_Gesture` to `mq3.botlib.elementary_actions.gesture` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L326)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-getinput-function-ea-getinput-state-client-thinktime-src-mq3-botlib-elementary-actions-ml-306115761"></a>
 ### EA_GetInput
@@ -521,14 +557,16 @@ function EA_Gesture(state, client)
 function EA_GetInput(state, client, thinktime)
 ```
 
+Forward `EA_GetInput` to `mq3.botlib.elementary_actions.getInput` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `thinktime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `thinktime` | `dynamic` | — | Bot thinking interval in seconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L418)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-jump-function-ea-jump-state-client-src-mq3-botlib-elementary-actions-ml-1214661036"></a>
 ### EA_Jump
@@ -537,13 +575,15 @@ function EA_GetInput(state, client, thinktime)
 function EA_Jump(state, client)
 ```
 
+Forward `EA_Jump` to `mq3.botlib.elementary_actions.jump` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L356)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-move-function-ea-move-state-client-direction-speed-src-mq3-botlib-elementary-actions-ml-985451974"></a>
 ### EA_Move
@@ -552,15 +592,17 @@ function EA_Jump(state, client)
 function EA_Move(state, client, direction, speed)
 ```
 
+Forward `EA_Move` to `mq3.botlib.elementary_actions.move` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
-| `speed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `direction` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `speed` | `dynamic` | — | Requested movement speed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L403)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-moveback-function-ea-moveback-state-client-src-mq3-botlib-elementary-actions-ml-2008057376"></a>
 ### EA_MoveBack
@@ -569,13 +611,15 @@ function EA_Move(state, client, direction, speed)
 function EA_MoveBack(state, client)
 ```
 
+Forward `EA_MoveBack` to `mq3.botlib.elementary_actions.moveBack` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L389)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-movedown-function-ea-movedown-state-client-src-mq3-botlib-elementary-actions-ml-218643386"></a>
 ### EA_MoveDown
@@ -584,13 +628,15 @@ function EA_MoveBack(state, client)
 function EA_MoveDown(state, client)
 ```
 
+Forward `EA_MoveDown` to `mq3.botlib.elementary_actions.moveDown` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L381)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-moveforward-function-ea-moveforward-state-client-src-mq3-botlib-elementary-actions-ml-1291756122"></a>
 ### EA_MoveForward
@@ -599,13 +645,15 @@ function EA_MoveDown(state, client)
 function EA_MoveForward(state, client)
 ```
 
+Forward `EA_MoveForward` to `mq3.botlib.elementary_actions.moveForward` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L385)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-moveleft-function-ea-moveleft-state-client-src-mq3-botlib-elementary-actions-ml-1630295288"></a>
 ### EA_MoveLeft
@@ -614,13 +662,15 @@ function EA_MoveForward(state, client)
 function EA_MoveLeft(state, client)
 ```
 
+Forward `EA_MoveLeft` to `mq3.botlib.elementary_actions.moveLeft` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L393)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-moveright-function-ea-moveright-state-client-src-mq3-botlib-elementary-actions-ml-881448114"></a>
 ### EA_MoveRight
@@ -629,13 +679,15 @@ function EA_MoveLeft(state, client)
 function EA_MoveRight(state, client)
 ```
 
+Forward `EA_MoveRight` to `mq3.botlib.elementary_actions.moveRight` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L397)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-moveup-function-ea-moveup-state-client-src-mq3-botlib-elementary-actions-ml-127238592"></a>
 ### EA_MoveUp
@@ -644,13 +696,15 @@ function EA_MoveRight(state, client)
 function EA_MoveUp(state, client)
 ```
 
+Forward `EA_MoveUp` to `mq3.botlib.elementary_actions.moveUp` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L377)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-resetinput-function-ea-resetinput-state-client-src-mq3-botlib-elementary-actions-ml-2017912522"></a>
 ### EA_ResetInput
@@ -659,13 +713,15 @@ function EA_MoveUp(state, client)
 function EA_ResetInput(state, client)
 ```
 
+Forward `EA_ResetInput` to `mq3.botlib.elementary_actions.resetInput` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L422)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-respawn-function-ea-respawn-state-client-src-mq3-botlib-elementary-actions-ml-553949858"></a>
 ### EA_Respawn
@@ -674,13 +730,15 @@ function EA_ResetInput(state, client)
 function EA_Respawn(state, client)
 ```
 
+Forward `EA_Respawn` to `mq3.botlib.elementary_actions.respawn` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L352)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-say-function-ea-say-state-client-text-src-mq3-botlib-elementary-actions-ml-501452181"></a>
 ### EA_Say
@@ -689,14 +747,16 @@ function EA_Respawn(state, client)
 function EA_Say(state, client, text)
 ```
 
+Forward `EA_Say` to `mq3.botlib.elementary_actions.say` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L291)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-sayteam-function-ea-sayteam-state-client-text-src-mq3-botlib-elementary-actions-ml-668141317"></a>
 ### EA_SayTeam
@@ -705,14 +765,16 @@ function EA_Say(state, client, text)
 function EA_SayTeam(state, client, text)
 ```
 
+Forward `EA_SayTeam` to `mq3.botlib.elementary_actions.sayTeam` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L296)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-selectweapon-function-ea-selectweapon-state-client-weapon-src-mq3-botlib-elementary-actions-ml-1199884292"></a>
 ### EA_SelectWeapon
@@ -721,14 +783,16 @@ function EA_SayTeam(state, client, text)
 function EA_SelectWeapon(state, client, weapon)
 ```
 
+Forward `EA_SelectWeapon` to `mq3.botlib.elementary_actions.selectWeapon` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L336)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-setup-function-ea-setup-maxclients-src-mq3-botlib-elementary-actions-ml-1899391466"></a>
 ### EA_Setup
@@ -741,10 +805,10 @@ Complete code/botlib/be_ea.c surface.  The explicit state argument replaces the 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxClients` | `dynamic` | — |  |
+| `maxClients` | `dynamic` | — | Initial value stored in `mq3.botlib.elementary_actions.State.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L279)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-shutdown-function-ea-shutdown-state-src-mq3-botlib-elementary-actions-ml-1187496495"></a>
 ### EA_Shutdown
@@ -753,12 +817,14 @@ Complete code/botlib/be_ea.c surface.  The explicit state argument replaces the 
 function EA_Shutdown(state)
 ```
 
+Forward `EA_Shutdown` to `mq3.botlib.elementary_actions.shutdown` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `initialized`, `inputs` and `maxClients`. May update `state.initialized`, `state.inputs` and `state.maxClients` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L286)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-talk-function-ea-talk-state-client-src-mq3-botlib-elementary-actions-ml-1609241764"></a>
 ### EA_Talk
@@ -767,13 +833,15 @@ function EA_Shutdown(state)
 function EA_Talk(state, client)
 ```
 
+Forward `EA_Talk` to `mq3.botlib.elementary_actions.talk` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L344)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-tell-function-ea-tell-state-client-clientto-text-src-mq3-botlib-elementary-actions-ml-1977382715"></a>
 ### EA_Tell
@@ -782,15 +850,17 @@ function EA_Talk(state, client)
 function EA_Tell(state, client, clientTo, text)
 ```
 
+Forward `EA_Tell` to `mq3.botlib.elementary_actions.tell` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `clientTo` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `clientTo` | `dynamic` | — | Value passed as argument 1 to `str`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L302)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-use-function-ea-use-state-client-src-mq3-botlib-elementary-actions-ml-76045266"></a>
 ### EA_Use
@@ -799,13 +869,15 @@ function EA_Tell(state, client, clientTo, text)
 function EA_Use(state, client)
 ```
 
+Forward `EA_Use` to `mq3.botlib.elementary_actions.useAction` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L348)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-useinv-function-ea-useinv-state-client-inventory-src-mq3-botlib-elementary-actions-ml-1096255568"></a>
 ### EA_UseInv
@@ -814,14 +886,16 @@ function EA_Use(state, client)
 function EA_UseInv(state, client, inventory)
 ```
 
+Forward `EA_UseInv` to `mq3.botlib.elementary_actions.useInv` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L317)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-useitem-function-ea-useitem-state-client-item-src-mq3-botlib-elementary-actions-ml-1016887401"></a>
 ### EA_UseItem
@@ -830,14 +904,16 @@ function EA_UseInv(state, client, inventory)
 function EA_UseItem(state, client, item)
 ```
 
+Forward `EA_UseItem` to `mq3.botlib.elementary_actions.useItem` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `item` | `dynamic` | — | Operand used to evaluate the returned expression `emit(state,client,"use "+item)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L307)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-view-function-ea-view-state-client-angles-src-mq3-botlib-elementary-actions-ml-1450472974"></a>
 ### EA_View
@@ -846,14 +922,16 @@ function EA_UseItem(state, client, item)
 function EA_View(state, client, angles)
 ```
 
+Forward `EA_View` to `mq3.botlib.elementary_actions.view` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L408)
 
 <a id="function-function-mq3-botlib-elementary-actions-ea-walk-function-ea-walk-state-client-src-mq3-botlib-elementary-actions-ml-460241194"></a>
 ### EA_Walk
@@ -862,13 +940,15 @@ function EA_View(state, client, angles)
 function EA_Walk(state, client)
 ```
 
+Forward `EA_Walk` to `mq3.botlib.elementary_actions.walk` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L368)
 
 - [mq3.botlib.elementary_actions.ElementaryInput](Type-mq3-botlib-elementary-actions-elementaryinput-404656510.md) — struct
 <a id="function-function-mq3-botlib-elementary-actions-emit-function-emit-state-client-text-src-mq3-botlib-elementary-actions-ml-685378529"></a>
@@ -878,14 +958,16 @@ function EA_Walk(state, client)
 function emit(state, client, text)
 ```
 
+Set `state.commandCount` to `state.commandCount+1` in `mq3.botlib.elementary_actions.emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L99)
 
 <a id="function-function-mq3-botlib-elementary-actions-emptyinput-function-emptyinput-src-mq3-botlib-elementary-actions-ml-938304876"></a>
 ### emptyInput
@@ -894,8 +976,10 @@ function emit(state, client, text)
 function emptyInput()
 ```
 
+Create a `mq3.botlib.elementary_actions.ElementaryInput` record, initializing `dir` as `[0.0,0.0,0.0]` and `viewangles` as `[0.0,0.0,0.0]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L71)
 
 <a id="function-function-mq3-botlib-elementary-actions-endregular-function-endregular-state-client-thinktime-src-mq3-botlib-elementary-actions-ml-369737375"></a>
 ### endRegular
@@ -908,12 +992,12 @@ The complete body is commented out in released be_ea.c.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `thinktime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Not read by this implementation; retained in the `endRegular` signature. |
+| `client` | `dynamic` | — | Not read by this implementation; retained in the `endRegular` signature. |
+| `thinktime` | `dynamic` | — | Not read by this implementation; retained in the `endRegular` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L246)
 
 <a id="function-function-mq3-botlib-elementary-actions-fail-function-fail-message-src-mq3-botlib-elementary-actions-ml-1493413395"></a>
 ### fail
@@ -922,12 +1006,14 @@ The complete body is commented out in released be_ea.c.
 function fail(message)
 ```
 
+Construct error `7540` with diagnostic text `"Elementary Actions: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L69)
 
 <a id="function-function-mq3-botlib-elementary-actions-gesture-function-gesture-state-client-src-mq3-botlib-elementary-actions-ml-1969718816"></a>
 ### gesture
@@ -936,13 +1022,15 @@ function fail(message)
 function gesture(state, client)
 ```
 
+Forward `gesture` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L154)
 
 <a id="function-function-mq3-botlib-elementary-actions-getinput-function-getinput-state-client-thinktime-src-mq3-botlib-elementary-actions-ml-1996966135"></a>
 ### getInput
@@ -951,14 +1039,16 @@ function gesture(state, client)
 function getInput(state, client, thinktime)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` and `mq3.botlib.elementary_actions.copyInput` while evaluating `getInput`. Return paths include `copyInput(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `thinktime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `thinktime` | `dynamic` | — | Bot thinking interval in seconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L251)
 
 <a id="constant-constant-mq3-botlib-elementary-actions-input-size-const-input-size-40-src-mq3-botlib-elementary-actions-ml-807701751"></a>
 ### INPUT_SIZE
@@ -977,13 +1067,15 @@ const INPUT_SIZE = 40
 function inputAt(state, client)
 ```
 
+Apply `mq3.botlib.elementary_actions.validClient` while evaluating `inputAt`. Return paths include `state.inputs[client]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L94)
 
 <a id="function-function-mq3-botlib-elementary-actions-jump-function-jump-state-client-src-mq3-botlib-elementary-actions-ml-1683154690"></a>
 ### jump
@@ -992,13 +1084,15 @@ function inputAt(state, client)
 function jump(state, client)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` while evaluating `jump`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L211)
 
 <a id="constant-constant-mq3-botlib-elementary-actions-max-usermove-const-max-usermove-400-src-mq3-botlib-elementary-actions-ml-212832417"></a>
 ### MAX_USERMOVE
@@ -1017,15 +1111,17 @@ const MAX_USERMOVE = 400
 function move(state, client, direction, speed)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` while evaluating `move`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
-| `speed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `direction` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `speed` | `dynamic` | — | Requested movement speed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L227)
 
 <a id="function-function-mq3-botlib-elementary-actions-moveback-function-moveback-state-client-src-mq3-botlib-elementary-actions-ml-896566906"></a>
 ### moveBack
@@ -1034,13 +1130,15 @@ function move(state, client, direction, speed)
 function moveBack(state, client)
 ```
 
+Forward `moveBack` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L194)
 
 <a id="function-function-mq3-botlib-elementary-actions-movedown-function-movedown-state-client-src-mq3-botlib-elementary-actions-ml-479899506"></a>
 ### moveDown
@@ -1049,13 +1147,15 @@ function moveBack(state, client)
 function moveDown(state, client)
 ```
 
+Forward `moveDown` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L186)
 
 <a id="function-function-mq3-botlib-elementary-actions-moveforward-function-moveforward-state-client-src-mq3-botlib-elementary-actions-ml-667007082"></a>
 ### moveForward
@@ -1064,13 +1164,15 @@ function moveDown(state, client)
 function moveForward(state, client)
 ```
 
+Forward `moveForward` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L190)
 
 <a id="function-function-mq3-botlib-elementary-actions-moveleft-function-moveleft-state-client-src-mq3-botlib-elementary-actions-ml-1038149738"></a>
 ### moveLeft
@@ -1079,13 +1181,15 @@ function moveForward(state, client)
 function moveLeft(state, client)
 ```
 
+Forward `moveLeft` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L198)
 
 <a id="function-function-mq3-botlib-elementary-actions-moveright-function-moveright-state-client-src-mq3-botlib-elementary-actions-ml-318678472"></a>
 ### moveRight
@@ -1094,13 +1198,15 @@ function moveLeft(state, client)
 function moveRight(state, client)
 ```
 
+Forward `moveRight` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L202)
 
 <a id="function-function-mq3-botlib-elementary-actions-moveup-function-moveup-state-client-src-mq3-botlib-elementary-actions-ml-1987857406"></a>
 ### moveUp
@@ -1109,13 +1215,15 @@ function moveRight(state, client)
 function moveUp(state, client)
 ```
 
+Forward `moveUp` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L182)
 
 <a id="constant-constant-mq3-botlib-elementary-actions-op-action-const-op-action-403-src-mq3-botlib-elementary-actions-ml-240144934"></a>
 ### OP_ACTION
@@ -1364,13 +1472,15 @@ const OP_VIEW = 420
 function resetInput(state, client)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` while evaluating `resetInput`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L257)
 
 <a id="function-function-mq3-botlib-elementary-actions-respawn-function-respawn-state-client-src-mq3-botlib-elementary-actions-ml-1768779530"></a>
 ### respawn
@@ -1379,13 +1489,15 @@ function resetInput(state, client)
 function respawn(state, client)
 ```
 
+Forward `respawn` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L170)
 
 <a id="function-function-mq3-botlib-elementary-actions-say-function-say-state-client-text-src-mq3-botlib-elementary-actions-ml-1560060551"></a>
 ### say
@@ -1394,14 +1506,16 @@ function respawn(state, client)
 function say(state, client, text)
 ```
 
+Forward `say` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L108)
 
 <a id="function-function-mq3-botlib-elementary-actions-sayteam-function-sayteam-state-client-text-src-mq3-botlib-elementary-actions-ml-2129953029"></a>
 ### sayTeam
@@ -1410,14 +1524,16 @@ function say(state, client, text)
 function sayTeam(state, client, text)
 ```
 
+Forward `sayTeam` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L113)
 
 <a id="function-function-mq3-botlib-elementary-actions-selectweapon-function-selectweapon-state-client-weapon-src-mq3-botlib-elementary-actions-ml-1768303362"></a>
 ### selectWeapon
@@ -1426,14 +1542,16 @@ function sayTeam(state, client, text)
 function selectWeapon(state, client, weapon)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` while evaluating `selectWeapon`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L207)
 
 <a id="function-function-mq3-botlib-elementary-actions-shutdown-function-shutdown-state-src-mq3-botlib-elementary-actions-ml-447651477"></a>
 ### shutdown
@@ -1442,12 +1560,14 @@ function selectWeapon(state, client, weapon)
 function shutdown(state)
 ```
 
+Update `state.initialized`, `state.inputs` and `state.maxClients` during `shutdown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `initialized`, `inputs` and `maxClients`. May update `state.initialized`, `state.inputs` and `state.maxClients` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L86)
 
 - [mq3.botlib.elementary_actions.State](Type-mq3-botlib-elementary-actions-state-322894625.md) — struct
 <a id="function-function-mq3-botlib-elementary-actions-talk-function-talk-state-client-src-mq3-botlib-elementary-actions-ml-1201005586"></a>
@@ -1457,13 +1577,15 @@ function shutdown(state)
 function talk(state, client)
 ```
 
+Forward `talk` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L158)
 
 <a id="function-function-mq3-botlib-elementary-actions-tell-function-tell-state-client-clientto-text-src-mq3-botlib-elementary-actions-ml-1685470755"></a>
 ### tell
@@ -1472,15 +1594,17 @@ function talk(state, client)
 function tell(state, client, clientTo, text)
 ```
 
+Forward `tell` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `clientTo` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `clientTo` | `dynamic` | — | Value passed as argument 1 to `str`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L124)
 
 <a id="function-function-mq3-botlib-elementary-actions-useaction-function-useaction-state-client-src-mq3-botlib-elementary-actions-ml-1371898620"></a>
 ### useAction
@@ -1489,13 +1613,15 @@ function tell(state, client, clientTo, text)
 function useAction(state, client)
 ```
 
+Forward `useAction` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L166)
 
 <a id="function-function-mq3-botlib-elementary-actions-useinv-function-useinv-state-client-inventory-src-mq3-botlib-elementary-actions-ml-124080082"></a>
 ### useInv
@@ -1504,14 +1630,16 @@ function useAction(state, client)
 function useInv(state, client, inventory)
 ```
 
+Forward `useInv` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L139)
 
 <a id="function-function-mq3-botlib-elementary-actions-useitem-function-useitem-state-client-item-src-mq3-botlib-elementary-actions-ml-1495953649"></a>
 ### useItem
@@ -1520,14 +1648,16 @@ function useInv(state, client, inventory)
 function useItem(state, client, item)
 ```
 
+Forward `useItem` to `mq3.botlib.elementary_actions.emit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `commandFn`, `context` and `commandCount`. May update `state.commandCount` in place. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `item` | `dynamic` | — | Operand used to evaluate the returned expression `emit(state,client,"use "+item)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L129)
 
 <a id="function-function-mq3-botlib-elementary-actions-validclient-function-validclient-state-client-src-mq3-botlib-elementary-actions-ml-1974430124"></a>
 ### validClient
@@ -1536,13 +1666,15 @@ function useItem(state, client, item)
 function validClient(state, client)
 ```
 
+Test `state!=void and state.initialized and client>=0 and client<state.maxClients` as the condition for `validClient`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `initialized` and `maxClients`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L90)
 
 <a id="function-function-mq3-botlib-elementary-actions-view-function-view-state-client-angles-src-mq3-botlib-elementary-actions-ml-655118918"></a>
 ### view
@@ -1551,14 +1683,16 @@ function validClient(state, client)
 function view(state, client, angles)
 ```
 
+Apply `mq3.botlib.elementary_actions.inputAt` while evaluating `view`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L237)
 
 <a id="function-function-mq3-botlib-elementary-actions-walk-function-walk-state-client-src-mq3-botlib-elementary-actions-ml-1831079682"></a>
 ### walk
@@ -1567,13 +1701,15 @@ function view(state, client, angles)
 function walk(state, client)
 ```
 
+Forward `walk` to `mq3.botlib.elementary_actions.action` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Elementary actions state; accesses `inputs`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and state.initialized and client>=0 and client<state.maxClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L178)
 
 <a id="function-function-mq3-botlib-elementary-actions-writeinput-function-writeinput-data-offset-value-src-mq3-botlib-elementary-actions-ml-566249596"></a>
 ### writeInput
@@ -1582,11 +1718,13 @@ function walk(state, client)
 function writeInput(data, offset, value)
 ```
 
+Serialize bot_input_t fields into a validated VM byte buffer using their exact 32-bit ABI offsets.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Sequence whose length bounds the iteration or lookup in `writeInput`. |
+| `offset` | `dynamic` | — | Offset into the buffer or sequence used by this operation. |
+| `value` | `dynamic` | — | Value record; accesses `thinktime`, `dir`, `speed`, `viewangles` and `actionflags` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/elementary_actions.ml#L268)

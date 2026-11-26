@@ -23,27 +23,29 @@ Reachable from entry: **yes**
 function action(state, boundaryName, kind, weaponNum, entityNum, origin, finish, velocity, model, shader, sound, radius, light, color, value, retailActive)
 ```
 
+Appends a client game weapons action record to the queued engine requests.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundaryName` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
-| `light` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.actions`, `state.emitted`, `state.suppressed`. |
+| `boundaryName` | `dynamic` | — | Value used by `v=Boundary(boundaryName,kind,weaponNum,entityNum,copy3(origin),copy3(finish),copy3(velocity),model,shader,sound,radius,light,color,value,not r...`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `finish` | `dynamic` | — | Value used by `v=Boundary(boundaryName,kind,weaponNum,entityNum,copy3(origin),copy3(finish),copy3(velocity),model,shader,sound,radius,light,color,value,not r...`. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game weapons operation. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `sound` | `dynamic` | — | Sound handle or asset name passed to the audio action. |
+| `radius` | `dynamic` | — | Radius used by the spatial or visual calculation. |
+| `light` | `dynamic` | — | Value used by `v=Boundary(boundaryName,kind,weaponNum,entityNum,copy3(origin),copy3(finish),copy3(velocity),model,shader,sound,radius,light,color,value,not r...`. |
+| `color` | `dynamic` | — | Color value used by the client game weapons drawing or interpolation operation. |
+| `value` | `dynamic` | — | Value used by `v=Boundary(boundaryName,kind,weaponNum,entityNum,copy3(origin),copy3(finish),copy3(velocity),model,shader,sound,radius,light,color,value,not r...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L113)
 
 <a id="function-function-mq3-client-cgame-weapons-addplayerweapon-function-addplayerweapon-state-cent-isview-flashorigin-retailactive-src-mq3-client-cgame-weapons-ml-1866418275"></a>
 ### addPlayerWeapon
@@ -56,14 +58,14 @@ CG_AddPlayerWeapon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `isView` | `dynamic` | — |  |
-| `flashOrigin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.weapons`, `state.time`. |
+| `cent` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `cent.lightningFiring`. |
+| `isView` | `dynamic` | — | Value used by `if not isView then if (cent.eFlags&EF_FIRING)!=0 and w.firingSound!="" then result=result+[audio(state,"weapon-loop",cent.weapon,cent.number,c...`. |
+| `flashOrigin` | `dynamic` | — | Value used by `if w.flashModel!="" then result=result+[visual(state,"muzzle-flash",cent.weapon,cent.number,flashOrigin,flashOrigin,w.flashModel,"",0.0,0,reta...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L363)
 
 <a id="function-function-mq3-client-cgame-weapons-addviewweapon-function-addviewweapon-state-cent-team-intermission-vieworg-viewangles-bobcycle-xyspeed-bobfracsin-landtime-landchange-retailactive-src-mq3-client-cgame-weapons-ml-283803604"></a>
 ### addViewWeapon
@@ -76,21 +78,21 @@ CG_AddViewWeapon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `intermission` | `dynamic` | — |  |
-| `vieworg` | `dynamic` | — |  |
-| `viewangles` | `dynamic` | — |  |
-| `bobcycle` | `dynamic` | — |  |
-| `xyspeed` | `dynamic` | — |  |
-| `bobfracsin` | `dynamic` | — |  |
-| `landTime` | `dynamic` | — |  |
-| `landChange` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.renderingThirdPerson`, `state.testGun`, `state.drawGun`, `state.time` and additional values. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.eFlags`, `cent.number`. |
+| `team` | `dynamic` | — | Value used by `if team==3 or intermission or state.renderingThirdPerson or state.testGun then return [] end if`. |
+| `intermission` | `dynamic` | — | Value used by `if team==3 or intermission or state.renderingThirdPerson or state.testGun then return [] end if`. |
+| `vieworg` | `dynamic` | — | Value used by `if not state.drawGun then if (cent.eFlags&EF_FIRING)!=0 then return lightningBolt(state,cent,q.VectorMA(vieworg,-8.0,q.AngleVectors(viewangles...`. |
+| `viewangles` | `dynamic` | — | Value used by `if not state.drawGun then if (cent.eFlags&EF_FIRING)!=0 then return lightningBolt(state,cent,q.VectorMA(vieworg,-8.0,q.AngleVectors(viewangles...`. |
+| `bobcycle` | `dynamic` | — | Value used by `position=calculateWeaponPosition(vieworg,viewangles,bobcycle,xyspeed,bobfracsin,state.time,landTime,landChange)`. |
+| `xyspeed` | `dynamic` | — | Value used by `position=calculateWeaponPosition(vieworg,viewangles,bobcycle,xyspeed,bobfracsin,state.time,landTime,landChange)`. |
+| `bobfracsin` | `dynamic` | — | Value used by `position=calculateWeaponPosition(vieworg,viewangles,bobcycle,xyspeed,bobfracsin,state.time,landTime,landChange)`. |
+| `landTime` | `dynamic` | — | Value used by `position=calculateWeaponPosition(vieworg,viewangles,bobcycle,xyspeed,bobfracsin,state.time,landTime,landChange)`. |
+| `landChange` | `dynamic` | — | Value used by `position=calculateWeaponPosition(vieworg,viewangles,bobcycle,xyspeed,bobfracsin,state.time,landTime,landChange)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L382)
 
 <a id="function-function-mq3-client-cgame-weapons-addweaponwithpowerups-function-addweaponwithpowerups-state-weaponnum-entitynum-origin-powerups-model-retailactive-src-mq3-client-cgame-weapons-ml-687764569"></a>
 ### addWeaponWithPowerups
@@ -103,16 +105,16 @@ CG_AddWeaponWithPowerups
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `powerups` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game weapons state passed to the helper calls in `addWeaponWithPowerups`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `powerups` | `dynamic` | — | Value used by `if (powerups&(1<<PW_INVIS))!=0 then result=result+[visual(state,"weapon-invisibility",weaponNum,entityNum,origin,origin,model,"invis",0.0,0,re...`. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game weapons operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L354)
 
 <a id="function-function-mq3-client-cgame-weapons-audio-function-audio-state-kind-weaponnum-entitynum-origin-sound-retailactive-src-mq3-client-cgame-weapons-ml-768246064"></a>
 ### audio
@@ -121,18 +123,20 @@ CG_AddWeaponWithPowerups
 function audio(state, kind, weaponNum, entityNum, origin, sound, retailActive)
 ```
 
+Adapts `mq3.client.cgame_weapons.action` to client game weapons `audio`, returning its result for `state, "audio", kind, weaponNum, entityNum, origin, origin, zero3(), "", "", sound, 0.0, 0.0, [1.0,1.0,1.0], 0, retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_weapons.action`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `sound` | `dynamic` | — | Argument 11 of `mq3.client.cgame_weapons.action`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_weapons.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L141)
 
 <a id="function-function-mq3-client-cgame-weapons-barrel-function-barrel-src-mq3-client-cgame-weapons-ml-863573614"></a>
 ### barrel
@@ -141,8 +145,10 @@ function audio(state, kind, weaponNum, entityNum, origin, sound, retailActive)
 function barrel()
 ```
 
+Creates a `mq3.client.cgame_weapons.Barrel` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L71)
 
 - [mq3.client.cgame_weapons.Barrel](Type-mq3-client-cgame-weapons-barrel-1504615164.md) — struct
 - [mq3.client.cgame_weapons.Boundary](Type-mq3-client-cgame-weapons-boundary-1730375166.md) — struct
@@ -157,21 +163,21 @@ CG_Bullet
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `sourceEntityNum` | `dynamic` | — |  |
-| `normal` | `dynamic` | — |  |
-| `flesh` | `dynamic` | — |  |
-| `fleshEntityNum` | `dynamic` | — |  |
-| `muzzle` | `dynamic` | — |  |
-| `sourceContents` | `dynamic` | — |  |
-| `destContents` | `dynamic` | — |  |
-| `viewRight` | `dynamic` | — |  |
-| `viewUp` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.tracerChance`. |
+| `finish` | `dynamic` | — | Value used by `if sourceEntityNum>=0 and state.tracerChance>0.0 and muzzle!=void then if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0...`. |
+| `sourceEntityNum` | `dynamic` | — | Value used by `if sourceEntityNum>=0 and state.tracerChance>0.0 and muzzle!=void then if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0...`. |
+| `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
+| `flesh` | `dynamic` | — | Value used by `if flesh then return result+[visual(state,"bleed",WP_MACHINEGUN,fleshEntityNum,finish,normal,"","bloodExplosion",24.0,0,retailActive)] end if`. |
+| `fleshEntityNum` | `dynamic` | — | Value used by `if flesh then return result+[visual(state,"bleed",WP_MACHINEGUN,fleshEntityNum,finish,normal,"","bloodExplosion",24.0,0,retailActive)] end if`. |
+| `muzzle` | `dynamic` | — | Value used by `if sourceEntityNum>=0 and state.tracerChance>0.0 and muzzle!=void then if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0...`. |
+| `sourceContents` | `dynamic` | — | Value used by `if sourceEntityNum>=0 and state.tracerChance>0.0 and muzzle!=void then if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0...`. |
+| `destContents` | `dynamic` | — | Value used by `if sourceEntityNum>=0 and state.tracerChance>0.0 and muzzle!=void then if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0...`. |
+| `viewRight` | `dynamic` | — | Value used by `if randomFloat(state)<state.tracerChance then result=result+tracer(state,muzzle,finish,viewRight,viewUp,retailActive) end if end if`. |
+| `viewUp` | `dynamic` | — | Value used by `if randomFloat(state)<state.tracerChance then result=result+tracer(state,muzzle,finish,viewRight,viewUp,retailActive) end if end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L529)
 
 <a id="function-function-mq3-client-cgame-weapons-calcmuzzlepoint-function-calcmuzzlepoint-entitynum-localclient-localorigin-viewheight-viewangles-cent-src-mq3-client-cgame-weapons-ml-714686917"></a>
 ### calcMuzzlePoint
@@ -184,15 +190,15 @@ CG_CalcMuzzlePoint
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entityNum` | `dynamic` | — |  |
-| `localClient` | `dynamic` | — |  |
-| `localOrigin` | `dynamic` | — |  |
-| `viewheight` | `dynamic` | — |  |
-| `viewangles` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `localClient` | `dynamic` | — | Value used by `if entityNum==localClient then muzzle=[localOrigin[0],localOrigin[1],localOrigin[2]+viewheight]`. |
+| `localOrigin` | `dynamic` | — | Sequence read at `localOrigin[0]`, `localOrigin[1]`, `localOrigin[2]`. |
+| `viewheight` | `dynamic` | — | Value used by `if entityNum==localClient then muzzle=[localOrigin[0],localOrigin[1],localOrigin[2]+viewheight]`. |
+| `viewangles` | `dynamic` | — | Value used by `return q.VectorMA(muzzle,14.0,q.AngleVectors(viewangles)[0]) end if`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.currentValid`, `cent.origin`, `cent.legsAnim`, `cent.angles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L513)
 
 <a id="function-function-mq3-client-cgame-weapons-calculateweaponposition-function-calculateweaponposition-vieworg-viewangles-bobcycle-xyspeed-bobfracsin-time-landtime-landchange-src-mq3-client-cgame-weapons-ml-4829700"></a>
 ### calculateWeaponPosition
@@ -205,17 +211,17 @@ CG_CalculateWeaponPosition
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vieworg` | `dynamic` | — |  |
-| `viewangles` | `dynamic` | — |  |
-| `bobcycle` | `dynamic` | — |  |
-| `xyspeed` | `dynamic` | — |  |
-| `bobfracsin` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `landTime` | `dynamic` | — |  |
-| `landChange` | `dynamic` | — |  |
+| `vieworg` | `dynamic` | — | Value used by `origin=copy3(vieworg)`. |
+| `viewangles` | `dynamic` | — | Value used by `angles=copy3(viewangles)`. |
+| `bobcycle` | `dynamic` | — | Value used by `if (bobcycle&1)!=0 then scale= -xyspeed end if`. |
+| `xyspeed` | `dynamic` | — | Value used by `scale=xyspeed`. |
+| `bobfracsin` | `dynamic` | — | Value used by `angles[2]=angles[2]+scale*bobfracsin*0.005`. |
+| `time` | `dynamic` | — | Value used by `delta=time-landTime`. |
+| `landTime` | `dynamic` | — | Value used by `delta=time-landTime`. |
+| `landChange` | `dynamic` | — | Value used by `if delta<LAND_DEFLECT_TIME then origin[2]=origin[2]+landChange*0.25*delta/LAND_DEFLECT_TIME else if delta<LAND_DEFLECT_TIME+LAND_RETURN_TIME t...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L304)
 
 <a id="function-function-mq3-client-cgame-weapons-clearactions-function-clearactions-state-src-mq3-client-cgame-weapons-ml-130032705"></a>
 ### clearActions
@@ -224,12 +230,14 @@ CG_CalculateWeaponPosition
 function clearActions(state)
 ```
 
+Updates `state.actions`, `state.emitted`, `state.suppressed` during client game weapons `clearActions`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.actions`, `state.emitted`, `state.suppressed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L119)
 
 <a id="constant-constant-mq3-client-cgame-weapons-coast-time-const-coast-time-1000-src-mq3-client-cgame-weapons-ml-43855258"></a>
 ### COAST_TIME
@@ -278,12 +286,14 @@ const CONTENTS_WATER = 32
 function copy3(v)
 ```
 
+Copies the X, Y and Z components into a fresh client game weapons vector.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `v` | `dynamic` | — |  |
+| `v` | `dynamic` | — | Sequence read at `v[0]`, `v[1]`, `v[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L67)
 
 <a id="function-function-mq3-client-cgame-weapons-crandom-function-crandom-state-src-mq3-client-cgame-weapons-ml-289990973"></a>
 ### crandom
@@ -292,12 +302,14 @@ function copy3(v)
 function crandom(state)
 ```
 
+Adapts `mq3.compat.numeric.fsub` to client game weapons `crandom`, returning its result for `n.fmul(2.0,randomFloat(state)), 1.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.fsub`; passed as `n.fmul(2.0,randomFloat(state))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L95)
 
 <a id="function-function-mq3-client-cgame-weapons-create-function-create-src-mq3-client-cgame-weapons-ml-48591090"></a>
 ### create
@@ -306,8 +318,10 @@ function crandom(state)
 function create()
 ```
 
+Calls `mq3.client.cgame_weapons.emptyWeapon`, `mq3.client.cgame_weapons.State`, `mq3.shared.math.RandomState` from client game weapons `create`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L64)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L79)
 
 <a id="constant-constant-mq3-client-cgame-weapons-default-shotgun-count-const-default-shotgun-count-11-src-mq3-client-cgame-weapons-ml-1396717195"></a>
 ### DEFAULT_SHOTGUN_COUNT
@@ -340,12 +354,12 @@ CG_DrawWeaponSelect
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `names` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.itemPickupTime`. |
+| `names` | `dynamic` | — | Sequence read at `names[state.weaponSelect]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L390)
 
 <a id="constant-constant-mq3-client-cgame-weapons-ef-firing-const-ef-firing-256-src-mq3-client-cgame-weapons-ml-1105802068"></a>
 ### EF_FIRING
@@ -364,12 +378,14 @@ const EF_FIRING = 256
 function emptyWeapon(number)
 ```
 
+Creates a `mq3.client.cgame_weapons.WeaponInfo` record. Assigns `number` from `number`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `number` | `dynamic` | — |  |
+| `number` | `dynamic` | — | Value used to initialize `WeaponInfo.number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L77)
 
 <a id="function-function-mq3-client-cgame-weapons-entity-function-entity-number-src-mq3-client-cgame-weapons-ml-295136073"></a>
 ### entity
@@ -378,12 +394,14 @@ function emptyWeapon(number)
 function entity(number)
 ```
 
+Creates a `mq3.client.cgame_weapons.Entity` record. Assigns `number` from `number`, `clientNum` from `number`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `number` | `dynamic` | — |  |
+| `number` | `dynamic` | — | Value used to initialize `Entity.number`, `Entity.clientNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L74)
 
 - [mq3.client.cgame_weapons.Entity](Type-mq3-client-cgame-weapons-entity-374169011.md) — struct
 <a id="function-function-mq3-client-cgame-weapons-fireweapon-function-fireweapon-state-cent-retailactive-src-mq3-client-cgame-weapons-ml-1263124952"></a>
@@ -397,12 +415,12 @@ CG_FireWeapon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.weapons[cent.weapon]`. |
+| `cent` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `cent.muzzleFlashTime`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L416)
 
 <a id="function-function-mq3-client-cgame-weapons-grappletrail-function-grappletrail-state-cent-ownerorigin-ownerangles-hookorigin-retailactive-src-mq3-client-cgame-weapons-ml-1200897263"></a>
 ### grappleTrail
@@ -415,15 +433,15 @@ CG_GrappleTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `ownerOrigin` | `dynamic` | — |  |
-| `ownerAngles` | `dynamic` | — |  |
-| `hookOrigin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `cent` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `cent.trailTime`. |
+| `ownerOrigin` | `dynamic` | — | Sequence read at `ownerOrigin[0]`, `ownerOrigin[1]`, `ownerOrigin[2]`. |
+| `ownerAngles` | `dynamic` | — | Value used by `up=q.AngleVectors(ownerAngles)[2]`. |
+| `hookOrigin` | `dynamic` | — | Sequence read at `hookOrigin[0]`, `hookOrigin[1]`, `hookOrigin[2]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L238)
 
 <a id="function-function-mq3-client-cgame-weapons-grenadetrail-function-grenadetrail-state-cent-start-finish-liquidboth-retailactive-src-mq3-client-cgame-weapons-ml-653994726"></a>
 ### grenadeTrail
@@ -436,15 +454,15 @@ CG_GrenadeTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `liquidBoth` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Forwarded to `mq3.client.cgame_weapons.smokeTrail`. |
+| `start` | `dynamic` | — | Argument 4 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `finish` | `dynamic` | — | Argument 5 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `liquidBoth` | `dynamic` | — | Argument 8 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_weapons.smokeTrail`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L248)
 
 <a id="constant-constant-mq3-client-cgame-weapons-impactsound-default-const-impactsound-default-cgabi-impactsound-default-src-mq3-client-cgame-weapons-ml-17351340"></a>
 ### IMPACTSOUND_DEFAULT
@@ -518,17 +536,17 @@ CG_LightningBolt
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `viewAngles` | `dynamic` | — |  |
-| `predictedClient` | `dynamic` | — |  |
-| `traceEnd` | `dynamic` | — |  |
-| `traceFraction` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.trueLightning`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.weapon`, `cent.angles`, `cent.number`, `cent.origin`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `viewAngles` | `dynamic` | — | Sequence read at `viewAngles[i]`. |
+| `predictedClient` | `dynamic` | — | Value used by `if cent.number==predictedClient and state.trueLightning!=0.0 then for i=0 to 2 diff=cent.angles[i]-viewAngles[i]`. |
+| `traceEnd` | `dynamic` | — | Value used by `finish=traceEnd`. |
+| `traceFraction` | `dynamic` | — | Value used by `if traceFraction<1.0 then result=result+[visual(state,"lightning-impact",WP_LIGHTNING,cent.number,q.VectorMA(finish,-16.0,forward),finish,"mod...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L318)
 
 <a id="function-function-mq3-client-cgame-weapons-machinegunejectbrass-function-machinegunejectbrass-state-cent-water-retailactive-src-mq3-client-cgame-weapons-ml-399881443"></a>
 ### machineGunEjectBrass
@@ -541,13 +559,13 @@ CG_MachineGunEjectBrass
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `water` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.brassTime`, `state.time`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.angles`, `cent.origin`, `cent.weapon`, `cent.number`. |
+| `water` | `dynamic` | — | Value used by `if water then scale=0.1 end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L148)
 
 <a id="function-function-mq3-client-cgame-weapons-machinegunspinangle-function-machinegunspinangle-state-cent-retailactive-src-mq3-client-cgame-weapons-ml-1924025160"></a>
 ### machinegunSpinAngle
@@ -560,12 +578,12 @@ CG_MachinegunSpinAngle
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `cent` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `cent.barrel.time`, `cent.barrel.angle`, `cent.barrel.spinning`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L334)
 
 <a id="function-function-mq3-client-cgame-weapons-maptorsotoweaponframe-function-maptorsotoweaponframe-dropfirst-attackfirst-attack2first-frame-src-mq3-client-cgame-weapons-ml-283545126"></a>
 ### mapTorsoToWeaponFrame
@@ -578,13 +596,13 @@ CG_MapTorsoToWeaponFrame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `dropFirst` | `dynamic` | — |  |
-| `attackFirst` | `dynamic` | — |  |
-| `attack2First` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
+| `dropFirst` | `dynamic` | — | Value used by `if frame>=dropFirst and frame<dropFirst+9 then return frame-dropFirst+6 end if`. |
+| `attackFirst` | `dynamic` | — | Value used by `if frame>=attackFirst and frame<attackFirst+6 then return 1+frame-attackFirst end if`. |
+| `attack2First` | `dynamic` | — | Value used by `if frame>=attack2First and frame<attack2First+6 then return 1+frame-attack2First end if`. |
+| `frame` | `dynamic` | — | Value used by `if frame>=dropFirst and frame<dropFirst+9 then return frame-dropFirst+6 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L292)
 
 <a id="function-function-mq3-client-cgame-weapons-missilehitplayer-function-missilehitplayer-state-weaponnum-origin-dir-entitynum-retailactive-src-mq3-client-cgame-weapons-ml-1302621854"></a>
 ### missileHitPlayer
@@ -597,15 +615,15 @@ CG_MissileHitPlayer
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game weapons state passed to the helper calls in `missileHitPlayer`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `dir` | `dynamic` | — | Value used by `result=[visual(state,"bleed",weaponNum,entityNum,origin,dir,"","bloodExplosion",24.0,0,retailActive)]`. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L453)
 
 <a id="function-function-mq3-client-cgame-weapons-missilehitwall-function-missilehitwall-state-weaponnum-clientnum-origin-dir-soundtype-clientcolor1-clientcolor2-retailactive-src-mq3-client-cgame-weapons-ml-479524218"></a>
 ### missileHitWall
@@ -618,18 +636,18 @@ CG_MissileHitWall
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
-| `soundType` | `dynamic` | — |  |
-| `clientColor1` | `dynamic` | — |  |
-| `clientColor2` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.oldRocket`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `dir` | `dynamic` | — | Value used by `if not state.oldRocket then action(state,"render","rocket-particle-explosion",weaponNum,0,q.VectorMA(origin,24.0,dir),origin,q.VectorScale(dir...`. |
+| `soundType` | `dynamic` | — | Value used by `if soundType==IMPACTSOUND_FLESH then sound="sound/weapons/nailgun/wnalimpl.wav" else if soundType==IMPACTSOUND_METAL then sound="sound/weapons...`. |
+| `clientColor1` | `dynamic` | — | Value used by `color=clientColor1 end case`. |
+| `clientColor2` | `dynamic` | — | Value used by `if weaponNum==WP_RAILGUN then markColor=clientColor2 end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L430)
 
 <a id="constant-constant-mq3-client-cgame-weapons-muzzle-flash-time-const-muzzle-flash-time-cgabi-muzzle-flash-time-src-mq3-client-cgame-weapons-ml-1903619391"></a>
 ### MUZZLE_FLASH_TIME
@@ -652,12 +670,12 @@ CG_NailgunEjectBrass
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.angles`, `cent.origin`, `cent.weapon`, `cent.number`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L168)
 
 <a id="function-function-mq3-client-cgame-weapons-nailtrail-function-nailtrail-state-cent-start-finish-liquidboth-retailactive-src-mq3-client-cgame-weapons-ml-2139141742"></a>
 ### nailTrail
@@ -670,15 +688,15 @@ CG_NailTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `liquidBoth` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Forwarded to `mq3.client.cgame_weapons.smokeTrail`. |
+| `start` | `dynamic` | — | Argument 4 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `finish` | `dynamic` | — | Argument 5 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `liquidBoth` | `dynamic` | — | Argument 8 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_weapons.smokeTrail`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L220)
 
 <a id="function-function-mq3-client-cgame-weapons-nextweapon-function-nextweapon-state-src-mq3-client-cgame-weapons-ml-1349033501"></a>
 ### nextWeapon
@@ -691,10 +709,10 @@ CG_NextWeapon_f
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.weaponSelectTime`, `state.weaponSelect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L400)
 
 <a id="function-function-mq3-client-cgame-weapons-outofammochange-function-outofammochange-state-src-mq3-client-cgame-weapons-ml-959437411"></a>
 ### outOfAmmoChange
@@ -707,10 +725,10 @@ CG_OutOfAmmoChange
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.weaponSelectTime`, `state.weaponSelect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L410)
 
 <a id="function-function-mq3-client-cgame-weapons-plasmatrail-function-plasmatrail-state-cent-origin-water-flashcolor-retailactive-src-mq3-client-cgame-weapons-ml-484366402"></a>
 ### plasmaTrail
@@ -723,15 +741,15 @@ CG_PlasmaTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `water` | `dynamic` | — |  |
-| `flashColor` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.noProjectileTrail`, `state.oldPlasma`, `state.time`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.angles`, `cent.number`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `water` | `dynamic` | — | Value used by `if water then scale=0.1 end if`. |
+| `flashColor` | `dynamic` | — | Sequence read at `flashColor[0]`, `flashColor[1]`, `flashColor[2]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L228)
 
 <a id="constant-constant-mq3-client-cgame-weapons-pmf-follow-const-pmf-follow-4096-src-mq3-client-cgame-weapons-ml-1235356282"></a>
 ### PMF_FOLLOW
@@ -754,10 +772,10 @@ CG_PrevWeapon_f
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.weaponSelectTime`, `state.weaponSelect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L403)
 
 <a id="function-function-mq3-client-cgame-weapons-profile-function-profile-number-src-mq3-client-cgame-weapons-ml-1261875707"></a>
 ### profile
@@ -766,12 +784,14 @@ CG_PrevWeapon_f
 function profile(number)
 ```
 
+Calls `mq3.client.cgame_weapons.emptyWeapon` from client game weapons `profile`. The final path returns `w`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `number` | `dynamic` | — |  |
+| `number` | `dynamic` | — | Value used by `w=emptyWeapon(number)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L252)
 
 <a id="constant-constant-mq3-client-cgame-weapons-pw-battlesuit-const-pw-battlesuit-2-src-mq3-client-cgame-weapons-ml-804227703"></a>
 ### PW_BATTLESUIT
@@ -814,15 +834,15 @@ CG_RailTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `color1` | `dynamic` | — |  |
-| `color2` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.railTrailTime`, `state.oldRail`. |
+| `color1` | `dynamic` | — | Value used by `core=action(state,"render","rail-core",WP_RAILGUN,0,start,finish,zero3(),"","railCore","",0.0,0.0,color1,state.time+n.trunc32(state.railTrailT...`. |
+| `color2` | `dynamic` | — | Value used by `result=result+[action(state,"render","rail-ring",WP_RAILGUN,0,point,point,q.VectorScale(ringAxis,6.0),"","railDisc","",1.1,0.0,color2,state.ti...`. |
+| `start` | `dynamic` | — | Mutable sequence; this routine writes `start[2]`. |
+| `finish` | `dynamic` | — | Mutable sequence; this routine writes `finish[2]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L179)
 
 <a id="function-function-mq3-client-cgame-weapons-randint-function-randint-state-src-mq3-client-cgame-weapons-ml-52338425"></a>
 ### randInt
@@ -831,12 +851,14 @@ CG_RailTrail
 function randInt(state)
 ```
 
+Updates `state.randomAt` during client game weapons `randInt`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.randomAt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L89)
 
 <a id="function-function-mq3-client-cgame-weapons-randomfloat-function-randomfloat-state-src-mq3-client-cgame-weapons-ml-190823191"></a>
 ### randomFloat
@@ -845,12 +867,14 @@ function randInt(state)
 function randomFloat(state)
 ```
 
+Adapts `mq3.compat.numeric.fdiv` to client game weapons `randomFloat`, returning its result for `randInt(state), 32767.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.fdiv`; passed as `randInt(state)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L92)
 
 <a id="function-function-mq3-client-cgame-weapons-registeritemvisuals-function-registeritemvisuals-state-itemnum-retailactive-src-mq3-client-cgame-weapons-ml-1963240469"></a>
 ### registerItemVisuals
@@ -863,12 +887,12 @@ CG_RegisterItemVisuals
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `itemNum` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.items[itemNum]`. |
+| `itemNum` | `dynamic` | — | Value used by `if itemNum<0 or itemNum>=len(state.items) then return error(7790,"item number out of range") end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L283)
 
 <a id="function-function-mq3-client-cgame-weapons-registerweapon-function-registerweapon-state-weaponnum-item-retailactive-src-mq3-client-cgame-weapons-ml-1077995945"></a>
 ### registerWeapon
@@ -881,13 +905,13 @@ CG_RegisterWeapon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.weapons[weaponNum]`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. |
+| `item` | `dynamic` | — | Record read through `item.pickupName`, `item.worldModel`, `item.icon`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L275)
 
 <a id="function-function-mq3-client-cgame-weapons-rockettrail-function-rockettrail-state-cent-start-finish-liquidboth-retailactive-src-mq3-client-cgame-weapons-ml-793696834"></a>
 ### rocketTrail
@@ -900,15 +924,15 @@ CG_RocketTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `liquidBoth` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Forwarded to `mq3.client.cgame_weapons.smokeTrail`. |
+| `start` | `dynamic` | — | Argument 4 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `finish` | `dynamic` | — | Argument 5 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `liquidBoth` | `dynamic` | — | Argument 8 of `mq3.client.cgame_weapons.smokeTrail`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_weapons.smokeTrail`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L212)
 
 <a id="function-function-mq3-client-cgame-weapons-selectweapon-function-selectweapon-state-num-src-mq3-client-cgame-weapons-ml-1150040483"></a>
 ### selectWeapon
@@ -921,11 +945,11 @@ CG_Weapon_f
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `num` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.weaponSelectTime`, `state.weaponSelect`. |
+| `num` | `dynamic` | — | Value assigned to `state.weaponSelect`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L407)
 
 <a id="function-function-mq3-client-cgame-weapons-setrandomints-function-setrandomints-state-values-src-mq3-client-cgame-weapons-ml-784505705"></a>
 ### setRandomInts
@@ -934,13 +958,15 @@ CG_Weapon_f
 function setRandomInts(state, values)
 ```
 
+Updates `state.randomInts`, `state.randomAt` during client game weapons `setRandomInts`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `values` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `state.randomInts`, `state.randomAt`. |
+| `values` | `dynamic` | — | Value assigned to `state.randomInts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L86)
 
 <a id="function-function-mq3-client-cgame-weapons-shotgunejectbrass-function-shotgunejectbrass-state-cent-water-retailactive-src-mq3-client-cgame-weapons-ml-1032566811"></a>
 ### shotgunEjectBrass
@@ -953,13 +979,13 @@ CG_ShotgunEjectBrass
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `water` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.brassTime`, `state.time`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.angles`, `cent.origin`, `cent.weapon`, `cent.number`. |
+| `water` | `dynamic` | — | Value used by `if water then scale=0.1 end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L159)
 
 <a id="function-function-mq3-client-cgame-weapons-shotgunfire-function-shotgunfire-state-origin-direction-seed-otherentnum-water-ragepro-retailactive-src-mq3-client-cgame-weapons-ml-1077952368"></a>
 ### shotgunFire
@@ -972,17 +998,17 @@ CG_ShotgunFire
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
-| `seed` | `dynamic` | — |  |
-| `otherEntNum` | `dynamic` | — |  |
-| `water` | `dynamic` | — |  |
-| `ragePro` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `direction` | `dynamic` | — | Direction vector used by the spatial calculation. |
+| `seed` | `dynamic` | — | Value used by `return result+shotgunPattern(state,origin,direction,seed,otherEntNum,retailActive)`. |
+| `otherEntNum` | `dynamic` | — | Value used by `if not ragePro and not water then result=result+[action(state,"render","shotgun-smoke",WP_SHOTGUN,otherEntNum,smokeOrigin,smokeOrigin,[0.0,0.0...`. |
+| `water` | `dynamic` | — | Value used by `if not ragePro and not water then result=result+[action(state,"render","shotgun-smoke",WP_SHOTGUN,otherEntNum,smokeOrigin,smokeOrigin,[0.0,0.0...`. |
+| `ragePro` | `dynamic` | — | Value used by `if not ragePro and not water then result=result+[action(state,"render","shotgun-smoke",WP_SHOTGUN,otherEntNum,smokeOrigin,smokeOrigin,[0.0,0.0...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L492)
 
 <a id="function-function-mq3-client-cgame-weapons-shotgunpattern-function-shotgunpattern-state-origin-direction-seed-otherentnum-retailactive-src-mq3-client-cgame-weapons-ml-688322683"></a>
 ### shotgunPattern
@@ -995,15 +1021,15 @@ CG_ShotgunPattern
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
-| `seed` | `dynamic` | — |  |
-| `otherEntNum` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game weapons state passed to the helper calls in `shotgunPattern`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `direction` | `dynamic` | — | Direction vector used by the spatial calculation. |
+| `seed` | `dynamic` | — | Value used by `rng=q.RandomState(seed)`. |
+| `otherEntNum` | `dynamic` | — | Value used by `result=result+[action(state,"trace","shotgun-pellet",WP_SHOTGUN,otherEntNum,origin,finish,zero3(),"","","",0.0,0.0,[1.0,1.0,1.0],rng.seed,reta...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L480)
 
 <a id="function-function-mq3-client-cgame-weapons-shotgunpellet-function-shotgunpellet-state-start-finish-skipnum-sourcecontents-destcontents-hitposition-normal-surfaceflags-hitplayer-hitentity-retailactive-src-mq3-client-cgame-weapons-ml-1785700770"></a>
 ### shotgunPellet
@@ -1016,21 +1042,21 @@ CG_ShotgunPellet
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `skipNum` | `dynamic` | — |  |
-| `sourceContents` | `dynamic` | — |  |
-| `destContents` | `dynamic` | — |  |
-| `hitPosition` | `dynamic` | — |  |
-| `normal` | `dynamic` | — |  |
-| `surfaceFlags` | `dynamic` | — |  |
-| `hitPlayer` | `dynamic` | — |  |
-| `hitEntity` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game weapons state passed to the helper calls in `shotgunPellet`. |
+| `start` | `dynamic` | — | Value used by `if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0 then result=result+[visual(state,"pellet-bubbles",WP_SHOTGUN,skipNum,st...`. |
+| `finish` | `dynamic` | — | Value used by `if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0 then result=result+[visual(state,"pellet-bubbles",WP_SHOTGUN,skipNum,st...`. |
+| `skipNum` | `dynamic` | — | Value used by `if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0 then result=result+[visual(state,"pellet-bubbles",WP_SHOTGUN,skipNum,st...`. |
+| `sourceContents` | `dynamic` | — | Value used by `if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0 then result=result+[visual(state,"pellet-bubbles",WP_SHOTGUN,skipNum,st...`. |
+| `destContents` | `dynamic` | — | Value used by `if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0 then result=result+[visual(state,"pellet-bubbles",WP_SHOTGUN,skipNum,st...`. |
+| `hitPosition` | `dynamic` | — | Value used by `if sourceContents==destContents and (sourceContents&CONTENTS_WATER)!=0 then result=result+[visual(state,"pellet-bubbles",WP_SHOTGUN,skipNum,st...`. |
+| `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
+| `surfaceFlags` | `dynamic` | — | Value used by `if (surfaceFlags&SURF_NOIMPACT)!=0 then return result end if`. |
+| `hitPlayer` | `dynamic` | — | Value used by `if hitPlayer then return result+missileHitPlayer(state,WP_SHOTGUN,hitPosition,normal,hitEntity,retailActive) end if`. |
+| `hitEntity` | `dynamic` | — | Value used by `if hitPlayer then return result+missileHitPlayer(state,WP_SHOTGUN,hitPosition,normal,hitEntity,retailActive) end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L470)
 
 <a id="function-function-mq3-client-cgame-weapons-smoketrail-function-smoketrail-state-kind-cent-start-finish-trailradius-trailtime-liquidboth-shader-retailactive-src-mq3-client-cgame-weapons-ml-898939106"></a>
 ### smokeTrail
@@ -1039,21 +1065,23 @@ CG_ShotgunPellet
 function smokeTrail(state, kind, cent, start, finish, trailRadius, trailTime, liquidBoth, shader, retailActive)
 ```
 
+Updates `cent.trailTime` during client game weapons `smokeTrail`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `trailRadius` | `dynamic` | — |  |
-| `trailTime` | `dynamic` | — |  |
-| `liquidBoth` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.noProjectileTrail`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `cent` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `cent.trailTime`. |
+| `start` | `dynamic` | — | Sequence read at `start[0]`, `start[1]`, `start[2]`. |
+| `finish` | `dynamic` | — | Sequence read at `finish[0]`, `finish[1]`, `finish[2]`. |
+| `trailRadius` | `dynamic` | — | Value used by `result=result+[action(state,"render",kind,cent.weapon,cent.number,pos,pos,zero3(),"",shader,"",trailRadius,0.0,[1.0,1.0,1.0],t+trailTime,retai...`. |
+| `trailTime` | `dynamic` | — | Value used by `startTime=cent.trailTime`. |
+| `liquidBoth` | `dynamic` | — | Value used by `if liquidBoth then return [action(state,"render",kind+"-bubbles",cent.weapon,cent.number,start,finish,zero3(),"","waterBubble","",8.0,0.0,[1.0...`. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L200)
 
 <a id="function-function-mq3-client-cgame-weapons-spawnrailtrail-function-spawnrailtrail-state-cent-origin-color1-color2-retailactive-src-mq3-client-cgame-weapons-ml-2047645269"></a>
 ### spawnRailTrail
@@ -1066,15 +1094,15 @@ CG_SpawnRailTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `color1` | `dynamic` | — |  |
-| `color2` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game weapons state passed to the helper calls in `spawnRailTrail`. |
+| `cent` | `dynamic` | — | Mutable client game weapons record/storage; this routine assigns `cent.railgunFlash`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `color1` | `dynamic` | — | Value used by `return railTrail(state,color1,color2,origin,cent.railgunImpact,retailActive)`. |
+| `color2` | `dynamic` | — | Value used by `return railTrail(state,color1,color2,origin,cent.railgunImpact,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L329)
 
 <a id="constant-constant-mq3-client-cgame-weapons-spin-speed-const-spin-speed-0-9-src-mq3-client-cgame-weapons-ml-1583319070"></a>
 ### SPIN_SPEED
@@ -1098,14 +1126,14 @@ Inventory scanner also reports the local identifiers `strike` and `weapon`. Keep
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_weapons.missileHitWall`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. Forwarded to `mq3.client.cgame_weapons.missileHitWall`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_weapons.missileHitWall`. |
+| `dir` | `dynamic` | — | Argument 5 of `mq3.client.cgame_weapons.missileHitWall`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_weapons.missileHitWall`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L541)
 
 <a id="constant-constant-mq3-client-cgame-weapons-surf-metalsteps-const-surf-metalsteps-4096-src-mq3-client-cgame-weapons-ml-985043738"></a>
 ### SURF_METALSTEPS
@@ -1138,15 +1166,15 @@ CG_Tracer
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `dest` | `dynamic` | — |  |
-| `viewRight` | `dynamic` | — |  |
-| `viewUp` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.tracerLength`, `state.tracerWidth`. |
+| `source` | `dynamic` | — | Sequence read at `source[0]`, `source[1]`, `source[2]`. |
+| `dest` | `dynamic` | — | Sequence read at `dest[0]`, `dest[1]`, `dest[2]`. |
+| `viewRight` | `dynamic` | — | Value used by `line=[q.DotProduct(forward,viewRight),q.DotProduct(forward,viewUp),0.0]`. |
+| `viewUp` | `dynamic` | — | Value used by `line=[q.DotProduct(forward,viewRight),q.DotProduct(forward,viewUp),0.0]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L503)
 
 <a id="function-function-mq3-client-cgame-weapons-visual-function-visual-state-kind-weaponnum-entitynum-origin-finish-model-shader-radius-value-retailactive-src-mq3-client-cgame-weapons-ml-1901050397"></a>
 ### visual
@@ -1155,22 +1183,24 @@ CG_Tracer
 function visual(state, kind, weaponNum, entityNum, origin, finish, model, shader, radius, value, retailActive)
 ```
 
+Adapts `mq3.client.cgame_weapons.action` to client game weapons `visual`, returning its result for `state, "render", kind, weaponNum, entityNum, origin, finish, zero3(), model, shader, "", radius, 0.0, [1.0,1.0,1.0], value, retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_weapons.action`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `finish` | `dynamic` | — | Argument 7 of `mq3.client.cgame_weapons.action`. |
+| `model` | `dynamic` | — | Argument 9 of `mq3.client.cgame_weapons.action`. |
+| `shader` | `dynamic` | — | Argument 10 of `mq3.client.cgame_weapons.action`. |
+| `radius` | `dynamic` | — | Radius used by the spatial or visual calculation. Forwarded to `mq3.client.cgame_weapons.action`. |
+| `value` | `dynamic` | — | Argument 15 of `mq3.client.cgame_weapons.action`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_weapons.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L132)
 
 <a id="function-function-mq3-client-cgame-weapons-weapon-function-weapon-state-weaponnum-src-mq3-client-cgame-weapons-ml-137420851"></a>
 ### weapon
@@ -1183,11 +1213,11 @@ weapon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.weapons`. |
+| `weaponNum` | `dynamic` | — | Quake III weapon identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L545)
 
 - [mq3.client.cgame_weapons.WeaponInfo](Type-mq3-client-cgame-weapons-weaponinfo-2140386880.md) — struct
 <a id="function-function-mq3-client-cgame-weapons-weaponselectable-function-weaponselectable-state-i-src-mq3-client-cgame-weapons-ml-1785854166"></a>
@@ -1201,11 +1231,11 @@ CG_WeaponSelectable
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `i` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.ammo`, `state.owned`. |
+| `i` | `dynamic` | — | Value used by `return i>=0 and i<len(state.ammo) and state.ammo[i]!=0 and (state.owned&(1<<i))!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L397)
 
 <a id="constant-constant-mq3-client-cgame-weapons-wp-bfg-const-wp-bfg-9-src-mq3-client-cgame-weapons-ml-1610984378"></a>
 ### WP_BFG
@@ -1364,5 +1394,7 @@ const WP_SHOTGUN = 3
 function zero3()
 ```
 
+Creates a three-component zero vector for client game weapons.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L60)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L69)

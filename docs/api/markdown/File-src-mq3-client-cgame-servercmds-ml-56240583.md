@@ -22,17 +22,19 @@ Reachable from entry: **yes**
 function action(boundary, kind, value, value2, number, emit)
 ```
 
+Creates a `mq3.client.cgame_servercmds.Action` record. Assigns `boundary` from `boundary`, `kind` from `kind`, `value` from `value`, `value2` from `value2`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `value2` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `boundary` | `dynamic` | — | Value used to initialize `Action.boundary`. |
+| `kind` | `dynamic` | — | Value used to initialize `Action.kind`. |
+| `value` | `dynamic` | — | Value used to initialize `Action.value`. |
+| `value2` | `dynamic` | — | Value used to initialize `Action.value2`. |
+| `number` | `dynamic` | — | Value used to initialize `Action.number`. |
+| `emit` | `dynamic` | — | Value used to initialize `Action.dispatched`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L99)
 
 - [mq3.client.cgame_servercmds.Action](Type-mq3-client-cgame-servercmds-action-1170717877.md) — struct
 <a id="function-function-mq3-client-cgame-servercmds-add-function-add-effect-boundary-kind-value-value2-number-emit-src-mq3-client-cgame-servercmds-ml-534581999"></a>
@@ -42,18 +44,20 @@ function action(boundary, kind, value, value2, number, emit)
 function add(effect, boundary, kind, value, value2, number, emit)
 ```
 
+Updates `effect.actions` during client game servercmds `add`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `effect` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `value2` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `effect` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `effect.actions`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `value` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`. |
+| `value2` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`. |
+| `number` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`. |
+| `emit` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L111)
 
 <a id="function-function-mq3-client-cgame-servercmds-addbufferedvoicechat-function-addbufferedvoicechat-state-vchat-emit-src-mq3-client-cgame-servercmds-ml-855109622"></a>
 ### addBufferedVoiceChat
@@ -66,12 +70,12 @@ CG_AddBufferedVoiceChat
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `vchat` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.voiceBuffer[state.voiceChatBufferIn]`, `state.voiceChatBufferIn`, `state.voiceChatBufferOut`. |
+| `vchat` | `dynamic` | — | Value used by `state.voiceBuffer[state.voiceChatBufferIn]=vchat`. |
+| `emit` | `dynamic` | — | Value used by `if state.voiceChatBufferIn==state.voiceChatBufferOut then nested=playVoiceChat(state,state.voiceBuffer[state.voiceChatBufferOut],emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L370)
 
 <a id="function-function-mq3-client-cgame-servercmds-addtoteamchat-function-addtoteamchat-state-text-src-mq3-client-cgame-servercmds-ml-1057302260"></a>
 ### addToTeamChat
@@ -84,11 +88,11 @@ CG_AddToTeamChat, including color carry and last-space wrapping.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.teamChatPos`, `state.teamLastChatPos`, `state.teamChatMsgs[state.teamChatPos%height]`, `state.teamChatMsgTimes[state.teamChatPos%height]`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `addToTeamChat` in the client game servercmds path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L236)
 
 <a id="function-function-mq3-client-cgame-servercmds-arg-function-arg-args-index-src-mq3-client-cgame-servercmds-ml-455799667"></a>
 ### arg
@@ -97,13 +101,15 @@ CG_AddToTeamChat, including color carry and last-space wrapping.
 function arg(args, index)
 ```
 
+Evaluates client game servercmds `arg` and returns `""`, `args[index]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `args` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `args` | `dynamic` | — | Sequence read at `args[index]`. |
+| `index` | `dynamic` | — | Value tested by `index<0 or index>=len(args)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L115)
 
 <a id="extern_function-extern-function-mq3-client-cgame-servercmds-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-client-cgame-servercmds-ml-2035448370"></a>
 ### atoi
@@ -112,12 +118,16 @@ function arg(args, index)
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 ```
 
+Converts a NUL-terminated decimal C string to a signed 32-bit integer using the Windows C runtime. This binding is used by client game servercmds.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `cstr` | — |  |
+| `text` | `cstr` | — | NUL-terminated C string containing the decimal numeric text. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L10)
+**Returns:** The converted integer; a string with no initial numeric conversion yields zero.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L13)
 
 - [mq3.client.cgame_servercmds.BufferedVoice](Type-mq3-client-cgame-servercmds-bufferedvoice-600835574.md) — struct
 <a id="function-function-mq3-client-cgame-servercmds-cachehead-function-cachehead-state-name-index-src-mq3-client-cgame-servercmds-ml-1209603924"></a>
@@ -127,14 +137,16 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 function cacheHead(state, name, index)
 ```
 
+Updates `state.headVoices` during client game servercmds `cacheHead`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.headVoices`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game servercmds resource. |
+| `index` | `dynamic` | — | Value assigned to `pair.voiceChatNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L330)
 
 <a id="function-function-mq3-client-cgame-servercmds-client-function-client-src-mq3-client-cgame-servercmds-ml-1763235438"></a>
 ### client
@@ -143,8 +155,10 @@ function cacheHead(state, name, index)
 function client()
 ```
 
+Creates a `mq3.client.cgame_servercmds.Client` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L83)
 
 - [mq3.client.cgame_servercmds.Client](Type-mq3-client-cgame-servercmds-client-547319872.md) — struct
 <a id="function-function-mq3-client-cgame-servercmds-cmdargv-function-cmdargv-args-index-src-mq3-client-cgame-servercmds-ml-64623187"></a>
@@ -158,11 +172,11 @@ Cmd_Argv compatibility name retained for the original candidate inventory.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `args` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `args` | `dynamic` | — | Argument 1 of `mq3.client.cgame_servercmds.arg`. |
+| `index` | `dynamic` | — | Argument 2 of `mq3.client.cgame_servercmds.arg`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L448)
 
 <a id="function-function-mq3-client-cgame-servercmds-configstringmodified-function-configstringmodified-state-num-value-emit-src-mq3-client-cgame-servercmds-ml-659706539"></a>
 ### configStringModified
@@ -175,13 +189,13 @@ CG_ConfigStringModified. The engine has already integrated the new value.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `num` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.configstrings[num]`, `state.scores1`, `state.scores2`, `state.levelStartTime` and additional values. |
+| `num` | `dynamic` | — | Value used by `if num<0 or num>=len(state.configstrings) then return error(7820,"cg_servercmds: bad configstring index") end if`. |
+| `value` | `dynamic` | — | Sequence whose length/content is inspected by `configStringModified`. |
+| `emit` | `dynamic` | — | Value used by `if num==CS_MUSIC then add(effect,"audio","start-music",value,"",0,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L204)
 
 <a id="function-function-mq3-client-cgame-servercmds-create-function-create-src-mq3-client-cgame-servercmds-ml-1267341318"></a>
 ### create
@@ -190,8 +204,10 @@ CG_ConfigStringModified. The engine has already integrated the new value.
 function create()
 ```
 
+Calls `mq3.client.cgame_servercmds.client`, `mq3.client.cgame_servercmds.State` from client game servercmds `create`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L70)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L85)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-flagstatus-const-cs-flagstatus-23-src-mq3-client-cgame-servercmds-ml-1727650702"></a>
 ### CS_FLAGSTATUS
@@ -201,7 +217,7 @@ const CS_FLAGSTATUS = 23
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L55)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-intermission-const-cs-intermission-22-src-mq3-client-cgame-servercmds-ml-454244011"></a>
 ### CS_INTERMISSION
@@ -211,7 +227,7 @@ const CS_INTERMISSION = 22
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L54)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-level-start-time-const-cs-level-start-time-21-src-mq3-client-cgame-servercmds-ml-2133037984"></a>
 ### CS_LEVEL_START_TIME
@@ -221,7 +237,7 @@ const CS_LEVEL_START_TIME = 21
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L53)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-models-const-cs-models-32-src-mq3-client-cgame-servercmds-ml-444271308"></a>
 ### CS_MODELS
@@ -231,7 +247,7 @@ const CS_MODELS = 32
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L57)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-music-const-cs-music-2-src-mq3-client-cgame-servercmds-ml-347748153"></a>
 ### CS_MUSIC
@@ -241,7 +257,7 @@ const CS_MUSIC = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L41)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-players-const-cs-players-544-src-mq3-client-cgame-servercmds-ml-1383695540"></a>
 ### CS_PLAYERS
@@ -251,7 +267,7 @@ const CS_PLAYERS = 544
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L59)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-scores1-const-cs-scores1-6-src-mq3-client-cgame-servercmds-ml-783345299"></a>
 ### CS_SCORES1
@@ -261,7 +277,7 @@ const CS_SCORES1 = 6
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L43)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-scores2-const-cs-scores2-7-src-mq3-client-cgame-servercmds-ml-970956556"></a>
 ### CS_SCORES2
@@ -271,7 +287,7 @@ const CS_SCORES2 = 7
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L44)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-serverinfo-const-cs-serverinfo-0-src-mq3-client-cgame-servercmds-ml-255752417"></a>
 ### CS_SERVERINFO
@@ -281,7 +297,7 @@ const CS_SERVERINFO = 0
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L40)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-shaderstate-const-cs-shaderstate-24-src-mq3-client-cgame-servercmds-ml-998418065"></a>
 ### CS_SHADERSTATE
@@ -291,7 +307,7 @@ const CS_SHADERSTATE = 24
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L56)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-sounds-const-cs-sounds-288-src-mq3-client-cgame-servercmds-ml-1815120811"></a>
 ### CS_SOUNDS
@@ -301,7 +317,7 @@ const CS_SOUNDS = 288
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-teamvote-no-const-cs-teamvote-no-18-src-mq3-client-cgame-servercmds-ml-843035718"></a>
 ### CS_TEAMVOTE_NO
@@ -311,7 +327,7 @@ const CS_TEAMVOTE_NO = 18
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L52)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-teamvote-string-const-cs-teamvote-string-14-src-mq3-client-cgame-servercmds-ml-156650274"></a>
 ### CS_TEAMVOTE_STRING
@@ -321,7 +337,7 @@ const CS_TEAMVOTE_STRING = 14
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L50)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-teamvote-time-const-cs-teamvote-time-12-src-mq3-client-cgame-servercmds-ml-1178099664"></a>
 ### CS_TEAMVOTE_TIME
@@ -331,7 +347,7 @@ const CS_TEAMVOTE_TIME = 12
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L49)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-teamvote-yes-const-cs-teamvote-yes-16-src-mq3-client-cgame-servercmds-ml-12278262"></a>
 ### CS_TEAMVOTE_YES
@@ -341,7 +357,7 @@ const CS_TEAMVOTE_YES = 16
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L51)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-vote-no-const-cs-vote-no-11-src-mq3-client-cgame-servercmds-ml-1394687077"></a>
 ### CS_VOTE_NO
@@ -351,7 +367,7 @@ const CS_VOTE_NO = 11
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L48)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-vote-string-const-cs-vote-string-9-src-mq3-client-cgame-servercmds-ml-1451531412"></a>
 ### CS_VOTE_STRING
@@ -361,7 +377,7 @@ const CS_VOTE_STRING = 9
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L46)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-vote-time-const-cs-vote-time-8-src-mq3-client-cgame-servercmds-ml-659114545"></a>
 ### CS_VOTE_TIME
@@ -371,7 +387,7 @@ const CS_VOTE_TIME = 8
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L45)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-vote-yes-const-cs-vote-yes-10-src-mq3-client-cgame-servercmds-ml-575820084"></a>
 ### CS_VOTE_YES
@@ -381,7 +397,7 @@ const CS_VOTE_YES = 10
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L47)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-cs-warmup-const-cs-warmup-5-src-mq3-client-cgame-servercmds-ml-1571073864"></a>
 ### CS_WARMUP
@@ -391,7 +407,7 @@ const CS_WARMUP = 5
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L42)
 
 <a id="function-function-mq3-client-cgame-servercmds-executenewservercommands-function-executenewservercommands-state-latestsequence-commands-vcfiles-emit-src-mq3-client-cgame-servercmds-ml-2143024408"></a>
 ### executeNewServerCommands
@@ -404,14 +420,14 @@ CG_ExecuteNewServerCommands. commands contains [sequence,argv] records.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `latestSequence` | `dynamic` | — |  |
-| `commands` | `dynamic` | — |  |
-| `vcFiles` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.serverCommandSequence`. |
+| `latestSequence` | `dynamic` | — | Value used by `while state.serverCommandSequence<latestSequence`. |
+| `commands` | `dynamic` | — | Value used by `for each item in commands if item[0]==state.serverCommandSequence then found=item[1]`. |
+| `vcFiles` | `dynamic` | — | Value used by `if found!=void then nested=serverCommand(state,found,vcFiles,emit)`. |
+| `emit` | `dynamic` | — | Value used by `if found!=void then nested=serverCommand(state,found,vcFiles,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L435)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-gender-female-const-gender-female-1-src-mq3-client-cgame-servercmds-ml-1968654108"></a>
 ### GENDER_FEMALE
@@ -421,7 +437,7 @@ const GENDER_FEMALE = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L28)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-gender-male-const-gender-male-0-src-mq3-client-cgame-servercmds-ml-714325869"></a>
 ### GENDER_MALE
@@ -431,7 +447,7 @@ const GENDER_MALE = 0
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L27)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-gender-neuter-const-gender-neuter-2-src-mq3-client-cgame-servercmds-ml-397901631"></a>
 ### GENDER_NEUTER
@@ -441,7 +457,7 @@ const GENDER_NEUTER = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L29)
 
 <a id="function-function-mq3-client-cgame-servercmds-getvoicechat-function-getvoicechat-list-id-cursor-src-mq3-client-cgame-servercmds-ml-1876510601"></a>
 ### getVoiceChat
@@ -454,12 +470,12 @@ CG_GetVoiceChat. cursor is an injected [0,1) random value.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `list` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `cursor` | `dynamic` | — |  |
+| `list` | `dynamic` | — | Record read through `list.chats`. |
+| `id` | `dynamic` | — | Value used by `if strings.equalsIgnoreCaseAscii(id,chat.id) and len(chat.variants)>0 then index=numeric.trunc32(cursor*len(chat.variants))`. |
+| `cursor` | `dynamic` | — | Value used by `if strings.equalsIgnoreCaseAscii(id,chat.id) and len(chat.variants)>0 then index=numeric.trunc32(cursor*len(chat.variants))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L319)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-gt-1fctf-const-gt-1fctf-5-src-mq3-client-cgame-servercmds-ml-1346554622"></a>
 ### GT_1FCTF
@@ -469,7 +485,7 @@ const GT_1FCTF = 5
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L26)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-servercmds-ml-945969825"></a>
 ### GT_CTF
@@ -479,7 +495,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L25)
 
 <a id="function-function-mq3-client-cgame-servercmds-headmodelvoicechats-function-headmodelvoicechats-state-text-src-mq3-client-cgame-servercmds-ml-1303059158"></a>
 ### headModelVoiceChats
@@ -492,11 +508,11 @@ CG_HeadModelVoiceChats
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.voiceLists`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `headModelVoiceChats` in the client game servercmds path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L311)
 
 - [mq3.client.cgame_servercmds.HeadVoice](Type-mq3-client-cgame-servercmds-headvoice-756147145.md) — struct
 <a id="function-function-mq3-client-cgame-servercmds-integer-function-integer-args-index-src-mq3-client-cgame-servercmds-ml-839205039"></a>
@@ -506,13 +522,15 @@ CG_HeadModelVoiceChats
 function integer(args, index)
 ```
 
+Adapts `mq3.client.cgame_servercmds.atoi` to client game servercmds `integer`, returning its result for `arg(args,index)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `args` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `args` | `dynamic` | — | Argument 1 of `mq3.client.cgame_servercmds.atoi`; passed as `arg(args,index)`. |
+| `index` | `dynamic` | — | Argument 1 of `mq3.client.cgame_servercmds.atoi`; passed as `arg(args,index)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L119)
 
 <a id="function-function-mq3-client-cgame-servercmds-iscolor-function-iscolor-data-index-src-mq3-client-cgame-servercmds-ml-1150838726"></a>
 ### isColor
@@ -521,13 +539,15 @@ function integer(args, index)
 function isColor(data, index)
 ```
 
+Computes `index+1<len(data) and data[index]==94 and data[index+1]!=94` for client game servercmds `isColor`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Sequence read at `data[index]`, `data[index+1]`. |
+| `index` | `dynamic` | — | Value used by `return index+1<len(data) and data[index]==94 and data[index+1]!=94`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L232)
 
 <a id="function-function-mq3-client-cgame-servercmds-loadvoicechats-function-loadvoicechats-state-files-soundfn-compress-src-mq3-client-cgame-servercmds-ml-1936144351"></a>
 ### loadVoiceChats
@@ -540,13 +560,13 @@ CG_LoadVoiceChats
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `files` | `dynamic` | — |  |
-| `soundFn` | `dynamic` | — |  |
-| `compress` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.voiceLists`. |
+| `files` | `dynamic` | — | Value used by `for each item in files if len(state.voiceLists)>=MAX_VOICEFILES then break end if`. |
+| `soundFn` | `dynamic` | — | Callback invoked by `loadVoiceChats` for sound. |
+| `compress` | `dynamic` | — | Value used by `parsed=parseVoiceChats(item[0],item[1],MAX_VOICECHATS,soundFn,compress)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L304)
 
 <a id="function-function-mq3-client-cgame-servercmds-maprestart-function-maprestart-state-emit-src-mq3-client-cgame-servercmds-ml-1621185030"></a>
 ### mapRestart
@@ -559,11 +579,11 @@ CG_MapRestart
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.fraglimitWarnings`, `state.timelimitWarnings`, `state.intermissionStarted`, `state.voteTime` and additional values. |
+| `emit` | `dynamic` | — | Value used by `for each kind in ["init-local-entities","init-mark-polys","clear-particles"] add(effect,"state",kind,"","",0,emit) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L257)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-clients-const-max-clients-64-src-mq3-client-cgame-servercmds-ml-829079533"></a>
 ### MAX_CLIENTS
@@ -573,7 +593,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L15)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-headmodels-const-max-headmodels-64-src-mq3-client-cgame-servercmds-ml-965591725"></a>
 ### MAX_HEADMODELS
@@ -583,7 +603,7 @@ const MAX_HEADMODELS = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L20)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-models-const-max-models-256-src-mq3-client-cgame-servercmds-ml-1613809698"></a>
 ### MAX_MODELS
@@ -593,7 +613,7 @@ const MAX_MODELS = 256
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L16)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-say-text-const-max-say-text-150-src-mq3-client-cgame-servercmds-ml-208165361"></a>
 ### MAX_SAY_TEXT
@@ -603,7 +623,7 @@ const MAX_SAY_TEXT = 150
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L22)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-voicechatbuffer-const-max-voicechatbuffer-32-src-mq3-client-cgame-servercmds-ml-846184288"></a>
 ### MAX_VOICECHATBUFFER
@@ -613,7 +633,7 @@ const MAX_VOICECHATBUFFER = 32
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L21)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-voicechats-const-max-voicechats-64-src-mq3-client-cgame-servercmds-ml-209228259"></a>
 ### MAX_VOICECHATS
@@ -623,7 +643,7 @@ const MAX_VOICECHATS = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L18)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-voicefiles-const-max-voicefiles-8-src-mq3-client-cgame-servercmds-ml-1514808955"></a>
 ### MAX_VOICEFILES
@@ -633,7 +653,7 @@ const MAX_VOICEFILES = 8
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L17)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-max-voicesounds-const-max-voicesounds-64-src-mq3-client-cgame-servercmds-ml-2014906909"></a>
 ### MAX_VOICESOUNDS
@@ -643,7 +663,7 @@ const MAX_VOICESOUNDS = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L19)
 
 <a id="function-function-mq3-client-cgame-servercmds-parsescores-function-parsescores-state-args-src-mq3-client-cgame-servercmds-ml-813076988"></a>
 ### parseScores
@@ -656,11 +676,11 @@ CG_ParseScores: the wire command has fourteen fields per score.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.numScores`, `state.teamScores`, `state.scores`, `state.clients[number].score` and additional values. |
+| `args` | `dynamic` | — | Value used by `count=integer(args,1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L138)
 
 <a id="function-function-mq3-client-cgame-servercmds-parseserverinfo-function-parseserverinfo-state-src-mq3-client-cgame-servercmds-ml-247223945"></a>
 ### parseServerinfo
@@ -673,10 +693,10 @@ CG_ParseServerinfo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.gametype`, `state.dmflags`, `state.teamflags`, `state.fraglimit` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L165)
 
 <a id="function-function-mq3-client-cgame-servercmds-parseteaminfo-function-parseteaminfo-state-args-src-mq3-client-cgame-servercmds-ml-270874704"></a>
 ### parseTeamInfo
@@ -689,11 +709,11 @@ CG_ParseTeamInfo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.sortedTeamPlayers`. |
+| `args` | `dynamic` | — | Value used by `count=integer(args,1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L152)
 
 <a id="function-function-mq3-client-cgame-servercmds-parsevoicechats-function-parsevoicechats-filename-text-maxvoicechats-soundfn-compress-src-mq3-client-cgame-servercmds-ml-1467379550"></a>
 ### parseVoiceChats
@@ -706,14 +726,14 @@ CG_ParseVoiceChats. soundFn(path,compress) may reject an unavailable sound.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `filename` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `maxVoiceChats` | `dynamic` | — |  |
-| `soundFn` | `dynamic` | — |  |
-| `compress` | `dynamic` | — |  |
+| `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. |
+| `text` | `dynamic` | — | Text consumed or emitted by `parseVoiceChats` in the client game servercmds path. |
+| `maxVoiceChats` | `dynamic` | — | Value used by `while at<len(tokens) and len(list.chats)<maxVoiceChats`. |
+| `soundFn` | `dynamic` | — | Callback invoked by `parseVoiceChats` for sound. |
+| `compress` | `dynamic` | — | Value used by `if soundFn!=void then sound=soundFn(path,compress) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L285)
 
 <a id="function-function-mq3-client-cgame-servercmds-parsewarmup-function-parsewarmup-state-src-mq3-client-cgame-servercmds-ml-1027204707"></a>
 ### parseWarmup
@@ -726,10 +746,10 @@ CG_ParseWarmup
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.warmupCount`, `state.warmup`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L172)
 
 <a id="function-function-mq3-client-cgame-servercmds-playbufferedvoicechats-function-playbufferedvoicechats-state-emit-src-mq3-client-cgame-servercmds-ml-118283994"></a>
 ### playBufferedVoiceChats
@@ -742,11 +762,11 @@ CG_PlayBufferedVoiceChats
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.voiceBuffer[state.voiceChatBufferOut]`, `state.voiceChatBufferOut`, `state.voiceChatTime`. |
+| `emit` | `dynamic` | — | Value used by `if value!=void then nested=playVoiceChat(state,value,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L362)
 
 <a id="function-function-mq3-client-cgame-servercmds-playvoicechat-function-playvoicechat-state-vchat-emit-src-mq3-client-cgame-servercmds-ml-453736130"></a>
 ### playVoiceChat
@@ -759,12 +779,12 @@ CG_PlayVoiceChat
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `vchat` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.acceptOrderTime`, `state.acceptVoice`, `state.acceptTask`, `state.acceptLeader`. |
+| `vchat` | `dynamic` | — | Record read through `vchat.sound`, `vchat.clientNum`, `vchat.cmd`, `vchat.voiceOnly` and additional values. |
+| `emit` | `dynamic` | — | Value used by `if not state.noVoiceChats then add(effect,"audio","voice",vchat.sound,"",vchat.clientNum,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L353)
 
 <a id="function-function-mq3-client-cgame-servercmds-removechatescapechar-function-removechatescapechar-text-src-mq3-client-cgame-servercmds-ml-246186897"></a>
 ### removeChatEscapeChar
@@ -777,10 +797,10 @@ CG_RemoveChatEscapeChar
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `removeChatEscapeChar` in the client game servercmds path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L402)
 
 <a id="function-function-mq3-client-cgame-servercmds-result-function-result-handled-src-mq3-client-cgame-servercmds-ml-1149019014"></a>
 ### result
@@ -789,12 +809,14 @@ CG_RemoveChatEscapeChar
 function result(handled)
 ```
 
+Creates a `mq3.client.cgame_servercmds.Result` record. Assigns `handled` from `handled`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `handled` | `dynamic` | — |  |
+| `handled` | `dynamic` | — | Value used to initialize `Result.handled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L102)
 
 - [mq3.client.cgame_servercmds.Result](Type-mq3-client-cgame-servercmds-result-442483030.md) — struct
 <a id="constant-constant-mq3-client-cgame-servercmds-say-all-const-say-all-0-src-mq3-client-cgame-servercmds-ml-1798245949"></a>
@@ -805,7 +827,7 @@ const SAY_ALL = 0
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L30)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-say-team-const-say-team-1-src-mq3-client-cgame-servercmds-ml-524018100"></a>
 ### SAY_TEAM
@@ -815,7 +837,7 @@ const SAY_TEAM = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L31)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-say-tell-const-say-tell-2-src-mq3-client-cgame-servercmds-ml-923991127"></a>
 ### SAY_TELL
@@ -825,7 +847,7 @@ const SAY_TELL = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L32)
 
 - [mq3.client.cgame_servercmds.Score](Type-mq3-client-cgame-servercmds-score-1665700067.md) — struct
 <a id="function-function-mq3-client-cgame-servercmds-servercommand-function-servercommand-state-args-vcfiles-emit-src-mq3-client-cgame-servercmds-ml-1303444715"></a>
@@ -839,13 +861,13 @@ CG_ServerCommand
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
-| `vcFiles` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.levelShot`. |
+| `args` | `dynamic` | — | Command argument sequence by `serverCommand`. |
+| `vcFiles` | `dynamic` | — | Value used by `else if cmd=="vchat" then nested=voiceChat(state,SAY_ALL,args,vcFiles,emit)`. |
+| `emit` | `dynamic` | — | Value used by `if cmd=="cp" then add(effect,"hud","center-print",arg(args,1),"144",16,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L409)
 
 <a id="function-function-mq3-client-cgame-servercmds-setconfigvalues-function-setconfigvalues-state-src-mq3-client-cgame-servercmds-ml-1480964065"></a>
 ### setConfigValues
@@ -858,10 +880,10 @@ CG_SetConfigValues
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.scores1`, `state.scores2`, `state.levelStartTime`, `state.redflag` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L180)
 
 <a id="function-function-mq3-client-cgame-servercmds-shaderstatechanged-function-shaderstatechanged-state-emit-src-mq3-client-cgame-servercmds-ml-622755154"></a>
 ### shaderStateChanged
@@ -874,11 +896,11 @@ CG_ShaderStateChanged
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.configstrings`. |
+| `emit` | `dynamic` | — | Value used by `add(effect,"renderer","remap-shader",oldName,newName,atoi(offset),emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L190)
 
 - [mq3.client.cgame_servercmds.State](Type-mq3-client-cgame-servercmds-state-253786656.md) — struct
 <a id="constant-constant-mq3-client-cgame-servercmds-teamchat-height-const-teamchat-height-cgabi-teamchat-height-src-mq3-client-cgame-servercmds-ml-36421286"></a>
@@ -889,7 +911,7 @@ const TEAMCHAT_HEIGHT = cgabi.TEAMCHAT_HEIGHT
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L23)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamchat-width-const-teamchat-width-cgabi-teamchat-width-src-mq3-client-cgame-servercmds-ml-988895255"></a>
 ### TEAMCHAT_WIDTH
@@ -899,7 +921,7 @@ const TEAMCHAT_WIDTH = cgabi.TEAMCHAT_WIDTH
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L24)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamtask-camp-const-teamtask-camp-7-src-mq3-client-cgame-servercmds-ml-415486762"></a>
 ### TEAMTASK_CAMP
@@ -909,7 +931,7 @@ const TEAMTASK_CAMP = 7
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L39)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamtask-defense-const-teamtask-defense-2-src-mq3-client-cgame-servercmds-ml-2135632183"></a>
 ### TEAMTASK_DEFENSE
@@ -919,7 +941,7 @@ const TEAMTASK_DEFENSE = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L34)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamtask-escort-const-teamtask-escort-6-src-mq3-client-cgame-servercmds-ml-901979667"></a>
 ### TEAMTASK_ESCORT
@@ -929,7 +951,7 @@ const TEAMTASK_ESCORT = 6
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L38)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamtask-follow-const-teamtask-follow-4-src-mq3-client-cgame-servercmds-ml-485565841"></a>
 ### TEAMTASK_FOLLOW
@@ -939,7 +961,7 @@ const TEAMTASK_FOLLOW = 4
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L36)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamtask-offense-const-teamtask-offense-1-src-mq3-client-cgame-servercmds-ml-647632004"></a>
 ### TEAMTASK_OFFENSE
@@ -949,7 +971,7 @@ const TEAMTASK_OFFENSE = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L33)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamtask-patrol-const-teamtask-patrol-3-src-mq3-client-cgame-servercmds-ml-386167606"></a>
 ### TEAMTASK_PATROL
@@ -959,7 +981,7 @@ const TEAMTASK_PATROL = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L35)
 
 <a id="constant-constant-mq3-client-cgame-servercmds-teamtask-retrieve-const-teamtask-retrieve-5-src-mq3-client-cgame-servercmds-ml-1951001404"></a>
 ### TEAMTASK_RETRIEVE
@@ -969,7 +991,7 @@ const TEAMTASK_RETRIEVE = 5
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L37)
 
 <a id="function-function-mq3-client-cgame-servercmds-validorder-function-validorder-name-src-mq3-client-cgame-servercmds-ml-2049881253"></a>
 ### validOrder
@@ -982,10 +1004,10 @@ CG_ValidOrder
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game servercmds resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L123)
 
 <a id="function-function-mq3-client-cgame-servercmds-voicechat-function-voicechat-state-mode-args-vcfiles-emit-src-mq3-client-cgame-servercmds-ml-1742502666"></a>
 ### voiceChat
@@ -998,14 +1020,14 @@ CG_VoiceChat
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
-| `vcFiles` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.noTaunt`. |
+| `mode` | `dynamic` | — | Value used by `return voiceChatLocal(state,mode,integer(args,1)!=0,integer(args,2),integer(args,3),cmd,vcFiles,emit)`. |
+| `args` | `dynamic` | — | Value used by `cmd=arg(args,4)`. |
+| `vcFiles` | `dynamic` | — | Value used by `return voiceChatLocal(state,mode,integer(args,1)!=0,integer(args,2),integer(args,3),cmd,vcFiles,emit)`. |
+| `emit` | `dynamic` | — | Value used by `return voiceChatLocal(state,mode,integer(args,1)!=0,integer(args,2),integer(args,3),cmd,vcFiles,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L395)
 
 - [mq3.client.cgame_servercmds.VoiceChat](Type-mq3-client-cgame-servercmds-voicechat-1780850893.md) — struct
 <a id="function-function-mq3-client-cgame-servercmds-voicechatlistforclient-function-voicechatlistforclient-state-clientnum-vcfiles-src-mq3-client-cgame-servercmds-ml-305184640"></a>
@@ -1019,12 +1041,12 @@ CG_VoiceChatListForClient. vcFiles contains [path,text] pairs.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `vcFiles` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`, `state.headVoices`, `state.voiceLists`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `vcFiles` | `dynamic` | — | Value used by `for each file in vcFiles if strings.equalsIgnoreCaseAscii(file[0],wanted) then index=headModelVoiceChats(state,file[1])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L338)
 
 <a id="function-function-mq3-client-cgame-servercmds-voicechatlocal-function-voicechatlocal-state-mode-voiceonly-clientnum-color-cmd-vcfiles-emit-src-mq3-client-cgame-servercmds-ml-753596985"></a>
 ### voiceChatLocal
@@ -1037,17 +1059,17 @@ CG_VoiceChatLocal
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `voiceOnly` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `cmd` | `dynamic` | — |  |
-| `vcFiles` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game servercmds record/storage; this routine assigns `state.currentVoiceClient`. |
+| `mode` | `dynamic` | — | Value used by `if variant==void or (mode!=SAY_TEAM and state.teamChatsOnly) then return effect end if`. |
+| `voiceOnly` | `dynamic` | — | Value used by `vchat=BufferedVoice(clientNum,variant.sound,voiceOnly,cmd,message)`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `color` | `dynamic` | — | Color value used by the client game servercmds drawing or interpolation operation. |
+| `cmd` | `dynamic` | — | Value used by `variant=getVoiceChat(list,cmd,state.randomCursor)`. |
+| `vcFiles` | `dynamic` | — | Value used by `list=voiceChatListForClient(state,clientNum,vcFiles)`. |
+| `emit` | `dynamic` | — | Value used by `return addBufferedVoiceChat(state,vchat,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L384)
 
 - [mq3.client.cgame_servercmds.VoiceList](Type-mq3-client-cgame-servercmds-voicelist-1498240539.md) — struct
 <a id="function-function-mq3-client-cgame-servercmds-voicetokens-function-voicetokens-text-src-mq3-client-cgame-servercmds-ml-333654793"></a>
@@ -1061,9 +1083,9 @@ COM_ParseExt subset used by .voice and .vc files.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `voiceTokens` in the client game servercmds path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L267)
 
 - [mq3.client.cgame_servercmds.VoiceVariant](Type-mq3-client-cgame-servercmds-voicevariant-662097924.md) — struct

@@ -9,8 +9,10 @@
 struct LineCommand
 ```
 
+Stores playable target render line command record, including `a`, `b`, `red`, `green`, `blue`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ a
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L16)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-b-b-src-mq3-client-playable-target-render-ml-495756728"></a>
 ### b
@@ -32,7 +34,7 @@ b
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L16)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-blue-blue-src-mq3-client-playable-target-render-ml-1874829240"></a>
 ### blue
@@ -42,7 +44,7 @@ blue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L16)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-green-green-src-mq3-client-playable-target-render-ml-1647740528"></a>
 ### green
@@ -52,7 +54,7 @@ green
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L16)
 
 <a id="field-field-mq3-client-playable-target-render-linecommand-red-red-src-mq3-client-playable-target-render-ml-445530660"></a>
 ### red
@@ -62,4 +64,4 @@ red
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_target_render.ml#L16)

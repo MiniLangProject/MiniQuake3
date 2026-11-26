@@ -18,7 +18,7 @@ function cache()
 UI_DisplayOptionsMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L35)
 
 <a id="function-function-mq3-client-ui-display-options-event-function-event-menu-id-eventcode-value-src-mq3-client-ui-display-options-ml-1537874886"></a>
 ### event
@@ -31,13 +31,13 @@ UI_DisplayOptionsMenu_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI display options record/storage; this routine assigns `menu.actions`, `menu.cvarWrites`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_GRAPHICS then menu.actions=menu.actions+["pop","graphics"]`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
+| `value` | `dynamic` | — | Value used by `else if id==ID_BRIGHTNESS then menu.cvarWrites=menu.cvarWrites+[["r_gamma",value/10.0]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L63)
 
 <a id="constant-constant-mq3-client-ui-display-options-id-back-const-id-back-16-src-mq3-client-ui-display-options-ml-131938494"></a>
 ### ID_BACK
@@ -120,12 +120,12 @@ UI_DisplayOptionsMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rGamma` | `dynamic` | — |  |
-| `cgViewsize` | `dynamic` | — |  |
-| `deviceSupportsGamma` | `dynamic` | — |  |
+| `rGamma` | `dynamic` | — | Value used by `items=items+[item(ID_BRIGHTNESS,"slider","Brightness:",400,222,5.0,20.0,rGamma*10.0,deviceSupportsGamma)]`. |
+| `cgViewsize` | `dynamic` | — | Value used by `items=items+[item(ID_SCREENSIZE,"slider","Screen Size:",400,240,3.0,10.0,cgViewsize/10.0,true)]`. |
+| `deviceSupportsGamma` | `dynamic` | — | Value used by `items=items+[item(ID_BRIGHTNESS,"slider","Brightness:",400,222,5.0,20.0,rGamma*10.0,deviceSupportsGamma)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L43)
 
 <a id="function-function-mq3-client-ui-display-options-item-function-item-id-kind-name-x-y-minvalue-maxvalue-value-active-src-mq3-client-ui-display-options-ml-162636300"></a>
 ### item
@@ -134,20 +134,22 @@ UI_DisplayOptionsMenu_Init
 function item(id, kind, name, x, y, minValue, maxValue, value, active)
 ```
 
+Creates a `mq3.client.ui_display_options.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `id` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `minValue` | `dynamic` | — |  |
-| `maxValue` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `active` | `dynamic` | — |  |
+| `id` | `dynamic` | — | Value used to initialize `Item.id`. |
+| `kind` | `dynamic` | — | Value used to initialize `Item.kind`. |
+| `name` | `dynamic` | — | Value used to initialize `Item.name`. |
+| `x` | `dynamic` | — | Value used to initialize `Item.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Item.y`. |
+| `minValue` | `dynamic` | — | Value used to initialize `Item.minValue`. |
+| `maxValue` | `dynamic` | — | Value used to initialize `Item.maxValue`. |
+| `value` | `dynamic` | — | Value used to initialize `Item.value`. |
+| `active` | `dynamic` | — | Value used to initialize `Item.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L30)
 
 - [mq3.client.ui_display_options.Item](Type-mq3-client-ui-display-options-item-2063193960.md) — struct
 - [mq3.client.ui_display_options.Menu](Type-mq3-client-ui-display-options-menu-1101877152.md) — struct
@@ -162,12 +164,12 @@ UI_DisplayOptionsMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rGamma` | `dynamic` | — |  |
-| `cgViewsize` | `dynamic` | — |  |
-| `deviceSupportsGamma` | `dynamic` | — |  |
+| `rGamma` | `dynamic` | — | Argument 1 of `mq3.client.ui_display_options.init`. |
+| `cgViewsize` | `dynamic` | — | Argument 2 of `mq3.client.ui_display_options.init`. |
+| `deviceSupportsGamma` | `dynamic` | — | Argument 3 of `mq3.client.ui_display_options.init`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_display_options.ml#L79)
 
 <a id="constant-constant-mq3-client-ui-display-options-qm-activated-const-qm-activated-3-src-mq3-client-ui-display-options-ml-921070772"></a>
 ### QM_ACTIVATED

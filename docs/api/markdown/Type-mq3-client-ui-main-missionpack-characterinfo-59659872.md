@@ -9,8 +9,10 @@
 struct CharacterInfo
 ```
 
+Stores UI main missionpack character info record, including `name`, `base`, `imageName`, `active`, `headImage`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
 
 <a id="field-field-mq3-client-ui-main-missionpack-characterinfo-base-base-src-mq3-client-ui-main-missionpack-ml-1317006734"></a>
 ### base
@@ -32,7 +34,7 @@ base
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
 
 <a id="field-field-mq3-client-ui-main-missionpack-characterinfo-headimage-headimage-src-mq3-client-ui-main-missionpack-ml-2044443744"></a>
 ### headImage
@@ -42,7 +44,7 @@ headImage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
 
 <a id="field-field-mq3-client-ui-main-missionpack-characterinfo-imagename-imagename-src-mq3-client-ui-main-missionpack-ml-473526528"></a>
 ### imageName
@@ -52,7 +54,7 @@ imageName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
 
 <a id="field-field-mq3-client-ui-main-missionpack-characterinfo-name-name-src-mq3-client-ui-main-missionpack-ml-716324494"></a>
 ### name
@@ -62,4 +64,4 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)

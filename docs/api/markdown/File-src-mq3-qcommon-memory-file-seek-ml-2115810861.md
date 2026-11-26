@@ -45,12 +45,16 @@ const FS_SEEK_SET = 2
 function seek(files, handle, offset, origin)
 ```
 
+Seek memory file seek in qcommon.memory_file_seek; the normal completion returns `0`.
+
+Validation failures include `invalid FS_Seek origin`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `files` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `files` | `dynamic` | — | Files used in `len(files)` and `files[handle]`. |
+| `handle` | `dynamic` | — | Zero-based index into `files`. |
+| `offset` | `dynamic` | — | Offset used in `(base + offset)` and `(cursor.offset < 0)`. |
+| `origin` | `dynamic` | — | Origin used in `(origin == FS_SEEK_END)` and `(origin == FS_SEEK_SET)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/memory_file_seek.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/memory_file_seek.ml#L17)

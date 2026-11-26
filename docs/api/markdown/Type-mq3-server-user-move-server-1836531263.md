@@ -9,8 +9,10 @@
 struct Server
 ```
 
+Server record for server.user_move, containing `checksumFeed`, `time`, `pure`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ checksumFeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L30)
 
 <a id="field-field-mq3-server-user-move-server-pure-pure-src-mq3-server-user-move-ml-637205046"></a>
 ### pure
@@ -32,7 +34,7 @@ pure
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L30)
 
 <a id="field-field-mq3-server-user-move-server-time-time-src-mq3-server-user-move-ml-1984954820"></a>
 ### time
@@ -42,4 +44,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L30)

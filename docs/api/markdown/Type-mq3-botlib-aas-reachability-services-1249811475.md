@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for aas reachability, containing `pointAreaFn`, `pointContentsFn`, `bboxAreasFn`, `traceFn` and `teamFn` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)
 
 ## Members
 
@@ -22,7 +24,7 @@ bboxAreasFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)
 
 <a id="field-field-mq3-botlib-aas-reachability-services-context-context-src-mq3-botlib-aas-reachability-ml-1542769991"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)
 
 <a id="field-field-mq3-botlib-aas-reachability-services-pointareafn-pointareafn-src-mq3-botlib-aas-reachability-ml-417775455"></a>
 ### pointAreaFn
@@ -42,7 +44,7 @@ pointAreaFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)
 
 <a id="field-field-mq3-botlib-aas-reachability-services-pointcontentsfn-pointcontentsfn-src-mq3-botlib-aas-reachability-ml-1953684027"></a>
 ### pointContentsFn
@@ -52,7 +54,7 @@ pointContentsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)
 
 <a id="field-field-mq3-botlib-aas-reachability-services-teamfn-teamfn-src-mq3-botlib-aas-reachability-ml-1384028713"></a>
 ### teamFn
@@ -62,7 +64,7 @@ teamFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)
 
 <a id="field-field-mq3-botlib-aas-reachability-services-timefn-timefn-src-mq3-botlib-aas-reachability-ml-1477997761"></a>
 ### timeFn
@@ -72,7 +74,7 @@ timeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)
 
 <a id="field-field-mq3-botlib-aas-reachability-services-tracefn-tracefn-src-mq3-botlib-aas-reachability-ml-360377683"></a>
 ### traceFn
@@ -82,4 +84,4 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L51)

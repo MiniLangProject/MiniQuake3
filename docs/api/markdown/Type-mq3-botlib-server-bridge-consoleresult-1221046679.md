@@ -9,8 +9,10 @@
 struct ConsoleResult
 ```
 
+`ConsoleResult` record for server bridge, containing `available` and `text`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ available
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L23)
 
 <a id="field-field-mq3-botlib-server-bridge-consoleresult-text-text-src-mq3-botlib-server-bridge-ml-1951870209"></a>
 ### text
@@ -32,4 +34,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L23)

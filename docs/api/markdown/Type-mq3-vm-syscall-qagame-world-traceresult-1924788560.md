@@ -9,8 +9,10 @@
 struct TraceResult
 ```
 
+TraceResult record for vm.syscall_qagame_world, containing `allsolid`, `startsolid`, `fraction`, `endpos`, `planeNormal`, `planeDist`, and 5 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ allsolid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L35)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-contents-contents-src-mq3-vm-syscall-qagame-world-ml-748934141"></a>
 ### contents
@@ -32,7 +34,7 @@ contents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L44)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-endpos-endpos-src-mq3-vm-syscall-qagame-world-ml-312871063"></a>
 ### endpos
@@ -42,7 +44,7 @@ endpos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L38)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-entitynum-entitynum-src-mq3-vm-syscall-qagame-world-ml-1152553409"></a>
 ### entityNum
@@ -52,7 +54,7 @@ entityNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L45)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-fraction-fraction-src-mq3-vm-syscall-qagame-world-ml-489066973"></a>
 ### fraction
@@ -62,7 +64,7 @@ fraction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L37)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-planedist-planedist-src-mq3-vm-syscall-qagame-world-ml-115110269"></a>
 ### planeDist
@@ -72,7 +74,7 @@ planeDist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L40)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-planenormal-planenormal-src-mq3-vm-syscall-qagame-world-ml-936975689"></a>
 ### planeNormal
@@ -82,7 +84,7 @@ planeNormal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L39)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-planesignbits-planesignbits-src-mq3-vm-syscall-qagame-world-ml-1252235633"></a>
 ### planeSignBits
@@ -92,7 +94,7 @@ planeSignBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L42)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-planetype-planetype-src-mq3-vm-syscall-qagame-world-ml-46511149"></a>
 ### planeType
@@ -102,7 +104,7 @@ planeType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L41)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-startsolid-startsolid-src-mq3-vm-syscall-qagame-world-ml-837235315"></a>
 ### startsolid
@@ -112,7 +114,7 @@ startsolid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L36)
 
 <a id="field-field-mq3-vm-syscall-qagame-world-traceresult-surfaceflags-surfaceflags-src-mq3-vm-syscall-qagame-world-ml-1523462301"></a>
 ### surfaceFlags
@@ -122,4 +124,4 @@ surfaceFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame_world.ml#L43)

@@ -9,8 +9,10 @@
 struct TransformEntry
 ```
 
+Data record for `mq3.renderer.qvm_scene_geometry.TransformEntry`; groups `modelHandle`, `surfaceIndex`, `frame`, `oldFrame`, `backlerp`, `origin`, and 8 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-backlerp-backlerp-src-mq3-renderer-qvm-scene-geometry-ml-1499170007"></a>
 ### backlerp
@@ -32,7 +34,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-colors-colors-src-mq3-renderer-qvm-scene-geometry-ml-949099139"></a>
 ### colors
@@ -42,7 +44,7 @@ colors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-frame-frame-src-mq3-renderer-qvm-scene-geometry-ml-1907680895"></a>
 ### frame
@@ -52,7 +54,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-lightalpha-lightalpha-src-mq3-renderer-qvm-scene-geometry-ml-1703895995"></a>
 ### lightAlpha
@@ -62,7 +64,7 @@ lightAlpha
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-lightambient-lightambient-src-mq3-renderer-qvm-scene-geometry-ml-2132884451"></a>
 ### lightAmbient
@@ -72,7 +74,7 @@ lightAmbient
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-lightdirected-lightdirected-src-mq3-renderer-qvm-scene-geometry-ml-1163910943"></a>
 ### lightDirected
@@ -82,7 +84,7 @@ lightDirected
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-lightdirection-lightdirection-src-mq3-renderer-qvm-scene-geometry-ml-526685977"></a>
 ### lightDirection
@@ -92,7 +94,7 @@ lightDirection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-modelhandle-modelhandle-src-mq3-renderer-qvm-scene-geometry-ml-421160599"></a>
 ### modelHandle
@@ -102,7 +104,7 @@ modelHandle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-normals-normals-src-mq3-renderer-qvm-scene-geometry-ml-1461170595"></a>
 ### normals
@@ -112,7 +114,7 @@ normals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-oldframe-oldframe-src-mq3-renderer-qvm-scene-geometry-ml-1494592947"></a>
 ### oldFrame
@@ -122,7 +124,7 @@ oldFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-origin-origin-src-mq3-renderer-qvm-scene-geometry-ml-913571791"></a>
 ### origin
@@ -132,7 +134,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-positions-positions-src-mq3-renderer-qvm-scene-geometry-ml-2054897479"></a>
 ### positions
@@ -142,7 +144,7 @@ positions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-transformentry-surfaceindex-surfaceindex-src-mq3-renderer-qvm-scene-geometry-ml-1372008197"></a>
 ### surfaceIndex
@@ -152,4 +154,4 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L51)

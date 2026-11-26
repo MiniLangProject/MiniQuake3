@@ -19,13 +19,17 @@ Reachable from entry: **yes**
 function check(state, host)
 ```
 
+Check timeouts in server.timeouts.
+
+Validation failures include `server timeouts: missing state`; `server timeouts: invalid client count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `clients`, `maxClients`, `time`, `timeoutSeconds`, `zombieSeconds`. |
+| `host` | `dynamic` | — | Record exposing `diagnosticFn`, `dropFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L40)
 
 <a id="function-function-mq3-server-timeouts-client-function-client-state-lastpackettime-timeoutcount-src-mq3-server-timeouts-ml-482447898"></a>
 ### client
@@ -34,14 +38,16 @@ function check(state, host)
 function client(state, lastPacketTime, timeoutCount)
 ```
 
+Create `mq3.server.timeouts.Client` with state=state; lastPacketTime=lastPacketTime; timeoutCount=timeoutCount.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `lastPacketTime` | `dynamic` | — |  |
-| `timeoutCount` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Initial `state` field stored in the returned or constructed `mq3.server.timeouts.Client` record. |
+| `lastPacketTime` | `dynamic` | — | Initial `lastPacketTime` field stored in the returned or constructed `mq3.server.timeouts.Client` record. |
+| `timeoutCount` | `dynamic` | — | Initial `timeoutCount` field stored in the returned or constructed `mq3.server.timeouts.Client` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L19)
 
 - [mq3.server.timeouts.Client](Type-mq3-server-timeouts-client-2043009170.md) — struct
 <a id="constant-constant-mq3-server-timeouts-cs-active-const-cs-active-4-src-mq3-server-timeouts-ml-946476765"></a>
@@ -101,12 +107,14 @@ const CS_ZOMBIE = 1
 function runtime(clients)
 ```
 
+Compute runtime in server.timeouts; the normal completion returns `Runtime(0, 200, 2, size, clients)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clients` | `dynamic` | — |  |
+| `clients` | `dynamic` | — | Initial `clients` field stored in the returned or constructed `mq3.server.timeouts.Runtime` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L25)
 
 - [mq3.server.timeouts.Runtime](Type-mq3-server-timeouts-runtime-1330395935.md) — struct
 <a id="function-function-mq3-server-timeouts-services-function-services-src-mq3-server-timeouts-ml-1850656174"></a>
@@ -116,7 +124,9 @@ function runtime(clients)
 function services()
 ```
 
+Create `mq3.server.timeouts.Services` with dropFn=void; diagnosticFn=void; context=void.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L33)
 
 - [mq3.server.timeouts.Services](Type-mq3-server-timeouts-services-141417729.md) — struct

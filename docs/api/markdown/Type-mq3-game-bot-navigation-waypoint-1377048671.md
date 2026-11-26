@@ -9,8 +9,10 @@
 struct Waypoint
 ```
 
+`Waypoint` record for bot navigation, containing `name`, `goal`, `next` and `prev`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L77)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
 
 ## Members
 
@@ -22,7 +24,7 @@ goal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
 
 <a id="field-field-mq3-game-bot-navigation-waypoint-name-name-src-mq3-game-bot-navigation-ml-198285834"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
 
 <a id="field-field-mq3-game-bot-navigation-waypoint-next-next-src-mq3-game-bot-navigation-ml-368031686"></a>
 ### next
@@ -42,7 +44,7 @@ next
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)
 
 <a id="field-field-mq3-game-bot-navigation-waypoint-prev-prev-src-mq3-game-bot-navigation-ml-1117553950"></a>
 ### prev
@@ -52,4 +54,4 @@ prev
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L84)

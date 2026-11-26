@@ -20,17 +20,19 @@ Reachable from entry: **no**
 function action(text, id, x, y, flags, style)
 ```
 
+Calls `mq3.client.ui_qmenu.item` from UI login `action`. The final path returns `item`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Value assigned to `item.string`. |
+| `id` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_PTEXT,"",id,x,y,flags)`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `action`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `action`. |
+| `flags` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_PTEXT,"",id,x,y,flags)`. |
+| `style` | `dynamic` | — | Value assigned to `item.style`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L46)
 
 - [mq3.client.ui_login.Action](Type-mq3-client-ui-login-action-2008815967.md) — struct
 <a id="function-function-mq3-client-ui-login-create-function-create-retailactive-src-mq3-client-ui-login-ml-257190167"></a>
@@ -40,12 +42,14 @@ function action(text, id, x, y, flags, style)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_login.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L20)
 
 <a id="function-function-mq3-client-ui-login-emit-function-emit-state-boundary-kind-name-text-text2-src-mq3-client-ui-login-ml-110559878"></a>
 ### emit
@@ -54,17 +58,19 @@ function create(retailActive)
 function emit(state, boundary, kind, name, text, text2)
 ```
 
+Appends a UI login action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `text2` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI login record/storage; this routine assigns `state.actions`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI login resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI login path. |
+| `text2` | `dynamic` | — | Value used by `a=Action(boundary,kind,name,text,text2,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L28)
 
 <a id="function-function-mq3-client-ui-login-field-function-field-id-x-y-src-mq3-client-ui-login-ml-928259504"></a>
 ### field
@@ -73,14 +79,16 @@ function emit(state, boundary, kind, name, text, text2)
 function field(id, x, y)
 ```
 
+Calls `mq3.client.ui_qmenu.item` from UI login `field`. The final path returns `item`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `id` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `id` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_FIELD,"",id,x,y,0)`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `field`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `field`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L33)
 
 <a id="constant-constant-mq3-client-ui-login-id-cancel-const-id-cancel-105-src-mq3-client-ui-login-ml-1970332693"></a>
 ### ID_CANCEL
@@ -149,14 +157,16 @@ const ID_PASSWORD_BOX = 103
 function label(text, id, y)
 ```
 
+Calls `mq3.client.ui_qmenu.item` from UI login `label`. The final path returns `item`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Value assigned to `item.string`. |
+| `id` | `dynamic` | — | Value used by `item=q.item(q.MTYPE_PTEXT,"",id,310,y,q.QMF_RIGHT_JUSTIFY\|q.QMF_INACTIVE)`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `label`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L38)
 
 <a id="function-function-mq3-client-ui-login-login-cache-function-login-cache-state-src-mq3-client-ui-login-ml-1809301881"></a>
 ### Login_Cache
@@ -169,10 +179,10 @@ Login_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI login state passed to the helper calls in `Login_Cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L56)
 
 <a id="constant-constant-mq3-client-ui-login-login-frame-const-login-frame-menu-art-cut-frame-src-mq3-client-ui-login-ml-1652091207"></a>
 ### LOGIN_FRAME
@@ -195,12 +205,12 @@ Login_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI login record/storage; this routine assigns `state.nameBox.buffer`, `state.passwordBox.buffer`, `state.forcedOff`, `state.popped` and additional values. |
+| `id` | `dynamic` | — | Value used by `if id==ID_LOGIN then state.nameBox.buffer=rankings.sanitize(state.nameBox.buffer)`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L51)
 
 <a id="function-function-mq3-client-ui-login-login-menuinit-function-login-menuinit-state-src-mq3-client-ui-login-ml-1252515985"></a>
 ### Login_MenuInit
@@ -213,10 +223,10 @@ Login_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI login record/storage; this routine assigns `state.menu`, `state.actions`, `state.frame`, `state.frame.width` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L59)
 
 - [mq3.client.ui_login.State](Type-mq3-client-ui-login-state-1861023702.md) — struct
 <a id="function-function-mq3-client-ui-login-ui-loginmenu-function-ui-loginmenu-state-src-mq3-client-ui-login-ml-834644809"></a>
@@ -230,7 +240,7 @@ UI_LoginMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI login record/storage; this routine assigns `state.pushed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L64)

@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI main state, including `cvars`, `actions`, `initialized`, `shutdown`, `keyEvents`, `mouseEvents` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-activemenus-activemenus-src-mq3-client-ui-main-ml-2085275970"></a>
 ### activeMenus
@@ -32,7 +34,7 @@ activeMenus
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-connectscreens-connectscreens-src-mq3-client-ui-main-ml-1934127468"></a>
 ### connectScreens
@@ -42,7 +44,7 @@ connectScreens
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-consoleresult-consoleresult-src-mq3-client-ui-main-ml-126456014"></a>
 ### consoleResult
@@ -52,7 +54,7 @@ consoleResult
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-cvars-cvars-src-mq3-client-ui-main-ml-119151582"></a>
 ### cvars
@@ -62,7 +64,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-fullscreenresult-fullscreenresult-src-mq3-client-ui-main-ml-1509585722"></a>
 ### fullscreenResult
@@ -72,7 +74,7 @@ fullscreenResult
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-initialized-initialized-src-mq3-client-ui-main-ml-2109867106"></a>
 ### initialized
@@ -82,7 +84,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-keyevents-keyevents-src-mq3-client-ui-main-ml-1555183450"></a>
 ### keyEvents
@@ -92,7 +94,7 @@ keyEvents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-mouseevents-mouseevents-src-mq3-client-ui-main-ml-238635138"></a>
 ### mouseEvents
@@ -102,7 +104,7 @@ mouseEvents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-refreshtimes-refreshtimes-src-mq3-client-ui-main-ml-164411512"></a>
 ### refreshTimes
@@ -112,7 +114,7 @@ refreshTimes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-retailqvmactive-retailqvmactive-src-mq3-client-ui-main-ml-1033593546"></a>
 ### retailQvmActive
@@ -122,7 +124,7 @@ retailQvmActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)
 
 <a id="field-field-mq3-client-ui-main-state-shutdown-shutdown-src-mq3-client-ui-main-ml-1276095202"></a>
 ### shutdown
@@ -132,4 +134,4 @@ shutdown
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L30)

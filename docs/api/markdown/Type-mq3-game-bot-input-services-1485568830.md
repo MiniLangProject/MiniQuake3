@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for bot input, containing `challenge`, `characteristicFloatFn`, `viewFn`, `getInputFn` and `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L53)
 
 ## Members
 
@@ -22,7 +24,7 @@ challenge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L54)
 
 <a id="field-field-mq3-game-bot-input-services-characteristicfloatfn-characteristicfloatfn-src-mq3-game-bot-input-ml-100785"></a>
 ### characteristicFloatFn
@@ -32,7 +34,7 @@ characteristicFloatFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L55)
 
 <a id="field-field-mq3-game-bot-input-services-context-context-src-mq3-game-bot-input-ml-1038124377"></a>
 ### context
@@ -42,7 +44,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L58)
 
 <a id="field-field-mq3-game-bot-input-services-getinputfn-getinputfn-src-mq3-game-bot-input-ml-1406539157"></a>
 ### getInputFn
@@ -52,7 +54,7 @@ getInputFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L57)
 
 <a id="field-field-mq3-game-bot-input-services-viewfn-viewfn-src-mq3-game-bot-input-ml-1204987055"></a>
 ### viewFn
@@ -62,4 +64,4 @@ viewFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L56)

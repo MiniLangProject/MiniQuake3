@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.playable_flares.State`; groups `visible`, `fadeTime`, `drawIntensity`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ drawIntensity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-flares-state-fadetime-fadetime-src-mq3-renderer-playable-flares-ml-12719232"></a>
 ### fadeTime
@@ -32,7 +34,7 @@ fadeTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-flares-state-visible-visible-src-mq3-renderer-playable-flares-ml-192325770"></a>
 ### visible
@@ -42,4 +44,4 @@ visible
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L23)

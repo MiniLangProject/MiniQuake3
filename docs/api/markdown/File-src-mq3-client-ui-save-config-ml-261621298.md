@@ -23,11 +23,11 @@ UI_SaveConfigMenu_BackEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI save config record/storage; this routine assigns `menu.actions`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L15)
 
 <a id="function-function-mq3-client-ui-save-config-cache-function-cache-src-mq3-client-ui-save-config-ml-684037968"></a>
 ### cache
@@ -39,7 +39,7 @@ function cache()
 UI_SaveConfigMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L28)
 
 <a id="function-function-mq3-client-ui-save-config-drawname-function-drawname-menu-focused-src-mq3-client-ui-save-config-ml-2112066584"></a>
 ### drawName
@@ -52,11 +52,11 @@ UI_SaveConfigMenu_SavenameDraw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `focused` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Record read through `menu.widthInChars`, `menu.name`. |
+| `focused` | `dynamic` | — | Value used by `if focused then style="left+pulse+small"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L26)
 
 <a id="function-function-mq3-client-ui-save-config-init-function-init-src-mq3-client-ui-save-config-ml-1718945232"></a>
 ### init
@@ -68,7 +68,7 @@ function init()
 UI_SaveConfigMenu_Init
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L30)
 
 <a id="function-function-mq3-client-ui-save-config-open-function-open-src-mq3-client-ui-save-config-ml-1885765156"></a>
 ### open
@@ -80,7 +80,7 @@ function open()
 UI_SaveConfigMenu
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-save-config-qm-activated-const-qm-activated-3-src-mq3-client-ui-save-config-ml-1460457756"></a>
 ### QM_ACTIVATED
@@ -104,11 +104,11 @@ UI_SaveConfigMenu_SaveEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI save config record/storage; this routine assigns `menu.commands`, `menu.actions`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L19)
 
 <a id="function-function-mq3-client-ui-save-config-stripextension-function-stripextension-name-src-mq3-client-ui-save-config-ml-1563109671"></a>
 ### stripExtension
@@ -117,9 +117,11 @@ UI_SaveConfigMenu_SaveEvent
 function stripExtension(name)
 ```
 
+Calls `std.string.lastIndexOf`, `std.string.substr` from UI save config `stripExtension`. The final path returns `name`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI save config resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L11)

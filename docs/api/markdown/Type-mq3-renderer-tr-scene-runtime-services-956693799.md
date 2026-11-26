@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Callback table for `mq3.renderer.tr_scene_runtime.Services`; exposes `timeFn`, `renderViewFn`, `drawSurfFn`, `shaderFn`, `eventFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-drawsurffn-drawsurffn-src-mq3-renderer-tr-scene-runtime-ml-34364611"></a>
 ### drawSurfFn
@@ -32,7 +34,7 @@ drawSurfFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-eventfn-eventfn-src-mq3-renderer-tr-scene-runtime-ml-1964204579"></a>
 ### eventFn
@@ -42,7 +44,7 @@ eventFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-renderviewfn-renderviewfn-src-mq3-renderer-tr-scene-runtime-ml-1949429349"></a>
 ### renderViewFn
@@ -52,7 +54,7 @@ renderViewFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-shaderfn-shaderfn-src-mq3-renderer-tr-scene-runtime-ml-1350422977"></a>
 ### shaderFn
@@ -62,7 +64,7 @@ shaderFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-scene-runtime-services-timefn-timefn-src-mq3-renderer-tr-scene-runtime-ml-948572469"></a>
 ### timeFn
@@ -72,4 +74,4 @@ timeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_scene_runtime.ml#L18)

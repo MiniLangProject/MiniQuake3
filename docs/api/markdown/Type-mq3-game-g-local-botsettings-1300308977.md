@@ -9,8 +9,10 @@
 struct BotSettings
 ```
 
+`BotSettings` record for g local, containing `characterfile`, `skill` and `team`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L66)
 
 ## Members
 
@@ -22,7 +24,7 @@ characterfile
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L66)
 
 <a id="field-field-mq3-game-g-local-botsettings-skill-skill-src-mq3-game-g-local-ml-1552933051"></a>
 ### skill
@@ -32,7 +34,7 @@ skill
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L66)
 
 <a id="field-field-mq3-game-g-local-botsettings-team-team-src-mq3-game-g-local-ml-1329124781"></a>
 ### team
@@ -42,4 +44,4 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L66)

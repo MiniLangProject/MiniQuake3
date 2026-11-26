@@ -9,8 +9,10 @@
 struct Display
 ```
 
+Stores UI shared display record, including `menus`, `focus`, `capture`, `cursorx`, `cursory`, `scaleX` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-assets-assets-src-mq3-client-ui-shared-ml-1004087155"></a>
 ### assets
@@ -32,7 +34,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-bias-bias-src-mq3-client-ui-shared-ml-256062687"></a>
 ### bias
@@ -42,7 +44,7 @@ bias
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-bindings-bindings-src-mq3-client-ui-shared-ml-909265301"></a>
 ### bindings
@@ -52,7 +54,7 @@ bindings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-capture-capture-src-mq3-client-ui-shared-ml-1573910381"></a>
 ### capture
@@ -62,7 +64,7 @@ capture
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-cursorx-cursorx-src-mq3-client-ui-shared-ml-908500877"></a>
 ### cursorx
@@ -72,7 +74,7 @@ cursorx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-cursory-cursory-src-mq3-client-ui-shared-ml-2080696897"></a>
 ### cursory
@@ -82,7 +84,7 @@ cursory
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-cvars-cvars-src-mq3-client-ui-shared-ml-1962354433"></a>
 ### cvars
@@ -92,7 +94,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-focus-focus-src-mq3-client-ui-shared-ml-901142877"></a>
 ### focus
@@ -102,7 +104,7 @@ focus
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-frametime-frametime-src-mq3-client-ui-shared-ml-1384869717"></a>
 ### frameTime
@@ -112,7 +114,7 @@ frameTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-keybindpending-keybindpending-src-mq3-client-ui-shared-ml-1688025363"></a>
 ### keyBindPending
@@ -122,7 +124,7 @@ keyBindPending
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-memory-memory-src-mq3-client-ui-shared-ml-1158257159"></a>
 ### memory
@@ -132,7 +134,7 @@ memory
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-menus-menus-src-mq3-client-ui-shared-ml-876347813"></a>
 ### menus
@@ -142,7 +144,7 @@ menus
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-realtime-realtime-src-mq3-client-ui-shared-ml-960297635"></a>
 ### realtime
@@ -152,7 +154,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-retailactive-retailactive-src-mq3-client-ui-shared-ml-873990983"></a>
 ### retailActive
@@ -162,7 +164,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-scalex-scalex-src-mq3-client-ui-shared-ml-1601580553"></a>
 ### scaleX
@@ -172,7 +174,7 @@ scaleX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)
 
 <a id="field-field-mq3-client-ui-shared-display-scaley-scaley-src-mq3-client-ui-shared-ml-173226207"></a>
 ### scaleY
@@ -182,4 +184,4 @@ scaleY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L94)

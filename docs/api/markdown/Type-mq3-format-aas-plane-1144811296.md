@@ -9,8 +9,10 @@
 struct Plane
 ```
 
+Plane record for format.aas, containing `normal`, `dist`, `type`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L117)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 ## Members
 
@@ -22,7 +24,7 @@ dist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-plane-normal-normal-src-mq3-format-aas-ml-1483893065"></a>
 ### normal
@@ -32,7 +34,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-plane-type-type-src-mq3-format-aas-ml-734220191"></a>
 ### type
@@ -42,4 +44,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)

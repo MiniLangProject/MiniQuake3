@@ -9,8 +9,10 @@
 struct MenuKeyResult
 ```
 
+Stores UI mfield menu key result record, including `sound`, `key`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ key
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L22)
 
 <a id="field-field-mq3-client-ui-mfield-menukeyresult-sound-sound-src-mq3-client-ui-mfield-ml-916051736"></a>
 ### sound
@@ -32,4 +34,4 @@ sound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L22)

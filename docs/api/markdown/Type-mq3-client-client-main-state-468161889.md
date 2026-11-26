@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores client main state, including `lifecycle`, `reliable`, `pings`, `servers`, `statuses`, `downloads` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-configstrings-configstrings-src-mq3-client-client-main-ml-1028157692"></a>
 ### configstrings
@@ -32,7 +34,7 @@ configstrings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-connectionhost-connectionhost-src-mq3-client-client-main-ml-90153180"></a>
 ### connectionHost
@@ -42,7 +44,7 @@ connectionHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-connectionruntime-connectionruntime-src-mq3-client-client-main-ml-1126126496"></a>
 ### connectionRuntime
@@ -52,7 +54,7 @@ connectionRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-cvars-cvars-src-mq3-client-client-main-ml-2089216720"></a>
 ### cvars
@@ -62,7 +64,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-demo-demo-src-mq3-client-client-main-ml-1186775334"></a>
 ### demo
@@ -72,7 +74,7 @@ demo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-downloads-downloads-src-mq3-client-client-main-ml-1043177980"></a>
 ### downloads
@@ -82,7 +84,7 @@ downloads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-framehost-framehost-src-mq3-client-client-main-ml-1046420928"></a>
 ### frameHost
@@ -92,7 +94,7 @@ frameHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-frameruntime-frameruntime-src-mq3-client-client-main-ml-1115732434"></a>
 ### frameRuntime
@@ -102,7 +104,7 @@ frameRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-lanruntime-lanruntime-src-mq3-client-client-main-ml-17976750"></a>
 ### lanRuntime
@@ -112,7 +114,7 @@ lanRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-lifecycle-lifecycle-src-mq3-client-client-main-ml-136718448"></a>
 ### lifecycle
@@ -122,7 +124,7 @@ lifecycle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-openedpaks-openedpaks-src-mq3-client-client-main-ml-2036273020"></a>
 ### openedPaks
@@ -132,7 +134,7 @@ openedPaks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-packethost-packethost-src-mq3-client-client-main-ml-1052035160"></a>
 ### packetHost
@@ -142,7 +144,7 @@ packetHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-packetruntime-packetruntime-src-mq3-client-client-main-ml-304804972"></a>
 ### packetRuntime
@@ -152,7 +154,7 @@ packetRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-pings-pings-src-mq3-client-client-main-ml-806381364"></a>
 ### pings
@@ -162,7 +164,7 @@ pings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-purechecksums-purechecksums-src-mq3-client-client-main-ml-799922788"></a>
 ### pureChecksums
@@ -172,7 +174,7 @@ pureChecksums
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-reconnectname-reconnectname-src-mq3-client-client-main-ml-1358665092"></a>
 ### reconnectName
@@ -182,7 +184,7 @@ reconnectName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-referencedpaks-referencedpaks-src-mq3-client-client-main-ml-481624372"></a>
 ### referencedPaks
@@ -192,7 +194,7 @@ referencedPaks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-reliable-reliable-src-mq3-client-client-main-ml-898221232"></a>
 ### reliable
@@ -202,7 +204,7 @@ reliable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-retailactive-retailactive-src-mq3-client-client-main-ml-2048246346"></a>
 ### retailActive
@@ -212,7 +214,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-servername-servername-src-mq3-client-client-main-ml-734297412"></a>
 ### serverName
@@ -222,7 +224,7 @@ serverName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-servers-servers-src-mq3-client-client-main-ml-1045642192"></a>
 ### servers
@@ -232,7 +234,7 @@ servers
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-statuses-statuses-src-mq3-client-client-main-ml-2049000052"></a>
 ### statuses
@@ -242,7 +244,7 @@ statuses
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)
 
 <a id="field-field-mq3-client-client-main-state-userinfo-userinfo-src-mq3-client-client-main-ml-297908418"></a>
 ### userinfo
@@ -252,4 +254,4 @@ userinfo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L55)

@@ -21,16 +21,18 @@ Reachable from entry: **no**
 function configIndex(state, name, start, capacity, create)
 ```
 
+Apply `mq3.game.spawn_values.setConfig` while evaluating `configIndex`. Return paths include `index`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
-| `create` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `configstrings`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
+| `start` | `dynamic` | — | Value used by `configIndex` in `if start < 0 or capacity < 1 or start+capacity > 1024 then return error(485,"Invalid configstring range") end if`. |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
+| `create` | `dynamic` | — | Value used by `configIndex` in `if not create then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L47)
 
 <a id="function-function-mq3-game-spawn-values-getfloat-function-getfloat-state-key-fallback-src-mq3-game-spawn-values-ml-554110950"></a>
 ### getFloat
@@ -39,14 +41,16 @@ function configIndex(state, name, start, capacity, create)
 function getFloat(state, key, fallback)
 ```
 
+Apply `mq3.game.spawn_values.getString` while evaluating `getFloat`. Return paths include `[value[0],n.f32(textnum.atof(value[1]))]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `vars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L28)
 
 <a id="function-function-mq3-game-spawn-values-getint-function-getint-state-key-fallback-src-mq3-game-spawn-values-ml-263140546"></a>
 ### getInt
@@ -55,14 +59,16 @@ function getFloat(state, key, fallback)
 function getInt(state, key, fallback)
 ```
 
+Apply `mq3.game.spawn_values.getString` while evaluating `getInt`. Return paths include `[value[0],textnum.atoi(value[1])]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `vars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L21)
 
 <a id="function-function-mq3-game-spawn-values-getstring-function-getstring-state-key-fallback-src-mq3-game-spawn-values-ml-881266688"></a>
 ### getString
@@ -71,14 +77,16 @@ function getInt(state, key, fallback)
 function getString(state, key, fallback)
 ```
 
+Look up a spawn key case-insensitively and return a found flag with either its text or the supplied fallback.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `vars`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `fallback` | `dynamic` | — | Value used when the requested entry is unavailable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L11)
 
 <a id="function-function-mq3-game-spawn-values-modelindex-function-modelindex-state-name-src-mq3-game-spawn-values-ml-737307678"></a>
 ### modelIndex
@@ -87,13 +95,15 @@ function getString(state, key, fallback)
 function modelIndex(state, name)
 ```
 
+Forward `modelIndex` to `mq3.game.spawn_values.configIndex` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `configstrings`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L73)
 
 <a id="function-function-mq3-game-spawn-values-setconfig-function-setconfig-state-index-value-src-mq3-game-spawn-values-ml-1583478660"></a>
 ### setConfig
@@ -102,14 +112,16 @@ function modelIndex(state, name)
 function setConfig(state, index, value)
 ```
 
+Set `state.configstrings[index]` to `""` and `state.configstrings[index]` to `value` in `mq3.game.spawn_values.setConfig`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `configstrings` and `effectFn`. May update `state.configstrings[index]` in place. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `value` | `dynamic` | — | Value passed as argument 5 to `state.effectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L35)
 
 <a id="function-function-mq3-game-spawn-values-soundindex-function-soundindex-state-name-src-mq3-game-spawn-values-ml-1563858458"></a>
 ### soundIndex
@@ -118,10 +130,12 @@ function setConfig(state, index, value)
 function soundIndex(state, name)
 ```
 
+Forward `soundIndex` to `mq3.game.spawn_values.configIndex` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Spawn values state; accesses `configstrings`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_values.ml#L67)

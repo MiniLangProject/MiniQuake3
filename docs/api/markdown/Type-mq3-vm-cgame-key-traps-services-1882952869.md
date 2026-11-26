@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for vm.cgame_key_traps, containing `context`, `isDownFn`, `getCatcherFn`, `setCatcherFn`, `getKeyFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L15)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-getcatcherfn-getcatcherfn-src-mq3-vm-cgame-key-traps-ml-1790889633"></a>
 ### getCatcherFn
@@ -32,7 +34,7 @@ getCatcherFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L15)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-getkeyfn-getkeyfn-src-mq3-vm-cgame-key-traps-ml-1419534667"></a>
 ### getKeyFn
@@ -42,7 +44,7 @@ getKeyFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L15)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-isdownfn-isdownfn-src-mq3-vm-cgame-key-traps-ml-1667749153"></a>
 ### isDownFn
@@ -52,7 +54,7 @@ isDownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L15)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-setcatcherfn-setcatcherfn-src-mq3-vm-cgame-key-traps-ml-1074097457"></a>
 ### setCatcherFn
@@ -62,4 +64,4 @@ setCatcherFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L15)

@@ -15,12 +15,14 @@ Reachable from entry: **yes**
 function isPortalMarker(reType)
 ```
 
+Computes `reType==RT_PORTALSURFACE` for `mq3.renderer.entity_surface_policy.isPortalMarker`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reType` | `dynamic` | — |  |
+| `reType` | `dynamic` | — | Input used in the result expression `reType==RT_PORTALSURFACE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/entity_surface_policy.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/entity_surface_policy.ml#L20)
 
 <a id="constant-constant-mq3-renderer-entity-surface-policy-rf-first-person-const-rf-first-person-4-src-mq3-renderer-entity-surface-policy-ml-248603051"></a>
 ### RF_FIRST_PERSON
@@ -59,11 +61,13 @@ const RT_PORTALSURFACE = 7
 function visible(reType, renderfx, isPortal)
 ```
 
+Returns `reType!=RT_PORTALSURFACE` from `mq3.renderer.entity_surface_policy.visible`; earlier branches return `false`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reType` | `dynamic` | — |  |
-| `renderfx` | `dynamic` | — |  |
-| `isPortal` | `dynamic` | — |  |
+| `reType` | `dynamic` | — | Input used in the result expression `reType!=RT_PORTALSURFACE`. |
+| `renderfx` | `dynamic` | — | Input tested by `(renderfx&RF_FIRST_PERSON)!=0 and isPortal`. |
+| `isPortal` | `dynamic` | — | Input tested by `(renderfx&RF_FIRST_PERSON)!=0 and isPortal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/entity_surface_policy.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/entity_surface_policy.ml#L13)

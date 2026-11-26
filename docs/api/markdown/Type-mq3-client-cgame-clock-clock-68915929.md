@@ -9,8 +9,10 @@
 struct Clock
 ```
 
+Stores client game clock clock record, including `state`, `snapshotNumber`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ snapshotNumber
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L9)
 
 <a id="field-field-mq3-client-cgame-clock-clock-state-state-src-mq3-client-cgame-clock-ml-222510781"></a>
 ### state
@@ -32,4 +34,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L9)

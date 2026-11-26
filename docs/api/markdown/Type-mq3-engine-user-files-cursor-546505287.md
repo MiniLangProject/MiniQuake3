@@ -9,8 +9,10 @@
 struct Cursor
 ```
 
+Cursor record for engine.user_files, containing `data`, `offset`, `size`, `mode`, `path`, `dirty`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
 
 <a id="field-field-mq3-engine-user-files-cursor-dirty-dirty-src-mq3-engine-user-files-ml-1207943397"></a>
 ### dirty
@@ -32,7 +34,7 @@ dirty
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
 
 <a id="field-field-mq3-engine-user-files-cursor-mode-mode-src-mq3-engine-user-files-ml-2019073271"></a>
 ### mode
@@ -42,7 +44,7 @@ mode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
 
 <a id="field-field-mq3-engine-user-files-cursor-offset-offset-src-mq3-engine-user-files-ml-383814127"></a>
 ### offset
@@ -52,7 +54,7 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
 
 <a id="field-field-mq3-engine-user-files-cursor-path-path-src-mq3-engine-user-files-ml-73790207"></a>
 ### path
@@ -62,7 +64,7 @@ path
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
 
 <a id="field-field-mq3-engine-user-files-cursor-size-size-src-mq3-engine-user-files-ml-1528681447"></a>
 ### size
@@ -72,4 +74,4 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)

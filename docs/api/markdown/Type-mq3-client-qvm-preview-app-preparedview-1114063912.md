@@ -9,8 +9,10 @@
 struct PreparedView
 ```
 
+Stores QVM preview app prepared view record, including `source`, `geometry`, `batch`, `target`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L72)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
 
 ## Members
 
@@ -22,7 +24,7 @@ batch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
 
 <a id="field-field-mq3-client-qvm-preview-app-preparedview-geometry-geometry-src-mq3-client-qvm-preview-app-ml-319771405"></a>
 ### geometry
@@ -32,7 +34,7 @@ geometry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
 
 <a id="field-field-mq3-client-qvm-preview-app-preparedview-source-source-src-mq3-client-qvm-preview-app-ml-1111553919"></a>
 ### source
@@ -42,7 +44,7 @@ source
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
 
 <a id="field-field-mq3-client-qvm-preview-app-preparedview-target-target-src-mq3-client-qvm-preview-app-ml-876149827"></a>
 ### target
@@ -52,4 +54,4 @@ target
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)

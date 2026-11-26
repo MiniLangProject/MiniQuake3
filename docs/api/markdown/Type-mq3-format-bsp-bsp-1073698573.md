@@ -9,8 +9,10 @@
 struct BSP
 ```
 
+BSP record for format.bsp, containing `data`, `offsets`, `lengths`, `counts`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ counts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L14)
 
 <a id="field-field-mq3-format-bsp-bsp-data-data-src-mq3-format-bsp-ml-426410636"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L11)
 
 <a id="field-field-mq3-format-bsp-bsp-lengths-lengths-src-mq3-format-bsp-ml-1929420676"></a>
 ### lengths
@@ -42,7 +44,7 @@ lengths
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L13)
 
 <a id="field-field-mq3-format-bsp-bsp-offsets-offsets-src-mq3-format-bsp-ml-869306536"></a>
 ### offsets
@@ -52,4 +54,4 @@ offsets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L12)

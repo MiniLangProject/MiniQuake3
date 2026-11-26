@@ -23,10 +23,10 @@ AAS_ClearShownDebugLines
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines` and `visible`. May update `state.lines[index]` and `state.visible[index]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L150)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-clearshownpolygons-function-aas-clearshownpolygons-state-src-mq3-botlib-aas-debug-ml-1241843815"></a>
 ### AAS_ClearShownPolygons
@@ -39,10 +39,10 @@ AAS_ClearShownPolygons
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `polygons`. May update `state.polygons[index]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L141)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-debugline-function-aas-debugline-state-start-finish-color-src-mq3-botlib-aas-debug-ml-2107033215"></a>
 ### AAS_DebugLine
@@ -55,13 +55,13 @@ AAS_DebugLine
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines`, `visible` and `numDebugLines`. May update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` in place. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L156)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawarrow-function-aas-drawarrow-state-start-finish-linecolor-arrowcolor-src-mq3-botlib-aas-debug-ml-1424404421"></a>
 ### AAS_DrawArrow
@@ -74,14 +74,14 @@ AAS_DrawArrow
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `lineColor` | `dynamic` | — |  |
-| `arrowColor` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines`, `visible` and `numDebugLines`. May update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` in place. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `lineColor` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
+| `arrowColor` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L266)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawcross-function-aas-drawcross-state-origin-size-color-src-mq3-botlib-aas-debug-ml-2120740973"></a>
 ### AAS_DrawCross
@@ -94,13 +94,13 @@ AAS_DrawCross
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines`, `visible` and `numDebugLines`. May update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` in place. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L254)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawpermanentcross-function-aas-drawpermanentcross-state-origin-size-color-src-mq3-botlib-aas-debug-ml-159165573"></a>
 ### AAS_DrawPermanentCross
@@ -113,13 +113,13 @@ AAS_DrawPermanentCross
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines`, `visible` and `numDebugLines`. May update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` in place. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `size` | `dynamic` | — | Size or capacity supplied to the buffer operation. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L173)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawplanecross-function-aas-drawplanecross-state-point-normal-dist-typevalue-color-src-mq3-botlib-aas-debug-ml-296533152"></a>
 ### AAS_DrawPlaneCross
@@ -132,15 +132,15 @@ AAS_DrawPlaneCross
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
-| `normal` | `dynamic` | — |  |
-| `dist` | `dynamic` | — |  |
-| `typeValue` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines`, `visible` and `numDebugLines`. May update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` in place. |
+| `point` | `dynamic` | — | Three-component point used by the geometric query. |
+| `normal` | `dynamic` | — | Array or byte sequence accessed at `n1`, `n2` and `n0`. |
+| `dist` | `dynamic` | — | Value used by `AAS_DrawPlaneCross` in `start1[n0]=(dist-(start1[n1]*normal[n1]+start1[n2]*normal[n2]))/normal[n0]`. |
+| `typeValue` | `dynamic` | — | Value used by `AAS_DrawPlaneCross` in `n0=typeValue%3`. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L185)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-floodareas-function-aas-floodareas-state-value-origin-src-mq3-botlib-aas-debug-ml-1217342454"></a>
 ### AAS_FloodAreas
@@ -153,12 +153,12 @@ AAS_FloodAreas
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `value` | `dynamic` | — | Value record; accesses `loaded`, `pointArea`, `areas` and `areaSettings`. |
+| `origin` | `dynamic` | — | Not read by this implementation; retained in the `AAS_FloodAreas` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L303)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-floodareas-r-function-aas-floodareas-r-state-value-areanum-cluster-done-src-mq3-botlib-aas-debug-ml-1656363381"></a>
 ### AAS_FloodAreas_r
@@ -171,14 +171,14 @@ AAS_FloodAreas_r
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `cluster` | `dynamic` | — |  |
-| `done` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `value` | `dynamic` | — | Value record; accesses `areas`, `areaSettings`, `faceIndex`, `faces` and `reachabilities`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `cluster` | `dynamic` | — | Value passed as argument 4 to `mq3.botlib.aas_debug.AAS_FloodAreas_r`. |
+| `done` | `dynamic` | — | Array or byte sequence accessed at `next`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L294)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-permanentline-function-aas-permanentline-state-start-finish-color-src-mq3-botlib-aas-debug-ml-906073193"></a>
 ### AAS_PermanentLine
@@ -191,13 +191,13 @@ AAS_PermanentLine
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `nextLine`. May update `state.nextLine` in place. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L167)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-printtraveltype-function-aas-printtraveltype-traveltype-src-mq3-botlib-aas-debug-ml-331372020"></a>
 ### AAS_PrintTravelType
@@ -210,10 +210,10 @@ AAS_PrintTravelType
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `travelType` | `dynamic` | — |  |
+| `travelType` | `dynamic` | — | AAS reachability travel-type code. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L257)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showarea-function-aas-showarea-state-value-areanum-groundfacesonly-src-mq3-botlib-aas-debug-ml-1903634348"></a>
 ### AAS_ShowArea
@@ -226,13 +226,13 @@ AAS_ShowArea
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `groundFacesOnly` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `value` | `dynamic` | — | Value record; accesses `areas`, `faceIndex`, `faces`, `edgeIndex` and `edges` and related fields. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `groundFacesOnly` | `dynamic` | — | Value used by `AAS_ShowArea` in `if not groundFacesOnly or (faceValue.flags&(FACE_GROUND\|FACE_LADDER))!=0 then for offset=0 to faceValue.numEdges...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L235)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showareapolygons-function-aas-showareapolygons-state-value-areanum-color-groundfacesonly-src-mq3-botlib-aas-debug-ml-363440895"></a>
 ### AAS_ShowAreaPolygons
@@ -245,14 +245,14 @@ AAS_ShowAreaPolygons
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `groundFacesOnly` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `value` | `dynamic` | — | Value record; accesses `areas`, `faceIndex` and `faces`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
+| `groundFacesOnly` | `dynamic` | — | Value used by `AAS_ShowAreaPolygons` in `if not groundFacesOnly or (faceValue.flags&(FACE_GROUND\|FACE_LADDER))!=0 then AAS_ShowFacePolygon(state,value,fa...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L246)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showboundingbox-function-aas-showboundingbox-state-origin-mins-maxs-src-mq3-botlib-aas-debug-ml-1184995543"></a>
 ### AAS_ShowBoundingBox
@@ -265,13 +265,13 @@ AAS_ShowBoundingBox
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines`, `visible` and `numDebugLines`. May update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` in place. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `mins` | `dynamic` | — | Minimum coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum coordinates of the axis-aligned bounds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L196)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showface-function-aas-showface-state-value-facenum-src-mq3-botlib-aas-debug-ml-57431919"></a>
 ### AAS_ShowFace
@@ -284,12 +284,12 @@ AAS_ShowFace
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `faceNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `value` | `dynamic` | — | Value record; accesses `faces`, `edgeIndex`, `edges`, `vertexes` and `planes`. |
+| `faceNum` | `dynamic` | — | AAS face index. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L206)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showfacepolygon-function-aas-showfacepolygon-state-value-facenum-color-flip-src-mq3-botlib-aas-debug-ml-1637011079"></a>
 ### AAS_ShowFacePolygon
@@ -302,14 +302,14 @@ AAS_ShowFacePolygon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `faceNum` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `flip` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `value` | `dynamic` | — | Value record; accesses `faces`, `edgeIndex`, `edges` and `vertexes`. |
+| `faceNum` | `dynamic` | — | AAS face index. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
+| `flip` | `dynamic` | — | Value used by `AAS_ShowFacePolygon` in `if flip then offset=item.numEdges-1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L225)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showpolygon-function-aas-showpolygon-state-color-numpoints-points-src-mq3-botlib-aas-debug-ml-591196034"></a>
 ### AAS_ShowPolygon
@@ -322,13 +322,13 @@ AAS_ShowPolygon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `numPoints` | `dynamic` | — |  |
-| `points` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `polygons` and `nextPolygon`. May update `state.nextPolygon` and `state.polygons[index]` in place. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
+| `numPoints` | `dynamic` | — | Value used by `AAS_ShowPolygon` in `emit(state,"botimport","polygon-create",id,color,points, [numPoints])`. |
+| `points` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.points`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L147)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showreachability-function-aas-showreachability-state-value-reach-src-mq3-botlib-aas-debug-ml-68834443"></a>
 ### AAS_ShowReachability
@@ -341,12 +341,12 @@ AAS_ShowReachability
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `reach` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `value` | `dynamic` | — | Value record; accesses `areas`, `faceIndex` and `faces`. |
+| `reach` | `dynamic` | — | AAS reachability record; accesses `areaNum`, `start`, `finish`, `travelType` and `edgeNum` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L274)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showreachableareas-function-aas-showreachableareas-state-value-areanum-time-src-mq3-botlib-aas-debug-ml-1220396020"></a>
 ### AAS_ShowReachableAreas
@@ -359,13 +359,13 @@ AAS_ShowReachableAreas
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lastAreaNum`, `reachIndex`, `lastTime` and `reach`. May update `state.reachIndex`, `state.lastAreaNum` and `state.reach` and additional fields in place. |
+| `value` | `dynamic` | — | Value record; accesses `areaSettings` and `reachabilities`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L283)
 
 <a id="function-function-mq3-botlib-aas-debug-absindex-function-absindex-value-src-mq3-botlib-aas-debug-ml-58506731"></a>
 ### absIndex
@@ -374,12 +374,14 @@ AAS_ShowReachableAreas
 function absIndex(value)
 ```
 
+Return the absolute value of the numeric argument for aas debug.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L118)
 
 - [mq3.botlib.aas_debug.Action](Type-mq3-botlib-aas-debug-action-1720482245.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-area-function-area-numfaces-firstface-src-mq3-botlib-aas-debug-ml-746666939"></a>
@@ -389,13 +391,15 @@ function absIndex(value)
 function area(numFaces, firstFace)
 ```
 
+Create a `mq3.botlib.aas_debug.Area` record, initializing `numFaces` from `numFaces` and `firstFace` from `firstFace`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `numFaces` | `dynamic` | — |  |
-| `firstFace` | `dynamic` | — |  |
+| `numFaces` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Area.numFaces`. |
+| `firstFace` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Area.firstFace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L77)
 
 - [mq3.botlib.aas_debug.Area](Type-mq3-botlib-aas-debug-area-1516825746.md) — struct
 <a id="constant-constant-mq3-botlib-aas-debug-areacontents-viewportal-const-areacontents-viewportal-512-src-mq3-botlib-aas-debug-ml-844518195"></a>
@@ -415,15 +419,17 @@ const AREACONTENTS_VIEWPORTAL = 512
 function areaSettings(contents, cluster, numReachableAreas, firstReachableArea)
 ```
 
+Create a `mq3.botlib.aas_debug.AreaSettings` record, initializing `contents` from `contents`, `cluster` from `cluster` and `numReachableAreas` from `numReachableAreas`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `contents` | `dynamic` | — |  |
-| `cluster` | `dynamic` | — |  |
-| `numReachableAreas` | `dynamic` | — |  |
-| `firstReachableArea` | `dynamic` | — |  |
+| `contents` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.AreaSettings.contents`. |
+| `cluster` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.AreaSettings.cluster`. |
+| `numReachableAreas` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.AreaSettings.numReachableAreas`. |
+| `firstReachableArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.AreaSettings.firstReachableArea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L83)
 
 - [mq3.botlib.aas_debug.AreaSettings](Type-mq3-botlib-aas-debug-areasettings-1541327639.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-claimline-function-claimline-state-src-mq3-botlib-aas-debug-ml-43193463"></a>
@@ -433,12 +439,14 @@ function areaSettings(contents, cluster, numReachableAreas, firstReachableArea)
 function claimLine(state)
 ```
 
+Update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` during `claimLine`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `lines`, `visible` and `numDebugLines`. May update `state.lines[index]`, `state.visible[index]` and `state.numDebugLines` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L177)
 
 <a id="function-function-mq3-botlib-aas-debug-copy3-function-copy3-value-src-mq3-botlib-aas-debug-ml-1213909023"></a>
 ### copy3
@@ -447,12 +455,14 @@ function claimLine(state)
 function copy3(value)
 ```
 
+Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas debug.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L111)
 
 <a id="function-function-mq3-botlib-aas-debug-create-function-create-retailactive-src-mq3-botlib-aas-debug-ml-433507505"></a>
 ### create
@@ -461,12 +471,14 @@ function copy3(value)
 function create(retailActive)
 ```
 
+Create a `mq3.botlib.aas_debug.State` record, initializing `lines` as `array(MAX_DEBUGLINES,0)`, `visible` as `array(MAX_DEBUGLINES,false)` and `polygons` as `array(MAX_DEBUGPOLYGONS,0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L108)
 
 <a id="function-function-mq3-botlib-aas-debug-createline-function-createline-state-src-mq3-botlib-aas-debug-ml-1654752831"></a>
 ### createLine
@@ -475,12 +487,14 @@ function create(retailActive)
 function createLine(state)
 ```
 
+Record or dispatch `"botimport"` actions in `createLine`. Return paths include `id`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `nextLine`. May update `state.nextLine` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L130)
 
 <a id="function-function-mq3-botlib-aas-debug-edge-function-edge-a-b-src-mq3-botlib-aas-debug-ml-1964394975"></a>
 ### edge
@@ -489,13 +503,15 @@ function createLine(state)
 function edge(a, b)
 ```
 
+Create a `mq3.botlib.aas_debug.Edge` record, initializing `vertices` as `[a,b]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Operand used to evaluate the returned expression `Edge([a,b])`. |
+| `b` | `dynamic` | — | Operand used to evaluate the returned expression `Edge([a,b])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L61)
 
 - [mq3.botlib.aas_debug.Edge](Type-mq3-botlib-aas-debug-edge-528609626.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-emit-function-emit-state-boundary-kind-id-color-points-values-src-mq3-botlib-aas-debug-ml-141833408"></a>
@@ -505,18 +521,20 @@ function edge(a, b)
 function emit(state, boundary, kind, id, color, points, values)
 ```
 
+Set `state.actions` to `state.actions+[action]` in `mq3.botlib.aas_debug.emit`. Return paths include `action`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `points` | `dynamic` | — |  |
-| `values` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `boundary` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.boundary`. |
+| `kind` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.kind`. |
+| `id` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.id`. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
+| `points` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.points`. |
+| `values` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.values`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L127)
 
 <a id="function-function-mq3-botlib-aas-debug-face-function-face-planenum-flags-numedges-firstedge-frontarea-backarea-src-mq3-botlib-aas-debug-ml-1894548762"></a>
 ### face
@@ -525,17 +543,19 @@ function emit(state, boundary, kind, id, color, points, values)
 function face(planeNum, flags, numEdges, firstEdge, frontArea, backArea)
 ```
 
+Create a `mq3.botlib.aas_debug.Face` record, initializing `planeNum` from `planeNum`, `flags` from `flags` and `numEdges` from `numEdges`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `planeNum` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `numEdges` | `dynamic` | — |  |
-| `firstEdge` | `dynamic` | — |  |
-| `frontArea` | `dynamic` | — |  |
-| `backArea` | `dynamic` | — |  |
+| `planeNum` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Face.planeNum`. |
+| `flags` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Face.flags`. |
+| `numEdges` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Face.numEdges`. |
+| `firstEdge` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Face.firstEdge`. |
+| `frontArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Face.frontArea`. |
+| `backArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Face.backArea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L69)
 
 - [mq3.botlib.aas_debug.Face](Type-mq3-botlib-aas-debug-face-1428232246.md) — struct
 <a id="constant-constant-mq3-botlib-aas-debug-face-ground-const-face-ground-4-src-mq3-botlib-aas-debug-ml-1487960439"></a>
@@ -635,13 +655,15 @@ const MAX_DEBUGPOLYGONS = 8192
 function plane(normal, dist)
 ```
 
+Create a `mq3.botlib.aas_debug.Plane` record, initializing `normal` from `normal` and `dist` from `dist`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `normal` | `dynamic` | — |  |
-| `dist` | `dynamic` | — |  |
+| `normal` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Plane.normal`. |
+| `dist` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Plane.dist`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L73)
 
 - [mq3.botlib.aas_debug.Plane](Type-mq3-botlib-aas-debug-plane-1355552775.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-reachability-function-reachability-areanum-facenum-edgenum-start-finish-traveltype-traveltime-src-mq3-botlib-aas-debug-ml-375437905"></a>
@@ -651,18 +673,20 @@ function plane(normal, dist)
 function reachability(areaNum, faceNum, edgeNum, start, finish, travelType, travelTime)
 ```
 
+Create a `mq3.botlib.aas_debug.Reachability` record, initializing `areaNum` from `areaNum`, `faceNum` from `faceNum` and `edgeNum` from `edgeNum`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `areaNum` | `dynamic` | — |  |
-| `faceNum` | `dynamic` | — |  |
-| `edgeNum` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `travelType` | `dynamic` | — |  |
-| `travelTime` | `dynamic` | — |  |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `faceNum` | `dynamic` | — | AAS face index. |
+| `edgeNum` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Reachability.edgeNum`. |
+| `start` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Reachability.start`. |
+| `finish` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Reachability.finish`. |
+| `travelType` | `dynamic` | — | AAS reachability travel-type code. |
+| `travelTime` | `dynamic` | — | AAS travel-time value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L92)
 
 - [mq3.botlib.aas_debug.Reachability](Type-mq3-botlib-aas-debug-reachability-1287693228.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-showline-function-showline-state-id-start-finish-color-src-mq3-botlib-aas-debug-ml-930446882"></a>
@@ -672,16 +696,18 @@ function reachability(areaNum, faceNum, edgeNum, start, finish, travelType, trav
 function showLine(state, id, start, finish, color)
 ```
 
+Record or dispatch `"botimport"` actions in `showLine`. Return paths include `id`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS debug state; accesses `retailActive` and `actions`. May update `state.actions` in place. |
+| `id` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.id`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `color` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.Action.color`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L137)
 
 - [mq3.botlib.aas_debug.State](Type-mq3-botlib-aas-debug-state-1941901200.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-subtract3-function-subtract3-a-b-src-mq3-botlib-aas-debug-ml-897137113"></a>
@@ -691,13 +717,15 @@ function showLine(state, id, start, finish, color)
 function subtract3(a, b)
 ```
 
+Return a new array `[a[0]-b[0],a[1]-b[1],a[2]-b[2]]` for `subtract3`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L115)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-barrierjump-const-travel-barrierjump-4-src-mq3-botlib-aas-debug-ml-1773517617"></a>
 ### TRAVEL_BARRIERJUMP
@@ -906,21 +934,23 @@ const TRAVELTYPE_MASK = 16777215
 function world(vertexes, edges, edgeIndex, faces, faceIndex, planes, areas, settings, reaches, pointArea, retailActive)
 ```
 
+Create a `mq3.botlib.aas_debug.World` record, initializing `vertexes` from `vertexes`, `edges` from `edges` and `edgeIndex` from `edgeIndex`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vertexes` | `dynamic` | — |  |
-| `edges` | `dynamic` | — |  |
-| `edgeIndex` | `dynamic` | — |  |
-| `faces` | `dynamic` | — |  |
-| `faceIndex` | `dynamic` | — |  |
-| `planes` | `dynamic` | — |  |
-| `areas` | `dynamic` | — |  |
-| `settings` | `dynamic` | — |  |
-| `reaches` | `dynamic` | — |  |
-| `pointArea` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `vertexes` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.vertexes`. |
+| `edges` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.edges`. |
+| `edgeIndex` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.edgeIndex`. |
+| `faces` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.faces`. |
+| `faceIndex` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.faceIndex`. |
+| `planes` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.planes`. |
+| `areas` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.areas`. |
+| `settings` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.areaSettings`. |
+| `reaches` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.reachabilities`. |
+| `pointArea` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_debug.World.pointArea`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L105)
 
 - [mq3.botlib.aas_debug.World](Type-mq3-botlib-aas-debug-world-1709028061.md) — struct

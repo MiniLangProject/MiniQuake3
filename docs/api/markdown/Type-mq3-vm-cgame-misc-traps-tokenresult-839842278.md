@@ -9,8 +9,10 @@
 struct TokenResult
 ```
 
+TokenResult record for vm.cgame_misc_traps, containing `found`, `text`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ found
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L19)
 
 <a id="field-field-mq3-vm-cgame-misc-traps-tokenresult-text-text-src-mq3-vm-cgame-misc-traps-ml-2016654683"></a>
 ### text
@@ -32,4 +34,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L19)

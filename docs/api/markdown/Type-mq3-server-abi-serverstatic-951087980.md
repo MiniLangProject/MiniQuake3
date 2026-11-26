@@ -9,8 +9,10 @@
 struct ServerStatic
 ```
 
+ServerStatic record for server.abi, containing `initialized`, `time`, `snapFlagServerBit`, `clients`, `numSnapshotEntities`, `nextSnapshotEntities`, and 5 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 ## Members
 
@@ -22,7 +24,7 @@ authorizeAddress
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-challenges-challenges-src-mq3-server-abi-ml-1336334108"></a>
 ### challenges
@@ -32,7 +34,7 @@ challenges
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-clients-clients-src-mq3-server-abi-ml-1980828032"></a>
 ### clients
@@ -42,7 +44,7 @@ clients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-initialized-initialized-src-mq3-server-abi-ml-1090370396"></a>
 ### initialized
@@ -52,7 +54,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-nextheartbeattime-nextheartbeattime-src-mq3-server-abi-ml-489064588"></a>
 ### nextHeartbeatTime
@@ -62,7 +64,7 @@ nextHeartbeatTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-nextsnapshotentities-nextsnapshotentities-src-mq3-server-abi-ml-1385942228"></a>
 ### nextSnapshotEntities
@@ -72,7 +74,7 @@ nextSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-numsnapshotentities-numsnapshotentities-src-mq3-server-abi-ml-1739660260"></a>
 ### numSnapshotEntities
@@ -82,7 +84,7 @@ numSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-redirectaddress-redirectaddress-src-mq3-server-abi-ml-387419812"></a>
 ### redirectAddress
@@ -92,7 +94,7 @@ redirectAddress
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-snapflagserverbit-snapflagserverbit-src-mq3-server-abi-ml-891027832"></a>
 ### snapFlagServerBit
@@ -102,7 +104,7 @@ snapFlagServerBit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-snapshotentities-snapshotentities-src-mq3-server-abi-ml-252774942"></a>
 ### snapshotEntities
@@ -112,7 +114,7 @@ snapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)
 
 <a id="field-field-mq3-server-abi-serverstatic-time-time-src-mq3-server-abi-ml-590351986"></a>
 ### time
@@ -122,4 +124,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L143)

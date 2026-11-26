@@ -21,13 +21,15 @@ Reachable from entry: **no**
 function characteristic(state, index)
 ```
 
+Read a bot chat characteristic by index, returning zero when it is outside the table.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `characteristics`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L110)
 
 <a id="constant-constant-mq3-game-bot-chat-chat-all-const-chat-all-0-src-mq3-game-bot-chat-ml-723632907"></a>
 ### CHAT_ALL
@@ -60,12 +62,12 @@ BotChat_Death
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay` and `missionpack`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lastkilledby`, `client`, `botdeathtype` and `botsuicide`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L293)
 
 <a id="function-function-mq3-game-bot-chat-chatendlevel-function-chatendlevel-state-bot-retailactive-src-mq3-game-bot-chat-ml-1791010863"></a>
 ### chatEndLevel
@@ -78,12 +80,12 @@ BotChat_EndLevel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `botNoChat`, `now`, `teamplay`, `gametype` and `fastChat`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `observer`, `lastchatTime` and `client`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L281)
 
 <a id="function-function-mq3-game-bot-chat-chatenemysuicide-function-chatenemysuicide-state-bot-retailactive-src-mq3-game-bot-chat-ml-14474415"></a>
 ### chatEnemySuicide
@@ -96,12 +98,12 @@ BotChat_EnemySuicide
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L327)
 
 <a id="function-function-mq3-game-bot-chat-chatentergame-function-chatentergame-state-bot-retailactive-src-mq3-game-bot-chat-ml-948756463"></a>
 ### chatEnterGame
@@ -114,12 +116,12 @@ BotChat_EnterGame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L255)
 
 <a id="function-function-mq3-game-bot-chat-chatexitgame-function-chatexitgame-state-bot-retailactive-src-mq3-game-bot-chat-ml-953148859"></a>
 ### chatExitGame
@@ -132,12 +134,12 @@ BotChat_ExitGame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L263)
 
 <a id="function-function-mq3-game-bot-chat-chathitnodeath-function-chathitnodeath-state-bot-retailactive-src-mq3-game-bot-chat-ml-1340214175"></a>
 ### chatHitNoDeath
@@ -150,12 +152,12 @@ BotChat_HitNoDeath
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay` and `missionpack`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lasthurtClient`, `client`, `enemy` and `lasthurtMod`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L348)
 
 <a id="function-function-mq3-game-bot-chat-chathitnokill-function-chathitnokill-state-bot-retailactive-src-mq3-game-bot-chat-ml-240038135"></a>
 ### chatHitNoKill
@@ -168,12 +170,12 @@ BotChat_HitNoKill
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay`, `hurtMods` and `missionpack`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L356)
 
 <a id="function-function-mq3-game-bot-chat-chathittalking-function-chathittalking-state-bot-retailactive-src-mq3-game-bot-chat-ml-1980182359"></a>
 ### chatHitTalking
@@ -186,12 +188,12 @@ BotChat_HitTalking
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay` and `missionpack`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lasthurtClient` and `client`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L339)
 
 <a id="function-function-mq3-game-bot-chat-chatkill-function-chatkill-state-bot-retailactive-src-mq3-game-bot-chat-ml-1728252959"></a>
 ### chatKill
@@ -204,12 +206,12 @@ BotChat_Kill
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay` and `missionpack`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lastkilledplayer`, `client`, `enemydeathtype` and `botdeathtype`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L315)
 
 <a id="function-function-mq3-game-bot-chat-chatrandom-function-chatrandom-state-bot-retailactive-src-mq3-game-bot-chat-ml-1645415243"></a>
 ### chatRandom
@@ -222,12 +224,12 @@ BotChat_Random
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `botNoChat`, `now`, `gametype`, `fastChat` and `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `observer`, `lastchatTime`, `ltgtype`, `thinktime` and `lastkilledplayer` and related fields. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L365)
 
 <a id="function-function-mq3-game-bot-chat-chatstartlevel-function-chatstartlevel-state-bot-retailactive-src-mq3-game-bot-chat-ml-476200107"></a>
 ### chatStartLevel
@@ -240,12 +242,12 @@ BotChat_StartLevel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `botNoChat`, `now`, `teamplay`, `gametype` and `fastChat`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `observer`, `lastchatTime` and `client`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L271)
 
 <a id="function-function-mq3-game-bot-chat-chattest-function-chattest-state-bot-retailactive-src-mq3-game-bot-chat-ml-1232663063"></a>
 ### chatTest
@@ -258,12 +260,12 @@ BotChatTest
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `initialChatCounts`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `chatto`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L403)
 
 <a id="function-function-mq3-game-bot-chat-chattime-function-chattime-state-bot-src-mq3-game-bot-chat-ml-106968058"></a>
 ### chatTime
@@ -276,11 +278,11 @@ BotChatTime
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `characteristics`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `character`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L378)
 
 <a id="function-function-mq3-game-bot-chat-command-function-command-state-bot-text-retailactive-src-mq3-game-bot-chat-ml-317696538"></a>
 ### command
@@ -289,15 +291,17 @@ BotChatTime
 function command(state, bot, text, retailActive)
 ```
 
+Record or dispatch `"ea-command"` actions in `command`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L137)
 
 <a id="function-function-mq3-game-bot-chat-commongate-function-commongate-state-bot-characteristicindex-scale-src-mq3-game-bot-chat-ml-1543814149"></a>
 ### commonGate
@@ -306,15 +310,17 @@ function command(state, bot, text, retailActive)
 function commonGate(state, bot, characteristicIndex, scale)
 ```
 
+Apply `mq3.game.bot_chat.randomValue`, `mq3.game.bot_chat.characteristic` and `mq3.game.bot_chat.numActivePlayers` while evaluating `commonGate`. Return paths include `numActivePlayers(state)>1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `characteristicIndex` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `botNoChat`, `now`, `gametype` and `fastChat`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lastchatTime`. |
+| `characteristicIndex` | `dynamic` | — | Index of the entry to access. |
+| `scale` | `dynamic` | — | Scale factor applied to the computed value. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L237)
 
 <a id="constant-constant-mq3-game-bot-chat-contents-lava-const-contents-lava-headers-contents-lava-src-mq3-game-bot-chat-ml-355271198"></a>
 ### CONTENTS_LAVA
@@ -343,13 +349,15 @@ const CONTENTS_SLIME = headers.CONTENTS_SLIME
 function countFor(state, name)
 ```
 
+Find the configured initial-chat message count for a named chat type.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `initialChatCounts`. |
+| `name` | `dynamic` | — | Lookup text matched against `item[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L382)
 
 <a id="function-function-mq3-game-bot-chat-create-function-create-src-mq3-game-bot-chat-ml-151652952"></a>
 ### create
@@ -358,8 +366,10 @@ function countFor(state, name)
 function create()
 ```
 
+Build the `mq3.game.bot_chat.State` result for `create`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L80)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L94)
 
 <a id="function-function-mq3-game-bot-chat-createbot-function-createbot-client-src-mq3-game-bot-chat-ml-600407889"></a>
 ### createBot
@@ -368,12 +378,14 @@ function create()
 function createBot(client)
 ```
 
+Create a `mq3.game.bot_chat.Bot` record, initializing `client` from `client`, `entitynum` from `client` and `character` from `client`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.Bot.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L90)
 
 <a id="function-function-mq3-game-bot-chat-createentity-function-createentity-number-src-mq3-game-bot-chat-ml-1309947521"></a>
 ### createEntity
@@ -382,12 +394,14 @@ function createBot(client)
 function createEntity(number)
 ```
 
+Create a `mq3.game.bot_chat.Entity` record, initializing `number` from `number`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `number` | `dynamic` | — |  |
+| `number` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.Entity.number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L87)
 
 <a id="function-function-mq3-game-bot-chat-createplayer-function-createplayer-name-team-score-src-mq3-game-bot-chat-ml-1380748112"></a>
 ### createPlayer
@@ -396,14 +410,16 @@ function createEntity(number)
 function createPlayer(name, team, score)
 ```
 
+Create a `mq3.game.bot_chat.Player` record, initializing `active` as `name!=""`, `name` from `name` and `team` from `team`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `score` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
+| `score` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.Player.score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L84)
 
 <a id="function-function-mq3-game-bot-chat-emit-function-emit-state-kind-bot-channel-chat-variables-value-retailactive-src-mq3-game-bot-chat-ml-483722522"></a>
 ### emit
@@ -412,19 +428,21 @@ function createPlayer(name, team, score)
 function emit(state, kind, bot, channel, chat, variables, value, retailActive)
 ```
 
+Set `state.actions` to `state.actions+[action]` in `mq3.game.bot_chat.emit`. Return paths include `action`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `chat` | `dynamic` | — |  |
-| `variables` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `kind` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.HostAction.kind`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `channel` | `dynamic` | — | Channel identifier for the requested action. |
+| `chat` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.HostAction.chat`. |
+| `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
+| `value` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.HostAction.value`. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L120)
 
 <a id="function-function-mq3-game-bot-chat-enterchat-function-enterchat-state-bot-channel-retailactive-src-mq3-game-bot-chat-ml-1824639684"></a>
 ### enterChat
@@ -433,15 +451,17 @@ function emit(state, kind, bot, channel, chat, variables, value, retailActive)
 function enterChat(state, bot, channel, retailActive)
 ```
 
+Record or dispatch `"enter-chat"` actions in `enterChat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `cs`. |
+| `channel` | `dynamic` | — | Channel identifier for the requested action. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L143)
 
 - [mq3.game.bot_chat.Entity](Type-mq3-game-bot-chat-entity-592045055.md) — struct
 <a id="constant-constant-mq3-game-bot-chat-entitynum-world-const-entitynum-world-1022-src-mq3-game-bot-chat-ml-120943666"></a>
@@ -461,13 +481,15 @@ const ENTITYNUM_WORLD = 1022
 function entityShooting(state, index)
 ```
 
+Test `index>=0 and index<len(state.entities) and state.entities[index].shooting` as the condition for `entityShooting`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `entities`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L334)
 
 <a id="function-function-mq3-game-bot-chat-finish-function-finish-state-bot-chat-variables-channel-retailactive-src-mq3-game-bot-chat-ml-1546053449"></a>
 ### finish
@@ -476,17 +498,19 @@ function entityShooting(state, index)
 function finish(state, bot, chat, variables, channel, retailActive)
 ```
 
+Set `bot.chatto` to `channel` and `bot.lastchatTime` to `state.now` in `mq3.game.bot_chat.finish`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `chat` | `dynamic` | — |  |
-| `variables` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `now`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `chatto` and `lastchatTime`. May update `bot.chatto` and `bot.lastchatTime` in place. |
+| `chat` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.HostAction.chat`. |
+| `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
+| `channel` | `dynamic` | — | Channel identifier for the requested action. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L249)
 
 <a id="function-function-mq3-game-bot-chat-firstclientinrankings-function-firstclientinrankings-state-src-mq3-game-bot-chat-ml-403185767"></a>
 ### firstClientInRankings
@@ -499,10 +523,10 @@ BotFirstClientInRankings
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L176)
 
 <a id="constant-constant-mq3-game-bot-chat-gt-tournament-const-gt-tournament-1-src-mq3-game-bot-chat-ml-890273856"></a>
 ### GT_TOURNAMENT
@@ -522,16 +546,18 @@ const GT_TOURNAMENT = 1
 function initialChat(state, bot, chat, variables, retailActive)
 ```
 
+Record or dispatch `"initial-chat"` actions in `initialChat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `chat` | `dynamic` | — |  |
-| `variables` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `chatto`. |
+| `chat` | `dynamic` | — | Initial value stored in `mq3.game.bot_chat.HostAction.chat`. |
+| `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
+| `retailActive` | `dynamic` | — | Whether the retail integration owns side-effect delivery. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L131)
 
 <a id="constant-constant-mq3-game-bot-chat-inventory-flight-const-inventory-flight-headers-inventory-flight-src-mq3-game-bot-chat-ml-1244836596"></a>
 ### INVENTORY_FLIGHT
@@ -594,11 +620,11 @@ BotIsFirstInRankings
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `players`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L169)
 
 <a id="function-function-mq3-game-bot-chat-islastinrankings-function-islastinrankings-state-bot-src-mq3-game-bot-chat-ml-284711890"></a>
 ### isLastInRankings
@@ -611,11 +637,11 @@ BotIsLastInRankings
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `players`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `score`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L173)
 
 <a id="function-function-mq3-game-bot-chat-lastclientinrankings-function-lastclientinrankings-state-src-mq3-game-bot-chat-ml-392119805"></a>
 ### lastClientInRankings
@@ -628,10 +654,10 @@ BotLastClientInRankings
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L179)
 
 <a id="constant-constant-mq3-game-bot-chat-ltg-rushbase-const-ltg-rushbase-5-src-mq3-game-bot-chat-ml-1073854436"></a>
 ### LTG_RUSHBASE
@@ -674,10 +700,10 @@ BotMapTitle
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `mapTitle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L191)
 
 <a id="constant-constant-mq3-game-bot-chat-mask-water-const-mask-water-56-src-mq3-game-bot-chat-ml-2135182286"></a>
 ### MASK_WATER
@@ -1012,10 +1038,10 @@ BotNumActivePlayers
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `maxclients` and `players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L165)
 
 - [mq3.game.bot_chat.Player](Type-mq3-game-bot-chat-player-2090771289.md) — struct
 <a id="function-function-mq3-game-bot-chat-playeractive-function-playeractive-player-src-mq3-game-bot-chat-ml-917064645"></a>
@@ -1025,12 +1051,14 @@ BotNumActivePlayers
 function playerActive(player)
 ```
 
+Test `player.active and player.name!="" and player.team!=TEAM_SPECTATOR` as the condition for `playerActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `player` | `dynamic` | — |  |
+| `player` | `dynamic` | — | Player entity; accesses `active`, `name` and `team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L146)
 
 <a id="function-function-mq3-game-bot-chat-playername-function-playername-state-client-src-mq3-game-bot-chat-ml-859231998"></a>
 ### playerName
@@ -1039,13 +1067,15 @@ function playerActive(player)
 function playerName(state, client)
 ```
 
+Read a nonempty player name for a valid slot, returning an empty string otherwise.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `players`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state.players[client].name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L150)
 
 <a id="function-function-mq3-game-bot-chat-randomopponentname-function-randomopponentname-state-bot-src-mq3-game-bot-chat-ml-1057790386"></a>
 ### randomOpponentName
@@ -1058,11 +1088,11 @@ BotRandomOpponentName
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `players`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L183)
 
 <a id="function-function-mq3-game-bot-chat-randomvalue-function-randomvalue-state-src-mq3-game-bot-chat-ml-511571617"></a>
 ### randomValue
@@ -1071,12 +1101,14 @@ BotRandomOpponentName
 function randomValue(state)
 ```
 
+Set `state.randomIndex` to `state.randomIndex+1` in `mq3.game.bot_chat.randomValue`. Return paths include `0.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `randomIndex` and `randomValues`. May update `state.randomIndex` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L103)
 
 <a id="function-function-mq3-game-bot-chat-randomweaponname-function-randomweaponname-state-src-mq3-game-bot-chat-ml-2105648473"></a>
 ### randomWeaponName
@@ -1089,10 +1121,10 @@ BotRandomWeaponName
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `missionpack`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L212)
 
 <a id="function-function-mq3-game-bot-chat-sameteam-function-sameteam-state-bot-client-src-mq3-game-bot-chat-ml-240823773"></a>
 ### sameTeam
@@ -1101,14 +1133,16 @@ BotRandomWeaponName
 function sameTeam(state, bot, client)
 ```
 
+Compare bot and player teams only when teamplay and both player slots are valid.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `teamplay` and `players`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state.players[client].team==state.players[bot.client].team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L158)
 
 - [mq3.game.bot_chat.State](Type-mq3-game-bot-chat-state-1889395289.md) — struct
 <a id="constant-constant-mq3-game-bot-chat-team-spectator-const-team-spectator-3-src-mq3-game-bot-chat-ml-1488783814"></a>
@@ -1128,14 +1162,16 @@ const TEAM_SPECTATOR = 3
 function testVariables(state, bot, chat)
 ```
 
+Apply `mq3.game.bot_chat.playerName`, `mq3.game.bot_chat.randomOpponentName` and `mq3.game.bot_chat.mapTitle` while evaluating `testVariables`. Return paths include `[]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `chat` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `missionpack`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`, `lastkilledby`, `lastkilledplayer`, `lasthurtClient` and `botdeathtype`. |
+| `chat` | `dynamic` | — | Value used by `testVariables` in `if chat=="game_enter" or chat=="game_exit" then return [self,opponent,"[invalid var]","[invalid var]",mapname] e...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L387)
 
 <a id="constant-constant-mq3-game-bot-chat-time-betweenchatting-const-time-betweenchatting-25-src-mq3-game-bot-chat-ml-1254637648"></a>
 ### TIME_BETWEENCHATTING
@@ -1158,11 +1194,11 @@ BotValidChatPosition
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `pointBelow`, `pointAbove` and `groundEntity`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `dead` and `inventory`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L226)
 
 <a id="function-function-mq3-game-bot-chat-visibleenemies-function-visibleenemies-state-bot-src-mq3-game-bot-chat-ml-1739864314"></a>
 ### visibleEnemies
@@ -1175,11 +1211,11 @@ BotVisibleEnemies
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot chat state; accesses `entities`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `entitynum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L220)
 
 <a id="function-function-mq3-game-bot-chat-weaponnameformeansofdeath-function-weaponnameformeansofdeath-mod-src-mq3-game-bot-chat-ml-1924744326"></a>
 ### weaponNameForMeansOfDeath
@@ -1192,10 +1228,10 @@ BotWeaponNameForMeansOfDeath
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mod` | `dynamic` | — |  |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L194)
 
 <a id="function-function-mq3-game-bot-chat-weaponnameformeansofdeathmode-function-weaponnameformeansofdeathmode-mod-missionpack-src-mq3-game-bot-chat-ml-1187974679"></a>
 ### weaponNameForMeansOfDeathMode
@@ -1204,10 +1240,12 @@ BotWeaponNameForMeansOfDeath
 function weaponNameForMeansOfDeathMode(mod, missionpack)
 ```
 
+Apply `mq3.game.bot_chat.weaponNameForMeansOfDeath` while evaluating `weaponNameForMeansOfDeathMode`. Return paths include `weaponNameForMeansOfDeath(mod)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mod` | `dynamic` | — |  |
-| `missionpack` | `dynamic` | — |  |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
+| `missionpack` | `dynamic` | — | Whether Team Arena rules and definitions are active. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L204)

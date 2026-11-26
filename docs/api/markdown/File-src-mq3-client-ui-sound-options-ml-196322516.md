@@ -18,7 +18,7 @@ function cache()
 UI_SoundOptionsMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L36)
 
 <a id="function-function-mq3-client-ui-sound-options-event-function-event-menu-id-eventcode-value-src-mq3-client-ui-sound-options-ml-605962800"></a>
 ### event
@@ -31,13 +31,13 @@ UI_SoundOptionsMenu_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI sound options record/storage; this routine assigns `menu.actions`, `menu.cvarWrites`, `menu.commands`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_GRAPHICS then menu.actions=menu.actions+["pop","graphics"]`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
+| `value` | `dynamic` | — | Value tested by `value!=0.0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L65)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-back-const-id-back-18-src-mq3-client-ui-sound-options-ml-486695126"></a>
 ### ID_BACK
@@ -130,12 +130,12 @@ UI_SoundOptionsMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sVolume` | `dynamic` | — |  |
-| `sMusicVolume` | `dynamic` | — |  |
-| `sCompression` | `dynamic` | — |  |
+| `sVolume` | `dynamic` | — | Value used by `items=items+[item(ID_EFFECTSVOLUME,"slider","Effects Volume:",400,213,0.0,10.0,sVolume*10.0,true)]`. |
+| `sMusicVolume` | `dynamic` | — | Value used by `items=items+[item(ID_MUSICVOLUME,"slider","Music Volume:",400,231,0.0,10.0,sMusicVolume*10.0,true)]`. |
+| `sCompression` | `dynamic` | — | Value used by `items=items+[item(ID_QUALITY,"spin","Sound Quality:",400,249,0.0,1.0,1.0-sCompression,true)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L44)
 
 <a id="function-function-mq3-client-ui-sound-options-item-function-item-id-kind-name-x-y-minvalue-maxvalue-value-active-src-mq3-client-ui-sound-options-ml-589524636"></a>
 ### item
@@ -144,20 +144,22 @@ UI_SoundOptionsMenu_Init
 function item(id, kind, name, x, y, minValue, maxValue, value, active)
 ```
 
+Creates a `mq3.client.ui_sound_options.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `id` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `minValue` | `dynamic` | — |  |
-| `maxValue` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `active` | `dynamic` | — |  |
+| `id` | `dynamic` | — | Value used to initialize `Item.id`. |
+| `kind` | `dynamic` | — | Value used to initialize `Item.kind`. |
+| `name` | `dynamic` | — | Value used to initialize `Item.name`. |
+| `x` | `dynamic` | — | Value used to initialize `Item.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Item.y`. |
+| `minValue` | `dynamic` | — | Value used to initialize `Item.minValue`. |
+| `maxValue` | `dynamic` | — | Value used to initialize `Item.maxValue`. |
+| `value` | `dynamic` | — | Value used to initialize `Item.value`. |
+| `active` | `dynamic` | — | Value used to initialize `Item.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L31)
 
 - [mq3.client.ui_sound_options.Item](Type-mq3-client-ui-sound-options-item-793859675.md) — struct
 - [mq3.client.ui_sound_options.Menu](Type-mq3-client-ui-sound-options-menu-323770811.md) — struct
@@ -172,12 +174,12 @@ UI_SoundOptionsMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sVolume` | `dynamic` | — |  |
-| `sMusicVolume` | `dynamic` | — |  |
-| `sCompression` | `dynamic` | — |  |
+| `sVolume` | `dynamic` | — | Argument 1 of `mq3.client.ui_sound_options.init`. |
+| `sMusicVolume` | `dynamic` | — | Argument 2 of `mq3.client.ui_sound_options.init`. |
+| `sCompression` | `dynamic` | — | Argument 3 of `mq3.client.ui_sound_options.init`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L86)
 
 <a id="constant-constant-mq3-client-ui-sound-options-qm-activated-const-qm-activated-3-src-mq3-client-ui-sound-options-ml-2043382004"></a>
 ### QM_ACTIVATED

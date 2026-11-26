@@ -9,8 +9,10 @@
 struct Packet
 ```
 
+Packet record for qcommon.net_transport, containing `received`, `address`, `data`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)
 
 <a id="field-field-mq3-qcommon-net-transport-packet-data-data-src-mq3-qcommon-net-transport-ml-2102400057"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)
 
 <a id="field-field-mq3-qcommon-net-transport-packet-received-received-src-mq3-qcommon-net-transport-ml-1228096659"></a>
 ### received
@@ -42,4 +44,4 @@ received
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L30)

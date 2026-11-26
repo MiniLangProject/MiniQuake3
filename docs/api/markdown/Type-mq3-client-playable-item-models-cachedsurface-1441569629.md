@@ -9,8 +9,10 @@
 struct CachedSurface
 ```
 
+Stores playable item models cached surface record, including `positions`, `normals`, `triangleIndexes`, `triangleTexCoords`, `surfaceIndex`, `numTriangles`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ normals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-cachedsurface-numtriangles-numtriangles-src-mq3-client-playable-item-models-ml-884289280"></a>
 ### numTriangles
@@ -32,7 +34,7 @@ numTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-cachedsurface-positions-positions-src-mq3-client-playable-item-models-ml-159129650"></a>
 ### positions
@@ -42,7 +44,7 @@ positions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-cachedsurface-surfaceindex-surfaceindex-src-mq3-client-playable-item-models-ml-381836408"></a>
 ### surfaceIndex
@@ -52,7 +54,7 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-cachedsurface-triangleindexes-triangleindexes-src-mq3-client-playable-item-models-ml-107807850"></a>
 ### triangleIndexes
@@ -62,7 +64,7 @@ triangleIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-cachedsurface-triangletexcoords-triangletexcoords-src-mq3-client-playable-item-models-ml-1101632002"></a>
 ### triangleTexCoords
@@ -72,4 +74,4 @@ triangleTexCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)

@@ -9,8 +9,10 @@
 struct UploadConfig
 ```
 
+Data record for `mq3.renderer.image_registry.UploadConfig`; groups `roundImagesDown`, `picmip`, `maxTextureSize`, `textureBits`, `textureCompression`, `simpleMipMaps`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ deviceSupportsGamma
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-gammatable-gammatable-src-mq3-renderer-image-registry-ml-442104782"></a>
 ### gammaTable
@@ -32,7 +34,7 @@ gammaTable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-intensitytable-intensitytable-src-mq3-renderer-image-registry-ml-1768047854"></a>
 ### intensityTable
@@ -42,7 +44,7 @@ intensityTable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-maxtexturesize-maxtexturesize-src-mq3-renderer-image-registry-ml-252336908"></a>
 ### maxTextureSize
@@ -52,7 +54,7 @@ maxTextureSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-picmip-picmip-src-mq3-renderer-image-registry-ml-1569889596"></a>
 ### picmip
@@ -62,7 +64,7 @@ picmip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-roundimagesdown-roundimagesdown-src-mq3-renderer-image-registry-ml-1187981196"></a>
 ### roundImagesDown
@@ -72,7 +74,7 @@ roundImagesDown
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-simplemipmaps-simplemipmaps-src-mq3-renderer-image-registry-ml-1554024776"></a>
 ### simpleMipMaps
@@ -82,7 +84,7 @@ simpleMipMaps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-texturebits-texturebits-src-mq3-renderer-image-registry-ml-1443487712"></a>
 ### textureBits
@@ -92,7 +94,7 @@ textureBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
 
 <a id="field-field-mq3-renderer-image-registry-uploadconfig-texturecompression-texturecompression-src-mq3-renderer-image-registry-ml-58456790"></a>
 ### textureCompression
@@ -102,4 +104,4 @@ textureCompression
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)

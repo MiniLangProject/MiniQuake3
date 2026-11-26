@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for rankings, containing `warmupTime`, `time`, `framenum`, `maxclients` and `gametype` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-active-active-src-mq3-game-rankings-ml-2027326926"></a>
 ### active
@@ -32,7 +34,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-clients-clients-src-mq3-game-rankings-ml-1889683426"></a>
 ### clients
@@ -42,7 +44,7 @@ clients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-cvars-cvars-src-mq3-game-rankings-ml-1409774674"></a>
 ### cvars
@@ -52,7 +54,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-fraglimit-fraglimit-src-mq3-game-rankings-ml-171425122"></a>
 ### fraglimit
@@ -62,7 +64,7 @@ fraglimit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-framenum-framenum-src-mq3-game-rankings-ml-866937512"></a>
 ### framenum
@@ -72,7 +74,7 @@ framenum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-gametype-gametype-src-mq3-game-rankings-ml-494580134"></a>
 ### gametype
@@ -82,7 +84,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-initialized-initialized-src-mq3-game-rankings-ml-1001048158"></a>
 ### initialized
@@ -92,7 +94,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-intermissiontime-intermissiontime-src-mq3-game-rankings-ml-340699156"></a>
 ### intermissiontime
@@ -102,7 +104,7 @@ intermissiontime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-lastattacker-lastattacker-src-mq3-game-rankings-ml-890486432"></a>
 ### lastAttacker
@@ -112,7 +114,7 @@ lastAttacker
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-lastframe-lastframe-src-mq3-game-rankings-ml-1599107262"></a>
 ### lastFrame
@@ -122,7 +124,7 @@ lastFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-lastmod-lastmod-src-mq3-game-rankings-ml-598647974"></a>
 ### lastMod
@@ -132,7 +134,7 @@ lastMod
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-lastself-lastself-src-mq3-game-rankings-ml-1407621430"></a>
 ### lastSelf
@@ -142,7 +144,7 @@ lastSelf
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-maxclients-maxclients-src-mq3-game-rankings-ml-2119153318"></a>
 ### maxclients
@@ -152,7 +154,7 @@ maxclients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-rankbeginfn-rankbeginfn-src-mq3-game-rankings-ml-70186778"></a>
 ### rankBeginFn
@@ -162,7 +164,7 @@ rankBeginFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-rankpollfn-rankpollfn-src-mq3-game-rankings-ml-1970123684"></a>
 ### rankPollFn
@@ -172,7 +174,7 @@ rankPollFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-rankresetfn-rankresetfn-src-mq3-game-rankings-ml-1854991026"></a>
 ### rankResetFn
@@ -182,7 +184,7 @@ rankResetFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-reportintfn-reportintfn-src-mq3-game-rankings-ml-1465358110"></a>
 ### reportIntFn
@@ -192,7 +194,7 @@ reportIntFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-reports-reports-src-mq3-game-rankings-ml-377914150"></a>
 ### reports
@@ -202,7 +204,7 @@ reports
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-reportstrfn-reportstrfn-src-mq3-game-rankings-ml-1480674714"></a>
 ### reportStrFn
@@ -212,7 +214,7 @@ reportStrFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-statusfn-statusfn-src-mq3-game-rankings-ml-539936214"></a>
 ### statusFn
@@ -222,7 +224,7 @@ statusFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-time-time-src-mq3-game-rankings-ml-936647872"></a>
 ### time
@@ -232,7 +234,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-timelimit-timelimit-src-mq3-game-rankings-ml-1493990510"></a>
 ### timelimit
@@ -242,7 +244,7 @@ timelimit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)
 
 <a id="field-field-mq3-game-rankings-state-warmuptime-warmuptime-src-mq3-game-rankings-ml-145666624"></a>
 ### warmupTime
@@ -252,4 +254,4 @@ warmupTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L143)

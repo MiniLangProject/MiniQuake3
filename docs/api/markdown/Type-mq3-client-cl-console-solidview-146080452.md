@@ -9,8 +9,10 @@
 struct SolidView
 ```
 
+Stores engine client console solid view record, including `fraction`, `scanlines`, `rows`, `backscrolled`, `version`, `glyphs` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ backscrolled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)
 
 <a id="field-field-mq3-client-cl-console-solidview-fraction-fraction-src-mq3-client-cl-console-ml-1254303227"></a>
 ### fraction
@@ -32,7 +34,7 @@ fraction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)
 
 <a id="field-field-mq3-client-cl-console-solidview-glyphs-glyphs-src-mq3-client-cl-console-ml-833189049"></a>
 ### glyphs
@@ -42,7 +44,7 @@ glyphs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)
 
 <a id="field-field-mq3-client-cl-console-solidview-input-input-src-mq3-client-cl-console-ml-763073351"></a>
 ### input
@@ -52,7 +54,7 @@ input
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)
 
 <a id="field-field-mq3-client-cl-console-solidview-rows-rows-src-mq3-client-cl-console-ml-2066180981"></a>
 ### rows
@@ -62,7 +64,7 @@ rows
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)
 
 <a id="field-field-mq3-client-cl-console-solidview-scanlines-scanlines-src-mq3-client-cl-console-ml-953708271"></a>
 ### scanlines
@@ -72,7 +74,7 @@ scanlines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)
 
 <a id="field-field-mq3-client-cl-console-solidview-version-version-src-mq3-client-cl-console-ml-1394578311"></a>
 ### version
@@ -82,4 +84,4 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L34)

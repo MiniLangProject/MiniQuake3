@@ -9,8 +9,10 @@
 struct Zone
 ```
 
+Zone record for qcommon.common, containing `capacity`, `used`, `nextHandle`, `allocations`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L45)
 
 ## Members
 
@@ -22,7 +24,7 @@ allocations
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L45)
 
 <a id="field-field-mq3-qcommon-common-zone-capacity-capacity-src-mq3-qcommon-common-ml-1989971565"></a>
 ### capacity
@@ -32,7 +34,7 @@ capacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L45)
 
 <a id="field-field-mq3-qcommon-common-zone-nexthandle-nexthandle-src-mq3-qcommon-common-ml-949425543"></a>
 ### nextHandle
@@ -42,7 +44,7 @@ nextHandle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L45)
 
 <a id="field-field-mq3-qcommon-common-zone-used-used-src-mq3-qcommon-common-ml-1433523123"></a>
 ### used
@@ -52,4 +54,4 @@ used
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L45)

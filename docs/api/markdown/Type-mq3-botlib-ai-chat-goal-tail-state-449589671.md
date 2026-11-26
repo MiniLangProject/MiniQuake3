@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for ai chat goal tail, containing `chatProfiles`, `goalRuntime` and `levelItems`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ chatProfiles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-goal-tail-state-goalruntime-goalruntime-src-mq3-botlib-ai-chat-goal-tail-ml-1307123312"></a>
 ### goalRuntime
@@ -32,7 +34,7 @@ goalRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-goal-tail-state-levelitems-levelitems-src-mq3-botlib-ai-chat-goal-tail-ml-888806800"></a>
 ### levelItems
@@ -42,4 +44,4 @@ levelItems
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L20)

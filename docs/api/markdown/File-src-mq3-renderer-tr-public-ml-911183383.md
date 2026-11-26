@@ -15,12 +15,14 @@ Reachable from entry: **yes**
 function compatible(apiVersion)
 ```
 
+Computes `apiVersion==REF_API_VERSION` for `mq3.renderer.tr_public.compatible`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `apiVersion` | `dynamic` | — |  |
+| `apiVersion` | `dynamic` | — | Input used in the result expression `apiVersion==REF_API_VERSION`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L19)
 
 <a id="function-function-mq3-renderer-tr-public-declaredexportnames-function-declaredexportnames-src-mq3-renderer-tr-public-ml-703196322"></a>
 ### declaredExportNames
@@ -29,8 +31,10 @@ function compatible(apiVersion)
 function declaredExportNames()
 ```
 
+Lists the 30 declared names for `mq3.renderer.tr_public.declaredExportNames`, including `Shutdown`, `BeginRegistration`, `RegisterModel`, `RegisterSkin`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L12)
 
 <a id="function-function-mq3-renderer-tr-public-entrypointname-function-entrypointname-src-mq3-renderer-tr-public-ml-255035574"></a>
 ### entrypointName
@@ -39,8 +43,10 @@ function declaredExportNames()
 function entrypointName()
 ```
 
+Computes `"GetRefAPI"` for `mq3.renderer.tr_public.entrypointName`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L21)
 
 <a id="function-function-mq3-renderer-tr-public-exportnames-function-exportnames-src-mq3-renderer-tr-public-ml-1915362954"></a>
 ### exportNames
@@ -49,8 +55,10 @@ function entrypointName()
 function exportNames()
 ```
 
+Returns `result` from `mq3.renderer.tr_public.exportNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L14)
 
 <a id="function-function-mq3-renderer-tr-public-importnames-function-importnames-src-mq3-renderer-tr-public-ml-1252804412"></a>
 ### importNames
@@ -59,8 +67,10 @@ function exportNames()
 function importNames()
 ```
 
+Lists the 27 declared names for `mq3.renderer.tr_public.importNames`, including `Printf`, `Error`, `Milliseconds`, `Hunk_AllocDebug`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L16)
 
 <a id="constant-constant-mq3-renderer-tr-public-ref-api-version-const-ref-api-version-8-src-mq3-renderer-tr-public-ml-1515639899"></a>
 ### REF_API_VERSION

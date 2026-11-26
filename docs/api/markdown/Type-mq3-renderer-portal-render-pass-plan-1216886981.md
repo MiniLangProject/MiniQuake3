@@ -9,8 +9,10 @@
 struct Plan
 ```
 
+Data record for `mq3.renderer.portal_render_pass.Plan`; groups `surface`, `view`, `refdef`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ refdef
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L18)
 
 <a id="field-field-mq3-renderer-portal-render-pass-plan-surface-surface-src-mq3-renderer-portal-render-pass-ml-1565033828"></a>
 ### surface
@@ -32,7 +34,7 @@ surface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L18)
 
 <a id="field-field-mq3-renderer-portal-render-pass-plan-view-view-src-mq3-renderer-portal-render-pass-ml-816271662"></a>
 ### view
@@ -42,4 +44,4 @@ view
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L18)

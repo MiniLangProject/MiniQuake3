@@ -18,7 +18,7 @@ function cache()
 InGame_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L65)
 
 <a id="function-function-mq3-client-ui-ingame-event-function-event-menu-id-notification-src-mq3-client-ui-ingame-ml-1320600769"></a>
 ### event
@@ -31,12 +31,12 @@ InGame_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `notification` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI ingame record/storage; this routine assigns `menu.actions`, `menu.commands`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_TEAM then menu.actions=menu.actions+["team"]`. |
+| `notification` | `dynamic` | — | Value used by `if notification!=QM_ACTIVATED then return menu end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L49)
 
 <a id="constant-constant-mq3-client-ui-ingame-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-ingame-ml-390025383"></a>
 ### GT_SINGLE_PLAYER
@@ -181,13 +181,13 @@ InGame_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `serverRunning` | `dynamic` | — |  |
-| `botEnable` | `dynamic` | — |  |
-| `gametype` | `dynamic` | — |  |
-| `playerTeam` | `dynamic` | — |  |
+| `serverRunning` | `dynamic` | — | Value used by `botGrayed=not serverRunning or not botEnable or gametype==GT_SINGLE_PLAYER`. |
+| `botEnable` | `dynamic` | — | Value used by `botGrayed=not serverRunning or not botEnable or gametype==GT_SINGLE_PLAYER`. |
+| `gametype` | `dynamic` | — | Quake III game-type identifier. |
+| `playerTeam` | `dynamic` | — | Value used by `ordersGrayed=gametype<GT_TEAM or playerTeam==TEAM_SPECTATOR`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L72)
 
 <a id="function-function-mq3-client-ui-ingame-open-function-open-serverrunning-botenable-gametype-playerteam-src-mq3-client-ui-ingame-ml-1831280496"></a>
 ### open
@@ -200,13 +200,13 @@ UI_InGameMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `serverRunning` | `dynamic` | — |  |
-| `botEnable` | `dynamic` | — |  |
-| `gametype` | `dynamic` | — |  |
-| `playerTeam` | `dynamic` | — |  |
+| `serverRunning` | `dynamic` | — | Value used by `menu=init(serverRunning,botEnable,gametype,playerTeam)`. |
+| `botEnable` | `dynamic` | — | Value used by `menu=init(serverRunning,botEnable,gametype,playerTeam)`. |
+| `gametype` | `dynamic` | — | Quake III game-type identifier. |
+| `playerTeam` | `dynamic` | — | Value used by `menu=init(serverRunning,botEnable,gametype,playerTeam)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L95)
 
 <a id="constant-constant-mq3-client-ui-ingame-qm-activated-const-qm-activated-3-src-mq3-client-ui-ingame-ml-156422168"></a>
 ### QM_ACTIVATED
@@ -229,11 +229,11 @@ InGame_QuitAction
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI ingame record/storage; this routine assigns `menu.actions`. |
+| `result` | `dynamic` | — | Value used by `if result then menu.actions=menu.actions+["pop","credits"] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L40)
 
 <a id="function-function-mq3-client-ui-ingame-restartaction-function-restartaction-menu-result-src-mq3-client-ui-ingame-ml-1874227270"></a>
 ### restartAction
@@ -246,11 +246,11 @@ InGame_RestartAction
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI ingame record/storage; this routine assigns `menu.actions`, `menu.commands`. |
+| `result` | `dynamic` | — | Value used by `if not result then return menu end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-ingame-team-spectator-const-team-spectator-3-src-mq3-client-ui-ingame-ml-1484767946"></a>
 ### TEAM_SPECTATOR

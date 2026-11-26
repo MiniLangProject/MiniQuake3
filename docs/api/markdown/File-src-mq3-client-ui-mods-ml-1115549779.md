@@ -22,7 +22,7 @@ function cache()
 UI_ModsMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L44)
 
 <a id="function-function-mq3-client-ui-mods-event-function-event-menu-id-eventcode-src-mq3-client-ui-mods-ml-597660001"></a>
 ### event
@@ -35,12 +35,12 @@ UI_Mods_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI mods record/storage; this routine assigns `menu.cvarWrites`, `menu.commands`, `menu.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_GO then menu.cvarWrites=menu.cvarWrites+["fs_game="+menu.entries[menu.selected].game]`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L37)
 
 <a id="constant-constant-mq3-client-ui-mods-id-back-const-id-back-10-src-mq3-client-ui-mods-ml-1308614628"></a>
 ### ID_BACK
@@ -83,10 +83,10 @@ UI_Mods_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mods` | `dynamic` | — |  |
+| `mods` | `dynamic` | — | Value used by `menu=loadMods(mods)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L47)
 
 <a id="function-function-mq3-client-ui-mods-loadmodfromfile-function-loadmodfromfile-menu-filename-description-src-mq3-client-ui-mods-ml-1369883760"></a>
 ### loadModFromFile
@@ -99,12 +99,12 @@ UI_Mods_LoadModsFromFile (unused in the original build, retained as semantic hel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
-| `description` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Value used by `return parseInfo(menu,name,description)`. |
+| `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. |
+| `description` | `dynamic` | — | Value used by `return parseInfo(menu,name,description)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L55)
 
 <a id="function-function-mq3-client-ui-mods-loadmods-function-loadmods-mods-src-mq3-client-ui-mods-ml-1281181733"></a>
 ### loadMods
@@ -117,10 +117,10 @@ UI_Mods_LoadMods
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mods` | `dynamic` | — |  |
+| `mods` | `dynamic` | — | Value used by `for each item in mods if len(menu.entries)<MAX_MODS then menu=parseInfo(menu,item[0],item[1]) end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-mods-max-mods-const-max-mods-64-src-mq3-client-ui-mods-ml-2093764509"></a>
 ### MAX_MODS
@@ -145,10 +145,10 @@ UI_ModsMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mods` | `dynamic` | — |  |
+| `mods` | `dynamic` | — | Value used by `menu=init(mods)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L50)
 
 <a id="function-function-mq3-client-ui-mods-parseinfo-function-parseinfo-menu-moddir-moddesc-src-mq3-client-ui-mods-ml-13860989"></a>
 ### parseInfo
@@ -161,12 +161,12 @@ UI_Mods_ParseInfos
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `modDir` | `dynamic` | — |  |
-| `modDesc` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI mods record/storage; this routine assigns `menu.entries`. |
+| `modDir` | `dynamic` | — | Value used by `game=modDir`. |
+| `modDesc` | `dynamic` | — | Value used by `description=modDesc`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-mods-qm-activated-const-qm-activated-3-src-mq3-client-ui-mods-ml-1641659040"></a>
 ### QM_ACTIVATED

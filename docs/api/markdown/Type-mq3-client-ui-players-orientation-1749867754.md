@@ -9,8 +9,10 @@
 struct Orientation
 ```
 
+Stores UI players orientation record, including `origin`, `axis`, `found`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L63)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L63)
 
 <a id="field-field-mq3-client-ui-players-orientation-found-found-src-mq3-client-ui-players-ml-581848071"></a>
 ### found
@@ -32,7 +34,7 @@ found
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L63)
 
 <a id="field-field-mq3-client-ui-players-orientation-origin-origin-src-mq3-client-ui-players-ml-65665219"></a>
 ### origin
@@ -42,4 +44,4 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L63)

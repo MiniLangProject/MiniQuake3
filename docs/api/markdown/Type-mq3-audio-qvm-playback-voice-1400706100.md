@@ -9,8 +9,10 @@
 struct Voice
 ```
 
+Voice record for audio.qvm_playback, containing `id`, `slot`, `entity`, `channel`, `handle`, `origin`, and 7 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-channel-channel-src-mq3-audio-qvm-playback-ml-1155556189"></a>
 ### channel
@@ -32,7 +34,7 @@ channel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-compressed-compressed-src-mq3-audio-qvm-playback-ml-820691771"></a>
 ### compressed
@@ -42,7 +44,7 @@ compressed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-cursor-cursor-src-mq3-audio-qvm-playback-ml-1852614061"></a>
 ### cursor
@@ -52,7 +54,7 @@ cursor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-entity-entity-src-mq3-audio-qvm-playback-ml-1309986387"></a>
 ### entity
@@ -62,7 +64,7 @@ entity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-fixedorigin-fixedorigin-src-mq3-audio-qvm-playback-ml-984583625"></a>
 ### fixedOrigin
@@ -72,7 +74,7 @@ fixedOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-handle-handle-src-mq3-audio-qvm-playback-ml-913202093"></a>
 ### handle
@@ -82,7 +84,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-id-id-src-mq3-audio-qvm-playback-ml-1890350375"></a>
 ### id
@@ -92,7 +94,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-localsound-localsound-src-mq3-audio-qvm-playback-ml-599888685"></a>
 ### localSound
@@ -102,7 +104,7 @@ localSound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-mono-mono-src-mq3-audio-qvm-playback-ml-1126657615"></a>
 ### mono
@@ -112,7 +114,7 @@ mono
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-origin-origin-src-mq3-audio-qvm-playback-ml-1922853949"></a>
 ### origin
@@ -122,7 +124,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-slot-slot-src-mq3-audio-qvm-playback-ml-1107463961"></a>
 ### slot
@@ -132,7 +134,7 @@ slot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-voice-sound-sound-src-mq3-audio-qvm-playback-ml-259294473"></a>
 ### sound
@@ -142,4 +144,4 @@ sound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)

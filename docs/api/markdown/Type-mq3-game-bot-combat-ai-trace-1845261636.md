@@ -9,8 +9,10 @@
 struct Trace
 ```
 
+`Trace` record for bot combat ai, containing `fraction`, `ent`, `endpos` and `startsolid`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 ## Members
 
@@ -22,7 +24,7 @@ endpos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 <a id="field-field-mq3-game-bot-combat-ai-trace-ent-ent-src-mq3-game-bot-combat-ai-ml-1382998086"></a>
 ### ent
@@ -32,7 +34,7 @@ ent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 <a id="field-field-mq3-game-bot-combat-ai-trace-fraction-fraction-src-mq3-game-bot-combat-ai-ml-727941150"></a>
 ### fraction
@@ -42,7 +44,7 @@ fraction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 <a id="field-field-mq3-game-bot-combat-ai-trace-startsolid-startsolid-src-mq3-game-bot-combat-ai-ml-974742392"></a>
 ### startsolid
@@ -52,4 +54,4 @@ startsolid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)

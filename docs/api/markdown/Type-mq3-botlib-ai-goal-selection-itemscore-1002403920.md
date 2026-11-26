@@ -9,8 +9,10 @@
 struct ItemScore
 ```
 
+`ItemScore` record for ai goal selection, containing `weight` and `time`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L40)
 
 ## Members
 
@@ -22,7 +24,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-itemscore-weight-weight-src-mq3-botlib-ai-goal-selection-ml-1381547744"></a>
 ### weight
@@ -32,4 +34,4 @@ weight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L40)

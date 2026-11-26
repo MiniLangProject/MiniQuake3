@@ -92,15 +92,17 @@ const ENTITYNUM_NONE = 1023
 function fire_bfg(level, self, start, dir)
 ```
 
+Forward `fire_bfg` to `mq3.game.missiles.fire` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `dir` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L225)
 
 <a id="function-function-mq3-game-g-missile-fire-grapple-function-fire-grapple-level-self-start-dir-src-mq3-game-g-missile-ml-854171595"></a>
 ### fire_grapple
@@ -109,15 +111,17 @@ function fire_bfg(level, self, start, dir)
 function fire_grapple(level, self, start, dir)
 ```
 
+Forward `fire_grapple` to `mq3.game.missiles.fire` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `dir` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L237)
 
 <a id="function-function-mq3-game-g-missile-fire-grenade-function-fire-grenade-level-self-start-dir-src-mq3-game-g-missile-ml-962124035"></a>
 ### fire_grenade
@@ -126,15 +130,17 @@ function fire_grapple(level, self, start, dir)
 function fire_grenade(level, self, start, dir)
 ```
 
+Forward `fire_grenade` to `mq3.game.missiles.fire` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `dir` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L219)
 
 <a id="function-function-mq3-game-g-missile-fire-nail-function-fire-nail-level-self-start-forward-right-up-src-mq3-game-g-missile-ml-552681064"></a>
 ### fire_nail
@@ -143,17 +149,19 @@ function fire_grenade(level, self, start, dir)
 function fire_nail(level, self, start, forward, right, up)
 ```
 
+Forward `fire_nail` to `mq3.game.g_weapon.fireNail` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `forward` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
-| `up` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `forward` | `dynamic` | — | Value passed as argument 3 to `mq3.shared.math.VectorMA`. |
+| `right` | `dynamic` | — | Value passed as argument 3 to `mq3.shared.math.VectorMA`. |
+| `up` | `dynamic` | — | Value passed as argument 3 to `mq3.shared.math.VectorMA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L245)
 
 <a id="function-function-mq3-game-g-missile-fire-plasma-function-fire-plasma-level-self-start-dir-src-mq3-game-g-missile-ml-1000516013"></a>
 ### fire_plasma
@@ -162,15 +170,17 @@ function fire_nail(level, self, start, forward, right, up)
 function fire_plasma(level, self, start, dir)
 ```
 
+Forward `fire_plasma` to `mq3.game.missiles.fire` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `dir` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L213)
 
 <a id="function-function-mq3-game-g-missile-fire-prox-function-fire-prox-level-self-start-dir-src-mq3-game-g-missile-ml-1855502207"></a>
 ### fire_prox
@@ -179,15 +189,17 @@ function fire_plasma(level, self, start, dir)
 function fire_prox(level, self, start, dir)
 ```
 
+Forward `fire_prox` to `mq3.game.g_weapon.fireProx` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s` and `client`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `dir` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L251)
 
 <a id="function-function-mq3-game-g-missile-fire-rocket-function-fire-rocket-level-self-start-dir-src-mq3-game-g-missile-ml-1843225833"></a>
 ### fire_rocket
@@ -196,15 +208,17 @@ function fire_prox(level, self, start, dir)
 function fire_rocket(level, self, start, dir)
 ```
 
+Forward `fire_rocket` to `mq3.game.missiles.fire` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `dir` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `dir` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.VectorNormalize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L231)
 
 <a id="function-function-mq3-game-g-missile-g-bouncemissile-function-g-bouncemissile-level-ent-hit-src-mq3-game-g-missile-ml-133320190"></a>
 ### G_BounceMissile
@@ -213,14 +227,16 @@ function fire_rocket(level, self, start, dir)
 function G_BounceMissile(level, ent, hit)
 ```
 
+Forward `G_BounceMissile` to `mq3.game.missiles.bounce` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `hit` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `previousTime` and `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s` and `r`. May update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]` and `ent.r.currentOrigin[axis]` and additional fields in place. |
+| `hit` | `dynamic` | — | Hit record; accesses `trace` and `endpos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L40)
 
 <a id="function-function-mq3-game-g-missile-g-explodemissile-function-g-explodemissile-level-ent-src-mq3-game-g-missile-ml-51055687"></a>
 ### G_ExplodeMissile
@@ -229,13 +245,15 @@ function G_BounceMissile(level, ent, hit)
 function G_ExplodeMissile(level, ent)
 ```
 
+Forward `G_ExplodeMissile` to `mq3.game.missiles.explode` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`, `freeAfterEvent`, `splashDamage`, `r` and `parent` and related fields. May update `ent.s.eType` and `ent.freeAfterEvent` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L44)
 
 <a id="function-function-mq3-game-g-missile-g-missileimpact-function-g-missileimpact-level-ent-hit-src-mq3-game-g-missile-ml-729818106"></a>
 ### G_MissileImpact
@@ -244,14 +262,16 @@ function G_ExplodeMissile(level, ent)
 function G_MissileImpact(level, ent, hit)
 ```
 
+Update `ent.s.eFlags`, `ent.target_ent`, `ent.s.pos.trType` and `ent.s.pos.trDelta` and related state during `G_MissileImpact`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `hit` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities` and `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`, `target_ent`, `damage`, `r` and `methodOfDeath` and related fields. May update `ent.s.eFlags`, `ent.target_ent` and `ent.s.pos.trType` and additional fields in place. |
+| `hit` | `dynamic` | — | Hit record; accesses `trace`, `entityNum` and `endpos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L161)
 
 <a id="function-function-mq3-game-g-missile-g-runmissile-function-g-runmissile-level-ent-src-mq3-game-g-missile-ml-141336767"></a>
 ### G_RunMissile
@@ -260,13 +280,15 @@ function G_MissileImpact(level, ent, hit)
 function G_RunMissile(level, ent)
 ```
 
+Update `ent.r.currentOrigin`, `ent.parent.client.hook` and `ent.count` during `G_RunMissile`. Return paths include `game.runThink(level,ent)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `s`, `r`, `target_ent`, `count` and `clipmask` and related fields. May update `ent.r.currentOrigin`, `ent.parent.client.hook` and `ent.count` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L190)
 
 <a id="function-function-mq3-game-g-missile-gametype-function-gametype-level-src-mq3-game-g-missile-ml-513423556"></a>
 ### gameType
@@ -275,12 +297,14 @@ function G_RunMissile(level, ent)
 function gameType(level)
 ```
 
+Read the active game type from the spawner, using zero when no spawner is installed.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L69)
 
 <a id="function-function-mq3-game-g-missile-invulnerabilityeffect-function-invulnerabilityeffect-level-target-direction-point-src-mq3-game-g-missile-ml-2016797264"></a>
 ### invulnerabilityEffect
@@ -293,13 +317,13 @@ Exact RaySphereIntersections/G_InvulnerabilityEffect geometry used by the Team A
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `target` | `dynamic` | — | Target record; accesses `client`. |
+| `direction` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L144)
 
 <a id="constant-constant-mq3-game-g-missile-mask-shot-const-mask-shot-100663297-src-mq3-game-g-missile-ml-1269504947"></a>
 ### MASK_SHOT
@@ -338,13 +362,15 @@ const MOD_PROXIMITY_MINE = 26
 function ProximityMine_Activate(level, ent)
 ```
 
+Update `ent.think`, `ent.nextthink`, `ent.takedamage` and `ent.health` and related state during `ProximityMine_Activate`. Return paths include `trigger`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time` and `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `think`, `nextthink`, `takedamage`, `health` and `die` and related fields. May update `ent.think`, `ent.nextthink` and `ent.takedamage` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L93)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-die-function-proximitymine-die-level-ent-inflictor-attacker-damage-mod-src-mq3-game-g-missile-ml-363952673"></a>
 ### ProximityMine_Die
@@ -353,17 +379,19 @@ function ProximityMine_Activate(level, ent)
 function ProximityMine_Die(level, ent, inflictor, attacker, damage, mod)
 ```
 
+Set `ent.think` to `ProximityMine_Explode` and `ent.nextthink` to `n.add32(level.time,1)` in `mq3.game.g_missile.ProximityMine_Die`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `inflictor` | `dynamic` | — |  |
-| `attacker` | `dynamic` | — |  |
-| `damage` | `dynamic` | — |  |
-| `mod` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `think` and `nextthink`. May update `ent.think` and `ent.nextthink` in place. |
+| `inflictor` | `dynamic` | — | Not read by this implementation; retained in the `ProximityMine_Die` signature. |
+| `attacker` | `dynamic` | — | Not read by this implementation; retained in the `ProximityMine_Die` signature. |
+| `damage` | `dynamic` | — | Not read by this implementation; retained in the `ProximityMine_Die` signature. |
+| `mod` | `dynamic` | — | Not read by this implementation; retained in the `ProximityMine_Die` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L62)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-explode-function-proximitymine-explode-level-mine-src-mq3-game-g-missile-ml-1418904909"></a>
 ### ProximityMine_Explode
@@ -372,13 +400,15 @@ function ProximityMine_Die(level, ent, inflictor, attacker, damage, mod)
 function ProximityMine_Explode(level, mine)
 ```
 
+Set `mine.activator` to `void` in `mq3.game.g_missile.ProximityMine_Explode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `mine` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `mine` | `dynamic` | — | Mine record; accesses `activator`. May update `mine.activator` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L49)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-explodeonplayer-function-proximitymine-explodeonplayer-level-mine-src-mq3-game-g-missile-ml-1641089697"></a>
 ### ProximityMine_ExplodeOnPlayer
@@ -387,13 +417,15 @@ function ProximityMine_Explode(level, mine)
 function ProximityMine_ExplodeOnPlayer(level, mine)
 ```
 
+Set `mine.r.svFlags` to `mine.r.svFlags & n.i32(~SVF_NOCLIENT)` and `mine.splashMethodOfDeath` to `MOD_PROXIMITY_MINE` in `mq3.game.g_missile.ProximityMine_ExplodeOnPlayer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `mine` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `mine` | `dynamic` | — | Mine record; accesses `enemy`, `parent`, `s`, `r` and `splashMethodOfDeath`. May update `mine.r.svFlags` and `mine.splashMethodOfDeath` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L107)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-player-function-proximitymine-player-level-mine-player-src-mq3-game-g-missile-ml-877093170"></a>
 ### ProximityMine_Player
@@ -402,14 +434,16 @@ function ProximityMine_ExplodeOnPlayer(level, mine)
 function ProximityMine_Player(level, mine, player)
 ```
 
+Update `player.activator.splashDamage`, `player.activator.splashRadius`, `mine.think` and `mine.nextthink` and related state during `ProximityMine_Player`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `mine` | `dynamic` | — |  |
-| `player` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `mine` | `dynamic` | — | Mine record; accesses `s`, `splashDamage`, `think`, `nextthink` and `r` and related fields. May update `mine.think`, `mine.nextthink` and `mine.s.eFlags` and additional fields in place. |
+| `player` | `dynamic` | — | Player entity; accesses `s`, `activator` and `client`. May update `player.activator.splashDamage`, `player.activator.splashRadius` and `player.client.ps.eFlags` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L123)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-trigger-function-proximitymine-trigger-level-trigger-other-trace-src-mq3-game-g-missile-ml-169294651"></a>
 ### ProximityMine_Trigger
@@ -418,15 +452,17 @@ function ProximityMine_Player(level, mine, player)
 function ProximityMine_Trigger(level, trigger, other, trace)
 ```
 
+Apply `mq3.game.g_missile.gameType`, `mq3.game.combat.canDamage` and `mq3.game.events.add` while evaluating `ProximityMine_Trigger`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `trigger` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `trigger` | `dynamic` | — | Trigger record; accesses `s` and `parent`. |
+| `other` | `dynamic` | — | Other record; accesses `client` and `s`. |
+| `trace` | `dynamic` | — | Not read by this implementation; retained in the `ProximityMine_Trigger` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L79)
 
 <a id="constant-constant-mq3-game-g-missile-svf-noclient-const-svf-noclient-1-src-mq3-game-g-missile-ml-503051952"></a>
 ### SVF_NOCLIENT

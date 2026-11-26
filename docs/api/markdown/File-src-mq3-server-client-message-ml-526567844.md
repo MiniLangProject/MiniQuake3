@@ -61,8 +61,10 @@ const CLC_MOVE_NO_DELTA = 3
 function createClient()
 ```
 
+Create `mq3.server.client_message.Client` with state=0; messageAcknowledge=0; reliableAcknowledge=0; reliableSequence=0; gamestateMessageNum=0; downloadName=""; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L31)
 
 <a id="function-function-mq3-server-client-message-createserver-function-createserver-serverid-restartedserverid-src-mq3-server-client-message-ml-675477102"></a>
 ### createServer
@@ -71,13 +73,15 @@ function createClient()
 function createServer(serverId, restartedServerId)
 ```
 
+Create `mq3.server.client_message.Server` with serverId=serverId; restartedServerId=restartedServerId.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `serverId` | `dynamic` | — |  |
-| `restartedServerId` | `dynamic` | — |  |
+| `serverId` | `dynamic` | — | Initial `serverId` field stored in the returned or constructed `mq3.server.client_message.Server` record. |
+| `restartedServerId` | `dynamic` | — | Initial `restartedServerId` field stored in the returned or constructed `mq3.server.client_message.Server` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L29)
 
 <a id="constant-constant-mq3-server-client-message-cs-zombie-const-cs-zombie-1-src-mq3-server-client-message-ml-2023967532"></a>
 ### CS_ZOMBIE
@@ -96,15 +100,20 @@ const CS_ZOMBIE = 1
 function execute(serverState, clientState, host, msg)
 ```
 
+Execute client message in server.client_message; the normal completion returns `"eof"`.
+
+Validation failures include `client message: missing state`.
+Direct state writes: `clientState.messageAcknowledge`, `clientState.reliableAcknowledge`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `serverState` | `dynamic` | — |  |
-| `clientState` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `serverState` | `dynamic` | — | Record exposing `serverId`, `restartedServerId`. |
+| `clientState` | `dynamic` | — | Record exposing `messageAcknowledge`, `reliableAcknowledge`, `reliableSequence`, `lastClientCommandString`, `downloadName`, `gamestateMessageNum`, `state`. Updated in place: `messageAcknowledge`, `reliableAcknowledge`. |
+| `host` | `dynamic` | — | Record exposing `dropFn`, `sendGamestateFn`, `clientCommandFn`, `userMoveFn`, `diagnosticFn`. |
+| `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.bitstream`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L43)
 
 <a id="constant-constant-mq3-server-client-message-max-reliable-commands-const-max-reliable-commands-64-src-mq3-server-client-message-ml-1803184575"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -124,7 +133,9 @@ const MAX_RELIABLE_COMMANDS = 64
 function services()
 ```
 
+Create `mq3.server.client_message.Services` with clientCommandFn=void; userMoveFn=void; sendGamestateFn=void; dropFn=void; diagnosticFn=void; context=void.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L33)
 
 - [mq3.server.client_message.Services](Type-mq3-server-client-message-services-149189296.md) — struct

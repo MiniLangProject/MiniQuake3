@@ -20,19 +20,21 @@ Reachable from entry: **yes**
 function action(boundary, kind, name, value, value2, number, flags, retailActive)
 ```
 
+Creates a `mq3.client.cgame_main.Action` record. Assigns `boundary` from `boundary`, `kind` from `kind`, `name` from `name`, `value` from `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `value2` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `boundary` | `dynamic` | — | Value used to initialize `Action.boundary`. |
+| `kind` | `dynamic` | — | Value used to initialize `Action.kind`. |
+| `name` | `dynamic` | — | Value used to initialize `Action.name`. |
+| `value` | `dynamic` | — | Value used to initialize `Action.value`. |
+| `value2` | `dynamic` | — | Value used to initialize `Action.value2`. |
+| `number` | `dynamic` | — | Value used to initialize `Action.number`. |
+| `flags` | `dynamic` | — | Value used to initialize `Action.flags`. |
+| `retailActive` | `dynamic` | — | Value used to initialize `Action.dispatched`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L82)
 
 - [mq3.client.cgame_main.Action](Type-mq3-client-cgame-main-action-1053767360.md) — struct
 <a id="function-function-mq3-client-cgame-main-argv-function-argv-args-index-src-mq3-client-cgame-main-ml-1460541111"></a>
@@ -46,11 +48,11 @@ CG_Argv
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `args` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `args` | `dynamic` | — | Sequence read at `args[index]`. |
+| `index` | `dynamic` | — | Value tested by `index<0 or index>=len(args)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L116)
 
 <a id="function-function-mq3-client-cgame-main-assetcache-function-assetcache-state-retailactive-src-mq3-client-cgame-main-ml-1272044528"></a>
 ### assetCache
@@ -63,11 +65,11 @@ CG_AssetCache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Accepted for compatibility with `assetCache`; the current implementation does not read it. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L389)
 
 <a id="function-function-mq3-client-cgame-main-assetparse-function-assetparse-state-tokens-start-retailactive-src-mq3-client-cgame-main-ml-1566404112"></a>
 ### assetParse
@@ -80,13 +82,13 @@ CG_Asset_Parse
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `tokens` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.hudAssets.textFont`, `state.hudAssets.smallFont`, `state.hudAssets.bigFont`, `state.hudAssets.gradientBar` and additional values. |
+| `tokens` | `dynamic` | — | Sequence read at `tokens[start]`, `tokens[at]`, `tokens[at+1]`, `tokens[at+2]` and additional values. |
+| `start` | `dynamic` | — | Value tested by `start>=len(tokens) or tokens[start]!="{"` before the calculation continues. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L247)
 
 <a id="extern_function-extern-function-mq3-client-cgame-main-atof-extern-function-atof-text-as-cstr-from-ucrtbase-dll-returns-double-src-mq3-client-cgame-main-ml-483178875"></a>
 ### atof
@@ -95,12 +97,16 @@ CG_Asset_Parse
 extern function atof(text as cstr) from "ucrtbase.dll" returns double
 ```
 
+Converts a NUL-terminated numeric C string to a double using the Windows C runtime. This binding is used by client game main.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `cstr` | — |  |
+| `text` | `cstr` | — | NUL-terminated C string containing the decimal numeric text. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L10)
+**Returns:** The parsed floating-point value; a string with no initial numeric conversion yields zero.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L16)
 
 <a id="extern_function-extern-function-mq3-client-cgame-main-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-client-cgame-main-ml-2118327986"></a>
 ### atoi
@@ -109,12 +115,16 @@ extern function atof(text as cstr) from "ucrtbase.dll" returns double
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 ```
 
+Converts a NUL-terminated decimal C string to a signed 32-bit integer using the Windows C runtime. This binding is used by client game main.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `cstr` | — |  |
+| `text` | `cstr` | — | NUL-terminated C string containing the decimal numeric text. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L9)
+**Returns:** The converted integer; a string with no initial numeric conversion yields zero.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L12)
 
 <a id="function-function-mq3-client-cgame-main-basegraphics-function-basegraphics-src-mq3-client-cgame-main-ml-1499393620"></a>
 ### baseGraphics
@@ -123,8 +133,10 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 function baseGraphics()
 ```
 
+Lists the 140 client game main base graphics strings in their declared order, beginning with `"menu/art/skill1.tga"`, `"menu/art/skill2.tga"`, `"menu/art/skill3.tga"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L120)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L201)
 
 <a id="function-function-mq3-client-cgame-main-basesounds-function-basesounds-src-mq3-client-cgame-main-ml-1935160008"></a>
 ### baseSounds
@@ -133,8 +145,10 @@ function baseGraphics()
 function baseSounds()
 ```
 
+Lists the 145 client game main base sounds strings in their declared order, beginning with `"sound/feedback/1_minute.wav"`, `"sound/feedback/5_minute.wav"`, `"sound/feedback/sudden_death.wav"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L189)
 
 <a id="function-function-mq3-client-cgame-main-buildspectatorstring-function-buildspectatorstring-state-src-mq3-client-cgame-main-ml-1909250217"></a>
 ### buildSpectatorString
@@ -147,10 +161,10 @@ CG_BuildSpectatorString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.spectatorList`, `state.spectatorLen`, `state.spectatorWidth`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L217)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-console-command-const-cg-console-command-2-src-mq3-client-cgame-main-ml-1926490749"></a>
 ### CG_CONSOLE_COMMAND
@@ -160,7 +174,7 @@ const CG_CONSOLE_COMMAND = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L36)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-crosshair-player-const-cg-crosshair-player-4-src-mq3-client-cgame-main-ml-863930465"></a>
 ### CG_CROSSHAIR_PLAYER
@@ -170,7 +184,7 @@ const CG_CROSSHAIR_PLAYER = 4
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L38)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-draw-active-frame-const-cg-draw-active-frame-3-src-mq3-client-cgame-main-ml-322443512"></a>
 ### CG_DRAW_ACTIVE_FRAME
@@ -180,7 +194,7 @@ const CG_DRAW_ACTIVE_FRAME = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L37)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-event-handling-const-cg-event-handling-8-src-mq3-client-cgame-main-ml-1630742941"></a>
 ### CG_EVENT_HANDLING
@@ -190,7 +204,7 @@ const CG_EVENT_HANDLING = 8
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-init-const-cg-init-0-src-mq3-client-cgame-main-ml-1204025833"></a>
 ### CG_INIT
@@ -200,7 +214,7 @@ const CG_INIT = 0
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L34)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-key-event-const-cg-key-event-6-src-mq3-client-cgame-main-ml-812056715"></a>
 ### CG_KEY_EVENT
@@ -210,7 +224,7 @@ const CG_KEY_EVENT = 6
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L40)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-last-attacker-const-cg-last-attacker-5-src-mq3-client-cgame-main-ml-762733540"></a>
 ### CG_LAST_ATTACKER
@@ -220,7 +234,7 @@ const CG_LAST_ATTACKER = 5
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L39)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-mouse-event-const-cg-mouse-event-7-src-mq3-client-cgame-main-ml-1386472774"></a>
 ### CG_MOUSE_EVENT
@@ -230,7 +244,7 @@ const CG_MOUSE_EVENT = 7
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="constant-constant-mq3-client-cgame-main-cg-shutdown-const-cg-shutdown-1-src-mq3-client-cgame-main-ml-639402052"></a>
 ### CG_SHUTDOWN
@@ -240,7 +254,7 @@ const CG_SHUTDOWN = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L35)
 
 <a id="function-function-mq3-client-cgame-main-client-function-client-src-mq3-client-cgame-main-ml-1743880804"></a>
 ### client
@@ -249,8 +263,10 @@ const CG_SHUTDOWN = 1
 function client()
 ```
 
+Creates a `mq3.client.cgame_main.Client` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L65)
 
 - [mq3.client.cgame_main.Client](Type-mq3-client-cgame-main-client-1204603393.md) — struct
 <a id="function-function-mq3-client-cgame-main-configstring-function-configstring-state-index-src-mq3-client-cgame-main-ml-431606295"></a>
@@ -264,11 +280,11 @@ CG_ConfigString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.configstrings`. |
+| `index` | `dynamic` | — | Value tested by `index<0 or index>=MAX_CONFIGSTRINGS` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L120)
 
 <a id="function-function-mq3-client-cgame-main-create-function-create-src-mq3-client-cgame-main-ml-1215111156"></a>
 ### create
@@ -277,8 +293,10 @@ CG_ConfigString
 function create()
 ```
 
+Calls `mq3.client.cgame_main.client`, `mq3.client.cgame_main.State`, `mq3.client.cgame_main.hudAssets` from client game main `create`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L69)
 
 <a id="function-function-mq3-client-cgame-main-crosshairplayer-function-crosshairplayer-state-src-mq3-client-cgame-main-ml-2062898667"></a>
 ### crosshairPlayer
@@ -291,10 +309,10 @@ CG_CrosshairPlayer
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.crosshairClientTime`, `state.crosshairClientNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L168)
 
 <a id="constant-constant-mq3-client-cgame-main-cs-game-version-const-cs-game-version-20-src-mq3-client-cgame-main-ml-2117492399"></a>
 ### CS_GAME_VERSION
@@ -304,7 +322,7 @@ const CS_GAME_VERSION = 20
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L21)
 
 <a id="constant-constant-mq3-client-cgame-main-cs-items-const-cs-items-27-src-mq3-client-cgame-main-ml-221033244"></a>
 ### CS_ITEMS
@@ -314,7 +332,7 @@ const CS_ITEMS = 27
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L23)
 
 <a id="constant-constant-mq3-client-cgame-main-cs-level-start-time-const-cs-level-start-time-21-src-mq3-client-cgame-main-ml-1027365270"></a>
 ### CS_LEVEL_START_TIME
@@ -324,7 +342,7 @@ const CS_LEVEL_START_TIME = 21
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L22)
 
 <a id="constant-constant-mq3-client-cgame-main-cs-models-const-cs-models-32-src-mq3-client-cgame-main-ml-492798810"></a>
 ### CS_MODELS
@@ -334,7 +352,7 @@ const CS_MODELS = 32
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L24)
 
 <a id="constant-constant-mq3-client-cgame-main-cs-music-const-cs-music-2-src-mq3-client-cgame-main-ml-45113753"></a>
 ### CS_MUSIC
@@ -344,7 +362,7 @@ const CS_MUSIC = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L20)
 
 <a id="constant-constant-mq3-client-cgame-main-cs-players-const-cs-players-544-src-mq3-client-cgame-main-ml-2010956152"></a>
 ### CS_PLAYERS
@@ -354,7 +372,7 @@ const CS_PLAYERS = 544
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L26)
 
 <a id="constant-constant-mq3-client-cgame-main-cs-sounds-const-cs-sounds-288-src-mq3-client-cgame-main-ml-1213014155"></a>
 ### CS_SOUNDS
@@ -364,7 +382,7 @@ const CS_SOUNDS = 288
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L25)
 
 - [mq3.client.cgame_main.Cvar](Type-mq3-client-cgame-main-cvar-2054669032.md) — struct
 <a id="function-function-mq3-client-cgame-main-cvarget-function-cvarget-state-name-src-mq3-client-cgame-main-ml-1253818526"></a>
@@ -378,11 +396,11 @@ CG_Cvar_Get
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game main state passed to the helper calls in `cvarGet`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game main resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L337)
 
 <a id="function-function-mq3-client-cgame-main-cvarspec-function-cvarspec-name-defaultvalue-flags-src-mq3-client-cgame-main-ml-1290860860"></a>
 ### cvarSpec
@@ -391,14 +409,16 @@ CG_Cvar_Get
 function cvarSpec(name, defaultValue, flags)
 ```
 
+Creates a `mq3.client.cgame_main.Cvar` record. Assigns `name` from `name`, `defaultValue` from `defaultValue`, `flags` from `flags`, `value` from `defaultValue`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `defaultValue` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value used to initialize `Cvar.name`. |
+| `defaultValue` | `dynamic` | — | Value used to initialize `Cvar.defaultValue`, `Cvar.value`, `Cvar.integer`. |
+| `flags` | `dynamic` | — | Value used to initialize `Cvar.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L126)
 
 <a id="function-function-mq3-client-cgame-main-cvarspecs-function-cvarspecs-src-mq3-client-cgame-main-ml-1276739776"></a>
 ### cvarSpecs
@@ -407,8 +427,10 @@ function cvarSpec(name, defaultValue, flags)
 function cvarSpecs()
 ```
 
+Calls `mq3.client.cgame_main.cvarSpec` from client game main `cvarSpecs`. The final path returns `effect`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L73)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L128)
 
 <a id="function-function-mq3-client-cgame-main-drawcinematic-function-drawcinematic-handle-x-y-w-h-retailactive-src-mq3-client-cgame-main-ml-1024254357"></a>
 ### drawCinematic
@@ -421,15 +443,15 @@ CG_DrawCinematic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `handle` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `drawCinematic`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawCinematic`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawCinematic`. |
+| `w` | `dynamic` | — | Width in the coordinate space used by `drawCinematic`. |
+| `h` | `dynamic` | — | Height in the coordinate space used by `drawCinematic`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L375)
 
 <a id="function-function-mq3-client-cgame-main-emit-function-emit-effect-boundary-kind-name-value-value2-number-flags-retailactive-src-mq3-client-cgame-main-ml-1622616355"></a>
 ### emit
@@ -438,20 +460,22 @@ CG_DrawCinematic
 function emit(effect, boundary, kind, name, value, value2, number, flags, retailActive)
 ```
 
+Appends a client game main action record to the queued engine requests.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `effect` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `value2` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `effect` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `effect.actions`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game main resource. |
+| `value` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`. |
+| `value2` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`. |
+| `number` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`. |
+| `flags` | `dynamic` | — | Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L97)
 
 <a id="function-function-mq3-client-cgame-main-errormessage-function-errormessage-text-retailactive-src-mq3-client-cgame-main-ml-524479786"></a>
 ### errorMessage
@@ -464,11 +488,11 @@ CG_Error Com_Error
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `errorMessage` in the client game main path. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L112)
 
 <a id="function-function-mq3-client-cgame-main-eventhandling-function-eventhandling-state-type-src-mq3-client-cgame-main-ml-246418343"></a>
 ### eventHandling
@@ -481,11 +505,11 @@ CG_EventHandling
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.eventType`. |
+| `type` | `dynamic` | — | Value assigned to `state.eventType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L415)
 
 <a id="constant-constant-mq3-client-cgame-main-feeder-blueteam-list-const-feeder-blueteam-list-2-src-mq3-client-cgame-main-ml-1390524421"></a>
 ### FEEDER_BLUETEAM_LIST
@@ -495,7 +519,7 @@ const FEEDER_BLUETEAM_LIST = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L44)
 
 <a id="constant-constant-mq3-client-cgame-main-feeder-redteam-list-const-feeder-redteam-list-1-src-mq3-client-cgame-main-ml-1364158196"></a>
 ### FEEDER_REDTEAM_LIST
@@ -505,7 +529,7 @@ const FEEDER_REDTEAM_LIST = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)
 
 <a id="constant-constant-mq3-client-cgame-main-feeder-scoreboard-const-feeder-scoreboard-3-src-mq3-client-cgame-main-ml-343809326"></a>
 ### FEEDER_SCOREBOARD
@@ -515,7 +539,7 @@ const FEEDER_SCOREBOARD = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="function-function-mq3-client-cgame-main-feedercount-function-feedercount-state-feederid-src-mq3-client-cgame-main-ml-656299343"></a>
 ### feederCount
@@ -528,11 +552,11 @@ CG_FeederCount
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `feederID` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.numScores`, `state.scores`. |
+| `feederID` | `dynamic` | — | Value used by `if feederID==FEEDER_SCOREBOARD then return state.numScores end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L297)
 
 <a id="function-function-mq3-client-cgame-main-feederitemimage-function-feederitemimage-feederid-index-src-mq3-client-cgame-main-ml-529662924"></a>
 ### feederItemImage
@@ -545,11 +569,11 @@ CG_FeederItemImage
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `feederID` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `feederID` | `dynamic` | — | Accepted for compatibility with `feederItemImage`; the current implementation does not read it. |
+| `index` | `dynamic` | — | Accepted for compatibility with `feederItemImage`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L328)
 
 <a id="function-function-mq3-client-cgame-main-feederitemtext-function-feederitemtext-state-feederid-index-column-readymask-src-mq3-client-cgame-main-ml-605719670"></a>
 ### feederItemText
@@ -562,14 +586,14 @@ CG_FeederItemText
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `feederID` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `column` | `dynamic` | — |  |
-| `readyMask` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.scores`, `state.clients`, `state.gametype`. |
+| `feederID` | `dynamic` | — | Value used by `if feederID==FEEDER_REDTEAM_LIST then team=TEAM_RED else if feederID==FEEDER_BLUETEAM_LIST then team=TEAM_BLUE end if`. |
+| `index` | `dynamic` | — | Value used by `scoreIndex=infoFromScoreIndex(state,index,team)`. |
+| `column` | `dynamic` | — | Value used by `if column==0 then if ci.botSkill>0 and ci.botSkill<=5 then return ["",ci.botSkill] end if`. |
+| `readyMask` | `dynamic` | — | Value used by `else if column==2 then if (readyMask & (1<<sp.client))!=0 then return ["Ready",-1] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L318)
 
 <a id="function-function-mq3-client-cgame-main-feederselection-function-feederselection-state-feederid-index-src-mq3-client-cgame-main-ml-27938387"></a>
 ### feederSelection
@@ -582,12 +606,12 @@ CG_FeederSelection
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `feederID` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.selectedScore`. |
+| `feederID` | `dynamic` | — | Value used by `if feederID==FEEDER_BLUETEAM_LIST then team=TEAM_BLUE end if`. |
+| `index` | `dynamic` | — | Value assigned to `state.selectedScore`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L333)
 
 <a id="function-function-mq3-client-cgame-main-findcvar-function-findcvar-state-name-src-mq3-client-cgame-main-ml-1958167258"></a>
 ### findCvar
@@ -596,13 +620,15 @@ CG_FeederSelection
 function findCvar(state, name)
 ```
 
+Searches the client game main collection for find cvar, returning `void` when no entry matches.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.cvars`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game main resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L138)
 
 <a id="function-function-mq3-client-cgame-main-forcemodelchange-function-forcemodelchange-state-retailactive-src-mq3-client-cgame-main-ml-1283477564"></a>
 ### forceModelChange
@@ -615,11 +641,11 @@ CG_ForceModelChange
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game main state passed to the helper calls in `forceModelChange`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L153)
 
 <a id="function-function-mq3-client-cgame-main-getmenubuffer-function-getmenubuffer-filename-text-maxsize-src-mq3-client-cgame-main-ml-283392439"></a>
 ### getMenuBuffer
@@ -632,12 +658,12 @@ CG_GetMenuBuffer
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `filename` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `maxSize` | `dynamic` | — |  |
+| `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. |
+| `text` | `dynamic` | — | Text whose length/content is inspected by `getMenuBuffer`. |
+| `maxSize` | `dynamic` | — | Value used by `if len(text)>=maxSize then return error(7843,"menu file too large: "+filename) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L241)
 
 <a id="constant-constant-mq3-client-cgame-main-gt-team-const-gt-team-3-src-mq3-client-cgame-main-ml-636292634"></a>
 ### GT_TEAM
@@ -647,7 +673,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L32)
 
 <a id="constant-constant-mq3-client-cgame-main-gt-tournament-const-gt-tournament-1-src-mq3-client-cgame-main-ml-1967860844"></a>
 ### GT_TOURNAMENT
@@ -657,7 +683,7 @@ const GT_TOURNAMENT = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L31)
 
 <a id="function-function-mq3-client-cgame-main-hudassets-function-hudassets-src-mq3-client-cgame-main-ml-2125143748"></a>
 ### hudAssets
@@ -666,8 +692,10 @@ const GT_TOURNAMENT = 1
 function hudAssets()
 ```
 
+Creates a `mq3.client.cgame_main.HudAssets` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L67)
 
 - [mq3.client.cgame_main.HudAssets](Type-mq3-client-cgame-main-hudassets-665283646.md) — struct
 <a id="function-function-mq3-client-cgame-main-infofromscoreindex-function-infofromscoreindex-state-index-team-src-mq3-client-cgame-main-ml-635857230"></a>
@@ -681,12 +709,12 @@ CG_InfoFromScoreIndex
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.scores`. |
+| `index` | `dynamic` | — | Value tested by `count==index` before the calculation continues. |
+| `team` | `dynamic` | — | Value used by `for i=0 to len(state.scores)-1 if state.scores[i].team==team then if count==index then return i end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L311)
 
 <a id="function-function-mq3-client-cgame-main-init-function-init-state-servermessagenum-servercommandsequence-clientnum-gameversion-vidwidth-vidheight-items-retailactive-src-mq3-client-cgame-main-ml-1405693357"></a>
 ### init
@@ -699,18 +727,18 @@ CG_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverMessageNum` | `dynamic` | — |  |
-| `serverCommandSequence` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `gameVersion` | `dynamic` | — |  |
-| `vidWidth` | `dynamic` | — |  |
-| `vidHeight` | `dynamic` | — |  |
-| `items` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.initialized`, `state.loading`, `state.clientNum`, `state.processedSnapshotNum` and additional values. |
+| `serverMessageNum` | `dynamic` | — | Value assigned to `state.processedSnapshotNum`. |
+| `serverCommandSequence` | `dynamic` | — | Value assigned to `state.serverCommandSequence`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `gameVersion` | `dynamic` | — | Value used by `if gameVersion!=state.gameVersion then return error(7844,"Client/Server game mismatch: "+state.gameVersion+"/"+gameVersion) end if`. |
+| `vidWidth` | `dynamic` | — | Value assigned to `state.screenXScale`. |
+| `vidHeight` | `dynamic` | — | Value assigned to `state.screenYScale`. |
+| `items` | `dynamic` | — | Value used by `merge(effect,registerSounds(state,items,retailActive))`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L401)
 
 - [mq3.client.cgame_main.Item](Type-mq3-client-cgame-main-item-495663849.md) — struct
 <a id="function-function-mq3-client-cgame-main-keyevent-function-keyevent-state-key-down-src-mq3-client-cgame-main-ml-2005306932"></a>
@@ -724,12 +752,12 @@ CG_KeyEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `down` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Accepted for compatibility with `keyEvent`; the current implementation does not read it. |
+| `key` | `dynamic` | — | Accepted for compatibility with `keyEvent`; the current implementation does not read it. |
+| `down` | `dynamic` | — | Accepted for compatibility with `keyEvent`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L420)
 
 <a id="function-function-mq3-client-cgame-main-lastattacker-function-lastattacker-state-src-mq3-client-cgame-main-ml-589473373"></a>
 ### lastAttacker
@@ -742,10 +770,10 @@ CG_LastAttacker
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.attackerTime`, `state.attackerNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L171)
 
 <a id="function-function-mq3-client-cgame-main-loadhudmenu-function-loadhudmenu-state-hudtext-menufiles-retailactive-src-mq3-client-cgame-main-ml-1866665680"></a>
 ### loadHudMenu
@@ -758,13 +786,13 @@ CG_LoadHudMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `hudText` | `dynamic` | — |  |
-| `menuFiles` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.hudFile`. |
+| `hudText` | `dynamic` | — | Value used by `merge(effect,loadMenus(state,state.hudFile,hudText,menuFiles,retailActive))`. |
+| `menuFiles` | `dynamic` | — | Value used by `merge(effect,loadMenus(state,state.hudFile,hudText,menuFiles,retailActive))`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L385)
 
 <a id="function-function-mq3-client-cgame-main-loadmenu-function-loadmenu-state-tokens-start-files-retailactive-src-mq3-client-cgame-main-ml-821619769"></a>
 ### loadMenu
@@ -777,14 +805,14 @@ CG_Load_Menu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `tokens` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `files` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game main state passed to the helper calls in `loadMenu`. |
+| `tokens` | `dynamic` | — | Sequence read at `tokens[start]`, `tokens[at]`. |
+| `start` | `dynamic` | — | Value tested by `start>=len(tokens) or tokens[start]!="{"` before the calculation continues. |
+| `files` | `dynamic` | — | Value used by `for each file in files if file[0]==name then text=file[1] end if end for`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L276)
 
 <a id="function-function-mq3-client-cgame-main-loadmenus-function-loadmenus-state-menufile-text-files-retailactive-src-mq3-client-cgame-main-ml-1030752987"></a>
 ### loadMenus
@@ -797,14 +825,14 @@ CG_LoadMenus
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `menuFile` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `files` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game main state passed to the helper calls in `loadMenus`. |
+| `menuFile` | `dynamic` | — | Accepted for compatibility with `loadMenus`; the current implementation does not read it. |
+| `text` | `dynamic` | — | Text consumed or emitted by `loadMenus` in the client game main path. |
+| `files` | `dynamic` | — | Value used by `if key=="loadmenu" then nested=loadMenu(state,tokens,at,files,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L285)
 
 <a id="constant-constant-mq3-client-cgame-main-max-clients-const-max-clients-64-src-mq3-client-cgame-main-ml-911047387"></a>
 ### MAX_CLIENTS
@@ -814,7 +842,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L18)
 
 <a id="constant-constant-mq3-client-cgame-main-max-configstrings-const-max-configstrings-1024-src-mq3-client-cgame-main-ml-1222498808"></a>
 ### MAX_CONFIGSTRINGS
@@ -824,7 +852,7 @@ const MAX_CONFIGSTRINGS = 1024
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L19)
 
 <a id="function-function-mq3-client-cgame-main-menutokens-function-menutokens-text-src-mq3-client-cgame-main-ml-480236411"></a>
 ### menuTokens
@@ -833,12 +861,14 @@ const MAX_CONFIGSTRINGS = 1024
 function menuTokens(text)
 ```
 
+Calls `decode`, `slice` from client game main `menuTokens`. The final path returns `effect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `menuTokens` in the client game main path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L234)
 
 <a id="function-function-mq3-client-cgame-main-merge-function-merge-effect-other-src-mq3-client-cgame-main-ml-1281251817"></a>
 ### merge
@@ -847,13 +877,15 @@ function menuTokens(text)
 function merge(effect, other)
 ```
 
+Updates `effect.actions` during client game main `merge`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `effect` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
+| `effect` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `effect.actions`. |
+| `other` | `dynamic` | — | Record read through `other.actions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L101)
 
 <a id="function-function-mq3-client-cgame-main-mouseevent-function-mouseevent-state-x-y-src-mq3-client-cgame-main-ml-1611407826"></a>
 ### mouseEvent
@@ -866,12 +898,12 @@ CG_MouseEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.cursorX`, `state.cursorY`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `mouseEvent`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `mouseEvent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L425)
 
 <a id="function-function-mq3-client-cgame-main-ownerdrawhandlekey-function-ownerdrawhandlekey-ownerdraw-flags-special-key-src-mq3-client-cgame-main-ml-725193166"></a>
 ### ownerDrawHandleKey
@@ -884,13 +916,13 @@ CG_OwnerDrawHandleKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ownerDraw` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `special` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `ownerDraw` | `dynamic` | — | Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it. |
+| `flags` | `dynamic` | — | Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it. |
+| `special` | `dynamic` | — | Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it. |
+| `key` | `dynamic` | — | Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L293)
 
 <a id="function-function-mq3-client-cgame-main-ownerdrawwidth-function-ownerdrawwidth-ownerdraw-scale-gametypetext-statustext-killertext-redname-bluename-src-mq3-client-cgame-main-ml-211884012"></a>
 ### ownerDrawWidth
@@ -903,16 +935,16 @@ CG_OwnerDrawWidth
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ownerDraw` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `gameTypeText` | `dynamic` | — |  |
-| `statusText` | `dynamic` | — |  |
-| `killerText` | `dynamic` | — |  |
-| `redName` | `dynamic` | — |  |
-| `blueName` | `dynamic` | — |  |
+| `ownerDraw` | `dynamic` | — | Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`. |
+| `scale` | `dynamic` | — | Value used by `return numeric.trunc32(len(text)*8*scale)`. |
+| `gameTypeText` | `dynamic` | — | Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`. |
+| `statusText` | `dynamic` | — | Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`. |
+| `killerText` | `dynamic` | — | Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`. |
+| `redName` | `dynamic` | — | Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`. |
+| `blueName` | `dynamic` | — | Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L354)
 
 <a id="function-function-mq3-client-cgame-main-parsemenu-function-parsemenu-state-menufile-text-retailactive-src-mq3-client-cgame-main-ml-724865082"></a>
 ### parseMenu
@@ -925,13 +957,13 @@ CG_ParseMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `menuFile` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.menuFiles`. |
+| `menuFile` | `dynamic` | — | Value used by `at=nested.value else if key=="menudef" then emit(effect,"ui","new-menu",menuFile,"","",at,0,retailActive)`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `parseMenu` in the client game main path. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L267)
 
 <a id="function-function-mq3-client-cgame-main-playcinematic-function-playcinematic-state-name-x-y-w-h-retailactive-src-mq3-client-cgame-main-ml-1362624281"></a>
 ### playCinematic
@@ -944,16 +976,16 @@ CG_PlayCinematic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.nextCinematicHandle`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game main resource. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `playCinematic`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `playCinematic`. |
+| `w` | `dynamic` | — | Width in the coordinate space used by `playCinematic`. |
+| `h` | `dynamic` | — | Height in the coordinate space used by `playCinematic`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L363)
 
 <a id="function-function-mq3-client-cgame-main-printmessage-function-printmessage-text-retailactive-src-mq3-client-cgame-main-ml-983892018"></a>
 ### printMessage
@@ -966,11 +998,11 @@ CG_Printf Com_Printf
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `printMessage` in the client game main path. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L107)
 
 <a id="function-function-mq3-client-cgame-main-registerclients-function-registerclients-state-retailactive-src-mq3-client-cgame-main-ml-580628154"></a>
 ### registerClients
@@ -983,11 +1015,11 @@ CG_RegisterClients
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clientNum`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L223)
 
 <a id="function-function-mq3-client-cgame-main-registercvars-function-registercvars-state-svrunning-retailactive-src-mq3-client-cgame-main-ml-641210418"></a>
 ### registerCvars
@@ -1000,12 +1032,12 @@ CG_RegisterCvars
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `svRunning` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.cvars`, `state.forceModelModificationCount`. |
+| `svRunning` | `dynamic` | — | Value used by `emit(effect,"state","local-server","",svRunning,"",atoi(svRunning),0,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L144)
 
 <a id="function-function-mq3-client-cgame-main-registergraphics-function-registergraphics-state-items-retailactive-src-mq3-client-cgame-main-ml-196895570"></a>
 ### registerGraphics
@@ -1018,12 +1050,12 @@ CG_RegisterGraphics
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `items` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.mapname`. |
+| `items` | `dynamic` | — | Sequence read at `items[i]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L206)
 
 <a id="function-function-mq3-client-cgame-main-registeritemsounds-function-registeritemsounds-item-itemnum-retailactive-src-mq3-client-cgame-main-ml-1506902349"></a>
 ### registerItemSounds
@@ -1036,12 +1068,12 @@ CG_RegisterItemSounds
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `item` | `dynamic` | — |  |
-| `itemNum` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `item` | `dynamic` | — | Record read through `item.pickupSound`, `item.sounds`, `item.classname`. |
+| `itemNum` | `dynamic` | — | Value used by `if item.pickupSound!="" then emit(effect,"audio","register-sound",item.pickupSound,"","",itemNum,0,retailActive) end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L184)
 
 <a id="function-function-mq3-client-cgame-main-registersounds-function-registersounds-state-items-retailactive-src-mq3-client-cgame-main-ml-151687218"></a>
 ### registerSounds
@@ -1054,12 +1086,12 @@ CG_RegisterSounds
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `items` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game main state passed to the helper calls in `registerSounds`. |
+| `items` | `dynamic` | — | Sequence read at `items[i]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L194)
 
 <a id="function-function-mq3-client-cgame-main-result-function-result-handled-value-src-mq3-client-cgame-main-ml-1906671231"></a>
 ### result
@@ -1068,13 +1100,15 @@ CG_RegisterSounds
 function result(handled, value)
 ```
 
+Creates a `mq3.client.cgame_main.Result` record. Assigns `handled` from `handled`, `value` from `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `handled` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `handled` | `dynamic` | — | Value used to initialize `Result.handled`. |
+| `value` | `dynamic` | — | Value used to initialize `Result.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L86)
 
 - [mq3.client.cgame_main.Result](Type-mq3-client-cgame-main-result-1141204139.md) — struct
 <a id="function-function-mq3-client-cgame-main-runcinematicframe-function-runcinematicframe-handle-retailactive-src-mq3-client-cgame-main-ml-611886313"></a>
@@ -1088,11 +1122,11 @@ CG_RunCinematicFrame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `handle` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `runCinematicFrame`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L379)
 
 - [mq3.client.cgame_main.Score](Type-mq3-client-cgame-main-score-1695914296.md) — struct
 <a id="function-function-mq3-client-cgame-main-setscoreselection-function-setscoreselection-state-clientnum-hasmenu-retailactive-src-mq3-client-cgame-main-ml-903755616"></a>
@@ -1106,13 +1140,13 @@ CG_SetScoreSelection
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `hasMenu` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.selectedScore`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `hasMenu` | `dynamic` | — | Value used by `if hasMenu and len(state.scores)>0 then feeder=FEEDER_SCOREBOARD`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L303)
 
 <a id="function-function-mq3-client-cgame-main-shutdown-function-shutdown-state-retailactive-src-mq3-client-cgame-main-ml-1302453760"></a>
 ### shutdown
@@ -1125,11 +1159,11 @@ CG_Shutdown
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.initialized`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L411)
 
 <a id="function-function-mq3-client-cgame-main-splitwords-function-splitwords-text-src-mq3-client-cgame-main-ml-1188929167"></a>
 ### splitWords
@@ -1138,12 +1172,14 @@ CG_Shutdown
 function splitWords(text)
 ```
 
+Calls `decode`, `slice` from client game main `splitWords`. The final path returns `effect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `splitWords` in the client game main path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L175)
 
 <a id="function-function-mq3-client-cgame-main-startmusic-function-startmusic-state-retailactive-src-mq3-client-cgame-main-ml-1950110256"></a>
 ### startMusic
@@ -1156,11 +1192,11 @@ CG_StartMusic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game main state passed to the helper calls in `startMusic`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L230)
 
 - [mq3.client.cgame_main.State](Type-mq3-client-cgame-main-state-1163369719.md) — struct
 <a id="function-function-mq3-client-cgame-main-stopcinematic-function-stopcinematic-handle-retailactive-src-mq3-client-cgame-main-ml-1339318873"></a>
@@ -1174,11 +1210,11 @@ CG_StopCinematic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `handle` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `stopCinematic`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L367)
 
 <a id="function-function-mq3-client-cgame-main-suffix-function-suffix-text-want-src-mq3-client-cgame-main-ml-1669933353"></a>
 ### suffix
@@ -1187,13 +1223,15 @@ CG_StopCinematic
 function suffix(text, want)
 ```
 
+Calls `std.string.equalsIgnoreCaseAscii`, `std.string.substr` from client game main `suffix`. The final path returns `strings.equalsIgnoreCaseAscii(strings.substr(text,len(text)-len(want),len(want)),want)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `want` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text whose length/content is inspected by `suffix`. |
+| `want` | `dynamic` | — | Sequence whose length/content is inspected by `suffix`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L179)
 
 <a id="constant-constant-mq3-client-cgame-main-team-blue-const-team-blue-2-src-mq3-client-cgame-main-ml-251438523"></a>
 ### TEAM_BLUE
@@ -1203,7 +1241,7 @@ const TEAM_BLUE = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L29)
 
 <a id="constant-constant-mq3-client-cgame-main-team-free-const-team-free-0-src-mq3-client-cgame-main-ml-432045649"></a>
 ### TEAM_FREE
@@ -1213,7 +1251,7 @@ const TEAM_FREE = 0
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L27)
 
 <a id="constant-constant-mq3-client-cgame-main-team-red-const-team-red-1-src-mq3-client-cgame-main-ml-39380068"></a>
 ### TEAM_RED
@@ -1223,7 +1261,7 @@ const TEAM_RED = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L28)
 
 <a id="constant-constant-mq3-client-cgame-main-team-spectator-const-team-spectator-3-src-mq3-client-cgame-main-ml-978078842"></a>
 ### TEAM_SPECTATOR
@@ -1233,7 +1271,7 @@ const TEAM_SPECTATOR = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L30)
 
 <a id="function-function-mq3-client-cgame-main-textpaintwithcursor-function-textpaintwithcursor-text-cursorpos-cursor-limit-style-retailactive-src-mq3-client-cgame-main-ml-1426501384"></a>
 ### textPaintWithCursor
@@ -1246,15 +1284,15 @@ CG_Text_PaintWithCursor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `cursorPos` | `dynamic` | — |  |
-| `cursor` | `dynamic` | — |  |
-| `limit` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `textPaintWithCursor` in the client game main path. |
+| `cursorPos` | `dynamic` | — | Value used by `emit(effect,"ui","paint-text",text,str(cursor),"",cursorPos,style,retailActive)`. |
+| `cursor` | `dynamic` | — | Value used by `emit(effect,"ui","paint-text",text,str(cursor),"",cursorPos,style,retailActive)`. |
+| `limit` | `dynamic` | — | Accepted for compatibility with `textPaintWithCursor`; the current implementation does not read it. |
+| `style` | `dynamic` | — | Value used by `emit(effect,"ui","paint-text",text,str(cursor),"",cursorPos,style,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L345)
 
 <a id="function-function-mq3-client-cgame-main-updatecvars-function-updatecvars-state-updates-retailactive-src-mq3-client-cgame-main-ml-1809592228"></a>
 ### updateCvars
@@ -1267,12 +1305,12 @@ CG_UpdateCvars
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `updates` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game main record/storage; this routine assigns `state.drawTeamOverlayModificationCount`, `state.forceModelModificationCount`. |
+| `updates` | `dynamic` | — | Value used by `for each update in updates cv=findCvar(state,update[0])`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L160)
 
 <a id="function-function-mq3-client-cgame-main-vmmain-function-vmmain-state-command-args-items-gameversion-vidwidth-vidheight-retailactive-src-mq3-client-cgame-main-ml-877184929"></a>
 ### vmMain
@@ -1285,17 +1323,17 @@ vmMain
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
-| `items` | `dynamic` | — |  |
-| `gameVersion` | `dynamic` | — |  |
-| `vidWidth` | `dynamic` | — |  |
-| `vidHeight` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game main state passed to the helper calls in `vmMain`. |
+| `command` | `dynamic` | — | Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`. |
+| `args` | `dynamic` | — | Sequence read at `args[0]`, `args[1]`, `args[2]`. |
+| `items` | `dynamic` | — | Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`. |
+| `gameVersion` | `dynamic` | — | Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`. |
+| `vidWidth` | `dynamic` | — | Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`. |
+| `vidHeight` | `dynamic` | — | Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L435)
 
 <a id="constant-constant-mq3-client-cgame-main-wp-machinegun-const-wp-machinegun-2-src-mq3-client-cgame-main-ml-563110343"></a>
 ### WP_MACHINEGUN
@@ -1305,4 +1343,4 @@ const WP_MACHINEGUN = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L33)

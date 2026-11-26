@@ -9,8 +9,10 @@
 struct MenuBitmap
 ```
 
+Stores UI local menu bitmap record, including `generic`, `focuspic`, `errorpic`, `shader`, `focusshader`, `width` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 ## Members
 
@@ -22,7 +24,7 @@ errorpic
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 <a id="field-field-mq3-client-ui-local-menubitmap-focuscolor-focuscolor-src-mq3-client-ui-local-ml-1810672381"></a>
 ### focuscolor
@@ -32,7 +34,7 @@ focuscolor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 <a id="field-field-mq3-client-ui-local-menubitmap-focuspic-focuspic-src-mq3-client-ui-local-ml-930364311"></a>
 ### focuspic
@@ -42,7 +44,7 @@ focuspic
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 <a id="field-field-mq3-client-ui-local-menubitmap-focusshader-focusshader-src-mq3-client-ui-local-ml-1321744103"></a>
 ### focusshader
@@ -52,7 +54,7 @@ focusshader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 <a id="field-field-mq3-client-ui-local-menubitmap-generic-generic-src-mq3-client-ui-local-ml-71804559"></a>
 ### generic
@@ -62,7 +64,7 @@ generic
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 <a id="field-field-mq3-client-ui-local-menubitmap-height-height-src-mq3-client-ui-local-ml-123992945"></a>
 ### height
@@ -72,7 +74,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 <a id="field-field-mq3-client-ui-local-menubitmap-shader-shader-src-mq3-client-ui-local-ml-1397268645"></a>
 ### shader
@@ -82,7 +84,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
 
 <a id="field-field-mq3-client-ui-local-menubitmap-width-width-src-mq3-client-ui-local-ml-218795227"></a>
 ### width
@@ -92,4 +94,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)

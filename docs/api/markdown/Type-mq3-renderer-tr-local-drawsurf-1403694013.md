@@ -9,8 +9,10 @@
 struct DrawSurf
 ```
 
+Data record for `mq3.renderer.tr_local.DrawSurf`; groups `sort`, `surface`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
 
 ## Members
 
@@ -22,7 +24,7 @@ sort
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
 
 <a id="field-field-mq3-renderer-tr-local-drawsurf-surface-surface-src-mq3-renderer-tr-local-ml-1463835045"></a>
 ### surface
@@ -32,4 +34,4 @@ surface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)

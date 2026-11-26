@@ -9,8 +9,10 @@
 struct State
 ```
 
+State record for audio.snd_raw_stream, containing `outputRate`, `soundTime`, `rawEnd`, `left`, `right`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ left
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L11)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-outputrate-outputrate-src-mq3-audio-snd-raw-stream-ml-923272774"></a>
 ### outputRate
@@ -32,7 +34,7 @@ outputRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L11)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-rawend-rawend-src-mq3-audio-snd-raw-stream-ml-285813158"></a>
 ### rawEnd
@@ -42,7 +44,7 @@ rawEnd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L11)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-right-right-src-mq3-audio-snd-raw-stream-ml-313933888"></a>
 ### right
@@ -52,7 +54,7 @@ right
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L11)
 
 <a id="field-field-mq3-audio-snd-raw-stream-state-soundtime-soundtime-src-mq3-audio-snd-raw-stream-ml-2072764440"></a>
 ### soundTime
@@ -62,4 +64,4 @@ soundTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L11)

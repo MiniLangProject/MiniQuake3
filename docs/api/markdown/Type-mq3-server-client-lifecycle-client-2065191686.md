@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.client_lifecycle, containing `state`, `name`, `userinfo`, `addressText`, `lan`, `local`, and 17 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ addressText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-bot-bot-src-mq3-server-client-lifecycle-ml-1665501534"></a>
 ### bot
@@ -32,7 +34,7 @@ bot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-deltamessage-deltamessage-src-mq3-server-client-lifecycle-ml-1073149216"></a>
 ### deltaMessage
@@ -42,7 +44,7 @@ deltaMessage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-downloadname-downloadname-src-mq3-server-client-lifecycle-ml-2077025500"></a>
 ### downloadName
@@ -52,7 +54,7 @@ downloadName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-gamestatemessagenum-gamestatemessagenum-src-mq3-server-client-lifecycle-ml-1500348658"></a>
 ### gamestateMessageNum
@@ -62,7 +64,7 @@ gamestateMessageNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-gentitynumber-gentitynumber-src-mq3-server-client-lifecycle-ml-1555054698"></a>
 ### gentityNumber
@@ -72,7 +74,7 @@ gentityNumber
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-gotcp-gotcp-src-mq3-server-client-lifecycle-ml-1686770294"></a>
 ### gotCP
@@ -82,7 +84,7 @@ gotCP
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-lan-lan-src-mq3-server-client-lifecycle-ml-652700798"></a>
 ### lan
@@ -92,7 +94,7 @@ lan
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-lastclientcommand-lastclientcommand-src-mq3-server-client-lifecycle-ml-1983985818"></a>
 ### lastClientCommand
@@ -102,7 +104,7 @@ lastClientCommand
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-lastusercmd-lastusercmd-src-mq3-server-client-lifecycle-ml-1008647322"></a>
 ### lastUsercmd
@@ -112,7 +114,7 @@ lastUsercmd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-local-local-src-mq3-server-client-lifecycle-ml-525687666"></a>
 ### local
@@ -122,7 +124,7 @@ local
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-name-name-src-mq3-server-client-lifecycle-ml-1129796112"></a>
 ### name
@@ -132,7 +134,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-nextsnapshottime-nextsnapshottime-src-mq3-server-client-lifecycle-ml-773471850"></a>
 ### nextSnapshotTime
@@ -142,7 +144,7 @@ nextSnapshotTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-outgoingsequence-outgoingsequence-src-mq3-server-client-lifecycle-ml-2044051492"></a>
 ### outgoingSequence
@@ -152,7 +154,7 @@ outgoingSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-pureauthentic-pureauthentic-src-mq3-server-client-lifecycle-ml-332911386"></a>
 ### pureAuthentic
@@ -162,7 +164,7 @@ pureAuthentic
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-rate-rate-src-mq3-server-client-lifecycle-ml-1937010210"></a>
 ### rate
@@ -172,7 +174,7 @@ rate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-reliableacknowledge-reliableacknowledge-src-mq3-server-client-lifecycle-ml-1678310290"></a>
 ### reliableAcknowledge
@@ -182,7 +184,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-reliablecommands-reliablecommands-src-mq3-server-client-lifecycle-ml-157892086"></a>
 ### reliableCommands
@@ -192,7 +194,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-reliablesent-reliablesent-src-mq3-server-client-lifecycle-ml-423051990"></a>
 ### reliableSent
@@ -202,7 +204,7 @@ reliableSent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-reliablesequence-reliablesequence-src-mq3-server-client-lifecycle-ml-1297757976"></a>
 ### reliableSequence
@@ -212,7 +214,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-snapshotmsec-snapshotmsec-src-mq3-server-client-lifecycle-ml-300722758"></a>
 ### snapshotMsec
@@ -222,7 +224,7 @@ snapshotMsec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-state-state-src-mq3-server-client-lifecycle-ml-1371856022"></a>
 ### state
@@ -232,7 +234,7 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)
 
 <a id="field-field-mq3-server-client-lifecycle-client-userinfo-userinfo-src-mq3-server-client-lifecycle-ml-2120945072"></a>
 ### userinfo
@@ -242,4 +244,4 @@ userinfo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L29)

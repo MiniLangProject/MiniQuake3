@@ -9,8 +9,10 @@
 struct Source
 ```
 
+Stores UI shared source record, including `scan`, `name`, `warnings`, `errors`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
 
 ## Members
 
@@ -22,7 +24,7 @@ errors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
 
 <a id="field-field-mq3-client-ui-shared-source-name-name-src-mq3-client-ui-shared-ml-407053338"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
 
 <a id="field-field-mq3-client-ui-shared-source-scan-scan-src-mq3-client-ui-shared-ml-979426726"></a>
 ### scan
@@ -42,7 +44,7 @@ scan
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)
 
 <a id="field-field-mq3-client-ui-shared-source-warnings-warnings-src-mq3-client-ui-shared-ml-220985574"></a>
 ### warnings
@@ -52,4 +54,4 @@ warnings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L82)

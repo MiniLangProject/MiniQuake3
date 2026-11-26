@@ -21,12 +21,14 @@ Reachable from entry: **yes**
 function clear(state)
 ```
 
+Updates `state.stringOffsets`, `state.stringData`, `state.dataCount`, `state.baselines` and additional values during gamestate `clear`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable gamestate record/storage; this routine assigns `state.stringOffsets`, `state.stringData`, `state.dataCount`, `state.baselines` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L43)
 
 <a id="function-function-mq3-client-gamestate-configstring-function-configstring-state-index-src-mq3-client-gamestate-ml-89968791"></a>
 ### configString
@@ -35,13 +37,15 @@ function clear(state)
 function configString(state, index)
 ```
 
+Calls `decode`, `slice` from gamestate `configString`. The final path returns `decode(slice(state.stringData,offset,finish-offset))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.stringOffsets`, `state.stringData`. |
+| `index` | `dynamic` | — | Value tested by `index<0 or index>=MAX_CONFIGSTRINGS` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L52)
 
 <a id="function-function-mq3-client-gamestate-create-function-create-src-mq3-client-gamestate-ml-422794250"></a>
 ### create
@@ -50,8 +54,10 @@ function configString(state, index)
 function create()
 ```
 
+Creates a `mq3.client.gamestate.State` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L37)
 
 <a id="constant-constant-mq3-client-gamestate-gentitynum-bits-const-gentitynum-bits-10-src-mq3-client-gamestate-ml-1643500988"></a>
 ### GENTITYNUM_BITS
@@ -100,13 +106,15 @@ const MAX_GENTITIES = 1024
 function parse(state, msg)
 ```
 
+Updates `state.connectPacketCount`, `state.serverCommandSequence`, `state.stringOffsets[index]`, `state.stringData[state.dataCount+offset]` and additional values during gamestate `parse`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable gamestate record/storage; this routine assigns `state.connectPacketCount`, `state.serverCommandSequence`, `state.stringOffsets[index]`, `state.stringData[state.dataCount+offset]` and additional values. |
+| `msg` | `dynamic` | — | Record read through `msg.readcount`, `msg.cursize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L66)
 
 - [mq3.client.gamestate.State](Type-mq3-client-gamestate-state-156757087.md) — struct
 <a id="constant-constant-mq3-client-gamestate-svc-baseline-const-svc-baseline-4-src-mq3-client-gamestate-ml-1221981739"></a>

@@ -20,14 +20,16 @@ Reachable from entry: **yes**
 function attachSend(host, runtime, sendServices)
 ```
 
+Updates `host.sendRuntime`, `host.sendServices`, `host.sendCmdFn` during frame `attachSend`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `runtime` | `dynamic` | — |  |
-| `sendServices` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Mutable frame record/storage; this routine assigns `host.sendRuntime`, `host.sendServices`, `host.sendCmdFn`. |
+| `runtime` | `dynamic` | — | Value assigned to `host.sendRuntime`. |
+| `sendServices` | `dynamic` | — | Value assigned to `host.sendServices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L53)
 
 <a id="constant-constant-mq3-client-frame-ca-active-const-ca-active-8-src-mq3-client-frame-ml-215832813"></a>
 ### CA_ACTIVE
@@ -86,13 +88,15 @@ const CA_DISCONNECTED = 1
 function call0(fn, host)
 ```
 
+Calls `fn` from frame `call0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fn` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `fn` | `dynamic` | — | Value used by `if fn!=void then fn(host) end if`. |
+| `host` | `dynamic` | — | host record passed to the frame helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L61)
 
 <a id="function-function-mq3-client-frame-checktimeout-function-checktimeout-state-host-src-mq3-client-frame-ml-405969295"></a>
 ### checkTimeout
@@ -101,13 +105,15 @@ function call0(fn, host)
 function checkTimeout(state, host)
 ```
 
+Updates `state.timeoutCount` during frame `checkTimeout`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable frame record/storage; this routine assigns `state.timeoutCount`. |
+| `host` | `dynamic` | — | Record read through `host.diagnosticFn`, `host.disconnectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L79)
 
 <a id="function-function-mq3-client-frame-checkuserinfo-function-checkuserinfo-state-host-src-mq3-client-frame-ml-1220019525"></a>
 ### checkUserinfo
@@ -116,13 +122,15 @@ function checkTimeout(state, host)
 function checkUserinfo(state, host)
 ```
 
+Updates `state.modifiedFlags` during frame `checkUserinfo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable frame record/storage; this routine assigns `state.modifiedFlags`. |
+| `host` | `dynamic` | — | Record read through `host.infoStringFn`, `host.reliableFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L66)
 
 <a id="constant-constant-mq3-client-frame-cvar-userinfo-const-cvar-userinfo-2-src-mq3-client-frame-ml-101637595"></a>
 ### CVAR_USERINFO
@@ -151,12 +159,14 @@ const KEYCATCH_UI = 2
 function liveSend(host)
 ```
 
+Adapts `mq3.client.send_cmd.send` to frame `liveSend`, returning its result for `host.sendRuntime, host.sendRuntime.realtime, host.sendServices`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.sendRuntime`, `host.sendRuntime.realtime`, `host.sendServices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L48)
 
 <a id="function-function-mq3-client-frame-run-function-run-state-msec-host-src-mq3-client-frame-ml-2139911909"></a>
 ### run
@@ -165,14 +175,16 @@ function liveSend(host)
 function run(state, msec, host)
 ```
 
+Updates `state.cdDialog`, `state.realFrametime`, `state.frametime`, `state.realtime` and additional values during frame `run`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msec` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable frame record/storage; this routine assigns `state.cdDialog`, `state.realFrametime`, `state.frametime`, `state.realtime` and additional values. |
+| `msec` | `dynamic` | — | Time interval in milliseconds. |
+| `host` | `dynamic` | — | Mutable frame record/storage; this routine assigns `host.sendRuntime.connectionState`, `host.sendRuntime.realtime`, `host.sendRuntime.serverRunning`, `host.sendRuntime.serverPaused` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L98)
 
 <a id="function-function-mq3-client-frame-runtime-function-runtime-src-mq3-client-frame-ml-2128324342"></a>
 ### runtime
@@ -181,8 +193,10 @@ function run(state, msec, host)
 function runtime()
 ```
 
+Creates a `mq3.client.frame.Runtime` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L27)
 
 - [mq3.client.frame.Runtime](Type-mq3-client-frame-runtime-223182724.md) — struct
 <a id="function-function-mq3-client-frame-services-function-services-src-mq3-client-frame-ml-39845774"></a>
@@ -192,8 +206,10 @@ function runtime()
 function services()
 ```
 
+Creates a `mq3.client.frame.Services` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L42)
 
 - [mq3.client.frame.Services](Type-mq3-client-frame-services-1398414064.md) — struct
 <a id="constant-constant-mq3-client-frame-uimenu-main-const-uimenu-main-1-src-mq3-client-frame-ml-1057386878"></a>

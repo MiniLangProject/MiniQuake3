@@ -9,8 +9,10 @@
 struct Animation
 ```
 
+Data record for `mq3.renderer.player_model_assembly.Animation`; groups `frame`, `oldFrame`, `backlerp`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
 
 <a id="field-field-mq3-renderer-player-model-assembly-animation-frame-frame-src-mq3-renderer-player-model-assembly-ml-100082437"></a>
 ### frame
@@ -32,7 +34,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)
 
 <a id="field-field-mq3-renderer-player-model-assembly-animation-oldframe-oldframe-src-mq3-renderer-player-model-assembly-ml-456663465"></a>
 ### oldFrame
@@ -42,4 +44,4 @@ oldFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L16)

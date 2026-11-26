@@ -973,13 +973,15 @@ const CG_UPDATESCREEN = 17
 function dispatchExisting(context, words)
 ```
 
+Calls `mq3.compat.numeric.writeU32`, `mq3.vm.syscall_cgame.dispatch` from client game syscalls `dispatchExisting`. The final path returns `syscallCgame.dispatch(context.host,context.vm,context.base)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `words` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Record read through `context.vm`, `context.host`, `context.base`, `context.vm.data`. |
+| `words` | `dynamic` | — | Sequence read at `words[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L142)
 
 <a id="function-function-mq3-client-cgame-syscalls-dllentry-function-dllentry-context-syscallfn-retailactive-src-mq3-client-cgame-syscalls-ml-1991466447"></a>
 ### dllEntry
@@ -992,12 +994,12 @@ dllEntry
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `syscallFn` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `context` | `dynamic` | — | context record passed to the client game syscalls helper calls. |
+| `syscallFn` | `dynamic` | — | Callback invoked by `dllEntry` for syscall. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L122)
 
 <a id="function-function-mq3-client-cgame-syscalls-fail-function-fail-message-src-mq3-client-cgame-syscalls-ml-493417971"></a>
 ### fail
@@ -1006,12 +1008,14 @@ dllEntry
 function fail(message)
 ```
 
+Creates the client game syscalls error `7904` with diagnostic text `"cgame syscalls: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"cgame syscalls: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L116)
 
 - [mq3.client.cgame_syscalls.Gateway](Type-mq3-client-cgame-syscalls-gateway-430823991.md) — struct
 - [mq3.client.cgame_syscalls.Invocation](Type-mq3-client-cgame-syscalls-invocation-1585376181.md) — struct
@@ -1022,14 +1026,16 @@ function fail(message)
 function invoke(gateway, opcode, arguments)
 ```
 
+Updates `gateway.calls` during client game syscalls `invoke`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `opcode` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Mutable client game syscalls record/storage; this routine assigns `gateway.calls`. |
+| `opcode` | `dynamic` | — | Value used by `if gateway.retailActive then gateway.calls=gateway.calls+[Invocation(opcode,arguments,0,false)]`. |
+| `arguments` | `dynamic` | — | Value used by `if arguments==void then arguments=[] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L131)
 
 <a id="function-function-mq3-client-cgame-syscalls-passfloat-function-passfloat-value-src-mq3-client-cgame-syscalls-ml-608707271"></a>
 ### PASSFLOAT
@@ -1042,10 +1048,10 @@ PASSFLOAT
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.i32`; passed as `numeric.floatBits(numeric.f32(value))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L157)
 
 <a id="function-function-mq3-client-cgame-syscalls-qvmgateway-function-qvmgateway-host-vm-base-retailactive-src-mq3-client-cgame-syscalls-ml-399777517"></a>
 ### qvmGateway
@@ -1054,15 +1060,17 @@ PASSFLOAT
 function qvmGateway(host, vm, base, retailActive)
 ```
 
+Adapts `mq3.client.cgame_syscalls.dllEntry` to client game syscalls `qvmGateway`, returning its result for `DispatcherContext(host,vm,base), dispatchExisting, retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Argument 1 of `mq3.client.cgame_syscalls.dllEntry`; passed as `DispatcherContext(host,vm,base)`. |
+| `vm` | `dynamic` | — | Argument 1 of `mq3.client.cgame_syscalls.dllEntry`; passed as `DispatcherContext(host,vm,base)`. |
+| `base` | `dynamic` | — | Argument 1 of `mq3.client.cgame_syscalls.dllEntry`; passed as `DispatcherContext(host,vm,base)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_syscalls.dllEntry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L153)
 
 <a id="function-function-mq3-client-cgame-syscalls-testprintfloat-function-testprintfloat-gateway-text-value-src-mq3-client-cgame-syscalls-ml-752897300"></a>
 ### testPrintFloat
@@ -1075,12 +1083,12 @@ testPrintFloat
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `text` | `dynamic` | — | Text consumed or emitted by `testPrintFloat` in the client game syscalls path. |
+| `value` | `dynamic` | — | Value used by `invoke(gateway,CG_TESTPRINTFLOAT,[text,PASSFLOAT(value)])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L553)
 
 <a id="function-function-mq3-client-cgame-syscalls-testprintint-function-testprintint-gateway-text-value-src-mq3-client-cgame-syscalls-ml-1012513280"></a>
 ### testPrintInt
@@ -1093,12 +1101,12 @@ testPrintInt
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `text` | `dynamic` | — | Text consumed or emitted by `testPrintInt` in the client game syscalls path. |
+| `value` | `dynamic` | — | Value used by `invoke(gateway,CG_TESTPRINTINT,[text,value])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L548)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-addcommand-function-trap-addcommand-gateway-cmdname-src-mq3-client-cgame-syscalls-ml-1023185799"></a>
 ### trap_AddCommand
@@ -1111,11 +1119,11 @@ trap_AddCommand
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `cmdName` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `cmdName` | `dynamic` | — | Value used by `invoke(gateway,CG_ADDCOMMAND,[cmdName])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L241)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-argc-function-trap-argc-gateway-src-mq3-client-cgame-syscalls-ml-530445916"></a>
 ### trap_Argc
@@ -1128,10 +1136,10 @@ trap_Argc
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L194)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-args-function-trap-args-gateway-buffer-bufferlength-src-mq3-client-cgame-syscalls-ml-241503576"></a>
 ### trap_Args
@@ -1144,12 +1152,12 @@ trap_Args
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `buffer` | `dynamic` | — |  |
-| `bufferLength` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `buffer` | `dynamic` | — | Value used by `invoke(gateway,CG_ARGS,[buffer,bufferLength])`. |
+| `bufferLength` | `dynamic` | — | Value used by `invoke(gateway,CG_ARGS,[buffer,bufferLength])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L205)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-argv-function-trap-argv-gateway-index-buffer-bufferlength-src-mq3-client-cgame-syscalls-ml-91294300"></a>
 ### trap_Argv
@@ -1162,13 +1170,13 @@ trap_Argv
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `buffer` | `dynamic` | — |  |
-| `bufferLength` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `index` | `dynamic` | — | Value used by `invoke(gateway,CG_ARGV,[index,buffer,bufferLength])`. |
+| `buffer` | `dynamic` | — | Value used by `invoke(gateway,CG_ARGV,[index,buffer,bufferLength])`. |
+| `bufferLength` | `dynamic` | — | Value used by `invoke(gateway,CG_ARGV,[index,buffer,bufferLength])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L200)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cin-drawcinematic-function-trap-cin-drawcinematic-gateway-handle-src-mq3-client-cgame-syscalls-ml-1606571544"></a>
 ### trap_CIN_DrawCinematic
@@ -1181,11 +1189,11 @@ trap_CIN_DrawCinematic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `trap_CIN_DrawCinematic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L623)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cin-playcinematic-function-trap-cin-playcinematic-gateway-name-x-y-width-height-bits-src-mq3-client-cgame-syscalls-ml-420753899"></a>
 ### trap_CIN_PlayCinematic
@@ -1198,16 +1206,16 @@ trap_CIN_PlayCinematic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `bits` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `name` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name,x,y,width,height,bits]`. |
+| `x` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name,x,y,width,height,bits]`. |
+| `y` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name,x,y,width,height,bits]`. |
+| `width` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name,x,y,width,height,bits]`. |
+| `height` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name,x,y,width,height,bits]`. |
+| `bits` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name,x,y,width,height,bits]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L611)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cin-runcinematic-function-trap-cin-runcinematic-gateway-handle-src-mq3-client-cgame-syscalls-ml-2106637574"></a>
 ### trap_CIN_RunCinematic
@@ -1220,11 +1228,11 @@ trap_CIN_RunCinematic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `handle` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L619)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cin-setextents-function-trap-cin-setextents-gateway-handle-x-y-width-height-src-mq3-client-cgame-syscalls-ml-668059128"></a>
 ### trap_CIN_SetExtents
@@ -1237,15 +1245,15 @@ trap_CIN_SetExtents
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `trap_CIN_SetExtents`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `trap_CIN_SetExtents`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `trap_CIN_SetExtents`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `trap_CIN_SetExtents`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `trap_CIN_SetExtents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L315)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L631)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cin-stopcinematic-function-trap-cin-stopcinematic-gateway-handle-src-mq3-client-cgame-syscalls-ml-1374217532"></a>
 ### trap_CIN_StopCinematic
@@ -1258,11 +1266,11 @@ trap_CIN_StopCinematic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `handle` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L309)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L615)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-boxtrace-function-trap-cm-boxtrace-gateway-results-start-endpoint-mins-maxs-model-brushmask-src-mq3-client-cgame-syscalls-ml-1527336492"></a>
 ### trap_CM_BoxTrace
@@ -1275,17 +1283,17 @@ trap_CM_BoxTrace
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `results` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `brushmask` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `results` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_BOXTRACE,[results,start,endPoint,mins,maxs,model,brushmask])`. |
+| `start` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_BOXTRACE,[results,start,endPoint,mins,maxs,model,brushmask])`. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
+| `mins` | `dynamic` | — | Minimum X, Y and Z coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game syscalls operation. |
+| `brushmask` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_BOXTRACE,[results,start,endPoint,mins,maxs,model,brushmask])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L295)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-capsuletrace-function-trap-cm-capsuletrace-gateway-results-start-endpoint-mins-maxs-model-brushmask-src-mq3-client-cgame-syscalls-ml-1551950220"></a>
 ### trap_CM_CapsuleTrace
@@ -1298,17 +1306,17 @@ trap_CM_CapsuleTrace
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `results` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `brushmask` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `results` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_CAPSULETRACE,[results,start,endPoint,mins,maxs,model,brushmask])`. |
+| `start` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_CAPSULETRACE,[results,start,endPoint,mins,maxs,model,brushmask])`. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
+| `mins` | `dynamic` | — | Minimum X, Y and Z coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game syscalls operation. |
+| `brushmask` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_CAPSULETRACE,[results,start,endPoint,mins,maxs,model,brushmask])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L305)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-inlinemodel-function-trap-cm-inlinemodel-gateway-index-src-mq3-client-cgame-syscalls-ml-174103730"></a>
 ### trap_CM_InlineModel
@@ -1321,11 +1329,11 @@ trap_CM_InlineModel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `index` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L263)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-loadmap-function-trap-cm-loadmap-gateway-mapname-src-mq3-client-cgame-syscalls-ml-181819887"></a>
 ### trap_CM_LoadMap
@@ -1338,11 +1346,11 @@ trap_CM_LoadMap
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `mapname` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `mapname` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_LOADMAP,[mapname])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L256)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-markfragments-function-trap-cm-markfragments-gateway-numpoints-points-projection-maxpoints-pointbuffer-maxfragments-fragmentbuffer-src-mq3-client-cgame-syscalls-ml-1162104153"></a>
 ### trap_CM_MarkFragments
@@ -1355,17 +1363,17 @@ trap_CM_MarkFragments
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `numPoints` | `dynamic` | — |  |
-| `points` | `dynamic` | — |  |
-| `projection` | `dynamic` | — |  |
-| `maxPoints` | `dynamic` | — |  |
-| `pointBuffer` | `dynamic` | — |  |
-| `maxFragments` | `dynamic` | — |  |
-| `fragmentBuffer` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `numPoints` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[numPoints,points,projection,maxPoints,pointBuffer,maxFragments,fragmentBuffer]`. |
+| `points` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[numPoints,points,projection,maxPoints,pointBuffer,maxFragments,fragmentBuffer]`. |
+| `projection` | `dynamic` | — | Projection parameters used to convert camera-space geometry to screen coordinates. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `maxPoints` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[numPoints,points,projection,maxPoints,pointBuffer,maxFragments,fragmentBuffer]`. |
+| `pointBuffer` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[numPoints,points,projection,maxPoints,pointBuffer,maxFragments,fragmentBuffer]`. |
+| `maxFragments` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[numPoints,points,projection,maxPoints,pointBuffer,maxFragments,fragmentBuffer]`. |
+| `fragmentBuffer` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[numPoints,points,projection,maxPoints,pointBuffer,maxFragments,fragmentBuffer]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L339)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-numinlinemodels-function-trap-cm-numinlinemodels-gateway-src-mq3-client-cgame-syscalls-ml-904228362"></a>
 ### trap_CM_NumInlineModels
@@ -1378,10 +1386,10 @@ trap_CM_NumInlineModels
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L259)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-pointcontents-function-trap-cm-pointcontents-gateway-point-model-src-mq3-client-cgame-syscalls-ml-1016605835"></a>
 ### trap_CM_PointContents
@@ -1394,12 +1402,12 @@ trap_CM_PointContents
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `point` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,model]`. |
+| `model` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,model]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L278)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-tempboxmodel-function-trap-cm-tempboxmodel-gateway-mins-maxs-src-mq3-client-cgame-syscalls-ml-261502816"></a>
 ### trap_CM_TempBoxModel
@@ -1412,12 +1420,12 @@ trap_CM_TempBoxModel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `mins` | `dynamic` | — | Minimum X, Y and Z coordinates of the axis-aligned bounds. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L268)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-tempcapsulemodel-function-trap-cm-tempcapsulemodel-gateway-mins-maxs-src-mq3-client-cgame-syscalls-ml-163091876"></a>
 ### trap_CM_TempCapsuleModel
@@ -1430,12 +1438,12 @@ trap_CM_TempCapsuleModel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `mins` | `dynamic` | — | Minimum X, Y and Z coordinates of the axis-aligned bounds. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L273)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-transformedboxtrace-function-trap-cm-transformedboxtrace-gateway-results-start-endpoint-mins-maxs-model-brushmask-origin-angles-src-mq3-client-cgame-syscalls-ml-994020954"></a>
 ### trap_CM_TransformedBoxTrace
@@ -1448,19 +1456,19 @@ trap_CM_TransformedBoxTrace
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `results` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `brushmask` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `results` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDBOXTRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
+| `start` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDBOXTRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
+| `mins` | `dynamic` | — | Minimum X, Y and Z coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game syscalls operation. |
+| `brushmask` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDBOXTRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `angles` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDBOXTRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L317)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-transformedcapsuletrace-function-trap-cm-transformedcapsuletrace-gateway-results-start-endpoint-mins-maxs-model-brushmask-origin-angles-src-mq3-client-cgame-syscalls-ml-711029090"></a>
 ### trap_CM_TransformedCapsuleTrace
@@ -1473,19 +1481,19 @@ trap_CM_TransformedCapsuleTrace
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `results` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `brushmask` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `results` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDCAPSULETRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
+| `start` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDCAPSULETRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
+| `mins` | `dynamic` | — | Minimum X, Y and Z coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game syscalls operation. |
+| `brushmask` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDCAPSULETRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `angles` | `dynamic` | — | Value used by `invoke(gateway,CG_CM_TRANSFORMEDCAPSULETRACE,[results,start,endPoint,mins,maxs,model,brushmask,origin,angles])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L329)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cm-transformedpointcontents-function-trap-cm-transformedpointcontents-gateway-point-model-origin-angles-src-mq3-client-cgame-syscalls-ml-457511103"></a>
 ### trap_CM_TransformedPointContents
@@ -1498,14 +1506,14 @@ trap_CM_TransformedPointContents
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `point` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,model,origin,angles]`. |
+| `model` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,model,origin,angles]`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `angles` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,model,origin,angles]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L285)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cvar-register-function-trap-cvar-register-gateway-vmcvar-varname-defaultvalue-flags-src-mq3-client-cgame-syscalls-ml-1291586178"></a>
 ### trap_Cvar_Register
@@ -1518,14 +1526,14 @@ trap_Cvar_Register
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `vmCvar` | `dynamic` | — |  |
-| `varName` | `dynamic` | — |  |
-| `defaultValue` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `vmCvar` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_REGISTER,[vmCvar,varName,defaultValue,flags])`. |
+| `varName` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_REGISTER,[vmCvar,varName,defaultValue,flags])`. |
+| `defaultValue` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_REGISTER,[vmCvar,varName,defaultValue,flags])`. |
+| `flags` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_REGISTER,[vmCvar,varName,defaultValue,flags])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L176)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cvar-set-function-trap-cvar-set-gateway-varname-value-src-mq3-client-cgame-syscalls-ml-1187682359"></a>
 ### trap_Cvar_Set
@@ -1538,12 +1546,12 @@ trap_Cvar_Set
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `varName` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `varName` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_SET,[varName,value])`. |
+| `value` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_SET,[varName,value])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L185)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cvar-update-function-trap-cvar-update-gateway-vmcvar-src-mq3-client-cgame-syscalls-ml-1895592585"></a>
 ### trap_Cvar_Update
@@ -1556,11 +1564,11 @@ trap_Cvar_Update
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `vmCvar` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `vmCvar` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_UPDATE,[vmCvar])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L180)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-cvar-variablestringbuffer-function-trap-cvar-variablestringbuffer-gateway-varname-buffer-bufsize-src-mq3-client-cgame-syscalls-ml-1325644306"></a>
 ### trap_Cvar_VariableStringBuffer
@@ -1573,13 +1581,13 @@ trap_Cvar_VariableStringBuffer
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `varName` | `dynamic` | — |  |
-| `buffer` | `dynamic` | — |  |
-| `bufsize` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `varName` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_VARIABLESTRINGBUFFER,[varName,buffer,bufsize])`. |
+| `buffer` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_VARIABLESTRINGBUFFER,[varName,buffer,bufsize])`. |
+| `bufsize` | `dynamic` | — | Value used by `invoke(gateway,CG_CVAR_VARIABLESTRINGBUFFER,[varName,buffer,bufsize])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L191)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-error-function-trap-error-gateway-fmt-src-mq3-client-cgame-syscalls-ml-424426299"></a>
 ### trap_Error
@@ -1592,11 +1600,11 @@ trap_Error
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `fmt` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `fmt` | `dynamic` | — | Value used by `invoke(gateway,CG_ERROR,[fmt])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L166)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-fs-fclosefile-function-trap-fs-fclosefile-gateway-filehandle-src-mq3-client-cgame-syscalls-ml-1379919298"></a>
 ### trap_FS_FCloseFile
@@ -1609,11 +1617,11 @@ trap_FS_FCloseFile
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `fileHandle` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `fileHandle` | `dynamic` | — | Value used by `invoke(gateway,CG_FS_FCLOSEFILE,[fileHandle])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L227)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-fs-fopenfile-function-trap-fs-fopenfile-gateway-qpath-filehandle-mode-src-mq3-client-cgame-syscalls-ml-1677859303"></a>
 ### trap_FS_FOpenFile
@@ -1626,13 +1634,13 @@ trap_FS_FOpenFile
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `qpath` | `dynamic` | — |  |
-| `fileHandle` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `qpath` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[qpath,fileHandle,mode]`. |
+| `fileHandle` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[qpath,fileHandle,mode]`. |
+| `mode` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[qpath,fileHandle,mode]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L211)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-fs-read-function-trap-fs-read-gateway-buffer-length-filehandle-src-mq3-client-cgame-syscalls-ml-1590540544"></a>
 ### trap_FS_Read
@@ -1645,13 +1653,13 @@ trap_FS_Read
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `buffer` | `dynamic` | — |  |
-| `length` | `dynamic` | — |  |
-| `fileHandle` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `buffer` | `dynamic` | — | Value used by `invoke(gateway,CG_FS_READ,[buffer,length,fileHandle])`. |
+| `length` | `dynamic` | — | Value used by `invoke(gateway,CG_FS_READ,[buffer,length,fileHandle])`. |
+| `fileHandle` | `dynamic` | — | Value used by `invoke(gateway,CG_FS_READ,[buffer,length,fileHandle])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L217)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-fs-seek-function-trap-fs-seek-gateway-filehandle-offset-origin-src-mq3-client-cgame-syscalls-ml-551180919"></a>
 ### trap_FS_Seek
@@ -1664,13 +1672,13 @@ trap_FS_Seek
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `fileHandle` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `fileHandle` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[fileHandle,offset,origin]`. |
+| `offset` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[fileHandle,offset,origin]`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L233)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-fs-write-function-trap-fs-write-gateway-buffer-length-filehandle-src-mq3-client-cgame-syscalls-ml-1831385958"></a>
 ### trap_FS_Write
@@ -1683,13 +1691,13 @@ trap_FS_Write
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `buffer` | `dynamic` | — |  |
-| `length` | `dynamic` | — |  |
-| `fileHandle` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `buffer` | `dynamic` | — | Value used by `invoke(gateway,CG_FS_WRITE,[buffer,length,fileHandle])`. |
+| `length` | `dynamic` | — | Value used by `invoke(gateway,CG_FS_WRITE,[buffer,length,fileHandle])`. |
+| `fileHandle` | `dynamic` | — | Value used by `invoke(gateway,CG_FS_WRITE,[buffer,length,fileHandle])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L223)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getcamerainfo-function-trap-getcamerainfo-gateway-time-origin-angles-src-mq3-client-cgame-syscalls-ml-1248755701"></a>
 ### trap_getCameraInfo
@@ -1702,13 +1710,13 @@ trap_getCameraInfo -- dormant in the shipped source, ordinal preserved.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `time` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[time,origin,angles]`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `angles` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[time,origin,angles]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L326)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L656)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getcurrentcmdnumber-function-trap-getcurrentcmdnumber-gateway-src-mq3-client-cgame-syscalls-ml-1958166074"></a>
 ### trap_GetCurrentCmdNumber
@@ -1721,10 +1729,10 @@ trap_GetCurrentCmdNumber
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L533)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getcurrentsnapshotnumber-function-trap-getcurrentsnapshotnumber-gateway-snapshotnumber-servertime-src-mq3-client-cgame-syscalls-ml-690237997"></a>
 ### trap_GetCurrentSnapshotNumber
@@ -1737,12 +1745,12 @@ trap_GetCurrentSnapshotNumber
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `snapshotNumber` | `dynamic` | — |  |
-| `serverTime` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `snapshotNumber` | `dynamic` | — | Value used by `invoke(gateway,CG_GETCURRENTSNAPSHOTNUMBER,[snapshotNumber,serverTime])`. |
+| `serverTime` | `dynamic` | — | Authoritative server timestamp in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L521)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getentitytoken-function-trap-getentitytoken-gateway-buffer-buffersize-src-mq3-client-cgame-syscalls-ml-177230215"></a>
 ### trap_GetEntityToken
@@ -1755,12 +1763,12 @@ trap_GetEntityToken
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `buffer` | `dynamic` | — |  |
-| `bufferSize` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `buffer` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[buffer,bufferSize]`. |
+| `bufferSize` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[buffer,bufferSize]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L636)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getgamestate-function-trap-getgamestate-gateway-gamestate-src-mq3-client-cgame-syscalls-ml-1829349037"></a>
 ### trap_GetGameState
@@ -1773,11 +1781,11 @@ trap_GetGameState
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `gameState` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `gameState` | `dynamic` | — | Value used by `invoke(gateway,CG_GETGAMESTATE,[gameState])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L516)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getglconfig-function-trap-getglconfig-gateway-glconfig-src-mq3-client-cgame-syscalls-ml-993102283"></a>
 ### trap_GetGlconfig
@@ -1790,11 +1798,11 @@ trap_GetGlconfig
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `glconfig` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `glconfig` | `dynamic` | — | Value used by `invoke(gateway,CG_GETGLCONFIG,[glconfig])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L512)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getservercommand-function-trap-getservercommand-gateway-servercommandnumber-src-mq3-client-cgame-syscalls-ml-1137832049"></a>
 ### trap_GetServerCommand
@@ -1807,11 +1815,11 @@ trap_GetServerCommand
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `serverCommandNumber` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `serverCommandNumber` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[serverCommandNumber]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L530)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getsnapshot-function-trap-getsnapshot-gateway-snapshotnumber-snapshot-src-mq3-client-cgame-syscalls-ml-1622627959"></a>
 ### trap_GetSnapshot
@@ -1824,12 +1832,12 @@ trap_GetSnapshot
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `snapshotNumber` | `dynamic` | — |  |
-| `snapshot` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `snapshotNumber` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[snapshotNumber,snapshot]`. |
+| `snapshot` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[snapshotNumber,snapshot]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L526)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-getusercmd-function-trap-getusercmd-gateway-cmdnumber-usercmd-src-mq3-client-cgame-syscalls-ml-1320579262"></a>
 ### trap_GetUserCmd
@@ -1842,12 +1850,12 @@ trap_GetUserCmd
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `cmdNumber` | `dynamic` | — |  |
-| `usercmd` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `cmdNumber` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[cmdNumber,usercmd]`. |
+| `usercmd` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[cmdNumber,usercmd]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L538)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-key-getcatcher-function-trap-key-getcatcher-gateway-src-mq3-client-cgame-syscalls-ml-1611388426"></a>
 ### trap_Key_GetCatcher
@@ -1860,10 +1868,10 @@ trap_Key_GetCatcher
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L563)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-key-getkey-function-trap-key-getkey-gateway-binding-src-mq3-client-cgame-syscalls-ml-798385819"></a>
 ### trap_Key_GetKey
@@ -1876,11 +1884,11 @@ trap_Key_GetKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `binding` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `binding` | `dynamic` | — | Command text associated with an input key. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L571)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-key-isdown-function-trap-key-isdown-gateway-keynum-src-mq3-client-cgame-syscalls-ml-398957423"></a>
 ### trap_Key_IsDown
@@ -1893,11 +1901,11 @@ trap_Key_IsDown
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `keynum` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `keynum` | `dynamic` | — | Quake III key number identifying the keyboard or mouse input. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L560)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-key-setcatcher-function-trap-key-setcatcher-gateway-catcher-src-mq3-client-cgame-syscalls-ml-1745487660"></a>
 ### trap_Key_SetCatcher
@@ -1910,11 +1918,11 @@ trap_Key_SetCatcher
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `catcher` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `catcher` | `dynamic` | — | Value used by `invoke(gateway,CG_KEY_SETCATCHER,[catcher])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L567)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-loadcamera-function-trap-loadcamera-gateway-name-src-mq3-client-cgame-syscalls-ml-816341775"></a>
 ### trap_loadCamera
@@ -1927,11 +1935,11 @@ trap_loadCamera -- dormant in the shipped source, ordinal preserved.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `name` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L322)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L646)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-memoryremaining-function-trap-memoryremaining-gateway-src-mq3-client-cgame-syscalls-ml-1147766054"></a>
 ### trap_MemoryRemaining
@@ -1944,10 +1952,10 @@ trap_MemoryRemaining
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L556)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-milliseconds-function-trap-milliseconds-gateway-src-mq3-client-cgame-syscalls-ml-71449854"></a>
 ### trap_Milliseconds
@@ -1960,10 +1968,10 @@ trap_Milliseconds
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L169)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-pc-addglobaldefine-function-trap-pc-addglobaldefine-gateway-definetext-src-mq3-client-cgame-syscalls-ml-2005838772"></a>
 ### trap_PC_AddGlobalDefine
@@ -1976,11 +1984,11 @@ trap_PC_AddGlobalDefine
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `defineText` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `defineText` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[defineText]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L293)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L575)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-pc-freesource-function-trap-pc-freesource-gateway-handle-src-mq3-client-cgame-syscalls-ml-1661270712"></a>
 ### trap_PC_FreeSource
@@ -1993,11 +2001,11 @@ trap_PC_FreeSource
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `handle` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[handle]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L297)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L583)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-pc-loadsource-function-trap-pc-loadsource-gateway-filename-src-mq3-client-cgame-syscalls-ml-216817495"></a>
 ### trap_PC_LoadSource
@@ -2010,11 +2018,11 @@ trap_PC_LoadSource
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L579)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-pc-readtoken-function-trap-pc-readtoken-gateway-handle-token-src-mq3-client-cgame-syscalls-ml-2012527445"></a>
 ### trap_PC_ReadToken
@@ -2027,12 +2035,12 @@ trap_PC_ReadToken
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `token` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `handle` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[handle,token]`. |
+| `token` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[handle,token]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L588)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-pc-sourcefileandline-function-trap-pc-sourcefileandline-gateway-handle-filename-line-src-mq3-client-cgame-syscalls-ml-1987395583"></a>
 ### trap_PC_SourceFileAndLine
@@ -2045,13 +2053,13 @@ trap_PC_SourceFileAndLine
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
-| `line` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `handle` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[handle,filename,line]`. |
+| `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `line` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[handle,filename,line]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L301)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L594)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-print-function-trap-print-gateway-fmt-src-mq3-client-cgame-syscalls-ml-100277051"></a>
 ### trap_Print
@@ -2064,11 +2072,11 @@ trap_Print
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `fmt` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `fmt` | `dynamic` | — | Value used by `invoke(gateway,CG_PRINT,[fmt])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L162)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-addadditivelighttoscene-function-trap-r-addadditivelighttoscene-gateway-origin-intensity-red-green-blue-src-mq3-client-cgame-syscalls-ml-617205121"></a>
 ### trap_R_AddAdditiveLightToScene
@@ -2081,15 +2089,15 @@ trap_R_AddAdditiveLightToScene
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `intensity` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `intensity` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDADDITIVELIGHTTOSCENE,[origin,PASSFLOAT(intensity),PASSFLOAT(red),PASSFLOAT(green),PASSFLOAT(blue)])`. |
+| `red` | `dynamic` | — | Red color component. |
+| `green` | `dynamic` | — | Green color component. |
+| `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L467)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-addlighttoscene-function-trap-r-addlighttoscene-gateway-origin-intensity-red-green-blue-src-mq3-client-cgame-syscalls-ml-145813657"></a>
 ### trap_R_AddLightToScene
@@ -2102,15 +2110,15 @@ trap_R_AddLightToScene
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `intensity` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `intensity` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDLIGHTTOSCENE,[origin,PASSFLOAT(intensity),PASSFLOAT(red),PASSFLOAT(green),PASSFLOAT(blue)])`. |
+| `red` | `dynamic` | — | Red color component. |
+| `green` | `dynamic` | — | Green color component. |
+| `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L459)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-addpolystoscene-function-trap-r-addpolystoscene-gateway-shader-numverts-verts-num-src-mq3-client-cgame-syscalls-ml-1915688091"></a>
 ### trap_R_AddPolysToScene
@@ -2123,14 +2131,14 @@ trap_R_AddPolysToScene
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `numVerts` | `dynamic` | — |  |
-| `verts` | `dynamic` | — |  |
-| `num` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `numVerts` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDPOLYSTOSCENE,[shader,numVerts,verts,num])`. |
+| `verts` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDPOLYSTOSCENE,[shader,numVerts,verts,num])`. |
+| `num` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDPOLYSTOSCENE,[shader,numVerts,verts,num])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L444)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-addpolytoscene-function-trap-r-addpolytoscene-gateway-shader-numverts-verts-src-mq3-client-cgame-syscalls-ml-2045359693"></a>
 ### trap_R_AddPolyToScene
@@ -2143,13 +2151,13 @@ trap_R_AddPolyToScene
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `numVerts` | `dynamic` | — |  |
-| `verts` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `numVerts` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDPOLYTOSCENE,[shader,numVerts,verts])`. |
+| `verts` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDPOLYTOSCENE,[shader,numVerts,verts])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L437)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-addrefentitytoscene-function-trap-r-addrefentitytoscene-gateway-refentity-src-mq3-client-cgame-syscalls-ml-1228719374"></a>
 ### trap_R_AddRefEntityToScene
@@ -2162,11 +2170,11 @@ trap_R_AddRefEntityToScene
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `refEntity` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `refEntity` | `dynamic` | — | Value used by `invoke(gateway,CG_R_ADDREFENTITYTOSCENE,[refEntity])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L431)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-clearscene-function-trap-r-clearscene-gateway-src-mq3-client-cgame-syscalls-ml-564684602"></a>
 ### trap_R_ClearScene
@@ -2179,10 +2187,10 @@ trap_R_ClearScene
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L427)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-drawstretchpic-function-trap-r-drawstretchpic-gateway-x-y-width-height-s1-t1-s2-t2-shader-src-mq3-client-cgame-syscalls-ml-1706119295"></a>
 ### trap_R_DrawStretchPic
@@ -2195,19 +2203,19 @@ trap_R_DrawStretchPic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `s1` | `dynamic` | — |  |
-| `t1` | `dynamic` | — |  |
-| `s2` | `dynamic` | — |  |
-| `t2` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `trap_R_DrawStretchPic`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `trap_R_DrawStretchPic`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `trap_R_DrawStretchPic`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `trap_R_DrawStretchPic`. |
+| `s1` | `dynamic` | — | Value used by `invoke(gateway,CG_R_DRAWSTRETCHPIC,[PASSFLOAT(x),PASSFLOAT(y),PASSFLOAT(width),PASSFLOAT(height),PASSFLOAT(s1),PASSFLOAT(t1),PASSFLOAT(s2),PAS...`. |
+| `t1` | `dynamic` | — | Value used by `invoke(gateway,CG_R_DRAWSTRETCHPIC,[PASSFLOAT(x),PASSFLOAT(y),PASSFLOAT(width),PASSFLOAT(height),PASSFLOAT(s1),PASSFLOAT(t1),PASSFLOAT(s2),PAS...`. |
+| `s2` | `dynamic` | — | Value used by `invoke(gateway,CG_R_DRAWSTRETCHPIC,[PASSFLOAT(x),PASSFLOAT(y),PASSFLOAT(width),PASSFLOAT(height),PASSFLOAT(s1),PASSFLOAT(t1),PASSFLOAT(s2),PAS...`. |
+| `t2` | `dynamic` | — | Value used by `invoke(gateway,CG_R_DRAWSTRETCHPIC,[PASSFLOAT(x),PASSFLOAT(y),PASSFLOAT(width),PASSFLOAT(height),PASSFLOAT(s1),PASSFLOAT(t1),PASSFLOAT(s2),PAS...`. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L487)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-inpvs-function-trap-r-inpvs-gateway-p1-p2-src-mq3-client-cgame-syscalls-ml-2021430035"></a>
 ### trap_R_inPVS
@@ -2220,12 +2228,12 @@ trap_R_inPVS
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `p1` | `dynamic` | — |  |
-| `p2` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `p1` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[p1,p2]`. |
+| `p2` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[p1,p2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L641)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-lerptag-function-trap-r-lerptag-gateway-tag-model-startframe-endframe-fraction-tagname-src-mq3-client-cgame-syscalls-ml-1481697335"></a>
 ### trap_R_LerpTag
@@ -2238,16 +2246,16 @@ trap_R_LerpTag
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `tag` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `startFrame` | `dynamic` | — |  |
-| `endFrame` | `dynamic` | — |  |
-| `fraction` | `dynamic` | — |  |
-| `tagName` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `tag` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[tag,model,startFrame,endFrame,PASSFLOAT(fraction),tagName]`. |
+| `model` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[tag,model,startFrame,endFrame,PASSFLOAT(fraction),tagName]`. |
+| `startFrame` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[tag,model,startFrame,endFrame,PASSFLOAT(fraction),tagName]`. |
+| `endFrame` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[tag,model,startFrame,endFrame,PASSFLOAT(fraction),tagName]`. |
+| `fraction` | `dynamic` | — | Interpolation or blend fraction between the endpoint values. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `tagName` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[tag,model,startFrame,endFrame,PASSFLOAT(fraction),tagName]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L502)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-lightforpoint-function-trap-r-lightforpoint-gateway-point-ambientlight-directedlight-lightdir-src-mq3-client-cgame-syscalls-ml-1118475931"></a>
 ### trap_R_LightForPoint
@@ -2260,14 +2268,14 @@ trap_R_LightForPoint
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
-| `ambientLight` | `dynamic` | — |  |
-| `directedLight` | `dynamic` | — |  |
-| `lightDir` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `point` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,ambientLight,directedLight,lightDir]`. |
+| `ambientLight` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,ambientLight,directedLight,lightDir]`. |
+| `directedLight` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,ambientLight,directedLight,lightDir]`. |
+| `lightDir` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[point,ambientLight,directedLight,lightDir]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L451)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-loadworldmap-function-trap-r-loadworldmap-gateway-mapname-src-mq3-client-cgame-syscalls-ml-1666590635"></a>
 ### trap_R_LoadWorldMap
@@ -2280,11 +2288,11 @@ trap_R_LoadWorldMap
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `mapname` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `mapname` | `dynamic` | — | Value used by `invoke(gateway,CG_R_LOADWORLDMAP,[mapname])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L402)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-modelbounds-function-trap-r-modelbounds-gateway-model-mins-maxs-src-mq3-client-cgame-syscalls-ml-1886039971"></a>
 ### trap_R_ModelBounds
@@ -2297,13 +2305,13 @@ trap_R_ModelBounds
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game syscalls operation. |
+| `mins` | `dynamic` | — | Minimum X, Y and Z coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum X, Y and Z coordinates of the axis-aligned bounds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L493)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-registerfont-function-trap-r-registerfont-gateway-fontname-pointsize-font-src-mq3-client-cgame-syscalls-ml-2051606242"></a>
 ### trap_R_RegisterFont
@@ -2316,13 +2324,13 @@ trap_R_RegisterFont
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `fontName` | `dynamic` | — |  |
-| `pointSize` | `dynamic` | — |  |
-| `font` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `fontName` | `dynamic` | — | Value used by `invoke(gateway,CG_R_REGISTERFONT,[fontName,pointSize,font])`. |
+| `pointSize` | `dynamic` | — | Value used by `invoke(gateway,CG_R_REGISTERFONT,[fontName,pointSize,font])`. |
+| `font` | `dynamic` | — | Value used by `invoke(gateway,CG_R_REGISTERFONT,[fontName,pointSize,font])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L424)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-registermodel-function-trap-r-registermodel-gateway-name-src-mq3-client-cgame-syscalls-ml-1879620025"></a>
 ### trap_R_RegisterModel
@@ -2335,11 +2343,11 @@ trap_R_RegisterModel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `name` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L406)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-registershader-function-trap-r-registershader-gateway-name-src-mq3-client-cgame-syscalls-ml-832703571"></a>
 ### trap_R_RegisterShader
@@ -2352,11 +2360,11 @@ trap_R_RegisterShader
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `name` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L414)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-registershadernomip-function-trap-r-registershadernomip-gateway-name-src-mq3-client-cgame-syscalls-ml-1699868397"></a>
 ### trap_R_RegisterShaderNoMip
@@ -2369,11 +2377,11 @@ trap_R_RegisterShaderNoMip
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `name` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L418)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-registerskin-function-trap-r-registerskin-gateway-name-src-mq3-client-cgame-syscalls-ml-594257987"></a>
 ### trap_R_RegisterSkin
@@ -2386,11 +2394,11 @@ trap_R_RegisterSkin
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `name` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[name]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L410)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-remapshader-function-trap-r-remapshader-gateway-oldshader-newshader-timeoffset-src-mq3-client-cgame-syscalls-ml-418774427"></a>
 ### trap_R_RemapShader
@@ -2403,13 +2411,13 @@ trap_R_RemapShader
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `oldShader` | `dynamic` | — |  |
-| `newShader` | `dynamic` | — |  |
-| `timeOffset` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `oldShader` | `dynamic` | — | Value used by `invoke(gateway,CG_R_REMAP_SHADER,[oldShader,newShader,timeOffset])`. |
+| `newShader` | `dynamic` | — | Value used by `invoke(gateway,CG_R_REMAP_SHADER,[oldShader,newShader,timeOffset])`. |
+| `timeOffset` | `dynamic` | — | Value used by `invoke(gateway,CG_R_REMAP_SHADER,[oldShader,newShader,timeOffset])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L508)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-renderscene-function-trap-r-renderscene-gateway-refdef-src-mq3-client-cgame-syscalls-ml-1000481654"></a>
 ### trap_R_RenderScene
@@ -2422,11 +2430,11 @@ trap_R_RenderScene
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `refdef` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `refdef` | `dynamic` | — | Value used by `invoke(gateway,CG_R_RENDERSCENE,[refdef])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L471)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-r-setcolor-function-trap-r-setcolor-gateway-rgba-src-mq3-client-cgame-syscalls-ml-1337036580"></a>
 ### trap_R_SetColor
@@ -2439,11 +2447,11 @@ trap_R_SetColor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `rgba` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `rgba` | `dynamic` | — | Value used by `invoke(gateway,CG_R_SETCOLOR,[rgba])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L475)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-realtime-function-trap-realtime-gateway-qtime-src-mq3-client-cgame-syscalls-ml-1474950064"></a>
 ### trap_RealTime
@@ -2456,11 +2464,11 @@ trap_RealTime
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `qtime` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `qtime` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[qtime]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L598)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-removecommand-function-trap-removecommand-gateway-cmdname-src-mq3-client-cgame-syscalls-ml-627020691"></a>
 ### trap_RemoveCommand
@@ -2473,11 +2481,11 @@ trap_RemoveCommand
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `cmdName` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `cmdName` | `dynamic` | — | Value used by `invoke(gateway,CG_REMOVECOMMAND,[cmdName])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L245)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-addloopingsound-function-trap-s-addloopingsound-gateway-entitynum-origin-velocity-sfx-src-mq3-client-cgame-syscalls-ml-1133685397"></a>
 ### trap_S_AddLoopingSound
@@ -2490,14 +2498,14 @@ trap_S_AddLoopingSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `sfx` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. |
+| `sfx` | `dynamic` | — | Value used by `invoke(gateway,CG_S_ADDLOOPINGSOUND,[entityNum,origin,velocity,sfx])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L362)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-addrealloopingsound-function-trap-s-addrealloopingsound-gateway-entitynum-origin-velocity-sfx-src-mq3-client-cgame-syscalls-ml-967946705"></a>
 ### trap_S_AddRealLoopingSound
@@ -2510,14 +2518,14 @@ trap_S_AddRealLoopingSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `sfx` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. |
+| `sfx` | `dynamic` | — | Value used by `invoke(gateway,CG_S_ADDREALLOOPINGSOUND,[entityNum,origin,velocity,sfx])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L369)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-clearloopingsounds-function-trap-s-clearloopingsounds-gateway-killall-src-mq3-client-cgame-syscalls-ml-1619418529"></a>
 ### trap_S_ClearLoopingSounds
@@ -2530,11 +2538,11 @@ trap_S_ClearLoopingSounds
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `killAll` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `killAll` | `dynamic` | — | Value used by `invoke(gateway,CG_S_CLEARLOOPINGSOUNDS,[killAll])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L355)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-registersound-function-trap-s-registersound-gateway-sample-compressed-src-mq3-client-cgame-syscalls-ml-1473847281"></a>
 ### trap_S_RegisterSound
@@ -2547,12 +2555,12 @@ trap_S_RegisterSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `sample` | `dynamic` | — |  |
-| `compressed` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. Forwarded to `mq3.client.cgame_syscalls.invoke`. |
+| `sample` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[sample,compressed]`. |
+| `compressed` | `dynamic` | — | Argument 3 of `mq3.client.cgame_syscalls.invoke`; passed as `[sample,compressed]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L390)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-respatialize-function-trap-s-respatialize-gateway-entitynum-origin-axis-inwater-src-mq3-client-cgame-syscalls-ml-1408081004"></a>
 ### trap_S_Respatialize
@@ -2565,14 +2573,14 @@ trap_S_Respatialize
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `axis` | `dynamic` | — |  |
-| `inWater` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `axis` | `dynamic` | — | Value used by `invoke(gateway,CG_S_RESPATIALIZE,[entityNum,origin,axis,inWater])`. |
+| `inWater` | `dynamic` | — | Value used by `invoke(gateway,CG_S_RESPATIALIZE,[entityNum,origin,axis,inWater])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L385)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-startbackgroundtrack-function-trap-s-startbackgroundtrack-gateway-intro-loopname-src-mq3-client-cgame-syscalls-ml-1975025765"></a>
 ### trap_S_StartBackgroundTrack
@@ -2585,12 +2593,12 @@ trap_S_StartBackgroundTrack
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `intro` | `dynamic` | — |  |
-| `loopName` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `intro` | `dynamic` | — | Value used by `invoke(gateway,CG_S_STARTBACKGROUNDTRACK,[intro,loopName])`. |
+| `loopName` | `dynamic` | — | Value used by `invoke(gateway,CG_S_STARTBACKGROUNDTRACK,[intro,loopName])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L395)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-startlocalsound-function-trap-s-startlocalsound-gateway-sfx-channelnum-src-mq3-client-cgame-syscalls-ml-1516783862"></a>
 ### trap_S_StartLocalSound
@@ -2603,12 +2611,12 @@ trap_S_StartLocalSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `sfx` | `dynamic` | — |  |
-| `channelNum` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `sfx` | `dynamic` | — | Value used by `invoke(gateway,CG_S_STARTLOCALSOUND,[sfx,channelNum])`. |
+| `channelNum` | `dynamic` | — | Value used by `invoke(gateway,CG_S_STARTLOCALSOUND,[sfx,channelNum])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L351)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-startsound-function-trap-s-startsound-gateway-origin-entitynum-entitychannel-sfx-src-mq3-client-cgame-syscalls-ml-283164432"></a>
 ### trap_S_StartSound
@@ -2621,14 +2629,14 @@ trap_S_StartSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `entityChannel` | `dynamic` | — |  |
-| `sfx` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `entityChannel` | `dynamic` | — | Value used by `invoke(gateway,CG_S_STARTSOUND,[origin,entityNum,entityChannel,sfx])`. |
+| `sfx` | `dynamic` | — | Value used by `invoke(gateway,CG_S_STARTSOUND,[origin,entityNum,entityChannel,sfx])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L346)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-stopbackgroundtrack-function-trap-s-stopbackgroundtrack-gateway-src-mq3-client-cgame-syscalls-ml-1515064830"></a>
 ### trap_S_StopBackgroundTrack
@@ -2641,10 +2649,10 @@ trap_S_StopBackgroundTrack
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L398)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-stoploopingsound-function-trap-s-stoploopingsound-gateway-entitynum-src-mq3-client-cgame-syscalls-ml-604828847"></a>
 ### trap_S_StopLoopingSound
@@ -2657,11 +2665,11 @@ trap_S_StopLoopingSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L373)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-s-updateentityposition-function-trap-s-updateentityposition-gateway-entitynum-origin-src-mq3-client-cgame-syscalls-ml-58090693"></a>
 ### trap_S_UpdateEntityPosition
@@ -2674,12 +2682,12 @@ trap_S_UpdateEntityPosition
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L378)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-sendclientcommand-function-trap-sendclientcommand-gateway-text-src-mq3-client-cgame-syscalls-ml-92827161"></a>
 ### trap_SendClientCommand
@@ -2692,11 +2700,11 @@ trap_SendClientCommand
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `text` | `dynamic` | — | Text consumed or emitted by `trap_SendClientCommand` in the client game syscalls path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L249)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-sendconsolecommand-function-trap-sendconsolecommand-gateway-text-src-mq3-client-cgame-syscalls-ml-1415473777"></a>
 ### trap_SendConsoleCommand
@@ -2709,11 +2717,11 @@ trap_SendConsoleCommand
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `text` | `dynamic` | — | Text consumed or emitted by `trap_SendConsoleCommand` in the client game syscalls path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L237)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-setusercmdvalue-function-trap-setusercmdvalue-gateway-statevalue-sensitivityscale-src-mq3-client-cgame-syscalls-ml-1348189151"></a>
 ### trap_SetUserCmdValue
@@ -2726,12 +2734,12 @@ trap_SetUserCmdValue
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `stateValue` | `dynamic` | — |  |
-| `sensitivityScale` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `stateValue` | `dynamic` | — | Value used by `invoke(gateway,CG_SETUSERCMDVALUE,[stateValue,PASSFLOAT(sensitivityScale)])`. |
+| `sensitivityScale` | `dynamic` | — | Value used by `invoke(gateway,CG_SETUSERCMDVALUE,[stateValue,PASSFLOAT(sensitivityScale)])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L543)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-snapvector-function-trap-snapvector-gateway-vector-src-mq3-client-cgame-syscalls-ml-176306411"></a>
 ### trap_SnapVector
@@ -2744,11 +2752,11 @@ trap_SnapVector
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `vector` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `vector` | `dynamic` | — | Value used by `invoke(gateway,CG_SNAPVECTOR,[vector])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L602)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-startcamera-function-trap-startcamera-gateway-time-src-mq3-client-cgame-syscalls-ml-233066587"></a>
 ### trap_startCamera
@@ -2761,11 +2769,11 @@ trap_startCamera -- dormant in the shipped source, ordinal preserved.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
+| `time` | `dynamic` | — | Value used by `invoke(gateway,CG_STARTCAMERA,[time])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L324)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L650)
 
 <a id="function-function-mq3-client-cgame-syscalls-trap-updatescreen-function-trap-updatescreen-gateway-src-mq3-client-cgame-syscalls-ml-1051710388"></a>
 ### trap_UpdateScreen
@@ -2778,7 +2786,7 @@ trap_UpdateScreen
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gateway` | `dynamic` | — |  |
+| `gateway` | `dynamic` | — | Native syscall gateway carrying the dispatcher callback and its host context. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_syscalls.ml#L252)

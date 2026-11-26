@@ -9,8 +9,10 @@
 struct Tables
 ```
 
+`Tables` record for aas routing tables, containing `router`, `reversed`, `areaTravelTimes`, `portalMaxTravelTimes` and `totalLinks` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaTravelTimes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-routing-tables-tables-portalmaxtraveltimes-portalmaxtraveltimes-src-mq3-botlib-aas-routing-tables-ml-647689902"></a>
 ### portalMaxTravelTimes
@@ -32,7 +34,7 @@ portalMaxTravelTimes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-routing-tables-tables-reachsources-reachsources-src-mq3-botlib-aas-routing-tables-ml-1535388280"></a>
 ### reachSources
@@ -42,7 +44,7 @@ reachSources
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-routing-tables-tables-reversed-reversed-src-mq3-botlib-aas-routing-tables-ml-861629146"></a>
 ### reversed
@@ -52,7 +54,7 @@ reversed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-routing-tables-tables-router-router-src-mq3-botlib-aas-routing-tables-ml-1094371252"></a>
 ### router
@@ -62,7 +64,7 @@ router
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-routing-tables-tables-totallinks-totallinks-src-mq3-botlib-aas-routing-tables-ml-1045722008"></a>
 ### totalLinks
@@ -72,7 +74,7 @@ totalLinks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-routing-tables-tables-truncatedsources-truncatedsources-src-mq3-botlib-aas-routing-tables-ml-1680253758"></a>
 ### truncatedSources
@@ -82,4 +84,4 @@ truncatedSources
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L14)

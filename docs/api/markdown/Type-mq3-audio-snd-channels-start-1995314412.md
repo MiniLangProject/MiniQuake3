@@ -9,8 +9,10 @@
 struct Start
 ```
 
+Start record for audio.snd_channels, containing `accepted`, `slot`, `replaced`, `reason`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ accepted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
 
 <a id="field-field-mq3-audio-snd-channels-start-reason-reason-src-mq3-audio-snd-channels-ml-371430379"></a>
 ### reason
@@ -32,7 +34,7 @@ reason
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
 
 <a id="field-field-mq3-audio-snd-channels-start-replaced-replaced-src-mq3-audio-snd-channels-ml-1957065003"></a>
 ### replaced
@@ -42,7 +44,7 @@ replaced
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)
 
 <a id="field-field-mq3-audio-snd-channels-start-slot-slot-src-mq3-audio-snd-channels-ml-253696331"></a>
 ### slot
@@ -52,4 +54,4 @@ slot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L15)

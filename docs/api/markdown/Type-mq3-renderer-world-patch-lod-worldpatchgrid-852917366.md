@@ -9,8 +9,10 @@
 struct WorldPatchGrid
 ```
 
+Data record for `mq3.renderer.world_patch_lod.WorldPatchGrid`; groups `control`, `width`, `height`, `widthLodError`, `heightLodError`, `lodOrigin`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ control
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-height-height-src-mq3-renderer-world-patch-lod-ml-709352909"></a>
 ### height
@@ -32,7 +34,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-heightloderror-heightloderror-src-mq3-renderer-world-patch-lod-ml-462257015"></a>
 ### heightLodError
@@ -42,7 +44,7 @@ heightLodError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodfixed-lodfixed-src-mq3-renderer-world-patch-lod-ml-2037571841"></a>
 ### lodFixed
@@ -52,7 +54,7 @@ lodFixed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodorigin-lodorigin-src-mq3-renderer-world-patch-lod-ml-429608735"></a>
 ### lodOrigin
@@ -62,7 +64,7 @@ lodOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodradius-lodradius-src-mq3-renderer-world-patch-lod-ml-1697486551"></a>
 ### lodRadius
@@ -72,7 +74,7 @@ lodRadius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-lodstitched-lodstitched-src-mq3-renderer-world-patch-lod-ml-996486203"></a>
 ### lodStitched
@@ -82,7 +84,7 @@ lodStitched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-width-width-src-mq3-renderer-world-patch-lod-ml-996080991"></a>
 ### width
@@ -92,7 +94,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldpatchgrid-widthloderror-widthloderror-src-mq3-renderer-world-patch-lod-ml-1096152407"></a>
 ### widthLodError
@@ -102,4 +104,4 @@ widthLodError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L16)

@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores original UI session host-service callbacks, including `context`, `catcherFn`, `keyEventFn`, `mouseEventFn`, `refreshFn`, `menuFn` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 ## Members
 
@@ -22,7 +24,7 @@ catcherFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-commandcountfn-commandcountfn-src-mq3-client-original-ui-session-ml-1358241993"></a>
 ### commandCountFn
@@ -32,7 +34,7 @@ commandCountFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-connectfn-connectfn-src-mq3-client-original-ui-session-ml-1520293933"></a>
 ### connectFn
@@ -42,7 +44,7 @@ connectFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-context-context-src-mq3-client-original-ui-session-ml-425294853"></a>
 ### context
@@ -52,7 +54,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-keyeventfn-keyeventfn-src-mq3-client-original-ui-session-ml-413004603"></a>
 ### keyEventFn
@@ -62,7 +64,7 @@ keyEventFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-menufn-menufn-src-mq3-client-original-ui-session-ml-579555015"></a>
 ### menuFn
@@ -72,7 +74,7 @@ menuFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-mouseeventfn-mouseeventfn-src-mq3-client-original-ui-session-ml-726155447"></a>
 ### mouseEventFn
@@ -82,7 +84,7 @@ mouseEventFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-refreshfn-refreshfn-src-mq3-client-original-ui-session-ml-1133504797"></a>
 ### refreshFn
@@ -92,7 +94,7 @@ refreshFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-services-stateeventfn-stateeventfn-src-mq3-client-original-ui-session-ml-2126567319"></a>
 ### stateEventFn
@@ -102,4 +104,4 @@ stateEventFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)

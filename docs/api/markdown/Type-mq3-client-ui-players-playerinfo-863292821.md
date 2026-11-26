@@ -9,8 +9,10 @@
 struct PlayerInfo
 ```
 
+Stores UI players player info record, including `legsModel`, `legsSkin`, `legs`, `torsoModel`, `torsoSkin`, `torso` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-animations-animations-src-mq3-client-ui-players-ml-844152784"></a>
 ### animations
@@ -32,7 +34,7 @@ animations
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-barrelangle-barrelangle-src-mq3-client-ui-players-ml-936612518"></a>
 ### barrelAngle
@@ -42,7 +44,7 @@ barrelAngle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-barrelmodel-barrelmodel-src-mq3-client-ui-players-ml-903560514"></a>
 ### barrelModel
@@ -52,7 +54,7 @@ barrelModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-barrelspinning-barrelspinning-src-mq3-client-ui-players-ml-891915310"></a>
 ### barrelSpinning
@@ -62,7 +64,7 @@ barrelSpinning
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-barreltime-barreltime-src-mq3-client-ui-players-ml-343700976"></a>
 ### barrelTime
@@ -72,7 +74,7 @@ barrelTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-chat-chat-src-mq3-client-ui-players-ml-887746442"></a>
 ### chat
@@ -82,7 +84,7 @@ chat
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-currentweapon-currentweapon-src-mq3-client-ui-players-ml-592421558"></a>
 ### currentWeapon
@@ -92,7 +94,7 @@ currentWeapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-flashdlightcolor-flashdlightcolor-src-mq3-client-ui-players-ml-1706570808"></a>
 ### flashDlightColor
@@ -102,7 +104,7 @@ flashDlightColor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-flashmodel-flashmodel-src-mq3-client-ui-players-ml-1208528044"></a>
 ### flashModel
@@ -112,7 +114,7 @@ flashModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-headmodel-headmodel-src-mq3-client-ui-players-ml-289804618"></a>
 ### headModel
@@ -122,7 +124,7 @@ headModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-headskin-headskin-src-mq3-client-ui-players-ml-1135492112"></a>
 ### headSkin
@@ -132,7 +134,7 @@ headSkin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-jumpheight-jumpheight-src-mq3-client-ui-players-ml-111466456"></a>
 ### jumpHeight
@@ -142,7 +144,7 @@ jumpHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-lastweapon-lastweapon-src-mq3-client-ui-players-ml-838584746"></a>
 ### lastWeapon
@@ -152,7 +154,7 @@ lastWeapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-legs-legs-src-mq3-client-ui-players-ml-182986520"></a>
 ### legs
@@ -162,7 +164,7 @@ legs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-legsanim-legsanim-src-mq3-client-ui-players-ml-495661946"></a>
 ### legsAnim
@@ -172,7 +174,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-legsanimationtimer-legsanimationtimer-src-mq3-client-ui-players-ml-235075670"></a>
 ### legsAnimationTimer
@@ -182,7 +184,7 @@ legsAnimationTimer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-legsmodel-legsmodel-src-mq3-client-ui-players-ml-1985652146"></a>
 ### legsModel
@@ -192,7 +194,7 @@ legsModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-legsskin-legsskin-src-mq3-client-ui-players-ml-930930554"></a>
 ### legsSkin
@@ -202,7 +204,7 @@ legsSkin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-moveangles-moveangles-src-mq3-client-ui-players-ml-1670628464"></a>
 ### moveAngles
@@ -212,7 +214,7 @@ moveAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-muzzleflashtime-muzzleflashtime-src-mq3-client-ui-players-ml-1953275586"></a>
 ### muzzleFlashTime
@@ -222,7 +224,7 @@ muzzleFlashTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-newmodel-newmodel-src-mq3-client-ui-players-ml-483468608"></a>
 ### newModel
@@ -232,7 +234,7 @@ newModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-pendinglegsanim-pendinglegsanim-src-mq3-client-ui-players-ml-430324542"></a>
 ### pendingLegsAnim
@@ -242,7 +244,7 @@ pendingLegsAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-pendingtorsoanim-pendingtorsoanim-src-mq3-client-ui-players-ml-1954894388"></a>
 ### pendingTorsoAnim
@@ -252,7 +254,7 @@ pendingTorsoAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-pendingweapon-pendingweapon-src-mq3-client-ui-players-ml-441156274"></a>
 ### pendingWeapon
@@ -262,7 +264,7 @@ pendingWeapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-realtime-realtime-src-mq3-client-ui-players-ml-62127084"></a>
 ### realtime
@@ -272,7 +274,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-realweapon-realweapon-src-mq3-client-ui-players-ml-1613117738"></a>
 ### realWeapon
@@ -282,7 +284,7 @@ realWeapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-torso-torso-src-mq3-client-ui-players-ml-1526252390"></a>
 ### torso
@@ -292,7 +294,7 @@ torso
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-torsoanim-torsoanim-src-mq3-client-ui-players-ml-1939051690"></a>
 ### torsoAnim
@@ -302,7 +304,7 @@ torsoAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-torsoanimationtimer-torsoanimationtimer-src-mq3-client-ui-players-ml-827382226"></a>
 ### torsoAnimationTimer
@@ -312,7 +314,7 @@ torsoAnimationTimer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-torsomodel-torsomodel-src-mq3-client-ui-players-ml-1631963914"></a>
 ### torsoModel
@@ -322,7 +324,7 @@ torsoModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-torsoskin-torsoskin-src-mq3-client-ui-players-ml-266692138"></a>
 ### torsoSkin
@@ -332,7 +334,7 @@ torsoSkin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-viewangles-viewangles-src-mq3-client-ui-players-ml-316797224"></a>
 ### viewAngles
@@ -342,7 +344,7 @@ viewAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-weapon-weapon-src-mq3-client-ui-players-ml-531698666"></a>
 ### weapon
@@ -352,7 +354,7 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-weaponmodel-weaponmodel-src-mq3-client-ui-players-ml-876819834"></a>
 ### weaponModel
@@ -362,7 +364,7 @@ weaponModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)
 
 <a id="field-field-mq3-client-ui-players-playerinfo-weapontimer-weapontimer-src-mq3-client-ui-players-ml-1528612774"></a>
 ### weaponTimer
@@ -372,4 +374,4 @@ weaponTimer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L67)

@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores base Quake III HUD state, including `health`, `armor`, `ammo`, `weapon`, `score`, `kills` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ ammo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-armor-armor-src-mq3-client-baseq3-hud-ml-2129271054"></a>
 ### armor
@@ -32,7 +34,7 @@ armor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-deaths-deaths-src-mq3-client-baseq3-hud-ml-879279400"></a>
 ### deaths
@@ -42,7 +44,7 @@ deaths
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-fragtime-fragtime-src-mq3-client-baseq3-hud-ml-1474486944"></a>
 ### fragTime
@@ -52,7 +54,7 @@ fragTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-health-health-src-mq3-client-baseq3-hud-ml-1042394374"></a>
 ### health
@@ -62,7 +64,7 @@ health
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-kills-kills-src-mq3-client-baseq3-hud-ml-902230898"></a>
 ### kills
@@ -72,7 +74,7 @@ kills
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-ownedweapons-ownedweapons-src-mq3-client-baseq3-hud-ml-1681753570"></a>
 ### ownedWeapons
@@ -82,7 +84,7 @@ ownedWeapons
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-pickupclass-pickupclass-src-mq3-client-baseq3-hud-ml-518363150"></a>
 ### pickupClass
@@ -92,7 +94,7 @@ pickupClass
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-pickupname-pickupname-src-mq3-client-baseq3-hud-ml-1016600768"></a>
 ### pickupName
@@ -102,7 +104,7 @@ pickupName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-pickuptime-pickuptime-src-mq3-client-baseq3-hud-ml-922784004"></a>
 ### pickupTime
@@ -112,7 +114,7 @@ pickupTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-score-score-src-mq3-client-baseq3-hud-ml-1438926786"></a>
 ### score
@@ -122,7 +124,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-weapon-weapon-src-mq3-client-baseq3-hud-ml-1892386826"></a>
 ### weapon
@@ -132,7 +134,7 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-weaponammo-weaponammo-src-mq3-client-baseq3-hud-ml-365803190"></a>
 ### weaponAmmo
@@ -142,7 +144,7 @@ weaponAmmo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-hud-state-weaponselecttime-weaponselecttime-src-mq3-client-baseq3-hud-ml-577122188"></a>
 ### weaponSelectTime
@@ -152,4 +154,4 @@ weaponSelectTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L31)

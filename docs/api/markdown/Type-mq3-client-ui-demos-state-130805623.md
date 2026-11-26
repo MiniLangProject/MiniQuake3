@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI demos state, including `numDemos`, `names`, `selected`, `top`, `columns`, `height` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-cached-cached-src-mq3-client-ui-demos-ml-934822906"></a>
 ### cached
@@ -32,7 +34,7 @@ cached
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-columns-columns-src-mq3-client-ui-demos-ml-839277058"></a>
 ### columns
@@ -42,7 +44,7 @@ columns
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-extension-extension-src-mq3-client-ui-demos-ml-1216328550"></a>
 ### extension
@@ -52,7 +54,7 @@ extension
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-govisible-govisible-src-mq3-client-ui-demos-ml-1745987322"></a>
 ### goVisible
@@ -62,7 +64,7 @@ goVisible
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-height-height-src-mq3-client-ui-demos-ml-1101880584"></a>
 ### height
@@ -72,7 +74,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-menuevents-menuevents-src-mq3-client-ui-demos-ml-504953098"></a>
 ### menuEvents
@@ -82,7 +84,7 @@ menuEvents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-names-names-src-mq3-client-ui-demos-ml-957444742"></a>
 ### names
@@ -92,7 +94,7 @@ names
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-numdemos-numdemos-src-mq3-client-ui-demos-ml-1012588590"></a>
 ### numDemos
@@ -102,7 +104,7 @@ numDemos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-protocol-protocol-src-mq3-client-ui-demos-ml-816990262"></a>
 ### protocol
@@ -112,7 +114,7 @@ protocol
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-pushed-pushed-src-mq3-client-ui-demos-ml-1609593664"></a>
 ### pushed
@@ -122,7 +124,7 @@ pushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-retailactive-retailactive-src-mq3-client-ui-demos-ml-1807248988"></a>
 ### retailActive
@@ -132,7 +134,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-selected-selected-src-mq3-client-ui-demos-ml-918372712"></a>
 ### selected
@@ -142,7 +144,7 @@ selected
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
 
 <a id="field-field-mq3-client-ui-demos-state-top-top-src-mq3-client-ui-demos-ml-100779342"></a>
 ### top
@@ -152,4 +154,4 @@ top
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)

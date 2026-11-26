@@ -9,8 +9,10 @@
 struct Chunk
 ```
 
+Chunk record for format.roq, containing `id`, `size`, `flags`, `dataOffset`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ dataOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
 
 <a id="field-field-mq3-format-roq-chunk-flags-flags-src-mq3-format-roq-ml-833315958"></a>
 ### flags
@@ -32,7 +34,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
 
 <a id="field-field-mq3-format-roq-chunk-id-id-src-mq3-format-roq-ml-1633816884"></a>
 ### id
@@ -42,7 +44,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)
 
 <a id="field-field-mq3-format-roq-chunk-size-size-src-mq3-format-roq-ml-1849303348"></a>
 ### size
@@ -52,4 +54,4 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L20)

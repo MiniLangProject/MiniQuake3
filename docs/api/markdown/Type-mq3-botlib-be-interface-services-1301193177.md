@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for be interface, containing `context`, `aasSetupFn`, `eaSetupFn`, `weaponSetupFn` and `goalSetupFn` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ aasLoadMapFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-aassetupfn-aassetupfn-src-mq3-botlib-be-interface-ml-870929735"></a>
 ### aasSetupFn
@@ -32,7 +34,7 @@ aasSetupFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-aasshutdownfn-aasshutdownfn-src-mq3-botlib-be-interface-ml-1396878023"></a>
 ### aasShutdownFn
@@ -42,7 +44,7 @@ aasShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-aasstartframefn-aasstartframefn-src-mq3-botlib-be-interface-ml-654190735"></a>
 ### aasStartFrameFn
@@ -52,7 +54,7 @@ aasStartFrameFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-aasupdateentityfn-aasupdateentityfn-src-mq3-botlib-be-interface-ml-1451468987"></a>
 ### aasUpdateEntityFn
@@ -62,7 +64,7 @@ aasUpdateEntityFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-charactersshutdownfn-charactersshutdownfn-src-mq3-botlib-be-interface-ml-1755699063"></a>
 ### charactersShutdownFn
@@ -72,7 +74,7 @@ charactersShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-chatsetupfn-chatsetupfn-src-mq3-botlib-be-interface-ml-236288047"></a>
 ### chatSetupFn
@@ -82,7 +84,7 @@ chatSetupFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-chatshutdownfn-chatshutdownfn-src-mq3-botlib-be-interface-ml-453366639"></a>
 ### chatShutdownFn
@@ -92,7 +94,7 @@ chatShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-checksourcesfn-checksourcesfn-src-mq3-botlib-be-interface-ml-1914862499"></a>
 ### checkSourcesFn
@@ -102,7 +104,7 @@ checkSourcesFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-context-context-src-mq3-botlib-be-interface-ml-62703127"></a>
 ### context
@@ -112,7 +114,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-definesremovedfn-definesremovedfn-src-mq3-botlib-be-interface-ml-1144823063"></a>
 ### definesRemovedFn
@@ -122,7 +124,7 @@ definesRemovedFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-easetupfn-easetupfn-src-mq3-botlib-be-interface-ml-1445061311"></a>
 ### eaSetupFn
@@ -132,7 +134,7 @@ eaSetupFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-eashutdownfn-eashutdownfn-src-mq3-botlib-be-interface-ml-1217637911"></a>
 ### eaShutdownFn
@@ -142,7 +144,7 @@ eaShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-goalsetupfn-goalsetupfn-src-mq3-botlib-be-interface-ml-1192803939"></a>
 ### goalSetupFn
@@ -152,7 +154,7 @@ goalSetupFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-goalshutdownfn-goalshutdownfn-src-mq3-botlib-be-interface-ml-793356353"></a>
 ### goalShutdownFn
@@ -162,7 +164,7 @@ goalShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-initlevelitemsfn-initlevelitemsfn-src-mq3-botlib-be-interface-ml-1404992079"></a>
 ### initLevelItemsFn
@@ -172,7 +174,7 @@ initLevelItemsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-libvarsreleasedfn-libvarsreleasedfn-src-mq3-botlib-be-interface-ml-1465899727"></a>
 ### libvarsReleasedFn
@@ -182,7 +184,7 @@ libvarsReleasedFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-logshutdownfn-logshutdownfn-src-mq3-botlib-be-interface-ml-597789375"></a>
 ### logShutdownFn
@@ -192,7 +194,7 @@ logShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-movesetupfn-movesetupfn-src-mq3-botlib-be-interface-ml-110292015"></a>
 ### moveSetupFn
@@ -202,7 +204,7 @@ moveSetupFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-moveshutdownfn-moveshutdownfn-src-mq3-botlib-be-interface-ml-823538073"></a>
 ### moveShutdownFn
@@ -212,7 +214,7 @@ moveShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-setbrushmodeltypesfn-setbrushmodeltypesfn-src-mq3-botlib-be-interface-ml-1666983755"></a>
 ### setBrushModelTypesFn
@@ -222,7 +224,7 @@ setBrushModelTypesFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-weaponsetupfn-weaponsetupfn-src-mq3-botlib-be-interface-ml-1273527847"></a>
 ### weaponSetupFn
@@ -232,7 +234,7 @@ weaponSetupFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-weaponshutdownfn-weaponshutdownfn-src-mq3-botlib-be-interface-ml-121528719"></a>
 ### weaponShutdownFn
@@ -242,7 +244,7 @@ weaponShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-services-weightsshutdownfn-weightsshutdownfn-src-mq3-botlib-be-interface-ml-199401995"></a>
 ### weightsShutdownFn
@@ -252,4 +254,4 @@ weightsShutdownFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)

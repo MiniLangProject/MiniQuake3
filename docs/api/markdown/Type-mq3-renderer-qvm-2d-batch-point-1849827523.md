@@ -9,8 +9,10 @@
 struct Point
 ```
 
+Data record for `mq3.renderer.qvm_2d_batch.Point`; groups `x`, `y`, `depth`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ depth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-point-x-x-src-mq3-renderer-qvm-2d-batch-ml-278035563"></a>
 ### x
@@ -32,7 +34,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-point-y-y-src-mq3-renderer-qvm-2d-batch-ml-1144328399"></a>
 ### y
@@ -42,4 +44,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)

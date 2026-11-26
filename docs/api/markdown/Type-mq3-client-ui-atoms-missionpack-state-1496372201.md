@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI atoms missionpack state, including `syscalls`, `xscale`, `yscale`, `realtime`, `frametime`, `cursorx` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-cursorx-cursorx-src-mq3-client-ui-atoms-missionpack-ml-1897161018"></a>
 ### cursorx
@@ -32,7 +34,7 @@ cursorx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-cursory-cursory-src-mq3-client-ui-atoms-missionpack-ml-113642238"></a>
 ### cursory
@@ -42,7 +44,7 @@ cursory
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-demoavailable-demoavailable-src-mq3-client-ui-atoms-missionpack-ml-1527984234"></a>
 ### demoAvailable
@@ -52,7 +54,7 @@ demoAvailable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-frametime-frametime-src-mq3-client-ui-atoms-missionpack-ml-1014198258"></a>
 ### frametime
@@ -62,7 +64,7 @@ frametime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-internalcontext-internalcontext-src-mq3-client-ui-atoms-missionpack-ml-453962546"></a>
 ### internalContext
@@ -72,7 +74,7 @@ internalContext
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-internalfn-internalfn-src-mq3-client-ui-atoms-missionpack-ml-224962868"></a>
 ### internalFn
@@ -82,7 +84,7 @@ internalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-newbesttime-newbesttime-src-mq3-client-ui-atoms-missionpack-ml-1872352498"></a>
 ### newBestTime
@@ -92,7 +94,7 @@ newBestTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-newhighscoretime-newhighscoretime-src-mq3-client-ui-atoms-missionpack-ml-757555348"></a>
 ### newHighScoreTime
@@ -102,7 +104,7 @@ newHighScoreTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-newui-newui-src-mq3-client-ui-atoms-missionpack-ml-823576018"></a>
 ### newUI
@@ -112,7 +114,7 @@ newUI
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-realtime-realtime-src-mq3-client-ui-atoms-missionpack-ml-1773549408"></a>
 ### realtime
@@ -122,7 +124,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-syscalls-syscalls-src-mq3-client-ui-atoms-missionpack-ml-544437102"></a>
 ### syscalls
@@ -132,7 +134,7 @@ syscalls
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-timetobeat-timetobeat-src-mq3-client-ui-atoms-missionpack-ml-442006170"></a>
 ### timeToBeat
@@ -142,7 +144,7 @@ timeToBeat
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-whiteshader-whiteshader-src-mq3-client-ui-atoms-missionpack-ml-1528321334"></a>
 ### whiteShader
@@ -152,7 +154,7 @@ whiteShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-xscale-xscale-src-mq3-client-ui-atoms-missionpack-ml-8306774"></a>
 ### xscale
@@ -162,7 +164,7 @@ xscale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-atoms-missionpack-state-yscale-yscale-src-mq3-client-ui-atoms-missionpack-ml-134968988"></a>
 ### yscale
@@ -172,4 +174,4 @@ yscale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms_missionpack.ml#L26)

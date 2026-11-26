@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores UI vm host-service callbacks, including `machineRuntime`, `syscall`, `loadFn`, `callFn`, `freeFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ callFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L26)
 
 <a id="field-field-mq3-client-ui-vm-services-freefn-freefn-src-mq3-client-ui-vm-ml-291569453"></a>
 ### freeFn
@@ -32,7 +34,7 @@ freeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L26)
 
 <a id="field-field-mq3-client-ui-vm-services-loadfn-loadfn-src-mq3-client-ui-vm-ml-1457731289"></a>
 ### loadFn
@@ -42,7 +44,7 @@ loadFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L26)
 
 <a id="field-field-mq3-client-ui-vm-services-machineruntime-machineruntime-src-mq3-client-ui-vm-ml-215031255"></a>
 ### machineRuntime
@@ -52,7 +54,7 @@ machineRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L26)
 
 <a id="field-field-mq3-client-ui-vm-services-syscall-syscall-src-mq3-client-ui-vm-ml-1106386001"></a>
 ### syscall
@@ -62,4 +64,4 @@ syscall
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L26)

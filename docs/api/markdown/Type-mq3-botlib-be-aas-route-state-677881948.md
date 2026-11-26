@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for be aas route, containing `runtime`, `router`, `cache`, `staticTables` and `areaContentTravelFlags` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaContentTravelFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-cache-cache-src-mq3-botlib-be-aas-route-ml-1733490482"></a>
 ### cache
@@ -32,7 +34,7 @@ cache
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-initialized-initialized-src-mq3-botlib-be-aas-route-ml-1022763362"></a>
 ### initialized
@@ -42,7 +44,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-lru-lru-src-mq3-botlib-be-aas-route-ml-285507818"></a>
 ### lru
@@ -52,7 +54,7 @@ lru
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-maxroutingcachesize-maxroutingcachesize-src-mq3-botlib-be-aas-route-ml-927320510"></a>
 ### maxRoutingCacheSize
@@ -62,7 +64,7 @@ maxRoutingCacheSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-reachabilityareaindex-reachabilityareaindex-src-mq3-botlib-be-aas-route-ml-100720450"></a>
 ### reachabilityAreaIndex
@@ -72,7 +74,7 @@ reachabilityAreaIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-reachabilityareas-reachabilityareas-src-mq3-botlib-be-aas-route-ml-1763419214"></a>
 ### reachabilityAreas
@@ -82,7 +84,7 @@ reachabilityAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-router-router-src-mq3-botlib-be-aas-route-ml-250680704"></a>
 ### router
@@ -92,7 +94,7 @@ router
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-routingcachesize-routingcachesize-src-mq3-botlib-be-aas-route-ml-1659092644"></a>
 ### routingCacheSize
@@ -102,7 +104,7 @@ routingCacheSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-runtime-runtime-src-mq3-botlib-be-aas-route-ml-995406826"></a>
 ### runtime
@@ -112,7 +114,7 @@ runtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-services-services-src-mq3-botlib-be-aas-route-ml-1935560490"></a>
 ### services
@@ -122,7 +124,7 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)
 
 <a id="field-field-mq3-botlib-be-aas-route-state-statictables-statictables-src-mq3-botlib-be-aas-route-ml-705925180"></a>
 ### staticTables
@@ -132,4 +134,4 @@ staticTables
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L24)

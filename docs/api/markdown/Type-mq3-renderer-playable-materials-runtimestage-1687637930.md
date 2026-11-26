@@ -9,8 +9,10 @@
 struct RuntimeStage
 ```
 
+Data record for `mq3.renderer.playable_materials.RuntimeStage`; groups `imageNames`, `images`, `slots`, `animationSpeed`, `uvMods`, `blend`, and 13 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 ## Members
 
@@ -22,7 +24,7 @@ alphaGen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-alphatest-alphatest-src-mq3-renderer-playable-materials-ml-1705016231"></a>
 ### alphaTest
@@ -32,7 +34,7 @@ alphaTest
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-alphawave-alphawave-src-mq3-renderer-playable-materials-ml-777844611"></a>
 ### alphaWave
@@ -42,7 +44,7 @@ alphaWave
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-animationspeed-animationspeed-src-mq3-renderer-playable-materials-ml-1898044805"></a>
 ### animationSpeed
@@ -52,7 +54,7 @@ animationSpeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-blend-blend-src-mq3-renderer-playable-materials-ml-1806353267"></a>
 ### blend
@@ -62,7 +64,7 @@ blend
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-bsplightmap-bsplightmap-src-mq3-renderer-playable-materials-ml-567845039"></a>
 ### bspLightmap
@@ -72,7 +74,7 @@ bspLightmap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-clamptexture-clamptexture-src-mq3-renderer-playable-materials-ml-372197379"></a>
 ### clampTexture
@@ -82,7 +84,7 @@ clampTexture
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-constantcolor-constantcolor-src-mq3-renderer-playable-materials-ml-332966807"></a>
 ### constantColor
@@ -92,7 +94,7 @@ constantColor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-depthequal-depthequal-src-mq3-renderer-playable-materials-ml-114946593"></a>
 ### depthEqual
@@ -102,7 +104,7 @@ depthEqual
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-depthwrite-depthwrite-src-mq3-renderer-playable-materials-ml-184737327"></a>
 ### depthWrite
@@ -112,7 +114,7 @@ depthWrite
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-imagenames-imagenames-src-mq3-renderer-playable-materials-ml-346831341"></a>
 ### imageNames
@@ -122,7 +124,7 @@ imageNames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-images-images-src-mq3-renderer-playable-materials-ml-681982859"></a>
 ### images
@@ -132,7 +134,7 @@ images
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-portalrange-portalrange-src-mq3-renderer-playable-materials-ml-1545261719"></a>
 ### portalRange
@@ -142,7 +144,7 @@ portalRange
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-rgbgen-rgbgen-src-mq3-renderer-playable-materials-ml-360327981"></a>
 ### rgbGen
@@ -152,7 +154,7 @@ rgbGen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-rgbwave-rgbwave-src-mq3-renderer-playable-materials-ml-1948425067"></a>
 ### rgbWave
@@ -162,7 +164,7 @@ rgbWave
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-slots-slots-src-mq3-renderer-playable-materials-ml-1019992823"></a>
 ### slots
@@ -172,7 +174,7 @@ slots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-tcgen-tcgen-src-mq3-renderer-playable-materials-ml-1721875043"></a>
 ### tcGen
@@ -182,7 +184,7 @@ tcGen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-tcgenvectors-tcgenvectors-src-mq3-renderer-playable-materials-ml-719453061"></a>
 ### tcGenVectors
@@ -192,7 +194,7 @@ tcGenVectors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-runtimestage-uvmods-uvmods-src-mq3-renderer-playable-materials-ml-1886781387"></a>
 ### uvMods
@@ -202,4 +204,4 @@ uvMods
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)

@@ -9,8 +9,10 @@
 struct SnapshotEntity
 ```
 
+SnapshotEntity record for server.snapshot_build, containing `state`, `linked`, `svFlags`, `singleClient`, `clusters`, `lastCluster`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-areanum2-areanum2-src-mq3-server-snapshot-build-ml-423691614"></a>
 ### areaNum2
@@ -32,7 +34,7 @@ areaNum2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-clusters-clusters-src-mq3-server-snapshot-build-ml-1565640954"></a>
 ### clusters
@@ -42,7 +44,7 @@ clusters
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-lastcluster-lastcluster-src-mq3-server-snapshot-build-ml-299314860"></a>
 ### lastCluster
@@ -52,7 +54,7 @@ lastCluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-linked-linked-src-mq3-server-snapshot-build-ml-1427265518"></a>
 ### linked
@@ -62,7 +64,7 @@ linked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-singleclient-singleclient-src-mq3-server-snapshot-build-ml-533266986"></a>
 ### singleClient
@@ -72,7 +74,7 @@ singleClient
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-snapshotcounter-snapshotcounter-src-mq3-server-snapshot-build-ml-576105900"></a>
 ### snapshotCounter
@@ -82,7 +84,7 @@ snapshotCounter
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-state-state-src-mq3-server-snapshot-build-ml-2053197952"></a>
 ### state
@@ -92,7 +94,7 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-snapshotentity-svflags-svflags-src-mq3-server-snapshot-build-ml-1722829656"></a>
 ### svFlags
@@ -102,4 +104,4 @@ svFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)

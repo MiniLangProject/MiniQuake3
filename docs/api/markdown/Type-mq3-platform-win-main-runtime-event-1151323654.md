@@ -9,8 +9,10 @@
 struct Event
 ```
 
+Data record for `mq3.platform.win_main_runtime.Event`; groups `time`, `type`, `value`, `value2`, `ptrLength`, `data`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L90)
 
 ## Members
 
@@ -22,7 +24,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L90)
 
 <a id="field-field-mq3-platform-win-main-runtime-event-ptrlength-ptrlength-src-mq3-platform-win-main-runtime-ml-357438029"></a>
 ### ptrLength
@@ -32,7 +34,7 @@ ptrLength
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L90)
 
 <a id="field-field-mq3-platform-win-main-runtime-event-time-time-src-mq3-platform-win-main-runtime-ml-574694571"></a>
 ### time
@@ -42,7 +44,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L90)
 
 <a id="field-field-mq3-platform-win-main-runtime-event-type-type-src-mq3-platform-win-main-runtime-ml-1041443385"></a>
 ### type
@@ -52,7 +54,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L90)
 
 <a id="field-field-mq3-platform-win-main-runtime-event-value-value-src-mq3-platform-win-main-runtime-ml-283052969"></a>
 ### value
@@ -62,7 +64,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L90)
 
 <a id="field-field-mq3-platform-win-main-runtime-event-value2-value2-src-mq3-platform-win-main-runtime-ml-1513290383"></a>
 ### value2
@@ -72,4 +74,4 @@ value2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L90)

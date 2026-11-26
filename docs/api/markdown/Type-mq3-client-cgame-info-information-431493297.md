@@ -9,8 +9,10 @@
 struct Information
 ```
 
+Stores client game info information record, including `commands`, `requestedShaders`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L24)
 
 <a id="field-field-mq3-client-cgame-info-information-requestedshaders-requestedshaders-src-mq3-client-cgame-info-ml-303488063"></a>
 ### requestedShaders
@@ -32,4 +34,4 @@ requestedShaders
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L24)

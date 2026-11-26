@@ -9,8 +9,10 @@
 struct EntityState
 ```
 
+`EntityState` record for entitystate, containing `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ angles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L19)
 
 <a id="field-field-mq3-game-entitystate-entitystate-angles2-angles2-src-mq3-game-entitystate-ml-1682064693"></a>
 ### angles2
@@ -32,7 +34,7 @@ angles2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L20)
 
 <a id="field-field-mq3-game-entitystate-entitystate-apos-apos-src-mq3-game-entitystate-ml-250680959"></a>
 ### apos
@@ -42,7 +44,7 @@ apos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L14)
 
 <a id="field-field-mq3-game-entitystate-entitystate-clientnum-clientnum-src-mq3-game-entitystate-ml-528643761"></a>
 ### clientNum
@@ -52,7 +54,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L28)
 
 <a id="field-field-mq3-game-entitystate-entitystate-constantlight-constantlight-src-mq3-game-entitystate-ml-2139455637"></a>
 ### constantLight
@@ -62,7 +64,7 @@ constantLight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L24)
 
 <a id="field-field-mq3-game-entitystate-entitystate-eflags-eflags-src-mq3-game-entitystate-ml-807312285"></a>
 ### eFlags
@@ -72,7 +74,7 @@ eFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L12)
 
 <a id="field-field-mq3-game-entitystate-entitystate-etype-etype-src-mq3-game-entitystate-ml-461261025"></a>
 ### eType
@@ -82,7 +84,7 @@ eType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L11)
 
 <a id="field-field-mq3-game-entitystate-entitystate-event-event-src-mq3-game-entitystate-ml-2140270357"></a>
 ### event
@@ -92,7 +94,7 @@ event
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L31)
 
 <a id="field-field-mq3-game-entitystate-entitystate-eventparm-eventparm-src-mq3-game-entitystate-ml-293604877"></a>
 ### eventParm
@@ -102,7 +104,7 @@ eventParm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L32)
 
 <a id="field-field-mq3-game-entitystate-entitystate-frame-frame-src-mq3-game-entitystate-ml-1276186433"></a>
 ### frame
@@ -112,7 +114,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L29)
 
 <a id="field-field-mq3-game-entitystate-entitystate-generic1-generic1-src-mq3-game-entitystate-ml-1057066961"></a>
 ### generic1
@@ -122,7 +124,7 @@ generic1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L37)
 
 <a id="field-field-mq3-game-entitystate-entitystate-groundentitynum-groundentitynum-src-mq3-game-entitystate-ml-1533747717"></a>
 ### groundEntityNum
@@ -132,7 +134,7 @@ groundEntityNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L23)
 
 <a id="field-field-mq3-game-entitystate-entitystate-legsanim-legsanim-src-mq3-game-entitystate-ml-1185644269"></a>
 ### legsAnim
@@ -142,7 +144,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L35)
 
 <a id="field-field-mq3-game-entitystate-entitystate-loopsound-loopsound-src-mq3-game-entitystate-ml-1729244941"></a>
 ### loopSound
@@ -152,7 +154,7 @@ loopSound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L25)
 
 <a id="field-field-mq3-game-entitystate-entitystate-modelindex-modelindex-src-mq3-game-entitystate-ml-1790196175"></a>
 ### modelindex
@@ -162,7 +164,7 @@ modelindex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L26)
 
 <a id="field-field-mq3-game-entitystate-entitystate-modelindex2-modelindex2-src-mq3-game-entitystate-ml-1039203637"></a>
 ### modelindex2
@@ -172,7 +174,7 @@ modelindex2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L27)
 
 <a id="field-field-mq3-game-entitystate-entitystate-number-number-src-mq3-game-entitystate-ml-648358631"></a>
 ### number
@@ -182,7 +184,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L10)
 
 <a id="field-field-mq3-game-entitystate-entitystate-origin-origin-src-mq3-game-entitystate-ml-638606045"></a>
 ### origin
@@ -192,7 +194,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L17)
 
 <a id="field-field-mq3-game-entitystate-entitystate-origin2-origin2-src-mq3-game-entitystate-ml-1367939705"></a>
 ### origin2
@@ -202,7 +204,7 @@ origin2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L18)
 
 <a id="field-field-mq3-game-entitystate-entitystate-otherentitynum-otherentitynum-src-mq3-game-entitystate-ml-1672810207"></a>
 ### otherEntityNum
@@ -212,7 +214,7 @@ otherEntityNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L21)
 
 <a id="field-field-mq3-game-entitystate-entitystate-otherentitynum2-otherentitynum2-src-mq3-game-entitystate-ml-1798785597"></a>
 ### otherEntityNum2
@@ -222,7 +224,7 @@ otherEntityNum2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L22)
 
 <a id="field-field-mq3-game-entitystate-entitystate-pos-pos-src-mq3-game-entitystate-ml-2128890125"></a>
 ### pos
@@ -232,7 +234,7 @@ pos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L13)
 
 <a id="field-field-mq3-game-entitystate-entitystate-powerups-powerups-src-mq3-game-entitystate-ml-1876039083"></a>
 ### powerups
@@ -242,7 +244,7 @@ powerups
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L33)
 
 <a id="field-field-mq3-game-entitystate-entitystate-solid-solid-src-mq3-game-entitystate-ml-620844661"></a>
 ### solid
@@ -252,7 +254,7 @@ solid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L30)
 
 <a id="field-field-mq3-game-entitystate-entitystate-time-time-src-mq3-game-entitystate-ml-97143875"></a>
 ### time
@@ -262,7 +264,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L15)
 
 <a id="field-field-mq3-game-entitystate-entitystate-time2-time2-src-mq3-game-entitystate-ml-876273817"></a>
 ### time2
@@ -272,7 +274,7 @@ time2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L16)
 
 <a id="field-field-mq3-game-entitystate-entitystate-torsoanim-torsoanim-src-mq3-game-entitystate-ml-193848829"></a>
 ### torsoAnim
@@ -282,7 +284,7 @@ torsoAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L36)
 
 <a id="field-field-mq3-game-entitystate-entitystate-weapon-weapon-src-mq3-game-entitystate-ml-415725725"></a>
 ### weapon
@@ -292,4 +294,4 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L34)

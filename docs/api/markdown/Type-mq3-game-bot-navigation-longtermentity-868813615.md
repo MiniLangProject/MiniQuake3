@@ -9,8 +9,10 @@
 struct LongTermEntity
 ```
 
+`LongTermEntity` record for bot navigation, containing `valid`, `origin`, `mins`, `maxs` and `angles`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
 
 ## Members
 
@@ -22,7 +24,7 @@ angles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-maxs-maxs-src-mq3-game-bot-navigation-ml-896719070"></a>
 ### maxs
@@ -32,7 +34,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-mins-mins-src-mq3-game-bot-navigation-ml-1594066370"></a>
 ### mins
@@ -42,7 +44,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-origin-origin-src-mq3-game-bot-navigation-ml-128617136"></a>
 ### origin
@@ -52,7 +54,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)
 
 <a id="field-field-mq3-game-bot-navigation-longtermentity-valid-valid-src-mq3-game-bot-navigation-ml-236195916"></a>
 ### valid
@@ -62,4 +64,4 @@ valid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L82)

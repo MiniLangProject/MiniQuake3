@@ -9,8 +9,10 @@
 struct Clip
 ```
 
+Stores playable weapon sounds clip record, including `path`, `sound`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ path
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L13)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-clip-sound-sound-src-mq3-client-playable-weapon-sounds-ml-1178753901"></a>
 ### sound
@@ -32,4 +34,4 @@ sound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L13)

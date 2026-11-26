@@ -9,8 +9,10 @@
 struct WindowState
 ```
 
+Data record for `mq3.platform.playable_window.WindowState`; groups `active`, `minimized`, `x`, `y`, `fullscreen`, `altTabDisabled`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)
 
 <a id="field-field-mq3-platform-playable-window-windowstate-alttabdisabled-alttabdisabled-src-mq3-platform-playable-window-ml-285699856"></a>
 ### altTabDisabled
@@ -32,7 +34,7 @@ altTabDisabled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)
 
 <a id="field-field-mq3-platform-playable-window-windowstate-fullscreen-fullscreen-src-mq3-platform-playable-window-ml-1243651198"></a>
 ### fullscreen
@@ -42,7 +44,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)
 
 <a id="field-field-mq3-platform-playable-window-windowstate-minimized-minimized-src-mq3-platform-playable-window-ml-1753975224"></a>
 ### minimized
@@ -52,7 +54,7 @@ minimized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)
 
 <a id="field-field-mq3-platform-playable-window-windowstate-soundactivationserial-soundactivationserial-src-mq3-platform-playable-window-ml-1647963780"></a>
 ### soundActivationSerial
@@ -62,7 +64,7 @@ soundActivationSerial
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)
 
 <a id="field-field-mq3-platform-playable-window-windowstate-x-x-src-mq3-platform-playable-window-ml-999579200"></a>
 ### x
@@ -72,7 +74,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)
 
 <a id="field-field-mq3-platform-playable-window-windowstate-y-y-src-mq3-platform-playable-window-ml-854276340"></a>
 ### y
@@ -82,4 +84,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L565)

@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.platform.win_snd.State`; groups `dsoundInit`, `sample16`, `sndBufSize`, `lockSize`, `hasDS`, `hasDSBuf`, and 11 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-bufferlocked-bufferlocked-src-mq3-platform-win-snd-ml-881774002"></a>
 ### bufferLocked
@@ -32,7 +34,7 @@ bufferLocked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-bufferlost-bufferlost-src-mq3-platform-win-snd-ml-57925470"></a>
 ### bufferLost
@@ -42,7 +44,7 @@ bufferLost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-coinitialized-coinitialized-src-mq3-platform-win-snd-ml-1379928850"></a>
 ### coInitialized
@@ -52,7 +54,7 @@ coInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-dllloaded-dllloaded-src-mq3-platform-win-snd-ml-919868966"></a>
 ### dllLoaded
@@ -62,7 +64,7 @@ dllLoaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-dma-dma-src-mq3-platform-win-snd-ml-549249146"></a>
 ### dma
@@ -72,7 +74,7 @@ dma
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-dsoundinit-dsoundinit-src-mq3-platform-win-snd-ml-1884032244"></a>
 ### dsoundInit
@@ -82,7 +84,7 @@ dsoundInit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-errors-errors-src-mq3-platform-win-snd-ml-1190597144"></a>
 ### errors
@@ -92,7 +94,7 @@ errors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-hasds-hasds-src-mq3-platform-win-snd-ml-1746973818"></a>
 ### hasDS
@@ -102,7 +104,7 @@ hasDS
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-hasdsbuf-hasdsbuf-src-mq3-platform-win-snd-ml-1806596874"></a>
 ### hasDSBuf
@@ -112,7 +114,7 @@ hasDSBuf
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-hasprimary-hasprimary-src-mq3-platform-win-snd-ml-57093130"></a>
 ### hasPrimary
@@ -122,7 +124,7 @@ hasPrimary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-locksize-locksize-src-mq3-platform-win-snd-ml-495904650"></a>
 ### lockSize
@@ -132,7 +134,7 @@ lockSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-playing-playing-src-mq3-platform-win-snd-ml-1435884042"></a>
 ### playing
@@ -142,7 +144,7 @@ playing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-prints-prints-src-mq3-platform-win-snd-ml-1704460322"></a>
 ### prints
@@ -152,7 +154,7 @@ prints
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-retailactive-retailactive-src-mq3-platform-win-snd-ml-1997865540"></a>
 ### retailActive
@@ -162,7 +164,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-sample16-sample16-src-mq3-platform-win-snd-ml-1177908280"></a>
 ### sample16
@@ -172,7 +174,7 @@ sample16
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)
 
 <a id="field-field-mq3-platform-win-snd-state-sndbufsize-sndbufsize-src-mq3-platform-win-snd-ml-1657084160"></a>
 ### sndBufSize
@@ -182,4 +184,4 @@ sndBufSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L18)

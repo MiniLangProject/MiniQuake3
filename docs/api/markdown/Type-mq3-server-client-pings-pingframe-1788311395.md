@@ -9,8 +9,10 @@
 struct PingFrame
 ```
 
+PingFrame record for server.client_pings, containing `messageSent`, `messageAcked`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ messageAcked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L12)
 
 <a id="field-field-mq3-server-client-pings-pingframe-messagesent-messagesent-src-mq3-server-client-pings-ml-244498618"></a>
 ### messageSent
@@ -32,4 +34,4 @@ messageSent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L12)

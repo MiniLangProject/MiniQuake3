@@ -15,14 +15,18 @@ Reachable from entry: **yes**
 function check(clients, clPaused, svPaused)
 ```
 
+Check pause in server.pause; the normal completion returns `PauseResult(true, svPaused, 0)`.
+
+Validation failures include `server pause: missing client array`; `server pause: missing client`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clients` | `dynamic` | — |  |
-| `clPaused` | `dynamic` | — |  |
-| `svPaused` | `dynamic` | — |  |
+| `clients` | `dynamic` | — | Clients used in `clients[i]` and `len(clients)`. |
+| `clPaused` | `dynamic` | — | Cl paused used in `(clPaused == 0)`. |
+| `svPaused` | `dynamic` | — | Initial `svPaused` field stored in the returned or constructed `mq3.server.pause.PauseResult` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L30)
 
 <a id="function-function-mq3-server-pause-client-function-client-state-addresstype-src-mq3-server-pause-ml-945974459"></a>
 ### client
@@ -31,13 +35,15 @@ function check(clients, clPaused, svPaused)
 function client(state, addressType)
 ```
 
+Create `mq3.server.pause.Client` with state=state; addressType=addressType.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `addressType` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Initial `state` field stored in the returned or constructed `mq3.server.pause.Client` record. |
+| `addressType` | `dynamic` | — | Initial `addressType` field stored in the returned or constructed `mq3.server.pause.Client` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pause.ml#L18)
 
 - [mq3.server.pause.Client](Type-mq3-server-pause-client-1009448838.md) — struct
 <a id="constant-constant-mq3-server-pause-cs-active-const-cs-active-4-src-mq3-server-pause-ml-1058145291"></a>

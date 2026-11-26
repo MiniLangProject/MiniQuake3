@@ -35,12 +35,14 @@ Reachable from entry: **no**
 function AddTournamentPlayer(level)
 ```
 
+Forward `AddTournamentPlayer` to `mq3.game.tournament.addPlayer` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `intermissiontime`, `maxclients`, `clients` and `spawner` and related fields. May update `level.spawner.warmupTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L178)
 
 <a id="function-function-mq3-game-g-main-adjusttournamentscores-function-adjusttournamentscores-level-src-mq3-game-g-main-ml-1764930006"></a>
 ### AdjustTournamentScores
@@ -49,12 +51,14 @@ function AddTournamentPlayer(level)
 function AdjustTournamentScores(level)
 ```
 
+Forward `AdjustTournamentScores` to `mq3.game.tournament.adjustScores` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. May update `level.clients[slot].wins` and `level.clients[slot].losses` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L187)
 
 <a id="function-function-mq3-game-g-main-argument-function-argument-args-index-src-mq3-game-g-main-ml-1840816567"></a>
 ### argument
@@ -63,13 +67,15 @@ function AdjustTournamentScores(level)
 function argument(args, index)
 ```
 
+Read an indexed qagame argument, returning zero for an omitted argument and an error for a non-array argument list.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `args` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `args` | `dynamic` | — | Array or byte sequence accessed at `index`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L60)
 
 <a id="function-function-mq3-game-g-main-beginintermission-function-beginintermission-level-src-mq3-game-g-main-ml-181706520"></a>
 ### BeginIntermission
@@ -78,12 +84,14 @@ function argument(args, index)
 function BeginIntermission(level)
 ```
 
+Forward `BeginIntermission` to `mq3.game.intermission.begin` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermissiontime`, `spawner`, `time`, `updateTournamentInfoFn` and `spawnVictoryPadsFn` and related fields. May update `level.intermissiontime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L194)
 
 <a id="constant-constant-mq3-game-g-main-botai-start-frame-const-botai-start-frame-10-src-mq3-game-g-main-ml-1470994340"></a>
 ### BOTAI_START_FRAME
@@ -102,12 +110,14 @@ const BOTAI_START_FRAME = 10
 function CalculateRanks(level)
 ```
 
+Forward `CalculateRanks` to `mq3.game.scores.calculateRanks` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `follow1`, `follow2`, `numConnectedClients` and `numNonSpectatorClients` and related fields. May update `level.follow1`, `level.follow2` and `level.numConnectedClients` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L138)
 
 <a id="function-function-mq3-game-g-main-checkcvars-function-checkcvars-level-src-mq3-game-g-main-ml-784594094"></a>
 ### CheckCvars
@@ -116,12 +126,14 @@ function CalculateRanks(level)
 function CheckCvars(level)
 ```
 
+Forward `CheckCvars` to `mq3.game.cvar_maintenance.check` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `cvarMaintenance` and `cvarSetFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L116)
 
 <a id="function-function-mq3-game-g-main-checkexitrules-function-checkexitrules-level-src-mq3-game-g-main-ml-507864646"></a>
 ### CheckExitRules
@@ -130,12 +142,14 @@ function CheckCvars(level)
 function CheckExitRules(level)
 ```
 
+Forward `CheckExitRules` to `mq3.game.scores.checkExitRules` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermissiontime`, `intermissionQueued`, `time`, `timelimit` and `spawner` and related fields. May update `level.intermissionQueued` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L147)
 
 <a id="function-function-mq3-game-g-main-checkintermissionexit-function-checkintermissionexit-level-src-mq3-game-g-main-ml-793041978"></a>
 ### CheckIntermissionExit
@@ -144,12 +158,14 @@ function CheckExitRules(level)
 function CheckIntermissionExit(level)
 ```
 
+Forward `CheckIntermissionExit` to `mq3.game.scores.checkIntermissionExit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `maxclientsCvar`, `clients`, `entities` and `time` and related fields. May update `level.readyToExit` and `level.exitTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L154)
 
 <a id="function-function-mq3-game-g-main-checkteamleader-function-checkteamleader-level-team-src-mq3-game-g-main-ml-1852021759"></a>
 ### CheckTeamLeader
@@ -158,13 +174,15 @@ function CheckIntermissionExit(level)
 function CheckTeamLeader(level, team)
 ```
 
+Forward `CheckTeamLeader` to `mq3.game.votes.checkTeamLeader` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `clients` and `entities`. May update `level.clients[index].teamLeader` in place. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L175)
 
 <a id="function-function-mq3-game-g-main-checkteamvote-function-checkteamvote-level-team-src-mq3-game-g-main-ml-473910881"></a>
 ### CheckTeamVote
@@ -173,13 +191,15 @@ function CheckTeamLeader(level, team)
 function CheckTeamVote(level, team)
 ```
 
+Forward `CheckTeamVote` to `mq3.game.votes.checkTeam` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `teamVoteTime`, `time`, `teamVoteYes`, `numteamVotingClients` and `teamVoteString` and related fields. May update `level.teamVoteTime[offset]` in place. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L161)
 
 <a id="function-function-mq3-game-g-main-checktournament-function-checktournament-level-src-mq3-game-g-main-ml-676106688"></a>
 ### CheckTournament
@@ -188,12 +208,14 @@ function CheckTeamVote(level, team)
 function CheckTournament(level)
 ```
 
+Forward `CheckTournament` to `mq3.game.tournament.check` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `numPlayingClients`, `tournamentAddFn`, `warmupCvarModificationCount` and `warmupModificationCount` and related fields. May update `level.warmupModificationCount` and `level.spawner.warmupTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L127)
 
 <a id="function-function-mq3-game-g-main-checkvote-function-checkvote-level-src-mq3-game-g-main-ml-933266234"></a>
 ### CheckVote
@@ -202,12 +224,14 @@ function CheckTournament(level)
 function CheckVote(level)
 ```
 
+Forward `CheckVote` to `mq3.game.votes.check` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `voteExecuteTime`, `time`, `voteString`, `voteTime` and `voteYes` and related fields. May update `level.voteExecuteTime` and `level.voteTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L157)
 
 <a id="function-function-mq3-game-g-main-com-error-function-com-error-level-code-format-arguments-src-mq3-game-g-main-ml-289212934"></a>
 ### Com_Error
@@ -216,15 +240,17 @@ function CheckVote(level)
 function Com_Error(level, code, format, arguments)
 ```
 
+Forward `Com_Error` to `mq3.game.g_main.G_Error` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `code` | `dynamic` | — |  |
-| `format` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `mq3.game.g_main.G_Error`. |
+| `code` | `dynamic` | — | Not read by this implementation; retained in the `Com_Error` signature. |
+| `format` | `dynamic` | — | C-style format string. |
+| `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L100)
 
 <a id="function-function-mq3-game-g-main-com-printf-function-com-printf-level-format-arguments-src-mq3-game-g-main-ml-454819301"></a>
 ### Com_Printf
@@ -233,14 +259,16 @@ function Com_Error(level, code, format, arguments)
 function Com_Printf(level, format, arguments)
 ```
 
+Forward `Com_Printf` to `mq3.game.g_main.G_Printf` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `format` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `format` | `dynamic` | — | C-style format string. |
+| `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L94)
 
 <a id="function-function-mq3-game-g-main-createruntime-function-createruntime-level-src-mq3-game-g-main-ml-1493529322"></a>
 ### createRuntime
@@ -249,12 +277,14 @@ function Com_Printf(level, format, arguments)
 function createRuntime(level)
 ```
 
+Create a `mq3.game.g_main.Runtime` record, initializing `level` from `level`, `gmainInitFn` as `defaultInit` and `gmainShutdownFn` as `defaultShutdown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Initial value stored in `mq3.game.g_main.Runtime.level`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L268)
 
 <a id="function-function-mq3-game-g-main-defaultbegin-function-defaultbegin-runtime-a-src-mq3-game-g-main-ml-264914765"></a>
 ### defaultBegin
@@ -263,13 +293,15 @@ function createRuntime(level)
 function defaultBegin(runtime, a)
 ```
 
+Forward `defaultBegin` to `mq3.game.g_client.ClientBegin` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L249)
 
 <a id="function-function-mq3-game-g-main-defaultbotframe-function-defaultbotframe-runtime-a-src-mq3-game-g-main-ml-1495704415"></a>
 ### defaultBotFrame
@@ -278,13 +310,15 @@ function defaultBegin(runtime, a)
 function defaultBotFrame(runtime, a)
 ```
 
+Forward `defaultBotFrame` to `mq3.game.lifecycle.startBotFrame` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L264)
 
 <a id="function-function-mq3-game-g-main-defaultcommand-function-defaultcommand-runtime-a-src-mq3-game-g-main-ml-612765485"></a>
 ### defaultCommand
@@ -293,13 +327,15 @@ function defaultBotFrame(runtime, a)
 function defaultCommand(runtime, a)
 ```
 
+Forward `defaultCommand` to `mq3.game.client_commands.command` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level` and `gmainArgv`. |
+| `a` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L253)
 
 <a id="function-function-mq3-game-g-main-defaultconnect-function-defaultconnect-runtime-a-b-c-src-mq3-game-g-main-ml-713455306"></a>
 ### defaultConnect
@@ -308,15 +344,17 @@ function defaultCommand(runtime, a)
 function defaultConnect(runtime, a, b, c)
 ```
 
+Forward `defaultConnect` to `mq3.game.g_client.ClientConnect` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `c` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Client slot number. |
+| `b` | `dynamic` | — | Operand used to evaluate the returned expression `gClient.ClientConnect(runtime.level,a,b!=0,c!=0)`. |
+| `c` | `dynamic` | — | Operand used to evaluate the returned expression `gClient.ClientConnect(runtime.level,a,b!=0,c!=0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L233)
 
 <a id="function-function-mq3-game-g-main-defaultconsole-function-defaultconsole-runtime-src-mq3-game-g-main-ml-1053633340"></a>
 ### defaultConsole
@@ -325,12 +363,14 @@ function defaultConnect(runtime, a, b, c)
 function defaultConsole(runtime)
 ```
 
+Forward `defaultConsole` to `mq3.game.server_commands.command` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level` and `gmainArgv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L260)
 
 <a id="function-function-mq3-game-g-main-defaultdisconnect-function-defaultdisconnect-runtime-a-src-mq3-game-g-main-ml-1133703719"></a>
 ### defaultDisconnect
@@ -339,13 +379,15 @@ function defaultConsole(runtime)
 function defaultDisconnect(runtime, a)
 ```
 
+Forward `defaultDisconnect` to `mq3.game.g_client.ClientDisconnect` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L245)
 
 <a id="function-function-mq3-game-g-main-defaultframe-function-defaultframe-runtime-a-src-mq3-game-g-main-ml-485035037"></a>
 ### defaultFrame
@@ -354,13 +396,15 @@ function defaultDisconnect(runtime, a)
 function defaultFrame(runtime, a)
 ```
 
+Forward `defaultFrame` to `mq3.game.g_main.G_RunFrame` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Current server game time in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L257)
 
 <a id="function-function-mq3-game-g-main-defaultinit-function-defaultinit-runtime-a-b-c-src-mq3-game-g-main-ml-1783750416"></a>
 ### defaultInit
@@ -369,15 +413,17 @@ function defaultFrame(runtime, a)
 function defaultInit(runtime, a, b, c)
 ```
 
+Forward `defaultInit` to `mq3.game.g_main.G_InitGame` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `c` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level` and `gmainEntityText`. |
+| `a` | `dynamic` | — | Current server game time in milliseconds. |
+| `b` | `dynamic` | — | State used to initialize the deterministic random sequence. |
+| `c` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L223)
 
 <a id="function-function-mq3-game-g-main-defaultshutdown-function-defaultshutdown-runtime-a-src-mq3-game-g-main-ml-1519474471"></a>
 ### defaultShutdown
@@ -386,13 +432,15 @@ function defaultInit(runtime, a, b, c)
 function defaultShutdown(runtime, a)
 ```
 
+Forward `defaultShutdown` to `mq3.game.g_main.G_ShutdownGame` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L227)
 
 <a id="function-function-mq3-game-g-main-defaultthink-function-defaultthink-runtime-a-src-mq3-game-g-main-ml-1326342321"></a>
 ### defaultThink
@@ -401,13 +449,15 @@ function defaultShutdown(runtime, a)
 function defaultThink(runtime, a)
 ```
 
+Forward `defaultThink` to `mq3.game.client_active.think` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L237)
 
 <a id="function-function-mq3-game-g-main-defaultuserinfo-function-defaultuserinfo-runtime-a-src-mq3-game-g-main-ml-916349805"></a>
 ### defaultUserinfo
@@ -416,13 +466,15 @@ function defaultThink(runtime, a)
 function defaultUserinfo(runtime, a)
 ```
 
+Forward `defaultUserinfo` to `mq3.game.g_client.ClientUserinfoChanged` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`. |
+| `a` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L241)
 
 <a id="function-function-mq3-game-g-main-exitlevel-function-exitlevel-level-src-mq3-game-g-main-ml-990885174"></a>
 ### ExitLevel
@@ -431,12 +483,14 @@ function defaultUserinfo(runtime, a)
 function ExitLevel(level)
 ```
 
+Forward `ExitLevel` to `mq3.game.intermission.exitLevel` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `botInterbreedEndMatchFn`, `botLifecycleState`, `spawner`, `restarted` and `consoleCommandFn` and related fields. May update `level.restarted`, `level.changemap` and `level.intermissiontime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L197)
 
 <a id="function-function-mq3-game-g-main-findintermissionpoint-function-findintermissionpoint-level-src-mq3-game-g-main-ml-152278496"></a>
 ### FindIntermissionPoint
@@ -445,12 +499,14 @@ function ExitLevel(level)
 function FindIntermissionPoint(level)
 ```
 
+Forward `FindIntermissionPoint` to `mq3.game.player_spawns.findIntermission` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermission_origin` and `intermission_angle`. May update `level.intermission_origin` and `level.intermission_angle` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L130)
 
 <a id="function-function-mq3-game-g-main-formatted-function-formatted-format-arguments-src-mq3-game-g-main-ml-936378905"></a>
 ### formatted
@@ -459,13 +515,15 @@ function FindIntermissionPoint(level)
 function formatted(format, arguments)
 ```
 
+Format a qagame diagnostic and reject output exceeding the original 1024-byte buffer including its terminator.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `format` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `format` | `dynamic` | — | C-style format string. |
+| `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L68)
 
 <a id="function-function-mq3-game-g-main-g-error-function-g-error-level-format-arguments-src-mq3-game-g-main-ml-1789694821"></a>
 ### G_Error
@@ -474,14 +532,16 @@ function formatted(format, arguments)
 function G_Error(level, format, arguments)
 ```
 
+Construct qagame error 481 from the formatted diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `format` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Not read by this implementation; retained in the `G_Error` signature. |
+| `format` | `dynamic` | — | C-style format string. |
+| `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L87)
 
 <a id="function-function-mq3-game-g-main-g-findteams-function-g-findteams-level-src-mq3-game-g-main-ml-1675690760"></a>
 ### G_FindTeams
@@ -490,12 +550,14 @@ function G_Error(level, format, arguments)
 function G_FindTeams(level)
 ```
 
+Forward `G_FindTeams` to `mq3.game.initialization.findTeams` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `entities` and `gamePrintFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L216)
 
 <a id="function-function-mq3-game-g-main-g-initgame-function-g-initgame-level-leveltime-randomseed-restart-entitytext-src-mq3-game-g-main-ml-1663798314"></a>
 ### G_InitGame
@@ -504,16 +566,18 @@ function G_FindTeams(level)
 function G_InitGame(level, levelTime, randomSeed, restart, entityText)
 ```
 
+Forward `G_InitGame` to `mq3.game.lifecycle.init` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `levelTime` | `dynamic` | — |  |
-| `randomSeed` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
-| `entityText` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `randSeed`, `time`, `startTime` and `sndFry` and related fields. May update `level.spawner.parser`, `level.randSeed` and `level.time` and additional fields in place. |
+| `levelTime` | `dynamic` | — | Current server game time in milliseconds. |
+| `randomSeed` | `dynamic` | — | State used to initialize the deterministic random sequence. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
+| `entityText` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L204)
 
 <a id="function-function-mq3-game-g-main-g-logprintf-function-g-logprintf-level-format-arguments-src-mq3-game-g-main-ml-565956047"></a>
 ### G_LogPrintf
@@ -522,14 +586,16 @@ function G_InitGame(level, levelTime, randomSeed, restart, entityText)
 function G_LogPrintf(level, format, arguments)
 ```
 
+Forward `G_LogPrintf` to `mq3.game.logging.write` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `format` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`, `dedicated`, `gamePrintFn`, `logFile` and `logWriteFn`. |
+| `format` | `dynamic` | — | C-style format string. |
+| `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L213)
 
 <a id="function-function-mq3-game-g-main-g-printf-function-g-printf-level-format-arguments-src-mq3-game-g-main-ml-2010961769"></a>
 ### G_Printf
@@ -538,14 +604,16 @@ function G_LogPrintf(level, format, arguments)
 function G_Printf(level, format, arguments)
 ```
 
+Format and deliver a qagame diagnostic through the installed game-print callback, rejecting a missing callback.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `format` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `format` | `dynamic` | — | C-style format string. |
+| `arguments` | `dynamic` | — | Ordered arguments consumed by the call or formatter. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L78)
 
 <a id="function-function-mq3-game-g-main-g-registercvars-function-g-registercvars-level-src-mq3-game-g-main-ml-880268594"></a>
 ### G_RegisterCvars
@@ -554,12 +622,14 @@ function G_Printf(level, format, arguments)
 function G_RegisterCvars(level)
 ```
 
+Forward `G_RegisterCvars` to `mq3.game.cvars.register` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `cvarSetFn`, `warmupModificationCount` and `warmupCvarModificationCount`. May update `level.warmupModificationCount` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L107)
 
 <a id="function-function-mq3-game-g-main-g-remapteamshaders-function-g-remapteamshaders-level-src-mq3-game-g-main-ml-1528718582"></a>
 ### G_RemapTeamShaders
@@ -568,12 +638,14 @@ function G_RegisterCvars(level)
 function G_RemapTeamShaders(level)
 ```
 
+Forward `G_RemapTeamShaders` to `mq3.game.cvars.remapTeamShaders` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `mq3.game.cvars.remapTeamShaders`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L113)
 
 <a id="function-function-mq3-game-g-main-g-runframe-function-g-runframe-level-leveltime-src-mq3-game-g-main-ml-158340979"></a>
 ### G_RunFrame
@@ -582,13 +654,15 @@ function G_RemapTeamShaders(level)
 function G_RunFrame(level, levelTime)
 ```
 
+Forward `G_RunFrame` to `mq3.game.frame.run` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `levelTime` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `restarted`, `framenum`, `previousTime`, `time` and `updateCvarsFn` and related fields. May update `level.framenum`, `level.previousTime` and `level.time` in place. |
+| `levelTime` | `dynamic` | — | Current server game time in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L124)
 
 <a id="function-function-mq3-game-g-main-g-runthink-function-g-runthink-level-ent-src-mq3-game-g-main-ml-1709312325"></a>
 ### G_RunThink
@@ -597,13 +671,15 @@ function G_RunFrame(level, levelTime)
 function G_RunThink(level, ent)
 ```
 
+Forward `G_RunThink` to `mq3.game.entities.runThink` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `nextthink` and `think`. May update `ent.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L120)
 
 <a id="function-function-mq3-game-g-main-g-shutdowngame-function-g-shutdowngame-level-restart-src-mq3-game-g-main-ml-631063303"></a>
 ### G_ShutdownGame
@@ -612,13 +688,15 @@ function G_RunThink(level, ent)
 function G_ShutdownGame(level, restart)
 ```
 
+Forward `G_ShutdownGame` to `mq3.game.lifecycle.shutdown` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `logFile`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L208)
 
 <a id="function-function-mq3-game-g-main-g-updatecvars-function-g-updatecvars-level-src-mq3-game-g-main-ml-2024503202"></a>
 ### G_UpdateCvars
@@ -627,12 +705,14 @@ function G_ShutdownGame(level, restart)
 function G_UpdateCvars(level)
 ```
 
+Forward `G_UpdateCvars` to `mq3.game.cvars.update` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `serverCommandFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L110)
 
 <a id="constant-constant-mq3-game-g-main-game-client-begin-const-game-client-begin-3-src-mq3-game-g-main-ml-1271755370"></a>
 ### GAME_CLIENT_BEGIN
@@ -741,12 +821,14 @@ const GAME_SHUTDOWN = 1
 function gameCvarTable(level)
 ```
 
+Return `cvars.moduleState(level).rows` for `gameCvarTable`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gameCvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L104)
 
 <a id="function-function-mq3-game-g-main-logexit-function-logexit-level-reason-src-mq3-game-g-main-ml-2142636890"></a>
 ### LogExit
@@ -755,13 +837,15 @@ function gameCvarTable(level)
 function LogExit(level, reason)
 ```
 
+Forward `LogExit` to `mq3.game.scores.logExit` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermissionQueued`, `time`, `spawner`, `numConnectedClients` and `teamScores` and related fields. May update `level.intermissionQueued` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L151)
 
 <a id="function-function-mq3-game-g-main-moveclienttointermission-function-moveclienttointermission-level-ent-src-mq3-game-g-main-ml-1878475773"></a>
 ### MoveClientToIntermission
@@ -770,13 +854,15 @@ function LogExit(level, reason)
 function MoveClientToIntermission(level, ent)
 ```
 
+Forward `MoveClientToIntermission` to `mq3.game.intermission.moveClient` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermission_origin` and `intermission_angle`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `r`. May update `ent.s.origin[axis]`, `ent.client.ps.origin[axis]` and `ent.client.ps.viewangles[axis]` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L191)
 
 <a id="function-function-mq3-game-g-main-printteam-function-printteam-level-team-message-src-mq3-game-g-main-ml-279053100"></a>
 ### PrintTeam
@@ -785,14 +871,16 @@ function MoveClientToIntermission(level, ent)
 function PrintTeam(level, team, message)
 ```
 
+Forward `PrintTeam` to `mq3.game.votes.printTeam` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients` and `clients`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L166)
 
 <a id="function-function-mq3-game-g-main-removetournamentloser-function-removetournamentloser-level-src-mq3-game-g-main-ml-728040186"></a>
 ### RemoveTournamentLoser
@@ -801,12 +889,14 @@ function PrintTeam(level, team, message)
 function RemoveTournamentLoser(level)
 ```
 
+Forward `RemoveTournamentLoser` to `mq3.game.tournament.removeLoser` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `clients` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L181)
 
 <a id="function-function-mq3-game-g-main-removetournamentwinner-function-removetournamentwinner-level-src-mq3-game-g-main-ml-1787068874"></a>
 ### RemoveTournamentWinner
@@ -815,12 +905,14 @@ function RemoveTournamentLoser(level)
 function RemoveTournamentWinner(level)
 ```
 
+Forward `RemoveTournamentWinner` to `mq3.game.tournament.removeWinner` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `clients` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L184)
 
 - [mq3.game.g_main.Runtime](Type-mq3-game-g-main-runtime-2035159239.md) — struct
 <a id="function-function-mq3-game-g-main-scoreistied-function-scoreistied-level-src-mq3-game-g-main-ml-1504488602"></a>
@@ -830,12 +922,14 @@ function RemoveTournamentWinner(level)
 function ScoreIsTied(level)
 ```
 
+Forward `ScoreIsTied` to `mq3.game.scores.scoreIsTied` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `numPlayingClients`, `spawner`, `teamScores` and `sortedClients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L144)
 
 <a id="function-function-mq3-game-g-main-sendscoreboardmessagetoallclients-function-sendscoreboardmessagetoallclients-level-src-mq3-game-g-main-ml-664371072"></a>
 ### SendScoreboardMessageToAllClients
@@ -844,12 +938,14 @@ function ScoreIsTied(level)
 function SendScoreboardMessageToAllClients(level)
 ```
 
+Forward `SendScoreboardMessageToAllClients` to `mq3.game.scores.sendAll` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `clients` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L141)
 
 <a id="function-function-mq3-game-g-main-setleader-function-setleader-level-team-client-src-mq3-game-g-main-ml-1512034058"></a>
 ### SetLeader
@@ -858,14 +954,16 @@ function SendScoreboardMessageToAllClients(level)
 function SetLeader(level, team, client)
 ```
 
+Forward `SetLeader` to `mq3.game.votes.setLeader` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients` and `maxclients`. May update `level.clients[current].teamLeader` and `level.clients[slot].teamLeader` in place. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
+| `client` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L171)
 
 <a id="function-function-mq3-game-g-main-sortranks-function-sortranks-level-a-b-src-mq3-game-g-main-ml-1487735627"></a>
 ### SortRanks
@@ -874,14 +972,16 @@ function SetLeader(level, team, client)
 function SortRanks(level, a, b)
 ```
 
+Forward `SortRanks` to `mq3.game.scores.compareRanks` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `a` | `dynamic` | — | Slot in the owning table or pool. |
+| `b` | `dynamic` | — | Slot in the owning table or pool. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L135)
 
 <a id="function-function-mq3-game-g-main-vmmain-function-vmmain-runtime-command-args-src-mq3-game-g-main-ml-1171035510"></a>
 ### vmMain
@@ -894,9 +994,9 @@ vmMain -- the only qagame export.  The return values and command ordering match 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | G main runtime; accesses `level`, `gmainInitFn`, `gmainShutdownFn`, `gmainConnectFn` and `gmainThinkFn` and related fields. |
+| `command` | `dynamic` | — | Value used by `vmMain` in `if command == GAME_INIT then runtime.gmainInitFn(runtime,argument(args,0),argument(args,1),argument(args,2))`. |
+| `args` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_main.ml#L278)

@@ -9,8 +9,10 @@
 struct ScoreRow
 ```
 
+Stores base Quake III match display score row record, including `name`, `score`, `deaths`, `localPlayer`, `red`, `green` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ blue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-match-display-scorerow-deaths-deaths-src-mq3-client-baseq3-match-display-ml-392419619"></a>
 ### deaths
@@ -32,7 +34,7 @@ deaths
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-match-display-scorerow-green-green-src-mq3-client-baseq3-match-display-ml-85904457"></a>
 ### green
@@ -42,7 +44,7 @@ green
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-match-display-scorerow-localplayer-localplayer-src-mq3-client-baseq3-match-display-ml-759227241"></a>
 ### localPlayer
@@ -52,7 +54,7 @@ localPlayer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-match-display-scorerow-name-name-src-mq3-client-baseq3-match-display-ml-1991392055"></a>
 ### name
@@ -62,7 +64,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-match-display-scorerow-red-red-src-mq3-client-baseq3-match-display-ml-1797601093"></a>
 ### red
@@ -72,7 +74,7 @@ red
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)
 
 <a id="field-field-mq3-client-baseq3-match-display-scorerow-score-score-src-mq3-client-baseq3-match-display-ml-1510576881"></a>
 ### score
@@ -82,4 +84,4 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L31)

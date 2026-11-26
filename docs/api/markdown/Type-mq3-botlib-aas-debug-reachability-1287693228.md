@@ -9,8 +9,10 @@
 struct Reachability
 ```
 
+`Reachability` record for aas debug, containing `areaNum`, `faceNum`, `edgeNum`, `start` and `finish` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-edgenum-edgenum-src-mq3-botlib-aas-debug-ml-1001437026"></a>
 ### edgeNum
@@ -32,7 +34,7 @@ edgeNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-facenum-facenum-src-mq3-botlib-aas-debug-ml-1095118322"></a>
 ### faceNum
@@ -42,7 +44,7 @@ faceNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-finish-finish-src-mq3-botlib-aas-debug-ml-504172188"></a>
 ### finish
@@ -52,7 +54,7 @@ finish
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-start-start-src-mq3-botlib-aas-debug-ml-112773910"></a>
 ### start
@@ -62,7 +64,7 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-traveltime-traveltime-src-mq3-botlib-aas-debug-ml-520575868"></a>
 ### travelTime
@@ -72,7 +74,7 @@ travelTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 <a id="field-field-mq3-botlib-aas-debug-reachability-traveltype-traveltype-src-mq3-botlib-aas-debug-ml-1880275130"></a>
 ### travelType
@@ -82,4 +84,4 @@ travelType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)

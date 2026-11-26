@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.netchan, containing `challenge`, `lastClientCommandString`, `reliableCommands`, `channel`, `queue`, `queueInitialized`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ challenge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L16)
 
 <a id="field-field-mq3-server-netchan-client-channel-channel-src-mq3-server-netchan-ml-630918362"></a>
 ### channel
@@ -32,7 +34,7 @@ channel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L19)
 
 <a id="field-field-mq3-server-netchan-client-lastclientcommandstring-lastclientcommandstring-src-mq3-server-netchan-ml-909787166"></a>
 ### lastClientCommandString
@@ -42,7 +44,7 @@ lastClientCommandString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L17)
 
 <a id="field-field-mq3-server-netchan-client-queue-queue-src-mq3-server-netchan-ml-79100502"></a>
 ### queue
@@ -52,7 +54,7 @@ queue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L20)
 
 <a id="field-field-mq3-server-netchan-client-queueinitialized-queueinitialized-src-mq3-server-netchan-ml-178960908"></a>
 ### queueInitialized
@@ -62,7 +64,7 @@ queueInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L21)
 
 <a id="field-field-mq3-server-netchan-client-reliablecommands-reliablecommands-src-mq3-server-netchan-ml-1563701746"></a>
 ### reliableCommands
@@ -72,4 +74,4 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/netchan.ml#L18)

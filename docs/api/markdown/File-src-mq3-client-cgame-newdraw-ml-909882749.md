@@ -846,10 +846,10 @@ CG_CheckOrderPending
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.commands`, `state.orderPending`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L233)
 
 <a id="function-function-mq3-client-cgame-newdraw-client-function-client-name-team-src-mq3-client-cgame-newdraw-ml-1620631044"></a>
 ### client
@@ -858,13 +858,15 @@ CG_CheckOrderPending
 function client(name, team)
 ```
 
+Creates a `mq3.client.cgame_newdraw.Client` record. Assigns `name` from `name`, `team` from `team`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value used to initialize `Client.name`. |
+| `team` | `dynamic` | — | Value used to initialize `Client.team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L144)
 
 - [mq3.client.cgame_newdraw.Client](Type-mq3-client-cgame-newdraw-client-464952916.md) — struct
 <a id="function-function-mq3-client-cgame-newdraw-clientnumfromname-function-clientnumfromname-state-name-src-mq3-client-cgame-newdraw-ml-1195909910"></a>
@@ -874,13 +876,15 @@ function client(name, team)
 function clientNumFromName(state, name)
 ```
 
+Calls `std.string.equalsIgnoreCaseAscii` from client game newdraw `clientNumFromName`. The final path returns `-1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game newdraw resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L672)
 
 <a id="function-function-mq3-client-cgame-newdraw-copycolor-function-copycolor-value-src-mq3-client-cgame-newdraw-ml-445659339"></a>
 ### copyColor
@@ -889,12 +893,14 @@ function clientNumFromName(state, name)
 function copyColor(value)
 ```
 
+Evaluates client game newdraw `copyColor` and returns `[1.0,1.0,1.0,1.0]`, `[value[0],value[1],value[2],value[3]]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`, `value[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L160)
 
 <a id="function-function-mq3-client-cgame-newdraw-create-function-create-retailactive-src-mq3-client-cgame-newdraw-ml-1466001961"></a>
 ### create
@@ -903,12 +909,14 @@ function copyColor(value)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.cgame_newdraw.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L149)
 
 <a id="function-function-mq3-client-cgame-newdraw-currentclient-function-currentclient-state-src-mq3-client-cgame-newdraw-ml-668591159"></a>
 ### currentClient
@@ -917,12 +925,14 @@ function create(retailActive)
 function currentClient(state)
 ```
 
+Evaluates client game newdraw `currentClient` and returns `void`, `state.clients[0]`, `state.clients[id]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`, `state.selected`, `state.sorted`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L195)
 
 <a id="function-function-mq3-client-cgame-newdraw-draw1stplace-function-draw1stplace-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1982436737"></a>
 ### draw1stPlace
@@ -931,16 +941,18 @@ function currentClient(state)
 function draw1stPlace(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.text`, `mq3.client.cgame_newdraw.two` from client game newdraw `draw1stPlace`. The final path returns `text(state,r,two(state.scores1),scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.scores1`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,two(state.scores1),scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,two(state.scores1),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `draw1stPlace`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L547)
 
 <a id="function-function-mq3-client-cgame-newdraw-draw2ndplace-function-draw2ndplace-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1397921761"></a>
 ### draw2ndPlace
@@ -949,16 +961,18 @@ function draw1stPlace(state, r, scale, color, shader)
 function draw2ndPlace(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.text`, `mq3.client.cgame_newdraw.two` from client game newdraw `draw2ndPlace`. The final path returns `text(state,r,two(state.scores2),scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.scores2`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,two(state.scores2),scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,two(state.scores2),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `draw2ndPlace`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L554)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawareachat-function-drawareachat-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1113261209"></a>
 ### drawAreaChat
@@ -967,16 +981,18 @@ function draw2ndPlace(state, r, scale, color, shader)
 function drawAreaChat(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.text` to client game newdraw `drawAreaChat`, returning its result for `state, r, state.teamChat2, scale, color`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.teamChat2`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.text`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.text`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.text`. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawAreaChat`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L523)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawareapowerup-function-drawareapowerup-state-r-align-special-scale-color-src-mq3-client-cgame-newdraw-ml-1280663568"></a>
 ### drawAreaPowerUp
@@ -985,17 +1001,19 @@ function drawAreaChat(state, r, scale, color, shader)
 function drawAreaPowerUp(state, r, align, special, scale, color)
 ```
 
+Calls `mq3.client.cgame_newdraw.sortedPowerups`, `mq3.compat.numeric.trunc32`, `mq3.client.cgame_newdraw.pic` and additional helpers from client game newdraw `drawAreaPowerUp`. The final path returns `len(items)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `align` | `dynamic` | — |  |
-| `special` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.health`, `state.time`. |
+| `r` | `dynamic` | — | Record read through `r.x`, `r.y`, `r.w`, `r.h`. |
+| `align` | `dynamic` | — | Value used by `if align==HUD_VERTICAL then y=y+r.w+special else x=x+r.w+special end if end for`. |
+| `special` | `dynamic` | — | Value used by `if align==HUD_VERTICAL then y=y+r.w+special else x=x+r.w+special end if end for`. |
+| `scale` | `dynamic` | — | Value used by `text(state,Rect(x+r.w*0.75+3,y,r.w*0.25,r.h),str(n.trunc32(remaining/1000.0)),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L473)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawareasystemchat-function-drawareasystemchat-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1528088533"></a>
 ### drawAreaSystemChat
@@ -1004,16 +1022,18 @@ function drawAreaPowerUp(state, r, align, special, scale, color)
 function drawAreaSystemChat(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.text` to client game newdraw `drawAreaSystemChat`, returning its result for `state, r, state.systemChat, scale, color`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.systemChat`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.text`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.text`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.text`. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawAreaSystemChat`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L509)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawareateamchat-function-drawareateamchat-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1423931509"></a>
 ### drawAreaTeamChat
@@ -1022,16 +1042,18 @@ function drawAreaSystemChat(state, r, scale, color, shader)
 function drawAreaTeamChat(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.text` to client game newdraw `drawAreaTeamChat`, returning its result for `state, r, state.teamChat1, scale, color`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.teamChat1`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.text`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.text`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.text`. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawAreaTeamChat`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L516)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawblueflaghead-function-drawblueflaghead-state-r-src-mq3-client-cgame-newdraw-ml-529577341"></a>
 ### drawBlueFlagHead
@@ -1040,13 +1062,15 @@ function drawAreaTeamChat(state, r, scale, color, shader)
 function drawBlueFlagHead(state, r)
 ```
 
+Calls `mq3.client.cgame_newdraw.flagCarrier`, `mq3.client.cgame_newdraw.model` from client game newdraw `drawBlueFlagHead`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawBlueFlagHead`. |
+| `r` | `dynamic` | — | Value used by `if id>=0 then return model(state,r,"clientHead",0) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L438)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawblueflagname-function-drawblueflagname-state-r-scale-color-src-mq3-client-cgame-newdraw-ml-1589028674"></a>
 ### drawBlueFlagName
@@ -1055,15 +1079,17 @@ function drawBlueFlagHead(state, r)
 function drawBlueFlagName(state, r, scale, color)
 ```
 
+Calls `mq3.client.cgame_newdraw.flagCarrier`, `mq3.client.cgame_newdraw.text` from client game newdraw `drawBlueFlagName`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `r` | `dynamic` | — | Value used by `if id>=0 then return text(state,r,state.clients[id].name,scale,color) end if`. |
+| `scale` | `dynamic` | — | Value used by `if id>=0 then return text(state,r,state.clients[id].name,scale,color) end if`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L418)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawblueflagstatus-function-drawblueflagstatus-state-r-shader-src-mq3-client-cgame-newdraw-ml-662579282"></a>
 ### drawBlueFlagStatus
@@ -1072,14 +1098,16 @@ function drawBlueFlagName(state, r, scale, color)
 function drawBlueFlagStatus(state, r, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic` from client game newdraw `drawBlueFlagStatus`. The final path returns `pic(state,r,"flag"+str(index),[0.0,0.0,1.0,1.0])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.blueflag`. |
+| `r` | `dynamic` | — | Value used by `if state.gametype==GT_HARVESTER then return pic(state,r,"blueCubeIcon",[0.0,0.0,1.0,1.0]) end if`. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L429)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawbluename-function-drawbluename-state-r-scale-color-src-mq3-client-cgame-newdraw-ml-105780598"></a>
 ### drawBlueName
@@ -1088,15 +1116,17 @@ function drawBlueFlagStatus(state, r, shader)
 function drawBlueName(state, r, scale, color)
 ```
 
+Adapts `mq3.client.cgame_newdraw.text` to client game newdraw `drawBlueName`, returning its result for `state, r, state.blueTeamName, scale, color`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.blueTeamName`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.text`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.text`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L407)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawbluescore-function-drawbluescore-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1659785505"></a>
 ### drawBlueScore
@@ -1105,16 +1135,18 @@ function drawBlueName(state, r, scale, color)
 function drawBlueScore(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.text` from client game newdraw `drawBlueScore`. The final path returns `text(state,r,value,scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.scores2`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,value,scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,value,scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawBlueScore`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L395)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawcapfraglimit-function-drawcapfraglimit-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-222064961"></a>
 ### drawCapFragLimit
@@ -1123,16 +1155,18 @@ function drawBlueScore(state, r, scale, color, shader)
 function drawCapFragLimit(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.text`, `mq3.client.cgame_newdraw.two` from client game newdraw `drawCapFragLimit`. The final path returns `text(state,r,two(limit),scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.fraglimit`, `state.gametype`, `state.capturelimit`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,two(limit),scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,two(limit),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawCapFragLimit`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L540)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawctfpowerup-function-drawctfpowerup-state-r-src-mq3-client-cgame-newdraw-ml-579631205"></a>
 ### drawCTFPowerUp
@@ -1141,13 +1175,15 @@ function drawCapFragLimit(state, r, scale, color, shader)
 function drawCTFPowerUp(state, r)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic` from client game newdraw `drawCTFPowerUp`. The final path returns `pic(state,r,"item"+str(state.persistentPowerup)+"Icon",void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.persistentPowerup`. |
+| `r` | `dynamic` | — | Value used by `return pic(state,r,"item"+str(state.persistentPowerup)+"Icon",void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L457)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawgamestatus-function-drawgamestatus-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1382672601"></a>
 ### drawGameStatus
@@ -1156,16 +1192,18 @@ function drawCTFPowerUp(state, r)
 function drawGameStatus(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.text` to client game newdraw `drawGameStatus`, returning its result for `state, r, getGameStatusText(state), scale, color`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1, 3 of `mq3.client.cgame_newdraw.text`; passed as `state`, `getGameStatusText(state)`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.text`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.text`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.text`. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawGameStatus`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L567)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawgametype-function-drawgametype-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1898628689"></a>
 ### drawGameType
@@ -1174,16 +1212,18 @@ function drawGameStatus(state, r, scale, color, shader)
 function drawGameType(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.text` to client game newdraw `drawGameType`, returning its result for `state, r, gameTypeString(state), scale, color`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1, 3 of `mq3.client.cgame_newdraw.text`; passed as `state`, `gameTypeString(state)`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.text`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.text`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.text`. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawGameType`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L577)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawkiller-function-drawkiller-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-2039572993"></a>
 ### drawKiller
@@ -1192,16 +1232,18 @@ function drawGameType(state, r, scale, color, shader)
 function drawKiller(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.getKillerText`, `mq3.client.cgame_newdraw.text` from client game newdraw `drawKiller`. The final path returns `text(state,r,value,scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawKiller`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,value,scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,value,scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawKiller`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L533)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawmedal-function-drawmedal-state-ownerdraw-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1880028202"></a>
 ### drawMedal
@@ -1210,17 +1252,19 @@ function drawKiller(state, r, scale, color, shader)
 function drawMedal(state, ownerDraw, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.medalValue`, `mq3.client.cgame_newdraw.copyColor`, `mq3.client.cgame_newdraw.pic` and additional helpers from client game newdraw `drawMedal`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ownerDraw` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.selectedScore`, `state.medals`. |
+| `ownerDraw` | `dynamic` | — | Value used by `value=medalValue(score,ownerDraw)`. |
+| `r` | `dynamic` | — | Value used by `pic(state,r,shader,shade)`. |
+| `scale` | `dynamic` | — | Value used by `if label!="" then text(state,r,label,scale,[shade[0],shade[1],shade[2],1.0]) end if`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L626)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawnewteaminfo-function-drawnewteaminfo-state-r-textx-texty-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1806598868"></a>
 ### drawNewTeamInfo
@@ -1229,18 +1273,20 @@ function drawMedal(state, ownerDraw, r, scale, color, shader)
 function drawNewTeamInfo(state, r, textX, textY, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic`, `mq3.client.cgame_newdraw.Rect`, `mq3.client.cgame_newdraw.statusHandle` and additional helpers from client game newdraw `drawNewTeamInfo`. The final path returns `drawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `textX` | `dynamic` | — |  |
-| `textY` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.sorted`, `state.clients`, `state.team`. |
+| `r` | `dynamic` | — | Record read through `r.y`, `r.x`, `r.w`, `r.h`. |
+| `textX` | `dynamic` | — | Accepted for compatibility with `drawNewTeamInfo`; the current implementation does not read it. |
+| `textY` | `dynamic` | — | Value used by `textPaintLimit(state,r.x+r.w,x+27,y+textY,scale,color,ci.name,0.0,0)`. |
+| `scale` | `dynamic` | — | Value used by `textPaintLimit(state,r.x+r.w,x+27,y+textY,scale,color,ci.name,0.0,0)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawNewTeamInfo`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L602)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerammoicon-function-drawplayerammoicon-state-r-draw2d-src-mq3-client-cgame-newdraw-ml-699771169"></a>
 ### drawPlayerAmmoIcon
@@ -1249,14 +1295,16 @@ function drawNewTeamInfo(state, r, textX, textY, scale, color, shader)
 function drawPlayerAmmoIcon(state, r, draw2D)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic`, `mq3.client.cgame_newdraw.model` from client game newdraw `drawPlayerAmmoIcon`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `draw2D` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.draw3dIcons`, `state.drawIcons`, `state.weapon`. |
+| `r` | `dynamic` | — | Value used by `if draw2D or (not state.draw3dIcons and state.drawIcons) then return pic(state,r,"weapon"+str(state.weapon)+"AmmoIcon",void) else if state.dra...`. |
+| `draw2D` | `dynamic` | — | Value used by `if draw2D or (not state.draw3dIcons and state.drawIcons) then return pic(state,r,"weapon"+str(state.weapon)+"AmmoIcon",void) else if state.dra...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L290)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerammovalue-function-drawplayerammovalue-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-168424981"></a>
 ### drawPlayerAmmoValue
@@ -1265,16 +1313,18 @@ function drawPlayerAmmoIcon(state, r, draw2D)
 function drawPlayerAmmoValue(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.numericDraw` from client game newdraw `drawPlayerAmmoValue`. The final path returns `numericDraw(state,r,state.ammo,scale,color,shader)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.weapon`, `state.ammo`. |
+| `r` | `dynamic` | — | Value used by `return numericDraw(state,r,state.ammo,scale,color,shader)`. |
+| `scale` | `dynamic` | — | Value used by `return numericDraw(state,r,state.ammo,scale,color,shader)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L297)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerarmoricon-function-drawplayerarmoricon-state-r-draw2d-src-mq3-client-cgame-newdraw-ml-282633367"></a>
 ### drawPlayerArmorIcon
@@ -1283,14 +1333,16 @@ function drawPlayerAmmoValue(state, r, scale, color, shader)
 function drawPlayerArmorIcon(state, r, draw2D)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic`, `mq3.client.cgame_newdraw.model` from client game newdraw `drawPlayerArmorIcon`. The final path returns `model(state,r,"armorModel",0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `draw2D` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.drawStatus`, `state.draw3dIcons`, `state.drawIcons`. |
+| `r` | `dynamic` | — | Value used by `if draw2D or (not state.draw3dIcons and state.drawIcons) then return pic(state,r,"armorIcon",void) else if state.draw3dIcons then return model...`. |
+| `draw2D` | `dynamic` | — | Value used by `if draw2D or (not state.draw3dIcons and state.drawIcons) then return pic(state,r,"armorIcon",void) else if state.draw3dIcons then return model...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L278)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerarmorvalue-function-drawplayerarmorvalue-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1271604217"></a>
 ### drawPlayerArmorValue
@@ -1299,16 +1351,18 @@ function drawPlayerArmorIcon(state, r, draw2D)
 function drawPlayerArmorValue(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.numericDraw` to client game newdraw `drawPlayerArmorValue`, returning its result for `state, r, state.armor, scale, color, shader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.armor`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `shader` | `dynamic` | — | Argument 6 of `mq3.client.cgame_newdraw.numericDraw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L285)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerhasflag-function-drawplayerhasflag-state-r-force2d-src-mq3-client-cgame-newdraw-ml-2092263056"></a>
 ### drawPlayerHasFlag
@@ -1317,14 +1371,16 @@ function drawPlayerArmorValue(state, r, scale, color, shader)
 function drawPlayerHasFlag(state, r, force2D)
 ```
 
+Calls `mq3.client.cgame_newdraw.emit` from client game newdraw `drawPlayerHasFlag`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `force2D` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.playerPowerups`. |
+| `r` | `dynamic` | — | Value used by `if (state.playerPowerups&(1<<PW_REDFLAG))!=0 then return emit(state,"flag",r,"red","","",void,force2D,TEAM_RED) else if (state.playerPowerups&...`. |
+| `force2D` | `dynamic` | — | Value used by `if (state.playerPowerups&(1<<PW_REDFLAG))!=0 then return emit(state,"flag",r,"red","","",void,force2D,TEAM_RED) else if (state.playerPowerups&...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L502)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerhead-function-drawplayerhead-state-r-draw2d-src-mq3-client-cgame-newdraw-ml-978080337"></a>
 ### drawPlayerHead
@@ -1333,14 +1389,16 @@ function drawPlayerHasFlag(state, r, force2D)
 function drawPlayerHead(state, r, draw2D)
 ```
 
+Calls `mq3.client.cgame_newdraw.selfClient`, `mq3.client.cgame_newdraw.pic`, `mq3.client.cgame_newdraw.model` from client game newdraw `drawPlayerHead`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `draw2D` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.draw3dIcons`. |
+| `r` | `dynamic` | — | Value used by `if ci!=void then return pic(state,r,ci.modelIcon,void) end if else return model(state,r,"playerHead",0) end if`. |
+| `draw2D` | `dynamic` | — | Value used by `if draw2D or not state.draw3dIcons then ci=selfClient(state)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L302)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerhealth-function-drawplayerhealth-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1601082665"></a>
 ### drawPlayerHealth
@@ -1349,16 +1407,18 @@ function drawPlayerHead(state, r, draw2D)
 function drawPlayerHealth(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.numericDraw` to client game newdraw `drawPlayerHealth`, returning its result for `state, r, state.health, scale, color, shader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.health`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `shader` | `dynamic` | — | Argument 6 of `mq3.client.cgame_newdraw.numericDraw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L381)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayeritem-function-drawplayeritem-state-r-scale-draw2d-src-mq3-client-cgame-newdraw-ml-9967851"></a>
 ### drawPlayerItem
@@ -1367,15 +1427,17 @@ function drawPlayerHealth(state, r, scale, color, shader)
 function drawPlayerItem(state, r, scale, draw2D)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic` from client game newdraw `drawPlayerItem`. The final path returns `pic(state,r,"item"+str(state.holdable)+"Icon",void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `draw2D` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.holdable`. |
+| `r` | `dynamic` | — | Value used by `return pic(state,r,"item"+str(state.holdable)+"Icon",void)`. |
+| `scale` | `dynamic` | — | Accepted for compatibility with `drawPlayerItem`; the current implementation does not read it. |
+| `draw2D` | `dynamic` | — | Accepted for compatibility with `drawPlayerItem`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L360)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerlocation-function-drawplayerlocation-state-r-scale-color-src-mq3-client-cgame-newdraw-ml-1891435162"></a>
 ### drawPlayerLocation
@@ -1384,15 +1446,17 @@ function drawPlayerItem(state, r, scale, draw2D)
 function drawPlayerLocation(state, r, scale, color)
 ```
 
+Calls `mq3.client.cgame_newdraw.selfClient`, `mq3.client.cgame_newdraw.text`, `mq3.client.cgame_newdraw.location` from client game newdraw `drawPlayerLocation`. The final path returns `text(state,r,location(state,ci.location),scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawPlayerLocation`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,location(state,ci.location),scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,location(state,ci.location),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L343)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerscore-function-drawplayerscore-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1619519839"></a>
 ### drawPlayerScore
@@ -1401,16 +1465,18 @@ function drawPlayerLocation(state, r, scale, color)
 function drawPlayerScore(state, r, scale, color, shader)
 ```
 
+Adapts `mq3.client.cgame_newdraw.numericDraw` to client game newdraw `drawPlayerScore`, returning its result for `state, r, state.score, scale, color, shader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.score`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.numericDraw`. |
+| `shader` | `dynamic` | — | Argument 6 of `mq3.client.cgame_newdraw.numericDraw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L354)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawplayerstatus-function-drawplayerstatus-state-r-src-mq3-client-cgame-newdraw-ml-1789393081"></a>
 ### drawPlayerStatus
@@ -1419,13 +1485,15 @@ function drawPlayerScore(state, r, scale, color, shader)
 function drawPlayerStatus(state, r)
 ```
 
+Calls `mq3.client.cgame_newdraw.selfClient`, `mq3.client.cgame_newdraw.pic`, `mq3.client.cgame_newdraw.statusHandle` from client game newdraw `drawPlayerStatus`. The final path returns `pic(state,r,statusHandle(ci.teamTask),void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawPlayerStatus`. |
+| `r` | `dynamic` | — | Value used by `return pic(state,r,statusHandle(ci.teamTask),void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L324)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawredflaghead-function-drawredflaghead-state-r-src-mq3-client-cgame-newdraw-ml-603745787"></a>
 ### drawRedFlagHead
@@ -1434,13 +1502,15 @@ function drawPlayerStatus(state, r)
 function drawRedFlagHead(state, r)
 ```
 
+Calls `mq3.client.cgame_newdraw.flagCarrier`, `mq3.client.cgame_newdraw.model` from client game newdraw `drawRedFlagHead`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawRedFlagHead`. |
+| `r` | `dynamic` | — | Value used by `if id>=0 then return model(state,r,"clientHead",0) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L442)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawredflagname-function-drawredflagname-state-r-scale-color-src-mq3-client-cgame-newdraw-ml-1478096306"></a>
 ### drawRedFlagName
@@ -1449,15 +1519,17 @@ function drawRedFlagHead(state, r)
 function drawRedFlagName(state, r, scale, color)
 ```
 
+Calls `mq3.client.cgame_newdraw.flagCarrier`, `mq3.client.cgame_newdraw.text` from client game newdraw `drawRedFlagName`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `r` | `dynamic` | — | Value used by `if id>=0 then return text(state,r,state.clients[id].name,scale,color) end if`. |
+| `scale` | `dynamic` | — | Value used by `if id>=0 then return text(state,r,state.clients[id].name,scale,color) end if`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L424)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawredflagstatus-function-drawredflagstatus-state-r-shader-src-mq3-client-cgame-newdraw-ml-1643796404"></a>
 ### drawRedFlagStatus
@@ -1466,14 +1538,16 @@ function drawRedFlagName(state, r, scale, color)
 function drawRedFlagStatus(state, r, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic` from client game newdraw `drawRedFlagStatus`. The final path returns `pic(state,r,"flag"+str(index),[1.0,0.0,0.0,1.0])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.redflag`. |
+| `r` | `dynamic` | — | Value used by `if state.gametype==GT_HARVESTER then return pic(state,r,"redCubeIcon",[1.0,0.0,0.0,1.0]) end if`. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L434)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawredname-function-drawredname-state-r-scale-color-src-mq3-client-cgame-newdraw-ml-1113209266"></a>
 ### drawRedName
@@ -1482,15 +1556,17 @@ function drawRedFlagStatus(state, r, shader)
 function drawRedName(state, r, scale, color)
 ```
 
+Adapts `mq3.client.cgame_newdraw.text` to client game newdraw `drawRedName`, returning its result for `state, r, state.redTeamName, scale, color`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.redTeamName`. |
+| `r` | `dynamic` | — | Argument 2 of `mq3.client.cgame_newdraw.text`. |
+| `scale` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.text`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_newdraw.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L401)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawredscore-function-drawredscore-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-716289293"></a>
 ### drawRedScore
@@ -1499,16 +1575,18 @@ function drawRedName(state, r, scale, color)
 function drawRedScore(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.text` from client game newdraw `drawRedScore`. The final path returns `text(state,r,value,scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.scores1`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,value,scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,value,scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawRedScore`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L388)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayerarmor-function-drawselectedplayerarmor-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-222087179"></a>
 ### drawSelectedPlayerArmor
@@ -1517,16 +1595,18 @@ function drawRedScore(state, r, scale, color, shader)
 function drawSelectedPlayerArmor(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.numericDraw` from client game newdraw `drawSelectedPlayerArmor`. The final path returns `numericDraw(state,r,ci.armor,scale,color,shader)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawSelectedPlayerArmor`. |
+| `r` | `dynamic` | — | Value used by `return numericDraw(state,r,ci.armor,scale,color,shader)`. |
+| `scale` | `dynamic` | — | Value used by `return numericDraw(state,r,ci.armor,scale,color,shader)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L316)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayerhead-function-drawselectedplayerhead-state-r-draw2d-voice-src-mq3-client-cgame-newdraw-ml-620219451"></a>
 ### drawSelectedPlayerHead
@@ -1535,15 +1615,17 @@ function drawSelectedPlayerArmor(state, r, scale, color, shader)
 function drawSelectedPlayerHead(state, r, draw2D, voice)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.voiceClient`, `mq3.client.cgame_newdraw.model` and additional helpers from client game newdraw `drawSelectedPlayerHead`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `draw2D` | `dynamic` | — |  |
-| `voice` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.selectedClient`, `state.voiceClient`, `state.draw3dIcons`, `state.drawIcons`. |
+| `r` | `dynamic` | — | Value used by `if state.draw3dIcons and not draw2D then result=model(state,r,ci.headModel,id) else if state.drawIcons then result=pic(state,r,ci.modelIcon,vo...`. |
+| `draw2D` | `dynamic` | — | Value used by `if state.draw3dIcons and not draw2D then result=model(state,r,ci.headModel,id) else if state.drawIcons then result=pic(state,r,ci.modelIcon,vo...`. |
+| `voice` | `dynamic` | — | Value used by `if voice then ci=voiceClient(state)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L374)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayerhealth-function-drawselectedplayerhealth-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-1443506201"></a>
 ### drawSelectedPlayerHealth
@@ -1552,16 +1634,18 @@ function drawSelectedPlayerHead(state, r, draw2D, voice)
 function drawSelectedPlayerHealth(state, r, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.numericDraw` from client game newdraw `drawSelectedPlayerHealth`. The final path returns `numericDraw(state,r,ci.health,scale,color,shader)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawSelectedPlayerHealth`. |
+| `r` | `dynamic` | — | Value used by `return numericDraw(state,r,ci.health,scale,color,shader)`. |
+| `scale` | `dynamic` | — | Value used by `return numericDraw(state,r,ci.health,scale,color,shader)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L309)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayerlocation-function-drawselectedplayerlocation-state-r-scale-color-src-mq3-client-cgame-newdraw-ml-1253835474"></a>
 ### drawSelectedPlayerLocation
@@ -1570,15 +1654,17 @@ function drawSelectedPlayerHealth(state, r, scale, color, shader)
 function drawSelectedPlayerLocation(state, r, scale, color)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.text`, `mq3.client.cgame_newdraw.location` from client game newdraw `drawSelectedPlayerLocation`. The final path returns `text(state,r,location(state,ci.location),scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawSelectedPlayerLocation`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,location(state,ci.location),scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,location(state,ci.location),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L337)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayername-function-drawselectedplayername-state-r-scale-color-voice-src-mq3-client-cgame-newdraw-ml-774211362"></a>
 ### drawSelectedPlayerName
@@ -1587,16 +1673,18 @@ function drawSelectedPlayerLocation(state, r, scale, color)
 function drawSelectedPlayerName(state, r, scale, color, voice)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.voiceClient`, `mq3.client.cgame_newdraw.text` from client game newdraw `drawSelectedPlayerName`. The final path returns `text(state,r,ci.name,scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `voice` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawSelectedPlayerName`. |
+| `r` | `dynamic` | — | Value used by `return text(state,r,ci.name,scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,ci.name,scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `voice` | `dynamic` | — | Value used by `if voice then ci=voiceClient(state) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L331)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayerpowerup-function-drawselectedplayerpowerup-state-r-draw2d-src-mq3-client-cgame-newdraw-ml-2028855857"></a>
 ### drawSelectedPlayerPowerup
@@ -1605,14 +1693,16 @@ function drawSelectedPlayerName(state, r, scale, color, voice)
 function drawSelectedPlayerPowerup(state, r, draw2D)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.firstPowerup`, `mq3.client.cgame_newdraw.pic` from client game newdraw `drawSelectedPlayerPowerup`. The final path returns `pic(state,r,"powerup"+str(id)+"Icon",void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `draw2D` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawSelectedPlayerPowerup`. |
+| `r` | `dynamic` | — | Value used by `return pic(state,r,"powerup"+str(id)+"Icon",void)`. |
+| `draw2D` | `dynamic` | — | Accepted for compatibility with `drawSelectedPlayerPowerup`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L368)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayerstatus-function-drawselectedplayerstatus-state-r-src-mq3-client-cgame-newdraw-ml-773378645"></a>
 ### drawSelectedPlayerStatus
@@ -1621,13 +1711,15 @@ function drawSelectedPlayerPowerup(state, r, draw2D)
 function drawSelectedPlayerStatus(state, r)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.pic`, `mq3.client.cgame_newdraw.statusHandle` from client game newdraw `drawSelectedPlayerStatus`. The final path returns `pic(state,r,statusHandle(task),void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.orderPending`, `state.time`, `state.orderTime`, `state.currentOrder`. |
+| `r` | `dynamic` | — | Value used by `return pic(state,r,statusHandle(task),void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L320)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawselectedplayerweapon-function-drawselectedplayerweapon-state-r-src-mq3-client-cgame-newdraw-ml-430085661"></a>
 ### drawSelectedPlayerWeapon
@@ -1636,13 +1728,15 @@ function drawSelectedPlayerStatus(state, r)
 function drawSelectedPlayerWeapon(state, r)
 ```
 
+Calls `mq3.client.cgame_newdraw.currentClient`, `mq3.client.cgame_newdraw.pic` from client game newdraw `drawSelectedPlayerWeapon`. The final path returns `pic(state,r,name,void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `drawSelectedPlayerWeapon`. |
+| `r` | `dynamic` | — | Value used by `return pic(state,r,name,void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L347)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawteamcolor-function-drawteamcolor-state-r-color-src-mq3-client-cgame-newdraw-ml-657079488"></a>
 ### drawTeamColor
@@ -1651,14 +1745,16 @@ function drawSelectedPlayerWeapon(state, r)
 function drawTeamColor(state, r, color)
 ```
 
+Adapts `mq3.client.cgame_newdraw.emit` to client game newdraw `drawTeamColor`, returning its result for `state, "team-background", r, "", "", "", color, color[3], state.team`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.team`. |
+| `r` | `dynamic` | — | Argument 3 of `mq3.client.cgame_newdraw.emit`. |
+| `color` | `dynamic` | — | Argument 7, 8 of `mq3.client.cgame_newdraw.emit`; passed as `color`, `color[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L462)
 
 <a id="function-function-mq3-client-cgame-newdraw-drawteamspectators-function-drawteamspectators-state-r-scale-color-shader-src-mq3-client-cgame-newdraw-ml-719341377"></a>
 ### drawTeamSpectators
@@ -1667,16 +1763,18 @@ function drawTeamColor(state, r, color)
 function drawTeamSpectators(state, r, scale, color, shader)
 ```
 
+Updates `state.spectatorWidth`, `state.spectatorPaintX`, `state.spectatorPaintX2`, `state.spectatorOffset` and additional values during client game newdraw `drawTeamSpectators`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.spectatorWidth`, `state.spectatorPaintX`, `state.spectatorPaintX2`, `state.spectatorOffset` and additional values. |
+| `r` | `dynamic` | — | Record read through `r.x`, `r.w`, `r.y`, `r.h`. |
+| `scale` | `dynamic` | — | Value used by `if state.spectatorPaintX<=r.x+2 then if state.spectatorOffset<state.spectatorLen then state.spectatorPaintX=state.spectatorPaintX+state.glyphW...`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Accepted for compatibility with `drawTeamSpectators`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L611)
 
 <a id="function-function-mq3-client-cgame-newdraw-emit-function-emit-state-kind-r-text-shader-model-color-value-clientnum-src-mq3-client-cgame-newdraw-ml-683034227"></a>
 ### emit
@@ -1685,20 +1783,22 @@ function drawTeamSpectators(state, r, scale, color, shader)
 function emit(state, kind, r, text, shader, model, color, value, clientNum)
 ```
 
+Appends a client game newdraw action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.actions`, `state.emitted`, `state.suppressed`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `r` | `dynamic` | — | Value used by `a=Action("cgame-newdraw",kind,r,text,shader,model,copyColor(color),value,clientNum,dispatched)`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the client game newdraw path. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game newdraw operation. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `value` | `dynamic` | — | Value used by `a=Action("cgame-newdraw",kind,r,text,shader,model,copyColor(color),value,clientNum,dispatched)`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L171)
 
 <a id="function-function-mq3-client-cgame-newdraw-eventhandling-function-eventhandling-state-type-src-mq3-client-cgame-newdraw-ml-1585594381"></a>
 ### eventHandling
@@ -1707,13 +1807,15 @@ function emit(state, kind, r, text, shader, model, color, value, clientNum)
 function eventHandling(state, type)
 ```
 
+Updates `state.eventHandling` during client game newdraw `eventHandling`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.eventHandling`. |
+| `type` | `dynamic` | — | Value assigned to `state.eventHandling`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L663)
 
 <a id="function-function-mq3-client-cgame-newdraw-firstpowerup-function-firstpowerup-bits-src-mq3-client-cgame-newdraw-ml-1533023382"></a>
 ### firstPowerup
@@ -1722,12 +1824,14 @@ function eventHandling(state, type)
 function firstPowerup(bits)
 ```
 
+Evaluates client game newdraw `firstPowerup` and returns `id`, `-1` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `bits` | `dynamic` | — |  |
+| `bits` | `dynamic` | — | Value used by `for id=0 to 31 if (bits&(1<<id))!=0 then return id end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L363)
 
 <a id="constant-constant-mq3-client-cgame-newdraw-flag-atbase-const-flag-atbase-0-src-mq3-client-cgame-newdraw-ml-1760103647"></a>
 ### FLAG_ATBASE
@@ -1786,14 +1890,16 @@ const FLAG_TAKEN_RED = 3
 function flagCarrier(state, wantedTeam, powerup)
 ```
 
+Evaluates client game newdraw `flagCarrier` and returns `id`, `-1` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `wantedTeam` | `dynamic` | — |  |
-| `powerup` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `wantedTeam` | `dynamic` | — | Value used by `if ci.infoValid and ci.team==wantedTeam and (ci.powerups&(1<<powerup))!=0 then return id end if end for`. |
+| `powerup` | `dynamic` | — | Value used by `if ci.infoValid and ci.team==wantedTeam and (ci.powerups&(1<<powerup))!=0 then return id end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L412)
 
 <a id="function-function-mq3-client-cgame-newdraw-gametypestring-function-gametypestring-state-src-mq3-client-cgame-newdraw-ml-1444808699"></a>
 ### gameTypeString
@@ -1802,12 +1908,14 @@ function flagCarrier(state, wantedTeam, powerup)
 function gameTypeString(state)
 ```
 
+Evaluates client game newdraw `gameTypeString` and returns `"Free For All"`, `"Team Deathmatch"`, `"Capture the Flag"` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L570)
 
 <a id="function-function-mq3-client-cgame-newdraw-getgamestatustext-function-getgamestatustext-state-src-mq3-client-cgame-newdraw-ml-1670054073"></a>
 ### getGameStatusText
@@ -1816,12 +1924,14 @@ function gameTypeString(state)
 function getGameStatusText(state)
 ```
 
+Calls `mq3.client.cgame_newdraw.placeString` from client game newdraw `getGameStatusText`. The final path returns `"Blue leads Red, "+str(state.teamScores[1])+" to "+str(state.teamScores[0])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.team`, `state.rank`, `state.score` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L560)
 
 <a id="function-function-mq3-client-cgame-newdraw-getkillertext-function-getkillertext-state-src-mq3-client-cgame-newdraw-ml-765047631"></a>
 ### getKillerText
@@ -1830,12 +1940,14 @@ function getGameStatusText(state)
 function getKillerText(state)
 ```
 
+Evaluates client game newdraw `getKillerText` and returns `"Fragged by "+state.killerName`, `""` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.killerName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L526)
 
 <a id="function-function-mq3-client-cgame-newdraw-getselectedplayer-function-getselectedplayer-state-src-mq3-client-cgame-newdraw-ml-2122214991"></a>
 ### getSelectedPlayer
@@ -1844,12 +1956,14 @@ function getKillerText(state)
 function getSelectedPlayer(state)
 ```
 
+Updates `state.selected` during client game newdraw `getSelectedPlayer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.selected`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L253)
 
 <a id="function-function-mq3-client-cgame-newdraw-getteamcolor-function-getteamcolor-state-src-mq3-client-cgame-newdraw-ml-1045829495"></a>
 ### getTeamColor
@@ -1858,12 +1972,14 @@ function getSelectedPlayer(state)
 function getTeamColor(state)
 ```
 
+Evaluates client game newdraw `getTeamColor` and returns `[1.0,0.0,0.0,0.25]`, `[0.0,0.0,1.0,0.25]`, `[0.0,0.17,0.0,0.25]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L683)
 
 <a id="function-function-mq3-client-cgame-newdraw-getvalue-function-getvalue-state-ownerdraw-src-mq3-client-cgame-newdraw-ml-1198027504"></a>
 ### getValue
@@ -1876,11 +1992,11 @@ CG_GetValue
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ownerDraw` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.armor`, `state.weapon`, `state.ammo`, `state.score` and additional values. |
+| `ownerDraw` | `dynamic` | — | Value used by `if ownerDraw==CG_SELECTEDPLAYER_ARMOR and ci!=void then return ci.armor end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L478)
 
 <a id="constant-constant-mq3-client-cgame-newdraw-gt-1fctf-const-gt-1fctf-5-src-mq3-client-cgame-newdraw-ml-69306150"></a>
 ### GT_1FCTF
@@ -1969,16 +2085,18 @@ const GT_TOURNAMENT = 1
 function harvesterSkulls(state, r, scale, color, force2D)
 ```
 
+Calls `mq3.client.cgame_newdraw.text`, `mq3.client.cgame_newdraw.model`, `mq3.client.cgame_newdraw.pic` from client game newdraw `harvesterSkulls`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `force2D` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.generic1`, `state.team`, `state.drawIcons` and additional values. |
+| `r` | `dynamic` | — | Value used by `text(state,r,str(value),scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `text(state,r,str(value),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `force2D` | `dynamic` | — | Value used by `if state.drawIcons then if not force2D and state.draw3dIcons then model(state,r,enemy+"CubeModel",0) else pic(state,r,enemy+"CubeIcon",void) e...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L449)
 
 <a id="function-function-mq3-client-cgame-newdraw-hasplayerflag-function-hasplayerflag-state-src-mq3-client-cgame-newdraw-ml-695109613"></a>
 ### hasPlayerFlag
@@ -1987,12 +2105,14 @@ function harvesterSkulls(state, r, scale, color, force2D)
 function hasPlayerFlag(state)
 ```
 
+Computes `(state.playerPowerups&(1<<PW_REDFLAG))!=0 or (state.playerPowerups&(1<<PW_BLUEFLAG))!=0 or (state.playerPowerups&(1<<PW_NEUTRALFLAG))!=0` for client game newdraw `hasPlayerFlag`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.playerPowerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L489)
 
 <a id="function-function-mq3-client-cgame-newdraw-hideteammenu-function-hideteammenu-state-src-mq3-client-cgame-newdraw-ml-718771271"></a>
 ### hideTeamMenu
@@ -2001,12 +2121,14 @@ function hasPlayerFlag(state)
 function hideTeamMenu(state)
 ```
 
+Updates `state.menus` during client game newdraw `hideTeamMenu`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L656)
 
 <a id="constant-constant-mq3-client-cgame-newdraw-hud-vertical-const-hud-vertical-0-src-mq3-client-cgame-newdraw-ml-1441063425"></a>
 ### HUD_VERTICAL
@@ -2029,10 +2151,10 @@ CG_InitTeamChat / CG_SetPrintString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.systemChat`, `state.teamChat1`, `state.teamChat2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L212)
 
 <a id="constant-constant-mq3-client-cgame-newdraw-k-mouse2-const-k-mouse2-179-src-mq3-client-cgame-newdraw-ml-1520881776"></a>
 ### K_MOUSE2
@@ -2051,14 +2173,16 @@ const K_MOUSE2 = 179
 function keyEvent(state, key, down)
 ```
 
+Updates `state.capturedItem` during client game newdraw `keyEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `down` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.capturedItem`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding client game newdraw entry. |
+| `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L668)
 
 <a id="function-function-mq3-client-cgame-newdraw-location-function-location-state-id-src-mq3-client-cgame-newdraw-ml-2051431404"></a>
 ### location
@@ -2067,13 +2191,15 @@ function keyEvent(state, key, down)
 function location(state, id)
 ```
 
+Evaluates client game newdraw `location` and returns `state.locations[id]`, `"unknown"` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.locations`. |
+| `id` | `dynamic` | — | Value used by `if id>=0 and id<len(state.locations) and state.locations[id]!="" then return state.locations[id] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L205)
 
 <a id="function-function-mq3-client-cgame-newdraw-medal-function-medal-src-mq3-client-cgame-newdraw-ml-127740068"></a>
 ### medal
@@ -2082,8 +2208,10 @@ function location(state, id)
 function medal()
 ```
 
+Creates a `mq3.client.cgame_newdraw.Medal` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L136)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L146)
 
 - [mq3.client.cgame_newdraw.Medal](Type-mq3-client-cgame-newdraw-medal-437857318.md) — struct
 <a id="function-function-mq3-client-cgame-newdraw-medalvalue-function-medalvalue-score-ownerdraw-src-mq3-client-cgame-newdraw-ml-1164127827"></a>
@@ -2093,13 +2221,15 @@ function medal()
 function medalValue(score, ownerDraw)
 ```
 
+Evaluates client game newdraw `medalValue` and returns `0`, `score.accuracy`, `score.assists` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `score` | `dynamic` | — |  |
-| `ownerDraw` | `dynamic` | — |  |
+| `score` | `dynamic` | — | Record read through `score.accuracy`, `score.assists`, `score.defend`, `score.excellent` and additional values. |
+| `ownerDraw` | `dynamic` | — | Value used by `if ownerDraw==CG_ACCURACY then return score.accuracy else if ownerDraw==CG_ASSISTS then return score.assists else if ownerDraw==CG_DEFEND then...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L618)
 
 <a id="function-function-mq3-client-cgame-newdraw-model-function-model-state-r-name-clientnum-src-mq3-client-cgame-newdraw-ml-1444007175"></a>
 ### model
@@ -2108,15 +2238,17 @@ function medalValue(score, ownerDraw)
 function model(state, r, name, clientNum)
 ```
 
+Calls `mq3.client.cgame_newdraw.emit` from client game newdraw `model`. The final path returns `emit(state,"model",r,"","",name,void,0.0,clientNum)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `model`. |
+| `r` | `dynamic` | — | Value used by `return emit(state,"model",r,"","",name,void,0.0,clientNum)`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game newdraw resource. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L192)
 
 <a id="function-function-mq3-client-cgame-newdraw-mouseevent-function-mouseevent-state-x-y-src-mq3-client-cgame-newdraw-ml-1630847090"></a>
 ### mouseEvent
@@ -2125,14 +2257,16 @@ function model(state, r, name, clientNum)
 function mouseEvent(state, x, y)
 ```
 
+Updates `state.cursorX`, `state.cursorY` during client game newdraw `mouseEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.cursorX`, `state.cursorY`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `mouseEvent`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `mouseEvent`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L653)
 
 <a id="function-function-mq3-client-cgame-newdraw-numericdraw-function-numericdraw-state-r-value-scale-color-shader-src-mq3-client-cgame-newdraw-ml-996353680"></a>
 ### numericDraw
@@ -2141,17 +2275,19 @@ function mouseEvent(state, x, y)
 function numericDraw(state, r, value, scale, color, shader)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic`, `mq3.client.cgame_newdraw.text` from client game newdraw `numericDraw`. The final path returns `text(state,r,str(value),scale,color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `numericDraw`. |
+| `r` | `dynamic` | — | Value used by `if shader!="" then return pic(state,r,shader,color) end if`. |
+| `value` | `dynamic` | — | Value used by `return text(state,r,str(value),scale,color)`. |
+| `scale` | `dynamic` | — | Value used by `return text(state,r,str(value),scale,color)`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L273)
 
 <a id="function-function-mq3-client-cgame-newdraw-oneflagstatus-function-oneflagstatus-state-r-src-mq3-client-cgame-newdraw-ml-306944277"></a>
 ### oneFlagStatus
@@ -2160,13 +2296,15 @@ function numericDraw(state, r, value, scale, color, shader)
 function oneFlagStatus(state, r)
 ```
 
+Calls `mq3.client.cgame_newdraw.pic` from client game newdraw `oneFlagStatus`. The final path returns `pic(state,r,"flag"+str(index),color)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.flagStatus`. |
+| `r` | `dynamic` | — | Value used by `return pic(state,r,"flag"+str(index),color)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L453)
 
 <a id="function-function-mq3-client-cgame-newdraw-otherteamhasflag-function-otherteamhasflag-state-src-mq3-client-cgame-newdraw-ml-302077103"></a>
 ### otherTeamHasFlag
@@ -2175,12 +2313,14 @@ function oneFlagStatus(state, r)
 function otherTeamHasFlag(state)
 ```
 
+Evaluates client game newdraw `otherTeamHasFlag` and returns `false`, `(state.team==TEAM_RED and state.flagStatus==FLAG_TAKEN_BLUE) or (state.team==TEAM_BLUE and state.flagStatus==FLAG_TAKEN_RED)`, `(state.team==TEAM_RED and state.redflag==FLAG_TAKEN) or (state.team==TEAM_BLUE and state.blueflag==FLAG_TAKEN)` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.team`, `state.flagStatus`, `state.redflag` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L483)
 
 <a id="function-function-mq3-client-cgame-newdraw-ownerdraw-function-ownerdraw-state-x-y-w-h-textx-texty-owner-flags-align-special-scale-color-shader-textstyle-src-mq3-client-cgame-newdraw-ml-1167269666"></a>
 ### ownerDraw
@@ -2193,24 +2333,24 @@ CG_OwnerDraw dispatcher
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
-| `textX` | `dynamic` | — |  |
-| `textY` | `dynamic` | — |  |
-| `owner` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `align` | `dynamic` | — |  |
-| `special` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `textStyle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.drawStatus`, `state.selected`, `state.sorted`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `ownerDraw`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `ownerDraw`. |
+| `w` | `dynamic` | — | Width in the coordinate space used by `ownerDraw`. |
+| `h` | `dynamic` | — | Height in the coordinate space used by `ownerDraw`. |
+| `textX` | `dynamic` | — | Value used by `if owner==CG_PLAYER_ARMOR_ICON or owner==CG_PLAYER_ARMOR_ICON2D then return drawPlayerArmorIcon(state,r,force2D or owner==CG_PLAYER_ARMOR_ICON...`. |
+| `textY` | `dynamic` | — | Value used by `if owner==CG_PLAYER_ARMOR_ICON or owner==CG_PLAYER_ARMOR_ICON2D then return drawPlayerArmorIcon(state,r,force2D or owner==CG_PLAYER_ARMOR_ICON...`. |
+| `owner` | `dynamic` | — | Value used by `if owner==CG_PLAYER_ARMOR_ICON or owner==CG_PLAYER_ARMOR_ICON2D then return drawPlayerArmorIcon(state,r,force2D or owner==CG_PLAYER_ARMOR_ICON...`. |
+| `flags` | `dynamic` | — | Value used by `force2D=(flags&CG_SHOW_2DONLY)!=0`. |
+| `align` | `dynamic` | — | Value used by `if owner==CG_PLAYER_ARMOR_ICON or owner==CG_PLAYER_ARMOR_ICON2D then return drawPlayerArmorIcon(state,r,force2D or owner==CG_PLAYER_ARMOR_ICON...`. |
+| `special` | `dynamic` | — | Value used by `if owner==CG_PLAYER_ARMOR_ICON or owner==CG_PLAYER_ARMOR_ICON2D then return drawPlayerArmorIcon(state,r,force2D or owner==CG_PLAYER_ARMOR_ICON...`. |
+| `scale` | `dynamic` | — | Value used by `if owner==CG_PLAYER_ARMOR_ICON or owner==CG_PLAYER_ARMOR_ICON2D then return drawPlayerArmorIcon(state,r,force2D or owner==CG_PLAYER_ARMOR_ICON...`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `textStyle` | `dynamic` | — | Accepted for compatibility with `ownerDraw`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L644)
 
 <a id="function-function-mq3-client-cgame-newdraw-ownerdrawvisible-function-ownerdrawvisible-state-flags-src-mq3-client-cgame-newdraw-ml-1730532358"></a>
 ### ownerDrawVisible
@@ -2219,13 +2359,15 @@ CG_OwnerDraw dispatcher
 function ownerDrawVisible(state, flags)
 ```
 
+Calls `mq3.client.cgame_newdraw.otherTeamHasFlag`, `mq3.client.cgame_newdraw.yourTeamHasFlag`, `mq3.client.cgame_newdraw.hasPlayerFlag` from client game newdraw `ownerDrawVisible`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.selected`, `state.sorted`, `state.redflag`, `state.flagStatus` and additional values. |
+| `flags` | `dynamic` | — | Value used by `if (flags&CG_SHOW_TEAMINFO)!=0 then return state.selected==len(state.sorted) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L493)
 
 <a id="function-function-mq3-client-cgame-newdraw-pic-function-pic-state-r-shader-color-src-mq3-client-cgame-newdraw-ml-1183740117"></a>
 ### pic
@@ -2234,15 +2376,17 @@ function ownerDrawVisible(state, flags)
 function pic(state, r, shader, color)
 ```
 
+Calls `mq3.client.cgame_newdraw.emit` from client game newdraw `pic`. The final path returns `emit(state,"pic",r,"",shader,"",color,0.0,-1)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `pic`. |
+| `r` | `dynamic` | — | Value used by `return emit(state,"pic",r,"",shader,"",color,0.0,-1)`. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L186)
 
 <a id="function-function-mq3-client-cgame-newdraw-placestring-function-placestring-rank-src-mq3-client-cgame-newdraw-ml-30955856"></a>
 ### placeString
@@ -2251,12 +2395,14 @@ function pic(state, r, shader, color)
 function placeString(rank)
 ```
 
+Evaluates client game newdraw `placeString` and returns `str(rank)+"th"`, `str(rank)+"st"`, `str(rank)+"nd"` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rank` | `dynamic` | — |  |
+| `rank` | `dynamic` | — | Value used by `if rank%100>=11 and rank%100<=13 then return str(rank)+"th" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L557)
 
 <a id="constant-constant-mq3-client-cgame-newdraw-pm-normal-const-pm-normal-0-src-mq3-client-cgame-newdraw-ml-1460058051"></a>
 ### PM_NORMAL
@@ -2316,15 +2462,17 @@ const PW_REDFLAG = 7
 function rect(x, y, w, h)
 ```
 
+Creates a `mq3.client.cgame_newdraw.Rect` record. Assigns `x` from `x`, `y` from `y`, `w` from `w`, `h` from `h`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
+| `x` | `dynamic` | — | Value used to initialize `Rect.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Rect.y`. |
+| `w` | `dynamic` | — | Value used to initialize `Rect.w`. |
+| `h` | `dynamic` | — | Value used to initialize `Rect.h`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L157)
 
 - [mq3.client.cgame_newdraw.Rect](Type-mq3-client-cgame-newdraw-rect-1855648725.md) — struct
 <a id="function-function-mq3-client-cgame-newdraw-runmenuscript-function-runmenuscript-state-args-src-mq3-client-cgame-newdraw-ml-2098242102"></a>
@@ -2338,11 +2486,11 @@ The original body is empty. Preserve that behavior while making the host boundar
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game newdraw state passed to the helper calls in `runMenuScript`. |
+| `args` | `dynamic` | — | Value used by `emit(state,"menu-script",Rect(0,0,0,0),args,"","",void,0,-1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L680)
 
 <a id="constant-constant-mq3-client-cgame-newdraw-score-not-present-const-score-not-present-9999-src-mq3-client-cgame-newdraw-ml-1082692240"></a>
 ### SCORE_NOT_PRESENT
@@ -2361,12 +2509,14 @@ const SCORE_NOT_PRESENT = -9999
 function selectNextPlayer(state)
 ```
 
+Updates `state.selected` during client game newdraw `selectNextPlayer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.selected`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L256)
 
 <a id="function-function-mq3-client-cgame-newdraw-selectprevplayer-function-selectprevplayer-state-src-mq3-client-cgame-newdraw-ml-1888395887"></a>
 ### selectPrevPlayer
@@ -2375,12 +2525,14 @@ function selectNextPlayer(state)
 function selectPrevPlayer(state)
 ```
 
+Updates `state.selected` during client game newdraw `selectPrevPlayer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.selected`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L259)
 
 <a id="function-function-mq3-client-cgame-newdraw-selfclient-function-selfclient-state-src-mq3-client-cgame-newdraw-ml-2058930775"></a>
 ### selfClient
@@ -2389,12 +2541,14 @@ function selectPrevPlayer(state)
 function selfClient(state)
 ```
 
+Evaluates client game newdraw `selfClient` and returns `void`, `state.clients[0]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L198)
 
 <a id="function-function-mq3-client-cgame-newdraw-setprintstring-function-setprintstring-state-type-value-src-mq3-client-cgame-newdraw-ml-1255936440"></a>
 ### setPrintString
@@ -2403,14 +2557,16 @@ function selfClient(state)
 function setPrintString(state, type, value)
 ```
 
+Updates `state.systemChat`, `state.teamChat2`, `state.teamChat1` during client game newdraw `setPrintString`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.systemChat`, `state.teamChat2`, `state.teamChat1`. |
+| `type` | `dynamic` | — | Value used by `if type==0 then state.systemChat=value else state.teamChat2=state.teamChat1`. |
+| `value` | `dynamic` | — | Value assigned to `state.systemChat`, `state.teamChat1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L217)
 
 <a id="function-function-mq3-client-cgame-newdraw-setselectedplayername-function-setselectedplayername-state-src-mq3-client-cgame-newdraw-ml-512423221"></a>
 ### setSelectedPlayerName
@@ -2423,10 +2579,10 @@ CG_SetSelectedPlayerName
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.selectedName`, `state.selectedClient`, `state.currentOrder`, `state.cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L248)
 
 <a id="function-function-mq3-client-cgame-newdraw-showresponsehead-function-showresponsehead-state-src-mq3-client-cgame-newdraw-ml-1227504307"></a>
 ### showResponseHead
@@ -2435,12 +2591,14 @@ CG_SetSelectedPlayerName
 function showResponseHead(state)
 ```
 
+Updates `state.menus`, `state.cvars`, `state.voiceTime` during client game newdraw `showResponseHead`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.menus`, `state.cvars`, `state.voiceTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L675)
 
 <a id="function-function-mq3-client-cgame-newdraw-showteammenu-function-showteammenu-state-src-mq3-client-cgame-newdraw-ml-1186749767"></a>
 ### showTeamMenu
@@ -2449,12 +2607,14 @@ function showResponseHead(state)
 function showTeamMenu(state)
 ```
 
+Updates `state.menus` during client game newdraw `showTeamMenu`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game newdraw record/storage; this routine assigns `state.menus`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L659)
 
 <a id="function-function-mq3-client-cgame-newdraw-sortedpowerups-function-sortedpowerups-state-src-mq3-client-cgame-newdraw-ml-1054733927"></a>
 ### sortedPowerups
@@ -2463,12 +2623,14 @@ function showTeamMenu(state)
 function sortedPowerups(state)
 ```
 
+Evaluates client game newdraw `sortedPowerups` and returns `result` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.powerups`, `state.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L465)
 
 - [mq3.client.cgame_newdraw.State](Type-mq3-client-cgame-newdraw-state-1072933844.md) — struct
 <a id="function-function-mq3-client-cgame-newdraw-statushandle-function-statushandle-task-src-mq3-client-cgame-newdraw-ml-1561494177"></a>
@@ -2478,12 +2640,14 @@ function sortedPowerups(state)
 function statusHandle(task)
 ```
 
+Evaluates client game newdraw `statusHandle` and returns `"defend"`, `"patrol"`, `"follow"` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `task` | `dynamic` | — |  |
+| `task` | `dynamic` | — | Value used by `if task==TEAMTASK_DEFENSE then return "defend" else if task==TEAMTASK_PATROL then return "patrol" else if task==TEAMTASK_FOLLOW then return "f...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L263)
 
 <a id="function-function-mq3-client-cgame-newdraw-taskvoice-function-taskvoice-task-src-mq3-client-cgame-newdraw-ml-777344703"></a>
 ### taskVoice
@@ -2492,12 +2656,14 @@ function statusHandle(task)
 function taskVoice(task)
 ```
 
+Evaluates client game newdraw `taskVoice` and returns `["onoffense","offense","+button7; wait; -button7"]`, `["ondefense","defend","+button8; wait; -button8"]`, `["onpatrol","patrol","+button9; wait; -button9"]` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `task` | `dynamic` | — |  |
+| `task` | `dynamic` | — | Value used by `if task==TEAMTASK_OFFENSE then return ["onoffense","offense","+button7`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L221)
 
 <a id="constant-constant-mq3-client-cgame-newdraw-team-blue-const-team-blue-2-src-mq3-client-cgame-newdraw-ml-527067677"></a>
 ### TEAM_BLUE
@@ -2626,16 +2792,18 @@ const TEAMTASK_RETRIEVE = 5
 function text(state, r, value, scale, color)
 ```
 
+Adapts `mq3.client.cgame_newdraw.emit` to client game newdraw `text`, returning its result for `state, "text", r, value, "", "", color, scale, -1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_newdraw.emit`. |
+| `r` | `dynamic` | — | Argument 3 of `mq3.client.cgame_newdraw.emit`. |
+| `value` | `dynamic` | — | Argument 4 of `mq3.client.cgame_newdraw.emit`. |
+| `scale` | `dynamic` | — | Argument 8 of `mq3.client.cgame_newdraw.emit`. |
+| `color` | `dynamic` | — | Argument 7 of `mq3.client.cgame_newdraw.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L180)
 
 <a id="function-function-mq3-client-cgame-newdraw-textpaintlimit-function-textpaintlimit-state-maxx-x-y-scale-color-value-adjust-limit-src-mq3-client-cgame-newdraw-ml-108963180"></a>
 ### textPaintLimit
@@ -2648,18 +2816,18 @@ CG_Text_Paint_Limit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `maxX` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `adjust` | `dynamic` | — |  |
-| `limit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.glyphWidth`. |
+| `maxX` | `dynamic` | — | Value used by `if value==void then return [maxX,""] end if`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `textPaintLimit`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `textPaintLimit`. |
+| `scale` | `dynamic` | — | Value used by `while at<len(value) and count<maximum if at+1<len(value) and value[at]=="^" and value[at+1]!="^" then at=at+2 else width=state.glyphWidth*scale`. |
+| `color` | `dynamic` | — | Color value used by the client game newdraw drawing or interpolation operation. |
+| `value` | `dynamic` | — | Sequence read at `value[at]`, `value[at+1]`. |
+| `adjust` | `dynamic` | — | Value used by `cursor=cursor+width+adjust`. |
+| `limit` | `dynamic` | — | Upper limit applied while collecting or rendering the result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L589)
 
 <a id="function-function-mq3-client-cgame-newdraw-two-function-two-value-src-mq3-client-cgame-newdraw-ml-1122284819"></a>
 ### two
@@ -2668,12 +2836,14 @@ CG_Text_Paint_Limit
 function two(value)
 ```
 
+Evaluates client game newdraw `two` and returns `" "+str(value)`, `str(value)` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value>=0 and value<10` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L208)
 
 <a id="function-function-mq3-client-cgame-newdraw-voiceclient-function-voiceclient-state-src-mq3-client-cgame-newdraw-ml-1672219409"></a>
 ### voiceClient
@@ -2682,12 +2852,14 @@ function two(value)
 function voiceClient(state)
 ```
 
+Evaluates client game newdraw `voiceClient` and returns `void`, `state.clients[state.voiceClient]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.voiceClient`, `state.clients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L201)
 
 <a id="function-function-mq3-client-cgame-newdraw-yourteamhasflag-function-yourteamhasflag-state-src-mq3-client-cgame-newdraw-ml-699853543"></a>
 ### yourTeamHasFlag
@@ -2696,9 +2868,11 @@ function voiceClient(state)
 function yourTeamHasFlag(state)
 ```
 
+Evaluates client game newdraw `yourTeamHasFlag` and returns `false`, `(state.team==TEAM_RED and state.flagStatus==FLAG_TAKEN_RED) or (state.team==TEAM_BLUE and state.flagStatus==FLAG_TAKEN_BLUE)`, `(state.team==TEAM_RED and state.blueflag==FLAG_TAKEN) or (state.team==TEAM_BLUE and state.redflag==FLAG_TAKEN)` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.team`, `state.flagStatus`, `state.blueflag` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L486)

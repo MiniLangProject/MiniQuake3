@@ -9,8 +9,10 @@
 struct ChangeReport
 ```
 
+ChangeReport record for qcommon.msg, containing `counts`, `printFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
 
 <a id="field-field-mq3-qcommon-msg-changereport-counts-counts-src-mq3-qcommon-msg-ml-1573674147"></a>
 ### counts
@@ -32,7 +34,7 @@ counts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
 
 <a id="field-field-mq3-qcommon-msg-changereport-printfn-printfn-src-mq3-qcommon-msg-ml-457326251"></a>
 ### printFn
@@ -42,4 +44,4 @@ printFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)

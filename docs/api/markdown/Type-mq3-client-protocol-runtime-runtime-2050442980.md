@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Stores protocol runtime runtime wiring and state, including `dispatcher`, `gamestateState`, `downloadState`, `downloadServices`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ dispatcher
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L13)
 
 <a id="field-field-mq3-client-protocol-runtime-runtime-downloadservices-downloadservices-src-mq3-client-protocol-runtime-ml-654948017"></a>
 ### downloadServices
@@ -32,7 +34,7 @@ downloadServices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L16)
 
 <a id="field-field-mq3-client-protocol-runtime-runtime-downloadstate-downloadstate-src-mq3-client-protocol-runtime-ml-2102335977"></a>
 ### downloadState
@@ -42,7 +44,7 @@ downloadState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L15)
 
 <a id="field-field-mq3-client-protocol-runtime-runtime-gamestatestate-gamestatestate-src-mq3-client-protocol-runtime-ml-588600489"></a>
 ### gamestateState
@@ -52,4 +54,4 @@ gamestateState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L14)

@@ -9,8 +9,10 @@
 struct World
 ```
 
+World record for collision.world, containing `brushes`, `nodes`, `leaves`, `models`, `surfaces`, `patchesReady`, and 8 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L100)
 
 ## Members
 
@@ -22,7 +24,7 @@ bounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L108)
 
 <a id="field-field-mq3-collision-world-world-brushes-brushes-src-mq3-collision-world-ml-1104169503"></a>
 ### brushes
@@ -32,7 +34,7 @@ brushes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L101)
 
 <a id="field-field-mq3-collision-world-world-checksum-checksum-src-mq3-collision-world-ml-1904695109"></a>
 ### checksum
@@ -42,7 +44,7 @@ checksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L113)
 
 <a id="field-field-mq3-collision-world-world-entitystring-entitystring-src-mq3-collision-world-ml-1780612639"></a>
 ### entityString
@@ -52,7 +54,7 @@ entityString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L111)
 
 <a id="field-field-mq3-collision-world-world-leaves-leaves-src-mq3-collision-world-ml-1672671563"></a>
 ### leaves
@@ -62,7 +64,7 @@ leaves
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L103)
 
 <a id="field-field-mq3-collision-world-world-models-models-src-mq3-collision-world-ml-1787104991"></a>
 ### models
@@ -72,7 +74,7 @@ models
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L104)
 
 <a id="field-field-mq3-collision-world-world-name-name-src-mq3-collision-world-ml-440243253"></a>
 ### name
@@ -82,7 +84,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L114)
 
 <a id="field-field-mq3-collision-world-world-nodes-nodes-src-mq3-collision-world-ml-1233042143"></a>
 ### nodes
@@ -92,7 +94,7 @@ nodes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L102)
 
 <a id="field-field-mq3-collision-world-world-patchesready-patchesready-src-mq3-collision-world-ml-38269305"></a>
 ### patchesReady
@@ -102,7 +104,7 @@ patchesReady
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L106)
 
 <a id="field-field-mq3-collision-world-world-playercurveclip-playercurveclip-src-mq3-collision-world-ml-1867318271"></a>
 ### playerCurveClip
@@ -112,7 +114,7 @@ playerCurveClip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L107)
 
 <a id="field-field-mq3-collision-world-world-shaders-shaders-src-mq3-collision-world-ml-342675735"></a>
 ### shaders
@@ -122,7 +124,7 @@ shaders
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L112)
 
 <a id="field-field-mq3-collision-world-world-surfaces-surfaces-src-mq3-collision-world-ml-1466420967"></a>
 ### surfaces
@@ -132,7 +134,7 @@ surfaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L105)
 
 <a id="field-field-mq3-collision-world-world-temporary-temporary-src-mq3-collision-world-ml-1250195235"></a>
 ### temporary
@@ -142,7 +144,7 @@ temporary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L109)
 
 <a id="field-field-mq3-collision-world-world-visibility-visibility-src-mq3-collision-world-ml-1341189663"></a>
 ### visibility
@@ -152,4 +154,4 @@ visibility
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L110)

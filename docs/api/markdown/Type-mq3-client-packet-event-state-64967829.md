@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores packet event state, including `connection`, `realtime`, `serverMessageSequence`, `demoRecording`, `demoWaiting`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ connection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L12)
 
 <a id="field-field-mq3-client-packet-event-state-demorecording-demorecording-src-mq3-client-packet-event-ml-459093186"></a>
 ### demoRecording
@@ -32,7 +34,7 @@ demoRecording
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L15)
 
 <a id="field-field-mq3-client-packet-event-state-demowaiting-demowaiting-src-mq3-client-packet-event-ml-74914890"></a>
 ### demoWaiting
@@ -42,7 +44,7 @@ demoWaiting
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L16)
 
 <a id="field-field-mq3-client-packet-event-state-realtime-realtime-src-mq3-client-packet-event-ml-1144463668"></a>
 ### realtime
@@ -52,7 +54,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L13)
 
 <a id="field-field-mq3-client-packet-event-state-servermessagesequence-servermessagesequence-src-mq3-client-packet-event-ml-1012700102"></a>
 ### serverMessageSequence
@@ -62,4 +64,4 @@ serverMessageSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L14)

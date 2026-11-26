@@ -9,8 +9,10 @@
 struct MainItem
 ```
 
+Stores UI main menu main item record, including `id`, `label`, `y`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 <a id="field-field-mq3-client-ui-main-menu-mainitem-label-label-src-mq3-client-ui-main-menu-ml-1341413589"></a>
 ### label
@@ -32,7 +34,7 @@ label
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 <a id="field-field-mq3-client-ui-main-menu-mainitem-y-y-src-mq3-client-ui-main-menu-ml-495293817"></a>
 ### y
@@ -42,4 +44,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)

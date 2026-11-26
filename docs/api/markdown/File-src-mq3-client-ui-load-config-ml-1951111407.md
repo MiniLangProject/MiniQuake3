@@ -22,7 +22,7 @@ function cache()
 UI_LoadConfig_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L31)
 
 <a id="function-function-mq3-client-ui-load-config-displayname-function-displayname-name-src-mq3-client-ui-load-config-ml-2032299163"></a>
 ### displayName
@@ -31,12 +31,14 @@ UI_LoadConfig_Cache
 function displayName(name)
 ```
 
+Calls `std.string.toLowerAscii`, `std.string.endsWith`, `std.string.substr` and additional helpers from UI load config `displayName`. The final path returns `strings.toUpperAscii(name)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name whose length/content is inspected by `displayName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L17)
 
 <a id="function-function-mq3-client-ui-load-config-event-function-event-menu-id-eventcode-src-mq3-client-ui-load-config-ml-986730547"></a>
 ### event
@@ -49,12 +51,12 @@ LoadConfig_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI load config record/storage; this routine assigns `menu.commands`, `menu.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_GO and not menu.goHidden then menu.commands=menu.commands+["exec "+menu.names[menu.selected]+"\\n"]`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-load-config-id-back-const-id-back-10-src-mq3-client-ui-load-config-ml-1889686076"></a>
 ### ID_BACK
@@ -117,10 +119,10 @@ LoadConfig_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `files` | `dynamic` | — |  |
+| `files` | `dynamic` | — | Value used by `for each file in files if len(names)<MAX_CONFIGS then names=names+[displayName(file)] end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L34)
 
 - [mq3.client.ui_load_config.LoadConfigMenu](Type-mq3-client-ui-load-config-loadconfigmenu-1342410830.md) — struct
 <a id="constant-constant-mq3-client-ui-load-config-max-configs-const-max-configs-128-src-mq3-client-ui-load-config-ml-1933149794"></a>
@@ -144,10 +146,10 @@ UI_LoadConfigMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `files` | `dynamic` | — |  |
+| `files` | `dynamic` | — | Value used by `menu=init(files)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L41)
 
 <a id="constant-constant-mq3-client-ui-load-config-qm-activated-const-qm-activated-3-src-mq3-client-ui-load-config-ml-1383171272"></a>
 ### QM_ACTIVATED

@@ -9,8 +9,10 @@
 struct Submission
 ```
 
+Data record for `mq3.renderer.surface_md3.Submission`; groups `xyz`, `normals`, `texCoords`, `indexes`, `baseVertex`, `baseIndex`, and 5 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ baseIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-basevertex-basevertex-src-mq3-renderer-surface-md3-ml-44771883"></a>
 ### baseVertex
@@ -32,7 +34,7 @@ baseVertex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-dlightbits-dlightbits-src-mq3-renderer-surface-md3-ml-496703305"></a>
 ### dlightBits
@@ -42,7 +44,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-flushed-flushed-src-mq3-renderer-surface-md3-ml-1111894681"></a>
 ### flushed
@@ -52,7 +54,7 @@ flushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-indexes-indexes-src-mq3-renderer-surface-md3-ml-1475797425"></a>
 ### indexes
@@ -62,7 +64,7 @@ indexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-normals-normals-src-mq3-renderer-surface-md3-ml-316889585"></a>
 ### normals
@@ -72,7 +74,7 @@ normals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-numindexes-numindexes-src-mq3-renderer-surface-md3-ml-691626929"></a>
 ### numIndexes
@@ -82,7 +84,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-numvertexes-numvertexes-src-mq3-renderer-surface-md3-ml-642757273"></a>
 ### numVertexes
@@ -92,7 +94,7 @@ numVertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-texcoords-texcoords-src-mq3-renderer-surface-md3-ml-1984942461"></a>
 ### texCoords
@@ -102,7 +104,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-touchesdlights-touchesdlights-src-mq3-renderer-surface-md3-ml-1280064537"></a>
 ### touchesDlights
@@ -112,7 +114,7 @@ touchesDlights
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)
 
 <a id="field-field-mq3-renderer-surface-md3-submission-xyz-xyz-src-mq3-renderer-surface-md3-ml-800209397"></a>
 ### xyz
@@ -122,4 +124,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L20)

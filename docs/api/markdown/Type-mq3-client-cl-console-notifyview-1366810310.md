@@ -9,8 +9,10 @@
 struct NotifyView
 ```
 
+Stores engine client console notify view record, including `lines`, `chat`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ chat
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L32)
 
 <a id="field-field-mq3-client-cl-console-notifyview-lines-lines-src-mq3-client-cl-console-ml-723733069"></a>
 ### lines
@@ -32,4 +34,4 @@ lines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L32)

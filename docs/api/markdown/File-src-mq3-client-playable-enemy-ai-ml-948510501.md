@@ -64,12 +64,14 @@ const DEFAULT_DAMAGE = 7
 function fail(message)
 ```
 
+Creates the playable enemy ai error `7540` with diagnostic text `"preview enemy AI: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview enemy AI: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L29)
 
 <a id="function-function-mq3-client-playable-enemy-ai-horizontaldirection-function-horizontaldirection-frompoint-topoint-src-mq3-client-playable-enemy-ai-ml-750622701"></a>
 ### horizontalDirection
@@ -78,13 +80,15 @@ function fail(message)
 function horizontalDirection(fromPoint, toPoint)
 ```
 
+Calls `mq3.compat.numeric.fsub`, `mq3.shared.math.VectorLength`, `mq3.shared.math.VectorNormalize` from playable enemy ai `horizontalDirection`. The final path returns `[value,length]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fromPoint` | `dynamic` | — |  |
-| `toPoint` | `dynamic` | — |  |
+| `fromPoint` | `dynamic` | — | Sequence read at `fromPoint[0]`, `fromPoint[1]`. |
+| `toPoint` | `dynamic` | — | Sequence read at `toPoint[0]`, `toPoint[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L68)
 
 <a id="function-function-mq3-client-playable-enemy-ai-linevisible-function-linevisible-tracefn-context-startpoint-endpoint-src-mq3-client-playable-enemy-ai-ml-1187773159"></a>
 ### lineVisible
@@ -93,15 +97,17 @@ function horizontalDirection(fromPoint, toPoint)
 function lineVisible(traceFn, context, startPoint, endPoint)
 ```
 
+Calls `traceFn` from playable enemy ai `lineVisible`. The final path returns `result.trace.fraction>=0.9999`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `traceFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `startPoint` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
+| `traceFn` | `dynamic` | — | Collision-trace callback used to test the requested movement or visibility segment. |
+| `context` | `dynamic` | — | context record passed to the playable enemy ai helper calls. |
+| `startPoint` | `dynamic` | — | Starting world-space point of the segment or trace. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L60)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-move-speed-const-move-speed-105-src-mq3-client-playable-enemy-ai-ml-732794515"></a>
 ### MOVE_SPEED
@@ -120,16 +126,18 @@ const MOVE_SPEED = 105
 function moveTarget(target, brain, playerPosition, now, deltaMilliseconds)
 ```
 
+Updates `target.origin[0]`, `target.origin[1]`, `target.origin[2]` during playable enemy ai `moveTarget`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `target` | `dynamic` | — |  |
-| `brain` | `dynamic` | — |  |
-| `playerPosition` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `deltaMilliseconds` | `dynamic` | — |  |
+| `target` | `dynamic` | — | Mutable playable enemy ai record/storage; this routine assigns `target.origin[0]`, `target.origin[1]`, `target.origin[2]`. |
+| `brain` | `dynamic` | — | Record read through `brain.mode`, `brain.strafeSide`. |
+| `playerPosition` | `dynamic` | — | Value used by `direction=horizontalDirection(target.origin,playerPosition)[0]`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L81)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-patrol-radius-const-patrol-radius-30-src-mq3-client-playable-enemy-ai-ml-424119334"></a>
 ### PATROL_RADIUS
@@ -162,11 +170,11 @@ A separate state object keeps AI timing out of playable_targets' combat data.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `targetState` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `targetState` | `dynamic` | — | Record read through `targetState.targets`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L37)
 
 - [mq3.client.playable_enemy_ai.State](Type-mq3-client-playable-enemy-ai-state-2024476272.md) — struct
 <a id="function-function-mq3-client-playable-enemy-ai-step-function-step-world-ai-targetstate-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-863388020"></a>
@@ -180,15 +188,15 @@ Public BSP-world entry point: sight is a zero-sized CM_BoxTrace.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `ai` | `dynamic` | — |  |
-| `targetState` | `dynamic` | — |  |
-| `playerPosition` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `deltaMilliseconds` | `dynamic` | — |  |
+| `world` | `dynamic` | — | world record passed to the playable enemy ai helper calls. |
+| `ai` | `dynamic` | — | Value used by `return stepWithTrace(worldPointTrace,world,ai,targetState,playerPosition,now,deltaMilliseconds)`. |
+| `targetState` | `dynamic` | — | targetState record passed to the playable enemy ai helper calls. |
+| `playerPosition` | `dynamic` | — | Value used by `return stepWithTrace(worldPointTrace,world,ai,targetState,playerPosition,now,deltaMilliseconds)`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L147)
 
 <a id="function-function-mq3-client-playable-enemy-ai-stepwithtrace-function-stepwithtrace-tracefn-context-ai-targetstate-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-2088443336"></a>
 ### stepWithTrace
@@ -201,16 +209,16 @@ Injectable trace entry point used by contracts. Events are rebuilt per frame.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `traceFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `ai` | `dynamic` | — |  |
-| `targetState` | `dynamic` | — |  |
-| `playerPosition` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `deltaMilliseconds` | `dynamic` | — |  |
+| `traceFn` | `dynamic` | — | Collision-trace callback used to test the requested movement or visibility segment. |
+| `context` | `dynamic` | — | context record passed to the playable enemy ai helper calls. |
+| `ai` | `dynamic` | — | Mutable playable enemy ai record/storage; this routine assigns `ai.events`, `ai.visibleCount`, `ai.lastTime`. |
+| `targetState` | `dynamic` | — | Record read through `targetState.targets`. |
+| `playerPosition` | `dynamic` | — | Sequence read at `playerPosition[0]`, `playerPosition[1]`, `playerPosition[2]`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L108)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-strafe-speed-const-strafe-speed-72-src-mq3-client-playable-enemy-ai-ml-722084112"></a>
 ### STRAFE_SPEED
@@ -239,12 +247,14 @@ const THINK_MILLISECONDS = 100
 function validVector(value)
 ```
 
+Computes `typeof(value)=="array" and len(value)==3` for playable enemy ai `validVector`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence whose length/content is inspected by `validVector`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L32)
 
 <a id="function-function-mq3-client-playable-enemy-ai-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-enemy-ai-ml-395437554"></a>
 ### worldPointTrace
@@ -253,11 +263,13 @@ function validVector(value)
 function worldPointTrace(context, startPoint, endPoint)
 ```
 
+Adapts `mq3.collision.world.boxTrace` to playable enemy ai `worldPointTrace`, returning its result for `context, startPoint, endPoint, [0.0,0.0,0.0], [0.0,0.0,0.0], 0, SIGHT_MASK, false`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `startPoint` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Argument 1 of `mq3.collision.world.boxTrace`. |
+| `startPoint` | `dynamic` | — | Starting world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L51)

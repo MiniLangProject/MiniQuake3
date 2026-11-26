@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores playable marks catalog record, including `textures`, `firstTextureSlot`, `textureCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstTextureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L28)
 
 <a id="field-field-mq3-client-playable-marks-catalog-texturecount-texturecount-src-mq3-client-playable-marks-ml-906255356"></a>
 ### textureCount
@@ -32,7 +34,7 @@ textureCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L28)
 
 <a id="field-field-mq3-client-playable-marks-catalog-textures-textures-src-mq3-client-playable-marks-ml-1809414200"></a>
 ### textures
@@ -42,4 +44,4 @@ textures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L28)

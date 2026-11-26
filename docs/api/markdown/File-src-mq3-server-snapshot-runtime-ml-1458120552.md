@@ -23,14 +23,16 @@ Reachable from entry: **yes**
 function areasConnected(host, first, second)
 ```
 
+Return `mq3.collision.visibility.areasConnected(host.context.world.visibility, first, second)` from `server.snapshot_runtime.areasConnected`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `first` | `dynamic` | — |  |
-| `second` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record exposing `context`. |
+| `first` | `dynamic` | — | Area 1 passed as `area1` to `mq3.collision.visibility.areasConnected`. |
+| `second` | `dynamic` | — | Area 2 passed as `area2` to `mq3.collision.visibility.areasConnected`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L39)
 
 <a id="function-function-mq3-server-snapshot-runtime-buildclientframe-function-buildclientframe-runtime-level-clientnum-zombie-src-mq3-server-snapshot-runtime-ml-1805398137"></a>
 ### buildClientFrame
@@ -39,15 +41,19 @@ function areasConnected(host, first, second)
 function buildClientFrame(runtime, level, clientNum, zombie)
 ```
 
+Build client frame in server.snapshot_runtime.
+
+Validation failures include `snapshot runtime: bad client number`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `level` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `zombie` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `buildWorld`, `scene`. |
+| `level` | `dynamic` | — | Record exposing `clients`, `num_entities`, `entities`. |
+| `clientNum` | `dynamic` | — | Zero-based index into `level.entities`, `level.clients`. |
+| `zombie` | `dynamic` | — | Zombie passed as `zombie` to `mq3.server.snapshot_build.buildClientSnapshot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L101)
 
 <a id="function-function-mq3-server-snapshot-runtime-clusterpvs-function-clusterpvs-host-cluster-src-mq3-server-snapshot-runtime-ml-611282676"></a>
 ### clusterPvs
@@ -56,13 +62,15 @@ function buildClientFrame(runtime, level, clientNum, zombie)
 function clusterPvs(host, cluster)
 ```
 
+Return `mq3.collision.visibility.clusterPVS(host.context.world.visibility, cluster)` from `server.snapshot_runtime.clusterPvs`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `cluster` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record exposing `context`. |
+| `cluster` | `dynamic` | — | Cluster passed as `cluster` to `mq3.collision.visibility.clusterPVS`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L34)
 
 <a id="function-function-mq3-server-snapshot-runtime-create-function-create-level-ringcapacity-src-mq3-server-snapshot-runtime-ml-1022973948"></a>
 ### create
@@ -71,13 +79,17 @@ function clusterPvs(host, cluster)
 function create(level, ringCapacity)
 ```
 
+Create snapshot runtime in server.snapshot_runtime; the normal completion returns `Runtime(level.scene, runtimeSnapshotBuild.world(true, mapped, ringCapacity))`.
+
+Validation failures include `snapshot runtime: missing level`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ringCapacity` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Record exposing `scene`, `num_entities`, `entities`. |
+| `ringCapacity` | `dynamic` | — | Ring capacity passed as `ringCapacity` to `mq3.server.snapshot_build.world`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L62)
 
 <a id="function-function-mq3-server-snapshot-runtime-hostservices-function-hostservices-scene-src-mq3-server-snapshot-runtime-ml-116480152"></a>
 ### hostServices
@@ -86,12 +98,16 @@ function create(level, ringCapacity)
 function hostServices(scene)
 ```
 
+Apply `mq3.server.snapshot_build.services` for host services in server.snapshot_runtime.
+
+Validation failures include `snapshot runtime: missing collision scene`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `scene` | `dynamic` | — |  |
+| `scene` | `dynamic` | — | Record exposing `world`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L45)
 
 <a id="function-function-mq3-server-snapshot-runtime-leafarea-function-leafarea-host-leaf-src-mq3-server-snapshot-runtime-ml-1334794538"></a>
 ### leafArea
@@ -100,13 +116,15 @@ function hostServices(scene)
 function leafArea(host, leaf)
 ```
 
+Return `mq3.collision.visibility.leafArea(host.context.world.visibility, leaf)` from `server.snapshot_runtime.leafArea`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `leaf` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record exposing `context`. |
+| `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.visibility.leafArea`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L21)
 
 <a id="function-function-mq3-server-snapshot-runtime-leafcluster-function-leafcluster-host-leaf-src-mq3-server-snapshot-runtime-ml-865727918"></a>
 ### leafCluster
@@ -115,13 +133,15 @@ function leafArea(host, leaf)
 function leafCluster(host, leaf)
 ```
 
+Return `mq3.collision.visibility.leafCluster(host.context.world.visibility, leaf)` from `server.snapshot_runtime.leafCluster`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `leaf` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record exposing `context`. |
+| `leaf` | `dynamic` | — | Leaf passed as `leaf` to `mq3.collision.visibility.leafCluster`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L25)
 
 <a id="function-function-mq3-server-snapshot-runtime-mappedentity-function-mappedentity-gameentity-src-mq3-server-snapshot-runtime-ml-1106855025"></a>
 ### mappedEntity
@@ -130,12 +150,14 @@ function leafCluster(host, leaf)
 function mappedEntity(gameEntity)
 ```
 
+Apply `mq3.server.snapshot_build.snapshotEntity`, `mq3.game.entitystate.copy` for mapped entity in server.snapshot_runtime.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gameEntity` | `dynamic` | — |  |
+| `gameEntity` | `dynamic` | — | Record exposing `r`, `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L52)
 
 <a id="function-function-mq3-server-snapshot-runtime-pointleaf-function-pointleaf-host-origin-src-mq3-server-snapshot-runtime-ml-251596936"></a>
 ### pointLeaf
@@ -144,13 +166,15 @@ function mappedEntity(gameEntity)
 function pointLeaf(host, origin)
 ```
 
+Return `mq3.collision.world.pointLeafnum(host.context.world, origin)` from `server.snapshot_runtime.pointLeaf`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record exposing `context`. |
+| `origin` | `dynamic` | — | Point passed as `point` to `mq3.collision.world.pointLeafnum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L17)
 
 - [mq3.server.snapshot_runtime.Runtime](Type-mq3-server-snapshot-runtime-runtime-335203544.md) — struct
 <a id="function-function-mq3-server-snapshot-runtime-synclevel-function-synclevel-runtime-level-src-mq3-server-snapshot-runtime-ml-529200892"></a>
@@ -164,11 +188,11 @@ Refresh game-owned state and spatial metadata while preserving the server's per-
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `level` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `scene`, `buildWorld`. |
+| `level` | `dynamic` | — | Record exposing `scene`, `num_entities`, `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L75)
 
 <a id="function-function-mq3-server-snapshot-runtime-writeareabits-function-writeareabits-host-bits-area-src-mq3-server-snapshot-runtime-ml-2079956811"></a>
 ### writeAreaBits
@@ -177,11 +201,13 @@ Refresh game-owned state and spatial metadata while preserving the server's per-
 function writeAreaBits(host, bits, area)
 ```
 
+Return `mq3.collision.visibility.writeAreaBits(host.context.world.visibility, bits, area)` from `server.snapshot_runtime.writeAreaBits`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `bits` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record exposing `context`. |
+| `bits` | `dynamic` | — | Buffer passed as `buffer` to `mq3.collision.visibility.writeAreaBits`. |
+| `area` | `dynamic` | — | Area passed as `area` to `mq3.collision.visibility.writeAreaBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L30)

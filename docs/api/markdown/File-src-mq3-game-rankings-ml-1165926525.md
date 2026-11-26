@@ -20,16 +20,18 @@ Reachable from entry: **no**
 function action(state, kind, client, text, value)
 ```
 
+Set `state.actions` to `state.actions+[Action(kind,client,text,value)]` in `mq3.game.rankings.action`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `actions`. May update `state.actions` in place. |
+| `kind` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Action.kind`. |
+| `client` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Action.client`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `value` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Action.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L174)
 
 - [mq3.game.rankings.Action](Type-mq3-game-rankings-action-447411339.md) — struct
 <a id="function-function-mq3-game-rankings-ammoordinal-function-ammoordinal-weapon-src-mq3-game-rankings-ml-2120407572"></a>
@@ -39,12 +41,14 @@ function action(state, kind, client, text, value)
 function ammoOrdinal(weapon)
 ```
 
+Map ammunition-bearing weapon identifiers to the ranking service's ammunition ordinal values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `weapon` | `dynamic` | — |  |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L255)
 
 <a id="function-function-mq3-game-rankings-client-function-client-src-mq3-game-rankings-ml-1278078994"></a>
 ### client
@@ -53,8 +57,10 @@ function ammoOrdinal(weapon)
 function client()
 ```
 
+Create a `mq3.game.rankings.Client` record, initializing `present` as `true`, `inuse` as `true` and `team` as `TEAM_SPECTATOR`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L141)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L146)
 
 - [mq3.game.rankings.Client](Type-mq3-game-rankings-client-1131561538.md) — struct
 <a id="function-function-mq3-game-rankings-create-function-create-maxclients-src-mq3-game-rankings-ml-1494739024"></a>
@@ -64,12 +70,14 @@ function client()
 function create(maxclients)
 ```
 
+Build the `mq3.game.rankings.State` result for `create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxclients` | `dynamic` | — |  |
+| `maxclients` | `dynamic` | — | Initial value stored in `mq3.game.rankings.State.maxclients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L149)
 
 <a id="function-function-mq3-game-rankings-cvarvalue-function-cvarvalue-state-name-src-mq3-game-rankings-ml-701522140"></a>
 ### cvarValue
@@ -78,13 +86,15 @@ function create(maxclients)
 function cvarValue(state, name)
 ```
 
+Look up a ranking cvar by exact name, returning an empty string when it is absent.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `cvars`. |
+| `name` | `dynamic` | — | Lookup text matched against `pair[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L318)
 
 <a id="function-function-mq3-game-rankings-damagespecific-function-damagespecific-base-weapon-src-mq3-game-rankings-ml-393363047"></a>
 ### damageSpecific
@@ -93,13 +103,15 @@ function cvarValue(state, name)
 function damageSpecific(base, weapon)
 ```
 
+Apply `mq3.game.rankings.ordinal` while evaluating `damageSpecific`. Return paths include `base+value*100`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `base` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `base` | `dynamic` | — | Operand used to evaluate the returned expression `base+value*100`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L189)
 
 <a id="constant-constant-mq3-game-rankings-ef-award-excellent-const-ef-award-excellent-8-src-mq3-game-rankings-ml-1164174615"></a>
 ### EF_AWARD_EXCELLENT
@@ -142,11 +154,11 @@ G_RankCapture
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L299)
 
 <a id="function-function-mq3-game-rankings-g-rankclientdisconnect-function-g-rankclientdisconnect-state-self-src-mq3-game-rankings-ml-1121146903"></a>
 ### G_RankClientDisconnect
@@ -159,11 +171,11 @@ G_RankClientDisconnect
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`, `time` and `clients`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L308)
 
 <a id="function-function-mq3-game-rankings-g-rankdamage-function-g-rankdamage-state-self-attacker-damage-mod-src-mq3-game-rankings-ml-1769369905"></a>
 ### G_RankDamage
@@ -176,14 +188,14 @@ G_RankDamage
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `attacker` | `dynamic` | — |  |
-| `damage` | `dynamic` | — |  |
-| `mod` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`, `framenum`, `lastFrame`, `lastSelf` and `lastAttacker` and related fields. May update `state.lastFrame`, `state.lastSelf` and `state.lastAttacker` and additional fields in place. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `attacker` | `dynamic` | — | Entity credited with the attack. |
+| `damage` | `dynamic` | — | Damage amount before the current operation applies its rules. |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L224)
 
 <a id="function-function-mq3-game-rankings-g-rankfireweapon-function-g-rankfireweapon-state-self-weapon-src-mq3-game-rankings-ml-1274395783"></a>
 ### G_RankFireWeapon
@@ -196,12 +208,12 @@ G_RankFireWeapon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L216)
 
 <a id="function-function-mq3-game-rankings-g-rankgameover-function-g-rankgameover-state-src-mq3-game-rankings-ml-2102443957"></a>
 ### G_RankGameOver
@@ -214,10 +226,10 @@ G_RankGameOver
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`, `maxclients`, `gametype`, `fraglimit` and `timelimit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L311)
 
 <a id="function-function-mq3-game-rankings-g-rankpickupammo-function-g-rankpickupammo-state-self-weapon-quantity-src-mq3-game-rankings-ml-1503905478"></a>
 ### G_RankPickupAmmo
@@ -230,13 +242,13 @@ G_RankPickupAmmo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
-| `quantity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
+| `quantity` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L261)
 
 <a id="function-function-mq3-game-rankings-g-rankpickuparmor-function-g-rankpickuparmor-state-self-quantity-src-mq3-game-rankings-ml-387427940"></a>
 ### G_RankPickupArmor
@@ -249,12 +261,12 @@ G_RankPickupArmor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `quantity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `quantity` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L271)
 
 <a id="function-function-mq3-game-rankings-g-rankpickuphealth-function-g-rankpickuphealth-state-self-quantity-src-mq3-game-rankings-ml-1214381054"></a>
 ### G_RankPickupHealth
@@ -267,12 +279,12 @@ G_RankPickupHealth
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `quantity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `quantity` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L266)
 
 <a id="function-function-mq3-game-rankings-g-rankpickupholdable-function-g-rankpickupholdable-state-self-holdable-src-mq3-game-rankings-ml-2111205246"></a>
 ### G_RankPickupHoldable
@@ -285,12 +297,12 @@ G_RankPickupHoldable
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `holdable` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `holdable` | `dynamic` | — | Value used by `holdableKey` in `if holdable==HI_MEDKIT then if use then return QGR_KEY_MEDKIT_USE end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L285)
 
 <a id="function-function-mq3-game-rankings-g-rankpickuppowerup-function-g-rankpickuppowerup-state-self-powerup-src-mq3-game-rankings-ml-1198232075"></a>
 ### G_RankPickupPowerup
@@ -303,12 +315,12 @@ G_RankPickupPowerup
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `powerup` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `powerup` | `dynamic` | — | Value used by `G_RankPickupPowerup` in `if powerup==PW_REDFLAG or powerup==PW_BLUEFLAG then reportInt(state,self,-1,QGR_KEY_FLAG_PICKUP,1,true)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L276)
 
 <a id="function-function-mq3-game-rankings-g-rankpickupweapon-function-g-rankpickupweapon-state-self-weapon-src-mq3-game-rankings-ml-222798095"></a>
 ### G_RankPickupWeapon
@@ -321,12 +333,12 @@ G_RankPickupWeapon
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L252)
 
 <a id="function-function-mq3-game-rankings-g-rankplayerdie-function-g-rankplayerdie-state-self-attacker-mod-src-mq3-game-rankings-ml-643505048"></a>
 ### G_RankPlayerDie
@@ -339,13 +351,13 @@ G_RankPlayerDie
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `attacker` | `dynamic` | — |  |
-| `mod` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `attacker` | `dynamic` | — | Entity credited with the attack. |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L240)
 
 <a id="function-function-mq3-game-rankings-g-rankreward-function-g-rankreward-state-self-award-src-mq3-game-rankings-ml-744140406"></a>
 ### G_RankReward
@@ -358,12 +370,12 @@ G_RankReward
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `award` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `award` | `dynamic` | — | Value used by `G_RankReward` in `if state.warmupTime==0 then if award==EF_AWARD_IMPRESSIVE then reportInt(state,self,-1,1111090000,1,true) else i...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L295)
 
 <a id="function-function-mq3-game-rankings-g-rankrunframe-function-g-rankrunframe-state-src-mq3-game-rankings-ml-1224638061"></a>
 ### G_RankRunFrame
@@ -376,10 +388,10 @@ G_RankRunFrame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `initialized`, `rankBeginFn`, `rankPollFn`, `active` and `maxclients` and related fields. May update `state.initialized`, `state.timelimit` and `state.cvars` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L207)
 
 <a id="function-function-mq3-game-rankings-g-rankuseholdable-function-g-rankuseholdable-state-self-holdable-src-mq3-game-rankings-ml-79371254"></a>
 ### G_RankUseHoldable
@@ -392,12 +404,12 @@ G_RankUseHoldable
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `holdable` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `holdable` | `dynamic` | — | Value used by `holdableKey` in `if holdable==HI_MEDKIT then if use then return QGR_KEY_MEDKIT_USE end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L290)
 
 <a id="function-function-mq3-game-rankings-g-rankuserteamname-function-g-rankuserteamname-state-self-teamname-src-mq3-game-rankings-ml-1049545117"></a>
 ### G_RankUserTeamName
@@ -410,12 +422,12 @@ G_RankUserTeamName
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `teamName` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `teamName` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L304)
 
 <a id="function-function-mq3-game-rankings-g-rankweapontime-function-g-rankweapontime-state-self-weapon-src-mq3-game-rankings-ml-763914995"></a>
 ### G_RankWeaponTime
@@ -428,12 +440,12 @@ G_RankWeaponTime
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `warmupTime`, `time` and `clients`. May update `state.clients[self].weaponChangeTime` in place. |
+| `self` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L247)
 
 <a id="constant-constant-mq3-game-rankings-gt-team-const-gt-team-3-src-mq3-game-rankings-ml-1050414298"></a>
 ### GT_TEAM
@@ -452,12 +464,14 @@ const GT_TEAM = 3
 function hazardKey(mod)
 ```
 
+Map environmental death causes to the corresponding ranking hazard key.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mod` | `dynamic` | — |  |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L234)
 
 <a id="function-function-mq3-game-rankings-hazardmod-function-hazardmod-mod-src-mq3-game-rankings-ml-1270735188"></a>
 ### hazardMod
@@ -466,12 +480,14 @@ function hazardKey(mod)
 function hazardMod(mod)
 ```
 
+Test `mod==MOD_WATER or mod==MOD_SLIME or mod==MOD_LAVA or mod==MOD_CRUSH or mod==MOD_TELEFRAG or mod==MOD_FALLING or mod==MOD_SUICIDE or mod==MOD_TRIGGE...` as the condition for `hazardMod`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mod` | `dynamic` | — |  |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L198)
 
 <a id="constant-constant-mq3-game-rankings-hi-invulnerability-const-hi-invulnerability-5-src-mq3-game-rankings-ml-1647746232"></a>
 ### HI_INVULNERABILITY
@@ -530,13 +546,15 @@ const HI_TELEPORTER = 1
 function holdableKey(holdable, use)
 ```
 
+Choose the ranking key for pickup or use of the selected holdable item.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `holdable` | `dynamic` | — |  |
-| `use` | `dynamic` | — |  |
+| `holdable` | `dynamic` | — | Value used by `holdableKey` in `if holdable==HI_MEDKIT then if use then return QGR_KEY_MEDKIT_USE end if`. |
+| `use` | `dynamic` | — | Value used by `holdableKey` in `if holdable==HI_MEDKIT then if use then return QGR_KEY_MEDKIT_USE end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L280)
 
 <a id="constant-constant-mq3-game-rankings-mod-bfg-const-mod-bfg-12-src-mq3-game-rankings-ml-614287534"></a>
 ### MOD_BFG
@@ -775,12 +793,14 @@ const MOD_WATER = 14
 function ordinal(weapon)
 ```
 
+Map weapon identifiers to the ranking service's weapon ordinal values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `weapon` | `dynamic` | — |  |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L181)
 
 <a id="constant-constant-mq3-game-rankings-pw-ammoregen-const-pw-ammoregen-13-src-mq3-game-rankings-ml-1823992703"></a>
 ### PW_AMMOREGEN
@@ -1540,17 +1560,19 @@ const QGR_STATUS_TIMEOUT = 10
 function reportInt(state, index1, index2, key, value, accum)
 ```
 
+Set `state.reports` to `state.reports+[Report(false,index1,index2,key,value,"",accum)]` in `mq3.game.rankings.reportInt`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index1` | `dynamic` | — |  |
-| `index2` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `accum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `reports` and `reportIntFn`. May update `state.reports` in place. |
+| `index1` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `index2` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index2`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.value`. |
+| `accum` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.accum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L160)
 
 <a id="function-function-mq3-game-rankings-reportstr-function-reportstr-state-index1-index2-key-value-src-mq3-game-rankings-ml-2126423070"></a>
 ### reportStr
@@ -1559,16 +1581,18 @@ function reportInt(state, index1, index2, key, value, accum)
 function reportStr(state, index1, index2, key, value)
 ```
 
+Set `state.reports` to `state.reports+[Report(true,index1,index2,key,0,value,false)]` in `mq3.game.rankings.reportStr`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index1` | `dynamic` | — |  |
-| `index2` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `reports` and `reportStrFn`. May update `state.reports` in place. |
+| `index1` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index1`. |
+| `index2` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.index2`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `value` | `dynamic` | — | Initial value stored in `mq3.game.rankings.Report.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L167)
 
 <a id="function-function-mq3-game-rankings-sameteam-function-sameteam-state-a-b-src-mq3-game-rankings-ml-686813550"></a>
 ### sameTeam
@@ -1577,14 +1601,16 @@ function reportStr(state, index1, index2, key, value)
 function sameTeam(state, a, b)
 ```
 
+Test `a>=0 and b>=0 and a<state.maxclients and b<state.maxclients and state.clients[a].team==state.clients[b].team` as the condition for `sameTeam`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `maxclients` and `clients`. |
+| `a` | `dynamic` | — | Operand used to evaluate the returned expression `a>=0 and b>=0 and a<state.maxclients and b<state.maxclients and state.clients[a].team==state.clients[b].team`. |
+| `b` | `dynamic` | — | Operand used to evaluate the returned expression `a>=0 and b>=0 and a<state.maxclients and b<state.maxclients and state.clients[a].team==state.clients[b].team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L203)
 
 <a id="function-function-mq3-game-rankings-specific-function-specific-base-weapon-src-mq3-game-rankings-ml-477731331"></a>
 ### specific
@@ -1593,13 +1619,15 @@ function sameTeam(state, a, b)
 function specific(base, weapon)
 ```
 
+Return `base+ordinal(weapon)*100` for `specific`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `base` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `base` | `dynamic` | — | Operand used to evaluate the returned expression `base+ordinal(weapon)*100`. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L185)
 
 <a id="constant-constant-mq3-game-rankings-spectator-free-const-spectator-free-1-src-mq3-game-rankings-ml-342905530"></a>
 ### SPECTATOR_FREE
@@ -1618,12 +1646,14 @@ const SPECTATOR_FREE = 1
 function splashMod(mod)
 ```
 
+Test `mod==MOD_GRENADE_SPLASH or mod==MOD_ROCKET_SPLASH or mod==MOD_PLASMA_SPLASH or mod==MOD_BFG_SPLASH` as the condition for `splashMod`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mod` | `dynamic` | — |  |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L195)
 
 - [mq3.game.rankings.State](Type-mq3-game-rankings-state-1265489706.md) — struct
 <a id="function-function-mq3-game-rankings-status-function-status-state-index-src-mq3-game-rankings-ml-645810565"></a>
@@ -1633,13 +1663,15 @@ function splashMod(mod)
 function status(state, index)
 ```
 
+Use `state.statusFn` to perform `status`. Return paths include `state.clients[index].status`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Rankings state; accesses `statusFn` and `clients`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L178)
 
 <a id="constant-constant-mq3-game-rankings-svf-bot-const-svf-bot-8-src-mq3-game-rankings-ml-2065643281"></a>
 ### SVF_BOT
@@ -1668,12 +1700,14 @@ const TEAM_SPECTATOR = 3
 function weaponForMod(mod)
 ```
 
+Map a means-of-death code to the weapon responsible for the ranking event.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mod` | `dynamic` | — |  |
+| `mod` | `dynamic` | — | Means-of-death code used for damage attribution. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L192)
 
 <a id="constant-constant-mq3-game-rankings-wp-bfg-const-wp-bfg-9-src-mq3-game-rankings-ml-2056522508"></a>
 ### WP_BFG

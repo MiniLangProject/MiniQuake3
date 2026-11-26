@@ -9,8 +9,10 @@
 struct VoiceChat
 ```
 
+Stores client game servercmds voice chat record, including `id`, `variants`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L68)
 
 ## Members
 
@@ -22,7 +24,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L68)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicechat-variants-variants-src-mq3-client-cgame-servercmds-ml-243810997"></a>
 ### variants
@@ -32,4 +34,4 @@ variants
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L68)

@@ -23,15 +23,15 @@ Asset handles are the renderer's stable shader objects in MiniQuake3. By replaci
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `assets` | `dynamic` | — |  |
-| `kinds` | `dynamic` | — |  |
-| `oldName` | `dynamic` | — |  |
-| `newName` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.entries`, `state.revision`. |
+| `assets` | `dynamic` | — | Mutable record or buffer; this call updates `assets[index]`. |
+| `kinds` | `dynamic` | — | Indexed input read at `index`. |
+| `oldName` | `dynamic` | — | Value forwarded as `oldName` to `mq3.renderer.shader_remap.find`. |
+| `newName` | `dynamic` | — | Value assigned to `entry.newName`, `assets[index]`. |
+| `offset` | `dynamic` | — | Value assigned to `entry.timeOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L90)
 
 <a id="function-function-mq3-renderer-shader-remap-contains-function-contains-values-value-src-mq3-renderer-shader-remap-ml-108049667"></a>
 ### contains
@@ -40,13 +40,15 @@ Asset handles are the renderer's stable shader objects in MiniQuake3. By replaci
 function contains(values, value)
 ```
 
+Returns `false` from `mq3.renderer.shader_remap.contains`; earlier branches return `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Sequence traversed as `current` while producing this result. |
+| `value` | `dynamic` | — | Input used by `for each current in values if current==value then return true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L67)
 
 <a id="function-function-mq3-renderer-shader-remap-create-function-create-src-mq3-renderer-shader-remap-ml-2147402328"></a>
 ### create
@@ -55,8 +57,10 @@ function contains(values, value)
 function create()
 ```
 
+Constructs `mq3.renderer.shader_remap.State` with `entries` = `[]`, `revision` = `0`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L13)
 
 - [mq3.renderer.shader_remap.Entry](Type-mq3-renderer-shader-remap-entry-2126128068.md) — struct
 <a id="function-function-mq3-renderer-shader-remap-find-function-find-state-oldname-src-mq3-renderer-shader-remap-ml-1104432281"></a>
@@ -66,13 +70,15 @@ function create()
 function find(state, oldName)
 ```
 
+Returns `void` from `mq3.renderer.shader_remap.find`; earlier branches return `void`, `entry`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `oldName` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.entries`. |
+| `oldName` | `dynamic` | — | Value forwarded as `b` to `mq3.renderer.shader_remap.sameName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L33)
 
 <a id="function-function-mq3-renderer-shader-remap-handle-function-handle-state-kinds-kind-name-src-mq3-renderer-shader-remap-ml-957057745"></a>
 ### handle
@@ -85,13 +91,13 @@ Return the stable renderer handle previously associated with this source shader.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kinds` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.shader_remap.find`. |
+| `kinds` | `dynamic` | — | Indexed input read at `index`. |
+| `kind` | `dynamic` | — | Input used by `for each index in entry.handles if index>=0 and index<len(kinds) and kinds[index]==kind then return index+1`. |
+| `name` | `dynamic` | — | Value forwarded as `oldName` to `mq3.renderer.shader_remap.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L75)
 
 <a id="function-function-mq3-renderer-shader-remap-resolve-function-resolve-state-name-src-mq3-renderer-shader-remap-ml-1800481638"></a>
 ### resolve
@@ -100,13 +106,15 @@ Return the stable renderer handle previously associated with this source shader.
 function resolve(state, name)
 ```
 
+Returns `entry.newName` from `mq3.renderer.shader_remap.resolve`; earlier branches return `name`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.shader_remap.find`. |
+| `name` | `dynamic` | — | Value forwarded as `oldName` to `mq3.renderer.shader_remap.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L42)
 
 <a id="function-function-mq3-renderer-shader-remap-samename-function-samename-a-b-src-mq3-renderer-shader-remap-ml-208811091"></a>
 ### sameName
@@ -115,13 +123,15 @@ function resolve(state, name)
 function sameName(a, b)
 ```
 
+Calls `stringEqualsIgnoreCaseAscii` with `(stripped(a),stripped(b))` and returns its result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.shader_remap.stripped`. |
+| `b` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.shader_remap.stripped`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L28)
 
 - [mq3.renderer.shader_remap.State](Type-mq3-renderer-shader-remap-state-1771016709.md) — struct
 <a id="function-function-mq3-renderer-shader-remap-stripped-function-stripped-name-src-mq3-renderer-shader-remap-ml-1619889783"></a>
@@ -135,10 +145,10 @@ R_FindShader stores extensionless names and R_RemapShader compares those names c
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L18)
 
 <a id="function-function-mq3-renderer-shader-remap-timeoffset-function-timeoffset-state-name-src-mq3-renderer-shader-remap-ml-1836726638"></a>
 ### timeOffset
@@ -147,13 +157,15 @@ R_FindShader stores extensionless names and R_RemapShader compares those names c
 function timeOffset(state, name)
 ```
 
+Returns `entry.timeOffset` from `mq3.renderer.shader_remap.timeOffset`; earlier branches return `""`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.shader_remap.find`. |
+| `name` | `dynamic` | — | Value forwarded as `oldName` to `mq3.renderer.shader_remap.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L50)
 
 <a id="function-function-mq3-renderer-shader-remap-timeoffsetforhandle-function-timeoffsetforhandle-state-handle-src-mq3-renderer-shader-remap-ml-1119334017"></a>
 ### timeOffsetForHandle
@@ -162,10 +174,12 @@ function timeOffset(state, name)
 function timeOffsetForHandle(state, handle)
 ```
 
+Returns `void` from `mq3.renderer.shader_remap.timeOffsetForHandle`; earlier branches return `void`, `numbers.atof32(entry.timeOffset)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.entries`. |
+| `handle` | `dynamic` | — | Input tested by `state==void or handle<=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L57)

@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI rankstatus queued engine action, including `boundary`, `kind`, `name`, `text`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
 
 <a id="field-field-mq3-client-ui-rankstatus-action-dispatched-dispatched-src-mq3-client-ui-rankstatus-ml-456225493"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
 
 <a id="field-field-mq3-client-ui-rankstatus-action-kind-kind-src-mq3-client-ui-rankstatus-ml-1925428219"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
 
 <a id="field-field-mq3-client-ui-rankstatus-action-name-name-src-mq3-client-ui-rankstatus-ml-1117435789"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
 
 <a id="field-field-mq3-client-ui-rankstatus-action-text-text-src-mq3-client-ui-rankstatus-ml-1307260925"></a>
 ### text
@@ -62,4 +64,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)

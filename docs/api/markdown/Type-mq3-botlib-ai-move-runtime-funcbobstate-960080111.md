@@ -9,8 +9,10 @@
 struct FuncBobState
 ```
 
+`FuncBobState` record for ai move runtime, containing `onMover`, `start`, `finish`, `origin` and `bottomCenter` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L73)
 
 ## Members
 
@@ -22,7 +24,7 @@ bottomCenter
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L73)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-funcbobstate-finish-finish-src-mq3-botlib-ai-move-runtime-ml-1057066417"></a>
 ### finish
@@ -32,7 +34,7 @@ finish
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L73)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-funcbobstate-maxbarrier-maxbarrier-src-mq3-botlib-ai-move-runtime-ml-643399865"></a>
 ### maxBarrier
@@ -42,7 +44,7 @@ maxBarrier
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L73)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-funcbobstate-onmover-onmover-src-mq3-botlib-ai-move-runtime-ml-1650427423"></a>
 ### onMover
@@ -52,7 +54,7 @@ onMover
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L73)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-funcbobstate-origin-origin-src-mq3-botlib-ai-move-runtime-ml-1947849643"></a>
 ### origin
@@ -62,7 +64,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L73)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-funcbobstate-start-start-src-mq3-botlib-ai-move-runtime-ml-796161271"></a>
 ### start
@@ -72,4 +74,4 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L73)

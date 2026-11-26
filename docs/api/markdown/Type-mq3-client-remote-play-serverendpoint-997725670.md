@@ -9,8 +9,10 @@
 struct ServerEndpoint
 ```
 
+Stores remote play server endpoint record, including `host`, `port`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ host
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L27)
 
 <a id="field-field-mq3-client-remote-play-serverendpoint-port-port-src-mq3-client-remote-play-ml-866610981"></a>
 ### port
@@ -32,4 +34,4 @@ port
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L27)

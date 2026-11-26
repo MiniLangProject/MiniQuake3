@@ -9,8 +9,10 @@
 struct Extracted
 ```
 
+Data record for `mq3.renderer.qvm_2d_batch.Extracted`; groups `quads`, `setColors`, `ignoredCommands`, `sourceWidth`, `sourceHeight`, `targetWidth`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ ignoredCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-extracted-quads-quads-src-mq3-renderer-qvm-2d-batch-ml-1059988797"></a>
 ### quads
@@ -32,7 +34,7 @@ quads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-extracted-setcolors-setcolors-src-mq3-renderer-qvm-2d-batch-ml-1746679089"></a>
 ### setColors
@@ -42,7 +44,7 @@ setColors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-extracted-sourceheight-sourceheight-src-mq3-renderer-qvm-2d-batch-ml-1845951481"></a>
 ### sourceHeight
@@ -52,7 +54,7 @@ sourceHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-extracted-sourcewidth-sourcewidth-src-mq3-renderer-qvm-2d-batch-ml-56514773"></a>
 ### sourceWidth
@@ -62,7 +64,7 @@ sourceWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-extracted-targetheight-targetheight-src-mq3-renderer-qvm-2d-batch-ml-1433389401"></a>
 ### targetHeight
@@ -72,7 +74,7 @@ targetHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-extracted-targetwidth-targetwidth-src-mq3-renderer-qvm-2d-batch-ml-801669537"></a>
 ### targetWidth
@@ -82,4 +84,4 @@ targetWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L34)

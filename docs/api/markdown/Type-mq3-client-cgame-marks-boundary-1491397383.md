@@ -12,7 +12,7 @@ struct Boundary
 Projection and polygon submission are explicit engine boundaries.  A Retail QVM observer records them but leaves dispatched=false, avoiding double draw.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 ## Members
 
@@ -24,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 <a id="field-field-mq3-client-cgame-marks-boundary-dispatched-dispatched-src-mq3-client-cgame-marks-ml-599920669"></a>
 ### dispatched
@@ -34,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 <a id="field-field-mq3-client-cgame-marks-boundary-kind-kind-src-mq3-client-cgame-marks-ml-1735400919"></a>
 ### kind
@@ -44,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 <a id="field-field-mq3-client-cgame-marks-boundary-points-points-src-mq3-client-cgame-marks-ml-144052821"></a>
 ### points
@@ -54,7 +54,7 @@ points
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 <a id="field-field-mq3-client-cgame-marks-boundary-projection-projection-src-mq3-client-cgame-marks-ml-735669189"></a>
 ### projection
@@ -64,7 +64,7 @@ projection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 <a id="field-field-mq3-client-cgame-marks-boundary-shader-shader-src-mq3-client-cgame-marks-ml-1078410217"></a>
 ### shader
@@ -74,7 +74,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 <a id="field-field-mq3-client-cgame-marks-boundary-temporary-temporary-src-mq3-client-cgame-marks-ml-1961655071"></a>
 ### temporary
@@ -84,7 +84,7 @@ temporary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)
 
 <a id="field-field-mq3-client-cgame-marks-boundary-vertices-vertices-src-mq3-client-cgame-marks-ml-1065728341"></a>
 ### vertices
@@ -94,4 +94,4 @@ vertices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)

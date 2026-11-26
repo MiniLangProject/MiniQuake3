@@ -9,8 +9,10 @@
 struct Weight
 ```
 
+Data record for `mq3.renderer.md4_animation.Weight`; groups `boneIndex`, `boneWeight`, `offset`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ boneIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
 
 <a id="field-field-mq3-renderer-md4-animation-weight-boneweight-boneweight-src-mq3-renderer-md4-animation-ml-1354256729"></a>
 ### boneWeight
@@ -32,7 +34,7 @@ boneWeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
 
 <a id="field-field-mq3-renderer-md4-animation-weight-offset-offset-src-mq3-renderer-md4-animation-ml-247886355"></a>
 ### offset
@@ -42,4 +44,4 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)

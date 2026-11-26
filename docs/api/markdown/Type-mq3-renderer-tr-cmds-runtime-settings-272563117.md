@@ -9,8 +9,10 @@
 struct Settings
 ```
 
+Data record for `mq3.renderer.tr_cmds_runtime.Settings`; groups `speeds`, `smp`, `showSmp`, `skipBackEnd`, `measureOverdraw`, `measureOverdrawModified`, and 11 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ drawBuffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-gammamodified-gammamodified-src-mq3-renderer-tr-cmds-runtime-ml-2102352592"></a>
 ### gammaModified
@@ -32,7 +34,7 @@ gammaModified
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-height-height-src-mq3-renderer-tr-cmds-runtime-ml-1238647054"></a>
 ### height
@@ -42,7 +44,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-ignoreglerrors-ignoreglerrors-src-mq3-renderer-tr-cmds-runtime-ml-307104972"></a>
 ### ignoreGLErrors
@@ -52,7 +54,7 @@ ignoreGLErrors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-measureoverdraw-measureoverdraw-src-mq3-renderer-tr-cmds-runtime-ml-86018188"></a>
 ### measureOverdraw
@@ -62,7 +64,7 @@ measureOverdraw
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-measureoverdrawmodified-measureoverdrawmodified-src-mq3-renderer-tr-cmds-runtime-ml-364363148"></a>
 ### measureOverdrawModified
@@ -72,7 +74,7 @@ measureOverdrawModified
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-registered-registered-src-mq3-renderer-tr-cmds-runtime-ml-2071772240"></a>
 ### registered
@@ -82,7 +84,7 @@ registered
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-shadows-shadows-src-mq3-renderer-tr-cmds-runtime-ml-2117172972"></a>
 ### shadows
@@ -92,7 +94,7 @@ shadows
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-showsmp-showsmp-src-mq3-renderer-tr-cmds-runtime-ml-395959688"></a>
 ### showSmp
@@ -102,7 +104,7 @@ showSmp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-skipbackend-skipbackend-src-mq3-renderer-tr-cmds-runtime-ml-87181396"></a>
 ### skipBackEnd
@@ -112,7 +114,7 @@ skipBackEnd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-smp-smp-src-mq3-renderer-tr-cmds-runtime-ml-2087509700"></a>
 ### smp
@@ -122,7 +124,7 @@ smp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-speeds-speeds-src-mq3-renderer-tr-cmds-runtime-ml-654388184"></a>
 ### speeds
@@ -132,7 +134,7 @@ speeds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-stencilbits-stencilbits-src-mq3-renderer-tr-cmds-runtime-ml-1452597596"></a>
 ### stencilBits
@@ -142,7 +144,7 @@ stencilBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-stereoenabled-stereoenabled-src-mq3-renderer-tr-cmds-runtime-ml-1681478780"></a>
 ### stereoEnabled
@@ -152,7 +154,7 @@ stereoEnabled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-texturemode-texturemode-src-mq3-renderer-tr-cmds-runtime-ml-1049897056"></a>
 ### textureMode
@@ -162,7 +164,7 @@ textureMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-texturemodemodified-texturemodemodified-src-mq3-renderer-tr-cmds-runtime-ml-1705940428"></a>
 ### textureModeModified
@@ -172,7 +174,7 @@ textureModeModified
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-settings-width-width-src-mq3-renderer-tr-cmds-runtime-ml-1224716108"></a>
 ### width
@@ -182,4 +184,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L20)

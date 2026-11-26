@@ -9,8 +9,10 @@
 struct ApplyResult
 ```
 
+ApplyResult record for audio.qvm_playback, containing `applied`, `missing`, `ignored`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L35)
 
 ## Members
 
@@ -22,7 +24,7 @@ applied
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L35)
 
 <a id="field-field-mq3-audio-qvm-playback-applyresult-ignored-ignored-src-mq3-audio-qvm-playback-ml-1751738558"></a>
 ### ignored
@@ -32,7 +34,7 @@ ignored
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L35)
 
 <a id="field-field-mq3-audio-qvm-playback-applyresult-missing-missing-src-mq3-audio-qvm-playback-ml-586660454"></a>
 ### missing
@@ -42,4 +44,4 @@ missing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L35)

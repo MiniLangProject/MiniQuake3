@@ -9,8 +9,10 @@
 struct Entry
 ```
 
+Data record for `mq3.renderer.shader_index.Entry`; groups `name`, `hash`, `bodyOffset`, `endOffset`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ bodyOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)
 
 <a id="field-field-mq3-renderer-shader-index-entry-endoffset-endoffset-src-mq3-renderer-shader-index-ml-996811573"></a>
 ### endOffset
@@ -32,7 +34,7 @@ endOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)
 
 <a id="field-field-mq3-renderer-shader-index-entry-hash-hash-src-mq3-renderer-shader-index-ml-2106519397"></a>
 ### hash
@@ -42,7 +44,7 @@ hash
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)
 
 <a id="field-field-mq3-renderer-shader-index-entry-name-name-src-mq3-renderer-shader-index-ml-882836343"></a>
 ### name
@@ -52,4 +54,4 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)

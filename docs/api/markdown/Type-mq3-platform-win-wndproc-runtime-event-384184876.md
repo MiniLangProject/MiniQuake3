@@ -9,8 +9,10 @@
 struct Event
 ```
 
+Data record for `mq3.platform.win_wndproc_runtime.Event`; groups `time`, `type`, `value`, `value2`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L80)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
 
 ## Members
 
@@ -22,7 +24,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-event-type-type-src-mq3-platform-win-wndproc-runtime-ml-1324124837"></a>
 ### type
@@ -32,7 +34,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-event-value-value-src-mq3-platform-win-wndproc-runtime-ml-2032184477"></a>
 ### value
@@ -42,7 +44,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)
 
 <a id="field-field-mq3-platform-win-wndproc-runtime-event-value2-value2-src-mq3-platform-win-wndproc-runtime-ml-1798655535"></a>
 ### value2
@@ -52,4 +54,4 @@ value2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L81)

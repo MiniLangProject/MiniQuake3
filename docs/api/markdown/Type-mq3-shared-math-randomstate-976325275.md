@@ -9,8 +9,10 @@
 struct RandomState
 ```
 
+RandomState record for shared.math, containing `seed`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L93)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L109)
 
 ## Members
 
@@ -22,4 +24,4 @@ seed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/math.ml#L110)

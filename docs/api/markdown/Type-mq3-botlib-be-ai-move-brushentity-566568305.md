@@ -9,8 +9,10 @@
 struct BrushEntity
 ```
 
+`BrushEntity` record for be ai move, containing `classname` and `modelNum`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ classname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L25)
 
 <a id="field-field-mq3-botlib-be-ai-move-brushentity-modelnum-modelnum-src-mq3-botlib-be-ai-move-ml-1720892118"></a>
 ### modelNum
@@ -32,4 +34,4 @@ modelNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_move.ml#L25)

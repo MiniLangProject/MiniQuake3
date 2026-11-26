@@ -9,8 +9,10 @@
 struct DrawCommand
 ```
 
+Stores UI player settings draw command record, including `kind`, `text`, `x`, `y`, `width`, `height` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ asset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-color-color-src-mq3-client-ui-player-settings-ml-1424107556"></a>
 ### color
@@ -32,7 +34,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-height-height-src-mq3-client-ui-player-settings-ml-1138893798"></a>
 ### height
@@ -42,7 +44,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-kind-kind-src-mq3-client-ui-player-settings-ml-326210384"></a>
 ### kind
@@ -52,7 +54,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-style-style-src-mq3-client-ui-player-settings-ml-346944060"></a>
 ### style
@@ -62,7 +64,7 @@ style
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-text-text-src-mq3-client-ui-player-settings-ml-275251738"></a>
 ### text
@@ -72,7 +74,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-width-width-src-mq3-client-ui-player-settings-ml-1033680892"></a>
 ### width
@@ -82,7 +84,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-x-x-src-mq3-client-ui-player-settings-ml-447013952"></a>
 ### x
@@ -92,7 +94,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)
 
 <a id="field-field-mq3-client-ui-player-settings-drawcommand-y-y-src-mq3-client-ui-player-settings-ml-550529580"></a>
 ### y
@@ -102,4 +104,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L21)

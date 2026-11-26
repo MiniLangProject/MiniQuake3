@@ -9,8 +9,10 @@
 struct EnemyAnimationSample
 ```
 
+EnemyAnimationSample record for format.player_animation, containing `mode`, `nextMode`, `lowerAnimation`, `upperAnimation`, `elapsed`, `lower`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 ## Members
 
@@ -22,7 +24,7 @@ elapsed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationsample-lower-lower-src-mq3-format-player-animation-ml-29173099"></a>
 ### lower
@@ -32,7 +34,7 @@ lower
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationsample-loweranimation-loweranimation-src-mq3-format-player-animation-ml-1381944761"></a>
 ### lowerAnimation
@@ -42,7 +44,7 @@ lowerAnimation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationsample-mode-mode-src-mq3-format-player-animation-ml-5219713"></a>
 ### mode
@@ -52,7 +54,7 @@ mode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationsample-nextmode-nextmode-src-mq3-format-player-animation-ml-1627310487"></a>
 ### nextMode
@@ -62,7 +64,7 @@ nextMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationsample-transitioned-transitioned-src-mq3-format-player-animation-ml-1772105931"></a>
 ### transitioned
@@ -72,7 +74,7 @@ transitioned
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationsample-upper-upper-src-mq3-format-player-animation-ml-449570471"></a>
 ### upper
@@ -82,7 +84,7 @@ upper
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationsample-upperanimation-upperanimation-src-mq3-format-player-animation-ml-1240184055"></a>
 ### upperAnimation
@@ -92,4 +94,4 @@ upperAnimation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L268)

@@ -9,8 +9,10 @@
 struct Punctuation
 ```
 
+`Punctuation` record for l script, containing `p` and `n`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L86)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L87)
 
 ## Members
 
@@ -22,7 +24,7 @@ n
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L87)
 
 <a id="field-field-mq3-botlib-l-script-punctuation-p-p-src-mq3-botlib-l-script-ml-353375777"></a>
 ### p
@@ -32,4 +34,4 @@ p
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L87)

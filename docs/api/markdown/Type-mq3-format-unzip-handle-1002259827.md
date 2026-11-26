@@ -9,8 +9,10 @@
 struct Handle
 ```
 
+Handle record for format.unzip, containing `archive`, `current`, `currentOk`, `readData`, `readPosition`, `localExtra`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ archive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)
 
 <a id="field-field-mq3-format-unzip-handle-closed-closed-src-mq3-format-unzip-ml-486909351"></a>
 ### closed
@@ -32,7 +34,7 @@ closed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)
 
 <a id="field-field-mq3-format-unzip-handle-current-current-src-mq3-format-unzip-ml-516098383"></a>
 ### current
@@ -42,7 +44,7 @@ current
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)
 
 <a id="field-field-mq3-format-unzip-handle-currentok-currentok-src-mq3-format-unzip-ml-1035242775"></a>
 ### currentOk
@@ -52,7 +54,7 @@ currentOk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)
 
 <a id="field-field-mq3-format-unzip-handle-localextra-localextra-src-mq3-format-unzip-ml-1465938133"></a>
 ### localExtra
@@ -62,7 +64,7 @@ localExtra
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)
 
 <a id="field-field-mq3-format-unzip-handle-readdata-readdata-src-mq3-format-unzip-ml-504259303"></a>
 ### readData
@@ -72,7 +74,7 @@ readData
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)
 
 <a id="field-field-mq3-format-unzip-handle-readposition-readposition-src-mq3-format-unzip-ml-1744418185"></a>
 ### readPosition
@@ -82,4 +84,4 @@ readPosition
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L34)

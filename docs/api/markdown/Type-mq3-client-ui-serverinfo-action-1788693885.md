@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI serverinfo queued engine action, including `boundary`, `kind`, `name`, `text`, `x`, `y` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-dispatched-dispatched-src-mq3-client-ui-serverinfo-ml-1314663809"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-kind-kind-src-mq3-client-ui-serverinfo-ml-1295877075"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-name-name-src-mq3-client-ui-serverinfo-ml-1529558229"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-number-number-src-mq3-client-ui-serverinfo-ml-747823281"></a>
 ### number
@@ -62,7 +64,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-text-text-src-mq3-client-ui-serverinfo-ml-1918709737"></a>
 ### text
@@ -72,7 +74,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-x-x-src-mq3-client-ui-serverinfo-ml-613888655"></a>
 ### x
@@ -82,7 +84,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)
 
 <a id="field-field-mq3-client-ui-serverinfo-action-y-y-src-mq3-client-ui-serverinfo-ml-1999345755"></a>
 ### y
@@ -92,4 +94,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L18)

@@ -9,8 +9,10 @@
 struct Slot
 ```
 
+Stores network handshake slot record, including `runtime`, `clientBound`, `serverBound`, `serverSlot`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientBound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 <a id="field-field-mq3-client-network-handshake-slot-runtime-runtime-src-mq3-client-network-handshake-ml-745164149"></a>
 ### runtime
@@ -32,7 +34,7 @@ runtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 <a id="field-field-mq3-client-network-handshake-slot-serverbound-serverbound-src-mq3-client-network-handshake-ml-1878477401"></a>
 ### serverBound
@@ -42,7 +44,7 @@ serverBound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 <a id="field-field-mq3-client-network-handshake-slot-serverslot-serverslot-src-mq3-client-network-handshake-ml-1270575139"></a>
 ### serverSlot
@@ -52,4 +54,4 @@ serverSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)

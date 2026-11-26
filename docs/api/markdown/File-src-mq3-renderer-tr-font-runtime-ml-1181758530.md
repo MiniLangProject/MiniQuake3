@@ -22,12 +22,14 @@ Reachable from entry: **no**
 function alphaImage(atlas)
 ```
 
+Builds `rgba[index*4+3]` in `mq3.renderer.tr_font_runtime.alphaImage`; returns `rgba`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `atlas` | `dynamic` | — |  |
+| `atlas` | `dynamic` | — | Indexed input read at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L146)
 
 - [mq3.renderer.tr_font_runtime.Bitmap](Type-mq3-renderer-tr-font-runtime-bitmap-422757207.md) — struct
 <a id="function-function-mq3-renderer-tr-font-runtime-blankglyph-function-blankglyph-src-mq3-renderer-tr-font-runtime-ml-25125878"></a>
@@ -37,8 +39,10 @@ function alphaImage(atlas)
 function blankGlyph()
 ```
 
+Constructs `mq3.renderer.tr_font_runtime.GlyphInfo` with `height` = `0`, `top` = `0`, `bottom` = `0`, `pitch` = `0` and the supplied remaining values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L63)
 
 - [mq3.renderer.tr_font_runtime.Constructed](Type-mq3-renderer-tr-font-runtime-constructed-1568830296.md) — struct
 <a id="function-function-mq3-renderer-tr-font-runtime-create-function-create-archive-src-mq3-renderer-tr-font-runtime-ml-1011765828"></a>
@@ -48,12 +52,14 @@ function blankGlyph()
 function create(archive)
 ```
 
+Constructs `mq3.renderer.tr_font_runtime.Lifecycle` with `registry` = `fontAbi.create(archive)`, `registeredFontCount` = `0`, `freeTypeInitialized` = `false`, `backend` = `void`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Argument 1 supplied to `mq3.vm.font_abi.create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L181)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-createbackend-function-createbackend-context-rasterizefn-createimagefn-savefontdata-outputroot-src-mq3-renderer-tr-font-runtime-ml-111708026"></a>
 ### createBackend
@@ -62,16 +68,18 @@ function create(archive)
 function createBackend(context, rasterizeFn, createImageFn, saveFontData, outputRoot)
 ```
 
+Constructs `mq3.renderer.tr_font_runtime.FreeTypeBackend` from `context`, `rasterizeFn`, `createImageFn`, `saveFontData`, `outputRoot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `rasterizeFn` | `dynamic` | — |  |
-| `createImageFn` | `dynamic` | — |  |
-| `saveFontData` | `dynamic` | — |  |
-| `outputRoot` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.context`. |
+| `rasterizeFn` | `dynamic` | — | Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.rasterizeFn`. |
+| `createImageFn` | `dynamic` | — | Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.createImageFn`. |
+| `saveFontData` | `dynamic` | — | Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.saveFontData`. |
+| `outputRoot` | `dynamic` | — | Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.outputRoot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L188)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-createcursor-function-createcursor-data-src-mq3-renderer-tr-font-runtime-ml-1490282202"></a>
 ### createCursor
@@ -80,12 +88,14 @@ function createBackend(context, rasterizeFn, createImageFn, saveFontData, output
 function createCursor(data)
 ```
 
+Constructs `mq3.renderer.tr_font_runtime.Cursor` with `offset` = `0` and the supplied remaining values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Initial value for `mq3.renderer.tr_font_runtime.Cursor.data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L41)
 
 - [mq3.renderer.tr_font_runtime.Cursor](Type-mq3-renderer-tr-font-runtime-cursor-1623801902.md) — struct
 <a id="function-function-mq3-renderer-tr-font-runtime-fail-function-fail-message-src-mq3-renderer-tr-font-runtime-ml-212383983"></a>
@@ -95,12 +105,14 @@ function createCursor(data)
 function fail(message)
 ```
 
+Creates error `7798` with message `"tr_font: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Input used in the result expression `error(7798,"tr_font: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L38)
 
 - [mq3.renderer.tr_font_runtime.FreeTypeBackend](Type-mq3-renderer-tr-font-runtime-freetypebackend-1921127062.md) — struct
 <a id="constant-constant-mq3-renderer-tr-font-runtime-ft-outline-const-ft-outline-1-src-mq3-renderer-tr-font-runtime-ml-1382774818"></a>
@@ -120,14 +132,16 @@ const FT_OUTLINE = 1
 function generatedFont(state, fontName, pointSize)
 ```
 
+Updates `state.registry.fonts` in `mq3.renderer.tr_font_runtime.generatedFont`; returns `fontAbi.Result(true,data,fontAbi.GLYPHS_PER_FONT-1,path)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `fontName` | `dynamic` | — |  |
-| `pointSize` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.registry.fonts`. |
+| `fontName` | `dynamic` | — | Argument 2 supplied to `mq3.format.pk3.read`. |
+| `pointSize` | `dynamic` | — | Argument 1 supplied to `mq3.vm.font_abi.pathFor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L155)
 
 - [mq3.renderer.tr_font_runtime.GlyphBounds](Type-mq3-renderer-tr-font-runtime-glyphbounds-933752019.md) — struct
 - [mq3.renderer.tr_font_runtime.GlyphInfo](Type-mq3-renderer-tr-font-runtime-glyphinfo-7683194.md) — struct
@@ -170,12 +184,14 @@ const PIXEL_MODE_MONO = 1
 function R_DoneFreeType(state)
 ```
 
+Updates `state.freeTypeInitialized`, `state.backend`, `state.registeredFontCount`, `state.registry.fonts` in `mq3.renderer.tr_font_runtime.R_DoneFreeType`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.freeTypeInitialized`, `state.backend`, `state.registeredFontCount`, `state.registry.fonts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L195)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-r-getglyphinfo-function-r-getglyphinfo-metrics-src-mq3-renderer-tr-font-runtime-ml-632808457"></a>
 ### R_GetGlyphInfo
@@ -184,12 +200,14 @@ function R_DoneFreeType(state)
 function R_GetGlyphInfo(metrics)
 ```
 
+Builds `mq3.renderer.tr_font_runtime.GlyphBounds` for `mq3.renderer.tr_font_runtime.R_GetGlyphInfo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `metrics` | `dynamic` | — |  |
+| `metrics` | `dynamic` | — | Record providing `metrics.horiBearingX`, `metrics.width`, `metrics.horiBearingY`, `metrics.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L57)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-r-initfreetype-function-r-initfreetype-state-backend-src-mq3-renderer-tr-font-runtime-ml-915320795"></a>
 ### R_InitFreeType
@@ -198,13 +216,15 @@ function R_GetGlyphInfo(metrics)
 function R_InitFreeType(state, backend)
 ```
 
+Updates `state.backend`, `state.freeTypeInitialized`, `state.registeredFontCount`, `state.registry.fonts` in `mq3.renderer.tr_font_runtime.R_InitFreeType`; returns `state.freeTypeInitialized`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `backend` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.backend`, `state.freeTypeInitialized`, `state.registeredFontCount`, `state.registry.fonts`. |
+| `backend` | `dynamic` | — | Value assigned to `state.backend`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L192)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-r-renderglyph-function-r-renderglyph-metrics-format-coverage-pixelmode-src-mq3-renderer-tr-font-runtime-ml-2141651937"></a>
 ### R_RenderGlyph
@@ -217,13 +237,13 @@ FreeType performs the outline scan conversion. The facade consumes that exact co
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `metrics` | `dynamic` | — |  |
-| `format` | `dynamic` | — |  |
-| `coverage` | `dynamic` | — |  |
-| `pixelMode` | `dynamic` | — |  |
+| `metrics` | `dynamic` | — | Record providing `metrics.horiBearingY`. |
+| `format` | `dynamic` | — | Input tested by `format!=FT_OUTLINE`. |
+| `coverage` | `dynamic` | — | Argument 1 supplied to `slice`. |
+| `pixelMode` | `dynamic` | — | Value used for `mq3.renderer.tr_font_runtime.Bitmap.pixelMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L71)
 
 - [mq3.renderer.tr_font_runtime.Raster](Type-mq3-renderer-tr-font-runtime-raster-579893233.md) — struct
 <a id="function-function-mq3-renderer-tr-font-runtime-re-constructglyphinfo-function-re-constructglyphinfo-imageout-x-y-maxheight-metrics-format-coverage-pixelmode-calcheight-src-mq3-renderer-tr-font-runtime-ml-921299016"></a>
@@ -233,20 +253,22 @@ FreeType performs the outline scan conversion. The facade consumes that exact co
 function RE_ConstructGlyphInfo(imageOut, x, y, maxHeight, metrics, format, coverage, pixelMode, calcHeight)
 ```
 
+Builds `mq3.renderer.tr_font_runtime.Constructed` after updating `glyph.xSkip`, `imageOut[destination+column]`, `glyph.imageHeight`, `glyph.imageWidth`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `imageOut` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `maxHeight` | `dynamic` | — |  |
-| `metrics` | `dynamic` | — |  |
-| `format` | `dynamic` | — |  |
-| `coverage` | `dynamic` | — |  |
-| `pixelMode` | `dynamic` | — |  |
-| `calcHeight` | `dynamic` | — |  |
+| `imageOut` | `dynamic` | — | Mutable record or buffer; this call updates `imageOut[destination+column]`. |
+| `x` | `dynamic` | — | Initial value for `mq3.renderer.tr_font_runtime.Constructed.x`. |
+| `y` | `dynamic` | — | Initial value for `mq3.renderer.tr_font_runtime.Constructed.y`. |
+| `maxHeight` | `dynamic` | — | Initial value for `mq3.renderer.tr_font_runtime.Constructed.maxHeight`. |
+| `metrics` | `dynamic` | — | Record providing `metrics.horiAdvance`. |
+| `format` | `dynamic` | — | Value forwarded as `format` to `mq3.renderer.tr_font_runtime.R_RenderGlyph`. |
+| `coverage` | `dynamic` | — | Value forwarded as `coverage` to `mq3.renderer.tr_font_runtime.R_RenderGlyph`. |
+| `pixelMode` | `dynamic` | — | Value forwarded as `pixelMode` to `mq3.renderer.tr_font_runtime.R_RenderGlyph`. |
+| `calcHeight` | `dynamic` | — | Input tested by `calcHeight`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L89)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-re-registerfont-function-re-registerfont-state-shadercontext-registershaderfn-fontname-pointsize-src-mq3-renderer-tr-font-runtime-ml-1379516078"></a>
 ### RE_RegisterFont
@@ -255,16 +277,18 @@ function RE_ConstructGlyphInfo(imageOut, x, y, maxHeight, metrics, format, cover
 function RE_RegisterFont(state, shaderContext, registerShaderFn, fontName, pointSize)
 ```
 
+Updates `state.registeredFontCount` in `mq3.renderer.tr_font_runtime.RE_RegisterFont`; returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `shaderContext` | `dynamic` | — |  |
-| `registerShaderFn` | `dynamic` | — |  |
-| `fontName` | `dynamic` | — |  |
-| `pointSize` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.registeredFontCount`. |
+| `shaderContext` | `dynamic` | — | Argument 2 supplied to `mq3.vm.font_abi.load`. |
+| `registerShaderFn` | `dynamic` | — | Argument 3 supplied to `mq3.vm.font_abi.load`. |
+| `fontName` | `dynamic` | — | Argument 4 supplied to `mq3.vm.font_abi.load`. |
+| `pointSize` | `dynamic` | — | Argument 1 supplied to `mq3.vm.font_abi.pathFor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L202)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-readfloat-function-readfloat-cursor-src-mq3-renderer-tr-font-runtime-ml-2020587728"></a>
 ### readFloat
@@ -273,12 +297,14 @@ function RE_RegisterFont(state, shaderContext, registerShaderFn, fontName, point
 function readFloat(cursor)
 ```
 
+Updates `cursor.offset` in `mq3.renderer.tr_font_runtime.readFloat`; returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `cursor` | `dynamic` | — |  |
+| `cursor` | `dynamic` | — | Mutable record or buffer; this call updates `cursor.offset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L50)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-readint-function-readint-cursor-src-mq3-renderer-tr-font-runtime-ml-1689932798"></a>
 ### readInt
@@ -287,12 +313,14 @@ function readFloat(cursor)
 function readInt(cursor)
 ```
 
+Updates `cursor.offset` in `mq3.renderer.tr_font_runtime.readInt`; returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `cursor` | `dynamic` | — |  |
+| `cursor` | `dynamic` | — | Mutable record or buffer; this call updates `cursor.offset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L44)
 
 - [mq3.renderer.tr_font_runtime.Rendered](Type-mq3-renderer-tr-font-runtime-rendered-1776297965.md) — struct
 <a id="function-function-mq3-renderer-tr-font-runtime-tgabytes-function-tgabytes-data-width-height-src-mq3-renderer-tr-font-runtime-ml-1585130399"></a>
@@ -302,14 +330,16 @@ function readInt(cursor)
 function tgaBytes(data, width, height)
 ```
 
+Builds `output[2]`, `output[12]`, `output[13]`, `output[14]`, `output[15]` in `mq3.renderer.tr_font_runtime.tgaBytes`; returns `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Indexed input read at `source+2`, `source+1`, `source`, `source+3`. |
+| `width` | `dynamic` | — | Input tested by `width<=0 or height<=0 or data==void or len(data)!=width*height*4`. |
+| `height` | `dynamic` | — | Input tested by `width<=0 or height<=0 or data==void or len(data)!=width*height*4`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L113)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-writecstring-function-writecstring-data-offset-capacity-value-src-mq3-renderer-tr-font-runtime-ml-2041146874"></a>
 ### writeCString
@@ -318,15 +348,17 @@ function tgaBytes(data, width, height)
 function writeCString(data, offset, capacity, value)
 ```
 
+Updates `data[offset+index]` in `mq3.renderer.tr_font_runtime.writeCString`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Mutable record or buffer; this call updates `data[offset+index]`. |
+| `offset` | `dynamic` | — | Argument 2 supplied to `copyBytes`. |
+| `capacity` | `dynamic` | — | Input tested by `count>=capacity`. |
+| `value` | `dynamic` | — | Argument 1 supplied to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L133)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-writeglyph-function-writeglyph-data-index-glyph-src-mq3-renderer-tr-font-runtime-ml-1448251444"></a>
 ### writeGlyph
@@ -335,14 +367,16 @@ function writeCString(data, offset, capacity, value)
 function writeGlyph(data, index, glyph)
 ```
 
+Validates glyph metadata and writes one fixed-layout QVM font glyph record into the byte buffer.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `glyph` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.writeU32`. |
+| `index` | `dynamic` | — | Input used by `offset=index*fontAbi.GLYPH_SIZE`. |
+| `glyph` | `dynamic` | — | Record providing `glyph.height`, `glyph.top`, `glyph.bottom`, `glyph.pitch`, `glyph.xSkip`, `glyph.imageWidth`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L140)
 
 <a id="function-function-mq3-renderer-tr-font-runtime-writetga-function-writetga-filename-data-width-height-src-mq3-renderer-tr-font-runtime-ml-746173154"></a>
 ### WriteTGA
@@ -351,12 +385,14 @@ function writeGlyph(data, index, glyph)
 function WriteTGA(filename, data, width, height)
 ```
 
+Returns `len(encoded)` from `mq3.renderer.tr_font_runtime.WriteTGA`; earlier branches return `encoded`, `written`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `filename` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
+| `filename` | `dynamic` | — | Argument 1 supplied to `std.fs.writeAllBytes`. |
+| `data` | `dynamic` | — | Value forwarded as `data` to `mq3.renderer.tr_font_runtime.tgaBytes`. |
+| `width` | `dynamic` | — | Value forwarded as `width` to `mq3.renderer.tr_font_runtime.tgaBytes`. |
+| `height` | `dynamic` | — | Value forwarded as `height` to `mq3.renderer.tr_font_runtime.tgaBytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L124)

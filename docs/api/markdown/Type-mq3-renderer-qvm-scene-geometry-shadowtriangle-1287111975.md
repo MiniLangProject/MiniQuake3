@@ -9,8 +9,10 @@
 struct ShadowTriangle
 ```
 
+Data record for `mq3.renderer.qvm_scene_geometry.ShadowTriangle`; groups `positions`, `entityIndex`, `surfaceIndex`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ entityIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-shadowtriangle-positions-positions-src-mq3-renderer-qvm-scene-geometry-ml-1600184483"></a>
 ### positions
@@ -32,7 +34,7 @@ positions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-shadowtriangle-surfaceindex-surfaceindex-src-mq3-renderer-qvm-scene-geometry-ml-1871701153"></a>
 ### surfaceIndex
@@ -42,4 +44,4 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)

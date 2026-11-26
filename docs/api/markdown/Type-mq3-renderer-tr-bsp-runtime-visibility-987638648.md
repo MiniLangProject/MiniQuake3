@@ -9,8 +9,10 @@
 struct Visibility
 ```
 
+Data record for `mq3.renderer.tr_bsp_runtime.Visibility`; groups `numClusters`, `clusterBytes`, `data`, `novis`, `external`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ clusterBytes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L39)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-data-data-src-mq3-renderer-tr-bsp-runtime-ml-1500402121"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L39)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-external-external-src-mq3-renderer-tr-bsp-runtime-ml-2116161883"></a>
 ### external
@@ -42,7 +44,7 @@ external
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L39)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-novis-novis-src-mq3-renderer-tr-bsp-runtime-ml-938863925"></a>
 ### novis
@@ -52,7 +54,7 @@ novis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L39)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-visibility-numclusters-numclusters-src-mq3-renderer-tr-bsp-runtime-ml-1250188817"></a>
 ### numClusters
@@ -62,4 +64,4 @@ numClusters
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L39)

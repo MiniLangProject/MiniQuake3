@@ -23,7 +23,7 @@ const ARCHIVE = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L19)
 
 <a id="extern_function-extern-function-mq3-qcommon-cvar-atof-extern-function-atof-text-as-cstr-from-ucrtbase-dll-returns-double-src-mq3-qcommon-cvar-ml-1664964635"></a>
 ### atof
@@ -32,12 +32,16 @@ const ARCHIVE = 1
 extern function atof(text as cstr) from "ucrtbase.dll" returns double
 ```
 
+Convert a C-string floating-point numeric prefix for qcommon.cvar.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `cstr` | — |  |
+| `text` | `cstr` | — | Null-terminated narrow numeric text accepted by the C runtime. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L10)
+**Returns:** The converted double; zero when no number is recognized.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L13)
 
 <a id="extern_function-extern-function-mq3-qcommon-cvar-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-qcommon-cvar-ml-1791065420"></a>
 ### atoi
@@ -46,12 +50,16 @@ extern function atof(text as cstr) from "ucrtbase.dll" returns double
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 ```
 
+Convert a C-string signed decimal integer prefix for qcommon.cvar.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `cstr` | — |  |
+| `text` | `cstr` | — | Null-terminated narrow numeric text accepted by the C runtime. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L11)
+**Returns:** The converted signed integer; zero when no number is recognized.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L17)
 
 <a id="function-function-mq3-qcommon-cvar-boundedstring-function-boundedstring-value-capacity-src-mq3-qcommon-cvar-ml-2012014823"></a>
 ### boundedString
@@ -60,13 +68,17 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 function boundedString(value, capacity)
 ```
 
+Compute bounded string in qcommon.cvar; the normal completion returns `decode(slice(data, 0, count))`.
+
+Validation failures include `Cvar_VariableStringBuffer invalid size`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `bytes(value)`. |
+| `capacity` | `dynamic` | — | Capacity used in `(capacity < 1)` and `(capacity - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L156)
 
 <a id="constant-constant-mq3-qcommon-cvar-cheat-const-cheat-512-src-mq3-qcommon-cvar-ml-81001755"></a>
 ### CHEAT
@@ -76,7 +88,7 @@ const CHEAT = 512
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L28)
 
 <a id="function-function-mq3-qcommon-cvar-commandcompletion-function-commandcompletion-registry-callback-src-mq3-qcommon-cvar-ml-363356970"></a>
 ### commandCompletion
@@ -89,11 +101,11 @@ Cvar_CommandCompletion preserves the linked-list order (newest first).
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `callback` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `variables`. |
+| `callback` | `dynamic` | — | Callback invoked for callback; the call sites below define the callback arguments. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L170)
 
 <a id="function-function-mq3-qcommon-cvar-configline-function-configline-name-value-src-mq3-qcommon-cvar-ml-1283362604"></a>
 ### configLine
@@ -106,11 +118,11 @@ Cvar_WriteVariables.  Registry.variables is kept in the original linked-list ord
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used in `("seta " + name)` and `(("seta " + name) + " \\"")`. |
+| `value` | `dynamic` | — | Value used in `((("seta " + name) + " \\"") + value)` and `(((("seta " + name) + " \\"") + value) + "\\"\\n")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L349)
 
 <a id="function-function-mq3-qcommon-cvar-create-function-create-src-mq3-qcommon-cvar-ml-341609520"></a>
 ### create
@@ -119,8 +131,10 @@ Cvar_WriteVariables.  Registry.variables is kept in the original linked-list ord
 function create()
 ```
 
+Create cvar in qcommon.cvar; the normal completion returns `registry`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L200)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L278)
 
 <a id="function-function-mq3-qcommon-cvar-createvm-function-createvm-src-mq3-qcommon-cvar-ml-1528945324"></a>
 ### createVm
@@ -129,8 +143,10 @@ function create()
 function createVm()
 ```
 
+Create `mq3.qcommon.cvar.VmCvar` with handle=0; modificationCount=0; value=0.0; integer=0; string=""; copyGeneration=0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L66)
 
 - [mq3.qcommon.cvar.Cvar](Type-mq3-qcommon-cvar-cvar-1261759200.md) — struct
 <a id="constant-constant-mq3-qcommon-cvar-file-hash-size-const-file-hash-size-256-src-mq3-qcommon-cvar-ml-2079715850"></a>
@@ -141,7 +157,7 @@ const FILE_HASH_SIZE = 256
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L31)
 
 <a id="function-function-mq3-qcommon-cvar-find-function-find-registry-name-src-mq3-qcommon-cvar-ml-1694138128"></a>
 ### find
@@ -150,13 +166,15 @@ const FILE_HASH_SIZE = 256
 function find(registry, name)
 ```
 
+Find cvar in qcommon.cvar.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `variables`. |
+| `name` | `dynamic` | — | Name used in `stringEqualsIgnoreCaseAscii(variable.name, name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L132)
 
 <a id="function-function-mq3-qcommon-cvar-generatehashvalue-function-generatehashvalue-name-src-mq3-qcommon-cvar-ml-1787223949"></a>
 ### generateHashValue
@@ -169,10 +187,10 @@ generateHashValue: the original uses the ASCII-lowercased byte multiplied by its
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used in `bytes(name)` and `(name == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L112)
 
 <a id="function-function-mq3-qcommon-cvar-get-function-get-registry-name-value-flags-src-mq3-qcommon-cvar-ml-1684654296"></a>
 ### get
@@ -181,15 +199,20 @@ generateHashValue: the original uses the ASCII-lowercased byte multiplied by its
 function get(registry, name, value, flags)
 ```
 
+Get cvar in qcommon.cvar; the normal completion returns `variable`.
+
+Validation failures include `Cvar_Get NULL parameter`; `MAX_CVARS`.
+Direct state writes: `registry.modifiedFlags`, `registry.numIndexes`, `registry.indexes`, `registry.variables`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `modifiedFlags`, `numIndexes`, `indexes`, `variables`. Updated in place: `modifiedFlags`, `numIndexes`, `indexes`, `variables`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.validName`. |
+| `value` | `dynamic` | — | Initial `string` field stored in the returned or constructed `mq3.qcommon.cvar.Cvar` record. |
+| `flags` | `dynamic` | — | Initial `flags` field stored in the returned or constructed `mq3.qcommon.cvar.Cvar` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L183)
 
 <a id="function-function-mq3-qcommon-cvar-infostring-function-infostring-registry-bit-src-mq3-qcommon-cvar-ml-1860573590"></a>
 ### infoString
@@ -202,11 +225,11 @@ Cvar_InfoString and Cvar_InfoString_Big deliberately differ in insertion order b
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `bit` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `variables`. |
+| `bit` | `dynamic` | — | Bit used in `(variable.flags & bit)` and `((variable.flags & bit) != 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L300)
 
 <a id="function-function-mq3-qcommon-cvar-infostringbig-function-infostringbig-registry-bit-src-mq3-qcommon-cvar-ml-1806309684"></a>
 ### infoStringBig
@@ -215,13 +238,15 @@ Cvar_InfoString and Cvar_InfoString_Big deliberately differ in insertion order b
 function infoStringBig(registry, bit)
 ```
 
+Compute info string big in qcommon.cvar; the normal completion returns `text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `bit` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `variables`. |
+| `bit` | `dynamic` | — | Bit used in `(variable.flags & bit)` and `((variable.flags & bit) != 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L308)
 
 <a id="function-function-mq3-qcommon-cvar-infostringbuffer-function-infostringbuffer-registry-bit-capacity-src-mq3-qcommon-cvar-ml-1576121530"></a>
 ### infoStringBuffer
@@ -230,14 +255,16 @@ function infoStringBig(registry, bit)
 function infoStringBuffer(registry, bit, capacity)
 ```
 
+Return `mq3.qcommon.cvar.boundedString(infoString(registry, bit), capacity)` from `qcommon.cvar.infoStringBuffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `bit` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.infoString`. |
+| `bit` | `dynamic` | — | Bit passed as `bit` to `mq3.qcommon.cvar.infoString`. |
+| `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.qcommon.cvar.boundedString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L317)
 
 <a id="constant-constant-mq3-qcommon-cvar-init-const-init-16-src-mq3-qcommon-cvar-ml-1149122730"></a>
 ### INIT
@@ -247,7 +274,7 @@ const INIT = 16
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L23)
 
 <a id="constant-constant-mq3-qcommon-cvar-latch-const-latch-32-src-mq3-qcommon-cvar-ml-1303747494"></a>
 ### LATCH
@@ -257,7 +284,7 @@ const LATCH = 32
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L24)
 
 <a id="constant-constant-mq3-qcommon-cvar-max-cvar-value-string-const-max-cvar-value-string-256-src-mq3-qcommon-cvar-ml-1635713538"></a>
 ### MAX_CVAR_VALUE_STRING
@@ -267,7 +294,7 @@ const MAX_CVAR_VALUE_STRING = 256
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L32)
 
 <a id="constant-constant-mq3-qcommon-cvar-max-cvars-const-max-cvars-1024-src-mq3-qcommon-cvar-ml-1279850292"></a>
 ### MAX_CVARS
@@ -277,7 +304,7 @@ const MAX_CVARS = 1024
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L30)
 
 <a id="constant-constant-mq3-qcommon-cvar-norestart-const-norestart-1024-src-mq3-qcommon-cvar-ml-709728896"></a>
 ### NORESTART
@@ -287,7 +314,7 @@ const NORESTART = 1024
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L29)
 
 <a id="function-function-mq3-qcommon-cvar-registervm-function-registervm-registry-snapshot-name-defaultvalue-flags-src-mq3-qcommon-cvar-ml-204004995"></a>
 ### registerVm
@@ -296,16 +323,20 @@ const NORESTART = 1024
 function registerVm(registry, snapshot, name, defaultValue, flags)
 ```
 
+Register vm in qcommon.cvar; the normal completion returns `updateVm(registry, snapshot)`.
+
+Direct state writes: `snapshot.handle`, `snapshot.modificationCount`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `snapshot` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `defaultValue` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.get`. |
+| `snapshot` | `dynamic` | — | Updated in place: `handle`, `modificationCount`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.get`. |
+| `defaultValue` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.cvar.get`. |
+| `flags` | `dynamic` | — | Flags passed as `flags` to `mq3.qcommon.cvar.get`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L102)
 
 - [mq3.qcommon.cvar.Registry](Type-mq3-qcommon-cvar-registry-893386049.md) — struct
 <a id="function-function-mq3-qcommon-cvar-reset-function-reset-registry-name-src-mq3-qcommon-cvar-ml-1274437518"></a>
@@ -315,13 +346,15 @@ function registerVm(registry, snapshot, name, defaultValue, flags)
 function reset(registry, name)
 ```
 
+Reset cvar in qcommon.cvar.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.set2`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.set2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L275)
 
 <a id="function-function-mq3-qcommon-cvar-restart-function-restart-registry-src-mq3-qcommon-cvar-ml-1690972483"></a>
 ### restart
@@ -334,10 +367,10 @@ Cvar_Restart_f resets registered variables while preserving the stable numeric h
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `variables`. Updated in place: `variables`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L325)
 
 <a id="constant-constant-mq3-qcommon-cvar-rom-const-rom-64-src-mq3-qcommon-cvar-ml-278003333"></a>
 ### ROM
@@ -347,7 +380,7 @@ const ROM = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L25)
 
 <a id="constant-constant-mq3-qcommon-cvar-serverinfo-const-serverinfo-4-src-mq3-qcommon-cvar-ml-141484723"></a>
 ### SERVERINFO
@@ -357,7 +390,7 @@ const SERVERINFO = 4
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L21)
 
 <a id="function-function-mq3-qcommon-cvar-set-function-set-registry-name-value-src-mq3-qcommon-cvar-ml-1985360627"></a>
 ### set
@@ -370,12 +403,12 @@ Public Cvar_Set/Cvar_SetLatched/Cvar_SetValue/Cvar_Reset entry points.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.set2`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.set2`. |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.cvar.set2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L257)
 
 <a id="function-function-mq3-qcommon-cvar-set2-function-set2-registry-name-value-force-src-mq3-qcommon-cvar-ml-438656100"></a>
 ### set2
@@ -384,15 +417,19 @@ Public Cvar_Set/Cvar_SetLatched/Cvar_SetValue/Cvar_Reset entry points.
 function set2(registry, name, value, force)
 ```
 
+Set 2 in qcommon.cvar; the normal completion returns `variable`.
+
+Direct state writes: `registry.modifiedFlags`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `force` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `modifiedFlags`. Updated in place: `modifiedFlags`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.validName`. |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.cvar.get`. |
+| `force` | `dynamic` | — | Force operand used by `set2`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L217)
 
 <a id="function-function-mq3-qcommon-cvar-setcheatstate-function-setcheatstate-registry-src-mq3-qcommon-cvar-ml-2075799881"></a>
 ### setCheatState
@@ -401,12 +438,14 @@ function set2(registry, name, value, force)
 function setCheatState(registry)
 ```
 
+Set cheat state in qcommon.cvar.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `variables`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L286)
 
 <a id="function-function-mq3-qcommon-cvar-setlatched-function-setlatched-registry-name-value-src-mq3-qcommon-cvar-ml-715695915"></a>
 ### setLatched
@@ -415,14 +454,16 @@ function setCheatState(registry)
 function setLatched(registry, name, value)
 ```
 
+Set latched in qcommon.cvar.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.set2`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.set2`. |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.qcommon.cvar.set2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L262)
 
 <a id="function-function-mq3-qcommon-cvar-setvalue-function-setvalue-registry-name-value-src-mq3-qcommon-cvar-ml-1748457351"></a>
 ### setValue
@@ -431,14 +472,16 @@ function setLatched(registry, name, value)
 function setValue(registry, name, value)
 ```
 
+Set value in qcommon.cvar; the normal completion returns `set(registry, name, text)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.set`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.set`. |
+| `value` | `dynamic` | — | Floating-point value to narrow to binary32. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L267)
 
 <a id="constant-constant-mq3-qcommon-cvar-systeminfo-const-systeminfo-8-src-mq3-qcommon-cvar-ml-1043293767"></a>
 ### SYSTEMINFO
@@ -448,7 +491,7 @@ const SYSTEMINFO = 8
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L22)
 
 <a id="constant-constant-mq3-qcommon-cvar-temp-const-temp-256-src-mq3-qcommon-cvar-ml-132323208"></a>
 ### TEMP
@@ -458,7 +501,7 @@ const TEMP = 256
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L27)
 
 <a id="function-function-mq3-qcommon-cvar-updatevm-function-updatevm-registry-snapshot-src-mq3-qcommon-cvar-ml-1088097737"></a>
 ### updateVm
@@ -467,13 +510,18 @@ const TEMP = 256
 function updateVm(registry, snapshot)
 ```
 
+Update vm in qcommon.cvar.
+
+Validation failures include `Cvar_Update NULL snapshot`; `Cvar_Update handle out of range`; `Cvar_Update exceeds native string storage`.
+Direct state writes: `snapshot.modificationCount`, `snapshot.string`, `snapshot.value`, `snapshot.integer`, `snapshot.copyGeneration`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `snapshot` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `numIndexes`, `indexes`. |
+| `snapshot` | `dynamic` | — | Record exposing `handle`, `modificationCount`, `copyGeneration`. Updated in place: `modificationCount`, `string`, `value`, `integer`, `copyGeneration`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L75)
 
 <a id="constant-constant-mq3-qcommon-cvar-user-created-const-user-created-128-src-mq3-qcommon-cvar-ml-1954693268"></a>
 ### USER_CREATED
@@ -483,7 +531,7 @@ const USER_CREATED = 128
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L26)
 
 <a id="constant-constant-mq3-qcommon-cvar-userinfo-const-userinfo-2-src-mq3-qcommon-cvar-ml-1057468117"></a>
 ### USERINFO
@@ -493,7 +541,7 @@ const USERINFO = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L20)
 
 <a id="function-function-mq3-qcommon-cvar-validname-function-validname-name-src-mq3-qcommon-cvar-ml-135019403"></a>
 ### validName
@@ -506,10 +554,10 @@ Cvar_ValidateString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used in `(name == void)` and `strings.indexOf(name, ";", 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L124)
 
 <a id="function-function-mq3-qcommon-cvar-variableintegervalue-function-variableintegervalue-registry-name-src-mq3-qcommon-cvar-ml-211007968"></a>
 ### variableIntegerValue
@@ -518,13 +566,15 @@ Cvar_ValidateString
 function variableIntegerValue(registry, name)
 ```
 
+Compute variable integer value in qcommon.cvar; the normal completion returns `variable.integer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.find`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L146)
 
 <a id="function-function-mq3-qcommon-cvar-variablestring-function-variablestring-registry-name-src-mq3-qcommon-cvar-ml-1874186152"></a>
 ### variableString
@@ -533,13 +583,15 @@ function variableIntegerValue(registry, name)
 function variableString(registry, name)
 ```
 
+Compute variable string in qcommon.cvar; the normal completion returns `variable.string`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.find`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L150)
 
 <a id="function-function-mq3-qcommon-cvar-variablestringbuffer-function-variablestringbuffer-registry-name-capacity-src-mq3-qcommon-cvar-ml-5851012"></a>
 ### variableStringBuffer
@@ -548,14 +600,16 @@ function variableString(registry, name)
 function variableStringBuffer(registry, name, capacity)
 ```
 
+Return `mq3.qcommon.cvar.boundedString(variableString(registry, name), capacity)` from `qcommon.cvar.variableStringBuffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.variableString`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.variableString`. |
+| `capacity` | `dynamic` | — | Capacity passed as `capacity` to `mq3.qcommon.cvar.boundedString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L165)
 
 <a id="function-function-mq3-qcommon-cvar-variablevalue-function-variablevalue-registry-name-src-mq3-qcommon-cvar-ml-799661910"></a>
 ### variableValue
@@ -568,11 +622,11 @@ Cvar_VariableValue / Cvar_VariableIntegerValue / Cvar_VariableString.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Registry passed as `registry` to `mq3.qcommon.cvar.find`. |
+| `name` | `dynamic` | — | Name passed as `name` to `mq3.qcommon.cvar.find`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L142)
 
 - [mq3.qcommon.cvar.VmCvar](Type-mq3-qcommon-cvar-vmcvar-334256681.md) — struct
 <a id="function-function-mq3-qcommon-cvar-writevariables-function-writevariables-registry-src-mq3-qcommon-cvar-ml-1062832945"></a>
@@ -582,9 +636,11 @@ Cvar_VariableValue / Cvar_VariableIntegerValue / Cvar_VariableString.
 function writeVariables(registry)
 ```
 
+Write variables in qcommon.cvar; the normal completion returns `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `variables`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L357)

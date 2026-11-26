@@ -19,13 +19,15 @@ Reachable from entry: **yes**
 function append(value, command)
 ```
 
+Updates `value.commands` during client game scoreboard `append`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game scoreboard record/storage; this routine assigns `value.commands`. |
+| `command` | `dynamic` | — | Value used by `value.commands=value.commands+[command]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L73)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-bigchar-height-const-bigchar-height-16-src-mq3-client-cgame-scoreboard-ml-1643848712"></a>
 ### BIGCHAR_HEIGHT
@@ -58,11 +60,11 @@ CG_CenterGiantLine
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `y` | `dynamic` | — | Argument 3 of `mq3.client.cgame_scoreboard.draw`. |
+| `text` | `dynamic` | — | Argument 2, 6 of `mq3.client.cgame_scoreboard.draw`; passed as `(640-GIANT_WIDTH*printableLength(text))/2`, `text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L181)
 
 <a id="function-function-mq3-client-cgame-scoreboard-client-function-client-name-team-src-mq3-client-cgame-scoreboard-ml-1705253140"></a>
 ### client
@@ -71,13 +73,15 @@ CG_CenterGiantLine
 function client(name, team)
 ```
 
+Creates a `mq3.client.cgame_scoreboard.Client` record. Assigns `name` from `name`, `team` from `team`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value used to initialize `Client.name`. |
+| `team` | `dynamic` | — | Value used to initialize `Client.team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L49)
 
 - [mq3.client.cgame_scoreboard.Client](Type-mq3-client-cgame-scoreboard-client-577185952.md) — struct
 <a id="function-function-mq3-client-cgame-scoreboard-draw-function-draw-kind-x-y-width-height-text-alpha-red-green-blue-clientnum-team-large-src-mq3-client-cgame-scoreboard-ml-1454894454"></a>
@@ -87,24 +91,26 @@ function client(name, team)
 function draw(kind, x, y, width, height, text, alpha, red, green, blue, clientNum, team, large)
 ```
 
+Creates a `mq3.client.cgame_scoreboard.Draw` record. Assigns `kind` from `kind`, `x` from `x`, `y` from `y`, `width` from `width`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `kind` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `alpha` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `large` | `dynamic` | — |  |
+| `kind` | `dynamic` | — | Value used to initialize `Draw.kind`. |
+| `x` | `dynamic` | — | Value used to initialize `Draw.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Draw.y`. |
+| `width` | `dynamic` | — | Value used to initialize `Draw.width`. |
+| `height` | `dynamic` | — | Value used to initialize `Draw.height`. |
+| `text` | `dynamic` | — | Value used to initialize `Draw.text`. |
+| `alpha` | `dynamic` | — | Value used to initialize `Draw.alpha`. |
+| `red` | `dynamic` | — | Value used to initialize `Draw.red`. |
+| `green` | `dynamic` | — | Value used to initialize `Draw.green`. |
+| `blue` | `dynamic` | — | Value used to initialize `Draw.blue`. |
+| `clientNum` | `dynamic` | — | Value used to initialize `Draw.client`. |
+| `team` | `dynamic` | — | Value used to initialize `Draw.team`. |
+| `large` | `dynamic` | — | Value used to initialize `Draw.large`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L66)
 
 - [mq3.client.cgame_scoreboard.Draw](Type-mq3-client-cgame-scoreboard-draw-39659597.md) — struct
 <a id="function-function-mq3-client-cgame-scoreboard-drawclientscore-function-drawclientscore-value-y-entry-fade-largeformat-src-mq3-client-cgame-scoreboard-ml-1059609034"></a>
@@ -118,14 +124,14 @@ CG_DrawClientScore
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `entry` | `dynamic` | — |  |
-| `fade` | `dynamic` | — |  |
-| `largeFormat` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.clients`, `value.gametype`, `value.clientNum`, `value.rank` and additional values. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawClientScore`. |
+| `entry` | `dynamic` | — | Record read through `entry.client`, `entry.ping`, `entry.time`, `entry.score`. |
+| `fade` | `dynamic` | — | Value used by `if ci.powerups!=0 then commands=commands+[draw("flag",iconx,iconY,iconSize,iconSize,"",fade,1.0,1.0,1.0,entry.client,ci.team,largeFormat)]`. |
+| `largeFormat` | `dynamic` | — | Value used by `if largeFormat then iconY=y-8`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L108)
 
 <a id="function-function-mq3-client-cgame-scoreboard-drawoldscoreboard-function-drawoldscoreboard-value-src-mq3-client-cgame-scoreboard-ml-1698690215"></a>
 ### drawOldScoreboard
@@ -138,10 +144,10 @@ CG_DrawOldScoreboard
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game scoreboard record/storage; this routine assigns `value.deferredPlayerLoading`, `value.killerName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L149)
 
 <a id="function-function-mq3-client-cgame-scoreboard-drawoldtourneyscoreboard-function-drawoldtourneyscoreboard-value-src-mq3-client-cgame-scoreboard-ml-316814165"></a>
 ### drawOldTourneyScoreboard
@@ -154,10 +160,10 @@ CG_DrawOldTourneyScoreboard
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game scoreboard record/storage; this routine assigns `value.scoresRequestTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L185)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-fade-time-const-fade-time-200-src-mq3-client-cgame-scoreboard-ml-2012495239"></a>
 ### FADE_TIME
@@ -176,12 +182,14 @@ const FADE_TIME = 200
 function fadeAlpha(stateValue)
 ```
 
+Evaluates client game scoreboard `fadeAlpha` and returns `0.0`, `(FADE_TIME-elapsed)/FADE_TIME` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `stateValue` | `dynamic` | — |  |
+| `stateValue` | `dynamic` | — | Record read through `stateValue.time`, `stateValue.scoreFadeTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L92)
 
 <a id="function-function-mq3-client-cgame-scoreboard-frame-function-frame-drawn-src-mq3-client-cgame-scoreboard-ml-2070318674"></a>
 ### frame
@@ -190,12 +198,14 @@ function fadeAlpha(stateValue)
 function frame(drawn)
 ```
 
+Creates a `mq3.client.cgame_scoreboard.Frame` record. Assigns `drawn` from `drawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `drawn` | `dynamic` | — |  |
+| `drawn` | `dynamic` | — | Value used to initialize `Frame.drawn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L69)
 
 - [mq3.client.cgame_scoreboard.Frame](Type-mq3-client-cgame-scoreboard-frame-549841652.md) — struct
 <a id="constant-constant-mq3-client-cgame-scoreboard-giant-height-const-giant-height-48-src-mq3-client-cgame-scoreboard-ml-570988095"></a>
@@ -245,13 +255,15 @@ const GT_TEAM = 3
 function padLeft(value, width)
 ```
 
+Evaluates client game scoreboard `padLeft` and returns `text` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `text=str(value)`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `padLeft`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L98)
 
 <a id="function-function-mq3-client-cgame-scoreboard-placestring-function-placestring-rank-src-mq3-client-cgame-scoreboard-ml-1839883584"></a>
 ### placeString
@@ -260,12 +272,14 @@ function padLeft(value, width)
 function placeString(rank)
 ```
 
+Evaluates client game scoreboard `placeString` and returns `"Tied for "+text`, `text` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rank` | `dynamic` | — |  |
+| `rank` | `dynamic` | — | Value used by `tied=(rank & RANK_TIED_FLAG)!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L85)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-pm-dead-const-pm-dead-3-src-mq3-client-cgame-scoreboard-ml-293227478"></a>
 ### PM_DEAD
@@ -294,12 +308,14 @@ const PM_INTERMISSION = 5
 function printableLength(text)
 ```
 
+Evaluates client game scoreboard `printableLength` and returns `count` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `printableLength` in the client game scoreboard path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L76)
 
 <a id="constant-constant-mq3-client-cgame-scoreboard-rank-tied-flag-const-rank-tied-flag-16384-src-mq3-client-cgame-scoreboard-ml-69180123"></a>
 ### RANK_TIED_FLAG
@@ -388,15 +404,17 @@ const SB_TOP = 118
 function score(client, points, ping, time)
 ```
 
+Creates a `mq3.client.cgame_scoreboard.Score` record. Assigns `client` from `client`, `score` from `points`, `ping` from `ping`, `time` from `time`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
-| `points` | `dynamic` | — |  |
-| `ping` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Value used to initialize `Score.client`. |
+| `points` | `dynamic` | — | Value used to initialize `Score.score`. |
+| `ping` | `dynamic` | — | Value used to initialize `Score.ping`. |
+| `time` | `dynamic` | — | Value used to initialize `Score.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L45)
 
 - [mq3.client.cgame_scoreboard.Score](Type-mq3-client-cgame-scoreboard-score-1835543747.md) — struct
 <a id="function-function-mq3-client-cgame-scoreboard-state-function-state-src-mq3-client-cgame-scoreboard-ml-1633129108"></a>
@@ -406,8 +424,10 @@ function score(client, points, ping, time)
 function state()
 ```
 
+Creates a `mq3.client.cgame_scoreboard.State` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L51)
 
 - [mq3.client.cgame_scoreboard.State](Type-mq3-client-cgame-scoreboard-state-423630336.md) — struct
 <a id="constant-constant-mq3-client-cgame-scoreboard-team-blue-const-team-blue-2-src-mq3-client-cgame-scoreboard-ml-89247283"></a>
@@ -461,12 +481,12 @@ CG_TeamScoreboard
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `fade` | `dynamic` | — |  |
-| `maxClients` | `dynamic` | — |  |
-| `lineHeight` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.scores`, `value.clients`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `teamScoreboard`. |
+| `team` | `dynamic` | — | Value used by `if entry.client>=0 and entry.client<len(value.clients) and value.clients[entry.client].team==team then`. |
+| `fade` | `dynamic` | — | Value used by `part=drawClientScore(value,y+lineHeight*count,entry,fade,lineHeight==SB_NORMAL_HEIGHT)`. |
+| `maxClients` | `dynamic` | — | Value used by `if count>=maxClients then break end if`. |
+| `lineHeight` | `dynamic` | — | Value used by `part=drawClientScore(value,y+lineHeight*count,entry,fade,lineHeight==SB_NORMAL_HEIGHT)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L136)

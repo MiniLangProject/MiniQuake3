@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.tr_flares_runtime.State`; groups `slots`, `active`, `inactive`, `projection`, `area`, `frameCount`, and 12 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-adds-adds-src-mq3-renderer-tr-flares-runtime-ml-956358320"></a>
 ### adds
@@ -32,7 +34,7 @@ adds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-area-area-src-mq3-renderer-tr-flares-runtime-ml-1750706590"></a>
 ### area
@@ -42,7 +44,7 @@ area
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-enabled-enabled-src-mq3-renderer-tr-flares-runtime-ml-1628355864"></a>
 ### enabled
@@ -52,7 +54,7 @@ enabled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-faderate-faderate-src-mq3-renderer-tr-flares-runtime-ml-656182248"></a>
 ### fadeRate
@@ -62,7 +64,7 @@ fadeRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-finishcalled-finishcalled-src-mq3-renderer-tr-flares-runtime-ml-633474676"></a>
 ### finishCalled
@@ -72,7 +74,7 @@ finishCalled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-fogcatalog-fogcatalog-src-mq3-renderer-tr-flares-runtime-ml-1034618134"></a>
 ### fogCatalog
@@ -82,7 +84,7 @@ fogCatalog
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-framecount-framecount-src-mq3-renderer-tr-flares-runtime-ml-189243352"></a>
 ### frameCount
@@ -92,7 +94,7 @@ frameCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-framescenenum-framescenenum-src-mq3-renderer-tr-flares-runtime-ml-866308864"></a>
 ### frameSceneNum
@@ -102,7 +104,7 @@ frameSceneNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-identitylight-identitylight-src-mq3-renderer-tr-flares-runtime-ml-2017222136"></a>
 ### identityLight
@@ -112,7 +114,7 @@ identityLight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-inactive-inactive-src-mq3-renderer-tr-flares-runtime-ml-1574659690"></a>
 ### inactive
@@ -122,7 +124,7 @@ inactive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-isportal-isportal-src-mq3-renderer-tr-flares-runtime-ml-28039152"></a>
 ### isPortal
@@ -132,7 +134,7 @@ isPortal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-projection-projection-src-mq3-renderer-tr-flares-runtime-ml-1901674514"></a>
 ### projection
@@ -142,7 +144,7 @@ projection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-renders-renders-src-mq3-renderer-tr-flares-runtime-ml-980484492"></a>
 ### renders
@@ -152,7 +154,7 @@ renders
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-sizevalue-sizevalue-src-mq3-renderer-tr-flares-runtime-ml-1119717888"></a>
 ### sizeValue
@@ -162,7 +164,7 @@ sizeValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-slots-slots-src-mq3-renderer-tr-flares-runtime-ml-678326052"></a>
 ### slots
@@ -172,7 +174,7 @@ slots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-tests-tests-src-mq3-renderer-tr-flares-runtime-ml-248334344"></a>
 ### tests
@@ -182,7 +184,7 @@ tests
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-state-time-time-src-mq3-renderer-tr-flares-runtime-ml-1751301554"></a>
 ### time
@@ -192,4 +194,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)

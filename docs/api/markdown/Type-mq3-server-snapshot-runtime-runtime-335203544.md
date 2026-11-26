@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for server.snapshot_runtime, containing `scene`, `buildWorld`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ buildWorld
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L12)
 
 <a id="field-field-mq3-server-snapshot-runtime-runtime-scene-scene-src-mq3-server-snapshot-runtime-ml-1403573657"></a>
 ### scene
@@ -32,4 +34,4 @@ scene
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L12)

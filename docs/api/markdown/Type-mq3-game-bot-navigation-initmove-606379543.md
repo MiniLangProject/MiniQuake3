@@ -9,8 +9,10 @@
 struct InitMove
 ```
 
+`InitMove` record for bot navigation, containing `origin`, `velocity`, `viewoffset`, `entitynum` and `client` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L62)
 
 ## Members
 
@@ -22,7 +24,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L67)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-entitynum-entitynum-src-mq3-game-bot-navigation-ml-1060858712"></a>
 ### entitynum
@@ -32,7 +34,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L66)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-origin-origin-src-mq3-game-bot-navigation-ml-1766569864"></a>
 ### origin
@@ -42,7 +44,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L63)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-ormoveflags-ormoveflags-src-mq3-game-bot-navigation-ml-51673492"></a>
 ### orMoveflags
@@ -52,7 +54,7 @@ orMoveflags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L69)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-presencetype-presencetype-src-mq3-game-bot-navigation-ml-277068234"></a>
 ### presencetype
@@ -62,7 +64,7 @@ presencetype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L70)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-thinktime-thinktime-src-mq3-game-bot-navigation-ml-44431296"></a>
 ### thinktime
@@ -72,7 +74,7 @@ thinktime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L68)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-velocity-velocity-src-mq3-game-bot-navigation-ml-1223766886"></a>
 ### velocity
@@ -82,7 +84,7 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L64)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-viewangles-viewangles-src-mq3-game-bot-navigation-ml-1686368322"></a>
 ### viewangles
@@ -92,7 +94,7 @@ viewangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L71)
 
 <a id="field-field-mq3-game-bot-navigation-initmove-viewoffset-viewoffset-src-mq3-game-bot-navigation-ml-1630900776"></a>
 ### viewoffset
@@ -102,4 +104,4 @@ viewoffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L65)

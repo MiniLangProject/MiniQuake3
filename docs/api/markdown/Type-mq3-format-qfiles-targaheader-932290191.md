@@ -9,8 +9,10 @@
 struct TargaHeader
 ```
 
+TargaHeader record for format.qfiles, containing `idLength`, `colormapType`, `imageType`, `colormapIndex`, `colormapLength`, `colormapSize`, and 6 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 ## Members
 
@@ -22,7 +24,7 @@ attributes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormapindex-colormapindex-src-mq3-format-qfiles-ml-1483399727"></a>
 ### colormapIndex
@@ -32,7 +34,7 @@ colormapIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormaplength-colormaplength-src-mq3-format-qfiles-ml-2053006261"></a>
 ### colormapLength
@@ -42,7 +44,7 @@ colormapLength
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormapsize-colormapsize-src-mq3-format-qfiles-ml-954553195"></a>
 ### colormapSize
@@ -52,7 +54,7 @@ colormapSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-colormaptype-colormaptype-src-mq3-format-qfiles-ml-41891713"></a>
 ### colormapType
@@ -62,7 +64,7 @@ colormapType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-height-height-src-mq3-format-qfiles-ml-487434265"></a>
 ### height
@@ -72,7 +74,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-idlength-idlength-src-mq3-format-qfiles-ml-730729469"></a>
 ### idLength
@@ -82,7 +84,7 @@ idLength
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-imagetype-imagetype-src-mq3-format-qfiles-ml-56715519"></a>
 ### imageType
@@ -92,7 +94,7 @@ imageType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-pixelsize-pixelsize-src-mq3-format-qfiles-ml-602234415"></a>
 ### pixelSize
@@ -102,7 +104,7 @@ pixelSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-width-width-src-mq3-format-qfiles-ml-1768248643"></a>
 ### width
@@ -112,7 +114,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-xorigin-xorigin-src-mq3-format-qfiles-ml-1017942855"></a>
 ### xOrigin
@@ -122,7 +124,7 @@ xOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)
 
 <a id="field-field-mq3-format-qfiles-targaheader-yorigin-yorigin-src-mq3-format-qfiles-ml-1364125443"></a>
 ### yOrigin
@@ -132,4 +134,4 @@ yOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L89)

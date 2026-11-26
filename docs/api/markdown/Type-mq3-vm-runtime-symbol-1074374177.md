@@ -9,8 +9,10 @@
 struct Symbol
 ```
 
+Symbol record for vm.runtime, containing `value`, `name`, `profileCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-symbol-profilecount-profilecount-src-mq3-vm-runtime-ml-2062393133"></a>
 ### profileCount
@@ -32,7 +34,7 @@ profileCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-symbol-value-value-src-mq3-vm-runtime-ml-1137782465"></a>
 ### value
@@ -42,4 +44,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)

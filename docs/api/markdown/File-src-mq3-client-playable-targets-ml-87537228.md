@@ -23,12 +23,14 @@ Reachable from entry: **yes**
 function activeCount(state)
 ```
 
+Evaluates playable targets `activeCount` and returns `0`, `count` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.targets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L72)
 
 <a id="function-function-mq3-client-playable-targets-applydefaultshot-function-applydefaultshot-state-shot-now-src-mq3-client-playable-targets-ml-467187407"></a>
 ### applyDefaultShot
@@ -37,14 +39,16 @@ function activeCount(state)
 function applyDefaultShot(state, shot, now)
 ```
 
+Adapts `mq3.client.playable_targets.applyShot` to playable targets `applyDefaultShot`, returning its result for `state, shot, DEFAULT_DAMAGE, now`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `shot` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.playable_targets.applyShot`. |
+| `shot` | `dynamic` | — | Argument 2 of `mq3.client.playable_targets.applyShot`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. Forwarded to `mq3.client.playable_targets.applyShot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L142)
 
 <a id="function-function-mq3-client-playable-targets-applyshot-function-applyshot-state-shot-damage-now-src-mq3-client-playable-targets-ml-1090787728"></a>
 ### applyShot
@@ -57,13 +61,13 @@ The Shot endpoint already contains the BSP world hit, so targets behind a wall c
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `shot` | `dynamic` | — |  |
-| `damage` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable playable targets record/storage; this routine assigns `state.score`. |
+| `shot` | `dynamic` | — | Record read through `shot.start`, `shot.endPoint`. |
+| `damage` | `dynamic` | — | Value used by `if damage<=0 or now<0 then return fail("positive damage and non-negative time are required") end if`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L113)
 
 <a id="constant-constant-mq3-client-playable-targets-default-damage-const-default-damage-34-src-mq3-client-playable-targets-ml-2042600152"></a>
 ### DEFAULT_DAMAGE
@@ -142,12 +146,14 @@ const DEFAULT_RESPAWN_MILLISECONDS = 3000
 function fail(message)
 ```
 
+Creates the playable targets error `7520` with diagnostic text `"preview targets: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview targets: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L28)
 
 <a id="function-function-mq3-client-playable-targets-field-function-field-fields-key-src-mq3-client-playable-targets-ml-969172396"></a>
 ### field
@@ -156,13 +162,15 @@ function fail(message)
 function field(fields, key)
 ```
 
+Calls `std.string.toLowerAscii` from playable targets `field`. The final path returns `""`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fields` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `fields` | `dynamic` | — | Value used by `for each pair in fields`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable targets entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L33)
 
 <a id="function-function-mq3-client-playable-targets-fromentities-function-fromentities-entities-playerspawnindex-src-mq3-client-playable-targets-ml-1037707139"></a>
 ### fromEntities
@@ -171,13 +179,15 @@ function field(fields, key)
 function fromEntities(entities, playerSpawnIndex)
 ```
 
+Calls `std.string.toLowerAscii`, `mq3.client.playable_targets.field`, `mq3.compat.textnumbers.vector` and additional helpers from playable targets `fromEntities`. The final path returns `State(targets,0,0,DEFAULT_RESPAWN_MILLISECONDS,DEFAULT_RADIUS,DEFAULT_MIN_Z,DEFAULT_MAX_Z)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entities` | `dynamic` | — |  |
-| `playerSpawnIndex` | `dynamic` | — |  |
+| `entities` | `dynamic` | — | Value used by `if entities==void or playerSpawnIndex< -1 then return fail("entities and a valid player spawn index are required") end if`. |
+| `playerSpawnIndex` | `dynamic` | — | Value used by `if entities==void or playerSpawnIndex< -1 then return fail("entities and a valid player spawn index are required") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L44)
 
 - [mq3.client.playable_targets.Hit](Type-mq3-client-playable-targets-hit-1354902781.md) — struct
 <a id="function-function-mq3-client-playable-targets-load-function-load-map-playerspawnindex-src-mq3-client-playable-targets-ml-368232594"></a>
@@ -187,13 +197,15 @@ function fromEntities(entities, playerSpawnIndex)
 function load(map, playerSpawnIndex)
 ```
 
+Calls `mq3.format.bsp.entities`, `mq3.client.playable_targets.fromEntities` from playable targets `load`. The final path returns `fromEntities(entities,playerSpawnIndex)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `playerSpawnIndex` | `dynamic` | — |  |
+| `map` | `dynamic` | — | map record passed to the playable targets helper calls. |
+| `playerSpawnIndex` | `dynamic` | — | Value used by `return fromEntities(entities,playerSpawnIndex)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L65)
 
 <a id="function-function-mq3-client-playable-targets-segmentfraction-function-segmentfraction-startpoint-endpoint-target-radius-minz-maxz-src-mq3-client-playable-targets-ml-691799380"></a>
 ### segmentFraction
@@ -206,15 +218,15 @@ Returns the normalized entry fraction for a segment/AABB hit, or -1 on miss.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `startPoint` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
-| `minZ` | `dynamic` | — |  |
-| `maxZ` | `dynamic` | — |  |
+| `startPoint` | `dynamic` | — | Starting world-space point of the segment or trace. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
+| `target` | `dynamic` | — | Record read through `target.origin`. |
+| `radius` | `dynamic` | — | Radius used by the spatial or visual calculation. |
+| `minZ` | `dynamic` | — | Value used by `if axis==2 then low=target.origin[2]+minZ`. |
+| `maxZ` | `dynamic` | — | Value used by `high=target.origin[2]+maxZ end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L85)
 
 - [mq3.client.playable_targets.State](Type-mq3-client-playable-targets-state-348587645.md) — struct
 - [mq3.client.playable_targets.Target](Type-mq3-client-playable-targets-target-163499649.md) — struct
@@ -229,8 +241,8 @@ Absolute-time motion makes previews and contract captures reproducible.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable playable targets record/storage; this routine assigns `state.lastTime`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L149)

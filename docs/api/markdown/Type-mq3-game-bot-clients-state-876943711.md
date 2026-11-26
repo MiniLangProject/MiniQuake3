@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for bot clients, containing `queue`, `minimumPlayersFn`, `clientBeginFn`, `userinfoFn` and `introSoundFn` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientBeginFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L29)
 
 <a id="field-field-mq3-game-bot-clients-state-dropclientfn-dropclientfn-src-mq3-game-bot-clients-ml-1526805600"></a>
 ### dropClientFn
@@ -32,7 +34,7 @@ dropClientFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L33)
 
 <a id="field-field-mq3-game-bot-clients-state-introsoundfn-introsoundfn-src-mq3-game-bot-clients-ml-801104450"></a>
 ### introSoundFn
@@ -42,7 +44,7 @@ introSoundFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L31)
 
 <a id="field-field-mq3-game-bot-clients-state-minimumplayersfn-minimumplayersfn-src-mq3-game-bot-clients-ml-23649964"></a>
 ### minimumPlayersFn
@@ -52,7 +54,7 @@ minimumPlayersFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L28)
 
 <a id="field-field-mq3-game-bot-clients-state-printfn-printfn-src-mq3-game-bot-clients-ml-2034652340"></a>
 ### printFn
@@ -62,7 +64,7 @@ printFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L32)
 
 <a id="field-field-mq3-game-bot-clients-state-queue-queue-src-mq3-game-bot-clients-ml-317464824"></a>
 ### queue
@@ -72,7 +74,7 @@ queue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L27)
 
 <a id="field-field-mq3-game-bot-clients-state-setupclientfn-setupclientfn-src-mq3-game-bot-clients-ml-2037381100"></a>
 ### setupClientFn
@@ -82,7 +84,7 @@ setupClientFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L34)
 
 <a id="field-field-mq3-game-bot-clients-state-userinfofn-userinfofn-src-mq3-game-bot-clients-ml-488418202"></a>
 ### userinfoFn
@@ -92,4 +94,4 @@ userinfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L30)

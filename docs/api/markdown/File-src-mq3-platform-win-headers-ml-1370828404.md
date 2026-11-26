@@ -65,8 +65,10 @@ const _APS_NO_MFC = 1
 function createGLWState()
 ```
 
+Constructs `mq3.platform.win_headers.GLWState` with `wndproc` = `void`, `hDC` = `void`, `hGLRC` = `void`, `hinstOpenGL` = `void` and the supplied remaining values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L49)
 
 <a id="function-function-mq3-platform-win-headers-createwinvars-function-createwinvars-src-mq3-platform-win-headers-ml-1261099122"></a>
 ### createWinVars
@@ -75,8 +77,10 @@ function createGLWState()
 function createWinVars()
 ```
 
+Constructs `mq3.platform.win_headers.WinVars` with `reflib_library` = `void`, `reflib_active` = `false`, `hWnd` = `void`, `hInstance` = `void` and the supplied remaining values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L53)
 
 <a id="constant-constant-mq3-platform-win-headers-directinput-version-const-directinput-version-768-src-mq3-platform-win-headers-ml-265979630"></a>
 ### DIRECTINPUT_VERSION
@@ -107,7 +111,7 @@ const GLWSTATE_X86_SIZE = 44
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L29)
 
 <a id="function-function-mq3-platform-win-headers-glwstatefieldnames-function-glwstatefieldnames-src-mq3-platform-win-headers-ml-1111318422"></a>
 ### glwStateFieldNames
@@ -116,8 +120,10 @@ const GLWSTATE_X86_SIZE = 44
 function glwStateFieldNames()
 ```
 
+Lists the 11 declared names for `mq3.platform.win_headers.glwStateFieldNames`, including `wndproc`, `hDC`, `hGLRC`, `hinstOpenGL`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L34)
 
 <a id="function-function-mq3-platform-win-headers-glwstatex86offsets-function-glwstatex86offsets-src-mq3-platform-win-headers-ml-1137499630"></a>
 ### glwStateX86Offsets
@@ -126,8 +132,10 @@ function glwStateFieldNames()
 function glwStateX86Offsets()
 ```
 
+Returns `[0,4,8,12,16,20,24,28,32,36,40]` for `mq3.platform.win_headers.glwStateX86Offsets`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L36)
 
 <a id="constant-constant-mq3-platform-win-headers-idb-bitmap1-const-idb-bitmap1-1-src-mq3-platform-win-headers-ml-930198538"></a>
 ### IDB_BITMAP1
@@ -207,7 +215,7 @@ const OSVERSIONINFOA_X86_SIZE = 148
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L31)
 
 <a id="function-function-mq3-platform-win-headers-resourcemacronames-function-resourcemacronames-src-mq3-platform-win-headers-ml-1302118746"></a>
 ### resourceMacroNames
@@ -216,8 +224,10 @@ const OSVERSIONINFOA_X86_SIZE = 148
 function resourceMacroNames()
 ```
 
+Lists the 12 declared names for `mq3.platform.win_headers.resourceMacroNames`, including `IDS_STRING1`, `IDI_ICON1`, `IDB_BITMAP1`, `IDB_BITMAP2`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L44)
 
 <a id="function-function-mq3-platform-win-headers-versionmacronames-function-versionmacronames-src-mq3-platform-win-headers-ml-115312094"></a>
 ### versionMacroNames
@@ -226,8 +236,10 @@ function resourceMacroNames()
 function versionMacroNames()
 ```
 
+Lists the 2 declared names for `mq3.platform.win_headers.versionMacroNames`, including `DIRECTSOUND_VERSION`, `DIRECTINPUT_VERSION`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L46)
 
 <a id="function-function-mq3-platform-win-headers-winlocalfunctionnames-function-winlocalfunctionnames-src-mq3-platform-win-headers-ml-1310857256"></a>
 ### winLocalFunctionNames
@@ -236,8 +248,10 @@ function versionMacroNames()
 function winLocalFunctionNames()
 ```
 
+Lists the 17 declared names for `mq3.platform.win_headers.winLocalFunctionNames`, including `IN_MouseEvent`, `Sys_QueEvent`, `Sys_CreateConsole`, `Sys_DestroyConsole`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L42)
 
 - [mq3.platform.win_headers.WinVars](Type-mq3-platform-win-headers-winvars-1793140258.md) — struct
 <a id="constant-constant-mq3-platform-win-headers-winvars-x86-size-const-winvars-x86-size-176-src-mq3-platform-win-headers-ml-1513613179"></a>
@@ -248,7 +262,7 @@ const WINVARS_X86_SIZE = 176
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L30)
 
 <a id="function-function-mq3-platform-win-headers-winvarsfieldnames-function-winvarsfieldnames-src-mq3-platform-win-headers-ml-206500222"></a>
 ### winVarsFieldNames
@@ -257,8 +271,10 @@ const WINVARS_X86_SIZE = 176
 function winVarsFieldNames()
 ```
 
+Lists the 8 declared names for `mq3.platform.win_headers.winVarsFieldNames`, including `reflib_library`, `reflib_active`, `hWnd`, `hInstance`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L38)
 
 <a id="function-function-mq3-platform-win-headers-winvarsx86offsets-function-winvarsx86offsets-src-mq3-platform-win-headers-ml-717476406"></a>
 ### winVarsX86Offsets
@@ -267,5 +283,7 @@ function winVarsFieldNames()
 function winVarsX86Offsets()
 ```
 
+Returns `[0,4,8,12,16,20,24,172]` for `mq3.platform.win_headers.winVarsX86Offsets`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L40)

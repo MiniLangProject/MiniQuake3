@@ -9,8 +9,10 @@
 struct Call
 ```
 
+`Call` record for syscalls, containing `opcode`, `arguments` and `result`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ arguments
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)
 
 <a id="field-field-mq3-game-syscalls-call-opcode-opcode-src-mq3-game-syscalls-ml-1853550809"></a>
 ### opcode
@@ -32,7 +34,7 @@ opcode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)
 
 <a id="field-field-mq3-game-syscalls-call-result-result-src-mq3-game-syscalls-ml-1958565819"></a>
 ### result
@@ -42,4 +44,4 @@ result
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)

@@ -9,8 +9,10 @@
 struct Bmodel
 ```
 
+Data record for `mq3.renderer.tr_light_runtime.Bmodel`; groups `bounds`, `surfaces`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ bounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-bmodel-surfaces-surfaces-src-mq3-renderer-tr-light-runtime-ml-1142396218"></a>
 ### surfaces
@@ -32,4 +34,4 @@ surfaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L26)

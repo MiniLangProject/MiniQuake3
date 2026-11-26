@@ -28,7 +28,7 @@ function cache()
 SystemConfig_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L24)
 
 <a id="function-function-mq3-client-ui-system-config-event-function-event-menu-id-eventcode-src-mq3-client-ui-system-config-ml-1219833115"></a>
 ### event
@@ -41,12 +41,12 @@ Options_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI system config record/storage; this routine assigns `menu.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_GRAPHICS then menu.actions=menu.actions+["graphics"] else if id==ID_DISPLAY then menu.actions=menu.actions+["display"] else if id==I...`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L35)
 
 <a id="constant-constant-mq3-client-ui-system-config-id-back-const-id-back-14-src-mq3-client-ui-system-config-ml-1826527866"></a>
 ### ID_BACK
@@ -109,10 +109,10 @@ Options_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `connState` | `dynamic` | — |  |
+| `connState` | `dynamic` | — | Value used by `return Menu(true,connState<CA_CONNECTED,items,cache(),[],false)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L27)
 
 <a id="function-function-mq3-client-ui-system-config-item-function-item-id-kind-name-x-y-src-mq3-client-ui-system-config-ml-1478832199"></a>
 ### item
@@ -121,16 +121,18 @@ Options_MenuInit
 function item(id, kind, name, x, y)
 ```
 
+Creates a `mq3.client.ui_system_config.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `id` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `id` | `dynamic` | — | Value used to initialize `Item.id`. |
+| `kind` | `dynamic` | — | Value used to initialize `Item.kind`. |
+| `name` | `dynamic` | — | Value used to initialize `Item.name`. |
+| `x` | `dynamic` | — | Value used to initialize `Item.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Item.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L22)
 
 - [mq3.client.ui_system_config.Item](Type-mq3-client-ui-system-config-item-637978321.md) — struct
 - [mq3.client.ui_system_config.Menu](Type-mq3-client-ui-system-config-menu-1987868637.md) — struct
@@ -145,10 +147,10 @@ UI_SystemConfigMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `connState` | `dynamic` | — |  |
+| `connState` | `dynamic` | — | Value used by `menu=init(connState)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L42)
 
 <a id="constant-constant-mq3-client-ui-system-config-qm-activated-const-qm-activated-3-src-mq3-client-ui-system-config-ml-759578524"></a>
 ### QM_ACTIVATED

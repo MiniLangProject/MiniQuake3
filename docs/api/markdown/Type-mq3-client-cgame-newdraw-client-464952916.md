@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Stores client game newdraw client record, including `infoValid`, `name`, `team`, `health`, `armor`, `teamTask` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 ## Members
 
@@ -22,7 +24,7 @@ armor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-curweapon-curweapon-src-mq3-client-cgame-newdraw-ml-181899886"></a>
 ### curWeapon
@@ -32,7 +34,7 @@ curWeapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-deferred-deferred-src-mq3-client-cgame-newdraw-ml-1484793064"></a>
 ### deferred
@@ -42,7 +44,7 @@ deferred
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-headmodel-headmodel-src-mq3-client-cgame-newdraw-ml-438416622"></a>
 ### headModel
@@ -52,7 +54,7 @@ headModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-headoffset-headoffset-src-mq3-client-cgame-newdraw-ml-1539997268"></a>
 ### headOffset
@@ -62,7 +64,7 @@ headOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-headskin-headskin-src-mq3-client-cgame-newdraw-ml-973376364"></a>
 ### headSkin
@@ -72,7 +74,7 @@ headSkin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-health-health-src-mq3-client-cgame-newdraw-ml-712369014"></a>
 ### health
@@ -82,7 +84,7 @@ health
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-infovalid-infovalid-src-mq3-client-cgame-newdraw-ml-1490855270"></a>
 ### infoValid
@@ -92,7 +94,7 @@ infoValid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-location-location-src-mq3-client-cgame-newdraw-ml-1900883948"></a>
 ### location
@@ -102,7 +104,7 @@ location
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-modelicon-modelicon-src-mq3-client-cgame-newdraw-ml-235116950"></a>
 ### modelIcon
@@ -112,7 +114,7 @@ modelIcon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-name-name-src-mq3-client-cgame-newdraw-ml-529363420"></a>
 ### name
@@ -122,7 +124,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-powerups-powerups-src-mq3-client-cgame-newdraw-ml-388562708"></a>
 ### powerups
@@ -132,7 +134,7 @@ powerups
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-team-team-src-mq3-client-cgame-newdraw-ml-1462325636"></a>
 ### team
@@ -142,7 +144,7 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)
 
 <a id="field-field-mq3-client-cgame-newdraw-client-teamtask-teamtask-src-mq3-client-cgame-newdraw-ml-606130074"></a>
 ### teamTask
@@ -152,4 +154,4 @@ teamTask
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L131)

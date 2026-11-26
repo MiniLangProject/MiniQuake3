@@ -9,8 +9,10 @@
 struct LanServices
 ```
 
+LanServices record for vm.syscall_ui, containing `loadFn`, `saveFn`, `addFn`, `removeFn`, `pingQueueCountFn`, `clearPingFn`, and 12 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ addFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-clearpingfn-clearpingfn-src-mq3-vm-syscall-ui-ml-1712463040"></a>
 ### clearPingFn
@@ -32,7 +34,7 @@ clearPingFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-comparefn-comparefn-src-mq3-vm-syscall-ui-ml-170036912"></a>
 ### compareFn
@@ -42,7 +44,7 @@ compareFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-getpingfn-getpingfn-src-mq3-vm-syscall-ui-ml-144821996"></a>
 ### getPingFn
@@ -52,7 +54,7 @@ getPingFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-getpinginfofn-getpinginfofn-src-mq3-vm-syscall-ui-ml-2127762256"></a>
 ### getPingInfoFn
@@ -62,7 +64,7 @@ getPingInfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-isvisiblefn-isvisiblefn-src-mq3-vm-syscall-ui-ml-537893520"></a>
 ### isVisibleFn
@@ -72,7 +74,7 @@ isVisibleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-loadfn-loadfn-src-mq3-vm-syscall-ui-ml-1273347976"></a>
 ### loadFn
@@ -82,7 +84,7 @@ loadFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-markvisiblefn-markvisiblefn-src-mq3-vm-syscall-ui-ml-897092692"></a>
 ### markVisibleFn
@@ -92,7 +94,7 @@ markVisibleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-pingqueuecountfn-pingqueuecountfn-src-mq3-vm-syscall-ui-ml-1979030624"></a>
 ### pingQueueCountFn
@@ -102,7 +104,7 @@ pingQueueCountFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-removefn-removefn-src-mq3-vm-syscall-ui-ml-1764783040"></a>
 ### removeFn
@@ -112,7 +114,7 @@ removeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-resetpingsfn-resetpingsfn-src-mq3-vm-syscall-ui-ml-1171772400"></a>
 ### resetPingsFn
@@ -122,7 +124,7 @@ resetPingsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-savefn-savefn-src-mq3-vm-syscall-ui-ml-222734518"></a>
 ### saveFn
@@ -132,7 +134,7 @@ saveFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-serveraddressfn-serveraddressfn-src-mq3-vm-syscall-ui-ml-1624090272"></a>
 ### serverAddressFn
@@ -142,7 +144,7 @@ serverAddressFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-servercountfn-servercountfn-src-mq3-vm-syscall-ui-ml-1526235248"></a>
 ### serverCountFn
@@ -152,7 +154,7 @@ serverCountFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-serverinfofn-serverinfofn-src-mq3-vm-syscall-ui-ml-1435850942"></a>
 ### serverInfoFn
@@ -162,7 +164,7 @@ serverInfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-serverpingfn-serverpingfn-src-mq3-vm-syscall-ui-ml-1777555538"></a>
 ### serverPingFn
@@ -172,7 +174,7 @@ serverPingFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-serverstatusfn-serverstatusfn-src-mq3-vm-syscall-ui-ml-1011383898"></a>
 ### serverStatusFn
@@ -182,7 +184,7 @@ serverStatusFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)
 
 <a id="field-field-mq3-vm-syscall-ui-lanservices-updatepingsfn-updatepingsfn-src-mq3-vm-syscall-ui-ml-952556840"></a>
 ### updatePingsFn
@@ -192,4 +194,4 @@ updatePingsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L19)

@@ -9,8 +9,10 @@
 struct WeaponInfo
 ```
 
+`WeaponInfo` record for bot combat ai, containing `number`, `speed`, `offset`, `vspread` and `hspread` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 ## Members
 
@@ -22,7 +24,7 @@ damage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-damagetype-damagetype-src-mq3-game-bot-combat-ai-ml-19354563"></a>
 ### damageType
@@ -32,7 +34,7 @@ damageType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-flags-flags-src-mq3-game-bot-combat-ai-ml-43959305"></a>
 ### flags
@@ -42,7 +44,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-hspread-hspread-src-mq3-game-bot-combat-ai-ml-1686403525"></a>
 ### hspread
@@ -52,7 +54,7 @@ hspread
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-number-number-src-mq3-game-bot-combat-ai-ml-768408947"></a>
 ### number
@@ -62,7 +64,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-offset-offset-src-mq3-game-bot-combat-ai-ml-1738420379"></a>
 ### offset
@@ -72,7 +74,7 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-radius-radius-src-mq3-game-bot-combat-ai-ml-892472349"></a>
 ### radius
@@ -82,7 +84,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-speed-speed-src-mq3-game-bot-combat-ai-ml-1580109653"></a>
 ### speed
@@ -92,7 +94,7 @@ speed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)
 
 <a id="field-field-mq3-game-bot-combat-ai-weaponinfo-vspread-vspread-src-mq3-game-bot-combat-ai-ml-1819039141"></a>
 ### vspread
@@ -102,4 +104,4 @@ vspread
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L68)

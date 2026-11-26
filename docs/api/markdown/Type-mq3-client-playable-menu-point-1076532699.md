@@ -9,8 +9,10 @@
 struct Point
 ```
 
+Stores playable menu point record, including `x`, `y`, `depth`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ depth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
 
 <a id="field-field-mq3-client-playable-menu-point-x-x-src-mq3-client-playable-menu-ml-660664269"></a>
 ### x
@@ -32,7 +34,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
 
 <a id="field-field-mq3-client-playable-menu-point-y-y-src-mq3-client-playable-menu-ml-1740943697"></a>
 ### y
@@ -42,4 +44,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)

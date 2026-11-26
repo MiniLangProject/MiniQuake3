@@ -9,8 +9,10 @@
 struct Submission
 ```
 
+Data record for `mq3.renderer.surface_trails.Submission`; groups `vertices`, `indexes`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ indexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L13)
 
 <a id="field-field-mq3-renderer-surface-trails-submission-vertices-vertices-src-mq3-renderer-surface-trails-ml-1126531515"></a>
 ### vertices
@@ -32,4 +34,4 @@ vertices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L13)

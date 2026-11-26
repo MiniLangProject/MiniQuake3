@@ -15,8 +15,10 @@ Reachable from entry: **no**
 function assemblyNames()
 ```
 
+Lists the assembly names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L61)
 
 <a id="function-function-mq3-client-ui-legacy-abi-assemblyordinals-function-assemblyordinals-src-mq3-client-ui-legacy-abi-ml-666539618"></a>
 ### assemblyOrdinals
@@ -25,8 +27,10 @@ function assemblyNames()
 function assemblyOrdinals()
 ```
 
+Builds the UI legacy ABI `assemblyOrdinals` sequence from `[-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-50,-51,-...`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L63)
 
 <a id="function-function-mq3-client-ui-legacy-abi-keynames-function-keynames-src-mq3-client-ui-legacy-abi-ml-1934923990"></a>
 ### keyNames
@@ -35,8 +39,10 @@ function assemblyOrdinals()
 function keyNames()
 ```
 
+Lists the key names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L35)
 
 <a id="function-function-mq3-client-ui-legacy-abi-localdefinenames-function-localdefinenames-src-mq3-client-ui-legacy-abi-ml-1693254478"></a>
 ### localDefineNames
@@ -45,8 +51,10 @@ function keyNames()
 function localDefineNames()
 ```
 
+Lists the local define names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L45)
 
 <a id="function-function-mq3-client-ui-legacy-abi-localfunctionnames-function-localfunctionnames-src-mq3-client-ui-legacy-abi-ml-824908366"></a>
 ### localFunctionNames
@@ -55,8 +63,10 @@ function localDefineNames()
 function localFunctionNames()
 ```
 
+Lists the local function names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L49)
 
 <a id="function-function-mq3-client-ui-legacy-abi-localglobalnames-function-localglobalnames-src-mq3-client-ui-legacy-abi-ml-759068018"></a>
 ### localGlobalNames
@@ -65,8 +75,10 @@ function localFunctionNames()
 function localGlobalNames()
 ```
 
+Lists the local global names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L51)
 
 <a id="function-function-mq3-client-ui-legacy-abi-localtypenames-function-localtypenames-src-mq3-client-ui-legacy-abi-ml-2010001786"></a>
 ### localTypeNames
@@ -75,8 +87,10 @@ function localGlobalNames()
 function localTypeNames()
 ```
 
+Lists the local type names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L47)
 
 <a id="function-function-mq3-client-ui-legacy-abi-publicexportnames-function-publicexportnames-src-mq3-client-ui-legacy-abi-ml-320723092"></a>
 ### publicExportNames
@@ -85,8 +99,10 @@ function localTypeNames()
 function publicExportNames()
 ```
 
+Lists the public export names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L41)
 
 <a id="function-function-mq3-client-ui-legacy-abi-publicimportnames-function-publicimportnames-src-mq3-client-ui-legacy-abi-ml-1426024578"></a>
 ### publicImportNames
@@ -95,8 +111,10 @@ function publicExportNames()
 function publicImportNames()
 ```
 
+Lists the public import names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L37)
 
 <a id="function-function-mq3-client-ui-legacy-abi-publicmenunames-function-publicmenunames-src-mq3-client-ui-legacy-abi-ml-618232530"></a>
 ### publicMenuNames
@@ -105,8 +123,10 @@ function publicImportNames()
 function publicMenuNames()
 ```
 
+Lists the public menu names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L39)
 
 <a id="function-function-mq3-client-ui-legacy-abi-publicsortnames-function-publicsortnames-src-mq3-client-ui-legacy-abi-ml-2063130492"></a>
 ### publicSortNames
@@ -115,8 +135,10 @@ function publicMenuNames()
 function publicSortNames()
 ```
 
+Lists the public sort names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L43)
 
 <a id="function-function-mq3-client-ui-legacy-abi-shareddefinenames-function-shareddefinenames-src-mq3-client-ui-legacy-abi-ml-1619953890"></a>
 ### sharedDefineNames
@@ -125,8 +147,10 @@ function publicSortNames()
 function sharedDefineNames()
 ```
 
+Lists the shared define names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L53)
 
 <a id="function-function-mq3-client-ui-legacy-abi-sharedfunctionnames-function-sharedfunctionnames-src-mq3-client-ui-legacy-abi-ml-446164136"></a>
 ### sharedFunctionNames
@@ -135,8 +159,10 @@ function sharedDefineNames()
 function sharedFunctionNames()
 ```
 
+Lists the shared function names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L57)
 
 <a id="function-function-mq3-client-ui-legacy-abi-sharedglobalnames-function-sharedglobalnames-src-mq3-client-ui-legacy-abi-ml-1124407474"></a>
 ### sharedGlobalNames
@@ -145,8 +171,10 @@ function sharedFunctionNames()
 function sharedGlobalNames()
 ```
 
+Lists the shared global names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L59)
 
 <a id="function-function-mq3-client-ui-legacy-abi-sharedtypenames-function-sharedtypenames-src-mq3-client-ui-legacy-abi-ml-679722676"></a>
 ### sharedTypeNames
@@ -155,8 +183,10 @@ function sharedGlobalNames()
 function sharedTypeNames()
 ```
 
+Lists the shared type names catalog for UI legacy ABI in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L55)
 
 <a id="constant-constant-mq3-client-ui-legacy-abi-sort-clients-const-sort-clients-2-src-mq3-client-ui-legacy-abi-ml-308876087"></a>
 ### SORT_CLIENTS
@@ -425,5 +455,7 @@ const UIMENU_TEAM = 5
 function utilHasRuntimeCode()
 ```
 
+Reads `false` for UI legacy ABI `utilHasRuntimeCode`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L49)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_legacy_abi.ml#L65)

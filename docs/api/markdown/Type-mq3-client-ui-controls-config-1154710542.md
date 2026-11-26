@@ -9,8 +9,10 @@
 struct Config
 ```
 
+Stores UI controls config record, including `name`, `defaultValue`, `value`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L99)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 ## Members
 
@@ -22,7 +24,7 @@ defaultValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 <a id="field-field-mq3-client-ui-controls-config-name-name-src-mq3-client-ui-controls-ml-2044538401"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 <a id="field-field-mq3-client-ui-controls-config-value-value-src-mq3-client-ui-controls-ml-89467935"></a>
 ### value
@@ -42,4 +44,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)

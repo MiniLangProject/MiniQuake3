@@ -20,19 +20,21 @@ Reachable from entry: **no**
 function action(boundary, kind, text, x, y, style, cursorChar, retailActive)
 ```
 
+Creates a `mq3.client.ui_mfield.HostAction` record. Assigns `boundary` from `boundary`, `kind` from `kind`, `text` from `text`, `x` from `x`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `cursorChar` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `boundary` | `dynamic` | — | Value used to initialize `HostAction.boundary`. |
+| `kind` | `dynamic` | — | Value used to initialize `HostAction.kind`. |
+| `text` | `dynamic` | — | Value used to initialize `HostAction.text`. |
+| `x` | `dynamic` | — | Value used to initialize `HostAction.x`. |
+| `y` | `dynamic` | — | Value used to initialize `HostAction.y`. |
+| `style` | `dynamic` | — | Value used to initialize `HostAction.style`. |
+| `cursorChar` | `dynamic` | — | Value used to initialize `HostAction.cursorChar`. |
+| `retailActive` | `dynamic` | — | Value used to initialize `HostAction.dispatched`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L37)
 
 <a id="function-function-mq3-client-ui-mfield-byteat-function-byteat-text-index-src-mq3-client-ui-mfield-ml-782235583"></a>
 ### byteAt
@@ -41,13 +43,15 @@ function action(boundary, kind, text, x, y, style, cursorChar, retailActive)
 function byteAt(text, index)
 ```
 
+Computes `bytes(text)[index]` for UI mfield `byteAt`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `byteAt` in the UI mfield path. |
+| `index` | `dynamic` | — | Value used by `return bytes(text)[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L49)
 
 <a id="function-function-mq3-client-ui-mfield-bytetext-function-bytetext-value-src-mq3-client-ui-mfield-ml-124348911"></a>
 ### byteText
@@ -56,12 +60,14 @@ function byteAt(text, index)
 function byteText(value)
 ```
 
+Calls `decode` from UI mfield `byteText`. The final path returns `decode(bytes(data))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `c=value&255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L45)
 
 <a id="function-function-mq3-client-ui-mfield-clamp-function-clamp-value-low-high-src-mq3-client-ui-mfield-ml-848353643"></a>
 ### clamp
@@ -70,14 +76,16 @@ function byteText(value)
 function clamp(value, low, high)
 ```
 
+Clamps `value` to the inclusive bounds `low` and `high` for UI mfield.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `low` | `dynamic` | — |  |
-| `high` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<low`, `value>high` before the calculation continues. |
+| `low` | `dynamic` | — | Lower bound used for comparison or clamping. |
+| `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L42)
 
 - [mq3.client.ui_mfield.DrawResult](Type-mq3-client-ui-mfield-drawresult-1748749990.md) — struct
 <a id="function-function-mq3-client-ui-mfield-eraseat-function-eraseat-text-index-src-mq3-client-ui-mfield-ml-795001741"></a>
@@ -87,13 +95,15 @@ function clamp(value, low, high)
 function eraseAt(text, index)
 ```
 
+Calls `decode`, `slice` from UI mfield `eraseAt`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `eraseAt` in the UI mfield path. |
+| `index` | `dynamic` | — | Value tested by `index<0 or index>=len(data)`, `index>0` and additional values before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L53)
 
 <a id="function-function-mq3-client-ui-mfield-field-function-field-widthinchars-maxchars-src-mq3-client-ui-mfield-ml-412473143"></a>
 ### field
@@ -102,13 +112,15 @@ function eraseAt(text, index)
 function field(widthInChars, maxchars)
 ```
 
+Creates a `mq3.client.ui_mfield.Field` record. Assigns `widthInChars` from `widthInChars`, `maxchars` from `maxchars`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `widthInChars` | `dynamic` | — |  |
-| `maxchars` | `dynamic` | — |  |
+| `widthInChars` | `dynamic` | — | Value used to initialize `Field.widthInChars`. |
+| `maxchars` | `dynamic` | — | Value used to initialize `Field.maxchars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L27)
 
 - [mq3.client.ui_mfield.Field](Type-mq3-client-ui-mfield-field-685654459.md) — struct
 - [mq3.client.ui_mfield.HostAction](Type-mq3-client-ui-mfield-hostaction-2004169545.md) — struct
@@ -119,14 +131,16 @@ function field(widthInChars, maxchars)
 function insertAt(text, index, value)
 ```
 
+Calls `mq3.client.ui_mfield.clamp`, `decode`, `slice` and additional helpers from UI mfield `insertAt`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `insertAt` in the UI mfield path. |
+| `index` | `dynamic` | — | Value tested by `index>0`, `index<len(data)` before the calculation continues. |
+| `value` | `dynamic` | — | Value used by `result=result+byteText(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L60)
 
 <a id="constant-constant-mq3-client-ui-mfield-k-ctrl-const-k-ctrl-137-src-mq3-client-ui-mfield-ml-1601910630"></a>
 ### K_CTRL
@@ -170,11 +184,11 @@ MenuField_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.flags`, `value.parentCursor`, `value.menuPosition`, `value.left` and additional values. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L162)
 
 <a id="function-function-mq3-client-ui-mfield-menufield-init-function-menufield-init-value-src-mq3-client-ui-mfield-ml-941020919"></a>
 ### MenuField_Init
@@ -187,10 +201,10 @@ MenuField_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI mfield record/storage; this routine assigns `value.left`, `value.top`, `value.right`, `value.bottom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L155)
 
 <a id="function-function-mq3-client-ui-mfield-menufield-key-function-menufield-key-value-key-shiftdown-ctrldown-clipboard-src-mq3-client-ui-mfield-ml-1582699447"></a>
 ### MenuField_Key
@@ -203,14 +217,14 @@ MenuField_Key
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `shiftDown` | `dynamic` | — |  |
-| `ctrlDown` | `dynamic` | — |  |
-| `clipboard` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.flags`, `value.field`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI mfield entry. |
+| `shiftDown` | `dynamic` | — | Value used by `MField_KeyDownEvent(value.field,key,shiftDown,ctrlDown,clipboard)`. |
+| `ctrlDown` | `dynamic` | — | Value used by `MField_KeyDownEvent(value.field,key,shiftDown,ctrlDown,clipboard)`. |
+| `clipboard` | `dynamic` | — | Value used by `if key==22 then MField_Paste(value.field,clipboard) else MField_CharEvent(value.field,key) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L175)
 
 - [mq3.client.ui_mfield.MenuKeyResult](Type-mq3-client-ui-mfield-menukeyresult-1480895852.md) — struct
 <a id="function-function-mq3-client-ui-mfield-mfield-charevent-function-mfield-charevent-edit-ch-src-mq3-client-ui-mfield-ml-2099227415"></a>
@@ -224,11 +238,11 @@ MField_CharEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `edit` | `dynamic` | — |  |
-| `ch` | `dynamic` | — |  |
+| `edit` | `dynamic` | — | Mutable UI mfield record/storage; this routine assigns `edit.buffer`, `edit.cursor`, `edit.scroll`. |
+| `ch` | `dynamic` | — | Value used by `if ch==22 then return MField_Paste(edit,edit.clipboard) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L129)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-clear-function-mfield-clear-edit-src-mq3-client-ui-mfield-ml-80018126"></a>
 ### MField_Clear
@@ -241,10 +255,10 @@ MField_Clear
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `edit` | `dynamic` | — |  |
+| `edit` | `dynamic` | — | Mutable UI mfield record/storage; this routine assigns `edit.buffer`, `edit.cursor`, `edit.scroll`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L151)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-draw-function-mfield-draw-edit-x-y-style-color-retailactive-src-mq3-client-ui-mfield-ml-588987808"></a>
 ### MField_Draw
@@ -257,15 +271,15 @@ MField_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `edit` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `edit` | `dynamic` | — | Mutable UI mfield record/storage; this routine assigns `edit.scroll`, `edit.actions`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `MField_Draw`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `MField_Draw`. |
+| `style` | `dynamic` | — | Value used by `actions=[action("renderer","draw-string",visible,x,y,style,0,retailActive)]`. |
+| `color` | `dynamic` | — | Accepted for compatibility with `MField_Draw`; the current implementation does not read it. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L78)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-keydownevent-function-mfield-keydownevent-edit-key-shiftdown-ctrldown-clipboard-src-mq3-client-ui-mfield-ml-470677984"></a>
 ### MField_KeyDownEvent
@@ -278,14 +292,14 @@ MField_KeyDownEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `edit` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `shiftDown` | `dynamic` | — |  |
-| `ctrlDown` | `dynamic` | — |  |
-| `clipboard` | `dynamic` | — |  |
+| `edit` | `dynamic` | — | Mutable UI mfield record/storage; this routine assigns `edit.clipboard`, `edit.buffer`, `edit.cursor`, `edit.scroll` and additional values. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI mfield entry. |
+| `shiftDown` | `dynamic` | — | Value used by `if (key==qmenu.K_INS or key==qmenu.K_KP_INS) and shiftDown then MField_Paste(edit,clipboard)`. |
+| `ctrlDown` | `dynamic` | — | Value used by `if key==qmenu.K_HOME or key==qmenu.K_KP_HOME or (lower==97 and ctrlDown) then edit.cursor=0`. |
+| `clipboard` | `dynamic` | — | Value assigned to `edit.clipboard`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L112)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-paste-function-mfield-paste-edit-clipboard-src-mq3-client-ui-mfield-ml-1699824490"></a>
 ### MField_Paste
@@ -298,11 +312,11 @@ MField_Paste
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `edit` | `dynamic` | — |  |
-| `clipboard` | `dynamic` | — |  |
+| `edit` | `dynamic` | — | Mutable UI mfield record/storage; this routine assigns `edit.clipboard`, `edit.actions`. |
+| `clipboard` | `dynamic` | — | Value assigned to `edit.clipboard`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L102)
 
 <a id="function-function-mq3-client-ui-mfield-overwriteat-function-overwriteat-text-index-value-src-mq3-client-ui-mfield-ml-86910328"></a>
 ### overwriteAt
@@ -311,11 +325,13 @@ MField_Paste
 function overwriteAt(text, index, value)
 ```
 
+Calls `mq3.client.ui_mfield.byteText`, `decode`, `slice` from UI mfield `overwriteAt`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `overwriteAt` in the UI mfield path. |
+| `index` | `dynamic` | — | Value tested by `index>=len(data)`, `index>0` and additional values before the calculation continues. |
+| `value` | `dynamic` | — | Value used by `if index>=len(data) then return text+byteText(value) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L67)

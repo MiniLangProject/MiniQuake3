@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for spawn, containing `level`, `parser`, `vars`, `chars` and `spawning` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ chars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L24)
 
 <a id="field-field-mq3-game-spawn-state-configstrings-configstrings-src-mq3-game-spawn-ml-924136966"></a>
 ### configstrings
@@ -32,7 +34,7 @@ configstrings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L32)
 
 <a id="field-field-mq3-game-spawn-state-context-context-src-mq3-game-spawn-ml-1052179182"></a>
 ### context
@@ -42,7 +44,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L36)
 
 <a id="field-field-mq3-game-spawn-state-cvars-cvars-src-mq3-game-spawn-ml-1460890690"></a>
 ### cvars
@@ -52,7 +54,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L33)
 
 <a id="field-field-mq3-game-spawn-state-dowarmup-dowarmup-src-mq3-game-spawn-ml-670989984"></a>
 ### doWarmup
@@ -62,7 +64,7 @@ doWarmup
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L29)
 
 <a id="field-field-mq3-game-spawn-state-effectfn-effectfn-src-mq3-game-spawn-ml-1560426596"></a>
 ### effectFn
@@ -72,7 +74,7 @@ effectFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L35)
 
 <a id="field-field-mq3-game-spawn-state-gametype-gametype-src-mq3-game-spawn-ml-1520557542"></a>
 ### gametype
@@ -82,7 +84,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L26)
 
 <a id="field-field-mq3-game-spawn-state-gravity-gravity-src-mq3-game-spawn-ml-1821007022"></a>
 ### gravity
@@ -92,7 +94,7 @@ gravity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L31)
 
 <a id="field-field-mq3-game-spawn-state-level-level-src-mq3-game-spawn-ml-561133950"></a>
 ### level
@@ -102,7 +104,7 @@ level
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L21)
 
 <a id="field-field-mq3-game-spawn-state-missionpack-missionpack-src-mq3-game-spawn-ml-67507054"></a>
 ### missionpack
@@ -112,7 +114,7 @@ missionpack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L37)
 
 <a id="field-field-mq3-game-spawn-state-motd-motd-src-mq3-game-spawn-ml-568724278"></a>
 ### motd
@@ -122,7 +124,7 @@ motd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L27)
 
 <a id="field-field-mq3-game-spawn-state-parser-parser-src-mq3-game-spawn-ml-658388312"></a>
 ### parser
@@ -132,7 +134,7 @@ parser
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L22)
 
 <a id="field-field-mq3-game-spawn-state-portalsequence-portalsequence-src-mq3-game-spawn-ml-1771310088"></a>
 ### portalSequence
@@ -142,7 +144,7 @@ portalSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L39)
 
 <a id="field-field-mq3-game-spawn-state-restarted-restarted-src-mq3-game-spawn-ml-1666469422"></a>
 ### restarted
@@ -152,7 +154,7 @@ restarted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L28)
 
 <a id="field-field-mq3-game-spawn-state-singleplayer-singleplayer-src-mq3-game-spawn-ml-815665272"></a>
 ### singlePlayer
@@ -162,7 +164,7 @@ singlePlayer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L38)
 
 <a id="field-field-mq3-game-spawn-state-spawning-spawning-src-mq3-game-spawn-ml-1023825780"></a>
 ### spawning
@@ -172,7 +174,7 @@ spawning
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L25)
 
 <a id="field-field-mq3-game-spawn-state-unportedfn-unportedfn-src-mq3-game-spawn-ml-1429421584"></a>
 ### unportedFn
@@ -182,7 +184,7 @@ unportedFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L34)
 
 <a id="field-field-mq3-game-spawn-state-vars-vars-src-mq3-game-spawn-ml-618426110"></a>
 ### vars
@@ -192,7 +194,7 @@ vars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L23)
 
 <a id="field-field-mq3-game-spawn-state-warmuptime-warmuptime-src-mq3-game-spawn-ml-798730888"></a>
 ### warmupTime
@@ -202,4 +204,4 @@ warmupTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn.ml#L30)

@@ -9,8 +9,10 @@
 struct MenuSlider
 ```
 
+Stores UI local menu slider record, including `generic`, `minvalue`, `maxvalue`, `curvalue`, `range`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L64)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 ## Members
 
@@ -22,7 +24,7 @@ curvalue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 <a id="field-field-mq3-client-ui-local-menuslider-generic-generic-src-mq3-client-ui-local-ml-522411841"></a>
 ### generic
@@ -32,7 +34,7 @@ generic
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 <a id="field-field-mq3-client-ui-local-menuslider-maxvalue-maxvalue-src-mq3-client-ui-local-ml-271081931"></a>
 ### maxvalue
@@ -42,7 +44,7 @@ maxvalue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 <a id="field-field-mq3-client-ui-local-menuslider-minvalue-minvalue-src-mq3-client-ui-local-ml-943755631"></a>
 ### minvalue
@@ -52,7 +54,7 @@ minvalue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 <a id="field-field-mq3-client-ui-local-menuslider-range-range-src-mq3-client-ui-local-ml-1535234457"></a>
 ### range
@@ -62,4 +64,4 @@ range
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)

@@ -9,8 +9,10 @@
 struct Source
 ```
 
+Source record for vm.pc_parser, containing `name`, `data`, `offset`, `line`, `pending`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 <a id="field-field-mq3-vm-pc-parser-source-line-line-src-mq3-vm-pc-parser-ml-1002664268"></a>
 ### line
@@ -32,7 +34,7 @@ line
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 <a id="field-field-mq3-vm-pc-parser-source-name-name-src-mq3-vm-pc-parser-ml-25264426"></a>
 ### name
@@ -42,7 +44,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 <a id="field-field-mq3-vm-pc-parser-source-offset-offset-src-mq3-vm-pc-parser-ml-2073326118"></a>
 ### offset
@@ -52,7 +54,7 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 <a id="field-field-mq3-vm-pc-parser-source-pending-pending-src-mq3-vm-pc-parser-ml-1179340956"></a>
 ### pending
@@ -62,4 +64,4 @@ pending
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)

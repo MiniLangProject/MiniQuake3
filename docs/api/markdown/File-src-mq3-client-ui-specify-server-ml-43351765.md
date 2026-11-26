@@ -18,7 +18,7 @@ function cache()
 SpecifyServer_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L20)
 
 <a id="function-function-mq3-client-ui-specify-server-event-function-event-menu-id-eventcode-src-mq3-client-ui-specify-server-ml-1885597373"></a>
 ### event
@@ -31,12 +31,12 @@ SpecifyServer_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI specify server record/storage; this routine assigns `menu.commands`, `menu.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_SPECIFYSERVERGO and eventCode==QM_ACTIVATED and menu.domain!="" then address=menu.domain`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-specify-server-id-specifyserverback-const-id-specifyserverback-102-src-mq3-client-ui-specify-server-ml-1187946114"></a>
 ### ID_SPECIFYSERVERBACK
@@ -68,7 +68,7 @@ function init()
 SpecifyServer_MenuInit
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L22)
 
 <a id="function-function-mq3-client-ui-specify-server-open-function-open-src-mq3-client-ui-specify-server-ml-635926742"></a>
 ### open
@@ -80,7 +80,7 @@ function open()
 UI_SpecifyServerMenu
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-specify-server-qm-activated-const-qm-activated-3-src-mq3-client-ui-specify-server-ml-207779720"></a>
 ### QM_ACTIVATED

@@ -9,8 +9,10 @@
 struct Item
 ```
 
+Stores UI servers2 menu item, including `id`, `kind`, `name`, `x`, `y`, `fallback`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)
 
 ## Members
 
@@ -22,7 +24,7 @@ fallback
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)
 
 <a id="field-field-mq3-client-ui-servers2-item-id-id-src-mq3-client-ui-servers2-ml-767842824"></a>
 ### id
@@ -32,7 +34,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)
 
 <a id="field-field-mq3-client-ui-servers2-item-kind-kind-src-mq3-client-ui-servers2-ml-515430030"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)
 
 <a id="field-field-mq3-client-ui-servers2-item-name-name-src-mq3-client-ui-servers2-ml-645407764"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)
 
 <a id="field-field-mq3-client-ui-servers2-item-x-x-src-mq3-client-ui-servers2-ml-138743578"></a>
 ### x
@@ -62,7 +64,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)
 
 <a id="field-field-mq3-client-ui-servers2-item-y-y-src-mq3-client-ui-servers2-ml-869263174"></a>
 ### y
@@ -72,4 +74,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)

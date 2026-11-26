@@ -9,8 +9,10 @@
 struct Static
 ```
 
+Static record for server.init_runtime, containing `initialized`, `clients`, `numSnapshotEntities`, `snapshotEntities`, `nextSnapshotEntities`, `snapFlagServerBit`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
 
 ## Members
 
@@ -22,7 +24,7 @@ clients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
 
 <a id="field-field-mq3-server-init-runtime-static-initialized-initialized-src-mq3-server-init-runtime-ml-1542305779"></a>
 ### initialized
@@ -32,7 +34,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
 
 <a id="field-field-mq3-server-init-runtime-static-nextsnapshotentities-nextsnapshotentities-src-mq3-server-init-runtime-ml-1375935835"></a>
 ### nextSnapshotEntities
@@ -42,7 +44,7 @@ nextSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
 
 <a id="field-field-mq3-server-init-runtime-static-numsnapshotentities-numsnapshotentities-src-mq3-server-init-runtime-ml-1696753323"></a>
 ### numSnapshotEntities
@@ -52,7 +54,7 @@ numSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
 
 <a id="field-field-mq3-server-init-runtime-static-snapflagserverbit-snapflagserverbit-src-mq3-server-init-runtime-ml-1718528279"></a>
 ### snapFlagServerBit
@@ -62,7 +64,7 @@ snapFlagServerBit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
 
 <a id="field-field-mq3-server-init-runtime-static-snapshotentities-snapshotentities-src-mq3-server-init-runtime-ml-876367109"></a>
 ### snapshotEntities
@@ -72,7 +74,7 @@ snapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
 
 <a id="field-field-mq3-server-init-runtime-static-time-time-src-mq3-server-init-runtime-ml-1684806625"></a>
 ### time
@@ -82,4 +84,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)

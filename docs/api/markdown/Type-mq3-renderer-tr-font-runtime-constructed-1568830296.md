@@ -9,8 +9,10 @@
 struct Constructed
 ```
 
+Data record for `mq3.renderer.tr_font_runtime.Constructed`; groups `glyph`, `x`, `y`, `maxHeight`, `placed`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ glyph
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-maxheight-maxheight-src-mq3-renderer-tr-font-runtime-ml-433747089"></a>
 ### maxHeight
@@ -32,7 +34,7 @@ maxHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-placed-placed-src-mq3-renderer-tr-font-runtime-ml-1352626207"></a>
 ### placed
@@ -42,7 +44,7 @@ placed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-x-x-src-mq3-renderer-tr-font-runtime-ml-211921669"></a>
 ### x
@@ -52,7 +54,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-constructed-y-y-src-mq3-renderer-tr-font-runtime-ml-601515305"></a>
 ### y
@@ -62,4 +64,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L28)

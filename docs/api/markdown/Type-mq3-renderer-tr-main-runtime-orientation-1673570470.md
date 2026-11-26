@@ -9,8 +9,10 @@
 struct Orientation
 ```
 
+Data record for `mq3.renderer.tr_main_runtime.Orientation`; groups `origin`, `axis`, `viewOrigin`, `modelMatrix`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-orientation-modelmatrix-modelmatrix-src-mq3-renderer-tr-main-runtime-ml-825074491"></a>
 ### modelMatrix
@@ -32,7 +34,7 @@ modelMatrix
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-orientation-origin-origin-src-mq3-renderer-tr-main-runtime-ml-438882523"></a>
 ### origin
@@ -42,7 +44,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-orientation-vieworigin-vieworigin-src-mq3-renderer-tr-main-runtime-ml-487546373"></a>
 ### viewOrigin
@@ -52,4 +54,4 @@ viewOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)

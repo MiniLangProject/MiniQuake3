@@ -9,8 +9,10 @@
 struct Md3XyzNormal
 ```
 
+Md3XyzNormal record for format.qfiles, containing `xyz`, `normal`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
 
 ## Members
 
@@ -22,7 +24,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
 
 <a id="field-field-mq3-format-qfiles-md3xyznormal-xyz-xyz-src-mq3-format-qfiles-ml-490617709"></a>
 ### xyz
@@ -32,4 +34,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)

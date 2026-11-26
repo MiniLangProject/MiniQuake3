@@ -121,12 +121,14 @@ const CHAT_GENDERMALE = 2
 function clearBot(bot)
 ```
 
+Update `bot.inuse`, `bot.client`, `bot.entitynum` and `bot.settings` and related state during `clearBot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `bot` | `dynamic` | — |  |
+| `bot` | `dynamic` | — | Bot AI state; accesses `inuse`, `client`, `entitynum`, `settings` and `curPs` and related fields. May update `bot.inuse`, `bot.client` and `bot.entitynum` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L166)
 
 <a id="function-function-mq3-game-bot-client-resources-create-function-create-state-src-mq3-game-bot-client-resources-ml-2106990309"></a>
 ### create
@@ -135,12 +137,14 @@ function clearBot(bot)
 function create(state)
 ```
 
+Build the `mq3.game.bot_client_resources.Services` result for `create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Initial value stored in `mq3.game.bot_client_resources.Services.lifecycleState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L65)
 
 <a id="function-function-mq3-game-bot-client-resources-diagnostic-function-diagnostic-services-kind-client-settings-src-mq3-game-bot-client-resources-ml-694697962"></a>
 ### diagnostic
@@ -149,15 +153,17 @@ function create(state)
 function diagnostic(services, kind, client, settings)
 ```
 
+Use `services.diagnosticFn` to perform `diagnostic`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `settings` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `diagnosticFn`. |
+| `kind` | `dynamic` | — | Value passed as argument 2 to `services.diagnosticFn`. |
+| `client` | `dynamic` | — | Value passed as argument 3 to `services.diagnosticFn`. |
+| `settings` | `dynamic` | — | Value passed as argument 4 to `services.diagnosticFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L91)
 
 <a id="function-function-mq3-game-bot-client-resources-inactivebot-function-inactivebot-client-src-mq3-game-bot-client-resources-ml-259645317"></a>
 ### inactiveBot
@@ -166,12 +172,14 @@ function diagnostic(services, kind, client, settings)
 function inactiveBot(client)
 ```
 
+Apply `mq3.game.bot_lifecycle.createBot` while evaluating `inactiveBot`. Return paths include `bot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Initial value stored in `mq3.game.bot_lifecycle.BotState.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L98)
 
 <a id="function-function-mq3-game-bot-client-resources-need-function-need-callback-label-src-mq3-game-bot-client-resources-ml-237431995"></a>
 ### need
@@ -180,13 +188,15 @@ function inactiveBot(client)
 function need(callback, label)
 ```
 
+Require a callback used to allocate or release bot client resources.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `callback` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `callback` | `dynamic` | — | Callback invoked by this operation. |
+| `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L81)
 
 - [mq3.game.bot_client_resources.Services](Type-mq3-game-bot-client-resources-services-676364621.md) — struct
 - [mq3.game.bot_client_resources.Settings](Type-mq3-game-bot-client-resources-settings-533718480.md) — struct
@@ -197,15 +207,17 @@ function need(callback, label)
 function setupClient(services, client, settings, restart)
 ```
 
+Use `services.characteristicStringFn` to perform `setupClient`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `settings` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `lifecycleState`, `aasInitializedFn`, `loadCharacterFn`, `allocGoalStateFn` and `characteristicStringFn` and related fields. |
+| `client` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
+| `settings` | `dynamic` | — | Settings record; accesses `characterfile`, `skill` and `team`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L107)
 
 <a id="function-function-mq3-game-bot-client-resources-shutdownclient-function-shutdownclient-services-client-restart-src-mq3-game-bot-client-resources-ml-2124841046"></a>
 ### shutdownClient
@@ -214,14 +226,16 @@ function setupClient(services, client, settings, restart)
 function shutdownClient(services, client, restart)
 ```
 
+Apply `mq3.game.bot_client_resources.validClient`, `mq3.game.bot_client_resources.need` and `mq3.game.bot_client_resources.clearBot` while evaluating `shutdownClient`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `lifecycleState`, `writeSessionFn`, `chatExitGameFn`, `enterChatFn` and `freeMoveStateFn` and related fields. |
+| `client` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L177)
 
 <a id="function-function-mq3-game-bot-client-resources-validclient-function-validclient-client-src-mq3-game-bot-client-resources-ml-128060471"></a>
 ### validClient
@@ -230,9 +244,11 @@ function shutdownClient(services, client, restart)
 function validClient(client)
 ```
 
+Require an integer bot client slot within the fixed bot-client capacity.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Value passed as argument 1 to `typeof`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L73)

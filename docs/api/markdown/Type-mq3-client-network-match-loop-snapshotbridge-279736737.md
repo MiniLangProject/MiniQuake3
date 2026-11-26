@@ -9,8 +9,10 @@
 struct SnapshotBridge
 ```
 
+Stores network match loop snapshot bridge record, including `runtimeState`, `delegate`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ delegate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L21)
 
 <a id="field-field-mq3-client-network-match-loop-snapshotbridge-runtimestate-runtimestate-src-mq3-client-network-match-loop-ml-1862263768"></a>
 ### runtimeState
@@ -32,4 +34,4 @@ runtimeState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L21)

@@ -29,13 +29,15 @@ const BIG_INFO_STRING = 8192
 function create(commandState, configstrings)
 ```
 
+Creates the reliable server-command consumer with a 64-command ring and validates the configstring table capacity.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commandState` | `dynamic` | — |  |
-| `configstrings` | `dynamic` | — |  |
+| `commandState` | `dynamic` | — | commandState record passed to the server command stream helper calls. |
+| `configstrings` | `dynamic` | — | Sequence whose length/content is inspected by `create`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L41)
 
 <a id="constant-constant-mq3-client-server-command-stream-cs-systeminfo-const-cs-systeminfo-1-src-mq3-client-server-command-stream-ml-88308008"></a>
 ### CS_SYSTEMINFO
@@ -54,14 +56,16 @@ const CS_SYSTEMINFO = 1
 function get(state, host, number)
 ```
 
+Consumes a numbered reliable command, assembles bcs fragments, updates configstrings and handles disconnect/map-restart/levelshot commands.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable server command stream record/storage; this routine assigns `state.lastExecuted`, `state.bigConfigString`. |
+| `host` | `dynamic` | — | Optional callbacks for configstrings, system-info changes, map-restart cleanup and local levelshot commands. |
+| `number` | `dynamic` | — | Reliable sequence to consume; commands beyond the received sequence are rejected, and expired ring entries fail outside demo playback. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L93)
 
 <a id="constant-constant-mq3-client-server-command-stream-max-configstrings-const-max-configstrings-1024-src-mq3-client-server-command-stream-ml-1424815438"></a>
 ### MAX_CONFIGSTRINGS
@@ -90,13 +94,15 @@ const MAX_RELIABLE_COMMANDS = 64
 function queue(state, text)
 ```
 
+Appends a reliable server command to the sequence ring and returns its assigned sequence number.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable server command stream record/storage; this routine assigns `state.commandSequence`, `state.commands[state.commandSequence&(MAX_RELIABLE_COMMANDS-1)]`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `queue` in the server command stream path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L51)
 
 <a id="function-function-mq3-client-server-command-stream-services-function-services-src-mq3-client-server-command-stream-ml-35372526"></a>
 ### services
@@ -105,8 +111,10 @@ function queue(state, text)
 function services()
 ```
 
+Creates a `mq3.client.server_command_stream.Services` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L37)
 
 - [mq3.client.server_command_stream.Services](Type-mq3-client-server-command-stream-services-921509293.md) — struct
 <a id="function-function-mq3-client-server-command-stream-setsequence-function-setsequence-state-sequence-commands-src-mq3-client-server-command-stream-ml-926277336"></a>
@@ -116,14 +124,16 @@ function services()
 function setSequence(state, sequence, commands)
 ```
 
+Copies a validated external reliable-command ring and its current sequence into the consumer state.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `sequence` | `dynamic` | — |  |
-| `commands` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable server command stream record/storage; this routine assigns `state.commandSequence`, `state.commands[index]`. |
+| `sequence` | `dynamic` | — | Value assigned to `state.commandSequence`. |
+| `commands` | `dynamic` | — | Mutable sequence; this routine writes `commands[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L62)
 
 - [mq3.client.server_command_stream.State](Type-mq3-client-server-command-stream-state-1716556974.md) — struct
 <a id="function-function-mq3-client-server-command-stream-toolong-function-toolong-prefix-value-extra-src-mq3-client-server-command-stream-ml-564194421"></a>
@@ -133,14 +143,16 @@ function setSequence(state, sequence, commands)
 function tooLong(prefix, value, extra)
 ```
 
+Checks whether a configstring fragment plus reserved terminator space reaches the BIG_INFO_STRING byte limit.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `prefix` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `extra` | `dynamic` | — |  |
+| `prefix` | `dynamic` | — | Value used by `return len(bytes(prefix))+len(bytes(value))+extra>=BIG_INFO_STRING`. |
+| `value` | `dynamic` | — | Value used by `return len(bytes(prefix))+len(bytes(value))+extra>=BIG_INFO_STRING`. |
+| `extra` | `dynamic` | — | Additional bytes reserved for quoting or termination when testing the 8,192-byte configstring limit. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L85)
 
 <a id="function-function-mq3-client-server-command-stream-updateconfigstring-function-updateconfigstring-state-host-src-mq3-client-server-command-stream-ml-2004200445"></a>
 ### updateConfigstring
@@ -149,10 +161,12 @@ function tooLong(prefix, value, extra)
 function updateConfigstring(state, host)
 ```
 
+Applies the tokenized configstring command and notifies configstring/system-info callbacks as required.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable server command stream record/storage; this routine assigns `state.configstrings[index]`. |
+| `host` | `dynamic` | — | Record read through `host.configstringFn`, `host.context`, `host.systemInfoFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L72)

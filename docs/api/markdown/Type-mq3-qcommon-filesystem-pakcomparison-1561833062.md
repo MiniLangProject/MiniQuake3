@@ -9,8 +9,10 @@
 struct PakComparison
 ```
 
+PakComparison record for qcommon.filesystem, containing `needed`, `text`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L363)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L491)
 
 ## Members
 
@@ -22,7 +24,7 @@ needed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L492)
 
 <a id="field-field-mq3-qcommon-filesystem-pakcomparison-text-text-src-mq3-qcommon-filesystem-ml-1009633194"></a>
 ### text
@@ -32,4 +34,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L365)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L493)

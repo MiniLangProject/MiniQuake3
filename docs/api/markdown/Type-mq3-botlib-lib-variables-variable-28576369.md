@@ -9,8 +9,10 @@
 struct Variable
 ```
 
+`Variable` record for lib variables, containing `name`, `value`, `numericValue` and `modified`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
 
 ## Members
 
@@ -22,7 +24,7 @@ modified
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
 
 <a id="field-field-mq3-botlib-lib-variables-variable-name-name-src-mq3-botlib-lib-variables-ml-558440259"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
 
 <a id="field-field-mq3-botlib-lib-variables-variable-numericvalue-numericvalue-src-mq3-botlib-lib-variables-ml-241231353"></a>
 ### numericValue
@@ -42,7 +44,7 @@ numericValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)
 
 <a id="field-field-mq3-botlib-lib-variables-variable-value-value-src-mq3-botlib-lib-variables-ml-1099349429"></a>
 ### value
@@ -52,4 +54,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L8)

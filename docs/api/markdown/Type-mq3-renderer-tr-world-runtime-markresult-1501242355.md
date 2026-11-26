@@ -9,8 +9,10 @@
 struct MarkResult
 ```
 
+Data record for `mq3.renderer.tr_world_runtime.MarkResult`; groups `changed`, `cluster`, `visCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ changed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L31)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-markresult-cluster-cluster-src-mq3-renderer-tr-world-runtime-ml-1550977291"></a>
 ### cluster
@@ -32,7 +34,7 @@ cluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L31)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-markresult-viscount-viscount-src-mq3-renderer-tr-world-runtime-ml-1868187605"></a>
 ### visCount
@@ -42,4 +44,4 @@ visCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L31)

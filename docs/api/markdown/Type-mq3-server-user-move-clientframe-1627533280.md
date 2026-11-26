@@ -9,8 +9,10 @@
 struct ClientFrame
 ```
 
+ClientFrame record for server.user_move, containing `messageAcked`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L16)
 
 ## Members
 
@@ -22,4 +24,4 @@ messageAcked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L16)

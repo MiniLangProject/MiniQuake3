@@ -85,12 +85,14 @@ const CACHETYPE_PORTAL = 0
 function clampEpairLength(length)
 ```
 
+Clamp epair text length to the available key buffer while reserving a terminating byte.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `length` | `dynamic` | — |  |
+| `length` | `dynamic` | — | Operand used to evaluate the returned expression `length`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L150)
 
 <a id="function-function-mq3-botlib-internal-headers-constantnames-function-constantnames-src-mq3-botlib-internal-headers-ml-1403361236"></a>
 ### constantNames
@@ -99,8 +101,10 @@ function clampEpairLength(length)
 function constantNames()
 ```
 
+Return the ordered constant names table for internal headers: 110 entries beginning with `"MAX_EPAIRKEY"` and `"MAX_CLIENTS"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L120)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L124)
 
 <a id="function-function-mq3-botlib-internal-headers-constantvalues-function-constantvalues-src-mq3-botlib-internal-headers-ml-83244008"></a>
 ### constantValues
@@ -109,8 +113,10 @@ function constantNames()
 function constantValues()
 ```
 
+Return the ordered constant values table for internal headers: 110 entries beginning with `MAX_EPAIRKEY` and `MAX_CLIENTS`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L121)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L126)
 
 <a id="constant-constant-mq3-botlib-internal-headers-cs-models-const-cs-models-96-src-mq3-botlib-internal-headers-ml-1815904920"></a>
 ### CS_MODELS
@@ -149,8 +155,10 @@ const CS_SOUNDS = 352
 function declarationNames()
 ```
 
+Return the ordered declaration names table for internal headers: 227 entries beginning with `"AAS_LoadBSPFile"` and `"AAS_DumpBSPData"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L123)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L130)
 
 <a id="constant-constant-mq3-botlib-internal-headers-define-fixed-const-define-fixed-1-src-mq3-botlib-internal-headers-ml-1412860890"></a>
 ### DEFINE_FIXED
@@ -169,8 +177,10 @@ const DEFINE_FIXED = 1
 function fieldNames()
 ```
 
+Return the ordered field names table for internal headers: 236 entries beginning with `"aas_stringindex_t.numindexes"` and `"aas_stringindex_t.index"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L125)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L134)
 
 <a id="constant-constant-mq3-botlib-internal-headers-ft-array-const-ft-array-256-src-mq3-botlib-internal-headers-ml-1564518496"></a>
 ### FT_ARRAY
@@ -269,8 +279,10 @@ const FT_UNSIGNED = 1024
 function globalNames()
 ```
 
+Return a new array `["aasworld","aassettings","botlibglobals","botimport","bot_developer"]` for `globalNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L124)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L132)
 
 <a id="function-function-mq3-botlib-internal-headers-headercounts-function-headercounts-src-mq3-botlib-internal-headers-ml-1538667708"></a>
 ### headerCounts
@@ -279,8 +291,10 @@ function globalNames()
 function headerCounts()
 ```
 
+Return a new array `[22,119,110,25,227,5,236]` for `headerCounts`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L127)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L138)
 
 <a id="function-function-mq3-botlib-internal-headers-headernames-function-headernames-src-mq3-botlib-internal-headers-ml-2067531418"></a>
 ### headerNames
@@ -289,8 +303,10 @@ function headerCounts()
 function headerNames()
 ```
 
+Return the ordered header names table for internal headers: 22 entries beginning with `"be_aas_bsp.h"` and `"be_aas_cluster.h"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L117)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L118)
 
 <a id="constant-constant-mq3-botlib-internal-headers-indent-elif-const-indent-elif-4-src-mq3-botlib-internal-headers-ml-253109529"></a>
 ### INDENT_ELIF
@@ -349,8 +365,10 @@ const INDENT_IFNDEF = 16
 function macroNames()
 ```
 
+Return the ordered macro names table for internal headers: 119 entries beginning with `"MAX_EPAIRKEY"` and `"AAS_DEBUG"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L119)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L122)
 
 <a id="constant-constant-mq3-botlib-internal-headers-max-clients-const-max-clients-64-src-mq3-botlib-internal-headers-ml-486605827"></a>
 ### MAX_CLIENTS
@@ -459,8 +477,10 @@ const MAX_WEIGHTS = 128
 function ownershipMappings()
 ```
 
+Return the ordered ownership mappings table for internal headers: 22 entries beginning with `"be_aas_bsp.h=aas_bspq3,aas_client_trace"` and `"be_aas_cluster.h=aas_clustering"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L118)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L120)
 
 <a id="constant-constant-mq3-botlib-internal-headers-p-add-const-p-add-29-src-mq3-botlib-internal-headers-ml-124485962"></a>
 ### P_ADD
@@ -1209,8 +1229,10 @@ const TT_UNSIGNED = 16384
 function typeNames()
 ```
 
+Return the ordered type names table for internal headers: 25 entries beginning with `"aas_stringindex_t"` and `"aas_link_t"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L122)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L128)
 
 <a id="function-function-mq3-botlib-internal-headers-validcachetype-function-validcachetype-value-src-mq3-botlib-internal-headers-ml-355947681"></a>
 ### validCacheType
@@ -1219,12 +1241,14 @@ function typeNames()
 function validCacheType(value)
 ```
 
+Test `value==CACHETYPE_PORTAL or value==CACHETYPE_AREA` as the condition for `validCacheType`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value==CACHETYPE_PORTAL or value==CACHETYPE_AREA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L141)
 
 <a id="function-function-mq3-botlib-internal-headers-validfieldtype-function-validfieldtype-value-src-mq3-botlib-internal-headers-ml-430790441"></a>
 ### validFieldType
@@ -1233,12 +1257,14 @@ function validCacheType(value)
 function validFieldType(value)
 ```
 
+Check whether the masked structure-field type is char, integer, float, string or nested structure.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `validFieldType` in `base=value&FT_TYPE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L147)
 
 <a id="function-function-mq3-botlib-internal-headers-validtokentype-function-validtokentype-value-src-mq3-botlib-internal-headers-ml-2071267469"></a>
 ### validTokenType
@@ -1247,12 +1273,14 @@ function validFieldType(value)
 function validTokenType(value)
 ```
 
+Test `value>=TT_STRING and value<=TT_PUNCTUATION` as the condition for `validTokenType`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value>=TT_STRING and value<=TT_PUNCTUATION`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L144)
 
 <a id="constant-constant-mq3-botlib-internal-headers-wt-balance-const-wt-balance-1-src-mq3-botlib-internal-headers-ml-1194750278"></a>
 ### WT_BALANCE
@@ -1271,5 +1299,7 @@ const WT_BALANCE = 1
 function x86AbiSizes()
 ```
 
+Return a new array `[8,24,24,56,148,156,64,40,12,8,8,4580,32,8,1092,16,32,16,3152,1040,12,1072,2160,28,8]` for `x86AbiSizes`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L126)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/internal_headers.ml#L136)

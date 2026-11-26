@@ -9,8 +9,10 @@
 struct EndFrameCommand
 ```
 
+Data record for `mq3.renderer.tr_local.EndFrameCommand`; groups `commandId`, `buffer`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L65)
 
 ## Members
 
@@ -22,7 +24,7 @@ buffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L65)
 
 <a id="field-field-mq3-renderer-tr-local-endframecommand-commandid-commandid-src-mq3-renderer-tr-local-ml-756927076"></a>
 ### commandId
@@ -32,4 +34,4 @@ commandId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L65)

@@ -9,8 +9,10 @@
 struct UploadPlan
 ```
 
+Data record for `mq3.renderer.image_registry.UploadPlan`; groups `uploadWidth`, `uploadHeight`, `internalFormat`, `samples`, `lightMap`, `levels`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ internalFormat
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)
 
 <a id="field-field-mq3-renderer-image-registry-uploadplan-levels-levels-src-mq3-renderer-image-registry-ml-2118588157"></a>
 ### levels
@@ -32,7 +34,7 @@ levels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)
 
 <a id="field-field-mq3-renderer-image-registry-uploadplan-lightmap-lightmap-src-mq3-renderer-image-registry-ml-2122690187"></a>
 ### lightMap
@@ -42,7 +44,7 @@ lightMap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)
 
 <a id="field-field-mq3-renderer-image-registry-uploadplan-samples-samples-src-mq3-renderer-image-registry-ml-1098423143"></a>
 ### samples
@@ -52,7 +54,7 @@ samples
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)
 
 <a id="field-field-mq3-renderer-image-registry-uploadplan-uploadheight-uploadheight-src-mq3-renderer-image-registry-ml-506237379"></a>
 ### uploadHeight
@@ -62,7 +64,7 @@ uploadHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)
 
 <a id="field-field-mq3-renderer-image-registry-uploadplan-uploadwidth-uploadwidth-src-mq3-renderer-image-registry-ml-1941700179"></a>
 ### uploadWidth
@@ -72,4 +74,4 @@ uploadWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L27)

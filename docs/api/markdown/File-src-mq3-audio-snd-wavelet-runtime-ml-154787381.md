@@ -30,14 +30,16 @@ const BLOCK_SAMPLES = 2048
 function daub4(values, size, isign)
 ```
 
+Return `mq3.audio.snd_compressed_paint.daub4(values, size, (isign < 0))` from `audio.snd_wavelet_runtime.daub4`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `isign` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Values passed as `values` to `mq3.audio.snd_compressed_paint.daub4`. |
+| `size` | `dynamic` | — | Size passed as `size` to `mq3.audio.snd_compressed_paint.daub4`. |
+| `isign` | `dynamic` | — | Isign used in `(isign < 0)` and `compressed.daub4(values, size, (isign < 0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L30)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-decodemulaw-function-decodemulaw-block-src-mq3-audio-snd-wavelet-runtime-ml-1733318407"></a>
 ### decodeMuLaw
@@ -46,12 +48,16 @@ function daub4(values, size, isign)
 function decodeMuLaw(block)
 ```
 
+Decode mu law in audio.snd_wavelet_runtime; the normal completion returns `result`.
+
+Validation failures include `decodeMuLaw: invalid block`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `block` | `dynamic` | — |  |
+| `block` | `dynamic` | — | Record exposing `data`, `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L106)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-decodewavelet-function-decodewavelet-block-src-mq3-audio-snd-wavelet-runtime-ml-252284991"></a>
 ### decodeWavelet
@@ -60,12 +66,14 @@ function decodeMuLaw(block)
 function decodeWavelet(block)
 ```
 
+Return `mq3.audio.snd_compressed_paint.waveletDecode(block.data, block.size)` from `audio.snd_wavelet_runtime.decodeWavelet`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `block` | `dynamic` | — |  |
+| `block` | `dynamic` | — | Record exposing `data`, `size`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L85)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-encodemulaw-function-encodemulaw-samples-src-mq3-audio-snd-wavelet-runtime-ml-749433873"></a>
 ### encodeMuLaw
@@ -74,12 +82,16 @@ function decodeWavelet(block)
 function encodeMuLaw(samples)
 ```
 
+Encode mu law in audio.snd_wavelet_runtime; the normal completion returns `compressed.Compressed(compressed.METHOD_MULAW, blocks, len(samples))`.
+
+Validation failures include `encodeMuLaw: samples are required`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `samples` | `dynamic` | — |  |
+| `samples` | `dynamic` | — | Samples used in `len(samples)` and `(samples == void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L91)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-encodewavelet-function-encodewavelet-samples-src-mq3-audio-snd-wavelet-runtime-ml-441856937"></a>
 ### encodeWavelet
@@ -88,12 +100,16 @@ function encodeMuLaw(samples)
 function encodeWavelet(samples)
 ```
 
+Encode wavelet in audio.snd_wavelet_runtime; the normal completion returns `compressed.Compressed(compressed.METHOD_WAVELET, blocks, len(samples))`.
+
+Validation failures include `encodeWavelet: samples are required`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `samples` | `dynamic` | — |  |
+| `samples` | `dynamic` | — | Samples passed as `samples` to `mq3.audio.snd_wavelet_runtime.slicePadded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L71)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-mulawdecode-function-mulawdecode-value-src-mq3-audio-snd-wavelet-runtime-ml-744168419"></a>
 ### MuLawDecode
@@ -102,12 +118,14 @@ function encodeWavelet(samples)
 function MuLawDecode(value)
 ```
 
+Return `mq3.audio.snd_compressed_paint.muLawDecode(value)` from `audio.snd_wavelet_runtime.MuLawDecode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.audio.snd_compressed_paint.muLawDecode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L25)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-mulawencode-function-mulawencode-sample-src-mq3-audio-snd-wavelet-runtime-ml-581901890"></a>
 ### MuLawEncode
@@ -116,12 +134,14 @@ function MuLawDecode(value)
 function MuLawEncode(sample)
 ```
 
+Compute mu law encode in audio.snd_wavelet_runtime; the normal completion returns `(~ ((sign | (exponent << 4)) | mantissa) & 255)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sample` | `dynamic` | — |  |
+| `sample` | `dynamic` | — | Sample used in `(sample >= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L15)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-nxputc-function-nxputc-stream-outputbyte-src-mq3-audio-snd-wavelet-runtime-ml-553805591"></a>
 ### NXPutc
@@ -130,13 +150,18 @@ function MuLawEncode(sample)
 function NXPutc(stream, outputByte)
 ```
 
+Update `stream.data`, `stream.count` in audio.snd_wavelet_runtime.
+
+Validation failures include `NXPutc: stream is required`.
+Direct state writes: `stream.data`, `stream.count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `stream` | `dynamic` | — |  |
-| `outputByte` | `dynamic` | — |  |
+| `stream` | `dynamic` | — | Record exposing `data`, `count`. Updated in place: `data`, `count`. |
+| `outputByte` | `dynamic` | — | Output byte used in `(outputByte & 255)` and `(stream.data + [(outputByte & 255)])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L52)
 
 <a id="function-function-mq3-audio-snd-wavelet-runtime-slicepadded-function-slicepadded-samples-offset-count-src-mq3-audio-snd-wavelet-runtime-ml-468828931"></a>
 ### slicePadded
@@ -145,14 +170,16 @@ function NXPutc(stream, outputByte)
 function slicePadded(samples, offset, count)
 ```
 
+Compute slice padded in audio.snd_wavelet_runtime; the normal completion returns `values`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `samples` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `samples` | `dynamic` | — | Samples used in `len(samples)` and `samples[(offset + index)]`. |
+| `offset` | `dynamic` | — | Offset used in `(offset + index)` and `samples[(offset + index)]`. |
+| `count` | `dynamic` | — | Count used in `(count - 1)` and `array(count, 0.0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L61)
 
 - [mq3.audio.snd_wavelet_runtime.Stream](Type-mq3-audio-snd-wavelet-runtime-stream-1314189679.md) — struct
 <a id="function-function-mq3-audio-snd-wavelet-runtime-wt1-function-wt1-values-size-isign-src-mq3-audio-snd-wavelet-runtime-ml-824933317"></a>
@@ -162,11 +189,15 @@ function slicePadded(samples, offset, count)
 function wt1(values, size, isign)
 ```
 
+Compute wt 1 in audio.snd_wavelet_runtime; the normal completion returns `values`.
+
+Validation failures include `wt1: invalid extent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `isign` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Values passed as `values` to `mq3.audio.snd_compressed_paint.daub4`. |
+| `size` | `dynamic` | — | Size used in `(size < 0)` and `(size >> 2)`. |
+| `isign` | `dynamic` | — | Isign used in `(isign >= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L38)

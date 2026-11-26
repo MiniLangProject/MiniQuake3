@@ -517,8 +517,10 @@ const CHARACTERISTIC_WEAPONWEIGHTS = 3
 function characteristicValues()
 ```
 
+Return the ordered characteristic values table for game headers: 49 entries beginning with `CHARACTERISTIC_NAME` and `CHARACTERISTIC_GENDER`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L355)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L359)
 
 <a id="constant-constant-mq3-game-game-headers-contents-areaportal-const-contents-areaportal-32768-src-mq3-game-game-headers-ml-2104766841"></a>
 ### CONTENTS_AREAPORTAL
@@ -1073,8 +1075,10 @@ const CTF_TEAM_BONUS = 0
 function EC()
 ```
 
+Return `EC_CODE` for `EC`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L351)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L352)
 
 <a id="constant-constant-mq3-game-game-headers-ec-code-const-ec-code-25-src-mq3-game-game-headers-ml-1413084828"></a>
 ### EC_CODE
@@ -1143,8 +1147,10 @@ const FORMATION = 5
 function headerCounts()
 ```
 
+Return a new array `[44,115,49,11,94,19]` for `headerCounts`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L359)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L367)
 
 <a id="constant-constant-mq3-game-game-headers-inventory-ammoregen-const-inventory-ammoregen-44-src-mq3-game-game-headers-ml-1418296467"></a>
 ### INVENTORY_AMMOREGEN
@@ -1625,8 +1631,10 @@ const INVENTORY_TELEPORTER = 30
 function inventoryValues()
 ```
 
+Return the ordered inventory values table for game headers: 115 entries beginning with `INVENTORY_NONE` and `INVENTORY_ARMOR`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L354)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L357)
 
 <a id="constant-constant-mq3-game-game-headers-item-const-item-3-src-mq3-game-game-headers-ml-1497059714"></a>
 ### ITEM
@@ -1655,8 +1663,10 @@ const KEYAREA = 5
 function matchValues()
 ```
 
+Return the ordered match values table for game headers: 94 entries beginning with `MTCONTEXT_MISC` and `MTCONTEXT_INITIALTEAMCHAT`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L357)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L363)
 
 <a id="constant-constant-mq3-game-game-headers-message-const-message-2-src-mq3-game-game-headers-ml-329821939"></a>
 ### MESSAGE
@@ -3227,8 +3237,10 @@ const SURF_SLICK = 2
 function surfaceValues()
 ```
 
+Return the ordered surface values table for game headers: 44 entries beginning with `CONTENTS_SOLID` and `CONTENTS_LAVA`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L353)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L355)
 
 <a id="function-function-mq3-game-game-headers-synonymcontextvalues-function-synonymcontextvalues-src-mq3-game-game-headers-ml-2117646542"></a>
 ### synonymContextValues
@@ -3237,8 +3249,10 @@ function surfaceValues()
 function synonymContextValues()
 ```
 
+Return the ordered synonym context values table for game headers: 11 entries beginning with `CONTEXT_ALL` and `CONTEXT_NORMAL`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L356)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L361)
 
 <a id="constant-constant-mq3-game-game-headers-teammate-const-teammate-4-src-mq3-game-game-headers-ml-262827399"></a>
 ### TEAMMATE
@@ -3267,8 +3281,10 @@ const TEAMNAME = 4
 function teamValues()
 ```
 
+Return the ordered team values table for game headers: 19 entries beginning with `CTF_CAPTURE_BONUS` and `CTF_TEAM_BONUS`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L358)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_headers.ml#L365)
 
 <a id="constant-constant-mq3-game-game-headers-the-enemy-const-the-enemy-7-src-mq3-game-game-headers-ml-1255953114"></a>
 ### THE_ENEMY

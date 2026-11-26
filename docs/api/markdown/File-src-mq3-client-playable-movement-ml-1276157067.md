@@ -22,12 +22,14 @@ Reachable from entry: **yes**
 function clampDelta(milliseconds)
 ```
 
+Evaluates playable movement `clampDelta` and returns `0`, `MAX_FRAME_MILLISECONDS`, `milliseconds` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `milliseconds` | `dynamic` | — |  |
+| `milliseconds` | `dynamic` | — | Time interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L67)
 
 - [mq3.client.playable_movement.Controller](Type-mq3-client-playable-movement-controller-1211553373.md) — struct
 <a id="function-function-mq3-client-playable-movement-create-function-create-world-position-src-mq3-client-playable-movement-ml-1844321705"></a>
@@ -37,13 +39,15 @@ function clampDelta(milliseconds)
 function create(world, position)
 ```
 
+Calls `mq3.client.playable_movement.createWithTrace` from playable movement `create`. The final path returns `createWithTrace(worldTrace,world,position)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
+| `world` | `dynamic` | — | world record passed to the playable movement helper calls. |
+| `position` | `dynamic` | — | Value used by `return createWithTrace(worldTrace,world,position)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L60)
 
 <a id="function-function-mq3-client-playable-movement-createwithtrace-function-createwithtrace-tracefn-context-position-src-mq3-client-playable-movement-ml-586476505"></a>
 ### createWithTrace
@@ -52,14 +56,16 @@ function create(world, position)
 function createWithTrace(traceFn, context, position)
 ```
 
+Calls `mq3.client.playable_movement.validPosition`, `mq3.game.movement.create`, `mq3.compat.numeric.f32` and additional helpers from playable movement `createWithTrace`. The final path returns `Controller(motion,false,false)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `traceFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
+| `traceFn` | `dynamic` | — | Collision-trace callback used to test the requested movement or visibility segment. |
+| `context` | `dynamic` | — | context record passed to the playable movement helper calls. |
+| `position` | `dynamic` | — | Sequence read at `position[0]`, `position[1]`, `position[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L47)
 
 <a id="constant-constant-mq3-client-playable-movement-gravity-const-gravity-800-src-mq3-client-playable-movement-ml-1882356315"></a>
 ### GRAVITY
@@ -98,12 +104,14 @@ const GROUND_PROBE = 0.25
 function groundCheck(controller)
 ```
 
+Updates `controller.grounded` during playable movement `groundCheck`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `controller` | `dynamic` | — |  |
+| `controller` | `dynamic` | — | Mutable playable movement record/storage; this routine assigns `controller.grounded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L75)
 
 <a id="function-function-mq3-client-playable-movement-isgrounded-function-isgrounded-controller-src-mq3-client-playable-movement-ml-412399066"></a>
 ### isGrounded
@@ -112,12 +120,14 @@ function groundCheck(controller)
 function isGrounded(controller)
 ```
 
+Reads `controller.grounded` for playable movement `isGrounded`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `controller` | `dynamic` | — |  |
+| `controller` | `dynamic` | — | Record read through `controller.grounded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L180)
 
 <a id="constant-constant-mq3-client-playable-movement-jump-velocity-const-jump-velocity-270-src-mq3-client-playable-movement-ml-1898330130"></a>
 ### JUMP_VELOCITY
@@ -156,12 +166,14 @@ const PLAYER_MASK = 33619969
 function position(controller)
 ```
 
+Reads `controller.motion.origin` for playable movement `position`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `controller` | `dynamic` | — |  |
+| `controller` | `dynamic` | — | Record read through `controller.motion.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L174)
 
 <a id="constant-constant-mq3-client-playable-movement-speed-const-speed-320-src-mq3-client-playable-movement-ml-135381032"></a>
 ### SPEED
@@ -180,17 +192,19 @@ const SPEED = 320
 function step(controller, yaw, forwardInput, rightInput, jumpDown, deltaMilliseconds)
 ```
 
+Updates `controller.jumpHeld` during playable movement `step`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `controller` | `dynamic` | — |  |
-| `yaw` | `dynamic` | — |  |
-| `forwardInput` | `dynamic` | — |  |
-| `rightInput` | `dynamic` | — |  |
-| `jumpDown` | `dynamic` | — |  |
-| `deltaMilliseconds` | `dynamic` | — |  |
+| `controller` | `dynamic` | — | Mutable playable movement record/storage; this routine assigns `controller.jumpHeld`. |
+| `yaw` | `dynamic` | — | Value used by `result=substep(controller,yaw,forwardInput,rightInput,jumpPressed,slice)`. |
+| `forwardInput` | `dynamic` | — | Value used by `forwardInput=numeric.f32(forwardInput)`. |
+| `rightInput` | `dynamic` | — | Value used by `rightInput=numeric.f32(rightInput)`. |
+| `jumpDown` | `dynamic` | — | Value assigned to `controller.jumpHeld`. |
+| `deltaMilliseconds` | `dynamic` | — | Elapsed simulation interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L145)
 
 <a id="function-function-mq3-client-playable-movement-substep-function-substep-controller-yaw-forwardinput-rightinput-jumppressed-milliseconds-src-mq3-client-playable-movement-ml-943181992"></a>
 ### substep
@@ -199,17 +213,19 @@ function step(controller, yaw, forwardInput, rightInput, jumpDown, deltaMillisec
 function substep(controller, yaw, forwardInput, rightInput, jumpPressed, milliseconds)
 ```
 
+Updates `controller.grounded` during playable movement `substep`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `controller` | `dynamic` | — |  |
-| `yaw` | `dynamic` | — |  |
-| `forwardInput` | `dynamic` | — |  |
-| `rightInput` | `dynamic` | — |  |
-| `jumpPressed` | `dynamic` | — |  |
-| `milliseconds` | `dynamic` | — |  |
+| `controller` | `dynamic` | — | Mutable playable movement record/storage; this routine assigns `controller.grounded`. |
+| `yaw` | `dynamic` | — | Value used by `wish=wishDirection(yaw,forwardInput,rightInput)`. |
+| `forwardInput` | `dynamic` | — | Value used by `wish=wishDirection(yaw,forwardInput,rightInput)`. |
+| `rightInput` | `dynamic` | — | Value used by `wish=wishDirection(yaw,forwardInput,rightInput)`. |
+| `jumpPressed` | `dynamic` | — | Value used by `if jumpPressed and controller.grounded then`. |
+| `milliseconds` | `dynamic` | — | Time interval in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L119)
 
 <a id="constant-constant-mq3-client-playable-movement-substep-milliseconds-const-substep-milliseconds-8-src-mq3-client-playable-movement-ml-1056671623"></a>
 ### SUBSTEP_MILLISECONDS
@@ -228,12 +244,14 @@ const SUBSTEP_MILLISECONDS = 8
 function validPosition(position)
 ```
 
+Computes `typeof(position)=="array" and len(position)==3` for playable movement `validPosition`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `position` | `dynamic` | — |  |
+| `position` | `dynamic` | — | Sequence whose length/content is inspected by `validPosition`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L39)
 
 <a id="function-function-mq3-client-playable-movement-velocity-function-velocity-controller-src-mq3-client-playable-movement-ml-47175174"></a>
 ### velocity
@@ -242,12 +260,14 @@ function validPosition(position)
 function velocity(controller)
 ```
 
+Reads `controller.motion.velocity` for playable movement `velocity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `controller` | `dynamic` | — |  |
+| `controller` | `dynamic` | — | Record read through `controller.motion.velocity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L177)
 
 <a id="function-function-mq3-client-playable-movement-wishdirection-function-wishdirection-yaw-forwardinput-rightinput-src-mq3-client-playable-movement-ml-2061540662"></a>
 ### wishDirection
@@ -256,14 +276,16 @@ function velocity(controller)
 function wishDirection(yaw, forwardInput, rightInput)
 ```
 
+Calls `mq3.shared.math.AngleVectors`, `mq3.compat.numeric.f32`, `mq3.compat.numeric.fadd` and additional helpers from playable movement `wishDirection`. The final path returns `[wish,numeric.fmul(SPEED,length)]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `yaw` | `dynamic` | — |  |
-| `forwardInput` | `dynamic` | — |  |
-| `rightInput` | `dynamic` | — |  |
+| `yaw` | `dynamic` | — | Value used by `axes=qmath.AngleVectors([0.0,numeric.f32(yaw),0.0])`. |
+| `forwardInput` | `dynamic` | — | Value used by `wish=[numeric.fadd(numeric.fmul(forwardInput,axes[0][0]),numeric.fmul(rightInput,axes[1][0])),numeric.fadd(numeric.fmul(forwardInput,axes[0][1...`. |
+| `rightInput` | `dynamic` | — | Value used by `wish=[numeric.fadd(numeric.fmul(forwardInput,axes[0][0]),numeric.fmul(rightInput,axes[1][0])),numeric.fadd(numeric.fmul(forwardInput,axes[0][1...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L102)
 
 <a id="function-function-mq3-client-playable-movement-worldtrace-function-worldtrace-state-startpoint-endpoint-src-mq3-client-playable-movement-ml-1928580074"></a>
 ### worldTrace
@@ -272,11 +294,13 @@ function wishDirection(yaw, forwardInput, rightInput)
 function worldTrace(state, startPoint, endPoint)
 ```
 
+Calls `mq3.collision.world.boxTrace`, `mq3.game.movement.Collision` from playable movement `worldTrace`. The final path returns `movement.Collision(hit.trace,hit.endpos,entity)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `startPoint` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.context`, `state.mins`, `state.maxs`, `state.mask`. |
+| `startPoint` | `dynamic` | — | Starting world-space point of the segment or trace. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L30)

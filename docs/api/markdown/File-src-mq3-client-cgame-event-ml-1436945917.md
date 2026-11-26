@@ -20,22 +20,24 @@ Reachable from entry: **yes**
 function action(boundary, kind, entity, channel, parm, origin, origin2, weapon, other, text, dispatched)
 ```
 
+Creates a `mq3.client.cgame_event.Action` record. Assigns `boundary` from `boundary`, `kind` from `kind`, `entity` from `entity`, `channel` from `channel`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `parm` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `origin2` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `dispatched` | `dynamic` | — |  |
+| `boundary` | `dynamic` | — | Value used to initialize `Action.boundary`. |
+| `kind` | `dynamic` | — | Value used to initialize `Action.kind`. |
+| `entity` | `dynamic` | — | Value used to initialize `Action.entity`. |
+| `channel` | `dynamic` | — | Value used to initialize `Action.channel`. |
+| `parm` | `dynamic` | — | Value used to initialize `Action.parm`. |
+| `origin` | `dynamic` | — | Value used to initialize `Action.origin`. |
+| `origin2` | `dynamic` | — | Value used to initialize `Action.origin2`. |
+| `weapon` | `dynamic` | — | Value used to initialize `Action.weapon`. |
+| `other` | `dynamic` | — | Value used to initialize `Action.other`. |
+| `text` | `dynamic` | — | Value used to initialize `Action.text`. |
+| `dispatched` | `dynamic` | — | Value used to initialize `Action.dispatched`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L47)
 
 - [mq3.client.cgame_event.Action](Type-mq3-client-cgame-event-action-1706863217.md) — struct
 <a id="function-function-mq3-client-cgame-event-appendaction-function-appendaction-value-result-boundary-kind-entity-channel-parm-origin-origin2-weapon-other-text-emit-src-mq3-client-cgame-event-ml-1273572526"></a>
@@ -45,24 +47,26 @@ function action(boundary, kind, entity, channel, parm, origin, origin2, weapon, 
 function appendAction(value, result, boundary, kind, entity, channel, parm, origin, origin2, weapon, other, text, emit)
 ```
 
+Updates `value.audio`, `value.render`, `value.hud`, `value.stateActions` and additional values during client game event `appendAction`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `parm` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `origin2` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `value.audio`, `value.render`, `value.hud`, `value.stateActions` and additional values. |
+| `result` | `dynamic` | — | Value used by `result=result+[item]`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `entity` | `dynamic` | — | Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`. |
+| `channel` | `dynamic` | — | Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`. |
+| `parm` | `dynamic` | — | Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `origin2` | `dynamic` | — | Second world-space endpoint of the effect. |
+| `weapon` | `dynamic` | — | Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`. |
+| `other` | `dynamic` | — | Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `appendAction` in the client game event path. |
+| `emit` | `dynamic` | — | Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L64)
 
 <a id="function-function-mq3-client-cgame-event-audio-function-audio-value-result-kind-entity-channel-parm-origin-emit-src-mq3-client-cgame-event-ml-1193229795"></a>
 ### audio
@@ -71,19 +75,21 @@ function appendAction(value, result, boundary, kind, entity, channel, parm, orig
 function audio(value, result, kind, entity, channel, parm, origin, emit)
 ```
 
+Adapts `mq3.client.cgame_event.appendAction` to client game event `audio`, returning its result for `value, result, "audio", kind, entity, channel, parm, origin, void, 0, 0, "", emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `parm` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 of `mq3.client.cgame_event.appendAction`. |
+| `result` | `dynamic` | — | Argument 2 of `mq3.client.cgame_event.appendAction`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_event.appendAction`. |
+| `entity` | `dynamic` | — | Argument 5 of `mq3.client.cgame_event.appendAction`. |
+| `channel` | `dynamic` | — | Argument 6 of `mq3.client.cgame_event.appendAction`. |
+| `parm` | `dynamic` | — | Argument 7 of `mq3.client.cgame_event.appendAction`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_event.appendAction`. |
+| `emit` | `dynamic` | — | Argument 13 of `mq3.client.cgame_event.appendAction`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L232)
 
 <a id="constant-constant-mq3-client-cgame-event-chan-auto-const-chan-auto-0-src-mq3-client-cgame-event-ml-1623963607"></a>
 ### CHAN_AUTO
@@ -136,13 +142,13 @@ CG_CheckEvents
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `es` | `dynamic` | — |  |
-| `serverTime` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `value.previousEvents[sourceEntity]`, `value.eventOnly[sourceEntity]`, `value.seenTime[sourceEntity]`, `value.records` and additional values. |
+| `es` | `dynamic` | — | Record read through `es.number`, `es.event`, `es.eType`, `es.eFlags` and additional values. |
+| `serverTime` | `dynamic` | — | Authoritative server timestamp in milliseconds. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L331)
 
 <a id="function-function-mq3-client-cgame-event-clearboundaryqueues-function-clearboundaryqueues-value-src-mq3-client-cgame-event-ml-943721301"></a>
 ### clearBoundaryQueues
@@ -151,12 +157,14 @@ CG_CheckEvents
 function clearBoundaryQueues(value)
 ```
 
+Updates `value.audio`, `value.render`, `value.hud`, `value.stateActions` during client game event `clearBoundaryQueues`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `value.audio`, `value.render`, `value.hud`, `value.stateActions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L361)
 
 <a id="function-function-mq3-client-cgame-event-create-function-create-maxentities-src-mq3-client-cgame-event-ml-675101583"></a>
 ### create
@@ -165,12 +173,14 @@ function clearBoundaryQueues(value)
 function create(maxEntities)
 ```
 
+Creates a `mq3.client.cgame_event.State` record.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxEntities` | `dynamic` | — |  |
+| `maxEntities` | `dynamic` | — | Value used to initialize `State.previousEvents`, `State.eventOnly`, `State.seenTime`, `State.painTime`, `State.painDirection`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L31)
 
 <a id="constant-constant-mq3-client-cgame-event-ef-kamikaze-const-ef-kamikaze-1048576-src-mq3-client-cgame-event-ml-1548906774"></a>
 ### EF_KAMIKAZE
@@ -203,15 +213,15 @@ CG_EntityEvent.  Symbolic media names preserve the exact choice point; the activ
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `es` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `value.stepChange`, `value.stepTime`, `value.painTime[entity]`, `value.landChange` and additional values. |
+| `es` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `es.loopSound`. |
+| `entity` | `dynamic` | — | Value used by `if event>=1 and event<=5 then result=audio(value,result,eventName(event),entity,CHAN_BODY,es.eventParm,position,emit)`. |
+| `position` | `dynamic` | — | Value used by `if event>=1 and event<=5 then result=audio(value,result,eventName(event),entity,CHAN_BODY,es.eventParm,position,emit)`. |
+| `event` | `dynamic` | — | Value assigned to `value.powerupActive`. |
+| `emit` | `dynamic` | — | Value used by `if event>=1 and event<=5 then result=audio(value,result,eventName(event),entity,CHAN_BODY,es.eventParm,position,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L273)
 
 <a id="constant-constant-mq3-client-cgame-event-et-events-const-et-events-13-src-mq3-client-cgame-event-ml-865218873"></a>
 ### ET_EVENTS
@@ -240,12 +250,14 @@ const EV_EVENT_BITS = 768
 function eventName(event)
 ```
 
+Evaluates client game event `eventName` and returns `"EV_NONE"`, `"EV_FOOTSTEP"`, `"EV_FOOTSTEP_METAL"` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `event` | `dynamic` | — |  |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L93)
 
 <a id="function-function-mq3-client-cgame-event-itempickup-function-itempickup-value-itemnum-isweapon-weapontag-autoswitch-src-mq3-client-cgame-event-ml-123293999"></a>
 ### itemPickup
@@ -258,14 +270,14 @@ CG_ItemPickup
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `itemNum` | `dynamic` | — |  |
-| `isWeapon` | `dynamic` | — |  |
-| `weaponTag` | `dynamic` | — |  |
-| `autoSwitch` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `value.itemPickup`, `value.itemPickupTime`, `value.itemPickupBlendTime`, `value.weaponSelectTime` and additional values. |
+| `itemNum` | `dynamic` | — | Value assigned to `value.itemPickup`. |
+| `isWeapon` | `dynamic` | — | Value used by `if isWeapon and autoSwitch and weaponTag!=2 then value.weaponSelectTime=value.time`. |
+| `weaponTag` | `dynamic` | — | Value assigned to `value.weaponSelect`. |
+| `autoSwitch` | `dynamic` | — | Value used by `if isWeapon and autoSwitch and weaponTag!=2 then value.weaponSelectTime=value.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L207)
 
 <a id="constant-constant-mq3-client-cgame-event-max-clients-const-max-clients-64-src-mq3-client-cgame-event-ml-772537907"></a>
 ### MAX_CLIENTS
@@ -298,13 +310,13 @@ CG_Obituary is kept semantic here: the full target, attacker and means of death 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `es` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 of `mq3.client.cgame_event.appendAction`. |
+| `es` | `dynamic` | — | Record read through `es.otherEntityNum`, `es.eventParm`, `es.otherEntityNum2`. |
+| `position` | `dynamic` | — | Argument 8 of `mq3.client.cgame_event.appendAction`. |
+| `emit` | `dynamic` | — | Argument 13 of `mq3.client.cgame_event.appendAction`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L219)
 
 <a id="function-function-mq3-client-cgame-event-observesnapshot-function-observesnapshot-value-snapshot-retailactive-src-mq3-client-cgame-event-ml-908313664"></a>
 ### observeSnapshot
@@ -313,14 +325,16 @@ CG_Obituary is kept semantic here: the full target, attacker and means of death 
 function observeSnapshot(value, snapshot, retailActive)
 ```
 
+Updates `value.time`, `value.predictedClient`, `value.follow` during client game event `observeSnapshot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `snapshot` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `value.time`, `value.predictedClient`, `value.follow`. |
+| `snapshot` | `dynamic` | — | Record read through `snapshot.serverTime`, `snapshot.playerState.clientNum`, `snapshot.playerState.pm_flags`, `snapshot.entities`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L352)
 
 <a id="function-function-mq3-client-cgame-event-painevent-function-painevent-value-entity-health-origin-emit-src-mq3-client-cgame-event-ml-1293288055"></a>
 ### painEvent
@@ -333,14 +347,14 @@ CG_PainEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `health` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game event record/storage; this routine assigns `value.painTime[entity]`, `value.painDirection[entity]`. |
+| `entity` | `dynamic` | — | Value used by `if entity<0 or entity>=len(value.painTime) then return [] end if`. |
+| `health` | `dynamic` | — | Value used by `return appendAction(value,[],"audio","custom:"+painSound(health),entity,CHAN_VOICE,health,origin,void,0,0,"",emit)`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `emit` | `dynamic` | — | Value used by `return appendAction(value,[],"audio","custom:"+painSound(health),entity,CHAN_VOICE,health,origin,void,0,0,"",emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L194)
 
 <a id="function-function-mq3-client-cgame-event-painsound-function-painsound-health-src-mq3-client-cgame-event-ml-1186138798"></a>
 ### painSound
@@ -349,12 +363,14 @@ CG_PainEvent
 function painSound(health)
 ```
 
+Evaluates client game event `painSound` and returns `"*pain25_1.wav"`, `"*pain50_1.wav"`, `"*pain75_1.wav"` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `health` | `dynamic` | — |  |
+| `health` | `dynamic` | — | Value used by `if health<25 then return "*pain25_1.wav" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L184)
 
 <a id="function-function-mq3-client-cgame-event-placestring-function-placestring-rank-src-mq3-client-cgame-event-ml-231557648"></a>
 ### placeString
@@ -367,10 +383,10 @@ CG_PlaceString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rank` | `dynamic` | — |  |
+| `rank` | `dynamic` | — | Value used by `if (rank&RANK_TIED_FLAG)!=0 then rank=rank&(~RANK_TIED_FLAG)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L76)
 
 <a id="constant-constant-mq3-client-cgame-event-rank-tied-flag-const-rank-tied-flag-16384-src-mq3-client-cgame-event-ml-60558789"></a>
 ### RANK_TIED_FLAG
@@ -390,17 +406,19 @@ const RANK_TIED_FLAG = 16384
 function render(value, result, kind, es, position, emit)
 ```
 
+Adapts `mq3.client.cgame_event.appendAction` to client game event `render`, returning its result for `value, result, "render", kind, es.number, 0, es.eventParm, position, es.origin2, es.weapon, es.otherEntityNum, "", emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `es` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 of `mq3.client.cgame_event.appendAction`. |
+| `result` | `dynamic` | — | Argument 2 of `mq3.client.cgame_event.appendAction`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_event.appendAction`. |
+| `es` | `dynamic` | — | Record read through `es.number`, `es.eventParm`, `es.origin2`, `es.weapon` and additional values. |
+| `position` | `dynamic` | — | Argument 8 of `mq3.client.cgame_event.appendAction`. |
+| `emit` | `dynamic` | — | Argument 13 of `mq3.client.cgame_event.appendAction`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L240)
 
 - [mq3.client.cgame_event.State](Type-mq3-client-cgame-event-state-229090580.md) — struct
 <a id="function-function-mq3-client-cgame-event-stateaction-function-stateaction-value-result-kind-es-position-emit-src-mq3-client-cgame-event-ml-1873369636"></a>
@@ -410,17 +428,19 @@ function render(value, result, kind, es, position, emit)
 function stateAction(value, result, kind, es, position, emit)
 ```
 
+Adapts `mq3.client.cgame_event.appendAction` to client game event `stateAction`, returning its result for `value, result, "state", kind, es.number, 0, es.eventParm, position, es.origin2, es.weapon, es.otherEntityNum, "", emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `es` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 of `mq3.client.cgame_event.appendAction`. |
+| `result` | `dynamic` | — | Argument 2 of `mq3.client.cgame_event.appendAction`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_event.appendAction`. |
+| `es` | `dynamic` | — | Record read through `es.number`, `es.eventParm`, `es.origin2`, `es.weapon` and additional values. |
+| `position` | `dynamic` | — | Argument 8 of `mq3.client.cgame_event.appendAction`. |
+| `emit` | `dynamic` | — | Argument 13 of `mq3.client.cgame_event.appendAction`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L248)
 
 <a id="constant-constant-mq3-client-cgame-event-step-time-const-step-time-cgabi-step-time-src-mq3-client-cgame-event-ml-2077446203"></a>
 ### STEP_TIME
@@ -443,11 +463,11 @@ CG_UseItem
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `es` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.predictedClient`. |
+| `es` | `dynamic` | — | Record read through `es.number`. |
+| `position` | `dynamic` | — | Value used by `if es.number==value.predictedClient then result=appendAction(value,result,"hud","use-item",es.number,0,itemNum,position,void,0,0,"",emit) end if`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
+| `emit` | `dynamic` | — | Value used by `if es.number==value.predictedClient then result=appendAction(value,result,"hud","use-item",es.number,0,itemNum,position,void,0,0,"",emit) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L256)

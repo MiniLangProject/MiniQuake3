@@ -9,8 +9,10 @@
 struct Pmove
 ```
 
+`Pmove` record for bg public, containing `ps`, `cmd`, `tracemask`, `debugLevel` and `noFootsteps` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 ## Members
 
@@ -22,7 +24,7 @@ cmd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-debuglevel-debuglevel-src-mq3-game-bg-public-ml-627780380"></a>
 ### debugLevel
@@ -32,7 +34,7 @@ debugLevel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-framecount-framecount-src-mq3-game-bg-public-ml-1642433030"></a>
 ### framecount
@@ -42,7 +44,7 @@ framecount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-gauntlethit-gauntlethit-src-mq3-game-bg-public-ml-1900821438"></a>
 ### gauntletHit
@@ -52,7 +54,7 @@ gauntletHit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-maxs-maxs-src-mq3-game-bg-public-ml-638906140"></a>
 ### maxs
@@ -62,7 +64,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-mins-mins-src-mq3-game-bg-public-ml-1445608660"></a>
 ### mins
@@ -72,7 +74,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-nofootsteps-nofootsteps-src-mq3-game-bg-public-ml-1125496782"></a>
 ### noFootsteps
@@ -82,7 +84,7 @@ noFootsteps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-numtouch-numtouch-src-mq3-game-bg-public-ml-723200336"></a>
 ### numtouch
@@ -92,7 +94,7 @@ numtouch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-pmovefixed-pmovefixed-src-mq3-game-bg-public-ml-463164524"></a>
 ### pmoveFixed
@@ -102,7 +104,7 @@ pmoveFixed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-pmovemsec-pmovemsec-src-mq3-game-bg-public-ml-883940602"></a>
 ### pmoveMsec
@@ -112,7 +114,7 @@ pmoveMsec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-pointcontentsfn-pointcontentsfn-src-mq3-game-bg-public-ml-1649347594"></a>
 ### pointContentsFn
@@ -122,7 +124,7 @@ pointContentsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-ps-ps-src-mq3-game-bg-public-ml-677990160"></a>
 ### ps
@@ -132,7 +134,7 @@ ps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-touchents-touchents-src-mq3-game-bg-public-ml-1355344918"></a>
 ### touchents
@@ -142,7 +144,7 @@ touchents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-tracefn-tracefn-src-mq3-game-bg-public-ml-42746706"></a>
 ### traceFn
@@ -152,7 +154,7 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-tracemask-tracemask-src-mq3-game-bg-public-ml-689161290"></a>
 ### tracemask
@@ -162,7 +164,7 @@ tracemask
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-waterlevel-waterlevel-src-mq3-game-bg-public-ml-553175924"></a>
 ### waterlevel
@@ -172,7 +174,7 @@ waterlevel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-watertype-watertype-src-mq3-game-bg-public-ml-374020858"></a>
 ### watertype
@@ -182,7 +184,7 @@ watertype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)
 
 <a id="field-field-mq3-game-bg-public-pmove-xyspeed-xyspeed-src-mq3-game-bg-public-ml-801546638"></a>
 ### xyspeed
@@ -192,4 +194,4 @@ xyspeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L89)

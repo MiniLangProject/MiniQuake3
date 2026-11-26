@@ -9,8 +9,10 @@
 struct Selection
 ```
 
+Data record for `mq3.renderer.world_surface_selection.Selection`; groups `faceIndexes`, `candidateCount`, `selectedSurfaceCount`, `estimatedTriangleCount`, `pvsUsed`, `cameraLeaf`, and 6 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 ## Members
 
@@ -22,7 +24,7 @@ cameraCluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-cameraleaf-cameraleaf-src-mq3-renderer-world-surface-selection-ml-1597078805"></a>
 ### cameraLeaf
@@ -32,7 +34,7 @@ cameraLeaf
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-candidatecount-candidatecount-src-mq3-renderer-world-surface-selection-ml-255671027"></a>
 ### candidateCount
@@ -42,7 +44,7 @@ candidateCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-estimatedtrianglecount-estimatedtrianglecount-src-mq3-renderer-world-surface-selection-ml-242681873"></a>
 ### estimatedTriangleCount
@@ -52,7 +54,7 @@ estimatedTriangleCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-faceindexes-faceindexes-src-mq3-renderer-world-surface-selection-ml-403717547"></a>
 ### faceIndexes
@@ -62,7 +64,7 @@ faceIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-pvsused-pvsused-src-mq3-renderer-world-surface-selection-ml-1861885739"></a>
 ### pvsUsed
@@ -72,7 +74,7 @@ pvsUsed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-rejectedbackface-rejectedbackface-src-mq3-renderer-world-surface-selection-ml-336131031"></a>
 ### rejectedBackface
@@ -82,7 +84,7 @@ rejectedBackface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-rejectedbudget-rejectedbudget-src-mq3-renderer-world-surface-selection-ml-966472405"></a>
 ### rejectedBudget
@@ -92,7 +94,7 @@ rejectedBudget
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-rejecteddistance-rejecteddistance-src-mq3-renderer-world-surface-selection-ml-2055280341"></a>
 ### rejectedDistance
@@ -102,7 +104,7 @@ rejectedDistance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-rejectedfrustum-rejectedfrustum-src-mq3-renderer-world-surface-selection-ml-572790811"></a>
 ### rejectedFrustum
@@ -112,7 +114,7 @@ rejectedFrustum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-rejectedpvs-rejectedpvs-src-mq3-renderer-world-surface-selection-ml-1881328435"></a>
 ### rejectedPvs
@@ -122,7 +124,7 @@ rejectedPvs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selection-selectedsurfacecount-selectedsurfacecount-src-mq3-renderer-world-surface-selection-ml-19886813"></a>
 ### selectedSurfaceCount
@@ -132,4 +134,4 @@ selectedSurfaceCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L35)

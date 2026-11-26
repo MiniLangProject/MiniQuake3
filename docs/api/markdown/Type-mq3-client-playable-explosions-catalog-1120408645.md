@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores playable explosions catalog record, including `textures`, `profiles`, `plasmaModel`, `firstTextureSlot`, `textureCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstTextureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L26)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-plasmamodel-plasmamodel-src-mq3-client-playable-explosions-ml-55650054"></a>
 ### plasmaModel
@@ -32,7 +34,7 @@ plasmaModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L26)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-profiles-profiles-src-mq3-client-playable-explosions-ml-1994448230"></a>
 ### profiles
@@ -42,7 +44,7 @@ profiles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L26)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-texturecount-texturecount-src-mq3-client-playable-explosions-ml-1980541590"></a>
 ### textureCount
@@ -52,7 +54,7 @@ textureCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L26)
 
 <a id="field-field-mq3-client-playable-explosions-catalog-textures-textures-src-mq3-client-playable-explosions-ml-1034877610"></a>
 ### textures
@@ -62,4 +64,4 @@ textures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L26)

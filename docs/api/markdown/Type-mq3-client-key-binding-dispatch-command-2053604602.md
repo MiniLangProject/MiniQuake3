@@ -9,8 +9,10 @@
 struct Command
 ```
 
+Stores key binding dispatch command data, including `text`, `action`, `button`, `down`, `key`, `time`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ action
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-button-button-src-mq3-client-key-binding-dispatch-ml-417592566"></a>
 ### button
@@ -32,7 +34,7 @@ button
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-down-down-src-mq3-client-key-binding-dispatch-ml-2136099518"></a>
 ### down
@@ -42,7 +44,7 @@ down
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-key-key-src-mq3-client-key-binding-dispatch-ml-991787674"></a>
 ### key
@@ -52,7 +54,7 @@ key
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-text-text-src-mq3-client-key-binding-dispatch-ml-101926256"></a>
 ### text
@@ -62,7 +64,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)
 
 <a id="field-field-mq3-client-key-binding-dispatch-command-time-time-src-mq3-client-key-binding-dispatch-ml-2076790008"></a>
 ### time
@@ -72,4 +74,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L9)

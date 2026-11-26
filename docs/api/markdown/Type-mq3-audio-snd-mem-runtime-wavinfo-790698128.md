@@ -9,8 +9,10 @@
 struct WavInfo
 ```
 
+WavInfo record for audio.snd_mem_runtime, containing `format`, `channels`, `rate`, `width`, `samples`, `dataofs`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ channels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L18)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-wavinfo-dataofs-dataofs-src-mq3-audio-snd-mem-runtime-ml-1475293937"></a>
 ### dataofs
@@ -32,7 +34,7 @@ dataofs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L18)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-wavinfo-format-format-src-mq3-audio-snd-mem-runtime-ml-287080159"></a>
 ### format
@@ -42,7 +44,7 @@ format
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L18)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-wavinfo-rate-rate-src-mq3-audio-snd-mem-runtime-ml-297710345"></a>
 ### rate
@@ -52,7 +54,7 @@ rate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L18)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-wavinfo-samples-samples-src-mq3-audio-snd-mem-runtime-ml-1603249149"></a>
 ### samples
@@ -62,7 +64,7 @@ samples
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L18)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-wavinfo-width-width-src-mq3-audio-snd-mem-runtime-ml-1354603333"></a>
 ### width
@@ -72,4 +74,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L18)

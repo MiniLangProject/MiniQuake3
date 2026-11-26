@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores connectionless host-service callbacks, including `infoFn`, `statusFn`, `disconnectFn`, `printFn`, `outOfBandFn`, `motdFn` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ authorizationFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L33)
 
 <a id="field-field-mq3-client-connectionless-services-clearuserinfomodifiedfn-clearuserinfomodifiedfn-src-mq3-client-connectionless-ml-53375221"></a>
 ### clearUserinfoModifiedFn
@@ -32,7 +34,7 @@ clearUserinfoModifiedFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L33)
 
 <a id="field-field-mq3-client-connectionless-services-context-context-src-mq3-client-connectionless-ml-906653069"></a>
 ### context
@@ -42,7 +44,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-diagnosticfn-diagnosticfn-src-mq3-client-connectionless-ml-1527973727"></a>
 ### diagnosticFn
@@ -52,7 +54,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-disconnectfn-disconnectfn-src-mq3-client-connectionless-ml-1266605805"></a>
 ### disconnectFn
@@ -62,7 +64,7 @@ disconnectFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-infofn-infofn-src-mq3-client-connectionless-ml-976737669"></a>
 ### infoFn
@@ -72,7 +74,7 @@ infoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-lanfn-lanfn-src-mq3-client-connectionless-ml-1259613973"></a>
 ### lanFn
@@ -82,7 +84,7 @@ lanFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L33)
 
 <a id="field-field-mq3-client-connectionless-services-motdfn-motdfn-src-mq3-client-connectionless-ml-305876597"></a>
 ### motdFn
@@ -92,7 +94,7 @@ motdFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-outofbanddatafn-outofbanddatafn-src-mq3-client-connectionless-ml-1464499853"></a>
 ### outOfBandDataFn
@@ -102,7 +104,7 @@ outOfBandDataFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L33)
 
 <a id="field-field-mq3-client-connectionless-services-outofbandfn-outofbandfn-src-mq3-client-connectionless-ml-574434765"></a>
 ### outOfBandFn
@@ -112,7 +114,7 @@ outOfBandFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-printfn-printfn-src-mq3-client-connectionless-ml-1682101189"></a>
 ### printFn
@@ -122,7 +124,7 @@ printFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-serversfn-serversfn-src-mq3-client-connectionless-ml-670679849"></a>
 ### serversFn
@@ -132,7 +134,7 @@ serversFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-statusfn-statusfn-src-mq3-client-connectionless-ml-320840405"></a>
 ### statusFn
@@ -142,7 +144,7 @@ statusFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L32)
 
 <a id="field-field-mq3-client-connectionless-services-userinfofn-userinfofn-src-mq3-client-connectionless-ml-1692591403"></a>
 ### userinfoFn
@@ -152,4 +154,4 @@ userinfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L33)

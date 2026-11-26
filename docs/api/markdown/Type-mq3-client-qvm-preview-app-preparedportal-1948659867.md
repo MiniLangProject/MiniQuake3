@@ -9,8 +9,10 @@
 struct PreparedPortal
 ```
 
+Stores QVM preview app prepared portal record, including `plan`, `world`, `batch`, `target`, `source`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 ## Members
 
@@ -22,7 +24,7 @@ batch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="field-field-mq3-client-qvm-preview-app-preparedportal-plan-plan-src-mq3-client-qvm-preview-app-ml-26400276"></a>
 ### plan
@@ -32,7 +34,7 @@ plan
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="field-field-mq3-client-qvm-preview-app-preparedportal-source-source-src-mq3-client-qvm-preview-app-ml-2029518676"></a>
 ### source
@@ -42,7 +44,7 @@ source
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="field-field-mq3-client-qvm-preview-app-preparedportal-target-target-src-mq3-client-qvm-preview-app-ml-491877944"></a>
 ### target
@@ -52,7 +54,7 @@ target
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="field-field-mq3-client-qvm-preview-app-preparedportal-world-world-src-mq3-client-qvm-preview-app-ml-1409280814"></a>
 ### world
@@ -62,4 +64,4 @@ world
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)

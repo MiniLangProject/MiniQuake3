@@ -9,8 +9,10 @@
 struct Store
 ```
 
+Store record for engine.user_files, containing `archive`, `root`, `files`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ archive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
 
 <a id="field-field-mq3-engine-user-files-store-files-files-src-mq3-engine-user-files-ml-1829343502"></a>
 ### files
@@ -32,7 +34,7 @@ files
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
 
 <a id="field-field-mq3-engine-user-files-store-root-root-src-mq3-engine-user-files-ml-1161975938"></a>
 ### root
@@ -42,4 +44,4 @@ root
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)

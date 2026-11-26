@@ -21,18 +21,20 @@ Reachable from entry: **no**
 function bitmap(name, id, x, y, flags, w, h)
 ```
 
+Calls `mq3.client.ui_qmenu.item` from UI serverinfo `bitmap`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI serverinfo resource. |
+| `id` | `dynamic` | — | Value used by `value=qmenu.item(qmenu.MTYPE_BITMAP,name,id,x,y,flags)`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `bitmap`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `bitmap`. |
+| `flags` | `dynamic` | — | Value used by `value=qmenu.item(qmenu.MTYPE_BITMAP,name,id,x,y,flags)`. |
+| `w` | `dynamic` | — | Value assigned to `value.width`. |
+| `h` | `dynamic` | — | Value assigned to `value.height`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L87)
 
 <a id="function-function-mq3-client-ui-serverinfo-create-function-create-retailactive-src-mq3-client-ui-serverinfo-ml-717389117"></a>
 ### create
@@ -41,12 +43,14 @@ function bitmap(name, id, x, y, flags, w, h)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_serverinfo.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L24)
 
 <a id="function-function-mq3-client-ui-serverinfo-digitaddress-function-digitaddress-value-src-mq3-client-ui-serverinfo-ml-1638263035"></a>
 ### digitAddress
@@ -55,12 +59,14 @@ function create(retailActive)
 function digitAddress(value)
 ```
 
+Evaluates UI serverinfo `digitAddress` and returns `false`, `c>=48 and c<=57` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value==""` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L41)
 
 <a id="function-function-mq3-client-ui-serverinfo-emit-function-emit-state-boundary-kind-name-text-x-y-number-src-mq3-client-ui-serverinfo-ml-2027722389"></a>
 ### emit
@@ -69,19 +75,21 @@ function digitAddress(value)
 function emit(state, boundary, kind, name, text, x, y, number)
 ```
 
+Appends a UI serverinfo action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI serverinfo record/storage; this routine assigns `state.actions`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI serverinfo resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI serverinfo path. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `emit`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `emit`. |
+| `number` | `dynamic` | — | Value used by `action=Action(boundary,kind,name,text,x,y,number,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L34)
 
 <a id="function-function-mq3-client-ui-serverinfo-favorites-add-function-favorites-add-state-src-mq3-client-ui-serverinfo-ml-1715188321"></a>
 ### Favorites_Add
@@ -94,10 +102,10 @@ Favorites_Add
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI serverinfo record/storage; this routine assigns `state.favorites`, `state.favorites[best-1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L48)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-id-add-const-id-add-100-src-mq3-client-ui-serverinfo-ml-1464151984"></a>
 ### ID_ADD
@@ -126,12 +134,14 @@ const ID_BACK = 101
 function infoPairs(text)
 ```
 
+Calls `std.string.split` from UI serverinfo `infoPairs`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `infoPairs` in the UI serverinfo path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L44)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-max-favoriteservers-const-max-favoriteservers-16-src-mq3-client-ui-serverinfo-ml-912398238"></a>
 ### MAX_FAVORITESERVERS
@@ -150,13 +160,15 @@ const MAX_FAVORITESERVERS = 16
 function same(a, b)
 ```
 
+Compares two UI serverinfo names using ASCII case-insensitive equality.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Argument 1 of `std.string.equalsIgnoreCaseAscii`. |
+| `b` | `dynamic` | — | Argument 2 of `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L38)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-back0-const-serverinfo-back0-menu-art-back-0-src-mq3-client-ui-serverinfo-ml-30461817"></a>
 ### SERVERINFO_BACK0
@@ -189,10 +201,10 @@ ServerInfo_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI serverinfo state passed to the helper calls in `ServerInfo_Cache`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L77)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-event-function-serverinfo-event-state-id-event-src-mq3-client-ui-serverinfo-ml-1452128182"></a>
 ### ServerInfo_Event
@@ -205,12 +217,12 @@ ServerInfo_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI serverinfo record/storage; this routine assigns `state.popped`, `state.menu.popped`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_ADD then Favorites_Add(state)`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L57)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-framel-const-serverinfo-framel-menu-art-frame2-l-src-mq3-client-ui-serverinfo-ml-1343847279"></a>
 ### SERVERINFO_FRAMEL
@@ -243,11 +255,11 @@ ServerInfo_MenuDraw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.numlines`, `state.pairs`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L64)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-menukey-function-serverinfo-menukey-state-key-cursorx-cursory-src-mq3-client-ui-serverinfo-ml-1910452143"></a>
 ### ServerInfo_MenuKey
@@ -260,13 +272,13 @@ ServerInfo_MenuKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `cursorx` | `dynamic` | — |  |
-| `cursory` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.menu`. |
+| `key` | `dynamic` | — | Argument 2 of `mq3.client.ui_qmenu.Menu_DefaultKey`. |
+| `cursorx` | `dynamic` | — | Argument 3 of `mq3.client.ui_qmenu.Menu_DefaultKey`. |
+| `cursory` | `dynamic` | — | Argument 4 of `mq3.client.ui_qmenu.Menu_DefaultKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L73)
 
 - [mq3.client.ui_serverinfo.State](Type-mq3-client-ui-serverinfo-state-17572200.md) — struct
 <a id="function-function-mq3-client-ui-serverinfo-ui-serverinfomenu-function-ui-serverinfomenu-state-serverinfo-svrunning-currentaddress-favorites-src-mq3-client-ui-serverinfo-ml-882246256"></a>
@@ -280,11 +292,11 @@ UI_ServerInfoMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverInfo` | `dynamic` | — |  |
-| `svRunning` | `dynamic` | — |  |
-| `currentAddress` | `dynamic` | — |  |
-| `favorites` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI serverinfo record/storage; this routine assigns `state.menu`, `state.actions`, `state.pushed`, `state.popped` and additional values. |
+| `serverInfo` | `dynamic` | — | Value assigned to `state.info`. |
+| `svRunning` | `dynamic` | — | Value used by `if svRunning then flags=flags\|qmenu.QMF_GRAYED end if`. |
+| `currentAddress` | `dynamic` | — | Value assigned to `state.currentAddress`. |
+| `favorites` | `dynamic` | — | Value assigned to `state.favorites`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L95)

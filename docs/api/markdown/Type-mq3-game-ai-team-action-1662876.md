@@ -9,8 +9,10 @@
 struct Action
 ```
 
+`Action` record for ai team, containing `kind`, `client`, `target`, `text` and `args` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ args
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)
 
 <a id="field-field-mq3-game-ai-team-action-client-client-src-mq3-game-ai-team-ml-597369177"></a>
 ### client
@@ -32,7 +34,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)
 
 <a id="field-field-mq3-game-ai-team-action-kind-kind-src-mq3-game-ai-team-ml-1425145087"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)
 
 <a id="field-field-mq3-game-ai-team-action-suppressed-suppressed-src-mq3-game-ai-team-ml-1892641551"></a>
 ### suppressed
@@ -52,7 +54,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)
 
 <a id="field-field-mq3-game-ai-team-action-target-target-src-mq3-game-ai-team-ml-1514075189"></a>
 ### target
@@ -62,7 +64,7 @@ target
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)
 
 <a id="field-field-mq3-game-ai-team-action-text-text-src-mq3-game-ai-team-ml-553302665"></a>
 ### text
@@ -72,4 +74,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)

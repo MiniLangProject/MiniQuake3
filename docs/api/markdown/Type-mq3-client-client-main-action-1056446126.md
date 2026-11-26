@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores client main queued engine action, including `kind`, `text`, `address`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
 
 <a id="field-field-mq3-client-client-main-action-dispatched-dispatched-src-mq3-client-client-main-ml-1151506817"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
 
 <a id="field-field-mq3-client-client-main-action-kind-kind-src-mq3-client-client-main-ml-1624706135"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
 
 <a id="field-field-mq3-client-client-main-action-text-text-src-mq3-client-client-main-ml-807394529"></a>
 ### text
@@ -52,4 +54,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)

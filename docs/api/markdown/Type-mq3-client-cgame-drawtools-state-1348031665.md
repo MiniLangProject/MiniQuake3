@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores client game drawtools state, including `screenXScale`, `screenYScale`, `screenXBias`, `vidWidth`, `vidHeight`, `refX` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-armor-armor-src-mq3-client-cgame-drawtools-ml-172977844"></a>
 ### armor
@@ -32,7 +34,7 @@ armor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-backtileshader-backtileshader-src-mq3-client-cgame-drawtools-ml-666991960"></a>
 ### backTileShader
@@ -42,7 +44,7 @@ backTileShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-charsetprop-charsetprop-src-mq3-client-cgame-drawtools-ml-576300348"></a>
 ### charsetProp
@@ -52,7 +54,7 @@ charsetProp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-charsetpropb-charsetpropb-src-mq3-client-cgame-drawtools-ml-374708942"></a>
 ### charsetPropB
@@ -62,7 +64,7 @@ charsetPropB
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-charsetpropglow-charsetpropglow-src-mq3-client-cgame-drawtools-ml-115881400"></a>
 ### charsetPropGlow
@@ -72,7 +74,7 @@ charsetPropGlow
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-charsetshader-charsetshader-src-mq3-client-cgame-drawtools-ml-1429834124"></a>
 ### charsetShader
@@ -82,7 +84,7 @@ charsetShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-emitted-emitted-src-mq3-client-cgame-drawtools-ml-471202704"></a>
 ### emitted
@@ -92,7 +94,7 @@ emitted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-health-health-src-mq3-client-cgame-drawtools-ml-305330956"></a>
 ### health
@@ -102,7 +104,7 @@ health
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-refheight-refheight-src-mq3-client-cgame-drawtools-ml-554936536"></a>
 ### refHeight
@@ -112,7 +114,7 @@ refHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-refwidth-refwidth-src-mq3-client-cgame-drawtools-ml-1951742282"></a>
 ### refWidth
@@ -122,7 +124,7 @@ refWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-refx-refx-src-mq3-client-cgame-drawtools-ml-1440396858"></a>
 ### refX
@@ -132,7 +134,7 @@ refX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-refy-refy-src-mq3-client-cgame-drawtools-ml-1621701016"></a>
 ### refY
@@ -142,7 +144,7 @@ refY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-screenxbias-screenxbias-src-mq3-client-cgame-drawtools-ml-951510228"></a>
 ### screenXBias
@@ -152,7 +154,7 @@ screenXBias
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-screenxscale-screenxscale-src-mq3-client-cgame-drawtools-ml-590424316"></a>
 ### screenXScale
@@ -162,7 +164,7 @@ screenXScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-screenyscale-screenyscale-src-mq3-client-cgame-drawtools-ml-1385656710"></a>
 ### screenYScale
@@ -172,7 +174,7 @@ screenYScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-suppressed-suppressed-src-mq3-client-cgame-drawtools-ml-217800700"></a>
 ### suppressed
@@ -182,7 +184,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-time-time-src-mq3-client-cgame-drawtools-ml-1859605258"></a>
 ### time
@@ -192,7 +194,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-vidheight-vidheight-src-mq3-client-cgame-drawtools-ml-1186877480"></a>
 ### vidHeight
@@ -202,7 +204,7 @@ vidHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-vidwidth-vidwidth-src-mq3-client-cgame-drawtools-ml-1627563838"></a>
 ### vidWidth
@@ -212,7 +214,7 @@ vidWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
 
 <a id="field-field-mq3-client-cgame-drawtools-state-whiteshader-whiteshader-src-mq3-client-cgame-drawtools-ml-474201524"></a>
 ### whiteShader
@@ -222,4 +224,4 @@ whiteShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)

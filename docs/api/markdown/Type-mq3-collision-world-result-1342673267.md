@@ -9,8 +9,10 @@
 struct Result
 ```
 
+Result record for collision.world, containing `trace`, `endpos`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L93)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L155)
 
 ## Members
 
@@ -22,7 +24,7 @@ endpos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L157)
 
 <a id="field-field-mq3-collision-world-result-trace-trace-src-mq3-collision-world-ml-605134048"></a>
 ### trace
@@ -32,4 +34,4 @@ trace
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L156)

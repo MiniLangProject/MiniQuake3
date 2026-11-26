@@ -9,8 +9,10 @@
 struct Cvars
 ```
 
+Data record for `mq3.platform.win_net_runtime.Cvars`; groups `noudp`, `noipx`, `socksEnabled`, `socksServer`, `socksPort`, `socksUsername`, and 4 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ generation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-netinterface-netinterface-src-mq3-platform-win-net-runtime-ml-360336290"></a>
 ### netInterface
@@ -32,7 +34,7 @@ netInterface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-noipx-noipx-src-mq3-platform-win-net-runtime-ml-1892703002"></a>
 ### noipx
@@ -42,7 +44,7 @@ noipx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-noudp-noudp-src-mq3-platform-win-net-runtime-ml-1699478794"></a>
 ### noudp
@@ -52,7 +54,7 @@ noudp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-port-port-src-mq3-platform-win-net-runtime-ml-222551800"></a>
 ### port
@@ -62,7 +64,7 @@ port
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksenabled-socksenabled-src-mq3-platform-win-net-runtime-ml-324609394"></a>
 ### socksEnabled
@@ -72,7 +74,7 @@ socksEnabled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-sockspassword-sockspassword-src-mq3-platform-win-net-runtime-ml-10573730"></a>
 ### socksPassword
@@ -82,7 +84,7 @@ socksPassword
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksport-socksport-src-mq3-platform-win-net-runtime-ml-870182610"></a>
 ### socksPort
@@ -92,7 +94,7 @@ socksPort
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksserver-socksserver-src-mq3-platform-win-net-runtime-ml-611260130"></a>
 ### socksServer
@@ -102,7 +104,7 @@ socksServer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)
 
 <a id="field-field-mq3-platform-win-net-runtime-cvars-socksusername-socksusername-src-mq3-platform-win-net-runtime-ml-1563826622"></a>
 ### socksUsername
@@ -112,4 +114,4 @@ socksUsername
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L24)

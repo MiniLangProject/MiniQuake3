@@ -9,8 +9,10 @@
 struct Update
 ```
 
+Stores playable match update record, including `phase`, `changed`, `message`, `playerScore`, `enemyScore`, `remainingSeconds` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ changed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 <a id="field-field-mq3-client-playable-match-update-clock-clock-src-mq3-client-playable-match-ml-1778808132"></a>
 ### clock
@@ -32,7 +34,7 @@ clock
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 <a id="field-field-mq3-client-playable-match-update-enemyscore-enemyscore-src-mq3-client-playable-match-ml-1941944316"></a>
 ### enemyScore
@@ -42,7 +44,7 @@ enemyScore
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 <a id="field-field-mq3-client-playable-match-update-message-message-src-mq3-client-playable-match-ml-1826492904"></a>
 ### message
@@ -52,7 +54,7 @@ message
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 <a id="field-field-mq3-client-playable-match-update-phase-phase-src-mq3-client-playable-match-ml-1674805092"></a>
 ### phase
@@ -62,7 +64,7 @@ phase
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 <a id="field-field-mq3-client-playable-match-update-playerscore-playerscore-src-mq3-client-playable-match-ml-1140959900"></a>
 ### playerScore
@@ -72,7 +74,7 @@ playerScore
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 <a id="field-field-mq3-client-playable-match-update-remainingseconds-remainingseconds-src-mq3-client-playable-match-ml-1112623018"></a>
 ### remainingSeconds
@@ -82,4 +84,4 @@ remainingSeconds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)

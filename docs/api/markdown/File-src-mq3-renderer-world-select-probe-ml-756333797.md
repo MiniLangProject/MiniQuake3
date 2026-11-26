@@ -16,4 +16,4 @@ const VALUE = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_select_probe.ml#L3)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_select_probe.ml#L4)

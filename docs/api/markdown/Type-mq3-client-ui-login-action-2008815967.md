@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI login queued engine action, including `boundary`, `kind`, `name`, `text`, `text2`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L15)
 
 <a id="field-field-mq3-client-ui-login-action-dispatched-dispatched-src-mq3-client-ui-login-ml-752733735"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L15)
 
 <a id="field-field-mq3-client-ui-login-action-kind-kind-src-mq3-client-ui-login-ml-252623845"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L15)
 
 <a id="field-field-mq3-client-ui-login-action-name-name-src-mq3-client-ui-login-ml-757420803"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L15)
 
 <a id="field-field-mq3-client-ui-login-action-text-text-src-mq3-client-ui-login-ml-435391871"></a>
 ### text
@@ -62,7 +64,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L15)
 
 <a id="field-field-mq3-client-ui-login-action-text2-text2-src-mq3-client-ui-login-ml-1507399197"></a>
 ### text2
@@ -72,4 +74,4 @@ text2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L15)

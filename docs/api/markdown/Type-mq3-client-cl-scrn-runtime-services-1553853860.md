@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores engine client scrn runtime host-service callbacks, including `context`, `registerShaderFn`, `stopSoundsFn`, `consoleFn`, `fileTellFn`, `diagnosticFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ consoleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
 
 <a id="field-field-mq3-client-cl-scrn-runtime-services-context-context-src-mq3-client-cl-scrn-runtime-ml-1836275997"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
 
 <a id="field-field-mq3-client-cl-scrn-runtime-services-diagnosticfn-diagnosticfn-src-mq3-client-cl-scrn-runtime-ml-2121821475"></a>
 ### diagnosticFn
@@ -42,7 +44,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
 
 <a id="field-field-mq3-client-cl-scrn-runtime-services-filetellfn-filetellfn-src-mq3-client-cl-scrn-runtime-ml-1303285507"></a>
 ### fileTellFn
@@ -52,7 +54,7 @@ fileTellFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
 
 <a id="field-field-mq3-client-cl-scrn-runtime-services-registershaderfn-registershaderfn-src-mq3-client-cl-scrn-runtime-ml-1319586609"></a>
 ### registerShaderFn
@@ -62,7 +64,7 @@ registerShaderFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
 
 <a id="field-field-mq3-client-cl-scrn-runtime-services-stopsoundsfn-stopsoundsfn-src-mq3-client-cl-scrn-runtime-ml-1017462641"></a>
 ### stopSoundsFn
@@ -72,4 +74,4 @@ stopSoundsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)

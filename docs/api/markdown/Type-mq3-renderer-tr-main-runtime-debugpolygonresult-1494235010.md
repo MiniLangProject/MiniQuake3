@@ -9,8 +9,10 @@
 struct DebugPolygonResult
 ```
 
+Data record for `mq3.renderer.tr_main_runtime.DebugPolygonResult`; groups `solid`, `outline`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ outline
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpolygonresult-solid-solid-src-mq3-renderer-tr-main-runtime-ml-1986114183"></a>
 ### solid
@@ -32,4 +34,4 @@ solid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L38)

@@ -9,8 +9,10 @@
 struct InputEvent
 ```
 
+Data record for `mq3.platform.win_input_runtime.InputEvent`; groups `time`, `type`, `value`, `value2`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
 
 <a id="field-field-mq3-platform-win-input-runtime-inputevent-type-type-src-mq3-platform-win-input-runtime-ml-2140030373"></a>
 ### type
@@ -32,7 +34,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
 
 <a id="field-field-mq3-platform-win-input-runtime-inputevent-value-value-src-mq3-platform-win-input-runtime-ml-1863727737"></a>
 ### value
@@ -42,7 +44,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
 
 <a id="field-field-mq3-platform-win-input-runtime-inputevent-value2-value2-src-mq3-platform-win-input-runtime-ml-1976034939"></a>
 ### value2
@@ -52,4 +54,4 @@ value2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)

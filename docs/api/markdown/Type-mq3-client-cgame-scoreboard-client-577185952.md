@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Stores client game scoreboard client record, including `name`, `team`, `powerups`, `botSkill`, `handicap`, `wins` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ botSkill
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-handicap-handicap-src-mq3-client-cgame-scoreboard-ml-1986075178"></a>
 ### handicap
@@ -32,7 +34,7 @@ handicap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-infovalid-infovalid-src-mq3-client-cgame-scoreboard-ml-1719534102"></a>
 ### infoValid
@@ -42,7 +44,7 @@ infoValid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-losses-losses-src-mq3-client-cgame-scoreboard-ml-674387976"></a>
 ### losses
@@ -52,7 +54,7 @@ losses
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-name-name-src-mq3-client-cgame-scoreboard-ml-1917914060"></a>
 ### name
@@ -62,7 +64,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-powerups-powerups-src-mq3-client-cgame-scoreboard-ml-982158772"></a>
 ### powerups
@@ -72,7 +74,7 @@ powerups
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-score-score-src-mq3-client-cgame-scoreboard-ml-62012270"></a>
 ### score
@@ -82,7 +84,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-team-team-src-mq3-client-cgame-scoreboard-ml-1264694708"></a>
 ### team
@@ -92,7 +94,7 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)
 
 <a id="field-field-mq3-client-cgame-scoreboard-client-wins-wins-src-mq3-client-cgame-scoreboard-ml-1438496704"></a>
 ### wins
@@ -102,4 +104,4 @@ wins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L32)

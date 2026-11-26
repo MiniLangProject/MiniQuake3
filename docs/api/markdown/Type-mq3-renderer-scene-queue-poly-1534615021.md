@@ -9,8 +9,10 @@
 struct Poly
 ```
 
+Data record for `mq3.renderer.scene_queue.Poly`; groups `hShader`, `verts`, `fogIndex`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ fogIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
 
 <a id="field-field-mq3-renderer-scene-queue-poly-hshader-hshader-src-mq3-renderer-scene-queue-ml-1006949331"></a>
 ### hShader
@@ -32,7 +34,7 @@ hShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
 
 <a id="field-field-mq3-renderer-scene-queue-poly-verts-verts-src-mq3-renderer-scene-queue-ml-1196996011"></a>
 ### verts
@@ -42,4 +44,4 @@ verts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)

@@ -9,8 +9,10 @@
 struct PredictRoute
 ```
 
+`PredictRoute` record for aas route extras, containing `endPos`, `endArea`, `stopEvent`, `endContents` and `endTravelFlags` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ endArea
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)
 
 <a id="field-field-mq3-botlib-aas-route-extras-predictroute-endcontents-endcontents-src-mq3-botlib-aas-route-extras-ml-2110897449"></a>
 ### endContents
@@ -32,7 +34,7 @@ endContents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)
 
 <a id="field-field-mq3-botlib-aas-route-extras-predictroute-endpos-endpos-src-mq3-botlib-aas-route-extras-ml-147915391"></a>
 ### endPos
@@ -42,7 +44,7 @@ endPos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)
 
 <a id="field-field-mq3-botlib-aas-route-extras-predictroute-endtravelflags-endtravelflags-src-mq3-botlib-aas-route-extras-ml-706135177"></a>
 ### endTravelFlags
@@ -52,7 +54,7 @@ endTravelFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)
 
 <a id="field-field-mq3-botlib-aas-route-extras-predictroute-numareas-numareas-src-mq3-botlib-aas-route-extras-ml-499461505"></a>
 ### numAreas
@@ -62,7 +64,7 @@ numAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)
 
 <a id="field-field-mq3-botlib-aas-route-extras-predictroute-stopevent-stopevent-src-mq3-botlib-aas-route-extras-ml-333357841"></a>
 ### stopEvent
@@ -72,7 +74,7 @@ stopEvent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)
 
 <a id="field-field-mq3-botlib-aas-route-extras-predictroute-time-time-src-mq3-botlib-aas-route-extras-ml-1801371567"></a>
 ### time
@@ -82,4 +84,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L33)

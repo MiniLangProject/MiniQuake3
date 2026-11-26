@@ -9,8 +9,10 @@
 struct ActiveMode
 ```
 
+Stores desktop video active mode record, including `width`, `height`, `fullscreen`, `picmip`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L9)
 
 <a id="field-field-mq3-client-desktop-video-activemode-height-height-src-mq3-client-desktop-video-ml-1025753406"></a>
 ### height
@@ -32,7 +34,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L9)
 
 <a id="field-field-mq3-client-desktop-video-activemode-picmip-picmip-src-mq3-client-desktop-video-ml-2029279216"></a>
 ### picmip
@@ -42,7 +44,7 @@ picmip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L9)
 
 <a id="field-field-mq3-client-desktop-video-activemode-width-width-src-mq3-client-desktop-video-ml-1396082476"></a>
 ### width
@@ -52,4 +54,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L9)

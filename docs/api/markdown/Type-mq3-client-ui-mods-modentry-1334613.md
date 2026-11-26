@@ -9,8 +9,10 @@
 struct ModEntry
 ```
 
+Stores UI mods mod entry record, including `game`, `description`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ description
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
 
 <a id="field-field-mq3-client-ui-mods-modentry-game-game-src-mq3-client-ui-mods-ml-1991368501"></a>
 ### game
@@ -32,4 +34,4 @@ game
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)

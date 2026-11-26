@@ -25,12 +25,12 @@ CG_BigExplode
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.blood`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L315)
 
 <a id="function-function-mq3-client-cgame-effects-bleed-function-bleed-state-origin-entitynum-retailactive-src-mq3-client-cgame-effects-ml-1785957709"></a>
 ### bleed
@@ -43,13 +43,13 @@ CG_Bleed
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.blood`, `state.time`, `state.predictedClient`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L258)
 
 <a id="constant-constant-mq3-client-cgame-effects-blood-explosion-shader-const-blood-explosion-shader-bloodexplosion-src-mq3-client-cgame-effects-ml-1775586426"></a>
 ### BLOOD_EXPLOSION_SHADER
@@ -72,14 +72,14 @@ CG_BubbleTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `spacing` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.noProjectileTrail`, `state.time`. |
+| `start` | `dynamic` | — | Sequence read at `start[0]`, `start[1]`, `start[2]`. |
+| `finish` | `dynamic` | — | Sequence read at `finish[0]`, `finish[1]`, `finish[2]`. |
+| `spacing` | `dynamic` | — | Value used by `if spacing<=0.0 then return error(7720,"bubble trail spacing must be positive") end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L116)
 
 <a id="constant-constant-mq3-client-cgame-effects-chan-body-const-chan-body-4-src-mq3-client-cgame-effects-ml-925678475"></a>
 ### CHAN_BODY
@@ -98,12 +98,14 @@ const CHAN_BODY = 4
 function clear(state)
 ```
 
+Updates `state.actions` during client game effects `clear`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game effects record/storage; this routine assigns `state.actions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L81)
 
 <a id="function-function-mq3-client-cgame-effects-copy3-function-copy3-value-src-mq3-client-cgame-effects-ml-1890437099"></a>
 ### copy3
@@ -112,12 +114,14 @@ function clear(state)
 function copy3(value)
 ```
 
+Copies the X, Y and Z components into a fresh client game effects vector.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L106)
 
 <a id="function-function-mq3-client-cgame-effects-crandom-function-crandom-state-src-mq3-client-cgame-effects-ml-1345803547"></a>
 ### crandom
@@ -126,12 +130,14 @@ function copy3(value)
 function crandom(state)
 ```
 
+Computes `2.0*(randomFloat(state)-0.5)` for client game effects `crandom`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game effects state passed to the helper calls in `crandom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L97)
 
 <a id="function-function-mq3-client-cgame-effects-create-function-create-src-mq3-client-cgame-effects-ml-425149202"></a>
 ### create
@@ -140,8 +146,10 @@ function crandom(state)
 function create()
 ```
 
+Creates a `mq3.client.cgame_effects.State` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L58)
 
 <a id="constant-constant-mq3-client-cgame-effects-dish-flash-model-const-dish-flash-model-models-weaphits-boom01-md3-src-mq3-client-cgame-effects-ml-266284382"></a>
 ### DISH_FLASH_MODEL
@@ -160,13 +168,15 @@ const DISH_FLASH_MODEL = "models/weaphits/boom01.md3"
 function effect(boundary, kind)
 ```
 
+Creates a `mq3.client.cgame_effects.Effect` record. Assigns `boundary` from `boundary`, `kind` from `kind`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
+| `boundary` | `dynamic` | — | Value used to initialize `Effect.boundary`. |
+| `kind` | `dynamic` | — | Value used to initialize `Effect.kind`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L65)
 
 - [mq3.client.cgame_effects.Effect](Type-mq3-client-cgame-effects-effect-307195720.md) — struct
 <a id="constant-constant-mq3-client-cgame-effects-entitynum-none-const-entitynum-none-1023-src-mq3-client-cgame-effects-ml-2045724605"></a>
@@ -186,22 +196,24 @@ const ENTITYNUM_NONE = 1023
 function fragment(state, kind, origin, velocity, model, duration, spread, bounce, bounceSound, markType, retailActive)
 ```
 
+Calls `mq3.client.cgame_effects.effect`, `mq3.compat.numeric.trunc32`, `mq3.client.cgame_effects.randomFloat` and additional helpers from client game effects `fragment`. The final path returns `publish(state,value,retailActive)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `duration` | `dynamic` | — |  |
-| `spread` | `dynamic` | — |  |
-| `bounce` | `dynamic` | — |  |
-| `bounceSound` | `dynamic` | — |  |
-| `markType` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. |
+| `model` | `dynamic` | — | Value assigned to `value.model`. |
+| `duration` | `dynamic` | — | Lifetime or interval in the same units as this operation's clock. |
+| `spread` | `dynamic` | — | Value used by `value.endTime=state.time+duration+n.trunc32(randomFloat(state)*spread)`. |
+| `bounce` | `dynamic` | — | Value assigned to `value.bounceFactor`. |
+| `bounceSound` | `dynamic` | — | Value assigned to `value.bounceSound`. |
+| `markType` | `dynamic` | — | Value assigned to `value.markType`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L275)
 
 <a id="function-function-mq3-client-cgame-effects-gibplayer-function-gibplayer-state-origin-retailactive-src-mq3-client-cgame-effects-ml-2021119528"></a>
 ### gibPlayer
@@ -214,12 +226,12 @@ CG_GibPlayer
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.blood`, `state.gibs`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L304)
 
 <a id="function-function-mq3-client-cgame-effects-gibvelocity-function-gibvelocity-state-horizontal-jump-src-mq3-client-cgame-effects-ml-1236763881"></a>
 ### gibVelocity
@@ -228,14 +240,16 @@ CG_GibPlayer
 function gibVelocity(state, horizontal, jump)
 ```
 
+Builds the client game effects `gibVelocity` sequence from `[crandom(state)*horizontal,crandom(state)*horizontal,jump+crandom(state)*horizontal]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `horizontal` | `dynamic` | — |  |
-| `jump` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game effects state passed to the helper calls in `gibVelocity`. |
+| `horizontal` | `dynamic` | — | Whether the control/operation uses horizontal rather than vertical layout. |
+| `jump` | `dynamic` | — | Value used by `return [crandom(state)*horizontal,crandom(state)*horizontal,jump+crandom(state)*horizontal]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L298)
 
 <a id="constant-constant-mq3-client-cgame-effects-invul-impact-model-const-invul-impact-model-models-powerups-shield-impact-md3-src-mq3-client-cgame-effects-ml-20086680"></a>
 ### INVUL_IMPACT_MODEL
@@ -268,13 +282,13 @@ CG_InvulnerabilityImpact
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `angles` | `dynamic` | — | Value used by `value.angles=copy3(angles)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L229)
 
 <a id="function-function-mq3-client-cgame-effects-invulnerabilityjuiced-function-invulnerabilityjuiced-state-origin-retailactive-src-mq3-client-cgame-effects-ml-1039762204"></a>
 ### invulnerabilityJuiced
@@ -287,12 +301,12 @@ CG_InvulnerabilityJuiced
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L238)
 
 <a id="constant-constant-mq3-client-cgame-effects-kamikaze-model-const-kamikaze-model-models-weaphits-kamboom2-md3-src-mq3-client-cgame-effects-ml-1750521420"></a>
 ### KAMIKAZE_MODEL
@@ -315,12 +329,12 @@ CG_KamikazeEffect
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L170)
 
 <a id="function-function-mq3-client-cgame-effects-launchexplode-function-launchexplode-state-origin-velocity-model-retailactive-src-mq3-client-cgame-effects-ml-573743474"></a>
 ### launchExplode
@@ -333,14 +347,14 @@ CG_LaunchExplode
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_effects.fragment`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_effects.fragment`. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. Forwarded to `mq3.client.cgame_effects.fragment`. |
+| `model` | `dynamic` | — | Argument 5 of `mq3.client.cgame_effects.fragment`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_effects.fragment`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L292)
 
 <a id="function-function-mq3-client-cgame-effects-launchgib-function-launchgib-state-origin-velocity-model-retailactive-src-mq3-client-cgame-effects-ml-197171976"></a>
 ### launchGib
@@ -353,14 +367,14 @@ CG_LaunchGib
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_effects.fragment`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_effects.fragment`. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. Forwarded to `mq3.client.cgame_effects.fragment`. |
+| `model` | `dynamic` | — | Argument 5 of `mq3.client.cgame_effects.fragment`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_effects.fragment`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L285)
 
 <a id="constant-constant-mq3-client-cgame-effects-le-explosion-const-le-explosion-cgabi-le-explosion-src-mq3-client-cgame-effects-ml-2125148464"></a>
 ### LE_EXPLOSION
@@ -543,13 +557,13 @@ CG_LightningBoltBeam
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `start` | `dynamic` | — | Value used by `value.position=copy3(start)`. |
+| `finish` | `dynamic` | — | Value used by `value.oldPosition=copy3(finish)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L162)
 
 <a id="function-function-mq3-client-cgame-effects-makeexplosion-function-makeexplosion-state-origin-direction-model-shader-msec-issprite-retailactive-src-mq3-client-cgame-effects-ml-1689024574"></a>
 ### makeExplosion
@@ -562,17 +576,17 @@ CG_MakeExplosion
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `msec` | `dynamic` | — |  |
-| `isSprite` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `direction` | `dynamic` | — | Direction vector used by the spatial calculation. |
+| `model` | `dynamic` | — | Value assigned to `value.model`. |
+| `shader` | `dynamic` | — | Value assigned to `value.shader`. |
+| `msec` | `dynamic` | — | Time interval in milliseconds. |
+| `isSprite` | `dynamic` | — | Value used by `if isSprite then value.leType=LE_SPRITE_EXPLOSION`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L183)
 
 <a id="function-function-mq3-client-cgame-effects-obeliskexplode-function-obeliskexplode-state-origin-entitynum-retailactive-src-mq3-client-cgame-effects-ml-461994573"></a>
 ### obeliskExplode
@@ -585,13 +599,13 @@ CG_ObeliskExplode
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game effects state passed to the helper calls in `obeliskExplode`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L196)
 
 <a id="function-function-mq3-client-cgame-effects-obeliskpain-function-obeliskpain-state-origin-retailactive-src-mq3-client-cgame-effects-ml-588782168"></a>
 ### obeliskPain
@@ -604,12 +618,12 @@ CG_ObeliskPain
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game effects state passed to the helper calls in `obeliskPain`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L220)
 
 <a id="function-function-mq3-client-cgame-effects-publish-function-publish-state-value-retailactive-src-mq3-client-cgame-effects-ml-119347345"></a>
 ### publish
@@ -618,14 +632,16 @@ CG_ObeliskPain
 function publish(state, value, retailActive)
 ```
 
+Updates `value.dispatched`, `state.actions`, `state.emitted`, `state.suppressed` during client game effects `publish`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game effects record/storage; this routine assigns `state.actions`, `state.emitted`, `state.suppressed`. |
+| `value` | `dynamic` | — | Mutable client game effects record/storage; this routine assigns `value.dispatched`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L73)
 
 <a id="function-function-mq3-client-cgame-effects-randint-function-randint-state-src-mq3-client-cgame-effects-ml-1889090099"></a>
 ### randInt
@@ -634,12 +650,14 @@ function publish(state, value, retailActive)
 function randInt(state)
 ```
 
+Updates `state.randomAt`, `state.randomSeed` during client game effects `randInt`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game effects record/storage; this routine assigns `state.randomAt`, `state.randomSeed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L88)
 
 <a id="function-function-mq3-client-cgame-effects-randomfloat-function-randomfloat-state-src-mq3-client-cgame-effects-ml-1768297421"></a>
 ### randomFloat
@@ -648,12 +666,14 @@ function randInt(state)
 function randomFloat(state)
 ```
 
+Adapts `mq3.compat.numeric.fdiv` to client game effects `randomFloat`, returning its result for `randInt(state), 32767.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.fdiv`; passed as `randInt(state)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L94)
 
 <a id="constant-constant-mq3-client-cgame-effects-rf-third-person-const-rf-third-person-2-src-mq3-client-cgame-effects-ml-87327329"></a>
 ### RF_THIRD_PERSON
@@ -716,14 +736,14 @@ CG_ScorePlum
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `score` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game effects record/storage; this routine assigns `state.lastScorePosition`. |
+| `client` | `dynamic` | — | Value used by `if client!=state.predictedClient or not state.scorePlum then return void end if`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `score` | `dynamic` | — | Value assigned to `value.radius`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L248)
 
 <a id="function-function-mq3-client-cgame-effects-setrandomints-function-setrandomints-state-values-src-mq3-client-cgame-effects-ml-655378243"></a>
 ### setRandomInts
@@ -732,13 +752,15 @@ CG_ScorePlum
 function setRandomInts(state, values)
 ```
 
+Updates `state.randomInts`, `state.randomAt` during client game effects `setRandomInts`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `values` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game effects record/storage; this routine assigns `state.randomInts`, `state.randomAt`. |
+| `values` | `dynamic` | — | Value assigned to `state.randomInts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L85)
 
 <a id="constant-constant-mq3-client-cgame-effects-smoke2-model-const-smoke2-model-models-weapons2-shells-s-shell-md3-src-mq3-client-cgame-effects-ml-1416443140"></a>
 ### SMOKE2_MODEL
@@ -771,23 +793,23 @@ CG_SmokePuff
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `p` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `g` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `duration` | `dynamic` | — |  |
-| `startTime` | `dynamic` | — |  |
-| `fadeInTime` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.ragePro`. |
+| `p` | `dynamic` | — | Value used by `value.position=copy3(p)`. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. |
+| `radius` | `dynamic` | — | Radius used by the spatial or visual calculation. |
+| `r` | `dynamic` | — | Value used by `value.color=[r,g,b,a]`. |
+| `g` | `dynamic` | — | Value used by `value.color=[r,g,b,a]`. |
+| `b` | `dynamic` | — | Value used by `value.color=[r,g,b,a]`. |
+| `a` | `dynamic` | — | Value used by `value.color=[r,g,b,a]`. |
+| `duration` | `dynamic` | — | Lifetime or interval in the same units as this operation's clock. |
+| `startTime` | `dynamic` | — | Value assigned to `value.startTime`, `value.endTime`, `value.shaderTime`. |
+| `fadeInTime` | `dynamic` | — | Value assigned to `value.fadeInTime`. |
+| `flags` | `dynamic` | — | Value assigned to `value.flags`. |
+| `shader` | `dynamic` | — | Value assigned to `value.shader`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L142)
 
 <a id="function-function-mq3-client-cgame-effects-smokerandom-function-smokerandom-state-src-mq3-client-cgame-effects-ml-435936083"></a>
 ### smokeRandom
@@ -796,12 +818,14 @@ CG_SmokePuff
 function smokeRandom(state)
 ```
 
+Updates `state.smokeSeed` during client game effects `smokeRandom`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game effects record/storage; this routine assigns `state.smokeSeed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L100)
 
 <a id="function-function-mq3-client-cgame-effects-soundaction-function-soundaction-state-kind-origin-sound-retailactive-src-mq3-client-cgame-effects-ml-2033745959"></a>
 ### soundAction
@@ -810,16 +834,18 @@ function smokeRandom(state)
 function soundAction(state, kind, origin, sound, retailActive)
 ```
 
+Calls `mq3.client.cgame_effects.effect`, `mq3.client.cgame_effects.copy3`, `mq3.client.cgame_effects.publish` from client game effects `soundAction`. The final path returns `publish(state,value,retailActive)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game effects state passed to the helper calls in `soundAction`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `sound` | `dynamic` | — | Value assigned to `value.shader`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L212)
 
 <a id="function-function-mq3-client-cgame-effects-spawneffect-function-spawneffect-state-origin-retailactive-src-mq3-client-cgame-effects-ml-1947804834"></a>
 ### spawnEffect
@@ -832,12 +858,12 @@ CG_SpawnEffect
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.missionpack`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L151)
 
 - [mq3.client.cgame_effects.State](Type-mq3-client-cgame-effects-state-1269913826.md) — struct
 <a id="constant-constant-mq3-client-cgame-effects-teleport-missionpack-model-const-teleport-missionpack-model-models-powerups-pop-md3-src-mq3-client-cgame-effects-ml-1624284145"></a>
@@ -897,13 +923,15 @@ const TR_LINEAR = 2
 function variationSound(prefix, choice)
 ```
 
+Evaluates client game effects `variationSound` and returns `"sound/items/"+prefix+suffix` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `prefix` | `dynamic` | — |  |
-| `choice` | `dynamic` | — |  |
+| `prefix` | `dynamic` | — | Value used by `return "sound/items/"+prefix+suffix`. |
+| `choice` | `dynamic` | — | Value used by `if choice==2 then suffix="02.wav" else if choice==3 then suffix="03.wav" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L203)
 
 <a id="constant-constant-mq3-client-cgame-effects-water-bubble-shader-const-water-bubble-shader-waterbubble-src-mq3-client-cgame-effects-ml-1556804892"></a>
 ### WATER_BUBBLE_SHADER
@@ -922,5 +950,7 @@ const WATER_BUBBLE_SHADER = "waterBubble"
 function white()
 ```
 
+Builds the client game effects `white` sequence from `[1.0,1.0,1.0,1.0]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L83)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L108)

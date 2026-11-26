@@ -20,12 +20,14 @@ Reachable from entry: **yes**
 function fail(message)
 ```
 
+Create the audio.snd_spatialize error for `fail` with 7662 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("S_SpatializeOrigin: " + message)` and `error(7662, ("S_SpatializeOrigin: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L16)
 
 <a id="function-function-mq3-audio-snd-spatialize-gains-function-gains-origin-listenerorigin-listeneraxis-mastervolume-src-mq3-audio-snd-spatialize-ml-318797539"></a>
 ### gains
@@ -34,15 +36,17 @@ function fail(message)
 function gains(origin, listenerOrigin, listenerAxis, masterVolume)
 ```
 
+Convert spatialized channel volumes into normalized left/right gains with distance and attenuation metadata.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
-| `listenerOrigin` | `dynamic` | — |  |
-| `listenerAxis` | `dynamic` | — |  |
-| `masterVolume` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Origin passed as `origin` to `mq3.audio.snd_spatialize.spatialize`. |
+| `listenerOrigin` | `dynamic` | — | Listener origin passed as `listenerOrigin` to `mq3.audio.snd_spatialize.spatialize`. |
+| `listenerAxis` | `dynamic` | — | Listener axis passed as `listenerAxis` to `mq3.audio.snd_spatialize.spatialize`. |
+| `masterVolume` | `dynamic` | — | Master volume passed as `masterVolume` to `mq3.audio.snd_spatialize.spatialize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L55)
 
 <a id="constant-constant-mq3-audio-snd-spatialize-sound-attenuate-const-sound-attenuate-0-0008-src-mq3-audio-snd-spatialize-ml-420647277"></a>
 ### SOUND_ATTENUATE
@@ -71,16 +75,18 @@ const SOUND_FULLVOLUME = 80
 function spatialize(origin, listenerOrigin, listenerAxis, masterVolume, channels)
 ```
 
+Calculate left/right gains from listener orientation, source distance, and attenuation.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
-| `listenerOrigin` | `dynamic` | — |  |
-| `listenerAxis` | `dynamic` | — |  |
-| `masterVolume` | `dynamic` | — |  |
-| `channels` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Value passed as `value` to `mq3.audio.snd_spatialize.validVector`. |
+| `listenerOrigin` | `dynamic` | — | Value passed as `value` to `mq3.audio.snd_spatialize.validVector`. |
+| `listenerAxis` | `dynamic` | — | Listener axis used in `listenerAxis[0]` and `listenerAxis[1]`. |
+| `masterVolume` | `dynamic` | — | Floating-point value to narrow to binary32. |
+| `channels` | `dynamic` | — | Channels used in `(channels != 1)` and `(channels != 2)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L28)
 
 <a id="function-function-mq3-audio-snd-spatialize-validvector-function-validvector-value-src-mq3-audio-snd-spatialize-ml-899845965"></a>
 ### validVector
@@ -89,11 +95,13 @@ function spatialize(origin, listenerOrigin, listenerAxis, masterVolume, channels
 function validVector(value)
 ```
 
+Compute audio.snd_spatialize.validVector as `((value != void) and (len(value) == 3))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `len(value)` and `(value != void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L20)
 
 - [mq3.audio.snd_spatialize.Volumes](Type-mq3-audio-snd-spatialize-volumes-1889082757.md) — struct

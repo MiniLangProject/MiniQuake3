@@ -9,8 +9,10 @@
 struct View
 ```
 
+Data record for `mq3.renderer.portal_view.View`; groups `surface`, `camera`, `pvsOrigin`, `mirror`, `origin`, `axis`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-camera-camera-src-mq3-renderer-portal-view-ml-1693109570"></a>
 ### camera
@@ -32,7 +34,7 @@ camera
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-entityindex-entityindex-src-mq3-renderer-portal-view-ml-1075226244"></a>
 ### entityIndex
@@ -42,7 +44,7 @@ entityIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-mirror-mirror-src-mq3-renderer-portal-view-ml-706772778"></a>
 ### mirror
@@ -52,7 +54,7 @@ mirror
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-origin-origin-src-mq3-renderer-portal-view-ml-1502105236"></a>
 ### origin
@@ -62,7 +64,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-planedist-planedist-src-mq3-renderer-portal-view-ml-1428383492"></a>
 ### planeDist
@@ -72,7 +74,7 @@ planeDist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-planenormal-planenormal-src-mq3-renderer-portal-view-ml-437736832"></a>
 ### planeNormal
@@ -82,7 +84,7 @@ planeNormal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-pvsorigin-pvsorigin-src-mq3-renderer-portal-view-ml-200916324"></a>
 ### pvsOrigin
@@ -92,7 +94,7 @@ pvsOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="field-field-mq3-renderer-portal-view-view-surface-surface-src-mq3-renderer-portal-view-ml-1989114976"></a>
 ### surface
@@ -102,4 +104,4 @@ surface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)

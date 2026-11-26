@@ -9,8 +9,10 @@
 struct Verification
 ```
 
+Stores remote pure verification record, including `archive`, `command`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ archive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L23)
 
 <a id="field-field-mq3-client-remote-pure-verification-command-command-src-mq3-client-remote-pure-ml-304121266"></a>
 ### command
@@ -32,4 +34,4 @@ command
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L23)

@@ -21,16 +21,18 @@ Reachable from entry: **yes**
 function dispatch(runtime, pools, vm, base, op)
 ```
 
+Apply `mq3.botlib.ai_weapon_combat_syscalls.readInventory`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_weapon_combat.chooseBestFightWeapon` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `pools` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI weapon combat runtime; accesses `config`. |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L25)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-syscalls-inventory-count-const-inventory-count-256-src-mq3-botlib-ai-weapon-combat-syscalls-ml-2143757898"></a>
 ### INVENTORY_COUNT
@@ -49,10 +51,12 @@ const INVENTORY_COUNT = 256
 function readInventory(vm, address)
 ```
 
+Apply `mq3.vm.syscall_common.pointer` while evaluating `readInventory`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L14)

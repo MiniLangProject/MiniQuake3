@@ -9,8 +9,10 @@
 struct StructDef
 ```
 
+`StructDef` record for l struct, containing `size` and `fields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ fields
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L24)
 
 <a id="field-field-mq3-botlib-l-struct-structdef-size-size-src-mq3-botlib-l-struct-ml-304452655"></a>
 ### size
@@ -32,4 +34,4 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L24)

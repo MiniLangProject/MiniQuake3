@@ -9,8 +9,10 @@
 struct PlayerModelAssets
 ```
 
+Stores playable app player model assets record, including `models`, `animation`, `textures`, `cache`, `barrelStates`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L95)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L98)
 
 ## Members
 
@@ -22,7 +24,7 @@ animation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L98)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-barrelstates-barrelstates-src-mq3-client-playable-app-ml-351372416"></a>
 ### barrelStates
@@ -32,7 +34,7 @@ barrelStates
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L98)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-cache-cache-src-mq3-client-playable-app-ml-350306848"></a>
 ### cache
@@ -42,7 +44,7 @@ cache
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L98)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-models-models-src-mq3-client-playable-app-ml-1015669664"></a>
 ### models
@@ -52,7 +54,7 @@ models
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L98)
 
 <a id="field-field-mq3-client-playable-app-playermodelassets-textures-textures-src-mq3-client-playable-app-ml-507641844"></a>
 ### textures
@@ -62,4 +64,4 @@ textures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L98)

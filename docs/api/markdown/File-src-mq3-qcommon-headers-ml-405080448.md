@@ -145,8 +145,10 @@ const CLIP_EPSILON = 0.1
 function cmlocalFieldNames()
 ```
 
+List the 81 names in qcommon.headers.cmlocalFieldNames, beginning with `cArea_t.floodnum`, `cArea_t.floodvalid`, `cLeaf_t.area`, `cLeaf_t.cluster`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L129)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L134)
 
 <a id="function-function-mq3-qcommon-headers-cmlocalfunctionnames-function-cmlocalfunctionnames-src-mq3-qcommon-headers-ml-1498691682"></a>
 ### cmlocalFunctionNames
@@ -155,8 +157,10 @@ function cmlocalFieldNames()
 function cmlocalFunctionNames()
 ```
 
+List the 9 names in qcommon.headers.cmlocalFunctionNames, beginning with `CM_BoxBrushes`, `CM_BoxLeafnums_r`, `CM_ClearLevelPatches`, `CM_ClipHandleToModel`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L127)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L130)
 
 <a id="function-function-mq3-qcommon-headers-cmlocalglobalnames-function-cmlocalglobalnames-src-mq3-qcommon-headers-ml-1233706826"></a>
 ### cmlocalGlobalNames
@@ -165,8 +169,10 @@ function cmlocalFunctionNames()
 function cmlocalGlobalNames()
 ```
 
+List the 6 names in qcommon.headers.cmlocalGlobalNames, beginning with `c_patch_traces`, `c_pointcontents`, `cm`, `cm_noAreas`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L132)
 
 <a id="function-function-mq3-qcommon-headers-cmlocalmacronames-function-cmlocalmacronames-src-mq3-qcommon-headers-ml-1843590856"></a>
 ### cmlocalMacroNames
@@ -175,8 +181,10 @@ function cmlocalGlobalNames()
 function cmlocalMacroNames()
 ```
 
+List the 4 names in qcommon.headers.cmlocalMacroNames, beginning with `BOX_MODEL_HANDLE`, `CAPSULE_MODEL_HANDLE`, `MAX_SUBMODELS`, `SURFACE_CLIP_EPSILON`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L125)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L126)
 
 <a id="function-function-mq3-qcommon-headers-cmlocaltypenames-function-cmlocaltypenames-src-mq3-qcommon-headers-ml-561555678"></a>
 ### cmlocalTypeNames
@@ -185,8 +193,10 @@ function cmlocalMacroNames()
 function cmlocalTypeNames()
 ```
 
+List the 11 names in qcommon.headers.cmlocalTypeNames, beginning with `cArea_t`, `cLeaf_t`, `cNode_t`, `cPatch_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L126)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L128)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchfieldnames-function-cmpatchfieldnames-src-mq3-qcommon-headers-ml-313193486"></a>
 ### cmpatchFieldNames
@@ -195,8 +205,10 @@ function cmlocalTypeNames()
 function cmpatchFieldNames()
 ```
 
+List the 17 names in qcommon.headers.cmpatchFieldNames, beginning with `cGrid_t.points`, `cGrid_t.height`, `cGrid_t.width`, `cGrid_t.wrapHeight`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L135)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L145)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchfunctionnames-function-cmpatchfunctionnames-src-mq3-qcommon-headers-ml-589128942"></a>
 ### cmpatchFunctionNames
@@ -205,8 +217,10 @@ function cmpatchFieldNames()
 function cmpatchFunctionNames()
 ```
 
+List the 1 names in qcommon.headers.cmpatchFunctionNames, beginning with `CM_GeneratePatchCollide`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L133)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L141)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchglobalnames-function-cmpatchglobalnames-src-mq3-qcommon-headers-ml-95006114"></a>
 ### cmpatchGlobalNames
@@ -215,8 +229,10 @@ function cmpatchFunctionNames()
 function cmpatchGlobalNames()
 ```
 
+List the 0 names in qcommon.headers.cmpatchGlobalNames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L134)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L143)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchmacronames-function-cmpatchmacronames-src-mq3-qcommon-headers-ml-805500158"></a>
 ### cmpatchMacroNames
@@ -225,8 +241,10 @@ function cmpatchGlobalNames()
 function cmpatchMacroNames()
 ```
 
+List the 6 names in qcommon.headers.cmpatchMacroNames, beginning with `MAX_FACETS`, `MAX_GRID_SIZE`, `MAX_PATCH_PLANES`, `PLANE_TRI_EPSILON`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L131)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L137)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchtypenames-function-cmpatchtypenames-src-mq3-qcommon-headers-ml-1794261422"></a>
 ### cmpatchTypeNames
@@ -235,8 +253,10 @@ function cmpatchMacroNames()
 function cmpatchTypeNames()
 ```
 
+List the 4 names in qcommon.headers.cmpatchTypeNames, beginning with `cGrid_t`, `facet_t`, `patchCollide_t`, `patchPlane_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L132)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L139)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibfieldnames-function-cmpolylibfieldnames-src-mq3-qcommon-headers-ml-1447197320"></a>
 ### cmpolylibFieldNames
@@ -245,8 +265,10 @@ function cmpatchTypeNames()
 function cmpolylibFieldNames()
 ```
 
+List the 2 names in qcommon.headers.cmpolylibFieldNames, beginning with `winding_t.numpoints`, `winding_t.p`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L141)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L156)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibfunctionnames-function-cmpolylibfunctionnames-src-mq3-qcommon-headers-ml-1038321674"></a>
 ### cmpolylibFunctionNames
@@ -255,8 +277,10 @@ function cmpolylibFieldNames()
 function cmpolylibFunctionNames()
 ```
 
+List the 17 names in qcommon.headers.cmpolylibFunctionNames, beginning with `AddWindingToConvexHull`, `AllocWinding`, `BaseWindingForPlane`, `CheckWinding`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L139)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L152)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibglobalnames-function-cmpolylibglobalnames-src-mq3-qcommon-headers-ml-1483566494"></a>
 ### cmpolylibGlobalNames
@@ -265,8 +289,10 @@ function cmpolylibFunctionNames()
 function cmpolylibGlobalNames()
 ```
 
+List the 0 names in qcommon.headers.cmpolylibGlobalNames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L140)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L154)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibmacronames-function-cmpolylibmacronames-src-mq3-qcommon-headers-ml-2046443340"></a>
 ### cmpolylibMacroNames
@@ -275,8 +301,10 @@ function cmpolylibGlobalNames()
 function cmpolylibMacroNames()
 ```
 
+List the 8 names in qcommon.headers.cmpolylibMacroNames, beginning with `CLIP_EPSILON`, `MAX_MAP_BOUNDS`, `MAX_POINTS_ON_WINDING`, `ON_EPSILON`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L137)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L148)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibtypenames-function-cmpolylibtypenames-src-mq3-qcommon-headers-ml-1318799202"></a>
 ### cmpolylibTypeNames
@@ -285,8 +313,10 @@ function cmpolylibMacroNames()
 function cmpolylibTypeNames()
 ```
 
+List the 1 names in qcommon.headers.cmpolylibTypeNames, beginning with `winding_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L138)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L150)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicfieldnames-function-cmpublicfieldnames-src-mq3-qcommon-headers-ml-428680614"></a>
 ### cmpublicFieldNames
@@ -295,8 +325,10 @@ function cmpolylibTypeNames()
 function cmpublicFieldNames()
 ```
 
+List the 0 names in qcommon.headers.cmpublicFieldNames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L147)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L167)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicfunctionnames-function-cmpublicfunctionnames-src-mq3-qcommon-headers-ml-1667045624"></a>
 ### cmpublicFunctionNames
@@ -305,8 +337,10 @@ function cmpublicFieldNames()
 function cmpublicFunctionNames()
 ```
 
+List the 23 names in qcommon.headers.cmpublicFunctionNames, beginning with `CM_AdjustAreaPortalState`, `CM_AreasConnected`, `CM_BoxLeafnums`, `CM_BoxTrace`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L145)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L163)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicglobalnames-function-cmpublicglobalnames-src-mq3-qcommon-headers-ml-857906766"></a>
 ### cmpublicGlobalNames
@@ -315,8 +349,10 @@ function cmpublicFunctionNames()
 function cmpublicGlobalNames()
 ```
 
+List the 0 names in qcommon.headers.cmpublicGlobalNames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L146)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L165)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicmacronames-function-cmpublicmacronames-src-mq3-qcommon-headers-ml-1354846970"></a>
 ### cmpublicMacroNames
@@ -325,8 +361,10 @@ function cmpublicGlobalNames()
 function cmpublicMacroNames()
 ```
 
+List the 0 names in qcommon.headers.cmpublicMacroNames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L143)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L159)
 
 <a id="function-function-mq3-qcommon-headers-cmpublictypenames-function-cmpublictypenames-src-mq3-qcommon-headers-ml-421178636"></a>
 ### cmpublicTypeNames
@@ -335,8 +373,10 @@ function cmpublicMacroNames()
 function cmpublicTypeNames()
 ```
 
+List the 0 names in qcommon.headers.cmpublicTypeNames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L144)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L161)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-amd-3dnow-const-cpuid-amd-3dnow-48-src-mq3-qcommon-headers-ml-1507624491"></a>
 ### CPUID_AMD_3DNOW
@@ -415,8 +455,10 @@ const CPUID_INTEL_UNSUPPORTED = 32
 function enumNames()
 ```
 
+Return `mq3.qcommon.headers.qcommonEnumNames()` from `qcommon.headers.enumNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L164)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L198)
 
 <a id="function-function-mq3-qcommon-headers-fieldnames-function-fieldnames-src-mq3-qcommon-headers-ml-654966062"></a>
 ### fieldNames
@@ -425,8 +467,10 @@ function enumNames()
 function fieldNames()
 ```
 
+List the 222 names in qcommon.headers.fieldNames, beginning with `cArea_t.floodnum`, `cArea_t.floodvalid`, `cGrid_t.points`, `cGrid_t.height`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L167)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L204)
 
 <a id="constant-constant-mq3-qcommon-headers-fs-cgame-ref-const-fs-cgame-ref-4-src-mq3-qcommon-headers-ml-442733163"></a>
 ### FS_CGAME_REF
@@ -475,8 +519,10 @@ const FS_UI_REF = 2
 function functionNames()
 ```
 
+List the 343 names in qcommon.headers.functionNames, beginning with `AddWindingToConvexHull`, `AllocWinding`, `BaseWindingForPlane`, `CL_CDDialog`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L165)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L200)
 
 <a id="function-function-mq3-qcommon-headers-globalnames-function-globalnames-src-mq3-qcommon-headers-ml-369867820"></a>
 ### globalNames
@@ -485,8 +531,10 @@ function functionNames()
 function globalNames()
 ```
 
+List the 32 names in qcommon.headers.globalNames, beginning with `c_patch_traces`, `c_pointcontents`, `cl_cdkey`, `cl_paused`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L166)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L202)
 
 <a id="function-function-mq3-qcommon-headers-headercounts-function-headercounts-src-mq3-qcommon-headers-ml-510587890"></a>
 ### headerCounts
@@ -495,8 +543,10 @@ function globalNames()
 function headerCounts()
 ```
 
+Compute qcommon.headers.headerCounts as `[75, 46, 45, 344, 32, 222]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L173)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L222)
 
 <a id="constant-constant-mq3-qcommon-headers-hmax-const-hmax-256-src-mq3-qcommon-headers-ml-51674810"></a>
 ### HMAX
@@ -525,8 +575,10 @@ const INTERNAL_NODE = 257
 function macroNames()
 ```
 
+List the 75 names in qcommon.headers.macroNames, beginning with `AUTHORIZE_SERVER_NAME`, `BASEGAME`, `BOX_MODEL_HANDLE`, `CAPSULE_MODEL_HANDLE`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L162)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L194)
 
 <a id="constant-constant-mq3-qcommon-headers-master-server-name-const-master-server-name-master-quake3arena-com-src-mq3-qcommon-headers-ml-685183335"></a>
 ### MASTER_SERVER_NAME
@@ -915,8 +967,10 @@ const PROTOCOL_VERSION = 68
 function qcommonEnumNames()
 ```
 
+List the 46 names in qcommon.headers.qcommonEnumNames, beginning with `NA_BOT`, `NA_BAD`, `NA_LOOPBACK`, `NA_BROADCAST`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L151)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L174)
 
 <a id="function-function-mq3-qcommon-headers-qcommonfieldnames-function-qcommonfieldnames-src-mq3-qcommon-headers-ml-472542190"></a>
 ### qcommonFieldNames
@@ -925,8 +979,10 @@ function qcommonEnumNames()
 function qcommonFieldNames()
 ```
 
+List the 54 names in qcommon.headers.qcommonFieldNames, beginning with `field_t.buffer`, `field_t.cursor`, `field_t.scroll`, `field_t.widthInChars`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L154)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L180)
 
 <a id="function-function-mq3-qcommon-headers-qcommonfunctionnames-function-qcommonfunctionnames-src-mq3-qcommon-headers-ml-550811174"></a>
 ### qcommonFunctionNames
@@ -935,8 +991,10 @@ function qcommonFieldNames()
 function qcommonFunctionNames()
 ```
 
+List the 276 names in qcommon.headers.qcommonFunctionNames, beginning with `CL_CDDialog`, `CL_CharEvent`, `CL_ConsolePrint`, `CL_Disconnect`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L152)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L176)
 
 <a id="function-function-mq3-qcommon-headers-qcommonglobalnames-function-qcommonglobalnames-src-mq3-qcommon-headers-ml-88454814"></a>
 ### qcommonGlobalNames
@@ -945,8 +1003,10 @@ function qcommonFunctionNames()
 function qcommonGlobalNames()
 ```
 
+List the 26 names in qcommon.headers.qcommonGlobalNames, beginning with `cl_cdkey`, `cl_paused`, `clientHuffTables`, `com_blood`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L153)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L178)
 
 <a id="function-function-mq3-qcommon-headers-qcommonmacronames-function-qcommonmacronames-src-mq3-qcommon-headers-ml-1068576206"></a>
 ### qcommonMacroNames
@@ -955,8 +1015,10 @@ function qcommonGlobalNames()
 function qcommonMacroNames()
 ```
 
+List the 46 names in qcommon.headers.qcommonMacroNames, beginning with `AUTHORIZE_SERVER_NAME`, `BASEGAME`, `CL_DECODE_START`, `CL_ENCODE_START`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L149)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L170)
 
 <a id="function-function-mq3-qcommon-headers-qcommontypenames-function-qcommontypenames-src-mq3-qcommon-headers-ml-31545350"></a>
 ### qcommonTypeNames
@@ -965,8 +1027,10 @@ function qcommonMacroNames()
 function qcommonTypeNames()
 ```
 
+List the 17 names in qcommon.headers.qcommonTypeNames, beginning with `field_t`, `huff_t`, `huffman_t`, `joystickAxis_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L150)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L172)
 
 <a id="function-function-mq3-qcommon-headers-reliableslot-function-reliableslot-sequence-src-mq3-qcommon-headers-ml-407043951"></a>
 ### reliableSlot
@@ -975,12 +1039,14 @@ function qcommonTypeNames()
 function reliableSlot(sequence)
 ```
 
+Compute qcommon.headers.reliableSlot as `(sequence & PACKET_MASK)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sequence` | `dynamic` | — |  |
+| `sequence` | `dynamic` | — | Sequence used in `(sequence & PACKET_MASK)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L211)
 
 <a id="constant-constant-mq3-qcommon-headers-se-char-const-se-char-2-src-mq3-qcommon-headers-ml-132384981"></a>
 ### SE_CHAR
@@ -1339,8 +1405,10 @@ const TRAP_TESTPRINTINT = 112
 function typeNames()
 ```
 
+List the 45 names in qcommon.headers.typeNames, beginning with `cArea_t`, `cGrid_t`, `cLeaf_t`, `cNode_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L163)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L196)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-badzipfile-const-unz-badzipfile-103-src-mq3-qcommon-headers-ml-1207521912"></a>
 ### UNZ_BADZIPFILE
@@ -1459,8 +1527,10 @@ const UNZ_PARAMERROR = -102
 function unzipFieldNames()
 ```
 
+List the 68 names in qcommon.headers.unzipFieldNames, beginning with `file_in_zip_read_info_s.byte_before_the_zipfile`, `file_in_zip_read_info_s.compression_method`, `file_in_zip_read_info_s.crc32`, `file_in_zip_read_info_s.crc32_wait`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L160)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L191)
 
 <a id="function-function-mq3-qcommon-headers-unzipfunctionnames-function-unzipfunctionnames-src-mq3-qcommon-headers-ml-1536203326"></a>
 ### unzipFunctionNames
@@ -1469,8 +1539,10 @@ function unzipFieldNames()
 function unzipFunctionNames()
 ```
 
+List the 18 names in qcommon.headers.unzipFunctionNames, beginning with `unzClose`, `unzCloseCurrentFile`, `unzGetCurrentFileInfo`, `unzGetCurrentFileInfoPosition`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L158)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L187)
 
 <a id="function-function-mq3-qcommon-headers-unzipglobalnames-function-unzipglobalnames-src-mq3-qcommon-headers-ml-311101082"></a>
 ### unzipGlobalNames
@@ -1479,8 +1551,10 @@ function unzipFunctionNames()
 function unzipGlobalNames()
 ```
 
+List the 0 names in qcommon.headers.unzipGlobalNames.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L159)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L189)
 
 <a id="function-function-mq3-qcommon-headers-unzipmacronames-function-unzipmacronames-src-mq3-qcommon-headers-ml-205587022"></a>
 ### unzipMacroNames
@@ -1489,8 +1563,10 @@ function unzipGlobalNames()
 function unzipMacroNames()
 ```
 
+List the 11 names in qcommon.headers.unzipMacroNames, beginning with `UNZ_BADZIPFILE`, `UNZ_CASESENSITIVE`, `UNZ_CRCERROR`, `UNZ_END_OF_LIST_OF_FILE`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L156)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L183)
 
 <a id="function-function-mq3-qcommon-headers-unziptypenames-function-unziptypenames-src-mq3-qcommon-headers-ml-2023462990"></a>
 ### unzipTypeNames
@@ -1499,8 +1575,10 @@ function unzipMacroNames()
 function unzipTypeNames()
 ```
 
+List the 12 names in qcommon.headers.unzipTypeNames, beginning with `file_in_zip_read_info_s`, `tm_unz`, `alloc_func`, `free_func`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L157)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L185)
 
 <a id="constant-constant-mq3-qcommon-headers-update-server-name-const-update-server-name-update-quake3arena-com-src-mq3-qcommon-headers-ml-1733998850"></a>
 ### UPDATE_SERVER_NAME
@@ -1519,12 +1597,14 @@ const UPDATE_SERVER_NAME = "update.quake3arena.com"
 function validDownloadBlock(size)
 ```
 
+Compute qcommon.headers.validDownloadBlock as `((size >= 0) and (size <= MAX_DOWNLOAD_BLKSIZE))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `size` | `dynamic` | — |  |
+| `size` | `dynamic` | — | Size used in `(size >= 0)` and `(size <= MAX_DOWNLOAD_BLKSIZE)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L217)
 
 <a id="function-function-mq3-qcommon-headers-validinlinemodel-function-validinlinemodel-index-count-src-mq3-qcommon-headers-ml-1539401049"></a>
 ### validInlineModel
@@ -1533,13 +1613,15 @@ function validDownloadBlock(size)
 function validInlineModel(index, count)
 ```
 
+Compute qcommon.headers.validInlineModel as `(((index >= 0) and (index < count)) and (index < MAX_SUBMODELS))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index used in `(index >= 0)` and `(index < count)`. |
+| `count` | `dynamic` | — | Count used in `(index < count)` and `((index >= 0) and (index < count))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L208)
 
 <a id="function-function-mq3-qcommon-headers-validmessagesize-function-validmessagesize-size-src-mq3-qcommon-headers-ml-1442141983"></a>
 ### validMessageSize
@@ -1548,12 +1630,14 @@ function validInlineModel(index, count)
 function validMessageSize(size)
 ```
 
+Compute qcommon.headers.validMessageSize as `((size >= 0) and (size <= MAX_MSGLEN))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `size` | `dynamic` | — |  |
+| `size` | `dynamic` | — | Size used in `(size >= 0)` and `(size <= MAX_MSGLEN)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L214)
 
 <a id="function-function-mq3-qcommon-headers-validunzipresult-function-validunzipresult-code-src-mq3-qcommon-headers-ml-1211921455"></a>
 ### validUnzipResult
@@ -1562,12 +1646,14 @@ function validMessageSize(size)
 function validUnzipResult(code)
 ```
 
+Compute qcommon.headers.validUnzipResult as `(((code == UNZ_OK) or (code == UNZ_END_OF_LIST_OF_FILE)) or (code <= UNZ_PARAMERROR))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `code` | `dynamic` | — |  |
+| `code` | `dynamic` | — | Code used in `(code == UNZ_OK)` and `(code <= UNZ_PARAMERROR)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L220)
 
 <a id="constant-constant-mq3-qcommon-headers-vmi-bytecode-const-vmi-bytecode-1-src-mq3-qcommon-headers-ml-59925860"></a>
 ### VMI_BYTECODE

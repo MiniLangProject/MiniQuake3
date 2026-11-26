@@ -9,8 +9,10 @@
 struct Md4Weight
 ```
 
+Md4Weight record for format.qfiles, containing `boneIndex`, `boneWeight`, `offset`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L96)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)
 
 ## Members
 
@@ -22,7 +24,7 @@ boneIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)
 
 <a id="field-field-mq3-format-qfiles-md4weight-boneweight-boneweight-src-mq3-format-qfiles-ml-1892407656"></a>
 ### boneWeight
@@ -32,7 +34,7 @@ boneWeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)
 
 <a id="field-field-mq3-format-qfiles-md4weight-offset-offset-src-mq3-format-qfiles-ml-1744249498"></a>
 ### offset
@@ -42,4 +44,4 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)

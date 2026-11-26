@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores cinematic runtime state, including `archive`, `handles`, `drawQueue`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ archive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L33)
 
 <a id="field-field-mq3-client-cinematic-runtime-state-drawqueue-drawqueue-src-mq3-client-cinematic-runtime-ml-1853461602"></a>
 ### drawQueue
@@ -32,7 +34,7 @@ drawQueue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L33)
 
 <a id="field-field-mq3-client-cinematic-runtime-state-handles-handles-src-mq3-client-cinematic-runtime-ml-1882888438"></a>
 ### handles
@@ -42,4 +44,4 @@ handles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L33)

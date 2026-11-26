@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for qcommon.network_pump, containing `clientSocket`, `serverSocket`, `capacity`, `nextSide`, `context`, `clientPacketFn`, and 5 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ capacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientbuffer-clientbuffer-src-mq3-qcommon-network-pump-ml-316107607"></a>
 ### clientBuffer
@@ -32,7 +34,7 @@ clientBuffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientmetadata-clientmetadata-src-mq3-qcommon-network-pump-ml-1700826113"></a>
 ### clientMetadata
@@ -42,7 +44,7 @@ clientMetadata
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientpacketfn-clientpacketfn-src-mq3-qcommon-network-pump-ml-497272527"></a>
 ### clientPacketFn
@@ -52,7 +54,7 @@ clientPacketFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-clientsocket-clientsocket-src-mq3-qcommon-network-pump-ml-552722585"></a>
 ### clientSocket
@@ -62,7 +64,7 @@ clientSocket
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-context-context-src-mq3-qcommon-network-pump-ml-1094328565"></a>
 ### context
@@ -72,7 +74,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-nextside-nextside-src-mq3-qcommon-network-pump-ml-1929075377"></a>
 ### nextSide
@@ -82,7 +84,7 @@ nextSide
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-serverbuffer-serverbuffer-src-mq3-qcommon-network-pump-ml-6477111"></a>
 ### serverBuffer
@@ -92,7 +94,7 @@ serverBuffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-servermetadata-servermetadata-src-mq3-qcommon-network-pump-ml-274173825"></a>
 ### serverMetadata
@@ -102,7 +104,7 @@ serverMetadata
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-serverpacketfn-serverpacketfn-src-mq3-qcommon-network-pump-ml-637602071"></a>
 ### serverPacketFn
@@ -112,7 +114,7 @@ serverPacketFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-runtime-serversocket-serversocket-src-mq3-qcommon-network-pump-ml-970752577"></a>
 ### serverSocket
@@ -122,4 +124,4 @@ serverSocket
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)

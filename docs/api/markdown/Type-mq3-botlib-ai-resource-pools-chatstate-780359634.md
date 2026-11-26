@@ -9,8 +9,10 @@
 struct ChatState
 ```
 
+`ChatState` record for ai resource pools, containing `gender`, `client`, `name`, `chatMessage` and `handle` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ chat
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-chatstate-chatmessage-chatmessage-src-mq3-botlib-ai-resource-pools-ml-1402753356"></a>
 ### chatMessage
@@ -32,7 +34,7 @@ chatMessage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-chatstate-client-client-src-mq3-botlib-ai-resource-pools-ml-1662576234"></a>
 ### client
@@ -42,7 +44,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-chatstate-consolemessages-consolemessages-src-mq3-botlib-ai-resource-pools-ml-1631070668"></a>
 ### consoleMessages
@@ -52,7 +54,7 @@ consoleMessages
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-chatstate-gender-gender-src-mq3-botlib-ai-resource-pools-ml-744632442"></a>
 ### gender
@@ -62,7 +64,7 @@ gender
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-chatstate-handle-handle-src-mq3-botlib-ai-resource-pools-ml-454958348"></a>
 ### handle
@@ -72,7 +74,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-chatstate-name-name-src-mq3-botlib-ai-resource-pools-ml-1924981522"></a>
 ### name
@@ -82,7 +84,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-chatstate-numconsolemessages-numconsolemessages-src-mq3-botlib-ai-resource-pools-ml-1274102658"></a>
 ### numConsoleMessages
@@ -92,4 +94,4 @@ numConsoleMessages
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)

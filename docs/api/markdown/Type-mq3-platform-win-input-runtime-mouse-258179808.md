@@ -9,8 +9,10 @@
 struct Mouse
 ```
 
+Data record for `mq3.platform.win_input_runtime.Mouse`; groups `initialized`, `active`, `directInput`, `startupDelayed`, `oldButtonState`, `dx`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)
 
 <a id="field-field-mq3-platform-win-input-runtime-mouse-directinput-directinput-src-mq3-platform-win-input-runtime-ml-1193146360"></a>
 ### directInput
@@ -32,7 +34,7 @@ directInput
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)
 
 <a id="field-field-mq3-platform-win-input-runtime-mouse-dx-dx-src-mq3-platform-win-input-runtime-ml-694155972"></a>
 ### dx
@@ -42,7 +44,7 @@ dx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)
 
 <a id="field-field-mq3-platform-win-input-runtime-mouse-dy-dy-src-mq3-platform-win-input-runtime-ml-342258946"></a>
 ### dy
@@ -52,7 +54,7 @@ dy
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)
 
 <a id="field-field-mq3-platform-win-input-runtime-mouse-initialized-initialized-src-mq3-platform-win-input-runtime-ml-622950432"></a>
 ### initialized
@@ -62,7 +64,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)
 
 <a id="field-field-mq3-platform-win-input-runtime-mouse-oldbuttonstate-oldbuttonstate-src-mq3-platform-win-input-runtime-ml-847881552"></a>
 ### oldButtonState
@@ -72,7 +74,7 @@ oldButtonState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)
 
 <a id="field-field-mq3-platform-win-input-runtime-mouse-startupdelayed-startupdelayed-src-mq3-platform-win-input-runtime-ml-899234358"></a>
 ### startupDelayed
@@ -82,4 +84,4 @@ startupDelayed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L20)

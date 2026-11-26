@@ -9,8 +9,10 @@
 struct Transform
 ```
 
+Stores playable item models transform record, including `origin`, `axis`, `scale`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L34)
 
 <a id="field-field-mq3-client-playable-item-models-transform-origin-origin-src-mq3-client-playable-item-models-ml-18944189"></a>
 ### origin
@@ -32,7 +34,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L34)
 
 <a id="field-field-mq3-client-playable-item-models-transform-scale-scale-src-mq3-client-playable-item-models-ml-374043197"></a>
 ### scale
@@ -42,4 +44,4 @@ scale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L34)

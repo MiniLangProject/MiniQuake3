@@ -25,14 +25,16 @@ Reachable from entry: **yes**
 function addThresholds(values, size, thresholds)
 ```
 
+Collects positive interior LOD-error values into the supplied threshold list.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `thresholds` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Indexed input read at `index`. |
+| `size` | `dynamic` | — | Input tested by `size>2`. |
+| `thresholds` | `dynamic` | — | Record providing `thresholds.add`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L80)
 
 <a id="function-function-mq3-renderer-world-patch-lod-axes-function-axes-grid-src-mq3-renderer-world-patch-lod-ml-568581798"></a>
 ### axes
@@ -41,12 +43,14 @@ function addThresholds(values, size, thresholds)
 function axes(grid)
 ```
 
+Computes `axes` from `variants.toArray()` using `std.ds.list.List.withCapacity`, `thresholds.add`, `mq3.renderer.world_patch_lod.addThresholds`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `grid` | `dynamic` | — |  |
+| `grid` | `dynamic` | — | Record providing `grid.width`, `grid.height`, `grid.widthLodError`, `grid.heightLodError`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L97)
 
 <a id="function-function-mq3-renderer-world-patch-lod-before-function-before-left-right-src-mq3-renderer-world-patch-lod-ml-2121927533"></a>
 ### before
@@ -55,13 +59,15 @@ function axes(grid)
 function before(left, right)
 ```
 
+Computes `left<right` for `mq3.renderer.world_patch_lod.before`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `left` | `dynamic` | — | Input used in the result expression `left<right`. |
+| `right` | `dynamic` | — | Input used in the result expression `left<right`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L75)
 
 <a id="function-function-mq3-renderer-world-patch-lod-fail-function-fail-message-src-mq3-renderer-world-patch-lod-ml-1632018331"></a>
 ### fail
@@ -70,12 +76,14 @@ function before(left, right)
 function fail(message)
 ```
 
+Creates error `7490` with message `"World patch LOD: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Input used in the result expression `error(7490,"World patch LOD: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L24)
 
 <a id="function-function-mq3-renderer-world-patch-lod-read-function-read-map-face-faceoffset-texture-patcherror-src-mq3-renderer-world-patch-lod-ml-1523984734"></a>
 ### read
@@ -84,16 +92,18 @@ function fail(message)
 function read(map, face, faceOffset, texture, patchError)
 ```
 
+Builds `mq3.renderer.world_patch_lod.WorldLodPatch` after updating `first[axis]`, `origin[axis]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `face` | `dynamic` | — |  |
-| `faceOffset` | `dynamic` | — |  |
-| `texture` | `dynamic` | — |  |
-| `patchError` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record providing `map.data`, `map.counts`. |
+| `face` | `dynamic` | — | Initial value for `mq3.renderer.world_patch_lod.WorldLodPatch.face`. |
+| `faceOffset` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.bsp_render_data.patchGrid`. |
+| `texture` | `dynamic` | — | Initial value for `mq3.renderer.world_patch_lod.WorldLodPatch.texture`. |
+| `patchError` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.bsp_render_data.patchGrid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L32)
 
 <a id="function-function-mq3-renderer-world-patch-lod-select-function-select-patch-position-forward-curveerror-src-mq3-renderer-world-patch-lod-ml-106502577"></a>
 ### select
@@ -102,15 +112,17 @@ function read(map, face, faceOffset, texture, patchError)
 function select(patch, position, forward, curveError)
 ```
 
+Computes `select` from `patch.variants[0].face` using `mq3.compat.numeric.fsub`, `mq3.shared.math.DotProduct`, `mq3.compat.numeric.fneg`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `patch` | `dynamic` | — |  |
-| `position` | `dynamic` | — |  |
-| `forward` | `dynamic` | — |  |
-| `curveError` | `dynamic` | — |  |
+| `patch` | `dynamic` | — | Record providing `patch.variants`, `patch.face`, `patch.grid`. |
+| `position` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
+| `forward` | `dynamic` | — | Argument 2 supplied to `mq3.shared.math.DotProduct`. |
+| `curveError` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.fdiv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L130)
 
 <a id="function-function-mq3-renderer-world-patch-lod-selectaxis-function-selectaxis-size-errors-threshold-src-mq3-renderer-world-patch-lod-ml-1045499209"></a>
 ### selectAxis
@@ -119,14 +131,16 @@ function select(patch, position, forward, curveError)
 function selectAxis(size, errors, threshold)
 ```
 
+Returns `selected.toArray()` from `mq3.renderer.world_patch_lod.selectAxis`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `size` | `dynamic` | — |  |
-| `errors` | `dynamic` | — |  |
-| `threshold` | `dynamic` | — |  |
+| `size` | `dynamic` | — | Argument 1 supplied to `std.ds.list.List.withCapacity`. |
+| `errors` | `dynamic` | — | Indexed input read at `index`. |
+| `threshold` | `dynamic` | — | Input tested by `size>2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L89)
 
 <a id="function-function-mq3-renderer-world-patch-lod-stitch-function-stitch-patches-src-mq3-renderer-world-patch-lod-ml-1605984232"></a>
 ### stitch
@@ -135,12 +149,14 @@ function selectAxis(size, errors, threshold)
 function stitch(patches)
 ```
 
+Builds `grid.control` in `mq3.renderer.world_patch_lod.stitch`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `patches` | `dynamic` | — |  |
+| `patches` | `dynamic` | — | Sequence traversed as `patch` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L49)
 
 <a id="function-function-mq3-renderer-world-patch-lod-triangles-function-triangles-patch-variant-face-src-mq3-renderer-world-patch-lod-ml-348996474"></a>
 ### triangles
@@ -149,14 +165,16 @@ function stitch(patches)
 function triangles(patch, variant, face)
 ```
 
+Computes `triangles` from `result.toArray()` using `std.ds.list.List.withCapacity`, `mq3.renderer.bsp_render_data.appendPatchGrid`, `result.toArray`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `patch` | `dynamic` | — |  |
-| `variant` | `dynamic` | — |  |
-| `face` | `dynamic` | — |  |
+| `patch` | `dynamic` | — | Record providing `patch.grid`, `patch.texture`, `patch.lightmap`, `patch.fog`. |
+| `variant` | `dynamic` | — | Record providing `variant.columns`, `variant.rows`. |
+| `face` | `dynamic` | — | Argument 9 supplied to `mq3.renderer.bsp_render_data.appendPatchGrid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L116)
 
 - [mq3.renderer.world_patch_lod.WorldLodAxis](Type-mq3-renderer-world-patch-lod-worldlodaxis-27998858.md) — struct
 - [mq3.renderer.world_patch_lod.WorldLodPatch](Type-mq3-renderer-world-patch-lod-worldlodpatch-841667267.md) — struct

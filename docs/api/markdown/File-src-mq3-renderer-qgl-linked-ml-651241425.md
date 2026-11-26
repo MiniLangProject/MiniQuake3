@@ -15,8 +15,10 @@ Reachable from entry: **no**
 function aliases()
 ```
 
+Builds the 334-element result for `mq3.renderer.qgl_linked.aliases` from `["qglAccum","glAccum"]`, `["qglAlphaFunc","glAlphaFunc"]`, `["qglAreTexturesResident","glAreTexturesResident"]`, `["qglArrayElement","glArrayElement"]`, `["qglBegin","glBegin"]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L7)
 
 <a id="function-function-mq3-renderer-qgl-linked-contains-function-contains-name-src-mq3-renderer-qgl-linked-ml-785105001"></a>
 ### contains
@@ -25,12 +27,14 @@ function aliases()
 function contains(name)
 ```
 
+Computes `glName(name)!=""` for `mq3.renderer.qgl_linked.contains`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.qgl_linked.glName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L15)
 
 <a id="function-function-mq3-renderer-qgl-linked-glname-function-glname-name-src-mq3-renderer-qgl-linked-ml-1696570521"></a>
 ### glName
@@ -39,12 +43,14 @@ function contains(name)
 function glName(name)
 ```
 
+Returns `""` from `mq3.renderer.qgl_linked.glName`; earlier branches return `pair[1]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Input used by `for each pair in aliases() if pair[0]==name then return pair[1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L12)
 
 <a id="function-function-mq3-renderer-qgl-linked-qglnames-function-qglnames-src-mq3-renderer-qgl-linked-ml-1498378886"></a>
 ### qglNames
@@ -53,5 +59,7 @@ function glName(name)
 function qglNames()
 ```
 
+Returns `result` from `mq3.renderer.qgl_linked.qglNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L9)

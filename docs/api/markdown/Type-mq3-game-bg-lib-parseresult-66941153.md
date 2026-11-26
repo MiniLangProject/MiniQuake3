@@ -9,8 +9,10 @@
 struct ParseResult
 ```
 
+`ParseResult` record for bg lib, containing `value` and `next`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ next
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L26)
 
 <a id="field-field-mq3-game-bg-lib-parseresult-value-value-src-mq3-game-bg-lib-ml-512691139"></a>
 ### value
@@ -32,4 +34,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L26)

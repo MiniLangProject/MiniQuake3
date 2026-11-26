@@ -9,8 +9,10 @@
 struct LoopSource
 ```
 
+LoopSource record for audio.qvm_playback, containing `entity`, `handle`, `origin`, `velocity`, `realLoop`, `sound`, and 7 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-compressed-compressed-src-mq3-audio-qvm-playback-ml-511716186"></a>
 ### compressed
@@ -32,7 +34,7 @@ compressed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-cursor-cursor-src-mq3-audio-qvm-playback-ml-652647392"></a>
 ### cursor
@@ -42,7 +44,7 @@ cursor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-doppler-doppler-src-mq3-audio-qvm-playback-ml-1856231880"></a>
 ### doppler
@@ -52,7 +54,7 @@ doppler
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-dopplerscale-dopplerscale-src-mq3-audio-qvm-playback-ml-1268499580"></a>
 ### dopplerScale
@@ -62,7 +64,7 @@ dopplerScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-entity-entity-src-mq3-audio-qvm-playback-ml-588495170"></a>
 ### entity
@@ -72,7 +74,7 @@ entity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-handle-handle-src-mq3-audio-qvm-playback-ml-726891728"></a>
 ### handle
@@ -82,7 +84,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-mono-mono-src-mq3-audio-qvm-playback-ml-1274105502"></a>
 ### mono
@@ -92,7 +94,7 @@ mono
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-olddopplerscale-olddopplerscale-src-mq3-audio-qvm-playback-ml-1753753684"></a>
 ### oldDopplerScale
@@ -102,7 +104,7 @@ oldDopplerScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-origin-origin-src-mq3-audio-qvm-playback-ml-573141716"></a>
 ### origin
@@ -112,7 +114,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-realloop-realloop-src-mq3-audio-qvm-playback-ml-1875018704"></a>
 ### realLoop
@@ -122,7 +124,7 @@ realLoop
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-sound-sound-src-mq3-audio-qvm-playback-ml-1178122284"></a>
 ### sound
@@ -132,7 +134,7 @@ sound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)
 
 <a id="field-field-mq3-audio-qvm-playback-loopsource-velocity-velocity-src-mq3-audio-qvm-playback-ml-2066868946"></a>
 ### velocity
@@ -142,4 +144,4 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L29)

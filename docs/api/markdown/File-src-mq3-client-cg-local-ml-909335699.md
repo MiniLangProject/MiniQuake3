@@ -26,8 +26,10 @@ const ATTACKER_HEAD_TIME = 10000
 function centityFieldNames()
 ```
 
+Lists the centity field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L114)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L132)
 
 <a id="constant-constant-mq3-client-cg-local-cg-font-threshold-const-cg-font-threshold-0-1-src-mq3-client-cg-local-ml-1485971750"></a>
 ### CG_FONT_THRESHOLD
@@ -46,8 +48,10 @@ const CG_FONT_THRESHOLD = 0.1
 function cgFieldNames()
 ```
 
+Lists the cg field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L123)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L150)
 
 - [mq3.client.cg_local.CgMedia](Type-mq3-client-cg-local-cgmedia-1455801199.md) — struct
 <a id="function-function-mq3-client-cg-local-cgmediafieldnames-function-cgmediafieldnames-src-mq3-client-cg-local-ml-479834206"></a>
@@ -57,8 +61,10 @@ function cgFieldNames()
 function cgMediaFieldNames()
 ```
 
+Lists the cg media field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L124)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L152)
 
 <a id="function-function-mq3-client-cg-local-cgsfieldnames-function-cgsfieldnames-src-mq3-client-cg-local-ml-96011128"></a>
 ### cgsFieldNames
@@ -67,8 +73,10 @@ function cgMediaFieldNames()
 function cgsFieldNames()
 ```
 
+Lists the cgs field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L125)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L154)
 
 - [mq3.client.cg_local.CgsState](Type-mq3-client-cg-local-cgsstate-863881995.md) — struct
 - [mq3.client.cg_local.CgState](Type-mq3-client-cg-local-cgstate-2059897074.md) — struct
@@ -109,12 +117,14 @@ const CHAT_PRINT = 1
 function clampTeamChatHeight(value)
 ```
 
+Evaluates client game local `clampTeamChatHeight` and returns `0`, `TEAMCHAT_HEIGHT`, `value` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<0`, `value>TEAMCHAT_HEIGHT` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L187)
 
 - [mq3.client.cg_local.ClientInfo](Type-mq3-client-cg-local-clientinfo-1976747684.md) — struct
 <a id="function-function-mq3-client-cg-local-clientinfofieldnames-function-clientinfofieldnames-src-mq3-client-cg-local-ml-337162926"></a>
@@ -124,8 +134,10 @@ function clampTeamChatHeight(value)
 function clientInfoFieldNames()
 ```
 
+Lists the client info field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L118)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L140)
 
 <a id="constant-constant-mq3-client-cg-local-damage-deflect-time-const-damage-deflect-time-100-src-mq3-client-cg-local-ml-774796508"></a>
 ### DAMAGE_DEFLECT_TIME
@@ -164,8 +176,10 @@ const DAMAGE_TIME = 500
 function declarationNames()
 ```
 
+Lists the declaration names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L126)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L156)
 
 <a id="constant-constant-mq3-client-cg-local-default-blueteam-name-const-default-blueteam-name-pagans-src-mq3-client-cg-local-ml-1443750487"></a>
 ### DEFAULT_BLUETEAM_NAME
@@ -344,8 +358,10 @@ const GIANT_WIDTH = 32
 function globalNames()
 ```
 
+Lists the global names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L127)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L158)
 
 <a id="constant-constant-mq3-client-cg-local-icon-size-const-icon-size-48-src-mq3-client-cg-local-ml-1567752519"></a>
 ### ICON_SIZE
@@ -415,8 +431,10 @@ const ITEM_SCALEUP_TIME = 1000
 function itemInfoFieldNames()
 ```
 
+Lists the item info field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L120)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L144)
 
 <a id="constant-constant-mq3-client-cg-local-land-deflect-time-const-land-deflect-time-150-src-mq3-client-cg-local-ml-1442421675"></a>
 ### LAND_DEFLECT_TIME
@@ -676,8 +694,10 @@ const LEMT_NONE = 0
 function lerpFrameFieldNames()
 ```
 
+Lists the lerp frame field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L128)
 
 - [mq3.client.cg_local.LocalEntity](Type-mq3-client-cg-local-localentity-2084909029.md) — struct
 <a id="function-function-mq3-client-cg-local-localentityfieldnames-function-localentityfieldnames-src-mq3-client-cg-local-ml-1333710482"></a>
@@ -687,8 +707,10 @@ function lerpFrameFieldNames()
 function localEntityFieldNames()
 ```
 
+Lists the local entity field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L116)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L136)
 
 - [mq3.client.cg_local.MarkPoly](Type-mq3-client-cg-local-markpoly-386723940.md) — struct
 <a id="function-function-mq3-client-cg-local-markpolyfieldnames-function-markpolyfieldnames-src-mq3-client-cg-local-ml-521460486"></a>
@@ -698,8 +720,10 @@ function localEntityFieldNames()
 function markPolyFieldNames()
 ```
 
+Lists the mark poly field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L115)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L134)
 
 <a id="constant-constant-mq3-client-cg-local-max-custom-sounds-const-max-custom-sounds-32-src-mq3-client-cg-local-ml-369522652"></a>
 ### MAX_CUSTOM_SOUNDS
@@ -818,12 +842,14 @@ const MUZZLE_FLASH_TIME = 20
 function nextRewardSlot(value)
 ```
 
+Evaluates client game local `nextRewardSlot` and returns `error(7956,"cg_local.h: invalid reward slot")`, `(value+1)%MAX_REWARDSTACK` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<0 or value>=MAX_REWARDSTACK` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L175)
 
 <a id="function-function-mq3-client-cg-local-nextsoundbufferslot-function-nextsoundbufferslot-value-src-mq3-client-cg-local-ml-472250153"></a>
 ### nextSoundBufferSlot
@@ -832,12 +858,14 @@ function nextRewardSlot(value)
 function nextSoundBufferSlot(value)
 ```
 
+Evaluates client game local `nextSoundBufferSlot` and returns `error(7956,"cg_local.h: invalid sound-buffer slot")`, `(value+1)%MAX_SOUNDBUFFER` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<0 or value>=MAX_SOUNDBUFFER` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L172)
 
 <a id="constant-constant-mq3-client-cg-local-num-crosshairs-const-num-crosshairs-10-src-mq3-client-cg-local-ml-1816796522"></a>
 ### NUM_CROSSHAIRS
@@ -867,8 +895,10 @@ const PAIN_TWITCH_TIME = 200
 function playerEntityFieldNames()
 ```
 
+Lists the player entity field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L113)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L130)
 
 <a id="constant-constant-mq3-client-cg-local-powerup-blink-time-const-powerup-blink-time-1000-src-mq3-client-cg-local-ml-266478632"></a>
 ### POWERUP_BLINK_TIME
@@ -897,12 +927,14 @@ const POWERUP_BLINKS = 5
 function powerupBlinkWindow(timeLeft)
 ```
 
+Computes `timeLeft>=0 and timeLeft<=POWERUP_BLINKS*POWERUP_BLINK_TIME` for client game local `powerupBlinkWindow`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `timeLeft` | `dynamic` | — |  |
+| `timeLeft` | `dynamic` | — | Value used by `return timeLeft>=0 and timeLeft<=POWERUP_BLINKS*POWERUP_BLINK_TIME`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L184)
 
 - [mq3.client.cg_local.PowerupInfo](Type-mq3-client-cg-local-powerupinfo-393370837.md) — struct
 <a id="function-function-mq3-client-cg-local-powerupinfofieldnames-function-powerupinfofieldnames-src-mq3-client-cg-local-ml-189371698"></a>
@@ -912,8 +944,10 @@ function powerupBlinkWindow(timeLeft)
 function powerupInfoFieldNames()
 ```
 
+Lists the powerup info field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L121)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L146)
 
 <a id="constant-constant-mq3-client-cg-local-pulse-scale-const-pulse-scale-1-5-src-mq3-client-cg-local-ml-1517981111"></a>
 ### PULSE_SCALE
@@ -953,8 +987,10 @@ const REWARD_TIME = 3000
 function scoreFieldNames()
 ```
 
+Lists the score field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L117)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L138)
 
 <a id="constant-constant-mq3-client-cg-local-sink-time-const-sink-time-1000-src-mq3-client-cg-local-ml-1016716880"></a>
 ### SINK_TIME
@@ -974,8 +1010,10 @@ const SINK_TIME = 1000
 function skulltrailFieldNames()
 ```
 
+Lists the skulltrail field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L122)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L148)
 
 <a id="constant-constant-mq3-client-cg-local-stat-minus-const-stat-minus-10-src-mq3-client-cg-local-ml-1746953220"></a>
 ### STAT_MINUS
@@ -1074,8 +1112,10 @@ const TEXT_ICON_SPACE = 4
 function typeNames()
 ```
 
+Lists the type names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L126)
 
 <a id="function-function-mq3-client-cg-local-validcrosshair-function-validcrosshair-value-src-mq3-client-cg-local-ml-2138852945"></a>
 ### validCrosshair
@@ -1084,12 +1124,14 @@ function typeNames()
 function validCrosshair(value)
 ```
 
+Computes `value>=0 and value<NUM_CROSSHAIRS` for client game local `validCrosshair`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `return value>=0 and value<NUM_CROSSHAIRS`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L178)
 
 <a id="function-function-mq3-client-cg-local-validfootstep-function-validfootstep-value-src-mq3-client-cg-local-ml-819121705"></a>
 ### validFootstep
@@ -1098,12 +1140,14 @@ function validCrosshair(value)
 function validFootstep(value)
 ```
 
+Computes `value>=FOOTSTEP_NORMAL and value<FOOTSTEP_TOTAL` for client game local `validFootstep`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `return value>=FOOTSTEP_NORMAL and value<FOOTSTEP_TOTAL`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L162)
 
 <a id="function-function-mq3-client-cg-local-validimpactsound-function-validimpactsound-value-src-mq3-client-cg-local-ml-982772705"></a>
 ### validImpactSound
@@ -1112,12 +1156,14 @@ function validFootstep(value)
 function validImpactSound(value)
 ```
 
+Computes `value>=IMPACTSOUND_DEFAULT and value<=IMPACTSOUND_FLESH` for client game local `validImpactSound`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `return value>=IMPACTSOUND_DEFAULT and value<=IMPACTSOUND_FLESH`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L165)
 
 <a id="function-function-mq3-client-cg-local-validlocalentitytype-function-validlocalentitytype-value-missionpack-src-mq3-client-cg-local-ml-1228723778"></a>
 ### validLocalEntityType
@@ -1126,13 +1172,15 @@ function validImpactSound(value)
 function validLocalEntityType(value, missionpack)
 ```
 
+Evaluates client game local `validLocalEntityType` and returns `true`, `missionpack and value>=LE_KAMIKAZE and value<=LE_SHOWREFENTITY` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `missionpack` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value>=LE_MARK and value<=LE_SCOREPLUM` before the calculation continues. |
+| `missionpack` | `dynamic` | — | Value used by `return missionpack and value>=LE_KAMIKAZE and value<=LE_SHOWREFENTITY`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L169)
 
 <a id="function-function-mq3-client-cg-local-validmarkpolygon-function-validmarkpolygon-vertexcount-src-mq3-client-cg-local-ml-1372252393"></a>
 ### validMarkPolygon
@@ -1141,12 +1189,14 @@ function validLocalEntityType(value, missionpack)
 function validMarkPolygon(vertexCount)
 ```
 
+Computes `vertexCount>=0 and vertexCount<=MAX_VERTS_ON_POLY` for client game local `validMarkPolygon`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vertexCount` | `dynamic` | — |  |
+| `vertexCount` | `dynamic` | — | Value used by `return vertexCount>=0 and vertexCount<=MAX_VERTS_ON_POLY`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L181)
 
 <a id="constant-constant-mq3-client-cg-local-weapon-select-time-const-weapon-select-time-1400-src-mq3-client-cg-local-ml-1466687204"></a>
 ### WEAPON_SELECT_TIME
@@ -1166,8 +1216,10 @@ const WEAPON_SELECT_TIME = 1400
 function weaponInfoFieldNames()
 ```
 
+Lists the weapon info field names catalog for client game local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L119)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L142)
 
 <a id="constant-constant-mq3-client-cg-local-zoom-time-const-zoom-time-150-src-mq3-client-cg-local-ml-179129255"></a>
 ### ZOOM_TIME

@@ -9,8 +9,10 @@
 struct Poly
 ```
 
+Data record for `mq3.renderer.tr_types.Poly`; groups `hShader`, `numVerts`, `verts`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L50)
 
 ## Members
 
@@ -22,7 +24,7 @@ hShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L50)
 
 <a id="field-field-mq3-renderer-tr-types-poly-numverts-numverts-src-mq3-renderer-tr-types-ml-1056823413"></a>
 ### numVerts
@@ -32,7 +34,7 @@ numVerts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L50)
 
 <a id="field-field-mq3-renderer-tr-types-poly-verts-verts-src-mq3-renderer-tr-types-ml-705654321"></a>
 ### verts
@@ -42,4 +44,4 @@ verts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L50)

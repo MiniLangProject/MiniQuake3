@@ -9,8 +9,10 @@
 struct HudAssets
 ```
 
+Stores client game main hud assets record, including `textFont`, `smallFont`, `bigFont`, `gradientBar`, `cursor`, `fadeClamp` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 ## Members
 
@@ -22,7 +24,7 @@ bigFont
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-cursor-cursor-src-mq3-client-cgame-main-ml-1246771633"></a>
 ### cursor
@@ -32,7 +34,7 @@ cursor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-fadeamount-fadeamount-src-mq3-client-cgame-main-ml-625653953"></a>
 ### fadeAmount
@@ -42,7 +44,7 @@ fadeAmount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-fadeclamp-fadeclamp-src-mq3-client-cgame-main-ml-819557433"></a>
 ### fadeClamp
@@ -52,7 +54,7 @@ fadeClamp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-fadecycle-fadecycle-src-mq3-client-cgame-main-ml-622672989"></a>
 ### fadeCycle
@@ -62,7 +64,7 @@ fadeCycle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-gradientbar-gradientbar-src-mq3-client-cgame-main-ml-126895617"></a>
 ### gradientBar
@@ -72,7 +74,7 @@ gradientBar
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-shadowcolor-shadowcolor-src-mq3-client-cgame-main-ml-2063879145"></a>
 ### shadowColor
@@ -82,7 +84,7 @@ shadowColor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-shadowfadeclamp-shadowfadeclamp-src-mq3-client-cgame-main-ml-1171509681"></a>
 ### shadowFadeClamp
@@ -92,7 +94,7 @@ shadowFadeClamp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-shadowx-shadowx-src-mq3-client-cgame-main-ml-1069806589"></a>
 ### shadowX
@@ -102,7 +104,7 @@ shadowX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-shadowy-shadowy-src-mq3-client-cgame-main-ml-1912595921"></a>
 ### shadowY
@@ -112,7 +114,7 @@ shadowY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-smallfont-smallfont-src-mq3-client-cgame-main-ml-2076342577"></a>
 ### smallFont
@@ -122,7 +124,7 @@ smallFont
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)
 
 <a id="field-field-mq3-client-cgame-main-hudassets-textfont-textfont-src-mq3-client-cgame-main-ml-1199995409"></a>
 ### textFont
@@ -132,4 +134,4 @@ textFont
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L60)

@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Data record for `mq3.renderer.qvm_2d_batch.Catalog`; groups `materials`, `textures`, `runs`, `archive`, `scriptIndex`, `scriptCount`, and 14 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 ## Members
 
@@ -22,7 +24,7 @@ archive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-assetcount-assetcount-src-mq3-renderer-qvm-2d-batch-ml-1611508390"></a>
 ### assetCount
@@ -32,7 +34,7 @@ assetCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-emittedtriangles-emittedtriangles-src-mq3-renderer-qvm-2d-batch-ml-637856582"></a>
 ### emittedTriangles
@@ -42,7 +44,7 @@ emittedTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-endtextureslot-endtextureslot-src-mq3-renderer-qvm-2d-batch-ml-1520566156"></a>
 ### endTextureSlot
@@ -52,7 +54,7 @@ endTextureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-lastcommands-lastcommands-src-mq3-renderer-qvm-2d-batch-ml-884248472"></a>
 ### lastCommands
@@ -62,7 +64,7 @@ lastCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-materials-materials-src-mq3-renderer-qvm-2d-batch-ml-1889900504"></a>
 ### materials
@@ -72,7 +74,7 @@ materials
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-nexttextureslot-nexttextureslot-src-mq3-renderer-qvm-2d-batch-ml-1226467512"></a>
 ### nextTextureSlot
@@ -82,7 +84,7 @@ nextTextureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-remaprevision-remaprevision-src-mq3-renderer-qvm-2d-batch-ml-2121197016"></a>
 ### remapRevision
@@ -92,7 +94,7 @@ remapRevision
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-resolvedquads-resolvedquads-src-mq3-renderer-qvm-2d-batch-ml-1071570932"></a>
 ### resolvedQuads
@@ -102,7 +104,7 @@ resolvedQuads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-runs-runs-src-mq3-renderer-qvm-2d-batch-ml-1398416728"></a>
 ### runs
@@ -112,7 +114,7 @@ runs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-scriptcount-scriptcount-src-mq3-renderer-qvm-2d-batch-ml-1111405272"></a>
 ### scriptCount
@@ -122,7 +124,7 @@ scriptCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-scriptindex-scriptindex-src-mq3-renderer-qvm-2d-batch-ml-2028122608"></a>
 ### scriptIndex
@@ -132,7 +134,7 @@ scriptIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-shaderremaps-shaderremaps-src-mq3-renderer-qvm-2d-batch-ml-1585636278"></a>
 ### shaderRemaps
@@ -142,7 +144,7 @@ shaderRemaps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-sourceheight-sourceheight-src-mq3-renderer-qvm-2d-batch-ml-1440015384"></a>
 ### sourceHeight
@@ -152,7 +154,7 @@ sourceHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-sourcequads-sourcequads-src-mq3-renderer-qvm-2d-batch-ml-1795318524"></a>
 ### sourceQuads
@@ -162,7 +164,7 @@ sourceQuads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-sourcewidth-sourcewidth-src-mq3-renderer-qvm-2d-batch-ml-156392876"></a>
 ### sourceWidth
@@ -172,7 +174,7 @@ sourceWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-targetheight-targetheight-src-mq3-renderer-qvm-2d-batch-ml-1400764600"></a>
 ### targetHeight
@@ -182,7 +184,7 @@ targetHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-targetwidth-targetwidth-src-mq3-renderer-qvm-2d-batch-ml-1365110136"></a>
 ### targetWidth
@@ -192,7 +194,7 @@ targetWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-textures-textures-src-mq3-renderer-qvm-2d-batch-ml-506747828"></a>
 ### textures
@@ -202,7 +204,7 @@ textures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-catalog-unresolvedquads-unresolvedquads-src-mq3-renderer-qvm-2d-batch-ml-53167460"></a>
 ### unresolvedQuads
@@ -212,4 +214,4 @@ unresolvedQuads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L36)

@@ -9,8 +9,10 @@
 struct Player
 ```
 
+`Player` record for bot chat, containing `active`, `name`, `team` and `score`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-player-name-name-src-mq3-game-bot-chat-ml-1506967176"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-player-score-score-src-mq3-game-bot-chat-ml-997473874"></a>
 ### score
@@ -42,7 +44,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-player-team-team-src-mq3-game-bot-chat-ml-1336217732"></a>
 ### team
@@ -52,4 +54,4 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)

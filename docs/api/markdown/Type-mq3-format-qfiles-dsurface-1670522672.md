@@ -9,8 +9,10 @@
 struct Dsurface
 ```
 
+Dsurface record for format.qfiles, containing `shaderNum`, `fogNum`, `surfaceType`, `firstVert`, `numVerts`, `firstIndex`, and 10 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-firstvert-firstvert-src-mq3-format-qfiles-ml-272686866"></a>
 ### firstVert
@@ -32,7 +34,7 @@ firstVert
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-fognum-fognum-src-mq3-format-qfiles-ml-114857974"></a>
 ### fogNum
@@ -42,7 +44,7 @@ fogNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-lightmapheight-lightmapheight-src-mq3-format-qfiles-ml-195673984"></a>
 ### lightmapHeight
@@ -52,7 +54,7 @@ lightmapHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-lightmapnum-lightmapnum-src-mq3-format-qfiles-ml-407484858"></a>
 ### lightmapNum
@@ -62,7 +64,7 @@ lightmapNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-lightmaporigin-lightmaporigin-src-mq3-format-qfiles-ml-1238584610"></a>
 ### lightmapOrigin
@@ -72,7 +74,7 @@ lightmapOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-lightmapvecs-lightmapvecs-src-mq3-format-qfiles-ml-646787024"></a>
 ### lightmapVecs
@@ -82,7 +84,7 @@ lightmapVecs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-lightmapwidth-lightmapwidth-src-mq3-format-qfiles-ml-1449236874"></a>
 ### lightmapWidth
@@ -92,7 +94,7 @@ lightmapWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-lightmapx-lightmapx-src-mq3-format-qfiles-ml-475378162"></a>
 ### lightmapX
@@ -102,7 +104,7 @@ lightmapX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-lightmapy-lightmapy-src-mq3-format-qfiles-ml-463574358"></a>
 ### lightmapY
@@ -112,7 +114,7 @@ lightmapY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-numindexes-numindexes-src-mq3-format-qfiles-ml-1216856930"></a>
 ### numIndexes
@@ -122,7 +124,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-numverts-numverts-src-mq3-format-qfiles-ml-714520102"></a>
 ### numVerts
@@ -132,7 +134,7 @@ numVerts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-patchheight-patchheight-src-mq3-format-qfiles-ml-390819598"></a>
 ### patchHeight
@@ -142,7 +144,7 @@ patchHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-patchwidth-patchwidth-src-mq3-format-qfiles-ml-1396068858"></a>
 ### patchWidth
@@ -152,7 +154,7 @@ patchWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-shadernum-shadernum-src-mq3-format-qfiles-ml-1804764082"></a>
 ### shaderNum
@@ -162,7 +164,7 @@ shaderNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)
 
 <a id="field-field-mq3-format-qfiles-dsurface-surfacetype-surfacetype-src-mq3-format-qfiles-ml-2063601470"></a>
 ### surfaceType
@@ -172,4 +174,4 @@ surfaceType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L145)

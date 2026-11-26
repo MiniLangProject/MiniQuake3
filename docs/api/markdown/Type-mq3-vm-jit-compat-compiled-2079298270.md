@@ -9,8 +9,10 @@
 struct Compiled
 ```
 
+Compiled record for vm.jit_compat, containing `machine`, `architecture`, `instructionPointers`, `codeLength`, `tableLength`, `nativeCode`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ architecture
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L17)
 
 <a id="field-field-mq3-vm-jit-compat-compiled-codelength-codelength-src-mq3-vm-jit-compat-ml-932238700"></a>
 ### codeLength
@@ -32,7 +34,7 @@ codeLength
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L17)
 
 <a id="field-field-mq3-vm-jit-compat-compiled-instructionpointers-instructionpointers-src-mq3-vm-jit-compat-ml-846885402"></a>
 ### instructionPointers
@@ -42,7 +44,7 @@ instructionPointers
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L17)
 
 <a id="field-field-mq3-vm-jit-compat-compiled-machine-machine-src-mq3-vm-jit-compat-ml-121705862"></a>
 ### machine
@@ -52,7 +54,7 @@ machine
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L17)
 
 <a id="field-field-mq3-vm-jit-compat-compiled-nativecode-nativecode-src-mq3-vm-jit-compat-ml-1089377786"></a>
 ### nativeCode
@@ -62,7 +64,7 @@ nativeCode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L17)
 
 <a id="field-field-mq3-vm-jit-compat-compiled-tablelength-tablelength-src-mq3-vm-jit-compat-ml-1779497142"></a>
 ### tableLength
@@ -72,4 +74,4 @@ tableLength
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/jit_compat.ml#L17)

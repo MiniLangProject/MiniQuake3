@@ -9,8 +9,10 @@
 struct LoadResult
 ```
 
+LoadResult record for collision.world, containing `world`, `checksum`, `cached`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L121)
 
 ## Members
 
@@ -22,7 +24,7 @@ cached
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L121)
 
 <a id="field-field-mq3-collision-world-loadresult-checksum-checksum-src-mq3-collision-world-ml-114913066"></a>
 ### checksum
@@ -32,7 +34,7 @@ checksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L121)
 
 <a id="field-field-mq3-collision-world-loadresult-world-world-src-mq3-collision-world-ml-1572559344"></a>
 ### world
@@ -42,4 +44,4 @@ world
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L121)

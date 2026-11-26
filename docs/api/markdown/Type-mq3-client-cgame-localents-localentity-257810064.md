@@ -9,8 +9,10 @@
 struct LocalEntity
 ```
 
+Stores client game localents local entity record, including `id`, `active`, `leType`, `leFlags`, `startTime`, `endTime` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-angles-angles-src-mq3-client-cgame-localents-ml-660528573"></a>
 ### angles
@@ -32,7 +34,7 @@ angles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-bouncefactor-bouncefactor-src-mq3-client-cgame-localents-ml-1991686583"></a>
 ### bounceFactor
@@ -42,7 +44,7 @@ bounceFactor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-color-color-src-mq3-client-cgame-localents-ml-285346025"></a>
 ### color
@@ -52,7 +54,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-endtime-endtime-src-mq3-client-cgame-localents-ml-1992610873"></a>
 ### endTime
@@ -62,7 +64,7 @@ endTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-fadeintime-fadeintime-src-mq3-client-cgame-localents-ml-214864889"></a>
 ### fadeInTime
@@ -72,7 +74,7 @@ fadeInTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-id-id-src-mq3-client-cgame-localents-ml-1784095467"></a>
 ### id
@@ -82,7 +84,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-lebouncesoundtype-lebouncesoundtype-src-mq3-client-cgame-localents-ml-99355909"></a>
 ### leBounceSoundType
@@ -92,7 +94,7 @@ leBounceSoundType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-leflags-leflags-src-mq3-client-cgame-localents-ml-1940149413"></a>
 ### leFlags
@@ -102,7 +104,7 @@ leFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-lemarktype-lemarktype-src-mq3-client-cgame-localents-ml-1382578429"></a>
 ### leMarkType
@@ -112,7 +114,7 @@ leMarkType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-letype-letype-src-mq3-client-cgame-localents-ml-721858923"></a>
 ### leType
@@ -122,7 +124,7 @@ leType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-liferate-liferate-src-mq3-client-cgame-localents-ml-228762033"></a>
 ### lifeRate
@@ -132,7 +134,7 @@ lifeRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-light-light-src-mq3-client-cgame-localents-ml-60084497"></a>
 ### light
@@ -142,7 +144,7 @@ light
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-lightcolor-lightcolor-src-mq3-client-cgame-localents-ml-1637389147"></a>
 ### lightColor
@@ -152,7 +154,7 @@ lightColor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-pos-pos-src-mq3-client-cgame-localents-ml-1583773205"></a>
 ### pos
@@ -162,7 +164,7 @@ pos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-radius-radius-src-mq3-client-cgame-localents-ml-469957237"></a>
 ### radius
@@ -172,7 +174,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-refentity-refentity-src-mq3-client-cgame-localents-ml-1809421589"></a>
 ### refEntity
@@ -182,7 +184,7 @@ refEntity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
 
 <a id="field-field-mq3-client-cgame-localents-localentity-starttime-starttime-src-mq3-client-cgame-localents-ml-1084155937"></a>
 ### startTime
@@ -192,4 +194,4 @@ startTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)

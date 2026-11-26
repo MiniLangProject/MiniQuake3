@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for server.init_runtime, containing `sv`, `svs`, `registry`, `maxClients`, `dedicated`, `pure`, and 8 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 ## Members
 
@@ -22,7 +24,7 @@ botInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-dedicated-dedicated-src-mq3-server-init-runtime-ml-336872325"></a>
 ### dedicated
@@ -32,7 +34,7 @@ dedicated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-errorentered-errorentered-src-mq3-server-init-runtime-ml-266995515"></a>
 ### errorEntered
@@ -42,7 +44,7 @@ errorEntered
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-frametime-frametime-src-mq3-server-init-runtime-ml-274097001"></a>
 ### frameTime
@@ -52,7 +54,7 @@ frameTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-gametypemodified-gametypemodified-src-mq3-server-init-runtime-ml-803660991"></a>
 ### gametypeModified
@@ -62,7 +64,7 @@ gametypeModified
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-maxclients-maxclients-src-mq3-server-init-runtime-ml-1388702113"></a>
 ### maxClients
@@ -72,7 +74,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-modifiedflags-modifiedflags-src-mq3-server-init-runtime-ml-1485087753"></a>
 ### modifiedFlags
@@ -82,7 +84,7 @@ modifiedFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-operatorcommands-operatorcommands-src-mq3-server-init-runtime-ml-989374177"></a>
 ### operatorCommands
@@ -92,7 +94,7 @@ operatorCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-pure-pure-src-mq3-server-init-runtime-ml-44199017"></a>
 ### pure
@@ -102,7 +104,7 @@ pure
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-registry-registry-src-mq3-server-init-runtime-ml-837572103"></a>
 ### registry
@@ -112,7 +114,7 @@ registry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-running-running-src-mq3-server-init-runtime-ml-1355285645"></a>
 ### running
@@ -122,7 +124,7 @@ running
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-shutdown-shutdown-src-mq3-server-init-runtime-ml-9050297"></a>
 ### shutdown
@@ -132,7 +134,7 @@ shutdown
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-sv-sv-src-mq3-server-init-runtime-ml-941950987"></a>
 ### sv
@@ -142,7 +144,7 @@ sv
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)
 
 <a id="field-field-mq3-server-init-runtime-runtime-svs-svs-src-mq3-server-init-runtime-ml-406611193"></a>
 ### svs
@@ -152,4 +154,4 @@ svs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L58)

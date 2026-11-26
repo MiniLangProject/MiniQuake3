@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.tr_bsp_runtime.State`; groups `worldMapLoaded`, `externalVisData`, `world`, `sunDirection`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L45)
 
 ## Members
 
@@ -22,7 +24,7 @@ externalVisData
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L45)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-sundirection-sundirection-src-mq3-renderer-tr-bsp-runtime-ml-366881884"></a>
 ### sunDirection
@@ -32,7 +34,7 @@ sunDirection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L45)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-world-world-src-mq3-renderer-tr-bsp-runtime-ml-1578605082"></a>
 ### world
@@ -42,7 +44,7 @@ world
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L45)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-state-worldmaploaded-worldmaploaded-src-mq3-renderer-tr-bsp-runtime-ml-858755264"></a>
 ### worldMapLoaded
@@ -52,4 +54,4 @@ worldMapLoaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L45)

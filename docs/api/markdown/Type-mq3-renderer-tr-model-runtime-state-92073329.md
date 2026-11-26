@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.tr_model_runtime.State`; groups `models`, `numModels`, `maxModels`, `archives`, `registered`, `viewCluster`, and 6 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ archives
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-flareclears-flareclears-src-mq3-renderer-tr-model-runtime-ml-1335686602"></a>
 ### flareClears
@@ -32,7 +34,7 @@ flareClears
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-glconfig-glconfig-src-mq3-renderer-tr-model-runtime-ml-1690153444"></a>
 ### glConfig
@@ -42,7 +44,7 @@ glConfig
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-initcount-initcount-src-mq3-renderer-tr-model-runtime-ml-2100445494"></a>
 ### initCount
@@ -52,7 +54,7 @@ initCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-maxmodels-maxmodels-src-mq3-renderer-tr-model-runtime-ml-1500077146"></a>
 ### maxModels
@@ -62,7 +64,7 @@ maxModels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-models-models-src-mq3-renderer-tr-model-runtime-ml-1879122870"></a>
 ### models
@@ -72,7 +74,7 @@ models
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-nummodels-nummodels-src-mq3-renderer-tr-model-runtime-ml-1470399906"></a>
 ### numModels
@@ -82,7 +84,7 @@ numModels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-registered-registered-src-mq3-renderer-tr-model-runtime-ml-136771978"></a>
 ### registered
@@ -92,7 +94,7 @@ registered
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-sceneclears-sceneclears-src-mq3-renderer-tr-model-runtime-ml-778829834"></a>
 ### sceneClears
@@ -102,7 +104,7 @@ sceneClears
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-stretchprimes-stretchprimes-src-mq3-renderer-tr-model-runtime-ml-1905615882"></a>
 ### stretchPrimes
@@ -112,7 +114,7 @@ stretchPrimes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-synccount-synccount-src-mq3-renderer-tr-model-runtime-ml-841930474"></a>
 ### syncCount
@@ -122,7 +124,7 @@ syncCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-state-viewcluster-viewcluster-src-mq3-renderer-tr-model-runtime-ml-1291935406"></a>
 ### viewCluster
@@ -132,4 +134,4 @@ viewCluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)

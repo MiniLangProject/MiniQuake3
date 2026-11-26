@@ -23,14 +23,16 @@ Reachable from entry: **yes**
 function alternateRoute(services, bot, goal)
 ```
 
+Set `bot.reachedAltRouteGoalTime` to `need(services.floatTimeFn,"FloatTime")(services)` in `mq3.game.bot_navigation.alternateRoute`. Return paths include `goal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `areaTravelTimeFn` and `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `altRouteGoal`, `reachedAltRouteGoalTime`, `areanum`, `origin` and `tfl`. May update `bot.reachedAltRouteGoalTime` in place. |
+| `goal` | `dynamic` | — | Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `goal.areanum`, `goal.entitynum` and `goal.origin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L249)
 
 <a id="constant-constant-mq3-game-bot-navigation-areacontents-modelnum-const-areacontents-modelnum-4278190080-src-mq3-game-bot-navigation-ml-1732080608"></a>
 ### AREACONTENTS_MODELNUM
@@ -89,13 +91,15 @@ const CHARACTERISTIC_CROUCHER = headers.CHARACTERISTIC_CROUCHER
 function clearActivateGoalStack(services, bot)
 ```
 
+Apply `mq3.game.bot_navigation.popActivateGoal` while evaluating `clearActivateGoalStack`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `activateStackIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L324)
 
 <a id="constant-constant-mq3-game-bot-navigation-contents-lava-const-contents-lava-headers-contents-lava-src-mq3-game-bot-navigation-ml-1546513850"></a>
 ### CONTENTS_LAVA
@@ -154,12 +158,14 @@ const CONTENTS_WATER = headers.CONTENTS_WATER
 function copyActivateGoal(source)
 ```
 
+Build the `mq3.game.bot_navigation.ActivateGoal` result for `copyActivateGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Parser source state; accesses `goal`, `areas`, `inuse`, `time` and `startTime` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L244)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L290)
 
 <a id="function-function-mq3-game-bot-navigation-copygoalinto-function-copygoalinto-target-source-src-mq3-game-bot-navigation-ml-1928082516"></a>
 ### copyGoalInto
@@ -168,13 +174,15 @@ function copyActivateGoal(source)
 function copyGoalInto(target, source)
 ```
 
+Update `target.areanum`, `target.entitynum`, `target.origin` and `target.mins` and related state during `copyGoalInto`. Return paths include `target`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `target` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
+| `target` | `dynamic` | — | Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `target.areanum`, `target.entitynum` and `target.origin` and additional fields in place. |
+| `source` | `dynamic` | — | Parser source state; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L237)
 
 <a id="function-function-mq3-game-bot-navigation-create-function-create-src-mq3-game-bot-navigation-ml-687923580"></a>
 ### create
@@ -183,8 +191,10 @@ function copyGoalInto(target, source)
 function create()
 ```
 
+Create a `mq3.game.bot_navigation.Services` record with the declared empty defaults.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L147)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L158)
 
 <a id="function-function-mq3-game-bot-navigation-currentactivationduplicate-function-currentactivationduplicate-services-bot-activategoal-src-mq3-game-bot-navigation-ml-598425383"></a>
 ### currentActivationDuplicate
@@ -193,14 +203,16 @@ function create()
 function currentActivationDuplicate(services, bot, activategoal)
 ```
 
+Apply `mq3.game.bot_navigation.ensureActivateHeap` and `mq3.game.bot_navigation.need` while evaluating `currentActivationDuplicate`. Return paths include `top.startTime<n.fsub(need(services.floatTimeFn,"FloatTime")(services),2.0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `activategoal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `activateStackIndex` and `activateGoalHeap`. |
+| `activategoal` | `dynamic` | — | Activategoal record; accesses `goal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L367)
 
 <a id="function-function-mq3-game-bot-navigation-distsquared-function-distsquared-a-b-src-mq3-game-bot-navigation-ml-352556217"></a>
 ### distSquared
@@ -209,13 +221,15 @@ function currentActivationDuplicate(services, bot, activategoal)
 function distSquared(a, b)
 ```
 
+Calculate squared Euclidean distance between two navigation points using single-precision arithmetic.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L403)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L539)
 
 <a id="function-function-mq3-game-bot-navigation-dontavoid-function-dontavoid-services-bot-itemname-src-mq3-game-bot-navigation-ml-561409989"></a>
 ### dontAvoid
@@ -224,14 +238,16 @@ function distSquared(a, b)
 function dontAvoid(services, bot, itemname)
 ```
 
+Use `services.levelItemGoalFn` and `services.removeAvoidGoalFn` to perform `dontAvoid`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `itemname` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `levelItemGoalFn` and `removeAvoidGoalFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `gs`. |
+| `itemname` | `dynamic` | — | Value passed as argument 3 to `services.levelItemGoalFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L372)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L477)
 
 <a id="function-function-mq3-game-bot-navigation-emptyactivategoal-function-emptyactivategoal-src-mq3-game-bot-navigation-ml-1715302898"></a>
 ### emptyActivateGoal
@@ -240,8 +256,10 @@ function dontAvoid(services, bot, itemname)
 function emptyActivateGoal()
 ```
 
+Create a `mq3.game.bot_navigation.ActivateGoal` record, initializing `origin` as `[0.0,0.0,0.0]`, `goal` as `Goal(0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0)` and `nextIndex` as `-1`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L237)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L279)
 
 <a id="function-function-mq3-game-bot-navigation-enableactivategoalareas-function-enableactivategoalareas-services-activategoal-enable-src-mq3-game-bot-navigation-ml-710801391"></a>
 ### enableActivateGoalAreas
@@ -250,14 +268,16 @@ function emptyActivateGoal()
 function enableActivateGoalAreas(services, activategoal, enable)
 ```
 
+Set `activategoal.areasdisabled` to `disabled` in `mq3.game.bot_navigation.enableActivateGoalAreas`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `activategoal` | `dynamic` | — |  |
-| `enable` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `enableRoutingAreaFn`. |
+| `activategoal` | `dynamic` | — | Activategoal record; accesses `areasdisabled`, `numareas` and `areas`. May update `activategoal.areasdisabled` in place. |
+| `enable` | `dynamic` | — | Value used by `enableActivateGoalAreas` in `disabled=not enable`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L299)
 
 <a id="function-function-mq3-game-bot-navigation-ensureactivateheap-function-ensureactivateheap-bot-src-mq3-game-bot-navigation-ml-1380944305"></a>
 ### ensureActivateHeap
@@ -266,12 +286,14 @@ function enableActivateGoalAreas(services, activategoal, enable)
 function ensureActivateHeap(bot)
 ```
 
+Set `bot.activateGoalHeap` to `[]` and `bot.activateGoalHeap` to `bot.activateGoalHeap+[emptyActivateGoal()]` in `mq3.game.bot_navigation.ensureActivateHeap`. Return paths include `bot.activateGoalHeap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `bot` | `dynamic` | — |  |
+| `bot` | `dynamic` | — | Bot AI state; accesses `activateGoalHeap`. May update `bot.activateGoalHeap` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L284)
 
 - [mq3.game.bot_navigation.EntityInfo](Type-mq3-game-bot-navigation-entityinfo-1868580807.md) — struct
 <a id="constant-constant-mq3-game-bot-navigation-entitynum-none-const-entitynum-none-1023-src-mq3-game-bot-navigation-ml-250346873"></a>
@@ -301,15 +323,17 @@ const ET_MOVER = 4
 function getActivateGoal(services, bot, entitynum, activategoal)
 ```
 
+Set `activategoal.areas` to `activategoal.areas+[area]` and `activategoal.numareas` to `activategoal.numareas+1` in `mq3.game.bot_navigation.getActivateGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `entitynum` | `dynamic` | — |  |
-| `activategoal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `entityInfoFn`, `nextBspEntityFn`, `diagnosticFn`, `floatKeyFn` and `doorActivateGoalFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `areanum`, `origin` and `tfl`. |
+| `entitynum` | `dynamic` | — | Value used by `getActivateGoal` in `info=need(services.entityInfoFn,"BotEntityInfo")(services,entitynum)`. |
+| `activategoal` | `dynamic` | — | Activategoal record; accesses `numareas` and `areas`. May update `activategoal.areas` and `activategoal.numareas` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L398)
 
 <a id="function-function-mq3-game-bot-navigation-getairgoal-function-getairgoal-services-bot-goal-src-mq3-game-bot-navigation-ml-1755663626"></a>
 ### getAirGoal
@@ -318,14 +342,16 @@ function getActivateGoal(services, bot, entitynum, activategoal)
 function getAirGoal(services, bot, goal)
 ```
 
+Update `goal.origin`, `goal.areanum`, `goal.mins` and `goal.maxs` and related state during `getAirGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `traceFn` and `pointAreaFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `origin` and `entitynum`. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`, `areanum`, `mins`, `maxs` and `flags` and related fields. May update `goal.origin`, `goal.areanum` and `goal.mins` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L382)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L494)
 
 <a id="function-function-mq3-game-bot-navigation-getalternateroutegoal-function-getalternateroutegoal-services-bot-base-redgoals-bluegoals-src-mq3-game-bot-navigation-ml-1330800975"></a>
 ### getAlternateRouteGoal
@@ -334,16 +360,18 @@ function getAirGoal(services, bot, goal)
 function getAlternateRouteGoal(services, bot, base, redGoals, blueGoals)
 ```
 
+Set `bot.altRouteGoal` to `goal` and `bot.reachedAltRouteGoalTime` to `0.0` in `mq3.game.bot_navigation.getAlternateRouteGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `redGoals` | `dynamic` | — |  |
-| `blueGoals` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `randomFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `altRouteGoal` and `reachedAltRouteGoalTime`. May update `bot.altRouteGoal` and `bot.reachedAltRouteGoalTime` in place. |
+| `base` | `dynamic` | — | Value used by `getAlternateRouteGoal` in `if base==TEAM_RED then goals=redGoals end if`. |
+| `redGoals` | `dynamic` | — | Value used by `getAlternateRouteGoal` in `if base==TEAM_RED then goals=redGoals end if`. |
+| `blueGoals` | `dynamic` | — | Value used by `getAlternateRouteGoal` in `goals=blueGoals`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L226)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L267)
 
 <a id="function-function-mq3-game-bot-navigation-getitemlongtermgoal-function-getitemlongtermgoal-services-bot-tfl-goal-src-mq3-game-bot-navigation-ml-128392330"></a>
 ### getItemLongTermGoal
@@ -352,15 +380,17 @@ function getAlternateRouteGoal(services, bot, base, redGoals, blueGoals)
 function getItemLongTermGoal(services, bot, tfl, goal)
 ```
 
+Set `bot.ltgTime` to `0.0` and `bot.ltgTime` to `n.fadd(services.floatTimeFn(services),20.0)` in `mq3.game.bot_navigation.getItemLongTermGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `topGoalFn`, `chooseWeaponFn`, `floatTimeFn`, `popGoalFn` and `chooseLtgFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `gs`, `ltgTime`, `origin`, `inventory` and `ms`. May update `bot.ltgTime` in place. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `goal` | `dynamic` | — | Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `goal.areanum`, `goal.entitynum` and `goal.origin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L398)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L531)
 
 <a id="function-function-mq3-game-bot-navigation-getlongtermgoal-function-getlongtermgoal-services-bot-tfl-retreat-goal-src-mq3-game-bot-navigation-ml-1264061621"></a>
 ### getLongTermGoal
@@ -373,14 +403,14 @@ ai_dmnet.c BotGetLongTermGoal: common Baseq3 and CTF long-term goal policy.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `retreat` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`, `entityVisibleFn`, `resetAvoidReachFn`, `pointAreaFn` and `areaReachabilityFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgtype`, `teammessageTime`, `teammate`, `teamgoalTime` and `teammatevisibleTime` and related fields. May update `bot.teammessageTime`, `bot.ltgtype` and `bot.teammatevisibleTime` and additional fields in place. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `retreat` | `dynamic` | — | Value used by `getLongTermGoal` in `if bot.ltgtype==LTG_TEAMHELP and not retreat then`. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L573)
 
 <a id="constant-constant-mq3-game-bot-navigation-gfl-air-const-gfl-air-128-src-mq3-game-bot-navigation-ml-1240894302"></a>
 ### GFL_AIR
@@ -420,14 +450,16 @@ const GFL_ITEM = 1
 function goCamp(services, bot, goal)
 ```
 
+Update `bot.decisionmaker`, `bot.teammessageTime`, `bot.ltgtype` and `bot.teamGoal` and related state during `goCamp`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `characteristicFn`, `floatTimeFn` and `randomFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `decisionmaker`, `client`, `teammessageTime`, `ltgtype` and `teamGoal` and related fields. May update `bot.decisionmaker`, `bot.teammessageTime` and `bot.ltgtype` and additional fields in place. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L354)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L452)
 
 <a id="function-function-mq3-game-bot-navigation-goforactivategoal-function-goforactivategoal-services-bot-activategoal-src-mq3-game-bot-navigation-ml-2025345805"></a>
 ### goForActivateGoal
@@ -436,14 +468,16 @@ function goCamp(services, bot, goal)
 function goForActivateGoal(services, bot, activategoal)
 ```
 
+Update `activategoal.inuse`, `activategoal.time`, `activategoal.startTime` and `activategoal.origin` during `goForActivateGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `activategoal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`, `entityInfoFn` and `enterActivateNodeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `activateGoalHeap` and `activateStackIndex`. May update `bot.activateGoalHeap[best]` and `bot.activateStackIndex` in place. |
+| `activategoal` | `dynamic` | — | Activategoal record; accesses `inuse`, `time`, `startTime`, `goal` and `origin`. May update `activategoal.inuse`, `activategoal.time` and `activategoal.startTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L339)
 
 <a id="function-function-mq3-game-bot-navigation-goforair-function-goforair-services-bot-tfl-ltg-range-src-mq3-game-bot-navigation-ml-2143326235"></a>
 ### goForAir
@@ -452,16 +486,18 @@ function goForActivateGoal(services, bot, activategoal)
 function goForAir(services, bot, tfl, ltg, range)
 ```
 
+Use `services.floatTimeFn`, `services.pushGoalFn` and `services.chooseNbgFn` to perform `goForAir`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `ltg` | `dynamic` | — |  |
-| `range` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`, `pushGoalFn`, `chooseNbgFn`, `topGoalFn` and `pointContentsFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `lastairTime`, `gs`, `origin` and `inventory`. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `ltg` | `dynamic` | — | Value passed as argument 6 to `services.chooseNbgFn`. |
+| `range` | `dynamic` | — | Value passed as argument 7 to `services.chooseNbgFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L387)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L505)
 
 <a id="function-function-mq3-game-bot-navigation-goforpowerups-function-goforpowerups-services-bot-src-mq3-game-bot-navigation-ml-1463950025"></a>
 ### goForPowerups
@@ -470,13 +506,15 @@ function goForAir(services, bot, tfl, ltg, range)
 function goForPowerups(services, bot)
 ```
 
+Set `bot.ltgTime` to `0.0` in `mq3.game.bot_navigation.goForPowerups`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `levelItemGoalFn` and `removeAvoidGoalFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgTime`. May update `bot.ltgTime` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L377)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L485)
 
 <a id="constant-constant-mq3-game-bot-navigation-gt-ctf-const-gt-ctf-4-src-mq3-game-bot-navigation-ml-1222660417"></a>
 ### GT_CTF
@@ -546,14 +584,16 @@ const INVENTORY_SLUGS = headers.INVENTORY_SLUGS
 function isGoingToActivateEntity(services, bot, entitynum)
 ```
 
+Apply `mq3.game.bot_navigation.ensureActivateHeap` and `mq3.game.bot_navigation.need` while evaluating `isGoingToActivateEntity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `entitynum` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `activateStackIndex` and `activateGoalHeap`. |
+| `entitynum` | `dynamic` | — | Value used by `isGoingToActivateEntity` in `if goal.time>=need(services.floatTimeFn,"FloatTime")(services) and goal.goal.entitynum==entitynum then return tr...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L329)
 
 <a id="function-function-mq3-game-bot-navigation-key-function-key-services-entity-name-src-mq3-game-bot-navigation-ml-939746158"></a>
 ### key
@@ -562,14 +602,16 @@ function isGoingToActivateEntity(services, bot, entitynum)
 function key(services, entity, name)
 ```
 
+Return `need(services.stringKeyFn,"AAS_ValueForBSPEpairKey")(services,entity,name)` for `key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `stringKeyFn`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `need(services.stringKeyFn,"AAS_ValueForBSPEpairKey")(services,entity,name)`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L362)
 
 <a id="function-function-mq3-game-bot-navigation-longtermentity-function-longtermentity-services-entity-src-mq3-game-bot-navigation-ml-1449102055"></a>
 ### longTermEntity
@@ -578,13 +620,15 @@ function key(services, entity, name)
 function longTermEntity(services, entity)
 ```
 
+Return `need(services.entityLongTermInfoFn,"BotEntityInfo")(services,entity)` for `longTermEntity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `entityLongTermInfoFn`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `need(services.entityLongTermInfoFn,"BotEntityInfo")(services,entity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L409)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L553)
 
 - [mq3.game.bot_navigation.LongTermEntity](Type-mq3-game-bot-navigation-longtermentity-868813615.md) — struct
 <a id="function-function-mq3-game-bot-navigation-longtermgoal-function-longtermgoal-services-bot-tfl-retreat-goal-src-mq3-game-bot-navigation-ml-661556367"></a>
@@ -598,14 +642,14 @@ ai_dmnet.c BotLongTermGoal: leading policy before the LTG dispatcher.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `retreat` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn` and `entityVisibleFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `leadTime`, `leadTeammate`, `leadmessageTime`, `leadTeamGoal` and `entitynum` and related fields. May update `bot.leadTime`, `bot.leadmessageTime` and `bot.leadvisibleTime` and additional fields in place. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `retreat` | `dynamic` | — | Value used by `getLongTermGoal` in `if bot.ltgtype==LTG_TEAMHELP and not retreat then`. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L501)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L660)
 
 <a id="constant-constant-mq3-game-bot-navigation-ltg-camp-const-ltg-camp-aiheaders-ltg-camp-src-mq3-game-bot-navigation-ml-1531131642"></a>
 ### LTG_CAMP
@@ -784,12 +828,14 @@ const MFL_WATERJUMP = 16
 function modelIndex(text)
 ```
 
+Parse the numeric model identifier after the leading inline-model marker.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L282)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L357)
 
 <a id="constant-constant-mq3-game-bot-navigation-move-walk-const-move-walk-1-src-mq3-game-bot-navigation-ml-612353184"></a>
 ### MOVE_WALK
@@ -810,16 +856,18 @@ const MOVE_WALK = 1
 function nearbyGoal(services, bot, tfl, ltg, range)
 ```
 
+Use `services.carryingFlagFn`, `services.areaTravelTimeFn` and `services.chooseNbgFn` to perform `nearbyGoal`. Return paths include `services.chooseNbgFn(services,bot.gs,bot.origin,bot.inventory,tfl,ltg,range)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `tfl` | `dynamic` | — |  |
-| `ltg` | `dynamic` | — |  |
-| `range` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `carryingFlagFn`, `areaTravelTimeFn` and `chooseNbgFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `areanum`, `origin`, `teamGoal`, `gs` and `inventory`. |
+| `tfl` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `ltg` | `dynamic` | — | Value passed as argument 6 to `services.chooseNbgFn`. |
+| `range` | `dynamic` | — | Value passed as argument 7 to `services.chooseNbgFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L390)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L514)
 
 <a id="function-function-mq3-game-bot-navigation-need-function-need-callback-label-src-mq3-game-bot-navigation-ml-1070418083"></a>
 ### need
@@ -828,13 +876,15 @@ function nearbyGoal(services, bot, tfl, ltg, range)
 function need(callback, label)
 ```
 
+Require a navigation service callback and report the missing service by name.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `callback` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `callback` | `dynamic` | — | Callback invoked by this operation. |
+| `label` | `dynamic` | — | Label retained with the diagnostic or action record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L162)
 
 <a id="function-function-mq3-game-bot-navigation-notifylongterm-function-notifylongterm-services-bot-event-target-src-mq3-game-bot-navigation-ml-347140786"></a>
 ### notifyLongTerm
@@ -843,15 +893,17 @@ function need(callback, label)
 function notifyLongTerm(services, bot, event, target)
 ```
 
+Use `services.notifyFn` to perform `notifyLongTerm`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
-| `target` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `notifyFn`. |
+| `bot` | `dynamic` | — | Value passed as argument 2 to `services.notifyFn`. |
+| `event` | `dynamic` | — | Player or entity event identifier. |
+| `target` | `dynamic` | — | Value passed as argument 4 to `services.notifyFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L406)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L547)
 
 <a id="constant-constant-mq3-game-bot-navigation-patrol-back-const-patrol-back-aiheaders-patrol-back-src-mq3-game-bot-navigation-ml-187283351"></a>
 ### PATROL_BACK
@@ -900,13 +952,15 @@ const PMF_TIME_WATERJUMP = 256
 function popActivateGoal(services, bot)
 ```
 
+Set `bot.activateStackIndex` to `goal.nextIndex` in `mq3.game.bot_navigation.popActivateGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `activateStackIndex` and `activateGoalHeap`. May update `bot.activateStackIndex` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L307)
 
 <a id="function-function-mq3-game-bot-navigation-predictobstacles-function-predictobstacles-services-bot-goal-enabled-src-mq3-game-bot-navigation-ml-6838247"></a>
 ### predictObstacles
@@ -915,15 +969,17 @@ function popActivateGoal(services, bot)
 function predictObstacles(services, bot, goal, enabled)
 ```
 
+Set `bot.predictobstaclesGoalareanum` to `goal.areanum` and `bot.predictobstaclesTime` to `need(services.floatTimeFn,"FloatTime")(services)` in `mq3.game.bot_navigation.predictObstacles`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
-| `enabled` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`, `predictRouteFn`, `modelEntityFn`, `getActivateGoalFn` and `activationStackInUseFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `predictobstaclesGoalareanum`, `predictobstaclesTime`, `areanum`, `origin` and `tfl`. May update `bot.predictobstaclesGoalareanum` and `bot.predictobstaclesTime` in place. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `areanum` and `entitynum`. |
+| `enabled` | `dynamic` | — | Value used by `predictObstacles` in `if not enabled then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L207)
 
 <a id="function-function-mq3-game-bot-navigation-prepareactivator-function-prepareactivator-services-bot-entity-activategoal-kind-src-mq3-game-bot-navigation-ml-1207471834"></a>
 ### prepareActivator
@@ -932,16 +988,18 @@ function predictObstacles(services, bot, goal, enabled)
 function prepareActivator(services, bot, entity, activategoal, kind)
 ```
 
+Update `activategoal.time` during `prepareActivator`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `activategoal` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `buttonActivateGoalFn`, `triggerActivateGoalFn`, `areaReachabilityFn`, `areaTravelTimeFn` and `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `areanum`, `origin` and `tfl`. |
+| `entity` | `dynamic` | — | Value used by `prepareActivator` in `if kind==1 then okay=need(services.buttonActivateGoalFn,"BotFuncButtonActivateGoal")(services,bot,entity,activat...`. |
+| `activategoal` | `dynamic` | — | Activategoal record; accesses `goal` and `time`. May update `activategoal.time` in place. |
+| `kind` | `dynamic` | — | Value used by `prepareActivator` in `if kind==1 then okay=need(services.buttonActivateGoalFn,"BotFuncButtonActivateGoal")(services,bot,entity,activat...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L380)
 
 <a id="constant-constant-mq3-game-bot-navigation-presence-crouch-const-presence-crouch-aiheaders-presence-crouch-src-mq3-game-bot-navigation-ml-317996811"></a>
 ### PRESENCE_CROUCH
@@ -970,14 +1028,16 @@ const PRESENCE_NORMAL = aiheaders.PRESENCE_NORMAL
 function pushActivateGoal(services, bot, activategoal)
 ```
 
+Set `bot.activateGoalHeap[best]` to `stored` and `bot.activateStackIndex` to `best` in `mq3.game.bot_navigation.pushActivateGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `activategoal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `activateGoalHeap` and `activateStackIndex`. May update `bot.activateGoalHeap[best]` and `bot.activateStackIndex` in place. |
+| `activategoal` | `dynamic` | — | Parser source state; accesses `goal`, `areas`, `inuse`, `time` and `startTime` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L315)
 
 <a id="function-function-mq3-game-bot-navigation-randommove-function-randommove-services-bot-moveresult-src-mq3-game-bot-navigation-ml-93353593"></a>
 ### randomMove
@@ -986,14 +1046,16 @@ function pushActivateGoal(services, bot, activategoal)
 function randomMove(services, bot, moveresult)
 ```
 
+Set `moveresult.failure` to `false` and `moveresult.movedir` to `[direction[0],direction[1],direction[2]]` in `mq3.game.bot_navigation.randomMove`. Return paths include `moveresult`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `moveresult` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `randomFn` and `moveInDirectionFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ms`. |
+| `moveresult` | `dynamic` | — | Moveresult record; accesses `failure` and `movedir`. May update `moveresult.failure` and `moveresult.movedir` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L194)
 
 <a id="function-function-mq3-game-bot-navigation-reachedgoal-function-reachedgoal-services-bot-goal-src-mq3-game-bot-navigation-ml-1814535228"></a>
 ### reachedGoal
@@ -1002,14 +1064,16 @@ function randomMove(services, bot, moveresult)
 function reachedGoal(services, bot, goal)
 ```
 
+Use `services.touchingGoalFn`, `services.setAvoidGoalTimeFn` and `services.itemNotVisibleFn` to perform `reachedGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `touchingGoalFn`, `setAvoidGoalTimeFn`, `itemNotVisibleFn`, `swimmingFn` and `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `origin`, `gs`, `entitynum`, `eye` and `viewangles` and related fields. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `flags`, `number`, `areanum`, `origin` and `mins` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L393)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L521)
 
 <a id="function-function-mq3-game-bot-navigation-resetactivategoal-function-resetactivategoal-goal-src-mq3-game-bot-navigation-ml-374728477"></a>
 ### resetActivateGoal
@@ -1018,12 +1082,14 @@ function reachedGoal(services, bot, goal)
 function resetActivateGoal(goal)
 ```
 
+Update `goal.inuse`, `goal.time`, `goal.startTime` and `goal.justusedTime` and related state during `resetActivateGoal`. Return paths include `goal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `goal` | `dynamic` | — |  |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `inuse`, `time`, `startTime`, `justusedTime` and `origin` and related fields. May update `goal.inuse`, `goal.time` and `goal.startTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L348)
 
 - [mq3.game.bot_navigation.Route](Type-mq3-game-bot-navigation-route-702984309.md) — struct
 <a id="constant-constant-mq3-game-bot-navigation-rse-entercontents-const-rse-entercontents-4-src-mq3-game-bot-navigation-ml-2099735725"></a>
@@ -1053,13 +1119,15 @@ const RSE_USETRAVELTYPE = 2
 function sameVector(a, b)
 ```
 
+Test `a[0]==b[0] and a[1]==b[1] and a[2]==b[2]` as the condition for `sameVector`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L354)
 
 - [mq3.game.bot_navigation.Services](Type-mq3-game-bot-navigation-services-1677460312.md) — struct
 <a id="function-function-mq3-game-bot-navigation-setmovedir-function-setmovedir-angles-src-mq3-game-bot-navigation-ml-736502728"></a>
@@ -1069,12 +1137,14 @@ function sameVector(a, b)
 function setMovedir(angles)
 ```
 
+Store a movement direction in the bot navigation command state.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `angles` | `dynamic` | — |  |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L184)
 
 <a id="function-function-mq3-game-bot-navigation-setupformovement-function-setupformovement-services-bot-src-mq3-game-bot-navigation-ml-1681068269"></a>
 ### setupForMovement
@@ -1083,13 +1153,15 @@ function setMovedir(angles)
 function setupForMovement(services, bot)
 ```
 
+Apply `mq3.game.bot_navigation.need` while evaluating `setupForMovement`. Return paths include `initmove`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `initMoveStateFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `curPs`, `entitynum`, `client`, `thinktime` and `viewangles` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L167)
 
 <a id="constant-constant-mq3-game-bot-navigation-team-red-const-team-red-1-src-mq3-game-bot-navigation-ml-1484279148"></a>
 ### TEAM_RED
@@ -1128,15 +1200,17 @@ const TFL_DEFAULT = 18616254
 function updateMovingTeamGoal(services, bot, entity, teamGoal)
 ```
 
+Update `teamGoal.entitynum`, `teamGoal.areanum`, `teamGoal.origin` and `teamGoal.mins` and related state during `updateMovingTeamGoal`. Return paths include `info`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `teamGoal` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `pointAreaFn` and `areaReachabilityFn`. |
+| `bot` | `dynamic` | — | Not read by this implementation; retained in the `updateMovingTeamGoal` signature. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `need(services.entityLongTermInfoFn,"BotEntityInfo")(services,entity)`. |
+| `teamGoal` | `dynamic` | — | Team goal record; accesses `entitynum`, `areanum`, `origin`, `mins` and `maxs`. May update `teamGoal.entitynum`, `teamGoal.areanum` and `teamGoal.origin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L561)
 
 <a id="function-function-mq3-game-bot-navigation-wantstocamp-function-wantstocamp-services-bot-src-mq3-game-bot-navigation-ml-1630998471"></a>
 ### wantsToCamp
@@ -1145,12 +1219,14 @@ function updateMovingTeamGoal(services, bot, entity, teamGoal)
 function wantsToCamp(services, bot)
 ```
 
+Set `bot.campTime` to `services.floatTimeFn(services)` and `bot.ordered` to `false` in `mq3.game.bot_navigation.wantsToCamp`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `characteristicFn`, `floatTimeFn`, `randomFn`, `aggressionFn` and `nextCampSpotFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `character`, `ltgtype`, `campTime`, `inventory` and `areanum` and related fields. May update `bot.campTime` and `bot.ordered` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L462)
 
 - [mq3.game.bot_navigation.Waypoint](Type-mq3-game-bot-navigation-waypoint-1377048671.md) — struct

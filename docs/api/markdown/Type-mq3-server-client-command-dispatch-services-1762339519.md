@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for server.client_command_dispatch, containing `builtinFn`, `downloadFn`, `gameFn`, `ignoredFn`, `context`, `downloadContext`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ builtinFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 <a id="field-field-mq3-server-client-command-dispatch-services-context-context-src-mq3-server-client-command-dispatch-ml-568734893"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 <a id="field-field-mq3-server-client-command-dispatch-services-downloadcontext-downloadcontext-src-mq3-server-client-command-dispatch-ml-1293177081"></a>
 ### downloadContext
@@ -42,7 +44,7 @@ downloadContext
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 <a id="field-field-mq3-server-client-command-dispatch-services-downloadfn-downloadfn-src-mq3-server-client-command-dispatch-ml-1551282565"></a>
 ### downloadFn
@@ -52,7 +54,7 @@ downloadFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 <a id="field-field-mq3-server-client-command-dispatch-services-gamefn-gamefn-src-mq3-server-client-command-dispatch-ml-791809725"></a>
 ### gameFn
@@ -62,7 +64,7 @@ gameFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 <a id="field-field-mq3-server-client-command-dispatch-services-ignoredfn-ignoredfn-src-mq3-server-client-command-dispatch-ml-1188731565"></a>
 ### ignoredFn
@@ -72,7 +74,7 @@ ignoredFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 <a id="field-field-mq3-server-client-command-dispatch-services-lifecycleruntime-lifecycleruntime-src-mq3-server-client-command-dispatch-ml-1830225149"></a>
 ### lifecycleRuntime
@@ -82,4 +84,4 @@ lifecycleRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)

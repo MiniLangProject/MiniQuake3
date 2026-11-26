@@ -9,8 +9,10 @@
 struct State
 ```
 
+State record for qcommon.startup_commands, containing `commandState`, `lines`, `cvarSetFn`, `cvarGetFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ commandState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L12)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-context-context-src-mq3-qcommon-startup-commands-ml-1839458674"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L16)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-cvargetfn-cvargetfn-src-mq3-qcommon-startup-commands-ml-180570282"></a>
 ### cvarGetFn
@@ -42,7 +44,7 @@ cvarGetFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L15)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-cvarsetfn-cvarsetfn-src-mq3-qcommon-startup-commands-ml-356677754"></a>
 ### cvarSetFn
@@ -52,7 +54,7 @@ cvarSetFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L14)
 
 <a id="field-field-mq3-qcommon-startup-commands-state-lines-lines-src-mq3-qcommon-startup-commands-ml-209748014"></a>
 ### lines
@@ -62,4 +64,4 @@ lines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/startup_commands.ml#L13)

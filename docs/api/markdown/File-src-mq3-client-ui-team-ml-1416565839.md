@@ -18,7 +18,7 @@ function cache()
 TeamMain_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L31)
 
 <a id="function-function-mq3-client-ui-team-event-function-event-menu-id-eventcode-src-mq3-client-ui-team-ml-750525785"></a>
 ### event
@@ -31,12 +31,12 @@ TeamMain_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI team record/storage; this routine assigns `menu.commands`, `menu.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_JOINRED then command="cmd team red\\n" else if id==ID_JOINBLUE then command="cmd team blue\\n" else if id==ID_JOINGAME then command="c...`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-team-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-team-ml-1010667631"></a>
 ### GT_CTF
@@ -139,10 +139,10 @@ TeamMain_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gametype` | `dynamic` | — |  |
+| `gametype` | `dynamic` | — | Quake III game-type identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L34)
 
 <a id="function-function-mq3-client-ui-team-open-function-open-gametype-src-mq3-client-ui-team-ml-1966451192"></a>
 ### open
@@ -155,10 +155,10 @@ UI_TeamMainMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gametype` | `dynamic` | — |  |
+| `gametype` | `dynamic` | — | Quake III game-type identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L42)
 
 <a id="constant-constant-mq3-client-ui-team-qm-activated-const-qm-activated-3-src-mq3-client-ui-team-ml-539601408"></a>
 ### QM_ACTIVATED

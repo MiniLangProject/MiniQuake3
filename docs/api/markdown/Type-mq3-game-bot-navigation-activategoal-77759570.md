@@ -9,8 +9,10 @@
 struct ActivateGoal
 ```
 
+`ActivateGoal` record for bot navigation, containing `inuse`, `time`, `startTime`, `justusedTime` and `origin` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 ## Members
 
@@ -22,7 +24,7 @@ areas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-areasdisabled-areasdisabled-src-mq3-game-bot-navigation-ml-2098229471"></a>
 ### areasdisabled
@@ -32,7 +34,7 @@ areasdisabled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-goal-goal-src-mq3-game-bot-navigation-ml-10612493"></a>
 ### goal
@@ -42,7 +44,7 @@ goal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-inuse-inuse-src-mq3-game-bot-navigation-ml-394296703"></a>
 ### inuse
@@ -52,7 +54,7 @@ inuse
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-justusedtime-justusedtime-src-mq3-game-bot-navigation-ml-225059359"></a>
 ### justusedTime
@@ -62,7 +64,7 @@ justusedTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-nextindex-nextindex-src-mq3-game-bot-navigation-ml-182250399"></a>
 ### nextIndex
@@ -72,7 +74,7 @@ nextIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-numareas-numareas-src-mq3-game-bot-navigation-ml-490314287"></a>
 ### numareas
@@ -82,7 +84,7 @@ numareas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-origin-origin-src-mq3-game-bot-navigation-ml-631689647"></a>
 ### origin
@@ -92,7 +94,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-shoot-shoot-src-mq3-game-bot-navigation-ml-27987279"></a>
 ### shoot
@@ -102,7 +104,7 @@ shoot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-starttime-starttime-src-mq3-game-bot-navigation-ml-2068181643"></a>
 ### startTime
@@ -112,7 +114,7 @@ startTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-target-target-src-mq3-game-bot-navigation-ml-1829875045"></a>
 ### target
@@ -122,7 +124,7 @@ target
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-time-time-src-mq3-game-bot-navigation-ml-1778502633"></a>
 ### time
@@ -132,7 +134,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)
 
 <a id="field-field-mq3-game-bot-navigation-activategoal-weapon-weapon-src-mq3-game-bot-navigation-ml-1738728559"></a>
 ### weapon
@@ -142,4 +144,4 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L88)

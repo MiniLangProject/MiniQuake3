@@ -23,11 +23,11 @@ Updates each engine client's ping and mirrors active, non-bot values into the co
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clients` | `dynamic` | — |  |
-| `playerStates` | `dynamic` | — |  |
+| `clients` | `dynamic` | — | Clients used in `clients[i]` and `len(clients)`. |
+| `playerStates` | `dynamic` | — | Player states used in `playerStates[i]` and `len(playerStates)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L40)
 
 <a id="function-function-mq3-server-client-pings-client-function-client-src-mq3-server-client-pings-ml-519910768"></a>
 ### client
@@ -36,8 +36,10 @@ Updates each engine client's ping and mirrors active, non-bot values into the co
 function client()
 ```
 
+Create `mq3.server.client_pings.Client` with state=0; ping=0; gentity=void; frames=array(PACKET_BACKUP, void).
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L32)
 
 - [mq3.server.client_pings.Client](Type-mq3-server-client-pings-client-1462703897.md) — struct
 <a id="constant-constant-mq3-server-client-pings-cs-active-const-cs-active-4-src-mq3-server-client-pings-ml-1807043629"></a>
@@ -57,13 +59,15 @@ const CS_ACTIVE = 4
 function frame(sent, acked)
 ```
 
+Create `mq3.server.client_pings.PingFrame` with messageSent=sent; messageAcked=acked.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sent` | `dynamic` | — |  |
-| `acked` | `dynamic` | — |  |
+| `sent` | `dynamic` | — | Initial `messageSent` field stored in the returned or constructed `mq3.server.client_pings.PingFrame` record. |
+| `acked` | `dynamic` | — | Initial `messageAcked` field stored in the returned or constructed `mq3.server.client_pings.PingFrame` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L16)
 
 <a id="function-function-mq3-server-client-pings-gameentity-function-gameentity-flags-src-mq3-server-client-pings-ml-1286756867"></a>
 ### gameEntity
@@ -72,12 +76,14 @@ function frame(sent, acked)
 function gameEntity(flags)
 ```
 
+Create `mq3.server.client_pings.GameEntity` with svFlags=flags.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flags` | `dynamic` | — |  |
+| `flags` | `dynamic` | — | Initial `svFlags` field stored in the returned or constructed `mq3.server.client_pings.GameEntity` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L22)
 
 - [mq3.server.client_pings.GameEntity](Type-mq3-server-client-pings-gameentity-23766339.md) — struct
 <a id="constant-constant-mq3-server-client-pings-packet-backup-const-packet-backup-32-src-mq3-server-client-pings-ml-949092278"></a>
@@ -98,8 +104,10 @@ const PACKET_BACKUP = 32
 function playerState()
 ```
 
+Create `mq3.server.client_pings.PlayerState` with ping=0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L27)
 
 - [mq3.server.client_pings.PlayerState](Type-mq3-server-client-pings-playerstate-2126532420.md) — struct
 <a id="constant-constant-mq3-server-client-pings-svf-bot-const-svf-bot-8-src-mq3-server-client-pings-ml-434488321"></a>

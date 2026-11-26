@@ -23,12 +23,14 @@ Reachable from entry: **yes**
 function ammoIconKey(weapon)
 ```
 
+Calls `mq3.client.baseq3_hud.weaponIconKey` from base Quake III HUD `ammoIconKey`. The final path returns `"ammo_machinegun"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `weapon` | `dynamic` | — |  |
+| `weapon` | `dynamic` | — | Value used by `icon=weaponIconKey(weapon)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L276)
 
 - [mq3.client.baseq3_hud.Asset](Type-mq3-client-baseq3-hud-asset-1903594512.md) — struct
 - [mq3.client.baseq3_hud.Catalog](Type-mq3-client-baseq3-hud-catalog-869376479.md) — struct
@@ -59,13 +61,15 @@ const CHAR_WIDTH = 32
 function clampField(value, width)
 ```
 
+Evaluates base Quake III HUD `clampField` and returns `0`, `maximum`, `minimum` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value>maximum`, `if value<minimum` before the calculation continues. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `clampField`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L128)
 
 <a id="function-function-mq3-client-baseq3-hud-descriptor-function-descriptor-key-name-src-mq3-client-baseq3-hud-ml-1139469552"></a>
 ### descriptor
@@ -74,13 +78,15 @@ function clampField(value, width)
 function descriptor(key, name)
 ```
 
+Builds the base Quake III HUD `descriptor` sequence from `[key,name]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding base Quake III HUD entry. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding base Quake III HUD resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L44)
 
 <a id="function-function-mq3-client-baseq3-hud-descriptors-function-descriptors-src-mq3-client-baseq3-hud-ml-1000064720"></a>
 ### descriptors
@@ -92,7 +98,7 @@ function descriptors()
 The first eleven entries match cgs.media.numberShaders[0..STAT_MINUS]. The remaining artwork is the stock Baseq3 HUD and common q3dm1 pickup set. Baseq3's status bar uses a distinct icona_* picture for each ammo type.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L49)
 
 <a id="function-function-mq3-client-baseq3-hud-draw-function-draw-catalog-value-width-height-now-src-mq3-client-baseq3-hud-ml-963806433"></a>
 ### draw
@@ -101,16 +107,18 @@ The first eleven entries match cgs.media.numberShaders[0..STAT_MINUS]. The remai
 function draw(catalog, value, width, height, now)
 ```
 
+Calls `mq3.client.baseq3_hud.layout`, `mq3.client.baseq3_hud.drawAsset`, `mq3.client.baseq3_hud.find` and additional helpers from base Quake III HUD `draw`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `value` | `dynamic` | — | Record read through `value.ammo`, `value.weapon`, `value.health`, `value.armor` and additional values. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `draw`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `draw`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L347)
 
 <a id="function-function-mq3-client-baseq3-hud-drawasset-function-drawasset-asset-x-y-w-h-placement-red-green-blue-src-mq3-client-baseq3-hud-ml-1372339469"></a>
 ### drawAsset
@@ -119,20 +127,22 @@ function draw(catalog, value, width, height, now)
 function drawAsset(asset, x, y, w, h, placement, red, green, blue)
 ```
 
+Calls `mq3.client.baseq3_hud.point`, `mq3.platform.playable_window.drawTriangle` from base Quake III HUD `drawAsset`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `asset` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
-| `placement` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
+| `asset` | `dynamic` | — | Record read through `asset.slot`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawAsset`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawAsset`. |
+| `w` | `dynamic` | — | Width in the coordinate space used by `drawAsset`. |
+| `h` | `dynamic` | — | Height in the coordinate space used by `drawAsset`. |
+| `placement` | `dynamic` | — | Record read through `placement.scaleX`, `placement.scaleY`. |
+| `red` | `dynamic` | — | Red color component. |
+| `green` | `dynamic` | — | Green color component. |
+| `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L211)
 
 <a id="function-function-mq3-client-baseq3-hud-drawfield-function-drawfield-catalog-x-y-width-value-placement-red-green-blue-src-mq3-client-baseq3-hud-ml-1917472318"></a>
 ### drawField
@@ -141,20 +151,22 @@ function drawAsset(asset, x, y, w, h, placement, red, green, blue)
 function drawField(catalog, x, y, width, value, placement, red, green, blue)
 ```
 
+Calls `mq3.client.baseq3_hud.clampField`, `slice`, `mq3.client.baseq3_hud.fieldStart` and additional helpers from base Quake III HUD `drawField`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `placement` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawField`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawField`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawField`. |
+| `value` | `dynamic` | — | Value used by `text=str(clampField(value,width))`. |
+| `placement` | `dynamic` | — | Value used by `drawAsset(find(catalog,numberKey(text[index])),cursor,y,CHAR_WIDTH,CHAR_HEIGHT,placement,red,green,blue)`. |
+| `red` | `dynamic` | — | Red color component. |
+| `green` | `dynamic` | — | Green color component. |
+| `blue` | `dynamic` | — | Blue color component. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L246)
 
 <a id="function-function-mq3-client-baseq3-hud-drawweaponselect-function-drawweaponselect-catalog-value-placement-now-src-mq3-client-baseq3-hud-ml-614241213"></a>
 ### drawWeaponSelect
@@ -163,15 +175,17 @@ function drawField(catalog, x, y, width, value, placement, red, green, blue)
 function drawWeaponSelect(catalog, value, placement, now)
 ```
 
+Calls `std.string.toLowerAscii`, `mq3.client.baseq3_hud.drawAsset`, `mq3.client.baseq3_hud.find` and additional helpers from base Quake III HUD `drawWeaponSelect`. The final path returns `drawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `placement` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `value` | `dynamic` | — | Record read through `value.weaponSelectTime`, `value.ownedWeapons`, `value.weaponAmmo`, `value.weapon`. |
+| `placement` | `dynamic` | — | Record read through `placement.scaleX`, `placement.scaleY`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L326)
 
 <a id="function-function-mq3-client-baseq3-hud-fail-function-fail-message-src-mq3-client-baseq3-hud-ml-1778910915"></a>
 ### fail
@@ -180,12 +194,14 @@ function drawWeaponSelect(catalog, value, placement, now)
 function fail(message)
 ```
 
+Creates the base Quake III HUD error `7580` with diagnostic text `"Baseq3 HUD: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"Baseq3 HUD: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L39)
 
 <a id="constant-constant-mq3-client-baseq3-hud-feedback-time-const-feedback-time-3000-src-mq3-client-baseq3-hud-ml-123637804"></a>
 ### FEEDBACK_TIME
@@ -204,14 +220,16 @@ const FEEDBACK_TIME = 3000
 function fieldStart(x, width, value)
 ```
 
+Calls `mq3.client.baseq3_hud.clampField` from base Quake III HUD `fieldStart`. The final path returns `x+2.0+CHAR_WIDTH*(width-length)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `x` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `fieldStart`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `fieldStart`. |
+| `value` | `dynamic` | — | Value used by `text=str(clampField(value,width))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L231)
 
 <a id="function-function-mq3-client-baseq3-hud-find-function-find-catalog-key-src-mq3-client-baseq3-hud-ml-1044500850"></a>
 ### find
@@ -220,13 +238,15 @@ function fieldStart(x, width, value)
 function find(catalog, key)
 ```
 
+Searches the base Quake III HUD collection for find, returning `void` when no entry matches.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding base Quake III HUD entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L98)
 
 <a id="function-function-mq3-client-baseq3-hud-findkey-function-findkey-value-values-src-mq3-client-baseq3-hud-ml-1135976111"></a>
 ### findKey
@@ -235,13 +255,15 @@ function find(catalog, key)
 function findKey(value, values)
 ```
 
+Evaluates base Quake III HUD `findKey` and returns `true`, `false` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `values` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value==item` before the calculation continues. |
+| `values` | `dynamic` | — | Value used by `for each item in values if value==item then return true end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L301)
 
 <a id="function-function-mq3-client-baseq3-hud-frag-function-frag-value-now-src-mq3-client-baseq3-hud-ml-343427499"></a>
 ### frag
@@ -250,13 +272,15 @@ function findKey(value, values)
 function frag(value, now)
 ```
 
+Updates `value.fragTime` during base Quake III HUD `frag`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable base Quake III HUD record/storage; this routine assigns `value.fragTime`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L177)
 
 <a id="constant-constant-mq3-client-baseq3-hud-icon-size-const-icon-size-48-src-mq3-client-baseq3-hud-ml-744732053"></a>
 ### ICON_SIZE
@@ -275,13 +299,15 @@ const ICON_SIZE = 48
 function layout(width, height)
 ```
 
+Calls `mq3.client.baseq3_hud.Layout` from base Quake III HUD `layout`. The final path returns `Layout(width/VIRTUAL_WIDTH,height/VIRTUAL_HEIGHT,0.0,185.0,370.0,432.0,432.0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
+| `width` | `dynamic` | — | Width in the coordinate space used by `layout`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `layout`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L185)
 
 - [mq3.client.baseq3_hud.Layout](Type-mq3-client-baseq3-hud-layout-1169061062.md) — struct
 <a id="function-function-mq3-client-baseq3-hud-load-function-load-archive-firsttextureslot-maxtextureslots-src-mq3-client-baseq3-hud-ml-1980994191"></a>
@@ -291,14 +317,16 @@ function layout(width, height)
 function load(archive, firstTextureSlot, maxTextureSlots)
 ```
 
+Calls `mq3.client.baseq3_hud.descriptors`, `mq3.renderer.playable_materials.buildScriptIndex`, `mq3.renderer.playable_materials.mappedImageName` and additional helpers from base Quake III HUD `load`. The final path returns `Catalog(assets,firstTextureSlot,len(assets))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `firstTextureSlot` | `dynamic` | — |  |
-| `maxTextureSlots` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `firstTextureSlot` | `dynamic` | — | First texture slot reserved for this asset collection. |
+| `maxTextureSlots` | `dynamic` | — | Maximum number of texture slots available to the renderer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L77)
 
 <a id="function-function-mq3-client-baseq3-hud-numberkey-function-numberkey-character-src-mq3-client-baseq3-hud-ml-313708671"></a>
 ### numberKey
@@ -307,12 +335,14 @@ function load(archive, firstTextureSlot, maxTextureSlots)
 function numberKey(character)
 ```
 
+Evaluates base Quake III HUD `numberKey` and returns `"number_minus"`, `"number_"+character` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `character` | `dynamic` | — |  |
+| `character` | `dynamic` | — | Value used by `if character=="-" then return "number_minus" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L222)
 
 <a id="function-function-mq3-client-baseq3-hud-pickup-function-pickup-value-classname-name-now-src-mq3-client-baseq3-hud-ml-1011651941"></a>
 ### pickup
@@ -321,15 +351,17 @@ function numberKey(character)
 function pickup(value, classname, name, now)
 ```
 
+Updates `value.pickupClass`, `value.pickupName`, `value.pickupTime` during base Quake III HUD `pickup`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `classname` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable base Quake III HUD record/storage; this routine assigns `value.pickupClass`, `value.pickupName`, `value.pickupTime`. |
+| `classname` | `dynamic` | — | Value assigned to `value.pickupClass`. |
+| `name` | `dynamic` | — | Value assigned to `value.pickupName`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L169)
 
 <a id="function-function-mq3-client-baseq3-hud-pickupiconkey-function-pickupiconkey-classname-src-mq3-client-baseq3-hud-ml-705887563"></a>
 ### pickupIconKey
@@ -338,12 +370,14 @@ function pickup(value, classname, name, now)
 function pickupIconKey(classname)
 ```
 
+Calls `std.string.toLowerAscii`, `mq3.client.baseq3_hud.findKey`, `std.string.startsWith` and additional helpers from base Quake III HUD `pickupIconKey`. The final path returns `weaponIconKey(name)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `classname` | `dynamic` | — |  |
+| `classname` | `dynamic` | — | Value used by `name=strings.toLowerAscii(classname)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L290)
 
 <a id="function-function-mq3-client-baseq3-hud-point-function-point-x-y-src-mq3-client-baseq3-hud-ml-1206141515"></a>
 ### point
@@ -352,13 +386,15 @@ function pickupIconKey(classname)
 function point(x, y)
 ```
 
+Creates a `mq3.client.baseq3_hud.Point` record. Assigns `x` from `x`, `y` from `y`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `x` | `dynamic` | — | Value used to initialize `Point.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Point.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L199)
 
 - [mq3.client.baseq3_hud.Point](Type-mq3-client-baseq3-hud-point-463638582.md) — struct
 <a id="function-function-mq3-client-baseq3-hud-release-function-release-catalog-src-mq3-client-baseq3-hud-ml-1346631033"></a>
@@ -368,12 +404,14 @@ function point(x, y)
 function release(catalog)
 ```
 
+Calls `mq3.platform.playable_window.releaseTexture` from base Quake III HUD `release`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L119)
 
 <a id="constant-constant-mq3-client-baseq3-hud-required-textures-const-required-textures-39-src-mq3-client-baseq3-hud-ml-676279149"></a>
 ### REQUIRED_TEXTURES
@@ -406,14 +444,14 @@ Mirrors CG_Weapon_f/CG_NextWeapon_f feedback: the selection strip is only visibl
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `weapons` | `dynamic` | — |  |
-| `ammo` | `dynamic` | — |  |
-| `selected` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable base Quake III HUD record/storage; this routine assigns `value.ownedWeapons`, `value.weaponAmmo`, `value.weapon`, `value.weaponSelectTime`. |
+| `weapons` | `dynamic` | — | Sequence whose length/content is inspected by `selectWeapons`. |
+| `ammo` | `dynamic` | — | Sequence whose length/content is inspected by `selectWeapons`. |
+| `selected` | `dynamic` | — | Value assigned to `value.weapon`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L158)
 
 <a id="function-function-mq3-client-baseq3-hud-state-function-state-health-armor-ammo-weapon-score-kills-deaths-src-mq3-client-baseq3-hud-ml-841264169"></a>
 ### state
@@ -422,18 +460,20 @@ Mirrors CG_Weapon_f/CG_NextWeapon_f feedback: the selection strip is only visibl
 function state(health, armor, ammo, weapon, score, kills, deaths)
 ```
 
+Creates a `mq3.client.baseq3_hud.State` record. Assigns `health` from `health`, `armor` from `armor`, `ammo` from `ammo`, `weapon` from `weapon`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `health` | `dynamic` | — |  |
-| `armor` | `dynamic` | — |  |
-| `ammo` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
-| `score` | `dynamic` | — |  |
-| `kills` | `dynamic` | — |  |
-| `deaths` | `dynamic` | — |  |
+| `health` | `dynamic` | — | Value used to initialize `State.health`. |
+| `armor` | `dynamic` | — | Value used to initialize `State.armor`. |
+| `ammo` | `dynamic` | — | Value used to initialize `State.ammo`. |
+| `weapon` | `dynamic` | — | Value used to initialize `State.weapon`. |
+| `score` | `dynamic` | — | Value used to initialize `State.score`. |
+| `kills` | `dynamic` | — | Value used to initialize `State.kills`. |
+| `deaths` | `dynamic` | — | Value used to initialize `State.deaths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L146)
 
 - [mq3.client.baseq3_hud.State](Type-mq3-client-baseq3-hud-state-2145107605.md) — struct
 <a id="constant-constant-mq3-client-baseq3-hud-status-head-size-const-status-head-size-60-src-mq3-client-baseq3-hud-ml-536192599"></a>
@@ -465,12 +505,14 @@ const STATUS_HEAD_Y = 420
 function statusHeadX(placement)
 ```
 
+Computes `placement.healthX+CHAR_WIDTH*3.0+TEXT_ICON_SPACE` for base Quake III HUD `statusHeadX`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `placement` | `dynamic` | — |  |
+| `placement` | `dynamic` | — | Record read through `placement.healthX`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L192)
 
 <a id="constant-constant-mq3-client-baseq3-hud-text-icon-space-const-text-icon-space-4-src-mq3-client-baseq3-hud-ml-81053137"></a>
 ### TEXT_ICON_SPACE
@@ -489,12 +531,14 @@ const TEXT_ICON_SPACE = 4
 function upload(catalog)
 ```
 
+Calls `mq3.platform.playable_window.uploadTextureNoMip`, `mq3.client.baseq3_hud.release` from base Quake III HUD `upload`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. Record read through `catalog.assets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L107)
 
 <a id="constant-constant-mq3-client-baseq3-hud-virtual-height-const-virtual-height-480-src-mq3-client-baseq3-hud-ml-1484978981"></a>
 ### VIRTUAL_HEIGHT
@@ -543,12 +587,14 @@ const WEAPON_SELECT_TIME = 1400
 function weaponDisplayName(weapon)
 ```
 
+Calls `mq3.client.baseq3_hud.weaponIconKey` from base Quake III HUD `weaponDisplayName`. The final path returns `"MACHINEGUN"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `weapon` | `dynamic` | — |  |
+| `weapon` | `dynamic` | — | Value used by `key=weaponIconKey(weapon)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L308)
 
 <a id="function-function-mq3-client-baseq3-hud-weaponiconkey-function-weaponiconkey-weapon-src-mq3-client-baseq3-hud-ml-1886802692"></a>
 ### weaponIconKey
@@ -557,9 +603,11 @@ function weaponDisplayName(weapon)
 function weaponIconKey(weapon)
 ```
 
+Calls `std.string.toLowerAscii`, `std.string.startsWith` from base Quake III HUD `weaponIconKey`. The final path returns `"weapon_bfg"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `weapon` | `dynamic` | — |  |
+| `weapon` | `dynamic` | — | Value used by `name=strings.toLowerAscii(weapon)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L260)

@@ -9,8 +9,10 @@
 struct Result
 ```
 
+Stores client game main operation result, including `handled`, `value`, `actions`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L50)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L50)
 
 <a id="field-field-mq3-client-cgame-main-result-handled-handled-src-mq3-client-cgame-main-ml-254258710"></a>
 ### handled
@@ -32,7 +34,7 @@ handled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L50)
 
 <a id="field-field-mq3-client-cgame-main-result-value-value-src-mq3-client-cgame-main-ml-1929763002"></a>
 ### value
@@ -42,4 +44,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L50)

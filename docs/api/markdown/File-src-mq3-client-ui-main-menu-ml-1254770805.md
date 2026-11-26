@@ -20,12 +20,14 @@ Reachable from entry: **no**
 function buildItems(hasTeamArena)
 ```
 
+Calls `mq3.client.ui_main_menu.MainItem` from UI main menu `buildItems`. The final path returns `items`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `hasTeamArena` | `dynamic` | — |  |
+| `hasTeamArena` | `dynamic` | — | Value used by `if hasTeamArena then y=y+34`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L91)
 
 <a id="function-function-mq3-client-ui-main-menu-cache-function-cache-src-mq3-client-ui-main-menu-ml-1352930134"></a>
 ### cache
@@ -37,7 +39,7 @@ function cache()
 MainMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L53)
 
 <a id="function-function-mq3-client-ui-main-menu-draw-function-draw-menu-realtime-demoversion-src-mq3-client-ui-main-menu-ml-309414607"></a>
 ### draw
@@ -50,12 +52,12 @@ Main_MenuDraw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
-| `demoVersion` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Record read through `menu.errorMessage`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
+| `demoVersion` | `dynamic` | — | Value used by `if demoVersion then actions=actions+["text:320,372:DEMO FOR MATURE AUDIENCES DEMO","text:320,400:copyright"]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L68)
 
 <a id="function-function-mq3-client-ui-main-menu-errormessagekey-function-errormessagekey-menu-key-src-mq3-client-ui-main-menu-ml-1105459774"></a>
 ### errorMessageKey
@@ -68,11 +70,11 @@ ErrorMessage_Key
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI main menu record/storage; this routine assigns `menu.cvarWrites`, `menu.actions`. |
+| `key` | `dynamic` | — | Accepted for compatibility with `errorMessageKey`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L58)
 
 <a id="function-function-mq3-client-ui-main-menu-event-function-event-menu-id-eventcode-src-mq3-client-ui-main-menu-ml-1915617543"></a>
 ### event
@@ -85,12 +87,12 @@ Main_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `eventCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI main menu record/storage; this routine assigns `menu.actions`, `menu.cvarWrites`, `menu.commands`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_SINGLEPLAYER then menu.actions=menu.actions+["spLevel"]`. |
+| `eventCode` | `dynamic` | — | Quake III event identifier selecting the event handler. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L39)
 
 <a id="function-function-mq3-client-ui-main-menu-exitaction-function-exitaction-menu-result-src-mq3-client-ui-main-menu-ml-136962796"></a>
 ### exitAction
@@ -103,11 +105,11 @@ MainMenu_ExitAction
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI main menu record/storage; this routine assigns `menu.actions`. |
+| `result` | `dynamic` | — | Value used by `if not result then return menu end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-cinematics-const-id-cinematics-14-src-mq3-client-ui-main-menu-ml-269963088"></a>
 ### ID_CINEMATICS
@@ -213,14 +215,14 @@ UI_MainMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `demoVersion` | `dynamic` | — |  |
-| `cdKeyChecked` | `dynamic` | — |  |
-| `cdKeyValid` | `dynamic` | — |  |
-| `errorMessage` | `dynamic` | — |  |
-| `modNames` | `dynamic` | — |  |
+| `demoVersion` | `dynamic` | — | Value used by `if not demoVersion and not cdKeyChecked and not cdKeyValid then menu.actions=menu.actions+["cdKey"]`. |
+| `cdKeyChecked` | `dynamic` | — | Value used by `if not demoVersion and not cdKeyChecked and not cdKeyValid then menu.actions=menu.actions+["cdKey"]`. |
+| `cdKeyValid` | `dynamic` | — | Value used by `if not demoVersion and not cdKeyChecked and not cdKeyValid then menu.actions=menu.actions+["cdKey"]`. |
+| `errorMessage` | `dynamic` | — | Value used by `menu=MainMenu(true,true,true,[],cache(),["sv_killserver=1"],[],[],errorMessage)`. |
+| `modNames` | `dynamic` | — | Value used by `menu.items=buildItems(teamArenaExists(modNames))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L110)
 
 <a id="constant-constant-mq3-client-ui-main-menu-qm-activated-const-qm-activated-3-src-mq3-client-ui-main-menu-ml-1782790464"></a>
 ### QM_ACTIVATED
@@ -243,7 +245,7 @@ UI_TeamArenaExists
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `modNames` | `dynamic` | — |  |
+| `modNames` | `dynamic` | — | Sequence read at `modNames[i]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L80)

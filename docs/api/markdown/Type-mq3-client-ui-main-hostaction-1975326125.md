@@ -9,8 +9,10 @@
 struct HostAction
 ```
 
+Stores UI main host action record, including `boundary`, `kind`, `name`, `args`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ args
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
 
 <a id="field-field-mq3-client-ui-main-hostaction-boundary-boundary-src-mq3-client-ui-main-ml-1704894417"></a>
 ### boundary
@@ -32,7 +34,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
 
 <a id="field-field-mq3-client-ui-main-hostaction-dispatched-dispatched-src-mq3-client-ui-main-ml-1128729551"></a>
 ### dispatched
@@ -42,7 +44,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
 
 <a id="field-field-mq3-client-ui-main-hostaction-kind-kind-src-mq3-client-ui-main-ml-40049785"></a>
 ### kind
@@ -52,7 +54,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)
 
 <a id="field-field-mq3-client-ui-main-hostaction-name-name-src-mq3-client-ui-main-ml-1771864243"></a>
 ### name
@@ -62,4 +64,4 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L26)

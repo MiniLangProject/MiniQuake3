@@ -9,8 +9,10 @@
 struct Mount
 ```
 
+Mount record for format.mod_stack, containing `game`, `dataRoot`, `archive`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ archive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
 
 <a id="field-field-mq3-format-mod-stack-mount-dataroot-dataroot-src-mq3-format-mod-stack-ml-483205364"></a>
 ### dataRoot
@@ -32,7 +34,7 @@ dataRoot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)
 
 <a id="field-field-mq3-format-mod-stack-mount-game-game-src-mq3-format-mod-stack-ml-1124107316"></a>
 ### game
@@ -42,4 +44,4 @@ game
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/mod_stack.ml#L25)

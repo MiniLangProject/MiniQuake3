@@ -9,8 +9,10 @@
 struct OpenResult
 ```
 
+OpenResult record for qcommon.files_runtime, containing `length`, `handle`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
 
 <a id="field-field-mq3-qcommon-files-runtime-openresult-length-length-src-mq3-qcommon-files-runtime-ml-266612980"></a>
 ### length
@@ -32,4 +34,4 @@ length
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)

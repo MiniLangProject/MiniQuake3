@@ -9,8 +9,10 @@
 struct Allocation
 ```
 
+Allocation record for qcommon.common, containing `handle`, `data`, `size`, `tag`, `temporary`, `bank`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 ## Members
 
@@ -22,7 +24,7 @@ bank
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="field-field-mq3-qcommon-common-allocation-data-data-src-mq3-qcommon-common-ml-1485068789"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="field-field-mq3-qcommon-common-allocation-freed-freed-src-mq3-qcommon-common-ml-511063213"></a>
 ### freed
@@ -42,7 +44,7 @@ freed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="field-field-mq3-qcommon-common-allocation-handle-handle-src-mq3-qcommon-common-ml-202670581"></a>
 ### handle
@@ -52,7 +54,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="field-field-mq3-qcommon-common-allocation-label-label-src-mq3-qcommon-common-ml-617811509"></a>
 ### label
@@ -62,7 +64,7 @@ label
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="field-field-mq3-qcommon-common-allocation-size-size-src-mq3-qcommon-common-ml-1199057543"></a>
 ### size
@@ -72,7 +74,7 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="field-field-mq3-qcommon-common-allocation-tag-tag-src-mq3-qcommon-common-ml-566299001"></a>
 ### tag
@@ -82,7 +84,7 @@ tag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="field-field-mq3-qcommon-common-allocation-temporary-temporary-src-mq3-qcommon-common-ml-259532009"></a>
 ### temporary
@@ -92,4 +94,4 @@ temporary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)

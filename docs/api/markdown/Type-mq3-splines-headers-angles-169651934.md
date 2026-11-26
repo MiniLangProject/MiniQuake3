@@ -9,8 +9,10 @@
 struct Angles
 ```
 
+Angles record for splines.headers, containing `pitch`, `yaw`, `roll`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ pitch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L17)
 
 <a id="field-field-mq3-splines-headers-angles-roll-roll-src-mq3-splines-headers-ml-2086082085"></a>
 ### roll
@@ -32,7 +34,7 @@ roll
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L17)
 
 <a id="field-field-mq3-splines-headers-angles-yaw-yaw-src-mq3-splines-headers-ml-402459139"></a>
 ### yaw
@@ -42,4 +44,4 @@ yaw
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L17)

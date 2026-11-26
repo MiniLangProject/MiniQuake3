@@ -9,8 +9,10 @@
 struct Score
 ```
 
+Stores client game servercmds score record, including `client`, `score`, `ping`, `time`, `scoreFlags`, `powerups` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 ## Members
 
@@ -22,7 +24,7 @@ accuracy
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-assist-assist-src-mq3-client-cgame-servercmds-ml-979755989"></a>
 ### assist
@@ -32,7 +34,7 @@ assist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-captures-captures-src-mq3-client-cgame-servercmds-ml-1265314609"></a>
 ### captures
@@ -42,7 +44,7 @@ captures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-client-client-src-mq3-client-cgame-servercmds-ml-2031865653"></a>
 ### client
@@ -52,7 +54,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-defend-defend-src-mq3-client-cgame-servercmds-ml-1642773931"></a>
 ### defend
@@ -62,7 +64,7 @@ defend
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-excellent-excellent-src-mq3-client-cgame-servercmds-ml-277847835"></a>
 ### excellent
@@ -72,7 +74,7 @@ excellent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-gauntlet-gauntlet-src-mq3-client-cgame-servercmds-ml-2133066663"></a>
 ### gauntlet
@@ -82,7 +84,7 @@ gauntlet
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-impressive-impressive-src-mq3-client-cgame-servercmds-ml-664209141"></a>
 ### impressive
@@ -92,7 +94,7 @@ impressive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-perfect-perfect-src-mq3-client-cgame-servercmds-ml-1872979967"></a>
 ### perfect
@@ -102,7 +104,7 @@ perfect
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-ping-ping-src-mq3-client-cgame-servercmds-ml-1573714411"></a>
 ### ping
@@ -112,7 +114,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-powerups-powerups-src-mq3-client-cgame-servercmds-ml-417074813"></a>
 ### powerups
@@ -122,7 +124,7 @@ powerups
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-score-score-src-mq3-client-cgame-servercmds-ml-1912664507"></a>
 ### score
@@ -132,7 +134,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-scoreflags-scoreflags-src-mq3-client-cgame-servercmds-ml-72650725"></a>
 ### scoreFlags
@@ -142,7 +144,7 @@ scoreFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-team-team-src-mq3-client-cgame-servercmds-ml-2094243533"></a>
 ### team
@@ -152,7 +154,7 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-score-time-time-src-mq3-client-cgame-servercmds-ml-1847551669"></a>
 ### time
@@ -162,4 +164,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)

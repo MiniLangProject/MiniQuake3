@@ -9,8 +9,10 @@
 struct Missing
 ```
 
+Missing record for audio.qvm_sound_assets, containing `handle`, `path`, `reason`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L19)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-missing-path-path-src-mq3-audio-qvm-sound-assets-ml-1157811217"></a>
 ### path
@@ -32,7 +34,7 @@ path
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L19)
 
 <a id="field-field-mq3-audio-qvm-sound-assets-missing-reason-reason-src-mq3-audio-qvm-sound-assets-ml-842771419"></a>
 ### reason
@@ -42,4 +44,4 @@ reason
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L19)

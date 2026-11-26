@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.shader_remap.State`; groups `entries`, `revision`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ entries
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L10)
 
 <a id="field-field-mq3-renderer-shader-remap-state-revision-revision-src-mq3-renderer-shader-remap-ml-1028821312"></a>
 ### revision
@@ -32,4 +34,4 @@ revision
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L10)

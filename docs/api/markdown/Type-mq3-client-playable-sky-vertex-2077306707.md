@@ -9,8 +9,10 @@
 struct Vertex
 ```
 
+Stores playable sky vertex record, including `point`, `uv`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L66)
 
 ## Members
 
@@ -22,7 +24,7 @@ point
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L66)
 
 <a id="field-field-mq3-client-playable-sky-vertex-uv-uv-src-mq3-client-playable-sky-ml-1953839259"></a>
 ### uv
@@ -32,4 +34,4 @@ uv
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L66)

@@ -9,8 +9,10 @@
 struct Entity
 ```
 
+`Entity` record for aas clustering, containing `className`, `target`, `targetName`, `origin` and `linkedAreas` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ className
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-clustering-entity-destinationarea-destinationarea-src-mq3-botlib-aas-clustering-ml-1888591636"></a>
 ### destinationArea
@@ -32,7 +34,7 @@ destinationArea
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-clustering-entity-linkedareas-linkedareas-src-mq3-botlib-aas-clustering-ml-330485360"></a>
 ### linkedAreas
@@ -42,7 +44,7 @@ linkedAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-clustering-entity-origin-origin-src-mq3-botlib-aas-clustering-ml-1471666868"></a>
 ### origin
@@ -52,7 +54,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-clustering-entity-target-target-src-mq3-botlib-aas-clustering-ml-677730738"></a>
 ### target
@@ -62,7 +64,7 @@ target
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-clustering-entity-targetname-targetname-src-mq3-botlib-aas-clustering-ml-1484870056"></a>
 ### targetName
@@ -72,7 +74,7 @@ targetName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-clustering-entity-valid-valid-src-mq3-botlib-aas-clustering-ml-1626442608"></a>
 ### valid
@@ -82,4 +84,4 @@ valid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L37)

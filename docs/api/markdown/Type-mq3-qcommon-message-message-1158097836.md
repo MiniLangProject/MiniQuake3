@@ -9,8 +9,10 @@
 struct Message
 ```
 
+Message record for qcommon.message, containing `allowoverflow`, `overflowed`, `oob`, `data`, `maxsize`, `cursize`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ allowoverflow
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L12)
 
 <a id="field-field-mq3-qcommon-message-message-bit-bit-src-mq3-qcommon-message-ml-843816418"></a>
 ### bit
@@ -32,7 +34,7 @@ bit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L19)
 
 <a id="field-field-mq3-qcommon-message-message-codec-codec-src-mq3-qcommon-message-ml-711301030"></a>
 ### codec
@@ -42,7 +44,7 @@ codec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L20)
 
 <a id="field-field-mq3-qcommon-message-message-cursize-cursize-src-mq3-qcommon-message-ml-258758370"></a>
 ### cursize
@@ -52,7 +54,7 @@ cursize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L17)
 
 <a id="field-field-mq3-qcommon-message-message-data-data-src-mq3-qcommon-message-ml-848488794"></a>
 ### data
@@ -62,7 +64,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L15)
 
 <a id="field-field-mq3-qcommon-message-message-maxsize-maxsize-src-mq3-qcommon-message-ml-1678131922"></a>
 ### maxsize
@@ -72,7 +74,7 @@ maxsize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L16)
 
 <a id="field-field-mq3-qcommon-message-message-oob-oob-src-mq3-qcommon-message-ml-1621085138"></a>
 ### oob
@@ -82,7 +84,7 @@ oob
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L14)
 
 <a id="field-field-mq3-qcommon-message-message-overflowed-overflowed-src-mq3-qcommon-message-ml-1089870780"></a>
 ### overflowed
@@ -92,7 +94,7 @@ overflowed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L13)
 
 <a id="field-field-mq3-qcommon-message-message-readcount-readcount-src-mq3-qcommon-message-ml-576794914"></a>
 ### readcount
@@ -102,4 +104,4 @@ readcount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message.ml#L18)

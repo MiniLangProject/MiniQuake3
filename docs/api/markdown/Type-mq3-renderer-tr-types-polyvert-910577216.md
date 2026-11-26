@@ -9,8 +9,10 @@
 struct PolyVert
 ```
 
+Data record for `mq3.renderer.tr_types.PolyVert`; groups `xyz`, `st`, `modulate`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
 
 ## Members
 
@@ -22,7 +24,7 @@ modulate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
 
 <a id="field-field-mq3-renderer-tr-types-polyvert-st-st-src-mq3-renderer-tr-types-ml-1099446306"></a>
 ### st
@@ -32,7 +34,7 @@ st
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)
 
 <a id="field-field-mq3-renderer-tr-types-polyvert-xyz-xyz-src-mq3-renderer-tr-types-ml-167212484"></a>
 ### xyz
@@ -42,4 +44,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L48)

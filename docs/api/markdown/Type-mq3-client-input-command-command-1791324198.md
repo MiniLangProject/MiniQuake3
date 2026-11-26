@@ -9,8 +9,10 @@
 struct Command
 ```
 
+Stores input command command data, including `angles`, `buttons`, `weapon`, `forwardmove`, `rightmove`, `upmove` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ angles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 <a id="field-field-mq3-client-input-command-command-buttons-buttons-src-mq3-client-input-command-ml-1346295218"></a>
 ### buttons
@@ -32,7 +34,7 @@ buttons
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 <a id="field-field-mq3-client-input-command-command-forwardmove-forwardmove-src-mq3-client-input-command-ml-1824692034"></a>
 ### forwardmove
@@ -42,7 +44,7 @@ forwardmove
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 <a id="field-field-mq3-client-input-command-command-rightmove-rightmove-src-mq3-client-input-command-ml-1067262798"></a>
 ### rightmove
@@ -52,7 +54,7 @@ rightmove
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 <a id="field-field-mq3-client-input-command-command-servertime-servertime-src-mq3-client-input-command-ml-1636500710"></a>
 ### serverTime
@@ -62,7 +64,7 @@ serverTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 <a id="field-field-mq3-client-input-command-command-upmove-upmove-src-mq3-client-input-command-ml-243819266"></a>
 ### upmove
@@ -72,7 +74,7 @@ upmove
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 <a id="field-field-mq3-client-input-command-command-viewangles-viewangles-src-mq3-client-input-command-ml-699360948"></a>
 ### viewangles
@@ -82,7 +84,7 @@ viewangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)
 
 <a id="field-field-mq3-client-input-command-command-weapon-weapon-src-mq3-client-input-command-ml-1019884262"></a>
 ### weapon
@@ -92,4 +94,4 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L21)

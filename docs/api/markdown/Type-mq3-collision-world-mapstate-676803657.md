@@ -9,8 +9,10 @@
 struct MapState
 ```
 
+MapState record for collision.world, containing `world`, `name`, `checksum`, `lastChecksum`, `curves`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L119)
 
 ## Members
 
@@ -22,7 +24,7 @@ checksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L119)
 
 <a id="field-field-mq3-collision-world-mapstate-curves-curves-src-mq3-collision-world-ml-1294631170"></a>
 ### curves
@@ -32,7 +34,7 @@ curves
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L119)
 
 <a id="field-field-mq3-collision-world-mapstate-lastchecksum-lastchecksum-src-mq3-collision-world-ml-1825247572"></a>
 ### lastChecksum
@@ -42,7 +44,7 @@ lastChecksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L119)
 
 <a id="field-field-mq3-collision-world-mapstate-name-name-src-mq3-collision-world-ml-1743693572"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L119)
 
 <a id="field-field-mq3-collision-world-mapstate-world-world-src-mq3-collision-world-ml-727005214"></a>
 ### world
@@ -62,4 +64,4 @@ world
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L119)

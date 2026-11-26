@@ -9,8 +9,10 @@
 struct InfoPair
 ```
 
+InfoPair record for shared.q_shared_runtime, containing `head`, `key`, `value`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ head
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L18)
 
 <a id="field-field-mq3-shared-q-shared-runtime-infopair-key-key-src-mq3-shared-q-shared-runtime-ml-1347556599"></a>
 ### key
@@ -32,7 +34,7 @@ key
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L18)
 
 <a id="field-field-mq3-shared-q-shared-runtime-infopair-value-value-src-mq3-shared-q-shared-runtime-ml-509317207"></a>
 ### value
@@ -42,4 +44,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L18)

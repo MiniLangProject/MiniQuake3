@@ -9,8 +9,10 @@
 struct PipelineProfile
 ```
 
+Stores QVM preview app pipeline profile record, including `expansion`, `material`, `batch`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L76)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L81)
 
 ## Members
 
@@ -22,7 +24,7 @@ batch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L81)
 
 <a id="field-field-mq3-client-qvm-preview-app-pipelineprofile-expansion-expansion-src-mq3-client-qvm-preview-app-ml-2047983078"></a>
 ### expansion
@@ -32,7 +34,7 @@ expansion
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L81)
 
 <a id="field-field-mq3-client-qvm-preview-app-pipelineprofile-material-material-src-mq3-client-qvm-preview-app-ml-1387108288"></a>
 ### material
@@ -42,4 +44,4 @@ material
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L81)

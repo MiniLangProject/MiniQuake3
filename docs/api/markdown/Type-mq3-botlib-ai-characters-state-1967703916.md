@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for ai characters, containing `maxClients`, `characters`, `context`, `readFn` and `reloadCharacters` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ characters
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)
 
 <a id="field-field-mq3-botlib-ai-characters-state-context-context-src-mq3-botlib-ai-characters-ml-1457259982"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)
 
 <a id="field-field-mq3-botlib-ai-characters-state-filereads-filereads-src-mq3-botlib-ai-characters-ml-1691584386"></a>
 ### fileReads
@@ -42,7 +44,7 @@ fileReads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)
 
 <a id="field-field-mq3-botlib-ai-characters-state-maxclients-maxclients-src-mq3-botlib-ai-characters-ml-2078984726"></a>
 ### maxClients
@@ -52,7 +54,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)
 
 <a id="field-field-mq3-botlib-ai-characters-state-readfn-readfn-src-mq3-botlib-ai-characters-ml-820012030"></a>
 ### readFn
@@ -62,7 +64,7 @@ readFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)
 
 <a id="field-field-mq3-botlib-ai-characters-state-reloadcharacters-reloadcharacters-src-mq3-botlib-ai-characters-ml-268106088"></a>
 ### reloadCharacters
@@ -72,4 +74,4 @@ reloadCharacters
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L32)

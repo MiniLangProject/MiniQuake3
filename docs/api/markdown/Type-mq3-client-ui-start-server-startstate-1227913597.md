@@ -9,8 +9,10 @@
 struct StartState
 ```
 
+Stores UI start server start state record, including `multiplayer`, `gametype`, `maps`, `mapBits`, `currentMap`, `page` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-currentmap-currentmap-src-mq3-client-ui-start-server-ml-1154746434"></a>
 ### currentMap
@@ -32,7 +34,7 @@ currentMap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-displayname-displayname-src-mq3-client-ui-start-server-ml-1703150516"></a>
 ### displayName
@@ -42,7 +44,7 @@ displayName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-gametype-gametype-src-mq3-client-ui-start-server-ml-1224049656"></a>
 ### gametype
@@ -52,7 +54,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-mapbits-mapbits-src-mq3-client-ui-start-server-ml-754842432"></a>
 ### mapBits
@@ -62,7 +64,7 @@ mapBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-maps-maps-src-mq3-client-ui-start-server-ml-821709114"></a>
 ### maps
@@ -72,7 +74,7 @@ maps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-maxpages-maxpages-src-mq3-client-ui-start-server-ml-441880332"></a>
 ### maxPages
@@ -82,7 +84,7 @@ maxPages
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-multiplayer-multiplayer-src-mq3-client-ui-start-server-ml-1648623500"></a>
 ### multiplayer
@@ -92,7 +94,7 @@ multiplayer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 <a id="field-field-mq3-client-ui-start-server-startstate-page-page-src-mq3-client-ui-start-server-ml-1830146718"></a>
 ### page
@@ -102,4 +104,4 @@ page
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)

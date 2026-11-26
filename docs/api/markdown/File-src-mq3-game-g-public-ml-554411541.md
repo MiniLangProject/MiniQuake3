@@ -136,14 +136,16 @@ const GAME_SHUTDOWN = 1
 function sendsToClient(svFlags, singleClient, clientNum)
 ```
 
+Apply NOCLIENT, SINGLECLIENT, NOTSINGLECLIENT and CLIENTMASK visibility flags to a client slot.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `svFlags` | `dynamic` | — |  |
-| `singleClient` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `svFlags` | `dynamic` | — | Value used by `sendsToClient` in `if (svFlags&SVF_NOCLIENT)!=0 then return false end if`. |
+| `singleClient` | `dynamic` | — | Operand used to evaluate the returned expression `(singleClient&(1<<clientNum))!=0`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L42)
 
 - [mq3.game.g_public.SharedEntity](Type-mq3-game-g-public-sharedentity-526774383.md) — struct
 <a id="constant-constant-mq3-game-g-public-svf-bot-const-svf-bot-8-src-mq3-game-g-public-ml-1983738061"></a>
@@ -253,5 +255,7 @@ const SVF_USE_CURRENT_ORIGIN = 128
 function typeNames()
 ```
 
+Return a new array `["entityShared_t","sharedEntity_t"]` for `typeNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L36)

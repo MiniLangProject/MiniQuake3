@@ -9,8 +9,10 @@
 struct Frames
 ```
 
+Data record for `mq3.renderer.md3_entity.Frames`; groups `frame`, `oldFrame`, `wrapped`, `repaired`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L18)
 
 <a id="field-field-mq3-renderer-md3-entity-frames-oldframe-oldframe-src-mq3-renderer-md3-entity-ml-958933165"></a>
 ### oldFrame
@@ -32,7 +34,7 @@ oldFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L18)
 
 <a id="field-field-mq3-renderer-md3-entity-frames-repaired-repaired-src-mq3-renderer-md3-entity-ml-942348501"></a>
 ### repaired
@@ -42,7 +44,7 @@ repaired
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L18)
 
 <a id="field-field-mq3-renderer-md3-entity-frames-wrapped-wrapped-src-mq3-renderer-md3-entity-ml-377119521"></a>
 ### wrapped
@@ -52,4 +54,4 @@ wrapped
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L18)

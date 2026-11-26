@@ -9,8 +9,10 @@
 struct StripResult
 ```
 
+Data record for `mq3.renderer.tr_shade_runtime.StripResult`; groups `strips`, `begins`, `vertexes`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ begins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-stripresult-strips-strips-src-mq3-renderer-tr-shade-runtime-ml-754899082"></a>
 ### strips
@@ -32,7 +34,7 @@ strips
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-stripresult-vertexes-vertexes-src-mq3-renderer-tr-shade-runtime-ml-1670833356"></a>
 ### vertexes
@@ -42,4 +44,4 @@ vertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L19)

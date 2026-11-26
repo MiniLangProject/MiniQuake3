@@ -9,8 +9,10 @@
 struct Entity
 ```
 
+Stores client game predict entity record, including `state`, `lerpOrigin`, `lerpAngles`, `miscTime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ lerpAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L24)
 
 <a id="field-field-mq3-client-cgame-predict-entity-lerporigin-lerporigin-src-mq3-client-cgame-predict-ml-1863303196"></a>
 ### lerpOrigin
@@ -32,7 +34,7 @@ lerpOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L24)
 
 <a id="field-field-mq3-client-cgame-predict-entity-misctime-misctime-src-mq3-client-cgame-predict-ml-1699486056"></a>
 ### miscTime
@@ -42,7 +44,7 @@ miscTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L24)
 
 <a id="field-field-mq3-client-cgame-predict-entity-state-state-src-mq3-client-cgame-predict-ml-649501146"></a>
 ### state
@@ -52,4 +54,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L24)

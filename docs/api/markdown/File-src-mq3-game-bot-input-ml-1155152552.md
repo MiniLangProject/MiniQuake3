@@ -211,13 +211,15 @@ const ACTION_WALK = 524288
 function addMove(value, delta)
 ```
 
+Forward `addMove` to `mq3.compat.numeric.i8` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `delta` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `n.i8(value+delta)`. |
+| `delta` | `dynamic` | — | Operand used to evaluate the returned expression `n.i8(value+delta)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L134)
 
 <a id="function-function-mq3-game-bot-input-angledifference-function-angledifference-a-b-src-mq3-game-bot-input-ml-1853987663"></a>
 ### angleDifference
@@ -226,13 +228,15 @@ function addMove(value, delta)
 function angleDifference(a, b)
 ```
 
+Compute the shortest signed angular difference used by bot view steering.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.fsub`. |
+| `b` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fsub`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L78)
 
 <a id="function-function-mq3-game-bot-input-anglemod-function-anglemod-value-src-mq3-game-bot-input-ml-74544617"></a>
 ### angleMod
@@ -241,12 +245,14 @@ function angleDifference(a, b)
 function angleMod(value)
 ```
 
+Wrap an angle using the Quake III fixed-point angle representation.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.AngleNormalize360`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L66)
 
 <a id="function-function-mq3-game-bot-input-angletoshort-function-angletoshort-value-src-mq3-game-bot-input-ml-1721910053"></a>
 ### angleToShort
@@ -255,12 +261,14 @@ function angleMod(value)
 function angleToShort(value)
 ```
 
+Convert a degree angle into the signed sixteen-bit network user-command representation.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L72)
 
 - [mq3.game.bot_input.BotInput](Type-mq3-game-bot-input-botinput-701196905.md) — struct
 <a id="constant-constant-mq3-game-bot-input-button-affirmative-const-button-affirmative-32-src-mq3-game-bot-input-ml-1610381276"></a>
@@ -380,14 +388,16 @@ const BUTTON_WALKING = 16
 function changeViewAngle(angle, ideal, speed)
 ```
 
+Move one bot view angle toward its target with the specified maximum angular change.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `angle` | `dynamic` | — |  |
-| `ideal` | `dynamic` | — |  |
-| `speed` | `dynamic` | — |  |
+| `angle` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.AngleNormalize360`. |
+| `ideal` | `dynamic` | — | Value passed as argument 1 to `mq3.shared.math.AngleNormalize360`. |
+| `speed` | `dynamic` | — | Requested movement speed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L88)
 
 <a id="function-function-mq3-game-bot-input-changeviewangles-function-changeviewangles-services-bot-thinktime-src-mq3-game-bot-input-ml-1376037976"></a>
 ### changeViewAngles
@@ -396,14 +406,16 @@ function changeViewAngle(angle, ideal, speed)
 function changeViewAngles(services, bot, thinktime)
 ```
 
+Update `bot.idealViewangles[0]`, `bot.viewangles[axis]`, `bot.idealViewangles[axis]` and `bot.viewanglespeed[axis]` and related state during `changeViewAngles`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `thinktime` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `characteristicFloatFn`, `challenge` and `viewFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `idealViewangles`, `enemy`, `character`, `viewangles` and `viewanglespeed` and related fields. May update `bot.idealViewangles[0]`, `bot.viewangles[axis]` and `bot.idealViewangles[axis]` and additional fields in place. |
+| `thinktime` | `dynamic` | — | Bot thinking interval in seconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L102)
 
 <a id="constant-constant-mq3-game-bot-input-characteristic-view-factor-const-characteristic-view-factor-headers-characteristic-view-factor-src-mq3-game-bot-input-ml-1135412466"></a>
 ### CHARACTERISTIC_VIEW_FACTOR
@@ -432,8 +444,10 @@ const CHARACTERISTIC_VIEW_MAXCHANGE = headers.CHARACTERISTIC_VIEW_MAXCHANGE
 function create()
 ```
 
+Create a `mq3.game.bot_input.Services` record with the declared empty defaults.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L61)
 
 <a id="function-function-mq3-game-bot-input-inputtousercommand-function-inputtousercommand-input-command-deltaangles-time-src-mq3-game-bot-input-ml-1717469422"></a>
 ### inputToUserCommand
@@ -442,15 +456,17 @@ function create()
 function inputToUserCommand(input, command, deltaAngles, time)
 ```
 
+Update `command.serverTime`, `command.buttons`, `command.angles` and `command.weapon` and related state during `inputToUserCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `input` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
-| `deltaAngles` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `input` | `dynamic` | — | Input record; accesses `actionflags`, `weapon`, `viewangles`, `dir` and `speed`. May update `input.actionflags` and `input.speed` in place. |
+| `command` | `dynamic` | — | Command record; accesses `serverTime`, `buttons`, `angles`, `weapon` and `forwardmove` and related fields. May update `command.serverTime`, `command.buttons` and `command.angles` and additional fields in place. |
+| `deltaAngles` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
+| `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L140)
 
 - [mq3.game.bot_input.Services](Type-mq3-game-bot-input-services-1485568830.md) — struct
 <a id="function-function-mq3-game-bot-input-shorttoangle-function-shorttoangle-value-src-mq3-game-bot-input-ml-1429475481"></a>
@@ -460,12 +476,14 @@ function inputToUserCommand(input, command, deltaAngles, time)
 function shortToAngle(value)
 ```
 
+Return the result of `n.fmul(n.i16(value),n.f32(360.0/65536.0))` for `shortToAngle`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.i16`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L69)
 
 <a id="function-function-mq3-game-bot-input-updateinput-function-updateinput-services-bot-command-time-elapsed-src-mq3-game-bot-input-ml-51987223"></a>
 ### updateInput
@@ -474,13 +492,15 @@ function shortToAngle(value)
 function updateInput(services, bot, command, time, elapsed)
 ```
 
+Update `bot.viewangles[axis]` during `updateInput`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `elapsed` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `getInputFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `viewangles`, `curPs` and `client`. May update `bot.viewangles[axis]` in place. |
+| `command` | `dynamic` | — | Command record; accesses `buttons`. |
+| `time` | `dynamic` | — | Time value in the units expected by this module. |
+| `elapsed` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.fdiv`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L173)

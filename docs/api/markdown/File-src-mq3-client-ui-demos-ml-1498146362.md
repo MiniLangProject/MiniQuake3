@@ -114,10 +114,10 @@ Demos_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI demos record/storage; this routine assigns `state.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L72)
 
 <a id="function-function-mq3-client-ui-demos-comparenames-function-comparenames-left-right-src-mq3-client-ui-demos-ml-249557993"></a>
 ### compareNames
@@ -126,13 +126,15 @@ Demos_Cache
 function compareNames(left, right)
 ```
 
+Calls `std.string.toLowerAscii` from UI demos `compareNames`. The final path returns `0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `left` | `dynamic` | — | Value used by `a=bytes(strings.toLowerAscii(left))`. |
+| `right` | `dynamic` | — | Value used by `b=bytes(strings.toLowerAscii(right))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L45)
 
 <a id="function-function-mq3-client-ui-demos-create-function-create-retailactive-src-mq3-client-ui-demos-ml-1741462085"></a>
 ### create
@@ -141,12 +143,14 @@ function compareNames(left, right)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_demos.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L34)
 
 <a id="function-function-mq3-client-ui-demos-demosmenu-function-demosmenu-state-protocol-files-src-mq3-client-ui-demos-ml-316783322"></a>
 ### demosMenu
@@ -159,12 +163,12 @@ UI_DemosMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `protocol` | `dynamic` | — |  |
-| `files` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI demos record/storage; this routine assigns `state.pushed`, `state.menuEvents`. |
+| `protocol` | `dynamic` | — | Value used by `menuInit(state,protocol,files)`. |
+| `files` | `dynamic` | — | Value used by `menuInit(state,protocol,files)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L84)
 
 <a id="function-function-mq3-client-ui-demos-emit-function-emit-state-kind-name-text-value-src-mq3-client-ui-demos-ml-79522204"></a>
 ### emit
@@ -173,16 +177,18 @@ UI_DemosMenu
 function emit(state, kind, name, text, value)
 ```
 
+Appends a UI demos action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI demos record/storage; this routine assigns `state.actions`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI demos resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI demos path. |
+| `value` | `dynamic` | — | Value used by `item=Action("ui-demos",kind,name,text,value,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L41)
 
 <a id="constant-constant-mq3-client-ui-demos-id-back-const-id-back-10-src-mq3-client-ui-demos-ml-441936002"></a>
 ### ID_BACK
@@ -275,12 +281,12 @@ Demos_MenuEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI demos record/storage; this routine assigns `state.menuEvents`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_GO then if not state.goVisible or state.numDemos==0 then return false end if`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L63)
 
 <a id="function-function-mq3-client-ui-demos-menuinit-function-menuinit-state-protocol-files-src-mq3-client-ui-demos-ml-269245748"></a>
 ### menuInit
@@ -293,12 +299,12 @@ Demos_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `protocol` | `dynamic` | — |  |
-| `files` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI demos record/storage; this routine assigns `state.actions`, `state.menuEvents`, `state.protocol`, `state.extension` and additional values. |
+| `protocol` | `dynamic` | — | Value assigned to `state.protocol`. |
+| `files` | `dynamic` | — | Sequence read at `files[i]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L77)
 
 <a id="function-function-mq3-client-ui-demos-menukey-function-menukey-state-key-src-mq3-client-ui-demos-ml-1429601236"></a>
 ### menuKey
@@ -311,11 +317,11 @@ UI_DemosMenu_Key
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI demos state passed to the helper calls in `menuKey`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI demos entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L69)
 
 <a id="function-function-mq3-client-ui-demos-normalize-function-normalize-name-src-mq3-client-ui-demos-ml-18181745"></a>
 ### normalize
@@ -324,12 +330,14 @@ UI_DemosMenu_Key
 function normalize(name)
 ```
 
+Calls `std.string.equalsIgnoreCaseAscii`, `std.string.substr`, `std.string.toUpperAscii` from UI demos `normalize`. The final path returns `strings.toUpperAscii(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI demos resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L48)
 
 <a id="constant-constant-mq3-client-ui-demos-qm-activated-const-qm-activated-3-src-mq3-client-ui-demos-ml-379800040"></a>
 ### QM_ACTIVATED
@@ -348,13 +356,15 @@ const QM_ACTIVATED = 3
 function scroll(state, key)
 ```
 
+Updates `state.selected`, `state.top` during UI demos `scroll`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI demos record/storage; this routine assigns `state.selected`, `state.top`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI demos entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L55)
 
 <a id="function-function-mq3-client-ui-demos-sortnames-function-sortnames-values-src-mq3-client-ui-demos-ml-62056254"></a>
 ### sortNames
@@ -363,11 +373,13 @@ function scroll(state, key)
 function sortNames(values)
 ```
 
+Calls `mq3.client.ui_demos.compareNames` from UI demos `sortNames`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `values` | `dynamic` | — |  |
+| `values` | `dynamic` | — | Value used by `remaining=values`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L51)
 
 - [mq3.client.ui_demos.State](Type-mq3-client-ui-demos-state-130805623.md) — struct

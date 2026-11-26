@@ -20,13 +20,15 @@ Reachable from entry: **yes**
 function cached(registry, pointSize)
 ```
 
+Compute cached in vm.font_abi.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `pointSize` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `fonts`. |
+| `pointSize` | `dynamic` | — | Point size used in `(item.pointSize == pointSize)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L45)
 
 - [mq3.vm.font_abi.Cached](Type-mq3-vm-font-abi-cached-1606670249.md) — struct
 <a id="function-function-mq3-vm-font-abi-create-function-create-archive-src-mq3-vm-font-abi-ml-874868678"></a>
@@ -36,12 +38,14 @@ function cached(registry, pointSize)
 function create(archive)
 ```
 
+Create `mq3.vm.font_abi.Registry` with archive=archive; fonts=[].
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Initial `archive` field stored in the returned or constructed `mq3.vm.font_abi.Registry` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L30)
 
 <a id="function-function-mq3-vm-font-abi-cstring-function-cstring-data-offset-capacity-src-mq3-vm-font-abi-ml-1913894193"></a>
 ### cString
@@ -50,14 +54,16 @@ function create(archive)
 function cString(data, offset, capacity)
 ```
 
+Compute c string in vm.font_abi; the normal completion returns `decode(slice(data, offset, count))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `data[(offset + count)]` and `slice(data, offset, count)`. |
+| `offset` | `dynamic` | — | Offset used in `(offset + count)` and `data[(offset + count)]`. |
+| `capacity` | `dynamic` | — | Capacity used in `(count < capacity)` and `((count < capacity) and (data[(offset + count)] != 0))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L38)
 
 <a id="function-function-mq3-vm-font-abi-fail-function-fail-message-src-mq3-vm-font-abi-ml-241031899"></a>
 ### fail
@@ -66,12 +72,14 @@ function cString(data, offset, capacity)
 function fail(message)
 ```
 
+Create the vm.font_abi error for `fail` with 7690 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("font ABI: " + message)` and `error(7690, ("font ABI: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L27)
 
 <a id="constant-constant-mq3-vm-font-abi-font-info-size-const-font-info-size-20548-src-mq3-vm-font-abi-ml-152635872"></a>
 ### FONT_INFO_SIZE
@@ -170,16 +178,20 @@ const GLYPHS_PER_FONT = 256
 function load(registry, shaderContext, registerShaderFn, fontName, pointSize)
 ```
 
+Load font abi in vm.font_abi; the normal completion returns `Result(true, data, registered, path)`.
+
+Direct state writes: `registry.fonts`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `shaderContext` | `dynamic` | — |  |
-| `registerShaderFn` | `dynamic` | — |  |
-| `fontName` | `dynamic` | — |  |
-| `pointSize` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record exposing `archive`, `fonts`. Updated in place: `fonts`. |
+| `shaderContext` | `dynamic` | — | Shader context used in `registerShaderFn(shaderContext, shader)`. |
+| `registerShaderFn` | `dynamic` | — | Callback invoked for register shader; the call sites below define the callback arguments. |
+| `fontName` | `dynamic` | — | Reserved argument; this implementation does not read its value. |
+| `pointSize` | `dynamic` | — | Point size passed as `pointSize` to `mq3.vm.font_abi.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L69)
 
 <a id="function-function-mq3-vm-font-abi-pathfor-function-pathfor-pointsize-src-mq3-vm-font-abi-ml-309573383"></a>
 ### pathFor
@@ -188,12 +200,14 @@ function load(registry, shaderContext, registerShaderFn, fontName, pointSize)
 function pathFor(pointSize)
 ```
 
+Compute path for in vm.font_abi; the normal completion returns `(("fonts/fontImage_" + str(pointSize)) + ".dat")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pointSize` | `dynamic` | — |  |
+| `pointSize` | `dynamic` | — | Point size used in `str(pointSize)` and `(pointSize <= 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L33)
 
 - [mq3.vm.font_abi.Registry](Type-mq3-vm-font-abi-registry-911501124.md) — struct
 - [mq3.vm.font_abi.Result](Type-mq3-vm-font-abi-result-762768042.md) — struct
@@ -204,10 +218,14 @@ function pathFor(pointSize)
 function writeName(data, name)
 ```
 
+Write name in vm.font_abi; updates `data entries`.
+
+Direct state writes: `data elements`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Mutable sequence written at `(FONT_NAME_OFFSET + index)`. |
+| `name` | `dynamic` | — | Name used in `bytes(name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L55)

@@ -9,8 +9,10 @@
 struct HostAction
 ```
 
+Stores UI servers2 host action record, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L57)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
 
 <a id="field-field-mq3-client-ui-servers2-hostaction-dispatched-dispatched-src-mq3-client-ui-servers2-ml-1247067811"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
 
 <a id="field-field-mq3-client-ui-servers2-hostaction-kind-kind-src-mq3-client-ui-servers2-ml-1226063581"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
 
 <a id="field-field-mq3-client-ui-servers2-hostaction-name-name-src-mq3-client-ui-servers2-ml-986198635"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
 
 <a id="field-field-mq3-client-ui-servers2-hostaction-number-number-src-mq3-client-ui-servers2-ml-250616103"></a>
 ### number
@@ -62,7 +64,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)
 
 <a id="field-field-mq3-client-ui-servers2-hostaction-text-text-src-mq3-client-ui-servers2-ml-1333885707"></a>
 ### text
@@ -72,4 +74,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L61)

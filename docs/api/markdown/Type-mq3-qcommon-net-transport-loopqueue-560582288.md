@@ -9,8 +9,10 @@
 struct LoopQueue
 ```
 
+LoopQueue record for qcommon.net_transport, containing `messages`, `get`, `send`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ get
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L24)
 
 <a id="field-field-mq3-qcommon-net-transport-loopqueue-messages-messages-src-mq3-qcommon-net-transport-ml-1935649308"></a>
 ### messages
@@ -32,7 +34,7 @@ messages
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L24)
 
 <a id="field-field-mq3-qcommon-net-transport-loopqueue-send-send-src-mq3-qcommon-net-transport-ml-515647080"></a>
 ### send
@@ -42,4 +44,4 @@ send
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L24)

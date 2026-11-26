@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.client_message, containing `state`, `messageAcknowledge`, `reliableAcknowledge`, `reliableSequence`, `gamestateMessageNum`, `downloadName`, and 4 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ downloadName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L20)
 
 <a id="field-field-mq3-server-client-message-client-gamestatemessagenum-gamestatemessagenum-src-mq3-server-client-message-ml-1207675148"></a>
 ### gamestateMessageNum
@@ -32,7 +34,7 @@ gamestateMessageNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L20)
 
 <a id="field-field-mq3-server-client-message-client-lastclientcommand-lastclientcommand-src-mq3-server-client-message-ml-1563654788"></a>
 ### lastClientCommand
@@ -42,7 +44,7 @@ lastClientCommand
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L20)
 
 <a id="field-field-mq3-server-client-message-client-lastclientcommandstring-lastclientcommandstring-src-mq3-server-client-message-ml-1773291400"></a>
 ### lastClientCommandString
@@ -52,7 +54,7 @@ lastClientCommandString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 <a id="field-field-mq3-server-client-message-client-messageacknowledge-messageacknowledge-src-mq3-server-client-message-ml-1109591898"></a>
 ### messageAcknowledge
@@ -62,7 +64,7 @@ messageAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L19)
 
 <a id="field-field-mq3-server-client-message-client-name-name-src-mq3-server-client-message-ml-1880641870"></a>
 ### name
@@ -72,7 +74,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L20)
 
 <a id="field-field-mq3-server-client-message-client-nextreliabletime-nextreliabletime-src-mq3-server-client-message-ml-223970460"></a>
 ### nextReliableTime
@@ -82,7 +84,7 @@ nextReliableTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 <a id="field-field-mq3-server-client-message-client-reliableacknowledge-reliableacknowledge-src-mq3-server-client-message-ml-689386316"></a>
 ### reliableAcknowledge
@@ -92,7 +94,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L19)
 
 <a id="field-field-mq3-server-client-message-client-reliablesequence-reliablesequence-src-mq3-server-client-message-ml-1791496078"></a>
 ### reliableSequence
@@ -102,7 +104,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L19)
 
 <a id="field-field-mq3-server-client-message-client-state-state-src-mq3-server-client-message-ml-234354072"></a>
 ### state
@@ -112,4 +114,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L19)

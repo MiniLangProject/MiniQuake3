@@ -9,8 +9,10 @@
 struct Definition
 ```
 
+Stores playable weapon barrel definition record, including `weaponClass`, `barrelClass`, `modelPath`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ barrelClass
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L14)
 
 <a id="field-field-mq3-client-playable-weapon-barrel-definition-modelpath-modelpath-src-mq3-client-playable-weapon-barrel-ml-830779136"></a>
 ### modelPath
@@ -32,7 +34,7 @@ modelPath
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L14)
 
 <a id="field-field-mq3-client-playable-weapon-barrel-definition-weaponclass-weaponclass-src-mq3-client-playable-weapon-barrel-ml-1146206688"></a>
 ### weaponClass
@@ -42,4 +44,4 @@ weaponClass
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_barrel.ml#L14)

@@ -19,12 +19,14 @@ Reachable from entry: **yes**
 function allocChatState(pools)
 ```
 
+Set `pools.chatStates[handle]` to `emptyChatState()` in `mq3.botlib.ai_resource_pools.allocChatState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `chatStates`. May update `pools.chatStates[handle]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L96)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-allocgoalstate-function-allocgoalstate-pools-client-src-mq3-botlib-ai-resource-pools-ml-1290871704"></a>
 ### allocGoalState
@@ -33,13 +35,15 @@ function allocChatState(pools)
 function allocGoalState(pools, client)
 ```
 
+Set `pools.goalStates[handle]` to `emptyGoalState(client)` in `mq3.botlib.ai_resource_pools.allocGoalState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `goalStates`. May update `pools.goalStates[handle]` in place. |
+| `client` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_resource_pools.GoalState.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L112)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-allocmovestate-function-allocmovestate-pools-src-mq3-botlib-ai-resource-pools-ml-1079154405"></a>
 ### allocMoveState
@@ -48,12 +52,14 @@ function allocGoalState(pools, client)
 function allocMoveState(pools)
 ```
 
+Set `pools.moveStates[handle]` to `emptyMoveState()` in `mq3.botlib.ai_resource_pools.allocMoveState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `moveStates`. May update `pools.moveStates[handle]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L140)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-allocweaponstate-function-allocweaponstate-pools-src-mq3-botlib-ai-resource-pools-ml-1551054629"></a>
 ### allocWeaponState
@@ -62,12 +68,14 @@ function allocMoveState(pools)
 function allocWeaponState(pools)
 ```
 
+Set `pools.weaponStates[handle]` to `emptyWeaponState()` in `mq3.botlib.ai_resource_pools.allocWeaponState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. May update `pools.weaponStates[handle]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L171)
 
 - [mq3.botlib.ai_resource_pools.AvoidSpot](Type-mq3-botlib-ai-resource-pools-avoidspot-27978860.md) — struct
 <a id="function-function-mq3-botlib-ai-resource-pools-chatstate-function-chatstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-517119781"></a>
@@ -77,13 +85,15 @@ function allocWeaponState(pools)
 function chatState(pools, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.validHandle` while evaluating `chatState`. Return paths include `pools.chatStates[handle]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `chatStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L80)
 
 - [mq3.botlib.ai_resource_pools.ChatState](Type-mq3-botlib-ai-resource-pools-chatstate-780359634.md) — struct
 <a id="function-function-mq3-botlib-ai-resource-pools-create-function-create-src-mq3-botlib-ai-resource-pools-ml-792696950"></a>
@@ -93,8 +103,10 @@ function chatState(pools, handle)
 function create()
 ```
 
+Create a `mq3.botlib.ai_resource_pools.Pools` record, initializing `chatStates` as `array(MAX_CLIENTS+1,void)`, `goalStates` as `array(MAX_CLIENTS+1,void)` and `moveStates` as `array(MAX_CLIENTS+1,void)`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L50)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L73)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-emptyavoidspots-function-emptyavoidspots-src-mq3-botlib-ai-resource-pools-ml-1169647424"></a>
 ### emptyAvoidSpots
@@ -103,8 +115,10 @@ function create()
 function emptyAvoidSpots()
 ```
 
+Apply `mq3.botlib.ai_resource_pools.vec3` while evaluating `emptyAvoidSpots`. Return paths include `values`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L61)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-emptychatstate-function-emptychatstate-src-mq3-botlib-ai-resource-pools-ml-973927446"></a>
 ### emptyChatState
@@ -113,8 +127,10 @@ function emptyAvoidSpots()
 function emptyChatState()
 ```
 
+Create a `mq3.botlib.ai_resource_pools.ChatState` record with the declared empty defaults.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L63)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-emptygoal-function-emptygoal-src-mq3-botlib-ai-resource-pools-ml-55876610"></a>
 ### emptyGoal
@@ -123,8 +139,10 @@ function emptyChatState()
 function emptyGoal()
 ```
 
+Create a `mq3.botlib.ai_resource_pools.Goal` record, initializing `origin` as `vec3()`, `mins` as `vec3()` and `maxs` as `vec3()`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L57)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-emptygoalstack-function-emptygoalstack-src-mq3-botlib-ai-resource-pools-ml-1777313026"></a>
 ### emptyGoalStack
@@ -133,8 +151,10 @@ function emptyGoal()
 function emptyGoalStack()
 ```
 
+Apply `mq3.botlib.ai_resource_pools.emptyGoal` while evaluating `emptyGoalStack`. Return paths include `values`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L43)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L59)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-emptygoalstate-function-emptygoalstate-client-src-mq3-botlib-ai-resource-pools-ml-115286735"></a>
 ### emptyGoalState
@@ -143,12 +163,14 @@ function emptyGoalStack()
 function emptyGoalState(client)
 ```
 
+Create a `mq3.botlib.ai_resource_pools.GoalState` record, initializing `client` from `client`, `goalStack` as `emptyGoalStack()` and `avoidGoals` as `zeros(MAX_AVOIDGOALS)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_resource_pools.GoalState.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L66)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-emptymovestate-function-emptymovestate-src-mq3-botlib-ai-resource-pools-ml-413609558"></a>
 ### emptyMoveState
@@ -157,8 +179,10 @@ function emptyGoalState(client)
 function emptyMoveState()
 ```
 
+Create a `mq3.botlib.ai_resource_pools.MoveState` record, initializing `origin` as `vec3()`, `velocity` as `vec3()` and `viewOffset` as `vec3()`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L68)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-emptyweaponstate-function-emptyweaponstate-src-mq3-botlib-ai-resource-pools-ml-711518682"></a>
 ### emptyWeaponState
@@ -167,8 +191,10 @@ function emptyMoveState()
 function emptyWeaponState()
 ```
 
+Create a `mq3.botlib.ai_resource_pools.WeaponState` record with the declared empty defaults.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L70)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-floatzeros-function-floatzeros-count-src-mq3-botlib-ai-resource-pools-ml-1797316185"></a>
 ### floatZeros
@@ -177,12 +203,14 @@ function emptyWeaponState()
 function floatZeros(count)
 ```
 
+Allocate a floating-point array of the requested length initialized to zero.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `count` | `dynamic` | — |  |
+| `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L53)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-freechatstate-function-freechatstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-486864885"></a>
 ### freeChatState
@@ -191,13 +219,15 @@ function floatZeros(count)
 function freeChatState(pools, handle)
 ```
 
+Set `pools.chatStates[handle]` to `void` in `mq3.botlib.ai_resource_pools.freeChatState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `chatStates`. May update `pools.chatStates[handle]` in place. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L103)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-freegoalstate-function-freegoalstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-851389227"></a>
 ### freeGoalState
@@ -206,13 +236,15 @@ function freeChatState(pools, handle)
 function freeGoalState(pools, handle)
 ```
 
+Set `pools.goalStates[handle]` to `void` in `mq3.botlib.ai_resource_pools.freeGoalState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `goalStates`. May update `pools.goalStates[handle]` in place. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L133)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-freemovestate-function-freemovestate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-2123024679"></a>
 ### freeMoveState
@@ -221,13 +253,15 @@ function freeGoalState(pools, handle)
 function freeMoveState(pools, handle)
 ```
 
+Set `pools.moveStates[handle]` to `void` in `mq3.botlib.ai_resource_pools.freeMoveState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `moveStates`. May update `pools.moveStates[handle]` in place. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L167)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-freeweaponstate-function-freeweaponstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-727749589"></a>
 ### freeWeaponState
@@ -236,13 +270,15 @@ function freeMoveState(pools, handle)
 function freeWeaponState(pools, handle)
 ```
 
+Set `pools.weaponStates[handle]` to `void` in `mq3.botlib.ai_resource_pools.freeWeaponState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. May update `pools.weaponStates[handle]` in place. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L183)
 
 - [mq3.botlib.ai_resource_pools.Goal](Type-mq3-botlib-ai-resource-pools-goal-310128640.md) — struct
 <a id="function-function-mq3-botlib-ai-resource-pools-goalstate-function-goalstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-1752130007"></a>
@@ -252,13 +288,15 @@ function freeWeaponState(pools, handle)
 function goalState(pools, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.validHandle` while evaluating `goalState`. Return paths include `pools.goalStates[handle]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `goalStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L84)
 
 - [mq3.botlib.ai_resource_pools.GoalState](Type-mq3-botlib-ai-resource-pools-goalstate-1303085237.md) — struct
 <a id="constant-constant-mq3-botlib-ai-resource-pools-max-avoidgoals-const-max-avoidgoals-publicheaders-max-avoidgoals-src-mq3-botlib-ai-resource-pools-ml-1362883218"></a>
@@ -318,13 +356,15 @@ const MAX_GOALSTACK = publicHeaders.MAX_GOALSTACK
 function moveState(pools, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.validHandle` while evaluating `moveState`. Return paths include `pools.moveStates[handle]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `moveStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L88)
 
 - [mq3.botlib.ai_resource_pools.MoveState](Type-mq3-botlib-ai-resource-pools-movestate-1263083947.md) — struct
 <a id="constant-constant-mq3-botlib-ai-resource-pools-op-alloc-chat-state-const-op-alloc-chat-state-507-src-mq3-botlib-ai-resource-pools-ml-591062549"></a>
@@ -465,12 +505,14 @@ const OP_RESET_WEAPON_STATE = 563
 function resetAvoidGoalsState(value)
 ```
 
+Set `value.avoidGoals` to `zeros(MAX_AVOIDGOALS)` and `value.avoidGoalTimes` to `floatZeros(MAX_AVOIDGOALS)` in `mq3.botlib.ai_resource_pools.resetAvoidGoalsState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `avoidGoals` and `avoidGoalTimes`. May update `value.avoidGoals` and `value.avoidGoalTimes` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L118)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-resetavoidreach-function-resetavoidreach-pools-handle-src-mq3-botlib-ai-resource-pools-ml-1486354557"></a>
 ### resetAvoidReach
@@ -479,13 +521,15 @@ function resetAvoidGoalsState(value)
 function resetAvoidReach(pools, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.moveState`, `mq3.botlib.ai_resource_pools.zeros` and `mq3.botlib.ai_resource_pools.floatZeros` while evaluating `resetAvoidReach`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `moveStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L147)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-resetgoalstate-function-resetgoalstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-2107291323"></a>
 ### resetGoalState
@@ -494,13 +538,15 @@ function resetAvoidReach(pools, handle)
 function resetGoalState(pools, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.goalState`, `mq3.botlib.ai_resource_pools.emptyGoalStack` and `mq3.botlib.ai_resource_pools.resetAvoidGoalsState` while evaluating `resetGoalState`. Return paths include `resetAvoidGoalsState(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `goalStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L125)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-resetlastavoidreach-function-resetlastavoidreach-pools-handle-src-mq3-botlib-ai-resource-pools-ml-1028001345"></a>
 ### resetLastAvoidReach
@@ -509,13 +555,15 @@ function resetGoalState(pools, handle)
 function resetLastAvoidReach(pools, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.moveState` while evaluating `resetLastAvoidReach`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `moveStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L154)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-resetmovestate-function-resetmovestate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-1070108015"></a>
 ### resetMoveState
@@ -524,13 +572,15 @@ function resetLastAvoidReach(pools, handle)
 function resetMoveState(pools, handle)
 ```
 
+Set `pools.moveStates[handle]` to `emptyMoveState()` in `mq3.botlib.ai_resource_pools.resetMoveState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `moveStates`. May update `pools.moveStates[handle]` in place. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L163)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-resetweaponstate-function-resetweaponstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-1836349115"></a>
 ### resetWeaponState
@@ -543,11 +593,11 @@ The released BotResetWeaponState has its memset commented out and restores both 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L179)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-shutdown-function-shutdown-pools-src-mq3-botlib-ai-resource-pools-ml-420636133"></a>
 ### shutdown
@@ -556,12 +606,14 @@ The released BotResetWeaponState has its memset commented out and restores both 
 function shutdown(pools)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.freeChatState`, `mq3.botlib.ai_resource_pools.freeGoalState` and `mq3.botlib.ai_resource_pools.freeMoveState` while evaluating `shutdown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `chatStates`, `goalStates`, `moveStates` and `weaponStates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L190)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-resource-pools-ml-186023203"></a>
 ### supportsTrap
@@ -570,12 +622,14 @@ function shutdown(pools)
 function supportsTrap(op)
 ```
 
+Test `op==OP_ALLOC_CHAT_STATE or op==OP_FREE_CHAT_STATE or op==OP_RESET_GOAL_STATE or op==OP_ALLOC_GOAL_STATE or op==OP_FREE_GOAL_STATE or op==OP_RESET_M...` as the condition for `supportsTrap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `op` | `dynamic` | — |  |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L29)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-validhandle-function-validhandle-handle-src-mq3-botlib-ai-resource-pools-ml-267978120"></a>
 ### validHandle
@@ -584,12 +638,14 @@ function supportsTrap(op)
 function validHandle(handle)
 ```
 
+Test `handle>0 and handle<=MAX_CLIENTS` as the condition for `validHandle`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `handle` | `dynamic` | — |  |
+| `handle` | `dynamic` | — | Resource handle resolved by the owning pool or host service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L76)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-vec3-function-vec3-src-mq3-botlib-ai-resource-pools-ml-2103905062"></a>
 ### vec3
@@ -598,8 +654,10 @@ function validHandle(handle)
 function vec3()
 ```
 
+Return a new array `[0.0,0.0,0.0]` for `vec3`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L55)
 
 <a id="function-function-mq3-botlib-ai-resource-pools-weaponstate-function-weaponstate-pools-handle-src-mq3-botlib-ai-resource-pools-ml-1373755461"></a>
 ### weaponState
@@ -608,13 +666,15 @@ function vec3()
 function weaponState(pools, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.validHandle` while evaluating `weaponState`. Return paths include `pools.weaponStates[handle]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L92)
 
 - [mq3.botlib.ai_resource_pools.WeaponState](Type-mq3-botlib-ai-resource-pools-weaponstate-1198640016.md) — struct
 <a id="function-function-mq3-botlib-ai-resource-pools-zeros-function-zeros-count-src-mq3-botlib-ai-resource-pools-ml-1377276831"></a>
@@ -624,9 +684,11 @@ function weaponState(pools, handle)
 function zeros(count)
 ```
 
+Allocate an integer array of the requested length initialized to zero.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `count` | `dynamic` | — |  |
+| `count` | `dynamic` | — | Number of entries or bytes processed by this call. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L50)

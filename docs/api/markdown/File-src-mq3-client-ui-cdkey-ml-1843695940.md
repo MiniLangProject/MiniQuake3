@@ -74,10 +74,10 @@ UI_CDKeyMenu_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI cdkey record/storage; this routine assigns `state.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L54)
 
 <a id="function-function-mq3-client-ui-cdkey-cdkeymenu-function-cdkeymenu-state-storedkey-verifyvalid-menudepth-src-mq3-client-ui-cdkey-ml-154490288"></a>
 ### cdKeyMenu
@@ -90,13 +90,13 @@ UI_CDKeyMenu / UI_CDKeyMenu_f
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `storedKey` | `dynamic` | — |  |
-| `verifyValid` | `dynamic` | — |  |
-| `menuDepth` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI cdkey record/storage; this routine assigns `state.pushed`, `state.menuEvents`. |
+| `storedKey` | `dynamic` | — | Value used by `init(state,storedKey,verifyValid,menuDepth)`. |
+| `verifyValid` | `dynamic` | — | Value used by `init(state,storedKey,verifyValid,menuDepth)`. |
+| `menuDepth` | `dynamic` | — | Value used by `init(state,storedKey,verifyValid,menuDepth)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L68)
 
 <a id="function-function-mq3-client-ui-cdkey-cdkeymenuf-function-cdkeymenuf-state-storedkey-verifyvalid-menudepth-src-mq3-client-ui-cdkey-ml-514758290"></a>
 ### cdKeyMenuF
@@ -105,15 +105,17 @@ UI_CDKeyMenu / UI_CDKeyMenu_f
 function cdKeyMenuF(state, storedKey, verifyValid, menuDepth)
 ```
 
+Adapts `mq3.client.ui_cdkey.cdKeyMenu` to UI cdkey `cdKeyMenuF`, returning its result for `state, storedKey, verifyValid, menuDepth`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `storedKey` | `dynamic` | — |  |
-| `verifyValid` | `dynamic` | — |  |
-| `menuDepth` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_cdkey.cdKeyMenu`. |
+| `storedKey` | `dynamic` | — | Argument 2 of `mq3.client.ui_cdkey.cdKeyMenu`. |
+| `verifyValid` | `dynamic` | — | Argument 3 of `mq3.client.ui_cdkey.cdKeyMenu`. |
+| `menuDepth` | `dynamic` | — | Argument 4 of `mq3.client.ui_cdkey.cdKeyMenu`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L74)
 
 <a id="function-function-mq3-client-ui-cdkey-create-function-create-retailactive-src-mq3-client-ui-cdkey-ml-1327520617"></a>
 ### create
@@ -122,12 +124,14 @@ function cdKeyMenuF(state, storedKey, verifyValid, menuDepth)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_cdkey.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L27)
 
 - [mq3.client.ui_cdkey.Draw](Type-mq3-client-ui-cdkey-draw-1378794430.md) — struct
 <a id="function-function-mq3-client-ui-cdkey-drawkey-function-drawkey-state-src-mq3-client-ui-cdkey-ml-1540697651"></a>
@@ -141,10 +145,10 @@ UI_CDKeyMenu_DrawKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.buffer`, `state.focus`, `state.overstrike`, `state.cursor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L42)
 
 <a id="function-function-mq3-client-ui-cdkey-emit-function-emit-state-kind-name-text-value-src-mq3-client-ui-cdkey-ml-730559216"></a>
 ### emit
@@ -153,16 +157,18 @@ UI_CDKeyMenu_DrawKey
 function emit(state, kind, name, text, value)
 ```
 
+Appends a UI cdkey action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI cdkey record/storage; this routine assigns `state.actions`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI cdkey resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI cdkey path. |
+| `value` | `dynamic` | — | Value used by `item=Action("ui-cdkey",kind,name,text,value,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L34)
 
 <a id="constant-constant-mq3-client-ui-cdkey-id-accept-const-id-accept-11-src-mq3-client-ui-cdkey-ml-1132412355"></a>
 ### ID_ACCEPT
@@ -205,13 +211,13 @@ UI_CDKeyMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `storedKey` | `dynamic` | — |  |
-| `verifyValid` | `dynamic` | — |  |
-| `menuDepth` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI cdkey record/storage; this routine assigns `state.actions`, `state.menuEvents`, `state.menuDepth`, `state.backVisible` and additional values. |
+| `storedKey` | `dynamic` | — | Value assigned to `state.buffer`. |
+| `verifyValid` | `dynamic` | — | Value assigned to `state.verified`. |
+| `menuDepth` | `dynamic` | — | Value assigned to `state.menuDepth`, `state.backVisible`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L60)
 
 <a id="function-function-mq3-client-ui-cdkey-menuevent-function-menuevent-state-id-event-src-mq3-client-ui-cdkey-ml-1969675274"></a>
 ### menuEvent
@@ -224,12 +230,12 @@ UI_CDKeyMenu_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI cdkey record/storage; this routine assigns `state.menuEvents`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_ACCEPT then if len(state.buffer)>0 then emit(state,"set-cdkey","cdkey",state.buffer,0) end if`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L49)
 
 <a id="function-function-mq3-client-ui-cdkey-prevalidatekey-function-prevalidatekey-key-src-mq3-client-ui-cdkey-ml-1948226639"></a>
 ### preValidateKey
@@ -242,10 +248,10 @@ UI_CDKeyMenu_PreValidateKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Sequence whose length/content is inspected by `preValidateKey`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L37)
 
 <a id="constant-constant-mq3-client-ui-cdkey-qm-activated-const-qm-activated-3-src-mq3-client-ui-cdkey-ml-2134557820"></a>
 ### QM_ACTIVATED

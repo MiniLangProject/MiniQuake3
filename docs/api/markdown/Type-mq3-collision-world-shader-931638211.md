@@ -9,8 +9,10 @@
 struct Shader
 ```
 
+Shader record for collision.world, containing `name`, `surfaceFlags`, `contentFlags`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L73)
 
 ## Members
 
@@ -22,7 +24,7 @@ contentFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L73)
 
 <a id="field-field-mq3-collision-world-shader-name-name-src-mq3-collision-world-ml-2064452586"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L73)
 
 <a id="field-field-mq3-collision-world-shader-surfaceflags-surfaceflags-src-mq3-collision-world-ml-262746672"></a>
 ### surfaceFlags
@@ -42,4 +44,4 @@ surfaceFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L73)

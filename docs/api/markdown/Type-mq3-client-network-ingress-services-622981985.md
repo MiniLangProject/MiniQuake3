@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores network ingress host-service callbacks, including `connectionlessHost`, `demoFn`, `serverPacketFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ connectionlessHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
 
 <a id="field-field-mq3-client-network-ingress-services-context-context-src-mq3-client-network-ingress-ml-1467644621"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
 
 <a id="field-field-mq3-client-network-ingress-services-demofn-demofn-src-mq3-client-network-ingress-ml-1004431295"></a>
 ### demoFn
@@ -42,7 +44,7 @@ demoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)
 
 <a id="field-field-mq3-client-network-ingress-services-serverpacketfn-serverpacketfn-src-mq3-client-network-ingress-ml-792780651"></a>
 ### serverPacketFn
@@ -52,4 +54,4 @@ serverPacketFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L12)

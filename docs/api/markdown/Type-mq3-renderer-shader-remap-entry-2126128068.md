@@ -9,8 +9,10 @@
 struct Entry
 ```
 
+Data record for `mq3.renderer.shader_remap.Entry`; groups `oldName`, `newName`, `timeOffset`, `handles`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
 
 ## Members
 
@@ -22,7 +24,7 @@ handles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
 
 <a id="field-field-mq3-renderer-shader-remap-entry-newname-newname-src-mq3-renderer-shader-remap-ml-167938929"></a>
 ### newName
@@ -32,7 +34,7 @@ newName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
 
 <a id="field-field-mq3-renderer-shader-remap-entry-oldname-oldname-src-mq3-renderer-shader-remap-ml-1450005945"></a>
 ### oldName
@@ -42,7 +44,7 @@ oldName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)
 
 <a id="field-field-mq3-renderer-shader-remap-entry-timeoffset-timeoffset-src-mq3-renderer-shader-remap-ml-1010319729"></a>
 ### timeOffset
@@ -52,4 +54,4 @@ timeOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_remap.ml#L8)

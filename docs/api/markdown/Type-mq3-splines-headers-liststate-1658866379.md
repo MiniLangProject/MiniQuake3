@@ -9,8 +9,10 @@
 struct ListState
 ```
 
+ListState record for splines.headers, containing `values`, `size`, `granularity`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ granularity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L25)
 
 <a id="field-field-mq3-splines-headers-liststate-size-size-src-mq3-splines-headers-ml-938989158"></a>
 ### size
@@ -32,7 +34,7 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L25)
 
 <a id="field-field-mq3-splines-headers-liststate-values-values-src-mq3-splines-headers-ml-368154816"></a>
 ### values
@@ -42,4 +44,4 @@ values
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L25)

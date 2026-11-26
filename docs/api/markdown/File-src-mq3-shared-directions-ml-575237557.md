@@ -21,12 +21,14 @@ Reachable from entry: **yes**
 function dirToByte(dir)
 ```
 
+Compute dir to byte in shared.directions; the normal completion returns `best`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `dir` | `dynamic` | — |  |
+| `dir` | `dynamic` | — | Left three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L16)
 
 <a id="function-function-mq3-shared-directions-movedirvector-function-movedirvector-angles-src-mq3-shared-directions-ml-420476336"></a>
 ### movedirVector
@@ -35,12 +37,14 @@ function dirToByte(dir)
 function movedirVector(angles)
 ```
 
+Compute movedir vector in shared.directions; the normal completion returns `axes[0]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `angles` | `dynamic` | — |  |
+| `angles` | `dynamic` | — | Three-element [pitch, yaw, roll] array in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L9)
 
 <a id="function-function-mq3-shared-directions-perpendicular-function-perpendicular-src-src-mq3-shared-directions-ml-93724774"></a>
 ### perpendicular
@@ -49,12 +53,14 @@ function movedirVector(angles)
 function perpendicular(src)
 ```
 
+Compute perpendicular in shared.directions; the normal completion returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `src` | `dynamic` | — |  |
+| `src` | `dynamic` | — | Normal passed as `normal` to `mq3.shared.directions.projectPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L39)
 
 <a id="function-function-mq3-shared-directions-projectpoint-function-projectpoint-p-normal-src-mq3-shared-directions-ml-175034459"></a>
 ### projectPoint
@@ -63,10 +69,12 @@ function perpendicular(src)
 function projectPoint(p, normal)
 ```
 
+Compute project point in shared.directions; the normal completion returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `p` | `dynamic` | — |  |
-| `normal` | `dynamic` | — |  |
+| `p` | `dynamic` | — | Right three-element vector. |
+| `normal` | `dynamic` | — | Left three-element vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L29)

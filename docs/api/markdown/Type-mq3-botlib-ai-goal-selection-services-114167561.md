@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for ai goal selection, containing `context`, `reachabilityAreaFn`, `areaReachabilityFn`, `travelTimeFn` and `traceFn` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaReachabilityFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-services-context-context-src-mq3-botlib-ai-goal-selection-ml-1355006949"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-services-entityinfofn-entityinfofn-src-mq3-botlib-ai-goal-selection-ml-144345387"></a>
 ### entityInfoFn
@@ -42,7 +44,7 @@ entityInfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-services-itemqueryfn-itemqueryfn-src-mq3-botlib-ai-goal-selection-ml-1953384289"></a>
 ### itemQueryFn
@@ -52,7 +54,7 @@ itemQueryFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-services-reachabilityareafn-reachabilityareafn-src-mq3-botlib-ai-goal-selection-ml-648402481"></a>
 ### reachabilityAreaFn
@@ -62,7 +64,7 @@ reachabilityAreaFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-services-tracefn-tracefn-src-mq3-botlib-ai-goal-selection-ml-1486668697"></a>
 ### traceFn
@@ -72,7 +74,7 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-services-traveltimefn-traveltimefn-src-mq3-botlib-ai-goal-selection-ml-1225818679"></a>
 ### travelTimeFn
@@ -82,4 +84,4 @@ travelTimeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)

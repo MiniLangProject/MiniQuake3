@@ -19,14 +19,16 @@ Reachable from entry: **no**
 function G_InitSessionData(level, client, userinfo)
 ```
 
+Forward `G_InitSessionData` to `mq3.game.session.initClient` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `userinfo` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `teamAutoJoin`, `numNonSpectatorClients`, `maxGameClients` and `time`. |
+| `client` | `dynamic` | — | Client state; accesses `team`, `spectatorState` and `spectatorTime`. May update `client.team`, `client.spectatorState` and `client.spectatorTime` in place. |
+| `userinfo` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L19)
 
 <a id="function-function-mq3-game-g-session-g-initworldsession-function-g-initworldsession-level-src-mq3-game-g-session-ml-1709510328"></a>
 ### G_InitWorldSession
@@ -35,12 +37,14 @@ function G_InitSessionData(level, client, userinfo)
 function G_InitWorldSession(level)
 ```
 
+Forward `G_InitWorldSession` to `mq3.game.session.initWorld` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `newSession` and `gamePrintFn`. May update `level.newSession` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L22)
 
 <a id="function-function-mq3-game-g-session-g-readsessiondata-function-g-readsessiondata-level-client-src-mq3-game-g-session-ml-1942018597"></a>
 ### G_ReadSessionData
@@ -49,13 +53,15 @@ function G_InitWorldSession(level)
 function G_ReadSessionData(level, client)
 ```
 
+Forward `G_ReadSessionData` to `mq3.game.session.readClient` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `client` | `dynamic` | — | Client state; accesses `team`, `spectatorTime`, `spectatorState`, `spectatorClient` and `wins` and related fields. May update `client.team`, `client.spectatorTime` and `client.spectatorState` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L14)
 
 <a id="function-function-mq3-game-g-session-g-writeclientsessiondata-function-g-writeclientsessiondata-level-client-src-mq3-game-g-session-ml-1121841965"></a>
 ### G_WriteClientSessionData
@@ -64,13 +70,15 @@ function G_ReadSessionData(level, client)
 function G_WriteClientSessionData(level, client)
 ```
 
+Forward `G_WriteClientSessionData` to `mq3.game.session.writeClient` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `client` | `dynamic` | — | Client state; accesses `team`, `spectatorTime`, `spectatorState`, `spectatorClient` and `wins` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L10)
 
 <a id="function-function-mq3-game-g-session-g-writesessiondata-function-g-writesessiondata-level-src-mq3-game-g-session-ml-1070656748"></a>
 ### G_WriteSessionData
@@ -79,9 +87,11 @@ function G_WriteClientSessionData(level, client)
 function G_WriteSessionData(level)
 ```
 
+Forward `G_WriteSessionData` to `mq3.game.session.writeWorld` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `maxclients` and `clients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L25)

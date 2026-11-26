@@ -9,8 +9,10 @@
 struct Animation
 ```
 
+Animation record for format.player_animation, containing `firstFrame`, `numFrames`, `loopFrames`, `frameLerp`, `initialLerp`, `reversed`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)
 
 <a id="field-field-mq3-format-player-animation-animation-flipflop-flipflop-src-mq3-format-player-animation-ml-1832550267"></a>
 ### flipflop
@@ -32,7 +34,7 @@ flipflop
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)
 
 <a id="field-field-mq3-format-player-animation-animation-framelerp-framelerp-src-mq3-format-player-animation-ml-1738485199"></a>
 ### frameLerp
@@ -42,7 +44,7 @@ frameLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)
 
 <a id="field-field-mq3-format-player-animation-animation-initiallerp-initiallerp-src-mq3-format-player-animation-ml-35223555"></a>
 ### initialLerp
@@ -52,7 +54,7 @@ initialLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)
 
 <a id="field-field-mq3-format-player-animation-animation-loopframes-loopframes-src-mq3-format-player-animation-ml-1375967347"></a>
 ### loopFrames
@@ -62,7 +64,7 @@ loopFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)
 
 <a id="field-field-mq3-format-player-animation-animation-numframes-numframes-src-mq3-format-player-animation-ml-896615907"></a>
 ### numFrames
@@ -72,7 +74,7 @@ numFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)
 
 <a id="field-field-mq3-format-player-animation-animation-reversed-reversed-src-mq3-format-player-animation-ml-1766811863"></a>
 ### reversed
@@ -82,4 +84,4 @@ reversed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L33)

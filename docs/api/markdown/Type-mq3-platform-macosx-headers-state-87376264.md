@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.platform.macosx_headers.State`; groups `mouseInitialized`, `mouseDelta`, `notifications`, `bannerVisible`, `terminateRequested`, `quakeFrames`, and 21 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 ## Members
 
@@ -22,7 +24,7 @@ bannerVisible
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-cglcontext-cglcontext-src-mq3-platform-macosx-headers-ml-1716111020"></a>
 ### cglContext
@@ -32,7 +34,7 @@ cglContext
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-clipboard-clipboard-src-mq3-platform-macosx-headers-ml-780269626"></a>
 ### clipboard
@@ -42,7 +44,7 @@ clipboard
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-context-context-src-mq3-platform-macosx-headers-ml-734941106"></a>
 ### context
@@ -52,7 +54,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-contextcurrent-contextcurrent-src-mq3-platform-macosx-headers-ml-699744626"></a>
 ### contextCurrent
@@ -62,7 +64,7 @@ contextCurrent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-display-display-src-mq3-platform-macosx-headers-ml-1371825474"></a>
 ### display
@@ -72,7 +74,7 @@ display
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-displaymodes-displaymodes-src-mq3-platform-macosx-headers-ml-634294634"></a>
 ### displayModes
@@ -82,7 +84,7 @@ displayModes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-events-events-src-mq3-platform-macosx-headers-ml-1763429220"></a>
 ### events
@@ -92,7 +94,7 @@ events
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-fadeddisplays-fadeddisplays-src-mq3-platform-macosx-headers-ml-1982388362"></a>
 ### fadedDisplays
@@ -102,7 +104,7 @@ fadedDisplays
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-fadefraction-fadefraction-src-mq3-platform-macosx-headers-ml-959534902"></a>
 ### fadeFraction
@@ -112,7 +114,7 @@ fadeFraction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-gammatables-gammatables-src-mq3-platform-macosx-headers-ml-549744734"></a>
 ### gammaTables
@@ -122,7 +124,7 @@ gammaTables
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-hidden-hidden-src-mq3-platform-macosx-headers-ml-423302546"></a>
 ### hidden
@@ -132,7 +134,7 @@ hidden
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-inputinitialized-inputinitialized-src-mq3-platform-macosx-headers-ml-593930218"></a>
 ### inputInitialized
@@ -142,7 +144,7 @@ inputInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-mousedelta-mousedelta-src-mq3-platform-macosx-headers-ml-1961823964"></a>
 ### mouseDelta
@@ -152,7 +154,7 @@ mouseDelta
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-mouseinitialized-mouseinitialized-src-mq3-platform-macosx-headers-ml-973018016"></a>
 ### mouseInitialized
@@ -162,7 +164,7 @@ mouseInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-mouserect-mouserect-src-mq3-platform-macosx-headers-ml-904076770"></a>
 ### mouseRect
@@ -172,7 +174,7 @@ mouseRect
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-notifications-notifications-src-mq3-platform-macosx-headers-ml-426389942"></a>
 ### notifications
@@ -182,7 +184,7 @@ notifications
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-pausecount-pausecount-src-mq3-platform-macosx-headers-ml-309320700"></a>
 ### pauseCount
@@ -192,7 +194,7 @@ pauseCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-qglbeginstarted-qglbeginstarted-src-mq3-platform-macosx-headers-ml-1824415466"></a>
 ### qglBeginStarted
@@ -202,7 +204,7 @@ qglBeginStarted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-qglcalls-qglcalls-src-mq3-platform-macosx-headers-ml-975301244"></a>
 ### qglCalls
@@ -212,7 +214,7 @@ qglCalls
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-qglerrors-qglerrors-src-mq3-platform-macosx-headers-ml-1248892082"></a>
 ### qglErrors
@@ -222,7 +224,7 @@ qglErrors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-quakeframes-quakeframes-src-mq3-platform-macosx-headers-ml-935999934"></a>
 ### quakeFrames
@@ -232,7 +234,7 @@ quakeFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-stretchedmodes-stretchedmodes-src-mq3-platform-macosx-headers-ml-1662081490"></a>
 ### stretchedModes
@@ -242,7 +244,7 @@ stretchedModes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-terminaterequested-terminaterequested-src-mq3-platform-macosx-headers-ml-593543532"></a>
 ### terminateRequested
@@ -252,7 +254,7 @@ terminateRequested
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-timers-timers-src-mq3-platform-macosx-headers-ml-330210978"></a>
 ### timers
@@ -262,7 +264,7 @@ timers
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-timerstack-timerstack-src-mq3-platform-macosx-headers-ml-710695948"></a>
 ### timerStack
@@ -272,7 +274,7 @@ timerStack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)
 
 <a id="field-field-mq3-platform-macosx-headers-state-timerstamps-timerstamps-src-mq3-platform-macosx-headers-ml-496133050"></a>
 ### timerStamps
@@ -282,4 +284,4 @@ timerStamps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L42)

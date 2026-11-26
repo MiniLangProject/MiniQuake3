@@ -9,8 +9,10 @@
 struct RenderTriangle
 ```
 
+RenderTriangle record for format.md3, containing `positions`, `texCoords`, `normals`, `surfaceIndex`, `shaderName`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ normals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L37)
 
 <a id="field-field-mq3-format-md3-rendertriangle-positions-positions-src-mq3-format-md3-ml-27113677"></a>
 ### positions
@@ -32,7 +34,7 @@ positions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L37)
 
 <a id="field-field-mq3-format-md3-rendertriangle-shadername-shadername-src-mq3-format-md3-ml-883254073"></a>
 ### shaderName
@@ -42,7 +44,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L37)
 
 <a id="field-field-mq3-format-md3-rendertriangle-surfaceindex-surfaceindex-src-mq3-format-md3-ml-1518213507"></a>
 ### surfaceIndex
@@ -52,7 +54,7 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L37)
 
 <a id="field-field-mq3-format-md3-rendertriangle-texcoords-texcoords-src-mq3-format-md3-ml-177030725"></a>
 ### texCoords
@@ -62,4 +64,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L37)

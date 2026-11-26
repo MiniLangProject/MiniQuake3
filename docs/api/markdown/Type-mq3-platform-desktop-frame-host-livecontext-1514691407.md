@@ -9,8 +9,10 @@
 struct LiveContext
 ```
 
+Callback table for `mq3.platform.desktop_frame_host.LiveContext`; exposes `ingress`, `frameContext`, `commonFrameFn`, `serverFrameFn`, `clientFrameFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientFrameFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-commonframefn-commonframefn-src-mq3-platform-desktop-frame-host-ml-989665958"></a>
 ### commonFrameFn
@@ -32,7 +34,7 @@ commonFrameFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-framecontext-framecontext-src-mq3-platform-desktop-frame-host-ml-383991982"></a>
 ### frameContext
@@ -42,7 +44,7 @@ frameContext
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-ingress-ingress-src-mq3-platform-desktop-frame-host-ml-869160558"></a>
 ### ingress
@@ -52,7 +54,7 @@ ingress
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-livecontext-serverframefn-serverframefn-src-mq3-platform-desktop-frame-host-ml-1859910454"></a>
 ### serverFrameFn
@@ -62,4 +64,4 @@ serverFrameFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)

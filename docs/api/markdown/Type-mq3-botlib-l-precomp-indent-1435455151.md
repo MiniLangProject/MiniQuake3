@@ -9,8 +9,10 @@
 struct Indent
 ```
 
+`Indent` record for l precomp, containing `type` and `skip`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L53)
 
 ## Members
 
@@ -22,7 +24,7 @@ skip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L53)
 
 <a id="field-field-mq3-botlib-l-precomp-indent-type-type-src-mq3-botlib-l-precomp-ml-1448522439"></a>
 ### type
@@ -32,4 +34,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L53)

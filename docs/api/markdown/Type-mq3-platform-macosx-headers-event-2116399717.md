@@ -9,8 +9,10 @@
 struct Event
 ```
 
+Data record for `mq3.platform.macosx_headers.Event`; groups `time`, `kind`, `value1`, `value2`, `payload`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L40)
 
 ## Members
 
@@ -22,7 +24,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L40)
 
 <a id="field-field-mq3-platform-macosx-headers-event-payload-payload-src-mq3-platform-macosx-headers-ml-1023198221"></a>
 ### payload
@@ -32,7 +34,7 @@ payload
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L40)
 
 <a id="field-field-mq3-platform-macosx-headers-event-time-time-src-mq3-platform-macosx-headers-ml-322578263"></a>
 ### time
@@ -42,7 +44,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L40)
 
 <a id="field-field-mq3-platform-macosx-headers-event-value1-value1-src-mq3-platform-macosx-headers-ml-1508842365"></a>
 ### value1
@@ -52,7 +54,7 @@ value1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L40)
 
 <a id="field-field-mq3-platform-macosx-headers-event-value2-value2-src-mq3-platform-macosx-headers-ml-406334355"></a>
 ### value2
@@ -62,4 +64,4 @@ value2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L40)

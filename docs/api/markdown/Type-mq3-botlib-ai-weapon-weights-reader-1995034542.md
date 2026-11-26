@@ -9,8 +9,10 @@
 struct Reader
 ```
 
+`Reader` record for ai weapon weights, containing `registry` and `handle`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-reader-registry-registry-src-mq3-botlib-ai-weapon-weights-ml-1688359840"></a>
 ### registry
@@ -32,4 +34,4 @@ registry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L24)

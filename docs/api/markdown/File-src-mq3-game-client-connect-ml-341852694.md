@@ -26,12 +26,14 @@ Reachable from entry: **no**
 function connect(level, slot, firstTime, isBot)
 ```
 
+Use `level.userinfoFn`, `level.filterPacketFn` and `level.botConnectFn` to perform `connect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
-| `firstTime` | `dynamic` | — |  |
-| `isBot` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities`, `userinfoFn`, `filterPacketFn`, `cvarMaintenance` and `clients` and related fields. |
+| `slot` | `dynamic` | — | Slot in the owning table or pool. |
+| `firstTime` | `dynamic` | — | Value used by `connect` in `if firstTime or level.newSession then sessions.initClient(level,client,info) end if`. |
+| `isBot` | `dynamic` | — | Value used by `connect` in `if isBot then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_connect.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_connect.ml#L19)

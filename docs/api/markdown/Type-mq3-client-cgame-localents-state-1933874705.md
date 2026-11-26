@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores client game localents state, including `entities`, `free`, `active`, `time`, `frametime`, `vieworg` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-active-active-src-mq3-client-cgame-localents-ml-245437324"></a>
 ### active
@@ -32,7 +34,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-audio-audio-src-mq3-client-cgame-localents-ml-1288082496"></a>
 ### audio
@@ -42,7 +44,7 @@ audio
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-entities-entities-src-mq3-client-cgame-localents-ml-747340182"></a>
 ### entities
@@ -52,7 +54,7 @@ entities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-errors-errors-src-mq3-client-cgame-localents-ml-60279862"></a>
 ### errors
@@ -62,7 +64,7 @@ errors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-frametime-frametime-src-mq3-client-cgame-localents-ml-1655440216"></a>
 ### frametime
@@ -72,7 +74,7 @@ frametime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-free-free-src-mq3-client-cgame-localents-ml-1803133348"></a>
 ### free
@@ -82,7 +84,7 @@ free
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-freed-freed-src-mq3-client-cgame-localents-ml-1366688984"></a>
 ### freed
@@ -92,7 +94,7 @@ freed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-marks-marks-src-mq3-client-cgame-localents-ml-922694608"></a>
 ### marks
@@ -102,7 +104,7 @@ marks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-rendered-rendered-src-mq3-client-cgame-localents-ml-1023557306"></a>
 ### rendered
@@ -112,7 +114,7 @@ rendered
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-retailactive-retailactive-src-mq3-client-cgame-localents-ml-640692738"></a>
 ### retailActive
@@ -122,7 +124,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-services-services-src-mq3-client-cgame-localents-ml-1656648296"></a>
 ### services
@@ -132,7 +134,7 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-spawned-spawned-src-mq3-client-cgame-localents-ml-1922654552"></a>
 ### spawned
@@ -142,7 +144,7 @@ spawned
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-time-time-src-mq3-client-cgame-localents-ml-175530470"></a>
 ### time
@@ -152,7 +154,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
 
 <a id="field-field-mq3-client-cgame-localents-state-vieworg-vieworg-src-mq3-client-cgame-localents-ml-92878124"></a>
 ### vieworg
@@ -162,4 +164,4 @@ vieworg
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)

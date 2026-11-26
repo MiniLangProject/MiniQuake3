@@ -9,8 +9,10 @@
 struct LerpFrame
 ```
 
+Stores UI players missionpack lerp frame record, including `oldFrame`, `oldFrameTime`, `frame`, `frameTime`, `backlerp`, `yawAngle` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 ## Members
 
@@ -22,7 +24,7 @@ animation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-animationnumber-animationnumber-src-mq3-client-ui-players-missionpack-ml-1755049219"></a>
 ### animationNumber
@@ -32,7 +34,7 @@ animationNumber
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-animationtime-animationtime-src-mq3-client-ui-players-missionpack-ml-712013063"></a>
 ### animationTime
@@ -42,7 +44,7 @@ animationTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-backlerp-backlerp-src-mq3-client-ui-players-missionpack-ml-996774955"></a>
 ### backlerp
@@ -52,7 +54,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-frame-frame-src-mq3-client-ui-players-missionpack-ml-1240041087"></a>
 ### frame
@@ -62,7 +64,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-frametime-frametime-src-mq3-client-ui-players-missionpack-ml-666393595"></a>
 ### frameTime
@@ -72,7 +74,7 @@ frameTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-oldframe-oldframe-src-mq3-client-ui-players-missionpack-ml-1437386283"></a>
 ### oldFrame
@@ -82,7 +84,7 @@ oldFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-oldframetime-oldframetime-src-mq3-client-ui-players-missionpack-ml-1729569125"></a>
 ### oldFrameTime
@@ -92,7 +94,7 @@ oldFrameTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-pitchangle-pitchangle-src-mq3-client-ui-players-missionpack-ml-2114689877"></a>
 ### pitchAngle
@@ -102,7 +104,7 @@ pitchAngle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-pitching-pitching-src-mq3-client-ui-players-missionpack-ml-1334242371"></a>
 ### pitching
@@ -112,7 +114,7 @@ pitching
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-yawangle-yawangle-src-mq3-client-ui-players-missionpack-ml-736491251"></a>
 ### yawAngle
@@ -122,7 +124,7 @@ yawAngle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)
 
 <a id="field-field-mq3-client-ui-players-missionpack-lerpframe-yawing-yawing-src-mq3-client-ui-players-missionpack-ml-907965737"></a>
 ### yawing
@@ -132,4 +134,4 @@ yawing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L59)

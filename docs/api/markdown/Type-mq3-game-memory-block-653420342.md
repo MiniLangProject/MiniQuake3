@@ -9,8 +9,10 @@
 struct Block
 ```
 
+`Block` record for memory, containing `state`, `offset` and `size`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L16)
 
 <a id="field-field-mq3-game-memory-block-size-size-src-mq3-game-memory-ml-74551896"></a>
 ### size
@@ -32,7 +34,7 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L17)
 
 <a id="field-field-mq3-game-memory-block-state-state-src-mq3-game-memory-ml-609886786"></a>
 ### state
@@ -42,4 +44,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L15)

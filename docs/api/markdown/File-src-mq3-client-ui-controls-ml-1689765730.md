@@ -22,13 +22,15 @@ Reachable from entry: **no**
 function actionBinding(state, id)
 ```
 
+Evaluates UI controls `actionBinding` and returns `state.bindings[id]`, `void` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.bindings`. |
+| `id` | `dynamic` | — | Value used by `if id>=0 and id<len(state.bindings) then return state.bindings[id] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L196)
 
 <a id="function-function-mq3-client-ui-controls-actionevent-function-actionevent-state-id-event-src-mq3-client-ui-controls-ml-1811433826"></a>
 ### actionEvent
@@ -37,14 +39,16 @@ function actionBinding(state, id)
 function actionEvent(state, id, event)
 ```
 
+Updates `state.waitingForKey`, `state.cursorId` during UI controls `actionEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.waitingForKey`, `state.cursorId`. |
+| `id` | `dynamic` | — | Value assigned to `state.cursorId`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L364)
 
 <a id="constant-constant-mq3-client-ui-controls-anim-attack-const-anim-attack-22-src-mq3-client-ui-controls-ml-804918509"></a>
 ### ANIM_ATTACK
@@ -353,16 +357,18 @@ const ART_FRAMER = "menu/art/frame1_r"
 function binding(command, label, id, anim, key)
 ```
 
+Creates a `mq3.client.ui_controls.Binding` record. Assigns `command` from `command`, `label` from `label`, `id` from `id`, `anim` from `anim`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `command` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `anim` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `command` | `dynamic` | — | Value used to initialize `Binding.command`. |
+| `label` | `dynamic` | — | Value used to initialize `Binding.label`. |
+| `id` | `dynamic` | — | Value used to initialize `Binding.id`. |
+| `anim` | `dynamic` | — | Value used to initialize `Binding.anim`. |
+| `key` | `dynamic` | — | Value used to initialize `Binding.default1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L117)
 
 - [mq3.client.ui_controls.Binding](Type-mq3-client-ui-controls-binding-845961953.md) — struct
 <a id="constant-constant-mq3-client-ui-controls-both-death1-const-both-death1-0-src-mq3-client-ui-controls-ml-1271978141"></a>
@@ -432,12 +438,14 @@ const C_WEAPONS = 2
 function cache(state)
 ```
 
+Updates `state.cached` during UI controls `cache`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L375)
 
 <a id="function-function-mq3-client-ui-controls-clamp-function-clamp-low-high-value-src-mq3-client-ui-controls-ml-945748625"></a>
 ### clamp
@@ -446,14 +454,16 @@ function cache(state)
 function clamp(low, high, value)
 ```
 
+Clamps `low` to the inclusive bounds `high` and `value` for UI controls.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `low` | `dynamic` | — |  |
-| `high` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `low` | `dynamic` | — | Lower bound used for comparison or clamping. |
+| `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
+| `value` | `dynamic` | — | Value tested by `value<low`, `value>high` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L188)
 
 <a id="function-function-mq3-client-ui-controls-clean-function-clean-value-src-mq3-client-ui-controls-ml-1858138315"></a>
 ### clean
@@ -462,12 +472,14 @@ function clamp(low, high, value)
 function clean(value)
 ```
 
+Evaluates UI controls `clean` and returns `result` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence read at `value[at]`, `value[at+1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L151)
 
 - [mq3.client.ui_controls.Config](Type-mq3-client-ui-controls-config-1154710542.md) — struct
 <a id="function-function-mq3-client-ui-controls-control-function-control-state-id-src-mq3-client-ui-controls-ml-268972004"></a>
@@ -477,13 +489,15 @@ function clean(value)
 function control(state, id)
 ```
 
+Evaluates UI controls `control` and returns `state.controls[id]`, `void` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.controls`. |
+| `id` | `dynamic` | — | Value used by `if id>=0 and id<len(state.controls) then return state.controls[id] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L192)
 
 - [mq3.client.ui_controls.Control](Type-mq3-client-ui-controls-control-571295749.md) — struct
 <a id="function-function-mq3-client-ui-controls-create-function-create-retailactive-src-mq3-client-ui-controls-ml-2069479601"></a>
@@ -493,12 +507,14 @@ function control(state, id)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_controls.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L134)
 
 <a id="function-function-mq3-client-ui-controls-cvar-function-cvar-state-name-src-mq3-client-ui-controls-ml-1387760952"></a>
 ### cvar
@@ -507,13 +523,15 @@ function create(retailActive)
 function cvar(state, name)
 ```
 
+Adapts `mq3.client.ui_controls.pairGet` to UI controls `cvar`, returning its result for `state.cvarValues, name, "0"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.cvarValues`. |
+| `name` | `dynamic` | — | Argument 2 of `mq3.client.ui_controls.pairGet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L165)
 
 <a id="function-function-mq3-client-ui-controls-defaultbindings-function-defaultbindings-src-mq3-client-ui-controls-ml-1620451344"></a>
 ### defaultBindings
@@ -522,8 +540,10 @@ function cvar(state, name)
 function defaultBindings()
 ```
 
+Builds the UI controls `defaultBindings` sequence from `[binding("+scores","show scores",0,ANIM_IDLE,9),binding("+button2","use item",1,ANIM_IDLE,13),binding("+speed","run / walk",2,ANIM_RUN,138),binding("+forward","walk forward",3,ANIM_WALK,132),bindin...`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L106)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L119)
 
 <a id="function-function-mq3-client-ui-controls-defaultcvar-function-defaultcvar-state-name-src-mq3-client-ui-controls-ml-1436391910"></a>
 ### defaultCvar
@@ -532,13 +552,15 @@ function defaultBindings()
 function defaultCvar(state, name)
 ```
 
+Adapts `mq3.client.ui_controls.pairGet` to UI controls `defaultCvar`, returning its result for `state.cvarDefaults, name, "0"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.cvarDefaults`. |
+| `name` | `dynamic` | — | Argument 2 of `mq3.client.ui_controls.pairGet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L174)
 
 - [mq3.client.ui_controls.DrawBinding](Type-mq3-client-ui-controls-drawbinding-1537378751.md) — struct
 <a id="function-function-mq3-client-ui-controls-drawkeybinding-function-drawkeybinding-state-id-selected-src-mq3-client-ui-controls-ml-460180985"></a>
@@ -552,12 +574,12 @@ Controls_DrawKeyBinding / Controls_StatusBar / Controls_DrawPlayer
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `selected` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.waitingForKey`. |
+| `id` | `dynamic` | — | Value used by `item=actionBinding(state,id)`. |
+| `selected` | `dynamic` | — | Value used by `if item==void then return DrawBinding("","???",selected,true,state.waitingForKey) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L267)
 
 <a id="function-function-mq3-client-ui-controls-drawplayer-function-drawplayer-state-model-realtime-src-mq3-client-ui-controls-ml-874739111"></a>
 ### drawPlayer
@@ -566,14 +588,16 @@ Controls_DrawKeyBinding / Controls_StatusBar / Controls_DrawPlayer
 function drawPlayer(state, model, realtime)
 ```
 
+Updates `state.playerModel` during UI controls `drawPlayer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.playerModel`. |
+| `model` | `dynamic` | — | Value assigned to `state.playerModel`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L277)
 
 <a id="function-function-mq3-client-ui-controls-emit-function-emit-state-kind-name-text-value-number-src-mq3-client-ui-controls-ml-691546909"></a>
 ### emit
@@ -582,17 +606,19 @@ function drawPlayer(state, model, realtime)
 function emit(state, kind, name, text, value, number)
 ```
 
+Appends a UI controls action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.actions`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI controls resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI controls path. |
+| `value` | `dynamic` | — | Value used by `item=Action("ui-controls",kind,name,text,value,number,not state.retailActive)`. |
+| `number` | `dynamic` | — | Value used by `item=Action("ui-controls",kind,name,text,value,number,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L144)
 
 <a id="function-function-mq3-client-ui-controls-getconfig-function-getconfig-state-src-mq3-client-ui-controls-ml-865103517"></a>
 ### getConfig
@@ -601,12 +627,14 @@ function emit(state, kind, name, text, value, number)
 function getConfig(state)
 ```
 
+Calls `mq3.client.ui_controls.getKeyAssignment`, `mq3.client.ui_controls.setSetting`, `mq3.client.ui_controls.getCvarValue` and additional helpers from UI controls `getConfig`. The final path returns `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.bindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L285)
 
 <a id="function-function-mq3-client-ui-controls-getcvardefault-function-getcvardefault-state-name-src-mq3-client-ui-controls-ml-1168677040"></a>
 ### getCvarDefault
@@ -615,13 +643,15 @@ function getConfig(state)
 function getCvarDefault(state, name)
 ```
 
+Evaluates UI controls `getCvarDefault` and returns `item.defaultValue`, `0.0` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.configs`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI controls resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L206)
 
 <a id="function-function-mq3-client-ui-controls-getcvarvalue-function-getcvarvalue-state-name-src-mq3-client-ui-controls-ml-1578045352"></a>
 ### getCvarValue
@@ -630,13 +660,15 @@ function getCvarDefault(state, name)
 function getCvarValue(state, name)
 ```
 
+Evaluates UI controls `getCvarValue` and returns `item.value`, `0.0` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.configs`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI controls resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L210)
 
 <a id="function-function-mq3-client-ui-controls-getkeyassignment-function-getkeyassignment-state-command-src-mq3-client-ui-controls-ml-731688608"></a>
 ### getKeyAssignment
@@ -649,11 +681,11 @@ Controls_GetKeyAssignment / Controls_GetConfig
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.keyState`. |
+| `command` | `dynamic` | — | Value used by `if value!="" and same(value,command) then result[count]=key`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L282)
 
 <a id="function-function-mq3-client-ui-controls-groupfor-function-groupfor-id-src-mq3-client-ui-controls-ml-2001127413"></a>
 ### groupFor
@@ -662,12 +694,14 @@ Controls_GetKeyAssignment / Controls_GetConfig
 function groupFor(id)
 ```
 
+Evaluates UI controls `groupFor` and returns `C_MOVEMENT`, `C_LOOKING`, `C_WEAPONS` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `id` | `dynamic` | — |  |
+| `id` | `dynamic` | — | Value used by `if id==ID_ALWAYSRUN or (id>=2 and id<=11) then return C_MOVEMENT end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L124)
 
 <a id="function-function-mq3-client-ui-controls-groupids-function-groupids-section-src-mq3-client-ui-controls-ml-27572651"></a>
 ### groupIds
@@ -680,10 +714,10 @@ Controls_Update
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `section` | `dynamic` | — |  |
+| `section` | `dynamic` | — | Value used by `if section==C_MOVEMENT then return [36,2,3,4,5,6,7,8,9,10,11] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L249)
 
 <a id="constant-constant-mq3-client-ui-controls-id-alwaysrun-const-id-alwaysrun-36-src-mq3-client-ui-controls-ml-1685675542"></a>
 ### ID_ALWAYSRUN
@@ -856,10 +890,10 @@ Controls_InitCvars / Controls_GetCvarDefault / Controls_GetCvarValue
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.configs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L200)
 
 <a id="function-function-mq3-client-ui-controls-initmodel-function-initmodel-state-src-mq3-client-ui-controls-ml-857081075"></a>
 ### initModel
@@ -872,10 +906,10 @@ Controls_InitModel / Controls_InitWeapons / Controls_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.playerModel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L368)
 
 <a id="function-function-mq3-client-ui-controls-initweapons-function-initweapons-state-models-src-mq3-client-ui-controls-ml-1067609117"></a>
 ### initWeapons
@@ -884,13 +918,15 @@ Controls_InitModel / Controls_InitWeapons / Controls_MenuInit
 function initWeapons(state, models)
 ```
 
+Updates `state.weaponModels` during UI controls `initWeapons`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `models` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.weaponModels`. |
+| `models` | `dynamic` | — | Value used by `for each model in models state.weaponModels=state.weaponModels+[model]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L372)
 
 <a id="constant-constant-mq3-client-ui-controls-k-backspace-const-k-backspace-127-src-mq3-client-ui-controls-ml-1510407697"></a>
 ### K_BACKSPACE
@@ -1019,8 +1055,10 @@ const LEGS_WALK = 14
 function makeControls()
 ```
 
+Calls `mq3.client.ui_controls.Control`, `mq3.client.ui_controls.groupFor` from UI controls `makeControls`. The final path returns `result`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L115)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L131)
 
 <a id="function-function-mq3-client-ui-controls-menuevent-function-menuevent-state-id-event-src-mq3-client-ui-controls-ml-473595728"></a>
 ### menuEvent
@@ -1029,14 +1067,16 @@ function makeControls()
 function menuEvent(state, id, event)
 ```
 
+Updates `state.section`, `state.menuEvents`, `state.changesMade` during UI controls `menuEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.section`, `state.menuEvents`, `state.changesMade`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_MOVEMENT then state.section=C_MOVEMENT`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L248)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L355)
 
 <a id="function-function-mq3-client-ui-controls-menuinit-function-menuinit-state-weaponmodels-src-mq3-client-ui-controls-ml-1784124899"></a>
 ### menuInit
@@ -1045,13 +1085,15 @@ function menuEvent(state, id, event)
 function menuInit(state, weaponModels)
 ```
 
+Updates `state.bindings`, `state.controls`, `state.section`, `state.waitingForKey` and additional values during UI controls `menuInit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponModels` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.bindings`, `state.controls`, `state.section`, `state.waitingForKey` and additional values. |
+| `weaponModels` | `dynamic` | — | Value used by `initWeapons(state,weaponModels)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L379)
 
 <a id="function-function-mq3-client-ui-controls-menukey-function-menukey-state-key-src-mq3-client-ui-controls-ml-1644409406"></a>
 ### menuKey
@@ -1064,11 +1106,11 @@ Controls_MenuKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.waitingForKey`, `state.changesMade`. |
+| `key` | `dynamic` | — | Value assigned to `item.bind1`, `item.bind2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L310)
 
 <a id="function-function-mq3-client-ui-controls-pairget-function-pairget-pairs-name-fallback-src-mq3-client-ui-controls-ml-1459365682"></a>
 ### pairGet
@@ -1077,14 +1119,16 @@ Controls_MenuKey
 function pairGet(pairs, name, fallback)
 ```
 
+Evaluates UI controls `pairGet` and returns `pair[1]`, `fallback` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pairs` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `fallback` | `dynamic` | — |  |
+| `pairs` | `dynamic` | — | Value used by `for each pair in pairs if pair[0]==name then return pair[1] end if end for`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI controls resource. |
+| `fallback` | `dynamic` | — | Value used by `return fallback`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L156)
 
 <a id="function-function-mq3-client-ui-controls-pairset-function-pairset-pairs-name-value-src-mq3-client-ui-controls-ml-1366110595"></a>
 ### pairSet
@@ -1093,14 +1137,16 @@ function pairGet(pairs, name, fallback)
 function pairSet(pairs, name, value)
 ```
 
+Evaluates UI controls `pairSet` and returns `result+[[name,value]]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pairs` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `pairs` | `dynamic` | — | Value used by `for each pair in pairs if pair[0]!=name then result=result+[pair] end if end for`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI controls resource. |
+| `value` | `dynamic` | — | Value used by `return result+[[name,value]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L161)
 
 <a id="constant-constant-mq3-client-ui-controls-qm-activated-const-qm-activated-3-src-mq3-client-ui-controls-ml-1826730742"></a>
 ### QM_ACTIVATED
@@ -1143,11 +1189,11 @@ Reset/default confirmation and menu callbacks.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `result` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.changesMade`. |
+| `result` | `dynamic` | — | Value used by `if not result then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L347)
 
 <a id="function-function-mq3-client-ui-controls-resetdefaultsdraw-function-resetdefaultsdraw-state-src-mq3-client-ui-controls-ml-986159943"></a>
 ### resetDefaultsDraw
@@ -1156,12 +1202,14 @@ Reset/default confirmation and menu callbacks.
 function resetDefaultsDraw(state)
 ```
 
+Calls `mq3.client.ui_controls.emit` from UI controls `resetDefaultsDraw`. The final path returns `lines`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI controls state passed to the helper calls in `resetDefaultsDraw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L350)
 
 <a id="function-function-mq3-client-ui-controls-same-function-same-a-b-src-mq3-client-ui-controls-ml-513879911"></a>
 ### same
@@ -1170,13 +1218,15 @@ function resetDefaultsDraw(state)
 function same(a, b)
 ```
 
+Compares two UI controls names using ASCII case-insensitive equality.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Argument 1 of `std.string.equalsIgnoreCaseAscii`. |
+| `b` | `dynamic` | — | Argument 2 of `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L148)
 
 <a id="constant-constant-mq3-client-ui-controls-save-cancel-const-save-cancel-3-src-mq3-client-ui-controls-ml-1491988544"></a>
 ### SAVE_CANCEL
@@ -1229,10 +1279,10 @@ Controls_SetConfig / Controls_SetDefaults
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.bindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L297)
 
 <a id="function-function-mq3-client-ui-controls-setcvar-function-setcvar-state-name-value-src-mq3-client-ui-controls-ml-1644879759"></a>
 ### setCvar
@@ -1241,14 +1291,16 @@ Controls_SetConfig / Controls_SetDefaults
 function setCvar(state, name, value)
 ```
 
+Updates `state.cvarValues` during UI controls `setCvar`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.cvarValues`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI controls resource. |
+| `value` | `dynamic` | — | Value used by `state.cvarValues=pairSet(state.cvarValues,name,str(value))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L170)
 
 <a id="function-function-mq3-client-ui-controls-setdefaults-function-setdefaults-state-src-mq3-client-ui-controls-ml-1046820797"></a>
 ### setDefaults
@@ -1257,12 +1309,14 @@ function setCvar(state, name, value)
 function setDefaults(state)
 ```
 
+Calls `mq3.client.ui_controls.setSetting`, `mq3.client.ui_controls.getCvarDefault` from UI controls `setDefaults`. The final path returns `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.bindings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L303)
 
 <a id="function-function-mq3-client-ui-controls-setkey-function-setkey-state-key-command-src-mq3-client-ui-controls-ml-584065069"></a>
 ### setKey
@@ -1271,14 +1325,16 @@ function setDefaults(state)
 function setKey(state, key, command)
 ```
 
+Calls `mq3.vm.cgame_key_traps.setBinding`, `mq3.client.ui_controls.emit`, `mq3.vm.cgame_key_traps.keynumToString` from UI controls `setKey`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.keyState`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI controls entry. |
+| `command` | `dynamic` | — | Value used by `if key>=0 and key<256 then keys.setBinding(state.keyState,key,command) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L293)
 
 <a id="function-function-mq3-client-ui-controls-setsetting-function-setsetting-state-name-value-src-mq3-client-ui-controls-ml-1317119595"></a>
 ### setSetting
@@ -1287,14 +1343,16 @@ function setKey(state, key, command)
 function setSetting(state, name, value)
 ```
 
+Updates `state.settings` during UI controls `setSetting`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.settings`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI controls resource. |
+| `value` | `dynamic` | — | Value used by `state.settings=pairSet(state.settings,name,value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L183)
 
 <a id="function-function-mq3-client-ui-controls-setting-function-setting-state-name-src-mq3-client-ui-controls-ml-1765121348"></a>
 ### setting
@@ -1303,13 +1361,15 @@ function setSetting(state, name, value)
 function setting(state, name)
 ```
 
+Adapts `mq3.client.ui_controls.pairGet` to UI controls `setting`, returning its result for `state.settings, name, 0.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.settings`. |
+| `name` | `dynamic` | — | Argument 2 of `mq3.client.ui_controls.pairGet`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L178)
 
 - [mq3.client.ui_controls.State](Type-mq3-client-ui-controls-state-1669080757.md) — struct
 <a id="function-function-mq3-client-ui-controls-statusbar-function-statusbar-state-src-mq3-client-ui-controls-ml-656597527"></a>
@@ -1319,12 +1379,14 @@ function setting(state, name)
 function statusBar(state)
 ```
 
+Calls `mq3.client.ui_controls.emit` from UI controls `statusBar`. The final path returns `"Use Arrow Keys or CLICK to change"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI controls state passed to the helper calls in `statusBar`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L272)
 
 <a id="constant-constant-mq3-client-ui-controls-torso-attack-const-torso-attack-7-src-mq3-client-ui-controls-ml-365938690"></a>
 ### TORSO_ATTACK
@@ -1363,13 +1425,15 @@ const TORSO_STAND = 11
 function uiControlsMenu(state, weaponModels)
 ```
 
+Updates `state.pushed`, `state.menuEvents` during UI controls `uiControlsMenu`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weaponModels` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.pushed`, `state.menuEvents`. |
+| `weaponModels` | `dynamic` | — | Value used by `menuInit(state,weaponModels)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L385)
 
 <a id="function-function-mq3-client-ui-controls-update-function-update-state-src-mq3-client-ui-controls-ml-1377515401"></a>
 ### update
@@ -1378,12 +1442,14 @@ function uiControlsMenu(state, weaponModels)
 function update(state)
 ```
 
+Calls `mq3.client.ui_controls.groupIds`, `mq3.client.ui_controls.control` from UI controls `update`. The final path returns `len(active)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.controls`, `state.section`, `state.waitingForKey`, `state.cursorId`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L257)
 
 <a id="function-function-mq3-client-ui-controls-updatemodel-function-updatemodel-state-anim-src-mq3-client-ui-controls-ml-1253399758"></a>
 ### updateModel
@@ -1396,11 +1462,11 @@ Controls_UpdateModel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `anim` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI controls record/storage; this routine assigns `state.playerViewangles`, `state.playerMoveangles`, `state.playerLegs`, `state.playerTorso` and additional values. |
+| `anim` | `dynamic` | — | Value used by `switch anim`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L215)
 
 <a id="constant-constant-mq3-client-ui-controls-wp-bfg-const-wp-bfg-9-src-mq3-client-ui-controls-ml-1514592122"></a>
 ### WP_BFG

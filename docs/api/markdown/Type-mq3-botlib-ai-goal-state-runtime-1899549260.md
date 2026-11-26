@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+`Runtime` record for ai goal state, containing `pools`, `context`, `timeFn`, `goalNameFn` and `logFn` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-goalnamefn-goalnamefn-src-mq3-botlib-ai-goal-state-ml-798793085"></a>
 ### goalNameFn
@@ -32,7 +34,7 @@ goalNameFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-logfn-logfn-src-mq3-botlib-ai-goal-state-ml-1022651013"></a>
 ### logFn
@@ -42,7 +44,7 @@ logFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-pools-pools-src-mq3-botlib-ai-goal-state-ml-1402175301"></a>
 ### pools
@@ -52,7 +54,7 @@ pools
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-printfn-printfn-src-mq3-botlib-ai-goal-state-ml-813334221"></a>
 ### printFn
@@ -62,7 +64,7 @@ printFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-goal-state-runtime-timefn-timefn-src-mq3-botlib-ai-goal-state-ml-1308526995"></a>
 ### timeFn
@@ -72,4 +74,4 @@ timeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state.ml#L23)

@@ -23,11 +23,11 @@ The stale acknowledgement repair used before snapshot construction in SV_Execute
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
-| `sequence` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Record exposing `reliableAcknowledge`, `reliableSequence`. Updated in place: `reliableAcknowledge`. |
+| `sequence` | `dynamic` | — | Sequence operand used by `acknowledge`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L58)
 
 <a id="function-function-mq3-server-reliable-commands-add-function-add-client-text-src-mq3-server-reliable-commands-ml-1669790468"></a>
 ### add
@@ -40,11 +40,11 @@ Exact reliable ring insertion rule from SV_AddServerCommand. A false result repr
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Record exposing `reliableSequence`, `reliableAcknowledge`, `reliableCommands`. Updated in place: `reliableSequence`. |
+| `text` | `dynamic` | — | Text operand used by `add`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L46)
 
 <a id="function-function-mq3-server-reliable-commands-commandat-function-commandat-client-sequence-src-mq3-server-reliable-commands-ml-74566696"></a>
 ### commandAt
@@ -53,13 +53,15 @@ Exact reliable ring insertion rule from SV_AddServerCommand. A false result repr
 function commandAt(client, sequence)
 ```
 
+Compute command at in server.reliable_commands; the normal completion returns `client.reliableCommands[(sequence & (MAX_RELIABLE_COMMANDS - 1))]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
-| `sequence` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Record exposing `reliableCommands`. |
+| `sequence` | `dynamic` | — | Sequence used in `(sequence & (MAX_RELIABLE_COMMANDS - 1))` and `client.reliableCommands[(sequence & (MAX_RELIABLE_COMMANDS - 1))]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L37)
 
 <a id="function-function-mq3-server-reliable-commands-create-function-create-src-mq3-server-reliable-commands-ml-1179031262"></a>
 ### create
@@ -68,8 +70,10 @@ function commandAt(client, sequence)
 function create()
 ```
 
+Create `mq3.server.reliable_commands.ReliableClient` with reliableAcknowledge=0; reliableSequence=0; reliableSent=0; reliableCommands=array(MAX_RELIABLE_COMMANDS, "").
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L19)
 
 <a id="constant-constant-mq3-server-reliable-commands-max-reliable-commands-const-max-reliable-commands-64-src-mq3-server-reliable-commands-ml-1176494295"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -88,12 +92,14 @@ const MAX_RELIABLE_COMMANDS = 64
 function pending(client)
 ```
 
+Compute pending in server.reliable_commands; the normal completion returns `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Record exposing `reliableSequence`, `reliableAcknowledge`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L70)
 
 - [mq3.server.reliable_commands.ReliableClient](Type-mq3-server-reliable-commands-reliableclient-823202325.md) — struct
 <a id="function-function-mq3-server-reliable-commands-requirering-function-requirering-client-src-mq3-server-reliable-commands-ml-106160385"></a>
@@ -103,12 +109,16 @@ function pending(client)
 function requireRing(client)
 ```
 
+Compute require ring in server.reliable_commands.
+
+Validation failures include `reliable commands: invalid command ring`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Record exposing `reliableCommands`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L27)
 
 <a id="constant-constant-mq3-server-reliable-commands-svc-server-command-const-svc-server-command-5-src-mq3-server-reliable-commands-ml-1592746956"></a>
 ### SVC_SERVER_COMMAND
@@ -131,8 +141,8 @@ Exact SV_UpdateServerCommandsToClient loop. Each unacknowledged command is embed
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Record exposing `reliableAcknowledge`, `reliableSequence`. Updated in place: `reliableSent`. |
+| `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.writeByte`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L81)

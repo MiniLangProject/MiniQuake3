@@ -9,8 +9,10 @@
 struct Point
 ```
 
+Stores base Quake III match display point record, including `x`, `y`, `depth`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ depth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)
 
 <a id="field-field-mq3-client-baseq3-match-display-point-x-x-src-mq3-client-baseq3-match-display-ml-1473081019"></a>
 ### x
@@ -32,7 +34,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)
 
 <a id="field-field-mq3-client-baseq3-match-display-point-y-y-src-mq3-client-baseq3-match-display-ml-1709245695"></a>
 ### y
@@ -42,4 +44,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_match_display.ml#L33)

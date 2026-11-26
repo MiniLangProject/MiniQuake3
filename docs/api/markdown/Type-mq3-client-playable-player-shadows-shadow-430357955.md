@@ -9,8 +9,10 @@
 struct Shadow
 ```
 
+Stores playable player shadows shadow record, including `origin`, `normal`, `orientation`, `alpha`, `radius`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ alpha
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L23)
 
 <a id="field-field-mq3-client-playable-player-shadows-shadow-normal-normal-src-mq3-client-playable-player-shadows-ml-35304383"></a>
 ### normal
@@ -32,7 +34,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L23)
 
 <a id="field-field-mq3-client-playable-player-shadows-shadow-orientation-orientation-src-mq3-client-playable-player-shadows-ml-359157685"></a>
 ### orientation
@@ -42,7 +44,7 @@ orientation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L23)
 
 <a id="field-field-mq3-client-playable-player-shadows-shadow-origin-origin-src-mq3-client-playable-player-shadows-ml-1240572769"></a>
 ### origin
@@ -52,7 +54,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L23)
 
 <a id="field-field-mq3-client-playable-player-shadows-shadow-radius-radius-src-mq3-client-playable-player-shadows-ml-1613665641"></a>
 ### radius
@@ -62,4 +64,4 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L23)

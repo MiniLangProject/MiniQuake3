@@ -9,8 +9,10 @@
 struct Snapshot
 ```
 
+Stores client game snapshot snapshot metadata and contents, including `number`, `serverTime`, `snapFlags`, `serverCommandSequence`, `playerState`, `entities`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ entities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-number-number-src-mq3-client-cgame-snapshot-ml-2097320217"></a>
 ### number
@@ -32,7 +34,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-playerstate-playerstate-src-mq3-client-cgame-snapshot-ml-967150519"></a>
 ### playerState
@@ -42,7 +44,7 @@ playerState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-servercommandsequence-servercommandsequence-src-mq3-client-cgame-snapshot-ml-208651743"></a>
 ### serverCommandSequence
@@ -52,7 +54,7 @@ serverCommandSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-servertime-servertime-src-mq3-client-cgame-snapshot-ml-1723063307"></a>
 ### serverTime
@@ -62,7 +64,7 @@ serverTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)
 
 <a id="field-field-mq3-client-cgame-snapshot-snapshot-snapflags-snapflags-src-mq3-client-cgame-snapshot-ml-2024108955"></a>
 ### snapFlags
@@ -72,4 +74,4 @@ snapFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L14)

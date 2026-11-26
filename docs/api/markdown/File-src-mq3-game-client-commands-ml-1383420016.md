@@ -27,11 +27,13 @@ Reachable from entry: **no**
 function command(level, clientNum, argv)
 ```
 
+Apply `mq3.game.command_args.argument`, `mq3.game.chat_commands.sayCommand` and `mq3.game.chat_commands.tellCommand` while evaluating `command`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `entities` and `intermissiontime`. |
+| `clientNum` | `dynamic` | — | Client slot number. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_commands.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_commands.ml#L19)

@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores QVM frame input state, including `input`, `config`, `oldFrameTime`, `lastCommandTime`, `sequence`, `produced` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ config
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 <a id="field-field-mq3-client-qvm-frame-input-state-epochs-epochs-src-mq3-client-qvm-frame-input-ml-675154540"></a>
 ### epochs
@@ -32,7 +34,7 @@ epochs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 <a id="field-field-mq3-client-qvm-frame-input-state-input-input-src-mq3-client-qvm-frame-input-ml-1848847504"></a>
 ### input
@@ -42,7 +44,7 @@ input
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 <a id="field-field-mq3-client-qvm-frame-input-state-lastcommandtime-lastcommandtime-src-mq3-client-qvm-frame-input-ml-727378356"></a>
 ### lastCommandTime
@@ -52,7 +54,7 @@ lastCommandTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 <a id="field-field-mq3-client-qvm-frame-input-state-oldframetime-oldframetime-src-mq3-client-qvm-frame-input-ml-222986790"></a>
 ### oldFrameTime
@@ -62,7 +64,7 @@ oldFrameTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 <a id="field-field-mq3-client-qvm-frame-input-state-produced-produced-src-mq3-client-qvm-frame-input-ml-1392993084"></a>
 ### produced
@@ -72,7 +74,7 @@ produced
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 <a id="field-field-mq3-client-qvm-frame-input-state-sequence-sequence-src-mq3-client-qvm-frame-input-ml-1610862538"></a>
 ### sequence
@@ -82,7 +84,7 @@ sequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
 
 <a id="field-field-mq3-client-qvm-frame-input-state-variables-variables-src-mq3-client-qvm-frame-input-ml-99172800"></a>
 ### variables
@@ -92,4 +94,4 @@ variables
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)

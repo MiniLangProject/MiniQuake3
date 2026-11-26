@@ -15,14 +15,16 @@ Reachable from entry: **yes**
 function beginMessage(state, team, playerNum)
 ```
 
+Updates `state.chatTeam`, `state.chatPlayerNum`, `state.chat.widthInChars`, `state.catcher` during console input `beginMessage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `playerNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable console input record/storage; this routine assigns `state.chatTeam`, `state.chatPlayerNum`, `state.chat.widthInChars`, `state.catcher`. |
+| `team` | `dynamic` | — | Value assigned to `state.chatTeam`. |
+| `playerNum` | `dynamic` | — | Value assigned to `state.chatPlayerNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L64)
 
 <a id="constant-constant-mq3-client-console-input-ca-active-const-ca-active-8-src-mq3-client-console-input-ml-1554167611"></a>
 ### CA_ACTIVE
@@ -41,13 +43,15 @@ const CA_ACTIVE = 8
 function caughtChar(state, ch)
 ```
 
+Calls `mq3.client.console_input.charEvent` from console input `caughtChar`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ch` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.catcher`, `state.chat`, `state.console`. |
+| `ch` | `dynamic` | — | Value used by `if (state.catcher&KEYCATCH_MESSAGE)!=0 then return charEvent(state,state.chat,ch) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L214)
 
 <a id="function-function-mq3-client-console-input-caughtkey-function-caughtkey-state-key-shift-ctrl-src-mq3-client-console-input-ml-941697293"></a>
 ### caughtKey
@@ -56,15 +60,17 @@ function caughtChar(state, ch)
 function caughtKey(state, key, shift, ctrl)
 ```
 
+Calls `mq3.client.console_input.messageKey`, `mq3.client.console_input.consoleKey` from console input `caughtKey`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `shift` | `dynamic` | — |  |
-| `ctrl` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.catcher`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding console input entry. |
+| `shift` | `dynamic` | — | Value used by `if (state.catcher&KEYCATCH_MESSAGE)!=0 then return messageKey(state,key,shift,ctrl) end if`. |
+| `ctrl` | `dynamic` | — | Value used by `if (state.catcher&KEYCATCH_MESSAGE)!=0 then return messageKey(state,key,shift,ctrl) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L206)
 
 <a id="function-function-mq3-client-console-input-charevent-function-charevent-state-edit-ch-src-mq3-client-console-input-ml-1084152434"></a>
 ### charEvent
@@ -73,14 +79,16 @@ function caughtKey(state, key, shift, ctrl)
 function charEvent(state, edit, ch)
 ```
 
+Updates `edit.text`, `edit.cursor`, `edit.scroll` during console input `charEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `edit` | `dynamic` | — |  |
-| `ch` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared console input state passed to the helper calls in `charEvent`. |
+| `edit` | `dynamic` | — | Mutable console input record/storage; this routine assigns `edit.text`, `edit.cursor`, `edit.scroll`. |
+| `ch` | `dynamic` | — | Value used by `if ch==22 then return paste(state,edit) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L108)
 
 <a id="function-function-mq3-client-console-input-clear-function-clear-value-src-mq3-client-console-input-ml-398257161"></a>
 ### clear
@@ -89,12 +97,14 @@ function charEvent(state, edit, ch)
 function clear(value)
 ```
 
+Updates `value.cursor`, `value.scroll`, `value.text` during console input `clear`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable console input record/storage; this routine assigns `value.cursor`, `value.scroll`, `value.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L75)
 
 <a id="function-function-mq3-client-console-input-clonefield-function-clonefield-value-src-mq3-client-console-input-ml-854431735"></a>
 ### cloneField
@@ -103,12 +113,14 @@ function clear(value)
 function cloneField(value)
 ```
 
+Creates a `mq3.client.console_input.Field` record.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.cursor`, `value.scroll`, `value.widthInChars`, `value.text`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L72)
 
 <a id="constant-constant-mq3-client-console-input-command-history-const-command-history-32-src-mq3-client-console-input-ml-1083320052"></a>
 ### COMMAND_HISTORY
@@ -127,15 +139,17 @@ const COMMAND_HISTORY = 32
 function consoleKey(state, key, shift, ctrl)
 ```
 
+Updates `state.console.text`, `state.console.cursor`, `state.history[state.nextHistoryLine%COMMAND_HISTORY]`, `state.nextHistoryLine` and additional values during console input `consoleKey`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `shift` | `dynamic` | — |  |
-| `ctrl` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable console input record/storage; this routine assigns `state.console.text`, `state.console.cursor`, `state.history[state.nextHistoryLine%COMMAND_HISTORY]`, `state.nextHistoryLine` and additional values. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding console input entry. |
+| `shift` | `dynamic` | — | Value used by `if (key==K_MWHEELUP and shift) or key==K_UPARROW or key==K_KP_UPARROW or (lowerKey(key)==112 and ctrl) then`. |
+| `ctrl` | `dynamic` | — | Value used by `if key==108 and ctrl then emitCommand(state,"clear\\n")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L159)
 
 <a id="function-function-mq3-client-console-input-create-function-create-width-host-src-mq3-client-console-input-ml-2091676498"></a>
 ### create
@@ -144,13 +158,15 @@ function consoleKey(state, key, shift, ctrl)
 function create(width, host)
 ```
 
+Calls `mq3.client.console_input.field`, `mq3.client.console_input.State` from console input `create`. The final path returns `State(field(width),field(30),history,0,0,false,0,0,false,-1,host,void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `width` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `width` | `dynamic` | — | Width in the coordinate space used by `create`. |
+| `host` | `dynamic` | — | host record passed to the console input helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L50)
 
 <a id="function-function-mq3-client-console-input-emitcommand-function-emitcommand-state-text-src-mq3-client-console-input-ml-1900380442"></a>
 ### emitCommand
@@ -159,13 +175,15 @@ function create(width, host)
 function emitCommand(state, text)
 ```
 
+Calls `state.services.commandFn` from console input `emitCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services`, `state.services.commandFn`, `state.services.context`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emitCommand` in the console input path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L140)
 
 <a id="function-function-mq3-client-console-input-emitprint-function-emitprint-state-text-src-mq3-client-console-input-ml-2143769290"></a>
 ### emitPrint
@@ -174,13 +192,15 @@ function emitCommand(state, text)
 function emitPrint(state, text)
 ```
 
+Calls `state.services.printFn` from console input `emitPrint`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services`, `state.services.printFn`, `state.services.context`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emitPrint` in the console input path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L148)
 
 <a id="function-function-mq3-client-console-input-emitreliable-function-emitreliable-state-text-src-mq3-client-console-input-ml-184139522"></a>
 ### emitReliable
@@ -189,13 +209,15 @@ function emitPrint(state, text)
 function emitReliable(state, text)
 ```
 
+Calls `state.services.reliableFn` from console input `emitReliable`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services`, `state.services.reliableFn`, `state.services.context`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emitReliable` in the console input path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L144)
 
 <a id="function-function-mq3-client-console-input-field-function-field-width-src-mq3-client-console-input-ml-1613142204"></a>
 ### field
@@ -204,12 +226,14 @@ function emitReliable(state, text)
 function field(width)
 ```
 
+Creates a `mq3.client.console_input.Field` record. Assigns `widthInChars` from `width`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `width` | `dynamic` | — |  |
+| `width` | `dynamic` | — | Value used to initialize `Field.widthInChars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L43)
 
 - [mq3.client.console_input.Field](Type-mq3-client-console-input-field-1081259211.md) — struct
 <a id="function-function-mq3-client-console-input-fieldkeydown-function-fieldkeydown-state-edit-key-shift-ctrl-src-mq3-client-console-input-ml-664632119"></a>
@@ -219,16 +243,18 @@ function field(width)
 function fieldKeyDown(state, edit, key, shift, ctrl)
 ```
 
+Updates `edit.text`, `edit.cursor`, `edit.scroll`, `state.overstrike` during console input `fieldKeyDown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `edit` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `shift` | `dynamic` | — |  |
-| `ctrl` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable console input record/storage; this routine assigns `state.overstrike`. |
+| `edit` | `dynamic` | — | Mutable console input record/storage; this routine assigns `edit.text`, `edit.cursor`, `edit.scroll`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding console input entry. |
+| `shift` | `dynamic` | — | Value used by `if (key==K_INS or key==K_KP_INS) and shift then return paste(state,edit) end if`. |
+| `ctrl` | `dynamic` | — | Value used by `if key==K_HOME or (lowerKey(key)==97 and ctrl) then edit.cursor=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L126)
 
 <a id="function-function-mq3-client-console-input-insertbyte-function-insertbyte-state-edit-ch-src-mq3-client-console-input-ml-1475128858"></a>
 ### insertByte
@@ -237,14 +263,16 @@ function fieldKeyDown(state, edit, key, shift, ctrl)
 function insertByte(state, edit, ch)
 ```
 
+Updates `edit.text`, `edit.cursor`, `edit.scroll` during console input `insertByte`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `edit` | `dynamic` | — |  |
-| `ch` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.overstrike`. |
+| `edit` | `dynamic` | — | Mutable console input record/storage; this routine assigns `edit.text`, `edit.cursor`, `edit.scroll`. |
+| `ch` | `dynamic` | — | Value used by `if ch<32 then return false end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L83)
 
 <a id="constant-constant-mq3-client-console-input-k-backspace-const-k-backspace-127-src-mq3-client-console-input-ml-765719691"></a>
 ### K_BACKSPACE
@@ -493,12 +521,14 @@ const KEYCATCH_MESSAGE = 4
 function lowerKey(key)
 ```
 
+Evaluates console input `lowerKey` and returns `key+32`, `key` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding console input entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L78)
 
 <a id="constant-constant-mq3-client-console-input-max-edit-line-const-max-edit-line-256-src-mq3-client-console-input-ml-1836652226"></a>
 ### MAX_EDIT_LINE
@@ -517,15 +547,17 @@ const MAX_EDIT_LINE = 256
 function messageKey(state, key, shift, ctrl)
 ```
 
+Updates `state.catcher` during console input `messageKey`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `shift` | `dynamic` | — |  |
-| `ctrl` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable console input record/storage; this routine assigns `state.catcher`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding console input entry. |
+| `shift` | `dynamic` | — | Value used by `return fieldKeyDown(state,state.chat,key,shift,ctrl)`. |
+| `ctrl` | `dynamic` | — | Value used by `return fieldKeyDown(state,state.chat,key,shift,ctrl)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L190)
 
 <a id="function-function-mq3-client-console-input-paste-function-paste-state-edit-src-mq3-client-console-input-ml-639892353"></a>
 ### paste
@@ -534,13 +566,15 @@ function messageKey(state, key, shift, ctrl)
 function paste(state, edit)
 ```
 
+Calls `state.services.clipboardFn`, `mq3.client.console_input.insertByte` from console input `paste`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `edit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services`, `state.services.clipboardFn`, `state.services.context`. |
+| `edit` | `dynamic` | — | Value used by `for each ch in bytes(value) insertByte(state,edit,ch) end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L99)
 
 <a id="function-function-mq3-client-console-input-scroll-function-scroll-state-operation-count-src-mq3-client-console-input-ml-561223759"></a>
 ### scroll
@@ -549,14 +583,16 @@ function paste(state, edit)
 function scroll(state, operation, count)
 ```
 
+Calls `state.services.scrollFn` from console input `scroll`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `operation` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services`, `state.services.scrollFn`, `state.services.context`. |
+| `operation` | `dynamic` | — | Value used by `if state.services!=void and state.services.scrollFn!=void then state.services.scrollFn(state.services.context,operation,count) end if`. |
+| `count` | `dynamic` | — | Value used by `if state.services!=void and state.services.scrollFn!=void then state.services.scrollFn(state.services.context,operation,count) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L153)
 
 <a id="function-function-mq3-client-console-input-services-function-services-context-src-mq3-client-console-input-ml-761153617"></a>
 ### services
@@ -565,12 +601,14 @@ function scroll(state, operation, count)
 function services(context)
 ```
 
+Creates a `mq3.client.console_input.Services` record. Assigns `context` from `context`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Value used to initialize `Services.context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L46)
 
 - [mq3.client.console_input.Services](Type-mq3-client-console-input-services-253625625.md) — struct
 - [mq3.client.console_input.State](Type-mq3-client-console-input-state-1098085138.md) — struct
@@ -581,9 +619,11 @@ function services(context)
 function toggleConsole(state)
 ```
 
+Updates `state.catcher` during console input `toggleConsole`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable console input record/storage; this routine assigns `state.catcher`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L56)

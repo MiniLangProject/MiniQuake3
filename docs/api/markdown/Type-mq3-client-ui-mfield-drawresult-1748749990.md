@@ -9,8 +9,10 @@
 struct DrawResult
 ```
 
+Stores UI mfield draw result record, including `text`, `x`, `y`, `style`, `cursorX`, `cursorChar` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 <a id="field-field-mq3-client-ui-mfield-drawresult-charwidth-charwidth-src-mq3-client-ui-mfield-ml-444642586"></a>
 ### charWidth
@@ -32,7 +34,7 @@ charWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 <a id="field-field-mq3-client-ui-mfield-drawresult-cursorchar-cursorchar-src-mq3-client-ui-mfield-ml-147937222"></a>
 ### cursorChar
@@ -42,7 +44,7 @@ cursorChar
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 <a id="field-field-mq3-client-ui-mfield-drawresult-cursorx-cursorx-src-mq3-client-ui-mfield-ml-1943374222"></a>
 ### cursorX
@@ -52,7 +54,7 @@ cursorX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 <a id="field-field-mq3-client-ui-mfield-drawresult-style-style-src-mq3-client-ui-mfield-ml-930435890"></a>
 ### style
@@ -62,7 +64,7 @@ style
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 <a id="field-field-mq3-client-ui-mfield-drawresult-text-text-src-mq3-client-ui-mfield-ml-1442831088"></a>
 ### text
@@ -72,7 +74,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 <a id="field-field-mq3-client-ui-mfield-drawresult-x-x-src-mq3-client-ui-mfield-ml-650406374"></a>
 ### x
@@ -82,7 +84,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)
 
 <a id="field-field-mq3-client-ui-mfield-drawresult-y-y-src-mq3-client-ui-mfield-ml-1901745410"></a>
 ### y
@@ -92,4 +94,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L18)

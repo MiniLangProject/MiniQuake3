@@ -74,12 +74,14 @@ const CIN_SYSTEM = 1
 function closeAll(state)
 ```
 
+Updates `state.drawQueue` during cinematic runtime `closeAll`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable cinematic runtime record/storage; this routine assigns `state.drawQueue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L170)
 
 <a id="function-function-mq3-client-cinematic-runtime-create-function-create-archive-src-mq3-client-cinematic-runtime-ml-33781950"></a>
 ### create
@@ -88,12 +90,14 @@ function closeAll(state)
 function create(archive)
 ```
 
+Calls `mq3.client.cinematic_runtime.State`, `std.ds.list.List.withCapacity` from cinematic runtime `create`. The final path returns `State(archive,array(MAX_HANDLES,void),lists.List.withCapacity(16))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L40)
 
 <a id="function-function-mq3-client-cinematic-runtime-discarddraws-function-discarddraws-state-src-mq3-client-cinematic-runtime-ml-2064515291"></a>
 ### discardDraws
@@ -102,12 +106,14 @@ function create(archive)
 function discardDraws(state)
 ```
 
+Calls `state.drawQueue.clear` from cinematic runtime `discardDraws`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.drawQueue.clear`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L161)
 
 <a id="function-function-mq3-client-cinematic-runtime-draw-function-draw-state-handle-src-mq3-client-cinematic-runtime-ml-1438765113"></a>
 ### draw
@@ -116,13 +122,15 @@ function discardDraws(state)
 function draw(state, handle)
 ```
 
+Calls `mq3.client.cinematic_runtime.validHandle`, `mq3.client.cinematic_runtime.Draw`, `state.drawQueue.add` from cinematic runtime `draw`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.handles`, `state.drawQueue.add`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `draw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L130)
 
 - [mq3.client.cinematic_runtime.Draw](Type-mq3-client-cinematic-runtime-draw-320421191.md) — struct
 - [mq3.client.cinematic_runtime.Extents](Type-mq3-client-cinematic-runtime-extents-627808258.md) — struct
@@ -133,12 +141,14 @@ function draw(state, handle)
 function fail(message)
 ```
 
+Creates the cinematic runtime error `7692` with diagnostic text `"cinematic runtime: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"cinematic runtime: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L37)
 
 <a id="function-function-mq3-client-cinematic-runtime-finishclip-function-finishclip-clip-now-src-mq3-client-cinematic-runtime-ml-843846026"></a>
 ### finishClip
@@ -147,13 +157,15 @@ function fail(message)
 function finishClip(clip, now)
 ```
 
+Updates `clip.status` during cinematic runtime `finishClip`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clip` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `clip` | `dynamic` | — | Mutable cinematic runtime record/storage; this routine assigns `clip.status`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L83)
 
 <a id="constant-constant-mq3-client-cinematic-runtime-fmv-eof-const-fmv-eof-2-src-mq3-client-cinematic-runtime-ml-334524569"></a>
 ### FMV_EOF
@@ -202,12 +214,14 @@ const FMV_PLAY = 1
 function freeHandle(state)
 ```
 
+Evaluates cinematic runtime `freeHandle` and returns `index`, `-1` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.handles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L53)
 
 <a id="constant-constant-mq3-client-cinematic-runtime-max-handles-const-max-handles-16-src-mq3-client-cinematic-runtime-ml-1347476870"></a>
 ### MAX_HANDLES
@@ -226,12 +240,14 @@ const MAX_HANDLES = 16
 function pathFor(name)
 ```
 
+Calls `std.string.replaceAll`, `std.string.indexOf` from cinematic runtime `pathFor`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to select or register the corresponding cinematic runtime resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L43)
 
 <a id="function-function-mq3-client-cinematic-runtime-play-function-play-state-name-x-y-width-height-bits-now-src-mq3-client-cinematic-runtime-ml-1607619340"></a>
 ### play
@@ -240,19 +256,21 @@ function pathFor(name)
 function play(state, name, x, y, width, height, bits, now)
 ```
 
+Updates `state.handles[handle]` during cinematic runtime `play`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `bits` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable cinematic runtime record/storage; this routine assigns `state.handles[handle]`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding cinematic runtime resource. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `play`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `play`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `play`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `play`. |
+| `bits` | `dynamic` | — | Value used by `if (bits&CIN_SYSTEM)==0 then for index=0 to MAX_HANDLES-1 if state.handles[index]!=void and state.handles[index].status!=FMV_EOF and stringEqu...`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L64)
 
 <a id="function-function-mq3-client-cinematic-runtime-presentation-function-presentation-draw-virtualwidth-virtualheight-targetwidth-targetheight-src-mq3-client-cinematic-runtime-ml-1633123100"></a>
 ### presentation
@@ -261,16 +279,18 @@ function play(state, name, x, y, width, height, bits, now)
 function presentation(draw, virtualWidth, virtualHeight, targetWidth, targetHeight)
 ```
 
+Calls `mq3.client.cinematic_runtime.Presentation` from cinematic runtime `presentation`. The final path returns `Presentation(draw.frame.pixels,draw.frame.width,draw.frame.height,x,y,width,height,draw.dirty)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `draw` | `dynamic` | — |  |
-| `virtualWidth` | `dynamic` | — |  |
-| `virtualHeight` | `dynamic` | — |  |
-| `targetWidth` | `dynamic` | — |  |
-| `targetHeight` | `dynamic` | — |  |
+| `draw` | `dynamic` | — | Record read through `draw.extents.x`, `draw.extents.y`, `draw.extents.width`, `draw.extents.height` and additional values. |
+| `virtualWidth` | `dynamic` | — | Value used by `if draw==void or virtualWidth<=0 or virtualHeight<=0 or targetWidth<=0 or targetHeight<=0 then return fail("invalid presentation dimensions")...`. |
+| `virtualHeight` | `dynamic` | — | Value used by `if draw==void or virtualWidth<=0 or virtualHeight<=0 or targetWidth<=0 or targetHeight<=0 then return fail("invalid presentation dimensions")...`. |
+| `targetWidth` | `dynamic` | — | Value used by `if draw==void or virtualWidth<=0 or virtualHeight<=0 or targetWidth<=0 or targetHeight<=0 then return fail("invalid presentation dimensions")...`. |
+| `targetHeight` | `dynamic` | — | Value used by `if draw==void or virtualWidth<=0 or virtualHeight<=0 or targetWidth<=0 or targetHeight<=0 then return fail("invalid presentation dimensions")...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L150)
 
 - [mq3.client.cinematic_runtime.Presentation](Type-mq3-client-cinematic-runtime-presentation-577400981.md) — struct
 <a id="function-function-mq3-client-cinematic-runtime-resetclip-function-resetclip-clip-now-src-mq3-client-cinematic-runtime-ml-643260636"></a>
@@ -280,13 +300,15 @@ function presentation(draw, virtualWidth, virtualHeight, targetWidth, targetHeig
 function resetClip(clip, now)
 ```
 
+Updates `clip.decoder`, `clip.chunkIndex`, `clip.startTime`, `clip.lastTime` and additional values during cinematic runtime `resetClip`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clip` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `clip` | `dynamic` | — | Mutable cinematic runtime record/storage; this routine assigns `clip.decoder`, `clip.chunkIndex`, `clip.startTime`, `clip.lastTime` and additional values. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L77)
 
 <a id="function-function-mq3-client-cinematic-runtime-run-function-run-state-handle-now-src-mq3-client-cinematic-runtime-ml-1087629371"></a>
 ### run
@@ -295,14 +317,16 @@ function resetClip(clip, now)
 function run(state, handle, now)
 ```
 
+Calls `mq3.client.cinematic_runtime.validHandle`, `mq3.client.cinematic_runtime.finishClip`, `mq3.format.roq.decodeAudio` and additional helpers from cinematic runtime `run`. The final path returns `clip.status`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.handles`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `run`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L92)
 
 <a id="function-function-mq3-client-cinematic-runtime-setextents-function-setextents-state-handle-x-y-width-height-src-mq3-client-cinematic-runtime-ml-1424836159"></a>
 ### setExtents
@@ -311,17 +335,19 @@ function run(state, handle, now)
 function setExtents(state, handle, x, y, width, height)
 ```
 
+Calls `mq3.client.cinematic_runtime.validHandle`, `mq3.client.cinematic_runtime.Extents` from cinematic runtime `setExtents`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.handles`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `setExtents`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `setExtents`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `setExtents`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `setExtents`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `setExtents`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L123)
 
 - [mq3.client.cinematic_runtime.State](Type-mq3-client-cinematic-runtime-state-1968655514.md) — struct
 <a id="function-function-mq3-client-cinematic-runtime-stop-function-stop-state-handle-src-mq3-client-cinematic-runtime-ml-1254885973"></a>
@@ -331,13 +357,15 @@ function setExtents(state, handle, x, y, width, height)
 function stop(state, handle)
 ```
 
+Updates `state.handles[handle].status` during cinematic runtime `stop`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable cinematic runtime record/storage; this routine assigns `state.handles[handle].status`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `stop`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L113)
 
 <a id="function-function-mq3-client-cinematic-runtime-takeaudio-function-takeaudio-state-handle-src-mq3-client-cinematic-runtime-ml-1575632163"></a>
 ### takeAudio
@@ -346,13 +374,15 @@ function stop(state, handle)
 function takeAudio(state, handle)
 ```
 
+Calls `mq3.client.cinematic_runtime.validHandle`, `clip.audioQueue.toArray`, `std.ds.list.List.withCapacity` from cinematic runtime `takeAudio`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.handles`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `takeAudio`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L165)
 
 <a id="function-function-mq3-client-cinematic-runtime-takedraws-function-takedraws-state-src-mq3-client-cinematic-runtime-ml-1657774019"></a>
 ### takeDraws
@@ -361,12 +391,14 @@ function takeAudio(state, handle)
 function takeDraws(state)
 ```
 
+Updates `state.drawQueue` during cinematic runtime `takeDraws`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable cinematic runtime record/storage; this routine assigns `state.drawQueue`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L158)
 
 <a id="function-function-mq3-client-cinematic-runtime-upload-function-upload-state-handle-src-mq3-client-cinematic-runtime-ml-995088193"></a>
 ### upload
@@ -379,11 +411,11 @@ CIN_UploadCinematic consumes the same decoded buffer as CIN_DrawCinematic, but i
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.handles`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `upload`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L139)
 
 - [mq3.client.cinematic_runtime.Upload](Type-mq3-client-cinematic-runtime-upload-1996100800.md) — struct
 <a id="function-function-mq3-client-cinematic-runtime-validhandle-function-validhandle-state-handle-src-mq3-client-cinematic-runtime-ml-504717153"></a>
@@ -393,10 +425,12 @@ CIN_UploadCinematic consumes the same decoded buffer as CIN_DrawCinematic, but i
 function validHandle(state, handle)
 ```
 
+Computes `state!=void and handle>=0 and handle<MAX_HANDLES and state.handles[handle]!=void` for cinematic runtime `validHandle`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.handles`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `validHandle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L50)

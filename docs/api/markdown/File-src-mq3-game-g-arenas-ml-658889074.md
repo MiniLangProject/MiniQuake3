@@ -19,13 +19,15 @@ Reachable from entry: **no**
 function CelebrateStart(level, player)
 ```
 
+Forward `CelebrateStart` to `mq3.game.arenas.celebrateStart` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `player` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `player` | `dynamic` | — | Player entity; accesses `s`, `nextthink` and `think`. May update `player.s.torsoAnim`, `player.nextthink` and `player.think` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L24)
 
 <a id="function-function-mq3-game-g-arenas-celebratestop-function-celebratestop-level-player-src-mq3-game-g-arenas-ml-52164537"></a>
 ### CelebrateStop
@@ -34,13 +36,15 @@ function CelebrateStart(level, player)
 function CelebrateStop(level, player)
 ```
 
+Forward `CelebrateStop` to `mq3.game.arenas.celebrateStop` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `player` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `mq3.game.arenas.celebrateStop`. |
+| `player` | `dynamic` | — | Player entity; accesses `s`. May update `player.s.torsoAnim` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L20)
 
 <a id="function-function-mq3-game-g-arenas-podiumplacementthink-function-podiumplacementthink-level-podium-src-mq3-game-g-arenas-ml-1053627870"></a>
 ### PodiumPlacementThink
@@ -49,13 +53,15 @@ function CelebrateStop(level, player)
 function PodiumPlacementThink(level, podium)
 ```
 
+Forward `PodiumPlacementThink` to `mq3.game.arenas.podiumPlacementThink` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `podium` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`, `intermission_angle`, `intermission_origin`, `podium1` and `podium2` and related fields. |
+| `podium` | `dynamic` | — | Podium record; accesses `nextthink`. May update `podium.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L28)
 
 <a id="function-function-mq3-game-g-arenas-spawnmodelonvictorypad-function-spawnmodelonvictorypad-level-pad-offset-ent-place-src-mq3-game-g-arenas-ml-700296716"></a>
 ### SpawnModelOnVictoryPad
@@ -64,16 +70,18 @@ function PodiumPlacementThink(level, podium)
 function SpawnModelOnVictoryPad(level, pad, offset, ent, place)
 ```
 
+Forward `SpawnModelOnVictoryPad` to `mq3.game.arenas.spawnModelOnVictoryPad` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `pad` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `place` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `pad` | `dynamic` | — | Podium record; accesses `r`. |
+| `offset` | `dynamic` | — | Offset into the buffer or sequence used by this operation. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `r`. |
+| `place` | `dynamic` | — | Value used by `spawnModelOnVictoryPad` in `body.count = place`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L16)
 
 <a id="function-function-mq3-game-g-arenas-spawnmodelsonvictorypads-function-spawnmodelsonvictorypads-level-src-mq3-game-g-arenas-ml-2000729802"></a>
 ### SpawnModelsOnVictoryPads
@@ -82,12 +90,14 @@ function SpawnModelOnVictoryPad(level, pad, offset, ent, place)
 function SpawnModelsOnVictoryPads(level)
 ```
 
+Forward `SpawnModelsOnVictoryPads` to `mq3.game.arenas.spawnModelsOnVictoryPads` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `podium1`, `podium2`, `podium3`, `sortedClients` and `entities` and related fields. May update `level.podium1`, `level.podium2` and `level.podium3` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L34)
 
 <a id="function-function-mq3-game-g-arenas-spawnpodium-function-spawnpodium-level-src-mq3-game-g-arenas-ml-1315367480"></a>
 ### SpawnPodium
@@ -96,12 +106,14 @@ function SpawnModelsOnVictoryPads(level)
 function SpawnPodium(level)
 ```
 
+Forward `SpawnPodium` to `mq3.game.arenas.spawnPodium` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `intermission_angle`, `intermission_origin` and `time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L31)
 
 <a id="function-function-mq3-game-g-arenas-svcmd-abortpodium-f-function-svcmd-abortpodium-f-level-argv-src-mq3-game-g-arenas-ml-1582218406"></a>
 ### Svcmd_AbortPodium_f
@@ -110,13 +122,15 @@ function SpawnPodium(level)
 function Svcmd_AbortPodium_f(level, argv)
 ```
 
+Forward `Svcmd_AbortPodium_f` to `mq3.game.arenas.abortPodium` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`, `podium1` and `time`. May update `level.podium1.nextthink` and `level.podium1.think` in place. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L38)
 
 <a id="function-function-mq3-game-g-arenas-updatetournamentinfo-function-updatetournamentinfo-level-src-mq3-game-g-arenas-ml-676261822"></a>
 ### UpdateTournamentInfo
@@ -125,9 +139,11 @@ function Svcmd_AbortPodium_f(level, argv)
 function UpdateTournamentInfo(level)
 ```
 
+Forward `UpdateTournamentInfo` to `mq3.game.arenas.updateTournamentInfo` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `entities`, `clients`, `spawner` and `numNonSpectatorClients` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L9)

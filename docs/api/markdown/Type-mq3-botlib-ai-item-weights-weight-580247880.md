@@ -9,8 +9,10 @@
 struct Weight
 ```
 
+`Weight` record for ai item weights, containing `name` and `separators`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-item-weights-weight-separators-separators-src-mq3-botlib-ai-item-weights-ml-1091675989"></a>
 ### separators
@@ -32,4 +34,4 @@ separators
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)

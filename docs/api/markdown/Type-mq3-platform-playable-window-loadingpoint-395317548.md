@@ -9,8 +9,10 @@
 struct LoadingPoint
 ```
 
+Data record for `mq3.platform.playable_window.LoadingPoint`; groups `x`, `y`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L127)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L561)
 
 ## Members
 
@@ -22,7 +24,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L561)
 
 <a id="field-field-mq3-platform-playable-window-loadingpoint-y-y-src-mq3-platform-playable-window-ml-1938357835"></a>
 ### y
@@ -32,4 +34,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L561)

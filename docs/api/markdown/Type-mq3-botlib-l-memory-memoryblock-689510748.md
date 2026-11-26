@@ -9,8 +9,10 @@
 struct MemoryBlock
 ```
 
+`MemoryBlock` record for l memory, containing `id`, `handle`, `size`, `payloadSize` and `data` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ cleared
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-data-data-src-mq3-botlib-l-memory-ml-1412022093"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-file-file-src-mq3-botlib-l-memory-ml-421657697"></a>
 ### file
@@ -42,7 +44,7 @@ file
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-handle-handle-src-mq3-botlib-l-memory-ml-39153897"></a>
 ### handle
@@ -52,7 +54,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-id-id-src-mq3-botlib-l-memory-ml-1627037271"></a>
 ### id
@@ -62,7 +64,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-label-label-src-mq3-botlib-l-memory-ml-248896137"></a>
 ### label
@@ -72,7 +74,7 @@ label
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-line-line-src-mq3-botlib-l-memory-ml-1156561129"></a>
 ### line
@@ -82,7 +84,7 @@ line
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-payloadsize-payloadsize-src-mq3-botlib-l-memory-ml-1269718365"></a>
 ### payloadSize
@@ -92,7 +94,7 @@ payloadSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
 
 <a id="field-field-mq3-botlib-l-memory-memoryblock-size-size-src-mq3-botlib-l-memory-ml-1030249575"></a>
 ### size
@@ -102,4 +104,4 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)

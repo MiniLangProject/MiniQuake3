@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for bot inventory ai, containing `chooseBestFn`, `selectWeaponFn`, `floatTimeFn`, `entityInfoFn` and `checkItemPickupFn` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)
 
 ## Members
 
@@ -22,7 +24,7 @@ checkItemPickupFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)
 
 <a id="field-field-mq3-game-bot-inventory-ai-services-choosebestfn-choosebestfn-src-mq3-game-bot-inventory-ai-ml-2020917421"></a>
 ### chooseBestFn
@@ -32,7 +34,7 @@ chooseBestFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)
 
 <a id="field-field-mq3-game-bot-inventory-ai-services-context-context-src-mq3-game-bot-inventory-ai-ml-355965511"></a>
 ### context
@@ -42,7 +44,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)
 
 <a id="field-field-mq3-game-bot-inventory-ai-services-entityinfofn-entityinfofn-src-mq3-game-bot-inventory-ai-ml-1269367957"></a>
 ### entityInfoFn
@@ -52,7 +54,7 @@ entityInfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)
 
 <a id="field-field-mq3-game-bot-inventory-ai-services-floattimefn-floattimefn-src-mq3-game-bot-inventory-ai-ml-1270265143"></a>
 ### floatTimeFn
@@ -62,7 +64,7 @@ floatTimeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)
 
 <a id="field-field-mq3-game-bot-inventory-ai-services-selectweaponfn-selectweaponfn-src-mq3-game-bot-inventory-ai-ml-315371095"></a>
 ### selectWeaponFn
@@ -72,4 +74,4 @@ selectWeaponFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)

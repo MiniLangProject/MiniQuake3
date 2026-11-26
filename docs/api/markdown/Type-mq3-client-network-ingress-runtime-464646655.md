@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Stores network ingress runtime wiring and state, including `connection`, `packetState`, `packetHost`, `netchanRuntime`, `protocol`, `services` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ codec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L17)
 
 <a id="field-field-mq3-client-network-ingress-runtime-connection-connection-src-mq3-client-network-ingress-ml-102806723"></a>
 ### connection
@@ -32,7 +34,7 @@ connection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L16)
 
 <a id="field-field-mq3-client-network-ingress-runtime-lastpacketresult-lastpacketresult-src-mq3-client-network-ingress-ml-932467149"></a>
 ### lastPacketResult
@@ -42,7 +44,7 @@ lastPacketResult
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L17)
 
 <a id="field-field-mq3-client-network-ingress-runtime-lastparseresult-lastparseresult-src-mq3-client-network-ingress-ml-1409466843"></a>
 ### lastParseResult
@@ -52,7 +54,7 @@ lastParseResult
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L17)
 
 <a id="field-field-mq3-client-network-ingress-runtime-netchanruntime-netchanruntime-src-mq3-client-network-ingress-ml-1887470229"></a>
 ### netchanRuntime
@@ -62,7 +64,7 @@ netchanRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L16)
 
 <a id="field-field-mq3-client-network-ingress-runtime-packetcount-packetcount-src-mq3-client-network-ingress-ml-3203675"></a>
 ### packetCount
@@ -72,7 +74,7 @@ packetCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L17)
 
 <a id="field-field-mq3-client-network-ingress-runtime-packethost-packethost-src-mq3-client-network-ingress-ml-25903079"></a>
 ### packetHost
@@ -82,7 +84,7 @@ packetHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L16)
 
 <a id="field-field-mq3-client-network-ingress-runtime-packetstate-packetstate-src-mq3-client-network-ingress-ml-1840572947"></a>
 ### packetState
@@ -92,7 +94,7 @@ packetState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L16)
 
 <a id="field-field-mq3-client-network-ingress-runtime-protocol-protocol-src-mq3-client-network-ingress-ml-2029556043"></a>
 ### protocol
@@ -102,7 +104,7 @@ protocol
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L16)
 
 <a id="field-field-mq3-client-network-ingress-runtime-services-services-src-mq3-client-network-ingress-ml-1118490523"></a>
 ### services
@@ -112,4 +114,4 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L16)

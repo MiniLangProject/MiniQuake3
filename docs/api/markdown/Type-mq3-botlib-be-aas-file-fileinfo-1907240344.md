@@ -9,8 +9,10 @@
 struct FileInfo
 ```
 
+`FileInfo` record for be aas file, containing `version`, `numVertexes`, `numPlanes`, `numEdges` and `edgeIndexSize` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ edgeIndexSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-faceindexsize-faceindexsize-src-mq3-botlib-be-aas-file-ml-2006501215"></a>
 ### faceIndexSize
@@ -32,7 +34,7 @@ faceIndexSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-groundedareas-groundedareas-src-mq3-botlib-be-aas-file-ml-731262231"></a>
 ### groundedAreas
@@ -42,7 +44,7 @@ groundedAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numareas-numareas-src-mq3-botlib-be-aas-file-ml-714418279"></a>
 ### numAreas
@@ -52,7 +54,7 @@ numAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numareasettings-numareasettings-src-mq3-botlib-be-aas-file-ml-1729636103"></a>
 ### numAreaSettings
@@ -62,7 +64,7 @@ numAreaSettings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numclusters-numclusters-src-mq3-botlib-be-aas-file-ml-1416295739"></a>
 ### numClusters
@@ -72,7 +74,7 @@ numClusters
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numedges-numedges-src-mq3-botlib-be-aas-file-ml-400817575"></a>
 ### numEdges
@@ -82,7 +84,7 @@ numEdges
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numfaces-numfaces-src-mq3-botlib-be-aas-file-ml-1076762351"></a>
 ### numFaces
@@ -92,7 +94,7 @@ numFaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numnodes-numnodes-src-mq3-botlib-be-aas-file-ml-1113108001"></a>
 ### numNodes
@@ -102,7 +104,7 @@ numNodes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numplanes-numplanes-src-mq3-botlib-be-aas-file-ml-707481435"></a>
 ### numPlanes
@@ -112,7 +114,7 @@ numPlanes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numportals-numportals-src-mq3-botlib-be-aas-file-ml-878824001"></a>
 ### numPortals
@@ -122,7 +124,7 @@ numPortals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-numvertexes-numvertexes-src-mq3-botlib-be-aas-file-ml-1806116255"></a>
 ### numVertexes
@@ -132,7 +134,7 @@ numVertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-portalindexsize-portalindexsize-src-mq3-botlib-be-aas-file-ml-532968243"></a>
 ### portalIndexSize
@@ -142,7 +144,7 @@ portalIndexSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-reachabilitysize-reachabilitysize-src-mq3-botlib-be-aas-file-ml-878969687"></a>
 ### reachabilitySize
@@ -152,7 +154,7 @@ reachabilitySize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)
 
 <a id="field-field-mq3-botlib-be-aas-file-fileinfo-version-version-src-mq3-botlib-be-aas-file-ml-968936715"></a>
 ### version
@@ -162,4 +164,4 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L25)

@@ -9,8 +9,10 @@
 struct Fifo
 ```
 
+Fifo record for vm.cgame_collision_cache, containing `table`, `keys`, `next`, `used`, `capacity`, `hits`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ capacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 <a id="field-field-mq3-vm-cgame-collision-cache-fifo-evictions-evictions-src-mq3-vm-cgame-collision-cache-ml-176514167"></a>
 ### evictions
@@ -32,7 +34,7 @@ evictions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 <a id="field-field-mq3-vm-cgame-collision-cache-fifo-hits-hits-src-mq3-vm-cgame-collision-cache-ml-1737903415"></a>
 ### hits
@@ -42,7 +44,7 @@ hits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 <a id="field-field-mq3-vm-cgame-collision-cache-fifo-keys-keys-src-mq3-vm-cgame-collision-cache-ml-379333203"></a>
 ### keys
@@ -52,7 +54,7 @@ keys
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 <a id="field-field-mq3-vm-cgame-collision-cache-fifo-misses-misses-src-mq3-vm-cgame-collision-cache-ml-675095607"></a>
 ### misses
@@ -62,7 +64,7 @@ misses
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 <a id="field-field-mq3-vm-cgame-collision-cache-fifo-next-next-src-mq3-vm-cgame-collision-cache-ml-1627000085"></a>
 ### next
@@ -72,7 +74,7 @@ next
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 <a id="field-field-mq3-vm-cgame-collision-cache-fifo-table-table-src-mq3-vm-cgame-collision-cache-ml-958311691"></a>
 ### table
@@ -82,7 +84,7 @@ table
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)
 
 <a id="field-field-mq3-vm-cgame-collision-cache-fifo-used-used-src-mq3-vm-cgame-collision-cache-ml-54677505"></a>
 ### used
@@ -92,4 +94,4 @@ used
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L13)

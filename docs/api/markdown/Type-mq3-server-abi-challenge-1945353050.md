@@ -9,8 +9,10 @@
 struct Challenge
 ```
 
+Challenge record for server.abi, containing `address`, `challenge`, `time`, `pingTime`, `firstTime`, `connected`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L100)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L138)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L138)
 
 <a id="field-field-mq3-server-abi-challenge-challenge-challenge-src-mq3-server-abi-ml-98676506"></a>
 ### challenge
@@ -32,7 +34,7 @@ challenge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L138)
 
 <a id="field-field-mq3-server-abi-challenge-connected-connected-src-mq3-server-abi-ml-146098658"></a>
 ### connected
@@ -42,7 +44,7 @@ connected
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L138)
 
 <a id="field-field-mq3-server-abi-challenge-firsttime-firsttime-src-mq3-server-abi-ml-204522746"></a>
 ### firstTime
@@ -52,7 +54,7 @@ firstTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L138)
 
 <a id="field-field-mq3-server-abi-challenge-pingtime-pingtime-src-mq3-server-abi-ml-511009948"></a>
 ### pingTime
@@ -62,7 +64,7 @@ pingTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L138)
 
 <a id="field-field-mq3-server-abi-challenge-time-time-src-mq3-server-abi-ml-436256632"></a>
 ### time
@@ -72,4 +74,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L138)

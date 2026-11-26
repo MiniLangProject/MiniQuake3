@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.oob_connect, containing `state`, `address`, `qport`, `lastConnectTime`, `reliableAcknowledge`, `reliableSequence`, and 6 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-bot-bot-src-mq3-server-oob-connect-ml-8485774"></a>
 ### bot
@@ -32,7 +34,7 @@ bot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-challenge-challenge-src-mq3-server-oob-connect-ml-1315347738"></a>
 ### challenge
@@ -42,7 +44,7 @@ challenge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-gamestatemessagenum-gamestatemessagenum-src-mq3-server-oob-connect-ml-168630218"></a>
 ### gamestateMessageNum
@@ -52,7 +54,7 @@ gamestateMessageNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-lastconnecttime-lastconnecttime-src-mq3-server-oob-connect-ml-389730898"></a>
 ### lastConnectTime
@@ -62,7 +64,7 @@ lastConnectTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-lastpackettime-lastpackettime-src-mq3-server-oob-connect-ml-1093000236"></a>
 ### lastPacketTime
@@ -72,7 +74,7 @@ lastPacketTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-nextsnapshottime-nextsnapshottime-src-mq3-server-oob-connect-ml-2077013450"></a>
 ### nextSnapshotTime
@@ -82,7 +84,7 @@ nextSnapshotTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-qport-qport-src-mq3-server-oob-connect-ml-627231626"></a>
 ### qport
@@ -92,7 +94,7 @@ qport
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-reliableacknowledge-reliableacknowledge-src-mq3-server-oob-connect-ml-1859273418"></a>
 ### reliableAcknowledge
@@ -102,7 +104,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-reliablesequence-reliablesequence-src-mq3-server-oob-connect-ml-633333132"></a>
 ### reliableSequence
@@ -112,7 +114,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-state-state-src-mq3-server-oob-connect-ml-908738966"></a>
 ### state
@@ -122,7 +124,7 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)
 
 <a id="field-field-mq3-server-oob-connect-client-userinfo-userinfo-src-mq3-server-oob-connect-ml-8137252"></a>
 ### userinfo
@@ -132,4 +134,4 @@ userinfo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L37)

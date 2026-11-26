@@ -9,8 +9,10 @@
 struct LodPolicy
 ```
 
+Data record for `mq3.renderer.player_render_cache.LodPolicy`; groups `fullDistance`, `mediumDistance`, `farDistance`, `mediumStride`, `farStride`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ farDistance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-farstride-farstride-src-mq3-renderer-player-render-cache-ml-2105492460"></a>
 ### farStride
@@ -32,7 +34,7 @@ farStride
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-fulldistance-fulldistance-src-mq3-renderer-player-render-cache-ml-326468520"></a>
 ### fullDistance
@@ -42,7 +44,7 @@ fullDistance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-mediumdistance-mediumdistance-src-mq3-renderer-player-render-cache-ml-225486980"></a>
 ### mediumDistance
@@ -52,7 +54,7 @@ mediumDistance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
 
 <a id="field-field-mq3-renderer-player-render-cache-lodpolicy-mediumstride-mediumstride-src-mq3-renderer-player-render-cache-ml-1178556056"></a>
 ### mediumStride
@@ -62,4 +64,4 @@ mediumStride
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)

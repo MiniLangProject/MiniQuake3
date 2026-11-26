@@ -9,8 +9,10 @@
 struct AdpcmState
 ```
 
+AdpcmState record for audio.snd_local, containing `sample`, `index`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ index
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L19)
 
 <a id="field-field-mq3-audio-snd-local-adpcmstate-sample-sample-src-mq3-audio-snd-local-ml-422159713"></a>
 ### sample
@@ -32,4 +34,4 @@ sample
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L19)

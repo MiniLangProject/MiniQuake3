@@ -9,8 +9,10 @@
 struct Projectile
 ```
 
+`Projectile` record for ai weapon weights, containing `name`, `model`, `flags`, `gravity` and `damage` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ bounce
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-bouncefriction-bouncefriction-src-mq3-botlib-ai-weapon-weights-ml-619671478"></a>
 ### bounceFriction
@@ -32,7 +34,7 @@ bounceFriction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-bouncestop-bouncestop-src-mq3-botlib-ai-weapon-weights-ml-711295338"></a>
 ### bounceStop
@@ -42,7 +44,7 @@ bounceStop
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-damage-damage-src-mq3-botlib-ai-weapon-weights-ml-1236238672"></a>
 ### damage
@@ -52,7 +54,7 @@ damage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-damagetype-damagetype-src-mq3-botlib-ai-weapon-weights-ml-2085783368"></a>
 ### damageType
@@ -62,7 +64,7 @@ damageType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-detonation-detonation-src-mq3-botlib-ai-weapon-weights-ml-51807948"></a>
 ### detonation
@@ -72,7 +74,7 @@ detonation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-flags-flags-src-mq3-botlib-ai-weapon-weights-ml-48304838"></a>
 ### flags
@@ -82,7 +84,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-gravity-gravity-src-mq3-botlib-ai-weapon-weights-ml-1394438214"></a>
 ### gravity
@@ -92,7 +94,7 @@ gravity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-healthincrease-healthincrease-src-mq3-botlib-ai-weapon-weights-ml-1747553862"></a>
 ### healthIncrease
@@ -102,7 +104,7 @@ healthIncrease
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-model-model-src-mq3-botlib-ai-weapon-weights-ml-1756544822"></a>
 ### model
@@ -112,7 +114,7 @@ model
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-name-name-src-mq3-botlib-ai-weapon-weights-ml-1845901732"></a>
 ### name
@@ -122,7 +124,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-push-push-src-mq3-botlib-ai-weapon-weights-ml-778646134"></a>
 ### push
@@ -132,7 +134,7 @@ push
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-radius-radius-src-mq3-botlib-ai-weapon-weights-ml-1565767782"></a>
 ### radius
@@ -142,7 +144,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-projectile-visibledamage-visibledamage-src-mq3-botlib-ai-weapon-weights-ml-2112903374"></a>
 ### visibleDamage
@@ -152,4 +154,4 @@ visibleDamage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L18)

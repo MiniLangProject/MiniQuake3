@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for vm.cgame_pc_traps, containing `context`, `addDefineFn`, `loadSourceFn`, `freeSourceFn`, `readTokenFn`, `sourceLineFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ addDefineFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-services-context-context-src-mq3-vm-cgame-pc-traps-ml-1531287787"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-services-freesourcefn-freesourcefn-src-mq3-vm-cgame-pc-traps-ml-447970081"></a>
 ### freeSourceFn
@@ -42,7 +44,7 @@ freeSourceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-services-loadsourcefn-loadsourcefn-src-mq3-vm-cgame-pc-traps-ml-1792977241"></a>
 ### loadSourceFn
@@ -52,7 +54,7 @@ loadSourceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-services-readtokenfn-readtokenfn-src-mq3-vm-cgame-pc-traps-ml-1512216747"></a>
 ### readTokenFn
@@ -62,7 +64,7 @@ readTokenFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-services-sourcelinefn-sourcelinefn-src-mq3-vm-cgame-pc-traps-ml-159700953"></a>
 ### sourceLineFn
@@ -72,4 +74,4 @@ sourceLineFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L20)

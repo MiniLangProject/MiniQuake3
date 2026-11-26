@@ -9,8 +9,10 @@
 struct Registry
 ```
 
+Data record for `mq3.renderer.qgl.Registry`; groups `bindings`, `loaded`, `driver`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ bindings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L18)
 
 <a id="field-field-mq3-renderer-qgl-registry-driver-driver-src-mq3-renderer-qgl-ml-1123773334"></a>
 ### driver
@@ -32,7 +34,7 @@ driver
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L18)
 
 <a id="field-field-mq3-renderer-qgl-registry-loaded-loaded-src-mq3-renderer-qgl-ml-1095002740"></a>
 ### loaded
@@ -42,4 +44,4 @@ loaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L18)

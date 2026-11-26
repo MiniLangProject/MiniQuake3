@@ -9,8 +9,10 @@
 struct Item
 ```
 
+Stores UI sound options menu item, including `id`, `kind`, `name`, `x`, `y`, `minValue` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-id-id-src-mq3-client-ui-sound-options-ml-800349966"></a>
 ### id
@@ -32,7 +34,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-kind-kind-src-mq3-client-ui-sound-options-ml-2057711056"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-maxvalue-maxvalue-src-mq3-client-ui-sound-options-ml-502619350"></a>
 ### maxValue
@@ -52,7 +54,7 @@ maxValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-minvalue-minvalue-src-mq3-client-ui-sound-options-ml-1918707962"></a>
 ### minValue
@@ -62,7 +64,7 @@ minValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-name-name-src-mq3-client-ui-sound-options-ml-829880098"></a>
 ### name
@@ -72,7 +74,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-value-value-src-mq3-client-ui-sound-options-ml-613480352"></a>
 ### value
@@ -82,7 +84,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-x-x-src-mq3-client-ui-sound-options-ml-1822625188"></a>
 ### x
@@ -92,7 +94,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-item-y-y-src-mq3-client-ui-sound-options-ml-9781592"></a>
 ### y
@@ -102,4 +104,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)

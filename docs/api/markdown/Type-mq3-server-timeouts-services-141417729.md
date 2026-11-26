@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for server.timeouts, containing `dropFn`, `diagnosticFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L31)
 
 <a id="field-field-mq3-server-timeouts-services-diagnosticfn-diagnosticfn-src-mq3-server-timeouts-ml-1148040933"></a>
 ### diagnosticFn
@@ -32,7 +34,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L31)
 
 <a id="field-field-mq3-server-timeouts-services-dropfn-dropfn-src-mq3-server-timeouts-ml-1938603681"></a>
 ### dropFn
@@ -42,4 +44,4 @@ dropFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L31)

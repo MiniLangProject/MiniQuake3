@@ -9,8 +9,10 @@
 struct Reach
 ```
 
+`Reach` record for aas reachability, containing `sourceArea`, `areaNum`, `faceNum`, `edgeNum` and `start` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 ## Members
 
@@ -22,7 +24,7 @@ allocated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-areanum-areanum-src-mq3-botlib-aas-reachability-ml-811502160"></a>
 ### areaNum
@@ -32,7 +34,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-edgenum-edgenum-src-mq3-botlib-aas-reachability-ml-949628476"></a>
 ### edgeNum
@@ -42,7 +44,7 @@ edgeNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-facenum-facenum-src-mq3-botlib-aas-reachability-ml-357076652"></a>
 ### faceNum
@@ -52,7 +54,7 @@ faceNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-finish-finish-src-mq3-botlib-aas-reachability-ml-523326238"></a>
 ### finish
@@ -62,7 +64,7 @@ finish
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-sourcearea-sourcearea-src-mq3-botlib-aas-reachability-ml-187160400"></a>
 ### sourceArea
@@ -72,7 +74,7 @@ sourceArea
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-start-start-src-mq3-botlib-aas-reachability-ml-571726672"></a>
 ### start
@@ -82,7 +84,7 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-traveltime-traveltime-src-mq3-botlib-aas-reachability-ml-781393654"></a>
 ### travelTime
@@ -92,7 +94,7 @@ travelTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-reach-traveltype-traveltype-src-mq3-botlib-aas-reachability-ml-622463228"></a>
 ### travelType
@@ -102,4 +104,4 @@ travelType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)

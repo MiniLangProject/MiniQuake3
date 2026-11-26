@@ -19,11 +19,11 @@ Copies positions, base texture coordinates and packed color, then emits a fan.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `buffer` | `dynamic` | — |  |
-| `vertices` | `dynamic` | — |  |
+| `buffer` | `dynamic` | — | Mutable record or buffer; this call updates `buffer.xyz`, `buffer.texCoords`, `buffer.colors`, `buffer.numVertexes`, `buffer.indexes`. |
+| `vertices` | `dynamic` | — | Indexed input read at `i`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L59)
 
 - [mq3.renderer.surface_polychain.Buffer](Type-mq3-renderer-surface-polychain-buffer-21948748.md) — struct
 <a id="function-function-mq3-renderer-surface-polychain-checkoverflow-function-checkoverflow-buffer-vertices-indexes-src-mq3-renderer-surface-polychain-ml-282284823"></a>
@@ -37,12 +37,12 @@ Mirrors RB_CheckOverflow's strict '< MAX' checks and surface restart.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `buffer` | `dynamic` | — |  |
-| `vertices` | `dynamic` | — |  |
-| `indexes` | `dynamic` | — |  |
+| `buffer` | `dynamic` | — | Mutable record or buffer; this call updates `buffer.flushes`. |
+| `vertices` | `dynamic` | — | Input tested by `vertices<0 or indexes<0`. |
+| `indexes` | `dynamic` | — | Input tested by `vertices<0 or indexes<0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L47)
 
 <a id="function-function-mq3-renderer-surface-polychain-clear-function-clear-buffer-src-mq3-renderer-surface-polychain-ml-405539822"></a>
 ### clear
@@ -51,12 +51,14 @@ Mirrors RB_CheckOverflow's strict '< MAX' checks and surface restart.
 function clear(buffer)
 ```
 
+Updates `buffer.xyz`, `buffer.texCoords`, `buffer.colors`, `buffer.indexes`, `buffer.numVertexes` in `mq3.renderer.surface_polychain.clear`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `buffer` | `dynamic` | — |  |
+| `buffer` | `dynamic` | — | Mutable record or buffer; this call updates `buffer.xyz`, `buffer.texCoords`, `buffer.colors`, `buffer.indexes`, `buffer.numVertexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L38)
 
 <a id="function-function-mq3-renderer-surface-polychain-create-function-create-maxvertexes-maxindexes-src-mq3-renderer-surface-polychain-ml-1796380016"></a>
 ### create
@@ -65,13 +67,15 @@ function clear(buffer)
 function create(maxVertexes, maxIndexes)
 ```
 
+Builds `mq3.renderer.surface_polychain.Buffer` for `mq3.renderer.surface_polychain.create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxVertexes` | `dynamic` | — |  |
-| `maxIndexes` | `dynamic` | — |  |
+| `maxVertexes` | `dynamic` | — | Initial value for `mq3.renderer.surface_polychain.Buffer.maxVertexes`. |
+| `maxIndexes` | `dynamic` | — | Initial value for `mq3.renderer.surface_polychain.Buffer.maxIndexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L31)
 
 <a id="constant-constant-mq3-renderer-surface-polychain-shader-max-indexes-const-shader-max-indexes-6000-src-mq3-renderer-surface-polychain-ml-2055452683"></a>
 ### SHADER_MAX_INDEXES
@@ -100,19 +104,21 @@ const SHADER_MAX_VERTEXES = 1000
 function vertex(x, y, z, s, t, r, g, b, a)
 ```
 
+Constructs `mq3.renderer.surface_polychain.Vertex` with `xyz` = `[x,y,z]`, `st` = `[s,t]`, `modulate` = `[r&255,g&255,b&255,a&255]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `z` | `dynamic` | — |  |
-| `s` | `dynamic` | — |  |
-| `t` | `dynamic` | — |  |
-| `r` | `dynamic` | — |  |
-| `g` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
+| `x` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `y` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `z` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `s` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `t` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `r` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `g` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `b` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
+| `a` | `dynamic` | — | Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L24)
 
 - [mq3.renderer.surface_polychain.Vertex](Type-mq3-renderer-surface-polychain-vertex-563302080.md) — struct

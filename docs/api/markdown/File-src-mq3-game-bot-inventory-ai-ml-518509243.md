@@ -21,12 +21,14 @@ Reachable from entry: **yes**
 function bit(value)
 ```
 
+Convert a truth value to the integer one or zero for inventory flags.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `bit` in `if value then return 1 end if return 0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L47)
 
 <a id="function-function-mq3-game-bot-inventory-ai-chooseweapon-function-chooseweapon-services-bot-src-mq3-game-bot-inventory-ai-ml-1583053677"></a>
 ### chooseWeapon
@@ -35,13 +37,15 @@ function bit(value)
 function chooseWeapon(services, bot)
 ```
 
+Set `bot.weaponchangeTime` to `services.floatTimeFn(services)` and `bot.weaponnum` to `newWeapon` in `mq3.game.bot_inventory_ai.chooseWeapon`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `selectWeaponFn`, `chooseBestFn` and `floatTimeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `curPs`, `client`, `weaponnum`, `ws` and `inventory` and related fields. May update `bot.weaponchangeTime` and `bot.weaponnum` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L51)
 
 <a id="function-function-mq3-game-bot-inventory-ai-create-function-create-src-mq3-game-bot-inventory-ai-ml-407876202"></a>
 ### create
@@ -50,8 +54,10 @@ function chooseWeapon(services, bot)
 function create()
 ```
 
+Create a `mq3.game.bot_inventory_ai.Services` record with the declared empty defaults.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L44)
 
 <a id="constant-constant-mq3-game-bot-inventory-ai-enemy-height-const-enemy-height-headers-enemy-height-src-mq3-game-bot-inventory-ai-ml-1383456247"></a>
 ### ENEMY_HEIGHT
@@ -381,14 +387,16 @@ const INVENTORY_TELEPORTER = headers.INVENTORY_TELEPORTER
 function updateBattleInventory(services, bot, enemy)
 ```
 
+Set `bot.inventory[ENEMY_HEIGHT]` to `n.trunc32(dz)` and `bot.inventory[ENEMY_HORIZONTAL_DIST]` to `n.trunc32(n.fsqrt(n.fadd(n.fmul(dx,dx),n.fmul(dy,dy))))` in `mq3.game.bot_inventory_ai.updateBattleInventory`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `enemy` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `entityInfoFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `origin` and `inventory`. May update `bot.inventory[ENEMY_HEIGHT]` and `bot.inventory[ENEMY_HORIZONTAL_DIST]` in place. |
+| `enemy` | `dynamic` | — | Value passed as argument 2 to `services.entityInfoFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L63)
 
 <a id="function-function-mq3-game-bot-inventory-ai-updateinventory-function-updateinventory-services-bot-src-mq3-game-bot-inventory-ai-ml-98171451"></a>
 ### updateInventory
@@ -397,10 +405,12 @@ function updateBattleInventory(services, bot, enemy)
 function updateInventory(services, bot)
 ```
 
+Update `bot.inventory[INVENTORY_ARMOR]`, `bot.inventory[INVENTORY_GAUNTLET]`, `bot.inventory[INVENTORY_SHOTGUN]` and `bot.inventory[INVENTORY_MACHINEGUN]` and related state during `updateInventory`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `checkItemPickupFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `inventory` and `curPs`. May update `bot.inventory[INVENTORY_ARMOR]`, `bot.inventory[INVENTORY_GAUNTLET]` and `bot.inventory[INVENTORY_SHOTGUN]` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_inventory_ai.ml#L72)

@@ -9,8 +9,10 @@
 struct Plane
 ```
 
+Data record for `mq3.renderer.tr_main_runtime.Plane`; groups `normal`, `dist`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ dist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-plane-normal-normal-src-mq3-renderer-tr-main-runtime-ml-273685185"></a>
 ### normal
@@ -32,4 +34,4 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L30)

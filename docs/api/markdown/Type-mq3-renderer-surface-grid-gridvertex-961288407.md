@@ -9,8 +9,10 @@
 struct GridVertex
 ```
 
+Data record for `mq3.renderer.surface_grid.GridVertex`; groups `xyz`, `normal`, `st`, `lightmap`, `color`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-lightmap-lightmap-src-mq3-renderer-surface-grid-ml-2022651725"></a>
 ### lightmap
@@ -32,7 +34,7 @@ lightmap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-normal-normal-src-mq3-renderer-surface-grid-ml-1908610479"></a>
 ### normal
@@ -42,7 +44,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-st-st-src-mq3-renderer-surface-grid-ml-9540763"></a>
 ### st
@@ -52,7 +54,7 @@ st
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-gridvertex-xyz-xyz-src-mq3-renderer-surface-grid-ml-1433743713"></a>
 ### xyz
@@ -62,4 +64,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)

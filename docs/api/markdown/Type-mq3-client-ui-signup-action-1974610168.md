@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI signup queued engine action, including `boundary`, `kind`, `name`, `text`, `text2`, `text3` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-action-dispatched-dispatched-src-mq3-client-ui-signup-ml-130643645"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-action-kind-kind-src-mq3-client-ui-signup-ml-1673107491"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-action-name-name-src-mq3-client-ui-signup-ml-1073698149"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-action-text-text-src-mq3-client-ui-signup-ml-1400673829"></a>
 ### text
@@ -62,7 +64,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-action-text2-text2-src-mq3-client-ui-signup-ml-1658152647"></a>
 ### text2
@@ -72,7 +74,7 @@ text2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-action-text3-text3-src-mq3-client-ui-signup-ml-1035758039"></a>
 ### text3
@@ -82,4 +84,4 @@ text3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)

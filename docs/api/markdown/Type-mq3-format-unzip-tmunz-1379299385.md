@@ -9,8 +9,10 @@
 struct TmUnz
 ```
 
+TmUnz record for format.unzip, containing `tmSec`, `tmMin`, `tmHour`, `tmMday`, `tmMon`, `tmYear`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ tmHour
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 <a id="field-field-mq3-format-unzip-tmunz-tmmday-tmmday-src-mq3-format-unzip-ml-1809009493"></a>
 ### tmMday
@@ -32,7 +34,7 @@ tmMday
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 <a id="field-field-mq3-format-unzip-tmunz-tmmin-tmmin-src-mq3-format-unzip-ml-2136444201"></a>
 ### tmMin
@@ -42,7 +44,7 @@ tmMin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 <a id="field-field-mq3-format-unzip-tmunz-tmmon-tmmon-src-mq3-format-unzip-ml-1039567357"></a>
 ### tmMon
@@ -52,7 +54,7 @@ tmMon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 <a id="field-field-mq3-format-unzip-tmunz-tmsec-tmsec-src-mq3-format-unzip-ml-326512165"></a>
 ### tmSec
@@ -62,7 +64,7 @@ tmSec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 <a id="field-field-mq3-format-unzip-tmunz-tmyear-tmyear-src-mq3-format-unzip-ml-747807125"></a>
 ### tmYear
@@ -72,4 +74,4 @@ tmYear
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)

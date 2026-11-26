@@ -9,8 +9,10 @@
 struct Audio
 ```
 
+Audio record for format.roq, containing `samples`, `frames`, `sampleRate`, `channels`, `bitsPerSample`, `blockAlign`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ bitsPerSample
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)
 
 <a id="field-field-mq3-format-roq-audio-blockalign-blockalign-src-mq3-format-roq-ml-74929565"></a>
 ### blockAlign
@@ -32,7 +34,7 @@ blockAlign
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)
 
 <a id="field-field-mq3-format-roq-audio-channels-channels-src-mq3-format-roq-ml-215390521"></a>
 ### channels
@@ -42,7 +44,7 @@ channels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)
 
 <a id="field-field-mq3-format-roq-audio-frames-frames-src-mq3-format-roq-ml-115458097"></a>
 ### frames
@@ -52,7 +54,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)
 
 <a id="field-field-mq3-format-roq-audio-samplerate-samplerate-src-mq3-format-roq-ml-28240377"></a>
 ### sampleRate
@@ -62,7 +64,7 @@ sampleRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)
 
 <a id="field-field-mq3-format-roq-audio-samples-samples-src-mq3-format-roq-ml-1531785597"></a>
 ### samples
@@ -72,4 +74,4 @@ samples
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/roq.ml#L24)

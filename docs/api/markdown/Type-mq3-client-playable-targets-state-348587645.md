@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores playable targets state, including `targets`, `score`, `lastTime`, `respawnMilliseconds`, `radius`, `minZ` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ lastTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 <a id="field-field-mq3-client-playable-targets-state-maxz-maxz-src-mq3-client-playable-targets-ml-303509938"></a>
 ### maxZ
@@ -32,7 +34,7 @@ maxZ
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 <a id="field-field-mq3-client-playable-targets-state-minz-minz-src-mq3-client-playable-targets-ml-1923461582"></a>
 ### minZ
@@ -42,7 +44,7 @@ minZ
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 <a id="field-field-mq3-client-playable-targets-state-radius-radius-src-mq3-client-playable-targets-ml-76143702"></a>
 ### radius
@@ -52,7 +54,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 <a id="field-field-mq3-client-playable-targets-state-respawnmilliseconds-respawnmilliseconds-src-mq3-client-playable-targets-ml-613068458"></a>
 ### respawnMilliseconds
@@ -62,7 +64,7 @@ respawnMilliseconds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 <a id="field-field-mq3-client-playable-targets-state-score-score-src-mq3-client-playable-targets-ml-501129050"></a>
 ### score
@@ -72,7 +74,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)
 
 <a id="field-field-mq3-client-playable-targets-state-targets-targets-src-mq3-client-playable-targets-ml-2006428266"></a>
 ### targets
@@ -82,4 +84,4 @@ targets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L22)

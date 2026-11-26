@@ -9,8 +9,10 @@
 struct PacketFrame
 ```
 
+PacketFrame record for server.snapshot_delta, containing `firstEntity`, `numEntities`, `areaBits`, `playerState`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L29)
 
 <a id="field-field-mq3-server-snapshot-delta-packetframe-firstentity-firstentity-src-mq3-server-snapshot-delta-ml-565407850"></a>
 ### firstEntity
@@ -32,7 +34,7 @@ firstEntity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L27)
 
 <a id="field-field-mq3-server-snapshot-delta-packetframe-numentities-numentities-src-mq3-server-snapshot-delta-ml-831295570"></a>
 ### numEntities
@@ -42,7 +44,7 @@ numEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L28)
 
 <a id="field-field-mq3-server-snapshot-delta-packetframe-playerstate-playerstate-src-mq3-server-snapshot-delta-ml-989661990"></a>
 ### playerState
@@ -52,4 +54,4 @@ playerState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L30)

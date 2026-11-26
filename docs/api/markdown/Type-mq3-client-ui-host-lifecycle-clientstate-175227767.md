@@ -9,8 +9,10 @@
 struct ClientState
 ```
 
+Stores UI host lifecycle client state record, including `connState`, `connectPacketCount`, `clientNum`, `servername`, `updateInfoString`, `messageString`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-connectpacketcount-connectpacketcount-src-mq3-client-ui-host-lifecycle-ml-422026777"></a>
 ### connectPacketCount
@@ -32,7 +34,7 @@ connectPacketCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-connstate-connstate-src-mq3-client-ui-host-lifecycle-ml-1487978403"></a>
 ### connState
@@ -42,7 +44,7 @@ connState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-messagestring-messagestring-src-mq3-client-ui-host-lifecycle-ml-1873605999"></a>
 ### messageString
@@ -52,7 +54,7 @@ messageString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-servername-servername-src-mq3-client-ui-host-lifecycle-ml-1672216703"></a>
 ### servername
@@ -62,7 +64,7 @@ servername
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-clientstate-updateinfostring-updateinfostring-src-mq3-client-ui-host-lifecycle-ml-1673501487"></a>
 ### updateInfoString
@@ -72,4 +74,4 @@ updateInfoString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)

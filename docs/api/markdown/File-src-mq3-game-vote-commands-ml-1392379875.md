@@ -25,14 +25,16 @@ Reachable from entry: **no**
 function argument(argv, index, capacity)
 ```
 
+Apply `mq3.game.vote_commands.boundedText` while evaluating `argument`. Return paths include `boundedText(argv[index],capacity)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `argv` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L46)
 
 <a id="function-function-mq3-game-vote-commands-boundedtext-function-boundedtext-text-capacity-src-mq3-game-vote-commands-ml-302313827"></a>
 ### boundedText
@@ -41,13 +43,15 @@ function argument(argv, index, capacity)
 function boundedText(text, capacity)
 ```
 
+Validate vote argument storage and reject embedded zero bytes, truncating text to leave space for the terminator.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L19)
 
 <a id="function-function-mq3-game-vote-commands-callteamvote-function-callteamvote-level-ent-argv-src-mq3-game-vote-commands-ml-241544485"></a>
 ### callTeamVote
@@ -56,14 +60,16 @@ function boundedText(text, capacity)
 function callTeamVote(level, ent, argv)
 ```
 
+Update `level.teamVoteString[offset]`, `level.teamVoteTime[offset]`, `level.teamVoteYes[offset]` and `level.teamVoteNo[offset]` during `callTeamVote`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `allowVote`, `teamVoteTime`, `maxclients`, `entities` and `clients` and related fields. May update `level.teamVoteString[offset]`, `level.teamVoteTime[offset]` and `level.teamVoteYes[offset]` and additional fields in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot` and `client`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L199)
 
 <a id="function-function-mq3-game-vote-commands-callvote-function-callvote-level-ent-argv-src-mq3-game-vote-commands-ml-250711341"></a>
 ### callVote
@@ -72,14 +78,16 @@ function callTeamVote(level, ent, argv)
 function callVote(level, ent, argv)
 ```
 
+Update `level.voteExecuteTime`, `level.voteString`, `level.voteDisplayString` and `level.voteTime` and related state during `callVote`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `allowVote`, `voteTime`, `voteExecuteTime`, `voteString` and `voteDisplayString` and related fields. May update `level.voteExecuteTime`, `level.voteString` and `level.voteDisplayString` and additional fields in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot` and `client`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L91)
 
 <a id="function-function-mq3-game-vote-commands-castteamvote-function-castteamvote-level-ent-argv-src-mq3-game-vote-commands-ml-1980208501"></a>
 ### castTeamVote
@@ -88,14 +96,16 @@ function callVote(level, ent, argv)
 function castTeamVote(level, ent, argv)
 ```
 
+Set `level.teamVoteYes[offset]` to `n.add32(level.teamVoteYes[offset],1)` and `level.teamVoteNo[offset]` to `n.add32(level.teamVoteNo[offset],1)` in `mq3.game.vote_commands.castTeamVote`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `teamVoteTime`, `teamVoteYes` and `teamVoteNo`. May update `level.teamVoteYes[offset]` and `level.teamVoteNo[offset]` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot` and `client`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L257)
 
 <a id="function-function-mq3-game-vote-commands-castvote-function-castvote-level-ent-argv-src-mq3-game-vote-commands-ml-1423905733"></a>
 ### castVote
@@ -104,14 +114,16 @@ function castTeamVote(level, ent, argv)
 function castVote(level, ent, argv)
 ```
 
+Set `level.voteYes` to `n.add32(level.voteYes,1)` and `level.voteNo` to `n.add32(level.voteNo,1)` in `mq3.game.vote_commands.castVote`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `argv` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `voteTime`, `voteYes` and `voteNo`. May update `level.voteYes` and `level.voteNo` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot` and `client`. |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L154)
 
 <a id="function-function-mq3-game-vote-commands-cleanname-function-cleanname-text-src-mq3-game-vote-commands-ml-687753811"></a>
 ### cleanName
@@ -120,12 +132,14 @@ function castVote(level, ent, argv)
 function cleanName(text)
 ```
 
+Apply `mq3.game.vote_commands.boundedText` while evaluating `cleanName`. Return paths include `decode(bytes(result))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L183)
 
 <a id="constant-constant-mq3-game-vote-commands-ef-teamvoted-const-ef-teamvoted-524288-src-mq3-game-vote-commands-ml-1797066632"></a>
 ### EF_TEAMVOTED
@@ -154,14 +168,16 @@ const EF_VOTED = 16384
 function formattedText(level, text, capacity)
 ```
 
+Use `level.gamePrintFn` to perform `formattedText`. Return paths include `boundedText(text,capacity)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L32)
 
 <a id="function-function-mq3-game-vote-commands-invalidstring-function-invalidstring-first-second-src-mq3-game-vote-commands-ml-2081787534"></a>
 ### invalidString
@@ -170,13 +186,15 @@ function formattedText(level, text, capacity)
 function invalidString(first, second)
 ```
 
+Test `strings.indexOf(first,";",0) >= 0 or strings.indexOf(second,";",0) >= 0` as the condition for `invalidString`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `first` | `dynamic` | — |  |
-| `second` | `dynamic` | — |  |
+| `first` | `dynamic` | — | Value passed as argument 1 to `std.string.indexOf`. |
+| `second` | `dynamic` | — | Value passed as argument 1 to `std.string.indexOf`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L84)
 
 <a id="function-function-mq3-game-vote-commands-isyes-function-isyes-argv-src-mq3-game-vote-commands-ml-59008562"></a>
 ### isYes
@@ -185,12 +203,14 @@ function invalidString(first, second)
 function isYes(argv)
 ```
 
+Apply `mq3.game.vote_commands.argument` while evaluating `isYes`. Return paths include `first == 121 or second == 89 or second == 49`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `argv` | `dynamic` | — |  |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L143)
 
 <a id="function-function-mq3-game-vote-commands-nextmap-function-nextmap-level-src-mq3-game-vote-commands-ml-631797420"></a>
 ### nextMap
@@ -199,12 +219,14 @@ function isYes(argv)
 function nextMap(level)
 ```
 
+Apply `mq3.qcommon.cvar.find` and `mq3.game.vote_commands.boundedText` while evaluating `nextMap`. Return paths include `boundedText(variable.string,1024)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L75)
 
 <a id="function-function-mq3-game-vote-commands-notice-function-notice-level-ent-text-src-mq3-game-vote-commands-ml-1982185522"></a>
 ### notice
@@ -213,14 +235,16 @@ function nextMap(level)
 function notice(level, ent, text)
 ```
 
+Forward `notice` to `mq3.game.votes.send` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `serverCommandFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L62)
 
 <a id="function-function-mq3-game-vote-commands-teamarguments-function-teamarguments-argv-src-mq3-game-vote-commands-ml-378623810"></a>
 ### teamArguments
@@ -229,12 +253,14 @@ function notice(level, ent, text)
 function teamArguments(argv)
 ```
 
+Apply `mq3.game.vote_commands.argument` while evaluating `teamArguments`. Return paths include `text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `argv` | `dynamic` | — |  |
+| `argv` | `dynamic` | — | Command argument strings in their original order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L169)
 
 <a id="function-function-mq3-game-vote-commands-voteclient-function-voteclient-level-ent-src-mq3-game-vote-commands-ml-1850731495"></a>
 ### voteClient
@@ -243,13 +269,15 @@ function teamArguments(argv)
 function voteClient(level, ent)
 ```
 
+Apply `mq3.game.votes.clientLimit` while evaluating `voteClient`. Return paths include `ent.client`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot` and `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L53)
 
 <a id="function-function-mq3-game-vote-commands-voteconfig-function-voteconfig-level-index-value-src-mq3-game-vote-commands-ml-1179185729"></a>
 ### voteConfig
@@ -258,11 +286,13 @@ function voteClient(level, ent)
 function voteConfig(level, index, value)
 ```
 
+Apply `mq3.game.spawn_values.setConfig` while evaluating `voteConfig`. Return paths include `values.setConfig(level.spawner,index,value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `value` | `dynamic` | — | Value passed as argument 5 to `state.effectFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L69)

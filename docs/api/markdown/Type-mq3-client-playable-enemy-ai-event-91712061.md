@@ -9,8 +9,10 @@
 struct Event
 ```
 
+Stores playable enemy ai event record, including `damage`, `side`, `attacker`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ attacker
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L25)
 
 <a id="field-field-mq3-client-playable-enemy-ai-event-damage-damage-src-mq3-client-playable-enemy-ai-ml-1032184273"></a>
 ### damage
@@ -32,7 +34,7 @@ damage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L25)
 
 <a id="field-field-mq3-client-playable-enemy-ai-event-side-side-src-mq3-client-playable-enemy-ai-ml-815191677"></a>
 ### side
@@ -42,4 +44,4 @@ side
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L25)

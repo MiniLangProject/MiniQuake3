@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores client game console commands state, including `scoresRequestTime`, `showScores`, `numScores`, `scoreFadeTime`, `currentOrder`, `orderPending` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ acceptLeader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-acceptordertime-acceptordertime-src-mq3-client-cgame-console-commands-ml-750517862"></a>
 ### acceptOrderTime
@@ -32,7 +34,7 @@ acceptOrderTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-accepttask-accepttask-src-mq3-client-cgame-console-commands-ml-1946845300"></a>
 ### acceptTask
@@ -42,7 +44,7 @@ acceptTask
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-cameraorbit-cameraorbit-src-mq3-client-cgame-console-commands-ml-615399722"></a>
 ### cameraOrbit
@@ -52,7 +54,7 @@ cameraOrbit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-currentorder-currentorder-src-mq3-client-cgame-console-commands-ml-1312294300"></a>
 ### currentOrder
@@ -62,7 +64,7 @@ currentOrder
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-gametype-gametype-src-mq3-client-cgame-console-commands-ml-31642514"></a>
 ### gametype
@@ -72,7 +74,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-hudfile-hudfile-src-mq3-client-cgame-console-commands-ml-2101328058"></a>
 ### hudFile
@@ -82,7 +84,7 @@ hudFile
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-numscores-numscores-src-mq3-client-cgame-console-commands-ml-652712174"></a>
 ### numScores
@@ -92,7 +94,7 @@ numScores
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-orderpending-orderpending-src-mq3-client-cgame-console-commands-ml-1516673056"></a>
 ### orderPending
@@ -102,7 +104,7 @@ orderPending
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-ordertime-ordertime-src-mq3-client-cgame-console-commands-ml-1721304034"></a>
 ### orderTime
@@ -112,7 +114,7 @@ orderTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-otherteamhasflag-otherteamhasflag-src-mq3-client-cgame-console-commands-ml-348689772"></a>
 ### otherTeamHasFlag
@@ -122,7 +124,7 @@ otherTeamHasFlag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-scoreboardshowing-scoreboardshowing-src-mq3-client-cgame-console-commands-ml-274617022"></a>
 ### scoreboardShowing
@@ -132,7 +134,7 @@ scoreboardShowing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-scorefadetime-scorefadetime-src-mq3-client-cgame-console-commands-ml-4305922"></a>
 ### scoreFadeTime
@@ -142,7 +144,7 @@ scoreFadeTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-scoresrequesttime-scoresrequesttime-src-mq3-client-cgame-console-commands-ml-1898667854"></a>
 ### scoresRequestTime
@@ -152,7 +154,7 @@ scoresRequestTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-selectedisself-selectedisself-src-mq3-client-cgame-console-commands-ml-151114036"></a>
 ### selectedIsSelf
@@ -162,7 +164,7 @@ selectedIsSelf
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-selectedplayer-selectedplayer-src-mq3-client-cgame-console-commands-ml-1733369250"></a>
 ### selectedPlayer
@@ -172,7 +174,7 @@ selectedPlayer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-showscores-showscores-src-mq3-client-cgame-console-commands-ml-1220568746"></a>
 ### showScores
@@ -182,7 +184,7 @@ showScores
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-teamleader-teamleader-src-mq3-client-cgame-console-commands-ml-1172555914"></a>
 ### teamLeader
@@ -192,7 +194,7 @@ teamLeader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-teamplayercount-teamplayercount-src-mq3-client-cgame-console-commands-ml-758562378"></a>
 ### teamPlayerCount
@@ -202,7 +204,7 @@ teamPlayerCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-viewsize-viewsize-src-mq3-client-cgame-console-commands-ml-1585397094"></a>
 ### viewsize
@@ -212,7 +214,7 @@ viewsize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)
 
 <a id="field-field-mq3-client-cgame-console-commands-state-yourteamhasflag-yourteamhasflag-src-mq3-client-cgame-console-commands-ml-822019358"></a>
 ### yourTeamHasFlag
@@ -222,4 +224,4 @@ yourTeamHasFlag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L27)

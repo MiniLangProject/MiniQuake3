@@ -45,11 +45,13 @@ const CONTENTS_WATER = 32
 function swimming(context, pointContentsFn, origin)
 ```
 
+Test whether the point contents permit swimming under the AAS movement rules.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `pointContentsFn` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
+| `pointContentsFn` | `dynamic` | — | Operand used to evaluate the returned expression `(pointContentsFn(context,test)&(CONTENTS_LAVA\|CONTENTS_SLIME\|CONTENTS_WATER))!=0`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_movement_queries.ml#L14)

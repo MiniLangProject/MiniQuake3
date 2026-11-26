@@ -9,8 +9,10 @@
 struct GammaTable
 ```
 
+Data record for `mq3.platform.macosx_headers.GammaTable`; groups `display`, `tableSize`, `red`, `blue`, `green`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ blue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L38)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-display-display-src-mq3-platform-macosx-headers-ml-1106672698"></a>
 ### display
@@ -32,7 +34,7 @@ display
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L38)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-green-green-src-mq3-platform-macosx-headers-ml-1000066546"></a>
 ### green
@@ -42,7 +44,7 @@ green
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L38)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-red-red-src-mq3-platform-macosx-headers-ml-135517406"></a>
 ### red
@@ -52,7 +54,7 @@ red
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L38)
 
 <a id="field-field-mq3-platform-macosx-headers-gammatable-tablesize-tablesize-src-mq3-platform-macosx-headers-ml-1213148646"></a>
 ### tableSize
@@ -62,4 +64,4 @@ tableSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/macosx_headers.ml#L38)

@@ -20,13 +20,15 @@ Reachable from entry: **yes**
 function dispatch(runtime, pools, vm, base, op)
 ```
 
+Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.ai_item_weights.loadItemWeights` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `pools` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI item weights runtime; accesses `reloadCharacters` and `configs`. May update `runtime.configs` in place. |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `goalStates`. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weight_syscalls.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weight_syscalls.ml#L13)

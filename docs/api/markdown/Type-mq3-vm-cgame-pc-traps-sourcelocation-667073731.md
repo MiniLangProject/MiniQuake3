@@ -9,8 +9,10 @@
 struct SourceLocation
 ```
 
+SourceLocation record for vm.cgame_pc_traps, containing `found`, `name`, `line`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ found
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L24)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-sourcelocation-line-line-src-mq3-vm-cgame-pc-traps-ml-2071554177"></a>
 ### line
@@ -32,7 +34,7 @@ line
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L24)
 
 <a id="field-field-mq3-vm-cgame-pc-traps-sourcelocation-name-name-src-mq3-vm-cgame-pc-traps-ml-405775459"></a>
 ### name
@@ -42,4 +44,4 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_pc_traps.ml#L24)

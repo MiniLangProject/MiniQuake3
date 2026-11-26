@@ -9,8 +9,10 @@
 struct DownloadInfo
 ```
 
+Stores UI connect download info record, including `name`, `percent`, `downloaded`, `total`, `estimate`, `copied` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ copied
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-downloaded-downloaded-src-mq3-client-ui-connect-ml-1200827475"></a>
 ### downloaded
@@ -32,7 +34,7 @@ downloaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-estimate-estimate-src-mq3-client-ui-connect-ml-177346849"></a>
 ### estimate
@@ -42,7 +44,7 @@ estimate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-leftwidth-leftwidth-src-mq3-client-ui-connect-ml-522494157"></a>
 ### leftWidth
@@ -52,7 +54,7 @@ leftWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-name-name-src-mq3-client-ui-connect-ml-1229541079"></a>
 ### name
@@ -62,7 +64,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-percent-percent-src-mq3-client-ui-connect-ml-1334264693"></a>
 ### percent
@@ -72,7 +74,7 @@ percent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-ratetext-ratetext-src-mq3-client-ui-connect-ml-1109136267"></a>
 ### rateText
@@ -82,7 +84,7 @@ rateText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-total-total-src-mq3-client-ui-connect-ml-1696707065"></a>
 ### total
@@ -92,7 +94,7 @@ total
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 <a id="field-field-mq3-client-ui-connect-downloadinfo-transferrate-transferrate-src-mq3-client-ui-connect-ml-462824511"></a>
 ### transferRate
@@ -102,4 +104,4 @@ transferRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)

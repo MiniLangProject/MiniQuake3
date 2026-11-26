@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.platform.null_runtime.State`; groups `clientInitialized`, `inputInitialized`, `glInitialized`, `qglInitialized`, `logging`, `frames`, and 8 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-consoletext-consoletext-src-mq3-platform-null-runtime-ml-468148858"></a>
 ### consoleText
@@ -32,7 +34,7 @@ consoleText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-errors-errors-src-mq3-platform-null-runtime-ml-1816410000"></a>
 ### errors
@@ -42,7 +44,7 @@ errors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-frames-frames-src-mq3-platform-null-runtime-ml-1905327258"></a>
 ### frames
@@ -52,7 +54,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-glframes-glframes-src-mq3-platform-null-runtime-ml-1899544724"></a>
 ### glFrames
@@ -62,7 +64,7 @@ glFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-glinitialized-glinitialized-src-mq3-platform-null-runtime-ml-628617714"></a>
 ### glInitialized
@@ -72,7 +74,7 @@ glInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-inputframes-inputframes-src-mq3-platform-null-runtime-ml-561094818"></a>
 ### inputFrames
@@ -82,7 +84,7 @@ inputFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-inputinitialized-inputinitialized-src-mq3-platform-null-runtime-ml-562956954"></a>
 ### inputInitialized
@@ -92,7 +94,7 @@ inputInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-localsounds-localsounds-src-mq3-platform-null-runtime-ml-1624543494"></a>
 ### localSounds
@@ -102,7 +104,7 @@ localSounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-logging-logging-src-mq3-platform-null-runtime-ml-410607882"></a>
 ### logging
@@ -112,7 +114,7 @@ logging
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-qglinitialized-qglinitialized-src-mq3-platform-null-runtime-ml-1549865154"></a>
 ### qglInitialized
@@ -122,7 +124,7 @@ qglInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-quitrequested-quitrequested-src-mq3-platform-null-runtime-ml-1848261318"></a>
 ### quitRequested
@@ -132,7 +134,7 @@ quitRequested
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-sentpackets-sentpackets-src-mq3-platform-null-runtime-ml-2114865874"></a>
 ### sentPackets
@@ -142,7 +144,7 @@ sentPackets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="field-field-mq3-platform-null-runtime-state-soundregistrations-soundregistrations-src-mq3-platform-null-runtime-ml-174616220"></a>
 ### soundRegistrations
@@ -152,4 +154,4 @@ soundRegistrations
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)

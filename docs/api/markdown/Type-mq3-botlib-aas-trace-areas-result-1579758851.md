@@ -9,8 +9,10 @@
 struct Result
 ```
 
+`Result` record for aas trace areas, containing `areas` and `points`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ areas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)
 
 <a id="field-field-mq3-botlib-aas-trace-areas-result-points-points-src-mq3-botlib-aas-trace-areas-ml-1157537014"></a>
 ### points
@@ -32,4 +34,4 @@ points
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)

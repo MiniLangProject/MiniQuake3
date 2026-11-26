@@ -9,8 +9,10 @@
 struct Frustum
 ```
 
+Data record for `mq3.renderer.world_surface_selection.Frustum`; groups `slopeX`, `slopeY`, `radiusScaleX`, `radiusScaleY`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ radiusScaleX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L39)
 
 <a id="field-field-mq3-renderer-world-surface-selection-frustum-radiusscaley-radiusscaley-src-mq3-renderer-world-surface-selection-ml-556097637"></a>
 ### radiusScaleY
@@ -32,7 +34,7 @@ radiusScaleY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L39)
 
 <a id="field-field-mq3-renderer-world-surface-selection-frustum-slopex-slopex-src-mq3-renderer-world-surface-selection-ml-324881661"></a>
 ### slopeX
@@ -42,7 +44,7 @@ slopeX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L39)
 
 <a id="field-field-mq3-renderer-world-surface-selection-frustum-slopey-slopey-src-mq3-renderer-world-surface-selection-ml-394805255"></a>
 ### slopeY
@@ -52,4 +54,4 @@ slopeY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L39)

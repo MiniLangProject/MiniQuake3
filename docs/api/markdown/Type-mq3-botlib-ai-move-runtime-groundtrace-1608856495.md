@@ -9,8 +9,10 @@
 struct GroundTrace
 ```
 
+`GroundTrace` record for ai move runtime, containing `startSolid`, `fraction`, `entity` and `endPos`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)
 
 ## Members
 
@@ -22,7 +24,7 @@ endPos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-groundtrace-entity-entity-src-mq3-botlib-ai-move-runtime-ml-299484061"></a>
 ### entity
@@ -32,7 +34,7 @@ entity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-groundtrace-fraction-fraction-src-mq3-botlib-ai-move-runtime-ml-2056964071"></a>
 ### fraction
@@ -42,7 +44,7 @@ fraction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-groundtrace-startsolid-startsolid-src-mq3-botlib-ai-move-runtime-ml-1389492677"></a>
 ### startSolid
@@ -52,4 +54,4 @@ startSolid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)

@@ -15,12 +15,14 @@ Reachable from entry: **no**
 function createState(name)
 ```
 
+Create `mq3.vm.abi.VmState` with programStack=0; systemCall=void; name=name; dllHandle=void; 16 further fields.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Initial `name` field stored in the returned or constructed `mq3.vm.abi.VmState` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L85)
 
 <a id="constant-constant-mq3-vm-abi-op-add-const-op-add-38-src-mq3-vm-abi-ml-2042804038"></a>
 ### OP_ADD
@@ -639,8 +641,10 @@ const OP_UNDEF = 0
 function opcodeValues()
 ```
 
+Provide the opcode values lookup table in vm.abi.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L77)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L79)
 
 <a id="constant-constant-mq3-vm-abi-vm-offset-program-stack-const-vm-offset-program-stack-0-src-mq3-vm-abi-ml-1250423503"></a>
 ### VM_OFFSET_PROGRAM_STACK

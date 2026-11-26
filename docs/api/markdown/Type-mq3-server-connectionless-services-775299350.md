@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for server.connectionless, containing `statusFn`, `infoFn`, `rconFn`, `authorizeFn`, `decompressFn`, `diagnosticFn`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ authorizeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 <a id="field-field-mq3-server-connectionless-services-context-context-src-mq3-server-connectionless-ml-141957949"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 <a id="field-field-mq3-server-connectionless-services-decompressfn-decompressfn-src-mq3-server-connectionless-ml-410084571"></a>
 ### decompressFn
@@ -42,7 +44,7 @@ decompressFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 <a id="field-field-mq3-server-connectionless-services-diagnosticfn-diagnosticfn-src-mq3-server-connectionless-ml-342345831"></a>
 ### diagnosticFn
@@ -52,7 +54,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 <a id="field-field-mq3-server-connectionless-services-infofn-infofn-src-mq3-server-connectionless-ml-1647304997"></a>
 ### infoFn
@@ -62,7 +64,7 @@ infoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 <a id="field-field-mq3-server-connectionless-services-rconfn-rconfn-src-mq3-server-connectionless-ml-1251775357"></a>
 ### rconFn
@@ -72,7 +74,7 @@ rconFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 <a id="field-field-mq3-server-connectionless-services-statusfn-statusfn-src-mq3-server-connectionless-ml-153119941"></a>
 ### statusFn
@@ -82,4 +84,4 @@ statusFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)

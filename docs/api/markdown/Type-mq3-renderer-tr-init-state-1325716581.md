@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.tr_init.State`; groups `registered`, `cvars`, `commands`, `config`, `textureMode`, `overbrightBits`, and 7 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-apiexports-apiexports-src-mq3-renderer-tr-init-ml-1788296298"></a>
 ### apiExports
@@ -32,7 +34,7 @@ apiExports
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-commands-commands-src-mq3-renderer-tr-init-ml-1375630180"></a>
 ### commands
@@ -42,7 +44,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-config-config-src-mq3-renderer-tr-init-ml-296371736"></a>
 ### config
@@ -52,7 +54,7 @@ config
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-cvars-cvars-src-mq3-renderer-tr-init-ml-1003009116"></a>
 ### cvars
@@ -62,7 +64,7 @@ cvars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-glerror-glerror-src-mq3-renderer-tr-init-ml-1837427700"></a>
 ### glError
@@ -72,7 +74,7 @@ glError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-lastscreenshot-lastscreenshot-src-mq3-renderer-tr-init-ml-1427391240"></a>
 ### lastScreenshot
@@ -82,7 +84,7 @@ lastScreenshot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-lastscreenshotjpeg-lastscreenshotjpeg-src-mq3-renderer-tr-init-ml-700770224"></a>
 ### lastScreenshotJpeg
@@ -92,7 +94,7 @@ lastScreenshotJpeg
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-maxpolys-maxpolys-src-mq3-renderer-tr-init-ml-361831474"></a>
 ### maxPolys
@@ -102,7 +104,7 @@ maxPolys
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-maxpolyverts-maxpolyverts-src-mq3-renderer-tr-init-ml-1990967104"></a>
 ### maxPolyVerts
@@ -112,7 +114,7 @@ maxPolyVerts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-overbrightbits-overbrightbits-src-mq3-renderer-tr-init-ml-388513532"></a>
 ### overbrightBits
@@ -122,7 +124,7 @@ overbrightBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-registered-registered-src-mq3-renderer-tr-init-ml-662838768"></a>
 ### registered
@@ -132,7 +134,7 @@ registered
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 <a id="field-field-mq3-renderer-tr-init-state-texturemode-texturemode-src-mq3-renderer-tr-init-ml-1314066336"></a>
 ### textureMode
@@ -142,4 +144,4 @@ textureMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)

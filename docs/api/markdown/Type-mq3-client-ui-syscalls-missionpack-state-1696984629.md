@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI syscalls missionpack state, including `syscallFn`, `context`, `calls`, `lastOpcode`, `lastArguments`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L102)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L103)
 
 ## Members
 
@@ -22,7 +24,7 @@ calls
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L103)
 
 <a id="field-field-mq3-client-ui-syscalls-missionpack-state-context-context-src-mq3-client-ui-syscalls-missionpack-ml-366450284"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L103)
 
 <a id="field-field-mq3-client-ui-syscalls-missionpack-state-lastarguments-lastarguments-src-mq3-client-ui-syscalls-missionpack-ml-1717836152"></a>
 ### lastArguments
@@ -42,7 +44,7 @@ lastArguments
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L103)
 
 <a id="field-field-mq3-client-ui-syscalls-missionpack-state-lastopcode-lastopcode-src-mq3-client-ui-syscalls-missionpack-ml-1168658048"></a>
 ### lastOpcode
@@ -52,7 +54,7 @@ lastOpcode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L103)
 
 <a id="field-field-mq3-client-ui-syscalls-missionpack-state-syscallfn-syscallfn-src-mq3-client-ui-syscalls-missionpack-ml-1345434248"></a>
 ### syscallFn
@@ -62,4 +64,4 @@ syscallFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_syscalls_missionpack.ml#L103)

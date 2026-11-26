@@ -9,8 +9,10 @@
 struct OutPacket
 ```
 
+Stores send cmd out packet record, including `serverTime`, `realtime`, `cmdNumber`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ cmdNumber
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
 
 <a id="field-field-mq3-client-send-cmd-outpacket-realtime-realtime-src-mq3-client-send-cmd-ml-284500379"></a>
 ### realtime
@@ -32,7 +34,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
 
 <a id="field-field-mq3-client-send-cmd-outpacket-servertime-servertime-src-mq3-client-send-cmd-ml-328457945"></a>
 ### serverTime
@@ -42,4 +44,4 @@ serverTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)

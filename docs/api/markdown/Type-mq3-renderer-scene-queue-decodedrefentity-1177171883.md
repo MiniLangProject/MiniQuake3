@@ -9,8 +9,10 @@
 struct DecodedRefEntity
 ```
 
+Data record for `mq3.renderer.scene_queue.DecodedRefEntity`; groups `reType`, `renderfx`, `hModel`, `lightingOrigin`, `shadowPlane`, `axis`, and 14 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-backlerp-backlerp-src-mq3-renderer-scene-queue-ml-1621990685"></a>
 ### backlerp
@@ -32,7 +34,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-customshader-customshader-src-mq3-renderer-scene-queue-ml-1121296425"></a>
 ### customShader
@@ -42,7 +44,7 @@ customShader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-customskin-customskin-src-mq3-renderer-scene-queue-ml-1259095565"></a>
 ### customSkin
@@ -52,7 +54,7 @@ customSkin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-frame-frame-src-mq3-renderer-scene-queue-ml-1535142885"></a>
 ### frame
@@ -62,7 +64,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-hmodel-hmodel-src-mq3-renderer-scene-queue-ml-1768433507"></a>
 ### hModel
@@ -72,7 +74,7 @@ hModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-lightingorigin-lightingorigin-src-mq3-renderer-scene-queue-ml-165697009"></a>
 ### lightingOrigin
@@ -82,7 +84,7 @@ lightingOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-nonnormalizedaxes-nonnormalizedaxes-src-mq3-renderer-scene-queue-ml-1460728697"></a>
 ### nonNormalizedAxes
@@ -92,7 +94,7 @@ nonNormalizedAxes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-oldframe-oldframe-src-mq3-renderer-scene-queue-ml-217465577"></a>
 ### oldframe
@@ -102,7 +104,7 @@ oldframe
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-oldorigin-oldorigin-src-mq3-renderer-scene-queue-ml-1530673465"></a>
 ### oldorigin
@@ -112,7 +114,7 @@ oldorigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-origin-origin-src-mq3-renderer-scene-queue-ml-500117941"></a>
 ### origin
@@ -122,7 +124,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-radius-radius-src-mq3-renderer-scene-queue-ml-370052205"></a>
 ### radius
@@ -132,7 +134,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-renderfx-renderfx-src-mq3-renderer-scene-queue-ml-1792536421"></a>
 ### renderfx
@@ -142,7 +144,7 @@ renderfx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-retype-retype-src-mq3-renderer-scene-queue-ml-1870549219"></a>
 ### reType
@@ -152,7 +154,7 @@ reType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-rotation-rotation-src-mq3-renderer-scene-queue-ml-2026448469"></a>
 ### rotation
@@ -162,7 +164,7 @@ rotation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-shaderrgba-shaderrgba-src-mq3-renderer-scene-queue-ml-1458872655"></a>
 ### shaderRGBA
@@ -172,7 +174,7 @@ shaderRGBA
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-shadertexcoord-shadertexcoord-src-mq3-renderer-scene-queue-ml-1440794695"></a>
 ### shaderTexCoord
@@ -182,7 +184,7 @@ shaderTexCoord
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-shadertime-shadertime-src-mq3-renderer-scene-queue-ml-2102626441"></a>
 ### shaderTime
@@ -192,7 +194,7 @@ shaderTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-shadowplane-shadowplane-src-mq3-renderer-scene-queue-ml-285222201"></a>
 ### shadowPlane
@@ -202,7 +204,7 @@ shadowPlane
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-scene-queue-decodedrefentity-skinnum-skinnum-src-mq3-renderer-scene-queue-ml-1292668357"></a>
 ### skinNum
@@ -212,4 +214,4 @@ skinNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L24)

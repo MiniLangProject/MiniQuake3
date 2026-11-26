@@ -9,8 +9,10 @@
 struct DriverInfoState
 ```
 
+Stores UI video driver info state record, including `config`, `extensionStrings`, `drawLines`, `items`, `assets`, `actions`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L38)
 
 <a id="field-field-mq3-client-ui-video-driverinfostate-assets-assets-src-mq3-client-ui-video-ml-1821750258"></a>
 ### assets
@@ -32,7 +34,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L38)
 
 <a id="field-field-mq3-client-ui-video-driverinfostate-config-config-src-mq3-client-ui-video-ml-1859245828"></a>
 ### config
@@ -42,7 +44,7 @@ config
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L38)
 
 <a id="field-field-mq3-client-ui-video-driverinfostate-drawlines-drawlines-src-mq3-client-ui-video-ml-1725873364"></a>
 ### drawLines
@@ -52,7 +54,7 @@ drawLines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L38)
 
 <a id="field-field-mq3-client-ui-video-driverinfostate-extensionstrings-extensionstrings-src-mq3-client-ui-video-ml-433149354"></a>
 ### extensionStrings
@@ -62,7 +64,7 @@ extensionStrings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L38)
 
 <a id="field-field-mq3-client-ui-video-driverinfostate-items-items-src-mq3-client-ui-video-ml-511640904"></a>
 ### items
@@ -72,4 +74,4 @@ items
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L38)

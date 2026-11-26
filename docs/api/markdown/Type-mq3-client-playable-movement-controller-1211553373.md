@@ -9,8 +9,10 @@
 struct Controller
 ```
 
+Stores playable movement controller record, including `motion`, `grounded`, `jumpHeld`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ grounded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L22)
 
 <a id="field-field-mq3-client-playable-movement-controller-jumpheld-jumpheld-src-mq3-client-playable-movement-ml-711382683"></a>
 ### jumpHeld
@@ -32,7 +34,7 @@ jumpHeld
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L23)
 
 <a id="field-field-mq3-client-playable-movement-controller-motion-motion-src-mq3-client-playable-movement-ml-1746691769"></a>
 ### motion
@@ -42,4 +44,4 @@ motion
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_movement.ml#L21)

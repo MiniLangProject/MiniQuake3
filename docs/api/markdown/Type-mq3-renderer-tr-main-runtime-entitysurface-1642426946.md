@@ -9,8 +9,10 @@
 struct EntitySurface
 ```
 
+Data record for `mq3.renderer.tr_main_runtime.EntitySurface`; groups `entityIndex`, `reType`, `fogNum`, `payload`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ entityIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-entitysurface-fognum-fognum-src-mq3-renderer-tr-main-runtime-ml-842840067"></a>
 ### fogNum
@@ -32,7 +34,7 @@ fogNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-entitysurface-payload-payload-src-mq3-renderer-tr-main-runtime-ml-1239776711"></a>
 ### payload
@@ -42,7 +44,7 @@ payload
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-entitysurface-retype-retype-src-mq3-renderer-tr-main-runtime-ml-59100701"></a>
 ### reType
@@ -52,4 +54,4 @@ reType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)

@@ -9,8 +9,10 @@
 struct Plane
 ```
 
+Data record for `mq3.renderer.mark_fragments.Plane`; groups `normal`, `distance`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ distance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L24)
 
 <a id="field-field-mq3-renderer-mark-fragments-plane-normal-normal-src-mq3-renderer-mark-fragments-ml-1945613149"></a>
 ### normal
@@ -32,4 +34,4 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L24)

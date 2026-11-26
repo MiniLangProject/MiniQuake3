@@ -20,16 +20,18 @@ Reachable from entry: **yes**
 function add(pools, moveHandle, origin, radius, type)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.moveState` while evaluating `add`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `pools` | `dynamic` | — |  |
-| `moveHandle` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
+| `pools` | `dynamic` | — | Bot resource pools; accesses `moveStates`. |
+| `moveHandle` | `dynamic` | — | Handle identifying the allocated bot movement state. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `radius` | `dynamic` | — | Radius used by the spatial or damage query. |
+| `type` | `dynamic` | — | Value used by `add` in `if type==AVOID_CLEAR then state.numAvoidSpots=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L20)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-avoid-always-const-avoid-always-1-src-mq3-botlib-ai-avoid-spots-ml-689660804"></a>
 ### AVOID_ALWAYS

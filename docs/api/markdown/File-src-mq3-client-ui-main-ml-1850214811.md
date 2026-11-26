@@ -15,13 +15,15 @@ Reachable from entry: **no**
 function arg(args, index)
 ```
 
+Evaluates UI main `arg` and returns `0`, `args[index]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `args` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `args` | `dynamic` | — | Sequence read at `args[index]`. |
+| `index` | `dynamic` | — | Value tested by `index<0 or index>=len(args)` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L58)
 
 <a id="function-function-mq3-client-ui-main-create-function-create-retailqvmactive-src-mq3-client-ui-main-ml-1582222863"></a>
 ### create
@@ -30,12 +32,14 @@ function arg(args, index)
 function create(retailQvmActive)
 ```
 
+Creates a `mq3.client.ui_main.State` record. Assigns `retailQvmActive` from `retailQvmActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailQvmActive` | `dynamic` | — |  |
+| `retailQvmActive` | `dynamic` | — | Value used to initialize `State.retailQvmActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L47)
 
 <a id="constant-constant-mq3-client-ui-main-cvar-archive-const-cvar-archive-1-src-mq3-client-ui-main-ml-109240264"></a>
 ### CVAR_ARCHIVE
@@ -85,8 +89,10 @@ const CVAR_ROM = 64
 function cvarTable()
 ```
 
+Calls `mq3.client.ui_main.spec` from UI main `cvarTable`. The final path returns `rows+[spec("ui_cdkeychecked","0",CVAR_ROM)]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L38)
 
 - [mq3.client.ui_main.DispatchResult](Type-mq3-client-ui-main-dispatchresult-1778608090.md) — struct
 <a id="function-function-mq3-client-ui-main-hostaction-function-hostaction-state-boundary-kind-name-args-src-mq3-client-ui-main-ml-713026557"></a>
@@ -96,16 +102,18 @@ function cvarTable()
 function hostAction(state, boundary, kind, name, args)
 ```
 
+Updates `state.actions` during UI main `hostAction`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI main record/storage; this routine assigns `state.actions`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI main resource. |
+| `args` | `dynamic` | — | Value used by `value=HostAction(boundary,kind,name,args,not state.retailQvmActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L54)
 
 - [mq3.client.ui_main.HostAction](Type-mq3-client-ui-main-hostaction-1975326125.md) — struct
 <a id="function-function-mq3-client-ui-main-result-function-result-value-action-src-mq3-client-ui-main-ml-949067465"></a>
@@ -115,13 +123,15 @@ function hostAction(state, boundary, kind, name, args)
 function result(value, action)
 ```
 
+Creates a `mq3.client.ui_main.DispatchResult` record. Assigns `value` from `value`, `action` from `action`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `action` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used to initialize `DispatchResult.value`. |
+| `action` | `dynamic` | — | Value used to initialize `DispatchResult.action`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L62)
 
 <a id="function-function-mq3-client-ui-main-spec-function-spec-name-defaultvalue-flags-src-mq3-client-ui-main-ml-1532535040"></a>
 ### spec
@@ -130,14 +140,16 @@ function result(value, action)
 function spec(name, defaultValue, flags)
 ```
 
+Creates a `mq3.client.ui_main.CvarSpec` record. Assigns `name` from `name`, `defaultValue` from `defaultValue`, `flags` from `flags`, `value` from `defaultValue`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `defaultValue` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Value used to initialize `CvarSpec.name`. |
+| `defaultValue` | `dynamic` | — | Value used to initialize `CvarSpec.defaultValue`, `CvarSpec.value`. |
+| `flags` | `dynamic` | — | Value used to initialize `CvarSpec.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L36)
 
 - [mq3.client.ui_main.State](Type-mq3-client-ui-main-state-743995406.md) — struct
 <a id="constant-constant-mq3-client-ui-main-ui-api-version-const-ui-api-version-6-src-mq3-client-ui-main-ml-192207847"></a>
@@ -251,10 +263,10 @@ UI_RegisterCvars
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L66)
 
 <a id="constant-constant-mq3-client-ui-main-ui-set-active-menu-const-ui-set-active-menu-7-src-mq3-client-ui-main-ml-875542084"></a>
 ### UI_SET_ACTIVE_MENU
@@ -287,10 +299,10 @@ UI_UpdateCvars
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L72)
 
 <a id="function-function-mq3-client-ui-main-vmmain-function-vmmain-state-command-args-src-mq3-client-ui-main-ml-1159591367"></a>
 ### vmMain
@@ -303,9 +315,9 @@ vmMain
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `command` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI main record/storage; this routine assigns `state.initialized`, `state.shutdown`, `state.keyEvents`, `state.mouseEvents` and additional values. |
+| `command` | `dynamic` | — | Value used by `if command==UI_GETAPIVERSION then return result(UI_API_VERSION,void) end if`. |
+| `args` | `dynamic` | — | Value used by `if typeof(args)!="array" then return error(7894,"ui vmMain arguments must be an array") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L80)

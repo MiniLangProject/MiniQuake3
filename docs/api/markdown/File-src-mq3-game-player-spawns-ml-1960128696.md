@@ -24,16 +24,18 @@ Reachable from entry: **no**
 function ctf(level, team, teamstate, origin, angles)
 ```
 
+Apply `mq3.game.player_spawns.randomTeam`, `mq3.game.player_spawns.selectSpawn` and `mq3.game.player_spawns.spawnResult` while evaluating `ctf`. Return paths include `spawnResult(spot,origin,angles)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `teamstate` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
+| `teamstate` | `dynamic` | — | Value used by `randomTeam` in `if teamstate == 0 then`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L170)
 
 <a id="function-function-mq3-game-player-spawns-distancefrom-function-distancefrom-spot-point-src-mq3-game-player-spawns-ml-374925736"></a>
 ### distanceFrom
@@ -42,13 +44,15 @@ function ctf(level, team, teamstate, origin, angles)
 function distanceFrom(spot, point)
 ```
 
+Measure Euclidean distance from a player spawn point to a world-space point.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `spot` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
+| `spot` | `dynamic` | — | Spot record; accesses `s`. |
+| `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L40)
 
 <a id="function-function-mq3-game-player-spawns-findclass-function-findclass-level-after-name-src-mq3-game-player-spawns-ml-272860753"></a>
 ### findClass
@@ -57,14 +61,16 @@ function distanceFrom(spot, point)
 function findClass(level, after, name)
 ```
 
+Find the next active entity with a case-insensitive class-name match for player spawns.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `after` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `after` | `dynamic` | — | After record; accesses `slot`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L15)
 
 <a id="function-function-mq3-game-player-spawns-findintermission-function-findintermission-level-src-mq3-game-player-spawns-ml-668410224"></a>
 ### findIntermission
@@ -73,12 +79,14 @@ function findClass(level, after, name)
 function findIntermission(level)
 ```
 
+Update `level.intermission_origin` and `level.intermission_angle` during `findIntermission`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermission_origin` and `intermission_angle`. May update `level.intermission_origin` and `level.intermission_angle` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L177)
 
 <a id="function-function-mq3-game-player-spawns-furthest-function-furthest-level-avoid-origin-angles-src-mq3-game-player-spawns-ml-250756977"></a>
 ### furthest
@@ -87,15 +95,17 @@ function findIntermission(level)
 function furthest(level, avoid, origin, angles)
 ```
 
+Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag` and `mq3.game.player_spawns.distanceFrom` while evaluating `furthest`. Return paths include `spawnResult(spots[rnd],origin,angles)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `avoid` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `avoid` | `dynamic` | — | Three-component point used by the geometric query. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L91)
 
 <a id="function-function-mq3-game-player-spawns-initial-function-initial-level-origin-angles-src-mq3-game-player-spawns-ml-2123626330"></a>
 ### initial
@@ -104,14 +114,16 @@ function furthest(level, avoid, origin, angles)
 function initial(level, origin, angles)
 ```
 
+Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.selectSpawn` and `mq3.game.player_spawns.wouldTelefrag` while evaluating `initial`. Return paths include `spawnResult(spot,origin,angles)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L130)
 
 <a id="function-function-mq3-game-player-spawns-nearest-function-nearest-level-point-src-mq3-game-player-spawns-ml-512531602"></a>
 ### nearest
@@ -120,13 +132,15 @@ function initial(level, origin, angles)
 function nearest(level, point)
 ```
 
+Apply `mq3.game.player_spawns.findClass` and `mq3.game.player_spawns.distanceFrom` while evaluating `nearest`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L50)
 
 <a id="function-function-mq3-game-player-spawns-randomdeathmatch-function-randomdeathmatch-level-src-mq3-game-player-spawns-ml-1819014716"></a>
 ### randomDeathmatch
@@ -135,12 +149,14 @@ function nearest(level, point)
 function randomDeathmatch(level)
 ```
 
+Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag` and `mq3.game.entities.random` while evaluating `randomDeathmatch`. Return paths include `spots[game.random(level) % len(spots)]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L62)
 
 <a id="function-function-mq3-game-player-spawns-randomteam-function-randomteam-level-teamstate-team-src-mq3-game-player-spawns-ml-820015881"></a>
 ### randomTeam
@@ -149,14 +165,16 @@ function randomDeathmatch(level)
 function randomTeam(level, teamstate, team)
 ```
 
+Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag` and `mq3.game.entities.random` while evaluating `randomTeam`. Return paths include `spots[game.random(level) % len(spots)]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `teamstate` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `teamstate` | `dynamic` | — | Value used by `randomTeam` in `if teamstate == 0 then`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L145)
 
 <a id="function-function-mq3-game-player-spawns-selectspawn-function-selectspawn-level-avoid-origin-angles-src-mq3-game-player-spawns-ml-2078758599"></a>
 ### selectSpawn
@@ -165,15 +183,17 @@ function randomTeam(level, teamstate, team)
 function selectSpawn(level, avoid, origin, angles)
 ```
 
+Forward `selectSpawn` to `mq3.game.player_spawns.furthest` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `avoid` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities` and `entities`. |
+| `avoid` | `dynamic` | — | Three-component point used by the geometric query. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L123)
 
 <a id="function-function-mq3-game-player-spawns-spawnresult-function-spawnresult-spot-origin-angles-src-mq3-game-player-spawns-ml-81563016"></a>
 ### spawnResult
@@ -182,14 +202,16 @@ function selectSpawn(level, avoid, origin, angles)
 function spawnResult(spot, origin, angles)
 ```
 
+Update `origin[axis]`, `angles[axis]` and `origin[2]` during `spawnResult`. Return paths include `spot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `spot` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `spot` | `dynamic` | — | Spot record; accesses `s`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. Entries may be updated in place. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. Entries may be updated in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L78)
 
 <a id="function-function-mq3-game-player-spawns-spectator-function-spectator-level-origin-angles-src-mq3-game-player-spawns-ml-1068794004"></a>
 ### spectator
@@ -198,14 +220,16 @@ function spawnResult(spot, origin, angles)
 function spectator(level, origin, angles)
 ```
 
+Set `origin[axis]` to `level.intermission_origin[axis]` and `angles[axis]` to `level.intermission_angle[axis]` in `mq3.game.player_spawns.spectator`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermission_origin` and `intermission_angle`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. Entries may be updated in place. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. Entries may be updated in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L200)
 
 <a id="function-function-mq3-game-player-spawns-wouldtelefrag-function-wouldtelefrag-level-spot-src-mq3-game-player-spawns-ml-798618798"></a>
 ### wouldTelefrag
@@ -214,10 +238,12 @@ function spectator(level, origin, angles)
 function wouldTelefrag(level, spot)
 ```
 
+Apply `mq3.server.world.areaEntities` while evaluating `wouldTelefrag`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `spot` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `scene` and `entities`. |
+| `spot` | `dynamic` | — | Spot record; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L27)

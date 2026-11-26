@@ -9,8 +9,10 @@
 struct Token
 ```
 
+Token record for vm.pc_parser, containing `type`, `subtype`, `intValue`, `floatValue`, `text`, `line`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ floatValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
 
 <a id="field-field-mq3-vm-pc-parser-token-intvalue-intvalue-src-mq3-vm-pc-parser-ml-1656678352"></a>
 ### intValue
@@ -32,7 +34,7 @@ intValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
 
 <a id="field-field-mq3-vm-pc-parser-token-leadingspace-leadingspace-src-mq3-vm-pc-parser-ml-815774980"></a>
 ### leadingSpace
@@ -42,7 +44,7 @@ leadingSpace
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
 
 <a id="field-field-mq3-vm-pc-parser-token-line-line-src-mq3-vm-pc-parser-ml-985717660"></a>
 ### line
@@ -52,7 +54,7 @@ line
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
 
 <a id="field-field-mq3-vm-pc-parser-token-subtype-subtype-src-mq3-vm-pc-parser-ml-1948655220"></a>
 ### subtype
@@ -62,7 +64,7 @@ subtype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
 
 <a id="field-field-mq3-vm-pc-parser-token-text-text-src-mq3-vm-pc-parser-ml-822774942"></a>
 ### text
@@ -72,7 +74,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)
 
 <a id="field-field-mq3-vm-pc-parser-token-type-type-src-mq3-vm-pc-parser-ml-1492078116"></a>
 ### type
@@ -82,4 +84,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L24)

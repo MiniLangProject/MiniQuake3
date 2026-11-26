@@ -9,8 +9,10 @@
 struct Reader
 ```
 
+Reader record for video.roq_video, containing `data`, `offset`, `limit`, `control`, `remaining`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ control
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L14)
 
 <a id="field-field-mq3-video-roq-video-reader-data-data-src-mq3-video-roq-video-ml-730191656"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L14)
 
 <a id="field-field-mq3-video-roq-video-reader-limit-limit-src-mq3-video-roq-video-ml-121802504"></a>
 ### limit
@@ -42,7 +44,7 @@ limit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L14)
 
 <a id="field-field-mq3-video-roq-video-reader-offset-offset-src-mq3-video-roq-video-ml-1221543702"></a>
 ### offset
@@ -52,7 +54,7 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L14)
 
 <a id="field-field-mq3-video-roq-video-reader-remaining-remaining-src-mq3-video-roq-video-ml-1045091692"></a>
 ### remaining
@@ -62,4 +64,4 @@ remaining
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/video/roq_video.ml#L14)

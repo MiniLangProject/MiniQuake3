@@ -9,8 +9,10 @@
 struct SargeDefault
 ```
 
+Data record for `mq3.renderer.player_skins.SargeDefault`; groups `lower`, `upper`, `head`, `uniqueImages`, `scriptCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ head
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-lower-lower-src-mq3-renderer-player-skins-ml-1723774786"></a>
 ### lower
@@ -32,7 +34,7 @@ lower
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-scriptcount-scriptcount-src-mq3-renderer-player-skins-ml-1637498282"></a>
 ### scriptCount
@@ -42,7 +44,7 @@ scriptCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-uniqueimages-uniqueimages-src-mq3-renderer-player-skins-ml-703192880"></a>
 ### uniqueImages
@@ -52,7 +54,7 @@ uniqueImages
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)
 
 <a id="field-field-mq3-renderer-player-skins-sargedefault-upper-upper-src-mq3-renderer-player-skins-ml-812613254"></a>
 ### upper
@@ -62,4 +64,4 @@ upper
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L22)

@@ -9,8 +9,10 @@
 struct Raster
 ```
 
+Data record for `mq3.renderer.tr_font_runtime.Raster`; groups `metrics`, `format`, `coverage`, `pixelMode`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ coverage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-raster-format-format-src-mq3-renderer-tr-font-runtime-ml-1095662026"></a>
 ### format
@@ -32,7 +34,7 @@ format
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-raster-metrics-metrics-src-mq3-renderer-tr-font-runtime-ml-657573212"></a>
 ### metrics
@@ -42,7 +44,7 @@ metrics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-raster-pixelmode-pixelmode-src-mq3-renderer-tr-font-runtime-ml-1550516004"></a>
 ### pixelMode
@@ -52,4 +54,4 @@ pixelMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L30)

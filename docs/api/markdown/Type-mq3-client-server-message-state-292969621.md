@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores server message state, including `snapshotState`, `reliableAcknowledge`, `reliableSequence`, `serverCommandSequence`, `serverCommands`, `gamestateFn` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L26)
 
 <a id="field-field-mq3-client-server-message-state-downloadfn-downloadfn-src-mq3-client-server-message-ml-796487634"></a>
 ### downloadFn
@@ -32,7 +34,7 @@ downloadFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L25)
 
 <a id="field-field-mq3-client-server-message-state-gamestatefn-gamestatefn-src-mq3-client-server-message-ml-928608498"></a>
 ### gamestateFn
@@ -42,7 +44,7 @@ gamestateFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L24)
 
 <a id="field-field-mq3-client-server-message-state-reliableacknowledge-reliableacknowledge-src-mq3-client-server-message-ml-1357428450"></a>
 ### reliableAcknowledge
@@ -52,7 +54,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L20)
 
 <a id="field-field-mq3-client-server-message-state-reliablesequence-reliablesequence-src-mq3-client-server-message-ml-519003948"></a>
 ### reliableSequence
@@ -62,7 +64,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L21)
 
 <a id="field-field-mq3-client-server-message-state-servercommands-servercommands-src-mq3-client-server-message-ml-248419036"></a>
 ### serverCommands
@@ -72,7 +74,7 @@ serverCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L23)
 
 <a id="field-field-mq3-client-server-message-state-servercommandsequence-servercommandsequence-src-mq3-client-server-message-ml-1780431666"></a>
 ### serverCommandSequence
@@ -82,7 +84,7 @@ serverCommandSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L22)
 
 <a id="field-field-mq3-client-server-message-state-shownetcontext-shownetcontext-src-mq3-client-server-message-ml-2060308528"></a>
 ### shownetContext
@@ -92,7 +94,7 @@ shownetContext
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L30)
 
 <a id="field-field-mq3-client-server-message-state-shownetfn-shownetfn-src-mq3-client-server-message-ml-954161450"></a>
 ### shownetFn
@@ -102,7 +104,7 @@ shownetFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L29)
 
 <a id="field-field-mq3-client-server-message-state-shownetlevel-shownetlevel-src-mq3-client-server-message-ml-1735238114"></a>
 ### shownetLevel
@@ -112,7 +114,7 @@ shownetLevel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L27)
 
 <a id="field-field-mq3-client-server-message-state-shownetlines-shownetlines-src-mq3-client-server-message-ml-791393772"></a>
 ### shownetLines
@@ -122,7 +124,7 @@ shownetLines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L28)
 
 <a id="field-field-mq3-client-server-message-state-snapshotstate-snapshotstate-src-mq3-client-server-message-ml-1740321098"></a>
 ### snapshotState
@@ -132,4 +134,4 @@ snapshotState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L19)

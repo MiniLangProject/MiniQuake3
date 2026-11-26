@@ -20,12 +20,14 @@ Reachable from entry: **yes**
 function fail(message)
 ```
 
+Creates the playable enemy hitscan error `7630` with diagnostic text `"preview enemy hitscan: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview enemy hitscan: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L15)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-fire-function-fire-world-ai-targetstate-playerposition-muzzleorigins-now-src-mq3-client-playable-enemy-hitscan-ml-584943640"></a>
 ### fire
@@ -34,17 +36,19 @@ function fail(message)
 function fire(world, ai, targetState, playerPosition, muzzleOrigins, now)
 ```
 
+Calls `mq3.client.playable_enemy_hitscan.fireWithTrace` from playable enemy hitscan `fire`. The final path returns `fireWithTrace(worldPointTrace,world,ai,targetState,playerPosition,muzzleOrigins,now)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `ai` | `dynamic` | — |  |
-| `targetState` | `dynamic` | — |  |
-| `playerPosition` | `dynamic` | — |  |
-| `muzzleOrigins` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `world` | `dynamic` | — | world record passed to the playable enemy hitscan helper calls. |
+| `ai` | `dynamic` | — | Value used by `return fireWithTrace(worldPointTrace,world,ai,targetState,playerPosition,muzzleOrigins,now)`. |
+| `targetState` | `dynamic` | — | targetState record passed to the playable enemy hitscan helper calls. |
+| `playerPosition` | `dynamic` | — | Value used by `return fireWithTrace(worldPointTrace,world,ai,targetState,playerPosition,muzzleOrigins,now)`. |
+| `muzzleOrigins` | `dynamic` | — | Value used by `return fireWithTrace(worldPointTrace,world,ai,targetState,playerPosition,muzzleOrigins,now)`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L71)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-firewithtrace-function-firewithtrace-tracefn-context-ai-targetstate-playerposition-muzzleorigins-now-src-mq3-client-playable-enemy-hitscan-ml-2082619288"></a>
 ### fireWithTrace
@@ -57,16 +61,16 @@ The AI has already selected its target. This final muzzle-to-player trace is rep
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `traceFn` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `ai` | `dynamic` | — |  |
-| `targetState` | `dynamic` | — |  |
-| `playerPosition` | `dynamic` | — |  |
-| `muzzleOrigins` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `traceFn` | `dynamic` | — | Collision-trace callback used to test the requested movement or visibility segment. |
+| `context` | `dynamic` | — | context record passed to the playable enemy hitscan helper calls. |
+| `ai` | `dynamic` | — | Record read through `ai.events`. |
+| `targetState` | `dynamic` | — | Record read through `targetState.targets`. |
+| `playerPosition` | `dynamic` | — | Value used by `if traceFn==void or ai==void or targetState==void or not validPoint(playerPosition) then return fail("trace, AI, targets and player position a...`. |
+| `muzzleOrigins` | `dynamic` | — | Sequence read at `muzzleOrigins[event.attacker]`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L40)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-point-function-point-value-src-mq3-client-playable-enemy-hitscan-ml-1155821765"></a>
 ### point
@@ -75,12 +79,14 @@ The AI has already selected its target. This final muzzle-to-player trace is rep
 function point(value)
 ```
 
+Copies three vector components with float32 rounding for playable enemy hitscan.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L21)
 
 - [mq3.client.playable_enemy_hitscan.Shot](Type-mq3-client-playable-enemy-hitscan-shot-2051138919.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-hitscan-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-enemy-hitscan-ml-748115703"></a>
@@ -100,12 +106,14 @@ const SHOT_MASK = 100663297
 function validPoint(value)
 ```
 
+Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable enemy hitscan `validPoint`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence whose length/content is inspected by `validPoint`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L18)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-enemy-hitscan-ml-700371026"></a>
 ### worldPointTrace
@@ -114,11 +122,13 @@ function validPoint(value)
 function worldPointTrace(context, startPoint, endPoint)
 ```
 
+Adapts `mq3.collision.world.boxTrace` to playable enemy hitscan `worldPointTrace`, returning its result for `context, startPoint, endPoint, [0.0,0.0,0.0], [0.0,0.0,0.0], 0, SHOT_MASK, false`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `startPoint` | `dynamic` | — |  |
-| `endPoint` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Argument 1 of `mq3.collision.world.boxTrace`. |
+| `startPoint` | `dynamic` | — | Starting world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
+| `endPoint` | `dynamic` | — | Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L27)

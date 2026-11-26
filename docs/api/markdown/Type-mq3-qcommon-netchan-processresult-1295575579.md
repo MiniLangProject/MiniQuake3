@@ -9,8 +9,10 @@
 struct ProcessResult
 ```
 
+ProcessResult record for qcommon.netchan, containing `accepted`, `data`, `cursize`, `readcount`, `bit`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L41)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L45)
 
 ## Members
 
@@ -22,7 +24,7 @@ accepted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L45)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-bit-bit-src-mq3-qcommon-netchan-ml-1215759115"></a>
 ### bit
@@ -32,7 +34,7 @@ bit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L45)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-cursize-cursize-src-mq3-qcommon-netchan-ml-658652291"></a>
 ### cursize
@@ -42,7 +44,7 @@ cursize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L45)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-data-data-src-mq3-qcommon-netchan-ml-1077289335"></a>
 ### data
@@ -52,7 +54,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L45)
 
 <a id="field-field-mq3-qcommon-netchan-processresult-readcount-readcount-src-mq3-qcommon-netchan-ml-1624128059"></a>
 ### readcount
@@ -62,4 +64,4 @@ readcount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L45)

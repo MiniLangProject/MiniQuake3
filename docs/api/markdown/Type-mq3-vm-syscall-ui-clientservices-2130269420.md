@@ -9,8 +9,10 @@
 struct ClientServices
 ```
 
+ClientServices record for vm.syscall_ui, containing `clipboardFn`, `glconfigFn`, `clientStateFn`, `configStringFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientStateFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-clientservices-clipboardfn-clipboardfn-src-mq3-vm-syscall-ui-ml-1405951742"></a>
 ### clipboardFn
@@ -32,7 +34,7 @@ clipboardFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-clientservices-configstringfn-configstringfn-src-mq3-vm-syscall-ui-ml-6750724"></a>
 ### configStringFn
@@ -42,7 +44,7 @@ configStringFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-clientservices-glconfigfn-glconfigfn-src-mq3-vm-syscall-ui-ml-1639847856"></a>
 ### glconfigFn
@@ -52,4 +54,4 @@ glconfigFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)

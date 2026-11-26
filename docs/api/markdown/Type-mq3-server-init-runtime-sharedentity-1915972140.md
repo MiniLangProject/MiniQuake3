@@ -9,8 +9,10 @@
 struct SharedEntity
 ```
 
+SharedEntity record for server.init_runtime, containing `linked`, `state`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ linked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L39)
 
 <a id="field-field-mq3-server-init-runtime-sharedentity-state-state-src-mq3-server-init-runtime-ml-2066645947"></a>
 ### state
@@ -32,4 +34,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L39)

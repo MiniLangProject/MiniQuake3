@@ -9,8 +9,10 @@
 struct SelectionConfig
 ```
 
+Data record for `mq3.renderer.world_surface_selection.SelectionConfig`; groups `width`, `height`, `horizontalFov`, `nearDistance`, `farDistance`, `triangleBudget`, and 6 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaMask
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-backfacecull-backfacecull-src-mq3-renderer-world-surface-selection-ml-92603657"></a>
 ### backfaceCull
@@ -32,7 +34,7 @@ backfaceCull
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-fardistance-fardistance-src-mq3-renderer-world-surface-selection-ml-1072897241"></a>
 ### farDistance
@@ -42,7 +44,7 @@ farDistance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-height-height-src-mq3-renderer-world-surface-selection-ml-65034707"></a>
 ### height
@@ -52,7 +54,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-horizontalfov-horizontalfov-src-mq3-renderer-world-surface-selection-ml-1573632705"></a>
 ### horizontalFov
@@ -62,7 +64,7 @@ horizontalFov
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-lodcurveerror-lodcurveerror-src-mq3-renderer-world-surface-selection-ml-513416257"></a>
 ### lodCurveError
@@ -72,7 +74,7 @@ lodCurveError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-neardistance-neardistance-src-mq3-renderer-world-surface-selection-ml-769903699"></a>
 ### nearDistance
@@ -82,7 +84,7 @@ nearDistance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-patcherror-patcherror-src-mq3-renderer-world-surface-selection-ml-1956964601"></a>
 ### patchError
@@ -92,7 +94,7 @@ patchError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-runtime-runtime-src-mq3-renderer-world-surface-selection-ml-1016978417"></a>
 ### runtime
@@ -102,7 +104,7 @@ runtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-trianglebudget-trianglebudget-src-mq3-renderer-world-surface-selection-ml-2074508471"></a>
 ### triangleBudget
@@ -112,7 +114,7 @@ triangleBudget
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-verticalfov-verticalfov-src-mq3-renderer-world-surface-selection-ml-661225777"></a>
 ### verticalFov
@@ -122,7 +124,7 @@ verticalFov
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-selectionconfig-width-width-src-mq3-renderer-world-surface-selection-ml-639768069"></a>
 ### width
@@ -132,4 +134,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)

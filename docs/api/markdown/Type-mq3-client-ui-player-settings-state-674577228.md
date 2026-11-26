@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI player settings state, including `source`, `menu`, `name`, `handicap`, `effects`, `currentFx` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-assets-assets-src-mq3-client-ui-player-settings-ml-806559056"></a>
 ### assets
@@ -32,7 +34,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-currentfx-currentfx-src-mq3-client-ui-player-settings-ml-197777482"></a>
 ### currentFx
@@ -42,7 +44,7 @@ currentFx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-cvarwrites-cvarwrites-src-mq3-client-ui-player-settings-ml-1688812346"></a>
 ### cvarWrites
@@ -52,7 +54,7 @@ cvarWrites
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-drawcommands-drawcommands-src-mq3-client-ui-player-settings-ml-149742774"></a>
 ### drawCommands
@@ -62,7 +64,7 @@ drawCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-effects-effects-src-mq3-client-ui-player-settings-ml-871333450"></a>
 ### effects
@@ -72,7 +74,7 @@ effects
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-frametime-frametime-src-mq3-client-ui-player-settings-ml-76340298"></a>
 ### frametime
@@ -82,7 +84,7 @@ frametime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-handicap-handicap-src-mq3-client-ui-player-settings-ml-438005350"></a>
 ### handicap
@@ -92,7 +94,7 @@ handicap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-menu-menu-src-mq3-client-ui-player-settings-ml-2020922204"></a>
 ### menu
@@ -102,7 +104,7 @@ menu
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-modelmenu-modelmenu-src-mq3-client-ui-player-settings-ml-1465363002"></a>
 ### modelMenu
@@ -112,7 +114,7 @@ modelMenu
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-name-name-src-mq3-client-ui-player-settings-ml-1935937060"></a>
 ### name
@@ -122,7 +124,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-playerinfo-playerinfo-src-mq3-client-ui-player-settings-ml-193070600"></a>
 ### playerinfo
@@ -132,7 +134,7 @@ playerinfo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-playermodel-playermodel-src-mq3-client-ui-player-settings-ml-1907425482"></a>
 ### playerModel
@@ -142,7 +144,7 @@ playerModel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-popped-popped-src-mq3-client-ui-player-settings-ml-352870194"></a>
 ### popped
@@ -152,7 +154,7 @@ popped
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-pushed-pushed-src-mq3-client-ui-player-settings-ml-1003490320"></a>
 ### pushed
@@ -162,7 +164,7 @@ pushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-realtime-realtime-src-mq3-client-ui-player-settings-ml-59009296"></a>
 ### realtime
@@ -172,7 +174,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 <a id="field-field-mq3-client-ui-player-settings-state-source-source-src-mq3-client-ui-player-settings-ml-129861028"></a>
 ### source
@@ -182,4 +184,4 @@ source
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)

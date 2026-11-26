@@ -9,8 +9,10 @@
 struct PmoveContext
 ```
 
+`PmoveContext` record for pmove, containing `ps`, `cmd`, `k`, `noFootsteps` and `gauntletHit` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ cmd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L28)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-context-context-src-mq3-game-pmove-ml-632895777"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L47)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-fixed-fixed-src-mq3-game-pmove-ml-2057904273"></a>
 ### fixed
@@ -42,7 +44,7 @@ fixed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L32)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-fixedmsec-fixedmsec-src-mq3-game-pmove-ml-1194522465"></a>
 ### fixedMsec
@@ -52,7 +54,7 @@ fixedMsec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L34)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-forward-forward-src-mq3-game-pmove-ml-1139440097"></a>
 ### forward
@@ -62,7 +64,7 @@ forward
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L37)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-gauntlethit-gauntlethit-src-mq3-game-pmove-ml-999989945"></a>
 ### gauntletHit
@@ -72,7 +74,7 @@ gauntletHit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L31)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-groundtrace-groundtrace-src-mq3-game-pmove-ml-1779674009"></a>
 ### groundTrace
@@ -82,7 +84,7 @@ groundTrace
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L41)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-k-k-src-mq3-game-pmove-ml-286953877"></a>
 ### k
@@ -92,7 +94,7 @@ k
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L29)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-missionpack-missionpack-src-mq3-game-pmove-ml-1729163969"></a>
 ### missionpack
@@ -102,7 +104,7 @@ missionpack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L33)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-msec-msec-src-mq3-game-pmove-ml-908742849"></a>
 ### msec
@@ -112,7 +114,7 @@ msec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L40)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-nofootsteps-nofootsteps-src-mq3-game-pmove-ml-1597326377"></a>
 ### noFootsteps
@@ -122,7 +124,7 @@ noFootsteps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L30)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-pointfn-pointfn-src-mq3-game-pmove-ml-1783987041"></a>
 ### pointFn
@@ -132,7 +134,7 @@ pointFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L46)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-previousorigin-previousorigin-src-mq3-game-pmove-ml-442612731"></a>
 ### previousOrigin
@@ -142,7 +144,7 @@ previousOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L42)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-previousvelocity-previousvelocity-src-mq3-game-pmove-ml-99828921"></a>
 ### previousVelocity
@@ -152,7 +154,7 @@ previousVelocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L43)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-previouswaterlevel-previouswaterlevel-src-mq3-game-pmove-ml-1334956545"></a>
 ### previousWaterlevel
@@ -162,7 +164,7 @@ previousWaterlevel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L44)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-ps-ps-src-mq3-game-pmove-ml-789269667"></a>
 ### ps
@@ -172,7 +174,7 @@ ps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L27)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-right-right-src-mq3-game-pmove-ml-1916551137"></a>
 ### right
@@ -182,7 +184,7 @@ right
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L38)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-tracefn-tracefn-src-mq3-game-pmove-ml-2017743221"></a>
 ### traceFn
@@ -192,7 +194,7 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L45)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-up-up-src-mq3-game-pmove-ml-2128271727"></a>
 ### up
@@ -202,7 +204,7 @@ up
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L39)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-watertype-watertype-src-mq3-game-pmove-ml-1140805021"></a>
 ### watertype
@@ -212,7 +214,7 @@ watertype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L35)
 
 <a id="field-field-mq3-game-pmove-pmovecontext-xyspeed-xyspeed-src-mq3-game-pmove-ml-1060874529"></a>
 ### xyspeed
@@ -222,4 +224,4 @@ xyspeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L36)

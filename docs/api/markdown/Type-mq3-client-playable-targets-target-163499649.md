@@ -9,8 +9,10 @@
 struct Target
 ```
 
+Stores playable targets target record, including `origin`, `health`, `maxHealth`, `alive`, `respawnAt`, `score` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ alive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="field-field-mq3-client-playable-targets-target-health-health-src-mq3-client-playable-targets-ml-1625656242"></a>
 ### health
@@ -32,7 +34,7 @@ health
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="field-field-mq3-client-playable-targets-target-maxhealth-maxhealth-src-mq3-client-playable-targets-ml-1815782358"></a>
 ### maxHealth
@@ -42,7 +44,7 @@ maxHealth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="field-field-mq3-client-playable-targets-target-origin-origin-src-mq3-client-playable-targets-ml-91815994"></a>
 ### origin
@@ -52,7 +54,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="field-field-mq3-client-playable-targets-target-respawnat-respawnat-src-mq3-client-playable-targets-ml-225032578"></a>
 ### respawnAt
@@ -62,7 +64,7 @@ respawnAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="field-field-mq3-client-playable-targets-target-score-score-src-mq3-client-playable-targets-ml-359483838"></a>
 ### score
@@ -72,7 +74,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="field-field-mq3-client-playable-targets-target-spawnindex-spawnindex-src-mq3-client-playable-targets-ml-1374257052"></a>
 ### spawnIndex
@@ -82,7 +84,7 @@ spawnIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)
 
 <a id="field-field-mq3-client-playable-targets-target-spawnorigin-spawnorigin-src-mq3-client-playable-targets-ml-1920242306"></a>
 ### spawnOrigin
@@ -92,4 +94,4 @@ spawnOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L20)

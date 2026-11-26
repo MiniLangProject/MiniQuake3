@@ -9,8 +9,10 @@
 struct Component
 ```
 
+`Component` record for ai chat profiles, containing `kind`, `text` and `number`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-component-number-number-src-mq3-botlib-ai-chat-profiles-ml-1454111862"></a>
 ### number
@@ -32,7 +34,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-component-text-text-src-mq3-botlib-ai-chat-profiles-ml-127951422"></a>
 ### text
@@ -42,4 +44,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)

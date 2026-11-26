@@ -9,8 +9,10 @@
 struct Parser
 ```
 
+Parser record for shared.parser, containing `data`, `offset`, `line`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L6)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L7)
 
 ## Members
 
@@ -22,7 +24,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L8)
 
 <a id="field-field-mq3-shared-parser-parser-line-line-src-mq3-shared-parser-ml-409705140"></a>
 ### line
@@ -32,7 +34,7 @@ line
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L10)
 
 <a id="field-field-mq3-shared-parser-parser-offset-offset-src-mq3-shared-parser-ml-2005940166"></a>
 ### offset
@@ -42,4 +44,4 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L9)

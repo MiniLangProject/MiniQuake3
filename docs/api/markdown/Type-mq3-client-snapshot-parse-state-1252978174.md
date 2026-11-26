@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores snapshot parse state, including `parseEntities`, `parseEntitiesNum`, `entityBaselines`, `shownetLevel`, `shownetLines`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ entityBaselines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L24)
 
 <a id="field-field-mq3-client-snapshot-parse-state-parseentities-parseentities-src-mq3-client-snapshot-parse-ml-1336154130"></a>
 ### parseEntities
@@ -32,7 +34,7 @@ parseEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L22)
 
 <a id="field-field-mq3-client-snapshot-parse-state-parseentitiesnum-parseentitiesnum-src-mq3-client-snapshot-parse-ml-1741808506"></a>
 ### parseEntitiesNum
@@ -42,7 +44,7 @@ parseEntitiesNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L23)
 
 <a id="field-field-mq3-client-snapshot-parse-state-shownetlevel-shownetlevel-src-mq3-client-snapshot-parse-ml-1473801042"></a>
 ### shownetLevel
@@ -52,7 +54,7 @@ shownetLevel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L25)
 
 <a id="field-field-mq3-client-snapshot-parse-state-shownetlines-shownetlines-src-mq3-client-snapshot-parse-ml-562558304"></a>
 ### shownetLines
@@ -62,4 +64,4 @@ shownetLines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L26)

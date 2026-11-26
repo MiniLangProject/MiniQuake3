@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Action record for server.operator_commands, containing `boundary`, `kind`, `target`, `text`, `values`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L31)
 
 <a id="field-field-mq3-server-operator-commands-action-dispatched-dispatched-src-mq3-server-operator-commands-ml-1533183757"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L31)
 
 <a id="field-field-mq3-server-operator-commands-action-kind-kind-src-mq3-server-operator-commands-ml-216111759"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L31)
 
 <a id="field-field-mq3-server-operator-commands-action-target-target-src-mq3-server-operator-commands-ml-1445242417"></a>
 ### target
@@ -52,7 +54,7 @@ target
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L31)
 
 <a id="field-field-mq3-server-operator-commands-action-text-text-src-mq3-server-operator-commands-ml-1204103029"></a>
 ### text
@@ -62,7 +64,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L31)
 
 <a id="field-field-mq3-server-operator-commands-action-values-values-src-mq3-server-operator-commands-ml-414080399"></a>
 ### values
@@ -72,4 +74,4 @@ values
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L31)

@@ -9,8 +9,10 @@
 struct Movement
 ```
 
+`Movement` record for movement, containing `origin`, `velocity`, `mins`, `maxs` and `clientNum` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L22)
 
 <a id="field-field-mq3-game-movement-movement-context-context-src-mq3-game-movement-ml-2054418108"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L42)
 
 <a id="field-field-mq3-game-movement-movement-eventparms-eventparms-src-mq3-game-movement-ml-2040758242"></a>
 ### eventParms
@@ -42,7 +44,7 @@ eventParms
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L39)
 
 <a id="field-field-mq3-game-movement-movement-events-events-src-mq3-game-movement-ml-510202298"></a>
 ### events
@@ -52,7 +54,7 @@ events
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L38)
 
 <a id="field-field-mq3-game-movement-movement-eventsequence-eventsequence-src-mq3-game-movement-ml-1205251928"></a>
 ### eventSequence
@@ -62,7 +64,7 @@ eventSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L40)
 
 <a id="field-field-mq3-game-movement-movement-flight-flight-src-mq3-game-movement-ml-1722740812"></a>
 ### flight
@@ -72,7 +74,7 @@ flight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L29)
 
 <a id="field-field-mq3-game-movement-movement-frametime-frametime-src-mq3-game-movement-ml-101115052"></a>
 ### frametime
@@ -82,7 +84,7 @@ frametime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L31)
 
 <a id="field-field-mq3-game-movement-movement-gravity-gravity-src-mq3-game-movement-ml-666756476"></a>
 ### gravity
@@ -92,7 +94,7 @@ gravity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L24)
 
 <a id="field-field-mq3-game-movement-movement-groundflags-groundflags-src-mq3-game-movement-ml-1794782412"></a>
 ### groundFlags
@@ -102,7 +104,7 @@ groundFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L35)
 
 <a id="field-field-mq3-game-movement-movement-groundnormal-groundnormal-src-mq3-game-movement-ml-691282132"></a>
 ### groundNormal
@@ -112,7 +114,7 @@ groundNormal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L34)
 
 <a id="field-field-mq3-game-movement-movement-groundplane-groundplane-src-mq3-game-movement-ml-1432788296"></a>
 ### groundPlane
@@ -122,7 +124,7 @@ groundPlane
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L33)
 
 <a id="field-field-mq3-game-movement-movement-impactspeed-impactspeed-src-mq3-game-movement-ml-2093623068"></a>
 ### impactSpeed
@@ -132,7 +134,7 @@ impactSpeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L36)
 
 <a id="field-field-mq3-game-movement-movement-mask-mask-src-mq3-game-movement-ml-1209622464"></a>
 ### mask
@@ -142,7 +144,7 @@ mask
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L23)
 
 <a id="field-field-mq3-game-movement-movement-maxs-maxs-src-mq3-game-movement-ml-685996694"></a>
 ### maxs
@@ -152,7 +154,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L21)
 
 <a id="field-field-mq3-game-movement-movement-mins-mins-src-mq3-game-movement-ml-163993358"></a>
 ### mins
@@ -162,7 +164,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L20)
 
 <a id="field-field-mq3-game-movement-movement-origin-origin-src-mq3-game-movement-ml-702060012"></a>
 ### origin
@@ -172,7 +174,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L18)
 
 <a id="field-field-mq3-game-movement-movement-pmflags-pmflags-src-mq3-game-movement-ml-2121022532"></a>
 ### pmFlags
@@ -182,7 +184,7 @@ pmFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L26)
 
 <a id="field-field-mq3-game-movement-movement-pmtime-pmtime-src-mq3-game-movement-ml-567692716"></a>
 ### pmTime
@@ -192,7 +194,7 @@ pmTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L25)
 
 <a id="field-field-mq3-game-movement-movement-pmtype-pmtype-src-mq3-game-movement-ml-682613482"></a>
 ### pmType
@@ -202,7 +204,7 @@ pmType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L27)
 
 <a id="field-field-mq3-game-movement-movement-speed-speed-src-mq3-game-movement-ml-153713680"></a>
 ### speed
@@ -212,7 +214,7 @@ speed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L28)
 
 <a id="field-field-mq3-game-movement-movement-touches-touches-src-mq3-game-movement-ml-716275744"></a>
 ### touches
@@ -222,7 +224,7 @@ touches
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L37)
 
 <a id="field-field-mq3-game-movement-movement-tracefn-tracefn-src-mq3-game-movement-ml-1773679352"></a>
 ### traceFn
@@ -232,7 +234,7 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L41)
 
 <a id="field-field-mq3-game-movement-movement-velocity-velocity-src-mq3-game-movement-ml-1733754478"></a>
 ### velocity
@@ -242,7 +244,7 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L19)
 
 <a id="field-field-mq3-game-movement-movement-walking-walking-src-mq3-game-movement-ml-695414896"></a>
 ### walking
@@ -252,7 +254,7 @@ walking
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L32)
 
 <a id="field-field-mq3-game-movement-movement-waterlevel-waterlevel-src-mq3-game-movement-ml-2103226462"></a>
 ### waterlevel
@@ -262,4 +264,4 @@ waterlevel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L30)

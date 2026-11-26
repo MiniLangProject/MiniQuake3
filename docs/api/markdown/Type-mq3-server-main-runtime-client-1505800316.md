@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.main_runtime, containing `state`, `name`, `ping`, `score`, `reliableAcknowledge`, `reliableSequence`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 <a id="field-field-mq3-server-main-runtime-client-ping-ping-src-mq3-server-main-runtime-ml-291334050"></a>
 ### ping
@@ -32,7 +34,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 <a id="field-field-mq3-server-main-runtime-client-reliableacknowledge-reliableacknowledge-src-mq3-server-main-runtime-ml-408846846"></a>
 ### reliableAcknowledge
@@ -42,7 +44,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 <a id="field-field-mq3-server-main-runtime-client-reliablecommands-reliablecommands-src-mq3-server-main-runtime-ml-1368924746"></a>
 ### reliableCommands
@@ -52,7 +54,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 <a id="field-field-mq3-server-main-runtime-client-reliablesent-reliablesent-src-mq3-server-main-runtime-ml-500347098"></a>
 ### reliableSent
@@ -62,7 +64,7 @@ reliableSent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 <a id="field-field-mq3-server-main-runtime-client-reliablesequence-reliablesequence-src-mq3-server-main-runtime-ml-370459764"></a>
 ### reliableSequence
@@ -72,7 +74,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 <a id="field-field-mq3-server-main-runtime-client-score-score-src-mq3-server-main-runtime-ml-504117014"></a>
 ### score
@@ -82,7 +84,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 <a id="field-field-mq3-server-main-runtime-client-state-state-src-mq3-server-main-runtime-ml-909647362"></a>
 ### state
@@ -92,4 +94,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)

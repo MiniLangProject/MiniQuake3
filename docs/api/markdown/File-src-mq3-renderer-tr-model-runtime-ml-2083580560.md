@@ -25,13 +25,15 @@ Reachable from entry: **no**
 function archiveRead(state, name)
 ```
 
+Searches archives in reverse priority order and returns the first readable named asset, or void.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.archives`. |
+| `name` | `dynamic` | — | Argument 2 supplied to `mq3.format.pk3.read`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L154)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-createstate-function-createstate-archives-glconfig-src-mq3-renderer-tr-model-runtime-ml-1650506032"></a>
 ### createState
@@ -40,13 +42,15 @@ function archiveRead(state, name)
 function createState(archives, glConfig)
 ```
 
+Returns `state` from `mq3.renderer.tr_model_runtime.createState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archives` | `dynamic` | — |  |
-| `glConfig` | `dynamic` | — |  |
+| `archives` | `dynamic` | — | Value used for `mq3.renderer.tr_model_runtime.State.archives`. |
+| `glConfig` | `dynamic` | — | Value used for `mq3.renderer.tr_model_runtime.State.glConfig`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L71)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-emptymodel-function-emptymodel-index-src-mq3-renderer-tr-model-runtime-ml-681070588"></a>
 ### emptyModel
@@ -55,12 +59,14 @@ function createState(archives, glConfig)
 function emptyModel(index)
 ```
 
+Constructs `mq3.renderer.tr_model_runtime.Model` with `name` = `""`, `type` = `MOD_BAD`, `dataSize` = `0`, `brushBounds` = `void` and the supplied remaining values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Initial value for `mq3.renderer.tr_model_runtime.Model.index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L67)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-f32-function-f32-data-offset-src-mq3-renderer-tr-model-runtime-ml-594993873"></a>
 ### f32
@@ -69,13 +75,15 @@ function emptyModel(index)
 function f32(data, offset)
 ```
 
+Returns `n.bitsFloat(value)` from `mq3.renderer.tr_model_runtime.f32`; earlier branches return `fail("truncated float")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.readU32`. |
+| `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L50)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-fail-function-fail-text-src-mq3-renderer-tr-model-runtime-ml-1285292971"></a>
 ### fail
@@ -84,12 +92,14 @@ function f32(data, offset)
 function fail(text)
 ```
 
+Creates error `7790` with message `"tr_model: "+text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Input used in the result expression `error(7790,"tr_model: "+text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L42)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-fixedstring-function-fixedstring-data-offset-capacity-src-mq3-renderer-tr-model-runtime-ml-978244249"></a>
 ### fixedString
@@ -98,14 +108,16 @@ function fail(text)
 function fixedString(data, offset, capacity)
 ```
 
+Returns `decode(slice(data,offset,length))` from `mq3.renderer.tr_model_runtime.fixedString`; earlier branches return `check`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Argument 1 supplied to `slice`. |
+| `offset` | `dynamic` | — | Value forwarded as `offset` to `mq3.renderer.tr_model_runtime.span`. |
+| `capacity` | `dynamic` | — | Value forwarded as `size` to `mq3.renderer.tr_model_runtime.span`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L64)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-i32-function-i32-data-offset-src-mq3-renderer-tr-model-runtime-ml-2017573435"></a>
 ### i32
@@ -114,13 +126,15 @@ function fixedString(data, offset, capacity)
 function i32(data, offset)
 ```
 
+Returns `value` from `mq3.renderer.tr_model_runtime.i32`; earlier branches return `fail("truncated integer")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.readI32`. |
+| `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L46)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-lodname-function-lodname-name-lod-src-mq3-renderer-tr-model-runtime-ml-1774574810"></a>
 ### lodName
@@ -129,13 +143,15 @@ function i32(data, offset)
 function lodName(name, lod)
 ```
 
+Returns `decode(slice(raw,0,dot))+"_"+str(lod)+".md3"` from `mq3.renderer.tr_model_runtime.lodName`; earlier branches return `name`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
-| `lod` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Argument 1 supplied to `bytes`. |
+| `lod` | `dynamic` | — | Input tested by `lod==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L162)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-max-mod-known-const-max-mod-known-1024-src-mq3-renderer-tr-model-runtime-ml-226841584"></a>
 ### MAX_MOD_KNOWN
@@ -249,12 +265,14 @@ const MOD_MESH = 2
 function normalizeSurfaceNames(value)
 ```
 
+Calls `mq3.format.md3.normalizeSurfaceNames` with `(value)` and returns its result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 supplied to `mq3.format.md3.normalizeSurfaceNames`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L95)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-allocmodel-function-r-allocmodel-state-src-mq3-renderer-tr-model-runtime-ml-1248852409"></a>
 ### R_AllocModel
@@ -263,12 +281,14 @@ function normalizeSurfaceNames(value)
 function R_AllocModel(state)
 ```
 
+Updates `state.models`, `state.numModels` in `mq3.renderer.tr_model_runtime.R_AllocModel`; returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.models`, `state.numModels`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L75)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-getmodelbyhandle-function-r-getmodelbyhandle-state-index-src-mq3-renderer-tr-model-runtime-ml-2049658579"></a>
 ### R_GetModelByHandle
@@ -277,13 +297,15 @@ function R_AllocModel(state)
 function R_GetModelByHandle(state, index)
 ```
 
+Returns `state.models[index]` from `mq3.renderer.tr_model_runtime.R_GetModelByHandle`; earlier branches return `void`, `state.models[0]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.numModels`, `state.models`. |
+| `index` | `dynamic` | — | Input tested by `index<1 or index>=state.numModels`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L82)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-gettag-function-r-gettag-model-frame-tagname-src-mq3-renderer-tr-model-runtime-ml-1158904073"></a>
 ### R_GetTag
@@ -292,14 +314,16 @@ function R_GetModelByHandle(state, index)
 function R_GetTag(model, frame, tagName)
 ```
 
+Returns `tags.getTag(tagModel(model.md3[0]),frame,tagName)` from `mq3.renderer.tr_model_runtime.R_GetTag`; earlier branches return `void`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `tagName` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Record providing `model.md3`. |
+| `frame` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.model_tags.getTag`. |
+| `tagName` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.model_tags.getTag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L194)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-lerptag-function-r-lerptag-state-handle-startframe-endframe-frac-tagname-src-mq3-renderer-tr-model-runtime-ml-1151775023"></a>
 ### R_LerpTag
@@ -308,17 +332,19 @@ function R_GetTag(model, frame, tagName)
 function R_LerpTag(state, handle, startFrame, endFrame, frac, tagName)
 ```
 
+Returns `tags.lerpTag(tags.model(void,tagModel(model.md3[0])),startFrame,endFrame,frac,tagName)` from `mq3.renderer.tr_model_runtime.R_LerpTag`; earlier branches return `tags.missingOrientation()`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `startFrame` | `dynamic` | — |  |
-| `endFrame` | `dynamic` | — |  |
-| `frac` | `dynamic` | — |  |
-| `tagName` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.tr_model_runtime.R_GetModelByHandle`. |
+| `handle` | `dynamic` | — | Value forwarded as `index` to `mq3.renderer.tr_model_runtime.R_GetModelByHandle`. |
+| `startFrame` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.model_tags.lerpTag`. |
+| `endFrame` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.model_tags.lerpTag`. |
+| `frac` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.model_tags.lerpTag`. |
+| `tagName` | `dynamic` | — | Argument 5 supplied to `mq3.renderer.model_tags.lerpTag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L202)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-loadmd3-function-r-loadmd3-model-lod-data-name-src-mq3-renderer-tr-model-runtime-ml-1598138129"></a>
 ### R_LoadMD3
@@ -327,15 +353,17 @@ function R_LerpTag(state, handle, startFrame, endFrame, frac, tagName)
 function R_LoadMD3(model, lod, data, name)
 ```
 
+Updates `model.type`, `model.md3[lod]`, `model.dataSize` in `mq3.renderer.tr_model_runtime.R_LoadMD3`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
-| `lod` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Mutable record or buffer; this call updates `model.type`, `model.md3[lod]`, `model.dataSize`. |
+| `lod` | `dynamic` | — | Input tested by `model==void or lod<0 or lod>=MD3_MAX_LODS`. |
+| `data` | `dynamic` | — | Argument 1 supplied to `mq3.format.md3.load`. |
+| `name` | `dynamic` | — | Input tested by `surface.mesh.numVerts>SHADER_MAX_VERTEXES`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L101)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-loadmd4-function-r-loadmd4-model-data-name-src-mq3-renderer-tr-model-runtime-ml-548600902"></a>
 ### R_LoadMD4
@@ -344,14 +372,16 @@ function R_LoadMD3(model, lod, data, name)
 function R_LoadMD4(model, data, name)
 ```
 
+Updates `model.type`, `model.md4`, `model.dataSize` in `mq3.renderer.tr_model_runtime.R_LoadMD4`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Mutable record or buffer; this call updates `model.type`, `model.md4`, `model.dataSize`. |
+| `data` | `dynamic` | — | Value forwarded as `data` to `mq3.renderer.tr_model_runtime.i32`. |
+| `name` | `dynamic` | — | Unused compatibility argument retained by this entry point. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L115)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-modelbounds-function-r-modelbounds-state-handle-src-mq3-renderer-tr-model-runtime-ml-282765185"></a>
 ### R_ModelBounds
@@ -360,13 +390,15 @@ function R_LoadMD4(model, data, name)
 function R_ModelBounds(state, handle)
 ```
 
+Computes `R_ModelBounds` from `bounds.md3(model.md3[0])` using `mq3.renderer.tr_model_runtime.R_GetModelByHandle`, `mq3.renderer.model_tags.modelBounds`, `mq3.renderer.model_tags.model`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.tr_model_runtime.R_GetModelByHandle`. |
+| `handle` | `dynamic` | — | Value forwarded as `index` to `mq3.renderer.tr_model_runtime.R_GetModelByHandle`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L208)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-modelinit-function-r-modelinit-state-src-mq3-renderer-tr-model-runtime-ml-351969861"></a>
 ### R_ModelInit
@@ -375,12 +407,14 @@ function R_ModelBounds(state, handle)
 function R_ModelInit(state)
 ```
 
+Updates `state.models`, `state.numModels` in `mq3.renderer.tr_model_runtime.R_ModelInit`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.models`, `state.numModels`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L88)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-modellist-f-function-r-modellist-f-state-src-mq3-renderer-tr-model-runtime-ml-1128204391"></a>
 ### R_Modellist_f
@@ -389,12 +423,14 @@ function R_ModelInit(state)
 function R_Modellist_f(state)
 ```
 
+Builds `mq3.renderer.tr_model_runtime.ModelList` for `mq3.renderer.tr_model_runtime.R_Modellist_f`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.numModels`, `state.models`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L214)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-re-beginregistration-function-re-beginregistration-state-src-mq3-renderer-tr-model-runtime-ml-479505829"></a>
 ### RE_BeginRegistration
@@ -403,12 +439,14 @@ function R_Modellist_f(state)
 function RE_BeginRegistration(state)
 ```
 
+Updates `state.initCount`, `state.syncCount`, `state.viewCluster`, `state.flareClears`, `state.sceneClears` in `mq3.renderer.tr_model_runtime.RE_BeginRegistration`; returns `state.glConfig`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.initCount`, `state.syncCount`, `state.viewCluster`, `state.flareClears`, `state.sceneClears`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L219)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-re-registermodel-function-re-registermodel-state-name-src-mq3-renderer-tr-model-runtime-ml-2137178506"></a>
 ### RE_RegisterModel
@@ -417,13 +455,15 @@ function RE_BeginRegistration(state)
 function RE_RegisterModel(state, name)
 ```
 
+Builds `model.name`, `model.numLods`, `model.type`, `model.md3[lod]` in `mq3.renderer.tr_model_runtime.RE_RegisterModel`; returns `model.index`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.numModels`, `state.models`. |
+| `name` | `dynamic` | — | Value assigned to `model.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L168)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-shader-max-indexes-const-shader-max-indexes-6000-src-mq3-renderer-tr-model-runtime-ml-1667877655"></a>
 ### SHADER_MAX_INDEXES
@@ -452,14 +492,16 @@ const SHADER_MAX_VERTEXES = 1000
 function span(offset, size, limit)
 ```
 
+Returns `true` from `mq3.renderer.tr_model_runtime.span`; earlier branches return `fail("section outside model")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `offset` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `limit` | `dynamic` | — |  |
+| `offset` | `dynamic` | — | Input tested by `offset<0 or size<0 or offset>limit or size>limit-offset`. |
+| `size` | `dynamic` | — | Input tested by `offset<0 or size<0 or offset>limit or size>limit-offset`. |
+| `limit` | `dynamic` | — | Input tested by `offset<0 or size<0 or offset>limit or size>limit-offset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L59)
 
 - [mq3.renderer.tr_model_runtime.State](Type-mq3-renderer-tr-model-runtime-state-92073329.md) — struct
 <a id="function-function-mq3-renderer-tr-model-runtime-tagmodel-function-tagmodel-value-src-mq3-renderer-tr-model-runtime-ml-1642014205"></a>
@@ -469,12 +511,14 @@ function span(offset, size, limit)
 function tagModel(value)
 ```
 
+Computes `tagModel` from `tags.md3(frames,first[0],first[1])` using `mq3.renderer.model_tags.tag`, `mq3.renderer.model_bounds.md3`, `mq3.renderer.model_tags.md3`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record providing `value.tags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L186)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-vec3-function-vec3-data-offset-src-mq3-renderer-tr-model-runtime-ml-1689283319"></a>
 ### vec3
@@ -483,10 +527,12 @@ function tagModel(value)
 function vec3(data, offset)
 ```
 
+Returns `[f32(data,offset),f32(data,offset+4),f32(data,offset+8)]` for `mq3.renderer.tr_model_runtime.vec3`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Value forwarded as `data` to `mq3.renderer.tr_model_runtime.f32`. |
+| `offset` | `dynamic` | — | Value forwarded as `offset` to `mq3.renderer.tr_model_runtime.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L54)

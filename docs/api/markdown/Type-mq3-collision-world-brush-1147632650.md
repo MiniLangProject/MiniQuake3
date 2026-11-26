@@ -9,8 +9,10 @@
 struct Brush
 ```
 
+Brush record for collision.world, containing `planes`, `packedPlanes`, `contents`, `mins`, `maxs`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L75)
 
 ## Members
 
@@ -22,7 +24,7 @@ contents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L78)
 
 <a id="field-field-mq3-collision-world-brush-maxs-maxs-src-mq3-collision-world-ml-1592212165"></a>
 ### maxs
@@ -32,7 +34,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L80)
 
 <a id="field-field-mq3-collision-world-brush-mins-mins-src-mq3-collision-world-ml-54727869"></a>
 ### mins
@@ -42,7 +44,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L79)
 
 <a id="field-field-mq3-collision-world-brush-packedplanes-packedplanes-src-mq3-collision-world-ml-1272363205"></a>
 ### packedPlanes
@@ -52,7 +54,7 @@ packedPlanes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L77)
 
 <a id="field-field-mq3-collision-world-brush-planes-planes-src-mq3-collision-world-ml-1030623793"></a>
 ### planes
@@ -62,4 +64,4 @@ planes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L76)

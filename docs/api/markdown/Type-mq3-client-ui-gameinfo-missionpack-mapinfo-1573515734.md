@@ -9,8 +9,10 @@
 struct MapInfo
 ```
 
+Stores UI gameinfo missionpack map info record, including `cinematic`, `mapLoadName`, `mapName`, `levelShot`, `imageName`, `typeBits` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ cinematic
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-imagename-imagename-src-mq3-client-ui-gameinfo-missionpack-ml-622017119"></a>
 ### imageName
@@ -32,7 +34,7 @@ imageName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-levelshot-levelshot-src-mq3-client-ui-gameinfo-missionpack-ml-1690999983"></a>
 ### levelShot
@@ -42,7 +44,7 @@ levelShot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-maploadname-maploadname-src-mq3-client-ui-gameinfo-missionpack-ml-492733819"></a>
 ### mapLoadName
@@ -52,7 +54,7 @@ mapLoadName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-mapname-mapname-src-mq3-client-ui-gameinfo-missionpack-ml-1455547511"></a>
 ### mapName
@@ -62,7 +64,7 @@ mapName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-skirmishnumber-skirmishnumber-src-mq3-client-ui-gameinfo-missionpack-ml-1850333197"></a>
 ### skirmishNumber
@@ -72,7 +74,7 @@ skirmishNumber
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-mapinfo-typebits-typebits-src-mq3-client-ui-gameinfo-missionpack-ml-239374235"></a>
 ### typeBits
@@ -82,4 +84,4 @@ typeBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)

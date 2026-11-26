@@ -9,8 +9,10 @@
 struct Bits
 ```
 
+Bits record for format.deflate, containing `data`, `offset`, `value`, `available`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L5)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L6)
 
 ## Members
 
@@ -22,7 +24,7 @@ available
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L10)
 
 <a id="field-field-mq3-format-deflate-bits-data-data-src-mq3-format-deflate-ml-646808097"></a>
 ### data
@@ -32,7 +34,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L7)
 
 <a id="field-field-mq3-format-deflate-bits-offset-offset-src-mq3-format-deflate-ml-788487407"></a>
 ### offset
@@ -42,7 +44,7 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L8)
 
 <a id="field-field-mq3-format-deflate-bits-value-value-src-mq3-format-deflate-ml-1804780001"></a>
 ### value
@@ -52,4 +54,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L9)

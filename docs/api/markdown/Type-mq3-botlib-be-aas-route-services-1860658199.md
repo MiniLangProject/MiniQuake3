@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for be aas route, containing `context`, `visibleFn`, `traceAreasFn` and `randomFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-route-services-randomfn-randomfn-src-mq3-botlib-be-aas-route-ml-1785196229"></a>
 ### randomFn
@@ -32,7 +34,7 @@ randomFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-route-services-traceareasfn-traceareasfn-src-mq3-botlib-be-aas-route-ml-1841047997"></a>
 ### traceAreasFn
@@ -42,7 +44,7 @@ traceAreasFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-route-services-visiblefn-visiblefn-src-mq3-botlib-be-aas-route-ml-1517158635"></a>
 ### visibleFn
@@ -52,4 +54,4 @@ visibleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_route.ml#L18)

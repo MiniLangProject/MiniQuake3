@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for ai chat matches, containing `context`, `readFn`, `templates`, `loaded` and `fileReads`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-state-filereads-filereads-src-mq3-botlib-ai-chat-matches-ml-811339070"></a>
 ### fileReads
@@ -32,7 +34,7 @@ fileReads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-state-loaded-loaded-src-mq3-botlib-ai-chat-matches-ml-928061628"></a>
 ### loaded
@@ -42,7 +44,7 @@ loaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-state-readfn-readfn-src-mq3-botlib-ai-chat-matches-ml-1609371570"></a>
 ### readFn
@@ -52,7 +54,7 @@ readFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-state-templates-templates-src-mq3-botlib-ai-chat-matches-ml-38147430"></a>
 ### templates
@@ -62,4 +64,4 @@ templates
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)

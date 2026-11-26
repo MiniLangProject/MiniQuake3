@@ -9,8 +9,10 @@
 struct Services
 ```
 
+`Services` record for bot seek state, containing `fightServices`, `navigationServices`, `observerFn`, `recordNodeFn` and `enterNodeFn` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ activateOriginFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L79)
 
 <a id="field-field-mq3-game-bot-seek-state-services-activatetouchfn-activatetouchfn-src-mq3-game-bot-seek-state-ml-1113689817"></a>
 ### activateTouchFn
@@ -32,7 +34,7 @@ activateTouchFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L78)
 
 <a id="field-field-mq3-game-bot-seek-state-services-activatetracefn-activatetracefn-src-mq3-game-bot-seek-state-ml-862735017"></a>
 ### activateTraceFn
@@ -42,7 +44,7 @@ activateTraceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L77)
 
 <a id="field-field-mq3-game-bot-seek-state-services-activationnodefn-activationnodefn-src-mq3-game-bot-seek-state-ml-1952023373"></a>
 ### activationNodeFn
@@ -52,7 +54,7 @@ activationNodeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L76)
 
 <a id="field-field-mq3-game-bot-seek-state-services-attackfn-attackfn-src-mq3-game-bot-seek-state-ml-1273858981"></a>
 ### attackFn
@@ -62,7 +64,7 @@ attackFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L80)
 
 <a id="field-field-mq3-game-bot-seek-state-services-blockedfn-blockedfn-src-mq3-game-bot-seek-state-ml-774836721"></a>
 ### blockedFn
@@ -72,7 +74,7 @@ blockedFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L55)
 
 <a id="field-field-mq3-game-bot-seek-state-services-chattimefn-chattimefn-src-mq3-game-bot-seek-state-ml-1387559891"></a>
 ### chatTimeFn
@@ -82,7 +84,7 @@ chatTimeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L41)
 
 <a id="field-field-mq3-game-bot-seek-state-services-chooseweaponfn-chooseweaponfn-src-mq3-game-bot-seek-state-ml-2020323159"></a>
 ### chooseWeaponFn
@@ -92,7 +94,7 @@ chooseWeaponFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L63)
 
 <a id="field-field-mq3-game-bot-seek-state-services-clearactivatefn-clearactivatefn-src-mq3-game-bot-seek-state-ml-1689115025"></a>
 ### clearActivateFn
@@ -102,7 +104,7 @@ clearActivateFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L75)
 
 <a id="field-field-mq3-game-bot-seek-state-services-clearpathfn-clearpathfn-src-mq3-game-bot-seek-state-ml-412604641"></a>
 ### clearPathFn
@@ -112,7 +114,7 @@ clearPathFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L56)
 
 <a id="field-field-mq3-game-bot-seek-state-services-context-context-src-mq3-game-bot-seek-state-ml-782534489"></a>
 ### context
@@ -122,7 +124,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L84)
 
 <a id="field-field-mq3-game-bot-seek-state-services-deathchatfn-deathchatfn-src-mq3-game-bot-seek-state-ml-1220243941"></a>
 ### deathChatFn
@@ -132,7 +134,7 @@ deathChatFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L68)
 
 <a id="field-field-mq3-game-bot-seek-state-services-dmnetservices-dmnetservices-src-mq3-game-bot-seek-state-ml-168381665"></a>
 ### dmnetServices
@@ -142,7 +144,7 @@ dmnetServices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L83)
 
 <a id="field-field-mq3-game-bot-seek-state-services-emptygoalstackfn-emptygoalstackfn-src-mq3-game-bot-seek-state-ml-1936242537"></a>
 ### emptyGoalStackFn
@@ -152,7 +154,7 @@ emptyGoalStackFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L44)
 
 <a id="field-field-mq3-game-bot-seek-state-services-endlevelchatfn-endlevelchatfn-src-mq3-game-bot-seek-state-ml-1642004043"></a>
 ### endLevelChatFn
@@ -162,7 +164,7 @@ endLevelChatFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L65)
 
 <a id="field-field-mq3-game-bot-seek-state-services-enterchatfn-enterchatfn-src-mq3-game-bot-seek-state-ml-1980443773"></a>
 ### enterChatFn
@@ -172,7 +174,7 @@ enterChatFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L69)
 
 <a id="field-field-mq3-game-bot-seek-state-services-enternodefn-enternodefn-src-mq3-game-bot-seek-state-ml-1921669833"></a>
 ### enterNodeFn
@@ -182,7 +184,7 @@ enterNodeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L37)
 
 <a id="field-field-mq3-game-bot-seek-state-services-enterseeknbgfn-enterseeknbgfn-src-mq3-game-bot-seek-state-ml-68725115"></a>
 ### enterSeekNbgFn
@@ -192,7 +194,7 @@ enterSeekNbgFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L50)
 
 <a id="field-field-mq3-game-bot-seek-state-services-fightservices-fightservices-src-mq3-game-bot-seek-state-ml-1909481745"></a>
 ### fightServices
@@ -202,7 +204,7 @@ fightServices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L33)
 
 <a id="field-field-mq3-game-bot-seek-state-services-gesturefn-gesturefn-src-mq3-game-bot-seek-state-ml-152010653"></a>
 ### gestureFn
@@ -212,7 +214,7 @@ gestureFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L43)
 
 <a id="field-field-mq3-game-bot-seek-state-services-goalnamefn-goalnamefn-src-mq3-game-bot-seek-state-ml-400064585"></a>
 ### goalNameFn
@@ -222,7 +224,7 @@ goalNameFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L39)
 
 <a id="field-field-mq3-game-bot-seek-state-services-grapple-grapple-src-mq3-game-bot-seek-state-ml-1674771185"></a>
 ### grapple
@@ -232,7 +234,7 @@ grapple
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L59)
 
 <a id="field-field-mq3-game-bot-seek-state-services-hittalkingchatfn-hittalkingchatfn-src-mq3-game-bot-seek-state-ml-11972223"></a>
 ### hitTalkingChatFn
@@ -242,7 +244,7 @@ hitTalkingChatFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L67)
 
 <a id="field-field-mq3-game-bot-seek-state-services-longtermgoalfn-longtermgoalfn-src-mq3-game-bot-seek-state-ml-1026450479"></a>
 ### longTermGoalFn
@@ -252,7 +254,7 @@ longTermGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L46)
 
 <a id="field-field-mq3-game-bot-seek-state-services-mapscriptsfn-mapscriptsfn-src-mq3-game-bot-seek-state-ml-1356950241"></a>
 ### mapScriptsFn
@@ -262,7 +264,7 @@ mapScriptsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L42)
 
 <a id="field-field-mq3-game-bot-seek-state-services-missionnearbyrangefn-missionnearbyrangefn-src-mq3-game-bot-seek-state-ml-2135412593"></a>
 ### missionNearbyRangeFn
@@ -272,7 +274,7 @@ missionNearbyRangeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L82)
 
 <a id="field-field-mq3-game-bot-seek-state-services-movementviewtargetfn-movementviewtargetfn-src-mq3-game-bot-seek-state-ml-216760603"></a>
 ### movementViewTargetFn
@@ -282,7 +284,7 @@ movementViewTargetFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L57)
 
 <a id="field-field-mq3-game-bot-seek-state-services-movetogoalfn-movetogoalfn-src-mq3-game-bot-seek-state-ml-202043271"></a>
 ### moveToGoalFn
@@ -292,7 +294,7 @@ moveToGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L53)
 
 <a id="field-field-mq3-game-bot-seek-state-services-navigationservices-navigationservices-src-mq3-game-bot-seek-state-ml-1019687129"></a>
 ### navigationServices
@@ -302,7 +304,7 @@ navigationServices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L34)
 
 <a id="field-field-mq3-game-bot-seek-state-services-nearbygoalfn-nearbygoalfn-src-mq3-game-bot-seek-state-ml-695908201"></a>
 ### nearbyGoalFn
@@ -312,7 +314,7 @@ nearbyGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L48)
 
 <a id="field-field-mq3-game-bot-seek-state-services-observerfn-observerfn-src-mq3-game-bot-seek-state-ml-1958780449"></a>
 ### observerFn
@@ -322,7 +324,7 @@ observerFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L35)
 
 <a id="field-field-mq3-game-bot-seek-state-services-popgoalfn-popgoalfn-src-mq3-game-bot-seek-state-ml-1726433221"></a>
 ### popGoalFn
@@ -332,7 +334,7 @@ popGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L62)
 
 <a id="field-field-mq3-game-bot-seek-state-services-predictobstaclesfn-predictobstaclesfn-src-mq3-game-bot-seek-state-ml-684992563"></a>
 ### predictObstaclesFn
@@ -342,7 +344,7 @@ predictObstaclesFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L51)
 
 <a id="field-field-mq3-game-bot-seek-state-services-randomchatfn-randomchatfn-src-mq3-game-bot-seek-state-ml-1509416019"></a>
 ### randomChatFn
@@ -352,7 +354,7 @@ randomChatFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L40)
 
 <a id="field-field-mq3-game-bot-seek-state-services-reachedgoalfn-reachedgoalfn-src-mq3-game-bot-seek-state-ml-1518994005"></a>
 ### reachedGoalFn
@@ -362,7 +364,7 @@ reachedGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L60)
 
 <a id="field-field-mq3-game-bot-seek-state-services-recordnodefn-recordnodefn-src-mq3-game-bot-seek-state-ml-1943501923"></a>
 ### recordNodeFn
@@ -372,7 +374,7 @@ recordNodeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L36)
 
 <a id="field-field-mq3-game-bot-seek-state-services-resetavoidfn-resetavoidfn-src-mq3-game-bot-seek-state-ml-532800381"></a>
 ### resetAvoidFn
@@ -382,7 +384,7 @@ resetAvoidFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L54)
 
 <a id="field-field-mq3-game-bot-seek-state-services-resetavoidgoalsfn-resetavoidgoalsfn-src-mq3-game-bot-seek-state-ml-2070102341"></a>
 ### resetAvoidGoalsFn
@@ -392,7 +394,7 @@ resetAvoidGoalsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L74)
 
 <a id="field-field-mq3-game-bot-seek-state-services-resetgoalstatefn-resetgoalstatefn-src-mq3-game-bot-seek-state-ml-55278951"></a>
 ### resetGoalStateFn
@@ -402,7 +404,7 @@ resetGoalStateFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L73)
 
 <a id="field-field-mq3-game-bot-seek-state-services-resetlastavoidfn-resetlastavoidfn-src-mq3-game-bot-seek-state-ml-1664229233"></a>
 ### resetLastAvoidFn
@@ -412,7 +414,7 @@ resetLastAvoidFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L49)
 
 <a id="field-field-mq3-game-bot-seek-state-services-resetmovestatefn-resetmovestatefn-src-mq3-game-bot-seek-state-ml-1892723083"></a>
 ### resetMoveStateFn
@@ -422,7 +424,7 @@ resetMoveStateFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L72)
 
 <a id="field-field-mq3-game-bot-seek-state-services-resetstatefn-resetstatefn-src-mq3-game-bot-seek-state-ml-2001993145"></a>
 ### resetStateFn
@@ -432,7 +434,7 @@ resetStateFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L64)
 
 <a id="field-field-mq3-game-bot-seek-state-services-respawnfn-respawnfn-src-mq3-game-bot-seek-state-ml-1277814137"></a>
 ### respawnFn
@@ -442,7 +444,7 @@ respawnFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L71)
 
 <a id="field-field-mq3-game-bot-seek-state-services-roamgoalfn-roamgoalfn-src-mq3-game-bot-seek-state-ml-554214809"></a>
 ### roamGoalFn
@@ -452,7 +454,7 @@ roamGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L58)
 
 <a id="field-field-mq3-game-bot-seek-state-services-secondgoalfn-secondgoalfn-src-mq3-game-bot-seek-state-ml-736226155"></a>
 ### secondGoalFn
@@ -462,7 +464,7 @@ secondGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L61)
 
 <a id="field-field-mq3-game-bot-seek-state-services-selectactivateweaponfn-selectactivateweaponfn-src-mq3-game-bot-seek-state-ml-288025183"></a>
 ### selectActivateWeaponFn
@@ -472,7 +474,7 @@ selectActivateWeaponFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L81)
 
 <a id="field-field-mq3-game-bot-seek-state-services-setupmovementfn-setupmovementfn-src-mq3-game-bot-seek-state-ml-2081418473"></a>
 ### setupMovementFn
@@ -482,7 +484,7 @@ setupMovementFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L52)
 
 <a id="field-field-mq3-game-bot-seek-state-services-startlevelchatfn-startlevelchatfn-src-mq3-game-bot-seek-state-ml-1195571493"></a>
 ### startLevelChatFn
@@ -492,7 +494,7 @@ startLevelChatFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L66)
 
 <a id="field-field-mq3-game-bot-seek-state-services-talkfn-talkfn-src-mq3-game-bot-seek-state-ml-1970883649"></a>
 ### talkFn
@@ -502,7 +504,7 @@ talkFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L70)
 
 <a id="field-field-mq3-game-bot-seek-state-services-teamgoalsfn-teamgoalsfn-src-mq3-game-bot-seek-state-ml-2016084677"></a>
 ### teamGoalsFn
@@ -512,7 +514,7 @@ teamGoalsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L45)
 
 <a id="field-field-mq3-game-bot-seek-state-services-topgoalfn-topgoalfn-src-mq3-game-bot-seek-state-ml-1653002821"></a>
 ### topGoalFn
@@ -522,7 +524,7 @@ topGoalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L38)
 
 <a id="field-field-mq3-game-bot-seek-state-services-wantscampfn-wantscampfn-src-mq3-game-bot-seek-state-ml-1091182745"></a>
 ### wantsCampFn
@@ -532,4 +534,4 @@ wantsCampFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_seek_state.ml#L47)

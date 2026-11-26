@@ -9,8 +9,10 @@
 struct MenuField
 ```
 
+Stores UI mfield menu field record, including `field`, `name`, `flags`, `x`, `y`, `left` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ bottom
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-field-field-src-mq3-client-ui-mfield-ml-497026194"></a>
 ### field
@@ -32,7 +34,7 @@ field
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-flags-flags-src-mq3-client-ui-mfield-ml-2055020710"></a>
 ### flags
@@ -42,7 +44,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-left-left-src-mq3-client-ui-mfield-ml-1177469868"></a>
 ### left
@@ -52,7 +54,7 @@ left
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-menuposition-menuposition-src-mq3-client-ui-mfield-ml-1547984942"></a>
 ### menuPosition
@@ -62,7 +64,7 @@ menuPosition
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-name-name-src-mq3-client-ui-mfield-ml-1397396584"></a>
 ### name
@@ -72,7 +74,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-parentcursor-parentcursor-src-mq3-client-ui-mfield-ml-1586965630"></a>
 ### parentCursor
@@ -82,7 +84,7 @@ parentCursor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-right-right-src-mq3-client-ui-mfield-ml-46507534"></a>
 ### right
@@ -92,7 +94,7 @@ right
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-top-top-src-mq3-client-ui-mfield-ml-1568119278"></a>
 ### top
@@ -102,7 +104,7 @@ top
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-x-x-src-mq3-client-ui-mfield-ml-1346119766"></a>
 ### x
@@ -112,7 +114,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="field-field-mq3-client-ui-mfield-menufield-y-y-src-mq3-client-ui-mfield-ml-230570930"></a>
 ### y
@@ -122,4 +124,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)

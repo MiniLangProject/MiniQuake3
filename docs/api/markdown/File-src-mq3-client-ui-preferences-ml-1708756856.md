@@ -18,7 +18,7 @@ function cache()
 Preferences_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L76)
 
 <a id="function-function-mq3-client-ui-preferences-clamp-function-clamp-value-low-high-src-mq3-client-ui-preferences-ml-577242643"></a>
 ### clamp
@@ -27,14 +27,16 @@ Preferences_Cache
 function clamp(value, low, high)
 ```
 
+Clamps `value` to the inclusive bounds `low` and `high` for UI preferences.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `low` | `dynamic` | — |  |
-| `high` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<low`, `value>high` before the calculation continues. |
+| `low` | `dynamic` | — | Lower bound used for comparison or clamping. |
+| `high` | `dynamic` | — | Upper bound used for comparison or clamping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L26)
 
 <a id="function-function-mq3-client-ui-preferences-drawcrosshair-function-drawcrosshair-value-focus-grayed-blink-src-mq3-client-ui-preferences-ml-359995337"></a>
 ### drawCrosshair
@@ -47,13 +49,13 @@ Crosshair_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `focus` | `dynamic` | — |  |
-| `grayed` | `dynamic` | — |  |
-| `blink` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.crosshair`. |
+| `focus` | `dynamic` | — | Value used by `if grayed then color="disabled" else if focus then color="highlight"`. |
+| `grayed` | `dynamic` | — | Value used by `if grayed then color="disabled" else if focus then color="highlight"`. |
+| `blink` | `dynamic` | — | Value used by `style="small+pulse" else if blink then color="highlight"`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L68)
 
 <a id="function-function-mq3-client-ui-preferences-event-function-event-value-id-notification-src-mq3-client-ui-preferences-ml-1482222603"></a>
 ### event
@@ -66,12 +68,12 @@ Preferences_Event
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `notification` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI preferences record/storage; this routine assigns `value.crosshair`, `value.cvarWrites`, `value.actions`. |
+| `id` | `dynamic` | — | Value used by `if id==ID_CROSSHAIR then value.crosshair=(value.crosshair+1)%10`. |
+| `notification` | `dynamic` | — | Value used by `if notification!=QM_ACTIVATED then return value end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L47)
 
 <a id="constant-constant-mq3-client-ui-preferences-id-allowdownload-const-id-allowdownload-137-src-mq3-client-ui-preferences-ml-1723092022"></a>
 ### ID_ALLOWDOWNLOAD
@@ -204,10 +206,10 @@ Preferences_MenuInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI preferences record/storage; this routine assigns `value.items`, `value.assets`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L83)
 
 <a id="function-function-mq3-client-ui-preferences-open-function-open-value-src-mq3-client-ui-preferences-ml-1686092237"></a>
 ### open
@@ -220,10 +222,10 @@ UI_PreferencesMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI preferences record/storage; this routine assigns `value.actions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L92)
 
 - [mq3.client.ui_preferences.PreferenceItem](Type-mq3-client-ui-preferences-preferenceitem-2013934726.md) — struct
 - [mq3.client.ui_preferences.Preferences](Type-mq3-client-ui-preferences-preferences-546837250.md) — struct
@@ -248,17 +250,17 @@ Preferences_SetMenuItems
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `crosshair` | `dynamic` | — |  |
-| `simpleItems` | `dynamic` | — |  |
-| `brassTime` | `dynamic` | — |  |
-| `marks` | `dynamic` | — |  |
-| `identify` | `dynamic` | — |  |
-| `dynamicLights` | `dynamic` | — |  |
-| `fastSky` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `forceModel` | `dynamic` | — |  |
-| `teamOverlay` | `dynamic` | — |  |
-| `allowDownload` | `dynamic` | — |  |
+| `crosshair` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `simpleItems` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `brassTime` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `marks` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `identify` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `dynamicLights` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `fastSky` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `finish` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `forceModel` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `teamOverlay` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
+| `allowDownload` | `dynamic` | — | Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L39)

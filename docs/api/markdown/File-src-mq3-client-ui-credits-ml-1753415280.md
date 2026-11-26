@@ -22,7 +22,7 @@ function draw()
 UI_CreditMenu_Draw
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L28)
 
 - [mq3.client.ui_credits.Draw](Type-mq3-client-ui-credits-draw-1322397722.md) — struct
 <a id="constant-constant-mq3-client-ui-credits-exec-append-const-exec-append-2-src-mq3-client-ui-credits-ml-1920411779"></a>
@@ -42,13 +42,15 @@ const EXEC_APPEND = 2
 function gap(y, scale)
 ```
 
+Adapts `mq3.compat.numeric.trunc32` to UI credits `gap`, returning its result for `y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `y` | `dynamic` | — |  |
-| `scale` | `dynamic` | — |  |
+| `y` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.trunc32`; passed as `y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE`. |
+| `scale` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.trunc32`; passed as `y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-credits-k-char-flag-const-k-char-flag-1024-src-mq3-client-ui-credits-ml-1700404100"></a>
 ### K_CHAR_FLAG
@@ -71,10 +73,10 @@ UI_CreditMenu_Key
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `keyCode` | `dynamic` | — |  |
+| `keyCode` | `dynamic` | — | Value used by `if (keyCode&K_CHAR_FLAG)!=0 then return [] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L42)
 
 <a id="function-function-mq3-client-ui-credits-open-function-open-src-mq3-client-ui-credits-ml-1611727752"></a>
 ### open
@@ -86,7 +88,7 @@ function open()
 UI_CreditMenu
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L44)
 
 <a id="constant-constant-mq3-client-ui-credits-prop-height-const-prop-height-27-src-mq3-client-ui-credits-ml-1593660612"></a>
 ### PROP_HEIGHT
@@ -115,15 +117,17 @@ const PROP_SMALL_SIZE_SCALE = 0.75
 function row(text, y, color, proportional)
 ```
 
+Creates a `mq3.client.ui_credits.Draw` record. Assigns `text` from `text`, `y` from `y`, `color` from `color`, `proportional` from `proportional`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `proportional` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Value used to initialize `Draw.text`. |
+| `y` | `dynamic` | — | Value used to initialize `Draw.y`. |
+| `color` | `dynamic` | — | Value used to initialize `Draw.color`. |
+| `proportional` | `dynamic` | — | Value used to initialize `Draw.proportional`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-credits-smallchar-height-const-smallchar-height-16-src-mq3-client-ui-credits-ml-944834052"></a>
 ### SMALLCHAR_HEIGHT

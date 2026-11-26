@@ -9,8 +9,10 @@
 struct Impact
 ```
 
+Stores playable player projectiles impact record, including `id`, `projectileId`, `classname`, `style`, `kind`, `point` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ at
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-classname-classname-src-mq3-client-playable-player-projectiles-ml-1923565331"></a>
 ### classname
@@ -32,7 +34,7 @@ classname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-damages-damages-src-mq3-client-playable-player-projectiles-ml-255388895"></a>
 ### damages
@@ -42,7 +44,7 @@ damages
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-id-id-src-mq3-client-playable-player-projectiles-ml-1596912365"></a>
 ### id
@@ -52,7 +54,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-kind-kind-src-mq3-client-playable-player-projectiles-ml-323222671"></a>
 ### kind
@@ -62,7 +64,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-normal-normal-src-mq3-client-playable-player-projectiles-ml-1485355729"></a>
 ### normal
@@ -72,7 +74,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-point-point-src-mq3-client-playable-player-projectiles-ml-2050929135"></a>
 ### point
@@ -82,7 +84,7 @@ point
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-projectileid-projectileid-src-mq3-client-playable-player-projectiles-ml-546304143"></a>
 ### projectileId
@@ -92,7 +94,7 @@ projectileId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-style-style-src-mq3-client-playable-player-projectiles-ml-387819395"></a>
 ### style
@@ -102,7 +104,7 @@ style
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)
 
 <a id="field-field-mq3-client-playable-player-projectiles-impact-targetindex-targetindex-src-mq3-client-playable-player-projectiles-ml-1198864499"></a>
 ### targetIndex
@@ -112,4 +114,4 @@ targetIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L30)

@@ -15,8 +15,10 @@ Reachable from entry: **yes**
 function activateGoalFieldNames()
 ```
 
+Return a new array `["inuse","goal","time","start_time","justused_time","shoot","weapon","target","origin","areas","numareas","areasdisabled","next"]` for `activateGoalFieldNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L71)
 
 <a id="constant-constant-mq3-game-bot-ai-headers-bfl-aimatenemy-const-bfl-aimatenemy-8-src-mq3-game-bot-ai-headers-ml-714345961"></a>
 ### BFL_AIMATENEMY
@@ -95,8 +97,10 @@ const BFL_STRAFERIGHT = 1
 function botStateFieldNames()
 ```
 
+Return the ordered bot state field names table for bot ai headers: 145 entries beginning with `"inuse"` and `"botthink_residual"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L73)
 
 <a id="function-function-mq3-game-bot-ai-headers-constantnames-function-constantnames-src-mq3-game-bot-ai-headers-ml-29591718"></a>
 ### constantNames
@@ -105,8 +109,10 @@ function botStateFieldNames()
 function constantNames()
 ```
 
+Return the ordered constant names table for bot ai headers: 55 entries beginning with `"MAX_NODESWITCHES"` and `"CTF_FLAG_NONE"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L63)
 
 <a id="function-function-mq3-game-bot-ai-headers-constantvalues-function-constantvalues-src-mq3-game-bot-ai-headers-ml-1497668422"></a>
 ### constantValues
@@ -115,8 +121,10 @@ function constantNames()
 function constantValues()
 ```
 
+Return the ordered constant values table for bot ai headers: 55 entries beginning with `MAX_NODESWITCHES` and `CTF_FLAG_NONE`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L65)
 
 <a id="constant-constant-mq3-game-bot-ai-headers-ctf-flag-blue-const-ctf-flag-blue-2-src-mq3-game-bot-ai-headers-ml-1581709955"></a>
 ### CTF_FLAG_BLUE
@@ -225,8 +233,10 @@ const CTFS_AGRESSIVE = 1
 function declarationNames()
 ```
 
+Return the ordered declaration names table for bot ai headers: 135 entries beginning with `"BotChat_EnterGame"` and `"BotChat_ExitGame"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L75)
 
 <a id="function-function-mq3-game-bot-ai-headers-globalnames-function-globalnames-src-mq3-game-bot-ai-headers-ml-16459456"></a>
 ### globalNames
@@ -235,8 +245,10 @@ function declarationNames()
 function globalNames()
 ```
 
+Return the ordered global names table for bot ai headers: 16 entries beginning with `"notleader"` and `"gametype"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L77)
 
 <a id="function-function-mq3-game-bot-ai-headers-headercounts-function-headercounts-src-mq3-game-bot-ai-headers-ml-830346282"></a>
 ### headerCounts
@@ -245,8 +257,10 @@ function globalNames()
 function headerCounts()
 ```
 
+Return a new array `[55,3,135,16,163]` for `headerCounts`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L91)
 
 <a id="constant-constant-mq3-game-bot-ai-headers-ltg-attackenemybase-const-ltg-attackenemybase-13-src-mq3-game-bot-ai-headers-ml-1090688939"></a>
 ### LTG_ATTACKENEMYBASE
@@ -455,12 +469,14 @@ const MAX_PROXMINES = 64
 function nextPatrolDirection(flags)
 ```
 
+Choose reverse or looping patrol traversal from the patrol flag mask.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flags` | `dynamic` | — |  |
+| `flags` | `dynamic` | — | Value used by `nextPatrolDirection` in `if (flags&PATROL_REVERSE)!=0 then return PATROL_BACK end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L89)
 
 <a id="constant-constant-mq3-game-bot-ai-headers-patrol-back-const-patrol-back-4-src-mq3-game-bot-ai-headers-ml-142150257"></a>
 ### PATROL_BACK
@@ -649,8 +665,10 @@ const TEAMTP_DEFENDER = 1
 function typeNames()
 ```
 
+Return a new array `["bot_waypoint_t","bot_activategoal_t","bot_state_t"]` for `typeNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L64)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L67)
 
 <a id="function-function-mq3-game-bot-ai-headers-validlongtermgoal-function-validlongtermgoal-value-src-mq3-game-bot-ai-headers-ml-195651919"></a>
 ### validLongTermGoal
@@ -659,12 +677,14 @@ function typeNames()
 function validLongTermGoal(value)
 ```
 
+Test `value>=LTG_TEAMHELP and value<=LTG_MAKELOVE_ONTOP` as the condition for `validLongTermGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value>=LTG_TEAMHELP and value<=LTG_MAKELOVE_ONTOP`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L86)
 
 <a id="function-function-mq3-game-bot-ai-headers-validpresence-function-validpresence-value-src-mq3-game-bot-ai-headers-ml-1517209415"></a>
 ### validPresence
@@ -673,12 +693,14 @@ function validLongTermGoal(value)
 function validPresence(value)
 ```
 
+Test `value==PRESENCE_NONE or value==PRESENCE_NORMAL or value==PRESENCE_CROUCH` as the condition for `validPresence`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value==PRESENCE_NONE or value==PRESENCE_NORMAL or value==PRESENCE_CROUCH`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L80)
 
 <a id="function-function-mq3-game-bot-ai-headers-validteamtaskpreference-function-validteamtaskpreference-value-src-mq3-game-bot-ai-headers-ml-837319715"></a>
 ### validTeamTaskPreference
@@ -687,12 +709,14 @@ function validPresence(value)
 function validTeamTaskPreference(value)
 ```
 
+Test `value==TEAMTP_DEFENDER or value==TEAMTP_ATTACKER` as the condition for `validTeamTaskPreference`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value==TEAMTP_DEFENDER or value==TEAMTP_ATTACKER`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L83)
 
 <a id="function-function-mq3-game-bot-ai-headers-waypointfieldnames-function-waypointfieldnames-src-mq3-game-bot-ai-headers-ml-897021922"></a>
 ### waypointFieldNames
@@ -701,5 +725,7 @@ function validTeamTaskPreference(value)
 function waypointFieldNames()
 ```
 
+Return a new array `["inuse","name","goal","next","prev"]` for `waypointFieldNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_headers.ml#L69)

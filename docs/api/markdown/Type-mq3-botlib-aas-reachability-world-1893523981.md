@@ -9,8 +9,10 @@
 struct World
 ```
 
+`World` record for aas reachability, containing `runtime`, `map`, `settings`, `areas` and `reachesByArea` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-areas-areas-src-mq3-botlib-aas-reachability-ml-298623325"></a>
 ### areas
@@ -32,7 +34,7 @@ areas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-calcgrapple-calcgrapple-src-mq3-botlib-aas-reachability-ml-301137421"></a>
 ### calcGrapple
@@ -42,7 +44,7 @@ calcGrapple
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-forcereachability-forcereachability-src-mq3-botlib-aas-reachability-ml-561909073"></a>
 ### forceReachability
@@ -52,7 +54,7 @@ forceReachability
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-heapcapacity-heapcapacity-src-mq3-botlib-aas-reachability-ml-907922761"></a>
 ### heapCapacity
@@ -62,7 +64,7 @@ heapCapacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-heapused-heapused-src-mq3-botlib-aas-reachability-ml-600375835"></a>
 ### heapUsed
@@ -72,7 +74,7 @@ heapUsed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-loaded-loaded-src-mq3-botlib-aas-reachability-ml-1712126375"></a>
 ### loaded
@@ -82,7 +84,7 @@ loaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-map-map-src-mq3-botlib-aas-reachability-ml-1266751757"></a>
 ### map
@@ -92,7 +94,7 @@ map
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-numreachabilityareas-numreachabilityareas-src-mq3-botlib-aas-reachability-ml-1482864439"></a>
 ### numReachabilityAreas
@@ -102,7 +104,7 @@ numReachabilityAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-physics-physics-src-mq3-botlib-aas-reachability-ml-1273969689"></a>
 ### physics
@@ -112,7 +114,7 @@ physics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-reachesbyarea-reachesbyarea-src-mq3-botlib-aas-reachability-ml-1919510705"></a>
 ### reachesByArea
@@ -122,7 +124,7 @@ reachesByArea
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-retailactive-retailactive-src-mq3-botlib-aas-reachability-ml-531050863"></a>
 ### retailActive
@@ -132,7 +134,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-runtime-runtime-src-mq3-botlib-aas-reachability-ml-1229084485"></a>
 ### runtime
@@ -142,7 +144,7 @@ runtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-savefile-savefile-src-mq3-botlib-aas-reachability-ml-645351471"></a>
 ### saveFile
@@ -152,7 +154,7 @@ saveFile
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-services-services-src-mq3-botlib-aas-reachability-ml-259852869"></a>
 ### services
@@ -162,7 +164,7 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-settings-settings-src-mq3-botlib-aas-reachability-ml-1203682443"></a>
 ### settings
@@ -172,7 +174,7 @@ settings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-specials-specials-src-mq3-botlib-aas-reachability-ml-845844957"></a>
 ### specials
@@ -182,7 +184,7 @@ specials
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
 
 <a id="field-field-mq3-botlib-aas-reachability-world-stored-stored-src-mq3-botlib-aas-reachability-ml-309110947"></a>
 ### stored
@@ -192,4 +194,4 @@ stored
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)

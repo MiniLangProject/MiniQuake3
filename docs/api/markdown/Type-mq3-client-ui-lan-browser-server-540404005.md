@@ -9,8 +9,10 @@
 struct Server
 ```
 
+Stores UI LAN browser server record, including `address`, `hostName`, `mapName`, `clients`, `maxClients`, `ping` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-clients-clients-src-mq3-client-ui-lan-browser-ml-1087101172"></a>
 ### clients
@@ -32,7 +34,7 @@ clients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-game-game-src-mq3-client-ui-lan-browser-ml-205113488"></a>
 ### game
@@ -42,7 +44,7 @@ game
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-gametype-gametype-src-mq3-client-ui-lan-browser-ml-433372096"></a>
 ### gameType
@@ -52,7 +54,7 @@ gameType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-hostname-hostname-src-mq3-client-ui-lan-browser-ml-105883094"></a>
 ### hostName
@@ -62,7 +64,7 @@ hostName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-mapname-mapname-src-mq3-client-ui-lan-browser-ml-1986022456"></a>
 ### mapName
@@ -72,7 +74,7 @@ mapName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-maxclients-maxclients-src-mq3-client-ui-lan-browser-ml-137740456"></a>
 ### maxClients
@@ -82,7 +84,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-maxping-maxping-src-mq3-client-ui-lan-browser-ml-1441275504"></a>
 ### maxPing
@@ -92,7 +94,7 @@ maxPing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-minping-minping-src-mq3-client-ui-lan-browser-ml-711183724"></a>
 ### minPing
@@ -102,7 +104,7 @@ minPing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-nettype-nettype-src-mq3-client-ui-lan-browser-ml-1450275020"></a>
 ### netType
@@ -112,7 +114,7 @@ netType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-ping-ping-src-mq3-client-ui-lan-browser-ml-371094640"></a>
 ### ping
@@ -122,7 +124,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-punkbuster-punkbuster-src-mq3-client-ui-lan-browser-ml-794480458"></a>
 ### punkbuster
@@ -132,7 +134,7 @@ punkbuster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-status-status-src-mq3-client-ui-lan-browser-ml-284647468"></a>
 ### status
@@ -142,7 +144,7 @@ status
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-server-visible-visible-src-mq3-client-ui-lan-browser-ml-652256832"></a>
 ### visible
@@ -152,4 +154,4 @@ visible
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)

@@ -9,8 +9,10 @@
 struct Cache
 ```
 
+Data record for `mq3.renderer.player_render_cache.Cache`; groups `models`, `phaseCount`, `maxEntries`, `maxTrianglesPerTarget`, `maxTargetsPerFrame`, `entries`, and 15 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ builds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-detailed-detailed-src-mq3-renderer-player-render-cache-ml-2102857679"></a>
 ### detailed
@@ -32,7 +34,7 @@ detailed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-entries-entries-src-mq3-renderer-player-render-cache-ml-923501111"></a>
 ### entries
@@ -42,7 +44,7 @@ entries
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-evictions-evictions-src-mq3-renderer-player-render-cache-ml-1480230395"></a>
 ### evictions
@@ -52,7 +54,7 @@ evictions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-frameculled-frameculled-src-mq3-renderer-player-render-cache-ml-1510093295"></a>
 ### frameCulled
@@ -62,7 +64,7 @@ frameCulled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-framefar-framefar-src-mq3-renderer-player-render-cache-ml-604301979"></a>
 ### frameFar
@@ -72,7 +74,7 @@ frameFar
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-framefull-framefull-src-mq3-renderer-player-render-cache-ml-483961823"></a>
 ### frameFull
@@ -82,7 +84,7 @@ frameFull
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-framemedium-framemedium-src-mq3-renderer-player-render-cache-ml-420839811"></a>
 ### frameMedium
@@ -92,7 +94,7 @@ frameMedium
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-frametargets-frametargets-src-mq3-renderer-player-render-cache-ml-1893643285"></a>
 ### frameTargets
@@ -102,7 +104,7 @@ frameTargets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-frametriangles-frametriangles-src-mq3-renderer-player-render-cache-ml-169757547"></a>
 ### frameTriangles
@@ -112,7 +114,7 @@ frameTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-hits-hits-src-mq3-renderer-player-render-cache-ml-735902907"></a>
 ### hits
@@ -122,7 +124,7 @@ hits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-lighting-lighting-src-mq3-renderer-player-render-cache-ml-53922579"></a>
 ### lighting
@@ -132,7 +134,7 @@ lighting
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-lodpolicy-lodpolicy-src-mq3-renderer-player-render-cache-ml-1550620087"></a>
 ### lodPolicy
@@ -142,7 +144,7 @@ lodPolicy
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-maxentries-maxentries-src-mq3-renderer-player-render-cache-ml-342646963"></a>
 ### maxEntries
@@ -152,7 +154,7 @@ maxEntries
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-maxtargetsperframe-maxtargetsperframe-src-mq3-renderer-player-render-cache-ml-1678130215"></a>
 ### maxTargetsPerFrame
@@ -162,7 +164,7 @@ maxTargetsPerFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-maxtrianglespertarget-maxtrianglespertarget-src-mq3-renderer-player-render-cache-ml-474653771"></a>
 ### maxTrianglesPerTarget
@@ -172,7 +174,7 @@ maxTrianglesPerTarget
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-misses-misses-src-mq3-renderer-player-render-cache-ml-23093403"></a>
 ### misses
@@ -182,7 +184,7 @@ misses
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-models-models-src-mq3-renderer-player-render-cache-ml-1660036875"></a>
 ### models
@@ -192,7 +194,7 @@ models
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-phasecount-phasecount-src-mq3-renderer-player-render-cache-ml-2034332275"></a>
 ### phaseCount
@@ -202,7 +204,7 @@ phaseCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-skinset-skinset-src-mq3-renderer-player-render-cache-ml-1906185191"></a>
 ### skinSet
@@ -212,7 +214,7 @@ skinSet
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)
 
 <a id="field-field-mq3-renderer-player-render-cache-cache-sourcetriangles-sourcetriangles-src-mq3-renderer-player-render-cache-ml-1499230091"></a>
 ### sourceTriangles
@@ -222,4 +224,4 @@ sourceTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L29)

@@ -9,8 +9,10 @@
 struct Dma
 ```
 
+Dma record for audio.snd_local, containing `channels`, `samples`, `submission_chunk`, `samplebits`, `speed`, `buffer`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ buffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
 
 <a id="field-field-mq3-audio-snd-local-dma-channels-channels-src-mq3-audio-snd-local-ml-1852150165"></a>
 ### channels
@@ -32,7 +34,7 @@ channels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
 
 <a id="field-field-mq3-audio-snd-local-dma-samplebits-samplebits-src-mq3-audio-snd-local-ml-378693013"></a>
 ### samplebits
@@ -42,7 +44,7 @@ samplebits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
 
 <a id="field-field-mq3-audio-snd-local-dma-samples-samples-src-mq3-audio-snd-local-ml-1348802065"></a>
 ### samples
@@ -52,7 +54,7 @@ samples
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
 
 <a id="field-field-mq3-audio-snd-local-dma-speed-speed-src-mq3-audio-snd-local-ml-783571609"></a>
 ### speed
@@ -62,7 +64,7 @@ speed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)
 
 <a id="field-field-mq3-audio-snd-local-dma-submission-chunk-submission-chunk-src-mq3-audio-snd-local-ml-1505684897"></a>
 ### submission_chunk
@@ -72,4 +74,4 @@ submission_chunk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L25)

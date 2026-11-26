@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores connectionless state, including `connectionState`, `realtime`, `serverAddress`, `channel`, `challenge`, `connectPacketCount` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ challenge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
 
 <a id="field-field-mq3-client-connectionless-state-channel-channel-src-mq3-client-connectionless-ml-2053323270"></a>
 ### channel
@@ -32,7 +34,7 @@ channel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
 
 <a id="field-field-mq3-client-connectionless-state-connectionstate-connectionstate-src-mq3-client-connectionless-ml-432612118"></a>
 ### connectionState
@@ -42,7 +44,7 @@ connectionState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
 
 <a id="field-field-mq3-client-connectionless-state-connectpacketcount-connectpacketcount-src-mq3-client-connectionless-ml-1722589684"></a>
 ### connectPacketCount
@@ -52,7 +54,7 @@ connectPacketCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
 
 <a id="field-field-mq3-client-connectionless-state-connecttime-connecttime-src-mq3-client-connectionless-ml-1432398278"></a>
 ### connectTime
@@ -62,7 +64,7 @@ connectTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L28)
 
 <a id="field-field-mq3-client-connectionless-state-demoplaying-demoplaying-src-mq3-client-connectionless-ml-1470856434"></a>
 ### demoplaying
@@ -72,7 +74,7 @@ demoplaying
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L28)
 
 <a id="field-field-mq3-client-connectionless-state-lastpacketsenttime-lastpacketsenttime-src-mq3-client-connectionless-ml-1731355384"></a>
 ### lastPacketSentTime
@@ -82,7 +84,7 @@ lastPacketSentTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L28)
 
 <a id="field-field-mq3-client-connectionless-state-lastpackettime-lastpackettime-src-mq3-client-connectionless-ml-1578109412"></a>
 ### lastPacketTime
@@ -92,7 +94,7 @@ lastPacketTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L28)
 
 <a id="field-field-mq3-client-connectionless-state-qport-qport-src-mq3-client-connectionless-ml-1821415254"></a>
 ### qport
@@ -102,7 +104,7 @@ qport
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L28)
 
 <a id="field-field-mq3-client-connectionless-state-realtime-realtime-src-mq3-client-connectionless-ml-765132656"></a>
 ### realtime
@@ -112,7 +114,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
 
 <a id="field-field-mq3-client-connectionless-state-serveraddress-serveraddress-src-mq3-client-connectionless-ml-454759386"></a>
 ### serverAddress
@@ -122,7 +124,7 @@ serverAddress
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
 
 <a id="field-field-mq3-client-connectionless-state-servermessage-servermessage-src-mq3-client-connectionless-ml-109654326"></a>
 ### serverMessage
@@ -132,4 +134,4 @@ serverMessage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/connectionless.ml#L28)

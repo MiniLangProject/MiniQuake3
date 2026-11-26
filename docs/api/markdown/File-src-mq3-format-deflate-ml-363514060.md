@@ -20,11 +20,11 @@ Short canonical codes have one entry at every possible eight-bit suffix. DEFLATE
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `counts` | `dynamic` | — |  |
-| `symbols` | `dynamic` | — |  |
+| `counts` | `dynamic` | — | Counts used in `counts[width]`. |
+| `symbols` | `dynamic` | — | Symbols used in `symbols[(index + offset)]` and `(symbols[(index + offset)] << 4)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L48)
 
 <a id="function-function-mq3-format-deflate-decodesymbol-function-decodesymbol-reader-codes-src-mq3-format-deflate-ml-784818855"></a>
 ### decodeSymbol
@@ -33,13 +33,17 @@ Short canonical codes have one entry at every possible eight-bit suffix. DEFLATE
 function decodeSymbol(reader, codes)
 ```
 
+Decode symbol in format.deflate; the normal completion returns `fail("invalid Huffman code")`.
+
+Direct state writes: `reader.value`, `reader.available`, `reader.offset`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
-| `codes` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Record exposing `available`, `value`, `offset`, `data`. Updated in place: `value`, `available`, `offset`. |
+| `codes` | `dynamic` | — | Record exposing `prefix`, `counts`, `symbols`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L106)
 
 <a id="function-function-mq3-format-deflate-dynamictrees-function-dynamictrees-reader-src-mq3-format-deflate-ml-1383757355"></a>
 ### dynamicTrees
@@ -48,12 +52,14 @@ function decodeSymbol(reader, codes)
 function dynamicTrees(reader)
 ```
 
+Compute dynamic trees in format.deflate; the normal completion returns `[tree(literals), tree(distances)]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Reader passed as `reader` to `mq3.format.deflate.readBits`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L155)
 
 <a id="function-function-mq3-format-deflate-fail-function-fail-message-src-mq3-format-deflate-ml-293057215"></a>
 ### fail
@@ -62,12 +68,14 @@ function dynamicTrees(reader)
 function fail(message)
 ```
 
+Create the format.deflate error for `fail` with 3500 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("DEFLATE: " + message)` and `error(3500, ("DEFLATE: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L22)
 
 <a id="function-function-mq3-format-deflate-fixedtrees-function-fixedtrees-src-mq3-format-deflate-ml-1262350762"></a>
 ### fixedTrees
@@ -76,8 +84,10 @@ function fail(message)
 function fixedTrees()
 ```
 
+Compute fixed trees in format.deflate; the normal completion returns `[tree(lengths), tree(array(32, 5))]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L123)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L142)
 
 - [mq3.format.deflate.Huffman](Type-mq3-format-deflate-huffman-1324627979.md) — struct
 <a id="function-function-mq3-format-deflate-inflate-function-inflate-data-expectedsize-src-mq3-format-deflate-ml-1726441759"></a>
@@ -87,13 +97,15 @@ function fixedTrees()
 function inflate(data, expectedSize)
 ```
 
+Compute inflate in format.deflate; the normal completion returns `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `expectedSize` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Initial `data` field stored in the returned or constructed `mq3.format.deflate.Bits` record. |
+| `expectedSize` | `dynamic` | — | Expected size used in `(expectedSize < 0)` and `bytes(expectedSize, 0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L204)
 
 <a id="function-function-mq3-format-deflate-readbits-function-readbits-reader-as-bits-count-as-int-src-mq3-format-deflate-ml-395759967"></a>
 ### readBits
@@ -102,13 +114,17 @@ function inflate(data, expectedSize)
 function readBits(reader as Bits, count as int)
 ```
 
+Read bits in format.deflate; the normal completion returns `result`.
+
+Direct state writes: `reader.value`, `reader.available`, `reader.offset`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `Bits` | — |  |
-| `count` | `int` | — |  |
+| `reader` | `Bits` | — | Record exposing `available`, `offset`, `data`, `value`. Updated in place: `value`, `available`, `offset`. |
+| `count` | `int` | — | Count used in `(1 << count)` and `((1 << count) - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L31)
 
 <a id="function-function-mq3-format-deflate-tree-function-tree-lengths-src-mq3-format-deflate-ml-524636917"></a>
 ### tree
@@ -117,9 +133,11 @@ function readBits(reader as Bits, count as int)
 function tree(lengths)
 ```
 
+Compute tree in format.deflate; the normal completion returns `Huffman(counts, symbols, buildPrefix(counts, symbols))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `lengths` | `dynamic` | — |  |
+| `lengths` | `dynamic` | — | Lengths used in `len(lengths)` and `lengths[sym]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L75)

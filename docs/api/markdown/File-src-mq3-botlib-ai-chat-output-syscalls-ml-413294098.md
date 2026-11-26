@@ -20,15 +20,17 @@ Reachable from entry: **yes**
 function dispatch(state, vm, base, op)
 ```
 
+Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.ai_chat_output_syscalls.variables` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `profiles`. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L24)
 
 <a id="function-function-mq3-botlib-ai-chat-output-syscalls-optionalstring-function-optionalstring-vm-pointer-src-mq3-botlib-ai-chat-output-syscalls-ml-994288460"></a>
 ### optionalString
@@ -37,13 +39,15 @@ function dispatch(state, vm, base, op)
 function optionalString(vm, pointer)
 ```
 
+Apply `mq3.vm.syscall_common.readString` while evaluating `optionalString`. Return paths include `common.readString(vm,pointer)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `pointer` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `pointer` | `dynamic` | — | Value used by `pointer` in `if value==0 then return fail(label+" is NULL") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-chat-output-syscalls-variables-function-variables-vm-base-start-src-mq3-botlib-ai-chat-output-syscalls-ml-348445676"></a>
 ### variables
@@ -52,11 +56,13 @@ function optionalString(vm, pointer)
 function variables(vm, base, start)
 ```
 
+Apply `mq3.botlib.ai_chat_output_syscalls.optionalString` and `mq3.vm.syscall_common.argument` while evaluating `variables`. Return paths include `values`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `start` | `dynamic` | — | Value used by `variables` in `for index=0 to 7 value=optionalString(vm,common.argument(vm,base,start+index))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L16)

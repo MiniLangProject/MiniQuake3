@@ -9,8 +9,10 @@
 struct PlayerState
 ```
 
+`PlayerState` record for playerstate, containing `commandTime`, `pm_type`, `bobCycle`, `pm_flags` and `pm_time` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L8)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L9)
 
 ## Members
 
@@ -22,7 +24,7 @@ ammo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L47)
 
 <a id="field-field-mq3-game-playerstate-playerstate-bobcycle-bobcycle-src-mq3-game-playerstate-ml-1190934889"></a>
 ### bobCycle
@@ -32,7 +34,7 @@ bobCycle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L12)
 
 <a id="field-field-mq3-game-playerstate-playerstate-clientnum-clientnum-src-mq3-game-playerstate-ml-775416219"></a>
 ### clientNum
@@ -42,7 +44,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L35)
 
 <a id="field-field-mq3-game-playerstate-playerstate-commandtime-commandtime-src-mq3-game-playerstate-ml-223777171"></a>
 ### commandTime
@@ -52,7 +54,7 @@ commandTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L10)
 
 <a id="field-field-mq3-game-playerstate-playerstate-damagecount-damagecount-src-mq3-game-playerstate-ml-1245394991"></a>
 ### damageCount
@@ -62,7 +64,7 @@ damageCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L43)
 
 <a id="field-field-mq3-game-playerstate-playerstate-damageevent-damageevent-src-mq3-game-playerstate-ml-144624019"></a>
 ### damageEvent
@@ -72,7 +74,7 @@ damageEvent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L40)
 
 <a id="field-field-mq3-game-playerstate-playerstate-damagepitch-damagepitch-src-mq3-game-playerstate-ml-1783383995"></a>
 ### damagePitch
@@ -82,7 +84,7 @@ damagePitch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L42)
 
 <a id="field-field-mq3-game-playerstate-playerstate-damageyaw-damageyaw-src-mq3-game-playerstate-ml-2109611695"></a>
 ### damageYaw
@@ -92,7 +94,7 @@ damageYaw
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L41)
 
 <a id="field-field-mq3-game-playerstate-playerstate-delta-angles-delta-angles-src-mq3-game-playerstate-ml-654631433"></a>
 ### delta_angles
@@ -102,7 +104,7 @@ delta_angles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L20)
 
 <a id="field-field-mq3-game-playerstate-playerstate-eflags-eflags-src-mq3-game-playerstate-ml-62416247"></a>
 ### eFlags
@@ -112,7 +114,7 @@ eFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L28)
 
 <a id="field-field-mq3-game-playerstate-playerstate-entityeventsequence-entityeventsequence-src-mq3-game-playerstate-ml-2079911471"></a>
 ### entityEventSequence
@@ -122,7 +124,7 @@ entityEventSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L54)
 
 <a id="field-field-mq3-game-playerstate-playerstate-eventparms-eventparms-src-mq3-game-playerstate-ml-462522677"></a>
 ### eventParms
@@ -132,7 +134,7 @@ eventParms
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L31)
 
 <a id="field-field-mq3-game-playerstate-playerstate-events-events-src-mq3-game-playerstate-ml-1484875413"></a>
 ### events
@@ -142,7 +144,7 @@ events
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L30)
 
 <a id="field-field-mq3-game-playerstate-playerstate-eventsequence-eventsequence-src-mq3-game-playerstate-ml-572567315"></a>
 ### eventSequence
@@ -152,7 +154,7 @@ eventSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L29)
 
 <a id="field-field-mq3-game-playerstate-playerstate-externalevent-externalevent-src-mq3-game-playerstate-ml-1883845475"></a>
 ### externalEvent
@@ -162,7 +164,7 @@ externalEvent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L32)
 
 <a id="field-field-mq3-game-playerstate-playerstate-externaleventparm-externaleventparm-src-mq3-game-playerstate-ml-1012486387"></a>
 ### externalEventParm
@@ -172,7 +174,7 @@ externalEventParm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L33)
 
 <a id="field-field-mq3-game-playerstate-playerstate-externaleventtime-externaleventtime-src-mq3-game-playerstate-ml-2080762719"></a>
 ### externalEventTime
@@ -182,7 +184,7 @@ externalEventTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L34)
 
 <a id="field-field-mq3-game-playerstate-playerstate-generic1-generic1-src-mq3-game-playerstate-ml-505593179"></a>
 ### generic1
@@ -192,7 +194,7 @@ generic1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L48)
 
 <a id="field-field-mq3-game-playerstate-playerstate-grapplepoint-grapplepoint-src-mq3-game-playerstate-ml-1326384425"></a>
 ### grapplePoint
@@ -202,7 +204,7 @@ grapplePoint
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L27)
 
 <a id="field-field-mq3-game-playerstate-playerstate-gravity-gravity-src-mq3-game-playerstate-ml-1812339175"></a>
 ### gravity
@@ -212,7 +214,7 @@ gravity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L18)
 
 <a id="field-field-mq3-game-playerstate-playerstate-groundentitynum-groundentitynum-src-mq3-game-playerstate-ml-1447392847"></a>
 ### groundEntityNum
@@ -222,7 +224,7 @@ groundEntityNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L21)
 
 <a id="field-field-mq3-game-playerstate-playerstate-jumppad-ent-jumppad-ent-src-mq3-game-playerstate-ml-655140299"></a>
 ### jumppad_ent
@@ -232,7 +234,7 @@ jumppad_ent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L50)
 
 <a id="field-field-mq3-game-playerstate-playerstate-jumppad-frame-jumppad-frame-src-mq3-game-playerstate-ml-897304051"></a>
 ### jumppad_frame
@@ -242,7 +244,7 @@ jumppad_frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L53)
 
 <a id="field-field-mq3-game-playerstate-playerstate-legsanim-legsanim-src-mq3-game-playerstate-ml-1421326407"></a>
 ### legsAnim
@@ -252,7 +254,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L23)
 
 <a id="field-field-mq3-game-playerstate-playerstate-legstimer-legstimer-src-mq3-game-playerstate-ml-219641191"></a>
 ### legsTimer
@@ -262,7 +264,7 @@ legsTimer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L22)
 
 <a id="field-field-mq3-game-playerstate-playerstate-loopsound-loopsound-src-mq3-game-playerstate-ml-1516486151"></a>
 ### loopSound
@@ -272,7 +274,7 @@ loopSound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L49)
 
 <a id="field-field-mq3-game-playerstate-playerstate-movementdir-movementdir-src-mq3-game-playerstate-ml-292736263"></a>
 ### movementDir
@@ -282,7 +284,7 @@ movementDir
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L26)
 
 <a id="field-field-mq3-game-playerstate-playerstate-origin-origin-src-mq3-game-playerstate-ml-828843319"></a>
 ### origin
@@ -292,7 +294,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L15)
 
 <a id="field-field-mq3-game-playerstate-playerstate-persistant-persistant-src-mq3-game-playerstate-ml-836281989"></a>
 ### persistant
@@ -302,7 +304,7 @@ persistant
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L45)
 
 <a id="field-field-mq3-game-playerstate-playerstate-ping-ping-src-mq3-game-playerstate-ml-1406229763"></a>
 ### ping
@@ -312,7 +314,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L51)
 
 <a id="field-field-mq3-game-playerstate-playerstate-pm-flags-pm-flags-src-mq3-game-playerstate-ml-1286804925"></a>
 ### pm_flags
@@ -322,7 +324,7 @@ pm_flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L13)
 
 <a id="field-field-mq3-game-playerstate-playerstate-pm-time-pm-time-src-mq3-game-playerstate-ml-1116067843"></a>
 ### pm_time
@@ -332,7 +334,7 @@ pm_time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L14)
 
 <a id="field-field-mq3-game-playerstate-playerstate-pm-type-pm-type-src-mq3-game-playerstate-ml-29205251"></a>
 ### pm_type
@@ -342,7 +344,7 @@ pm_type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L11)
 
 <a id="field-field-mq3-game-playerstate-playerstate-pmove-framecount-pmove-framecount-src-mq3-game-playerstate-ml-1067074295"></a>
 ### pmove_framecount
@@ -352,7 +354,7 @@ pmove_framecount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L52)
 
 <a id="field-field-mq3-game-playerstate-playerstate-powerups-powerups-src-mq3-game-playerstate-ml-347125"></a>
 ### powerups
@@ -362,7 +364,7 @@ powerups
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L46)
 
 <a id="field-field-mq3-game-playerstate-playerstate-speed-speed-src-mq3-game-playerstate-ml-1351666115"></a>
 ### speed
@@ -372,7 +374,7 @@ speed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L19)
 
 <a id="field-field-mq3-game-playerstate-playerstate-stats-stats-src-mq3-game-playerstate-ml-1027578891"></a>
 ### stats
@@ -382,7 +384,7 @@ stats
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L44)
 
 <a id="field-field-mq3-game-playerstate-playerstate-torsoanim-torsoanim-src-mq3-game-playerstate-ml-598397431"></a>
 ### torsoAnim
@@ -392,7 +394,7 @@ torsoAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L25)
 
 <a id="field-field-mq3-game-playerstate-playerstate-torsotimer-torsotimer-src-mq3-game-playerstate-ml-102654967"></a>
 ### torsoTimer
@@ -402,7 +404,7 @@ torsoTimer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L24)
 
 <a id="field-field-mq3-game-playerstate-playerstate-velocity-velocity-src-mq3-game-playerstate-ml-1073853617"></a>
 ### velocity
@@ -412,7 +414,7 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L16)
 
 <a id="field-field-mq3-game-playerstate-playerstate-viewangles-viewangles-src-mq3-game-playerstate-ml-1384780501"></a>
 ### viewangles
@@ -422,7 +424,7 @@ viewangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L38)
 
 <a id="field-field-mq3-game-playerstate-playerstate-viewheight-viewheight-src-mq3-game-playerstate-ml-698316759"></a>
 ### viewheight
@@ -432,7 +434,7 @@ viewheight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L39)
 
 <a id="field-field-mq3-game-playerstate-playerstate-weapon-weapon-src-mq3-game-playerstate-ml-35515191"></a>
 ### weapon
@@ -442,7 +444,7 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L36)
 
 <a id="field-field-mq3-game-playerstate-playerstate-weaponstate-weaponstate-src-mq3-game-playerstate-ml-872712587"></a>
 ### weaponstate
@@ -452,7 +454,7 @@ weaponstate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L37)
 
 <a id="field-field-mq3-game-playerstate-playerstate-weapontime-weapontime-src-mq3-game-playerstate-ml-288689597"></a>
 ### weaponTime
@@ -462,4 +464,4 @@ weaponTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L17)

@@ -9,8 +9,10 @@
 struct Stream
 ```
 
+Stores server stream stream record, including `protocol`, `epoch`, `demoPlaying`, `pure`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ demoPlaying
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L14)
 
 <a id="field-field-mq3-client-server-stream-stream-epoch-epoch-src-mq3-client-server-stream-ml-905949869"></a>
 ### epoch
@@ -32,7 +34,7 @@ epoch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L14)
 
 <a id="field-field-mq3-client-server-stream-stream-protocol-protocol-src-mq3-client-server-stream-ml-1663937529"></a>
 ### protocol
@@ -42,7 +44,7 @@ protocol
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L14)
 
 <a id="field-field-mq3-client-server-stream-stream-pure-pure-src-mq3-client-server-stream-ml-425154745"></a>
 ### pure
@@ -52,4 +54,4 @@ pure
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L14)

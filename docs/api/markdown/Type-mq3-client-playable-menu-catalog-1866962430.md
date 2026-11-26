@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores playable menu catalog record, including `assets`, `firstTextureSlot`, `textureCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
 
 <a id="field-field-mq3-client-playable-menu-catalog-firsttextureslot-firsttextureslot-src-mq3-client-playable-menu-ml-453769258"></a>
 ### firstTextureSlot
@@ -32,7 +34,7 @@ firstTextureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
 
 <a id="field-field-mq3-client-playable-menu-catalog-texturecount-texturecount-src-mq3-client-playable-menu-ml-705305600"></a>
 ### textureCount
@@ -42,4 +44,4 @@ textureCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)

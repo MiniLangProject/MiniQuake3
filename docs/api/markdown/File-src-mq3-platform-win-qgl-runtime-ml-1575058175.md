@@ -19,12 +19,14 @@ Reachable from entry: **no**
 function BlendToName(value)
 ```
 
+Computes `BlendToName` from `str(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input tested by `value==GL_ONE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L90)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-booleantostring-function-booleantostring-value-src-mq3-platform-win-qgl-runtime-ml-1179668919"></a>
 ### BooleanToString
@@ -33,12 +35,14 @@ function BlendToName(value)
 function BooleanToString(value)
 ```
 
+Returns `"OUT OF RANGE FOR BOOLEAN"` from `mq3.platform.win_qgl_runtime.BooleanToString`; earlier branches return `"GL_FALSE"`, `"GL_TRUE"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input tested by `value==GL_FALSE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L61)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-captostring-function-captostring-value-src-mq3-platform-win-qgl-runtime-ml-1390789319"></a>
 ### CapToString
@@ -47,12 +51,14 @@ function BooleanToString(value)
 function CapToString(value)
 ```
 
+Computes `CapToString` from `str(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input tested by `value==GL_TEXTURE_2D`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L77)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-create-function-create-src-mq3-platform-win-qgl-runtime-ml-2037488478"></a>
 ### create
@@ -61,8 +67,10 @@ function CapToString(value)
 function create()
 ```
 
+Constructs `mq3.platform.win_qgl_runtime.State` with `loaded` = `false`, `driver` = `""`, `logging` = `false`, `logCounter` = `0` and the supplied remaining values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L58)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-dispatch-function-dispatch-state-registry-name-arguments-src-mq3-platform-win-qgl-runtime-ml-75429391"></a>
 ### dispatch
@@ -71,15 +79,17 @@ function create()
 function dispatch(state, registry, name, arguments)
 ```
 
+Updates `state.calls`, `state.logLines` in `mq3.platform.win_qgl_runtime.dispatch`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.calls`, `state.logLines`. |
+| `registry` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.qgl.has`. |
+| `name` | `dynamic` | — | Argument 2 supplied to `mq3.renderer.qgl.has`. |
+| `arguments` | `dynamic` | — | Input used by `state.calls=state.calls+[[name,arguments]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L141)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-functostring-function-functostring-value-src-mq3-platform-win-qgl-runtime-ml-1923384959"></a>
 ### FuncToString
@@ -88,12 +98,14 @@ function dispatch(state, registry, name, arguments)
 function FuncToString(value)
 ```
 
+Computes `FuncToString` from `"!!! UNKNOWN !!!"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input tested by `value==GL_ALWAYS`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L64)
 
 <a id="constant-constant-mq3-platform-win-qgl-runtime-gl-alpha-test-const-gl-alpha-test-3008-src-mq3-platform-win-qgl-runtime-ml-1674560822"></a>
 ### GL_ALPHA_TEST
@@ -552,12 +564,14 @@ const GL_ZERO = 0
 function GlideIsValid(loadSucceeded)
 ```
 
+Computes `loadSucceeded` for `mq3.platform.win_qgl_runtime.GlideIsValid`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `loadSucceeded` | `dynamic` | — |  |
+| `loadSucceeded` | `dynamic` | — | Input used in the result expression `loadSucceeded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L96)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-helperfunctionnames-function-helperfunctionnames-src-mq3-platform-win-qgl-runtime-ml-1191881826"></a>
 ### helperFunctionNames
@@ -566,8 +580,10 @@ function GlideIsValid(loadSucceeded)
 function helperFunctionNames()
 ```
 
+Lists the 7 declared names for `mq3.platform.win_qgl_runtime.helperFunctionNames`, including `BlendToName`, `BooleanToString`, `CapToString`, `FuncToString`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L124)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L160)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-isextensionentry-function-isextensionentry-name-src-mq3-platform-win-qgl-runtime-ml-582608287"></a>
 ### isExtensionEntry
@@ -576,12 +592,14 @@ function helperFunctionNames()
 function isExtensionEntry(name)
 ```
 
+Recognizes the eight optional multitexture, array-lock, swap-interval, and 3DFX-gamma entry points.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Exact qgl/qwgl symbol name to classify as an optional extension entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L100)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-lifecyclefunctionnames-function-lifecyclefunctionnames-src-mq3-platform-win-qgl-runtime-ml-142331710"></a>
 ### lifecycleFunctionNames
@@ -590,8 +608,10 @@ function isExtensionEntry(name)
 function lifecycleFunctionNames()
 ```
 
+Lists the 3 declared names for `mq3.platform.win_qgl_runtime.lifecycleFunctionNames`, including `QGL_EnableLogging`, `QGL_Init`, `QGL_Shutdown`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L125)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L162)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-logfunctionnames-function-logfunctionnames-src-mq3-platform-win-qgl-runtime-ml-1982999474"></a>
 ### logFunctionNames
@@ -603,7 +623,7 @@ function logFunctionNames()
 The original declares one typed forwarding wrapper for every core GL call. MiniLang has managed arguments, so dispatch owns the common forwarding and logging semantics while this complete inventory preserves every entrypoint. win_qgl.c's logFoo wrappers are a one-to-one projection of qglFoo. Keeping the canonical qgl inventory as the source prevents the two 336-entry lists from silently diverging while retaining complete wrapper coverage.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L154)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-primtostring-function-primtostring-value-src-mq3-platform-win-qgl-runtime-ml-1451758131"></a>
 ### PrimToString
@@ -612,12 +632,14 @@ The original declares one typed forwarding wrapper for every core GL call. MiniL
 function PrimToString(value)
 ```
 
+Computes `PrimToString` from `str(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input tested by `value==GL_TRIANGLES`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L70)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-qgl-enablelogging-function-qgl-enablelogging-state-enable-counter-src-mq3-platform-win-qgl-runtime-ml-1564945006"></a>
 ### QGL_EnableLogging
@@ -626,14 +648,16 @@ function PrimToString(value)
 function QGL_EnableLogging(state, enable, counter)
 ```
 
+Updates `state.logCounter`, `state.logging`, `state.logOpen`, `state.logLines` in `mq3.platform.win_qgl_runtime.QGL_EnableLogging`; returns `state.logging`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `enable` | `dynamic` | — |  |
-| `counter` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.logCounter`, `state.logging`, `state.logOpen`, `state.logLines`. |
+| `enable` | `dynamic` | — | Value assigned to `state.logging`. |
+| `counter` | `dynamic` | — | Value assigned to `state.logCounter`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L128)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-qgl-init-function-qgl-init-state-registry-dllname-loadsucceeded-src-mq3-platform-win-qgl-runtime-ml-912239862"></a>
 ### QGL_Init
@@ -642,15 +666,17 @@ function QGL_EnableLogging(state, enable, counter)
 function QGL_Init(state, registry, dllname, loadSucceeded)
 ```
 
+Updates `state.loaded`, `state.driver` in `mq3.platform.win_qgl_runtime.QGL_Init`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `registry` | `dynamic` | — |  |
-| `dllname` | `dynamic` | — |  |
-| `loadSucceeded` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.loaded`, `state.driver`. |
+| `registry` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.qgl.reset`. |
+| `dllname` | `dynamic` | — | Value assigned to `state.driver`. |
+| `loadSucceeded` | `dynamic` | — | Input tested by `not loadSucceeded`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L108)
 
 <a id="function-function-mq3-platform-win-qgl-runtime-qgl-shutdown-function-qgl-shutdown-state-registry-src-mq3-platform-win-qgl-runtime-ml-416293170"></a>
 ### QGL_Shutdown
@@ -659,13 +685,15 @@ function QGL_Init(state, registry, dllname, loadSucceeded)
 function QGL_Shutdown(state, registry)
 ```
 
+Updates `state.loaded`, `state.driver`, `state.logging`, `state.logCounter`, `state.logOpen` in `mq3.platform.win_qgl_runtime.QGL_Shutdown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `registry` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.loaded`, `state.driver`, `state.logging`, `state.logCounter`, `state.logOpen`. |
+| `registry` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.qgl.reset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L120)
 
 - [mq3.platform.win_qgl_runtime.State](Type-mq3-platform-win-qgl-runtime-state-289518214.md) — struct
 <a id="function-function-mq3-platform-win-qgl-runtime-typetostring-function-typetostring-value-src-mq3-platform-win-qgl-runtime-ml-856878207"></a>
@@ -675,9 +703,11 @@ function QGL_Shutdown(state, registry)
 function TypeToString(value)
 ```
 
+Computes `TypeToString` from `"!!! UNKNOWN !!!"`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input tested by `value==GL_BYTE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L84)

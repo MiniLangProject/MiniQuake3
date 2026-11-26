@@ -9,8 +9,10 @@
 struct Traversal
 ```
 
+Data record for `mq3.renderer.tr_world_runtime.Traversal`; groups `draws`, `leafs`, `visBounds`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ draws
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-traversal-leafs-leafs-src-mq3-renderer-tr-world-runtime-ml-997203967"></a>
 ### leafs
@@ -32,7 +34,7 @@ leafs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L29)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-traversal-visbounds-visbounds-src-mq3-renderer-tr-world-runtime-ml-1045107995"></a>
 ### visBounds
@@ -42,4 +44,4 @@ visBounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L29)

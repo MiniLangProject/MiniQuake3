@@ -9,8 +9,10 @@
 struct Definition
 ```
 
+Stores playable item models definition record, including `classname`, `category`, `modelPath`, `skinPath`, `scale`, `heightOffset` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ bobAmplitude
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-definition-category-category-src-mq3-client-playable-item-models-ml-1758506730"></a>
 ### category
@@ -32,7 +34,7 @@ category
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-definition-classname-classname-src-mq3-client-playable-item-models-ml-432532606"></a>
 ### classname
@@ -42,7 +44,7 @@ classname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-definition-heightoffset-heightoffset-src-mq3-client-playable-item-models-ml-99870538"></a>
 ### heightOffset
@@ -52,7 +54,7 @@ heightOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-definition-modelpath-modelpath-src-mq3-client-playable-item-models-ml-1746206674"></a>
 ### modelPath
@@ -62,7 +64,7 @@ modelPath
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-definition-scale-scale-src-mq3-client-playable-item-models-ml-854450266"></a>
 ### scale
@@ -72,7 +74,7 @@ scale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-definition-skinpath-skinpath-src-mq3-client-playable-item-models-ml-1498619370"></a>
 ### skinPath
@@ -82,7 +84,7 @@ skinPath
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-definition-spindegreespersecond-spindegreespersecond-src-mq3-client-playable-item-models-ml-1875312386"></a>
 ### spinDegreesPerSecond
@@ -92,4 +94,4 @@ spinDegreesPerSecond
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)

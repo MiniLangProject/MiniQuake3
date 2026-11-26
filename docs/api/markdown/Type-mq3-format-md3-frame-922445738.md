@@ -9,8 +9,10 @@
 struct Frame
 ```
 
+Frame record for format.md3, containing `mins`, `maxs`, `localOrigin`, `radius`, `name`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ localOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 <a id="field-field-mq3-format-md3-frame-maxs-maxs-src-mq3-format-md3-ml-1770203636"></a>
 ### maxs
@@ -32,7 +34,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 <a id="field-field-mq3-format-md3-frame-mins-mins-src-mq3-format-md3-ml-1141660188"></a>
 ### mins
@@ -42,7 +44,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 <a id="field-field-mq3-format-md3-frame-name-name-src-mq3-format-md3-ml-843726824"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 <a id="field-field-mq3-format-md3-frame-radius-radius-src-mq3-format-md3-ml-468010510"></a>
 ### radius
@@ -62,4 +64,4 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)

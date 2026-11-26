@@ -9,8 +9,10 @@
 struct Dbrushside
 ```
 
+Dbrushside record for format.qfiles, containing `planeNum`, `shaderNum`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L137)
 
 ## Members
 
@@ -22,7 +24,7 @@ planeNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L137)
 
 <a id="field-field-mq3-format-qfiles-dbrushside-shadernum-shadernum-src-mq3-format-qfiles-ml-1812651086"></a>
 ### shaderNum
@@ -32,4 +34,4 @@ shaderNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L137)

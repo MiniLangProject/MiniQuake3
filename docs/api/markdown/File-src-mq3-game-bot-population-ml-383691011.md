@@ -25,18 +25,20 @@ Reachable from entry: **no**
 function addBot(level, state, name, skill, team, delay, altname)
 ```
 
+Record or dispatch `"^1Error: bot has no aifile specified\n"` and `"^1Unable to add bot. All player slots are in use.\n"` actions in `addBot`. Return paths include `clientNum`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `skill` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `delay` | `dynamic` | — |  |
-| `altname` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `maxclients`, `spawner` and `entities`. |
+| `state` | `dynamic` | — | Bot population state; accesses `registry`, `allocateClientFn`, `setUserinfoFn`, `connectClientFn` and `clients`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
+| `skill` | `dynamic` | — | Bot skill value used to select or interpolate characteristics. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
+| `delay` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.add32`. |
+| `altname` | `dynamic` | — | Value used by `addBot` in `if altname != void and altname != "" then botname = altname end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L211)
 
 <a id="function-function-mq3-game-bot-population-addrandombot-function-addrandombot-level-state-team-src-mq3-game-bot-population-ml-824596388"></a>
 ### addRandomBot
@@ -45,14 +47,16 @@ function addBot(level, state, name, skill, team, delay, altname)
 function addRandomBot(level, state, team)
 ```
 
+Apply `mq3.shared.info.value`, `mq3.game.bot_population.botAlreadyUsed` and `mq3.game.bot_population.console` while evaluating `addRandomBot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `state` | `dynamic` | — | Bot population state; accesses `registry` and `spSkill`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L102)
 
 <a id="constant-constant-mq3-game-bot-population-bot-begin-delay-base-const-bot-begin-delay-base-2000-src-mq3-game-bot-population-ml-804866861"></a>
 ### BOT_BEGIN_DELAY_BASE
@@ -81,15 +85,17 @@ const BOT_BEGIN_DELAY_INCREMENT = 1500
 function botAlreadyUsed(level, state, name, team)
 ```
 
+Apply `mq3.game.bot_clients.clientLimit` and `mq3.game.bot_clients.entityForClient` while evaluating `botAlreadyUsed`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `state` | `dynamic` | — | Not read by this implementation; retained in the `botAlreadyUsed` signature. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L85)
 
 <a id="function-function-mq3-game-bot-population-botlist-function-botlist-level-state-src-mq3-game-bot-population-ml-1859880911"></a>
 ### botList
@@ -98,13 +104,15 @@ function botAlreadyUsed(level, state, name, team)
 function botList(level, state)
 ```
 
+Apply `mq3.game.bot_population.output`, `mq3.shared.info.value` and `mq3.game.bot_population.padded` while evaluating `botList`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.printFn`. |
+| `state` | `dynamic` | — | Bot population state; accesses `registry`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L291)
 
 <a id="function-function-mq3-game-bot-population-checkminimumplayers-function-checkminimumplayers-level-state-src-mq3-game-bot-population-ml-627732185"></a>
 ### checkMinimumPlayers
@@ -113,13 +121,15 @@ function botList(level, state)
 function checkMinimumPlayers(level, state)
 ```
 
+Set `state.checkTime` to `level.time` and `state.minimumPlayers` to `state.minimumVm.integer` in `mq3.game.bot_population.checkMinimumPlayers`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `intermissiontime`, `time`, `spawner` and `maxclients`. |
+| `state` | `dynamic` | — | Bot population state; accesses `checkTime`, `minimumVm`, `minimumPlayers` and `clients`. May update `state.checkTime` and `state.minimumPlayers` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L138)
 
 <a id="function-function-mq3-game-bot-population-clean-function-clean-text-src-mq3-game-bot-population-ml-140792423"></a>
 ### clean
@@ -128,12 +138,14 @@ function checkMinimumPlayers(level, state)
 function clean(text)
 ```
 
+Apply `mq3.shared.info.textBytes` while evaluating `clean`. Return paths include `decode(bytes(result))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L69)
 
 <a id="function-function-mq3-game-bot-population-console-function-console-level-state-text-src-mq3-game-bot-population-ml-113469708"></a>
 ### console
@@ -142,14 +154,16 @@ function clean(text)
 function console(level, state, text)
 ```
 
+Use `state.consoleFn` to perform `console`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.consoleFn`. |
+| `state` | `dynamic` | — | Bot population state; accesses `consoleFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L62)
 
 <a id="function-function-mq3-game-bot-population-create-function-create-registry-clients-src-mq3-game-bot-population-ml-1052471601"></a>
 ### create
@@ -158,13 +172,15 @@ function console(level, state, text)
 function create(registry, clients)
 ```
 
+Create a `mq3.game.bot_population.State` record, initializing `registry` from `registry`, `clients` from `clients` and `spSkill` as `4.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `clients` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Initial value stored in `mq3.game.bot_population.State.registry`. |
+| `clients` | `dynamic` | — | Initial value stored in `mq3.game.bot_population.State.clients`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L45)
 
 <a id="constant-constant-mq3-game-bot-population-exec-insert-const-exec-insert-1-src-mq3-game-bot-population-ml-1939338088"></a>
 ### EXEC_INSERT
@@ -223,16 +239,18 @@ const GT_TOURNAMENT = 1
 function infoSet(level, state, value, key, text)
 ```
 
+Forward `infoSet` to `mq3.shared.info.setValue` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Context forwarded to the configured host callbacks. |
+| `state` | `dynamic` | — | Bot population state; accesses `printFn`. |
+| `value` | `dynamic` | — | Text to parse, format or deliver. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L175)
 
 <a id="function-function-mq3-game-bot-population-initsingleplayer-function-initsingleplayer-level-state-restart-mapname-src-mq3-game-bot-population-ml-1714272405"></a>
 ### initSinglePlayer
@@ -241,15 +259,17 @@ function infoSet(level, state, value, key, text)
 function initSinglePlayer(level, state, restart, mapname)
 ```
 
+Use `state.cvarSetFn` to perform `initSinglePlayer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `restart` | `dynamic` | — |  |
-| `mapname` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `state` | `dynamic` | — | Bot population state; accesses `registry` and `cvarSetFn`. |
+| `restart` | `dynamic` | — | Whether initialization or shutdown belongs to a map restart. |
+| `mapname` | `dynamic` | — | Value passed as argument 2 to `std.string.equalsIgnoreCaseAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L329)
 
 <a id="function-function-mq3-game-bot-population-output-function-output-level-state-text-src-mq3-game-bot-population-ml-1530164714"></a>
 ### output
@@ -258,14 +278,16 @@ function initSinglePlayer(level, state, restart, mapname)
 function output(level, state, text)
 ```
 
+Use `state.printFn` to perform `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.printFn`. |
+| `state` | `dynamic` | — | Bot population state; accesses `printFn`. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L53)
 
 <a id="function-function-mq3-game-bot-population-padded-function-padded-text-width-src-mq3-game-bot-population-ml-1106611413"></a>
 ### padded
@@ -274,13 +296,15 @@ function output(level, state, text)
 function padded(text, width)
 ```
 
+Right-pad a bot-list field to the requested width and append one separating space.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `width` | `dynamic` | — | Operand used to evaluate the returned expression `text+decode(bytes(width-len(data),32))+" "`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L283)
 
 <a id="function-function-mq3-game-bot-population-pickteam-function-pickteam-level-ignore-src-mq3-game-bot-population-ml-516529612"></a>
 ### pickTeam
@@ -289,13 +313,15 @@ function padded(text, width)
 function pickTeam(level, ignore)
 ```
 
+Apply `mq3.game.bot_population.teamCount` while evaluating `pickTeam`. Return paths include `c.TEAM_BLUE`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ignore` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `teamScores`. |
+| `ignore` | `dynamic` | — | Value used by `teamCount` in `if slot != ignore and client.connected != 0 and client.team == team then count = count+1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L195)
 
 <a id="function-function-mq3-game-bot-population-removerandombot-function-removerandombot-level-state-team-src-mq3-game-bot-population-ml-1024330712"></a>
 ### removeRandomBot
@@ -304,14 +330,16 @@ function pickTeam(level, ignore)
 function removeRandomBot(level, state, team)
 ```
 
+Apply `mq3.game.bot_clients.clientLimit`, `mq3.game.bot_clients.entityForClient` and `mq3.game.bot_population.console` while evaluating `removeRandomBot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `state` | `dynamic` | — | Bot population state; accesses `consoleFn`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L123)
 
 <a id="function-function-mq3-game-bot-population-serviceaddbot-function-serviceaddbot-level-state-args-src-mq3-game-bot-population-ml-2093052450"></a>
 ### serviceAddBot
@@ -320,14 +348,16 @@ function removeRandomBot(level, state, team)
 function serviceAddBot(level, state, args)
 ```
 
+Use `state.serverCommandFn` to perform `serviceAddBot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time` and `startTime`. |
+| `state` | `dynamic` | — | Bot population state; accesses `botEnable`, `clRunning` and `serverCommandFn`. |
+| `args` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L264)
 
 <a id="function-function-mq3-game-bot-population-spawnbots-function-spawnbots-level-state-botlist-basedelay-src-mq3-game-bot-population-ml-1418351124"></a>
 ### spawnBots
@@ -336,15 +366,17 @@ function serviceAddBot(level, state, args)
 function spawnBots(level, state, botList, baseDelay)
 ```
 
+Set `state.spSkill` to `skill` in `mq3.game.bot_population.spawnBots`. Return paths include `delay`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `botList` | `dynamic` | — |  |
-| `baseDelay` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Value passed as argument 1 to `state.consoleFn`. |
+| `state` | `dynamic` | — | Bot population state; accesses `spSkill` and `cvarSetFn`. May update `state.spSkill` in place. |
+| `botList` | `dynamic` | — | Text to parse, format or deliver. |
+| `baseDelay` | `dynamic` | — | Value used by `spawnBots` in `delay = baseDelay`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L308)
 
 - [mq3.game.bot_population.State](Type-mq3-game-bot-population-state-1400645272.md) — struct
 <a id="constant-constant-mq3-game-bot-population-svf-bot-const-svf-bot-8-src-mq3-game-bot-population-ml-874840121"></a>
@@ -364,11 +396,13 @@ const SVF_BOT = 8
 function teamCount(level, ignore, team)
 ```
 
+Apply `mq3.game.bot_clients.clientLimit` while evaluating `teamCount`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ignore` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`. |
+| `ignore` | `dynamic` | — | Value used by `teamCount` in `if slot != ignore and client.connected != 0 and client.team == team then count = count+1 end if`. |
+| `team` | `dynamic` | — | Team identifier used by the game rules. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L183)

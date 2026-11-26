@@ -9,8 +9,10 @@
 struct Binding
 ```
 
+Data record for `mq3.renderer.qgl.Binding`; groups `name`, `address`, `extension`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)
 
 <a id="field-field-mq3-renderer-qgl-binding-extension-extension-src-mq3-renderer-qgl-ml-953338362"></a>
 ### extension
@@ -32,7 +34,7 @@ extension
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)
 
 <a id="field-field-mq3-renderer-qgl-binding-name-name-src-mq3-renderer-qgl-ml-664990752"></a>
 ### name
@@ -42,4 +44,4 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L16)

@@ -35,13 +35,15 @@ Reachable from entry: **no**
 function run(level, levelTime)
 ```
 
+Update `level.framenum`, `level.previousTime` and `level.time` during `run`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `levelTime` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `restarted`, `framenum`, `previousTime`, `time` and `updateCvarsFn` and related fields. May update `level.framenum`, `level.previousTime` and `level.time` in place. |
+| `levelTime` | `dynamic` | — | Current server game time in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L74)
 
 <a id="function-function-mq3-game-frame-runentities-function-runentities-level-src-mq3-game-frame-ml-1513590918"></a>
 ### runEntities
@@ -50,12 +52,14 @@ function run(level, levelTime)
 function runEntities(level)
 ```
 
+Use `level.runEntityFn` to perform `runEntities`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `entities`, `time` and `runEntityFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L24)
 
 <a id="function-function-mq3-game-frame-stage-function-stage-level-kind-arg-src-mq3-game-frame-ml-1465696878"></a>
 ### stage
@@ -64,11 +68,13 @@ function runEntities(level)
 function stage(level, kind, arg)
 ```
 
+Use `level.frameStageFn` to perform `stage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `arg` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `frameStageFn`. |
+| `kind` | `dynamic` | — | Value passed as argument 2 to `level.frameStageFn`. |
+| `arg` | `dynamic` | — | Value passed as argument 3 to `level.frameStageFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L65)

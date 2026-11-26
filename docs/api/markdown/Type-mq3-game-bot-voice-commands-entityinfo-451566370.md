@@ -9,8 +9,10 @@
 struct EntityInfo
 ```
 
+`EntityInfo` record for bot voice commands, containing `valid` and `origin`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L41)
 
 ## Members
 
@@ -22,7 +24,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L41)
 
 <a id="field-field-mq3-game-bot-voice-commands-entityinfo-valid-valid-src-mq3-game-bot-voice-commands-ml-83185442"></a>
 ### valid
@@ -32,4 +34,4 @@ valid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L41)

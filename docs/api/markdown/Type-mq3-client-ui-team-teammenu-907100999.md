@@ -9,8 +9,10 @@
 struct TeamMenu
 ```
 
+Stores UI team team menu record, including `wrapAround`, `fullscreen`, `items`, `assets`, `commands`, `actions`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)
 
 <a id="field-field-mq3-client-ui-team-teammenu-assets-assets-src-mq3-client-ui-team-ml-596767929"></a>
 ### assets
@@ -32,7 +34,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)
 
 <a id="field-field-mq3-client-ui-team-teammenu-commands-commands-src-mq3-client-ui-team-ml-2007912183"></a>
 ### commands
@@ -42,7 +44,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)
 
 <a id="field-field-mq3-client-ui-team-teammenu-fullscreen-fullscreen-src-mq3-client-ui-team-ml-42743913"></a>
 ### fullscreen
@@ -52,7 +54,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)
 
 <a id="field-field-mq3-client-ui-team-teammenu-items-items-src-mq3-client-ui-team-ml-1162156135"></a>
 ### items
@@ -62,7 +64,7 @@ items
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)
 
 <a id="field-field-mq3-client-ui-team-teammenu-wraparound-wraparound-src-mq3-client-ui-team-ml-1554018897"></a>
 ### wrapAround
@@ -72,4 +74,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_team.ml#L18)

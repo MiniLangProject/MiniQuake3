@@ -9,8 +9,10 @@
 struct Movement
 ```
 
+`Movement` record for aas client movement, containing `success`, `endpos`, `endarea`, `velocity` and `trace` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 ## Members
 
@@ -22,7 +24,7 @@ endarea
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-endcontents-endcontents-src-mq3-botlib-aas-client-movement-ml-1340260024"></a>
 ### endcontents
@@ -32,7 +34,7 @@ endcontents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-endpos-endpos-src-mq3-botlib-aas-client-movement-ml-1556949250"></a>
 ### endpos
@@ -42,7 +44,7 @@ endpos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-frames-frames-src-mq3-botlib-aas-client-movement-ml-71893560"></a>
 ### frames
@@ -52,7 +54,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-presencetype-presencetype-src-mq3-botlib-aas-client-movement-ml-2085696450"></a>
 ### presencetype
@@ -62,7 +64,7 @@ presencetype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-stopevent-stopevent-src-mq3-botlib-aas-client-movement-ml-252484304"></a>
 ### stopevent
@@ -72,7 +74,7 @@ stopevent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-success-success-src-mq3-botlib-aas-client-movement-ml-1076584580"></a>
 ### success
@@ -82,7 +84,7 @@ success
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-time-time-src-mq3-botlib-aas-client-movement-ml-1131122446"></a>
 ### time
@@ -92,7 +94,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-trace-trace-src-mq3-botlib-aas-client-movement-ml-1420410120"></a>
 ### trace
@@ -102,7 +104,7 @@ trace
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 <a id="field-field-mq3-botlib-aas-client-movement-movement-velocity-velocity-src-mq3-botlib-aas-client-movement-ml-731278154"></a>
 ### velocity
@@ -112,4 +114,4 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)

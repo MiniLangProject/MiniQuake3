@@ -9,8 +9,10 @@
 struct RefEntity
 ```
 
+Data record for `mq3.renderer.scene_queue.RefEntity`; groups `reType`, `payload`, `lightingCalculated`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ lightingCalculated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L22)
 
 <a id="field-field-mq3-renderer-scene-queue-refentity-payload-payload-src-mq3-renderer-scene-queue-ml-1535450933"></a>
 ### payload
@@ -32,7 +34,7 @@ payload
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L22)
 
 <a id="field-field-mq3-renderer-scene-queue-refentity-retype-retype-src-mq3-renderer-scene-queue-ml-379214295"></a>
 ### reType
@@ -42,4 +44,4 @@ reType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L22)

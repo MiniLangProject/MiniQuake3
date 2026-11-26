@@ -9,8 +9,10 @@
 struct Rect
 ```
 
+Stores UI shared rectangle, including `x`, `y`, `w`, `h`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L76)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
 
 ## Members
 
@@ -22,7 +24,7 @@ h
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
 
 <a id="field-field-mq3-client-ui-shared-rect-w-w-src-mq3-client-ui-shared-ml-2119904859"></a>
 ### w
@@ -32,7 +34,7 @@ w
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
 
 <a id="field-field-mq3-client-ui-shared-rect-x-x-src-mq3-client-ui-shared-ml-1576727303"></a>
 ### x
@@ -42,7 +44,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)
 
 <a id="field-field-mq3-client-ui-shared-rect-y-y-src-mq3-client-ui-shared-ml-1136969851"></a>
 ### y
@@ -52,4 +54,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L78)

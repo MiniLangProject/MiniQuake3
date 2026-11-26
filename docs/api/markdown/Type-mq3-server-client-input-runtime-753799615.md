@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for server.client_input, containing `commandHost`, `dispatchHost`, `moveServer`, `moveHost`, `serverState`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ commandHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)
 
 <a id="field-field-mq3-server-client-input-runtime-dispatchhost-dispatchhost-src-mq3-server-client-input-ml-128514501"></a>
 ### dispatchHost
@@ -32,7 +34,7 @@ dispatchHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)
 
 <a id="field-field-mq3-server-client-input-runtime-movehost-movehost-src-mq3-server-client-input-ml-1441839243"></a>
 ### moveHost
@@ -42,7 +44,7 @@ moveHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)
 
 <a id="field-field-mq3-server-client-input-runtime-moveserver-moveserver-src-mq3-server-client-input-ml-743447689"></a>
 ### moveServer
@@ -52,7 +54,7 @@ moveServer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)
 
 <a id="field-field-mq3-server-client-input-runtime-serverstate-serverstate-src-mq3-server-client-input-ml-1184099041"></a>
 ### serverState
@@ -62,4 +64,4 @@ serverState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)

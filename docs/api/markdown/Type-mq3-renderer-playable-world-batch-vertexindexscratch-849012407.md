@@ -9,8 +9,10 @@
 struct VertexIndexScratch
 ```
 
+Data record for `mq3.renderer.playable_world_batch.VertexIndexScratch`; groups `visited`, `slots`, `serial`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ serial
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexindexscratch-slots-slots-src-mq3-renderer-playable-world-batch-ml-1960057679"></a>
 ### slots
@@ -32,7 +34,7 @@ slots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)
 
 <a id="field-field-mq3-renderer-playable-world-batch-vertexindexscratch-visited-visited-src-mq3-renderer-playable-world-batch-ml-2029860387"></a>
 ### visited
@@ -42,4 +44,4 @@ visited
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L25)

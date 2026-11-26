@@ -9,8 +9,10 @@
 struct ModelList
 ```
 
+Data record for `mq3.renderer.tr_model_runtime.ModelList`; groups `entries`, `total`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ entries
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-modellist-total-total-src-mq3-renderer-tr-model-runtime-ml-342179706"></a>
 ### total
@@ -32,4 +34,4 @@ total
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)

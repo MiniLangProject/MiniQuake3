@@ -9,8 +9,10 @@
 struct SysEvent
 ```
 
+SysEvent record for qcommon.common, containing `time`, `type`, `value`, `value2`, `data`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L37)
 
 <a id="field-field-mq3-qcommon-common-sysevent-time-time-src-mq3-qcommon-common-ml-1154509698"></a>
 ### time
@@ -32,7 +34,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L37)
 
 <a id="field-field-mq3-qcommon-common-sysevent-type-type-src-mq3-qcommon-common-ml-1568543820"></a>
 ### type
@@ -42,7 +44,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L37)
 
 <a id="field-field-mq3-qcommon-common-sysevent-value-value-src-mq3-qcommon-common-ml-752788420"></a>
 ### value
@@ -52,7 +54,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L37)
 
 <a id="field-field-mq3-qcommon-common-sysevent-value2-value2-src-mq3-qcommon-common-ml-1432071430"></a>
 ### value2
@@ -62,4 +64,4 @@ value2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L37)

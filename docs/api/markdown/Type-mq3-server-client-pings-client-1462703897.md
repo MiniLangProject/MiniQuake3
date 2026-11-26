@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.client_pings, containing `state`, `ping`, `gentity`, `frames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L30)
 
 <a id="field-field-mq3-server-client-pings-client-gentity-gentity-src-mq3-server-client-pings-ml-587823800"></a>
 ### gentity
@@ -32,7 +34,7 @@ gentity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L30)
 
 <a id="field-field-mq3-server-client-pings-client-ping-ping-src-mq3-server-client-pings-ml-540156392"></a>
 ### ping
@@ -42,7 +44,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L30)
 
 <a id="field-field-mq3-server-client-pings-client-state-state-src-mq3-server-client-pings-ml-1296291260"></a>
 ### state
@@ -52,4 +54,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_pings.ml#L30)

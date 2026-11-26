@@ -9,8 +9,10 @@
 struct Result
 ```
 
+Data record for `mq3.renderer.mark_fragments.Result`; groups `points`, `fragments`, `candidateSurfaces`, `testedTriangles`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ candidateSurfaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L28)
 
 <a id="field-field-mq3-renderer-mark-fragments-result-fragments-fragments-src-mq3-renderer-mark-fragments-ml-2101290574"></a>
 ### fragments
@@ -32,7 +34,7 @@ fragments
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L28)
 
 <a id="field-field-mq3-renderer-mark-fragments-result-points-points-src-mq3-renderer-mark-fragments-ml-1136431616"></a>
 ### points
@@ -42,7 +44,7 @@ points
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L28)
 
 <a id="field-field-mq3-renderer-mark-fragments-result-testedtriangles-testedtriangles-src-mq3-renderer-mark-fragments-ml-1997277714"></a>
 ### testedTriangles
@@ -52,4 +54,4 @@ testedTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L28)

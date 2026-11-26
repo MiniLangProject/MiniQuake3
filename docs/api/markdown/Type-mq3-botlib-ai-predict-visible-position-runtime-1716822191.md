@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+`Runtime` record for ai predict visible position, containing `router`, `context` and `traceFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-runtime-router-router-src-mq3-botlib-ai-predict-visible-position-ml-165674289"></a>
 ### router
@@ -32,7 +34,7 @@ router
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-runtime-tracefn-tracefn-src-mq3-botlib-ai-predict-visible-position-ml-1303523007"></a>
 ### traceFn
@@ -42,4 +44,4 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)

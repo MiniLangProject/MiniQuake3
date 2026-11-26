@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores playable ambient sounds catalog record, including `speakers`, `uniqueSounds`, `skipped`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ skipped
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L15)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-catalog-speakers-speakers-src-mq3-client-playable-ambient-sounds-ml-73820140"></a>
 ### speakers
@@ -32,7 +34,7 @@ speakers
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L15)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-catalog-uniquesounds-uniquesounds-src-mq3-client-playable-ambient-sounds-ml-443311594"></a>
 ### uniqueSounds
@@ -42,4 +44,4 @@ uniqueSounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L15)

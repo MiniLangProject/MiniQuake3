@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores base Quake III HUD catalog record, including `assets`, `firstTextureSlot`, `textureCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L29)
 
 <a id="field-field-mq3-client-baseq3-hud-catalog-firsttextureslot-firsttextureslot-src-mq3-client-baseq3-hud-ml-2020513550"></a>
 ### firstTextureSlot
@@ -32,7 +34,7 @@ firstTextureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L29)
 
 <a id="field-field-mq3-client-baseq3-hud-catalog-texturecount-texturecount-src-mq3-client-baseq3-hud-ml-643289992"></a>
 ### textureCount
@@ -42,4 +44,4 @@ textureCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_hud.ml#L29)

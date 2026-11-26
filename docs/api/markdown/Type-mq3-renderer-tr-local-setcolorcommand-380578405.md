@@ -9,8 +9,10 @@
 struct SetColorCommand
 ```
 
+Data record for `mq3.renderer.tr_local.SetColorCommand`; groups `commandId`, `color`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L59)
 
 ## Members
 
@@ -22,7 +24,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L59)
 
 <a id="field-field-mq3-renderer-tr-local-setcolorcommand-commandid-commandid-src-mq3-renderer-tr-local-ml-479998925"></a>
 ### commandId
@@ -32,4 +34,4 @@ commandId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L59)

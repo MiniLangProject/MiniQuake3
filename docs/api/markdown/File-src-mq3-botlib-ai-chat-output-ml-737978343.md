@@ -56,13 +56,15 @@ const CHAT_TELL = 2
 function chatLength(state, handle)
 ```
 
+Apply `mq3.botlib.ai_chat_output.chatState` while evaluating `chatLength`. Return paths include `len(bytes(cs.chatMessage))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `profiles`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L330)
 
 <a id="function-function-mq3-botlib-ai-chat-output-chatstate-function-chatstate-state-handle-src-mq3-botlib-ai-chat-output-ml-817479493"></a>
 ### chatState
@@ -71,13 +73,15 @@ function chatLength(state, handle)
 function chatState(state, handle)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.chatState` while evaluating `chatState`. Return paths include `pools.chatState(state.profiles.pools,handle)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `profiles`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L272)
 
 <a id="function-function-mq3-botlib-ai-chat-output-choose-function-choose-messages-state-updaterecent-src-mq3-botlib-ai-chat-output-ml-1130011067"></a>
 ### choose
@@ -86,14 +90,16 @@ function chatState(state, handle)
 function choose(messages, state, updateRecent)
 ```
 
+Apply `mq3.botlib.ai_chat_output.now` and `mq3.botlib.ai_chat_output.randomValue` while evaluating `choose`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `messages` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `updateRecent` | `dynamic` | — |  |
+| `messages` | `dynamic` | — | Value used by `choose` in `for each value in messages if value.recentTime<=time then available=available+[value] end if end for`. |
+| `state` | `dynamic` | — | AI chat output state; accesses `timeFn` and `context`. |
+| `updateRecent` | `dynamic` | — | Value used by `choose` in `if updateRecent then value.recentTime=time+RECENT_TIME end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L179)
 
 <a id="function-function-mq3-botlib-ai-chat-output-choosereply-function-choosereply-messages-state-src-mq3-botlib-ai-chat-output-ml-489841423"></a>
 ### chooseReply
@@ -106,11 +112,11 @@ Preserve BotReplyChat's released loop order: --num is evaluated before the recen
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `messages` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
+| `messages` | `dynamic` | — | Value used by `chooseReply` in `for each value in messages if value.recentTime<=time then available=available+1 end if end for`. |
+| `state` | `dynamic` | — | AI chat output state; accesses `timeFn` and `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L188)
 
 <a id="function-function-mq3-botlib-ai-chat-output-clear-function-clear-state-src-mq3-botlib-ai-chat-output-ml-2068968619"></a>
 ### clear
@@ -119,12 +125,14 @@ Preserve BotReplyChat's released loop order: --num is evaluated before the recen
 function clear(state)
 ```
 
+Update `state.randomLists`, `state.replies` and `state.loaded` during `clear`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `randomLists`, `replies` and `loaded`. May update `state.randomLists`, `state.replies` and `state.loaded` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L62)
 
 <a id="function-function-mq3-botlib-ai-chat-output-clonematch-function-clonematch-value-src-mq3-botlib-ai-chat-output-ml-1816958325"></a>
 ### cloneMatch
@@ -133,12 +141,14 @@ function clear(state)
 function cloneMatch(value)
 ```
 
+Build the `mq3.botlib.ai_chat_matches.Match` result for `cloneMatch`. Return paths include `matches.Match(value.string,value.type,value.subtype,offsets,lengths)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `offsets`, `lengths`, `string`, `type` and `subtype`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L266)
 
 <a id="function-function-mq3-botlib-ai-chat-output-componentsfromencoded-function-componentsfromencoded-value-src-mq3-botlib-ai-chat-output-ml-18818501"></a>
 ### componentsFromEncoded
@@ -147,12 +157,14 @@ function cloneMatch(value)
 function componentsFromEncoded(value)
 ```
 
+Decode chat control markers into fixed text, variable and random-list message components.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L240)
 
 <a id="function-function-mq3-botlib-ai-chat-output-construct-function-construct-state-message-variables-context-vcontext-reply-src-mq3-botlib-ai-chat-output-ml-1953263453"></a>
 ### construct
@@ -161,17 +173,19 @@ function componentsFromEncoded(value)
 function construct(state, message, variables, context, vcontext, reply)
 ```
 
+Apply `mq3.botlib.ai_chat_output.expandOnce`, `mq3.botlib.ai_chat_output.replaceWeightedSynonyms` and `mq3.botlib.ai_chat_output.componentsFromEncoded` while evaluating `construct`. Return paths include `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
-| `variables` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `vcontext` | `dynamic` | — |  |
-| `reply` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `strings`. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
+| `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
+| `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
+| `vcontext` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
+| `reply` | `dynamic` | — | Value used by `expandOnce` in `if reply then piece=replaceReplySynonyms(state,piece,vcontext) else if vcontext!=0 and state.strings!=void then...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L257)
 
 <a id="function-function-mq3-botlib-ai-chat-output-create-function-create-profilestate-stringstate-actions-context-readfn-timefn-randomfn-src-mq3-botlib-ai-chat-output-ml-554345536"></a>
 ### create
@@ -180,18 +194,20 @@ function construct(state, message, variables, context, vcontext, reply)
 function create(profileState, stringState, actions, context, readFn, timeFn, randomFn)
 ```
 
+Create a `mq3.botlib.ai_chat_output.State` record, initializing `profiles` from `profileState`, `strings` from `stringState` and `actions` from `actions`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `profileState` | `dynamic` | — |  |
-| `stringState` | `dynamic` | — |  |
-| `actions` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `readFn` | `dynamic` | — |  |
-| `timeFn` | `dynamic` | — |  |
-| `randomFn` | `dynamic` | — |  |
+| `profileState` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_output.State.profiles`. |
+| `stringState` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_output.State.strings`. |
+| `actions` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_output.State.actions`. |
+| `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
+| `readFn` | `dynamic` | — | Callback that loads a named resource through the supplied context. |
+| `timeFn` | `dynamic` | — | Callback that supplies the current botlib time. |
+| `randomFn` | `dynamic` | — | Callback that supplies the random value used by selection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L59)
 
 <a id="function-function-mq3-botlib-ai-chat-output-ensureloaded-function-ensureloaded-state-src-mq3-botlib-ai-chat-output-ml-1223835293"></a>
 ### ensureLoaded
@@ -200,12 +216,14 @@ function create(profileState, stringState, actions, context, readFn, timeFn, ran
 function ensureLoaded(state)
 ```
 
+Forward `ensureLoaded` to `mq3.botlib.ai_chat_output.setup` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `loaded`, `strings`, `randomLists` and `replies`. May update `state.randomLists`, `state.replies` and `state.loaded` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L173)
 
 <a id="function-function-mq3-botlib-ai-chat-output-enterchat-function-enterchat-state-handle-clientto-sendto-src-mq3-botlib-ai-chat-output-ml-1695903182"></a>
 ### enterChat
@@ -214,15 +232,17 @@ function ensureLoaded(state)
 function enterChat(state, handle, clientTo, sendTo)
 ```
 
+Apply `mq3.botlib.ai_chat_output.chatState`, `mq3.botlib.ai_chat_output.removeTildes` and `mq3.botlib.elementary_actions.command` while evaluating `enterChat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `clientTo` | `dynamic` | — |  |
-| `sendTo` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `actions`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
+| `clientTo` | `dynamic` | — | Value passed as argument 1 to `str`. |
+| `sendTo` | `dynamic` | — | Value used by `enterChat` in `if sendTo==CHAT_TEAM then result=ea.command(state.actions,cs.client,"say_team "+message) else if sendTo==CHAT_TE...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L341)
 
 <a id="function-function-mq3-botlib-ai-chat-output-expandonce-function-expandonce-state-components-variables-vcontext-reply-src-mq3-botlib-ai-chat-output-ml-15968389"></a>
 ### expandOnce
@@ -231,16 +251,18 @@ function enterChat(state, handle, clientTo, sendTo)
 function expandOnce(state, components, variables, vcontext, reply)
 ```
 
+Apply `mq3.botlib.ai_chat_output.replaceReplySynonyms`, `mq3.botlib.ai_chat_strings.replaceSynonyms` and `mq3.botlib.ai_chat_output.randomList` while evaluating `expandOnce`. Return paths include `[output,expanded]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `components` | `dynamic` | — |  |
-| `variables` | `dynamic` | — |  |
-| `vcontext` | `dynamic` | — |  |
-| `reply` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `strings`. |
+| `components` | `dynamic` | — | Value used by `expandOnce` in `for each component in components`. |
+| `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
+| `vcontext` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
+| `reply` | `dynamic` | — | Value used by `expandOnce` in `if reply then piece=replaceReplySynonyms(state,piece,vcontext) else if vcontext!=0 and state.strings!=void then...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L227)
 
 <a id="function-function-mq3-botlib-ai-chat-output-expect-function-expect-reader-text-src-mq3-botlib-ai-chat-output-ml-901166554"></a>
 ### expect
@@ -249,13 +271,15 @@ function expandOnce(state, components, variables, vcontext, reply)
 function expect(reader, text)
 ```
 
+Apply `mq3.botlib.ai_chat_output.next` while evaluating `expect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Token-reader state; accesses `pending`, `registry` and `source`. May update `reader.pending` in place. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L89)
 
 <a id="function-function-mq3-botlib-ai-chat-output-fail-function-fail-message-src-mq3-botlib-ai-chat-output-ml-337632423"></a>
 ### fail
@@ -264,12 +288,14 @@ function expect(reader, text)
 function fail(message)
 ```
 
+Construct error `7574` with diagnostic text `"AI chat output: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L50)
 
 <a id="function-function-mq3-botlib-ai-chat-output-initialchat-function-initialchat-state-handle-type-context-variables-src-mq3-botlib-ai-chat-output-ml-945256575"></a>
 ### initialChat
@@ -278,16 +304,18 @@ function fail(message)
 function initialChat(state, handle, type, context, variables)
 ```
 
+Apply `mq3.botlib.ai_chat_output.chatState`, `mq3.botlib.ai_chat_output.ensureLoaded` and `mq3.botlib.ai_chat_profiles.typeByName` while evaluating `initialChat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `variables` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `profiles`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
+| `type` | `dynamic` | — | Name used to identify the requested entry. |
+| `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
+| `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L279)
 
 <a id="constant-constant-mq3-botlib-ai-chat-output-key-and-const-key-and-1-src-mq3-botlib-ai-chat-output-ml-2032748152"></a>
 ### KEY_AND
@@ -386,15 +414,17 @@ const KEY_VARIABLES = 16
 function keyResult(key, cs, message, match)
 ```
 
+Apply `mq3.botlib.ai_chat_matches.stringContains`, `mq3.botlib.ai_chat_matches.stringsMatch` and `mq3.botlib.ai_chat_strings.findWord` while evaluating `keyResult`. Return paths include `chatStrings.findWord(message,key.text,0)>=0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
-| `cs` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key record; accesses `flags`, `text` and `pieces`. |
+| `cs` | `dynamic` | — | Cs record; accesses `name` and `gender`. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `string` and `lengths`. May update `match.offsets[piece.variable]` and `match.lengths[lastVariable]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L287)
 
 - [mq3.botlib.ai_chat_output.Loader](Type-mq3-botlib-ai-chat-output-loader-1396766644.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-output-loadtext-function-loadtext-loader-name-src-mq3-botlib-ai-chat-output-ml-143972578"></a>
@@ -404,13 +434,15 @@ function keyResult(key, cs, message, match)
 function loadText(loader, name)
 ```
 
+Set `loader.state.fileReads` to `loader.state.fileReads+1` in `mq3.botlib.ai_chat_output.loadText`. Return paths include `loader.state.readFn(loader.state.context,profiles.botPath(name))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `loader` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `loader` | `dynamic` | — | Loader record; accesses `state`. May update `loader.state.fileReads` in place. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L75)
 
 <a id="constant-constant-mq3-botlib-ai-chat-output-max-message-size-const-max-message-size-256-src-mq3-botlib-ai-chat-output-ml-115876988"></a>
 ### MAX_MESSAGE_SIZE
@@ -429,13 +461,15 @@ const MAX_MESSAGE_SIZE = 256
 function message(reader, first)
 ```
 
+Forward `message` to `mq3.botlib.ai_chat_profiles.readMessage` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
-| `first` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Token-reader state; accesses `registry` and `source`. |
+| `first` | `dynamic` | — | Value used by `readMessage` in `token=first`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L93)
 
 <a id="function-function-mq3-botlib-ai-chat-output-next-function-next-reader-src-mq3-botlib-ai-chat-output-ml-1308475629"></a>
 ### next
@@ -444,12 +478,14 @@ function message(reader, first)
 function next(reader)
 ```
 
+Set `reader.pending` to `void` in `mq3.botlib.ai_chat_output.next`. Return paths include `pc.read(reader.registry,reader.source)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Token-reader state; accesses `pending`, `registry` and `source`. May update `reader.pending` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L81)
 
 <a id="function-function-mq3-botlib-ai-chat-output-now-function-now-state-src-mq3-botlib-ai-chat-output-ml-2100061129"></a>
 ### now
@@ -458,12 +494,14 @@ function next(reader)
 function now(state)
 ```
 
+Use `state.timeFn` to perform `now`. Return paths include `state.timeFn(state.context)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `timeFn` and `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L68)
 
 <a id="constant-constant-mq3-botlib-ai-chat-output-op-chat-length-const-op-chat-length-515-src-mq3-botlib-ai-chat-output-ml-228905498"></a>
 ### OP_CHAT_LENGTH
@@ -512,12 +550,14 @@ const OP_REPLY_CHAT = 514
 function parseRandomLists(state)
 ```
 
+Apply `mq3.vm.pc_parser.create`, `mq3.vm.pc_parser.load` and `mq3.botlib.ai_chat_output.next` while evaluating `parseRandomLists`. Return paths include `values`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_output.Loader.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L97)
 
 <a id="function-function-mq3-botlib-ai-chat-output-parsereplies-function-parsereplies-state-src-mq3-botlib-ai-chat-output-ml-1080962801"></a>
 ### parseReplies
@@ -526,12 +566,14 @@ function parseRandomLists(state)
 function parseReplies(state)
 ```
 
+Apply `mq3.vm.pc_parser.create`, `mq3.vm.pc_parser.load` and `mq3.botlib.ai_chat_output.next` while evaluating `parseReplies`. Return paths include `values`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_chat_output.Loader.state`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L143)
 
 <a id="function-function-mq3-botlib-ai-chat-output-parsereplykey-function-parsereplykey-reader-src-mq3-botlib-ai-chat-output-ml-1007510233"></a>
 ### parseReplyKey
@@ -540,12 +582,14 @@ function parseReplies(state)
 function parseReplyKey(reader)
 ```
 
+Build the `mq3.botlib.ai_chat_output.ReplyKey` result for `parseReplyKey`. Return paths include `ReplyKey(flags|KEY_STRING,token.text,[])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Token-reader state; accesses `pending`, `registry` and `source`. May update `reader.pending` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L127)
 
 <a id="function-function-mq3-botlib-ai-chat-output-parsereplypieces-function-parsereplypieces-reader-src-mq3-botlib-ai-chat-output-ml-1774211801"></a>
 ### parseReplyPieces
@@ -554,12 +598,14 @@ function parseReplyKey(reader)
 function parseReplyPieces(reader)
 ```
 
+Apply `mq3.botlib.ai_chat_output.next` and `mq3.botlib.ai_chat_output.unread` while evaluating `parseReplyPieces`. Return paths include `fail("invalid reply match separator")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Token-reader state; accesses `pending`, `registry` and `source`. May update `reader.pending` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L110)
 
 <a id="function-function-mq3-botlib-ai-chat-output-randomlist-function-randomlist-state-name-src-mq3-botlib-ai-chat-output-ml-1758430518"></a>
 ### randomList
@@ -568,13 +614,15 @@ function parseReplyPieces(reader)
 function randomList(state, name)
 ```
 
+Find a random-chat list by its exact name, returning void when absent.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `randomLists`. |
+| `name` | `dynamic` | — | Lookup text matched against `value.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L195)
 
 - [mq3.botlib.ai_chat_output.RandomList](Type-mq3-botlib-ai-chat-output-randomlist-973240048.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-output-randomvalue-function-randomvalue-state-src-mq3-botlib-ai-chat-output-ml-1294088169"></a>
@@ -584,12 +632,14 @@ function randomList(state, name)
 function randomValue(state)
 ```
 
+Use `state.randomFn` to perform `randomValue`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `randomFn` and `context`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L71)
 
 - [mq3.botlib.ai_chat_output.Reader](Type-mq3-botlib-ai-chat-output-reader-727736040.md) — struct
 <a id="constant-constant-mq3-botlib-ai-chat-output-recent-time-const-recent-time-20-src-mq3-botlib-ai-chat-output-ml-1563256461"></a>
@@ -609,12 +659,14 @@ const RECENT_TIME = 20
 function removeTildes(value)
 ```
 
+Remove single tilde markers and unescape doubled tildes in ai chat output text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L333)
 
 <a id="function-function-mq3-botlib-ai-chat-output-replacereplysynonyms-function-replacereplysynonyms-state-value-context-src-mq3-botlib-ai-chat-output-ml-1714997793"></a>
 ### replaceReplySynonyms
@@ -623,14 +675,16 @@ function removeTildes(value)
 function replaceReplySynonyms(state, value, context)
 ```
 
+Apply `mq3.botlib.ai_chat_strings.ensureLoaded`, `mq3.botlib.ai_chat_strings.findWord` and `mq3.botlib.ai_chat_strings.replaceRange` while evaluating `replaceReplySynonyms`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `strings`. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L200)
 
 <a id="function-function-mq3-botlib-ai-chat-output-replaceweightedsynonyms-function-replaceweightedsynonyms-state-value-context-src-mq3-botlib-ai-chat-output-ml-1023633251"></a>
 ### replaceWeightedSynonyms
@@ -639,14 +693,16 @@ function replaceReplySynonyms(state, value, context)
 function replaceWeightedSynonyms(state, value, context)
 ```
 
+Apply `mq3.botlib.ai_chat_strings.ensureLoaded`, `mq3.botlib.ai_chat_output.randomValue` and `mq3.botlib.ai_chat_strings.replaceWords` while evaluating `replaceWeightedSynonyms`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `strings`. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L215)
 
 - [mq3.botlib.ai_chat_output.Reply](Type-mq3-botlib-ai-chat-output-reply-23062993.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-output-replychat-function-replychat-state-handle-message-mcontext-vcontext-variables-src-mq3-botlib-ai-chat-output-ml-1737811658"></a>
@@ -656,17 +712,19 @@ function replaceWeightedSynonyms(state, value, context)
 function replyChat(state, handle, message, mcontext, vcontext, variables)
 ```
 
+Apply `mq3.botlib.ai_chat_output.chatState`, `mq3.botlib.ai_chat_output.ensureLoaded` and `mq3.botlib.ai_chat_output.replyMatches` while evaluating `replyChat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
-| `mcontext` | `dynamic` | — |  |
-| `vcontext` | `dynamic` | — |  |
-| `variables` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `replies`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot chat state. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
+| `mcontext` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
+| `vcontext` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
+| `variables` | `dynamic` | — | Chat substitution values in their numbered slots. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L317)
 
 - [mq3.botlib.ai_chat_output.ReplyKey](Type-mq3-botlib-ai-chat-output-replykey-1205241592.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-output-replymatches-function-replymatches-reply-cs-message-match-src-mq3-botlib-ai-chat-output-ml-1375409862"></a>
@@ -676,15 +734,17 @@ function replyChat(state, handle, message, mcontext, vcontext, variables)
 function replyMatches(reply, cs, message, match)
 ```
 
+Apply `mq3.botlib.ai_chat_output.keyResult` while evaluating `replyMatches`. Return paths include `found`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reply` | `dynamic` | — |  |
-| `cs` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
+| `reply` | `dynamic` | — | Reply record; accesses `keys`. |
+| `cs` | `dynamic` | — | Cs record; accesses `name` and `gender`. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `string` and `lengths`. May update `match.offsets[piece.variable]` and `match.lengths[lastVariable]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L301)
 
 <a id="function-function-mq3-botlib-ai-chat-output-setup-function-setup-state-nochat-src-mq3-botlib-ai-chat-output-ml-240457386"></a>
 ### setup
@@ -693,13 +753,15 @@ function replyMatches(reply, cs, message, match)
 function setup(state, noChat)
 ```
 
+Update `state.randomLists`, `state.replies` and `state.loaded` during `setup`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `noChat` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `loaded`, `strings`, `randomLists` and `replies`. May update `state.randomLists`, `state.replies` and `state.loaded` in place. |
+| `noChat` | `dynamic` | — | Value used by `setup` in `if not noChat then replies=parseReplies(state)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L164)
 
 <a id="function-function-mq3-botlib-ai-chat-output-shutdown-function-shutdown-state-src-mq3-botlib-ai-chat-output-ml-671823217"></a>
 ### shutdown
@@ -708,12 +770,14 @@ function setup(state, noChat)
 function shutdown(state)
 ```
 
+Forward `shutdown` to `mq3.botlib.ai_chat_output.clear` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI chat output state; accesses `randomLists`, `replies` and `loaded`. May update `state.randomLists`, `state.replies` and `state.loaded` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L65)
 
 - [mq3.botlib.ai_chat_output.State](Type-mq3-botlib-ai-chat-output-state-428510952.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-output-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-chat-output-ml-1893910013"></a>
@@ -723,12 +787,14 @@ function shutdown(state)
 function supportsTrap(op)
 ```
 
+Test `op>=OP_INITIAL_CHAT and op<=OP_ENTER_CHAT` as the condition for `supportsTrap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `op` | `dynamic` | — |  |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L348)
 
 <a id="function-function-mq3-botlib-ai-chat-output-unread-function-unread-reader-value-src-mq3-botlib-ai-chat-output-ml-670899120"></a>
 ### unread
@@ -737,10 +803,12 @@ function supportsTrap(op)
 function unread(reader, value)
 ```
 
+Set `reader.pending` to `value` in `mq3.botlib.ai_chat_output.unread`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reader` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `reader` | `dynamic` | — | Token-reader state; accesses `pending`. May update `reader.pending` in place. |
+| `value` | `dynamic` | — | Value used by `unread` in `reader.pending=value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L85)

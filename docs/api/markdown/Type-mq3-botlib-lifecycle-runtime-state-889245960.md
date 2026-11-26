@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for lifecycle runtime, containing `variables`, `setup`, `maxclients`, `maxentities` and `mapName` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ developer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-entityupdates-entityupdates-src-mq3-botlib-lifecycle-runtime-ml-1326422206"></a>
 ### entityUpdates
@@ -32,7 +34,7 @@ entityUpdates
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-frames-frames-src-mq3-botlib-lifecycle-runtime-ml-2039896606"></a>
 ### frames
@@ -42,7 +44,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-maploads-maploads-src-mq3-botlib-lifecycle-runtime-ml-550797592"></a>
 ### mapLoads
@@ -52,7 +54,7 @@ mapLoads
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-mapname-mapname-src-mq3-botlib-lifecycle-runtime-ml-229659334"></a>
 ### mapName
@@ -62,7 +64,7 @@ mapName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-maxclients-maxclients-src-mq3-botlib-lifecycle-runtime-ml-278166462"></a>
 ### maxclients
@@ -72,7 +74,7 @@ maxclients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-maxentities-maxentities-src-mq3-botlib-lifecycle-runtime-ml-884857678"></a>
 ### maxentities
@@ -82,7 +84,7 @@ maxentities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-removedentities-removedentities-src-mq3-botlib-lifecycle-runtime-ml-1799037622"></a>
 ### removedEntities
@@ -92,7 +94,7 @@ removedEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-setup-setup-src-mq3-botlib-lifecycle-runtime-ml-337192306"></a>
 ### setup
@@ -102,7 +104,7 @@ setup
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-time-time-src-mq3-botlib-lifecycle-runtime-ml-1634986212"></a>
 ### time
@@ -112,7 +114,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)
 
 <a id="field-field-mq3-botlib-lifecycle-runtime-state-variables-variables-src-mq3-botlib-lifecycle-runtime-ml-526365938"></a>
 ### variables
@@ -122,4 +124,4 @@ variables
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L13)

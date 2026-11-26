@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Callback table for `mq3.renderer.tr_cmds_runtime.Services`; exposes `eventFn`, `spawnThreadFn`, `frontEndSleepFn`, `wakeRendererFn`, `executeFn`, `textureModeFn`, and 4 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ colorMappingsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-context-context-src-mq3-renderer-tr-cmds-runtime-ml-163633301"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-eventfn-eventfn-src-mq3-renderer-tr-cmds-runtime-ml-2082131573"></a>
 ### eventFn
@@ -42,7 +44,7 @@ eventFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-executefn-executefn-src-mq3-renderer-tr-cmds-runtime-ml-1584947641"></a>
 ### executeFn
@@ -52,7 +54,7 @@ executeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-frontendsleepfn-frontendsleepfn-src-mq3-renderer-tr-cmds-runtime-ml-1268191733"></a>
 ### frontEndSleepFn
@@ -62,7 +64,7 @@ frontEndSleepFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-geterrorfn-geterrorfn-src-mq3-renderer-tr-cmds-runtime-ml-2024397205"></a>
 ### getErrorFn
@@ -72,7 +74,7 @@ getErrorFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-spawnthreadfn-spawnthreadfn-src-mq3-renderer-tr-cmds-runtime-ml-1203262021"></a>
 ### spawnThreadFn
@@ -82,7 +84,7 @@ spawnThreadFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-texturemodefn-texturemodefn-src-mq3-renderer-tr-cmds-runtime-ml-1714550205"></a>
 ### textureModeFn
@@ -92,7 +94,7 @@ textureModeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-togglesmpfn-togglesmpfn-src-mq3-renderer-tr-cmds-runtime-ml-311339669"></a>
 ### toggleSmpFn
@@ -102,7 +104,7 @@ toggleSmpFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-services-wakerendererfn-wakerendererfn-src-mq3-renderer-tr-cmds-runtime-ml-1788747191"></a>
 ### wakeRendererFn
@@ -112,4 +114,4 @@ wakeRendererFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)

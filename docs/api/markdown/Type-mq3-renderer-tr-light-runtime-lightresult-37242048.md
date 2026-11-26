@@ -9,8 +9,10 @@
 struct LightResult
 ```
 
+Data record for `mq3.renderer.tr_light_runtime.LightResult`; groups `found`, `ambientLight`, `directedLight`, `lightDir`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ ambientLight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-lightresult-directedlight-directedlight-src-mq3-renderer-tr-light-runtime-ml-649511514"></a>
 ### directedLight
@@ -32,7 +34,7 @@ directedLight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-lightresult-found-found-src-mq3-renderer-tr-light-runtime-ml-578669802"></a>
 ### found
@@ -42,7 +44,7 @@ found
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-lightresult-lightdir-lightdir-src-mq3-renderer-tr-light-runtime-ml-932089432"></a>
 ### lightDir
@@ -52,4 +54,4 @@ lightDir
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L32)

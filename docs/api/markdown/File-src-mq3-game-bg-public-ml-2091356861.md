@@ -477,12 +477,14 @@ const GIB_HEALTH = -40
 function ITEM_INDEX(index)
 ```
 
+Return `index` for `ITEM_INDEX`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L97)
 
 <a id="constant-constant-mq3-game-bg-public-item-radius-const-item-radius-15-src-mq3-game-bg-public-ml-2138652195"></a>
 ### ITEM_RADIUS
@@ -802,8 +804,10 @@ const TEAM_MAXOVERLAY = 32
 function typeNames()
 ```
 
+Return the ordered type names table for bg public: 20 entries beginning with `"pmove_t"` and `"animation_t"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L93)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_public.ml#L99)
 
 <a id="constant-constant-mq3-game-bg-public-vote-time-const-vote-time-30000-src-mq3-game-bg-public-ml-286384182"></a>
 ### VOTE_TIME

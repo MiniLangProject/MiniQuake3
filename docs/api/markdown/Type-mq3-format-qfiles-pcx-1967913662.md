@@ -9,8 +9,10 @@
 struct Pcx
 ```
 
+Pcx record for format.qfiles, containing `manufacturer`, `version`, `encoding`, `bitsPerPixel`, `xmin`, `ymin`, and 11 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 ## Members
 
@@ -22,7 +24,7 @@ bitsPerPixel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-bytesperline-bytesperline-src-mq3-format-qfiles-ml-1259868144"></a>
 ### bytesPerLine
@@ -32,7 +34,7 @@ bytesPerLine
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-colorplanes-colorplanes-src-mq3-format-qfiles-ml-547436236"></a>
 ### colorPlanes
@@ -42,7 +44,7 @@ colorPlanes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-data-data-src-mq3-format-qfiles-ml-1161220232"></a>
 ### data
@@ -52,7 +54,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-encoding-encoding-src-mq3-format-qfiles-ml-112885910"></a>
 ### encoding
@@ -62,7 +64,7 @@ encoding
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-filler-filler-src-mq3-format-qfiles-ml-1897828140"></a>
 ### filler
@@ -72,7 +74,7 @@ filler
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-hres-hres-src-mq3-format-qfiles-ml-1690524164"></a>
 ### hres
@@ -82,7 +84,7 @@ hres
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-manufacturer-manufacturer-src-mq3-format-qfiles-ml-494404770"></a>
 ### manufacturer
@@ -92,7 +94,7 @@ manufacturer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-palette-palette-src-mq3-format-qfiles-ml-1560001336"></a>
 ### palette
@@ -102,7 +104,7 @@ palette
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-palettetype-palettetype-src-mq3-format-qfiles-ml-1895419976"></a>
 ### paletteType
@@ -112,7 +114,7 @@ paletteType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-reserved-reserved-src-mq3-format-qfiles-ml-2079284832"></a>
 ### reserved
@@ -122,7 +124,7 @@ reserved
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-version-version-src-mq3-format-qfiles-ml-1914134728"></a>
 ### version
@@ -132,7 +134,7 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-vres-vres-src-mq3-format-qfiles-ml-316560660"></a>
 ### vres
@@ -142,7 +144,7 @@ vres
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-xmax-xmax-src-mq3-format-qfiles-ml-319692404"></a>
 ### xmax
@@ -152,7 +154,7 @@ xmax
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-xmin-xmin-src-mq3-format-qfiles-ml-238504484"></a>
 ### xmin
@@ -162,7 +164,7 @@ xmin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-ymax-ymax-src-mq3-format-qfiles-ml-1269064038"></a>
 ### ymax
@@ -172,7 +174,7 @@ ymax
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)
 
 <a id="field-field-mq3-format-qfiles-pcx-ymin-ymin-src-mq3-format-qfiles-ml-1720131414"></a>
 ### ymin
@@ -182,4 +184,4 @@ ymin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L87)

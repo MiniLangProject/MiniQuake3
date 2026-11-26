@@ -26,17 +26,19 @@ Reachable from entry: **yes**
 function blank(world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags)
 ```
 
+Constructs `mq3.renderer.retained_world_batch.Cache` with `full` = `void`, `base` = `void`, `streams` = `[]`, `fogStream` = `void` and the supplied remaining values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-| `skyFlags` | `dynamic` | — |  |
-| `fogCatalog` | `dynamic` | — |  |
-| `lightCatalog` | `dynamic` | — |  |
-| `receiveFlags` | `dynamic` | — |  |
+| `world` | `dynamic` | — | Initial value for `mq3.renderer.retained_world_batch.Cache.world`. |
+| `catalog` | `dynamic` | — | Initial value for `mq3.renderer.retained_world_batch.Cache.catalog`. |
+| `skyFlags` | `dynamic` | — | Initial value for `mq3.renderer.retained_world_batch.Cache.skyFlags`. |
+| `fogCatalog` | `dynamic` | — | Initial value for `mq3.renderer.retained_world_batch.Cache.fogCatalog`. |
+| `lightCatalog` | `dynamic` | — | Initial value for `mq3.renderer.retained_world_batch.Cache.lightCatalog`. |
+| `receiveFlags` | `dynamic` | — | Initial value for `mq3.renderer.retained_world_batch.Cache.receiveFlags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L53)
 
 - [mq3.renderer.retained_world_batch.Cache](Type-mq3-renderer-retained-world-batch-cache-1396367957.md) — struct
 <a id="function-function-mq3-renderer-retained-world-batch-counters-function-counters-batch-src-mq3-renderer-retained-world-batch-ml-63605840"></a>
@@ -46,12 +48,14 @@ function blank(world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags)
 function counters(batch)
 ```
 
+Updates `batch.animatedPasses`, `batch.uvModifiedPasses`, `batch.blendedPasses`, `batch.generatorPasses`, `batch.alphaTestPasses` in `mq3.renderer.retained_world_batch.counters`; returns `batch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `batch` | `dynamic` | — |  |
+| `batch` | `dynamic` | — | Mutable record or buffer; this call updates `batch.animatedPasses`, `batch.uvModifiedPasses`, `batch.blendedPasses`, `batch.generatorPasses`, `batch.alphaTestPasses`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L228)
 
 <a id="function-function-mq3-renderer-retained-world-batch-create-function-create-world-catalog-skyflags-fogcatalog-lightcatalog-receiveflags-src-mq3-renderer-retained-world-batch-ml-1821349217"></a>
 ### create
@@ -60,17 +64,19 @@ function counters(batch)
 function create(world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags)
 ```
 
+Builds `state.reason`, `indexes[index]`, `state.full`, `state.fallbackFaces`, `state.fallbackFaces[face]` in `mq3.renderer.retained_world_batch.create`; returns `state`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `catalog` | `dynamic` | — |  |
-| `skyFlags` | `dynamic` | — |  |
-| `fogCatalog` | `dynamic` | — |  |
-| `lightCatalog` | `dynamic` | — |  |
-| `receiveFlags` | `dynamic` | — |  |
+| `world` | `dynamic` | — | Record providing `world.totalTriangleCount`, `world.trianglesByFace`, `world.faceTextureIndexes`. |
+| `catalog` | `dynamic` | — | Value forwarded as `catalog` to `mq3.renderer.retained_world_batch.blank`. |
+| `skyFlags` | `dynamic` | — | Value forwarded as `skyFlags` to `mq3.renderer.retained_world_batch.blank`. |
+| `fogCatalog` | `dynamic` | — | Value forwarded as `fogCatalog` to `mq3.renderer.retained_world_batch.blank`. |
+| `lightCatalog` | `dynamic` | — | Value forwarded as `lightCatalog` to `mq3.renderer.retained_world_batch.blank`. |
+| `receiveFlags` | `dynamic` | — | Value forwarded as `receiveFlags` to `mq3.renderer.retained_world_batch.blank`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L118)
 
 <a id="function-function-mq3-renderer-retained-world-batch-fail-function-fail-text-src-mq3-renderer-retained-world-batch-ml-2375865"></a>
 ### fail
@@ -79,12 +85,14 @@ function create(world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags
 function fail(text)
 ```
 
+Creates error `7494` with message `"retained world batch: "+text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Input used in the result expression `error(7494,"retained world batch: "+text)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L45)
 
 <a id="function-function-mq3-renderer-retained-world-batch-gather-function-gather-stream-packed-count-src-mq3-renderer-retained-world-batch-ml-730939491"></a>
 ### gather
@@ -93,14 +101,16 @@ function fail(text)
 function gather(stream, packed, count)
 ```
 
+Updates `stream.draw.count` in `mq3.renderer.retained_world_batch.gather`; returns `written`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `stream` | `dynamic` | — |  |
-| `packed` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `stream` | `dynamic` | — | Mutable record or buffer; this call updates `stream.draw.count`. |
+| `packed` | `dynamic` | — | Read-only selected face indices, packed as 32-bit integers in draw order. |
+| `count` | `dynamic` | — | Value forwarded as `selectedCount` to `mq3.renderer.retained_world_batch.gatherNative`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L158)
 
 <a id="extern_function-extern-function-mq3-renderer-retained-world-batch-gathernative-extern-function-gathernative-source-as-ptr-sourcebytes-as-i32-sourcecount-as-i32-target-as-ptr-targetbytes-as-i32-runs-as-ptr-runbytes-as-i32-selected-as-ptr-selectedbytes-as-i32-selectedcount-as-i32-from-playable-window-dll-symbol-playable-window-gather-world-records-returns-i32-src-mq3-renderer-retained-world-batch-ml-1287534101"></a>
 ### gatherNative
@@ -109,21 +119,25 @@ function gather(stream, packed, count)
 extern function gatherNative(source as ptr, sourceBytes as i32, sourceCount as i32, target as ptr, targetBytes as i32, runs as ptr, runBytes as i32, selected as ptr, selectedBytes as i32, selectedCount as i32) from "playable_window.dll" symbol "playable_window_gather_world_records" returns i32
 ```
 
+Gathers selected face runs as 128-byte triangle records after validating all spans and overlap.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `ptr` | — |  |
-| `sourceBytes` | `i32` | — |  |
-| `sourceCount` | `i32` | — |  |
-| `target` | `ptr` | — |  |
-| `targetBytes` | `i32` | — |  |
-| `runs` | `ptr` | — |  |
-| `runBytes` | `i32` | — |  |
-| `selected` | `ptr` | — |  |
-| `selectedBytes` | `i32` | — |  |
-| `selectedCount` | `i32` | — |  |
+| `source` | `ptr` | — | Read-only packed source records. |
+| `sourceBytes` | `i32` | — | Available size of the source buffer in bytes. |
+| `sourceCount` | `i32` | — | Number of source records available to the gather operation. |
+| `target` | `ptr` | — | Writable destination storage; must not overlap any input range. |
+| `targetBytes` | `i32` | — | Writable capacity of the destination buffer in bytes. |
+| `runs` | `ptr` | — | Read-only eight-byte face-run records: first source record and record count. |
+| `runBytes` | `i32` | — | Size of the per-face first/count table in bytes. |
+| `selected` | `ptr` | — | Read-only packed 32-bit face indices, retained in this exact order. |
+| `selectedBytes` | `i32` | — | Size of the selected-face index buffer in bytes. |
+| `selectedCount` | `i32` | — | Number of 32-bit face indices to gather in selection order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L13)
+**Returns:** Gathered record count; -1 invalid buffers, -2 face index, -3 source span, -4 capacity, or -5 overlap.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L25)
 
 <a id="extern_function-extern-function-mq3-renderer-retained-world-batch-gatherspecularnative-extern-function-gatherspecularnative-source-as-ptr-sourcebytes-as-i32-sourcecount-as-i32-target-as-ptr-targetbytes-as-i32-runs-as-ptr-runbytes-as-i32-selected-as-ptr-selectedbytes-as-i32-selectedcount-as-i32-from-playable-window-dll-symbol-playable-window-gather-specular-normals-returns-i32-src-mq3-renderer-retained-world-batch-ml-389791938"></a>
 ### gatherSpecularNative
@@ -132,21 +146,25 @@ extern function gatherNative(source as ptr, sourceBytes as i32, sourceCount as i
 extern function gatherSpecularNative(source as ptr, sourceBytes as i32, sourceCount as i32, target as ptr, targetBytes as i32, runs as ptr, runBytes as i32, selected as ptr, selectedBytes as i32, selectedCount as i32) from "playable_window.dll" symbol "playable_window_gather_specular_normals" returns i32
 ```
 
+Gathers selected face runs as 36-byte triangle-normal records after validating all spans and overlap.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `ptr` | — |  |
-| `sourceBytes` | `i32` | — |  |
-| `sourceCount` | `i32` | — |  |
-| `target` | `ptr` | — |  |
-| `targetBytes` | `i32` | — |  |
-| `runs` | `ptr` | — |  |
-| `runBytes` | `i32` | — |  |
-| `selected` | `ptr` | — |  |
-| `selectedBytes` | `i32` | — |  |
-| `selectedCount` | `i32` | — |  |
+| `source` | `ptr` | — | Read-only packed source records. |
+| `sourceBytes` | `i32` | — | Available size of the source buffer in bytes. |
+| `sourceCount` | `i32` | — | Number of source records available to the gather operation. |
+| `target` | `ptr` | — | Writable destination storage; must not overlap any input range. |
+| `targetBytes` | `i32` | — | Writable capacity of the destination buffer in bytes. |
+| `runs` | `ptr` | — | Read-only eight-byte face-run records: first source record and record count. |
+| `runBytes` | `i32` | — | Size of the per-face first/count table in bytes. |
+| `selected` | `ptr` | — | Read-only packed 32-bit face indices, retained in this exact order. |
+| `selectedBytes` | `i32` | — | Size of the selected-face index buffer in bytes. |
+| `selectedCount` | `i32` | — | Number of 32-bit face indices to gather in selection order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L14)
+**Returns:** Gathered record count; -1 invalid buffers, -2 face index, -3 source span, -4 capacity, or -5 overlap.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L38)
 
 <a id="function-function-mq3-renderer-retained-world-batch-legacy-function-legacy-state-chosen-src-mq3-renderer-retained-world-batch-ml-1374813235"></a>
 ### legacy
@@ -155,13 +173,15 @@ extern function gatherSpecularNative(source as ptr, sourceBytes as i32, sourceCo
 function legacy(state, chosen)
 ```
 
+Updates `state.fallbacks` in `mq3.renderer.retained_world_batch.legacy`; returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `chosen` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.fallbacks`. |
+| `chosen` | `dynamic` | — | Record providing `chosen.renderData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L220)
 
 <a id="function-function-mq3-renderer-retained-world-batch-makestream-function-makestream-state-data-commands-pass-mode-lookup-src-mq3-renderer-retained-world-batch-ml-1970372387"></a>
 ### makeStream
@@ -170,17 +190,19 @@ function legacy(state, chosen)
 function makeStream(state, data, commands, pass, mode, lookup)
 ```
 
+Builds `mq3.renderer.retained_world_batch.Stream` after updating `firsts[face]`, `counts[face]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
-| `commands` | `dynamic` | — |  |
-| `pass` | `dynamic` | — |  |
-| `mode` | `dynamic` | — |  |
-| `lookup` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.world`, `state.fogCatalog`, `state.skyFlags`. |
+| `data` | `dynamic` | — | Record providing `data.triangles`. |
+| `commands` | `dynamic` | — | Record providing `commands.count`, `commands.data`. |
+| `pass` | `dynamic` | — | Initial value for `mq3.renderer.retained_world_batch.Stream.fullPass`. |
+| `mode` | `dynamic` | — | Input tested by `mode==2`. |
+| `lookup` | `dynamic` | — | Indexed input read at `triangle.textureIndex`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L80)
 
 <a id="function-function-mq3-renderer-retained-world-batch-refreshfog-function-refreshfog-state-faces-src-mq3-renderer-retained-world-batch-ml-1161668439"></a>
 ### refreshFog
@@ -189,13 +211,15 @@ function makeStream(state, data, commands, pass, mode, lookup)
 function refreshFog(state, faces)
 ```
 
+Builds `target.sourcePositions[outputIndex]`, `target.fogIndexes[outputIndex]` in `mq3.renderer.retained_world_batch.refreshFog`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `faces` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record providing `state.fogStream`, `state.full`, `state.active`. |
+| `faces` | `dynamic` | — | Sequence traversed as `face` while producing this result. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L195)
 
 <a id="function-function-mq3-renderer-retained-world-batch-refreshlights-function-refreshlights-state-data-src-mq3-renderer-retained-world-batch-ml-1935399517"></a>
 ### refreshLights
@@ -204,13 +228,15 @@ function refreshFog(state, faces)
 function refreshLights(state, data)
 ```
 
+Updates `state.active.dlightBatch.triangles` in `mq3.renderer.retained_world_batch.refreshLights`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.active.dlightBatch.triangles`. |
+| `data` | `dynamic` | — | Record providing `data.triangles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L208)
 
 <a id="function-function-mq3-renderer-retained-world-batch-select-function-select-state-chosen-src-mq3-renderer-retained-world-batch-ml-1758893451"></a>
 ### select
@@ -219,13 +245,15 @@ function refreshLights(state, data)
 function select(state, chosen)
 ```
 
+Updates `state.selections`, `state.faces`, `state.last` in `mq3.renderer.retained_world_batch.select`; returns `batch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `chosen` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.selections`, `state.faces`, `state.last`. |
+| `chosen` | `dynamic` | — | Record providing `chosen.selection`, `chosen.renderData`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L251)
 
 <a id="function-function-mq3-renderer-retained-world-batch-stagesources-function-stagesources-stream-faces-fogcatalog-src-mq3-renderer-retained-world-batch-ml-1269340501"></a>
 ### stageSources
@@ -234,14 +262,16 @@ function select(state, chosen)
 function stageSources(stream, faces, fogCatalog)
 ```
 
+Builds `active.fogIndexes`, `active.sourceUvs[outputIndex]`, `active.sourceDeformUvs[outputIndex]`, `active.sourcePositions[outputIndex]`, `active.sourceIndexes[outputIndex]` in `mq3.renderer.retained_world_batch.stageSources`; returns `active`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `stream` | `dynamic` | — |  |
-| `faces` | `dynamic` | — |  |
-| `fogCatalog` | `dynamic` | — |  |
+| `stream` | `dynamic` | — | Record providing `stream.fullPass`, `stream.activePass`, `stream.draw`, `stream.firsts`, `stream.counts`, `stream.primed`. |
+| `faces` | `dynamic` | — | Sequence traversed as `face` while producing this result. |
+| `fogCatalog` | `dynamic` | — | Input tested by `fogCatalog!=void`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L172)
 
 <a id="function-function-mq3-renderer-retained-world-batch-stageview-function-stageview-full-commands-src-mq3-renderer-retained-world-batch-ml-441673435"></a>
 ### stageView
@@ -250,13 +280,15 @@ function stageSources(stream, faces, fogCatalog)
 function stageView(full, commands)
 ```
 
+Creates a mutable draw-stage view with fresh per-triangle arrays while preserving the full stage's shader configuration.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `full` | `dynamic` | — |  |
-| `commands` | `dynamic` | — |  |
+| `full` | `dynamic` | — | Record providing `full.commands`, `full.vertexCache`, `full.specularNormals`, `full.fogAdjustment`, `full.stage`, `full.textureIndex`. |
+| `commands` | `dynamic` | — | Record providing `commands.count`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L64)
 
 - [mq3.renderer.retained_world_batch.Stream](Type-mq3-renderer-retained-world-batch-stream-1344965909.md) — struct
 <a id="function-function-mq3-renderer-retained-world-batch-unsupported-function-unsupported-material-src-mq3-renderer-retained-world-batch-ml-710349877"></a>
@@ -266,9 +298,11 @@ function stageView(full, commands)
 function unsupported(material)
 ```
 
+Computes `material!=void and (batches.hasDeform(material.deforms,"autosprite") or batches.hasDeform(material.deforms,"autosprite2"))` for `mq3.renderer.retained_world_batch.unsupported`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `material` | `dynamic` | — |  |
+| `material` | `dynamic` | — | Record providing `material.deforms`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/retained_world_batch.ml#L58)

@@ -9,8 +9,10 @@
 struct Route
 ```
 
+`Route` record for bot navigation, containing `stopevent` and `endcontents`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L73)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
 
 ## Members
 
@@ -22,7 +24,7 @@ endcontents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)
 
 <a id="field-field-mq3-game-bot-navigation-route-stopevent-stopevent-src-mq3-game-bot-navigation-ml-1758453054"></a>
 ### stopevent
@@ -32,4 +34,4 @@ stopevent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L76)

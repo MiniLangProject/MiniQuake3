@@ -9,8 +9,10 @@
 struct LoopSound
 ```
 
+LoopSound record for audio.snd_local, containing `origin`, `velocity`, `sfx`, `mergeFrame`, `active`, `kill`, and 4 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-doppler-doppler-src-mq3-audio-snd-local-ml-716560372"></a>
 ### doppler
@@ -32,7 +34,7 @@ doppler
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-dopplerscale-dopplerscale-src-mq3-audio-snd-local-ml-98588828"></a>
 ### dopplerScale
@@ -42,7 +44,7 @@ dopplerScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-framenum-framenum-src-mq3-audio-snd-local-ml-1799985962"></a>
 ### framenum
@@ -52,7 +54,7 @@ framenum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-kill-kill-src-mq3-audio-snd-local-ml-1742932708"></a>
 ### kill
@@ -62,7 +64,7 @@ kill
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-mergeframe-mergeframe-src-mq3-audio-snd-local-ml-465455682"></a>
 ### mergeFrame
@@ -72,7 +74,7 @@ mergeFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-olddopplerscale-olddopplerscale-src-mq3-audio-snd-local-ml-629082192"></a>
 ### oldDopplerScale
@@ -82,7 +84,7 @@ oldDopplerScale
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-origin-origin-src-mq3-audio-snd-local-ml-1509867052"></a>
 ### origin
@@ -92,7 +94,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-sfx-sfx-src-mq3-audio-snd-local-ml-505594900"></a>
 ### sfx
@@ -102,7 +104,7 @@ sfx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)
 
 <a id="field-field-mq3-audio-snd-local-loopsound-velocity-velocity-src-mq3-audio-snd-local-ml-1095581894"></a>
 ### velocity
@@ -112,4 +114,4 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_local.ml#L27)

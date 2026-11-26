@@ -9,8 +9,10 @@
 struct Dma
 ```
 
+Data record for `mq3.platform.win_snd.Dma`; groups `channels`, `samplebits`, `speed`, `samples`, `submissionChunk`, `bufferValid`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ bufferValid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
 
 <a id="field-field-mq3-platform-win-snd-dma-channels-channels-src-mq3-platform-win-snd-ml-671443233"></a>
 ### channels
@@ -32,7 +34,7 @@ channels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
 
 <a id="field-field-mq3-platform-win-snd-dma-samplebits-samplebits-src-mq3-platform-win-snd-ml-1815390625"></a>
 ### samplebits
@@ -42,7 +44,7 @@ samplebits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
 
 <a id="field-field-mq3-platform-win-snd-dma-samples-samples-src-mq3-platform-win-snd-ml-1637173053"></a>
 ### samples
@@ -52,7 +54,7 @@ samples
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
 
 <a id="field-field-mq3-platform-win-snd-dma-speed-speed-src-mq3-platform-win-snd-ml-689507541"></a>
 ### speed
@@ -62,7 +64,7 @@ speed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)
 
 <a id="field-field-mq3-platform-win-snd-dma-submissionchunk-submissionchunk-src-mq3-platform-win-snd-ml-392860257"></a>
 ### submissionChunk
@@ -72,4 +74,4 @@ submissionChunk
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L16)

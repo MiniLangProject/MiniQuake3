@@ -31,15 +31,17 @@ const BOT_GOAL_SIZE = 56
 function dispatch(state, vm, base, op)
 ```
 
+Apply `mq3.botlib.ai_map_goals.nextCampSpotGoal`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_map_goal_syscalls.writeSelectedGoal` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AI map goals state; accesses `campSpots`. |
+| `vm` | `dynamic` | — | VM instance owning the syscall memory and state. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L29)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-writeselectedgoal-function-writeselectedgoal-vm-address-goal-src-mq3-botlib-ai-map-goal-syscalls-ml-1212235518"></a>
 ### writeSelectedGoal
@@ -48,14 +50,16 @@ function dispatch(state, vm, base, op)
 function writeSelectedGoal(vm, address, goal)
 ```
 
+Apply `mq3.vm.syscall_common.pointer` and `mq3.botlib.ai_map_goal_syscalls.writeVector` while evaluating `writeSelectedGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `origin`, `areaNum`, `mins`, `maxs` and `entityNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L19)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-ai-map-goal-syscalls-ml-1264979321"></a>
 ### writeVector
@@ -64,11 +68,13 @@ function writeSelectedGoal(vm, address, goal)
 function writeVector(data, address, value)
 ```
 
+Write three float bit patterns to consecutive VM memory words for ai map goal syscalls.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.writeU32`. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L14)

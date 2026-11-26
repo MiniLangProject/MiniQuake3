@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for server.frame, containing `killServer`, `running`, `clPaused`, `svPaused`, `fps`, `dedicated`, and 14 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ clPaused
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-dedicated-dedicated-src-mq3-server-frame-ml-1890850561"></a>
 ### dedicated
@@ -32,7 +34,7 @@ dedicated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-fps-fps-src-mq3-server-frame-ml-1549754497"></a>
 ### fps
@@ -42,7 +44,7 @@ fps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-killserver-killserver-src-mq3-server-frame-ml-1834891159"></a>
 ### killServer
@@ -52,7 +54,7 @@ killServer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-maxrate-maxrate-src-mq3-server-frame-ml-2075699553"></a>
 ### maxRate
@@ -62,7 +64,7 @@ maxRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-modifiedflags-modifiedflags-src-mq3-server-frame-ml-1449879725"></a>
 ### modifiedFlags
@@ -72,7 +74,7 @@ modifiedFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-nextsnapshotentities-nextsnapshotentities-src-mq3-server-frame-ml-1696039125"></a>
 ### nextSnapshotEntities
@@ -82,7 +84,7 @@ nextSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-numsnapshotentities-numsnapshotentities-src-mq3-server-frame-ml-882294245"></a>
 ### numSnapshotEntities
@@ -92,7 +94,7 @@ numSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-pauseclients-pauseclients-src-mq3-server-frame-ml-1416178141"></a>
 ### pauseClients
@@ -102,7 +104,7 @@ pauseClients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-pingclients-pingclients-src-mq3-server-frame-ml-1793034025"></a>
 ### pingClients
@@ -112,7 +114,7 @@ pingClients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-playerstates-playerstates-src-mq3-server-frame-ml-880815431"></a>
 ### playerStates
@@ -122,7 +124,7 @@ playerStates
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-restarttime-restarttime-src-mq3-server-frame-ml-311304253"></a>
 ### restartTime
@@ -132,7 +134,7 @@ restartTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-running-running-src-mq3-server-frame-ml-1043087993"></a>
 ### running
@@ -142,7 +144,7 @@ running
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-snapshotclients-snapshotclients-src-mq3-server-frame-ml-1865237937"></a>
 ### snapshotClients
@@ -152,7 +154,7 @@ snapshotClients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-speeds-speeds-src-mq3-server-frame-ml-1556700761"></a>
 ### speeds
@@ -162,7 +164,7 @@ speeds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-svpaused-svpaused-src-mq3-server-frame-ml-1226873375"></a>
 ### svPaused
@@ -172,7 +174,7 @@ svPaused
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-time-time-src-mq3-server-frame-ml-650902247"></a>
 ### time
@@ -182,7 +184,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-timegame-timegame-src-mq3-server-frame-ml-1079699319"></a>
 ### timeGame
@@ -192,7 +194,7 @@ timeGame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-timeoutstate-timeoutstate-src-mq3-server-frame-ml-641666185"></a>
 ### timeoutState
@@ -202,7 +204,7 @@ timeoutState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 <a id="field-field-mq3-server-frame-runtime-timeresidual-timeresidual-src-mq3-server-frame-ml-84098429"></a>
 ### timeResidual
@@ -212,4 +214,4 @@ timeResidual
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)

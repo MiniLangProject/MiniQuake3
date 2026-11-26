@@ -9,8 +9,10 @@
 struct RenderRuntime
 ```
 
+Stores playable app render runtime record, including `lightGrid`, `collisionWorld`, `shadowCatalog`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L100)
 
 ## Members
 
@@ -22,7 +24,7 @@ collisionWorld
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L100)
 
 <a id="field-field-mq3-client-playable-app-renderruntime-lightgrid-lightgrid-src-mq3-client-playable-app-ml-81858233"></a>
 ### lightGrid
@@ -32,7 +34,7 @@ lightGrid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L100)
 
 <a id="field-field-mq3-client-playable-app-renderruntime-shadowcatalog-shadowcatalog-src-mq3-client-playable-app-ml-1176041769"></a>
 ### shadowCatalog
@@ -42,4 +44,4 @@ shadowCatalog
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L100)

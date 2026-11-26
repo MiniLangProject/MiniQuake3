@@ -9,8 +9,10 @@
 struct Binding
 ```
 
+`Binding` record for syscalls, containing `context`, `invokeFn` and `calls`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ calls
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L11)
 
 <a id="field-field-mq3-game-syscalls-binding-context-context-src-mq3-game-syscalls-ml-554876750"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L11)
 
 <a id="field-field-mq3-game-syscalls-binding-invokefn-invokefn-src-mq3-game-syscalls-ml-1290822094"></a>
 ### invokeFn
@@ -42,4 +44,4 @@ invokeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L11)

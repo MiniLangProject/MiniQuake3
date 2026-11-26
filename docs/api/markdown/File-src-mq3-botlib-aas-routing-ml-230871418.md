@@ -21,13 +21,15 @@ Reachable from entry: **yes**
 function allowed(required, travelFlags)
 ```
 
+Test `(required&travelFlags)==required` as the condition for `allowed`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `required` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `required` | `dynamic` | — | Operand used to evaluate the returned expression `(required&travelFlags)==required`. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L127)
 
 <a id="constant-constant-mq3-botlib-aas-routing-area-bridge-const-area-bridge-16-src-mq3-botlib-aas-routing-ml-448874918"></a>
 ### AREA_BRIDGE
@@ -116,13 +118,15 @@ const AREACONTENTS_WATER = 1
 function areaContentsTravelFlags(router, areaNum)
 ```
 
+Read the cached contents travel mask for an area, returning TFL_INVALID when the router or area is invalid.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `settings` and `areaFlags`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L120)
 
 <a id="function-function-mq3-botlib-aas-routing-areareachabilitytogoalarea-function-areareachabilitytogoalarea-router-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-ml-1725085503"></a>
 ### areaReachabilityToGoalArea
@@ -131,16 +135,18 @@ function areaContentsTravelFlags(router, areaNum)
 function areaReachabilityToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 ```
 
+Return `areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags).reachNum` for `areaReachabilityToGoalArea`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L287)
 
 <a id="function-function-mq3-botlib-aas-routing-arearoutetogoalarea-function-arearoutetogoalarea-router-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-ml-736216305"></a>
 ### areaRouteToGoalArea
@@ -149,16 +155,18 @@ function areaReachabilityToGoalArea(router, areaNum, origin, goalAreaNum, travel
 function areaRouteToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 ```
 
+Build the `mq3.botlib.aas_routing.Route` result for `areaRouteToGoalArea`. Return paths include `searchFromArea(router,areaNum,origin,goalAreaNum,travelFlags,void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L217)
 
 <a id="function-function-mq3-botlib-aas-routing-areatraveltime-function-areatraveltime-router-areanum-start-finish-src-mq3-botlib-aas-routing-ml-2143478815"></a>
 ### areaTravelTime
@@ -167,15 +175,17 @@ function areaRouteToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 function areaTravelTime(router, areaNum, start, finish)
 ```
 
+Apply `mq3.botlib.aas_runtime.validArea` and `mq3.botlib.aas_routing.scaledDistanceNative` while evaluating `areaTravelTime`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L155)
 
 <a id="function-function-mq3-botlib-aas-routing-areatraveltimetogoalarea-function-areatraveltimetogoalarea-router-areanum-origin-goalareanum-travelflags-src-mq3-botlib-aas-routing-ml-22880807"></a>
 ### areaTravelTimeToGoalArea
@@ -184,16 +194,18 @@ function areaTravelTime(router, areaNum, start, finish)
 function areaTravelTimeToGoalArea(router, areaNum, origin, goalAreaNum, travelFlags)
 ```
 
+Return `areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags).travelTime` for `areaTravelTimeToGoalArea`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L280)
 
 <a id="function-function-mq3-botlib-aas-routing-contentstravelflags-function-contentstravelflags-value-src-mq3-botlib-aas-routing-ml-419962027"></a>
 ### contentsTravelFlags
@@ -202,12 +214,14 @@ function areaTravelTimeToGoalArea(router, areaNum, origin, goalAreaNum, travelFl
 function contentsTravelFlags(value)
 ```
 
+Translate AAS area contents into air, liquid, exclusion and team restriction travel flags.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `contents` and `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L108)
 
 <a id="function-function-mq3-botlib-aas-routing-create-function-create-runtime-src-mq3-botlib-aas-routing-ml-1926952334"></a>
 ### create
@@ -216,12 +230,14 @@ function contentsTravelFlags(value)
 function create(runtime)
 ```
 
+Build routing settings, reachability records and travel masks from an initialized AAS map.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AAS routing runtime; accesses `initialized` and `map`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L84)
 
 <a id="function-function-mq3-botlib-aas-routing-edgeallowed-function-edgeallowed-router-reach-travelflags-src-mq3-botlib-aas-routing-ml-409389249"></a>
 ### edgeAllowed
@@ -230,14 +246,16 @@ function create(runtime)
 function edgeAllowed(router, reach, travelFlags)
 ```
 
+Apply `mq3.botlib.aas_runtime.validArea` and `mq3.botlib.aas_routing.allowed` while evaluating `edgeAllowed`. Return paths include `allowed(required,travelFlags) and allowed(router.areaFlags[destination],travelFlags)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `reach` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime`, `travelTypeFlags` and `areaFlags`. |
+| `reach` | `dynamic` | — | AAS reachability record; accesses `areaNum` and `travelType`. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L132)
 
 <a id="function-function-mq3-botlib-aas-routing-fail-function-fail-message-src-mq3-botlib-aas-routing-ml-5783867"></a>
 ### fail
@@ -246,12 +264,14 @@ function edgeAllowed(router, reach, travelFlags)
 function fail(message)
 ```
 
+Construct error `7530` with diagnostic text `"AAS routing: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L81)
 
 - [mq3.botlib.aas_routing.Heap](Type-mq3-botlib-aas-routing-heap-1740437250.md) — struct
 <a id="function-function-mq3-botlib-aas-routing-heapcreate-function-heapcreate-capacity-src-mq3-botlib-aas-routing-ml-590680214"></a>
@@ -261,12 +281,14 @@ function fail(message)
 function heapCreate(capacity)
 ```
 
+Create a `mq3.botlib.aas_routing.Heap` record, initializing `times` as `array(capacity+1,0)`, `reaches` as `array(capacity+1,0)` and `firstReaches` as `array(capacity+1,0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `capacity` | `dynamic` | — |  |
+| `capacity` | `dynamic` | — | Maximum number of entries to allocate or retain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L165)
 
 <a id="function-function-mq3-botlib-aas-routing-heapless-function-heapless-heap-left-right-src-mq3-botlib-aas-routing-ml-912131947"></a>
 ### heapLess
@@ -275,14 +297,16 @@ function heapCreate(capacity)
 function heapLess(heap, left, right)
 ```
 
+Order routing heap entries by travel time, breaking ties by reachability number.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `times` and `reaches`. |
+| `left` | `dynamic` | — | Operand used to evaluate the returned expression `heap.times[left]<heap.times[right]`. |
+| `right` | `dynamic` | — | Operand used to evaluate the returned expression `heap.times[left]<heap.times[right]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L170)
 
 <a id="function-function-mq3-botlib-aas-routing-heappop-function-heappop-heap-src-mq3-botlib-aas-routing-ml-321738666"></a>
 ### heapPop
@@ -291,12 +315,14 @@ function heapLess(heap, left, right)
 function heapPop(heap)
 ```
 
+Update `heap.size`, `heap.times[1]`, `heap.reaches[1]` and `heap.firstReaches[1]` during `heapPop`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `size`, `times`, `reaches`, `firstReaches` and `positions`. May update `heap.size`, `heap.times[1]` and `heap.reaches[1]` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L198)
 
 <a id="function-function-mq3-botlib-aas-routing-heapput-function-heapput-heap-reachnum-time-firstreach-src-mq3-botlib-aas-routing-ml-1213586329"></a>
 ### heapPut
@@ -305,15 +331,17 @@ function heapPop(heap)
 function heapPut(heap, reachNum, time, firstReach)
 ```
 
+Update `heap.size`, `heap.reaches[position]`, `heap.positions[reachNum]` and `heap.times[position]` and related state during `heapPut`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
-| `reachNum` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `firstReach` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `positions`, `size`, `reaches`, `times` and `firstReaches`. May update `heap.size`, `heap.reaches[position]` and `heap.positions[reachNum]` and additional fields in place. |
+| `reachNum` | `dynamic` | — | Value used by `heapPut` in `position=heap.positions[reachNum]`. |
+| `time` | `dynamic` | — | Time value in the units expected by this module. |
+| `firstReach` | `dynamic` | — | Value used by `heapPut` in `heap.firstReaches[position]=firstReach`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L189)
 
 <a id="function-function-mq3-botlib-aas-routing-heapswap-function-heapswap-heap-left-right-src-mq3-botlib-aas-routing-ml-1164695531"></a>
 ### heapSwap
@@ -322,14 +350,16 @@ function heapPut(heap, reachNum, time, firstReach)
 function heapSwap(heap, left, right)
 ```
 
+Update `heap.times[left]`, `heap.times[right]`, `heap.reaches[left]` and `heap.reaches[right]` and related state during `heapSwap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `heap` | `dynamic` | — |  |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `heap` | `dynamic` | — | Heap record; accesses `times`, `reaches`, `firstReaches` and `positions`. May update `heap.times[left]`, `heap.times[right]` and `heap.reaches[left]` and additional fields in place. |
+| `left` | `dynamic` | — | Value used by `heapSwap` in `value=heap.times[left]`. |
+| `right` | `dynamic` | — | Value used by `heapSwap` in `heap.times[left]=heap.times[right]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L178)
 
 - [mq3.botlib.aas_routing.Route](Type-mq3-botlib-aas-routing-route-1884253753.md) — struct
 - [mq3.botlib.aas_routing.Router](Type-mq3-botlib-aas-routing-router-403349521.md) — struct
@@ -340,18 +370,22 @@ function heapSwap(heap, left, right)
 extern function scaledDistanceNative(ax as double, ay as double, az as double, bx as double, by as double, bz as double, scale as double) from "miniquake3_abi.dll" symbol "mq3_scaled_distance3_trunc" returns i32
 ```
 
+Calculate truncated scaled distance between two 3D points through the native routing helper.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ax` | `double` | — |  |
-| `ay` | `double` | — |  |
-| `az` | `double` | — |  |
-| `bx` | `double` | — |  |
-| `by` | `double` | — |  |
-| `bz` | `double` | — |  |
-| `scale` | `double` | — |  |
+| `ax` | `double` | — | Native `double` value forwarded in the `ax` argument of `scaledDistanceNative`. |
+| `ay` | `double` | — | Native `double` value forwarded in the `ay` argument of `scaledDistanceNative`. |
+| `az` | `double` | — | Native `double` value forwarded in the `az` argument of `scaledDistanceNative`. |
+| `bx` | `double` | — | Native `double` value forwarded in the `bx` argument of `scaledDistanceNative`. |
+| `by` | `double` | — | Native `double` value forwarded in the `by` argument of `scaledDistanceNative`. |
+| `bz` | `double` | — | Native `double` value forwarded in the `bz` argument of `scaledDistanceNative`. |
+| `scale` | `double` | — | Multiplier applied to the Euclidean distance before conversion to a signed integer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L118)
+**Returns:** Scaled Euclidean distance truncated to the helper's signed 32-bit integer result.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L148)
 
 <a id="function-function-mq3-botlib-aas-routing-searchfromarea-function-searchfromarea-router-areanum-origin-goalareanum-travelflags-times-src-mq3-botlib-aas-routing-ml-1945604579"></a>
 ### searchFromArea
@@ -364,15 +398,15 @@ Dijkstra's first arrival in an area has the same cost as stopping the point-to-p
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
-| `times` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `reaches` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `times` | `dynamic` | — | Array or byte sequence accessed at `currentArea`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L247)
 
 <a id="constant-constant-mq3-botlib-aas-routing-tfl-air-const-tfl-air-publicheaders-tfl-air-src-mq3-botlib-aas-routing-ml-1470994639"></a>
 ### TFL_AIR
@@ -881,12 +915,14 @@ const TRAVELFLAG_NOTTEAM2 = 33554432
 function travelFlagForType(travelType)
 ```
 
+Map the masked AAS travel type to its travel flag, returning TFL_INVALID for an out-of-range type.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `travelType` | `dynamic` | — |  |
+| `travelType` | `dynamic` | — | AAS reachability travel-type code. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L98)
 
 <a id="function-function-mq3-botlib-aas-routing-traveltimesfromarea-function-traveltimesfromarea-router-areanum-origin-travelflags-src-mq3-botlib-aas-routing-ml-904575243"></a>
 ### travelTimesFromArea
@@ -895,15 +931,17 @@ function travelFlagForType(travelType)
 function travelTimesFromArea(router, areaNum, origin, travelFlags)
 ```
 
+Apply `mq3.botlib.aas_runtime.validArea` and `mq3.botlib.aas_routing.searchFromArea` while evaluating `travelTimesFromArea`. Return paths include `times`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L231)
 
 <a id="constant-constant-mq3-botlib-aas-routing-traveltype-mask-const-traveltype-mask-16777215-src-mq3-botlib-aas-routing-ml-849578027"></a>
 ### TRAVELTYPE_MASK

@@ -9,8 +9,10 @@
 struct Mode
 ```
 
+Data record for `mq3.platform.win_glimp_runtime.Mode`; groups `width`, `height`, `aspect`, `frequency`, `fullscreen`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ aspect
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-mode-frequency-frequency-src-mq3-platform-win-glimp-runtime-ml-77161138"></a>
 ### frequency
@@ -32,7 +34,7 @@ frequency
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-mode-fullscreen-fullscreen-src-mq3-platform-win-glimp-runtime-ml-550313212"></a>
 ### fullscreen
@@ -42,7 +44,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-mode-height-height-src-mq3-platform-win-glimp-runtime-ml-1154033196"></a>
 ### height
@@ -52,7 +54,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-mode-width-width-src-mq3-platform-win-glimp-runtime-ml-1537761542"></a>
 ### width
@@ -62,4 +64,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)

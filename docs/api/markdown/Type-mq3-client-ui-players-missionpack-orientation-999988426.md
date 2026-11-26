@@ -9,8 +9,10 @@
 struct Orientation
 ```
 
+Stores UI players missionpack orientation record, including `origin`, `axis`, `found`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L63)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L63)
 
 <a id="field-field-mq3-client-ui-players-missionpack-orientation-found-found-src-mq3-client-ui-players-missionpack-ml-1160761799"></a>
 ### found
@@ -32,7 +34,7 @@ found
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L63)
 
 <a id="field-field-mq3-client-ui-players-missionpack-orientation-origin-origin-src-mq3-client-ui-players-missionpack-ml-1010103827"></a>
 ### origin
@@ -42,4 +44,4 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players_missionpack.ml#L63)

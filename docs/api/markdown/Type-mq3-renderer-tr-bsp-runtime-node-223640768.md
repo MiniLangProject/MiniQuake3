@@ -9,8 +9,10 @@
 struct Node
 ```
 
+Data record for `mq3.renderer.tr_bsp_runtime.Node`; groups `index`, `planeIndex`, `children`, `mins`, `maxs`, `parent`, and 5 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ area
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-children-children-src-mq3-renderer-tr-bsp-runtime-ml-1239494339"></a>
 ### children
@@ -32,7 +34,7 @@ children
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-cluster-cluster-src-mq3-renderer-tr-bsp-runtime-ml-553115337"></a>
 ### cluster
@@ -42,7 +44,7 @@ cluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-contents-contents-src-mq3-renderer-tr-bsp-runtime-ml-1172705017"></a>
 ### contents
@@ -52,7 +54,7 @@ contents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-firstmarksurface-firstmarksurface-src-mq3-renderer-tr-bsp-runtime-ml-1263081657"></a>
 ### firstMarkSurface
@@ -62,7 +64,7 @@ firstMarkSurface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-index-index-src-mq3-renderer-tr-bsp-runtime-ml-2066146109"></a>
 ### index
@@ -72,7 +74,7 @@ index
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-maxs-maxs-src-mq3-renderer-tr-bsp-runtime-ml-677240567"></a>
 ### maxs
@@ -82,7 +84,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-mins-mins-src-mq3-renderer-tr-bsp-runtime-ml-1958124095"></a>
 ### mins
@@ -92,7 +94,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-nummarksurfaces-nummarksurfaces-src-mq3-renderer-tr-bsp-runtime-ml-1371816341"></a>
 ### numMarkSurfaces
@@ -102,7 +104,7 @@ numMarkSurfaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-parent-parent-src-mq3-renderer-tr-bsp-runtime-ml-1748079333"></a>
 ### parent
@@ -112,7 +114,7 @@ parent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-node-planeindex-planeindex-src-mq3-renderer-tr-bsp-runtime-ml-886544537"></a>
 ### planeIndex
@@ -122,4 +124,4 @@ planeIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L37)

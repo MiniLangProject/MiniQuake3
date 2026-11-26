@@ -24,13 +24,15 @@ Reachable from entry: **no**
 function Action_Draw(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.colorText`, `mq3.client.ui_qmenu.colorDisabled`, `mq3.client.ui_qmenu.focused` and additional helpers from UI qmenu `Action_Draw`. The final path returns `rows`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value tested by `(value.flags&QMF_PULSEIFFOCUS)!=0 and focused(m,value)`, `(value.flags&QMF_HIGHLIGHT_IF_FOCUS)!=0 and focused(m,value)` and additional values before the calculation continues. |
+| `value` | `dynamic` | — | Record read through `value.flags`, `value.x`, `value.y`, `value.name`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L246)
 
 <a id="function-function-mq3-client-ui-qmenu-action-init-function-action-init-value-src-mq3-client-ui-qmenu-ml-1564640911"></a>
 ### Action_Init
@@ -43,10 +45,10 @@ Action_Init / Action_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.left`, `value.right`, `value.top`, `value.bottom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L242)
 
 <a id="constant-constant-mq3-client-ui-qmenu-bigchar-height-const-bigchar-height-16-src-mq3-client-ui-qmenu-ml-1834201566"></a>
 ### BIGCHAR_HEIGHT
@@ -75,14 +77,16 @@ const BIGCHAR_WIDTH = 16
 function Bitmap_Draw(m, value, realtime)
 ```
 
+Calls `mq3.client.ui_qmenu.emit`, `mq3.client.ui_qmenu.colorDisabled`, `mq3.client.ui_qmenu.focused` and additional helpers from UI qmenu `Bitmap_Draw`. The final path returns `rows`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value used by `focus=focused(m,value)`. |
+| `value` | `dynamic` | — | Record read through `value.x`, `value.flags`, `value.width`, `value.name` and additional values. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L230)
 
 <a id="function-function-mq3-client-ui-qmenu-bitmap-init-function-bitmap-init-value-src-mq3-client-ui-qmenu-ml-1704357557"></a>
 ### Bitmap_Init
@@ -95,10 +99,10 @@ Bitmap_Init / Bitmap_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.left`, `value.right`, `value.top`, `value.bottom` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L221)
 
 <a id="function-function-mq3-client-ui-qmenu-btext-draw-function-btext-draw-m-value-src-mq3-client-ui-qmenu-ml-1185127600"></a>
 ### BText_Draw
@@ -107,13 +111,15 @@ Bitmap_Init / Bitmap_Draw
 function BText_Draw(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.colorDisabled`, `mq3.client.ui_qmenu.emit` from UI qmenu `BText_Draw`. The final path returns `[emit("banner",value.x,value.y,0,0,value.string,value.style,color,"")]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Accepted for compatibility with `BText_Draw`; the current implementation does not read it. |
+| `value` | `dynamic` | — | Record read through `value.color`, `value.flags`, `value.x`, `value.y` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L191)
 
 <a id="function-function-mq3-client-ui-qmenu-btext-init-function-btext-init-value-src-mq3-client-ui-qmenu-ml-1444228365"></a>
 ### BText_Init
@@ -126,10 +132,10 @@ BText_Init / BText_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L187)
 
 <a id="function-function-mq3-client-ui-qmenu-colordisabled-function-colordisabled-src-mq3-client-ui-qmenu-ml-1500205882"></a>
 ### colorDisabled
@@ -138,8 +144,10 @@ BText_Init / BText_Draw
 function colorDisabled()
 ```
 
+Builds the UI qmenu `colorDisabled` sequence from `[0.5,0.5,0.5,1.0]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L112)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L114)
 
 <a id="function-function-mq3-client-ui-qmenu-colorhighlight-function-colorhighlight-src-mq3-client-ui-qmenu-ml-278496856"></a>
 ### colorHighlight
@@ -148,8 +156,10 @@ function colorDisabled()
 function colorHighlight()
 ```
 
+Builds the UI qmenu `colorHighlight` sequence from `[1.0,1.0,0.0,1.0]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L114)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L118)
 
 <a id="function-function-mq3-client-ui-qmenu-colorlistbar-function-colorlistbar-src-mq3-client-ui-qmenu-ml-1925514052"></a>
 ### colorListbar
@@ -158,8 +168,10 @@ function colorHighlight()
 function colorListbar()
 ```
 
+Builds the UI qmenu `colorListbar` sequence from `[1.0,0.43,0.0,0.30]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L115)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L120)
 
 <a id="function-function-mq3-client-ui-qmenu-colornormal-function-colornormal-src-mq3-client-ui-qmenu-ml-1418832560"></a>
 ### colorNormal
@@ -168,8 +180,10 @@ function colorListbar()
 function colorNormal()
 ```
 
+Builds the UI qmenu `colorNormal` sequence from `[1.0,0.43,0.0,1.0]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L113)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L116)
 
 <a id="function-function-mq3-client-ui-qmenu-colortext-function-colortext-src-mq3-client-ui-qmenu-ml-511300084"></a>
 ### colorText
@@ -178,8 +192,10 @@ function colorNormal()
 function colorText()
 ```
 
+Builds the UI qmenu `colorText` sequence from `[1.0,1.0,1.0,1.0]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L111)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L112)
 
 <a id="function-function-mq3-client-ui-qmenu-drawitem-function-drawitem-m-value-realtime-src-mq3-client-ui-qmenu-ml-356814073"></a>
 ### drawItem
@@ -188,14 +204,16 @@ function colorText()
 function drawItem(m, value, realtime)
 ```
 
+Calls `value.ownerdraw`, `mq3.client.ui_qmenu.RadioButton_Draw`, `mq3.client.ui_qmenu.MenuField_Draw` and additional helpers from UI qmenu `drawItem`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value used by `if value.type==MTYPE_RADIOBUTTON then return RadioButton_Draw(m,value) end if`. |
+| `value` | `dynamic` | — | Record read through `value.ownerdraw`, `value.type`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L294)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L419)
 
 <a id="function-function-mq3-client-ui-qmenu-emit-function-emit-kind-x-y-w-h-text-style-color-asset-src-mq3-client-ui-qmenu-ml-299234087"></a>
 ### emit
@@ -204,20 +222,22 @@ function drawItem(m, value, realtime)
 function emit(kind, x, y, w, h, text, style, color, asset)
 ```
 
+Builds the UI qmenu `emit` sequence from `[kind,x,y,w,h,text,style,color,asset]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `kind` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `asset` | `dynamic` | — |  |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `emit`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `emit`. |
+| `w` | `dynamic` | — | Width in the coordinate space used by `emit`. |
+| `h` | `dynamic` | — | Height in the coordinate space used by `emit`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI qmenu path. |
+| `style` | `dynamic` | — | Value used by `return [kind,x,y,w,h,text,style,color,asset]`. |
+| `color` | `dynamic` | — | Color value used by the UI qmenu drawing or interpolation operation. |
+| `asset` | `dynamic` | — | Value used by `return [kind,x,y,w,h,text,style,color,asset]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L157)
 
 <a id="function-function-mq3-client-ui-qmenu-focused-function-focused-m-value-src-mq3-client-ui-qmenu-ml-2080173726"></a>
 ### focused
@@ -226,13 +246,15 @@ function emit(kind, x, y, w, h, text, style, color, asset)
 function focused(m, value)
 ```
 
+Computes `value.menuPosition==m.cursor` for UI qmenu `focused`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Record read through `m.cursor`. |
+| `value` | `dynamic` | — | Record read through `value.menuPosition`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L164)
 
 <a id="function-function-mq3-client-ui-qmenu-idiv-function-idiv-a-b-src-mq3-client-ui-qmenu-ml-2057489895"></a>
 ### idiv
@@ -241,13 +263,15 @@ function focused(m, value)
 function idiv(a, b)
 ```
 
+Adapts `mq3.compat.numeric.trunc32` to UI qmenu `idiv`, returning its result for `a/b`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.trunc32`; passed as `a/b`. |
+| `b` | `dynamic` | — | Argument 1 of `mq3.compat.numeric.trunc32`; passed as `a/b`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L168)
 
 <a id="function-function-mq3-client-ui-qmenu-item-function-item-type-name-id-x-y-flags-src-mq3-client-ui-qmenu-ml-304153332"></a>
 ### item
@@ -256,17 +280,19 @@ function idiv(a, b)
 function item(type, name, id, x, y, flags)
 ```
 
+Creates a `mq3.client.ui_qmenu.Item` record. Assigns `type` from `type`, `name` from `name`, `id` from `id`, `x` from `x`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `type` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `type` | `dynamic` | — | Value used to initialize `Item.type`. |
+| `name` | `dynamic` | — | Value used to initialize `Item.name`. |
+| `id` | `dynamic` | — | Value used to initialize `Item.id`. |
+| `x` | `dynamic` | — | Value used to initialize `Item.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Item.y`. |
+| `flags` | `dynamic` | — | Value used to initialize `Item.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L143)
 
 - [mq3.client.ui_qmenu.Item](Type-mq3-client-ui-qmenu-item-1773713585.md) — struct
 <a id="function-function-mq3-client-ui-qmenu-joystickactivate-function-joystickactivate-key-src-mq3-client-ui-qmenu-ml-680353551"></a>
@@ -276,12 +302,14 @@ function item(type, name, id, x, y, flags)
 function joystickActivate(key)
 ```
 
+Computes `(key>=K_JOY1 and key<=K_JOY4) or (key>=K_AUX1 and key<=K_AUX16)` for UI qmenu `joystickActivate`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI qmenu entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L431)
 
 <a id="constant-constant-mq3-client-ui-qmenu-k-aux1-const-k-aux1-q3keys-k-aux1-src-mq3-client-ui-qmenu-ml-593756726"></a>
 ### K_AUX1
@@ -681,13 +709,15 @@ const MAX_MENUITEMS = 64
 function menu(wrapAround, fullscreen)
 ```
 
+Creates a `mq3.client.ui_qmenu.Menu` record. Assigns `wrapAround` from `wrapAround`, `fullscreen` from `fullscreen`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `wrapAround` | `dynamic` | — |  |
-| `fullscreen` | `dynamic` | — |  |
+| `wrapAround` | `dynamic` | — | Value used to initialize `Menu.wrapAround`. |
+| `fullscreen` | `dynamic` | — | Value used to initialize `Menu.fullscreen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L132)
 
 - [mq3.client.ui_qmenu.Menu](Type-mq3-client-ui-qmenu-menu-976120253.md) — struct
 <a id="function-function-mq3-client-ui-qmenu-menu-activateitem-function-menu-activateitem-m-value-src-mq3-client-ui-qmenu-ml-732845900"></a>
@@ -697,13 +727,15 @@ function menu(wrapAround, fullscreen)
 function Menu_ActivateItem(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.notify` from UI qmenu `Menu_ActivateItem`. The final path returns `SOUND_NONE`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Accepted for compatibility with `Menu_ActivateItem`; the current implementation does not read it. |
+| `value` | `dynamic` | — | Record read through `value.callback`, `value.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L413)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-additem-function-menu-additem-m-value-src-mq3-client-ui-qmenu-ml-36609080"></a>
 ### Menu_AddItem
@@ -716,11 +748,11 @@ Menu_AddItem / cursor and focus functions.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `m.items`. |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.menuPosition`, `value.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L379)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-adjustcursor-function-menu-adjustcursor-m-direction-src-mq3-client-ui-qmenu-ml-596696846"></a>
 ### Menu_AdjustCursor
@@ -729,13 +761,15 @@ Menu_AddItem / cursor and focus functions.
 function Menu_AdjustCursor(m, direction)
 ```
 
+Updates `m.cursor` during UI qmenu `Menu_AdjustCursor`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `direction` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `m.cursor`. |
+| `direction` | `dynamic` | — | Direction vector used by the spatial calculation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L287)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L403)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-cache-function-menu-cache-ragepro-src-mq3-client-ui-qmenu-ml-1374440032"></a>
 ### Menu_Cache
@@ -748,10 +782,10 @@ Menu_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ragePro` | `dynamic` | — |  |
+| `ragePro` | `dynamic` | — | Value used by `if ragePro then back="menubackRagePro" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L445)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-cursormoved-function-menu-cursormoved-m-src-mq3-client-ui-qmenu-ml-106930955"></a>
 ### Menu_CursorMoved
@@ -760,12 +794,14 @@ Menu_Cache
 function Menu_CursorMoved(m)
 ```
 
+Calls `mq3.client.ui_qmenu.notify` from UI qmenu `Menu_CursorMoved`. The final path returns `m`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Record read through `m.cursor_prev`, `m.cursor`, `m.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L385)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-defaultkey-function-menu-defaultkey-m-key-cursorx-cursory-src-mq3-client-ui-qmenu-ml-2131068365"></a>
 ### Menu_DefaultKey
@@ -778,13 +814,13 @@ Menu_DefaultKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `cursorx` | `dynamic` | — |  |
-| `cursory` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `m.popped`, `m.debug`, `m.commands`, `m.cursor_prev` and additional values. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI qmenu entry. |
+| `cursorx` | `dynamic` | — | Value used by `if current.type==MTYPE_SPINCONTROL then sound=SpinControl_Key(current,key) else if current.type==MTYPE_RADIOBUTTON then sound=RadioButton_Key(...`. |
+| `cursory` | `dynamic` | — | Value used by `if current.type==MTYPE_SPINCONTROL then sound=SpinControl_Key(current,key) else if current.type==MTYPE_RADIOBUTTON then sound=RadioButton_Key(...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L437)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-draw-function-menu-draw-m-realtime-src-mq3-client-ui-qmenu-ml-1438362510"></a>
 ### Menu_Draw
@@ -797,11 +833,11 @@ Menu_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Record read through `m.items`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L425)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-itematcursor-function-menu-itematcursor-m-src-mq3-client-ui-qmenu-ml-616846579"></a>
 ### Menu_ItemAtCursor
@@ -810,12 +846,14 @@ Menu_Draw
 function Menu_ItemAtCursor(m)
 ```
 
+Evaluates UI qmenu `Menu_ItemAtCursor` and returns `void`, `m.items[m.cursor]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Record read through `m.cursor`, `m.items`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L291)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L409)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-setcursor-function-menu-setcursor-m-cursor-src-mq3-client-ui-qmenu-ml-293974973"></a>
 ### Menu_SetCursor
@@ -824,13 +862,15 @@ function Menu_ItemAtCursor(m)
 function Menu_SetCursor(m, cursor)
 ```
 
+Updates `m.cursor_prev`, `m.cursor` during UI qmenu `Menu_SetCursor`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `cursor` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `m.cursor_prev`, `m.cursor`. |
+| `cursor` | `dynamic` | — | Value assigned to `m.cursor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L391)
 
 <a id="function-function-mq3-client-ui-qmenu-menu-setcursortoitem-function-menu-setcursortoitem-m-value-src-mq3-client-ui-qmenu-ml-1346191732"></a>
 ### Menu_SetCursorToItem
@@ -839,13 +879,15 @@ function Menu_SetCursor(m, cursor)
 function Menu_SetCursorToItem(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.Menu_SetCursor` from UI qmenu `Menu_SetCursorToItem`. The final path returns `m`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Record read through `m.items`. |
+| `value` | `dynamic` | — | Value tested by `m.items[index]==value` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L284)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L397)
 
 <a id="function-function-mq3-client-ui-qmenu-menufield-draw-function-menufield-draw-m-value-src-mq3-client-ui-qmenu-ml-108695796"></a>
 ### MenuField_Draw
@@ -854,13 +896,15 @@ function Menu_SetCursorToItem(m, value)
 function MenuField_Draw(m, value)
 ```
 
+Calls `std.string.substr`, `mq3.client.ui_qmenu.colorNormal`, `mq3.client.ui_qmenu.colorDisabled` and additional helpers from UI qmenu `MenuField_Draw`. The final path returns `rows`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value tested by `focused(m,value)` before the calculation continues. |
+| `value` | `dynamic` | — | Record read through `value.buffer`, `value.fieldScroll`, `value.widthInChars`, `value.flags` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L372)
 
 <a id="function-function-mq3-client-ui-qmenu-menufield-init-function-menufield-init-value-src-mq3-client-ui-qmenu-ml-1359505881"></a>
 ### MenuField_Init
@@ -873,10 +917,10 @@ q3_ui/ui_mfield.c boundary used by the QMenu dispatcher.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.widthInChars`, `value.maxchars`, `value.fieldCursor`, `value.fieldScroll` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L256)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L350)
 
 <a id="function-function-mq3-client-ui-qmenu-menufield-key-function-menufield-key-value-key-src-mq3-client-ui-qmenu-ml-1321160838"></a>
 ### MenuField_Key
@@ -885,13 +929,15 @@ q3_ui/ui_mfield.c boundary used by the QMenu dispatcher.
 function MenuField_Key(value, key)
 ```
 
+Updates `value.buffer`, `value.fieldCursor`, `value.fieldScroll` during UI qmenu `MenuField_Key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.buffer`, `value.fieldCursor`, `value.fieldScroll`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI qmenu entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L360)
 
 <a id="constant-constant-mq3-client-ui-qmenu-mtype-action-const-mtype-action-q3local-mtype-action-src-mq3-client-ui-qmenu-ml-2142803036"></a>
 ### MTYPE_ACTION
@@ -1010,13 +1056,15 @@ const MTYPE_TEXT = q3local.MTYPE_TEXT
 function normalizedByte(value, flags)
 ```
 
+Evaluates UI qmenu `normalizedByte` and returns `value+32`, `value-32`, `value` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `(flags&QMF_LOWERCASE)!=0 and value>=65 and value<=90`, `(flags&QMF_UPPERCASE)!=0 and value>=97 and value<=122` before the calculation continues. |
+| `flags` | `dynamic` | — | Value used by `if (flags&QMF_LOWERCASE)!=0 and value>=65 and value<=90 then return value+32 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L356)
 
 <a id="function-function-mq3-client-ui-qmenu-notify-function-notify-value-event-src-mq3-client-ui-qmenu-ml-532749279"></a>
 ### notify
@@ -1025,13 +1073,15 @@ function normalizedByte(value, flags)
 function notify(value, event)
 ```
 
+Updates `value.events` during UI qmenu `notify`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.events`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L172)
 
 <a id="constant-constant-mq3-client-ui-qmenu-prop-gap-width-const-prop-gap-width-3-src-mq3-client-ui-qmenu-ml-2073792918"></a>
 ### PROP_GAP_WIDTH
@@ -1060,12 +1110,14 @@ const PROP_HEIGHT = 27
 function proportionalScale(style)
 ```
 
+Evaluates UI qmenu `proportionalScale` and returns `0.75`, `1.0` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `style` | `dynamic` | — |  |
+| `style` | `dynamic` | — | Value used by `if (style&UI_SMALLFONT)!=0 then return 0.75 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L198)
 
 <a id="function-function-mq3-client-ui-qmenu-proportionalwidth-function-proportionalwidth-value-src-mq3-client-ui-qmenu-ml-1871744315"></a>
 ### proportionalWidth
@@ -1074,12 +1126,14 @@ function proportionalScale(style)
 function proportionalWidth(value)
 ```
 
+Adapts `mq3.client.cgame_drawtools.proportionalStringWidth` to UI qmenu `proportionalWidth`, returning its result for `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.proportionalStringWidth`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L201)
 
 <a id="function-function-mq3-client-ui-qmenu-ptext-draw-function-ptext-draw-m-value-src-mq3-client-ui-qmenu-ml-1529782724"></a>
 ### PText_Draw
@@ -1088,13 +1142,15 @@ function proportionalWidth(value)
 function PText_Draw(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.colorDisabled`, `mq3.client.ui_qmenu.focused`, `mq3.client.ui_qmenu.emit` from UI qmenu `PText_Draw`. The final path returns `[emit("proportional",value.x,value.y,0,0,value.string,style,color,"")]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value tested by `focused(m,value)` before the calculation continues. |
+| `value` | `dynamic` | — | Record read through `value.color`, `value.style`, `value.flags`, `value.x` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L213)
 
 <a id="function-function-mq3-client-ui-qmenu-ptext-init-function-ptext-init-value-src-mq3-client-ui-qmenu-ml-1328264781"></a>
 ### PText_Init
@@ -1107,10 +1163,10 @@ PText_Init / PText_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.left`, `value.right`, `value.top`, `value.bottom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L205)
 
 <a id="constant-constant-mq3-client-ui-qmenu-qm-activated-const-qm-activated-q3local-qm-activated-src-mq3-client-ui-qmenu-ml-791343980"></a>
 ### QM_ACTIVATED
@@ -1359,13 +1415,15 @@ const QMF_UPPERCASE = q3local.QMF_UPPERCASE
 function RadioButton_Draw(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.focused`, `mq3.client.ui_qmenu.colorNormal`, `mq3.client.ui_qmenu.colorDisabled` and additional helpers from UI qmenu `RadioButton_Draw`. The final path returns `rows`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value used by `focus=focused(m,value)`. |
+| `value` | `dynamic` | — | Record read through `value.flags`, `value.left`, `value.top`, `value.right` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L265)
 
 <a id="function-function-mq3-client-ui-qmenu-radiobutton-init-function-radiobutton-init-value-src-mq3-client-ui-qmenu-ml-514411165"></a>
 ### RadioButton_Init
@@ -1378,10 +1436,10 @@ RadioButton_Init / RadioButton_Key / RadioButton_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.left`, `value.right`, `value.top`, `value.bottom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L253)
 
 <a id="function-function-mq3-client-ui-qmenu-radiobutton-key-function-radiobutton-key-value-key-src-mq3-client-ui-qmenu-ml-436139310"></a>
 ### RadioButton_Key
@@ -1390,13 +1448,15 @@ RadioButton_Init / RadioButton_Key / RadioButton_Draw
 function RadioButton_Key(value, key)
 ```
 
+Updates `value.curvalue` during UI qmenu `RadioButton_Key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.curvalue`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI qmenu entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L257)
 
 <a id="function-function-mq3-client-ui-qmenu-scrolllist-draw-function-scrolllist-draw-m-value-src-mq3-client-ui-qmenu-ml-2142545532"></a>
 ### ScrollList_Draw
@@ -1405,13 +1465,15 @@ function RadioButton_Key(value, key)
 function ScrollList_Draw(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.colorNormal`, `mq3.client.ui_qmenu.emit`, `mq3.client.ui_qmenu.colorListbar` and additional helpers from UI qmenu `ScrollList_Draw`. The final path returns `rows`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value tested by `focused(m,value)` before the calculation continues. |
+| `value` | `dynamic` | — | Record read through `value.x`, `value.columns`, `value.y`, `value.listTop` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L344)
 
 <a id="function-function-mq3-client-ui-qmenu-scrolllist-init-function-scrolllist-init-value-src-mq3-client-ui-qmenu-ml-1688351649"></a>
 ### ScrollList_Init
@@ -1424,10 +1486,10 @@ ScrollList_Init / ScrollList_Key / ScrollList_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.oldvalue`, `value.curvalue`, `value.listTop`, `value.columns` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L319)
 
 <a id="function-function-mq3-client-ui-qmenu-scrolllist-key-function-scrolllist-key-value-key-cursorx-cursory-src-mq3-client-ui-qmenu-ml-425222155"></a>
 ### ScrollList_Key
@@ -1436,15 +1498,17 @@ ScrollList_Init / ScrollList_Key / ScrollList_Draw
 function ScrollList_Key(value, key, cursorx, cursory)
 ```
 
+Updates `value.oldvalue`, `value.curvalue`, `value.listTop` during UI qmenu `ScrollList_Key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `cursorx` | `dynamic` | — |  |
-| `cursory` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.oldvalue`, `value.curvalue`, `value.listTop`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI qmenu entry. |
+| `cursorx` | `dynamic` | — | Value used by `if cursorx>=x and cursorx<x+w and cursory>=value.y and cursory<value.y+value.height*SMALLCHAR_HEIGHT then column=idiv(idiv(cursorx-x,SMALLCHAR...`. |
+| `cursory` | `dynamic` | — | Value used by `if cursorx>=x and cursorx<x+w and cursory>=value.y and cursory<value.y+value.height*SMALLCHAR_HEIGHT then column=idiv(idiv(cursorx-x,SMALLCHAR...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L327)
 
 <a id="function-function-mq3-client-ui-qmenu-slider-draw-function-slider-draw-m-value-src-mq3-client-ui-qmenu-ml-325073224"></a>
 ### Slider_Draw
@@ -1453,13 +1517,15 @@ function ScrollList_Key(value, key, cursorx, cursory)
 function Slider_Draw(m, value)
 ```
 
+Updates `value.range` during UI qmenu `Slider_Draw`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value used by `focus=focused(m,value)`. |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.range`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L291)
 
 <a id="function-function-mq3-client-ui-qmenu-slider-init-function-slider-init-value-src-mq3-client-ui-qmenu-ml-1889742661"></a>
 ### Slider_Init
@@ -1472,10 +1538,10 @@ Slider_Init / Slider_Key / Slider_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.left`, `value.right`, `value.top`, `value.bottom`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L276)
 
 <a id="function-function-mq3-client-ui-qmenu-slider-key-function-slider-key-value-key-cursorx-src-mq3-client-ui-qmenu-ml-1660868258"></a>
 ### Slider_Key
@@ -1484,14 +1550,16 @@ Slider_Init / Slider_Key / Slider_Draw
 function Slider_Key(value, key, cursorx)
 ```
 
+Updates `value.curvalue` during UI qmenu `Slider_Key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `cursorx` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.curvalue`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI qmenu entry. |
+| `cursorx` | `dynamic` | — | Value used by `if key==K_MOUSE1 then value.curvalue=((cursorx-value.x-2*SMALLCHAR_WIDTH)/(SLIDER_RANGE*SMALLCHAR_WIDTH))*(value.maxvalue-value.minvalue)+valu...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L281)
 
 <a id="constant-constant-mq3-client-ui-qmenu-slider-range-const-slider-range-10-src-mq3-client-ui-qmenu-ml-1111904498"></a>
 ### SLIDER_RANGE
@@ -1590,13 +1658,15 @@ const SOUND_OUT = 3
 function SpinControl_Draw(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.focused`, `mq3.client.ui_qmenu.colorNormal`, `mq3.client.ui_qmenu.colorDisabled` and additional helpers from UI qmenu `SpinControl_Draw`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Value used by `focus=focused(m,value)`. |
+| `value` | `dynamic` | — | Record read through `value.flags`, `value.left`, `value.top`, `value.right` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L312)
 
 <a id="function-function-mq3-client-ui-qmenu-spincontrol-init-function-spincontrol-init-value-src-mq3-client-ui-qmenu-ml-1181143677"></a>
 ### SpinControl_Init
@@ -1609,10 +1679,10 @@ SpinControl_Init / SpinControl_Key / SpinControl_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.left`, `value.numitems`, `value.top`, `value.right` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L300)
 
 <a id="function-function-mq3-client-ui-qmenu-spincontrol-key-function-spincontrol-key-value-key-src-mq3-client-ui-qmenu-ml-922073570"></a>
 ### SpinControl_Key
@@ -1621,13 +1691,15 @@ SpinControl_Init / SpinControl_Key / SpinControl_Draw
 function SpinControl_Key(value, key)
 ```
 
+Updates `value.curvalue` during UI qmenu `SpinControl_Key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.curvalue`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI qmenu entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L306)
 
 <a id="function-function-mq3-client-ui-qmenu-text-draw-function-text-draw-m-value-src-mq3-client-ui-qmenu-ml-1675379788"></a>
 ### Text_Draw
@@ -1636,13 +1708,15 @@ function SpinControl_Key(value, key)
 function Text_Draw(m, value)
 ```
 
+Calls `mq3.client.ui_qmenu.colorDisabled`, `mq3.client.ui_qmenu.emit` from UI qmenu `Text_Draw`. The final path returns `[emit("string",value.x,value.y,0,0,text,value.style,color,"")]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `m` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `m` | `dynamic` | — | Accepted for compatibility with `Text_Draw`; the current implementation does not read it. |
+| `value` | `dynamic` | — | Record read through `value.name`, `value.string`, `value.color`, `value.flags` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L180)
 
 <a id="function-function-mq3-client-ui-qmenu-text-init-function-text-init-value-src-mq3-client-ui-qmenu-ml-1829981837"></a>
 ### Text_Init
@@ -1655,10 +1729,10 @@ Text_Init / Text_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable UI qmenu record/storage; this routine assigns `value.flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_qmenu.ml#L176)
 
 <a id="constant-constant-mq3-client-ui-qmenu-ui-blink-const-ui-blink-32-src-mq3-client-ui-qmenu-ml-1595305490"></a>
 ### UI_BLINK

@@ -9,8 +9,10 @@
 struct RenderCommandList
 ```
 
+Data record for `mq3.renderer.tr_local.RenderCommandList`; groups `cmds`, `used`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L57)
 
 ## Members
 
@@ -22,7 +24,7 @@ cmds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L57)
 
 <a id="field-field-mq3-renderer-tr-local-rendercommandlist-used-used-src-mq3-renderer-tr-local-ml-1048448324"></a>
 ### used
@@ -32,4 +34,4 @@ used
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L57)

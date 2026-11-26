@@ -9,8 +9,10 @@
 struct SurfaceState
 ```
 
+Data record for `mq3.renderer.tr_shade_runtime.SurfaceState`; groups `shader`, `fogNum`, `dlightBits`, `shaderTime`, `numIndexes`, `numVertexes`, and 2 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-surfacestate-fognum-fognum-src-mq3-renderer-tr-shade-runtime-ml-2136918549"></a>
 ### fogNum
@@ -32,7 +34,7 @@ fogNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-surfacestate-iteratorname-iteratorname-src-mq3-renderer-tr-shade-runtime-ml-1622115103"></a>
 ### iteratorName
@@ -42,7 +44,7 @@ iteratorName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-surfacestate-numindexes-numindexes-src-mq3-renderer-tr-shade-runtime-ml-1618781521"></a>
 ### numIndexes
@@ -52,7 +54,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-surfacestate-numpasses-numpasses-src-mq3-renderer-tr-shade-runtime-ml-1695765037"></a>
 ### numPasses
@@ -62,7 +64,7 @@ numPasses
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-surfacestate-numvertexes-numvertexes-src-mq3-renderer-tr-shade-runtime-ml-475768689"></a>
 ### numVertexes
@@ -72,7 +74,7 @@ numVertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-surfacestate-shader-shader-src-mq3-renderer-tr-shade-runtime-ml-1228817691"></a>
 ### shader
@@ -82,7 +84,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-surfacestate-shadertime-shadertime-src-mq3-renderer-tr-shade-runtime-ml-713988645"></a>
 ### shaderTime
@@ -92,4 +94,4 @@ shaderTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)

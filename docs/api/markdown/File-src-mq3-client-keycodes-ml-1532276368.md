@@ -15,12 +15,14 @@ Reachable from entry: **yes**
 function characterCode(key)
 ```
 
+Computes `key&(~K_CHAR_FLAG)` for keycodes `characterCode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding keycodes entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/keycodes.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/keycodes.ml#L128)
 
 <a id="function-function-mq3-client-keycodes-ischaracterevent-function-ischaracterevent-key-src-mq3-client-keycodes-ml-1092822955"></a>
 ### isCharacterEvent
@@ -29,12 +31,14 @@ function characterCode(key)
 function isCharacterEvent(key)
 ```
 
+Computes `(key&K_CHAR_FLAG)!=0` for keycodes `isCharacterEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding keycodes entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/keycodes.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/keycodes.ml#L125)
 
 <a id="function-function-mq3-client-keycodes-iskeynumber-function-iskeynumber-key-src-mq3-client-keycodes-ml-2026056091"></a>
 ### isKeyNumber
@@ -43,12 +47,14 @@ function isCharacterEvent(key)
 function isKeyNumber(key)
 ```
 
+Computes `key>=0 and key<K_LAST_KEY` for keycodes `isKeyNumber`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding keycodes entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/keycodes.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/keycodes.ml#L122)
 
 <a id="constant-constant-mq3-client-keycodes-k-alt-const-k-alt-136-src-mq3-client-keycodes-ml-1074156743"></a>
 ### K_ALT

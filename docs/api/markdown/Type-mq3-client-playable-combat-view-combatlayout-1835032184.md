@@ -9,8 +9,10 @@
 struct CombatLayout
 ```
 
+Stores playable combat view combat layout record, including `centerX`, `centerY`, `weaponX`, `weaponY`, `weaponWidth`, `weaponHeight`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ centerX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-centery-centery-src-mq3-client-playable-combat-view-ml-1169275575"></a>
 ### centerY
@@ -32,7 +34,7 @@ centerY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weaponheight-weaponheight-src-mq3-client-playable-combat-view-ml-623050753"></a>
 ### weaponHeight
@@ -42,7 +44,7 @@ weaponHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weaponwidth-weaponwidth-src-mq3-client-playable-combat-view-ml-163462139"></a>
 ### weaponWidth
@@ -52,7 +54,7 @@ weaponWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weaponx-weaponx-src-mq3-client-playable-combat-view-ml-664579599"></a>
 ### weaponX
@@ -62,7 +64,7 @@ weaponX
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)
 
 <a id="field-field-mq3-client-playable-combat-view-combatlayout-weapony-weapony-src-mq3-client-playable-combat-view-ml-1477719499"></a>
 ### weaponY
@@ -72,4 +74,4 @@ weaponY
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L20)

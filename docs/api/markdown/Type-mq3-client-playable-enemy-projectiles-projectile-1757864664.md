@@ -9,8 +9,10 @@
 struct Projectile
 ```
 
+Stores playable enemy projectiles projectile record, including `id`, `attacker`, `origin`, `velocity`, `spawnedAt`, `expiresAt` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ attacker
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-damage-damage-src-mq3-client-playable-enemy-projectiles-ml-1676349252"></a>
 ### damage
@@ -32,7 +34,7 @@ damage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-expiresat-expiresat-src-mq3-client-playable-enemy-projectiles-ml-1914600902"></a>
 ### expiresAt
@@ -42,7 +44,7 @@ expiresAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-id-id-src-mq3-client-playable-enemy-projectiles-ml-1638648472"></a>
 ### id
@@ -52,7 +54,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-origin-origin-src-mq3-client-playable-enemy-projectiles-ml-424176430"></a>
 ### origin
@@ -62,7 +64,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-radius-radius-src-mq3-client-playable-enemy-projectiles-ml-2002206990"></a>
 ### radius
@@ -72,7 +74,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-side-side-src-mq3-client-playable-enemy-projectiles-ml-33788560"></a>
 ### side
@@ -82,7 +84,7 @@ side
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-spawnedat-spawnedat-src-mq3-client-playable-enemy-projectiles-ml-398313718"></a>
 ### spawnedAt
@@ -92,7 +94,7 @@ spawnedAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-projectile-velocity-velocity-src-mq3-client-playable-enemy-projectiles-ml-25946148"></a>
 ### velocity
@@ -102,4 +104,4 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)

@@ -9,8 +9,10 @@
 struct Address
 ```
 
+Address record for server.oob_connect, containing `type`, `ip`, `port`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ ip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L17)
 
 <a id="field-field-mq3-server-oob-connect-address-port-port-src-mq3-server-oob-connect-ml-1124760219"></a>
 ### port
@@ -32,7 +34,7 @@ port
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L17)
 
 <a id="field-field-mq3-server-oob-connect-address-type-type-src-mq3-server-oob-connect-ml-2107907021"></a>
 ### type
@@ -42,4 +44,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L17)

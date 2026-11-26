@@ -9,8 +9,10 @@
 struct Loop
 ```
 
+Loop record for audio.snd_dma_runtime, containing `entity`, `origin`, `velocity`, `handle`, `realLoop`, `active`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-loop-entity-entity-src-mq3-audio-snd-dma-runtime-ml-1911926669"></a>
 ### entity
@@ -32,7 +34,7 @@ entity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-loop-handle-handle-src-mq3-audio-snd-dma-runtime-ml-74581115"></a>
 ### handle
@@ -42,7 +44,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-loop-origin-origin-src-mq3-audio-snd-dma-runtime-ml-280959791"></a>
 ### origin
@@ -52,7 +54,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-loop-realloop-realloop-src-mq3-audio-snd-dma-runtime-ml-536880379"></a>
 ### realLoop
@@ -62,7 +64,7 @@ realLoop
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-loop-velocity-velocity-src-mq3-audio-snd-dma-runtime-ml-333113949"></a>
 ### velocity
@@ -72,4 +74,4 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)

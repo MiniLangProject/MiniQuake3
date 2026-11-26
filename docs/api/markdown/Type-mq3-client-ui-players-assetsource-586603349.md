@@ -9,8 +9,10 @@
 struct AssetSource
 ```
 
+Stores UI players asset source record, including `files`, `animationFiles`, `actions`, `retailActive`, `diagnostics`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L54)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L61)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-assetsource-animationfiles-animationfiles-src-mq3-client-ui-players-ml-1798873456"></a>
 ### animationFiles
@@ -32,7 +34,7 @@ animationFiles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-assetsource-diagnostics-diagnostics-src-mq3-client-ui-players-ml-1805498710"></a>
 ### diagnostics
@@ -42,7 +44,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-assetsource-files-files-src-mq3-client-ui-players-ml-86811450"></a>
 ### files
@@ -52,7 +54,7 @@ files
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L61)
 
 <a id="field-field-mq3-client-ui-players-assetsource-retailactive-retailactive-src-mq3-client-ui-players-ml-1838489668"></a>
 ### retailActive
@@ -62,4 +64,4 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L61)

@@ -9,8 +9,10 @@
 struct Event
 ```
 
+Stores playable enemy events event record, including `kind`, `targetIndex`, `at`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ at
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L24)
 
 <a id="field-field-mq3-client-playable-enemy-events-event-kind-kind-src-mq3-client-playable-enemy-events-ml-1492584333"></a>
 ### kind
@@ -32,7 +34,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L24)
 
 <a id="field-field-mq3-client-playable-enemy-events-event-targetindex-targetindex-src-mq3-client-playable-enemy-events-ml-1505307553"></a>
 ### targetIndex
@@ -42,4 +44,4 @@ targetIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L24)

@@ -9,8 +9,10 @@
 struct SendFrame
 ```
 
+SendFrame record for server.snapshot_send, containing `firstEntity`, `numEntities`, `areaBits`, `playerState`, `messageSent`, `messageAcked`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-firstentity-firstentity-src-mq3-server-snapshot-send-ml-32103494"></a>
 ### firstEntity
@@ -32,7 +34,7 @@ firstEntity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L22)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-messageacked-messageacked-src-mq3-server-snapshot-send-ml-1452646924"></a>
 ### messageAcked
@@ -42,7 +44,7 @@ messageAcked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L27)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-messagesent-messagesent-src-mq3-server-snapshot-send-ml-147951374"></a>
 ### messageSent
@@ -52,7 +54,7 @@ messageSent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L26)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-messagesize-messagesize-src-mq3-server-snapshot-send-ml-1974506130"></a>
 ### messageSize
@@ -62,7 +64,7 @@ messageSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L28)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-numentities-numentities-src-mq3-server-snapshot-send-ml-2100619758"></a>
 ### numEntities
@@ -72,7 +74,7 @@ numEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L23)
 
 <a id="field-field-mq3-server-snapshot-send-sendframe-playerstate-playerstate-src-mq3-server-snapshot-send-ml-571404690"></a>
 ### playerState
@@ -82,4 +84,4 @@ playerState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L25)

@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Services record for server.init_runtime, containing `context`, `actionFn`, `randomFn`, `millisecondsFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L65)
 
 ## Members
 
@@ -22,7 +24,7 @@ actionFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L65)
 
 <a id="field-field-mq3-server-init-runtime-services-context-context-src-mq3-server-init-runtime-ml-1427835429"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L65)
 
 <a id="field-field-mq3-server-init-runtime-services-millisecondsfn-millisecondsfn-src-mq3-server-init-runtime-ml-1160726269"></a>
 ### millisecondsFn
@@ -42,7 +44,7 @@ millisecondsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L65)
 
 <a id="field-field-mq3-server-init-runtime-services-randomfn-randomfn-src-mq3-server-init-runtime-ml-970442727"></a>
 ### randomFn
@@ -52,4 +54,4 @@ randomFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L65)

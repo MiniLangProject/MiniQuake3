@@ -26,12 +26,12 @@ These signatures match client_message.Services and can be installed directly in 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `messageHost` | `dynamic` | — |  |
-| `clientState` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `messageHost` | `dynamic` | — | Record exposing `context`. |
+| `clientState` | `dynamic` | — | Mutable client sequencing record; accepted commands update its sequence, text, and next reliable-command time. |
+| `msg` | `dynamic` | — | Network message read at the current cursor: an int32 sequence followed by a C string. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L70)
 
 <a id="function-function-mq3-server-client-input-create-function-create-commandhost-dispatchhost-moveserver-movehost-serverstate-src-mq3-server-client-input-ml-13658252"></a>
 ### create
@@ -40,16 +40,21 @@ These signatures match client_message.Services and can be installed directly in 
 function create(commandHost, dispatchHost, moveServer, moveHost, serverState)
 ```
 
+Create client input in server.client_input; the normal completion returns `runtime`.
+
+Validation failures include `client input: missing service`.
+Direct state writes: `commandHost.context`, `commandHost.executeFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commandHost` | `dynamic` | — |  |
-| `dispatchHost` | `dynamic` | — |  |
-| `moveServer` | `dynamic` | — |  |
-| `moveHost` | `dynamic` | — |  |
-| `serverState` | `dynamic` | — |  |
+| `commandHost` | `dynamic` | — | Updated in place: `context`, `executeFn`. |
+| `dispatchHost` | `dynamic` | — | Initial `dispatchHost` field stored in the returned or constructed `mq3.server.client_input.Runtime` record. |
+| `moveServer` | `dynamic` | — | Initial `moveServer` field stored in the returned or constructed `mq3.server.client_input.Runtime` record. |
+| `moveHost` | `dynamic` | — | Initial `moveHost` field stored in the returned or constructed `mq3.server.client_input.Runtime` record. |
+| `serverState` | `dynamic` | — | Initial `serverState` field stored in the returned or constructed `mq3.server.client_input.Runtime` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L48)
 
 <a id="function-function-mq3-server-client-input-createclient-function-createclient-src-mq3-server-client-input-ml-1209894494"></a>
 ### createClient
@@ -58,8 +63,10 @@ function create(commandHost, dispatchHost, moveServer, moveHost, serverState)
 function createClient()
 ```
 
+Create client in server.client_input.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L22)
 
 <a id="function-function-mq3-server-client-input-executetext-function-executetext-commandhost-clientstate-text-clientok-src-mq3-server-client-input-ml-1851392709"></a>
 ### executeText
@@ -68,15 +75,17 @@ function createClient()
 function executeText(commandHost, clientState, text, clientOk)
 ```
 
+Execute text in server.client_input; the normal completion returns `commandDispatch.execute(runtime.dispatchHost, clientState, text, clientOk, runtime.serverState)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commandHost` | `dynamic` | — |  |
-| `clientState` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `clientOk` | `dynamic` | — |  |
+| `commandHost` | `dynamic` | — | Record exposing `context`. |
+| `clientState` | `dynamic` | — | Client state passed as `clientState` to `mq3.server.client_command_dispatch.execute`. |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.server.client_command_dispatch.execute`. |
+| `clientOk` | `dynamic` | — | Client ok passed as `clientOk` to `mq3.server.client_command_dispatch.execute`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L34)
 
 - [mq3.server.client_input.Runtime](Type-mq3-server-client-input-runtime-753799615.md) — struct
 <a id="function-function-mq3-server-client-input-settime-function-settime-runtime-time-src-mq3-server-client-input-ml-573087527"></a>
@@ -86,13 +95,17 @@ function executeText(commandHost, clientState, text, clientOk)
 function setTime(runtime, time)
 ```
 
+Set time in server.client_input.
+
+Validation failures include `client input: missing runtime`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `commandHost`, `moveServer`. |
+| `time` | `dynamic` | — | Time operand used by `setTime`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L60)
 
 <a id="function-function-mq3-server-client-input-usermovefn-function-usermovefn-messagehost-clientstate-msg-isdelta-src-mq3-server-client-input-ml-1558293192"></a>
 ### userMoveFn
@@ -101,12 +114,16 @@ function setTime(runtime, time)
 function userMoveFn(messageHost, clientState, msg, isDelta)
 ```
 
+Compute user move fn in server.client_input; the normal completion returns `userMove.execute(runtime.moveServer, clientState, runtime.moveHost, msg, isDelta)`.
+
+Validation failures include `client input: missing runtime`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `messageHost` | `dynamic` | — |  |
-| `clientState` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
-| `isDelta` | `dynamic` | — |  |
+| `messageHost` | `dynamic` | — | Record exposing `context`. |
+| `clientState` | `dynamic` | — | Client state passed as `clientState` to `mq3.server.user_move.execute`. |
+| `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.server.user_move.execute`. |
+| `isDelta` | `dynamic` | — | Is delta passed as `isDelta` to `mq3.server.user_move.execute`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L82)

@@ -9,8 +9,10 @@
 struct FrameSample
 ```
 
+Stores playable viewmodel frame sample record, including `classname`, `oldFrame`, `frame`, `backlerp`, `switching`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L38)
 
 <a id="field-field-mq3-client-playable-viewmodel-framesample-classname-classname-src-mq3-client-playable-viewmodel-ml-1866230184"></a>
 ### classname
@@ -32,7 +34,7 @@ classname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L38)
 
 <a id="field-field-mq3-client-playable-viewmodel-framesample-frame-frame-src-mq3-client-playable-viewmodel-ml-1363116400"></a>
 ### frame
@@ -42,7 +44,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L38)
 
 <a id="field-field-mq3-client-playable-viewmodel-framesample-oldframe-oldframe-src-mq3-client-playable-viewmodel-ml-263449204"></a>
 ### oldFrame
@@ -52,7 +54,7 @@ oldFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L38)
 
 <a id="field-field-mq3-client-playable-viewmodel-framesample-switching-switching-src-mq3-client-playable-viewmodel-ml-359028552"></a>
 ### switching
@@ -62,4 +64,4 @@ switching
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L38)

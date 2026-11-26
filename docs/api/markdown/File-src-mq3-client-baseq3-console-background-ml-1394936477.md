@@ -23,15 +23,17 @@ Reachable from entry: **yes**
 function draw(media, width, height, now)
 ```
 
+Calls `mq3.platform.playable_multitexture.setAlphaTest`, `mq3.platform.playable_multitexture.setTextureClamp`, `mq3.client.baseq3_console_background.drawLayer` and additional helpers from base Quake III console background `draw`. The final path returns `len(media.layers)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `media` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `media` | `dynamic` | — | Record read through `media.layers`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `draw`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `draw`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L78)
 
 <a id="function-function-mq3-client-baseq3-console-background-drawlayer-function-drawlayer-layer-width-height-now-src-mq3-client-baseq3-console-background-ml-1499912194"></a>
 ### drawLayer
@@ -40,15 +42,17 @@ function draw(media, width, height, now)
 function drawLayer(layer, width, height, now)
 ```
 
+Calls `mq3.platform.playable_multitexture.setState`, `mq3.client.baseq3_console_background.point`, `mq3.renderer.playable_materials.transformUVAt` and additional helpers from base Quake III console background `drawLayer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `layer` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `layer` | `dynamic` | — | Record read through `layer.stage.blend`, `layer.stage`, `layer.slot`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawLayer`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `drawLayer`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L64)
 
 <a id="function-function-mq3-client-baseq3-console-background-fail-function-fail-message-src-mq3-client-baseq3-console-background-ml-1320637069"></a>
 ### fail
@@ -57,12 +61,14 @@ function drawLayer(layer, width, height, now)
 function fail(message)
 ```
 
+Creates the base Quake III console background error `7745` with diagnostic text `"Baseq3 console background: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"Baseq3 console background: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L23)
 
 - [mq3.client.baseq3_console_background.Layer](Type-mq3-client-baseq3-console-background-layer-1829146384.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-load-function-load-archive-firsttextureslot-src-mq3-client-baseq3-console-background-ml-1284111481"></a>
@@ -72,13 +78,15 @@ function fail(message)
 function load(archive, firstTextureSlot)
 ```
 
+Calls `mq3.renderer.playable_materials.buildScriptIndex`, `mq3.renderer.shader_parser.parseIndexed`, `mq3.renderer.playable_materials.loadRuntimeStage` and additional helpers from base Quake III console background `load`. The final path returns `Media(SHADER_NAME,layers,firstTextureSlot)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `firstTextureSlot` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `firstTextureSlot` | `dynamic` | — | First texture slot reserved for this asset collection. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L27)
 
 - [mq3.client.baseq3_console_background.Media](Type-mq3-client-baseq3-console-background-media-1898967553.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-point-function-point-x-y-src-mq3-client-baseq3-console-background-ml-633670739"></a>
@@ -88,13 +96,15 @@ function load(archive, firstTextureSlot)
 function point(x, y)
 ```
 
+Creates a `mq3.client.baseq3_console_background.Point` record. Assigns `x` from `x`, `y` from `y`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
+| `x` | `dynamic` | — | Value used to initialize `Point.x`. |
+| `y` | `dynamic` | — | Value used to initialize `Point.y`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L58)
 
 - [mq3.client.baseq3_console_background.Point](Type-mq3-client-baseq3-console-background-point-1935872503.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-release-function-release-media-src-mq3-client-baseq3-console-background-ml-1858720838"></a>
@@ -104,12 +114,14 @@ function point(x, y)
 function release(media)
 ```
 
+Calls `mq3.platform.playable_window.releaseTexture` from base Quake III console background `release`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `media` | `dynamic` | — |  |
+| `media` | `dynamic` | — | Record read through `media.layers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L54)
 
 <a id="constant-constant-mq3-client-baseq3-console-background-required-textures-const-required-textures-2-src-mq3-client-baseq3-console-background-ml-2127943845"></a>
 ### REQUIRED_TEXTURES
@@ -138,9 +150,11 @@ const SHADER_NAME = "console"
 function upload(media)
 ```
 
+Calls `mq3.platform.playable_window.uploadTextureNoMip`, `mq3.client.baseq3_console_background.release` from base Quake III console background `upload`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `media` | `dynamic` | — |  |
+| `media` | `dynamic` | — | Record read through `media.layers`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L47)

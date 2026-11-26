@@ -9,8 +9,10 @@
 struct Vertex
 ```
 
+Data record for `mq3.renderer.surface_polychain.Vertex`; groups `xyz`, `st`, `modulate`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ modulate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-polychain-vertex-st-st-src-mq3-renderer-surface-polychain-ml-527012657"></a>
 ### st
@@ -32,7 +34,7 @@ st
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-polychain-vertex-xyz-xyz-src-mq3-renderer-surface-polychain-ml-1795513323"></a>
 ### xyz
@@ -42,4 +44,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)

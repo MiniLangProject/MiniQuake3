@@ -9,8 +9,10 @@
 struct GraphSample
 ```
 
+Stores engine client scrn runtime graph sample record, including `value`, `color`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L24)
 
 <a id="field-field-mq3-client-cl-scrn-runtime-graphsample-value-value-src-mq3-client-cl-scrn-runtime-ml-2016169667"></a>
 ### value
@@ -32,4 +34,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_scrn_runtime.ml#L24)

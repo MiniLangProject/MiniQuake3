@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Data record for `mq3.renderer.playable_fog.Catalog`; groups `fogs`, `textureSlot`, `texture`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ fogs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-fog-catalog-texture-texture-src-mq3-renderer-playable-fog-ml-446142676"></a>
 ### texture
@@ -32,7 +34,7 @@ texture
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-fog-catalog-textureslot-textureslot-src-mq3-renderer-playable-fog-ml-1676939476"></a>
 ### textureSlot
@@ -42,4 +44,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L23)

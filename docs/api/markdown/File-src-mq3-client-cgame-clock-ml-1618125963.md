@@ -20,14 +20,16 @@ Reachable from entry: **yes**
 function create(realtime, snapshotNumber, snapshotServerTime)
 ```
 
+Calls `mq3.client.cgame_time.create`, `mq3.client.cgame_time.services`, `mq3.client.cgame_clock.Clock` from client game clock `create`. The final path returns `Clock(state,snapshotNumber)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `realtime` | `dynamic` | — |  |
-| `snapshotNumber` | `dynamic` | — |  |
-| `snapshotServerTime` | `dynamic` | — |  |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
+| `snapshotNumber` | `dynamic` | — | Value used by `if realtime<0 or snapshotNumber<0 or snapshotServerTime<0 then return fail("negative initial time or sequence") end if`. |
+| `snapshotServerTime` | `dynamic` | — | Value assigned to `state.snapServerTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L21)
 
 <a id="function-function-mq3-client-cgame-clock-fail-function-fail-message-src-mq3-client-cgame-clock-ml-1249441597"></a>
 ### fail
@@ -36,12 +38,14 @@ function create(realtime, snapshotNumber, snapshotServerTime)
 function fail(message)
 ```
 
+Creates the client game clock error `7691` with diagnostic text `"cgame clock: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"cgame clock: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L15)
 
 <a id="function-function-mq3-client-cgame-clock-frame-function-frame-clock-realtime-src-mq3-client-cgame-clock-ml-1929941099"></a>
 ### frame
@@ -50,13 +54,15 @@ function fail(message)
 function frame(clock, realtime)
 ```
 
+Updates `clock.state.realtime` during client game clock `frame`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clock` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `clock` | `dynamic` | — | Mutable client game clock record/storage; this routine assigns `clock.state.realtime`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L70)
 
 - [mq3.client.cgame_clock.FrameTime](Type-mq3-client-cgame-clock-frametime-890492891.md) — struct
 <a id="function-function-mq3-client-cgame-clock-publishsnapshot-function-publishsnapshot-clock-snapshotnumber-servertime-snapflags-src-mq3-client-cgame-clock-ml-900447888"></a>
@@ -66,15 +72,17 @@ function frame(clock, realtime)
 function publishSnapshot(clock, snapshotNumber, serverTime, snapFlags)
 ```
 
+Updates `clock.snapshotNumber`, `clock.state.snapServerTime`, `clock.state.snapFlags`, `clock.state.snapValid` and additional values during client game clock `publishSnapshot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clock` | `dynamic` | — |  |
-| `snapshotNumber` | `dynamic` | — |  |
-| `serverTime` | `dynamic` | — |  |
-| `snapFlags` | `dynamic` | — |  |
+| `clock` | `dynamic` | — | Mutable client game clock record/storage; this routine assigns `clock.snapshotNumber`, `clock.state.snapServerTime`, `clock.state.snapFlags`, `clock.state.snapValid` and additional values. |
+| `snapshotNumber` | `dynamic` | — | Value assigned to `clock.snapshotNumber`. |
+| `serverTime` | `dynamic` | — | Authoritative server timestamp in milliseconds. |
+| `snapFlags` | `dynamic` | — | Snapshot flags controlling validity, interpolation and server restarts. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L35)
 
 <a id="function-function-mq3-client-cgame-clock-setpaused-function-setpaused-clock-serverpaused-clientpaused-serverrunning-src-mq3-client-cgame-clock-ml-1490183122"></a>
 ### setPaused
@@ -83,15 +91,17 @@ function publishSnapshot(clock, snapshotNumber, serverTime, snapFlags)
 function setPaused(clock, serverPaused, clientPaused, serverRunning)
 ```
 
+Updates `clock.state.serverPaused`, `clock.state.clientPaused`, `clock.state.serverRunning` during client game clock `setPaused`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clock` | `dynamic` | — |  |
-| `serverPaused` | `dynamic` | — |  |
-| `clientPaused` | `dynamic` | — |  |
-| `serverRunning` | `dynamic` | — |  |
+| `clock` | `dynamic` | — | Mutable client game clock record/storage; this routine assigns `clock.state.serverPaused`, `clock.state.clientPaused`, `clock.state.serverRunning`. |
+| `serverPaused` | `dynamic` | — | Value assigned to `clock.state.serverPaused`. |
+| `clientPaused` | `dynamic` | — | Value assigned to `clock.state.clientPaused`. |
+| `serverRunning` | `dynamic` | — | Value assigned to `clock.state.serverRunning`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L61)
 
 <a id="function-function-mq3-client-cgame-clock-settimenudge-function-settimenudge-clock-value-src-mq3-client-cgame-clock-ml-1306256899"></a>
 ### setTimeNudge
@@ -100,10 +110,12 @@ function setPaused(clock, serverPaused, clientPaused, serverRunning)
 function setTimeNudge(clock, value)
 ```
 
+Updates `clock.state.timeNudge` during client game clock `setTimeNudge`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `clock` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `clock` | `dynamic` | — | Mutable client game clock record/storage; this routine assigns `clock.state.timeNudge`. |
+| `value` | `dynamic` | — | Value assigned to `clock.state.timeNudge`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L51)

@@ -9,8 +9,10 @@
 struct Script
 ```
 
+`Script` record for l script, containing `runtime`, `source`, `lastOffset`, `lastLine` and `whitespaceStart` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 ## Members
 
@@ -22,7 +24,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-freed-freed-src-mq3-botlib-l-script-ml-360271856"></a>
 ### freed
@@ -32,7 +34,7 @@ freed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-lastline-lastline-src-mq3-botlib-l-script-ml-1337106356"></a>
 ### lastLine
@@ -42,7 +44,7 @@ lastLine
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-lastoffset-lastoffset-src-mq3-botlib-l-script-ml-243450486"></a>
 ### lastOffset
@@ -52,7 +54,7 @@ lastOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-punctuations-punctuations-src-mq3-botlib-l-script-ml-286843726"></a>
 ### punctuations
@@ -62,7 +64,7 @@ punctuations
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-runtime-runtime-src-mq3-botlib-l-script-ml-1847999336"></a>
 ### runtime
@@ -72,7 +74,7 @@ runtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-source-source-src-mq3-botlib-l-script-ml-1460214690"></a>
 ### source
@@ -82,7 +84,7 @@ source
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-token-token-src-mq3-botlib-l-script-ml-1594311040"></a>
 ### token
@@ -92,7 +94,7 @@ token
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-tokenavailable-tokenavailable-src-mq3-botlib-l-script-ml-1349980064"></a>
 ### tokenAvailable
@@ -102,7 +104,7 @@ tokenAvailable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-whitespaceend-whitespaceend-src-mq3-botlib-l-script-ml-67434304"></a>
 ### whitespaceEnd
@@ -112,7 +114,7 @@ whitespaceEnd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)
 
 <a id="field-field-mq3-botlib-l-script-script-whitespacestart-whitespacestart-src-mq3-botlib-l-script-ml-1734531020"></a>
 ### whitespaceStart
@@ -122,4 +124,4 @@ whitespaceStart
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L95)

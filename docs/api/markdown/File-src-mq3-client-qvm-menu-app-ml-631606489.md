@@ -53,12 +53,14 @@ const CINEMATIC_TEXTURE_SLOT = 4055
 function fail(message)
 ```
 
+Creates the QVM menu app error `7688` with diagnostic text `"QVM menu: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"QVM menu: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L42)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-first-texture-slot-const-first-texture-slot-1-src-mq3-client-qvm-menu-app-ml-1030347800"></a>
 ### FIRST_TEXTURE_SLOT
@@ -77,14 +79,16 @@ const FIRST_TEXTURE_SLOT = 1
 function loadLocalMatch(archive, session, qvmRoot)
 ```
 
+Updates `session.action` during QVM menu app `loadLocalMatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `session` | `dynamic` | — |  |
-| `qvmRoot` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `session` | `dynamic` | — | Mutable QVM menu app record/storage; this routine assigns `session.action`. |
+| `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L198)
 
 <a id="function-function-mq3-client-qvm-menu-app-loadmap-function-loadmap-archive-dataroot-name-src-mq3-client-qvm-menu-app-ml-1837954293"></a>
 ### loadMap
@@ -93,14 +97,16 @@ function loadLocalMatch(archive, session, qvmRoot)
 function loadMap(archive, dataRoot, name)
 ```
 
+Calls `mq3.engine.local_qvm_match.desktopFilePath`, `std.string.indexOf`, `mq3.format.pk3.read` and additional helpers from QVM menu app `loadMap`. The final path returns `bsp.load(mapData)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `dataRoot` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `dataRoot` | `dynamic` | — | Value used by `if name=="" or match.desktopFilePath(dataRoot,relative)=="" then return fail("invalid map name") end if`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding QVM menu app resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L186)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-max-texture-slots-const-max-texture-slots-300-src-mq3-client-qvm-menu-app-ml-572085514"></a>
 ### MAX_TEXTURE_SLOTS
@@ -119,17 +125,19 @@ const MAX_TEXTURE_SLOTS = 300
 function renderStream(baseArchive, archive, installRoot, qvmRoot, session, source)
 ```
 
+Updates `session.action` during QVM menu app `renderStream`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `baseArchive` | `dynamic` | — |  |
-| `archive` | `dynamic` | — |  |
-| `installRoot` | `dynamic` | — |  |
-| `qvmRoot` | `dynamic` | — |  |
-| `session` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
+| `baseArchive` | `dynamic` | — | Value used by `mounted=try(mods.mount(baseArchive,installRoot,game))`. |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `installRoot` | `dynamic` | — | Value used by `mounted=try(mods.mount(baseArchive,installRoot,game))`. |
+| `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. |
+| `session` | `dynamic` | — | Mutable QVM menu app record/storage; this routine assigns `session.action`. |
+| `source` | `dynamic` | — | Record read through `source.demo`, `source.transport.mapName`, `source.transport`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L244)
 
 <a id="function-function-mq3-client-qvm-menu-app-run-function-run-archive-bootstrapmap-qvmroot-src-mq3-client-qvm-menu-app-ml-1503318232"></a>
 ### run
@@ -138,14 +146,16 @@ function renderStream(baseArchive, archive, installRoot, qvmRoot, session, sourc
 function run(archive, bootstrapMap, qvmRoot)
 ```
 
+Calls `mq3.platform.playable_window.executableDirectory`, `mq3.client.desktop_session.create`, `mq3.client.qvm_menu_app.loadLocalMatch` and additional helpers from QVM menu app `run`. The final path returns `0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `bootstrapMap` | `dynamic` | — |  |
-| `qvmRoot` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `bootstrapMap` | `dynamic` | — | Value used by `result=try(runMenu(activeArchive,bootstrapMap,qvmRoot,session,request=="levelselect"))`. |
+| `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L300)
 
 <a id="function-function-mq3-client-qvm-menu-app-runcinematic-function-runcinematic-archive-session-measurepixels-src-mq3-client-qvm-menu-app-ml-1091549707"></a>
 ### runCinematic
@@ -158,12 +168,12 @@ CL_PlayCinematic_f takes ownership of the disconnected screen. When the system R
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `session` | `dynamic` | — |  |
-| `measurePixels` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `session` | `dynamic` | — | Record read through `session.target`, `session.videoWidth`, `session.videoHeight`. |
+| `measurePixels` | `dynamic` | — | Value used by `if measurePixels then lit=window.presentedNonBlack()`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L125)
 
 <a id="function-function-mq3-client-qvm-menu-app-runmenu-function-runmenu-archive-bootstrapmap-qvmroot-session-openlevelselect-src-mq3-client-qvm-menu-app-ml-538961304"></a>
 ### runMenu
@@ -172,16 +182,18 @@ CL_PlayCinematic_f takes ownership of the disconnected screen. When the system R
 function runMenu(archive, bootstrapMap, qvmRoot, session, openLevelSelect)
 ```
 
+Updates `session.videoWidth`, `session.videoHeight`, `session.videoRestart` during QVM menu app `runMenu`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `bootstrapMap` | `dynamic` | — |  |
-| `qvmRoot` | `dynamic` | — |  |
-| `session` | `dynamic` | — |  |
-| `openLevelSelect` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. Record read through `archive.modArchive`. |
+| `bootstrapMap` | `dynamic` | — | Value used by `state=match.bootUiShellSettings(archive,bootstrapMap,1000,qvmRoot,session.settings)`. |
+| `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. |
+| `session` | `dynamic` | — | Mutable QVM menu app record/storage; this routine assigns `session.videoWidth`, `session.videoHeight`, `session.videoRestart`. |
+| `openLevelSelect` | `dynamic` | — | Value used by `if openLevelSelect then match.executeClientConsole(state,"levelselect") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L50)
 
 <a id="function-function-mq3-client-qvm-menu-app-runstream-function-runstream-basearchive-archive-installroot-qvmroot-session-demoplaying-src-mq3-client-qvm-menu-app-ml-255400437"></a>
 ### runStream
@@ -190,17 +202,19 @@ function runMenu(archive, bootstrapMap, qvmRoot, session, openLevelSelect)
 function runStream(baseArchive, archive, installRoot, qvmRoot, session, demoPlaying)
 ```
 
+Updates `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded` during QVM menu app `runStream`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `baseArchive` | `dynamic` | — |  |
-| `archive` | `dynamic` | — |  |
-| `installRoot` | `dynamic` | — |  |
-| `qvmRoot` | `dynamic` | — |  |
-| `session` | `dynamic` | — |  |
-| `demoPlaying` | `dynamic` | — |  |
+| `baseArchive` | `dynamic` | — | Value used by `result=try(renderStream(baseArchive,archive,installRoot,qvmRoot,session,source))`. |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `installRoot` | `dynamic` | — | Value used by `if not demoPlaying then remote.setBasePackages(transport,installRoot+"/baseq3") end if`. |
+| `qvmRoot` | `dynamic` | — | Directory containing the retail QVM bytecode files. |
+| `session` | `dynamic` | — | Mutable QVM menu app record/storage; this routine assigns `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded`. |
+| `demoPlaying` | `dynamic` | — | Value used by `if demoPlaying then`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L276)
 
 - [mq3.client.qvm_menu_app.ScreenPoint](Type-mq3-client-qvm-menu-app-screenpoint-1566616169.md) — struct
 <a id="constant-constant-mq3-client-qvm-menu-app-source-height-const-source-height-720-src-mq3-client-qvm-menu-app-ml-1893579200"></a>
@@ -230,13 +244,15 @@ const SOURCE_WIDTH = 1280
 function switchGame(session, mounted)
 ```
 
+Updates `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded` and additional values during QVM menu app `switchGame`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `session` | `dynamic` | — |  |
-| `mounted` | `dynamic` | — |  |
+| `session` | `dynamic` | — | Mutable QVM menu app record/storage; this routine assigns `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded` and additional values. |
+| `mounted` | `dynamic` | — | Record read through `mounted.game`, `mounted.dataRoot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L212)
 
 <a id="function-function-mq3-client-qvm-menu-app-waitforserver-function-waitforserver-live-src-mq3-client-qvm-menu-app-ml-2042830486"></a>
 ### waitForServer
@@ -245,9 +261,11 @@ function switchGame(session, mounted)
 function waitForServer(live)
 ```
 
+Calls `mq3.platform.playable_window.shouldClose`, `mq3.platform.playable_window.milliseconds`, `mq3.client.remote_play.pump` and additional helpers from QVM menu app `waitForServer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `live` | `dynamic` | — |  |
+| `live` | `dynamic` | — | Value used by `ready=try(remote.pump(live,now,64))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L223)

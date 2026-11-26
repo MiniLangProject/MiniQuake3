@@ -9,8 +9,10 @@
 struct Event
 ```
 
+Stores engine client keys runtime event record, including `kind`, `key`, `down`, `text`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 ## Members
 
@@ -22,7 +24,7 @@ down
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-event-key-key-src-mq3-client-cl-keys-runtime-ml-1590750113"></a>
 ### key
@@ -32,7 +34,7 @@ key
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-event-kind-kind-src-mq3-client-cl-keys-runtime-ml-666874621"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-event-text-text-src-mq3-client-cl-keys-runtime-ml-1726210635"></a>
 ### text
@@ -52,4 +54,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)

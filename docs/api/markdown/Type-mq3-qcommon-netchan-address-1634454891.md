@@ -9,8 +9,10 @@
 struct Address
 ```
 
+Address record for qcommon.netchan, containing `type`, `ip`, `port`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ ip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L18)
 
 <a id="field-field-mq3-qcommon-netchan-address-port-port-src-mq3-qcommon-netchan-ml-1261334429"></a>
 ### port
@@ -32,7 +34,7 @@ port
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L18)
 
 <a id="field-field-mq3-qcommon-netchan-address-type-type-src-mq3-qcommon-netchan-ml-693202551"></a>
 ### type
@@ -42,4 +44,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L18)

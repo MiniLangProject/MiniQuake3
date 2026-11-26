@@ -9,8 +9,10 @@
 struct Snapshot
 ```
 
+Snapshot record for engine.local_qvm_match, containing `serverTime`, `playerState`, `entities`, `areaBits`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L173)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-entities-entities-src-mq3-engine-local-qvm-match-ml-1694939923"></a>
 ### entities
@@ -32,7 +34,7 @@ entities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-playerstate-playerstate-src-mq3-engine-local-qvm-match-ml-1023706877"></a>
 ### playerState
@@ -42,7 +44,7 @@ playerState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshot-servertime-servertime-src-mq3-engine-local-qvm-match-ml-1582300509"></a>
 ### serverTime
@@ -52,4 +54,4 @@ serverTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L180)

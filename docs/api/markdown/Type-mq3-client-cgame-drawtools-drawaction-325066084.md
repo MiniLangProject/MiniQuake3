@@ -9,8 +9,10 @@
 struct DrawAction
 ```
 
+Stores client game drawtools draw action record, including `kind`, `x`, `y`, `width`, `height`, `s1` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-dispatched-dispatched-src-mq3-client-cgame-drawtools-ml-1259257467"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-height-height-src-mq3-client-cgame-drawtools-ml-2145629799"></a>
 ### height
@@ -42,7 +44,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-kind-kind-src-mq3-client-cgame-drawtools-ml-2001019553"></a>
 ### kind
@@ -52,7 +54,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-s1-s1-src-mq3-client-cgame-drawtools-ml-1301568337"></a>
 ### s1
@@ -62,7 +64,7 @@ s1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-s2-s2-src-mq3-client-cgame-drawtools-ml-1721327415"></a>
 ### s2
@@ -72,7 +74,7 @@ s2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-shader-shader-src-mq3-client-cgame-drawtools-ml-459393023"></a>
 ### shader
@@ -82,7 +84,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-t1-t1-src-mq3-client-cgame-drawtools-ml-1821419419"></a>
 ### t1
@@ -92,7 +94,7 @@ t1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-t2-t2-src-mq3-client-cgame-drawtools-ml-1770165249"></a>
 ### t2
@@ -102,7 +104,7 @@ t2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-width-width-src-mq3-client-cgame-drawtools-ml-520410557"></a>
 ### width
@@ -112,7 +114,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-x-x-src-mq3-client-cgame-drawtools-ml-995057"></a>
 ### x
@@ -122,7 +124,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)
 
 <a id="field-field-mq3-client-cgame-drawtools-drawaction-y-y-src-mq3-client-cgame-drawtools-ml-1211311869"></a>
 ### y
@@ -132,4 +134,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L37)

@@ -9,8 +9,10 @@
 struct Source
 ```
 
+`Source` record for l precomp, containing `runtime`, `handle`, `includePath`, `punctuations` and `lastToken` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 ## Members
 
@@ -22,7 +24,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 <a id="field-field-mq3-botlib-l-precomp-source-includepath-includepath-src-mq3-botlib-l-precomp-ml-848479300"></a>
 ### includePath
@@ -32,7 +34,7 @@ includePath
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 <a id="field-field-mq3-botlib-l-precomp-source-indents-indents-src-mq3-botlib-l-precomp-ml-958931076"></a>
 ### indents
@@ -42,7 +44,7 @@ indents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 <a id="field-field-mq3-botlib-l-precomp-source-lasttoken-lasttoken-src-mq3-botlib-l-precomp-ml-805760"></a>
 ### lastToken
@@ -52,7 +54,7 @@ lastToken
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 <a id="field-field-mq3-botlib-l-precomp-source-punctuations-punctuations-src-mq3-botlib-l-precomp-ml-1934734922"></a>
 ### punctuations
@@ -62,7 +64,7 @@ punctuations
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 <a id="field-field-mq3-botlib-l-precomp-source-runtime-runtime-src-mq3-botlib-l-precomp-ml-1201162868"></a>
 ### runtime
@@ -72,7 +74,7 @@ runtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 <a id="field-field-mq3-botlib-l-precomp-source-scripts-scripts-src-mq3-botlib-l-precomp-ml-1412905404"></a>
 ### scripts
@@ -82,4 +84,4 @@ scripts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)

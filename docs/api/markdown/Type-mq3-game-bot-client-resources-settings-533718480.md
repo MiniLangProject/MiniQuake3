@@ -9,8 +9,10 @@
 struct Settings
 ```
 
+`Settings` record for bot client resources, containing `characterfile`, `skill` and `team`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ characterfile
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L22)
 
 <a id="field-field-mq3-game-bot-client-resources-settings-skill-skill-src-mq3-game-bot-client-resources-ml-1124777072"></a>
 ### skill
@@ -32,7 +34,7 @@ skill
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L23)
 
 <a id="field-field-mq3-game-bot-client-resources-settings-team-team-src-mq3-game-bot-client-resources-ml-1441894238"></a>
 ### team
@@ -42,4 +44,4 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_client_resources.ml#L24)

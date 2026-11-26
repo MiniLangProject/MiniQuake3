@@ -9,8 +9,10 @@
 struct Entry
 ```
 
+`Entry` record for aas routing cache, containing `type`, `cluster`, `areaNum`, `goalAreaNum` and `travelFlags` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-cluster-cluster-src-mq3-botlib-aas-routing-cache-ml-1262464611"></a>
 ### cluster
@@ -32,7 +34,7 @@ cluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-generation-generation-src-mq3-botlib-aas-routing-cache-ml-913816931"></a>
 ### generation
@@ -42,7 +44,7 @@ generation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-goalareanum-goalareanum-src-mq3-botlib-aas-routing-cache-ml-1256875555"></a>
 ### goalAreaNum
@@ -52,7 +54,7 @@ goalAreaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-hasorigin-hasorigin-src-mq3-botlib-aas-routing-cache-ml-489982835"></a>
 ### hasOrigin
@@ -62,7 +64,7 @@ hasOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-originbits-originbits-src-mq3-botlib-aas-routing-cache-ml-513205487"></a>
 ### originBits
@@ -72,7 +74,7 @@ originBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-route-route-src-mq3-botlib-aas-routing-cache-ml-796757551"></a>
 ### route
@@ -82,7 +84,7 @@ route
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-serial-serial-src-mq3-botlib-aas-routing-cache-ml-327580899"></a>
 ### serial
@@ -92,7 +94,7 @@ serial
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-travelflags-travelflags-src-mq3-botlib-aas-routing-cache-ml-1200403227"></a>
 ### travelFlags
@@ -102,7 +104,7 @@ travelFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-entry-type-type-src-mq3-botlib-aas-routing-cache-ml-1788751843"></a>
 ### type
@@ -112,4 +114,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)

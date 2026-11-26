@@ -9,8 +9,10 @@
 struct ElevatorState
 ```
 
+`ElevatorState` record for ai move runtime, containing `onMover`, `down`, `bottomCenter` and `maxBarrier`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
 
 ## Members
 
@@ -22,7 +24,7 @@ bottomCenter
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-elevatorstate-down-down-src-mq3-botlib-ai-move-runtime-ml-601289080"></a>
 ### down
@@ -32,7 +34,7 @@ down
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-elevatorstate-maxbarrier-maxbarrier-src-mq3-botlib-ai-move-runtime-ml-443047090"></a>
 ### maxBarrier
@@ -42,7 +44,7 @@ maxBarrier
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-elevatorstate-onmover-onmover-src-mq3-botlib-ai-move-runtime-ml-926520704"></a>
 ### onMover
@@ -52,4 +54,4 @@ onMover
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L71)

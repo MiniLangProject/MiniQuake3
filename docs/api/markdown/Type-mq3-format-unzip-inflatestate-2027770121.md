@@ -9,8 +9,10 @@
 struct InflateState
 ```
 
+InflateState record for format.unzip, containing `windowBits`, `initialized`, `totalIn`, `totalOut`, `output`, `dictionary`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)
 
 ## Members
 
@@ -22,7 +24,7 @@ dictionary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)
 
 <a id="field-field-mq3-format-unzip-inflatestate-initialized-initialized-src-mq3-format-unzip-ml-119126461"></a>
 ### initialized
@@ -32,7 +34,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)
 
 <a id="field-field-mq3-format-unzip-inflatestate-output-output-src-mq3-format-unzip-ml-14240331"></a>
 ### output
@@ -42,7 +44,7 @@ output
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)
 
 <a id="field-field-mq3-format-unzip-inflatestate-syncpoint-syncpoint-src-mq3-format-unzip-ml-301703237"></a>
 ### syncPoint
@@ -52,7 +54,7 @@ syncPoint
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)
 
 <a id="field-field-mq3-format-unzip-inflatestate-totalin-totalin-src-mq3-format-unzip-ml-790872617"></a>
 ### totalIn
@@ -62,7 +64,7 @@ totalIn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)
 
 <a id="field-field-mq3-format-unzip-inflatestate-totalout-totalout-src-mq3-format-unzip-ml-1124309049"></a>
 ### totalOut
@@ -72,7 +74,7 @@ totalOut
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)
 
 <a id="field-field-mq3-format-unzip-inflatestate-windowbits-windowbits-src-mq3-format-unzip-ml-1858792285"></a>
 ### windowBits
@@ -82,4 +84,4 @@ windowBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L36)

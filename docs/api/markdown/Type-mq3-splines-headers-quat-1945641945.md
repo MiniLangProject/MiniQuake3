@@ -9,8 +9,10 @@
 struct Quat
 ```
 
+Quat record for splines.headers, containing `x`, `y`, `z`, `w`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ w
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
 
 <a id="field-field-mq3-splines-headers-quat-x-x-src-mq3-splines-headers-ml-1179477842"></a>
 ### x
@@ -32,7 +34,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
 
 <a id="field-field-mq3-splines-headers-quat-y-y-src-mq3-splines-headers-ml-378268534"></a>
 ### y
@@ -42,7 +44,7 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)
 
 <a id="field-field-mq3-splines-headers-quat-z-z-src-mq3-splines-headers-ml-126238530"></a>
 ### z
@@ -52,4 +54,4 @@ z
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L19)

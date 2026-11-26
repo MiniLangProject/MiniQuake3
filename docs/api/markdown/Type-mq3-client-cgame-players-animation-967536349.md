@@ -9,8 +9,10 @@
 struct Animation
 ```
 
+Stores client game players animation record, including `firstFrame`, `numFrames`, `loopFrames`, `frameLerp`, `initialLerp`, `reversed` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)
 
 <a id="field-field-mq3-client-cgame-players-animation-flipflop-flipflop-src-mq3-client-cgame-players-ml-525323157"></a>
 ### flipflop
@@ -32,7 +34,7 @@ flipflop
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)
 
 <a id="field-field-mq3-client-cgame-players-animation-framelerp-framelerp-src-mq3-client-cgame-players-ml-522636065"></a>
 ### frameLerp
@@ -42,7 +44,7 @@ frameLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)
 
 <a id="field-field-mq3-client-cgame-players-animation-initiallerp-initiallerp-src-mq3-client-cgame-players-ml-1599150573"></a>
 ### initialLerp
@@ -52,7 +54,7 @@ initialLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)
 
 <a id="field-field-mq3-client-cgame-players-animation-loopframes-loopframes-src-mq3-client-cgame-players-ml-971402701"></a>
 ### loopFrames
@@ -62,7 +64,7 @@ loopFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)
 
 <a id="field-field-mq3-client-cgame-players-animation-numframes-numframes-src-mq3-client-cgame-players-ml-555616429"></a>
 ### numFrames
@@ -72,7 +74,7 @@ numFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)
 
 <a id="field-field-mq3-client-cgame-players-animation-reversed-reversed-src-mq3-client-cgame-players-ml-762405609"></a>
 ### reversed
@@ -82,4 +84,4 @@ reversed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L63)

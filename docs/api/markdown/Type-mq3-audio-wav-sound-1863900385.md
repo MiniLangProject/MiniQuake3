@@ -9,8 +9,10 @@
 struct Sound
 ```
 
+Sound record for audio.wav, containing `sampleRate`, `channels`, `bitsPerSample`, `blockAlign`, `byteRate`, `samples`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L9)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)
 
 ## Members
 
@@ -22,7 +24,7 @@ bitsPerSample
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)
 
 <a id="field-field-mq3-audio-wav-sound-blockalign-blockalign-src-mq3-audio-wav-ml-514442394"></a>
 ### blockAlign
@@ -32,7 +34,7 @@ blockAlign
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)
 
 <a id="field-field-mq3-audio-wav-sound-byterate-byterate-src-mq3-audio-wav-ml-1303925470"></a>
 ### byteRate
@@ -42,7 +44,7 @@ byteRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)
 
 <a id="field-field-mq3-audio-wav-sound-channels-channels-src-mq3-audio-wav-ml-874299550"></a>
 ### channels
@@ -52,7 +54,7 @@ channels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)
 
 <a id="field-field-mq3-audio-wav-sound-samplerate-samplerate-src-mq3-audio-wav-ml-1958476574"></a>
 ### sampleRate
@@ -62,7 +64,7 @@ sampleRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)
 
 <a id="field-field-mq3-audio-wav-sound-samples-samples-src-mq3-audio-wav-ml-267445338"></a>
 ### samples
@@ -72,4 +74,4 @@ samples
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L10)

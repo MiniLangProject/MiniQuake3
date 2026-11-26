@@ -15,14 +15,16 @@ Reachable from entry: **yes**
 function copy(data, offset, count)
 ```
 
+Copy wav in audio.wav; the normal completion returns `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `data[(offset + index)]`. |
+| `offset` | `dynamic` | — | Offset used in `(offset + index)` and `data[(offset + index)]`. |
+| `count` | `dynamic` | — | Count used in `(count > 0)` and `(count - 1)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L37)
 
 <a id="function-function-mq3-audio-wav-decode-function-decode-data-src-mq3-audio-wav-ml-1569492630"></a>
 ### decode
@@ -31,12 +33,14 @@ function copy(data, offset, count)
 function decode(data)
 ```
 
+Decode wav in audio.wav; the normal completion returns `Sound(sampleRate, channels, bits, blockAlign, byteRate, copy(data, dataOffset, dataSize))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.audio.wav.tag`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L45)
 
 <a id="function-function-mq3-audio-wav-fail-function-fail-message-src-mq3-audio-wav-ml-2133538817"></a>
 ### fail
@@ -45,12 +49,14 @@ function decode(data)
 function fail(message)
 ```
 
+Create the audio.wav error for `fail` with 7490 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("WAV: " + message)` and `error(7490, ("WAV: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L14)
 
 <a id="constant-constant-mq3-audio-wav-max-pcm-bytes-const-max-pcm-bytes-67108864-src-mq3-audio-wav-ml-1855906827"></a>
 ### MAX_PCM_BYTES
@@ -90,17 +96,19 @@ const MIN_SAMPLE_RATE = 4000
 function tag(data, offset, a, b, c, d)
 ```
 
+Compute audio.wav.tag as `((((data[offset] == a) and (data[(offset + 1)] == b)) and (data[(offset + 2)] == c)) and (data[(offset + 3)] == d))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `c` | `dynamic` | — |  |
-| `d` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `data[offset]` and `data[(offset + 1)]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
+| `a` | `dynamic` | — | A used in `(data[offset] == a)` and `((data[offset] == a) and (data[(offset + 1)] == b))`. |
+| `b` | `dynamic` | — | B used in `(data[(offset + 1)] == b)` and `((data[offset] == a) and (data[(offset + 1)] == b))`. |
+| `c` | `dynamic` | — | C used in `(data[(offset + 2)] == c)` and `(((data[offset] == a) and (data[(offset + 1)] == b)) and (data[(offset + 2)] == c))`. |
+| `d` | `dynamic` | — | D used in `(data[(offset + 3)] == d)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L30)
 
 <a id="function-function-mq3-audio-wav-u16-function-u16-data-offset-src-mq3-audio-wav-ml-1423243765"></a>
 ### u16
@@ -109,13 +117,15 @@ function tag(data, offset, a, b, c, d)
 function u16(data, offset)
 ```
 
+Compute audio.wav.u16 as `(data[offset] | (data[(offset + 1)] << 8))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `data[offset]` and `data[(offset + 1)]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L18)
 
 <a id="function-function-mq3-audio-wav-u32-function-u32-data-offset-src-mq3-audio-wav-ml-1086806745"></a>
 ### u32
@@ -124,10 +134,12 @@ function u16(data, offset)
 function u32(data, offset)
 ```
 
+Compute audio.wav.u32 as `(((data[offset] | (data[(offset + 1)] << 8)) | (data[(offset + 2)] << 16)) | (data[(offset + 3)] << 24))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `data[offset]` and `data[(offset + 1)]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L22)

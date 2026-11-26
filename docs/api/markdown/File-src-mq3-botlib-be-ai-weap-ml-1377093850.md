@@ -21,12 +21,14 @@ Reachable from entry: **no**
 function BotAllocWeaponState(statePools)
 ```
 
+Forward `BotAllocWeaponState` to `mq3.botlib.ai_resource_pools.allocWeaponState` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `statePools` | `dynamic` | — |  |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. May update `statePools.weaponStates[handle]` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L68)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botchoosebestfightweapon-function-botchoosebestfightweapon-runtime-statepools-weaponstate-inventory-src-mq3-botlib-be-ai-weap-ml-1400276371"></a>
 ### BotChooseBestFightWeapon
@@ -35,15 +37,17 @@ function BotAllocWeaponState(statePools)
 function BotChooseBestFightWeapon(runtime, statePools, weaponState, inventory)
 ```
 
+Forward `BotChooseBestFightWeapon` to `mq3.botlib.ai_weapon_combat.chooseBestFightWeapon` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `statePools` | `dynamic` | — |  |
-| `weaponState` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI weapon combat runtime; accesses `config`. |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `weaponState` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L61)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botfreeweaponstate-function-botfreeweaponstate-statepools-handle-src-mq3-botlib-be-ai-weap-ml-1549961278"></a>
 ### BotFreeWeaponState
@@ -52,13 +56,15 @@ function BotChooseBestFightWeapon(runtime, statePools, weaponState, inventory)
 function BotFreeWeaponState(statePools, handle)
 ```
 
+Forward `BotFreeWeaponState` to `mq3.botlib.ai_resource_pools.freeWeaponState` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `statePools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. May update `statePools.weaponStates[handle]` in place. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L72)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botfreeweaponweights-function-botfreeweaponweights-runtime-statepools-weaponstate-src-mq3-botlib-be-ai-weap-ml-869358001"></a>
 ### BotFreeWeaponWeights
@@ -67,14 +73,16 @@ function BotFreeWeaponState(statePools, handle)
 function BotFreeWeaponWeights(runtime, statePools, weaponState)
 ```
 
+Forward `BotFreeWeaponWeights` to `mq3.botlib.ai_weapon_weights.freeWeaponWeights` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `statePools` | `dynamic` | — |  |
-| `weaponState` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Value passed as argument 1 to `mq3.botlib.ai_weapon_weights.freeWeaponWeights`. |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `weaponState` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L43)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botgetweaponinfo-function-botgetweaponinfo-runtime-statepools-weaponstate-weapon-src-mq3-botlib-be-ai-weap-ml-362490473"></a>
 ### BotGetWeaponInfo
@@ -83,15 +91,17 @@ function BotFreeWeaponWeights(runtime, statePools, weaponState)
 function BotGetWeaponInfo(runtime, statePools, weaponState, weapon)
 ```
 
+Forward `BotGetWeaponInfo` to `mq3.botlib.ai_weapon_combat.weaponInfo` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `statePools` | `dynamic` | — |  |
-| `weaponState` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI weapon combat runtime; accesses `config`. |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `weaponState` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L55)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botloadweaponweights-function-botloadweaponweights-runtime-statepools-weaponstate-filename-src-mq3-botlib-be-ai-weap-ml-1101735572"></a>
 ### BotLoadWeaponWeights
@@ -100,15 +110,17 @@ function BotGetWeaponInfo(runtime, statePools, weaponState, weapon)
 function BotLoadWeaponWeights(runtime, statePools, weaponState, filename)
 ```
 
+Forward `BotLoadWeaponWeights` to `mq3.botlib.ai_weapon_weights.loadWeaponWeights` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `statePools` | `dynamic` | — |  |
-| `weaponState` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI weapon weights runtime; accesses `fuzzyRuntime`. |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `weaponState` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
+| `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L49)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botresetweaponstate-function-botresetweaponstate-statepools-weaponstate-src-mq3-botlib-be-ai-weap-ml-390260839"></a>
 ### BotResetWeaponState
@@ -117,13 +129,15 @@ function BotLoadWeaponWeights(runtime, statePools, weaponState, filename)
 function BotResetWeaponState(statePools, weaponState)
 ```
 
+Forward `BotResetWeaponState` to `mq3.botlib.ai_resource_pools.resetWeaponState` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `statePools` | `dynamic` | — |  |
-| `weaponState` | `dynamic` | — |  |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `weaponState` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L65)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botsetupweaponai-function-botsetupweaponai-runtime-src-mq3-botlib-be-ai-weap-ml-1688691656"></a>
 ### BotSetupWeaponAI
@@ -132,12 +146,14 @@ function BotResetWeaponState(statePools, weaponState)
 function BotSetupWeaponAI(runtime)
 ```
 
+Apply `mq3.botlib.ai_weapon_weights.ensureConfig` while evaluating `BotSetupWeaponAI`. Return paths include `weights.BLERR_NOERROR`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI weapon weights runtime; accesses `config`. May update `runtime.config` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L75)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botshutdownweaponai-function-botshutdownweaponai-runtime-statepools-src-mq3-botlib-be-ai-weap-ml-651086822"></a>
 ### BotShutdownWeaponAI
@@ -146,13 +162,15 @@ function BotSetupWeaponAI(runtime)
 function BotShutdownWeaponAI(runtime, statePools)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.weaponState`, `mq3.botlib.ai_resource_pools.freeWeaponState` and `mq3.botlib.ai_weapon_weights.shutdown` while evaluating `BotShutdownWeaponAI`. Return paths include `weights.shutdown(runtime)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `statePools` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI weapon weights runtime; accesses `config`. May update `runtime.config` in place. |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L82)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botvalidweaponnumber-function-botvalidweaponnumber-runtime-weaponnum-src-mq3-botlib-be-ai-weap-ml-1933697796"></a>
 ### BotValidWeaponNumber
@@ -161,13 +179,15 @@ function BotShutdownWeaponAI(runtime, statePools)
 function BotValidWeaponNumber(runtime, weaponNum)
 ```
 
+Check that a weapon number refers to an entry in a loaded weapon configuration.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `weaponNum` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Be AI weap runtime; accesses `config`. |
+| `weaponNum` | `dynamic` | — | Operand used to evaluate the returned expression `weaponNum>0 and weaponNum<=len(runtime.config.weapons)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L13)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botweaponstatefromhandle-function-botweaponstatefromhandle-statepools-handle-src-mq3-botlib-be-ai-weap-ml-1579131118"></a>
 ### BotWeaponStateFromHandle
@@ -176,13 +196,15 @@ function BotValidWeaponNumber(runtime, weaponNum)
 function BotWeaponStateFromHandle(statePools, handle)
 ```
 
+Forward `BotWeaponStateFromHandle` to `mq3.botlib.ai_resource_pools.weaponState` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `statePools` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `statePools` | `dynamic` | — | Bot resource pools; accesses `weaponStates`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot weapon state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L22)
 
 <a id="function-function-mq3-botlib-be-ai-weap-dumpweaponconfig-function-dumpweaponconfig-config-src-mq3-botlib-be-ai-weap-ml-1174770698"></a>
 ### DumpWeaponConfig
@@ -191,12 +213,14 @@ function BotWeaponStateFromHandle(statePools, handle)
 function DumpWeaponConfig(config)
 ```
 
+List projectile names and valid weapon numbers and names from the weapon configuration.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `config` | `dynamic` | — |  |
+| `config` | `dynamic` | — | Configuration record; accesses `projectiles` and `weapons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L25)
 
 <a id="function-function-mq3-botlib-be-ai-weap-loadweaponconfig-function-loadweaponconfig-runtime-filename-src-mq3-botlib-be-ai-weap-ml-494205605"></a>
 ### LoadWeaponConfig
@@ -205,13 +229,15 @@ function DumpWeaponConfig(config)
 function LoadWeaponConfig(runtime, filename)
 ```
 
+Forward `LoadWeaponConfig` to `mq3.botlib.ai_weapon_weights.parseWeaponConfig` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Context forwarded to the configured host callbacks. |
+| `filename` | `dynamic` | — | Filename supplied to the configured loader or file service. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L34)
 
 <a id="function-function-mq3-botlib-be-ai-weap-weaponweightindex-function-weaponweightindex-profile-config-src-mq3-botlib-be-ai-weap-ml-1587439739"></a>
 ### WeaponWeightIndex
@@ -220,10 +246,12 @@ function LoadWeaponConfig(runtime, filename)
 function WeaponWeightIndex(profile, config)
 ```
 
+Forward `WeaponWeightIndex` to `mq3.botlib.ai_weapon_weights.weaponWeightIndex` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `profile` | `dynamic` | — |  |
-| `config` | `dynamic` | — |  |
+| `profile` | `dynamic` | — | Configuration record; accesses `weights`. |
+| `config` | `dynamic` | — | Configuration record; accesses `weapons`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L38)

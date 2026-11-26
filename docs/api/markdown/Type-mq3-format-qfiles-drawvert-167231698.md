@@ -9,8 +9,10 @@
 struct DrawVert
 ```
 
+DrawVert record for format.qfiles, containing `xyz`, `st`, `lightmap`, `normal`, `color`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L114)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L143)
 
 ## Members
 
@@ -22,7 +24,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L143)
 
 <a id="field-field-mq3-format-qfiles-drawvert-lightmap-lightmap-src-mq3-format-qfiles-ml-1131972136"></a>
 ### lightmap
@@ -32,7 +34,7 @@ lightmap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L143)
 
 <a id="field-field-mq3-format-qfiles-drawvert-normal-normal-src-mq3-format-qfiles-ml-1584572510"></a>
 ### normal
@@ -42,7 +44,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L143)
 
 <a id="field-field-mq3-format-qfiles-drawvert-st-st-src-mq3-format-qfiles-ml-1817229250"></a>
 ### st
@@ -52,7 +54,7 @@ st
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L143)
 
 <a id="field-field-mq3-format-qfiles-drawvert-xyz-xyz-src-mq3-format-qfiles-ml-1228697988"></a>
 ### xyz
@@ -62,4 +64,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L143)

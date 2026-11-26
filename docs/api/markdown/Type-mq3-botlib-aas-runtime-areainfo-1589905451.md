@@ -9,8 +9,10 @@
 struct AreaInfo
 ```
 
+`AreaInfo` record for aas runtime, containing `contents`, `flags`, `presenceType`, `cluster` and `clusterAreaNum` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ center
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-cluster-cluster-src-mq3-botlib-aas-runtime-ml-985596344"></a>
 ### cluster
@@ -32,7 +34,7 @@ cluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-clusterareanum-clusterareanum-src-mq3-botlib-aas-runtime-ml-197756374"></a>
 ### clusterAreaNum
@@ -42,7 +44,7 @@ clusterAreaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-contents-contents-src-mq3-botlib-aas-runtime-ml-525701704"></a>
 ### contents
@@ -52,7 +54,7 @@ contents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-firstreachablearea-firstreachablearea-src-mq3-botlib-aas-runtime-ml-172330072"></a>
 ### firstReachableArea
@@ -62,7 +64,7 @@ firstReachableArea
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-flags-flags-src-mq3-botlib-aas-runtime-ml-1766736120"></a>
 ### flags
@@ -72,7 +74,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-maxs-maxs-src-mq3-botlib-aas-runtime-ml-1551864942"></a>
 ### maxs
@@ -82,7 +84,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-mins-mins-src-mq3-botlib-aas-runtime-ml-1027117746"></a>
 ### mins
@@ -92,7 +94,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-numreachableareas-numreachableareas-src-mq3-botlib-aas-runtime-ml-471626744"></a>
 ### numReachableAreas
@@ -102,7 +104,7 @@ numReachableAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-runtime-areainfo-presencetype-presencetype-src-mq3-botlib-aas-runtime-ml-344493874"></a>
 ### presenceType
@@ -112,4 +114,4 @@ presenceType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)

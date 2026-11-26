@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores playable weapon sounds catalog record, including `weapons`, `clips`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ clips
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L17)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-catalog-weapons-weapons-src-mq3-client-playable-weapon-sounds-ml-766906456"></a>
 ### weapons
@@ -32,4 +34,4 @@ weapons
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L17)

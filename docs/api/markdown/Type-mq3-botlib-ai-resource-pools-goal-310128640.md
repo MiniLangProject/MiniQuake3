@@ -9,8 +9,10 @@
 struct Goal
 ```
 
+`Goal` record for ai resource pools, containing `origin`, `areaNum`, `mins`, `maxs` and `entityNum` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-entitynum-entitynum-src-mq3-botlib-ai-resource-pools-ml-420822786"></a>
 ### entityNum
@@ -32,7 +34,7 @@ entityNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-flags-flags-src-mq3-botlib-ai-resource-pools-ml-1360814854"></a>
 ### flags
@@ -42,7 +44,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-iteminfo-iteminfo-src-mq3-botlib-ai-resource-pools-ml-1348439076"></a>
 ### itemInfo
@@ -52,7 +54,7 @@ itemInfo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-maxs-maxs-src-mq3-botlib-ai-resource-pools-ml-1759027368"></a>
 ### maxs
@@ -62,7 +64,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-mins-mins-src-mq3-botlib-ai-resource-pools-ml-1000913760"></a>
 ### mins
@@ -72,7 +74,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-number-number-src-mq3-botlib-ai-resource-pools-ml-947567632"></a>
 ### number
@@ -82,7 +84,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goal-origin-origin-src-mq3-botlib-ai-resource-pools-ml-52859198"></a>
 ### origin
@@ -92,4 +94,4 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)

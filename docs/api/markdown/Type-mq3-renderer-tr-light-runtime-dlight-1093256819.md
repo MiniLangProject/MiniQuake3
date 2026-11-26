@@ -9,8 +9,10 @@
 struct Dlight
 ```
 
+Data record for `mq3.renderer.tr_light_runtime.Dlight`; groups `origin`, `transformed`, `radius`, `color`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-dlight-origin-origin-src-mq3-renderer-tr-light-runtime-ml-283622183"></a>
 ### origin
@@ -32,7 +34,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-dlight-radius-radius-src-mq3-renderer-tr-light-runtime-ml-1365769295"></a>
 ### radius
@@ -42,7 +44,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-dlight-transformed-transformed-src-mq3-renderer-tr-light-runtime-ml-728643827"></a>
 ### transformed
@@ -52,4 +54,4 @@ transformed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L22)

@@ -9,8 +9,10 @@
 struct Structure
 ```
 
+`Structure` record for l struct, containing `definition` and `fields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ definition
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L28)
 
 <a id="field-field-mq3-botlib-l-struct-structure-fields-fields-src-mq3-botlib-l-struct-ml-1573369120"></a>
 ### fields
@@ -32,4 +34,4 @@ fields
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L28)

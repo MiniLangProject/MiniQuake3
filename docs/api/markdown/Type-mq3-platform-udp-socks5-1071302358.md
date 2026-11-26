@@ -9,8 +9,10 @@
 struct Socks5
 ```
 
+Data record for `mq3.platform.udp.Socks5`; groups `control`, `relay`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L92)
 
 ## Members
 
@@ -22,7 +24,7 @@ control
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L92)
 
 <a id="field-field-mq3-platform-udp-socks5-relay-relay-src-mq3-platform-udp-ml-56104421"></a>
 ### relay
@@ -32,4 +34,4 @@ relay
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L92)

@@ -9,8 +9,10 @@
 struct Binding
 ```
 
+Binding record for server.network_ingress, containing `packetClient`, `messageClient`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ messageClient
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L11)
 
 <a id="field-field-mq3-server-network-ingress-binding-packetclient-packetclient-src-mq3-server-network-ingress-ml-411901476"></a>
 ### packetClient
@@ -32,4 +34,4 @@ packetClient
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/network_ingress.ml#L11)

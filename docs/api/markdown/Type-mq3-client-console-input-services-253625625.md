@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores console input host-service callbacks, including `context`, `commandFn`, `reliableFn`, `printFn`, `completeFn`, `clipboardFn` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ clipboardFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)
 
 <a id="field-field-mq3-client-console-input-services-commandfn-commandfn-src-mq3-client-console-input-ml-1705980693"></a>
 ### commandFn
@@ -32,7 +34,7 @@ commandFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)
 
 <a id="field-field-mq3-client-console-input-services-completefn-completefn-src-mq3-client-console-input-ml-50322347"></a>
 ### completeFn
@@ -42,7 +44,7 @@ completeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)
 
 <a id="field-field-mq3-client-console-input-services-context-context-src-mq3-client-console-input-ml-621193021"></a>
 ### context
@@ -52,7 +54,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)
 
 <a id="field-field-mq3-client-console-input-services-printfn-printfn-src-mq3-client-console-input-ml-827671741"></a>
 ### printFn
@@ -62,7 +64,7 @@ printFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)
 
 <a id="field-field-mq3-client-console-input-services-reliablefn-reliablefn-src-mq3-client-console-input-ml-1775557249"></a>
 ### reliableFn
@@ -72,7 +74,7 @@ reliableFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)
 
 <a id="field-field-mq3-client-console-input-services-scrollfn-scrollfn-src-mq3-client-console-input-ml-789966607"></a>
 ### scrollFn
@@ -82,4 +84,4 @@ scrollFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L37)

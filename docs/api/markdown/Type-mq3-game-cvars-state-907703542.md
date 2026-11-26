@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for cvars, containing `level`, `registry`, `rows`, `effectFn` and `registered` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ effectFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L24)
 
 <a id="field-field-mq3-game-cvars-state-level-level-src-mq3-game-cvars-ml-732929950"></a>
 ### level
@@ -32,7 +34,7 @@ level
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L21)
 
 <a id="field-field-mq3-game-cvars-state-passwordstate-passwordstate-src-mq3-game-cvars-ml-1714841142"></a>
 ### passwordState
@@ -42,7 +44,7 @@ passwordState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L26)
 
 <a id="field-field-mq3-game-cvars-state-registered-registered-src-mq3-game-cvars-ml-1692712042"></a>
 ### registered
@@ -52,7 +54,7 @@ registered
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L25)
 
 <a id="field-field-mq3-game-cvars-state-registry-registry-src-mq3-game-cvars-ml-1957753108"></a>
 ### registry
@@ -62,7 +64,7 @@ registry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L22)
 
 <a id="field-field-mq3-game-cvars-state-rows-rows-src-mq3-game-cvars-ml-765726796"></a>
 ### rows
@@ -72,4 +74,4 @@ rows
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L23)

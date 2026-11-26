@@ -9,8 +9,10 @@
 struct Area
 ```
 
+Area record for format.aas, containing `areaNum`, `numFaces`, `firstFace`, `mins`, `maxs`, `center`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L119)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-area-center-center-src-mq3-format-aas-ml-126220626"></a>
 ### center
@@ -32,7 +34,7 @@ center
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-area-firstface-firstface-src-mq3-format-aas-ml-1653123956"></a>
 ### firstFace
@@ -42,7 +44,7 @@ firstFace
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-area-maxs-maxs-src-mq3-format-aas-ml-1239667318"></a>
 ### maxs
@@ -52,7 +54,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-area-mins-mins-src-mq3-format-aas-ml-1385230450"></a>
 ### mins
@@ -62,7 +64,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-area-numfaces-numfaces-src-mq3-format-aas-ml-1966985896"></a>
 ### numFaces
@@ -72,4 +74,4 @@ numFaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)

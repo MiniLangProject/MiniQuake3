@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI teamorders state, including `menu`, `banner`, `frame`, `list`, `back`, `gametype` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-back-back-src-mq3-client-ui-teamorders-ml-438222554"></a>
 ### back
@@ -32,7 +34,7 @@ back
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-banner-banner-src-mq3-client-ui-teamorders-ml-1643325680"></a>
 ### banner
@@ -42,7 +44,7 @@ banner
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-botnames-botnames-src-mq3-client-ui-teamorders-ml-1130188134"></a>
 ### botNames
@@ -52,7 +54,7 @@ botNames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-bots-bots-src-mq3-client-ui-teamorders-ml-646163116"></a>
 ### bots
@@ -62,7 +64,7 @@ bots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-frame-frame-src-mq3-client-ui-teamorders-ml-1831848872"></a>
 ### frame
@@ -72,7 +74,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-gametype-gametype-src-mq3-client-ui-teamorders-ml-261291580"></a>
 ### gametype
@@ -82,7 +84,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-list-list-src-mq3-client-ui-teamorders-ml-699702508"></a>
 ### list
@@ -92,7 +94,7 @@ list
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-menu-menu-src-mq3-client-ui-teamorders-ml-486006710"></a>
 ### menu
@@ -102,7 +104,7 @@ menu
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-numbots-numbots-src-mq3-client-ui-teamorders-ml-2105337660"></a>
 ### numBots
@@ -112,7 +114,7 @@ numBots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-popped-popped-src-mq3-client-ui-teamorders-ml-1182995508"></a>
 ### popped
@@ -122,7 +124,7 @@ popped
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-pushed-pushed-src-mq3-client-ui-teamorders-ml-268032306"></a>
 ### pushed
@@ -132,7 +134,7 @@ pushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-retailactive-retailactive-src-mq3-client-ui-teamorders-ml-930357910"></a>
 ### retailActive
@@ -142,7 +144,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="field-field-mq3-client-ui-teamorders-state-selectedbot-selectedbot-src-mq3-client-ui-teamorders-ml-1028412676"></a>
 ### selectedBot
@@ -152,4 +154,4 @@ selectedBot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)

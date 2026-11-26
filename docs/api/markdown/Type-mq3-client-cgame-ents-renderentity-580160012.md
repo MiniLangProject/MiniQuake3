@@ -9,8 +9,10 @@
 struct RenderEntity
 ```
 
+Stores client game ents render entity record, including `reType`, `origin`, `oldorigin`, `lightingOrigin`, `axis`, `frame` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ axis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-backlerp-backlerp-src-mq3-client-cgame-ents-ml-345353150"></a>
 ### backlerp
@@ -32,7 +34,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-frame-frame-src-mq3-client-cgame-ents-ml-705266866"></a>
 ### frame
@@ -42,7 +44,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-lightingorigin-lightingorigin-src-mq3-client-cgame-ents-ml-668458830"></a>
 ### lightingOrigin
@@ -52,7 +54,7 @@ lightingOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-model-model-src-mq3-client-cgame-ents-ml-1068646254"></a>
 ### model
@@ -62,7 +64,7 @@ model
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-model2-model2-src-mq3-client-cgame-ents-ml-737293384"></a>
 ### model2
@@ -72,7 +74,7 @@ model2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-nonnormalized-nonnormalized-src-mq3-client-cgame-ents-ml-1421760942"></a>
 ### nonNormalized
@@ -82,7 +84,7 @@ nonNormalized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-oldframe-oldframe-src-mq3-client-cgame-ents-ml-286732734"></a>
 ### oldframe
@@ -92,7 +94,7 @@ oldframe
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-oldorigin-oldorigin-src-mq3-client-cgame-ents-ml-1310354358"></a>
 ### oldorigin
@@ -102,7 +104,7 @@ oldorigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-origin-origin-src-mq3-client-cgame-ents-ml-1693019534"></a>
 ### origin
@@ -112,7 +114,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-radius-radius-src-mq3-client-cgame-ents-ml-823579790"></a>
 ### radius
@@ -122,7 +124,7 @@ radius
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-renderfx-renderfx-src-mq3-client-cgame-ents-ml-1200715814"></a>
 ### renderfx
@@ -132,7 +134,7 @@ renderfx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-retype-retype-src-mq3-client-cgame-ents-ml-1535234996"></a>
 ### reType
@@ -142,7 +144,7 @@ reType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-rotation-rotation-src-mq3-client-cgame-ents-ml-1668380422"></a>
 ### rotation
@@ -152,7 +154,7 @@ rotation
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-shader-shader-src-mq3-client-cgame-ents-ml-1519150764"></a>
 ### shader
@@ -162,7 +164,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
 
 <a id="field-field-mq3-client-cgame-ents-renderentity-skin-skin-src-mq3-client-cgame-ents-ml-904172908"></a>
 ### skin
@@ -172,4 +174,4 @@ skin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)

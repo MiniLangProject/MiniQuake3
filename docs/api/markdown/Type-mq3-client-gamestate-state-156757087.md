@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores gamestate state, including `stringOffsets`, `stringData`, `dataCount`, `baselines`, `serverCommandSequence`, `clientNum` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ baselines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L22)
 
 <a id="field-field-mq3-client-gamestate-state-checksumfeed-checksumfeed-src-mq3-client-gamestate-ml-2097104278"></a>
 ### checksumFeed
@@ -32,7 +34,7 @@ checksumFeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L25)
 
 <a id="field-field-mq3-client-gamestate-state-clientnum-clientnum-src-mq3-client-gamestate-ml-1347335316"></a>
 ### clientNum
@@ -42,7 +44,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L24)
 
 <a id="field-field-mq3-client-gamestate-state-closefn-closefn-src-mq3-client-gamestate-ml-1766273044"></a>
 ### closeFn
@@ -52,7 +54,7 @@ closeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L28)
 
 <a id="field-field-mq3-client-gamestate-state-connectpacketcount-connectpacketcount-src-mq3-client-gamestate-ml-1177919926"></a>
 ### connectPacketCount
@@ -62,7 +64,7 @@ connectPacketCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L26)
 
 <a id="field-field-mq3-client-gamestate-state-context-context-src-mq3-client-gamestate-ml-1463942568"></a>
 ### context
@@ -72,7 +74,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L33)
 
 <a id="field-field-mq3-client-gamestate-state-datacount-datacount-src-mq3-client-gamestate-ml-349813348"></a>
 ### dataCount
@@ -82,7 +84,7 @@ dataCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L21)
 
 <a id="field-field-mq3-client-gamestate-state-downloadsfn-downloadsfn-src-mq3-client-gamestate-ml-1468307044"></a>
 ### downloadsFn
@@ -92,7 +94,7 @@ downloadsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L31)
 
 <a id="field-field-mq3-client-gamestate-state-paused-paused-src-mq3-client-gamestate-ml-282370936"></a>
 ### paused
@@ -102,7 +104,7 @@ paused
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L27)
 
 <a id="field-field-mq3-client-gamestate-state-pausefn-pausefn-src-mq3-client-gamestate-ml-1945047784"></a>
 ### pauseFn
@@ -112,7 +114,7 @@ pauseFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L32)
 
 <a id="field-field-mq3-client-gamestate-state-restartfn-restartfn-src-mq3-client-gamestate-ml-1551291796"></a>
 ### restartFn
@@ -122,7 +124,7 @@ restartFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L30)
 
 <a id="field-field-mq3-client-gamestate-state-servercommandsequence-servercommandsequence-src-mq3-client-gamestate-ml-1574262008"></a>
 ### serverCommandSequence
@@ -132,7 +134,7 @@ serverCommandSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L23)
 
 <a id="field-field-mq3-client-gamestate-state-stringdata-stringdata-src-mq3-client-gamestate-ml-1864440606"></a>
 ### stringData
@@ -142,7 +144,7 @@ stringData
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L20)
 
 <a id="field-field-mq3-client-gamestate-state-stringoffsets-stringoffsets-src-mq3-client-gamestate-ml-432338152"></a>
 ### stringOffsets
@@ -152,7 +154,7 @@ stringOffsets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L19)
 
 <a id="field-field-mq3-client-gamestate-state-systeminfofn-systeminfofn-src-mq3-client-gamestate-ml-1988682510"></a>
 ### systemInfoFn
@@ -162,4 +164,4 @@ systemInfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/gamestate.ml#L29)

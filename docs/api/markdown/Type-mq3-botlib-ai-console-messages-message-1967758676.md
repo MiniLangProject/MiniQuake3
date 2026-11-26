@@ -9,8 +9,10 @@
 struct Message
 ```
 
+`Message` record for ai console messages, containing `slot`, `handle`, `time`, `type` and `data`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-console-messages-message-handle-handle-src-mq3-botlib-ai-console-messages-ml-1145638484"></a>
 ### handle
@@ -32,7 +34,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-console-messages-message-slot-slot-src-mq3-botlib-ai-console-messages-ml-1315335848"></a>
 ### slot
@@ -42,7 +44,7 @@ slot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-console-messages-message-time-time-src-mq3-botlib-ai-console-messages-ml-358138182"></a>
 ### time
@@ -52,7 +54,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-console-messages-message-type-type-src-mq3-botlib-ai-console-messages-ml-1490082488"></a>
 ### type
@@ -62,4 +64,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L23)

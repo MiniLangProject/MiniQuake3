@@ -9,8 +9,10 @@
 struct CommonError
 ```
 
+CommonError record for qcommon.common, containing `code`, `message`, `fatal`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L34)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L41)
 
 ## Members
 
@@ -22,7 +24,7 @@ code
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L41)
 
 <a id="field-field-mq3-qcommon-common-commonerror-fatal-fatal-src-mq3-qcommon-common-ml-91346776"></a>
 ### fatal
@@ -32,7 +34,7 @@ fatal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L41)
 
 <a id="field-field-mq3-qcommon-common-commonerror-message-message-src-mq3-qcommon-common-ml-1732638652"></a>
 ### message
@@ -42,4 +44,4 @@ message
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L41)

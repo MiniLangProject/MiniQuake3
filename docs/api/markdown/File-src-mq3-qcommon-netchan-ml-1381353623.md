@@ -22,14 +22,18 @@ Reachable from entry: **yes**
 function emit(runtime, channel, packet)
 ```
 
+Emit netchan in qcommon.netchan.
+
+Validation failures include `Netchan transmit requires NET_SendPacket service`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `packet` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `sendPacketFn`. |
+| `channel` | `dynamic` | — | Record exposing `sock`, `remoteAddress`. |
+| `packet` | `dynamic` | — | Packet used in `runtime.sendPacketFn(runtime, channel.sock, packet, channel.remoteAddress)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L94)
 
 <a id="constant-constant-mq3-qcommon-netchan-fragment-bit-const-fragment-bit-2147483648-src-mq3-qcommon-netchan-ml-218011216"></a>
 ### FRAGMENT_BIT
@@ -58,12 +62,14 @@ const FRAGMENT_SIZE = 1300
 function init(port)
 ```
 
+Create `mq3.qcommon.netchan.Runtime` with qport=(port & 65535); sendPacketFn=void; context=void.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `port` | `dynamic` | — |  |
+| `port` | `dynamic` | — | Port used in `(port & 65535)` and `Runtime((port & 65535), void, void)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L49)
 
 <a id="constant-constant-mq3-qcommon-netchan-max-msglen-const-max-msglen-qcommonheaders-max-msglen-src-mq3-qcommon-netchan-ml-954055660"></a>
 ### MAX_MSGLEN
@@ -122,14 +128,18 @@ const PACKET_HEADER = 10
 function process(channel, data, maxsize)
 ```
 
+Process netchan in qcommon.netchan; the normal completion returns `ProcessResult(true, data, cursize, readcount, (readcount * 8))`.
+
+Direct state writes: `channel.dropped`, `channel.fragmentSequence`, `channel.fragmentLength`, `channel.incomingSequence`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `channel` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
-| `maxsize` | `dynamic` | — |  |
+| `channel` | `dynamic` | — | Record exposing `sock`, `incomingSequence`, `fragmentSequence`, `fragmentLength`, `fragmentBuffer`. Updated in place: `dropped`, `fragmentSequence`, `fragmentLength`, `incomingSequence`. |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.qcommon.netchan.rejected`. |
+| `maxsize` | `dynamic` | — | Maxsize used in `((channel.fragmentLength + 4) > maxsize)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L158)
 
 - [mq3.qcommon.netchan.ProcessResult](Type-mq3-qcommon-netchan-processresult-1295575579.md) — struct
 <a id="function-function-mq3-qcommon-netchan-readshort-function-readshort-data-offset-src-mq3-qcommon-netchan-ml-1892004011"></a>
@@ -139,13 +149,15 @@ function process(channel, data, maxsize)
 function readShort(data, offset)
 ```
 
+Read short in qcommon.netchan; the normal completion returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `data[offset]` and `data[(offset + 1)]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L82)
 
 <a id="function-function-mq3-qcommon-netchan-rejected-function-rejected-data-readcount-src-mq3-qcommon-netchan-ml-985126109"></a>
 ### rejected
@@ -154,13 +166,15 @@ function readShort(data, offset)
 function rejected(data, readcount)
 ```
 
+Create `mq3.qcommon.netchan.ProcessResult` with accepted=false; data=data; cursize=len(data); readcount=readcount; bit=(readcount * 8).
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `readcount` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Initial `data` field stored in the returned or constructed `mq3.qcommon.netchan.ProcessResult` record. |
+| `readcount` | `dynamic` | — | Initial `readcount` field stored in the returned or constructed `mq3.qcommon.netchan.ProcessResult` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L148)
 
 - [mq3.qcommon.netchan.Runtime](Type-mq3-qcommon-netchan-runtime-1334623059.md) — struct
 <a id="constant-constant-mq3-qcommon-netchan-scramble-start-const-scramble-start-6-src-mq3-qcommon-netchan-ml-1729049471"></a>
@@ -184,10 +198,10 @@ These two routines are inside Baseq3's #if 0 block, but keeping the exact transf
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `bytes(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L195)
 
 <a id="function-function-mq3-qcommon-netchan-setup-function-setup-sock-address-qport-src-mq3-qcommon-netchan-ml-218128106"></a>
 ### setup
@@ -196,14 +210,16 @@ These two routines are inside Baseq3's #if 0 block, but keeping the exact transf
 function setup(sock, address, qport)
 ```
 
+Create `mq3.qcommon.netchan.Channel` with sock=sock; dropped=0; remoteAddress=address; qport=qport; 9 further fields.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sock` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `qport` | `dynamic` | — |  |
+| `sock` | `dynamic` | — | Initial `sock` field stored in the returned or constructed `mq3.qcommon.netchan.Channel` record. |
+| `address` | `dynamic` | — | Initial `remoteAddress` field stored in the returned or constructed `mq3.qcommon.netchan.Channel` record. |
+| `qport` | `dynamic` | — | Initial `qport` field stored in the returned or constructed `mq3.qcommon.netchan.Channel` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L57)
 
 <a id="function-function-mq3-qcommon-netchan-transmit-function-transmit-runtime-channel-data-src-mq3-qcommon-netchan-ml-1030911527"></a>
 ### transmit
@@ -212,14 +228,19 @@ function setup(sock, address, qport)
 function transmit(runtime, channel, data)
 ```
 
+Update `channel.unsentFragmentStart`, `channel.unsentFragments`, `channel.unsentLength`, `channel.outgoingSequence` in qcommon.netchan; the normal completion returns `packet`.
+
+Validation failures include `Netchan_Transmit length exceeds MAX_MSGLEN`.
+Direct state writes: `channel.unsentFragmentStart`, `channel.unsentFragments`, `channel.unsentLength`, `channel.outgoingSequence`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `qport`. |
+| `channel` | `dynamic` | — | Record exposing `unsentBuffer`, `sock`, `outgoingSequence`. Updated in place: `unsentFragmentStart`, `unsentFragments`, `unsentLength`, `outgoingSequence`. |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[index]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L130)
 
 <a id="function-function-mq3-qcommon-netchan-transmitnextfragment-function-transmitnextfragment-runtime-channel-src-mq3-qcommon-netchan-ml-644208431"></a>
 ### transmitNextFragment
@@ -228,13 +249,18 @@ function transmit(runtime, channel, data)
 function transmitNextFragment(runtime, channel)
 ```
 
+Update `channel.unsentFragmentStart`, `channel.outgoingSequence`, `channel.unsentFragments` in qcommon.netchan; the normal completion returns `packet`.
+
+Validation failures include `Netchan has no pending fragments`.
+Direct state writes: `channel.unsentFragmentStart`, `channel.outgoingSequence`, `channel.unsentFragments`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Record exposing `qport`. |
+| `channel` | `dynamic` | — | Record exposing `unsentFragments`, `unsentFragmentStart`, `unsentLength`, `sock`, `outgoingSequence`, `unsentBuffer`. Updated in place: `unsentFragmentStart`, `outgoingSequence`, `unsentFragments`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L105)
 
 <a id="function-function-mq3-qcommon-netchan-unscramblepacket-function-unscramblepacket-data-src-mq3-qcommon-netchan-ml-1014647252"></a>
 ### unscramblePacket
@@ -243,12 +269,16 @@ function transmitNextFragment(runtime, channel)
 function unscramblePacket(data)
 ```
 
+Compute unscramble packet in qcommon.netchan; the normal completion returns `result`.
+
+Validation failures include `Netchan unscramble exceeds MAX_PACKETLEN`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `bytes(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L210)
 
 <a id="function-function-mq3-qcommon-netchan-writelong-function-writelong-data-offset-value-src-mq3-qcommon-netchan-ml-1836131760"></a>
 ### writeLong
@@ -257,14 +287,16 @@ function unscramblePacket(data)
 function writeLong(data, offset, value)
 ```
 
+Write long in qcommon.netchan.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.compat.numeric.writeU32`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.compat.numeric.writeU32`. |
+| `value` | `dynamic` | — | Integer whose low 32 bits are retained. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L75)
 
 <a id="function-function-mq3-qcommon-netchan-writeshort-function-writeshort-data-offset-value-src-mq3-qcommon-netchan-ml-528833118"></a>
 ### writeShort
@@ -273,11 +305,15 @@ function writeLong(data, offset, value)
 function writeShort(data, offset, value)
 ```
 
+Write short in qcommon.netchan; updates `data entries`.
+
+Direct state writes: `data elements`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Mutable sequence written at `offset`, `(offset + 1)`. |
+| `offset` | `dynamic` | — | Offset used in `(offset + 1)`. |
+| `value` | `dynamic` | — | Value used in `(value >> 8)` and `(value & 255)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L67)

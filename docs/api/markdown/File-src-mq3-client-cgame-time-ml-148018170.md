@@ -15,12 +15,14 @@ Reachable from entry: **yes**
 function adjustTimeDelta(state)
 ```
 
+Updates `state.newSnapshots`, `state.serverTimeDelta`, `state.oldServerTime`, `state.serverTime` and additional values during client game time `adjustTimeDelta`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game time record/storage; this routine assigns `state.newSnapshots`, `state.serverTimeDelta`, `state.oldServerTime`, `state.serverTime` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L57)
 
 <a id="constant-constant-mq3-client-cgame-time-ca-active-const-ca-active-8-src-mq3-client-cgame-time-ml-931776693"></a>
 ### CA_ACTIVE
@@ -49,12 +51,14 @@ const CA_PRIMED = 7
 function create(host)
 ```
 
+Calls `mq3.client.cgame_time.services`, `mq3.client.cgame_time.State` from client game time `create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
+| `host` | `dynamic` | — | host record passed to the client game time helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L46)
 
 <a id="function-function-mq3-client-cgame-time-diagnostic-function-diagnostic-state-text-src-mq3-client-cgame-time-ml-1953681166"></a>
 ### diagnostic
@@ -63,13 +67,15 @@ function create(host)
 function diagnostic(state, text)
 ```
 
+Calls `host.diagnosticFn` from client game time `diagnostic`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.host`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `diagnostic` in the client game time path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L53)
 
 <a id="function-function-mq3-client-cgame-time-firstsnapshot-function-firstsnapshot-state-src-mq3-client-cgame-time-ml-1913125085"></a>
 ### firstSnapshot
@@ -78,12 +84,14 @@ function diagnostic(state, text)
 function firstSnapshot(state)
 ```
 
+Updates `state.connectionState`, `state.serverTimeDelta`, `state.oldServerTime`, `state.timeDemoBaseTime` and additional values during client game time `firstSnapshot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game time record/storage; this routine assigns `state.connectionState`, `state.serverTimeDelta`, `state.oldServerTime`, `state.timeDemoBaseTime` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L74)
 
 <a id="function-function-mq3-client-cgame-time-readdemo-function-readdemo-state-src-mq3-client-cgame-time-ml-1179549317"></a>
 ### readDemo
@@ -92,12 +100,14 @@ function firstSnapshot(state)
 function readDemo(state)
 ```
 
+Calls `host.readDemoFn` from client game time `readDemo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.host`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L89)
 
 <a id="constant-constant-mq3-client-cgame-time-reset-time-const-reset-time-500-src-mq3-client-cgame-time-ml-1439934160"></a>
 ### RESET_TIME
@@ -116,8 +126,10 @@ const RESET_TIME = 500
 function services()
 ```
 
+Creates a `mq3.client.cgame_time.Services` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L43)
 
 - [mq3.client.cgame_time.Services](Type-mq3-client-cgame-time-services-52855922.md) — struct
 <a id="function-function-mq3-client-cgame-time-setcgametime-function-setcgametime-state-src-mq3-client-cgame-time-ml-952885589"></a>
@@ -127,12 +139,14 @@ function services()
 function setCGameTime(state)
 ```
 
+Updates `state.firstDemoFrameSkipped`, `state.newSnapshots`, `state.oldFrameServerTime`, `state.serverTime` and additional values during client game time `setCGameTime`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game time record/storage; this routine assigns `state.firstDemoFrameSkipped`, `state.newSnapshots`, `state.oldFrameServerTime`, `state.serverTime` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L96)
 
 <a id="constant-constant-mq3-client-cgame-time-snapflag-not-active-const-snapflag-not-active-2-src-mq3-client-cgame-time-ml-1549150167"></a>
 ### SNAPFLAG_NOT_ACTIVE

@@ -9,8 +9,10 @@
 struct Group
 ```
 
+Stores network match loop group record, including `runtimes`, `nextRuntime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ nextRuntime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L23)
 
 <a id="field-field-mq3-client-network-match-loop-group-runtimes-runtimes-src-mq3-client-network-match-loop-ml-1598552518"></a>
 ### runtimes
@@ -32,4 +34,4 @@ runtimes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L23)

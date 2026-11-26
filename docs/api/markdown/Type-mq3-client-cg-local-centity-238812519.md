@@ -9,8 +9,10 @@
 struct CEntity
 ```
 
+Stores client game local c entity record, including `currentState`, `nextState`, `interpolate`, `currentValid`, `muzzleFlashTime`, `previousEvent` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 ## Members
 
@@ -22,7 +24,7 @@ beamEnd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-currentstate-currentstate-src-mq3-client-cg-local-ml-1137206627"></a>
 ### currentState
@@ -32,7 +34,7 @@ currentState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-currentvalid-currentvalid-src-mq3-client-cg-local-ml-2065628161"></a>
 ### currentValid
@@ -42,7 +44,7 @@ currentValid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-dusttrailtime-dusttrailtime-src-mq3-client-cg-local-ml-1078784647"></a>
 ### dustTrailTime
@@ -52,7 +54,7 @@ dustTrailTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-errorangles-errorangles-src-mq3-client-cg-local-ml-750189739"></a>
 ### errorAngles
@@ -62,7 +64,7 @@ errorAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-errororigin-errororigin-src-mq3-client-cg-local-ml-40004827"></a>
 ### errorOrigin
@@ -72,7 +74,7 @@ errorOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-errortime-errortime-src-mq3-client-cg-local-ml-879289103"></a>
 ### errorTime
@@ -82,7 +84,7 @@ errorTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-extrapolated-extrapolated-src-mq3-client-cg-local-ml-1833832185"></a>
 ### extrapolated
@@ -92,7 +94,7 @@ extrapolated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-interpolate-interpolate-src-mq3-client-cg-local-ml-1869050539"></a>
 ### interpolate
@@ -102,7 +104,7 @@ interpolate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-lerpangles-lerpangles-src-mq3-client-cg-local-ml-87623285"></a>
 ### lerpAngles
@@ -112,7 +114,7 @@ lerpAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-lerporigin-lerporigin-src-mq3-client-cg-local-ml-1938659365"></a>
 ### lerpOrigin
@@ -122,7 +124,7 @@ lerpOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-misctime-misctime-src-mq3-client-cg-local-ml-38061225"></a>
 ### miscTime
@@ -132,7 +134,7 @@ miscTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-muzzleflashtime-muzzleflashtime-src-mq3-client-cg-local-ml-384418483"></a>
 ### muzzleFlashTime
@@ -142,7 +144,7 @@ muzzleFlashTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-nextstate-nextstate-src-mq3-client-cg-local-ml-1967249579"></a>
 ### nextState
@@ -152,7 +154,7 @@ nextState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-pe-pe-src-mq3-client-cg-local-ml-1452312909"></a>
 ### pe
@@ -162,7 +164,7 @@ pe
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-previousevent-previousevent-src-mq3-client-cg-local-ml-18054391"></a>
 ### previousEvent
@@ -172,7 +174,7 @@ previousEvent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-rawangles-rawangles-src-mq3-client-cg-local-ml-410410187"></a>
 ### rawAngles
@@ -182,7 +184,7 @@ rawAngles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-raworigin-raworigin-src-mq3-client-cg-local-ml-1732167139"></a>
 ### rawOrigin
@@ -192,7 +194,7 @@ rawOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-snapshottime-snapshottime-src-mq3-client-cg-local-ml-424513225"></a>
 ### snapShotTime
@@ -202,7 +204,7 @@ snapShotTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-teleportflag-teleportflag-src-mq3-client-cg-local-ml-1163151493"></a>
 ### teleportFlag
@@ -212,7 +214,7 @@ teleportFlag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
 
 <a id="field-field-mq3-client-cg-local-centity-trailtime-trailtime-src-mq3-client-cg-local-ml-331743419"></a>
 ### trailTime
@@ -222,4 +224,4 @@ trailTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)

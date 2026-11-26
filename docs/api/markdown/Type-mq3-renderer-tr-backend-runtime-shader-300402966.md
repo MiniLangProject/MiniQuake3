@@ -9,8 +9,10 @@
 struct Shader
 ```
 
+Data record for `mq3.renderer.tr_backend_runtime.Shader`; groups `name`, `entityMergable`, `timeOffset`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L47)
 
 ## Members
 
@@ -22,7 +24,7 @@ entityMergable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L47)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-shader-name-name-src-mq3-renderer-tr-backend-runtime-ml-1505288274"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L47)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-shader-timeoffset-timeoffset-src-mq3-renderer-tr-backend-runtime-ml-1333396432"></a>
 ### timeOffset
@@ -42,4 +44,4 @@ timeOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L47)

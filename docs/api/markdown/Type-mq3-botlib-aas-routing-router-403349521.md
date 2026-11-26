@@ -9,8 +9,10 @@
 struct Router
 ```
 
+`Router` record for aas routing, containing `runtime`, `settings`, `reaches`, `travelTypeFlags` and `areaFlags`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L72)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)
 
 <a id="field-field-mq3-botlib-aas-routing-router-reaches-reaches-src-mq3-botlib-aas-routing-ml-1535762088"></a>
 ### reaches
@@ -32,7 +34,7 @@ reaches
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)
 
 <a id="field-field-mq3-botlib-aas-routing-router-runtime-runtime-src-mq3-botlib-aas-routing-ml-115257400"></a>
 ### runtime
@@ -42,7 +44,7 @@ runtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)
 
 <a id="field-field-mq3-botlib-aas-routing-router-settings-settings-src-mq3-botlib-aas-routing-ml-678992710"></a>
 ### settings
@@ -52,7 +54,7 @@ settings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)
 
 <a id="field-field-mq3-botlib-aas-routing-router-traveltypeflags-traveltypeflags-src-mq3-botlib-aas-routing-ml-510596488"></a>
 ### travelTypeFlags
@@ -62,4 +64,4 @@ travelTypeFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)

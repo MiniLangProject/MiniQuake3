@@ -113,12 +113,14 @@ const CMD_MASK = 63
 function commandCopy(value)
 ```
 
+Calls `mq3.client.send_cmd.zeroCommand`, `mq3.qcommon.message_delta.userCommand` from send cmd `commandCopy`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.serverTime`, `value.angles`, `value.buttons`, `value.weapon` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L49)
 
 <a id="function-function-mq3-client-send-cmd-create-function-create-src-mq3-client-send-cmd-ml-371260116"></a>
 ### create
@@ -127,8 +129,10 @@ function commandCopy(value)
 function create()
 ```
 
+Calls `mq3.client.command_ring.create`, `mq3.client.send_cmd.zeroCommand`, `mq3.client.send_cmd.OutPacket` and additional helpers from send cmd `create`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L54)
 
 <a id="function-function-mq3-client-send-cmd-createnewcommand-function-createnewcommand-state-frametime-host-src-mq3-client-send-cmd-ml-748147797"></a>
 ### createNewCommand
@@ -137,14 +141,16 @@ function create()
 function createNewCommand(state, frameTime, host)
 ```
 
+Updates `state.frameMsec`, `state.oldFrameTime`, `state.cmdNumber` during send cmd `createNewCommand`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `frameTime` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable send cmd record/storage; this routine assigns `state.frameMsec`, `state.oldFrameTime`, `state.cmdNumber`. |
+| `frameTime` | `dynamic` | — | Value assigned to `command.serverTime`. |
+| `host` | `dynamic` | — | Record read through `host.createCommandFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L88)
 
 <a id="function-function-mq3-client-send-cmd-diagnose-function-diagnose-host-text-src-mq3-client-send-cmd-ml-1198002173"></a>
 ### diagnose
@@ -153,13 +159,15 @@ function createNewCommand(state, frameTime, host)
 function diagnose(host, text)
 ```
 
+Calls `host.diagnosticFn` from send cmd `diagnose`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.diagnosticFn`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `diagnose` in the send cmd path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L82)
 
 <a id="function-function-mq3-client-send-cmd-hashkey-function-hashkey-text-maxlength-src-mq3-client-send-cmd-ml-1267003325"></a>
 ### hashKey
@@ -172,11 +180,11 @@ Com_HashKey uses signed char on the pinned Windows reference build.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
-| `maxLength` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `hashKey` in the send cmd path. |
+| `maxLength` | `dynamic` | — | Value used by `if limit>maxLength then limit=maxLength end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L66)
 
 <a id="function-function-mq3-client-send-cmd-liveservices-function-liveservices-runtime-channel-src-mq3-client-send-cmd-ml-847702331"></a>
 ### liveServices
@@ -185,13 +193,15 @@ Com_HashKey uses signed char on the pinned Windows reference build.
 function liveServices(runtime, channel)
 ```
 
+Calls `mq3.client.send_cmd.services`, `mq3.client.send_cmd.LiveTransport` from send cmd `liveServices`. The final path returns `host`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | runtime record passed to the send cmd helper calls. |
+| `channel` | `dynamic` | — | Value used by `if runtime==void or channel==void then return error(7710,"client send: missing live transport") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L173)
 
 <a id="function-function-mq3-client-send-cmd-livetransmit-function-livetransmit-host-state-msg-src-mq3-client-send-cmd-ml-1620269776"></a>
 ### liveTransmit
@@ -200,14 +210,16 @@ function liveServices(runtime, channel)
 function liveTransmit(host, state, msg)
 ```
 
+Calls `mq3.client.netchan.transmit`, `mq3.client.netchan.transmitNextFragment` from send cmd `liveTransmit`. The final path returns `transport.channel.outgoingSequence`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.context`. |
+| `state` | `dynamic` | — | Accepted for compatibility with `liveTransmit`; the current implementation does not read it. |
+| `msg` | `dynamic` | — | Value used by `result=clientNetchan.transmit(transport.runtime,transport.channel,msg)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L165)
 
 - [mq3.client.send_cmd.LiveTransport](Type-mq3-client-send-cmd-livetransport-48332773.md) — struct
 <a id="constant-constant-mq3-client-send-cmd-max-packet-usercmds-const-max-packet-usercmds-32-src-mq3-client-send-cmd-ml-1724838990"></a>
@@ -268,13 +280,15 @@ const PACKET_MASK = 31
 function ready(state, host)
 ```
 
+Updates `state.maxPackets` during send cmd `ready`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable send cmd record/storage; this routine assigns `state.maxPackets`. |
+| `host` | `dynamic` | — | host record passed to the send cmd helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L100)
 
 <a id="function-function-mq3-client-send-cmd-send-function-send-state-frametime-host-src-mq3-client-send-cmd-ml-937658437"></a>
 ### send
@@ -283,14 +297,16 @@ function ready(state, host)
 function send(state, frameTime, host)
 ```
 
+Calls `mq3.client.send_cmd.createNewCommand`, `mq3.client.send_cmd.ready`, `mq3.client.send_cmd.writePacket` from send cmd `send`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `frameTime` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.connectionState`, `state.serverRunning`, `state.serverPaused`, `state.clientPaused`. |
+| `frameTime` | `dynamic` | — | Value used by `created=createNewCommand(state,frameTime,host)`. |
+| `host` | `dynamic` | — | host record passed to the send cmd helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L152)
 
 <a id="function-function-mq3-client-send-cmd-services-function-services-src-mq3-client-send-cmd-ml-424593320"></a>
 ### services
@@ -299,8 +315,10 @@ function send(state, frameTime, host)
 function services()
 ```
 
+Creates a `mq3.client.send_cmd.Services` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L61)
 
 - [mq3.client.send_cmd.Services](Type-mq3-client-send-cmd-services-1843866438.md) — struct
 <a id="function-function-mq3-client-send-cmd-setcvar-function-setcvar-host-name-value-src-mq3-client-send-cmd-ml-480295106"></a>
@@ -310,14 +328,16 @@ function services()
 function setCvar(host, name, value)
 ```
 
+Calls `host.cvarFn` from send cmd `setCvar`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.cvarFn`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding send cmd resource. |
+| `value` | `dynamic` | — | Value used by `if host.cvarFn!=void then host.cvarFn(host,name,str(value)) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L76)
 
 - [mq3.client.send_cmd.State](Type-mq3-client-send-cmd-state-1928835903.md) — struct
 <a id="function-function-mq3-client-send-cmd-writepacket-function-writepacket-state-host-src-mq3-client-send-cmd-ml-1991051129"></a>
@@ -327,13 +347,15 @@ function setCvar(host, name, value)
 function writePacket(state, host)
 ```
 
+Updates `state.codec`, `state.packetDup`, `state.outPackets[packetNum]`, `state.lastPacketSentTime` and additional values during send cmd `writePacket`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable send cmd record/storage; this routine assigns `state.codec`, `state.packetDup`, `state.outPackets[packetNum]`, `state.lastPacketSentTime` and additional values. |
+| `host` | `dynamic` | — | Record read through `host.transmitFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L114)
 
 - [mq3.client.send_cmd.WriteResult](Type-mq3-client-send-cmd-writeresult-2064183540.md) — struct
 <a id="function-function-mq3-client-send-cmd-zerocommand-function-zerocommand-src-mq3-client-send-cmd-ml-10821858"></a>
@@ -343,5 +365,7 @@ function writePacket(state, host)
 function zeroCommand()
 ```
 
+Adapts `mq3.qcommon.message_delta.userCommand` to send cmd `zeroCommand`, returning its result for `0, 0, 0, 0, 0, 0, 0, 0, 0`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L40)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L46)

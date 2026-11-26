@@ -9,8 +9,10 @@
 struct Projection
 ```
 
+Stores playable viewer projection record, including `position`, `right`, `up`, `forward`, `halfWidth`, `halfHeight` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ focal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-forward-forward-src-mq3-client-playable-viewer-ml-529237996"></a>
 ### forward
@@ -32,7 +34,7 @@ forward
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-halfheight-halfheight-src-mq3-client-playable-viewer-ml-835250960"></a>
 ### halfHeight
@@ -42,7 +44,7 @@ halfHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-halfwidth-halfwidth-src-mq3-client-playable-viewer-ml-1357704396"></a>
 ### halfWidth
@@ -52,7 +54,7 @@ halfWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-neardistance-neardistance-src-mq3-client-playable-viewer-ml-1792654218"></a>
 ### nearDistance
@@ -62,7 +64,7 @@ nearDistance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-position-position-src-mq3-client-playable-viewer-ml-1174111586"></a>
 ### position
@@ -72,7 +74,7 @@ position
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-right-right-src-mq3-client-playable-viewer-ml-1182385748"></a>
 ### right
@@ -82,7 +84,7 @@ right
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-up-up-src-mq3-client-playable-viewer-ml-330129746"></a>
 ### up
@@ -92,7 +94,7 @@ up
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)
 
 <a id="field-field-mq3-client-playable-viewer-projection-verticalfocal-verticalfocal-src-mq3-client-playable-viewer-ml-2136311600"></a>
 ### verticalFocal
@@ -102,4 +104,4 @@ verticalFocal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L23)

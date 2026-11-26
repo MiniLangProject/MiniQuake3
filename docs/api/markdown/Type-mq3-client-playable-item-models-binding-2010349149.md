@@ -9,8 +9,10 @@
 struct Binding
 ```
 
+Stores playable item models binding record, including `surfaceIndex`, `surfaceName`, `shaderName`, `imageName`, `image`, `textureSlot`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ image
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-binding-imagename-imagename-src-mq3-client-playable-item-models-ml-842169702"></a>
 ### imageName
@@ -32,7 +34,7 @@ imageName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-binding-shadername-shadername-src-mq3-client-playable-item-models-ml-2062166134"></a>
 ### shaderName
@@ -42,7 +44,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-binding-surfaceindex-surfaceindex-src-mq3-client-playable-item-models-ml-671257216"></a>
 ### surfaceIndex
@@ -52,7 +54,7 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-binding-surfacename-surfacename-src-mq3-client-playable-item-models-ml-702616858"></a>
 ### surfaceName
@@ -62,7 +64,7 @@ surfaceName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-binding-textureslot-textureslot-src-mq3-client-playable-item-models-ml-2147071374"></a>
 ### textureSlot
@@ -72,4 +74,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)

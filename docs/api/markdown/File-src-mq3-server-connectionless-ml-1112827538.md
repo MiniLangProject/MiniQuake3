@@ -22,12 +22,14 @@ Reachable from entry: **yes**
 function connectPrefix(msg)
 ```
 
+Test connect prefix in server.connectionless; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `msg` | `dynamic` | — |  |
+| `msg` | `dynamic` | — | Record exposing `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L16)
 
 <a id="function-function-mq3-server-connectionless-dispatch-function-dispatch-runtime-host-sourceaddress-msg-src-mq3-server-connectionless-ml-1807300734"></a>
 ### dispatch
@@ -36,15 +38,19 @@ function connectPrefix(msg)
 function dispatch(runtime, host, sourceAddress, msg)
 ```
 
+Dispatch connectionless in server.connectionless; the normal completion returns `"unknown"`.
+
+Validation failures include `connectionless: missing state`; `connectionless: missing OOB marker`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
-| `sourceAddress` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | Runtime passed as `runtime` to `mq3.server.oob_connect.getChallenge`. |
+| `host` | `dynamic` | — | Record exposing `decompressFn`, `statusFn`, `infoFn`, `authorizeFn`, `rconFn`, `diagnosticFn`. |
+| `sourceAddress` | `dynamic` | — | Source address passed as `sourceAddress` to `mq3.server.oob_connect.getChallenge`. |
+| `msg` | `dynamic` | — | Msg passed as `msg` to `mq3.qcommon.message.beginReadingOob`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L36)
 
 <a id="function-function-mq3-server-connectionless-services-function-services-src-mq3-server-connectionless-ml-104543780"></a>
 ### services
@@ -53,8 +59,10 @@ function dispatch(runtime, host, sourceAddress, msg)
 function services()
 ```
 
+Create `mq3.server.connectionless.Services` with statusFn=void; infoFn=void; rconFn=void; authorizeFn=void; decompressFn=void; diagnosticFn=void; context=void.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L13)
 
 - [mq3.server.connectionless.Services](Type-mq3-server-connectionless-services-775299350.md) — struct
 <a id="function-function-mq3-server-connectionless-tokens-function-tokens-text-src-mq3-server-connectionless-ml-1651922383"></a>
@@ -64,9 +72,11 @@ function services()
 function tokens(text)
 ```
 
+Compute tokens in server.connectionless; the normal completion returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text passed as `text` to `mq3.qcommon.command_buffer.tokenizeString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L24)

@@ -9,8 +9,10 @@
 struct Address
 ```
 
+Data record for `mq3.platform.unix_runtime.Address`; groups `type`, `host`, `port`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ host
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L38)
 
 <a id="field-field-mq3-platform-unix-runtime-address-port-port-src-mq3-platform-unix-runtime-ml-1339615363"></a>
 ### port
@@ -32,7 +34,7 @@ port
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L38)
 
 <a id="field-field-mq3-platform-unix-runtime-address-type-type-src-mq3-platform-unix-runtime-ml-2083850369"></a>
 ### type
@@ -42,4 +44,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/unix_runtime.ml#L38)

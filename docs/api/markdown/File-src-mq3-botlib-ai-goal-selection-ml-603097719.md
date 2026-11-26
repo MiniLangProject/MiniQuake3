@@ -27,13 +27,15 @@ Reachable from entry: **yes**
 function areaReachability(runtime, area)
 ```
 
+Use `runtime.services.areaReachabilityFn` to perform `areaReachability`. Return paths include `aasRuntime.areaReachability(runtime.levelItems.aas,area)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services` and `levelItems`. |
+| `area` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L84)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-goal-selection-ml-319965538"></a>
 ### AVOID_DEFAULT_TIME
@@ -72,13 +74,15 @@ const AVOID_MINIMUM_TIME = 10
 function avoidTime(info, item)
 ```
 
+Choose the item avoidance duration from dropped-item status and respawn time, enforcing the minimum duration.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `info` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
+| `info` | `dynamic` | — | Item or entity information record; accesses `respawnTime`. |
+| `item` | `dynamic` | — | Item record; accesses `timeout`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L139)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-chooseltgitem-function-chooseltgitem-runtime-handle-origin-inventory-travelflags-src-mq3-botlib-ai-goal-selection-ml-1688725159"></a>
 ### chooseLTGItem
@@ -87,16 +91,18 @@ function avoidTime(info, item)
 function chooseLTGItem(runtime, handle, origin, inventory, travelFlags)
 ```
 
+Select the highest-weight reachable long-term item goal, add its avoidance timer, and push it onto the goal stack.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `goals` and `levelItems`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L205)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-choosenbgitem-function-choosenbgitem-runtime-handle-origin-inventory-travelflags-longtermgoal-maxtime-src-mq3-botlib-ai-goal-selection-ml-1789209457"></a>
 ### chooseNBGItem
@@ -105,18 +111,20 @@ function chooseLTGItem(runtime, handle, origin, inventory, travelFlags)
 function chooseNBGItem(runtime, handle, origin, inventory, travelFlags, longTermGoal, maxTime)
 ```
 
+Select a nearby item within the travel-time limit while retaining an acceptable route back to the long-term goal.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
-| `longTermGoal` | `dynamic` | — |  |
-| `maxTime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `goals` and `levelItems`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `longTermGoal` | `dynamic` | — | Long term goal record; accesses `areaNum`. |
+| `maxTime` | `dynamic` | — | Exclusive upper bound on item travel time in AAS travel-time units. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L220)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-contents-solid-const-contents-solid-1-src-mq3-botlib-ai-goal-selection-ml-1837025526"></a>
 ### CONTENTS_SOLID
@@ -135,12 +143,14 @@ const CONTENTS_SOLID = 1
 function copyVector(value)
 ```
 
+Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for ai goal selection.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L68)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-create-function-create-items-goals-host-src-mq3-botlib-ai-goal-selection-ml-228282612"></a>
 ### create
@@ -149,14 +159,16 @@ function copyVector(value)
 function create(items, goals, host)
 ```
 
+Create a `mq3.botlib.ai_goal_selection.Runtime` record, initializing `levelItems` from `items`, `goals` from `goals` and `services` from `host`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `items` | `dynamic` | — |  |
-| `goals` | `dynamic` | — |  |
-| `host` | `dynamic` | — |  |
+| `items` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_goal_selection.Runtime.levelItems`. |
+| `goals` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_goal_selection.Runtime.goals`. |
+| `host` | `dynamic` | — | Initial value stored in `mq3.botlib.ai_goal_selection.Runtime.services`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L49)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-currenttime-function-currenttime-runtime-src-mq3-botlib-ai-goal-selection-ml-102381408"></a>
 ### currentTime
@@ -165,12 +177,14 @@ function create(items, goals, host)
 function currentTime(runtime)
 ```
 
+Forward `currentTime` to `mq3.botlib.ai_goal_state.currentTime` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `goals`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L116)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-default-dropped-weight-const-default-dropped-weight-1000-src-mq3-botlib-ai-goal-selection-ml-1591245924"></a>
 ### DEFAULT_DROPPED_WEIGHT
@@ -189,13 +203,15 @@ const DEFAULT_DROPPED_WEIGHT = 1000
 function entityInfo(runtime, number)
 ```
 
+Use `runtime.services.entityInfoFn` to perform `entityInfo`. Return paths include `aasEntities.info(runtime.levelItems.aasEntities,number)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services` and `levelItems`. |
+| `number` | `dynamic` | — | Value used by `info` in `if state==void or number<0 or number>=state.maxEntities then return emptyInfo() end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L101)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-fail-function-fail-message-src-mq3-botlib-ai-goal-selection-ml-1368722537"></a>
 ### fail
@@ -204,12 +220,14 @@ function entityInfo(runtime, number)
 function fail(message)
 ```
 
+Construct error `7594` with diagnostic text `"AI goal selection: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L71)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-geneticparentsandchildselection-function-geneticparentsandchildselection-runtime-numranks-ranks-src-mq3-botlib-ai-goal-selection-ml-2081058550"></a>
 ### geneticParentsAndChildSelection
@@ -218,14 +236,16 @@ function fail(message)
 function geneticParentsAndChildSelection(runtime, numRanks, ranks)
 ```
 
+Forward `geneticParentsAndChildSelection` to `mq3.botlib.ai_genetic.parentsAndChild` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `numRanks` | `dynamic` | — |  |
-| `ranks` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
+| `numRanks` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fmul`. |
+| `ranks` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L335)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-geneticselection-function-geneticselection-runtime-numranks-rankings-src-mq3-botlib-ai-goal-selection-ml-38895460"></a>
 ### geneticSelection
@@ -234,14 +254,16 @@ function geneticParentsAndChildSelection(runtime, numRanks, ranks)
 function geneticSelection(runtime, numRanks, rankings)
 ```
 
+Forward `geneticSelection` to `mq3.botlib.ai_genetic.selection` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `numRanks` | `dynamic` | — |  |
-| `rankings` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
+| `numRanks` | `dynamic` | — | Value passed as argument 2 to `mq3.compat.numeric.fmul`. |
+| `rankings` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L328)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-getlevelitemgoal-function-getlevelitemgoal-runtime-index-name-goal-src-mq3-botlib-ai-goal-selection-ml-1126470074"></a>
 ### getLevelItemGoal
@@ -250,15 +272,17 @@ function geneticSelection(runtime, numRanks, rankings)
 function getLevelItemGoal(runtime, index, name, goal)
 ```
 
+Find the next permitted item matching a pickup name and copy it into the caller's goal record; return -1 when absent.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `levelItems`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `areaNum`, `origin`, `entityNum`, `mins` and `maxs` and related fields. May update `goal.areaNum`, `goal.origin` and `goal.entityNum` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L252)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-gfl-dropped-const-gfl-dropped-4-src-mq3-botlib-ai-goal-selection-ml-986951567"></a>
 ### GFL_DROPPED
@@ -297,15 +321,17 @@ const GFL_ROAM = 2
 function interbreedGoalFuzzyLogic(runtime, parent1, parent2, child)
 ```
 
+Interbreed compatible parent fuzzy-weight configurations into the child goal state, diagnosing incompatible layouts.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `parent1` | `dynamic` | — |  |
-| `parent2` | `dynamic` | — |  |
-| `child` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `goals`. |
+| `parent1` | `dynamic` | — | Handle identifying the allocated bot goal state. |
+| `parent2` | `dynamic` | — | Handle identifying the allocated bot goal state. |
+| `child` | `dynamic` | — | Handle identifying the allocated bot goal state. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L285)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-interbreedseparators-function-interbreedseparators-runtime-first-second-resultgoal-src-mq3-botlib-ai-goal-selection-ml-1230196846"></a>
 ### interbreedSeparators
@@ -314,15 +340,17 @@ function interbreedGoalFuzzyLogic(runtime, parent1, parent2, child)
 function interbreedSeparators(runtime, first, second, resultGoal)
 ```
 
+Combine compatible fuzzy separator trees while preserving the released child-parent and weight-bound behavior.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `first` | `dynamic` | — |  |
-| `second` | `dynamic` | — |  |
-| `resultGoal` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `goals`. |
+| `first` | `dynamic` | — | Array or byte sequence accessed at `index`. |
+| `second` | `dynamic` | — | Array or byte sequence accessed at `index`. |
+| `resultGoal` | `dynamic` | — | Array or byte sequence accessed at `index`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L266)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-itemconfig-function-itemconfig-runtime-src-mq3-botlib-ai-goal-selection-ml-1764043368"></a>
 ### itemConfig
@@ -331,12 +359,14 @@ function interbreedSeparators(runtime, first, second, resultGoal)
 function itemConfig(runtime)
 ```
 
+Apply `mq3.botlib.ai_item_weights.ensureItems` while evaluating `itemConfig`. Return paths include `itemWeights.ensureItems(runtime.levelItems.itemRuntime)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `levelItems`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L119)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-itemgoalinvisbutnotvisible-function-itemgoalinvisbutnotvisible-runtime-viewer-eye-viewangles-goal-src-mq3-botlib-ai-goal-selection-ml-660583961"></a>
 ### itemGoalInVisButNotVisible
@@ -345,16 +375,18 @@ function itemConfig(runtime)
 function itemGoalInVisButNotVisible(runtime, viewer, eye, viewAngles, goal)
 ```
 
+Detect an unobstructed item goal whose entity information is stale, preserving the released goal-bound calculation.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `viewer` | `dynamic` | — |  |
-| `eye` | `dynamic` | — |  |
-| `viewAngles` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services`. |
+| `viewer` | `dynamic` | — | Entity number ignored by the visibility trace. |
+| `eye` | `dynamic` | — | Value passed as argument 2 to `runtime.services.traceFn`. |
+| `viewAngles` | `dynamic` | — | Not read by this implementation; retained in the `itemGoalInVisButNotVisible` signature. |
+| `goal` | `dynamic` | — | Bot navigation goal; accesses `flags`, `origin`, `mins` and `entityNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L239)
 
 - [mq3.botlib.ai_goal_selection.ItemScore](Type-mq3-botlib-ai-goal-selection-itemscore-1002403920.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-selection-itemtime-function-itemtime-runtime-query-area-origin-goal-travelflags-src-mq3-botlib-ai-goal-selection-ml-1844770361"></a>
@@ -364,17 +396,19 @@ function itemGoalInVisButNotVisible(runtime, viewer, eye, viewAngles, goal)
 function itemTime(runtime, query, area, origin, goal, travelFlags)
 ```
 
+Apply `mq3.botlib.aas_routing_cache.itemQueryTravelTime` and `mq3.botlib.ai_goal_selection.travelTime` while evaluating `itemTime`. Return paths include `travelTime(runtime,area,origin,goal,travelFlags)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `query` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services`. |
+| `query` | `dynamic` | — | Query record; accesses `cache`, `area`, `origin`, `flags` and `times` and related fields. May update `query.times` and `query.enterTimes` in place. |
+| `area` | `dynamic` | — | Value passed as argument 2 to `runtime.services.travelTimeFn`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goal` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L165)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-makeitemgoal-function-makeitemgoal-info-item-src-mq3-botlib-ai-goal-selection-ml-1003787027"></a>
 ### makeItemGoal
@@ -383,13 +417,15 @@ function itemTime(runtime, query, area, origin, goal, travelFlags)
 function makeItemGoal(info, item)
 ```
 
+Create an item goal with copied bounds and origin, including dropped-item and roaming flags.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `info` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
+| `info` | `dynamic` | — | Item or entity information record; accesses `mins` and `maxs`. |
+| `item` | `dynamic` | — | Item record; accesses `timeout`, `flags`, `goalOrigin`, `goalAreaNum` and `entityNum` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L132)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-mutategoalfuzzylogic-function-mutategoalfuzzylogic-runtime-handle-range-src-mq3-botlib-ai-goal-selection-ml-1291023343"></a>
 ### mutateGoalFuzzyLogic
@@ -398,14 +434,16 @@ function makeItemGoal(info, item)
 function mutateGoalFuzzyLogic(runtime, handle, range)
 ```
 
+Apply `mq3.botlib.ai_resource_pools.goalState` and `mq3.botlib.ai_goal_selection.mutateSeparators` while evaluating `mutateGoalFuzzyLogic`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `range` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `goals`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
+| `range` | `dynamic` | — | Not read by this implementation; retained in the `mutateGoalFuzzyLogic` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L319)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-mutateseparators-function-mutateseparators-runtime-separators-src-mq3-botlib-ai-goal-selection-ml-746849064"></a>
 ### mutateSeparators
@@ -414,13 +452,15 @@ function mutateGoalFuzzyLogic(runtime, handle, range)
 function mutateSeparators(runtime, separators)
 ```
 
+Apply `mq3.botlib.ai_goal_selection.mutateSeparators` and `mq3.botlib.ai_goal_selection.randomFloat` while evaluating `mutateSeparators`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `separators` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
+| `separators` | `dynamic` | — | Value used by `mutateSeparators` in `if separators==void then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L304)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-choose-ltg-item-const-op-choose-ltg-item-535-src-mq3-botlib-ai-goal-selection-ml-1818655044"></a>
 ### OP_CHOOSE_LTG_ITEM
@@ -511,14 +551,16 @@ const OP_SAVE_GOAL_FUZZY_LOGIC = 545
 function originArea(runtime, value, origin)
 ```
 
+Set `value.lastReachabilityArea` to `area` in `mq3.botlib.ai_goal_selection.originArea`. Return paths include `area`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services` and `levelItems`. |
+| `value` | `dynamic` | — | Value record; accesses `client` and `lastReachabilityArea`. May update `value.lastReachabilityArea` in place. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L146)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-permitted-function-permitted-runtime-item-src-mq3-botlib-ai-goal-selection-ml-1581043837"></a>
 ### permitted
@@ -527,13 +569,15 @@ function originArea(runtime, value, origin)
 function permitted(runtime, item)
 ```
 
+Apply `mq3.botlib.ai_level_items.permitted` while evaluating `permitted`. Return paths include `(item.flags&levelItems.IFL_NOTBOT)==0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `levelItems`. |
+| `item` | `dynamic` | — | Item record; accesses `flags`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L126)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-randomfloat-function-randomfloat-runtime-src-mq3-botlib-ai-goal-selection-ml-306190694"></a>
 ### randomFloat
@@ -542,12 +586,14 @@ function permitted(runtime, item)
 function randomFloat(runtime)
 ```
 
+Advance the Windows-compatible 214013/2531011 random sequence and return a value between zero and one.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L60)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-reachabilityarea-function-reachabilityarea-runtime-origin-client-src-mq3-botlib-ai-goal-selection-ml-1677872727"></a>
 ### reachabilityArea
@@ -556,14 +602,16 @@ function randomFloat(runtime)
 function reachabilityArea(runtime, origin, client)
 ```
 
+Use `runtime.services.reachabilityAreaFn` to perform `reachabilityArea`. Return paths include `aasRuntime.pointAreaNum(runtime.levelItems.aas,origin)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services` and `levelItems`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `client` | `dynamic` | — | Value passed as argument 3 to `runtime.services.reachabilityAreaFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L77)
 
 - [mq3.botlib.ai_goal_selection.Runtime](Type-mq3-botlib-ai-goal-selection-runtime-1927224759.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-selection-savegoalfuzzylogic-function-savegoalfuzzylogic-runtime-handle-filename-src-mq3-botlib-ai-goal-selection-ml-83961905"></a>
@@ -573,14 +621,16 @@ function reachabilityArea(runtime, origin, client)
 function saveGoalFuzzyLogic(runtime, handle, filename)
 ```
 
+Validate the goal-state handle and return zero; the released engine does not write a fuzzy-weight file here.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `goals`. |
+| `handle` | `dynamic` | — | Handle identifying the allocated bot goal state. |
+| `filename` | `dynamic` | — | Unused output filename retained for compatibility; this released-engine operation performs no file write. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L296)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-services-function-services-context-src-mq3-botlib-ai-goal-selection-ml-1537340521"></a>
 ### services
@@ -589,12 +639,14 @@ function saveGoalFuzzyLogic(runtime, handle, filename)
 function services(context)
 ```
 
+Create a `mq3.botlib.ai_goal_selection.Services` record, initializing `context` from `context`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Context forwarded to the configured host callbacks. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L44)
 
 - [mq3.botlib.ai_goal_selection.Services](Type-mq3-botlib-ai-goal-selection-services-114167561.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-selection-setdroppedweight-function-setdroppedweight-runtime-value-src-mq3-botlib-ai-goal-selection-ml-1580900897"></a>
@@ -604,13 +656,15 @@ function services(context)
 function setDroppedWeight(runtime, value)
 ```
 
+Set `runtime.droppedWeight` to `goalSelectNumeric.f32(value)` in `mq3.botlib.ai_goal_selection.setDroppedWeight`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `droppedWeight`. May update `runtime.droppedWeight` in place. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L53)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-setrandomseed-function-setrandomseed-runtime-value-src-mq3-botlib-ai-goal-selection-ml-491973789"></a>
 ### setRandomSeed
@@ -619,13 +673,15 @@ function setDroppedWeight(runtime, value)
 function setRandomSeed(runtime, value)
 ```
 
+Set `runtime.randomSeed` to `goalSelectNumeric.i32(value)` in `mq3.botlib.ai_goal_selection.setRandomSeed`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.i32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L57)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-startitemquery-function-startitemquery-runtime-area-origin-travelflags-src-mq3-botlib-ai-goal-selection-ml-959622536"></a>
 ### startItemQuery
@@ -634,15 +690,17 @@ function setRandomSeed(runtime, value)
 function startItemQuery(runtime, area, origin, travelFlags)
 ```
 
+Use `runtime.services.itemQueryFn` to perform `startItemQuery`. Return paths include `runtime.services.itemQueryFn(runtime.services.context,area,origin,travelFlags)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services`. |
+| `area` | `dynamic` | — | Value passed as argument 2 to `runtime.services.itemQueryFn`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L154)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-goal-selection-ml-1128319967"></a>
 ### supportsTrap
@@ -651,12 +709,14 @@ function startItemQuery(runtime, area, origin, travelFlags)
 function supportsTrap(op)
 ```
 
+Test `op==OP_CHOOSE_LTG_ITEM or op==OP_CHOOSE_NBG_ITEM or op==OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE or op==OP_GET_LEVEL_ITEM_GOAL or op==OP_SAVE_GOAL_FUZZY...` as the condition for `supportsTrap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `op` | `dynamic` | — |  |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L340)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-trace-function-trace-runtime-start-finish-viewer-src-mq3-botlib-ai-goal-selection-ml-1085226891"></a>
 ### trace
@@ -665,15 +725,17 @@ function supportsTrap(op)
 function trace(runtime, start, finish, viewer)
 ```
 
+Use `runtime.services.traceFn` to perform `trace`. Return paths include `runtime.services.traceFn(runtime.services.context,start,finish,viewer,CONTENTS_SOLID)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `viewer` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services`. |
+| `start` | `dynamic` | — | Value passed as argument 2 to `runtime.services.traceFn`. |
+| `finish` | `dynamic` | — | Value passed as argument 3 to `runtime.services.traceFn`. |
+| `viewer` | `dynamic` | — | Entity number ignored by the visibility trace. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L110)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-traveltime-function-traveltime-runtime-area-origin-goalarea-travelflags-src-mq3-botlib-ai-goal-selection-ml-2021290786"></a>
 ### travelTime
@@ -682,16 +744,18 @@ function trace(runtime, start, finish, viewer)
 function travelTime(runtime, area, origin, goalArea, travelFlags)
 ```
 
+Use `runtime.services.travelTimeFn` to perform `travelTime`. Return paths include `runtime.services.travelTimeFn(runtime.services.context,area,origin,goalArea,travelFlags)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalArea` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `services`. |
+| `area` | `dynamic` | — | Value passed as argument 2 to `runtime.services.travelTimeFn`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalArea` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L94)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-traveltime-scale-const-traveltime-scale-0-01-src-mq3-botlib-ai-goal-selection-ml-543899186"></a>
 ### TRAVELTIME_SCALE
@@ -710,20 +774,22 @@ const TRAVELTIME_SCALE = 0.01
 function weighted(runtime, handle, value, config, inventory, item, area, origin, travelFlags, itemQuery, fuzzyCache, score)
 ```
 
+Score one available item by fuzzy desirability and travel time, including dropped-item bonuses and avoidance timers.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `config` | `dynamic` | — |  |
-| `inventory` | `dynamic` | — |  |
-| `item` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
-| `itemQuery` | `dynamic` | — |  |
-| `fuzzyCache` | `dynamic` | — |  |
-| `score` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI goal selection runtime; accesses `droppedWeight` and `goals`. |
+| `handle` | `dynamic` | — | Resource handle resolved by the owning pool or host service. |
+| `value` | `dynamic` | — | Value record; accesses `itemWeightIndex` and `itemWeightConfig`. |
+| `config` | `dynamic` | — | Array or byte sequence accessed at `item.itemInfo`. |
+| `inventory` | `dynamic` | — | Bot inventory indexed by the corresponding inventory constants. |
+| `item` | `dynamic` | — | Item record; accesses `goalAreaNum`, `entityNum`, `flags`, `itemInfo` and `timeout` and related fields. |
+| `area` | `dynamic` | — | Value passed as argument 2 to `runtime.services.travelTimeFn`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `itemQuery` | `dynamic` | — | Query record; accesses `cache`, `area`, `origin`, `flags` and `times` and related fields. May update `itemQuery.times` and `itemQuery.enterTimes` in place. |
+| `fuzzyCache` | `dynamic` | — | Array or byte sequence accessed at `weightNumber`. Entries are written in place. |
+| `score` | `dynamic` | — | Score record; accesses `weight` and `time`. May update `score.weight` and `score.time` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L183)

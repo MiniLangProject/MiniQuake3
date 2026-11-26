@@ -9,8 +9,10 @@
 struct Item
 ```
 
+Stores client game main menu item, including `classname`, `pickupSound`, `sounds`, `icon`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
 
 ## Members
 
@@ -22,7 +24,7 @@ classname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
 
 <a id="field-field-mq3-client-cgame-main-item-icon-icon-src-mq3-client-cgame-main-ml-817750682"></a>
 ### icon
@@ -32,7 +34,7 @@ icon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
 
 <a id="field-field-mq3-client-cgame-main-item-pickupsound-pickupsound-src-mq3-client-cgame-main-ml-1211434932"></a>
 ### pickupSound
@@ -42,7 +44,7 @@ pickupSound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)
 
 <a id="field-field-mq3-client-cgame-main-item-sounds-sounds-src-mq3-client-cgame-main-ml-453799084"></a>
 ### sounds
@@ -52,4 +54,4 @@ sounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L54)

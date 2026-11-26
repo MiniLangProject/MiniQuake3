@@ -9,8 +9,10 @@
 struct Score
 ```
 
+Stores client game local score record, including `client`, `score`, `ping`, `time`, `scoreFlags`, `powerUps` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 ## Members
 
@@ -22,7 +24,7 @@ accuracy
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-assistcount-assistcount-src-mq3-client-cg-local-ml-1496239999"></a>
 ### assistCount
@@ -32,7 +34,7 @@ assistCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-captures-captures-src-mq3-client-cg-local-ml-1590020565"></a>
 ### captures
@@ -42,7 +44,7 @@ captures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-client-client-src-mq3-client-cg-local-ml-1555683161"></a>
 ### client
@@ -52,7 +54,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-defendcount-defendcount-src-mq3-client-cg-local-ml-775359843"></a>
 ### defendCount
@@ -62,7 +64,7 @@ defendCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-excellentcount-excellentcount-src-mq3-client-cg-local-ml-1007233385"></a>
 ### excellentCount
@@ -72,7 +74,7 @@ excellentCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-guantletcount-guantletcount-src-mq3-client-cg-local-ml-489560159"></a>
 ### guantletCount
@@ -82,7 +84,7 @@ guantletCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-impressivecount-impressivecount-src-mq3-client-cg-local-ml-1390244187"></a>
 ### impressiveCount
@@ -92,7 +94,7 @@ impressiveCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-perfect-perfect-src-mq3-client-cg-local-ml-570474467"></a>
 ### perfect
@@ -102,7 +104,7 @@ perfect
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-ping-ping-src-mq3-client-cg-local-ml-1481015183"></a>
 ### ping
@@ -112,7 +114,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-powerups-powerups-src-mq3-client-cg-local-ml-124518321"></a>
 ### powerUps
@@ -122,7 +124,7 @@ powerUps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-score-score-src-mq3-client-cg-local-ml-411286207"></a>
 ### score
@@ -132,7 +134,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-scoreflags-scoreflags-src-mq3-client-cg-local-ml-778485993"></a>
 ### scoreFlags
@@ -142,7 +144,7 @@ scoreFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-team-team-src-mq3-client-cg-local-ml-1067821601"></a>
 ### team
@@ -152,7 +154,7 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)
 
 <a id="field-field-mq3-client-cg-local-score-time-time-src-mq3-client-cg-local-ml-963949209"></a>
 ### time
@@ -162,4 +164,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L107)

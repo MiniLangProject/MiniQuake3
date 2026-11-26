@@ -9,8 +9,10 @@
 struct Goal
 ```
 
+`Goal` record for bot voice commands, containing `entitynum`, `areanum`, `origin`, `mins` and `maxs` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ areanum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-entitynum-entitynum-src-mq3-game-bot-voice-commands-ml-1138585522"></a>
 ### entitynum
@@ -32,7 +34,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-maxs-maxs-src-mq3-game-bot-voice-commands-ml-1208688072"></a>
 ### maxs
@@ -42,7 +44,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-mins-mins-src-mq3-game-bot-voice-commands-ml-1996470656"></a>
 ### mins
@@ -52,7 +54,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-origin-origin-src-mq3-game-bot-voice-commands-ml-187883086"></a>
 ### origin
@@ -62,7 +64,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)
 
 <a id="field-field-mq3-game-bot-voice-commands-goal-tag-tag-src-mq3-game-bot-voice-commands-ml-1557719674"></a>
 ### tag
@@ -72,4 +74,4 @@ tag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L39)

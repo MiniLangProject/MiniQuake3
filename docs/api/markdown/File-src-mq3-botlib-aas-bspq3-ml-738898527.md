@@ -21,13 +21,15 @@ Reachable from entry: **yes**
 function AAS_AreasConnected(area1, area2)
 ```
 
+Return `false` for `AAS_AreasConnected`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `area1` | `dynamic` | — | Not read by this implementation; retained in the `AAS_AreasConnected` signature. |
+| `area2` | `dynamic` | — | Not read by this implementation; retained in the `AAS_AreasConnected` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L91)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-boxentities-function-aas-boxentities-absmins-absmaxs-list-maxcount-src-mq3-botlib-aas-bspq3-ml-567765257"></a>
 ### AAS_BoxEntities
@@ -36,15 +38,17 @@ function AAS_AreasConnected(area1, area2)
 function AAS_BoxEntities(absmins, absmaxs, list, maxcount)
 ```
 
+Return `0` for `AAS_BoxEntities`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `absmins` | `dynamic` | — |  |
-| `absmaxs` | `dynamic` | — |  |
-| `list` | `dynamic` | — |  |
-| `maxcount` | `dynamic` | — |  |
+| `absmins` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BoxEntities` signature. |
+| `absmaxs` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BoxEntities` signature. |
+| `list` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BoxEntities` signature. |
+| `maxcount` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BoxEntities` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L75)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-bspentityinrange-function-aas-bspentityinrange-state-entity-src-mq3-botlib-aas-bspq3-ml-202152350"></a>
 ### AAS_BSPEntityInRange
@@ -53,13 +57,15 @@ function AAS_BoxEntities(absmins, absmaxs, list, maxcount)
 function AAS_BSPEntityInRange(state, entity)
 ```
 
+Test `state!=void and entity>0 and entity<state.numEntities` as the condition for `AAS_BSPEntityInRange`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `numEntities`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and entity>0 and entity<state.numEntities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L102)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-bsplinkentity-function-aas-bsplinkentity-absmins-absmaxs-entnum-modelnum-src-mq3-botlib-aas-bspq3-ml-1552015382"></a>
 ### AAS_BSPLinkEntity
@@ -68,15 +74,17 @@ function AAS_BSPEntityInRange(state, entity)
 function AAS_BSPLinkEntity(absmins, absmaxs, entnum, modelnum)
 ```
 
+Return `void` for `AAS_BSPLinkEntity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `absmins` | `dynamic` | — |  |
-| `absmaxs` | `dynamic` | — |  |
-| `entnum` | `dynamic` | — |  |
-| `modelnum` | `dynamic` | — |  |
+| `absmins` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPLinkEntity` signature. |
+| `absmaxs` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPLinkEntity` signature. |
+| `entnum` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPLinkEntity` signature. |
+| `modelnum` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPLinkEntity` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L69)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-bspmodelminsmaxsorigin-function-aas-bspmodelminsmaxsorigin-host-modelnum-angles-src-mq3-botlib-aas-bspq3-ml-243538977"></a>
 ### AAS_BSPModelMinsMaxsOrigin
@@ -85,14 +93,16 @@ function AAS_BSPLinkEntity(absmins, absmaxs, entnum, modelnum)
 function AAS_BSPModelMinsMaxsOrigin(host, modelnum, angles)
 ```
 
+Forward `AAS_BSPModelMinsMaxsOrigin` to `mq3.botlib.server_imports.BotImport_BSPModelMinsMaxsOrigin` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `modelnum` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Host service configuration; accesses `modelBoundsFn` and `context`. |
+| `modelnum` | `dynamic` | — | Value passed as argument 2 to `host.modelBoundsFn`. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L59)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-bsptracelight-function-aas-bsptracelight-start-finish-endpos-red-green-blue-src-mq3-botlib-aas-bspq3-ml-1064103204"></a>
 ### AAS_BSPTraceLight
@@ -101,17 +111,19 @@ function AAS_BSPModelMinsMaxsOrigin(host, modelnum, angles)
 function AAS_BSPTraceLight(start, finish, endpos, red, green, blue)
 ```
 
+Return `0` for `AAS_BSPTraceLight`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `endpos` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
+| `start` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPTraceLight` signature. |
+| `finish` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPTraceLight` signature. |
+| `endpos` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPTraceLight` signature. |
+| `red` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPTraceLight` signature. |
+| `green` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPTraceLight` signature. |
+| `blue` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BSPTraceLight` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L83)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-dumpbspdata-function-aas-dumpbspdata-state-src-mq3-botlib-aas-bspq3-ml-1605030729"></a>
 ### AAS_DumpBSPData
@@ -120,12 +132,14 @@ function AAS_BSPTraceLight(start, finish, endpos, red, green, blue)
 function AAS_DumpBSPData(state)
 ```
 
+Update `state.dentData`, `state.entDataSize` and `state.loaded` during `AAS_DumpBSPData`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `dentData`, `entDataSize` and `loaded`. May update `state.dentData`, `state.entDataSize` and `state.loaded` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L157)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-entitycollision-function-aas-entitycollision-host-entnum-start-boxmins-boxmaxs-finish-contentmask-originaltrace-src-mq3-botlib-aas-bspq3-ml-1585740989"></a>
 ### AAS_EntityCollision
@@ -134,19 +148,21 @@ function AAS_DumpBSPData(state)
 function AAS_EntityCollision(host, entnum, start, boxmins, boxmaxs, finish, contentmask, originalTrace)
 ```
 
+Apply `mq3.botlib.server_imports.BotImport_EntityTrace` while evaluating `AAS_EntityCollision`. Return paths include `[false,originalTrace]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `entnum` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `boxmins` | `dynamic` | — |  |
-| `boxmaxs` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `contentmask` | `dynamic` | — |  |
-| `originalTrace` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Host service configuration; accesses `entityTraceFn` and `context`. |
+| `entnum` | `dynamic` | — | Entity number in the game or AAS entity table. |
+| `start` | `dynamic` | — | Value passed as argument 2 to `host.entityTraceFn`. |
+| `boxmins` | `dynamic` | — | Minimum coordinates of the axis-aligned bounds. |
+| `boxmaxs` | `dynamic` | — | Maximum coordinates of the axis-aligned bounds. |
+| `finish` | `dynamic` | — | Value passed as argument 5 to `host.entityTraceFn`. |
+| `contentmask` | `dynamic` | — | Value passed as argument 7 to `host.entityTraceFn`. |
+| `originalTrace` | `dynamic` | — | Original trace record; accesses `fraction`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L42)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-floatforbspepairkey-function-aas-floatforbspepairkey-state-entity-key-src-mq3-botlib-aas-bspq3-ml-2095844105"></a>
 ### AAS_FloatForBSPEpairKey
@@ -155,14 +171,16 @@ function AAS_EntityCollision(host, entnum, start, boxmins, boxmaxs, finish, cont
 function AAS_FloatForBSPEpairKey(state, entity, key)
 ```
 
+Apply `mq3.botlib.aas_bspq3.AAS_ValueForBSPEpairKey` while evaluating `AAS_FloatForBSPEpairKey`. Return paths include `[true,numbers.atof32(pair[1])]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `entities`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and entity>0 and entity<state.numEntities`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L123)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-freebspentities-function-aas-freebspentities-state-src-mq3-botlib-aas-bspq3-ml-1994323403"></a>
 ### AAS_FreeBSPEntities
@@ -171,12 +189,14 @@ function AAS_FloatForBSPEpairKey(state, entity, key)
 function AAS_FreeBSPEntities(state)
 ```
 
+Set `state.entities` to `[]` and `state.numEntities` to `0` in `mq3.botlib.aas_bspq3.AAS_FreeBSPEntities`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `entities` and `numEntities`. May update `state.entities` and `state.numEntities` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L136)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-inphs-function-aas-inphs-p1-p2-src-mq3-botlib-aas-bspq3-ml-1023662685"></a>
 ### AAS_inPHS
@@ -185,13 +205,15 @@ function AAS_FreeBSPEntities(state)
 function AAS_inPHS(p1, p2)
 ```
 
+Return `true` for `AAS_inPHS`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `p1` | `dynamic` | — |  |
-| `p2` | `dynamic` | — |  |
+| `p1` | `dynamic` | — | Not read by this implementation; retained in the `AAS_inPHS` signature. |
+| `p2` | `dynamic` | — | Not read by this implementation; retained in the `AAS_inPHS` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L54)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-inpvs-function-aas-inpvs-host-p1-p2-src-mq3-botlib-aas-bspq3-ml-635954931"></a>
 ### AAS_inPVS
@@ -200,14 +222,16 @@ function AAS_inPHS(p1, p2)
 function AAS_inPVS(host, p1, p2)
 ```
 
+Forward `AAS_inPVS` to `mq3.botlib.server_imports.BotImport_inPVS` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `p1` | `dynamic` | — |  |
-| `p2` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Host service configuration; accesses `inPvsFn` and `context`. |
+| `p1` | `dynamic` | — | Value passed as argument 2 to `host.inPvsFn`. |
+| `p2` | `dynamic` | — | Value passed as argument 3 to `host.inPvsFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L50)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-intforbspepairkey-function-aas-intforbspepairkey-state-entity-key-src-mq3-botlib-aas-bspq3-ml-1495945307"></a>
 ### AAS_IntForBSPEpairKey
@@ -216,14 +240,16 @@ function AAS_inPVS(host, p1, p2)
 function AAS_IntForBSPEpairKey(state, entity, key)
 ```
 
+Apply `mq3.botlib.aas_bspq3.AAS_ValueForBSPEpairKey` while evaluating `AAS_IntForBSPEpairKey`. Return paths include `[true,numbers.atoi(pair[1])]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `entities`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and entity>0 and entity<state.numEntities`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L130)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-loadbspfile-function-aas-loadbspfile-state-entitydata-src-mq3-botlib-aas-bspq3-ml-1221409816"></a>
 ### AAS_LoadBSPFile
@@ -232,13 +258,15 @@ function AAS_IntForBSPEpairKey(state, entity, key)
 function AAS_LoadBSPFile(state, entityData)
 ```
 
+Update `state.dentData`, `state.entDataSize` and `state.loaded` during `AAS_LoadBSPFile`. Return paths include `BLERR_NOERROR`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entityData` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `dentData`, `entDataSize` and `loaded`. May update `state.dentData`, `state.entDataSize` and `state.loaded` in place. |
+| `entityData` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L163)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-nextbspentity-function-aas-nextbspentity-state-entity-src-mq3-botlib-aas-bspq3-ml-109412452"></a>
 ### AAS_NextBSPEntity
@@ -247,13 +275,15 @@ function AAS_LoadBSPFile(state, entityData)
 function AAS_NextBSPEntity(state, entity)
 ```
 
+Advance to the next valid BSP entity number, returning zero at the end of the entity table.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `numEntities`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `entity`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L96)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-parsebspentities-function-aas-parsebspentities-state-src-mq3-botlib-aas-bspq3-ml-1901848971"></a>
 ### AAS_ParseBSPEntities
@@ -262,12 +292,14 @@ function AAS_NextBSPEntity(state, entity)
 function AAS_ParseBSPEntities(state)
 ```
 
+Set `state.entities` to `entities` and `state.numEntities` to `len(entities)` in `mq3.botlib.aas_bspq3.AAS_ParseBSPEntities`. Return paths include `state.numEntities-1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `dentData`, `entities` and `numEntities`. May update `state.entities` and `state.numEntities` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L139)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-pointcontents-function-aas-pointcontents-host-point-src-mq3-botlib-aas-bspq3-ml-797317848"></a>
 ### AAS_PointContents
@@ -276,13 +308,15 @@ function AAS_ParseBSPEntities(state)
 function AAS_PointContents(host, point)
 ```
 
+Forward `AAS_PointContents` to `mq3.botlib.server_imports.BotImport_PointContents` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Host service configuration; accesses `pointContentsFn` and `context`. |
+| `point` | `dynamic` | — | Three-component point used by the geometric query. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L32)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-printfreebsplinks-function-aas-printfreebsplinks-text-src-mq3-botlib-aas-bspq3-ml-815027497"></a>
 ### AAS_PrintFreeBSPLinks
@@ -295,10 +329,10 @@ Declared by be_aas_bsp.h but not defined by the released Q3 BSP backend. Keep ex
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Not read by this implementation; retained in the `AAS_PrintFreeBSPLinks` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L87)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-trace-function-aas-trace-host-start-mins-maxs-finish-passent-contentmask-src-mq3-botlib-aas-bspq3-ml-1647102370"></a>
 ### AAS_Trace
@@ -307,18 +341,20 @@ Declared by be_aas_bsp.h but not defined by the released Q3 BSP backend. Keep ex
 function AAS_Trace(host, start, mins, maxs, finish, passent, contentmask)
 ```
 
+Forward `AAS_Trace` to `mq3.botlib.server_imports.BotImport_Trace` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `passent` | `dynamic` | — |  |
-| `contentmask` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Host service configuration; accesses `traceFn` and `context`. |
+| `start` | `dynamic` | — | Value passed as argument 2 to `host.traceFn`. |
+| `mins` | `dynamic` | — | Minimum coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum coordinates of the axis-aligned bounds. |
+| `finish` | `dynamic` | — | Value passed as argument 5 to `host.traceFn`. |
+| `passent` | `dynamic` | — | Value passed as argument 6 to `host.traceFn`. |
+| `contentmask` | `dynamic` | — | Value passed as argument 7 to `host.traceFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L28)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-unlinkfrombspleaves-function-aas-unlinkfrombspleaves-leaves-src-mq3-botlib-aas-bspq3-ml-1614857814"></a>
 ### AAS_UnlinkFromBSPLeaves
@@ -331,10 +367,10 @@ These are intentional empty Q3 implementations, not missing adapters.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `leaves` | `dynamic` | — |  |
+| `leaves` | `dynamic` | — | Not read by this implementation; retained in the `AAS_UnlinkFromBSPLeaves` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L63)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-valueforbspepairkey-function-aas-valueforbspepairkey-state-entity-key-src-mq3-botlib-aas-bspq3-ml-1085814063"></a>
 ### AAS_ValueForBSPEpairKey
@@ -343,14 +379,16 @@ These are intentional empty Q3 implementations, not missing adapters.
 function AAS_ValueForBSPEpairKey(state, entity, key)
 ```
 
+Apply `mq3.botlib.aas_bspq3.AAS_BSPEntityInRange` while evaluating `AAS_ValueForBSPEpairKey`. Return paths include `[false,""]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `entities`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and entity>0 and entity<state.numEntities`. |
+| `key` | `dynamic` | — | Lookup text matched against `pair[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L107)
 
 <a id="function-function-mq3-botlib-aas-bspq3-aas-vectorforbspepairkey-function-aas-vectorforbspepairkey-state-entity-key-src-mq3-botlib-aas-bspq3-ml-1330432161"></a>
 ### AAS_VectorForBSPEpairKey
@@ -359,14 +397,16 @@ function AAS_ValueForBSPEpairKey(state, entity, key)
 function AAS_VectorForBSPEpairKey(state, entity, key)
 ```
 
+Apply `mq3.botlib.aas_bspq3.AAS_ValueForBSPEpairKey` while evaluating `AAS_VectorForBSPEpairKey`. Return paths include `[true,parsed[1]]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS bspq3 state; accesses `entities`. |
+| `entity` | `dynamic` | — | Operand used to evaluate the returned expression `state!=void and entity>0 and entity<state.numEntities`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L115)
 
 <a id="constant-constant-mq3-botlib-aas-bspq3-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-aas-bspq3-ml-444693151"></a>
 ### BLERR_NOERROR
@@ -385,8 +425,10 @@ const BLERR_NOERROR = 0
 function create()
 ```
 
+Create a `mq3.botlib.aas_bspq3.State` record with the declared empty defaults.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L18)
 
 <a id="constant-constant-mq3-botlib-aas-bspq3-max-bspentities-const-max-bspentities-2048-src-mq3-botlib-aas-bspq3-ml-1296339775"></a>
 ### MAX_BSPENTITIES
@@ -405,11 +447,13 @@ const MAX_BSPENTITIES = 2048
 function PrintContents(contents)
 ```
 
+Decode the BSP contents mask into the ordered names of the enabled contents flags.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `contents` | `dynamic` | — |  |
+| `contents` | `dynamic` | — | Value used by `PrintContents` in `for each pair in values if (contents&pair[0])!=0 then result=result+[pair[1]] end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L171)
 
 - [mq3.botlib.aas_bspq3.State](Type-mq3-botlib-aas-bspq3-state-1438629734.md) — struct

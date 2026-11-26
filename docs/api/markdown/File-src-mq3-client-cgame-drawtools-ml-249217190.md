@@ -20,23 +20,25 @@ Reachable from entry: **yes**
 function action(kind, x, y, width, height, s1, t1, s2, t2, shader, color, dispatched)
 ```
 
+Creates a `mq3.client.cgame_drawtools.DrawAction` record. Assigns `kind` from `kind`, `x` from `x`, `y` from `y`, `width` from `width`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `kind` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `s1` | `dynamic` | — |  |
-| `t1` | `dynamic` | — |  |
-| `s2` | `dynamic` | — |  |
-| `t2` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `dispatched` | `dynamic` | — |  |
+| `kind` | `dynamic` | — | Value used to initialize `DrawAction.kind`. |
+| `x` | `dynamic` | — | Value used to initialize `DrawAction.x`. |
+| `y` | `dynamic` | — | Value used to initialize `DrawAction.y`. |
+| `width` | `dynamic` | — | Value used to initialize `DrawAction.width`. |
+| `height` | `dynamic` | — | Value used to initialize `DrawAction.height`. |
+| `s1` | `dynamic` | — | Value used to initialize `DrawAction.s1`. |
+| `t1` | `dynamic` | — | Value used to initialize `DrawAction.t1`. |
+| `s2` | `dynamic` | — | Value used to initialize `DrawAction.s2`. |
+| `t2` | `dynamic` | — | Value used to initialize `DrawAction.t2`. |
+| `shader` | `dynamic` | — | Value used to initialize `DrawAction.shader`. |
+| `color` | `dynamic` | — | Value used to initialize `DrawAction.color`. |
+| `dispatched` | `dynamic` | — | Value used to initialize `DrawAction.dispatched`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L61)
 
 <a id="function-function-mq3-client-cgame-drawtools-adjustfrom640-function-adjustfrom640-state-x-y-width-height-src-mq3-client-cgame-drawtools-ml-1157175411"></a>
 ### adjustFrom640
@@ -49,14 +51,14 @@ CG_AdjustFrom640
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.screenXScale`, `state.screenYScale`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `adjustFrom640`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `adjustFrom640`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `adjustFrom640`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `adjustFrom640`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L97)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-armor-protection-const-armor-protection-0-66-src-mq3-client-cgame-drawtools-ml-865087687"></a>
 ### ARMOR_PROTECTION
@@ -75,12 +77,14 @@ const ARMOR_PROTECTION = 0.66
 function bannerWidth(text)
 ```
 
+Calls `mq3.client.cgame_drawtools.propMapB` from client game drawtools `bannerWidth`. The final path returns `width-PROPB_GAP_WIDTH`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `bannerWidth` in the client game drawtools path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L299)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-bigchar-height-const-bigchar-height-16-src-mq3-client-cgame-drawtools-ml-1282769148"></a>
 ### BIGCHAR_HEIGHT
@@ -109,12 +113,14 @@ const BIGCHAR_WIDTH = 16
 function clear(state)
 ```
 
+Updates `state.actions` during client game drawtools `clear`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game drawtools record/storage; this routine assigns `state.actions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L71)
 
 <a id="function-function-mq3-client-cgame-drawtools-colorforhealth-function-colorforhealth-state-src-mq3-client-cgame-drawtools-ml-368336973"></a>
 ### colorForHealth
@@ -127,10 +133,10 @@ CG_ColorForHealth
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.health`, `state.armor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L275)
 
 <a id="function-function-mq3-client-cgame-drawtools-colorindex-function-colorindex-code-src-mq3-client-cgame-drawtools-ml-647676697"></a>
 ### colorIndex
@@ -139,12 +145,14 @@ CG_ColorForHealth
 function colorIndex(code)
 ```
 
+Computes `(code-48)&7` for client game drawtools `colorIndex`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `code` | `dynamic` | — |  |
+| `code` | `dynamic` | — | Value used by `return (code-48)&7`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L174)
 
 <a id="function-function-mq3-client-cgame-drawtools-colortable-function-colortable-index-src-mq3-client-cgame-drawtools-ml-827431890"></a>
 ### colorTable
@@ -153,12 +161,14 @@ function colorIndex(code)
 function colorTable(index)
 ```
 
+Calls `mq3.client.cgame_drawtools.copyColor` from client game drawtools `colorTable`. The final path returns `copyColor(table[index&7])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `index` | `dynamic` | — |  |
+| `index` | `dynamic` | — | Value used by `return copyColor(table[index&7])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L169)
 
 <a id="function-function-mq3-client-cgame-drawtools-copycolor-function-copycolor-color-src-mq3-client-cgame-drawtools-ml-1669726899"></a>
 ### copyColor
@@ -167,12 +177,14 @@ function colorTable(index)
 function copyColor(color)
 ```
 
+Evaluates client game drawtools `copyColor` and returns `void`, `[color[0],color[1],color[2],color[3]]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `color` | `dynamic` | — |  |
+| `color` | `dynamic` | — | Sequence read at `color[0]`, `color[1]`, `color[2]`, `color[3]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L47)
 
 <a id="function-function-mq3-client-cgame-drawtools-create-function-create-src-mq3-client-cgame-drawtools-ml-1293135386"></a>
 ### create
@@ -181,8 +193,10 @@ function copyColor(color)
 function create()
 ```
 
+Creates a `mq3.client.cgame_drawtools.State` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L42)
 
 - [mq3.client.cgame_drawtools.DrawAction](Type-mq3-client-cgame-drawtools-drawaction-325066084.md) — struct
 <a id="function-function-mq3-client-cgame-drawtools-drawbannerstring-function-drawbannerstring-state-x-y-text-style-color-retailactive-src-mq3-client-cgame-drawtools-ml-1666138498"></a>
@@ -196,16 +210,16 @@ UI_DrawBannerString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game drawtools state passed to the helper calls in `drawBannerString`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawBannerString`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawBannerString`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawBannerString` in the client game drawtools path. |
+| `style` | `dynamic` | — | Value used by `format=style&UI_FORMATMASK`. |
+| `color` | `dynamic` | — | Sequence read at `color[3]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L308)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawbannerstring2-function-drawbannerstring2-state-x-y-text-color-retailactive-src-mq3-client-cgame-drawtools-ml-34709427"></a>
 ### drawBannerString2
@@ -218,15 +232,15 @@ UI_DrawBannerString2
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.screenXScale`, `state.screenXBias`, `state.charsetPropB`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawBannerString2`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawBannerString2`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawBannerString2` in the client game drawtools path. |
+| `color` | `dynamic` | — | Color value used by the client game drawtools drawing or interpolation operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L292)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawbigstring-function-drawbigstring-state-x-y-text-alpha-retailactive-src-mq3-client-cgame-drawtools-ml-627332342"></a>
 ### drawBigString
@@ -239,15 +253,15 @@ CG_DrawBigString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `alpha` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `x` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `y` | `dynamic` | — | Argument 3 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `text` | `dynamic` | — | Argument 4 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `alpha` | `dynamic` | — | Opacity or blend weight used by the visual effect. Forwarded to `mq3.client.cgame_drawtools.drawStringExt`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_drawtools.drawStringExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L211)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawbigstringcolor-function-drawbigstringcolor-state-x-y-text-color-retailactive-src-mq3-client-cgame-drawtools-ml-602455381"></a>
 ### drawBigStringColor
@@ -260,15 +274,15 @@ CG_DrawBigStringColor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `x` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `y` | `dynamic` | — | Argument 3 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `text` | `dynamic` | — | Argument 4 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_drawtools.drawStringExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L219)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawchar-function-drawchar-state-x-y-width-height-ch-retailactive-src-mq3-client-cgame-drawtools-ml-1309834095"></a>
 ### drawChar
@@ -281,16 +295,16 @@ CG_DrawChar
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `ch` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.charsetShader`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawChar`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawChar`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawChar`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `drawChar`. |
+| `ch` | `dynamic` | — | Value used by `value=ch&255`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L160)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawpic-function-drawpic-state-x-y-width-height-shader-retailactive-src-mq3-client-cgame-drawtools-ml-817431145"></a>
 ### drawPic
@@ -303,16 +317,16 @@ CG_DrawPic
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game drawtools state passed to the helper calls in `drawPic`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawPic`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawPic`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawPic`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `drawPic`. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L150)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawproportionalstring-function-drawproportionalstring-state-x-y-text-style-color-retailactive-src-mq3-client-cgame-drawtools-ml-189983750"></a>
 ### drawProportionalString
@@ -325,16 +339,16 @@ UI_DrawProportionalString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `style` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.charsetProp`, `state.time`, `state.charsetPropGlow`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawProportionalString`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawProportionalString`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawProportionalString` in the client game drawtools path. |
+| `style` | `dynamic` | — | Value used by `scale=proportionalSizeScale(style)`. |
+| `color` | `dynamic` | — | Sequence read at `color[3]`, `color[0]`, `color[1]`, `color[2]`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L339)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawproportionalstring2-function-drawproportionalstring2-state-x-y-text-color-sizescale-charset-retailactive-src-mq3-client-cgame-drawtools-ml-139768112"></a>
 ### drawProportionalString2
@@ -347,17 +361,17 @@ UI_DrawProportionalString2
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `sizeScale` | `dynamic` | — |  |
-| `charset` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.screenXScale`, `state.screenXBias`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawProportionalString2`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawProportionalString2`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawProportionalString2` in the client game drawtools path. |
+| `color` | `dynamic` | — | Color value used by the client game drawtools drawing or interpolation operation. |
+| `sizeScale` | `dynamic` | — | Value used by `if ch==32 then aw=n.fmul(PROP_SPACE_WIDTH*1.0,n.fmul(state.screenXScale,sizeScale)) else if glyph[2]!=-1 then aw=n.fmul(glyph[2]*1.0,n.fmul(st...`. |
+| `charset` | `dynamic` | — | Value used by `stretchPic(state,ax,ay,aw,ah,glyph[0]/256.0,glyph[1]/256.0,(glyph[0]+glyph[2])/256.0,(glyph[1]+PROP_HEIGHT)/256.0,charset,retailActive) end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L323)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawrect-function-drawrect-state-x-y-width-height-size-color-retailactive-src-mq3-client-cgame-drawtools-ml-209674800"></a>
 ### drawRect
@@ -370,17 +384,17 @@ CG_DrawRect
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game drawtools state passed to the helper calls in `drawRect`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawRect`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawRect`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawRect`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `drawRect`. |
+| `size` | `dynamic` | — | Value used by `drawTopBottom(state,x,y,width,height,size,retailActive)`. |
+| `color` | `dynamic` | — | Color value used by the client game drawtools drawing or interpolation operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L141)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawsides-function-drawsides-state-x-y-width-height-size-retailactive-src-mq3-client-cgame-drawtools-ml-781270005"></a>
 ### drawSides
@@ -393,16 +407,16 @@ CG_DrawSides
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.screenXScale`, `state.whiteShader`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawSides`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawSides`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawSides`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `drawSides`. |
+| `size` | `dynamic` | — | Value used by `scaled=n.fmul(size,state.screenXScale)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L118)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawsmallstring-function-drawsmallstring-state-x-y-text-alpha-retailactive-src-mq3-client-cgame-drawtools-ml-1734264192"></a>
 ### drawSmallString
@@ -415,15 +429,15 @@ CG_DrawSmallString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `alpha` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `x` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `y` | `dynamic` | — | Argument 3 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `text` | `dynamic` | — | Argument 4 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `alpha` | `dynamic` | — | Opacity or blend weight used by the visual effect. Forwarded to `mq3.client.cgame_drawtools.drawStringExt`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_drawtools.drawStringExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L227)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawsmallstringcolor-function-drawsmallstringcolor-state-x-y-text-color-retailactive-src-mq3-client-cgame-drawtools-ml-1370177693"></a>
 ### drawSmallStringColor
@@ -436,15 +450,15 @@ CG_DrawSmallStringColor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `x` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `y` | `dynamic` | — | Argument 3 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `text` | `dynamic` | — | Argument 4 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `color` | `dynamic` | — | Argument 5 of `mq3.client.cgame_drawtools.drawStringExt`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_drawtools.drawStringExt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L235)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawstringext-function-drawstringext-state-x-y-text-setcolorvalue-forcecolor-shadow-charwidth-charheight-maxchars-retailactive-src-mq3-client-cgame-drawtools-ml-1190044036"></a>
 ### drawStringExt
@@ -457,20 +471,20 @@ CG_DrawStringExt
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `setColorValue` | `dynamic` | — |  |
-| `forceColor` | `dynamic` | — |  |
-| `shadow` | `dynamic` | — |  |
-| `charWidth` | `dynamic` | — |  |
-| `charHeight` | `dynamic` | — |  |
-| `maxChars` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game drawtools state passed to the helper calls in `drawStringExt`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawStringExt`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawStringExt`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawStringExt` in the client game drawtools path. |
+| `setColorValue` | `dynamic` | — | Sequence read at `setColorValue[3]`. |
+| `forceColor` | `dynamic` | — | Value used by `if not forceColor then color=colorTable(colorIndex(data[index+1]))`. |
+| `shadow` | `dynamic` | — | Value used by `if shadow then`. |
+| `charWidth` | `dynamic` | — | Value used by `if isColor(data,index) then index=index+2 else drawChar(state,xx+2,y+2,charWidth,charHeight,data[index],retailActive)`. |
+| `charHeight` | `dynamic` | — | Value used by `if isColor(data,index) then index=index+2 else drawChar(state,xx+2,y+2,charWidth,charHeight,data[index],retailActive)`. |
+| `maxChars` | `dynamic` | — | Value used by `limit=maxChars`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L188)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawstrlen-function-drawstrlen-text-src-mq3-client-cgame-drawtools-ml-1721484479"></a>
 ### drawStrlen
@@ -483,10 +497,10 @@ CG_DrawStrlen
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `drawStrlen` in the client game drawtools path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L238)
 
 <a id="function-function-mq3-client-cgame-drawtools-drawtopbottom-function-drawtopbottom-state-x-y-width-height-size-retailactive-src-mq3-client-cgame-drawtools-ml-568670501"></a>
 ### drawTopBottom
@@ -499,16 +513,16 @@ CG_DrawTopBottom
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.screenYScale`, `state.whiteShader`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `drawTopBottom`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `drawTopBottom`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `drawTopBottom`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `drawTopBottom`. |
+| `size` | `dynamic` | — | Value used by `scaled=n.fmul(size,state.screenYScale)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L129)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-fade-time-const-fade-time-200-src-mq3-client-cgame-drawtools-ml-1910280699"></a>
 ### FADE_TIME
@@ -531,12 +545,12 @@ CG_FadeColor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `startMsec` | `dynamic` | — |  |
-| `totalMsec` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `startMsec` | `dynamic` | — | Value used by `if startMsec==0 then return void end if`. |
+| `totalMsec` | `dynamic` | — | Value used by `if t>=totalMsec then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L261)
 
 <a id="function-function-mq3-client-cgame-drawtools-fillrect-function-fillrect-state-x-y-width-height-color-retailactive-src-mq3-client-cgame-drawtools-ml-164111469"></a>
 ### fillRect
@@ -549,16 +563,16 @@ CG_FillRect
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.whiteShader`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `fillRect`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `fillRect`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `fillRect`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `fillRect`. |
+| `color` | `dynamic` | — | Color value used by the client game drawtools drawing or interpolation operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L107)
 
 <a id="function-function-mq3-client-cgame-drawtools-getcolorforhealth-function-getcolorforhealth-health-armor-src-mq3-client-cgame-drawtools-ml-1504742409"></a>
 ### getColorForHealth
@@ -571,11 +585,11 @@ CG_GetColorForHealth
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `health` | `dynamic` | — |  |
-| `armor` | `dynamic` | — |  |
+| `health` | `dynamic` | — | Value used by `if health<=0 then return [0.0,0.0,0.0,1.0] end if`. |
+| `armor` | `dynamic` | — | Value used by `count=armor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L270)
 
 <a id="function-function-mq3-client-cgame-drawtools-iscolor-function-iscolor-data-index-src-mq3-client-cgame-drawtools-ml-1850510632"></a>
 ### isColor
@@ -584,13 +598,15 @@ CG_GetColorForHealth
 function isColor(data, index)
 ```
 
+Computes `index+1<len(data) and data[index]==94 and data[index+1]!=94` for client game drawtools `isColor`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Sequence read at `data[index]`, `data[index+1]`. |
+| `index` | `dynamic` | — | Value used by `return index+1<len(data) and data[index]==94 and data[index+1]!=94`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L166)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-prop-gap-width-const-prop-gap-width-3-src-mq3-client-cgame-drawtools-ml-1760045056"></a>
 ### PROP_GAP_WIDTH
@@ -659,8 +675,10 @@ const PROPB_SPACE_WIDTH = 12
 function propMap()
 ```
 
+Evaluates client game drawtools `propMap` and returns `invalid+visible` according to its guard/selection conditions.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L130)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L278)
 
 <a id="function-function-mq3-client-cgame-drawtools-propmapb-function-propmapb-src-mq3-client-cgame-drawtools-ml-498657362"></a>
 ### propMapB
@@ -669,8 +687,10 @@ function propMap()
 function propMapB()
 ```
 
+Builds the client game drawtools `propMapB` sequence from `[[11,12,33],[49,12,31],[85,12,31],[120,12,30],[156,12,21],[183,12,21],[207,12,32],[13,55,30],[49,55,13],[66,55,29],[101,55,31],[135,55,21],[158,55,40],[204,55,32],[12,97,31],[48,97,31],[82,97,30],[...`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L134)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L283)
 
 <a id="function-function-mq3-client-cgame-drawtools-proportionalsizescale-function-proportionalsizescale-style-src-mq3-client-cgame-drawtools-ml-658122317"></a>
 ### proportionalSizeScale
@@ -683,10 +703,10 @@ UI_ProportionalSizeScale
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `style` | `dynamic` | — |  |
+| `style` | `dynamic` | — | Value used by `if (style&UI_SMALLFONT)!=0 then return 0.75 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L330)
 
 <a id="function-function-mq3-client-cgame-drawtools-proportionalstringwidth-function-proportionalstringwidth-text-src-mq3-client-cgame-drawtools-ml-1717194727"></a>
 ### proportionalStringWidth
@@ -699,10 +719,10 @@ UI_ProportionalStringWidth
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `proportionalStringWidth` in the client game drawtools path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L313)
 
 <a id="function-function-mq3-client-cgame-drawtools-publish-function-publish-state-value-retailactive-src-mq3-client-cgame-drawtools-ml-2022545141"></a>
 ### publish
@@ -711,14 +731,16 @@ UI_ProportionalStringWidth
 function publish(state, value, retailActive)
 ```
 
+Updates `value.dispatched`, `state.actions`, `state.emitted`, `state.suppressed` during client game drawtools `publish`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game drawtools record/storage; this routine assigns `state.actions`, `state.emitted`, `state.suppressed`. |
+| `value` | `dynamic` | — | Mutable client game drawtools record/storage; this routine assigns `value.dispatched`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L66)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-pulse-divisor-const-pulse-divisor-75-src-mq3-client-cgame-drawtools-ml-1416910461"></a>
 ### PULSE_DIVISOR
@@ -737,14 +759,16 @@ const PULSE_DIVISOR = 75
 function setColor(state, color, retailActive)
 ```
 
+Adapts `mq3.client.cgame_drawtools.publish` to client game drawtools `setColor`, returning its result for `state, action("set-color",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,"",color,false), retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.publish`. |
+| `color` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("set-color",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,"",color,false)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_drawtools.publish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L76)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-smallchar-height-const-smallchar-height-16-src-mq3-client-cgame-drawtools-ml-791703038"></a>
 ### SMALLCHAR_HEIGHT
@@ -774,22 +798,24 @@ const SMALLCHAR_WIDTH = 8
 function stretchPic(state, x, y, width, height, s1, t1, s2, t2, shader, retailActive)
 ```
 
+Adapts `mq3.client.cgame_drawtools.publish` to client game drawtools `stretchPic`, returning its result for `state, action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false), retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `s1` | `dynamic` | — |  |
-| `t1` | `dynamic` | — |  |
-| `s2` | `dynamic` | — |  |
-| `t2` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.publish`. |
+| `x` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `y` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `width` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `height` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `s1` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `t1` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `s2` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `t2` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `shader` | `dynamic` | — | Argument 2 of `mq3.client.cgame_drawtools.publish`; passed as `action("stretch-pic",x,y,width,height,s1,t1,s2,t2,shader,void,false)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_drawtools.publish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L89)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-team-blue-const-team-blue-2-src-mq3-client-cgame-drawtools-ml-1226821023"></a>
 ### TEAM_BLUE
@@ -832,10 +858,10 @@ CG_TeamColor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `team` | `dynamic` | — |  |
+| `team` | `dynamic` | — | Value used by `if team==TEAM_RED then return [1.0,0.2,0.2,1.0] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L266)
 
 <a id="function-function-mq3-client-cgame-drawtools-tileclear-function-tileclear-state-retailactive-src-mq3-client-cgame-drawtools-ml-968737396"></a>
 ### tileClear
@@ -848,11 +874,11 @@ CG_TileClear
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.vidWidth`, `state.vidHeight`, `state.refX`, `state.refY` and additional values. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L252)
 
 <a id="function-function-mq3-client-cgame-drawtools-tileclearbox-function-tileclearbox-state-x-y-width-height-shader-retailactive-src-mq3-client-cgame-drawtools-ml-1164393137"></a>
 ### tileClearBox
@@ -865,16 +891,16 @@ CG_TileClearBox
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_drawtools.stretchPic`. |
+| `x` | `dynamic` | — | Argument 2, 6, 8 of `mq3.client.cgame_drawtools.stretchPic`; passed as `x*1.0`, `x/64.0`, `(x+width)/64.0`. |
+| `y` | `dynamic` | — | Argument 3, 7, 9 of `mq3.client.cgame_drawtools.stretchPic`; passed as `y*1.0`, `y/64.0`, `(y+height)/64.0`. |
+| `width` | `dynamic` | — | Argument 4, 8 of `mq3.client.cgame_drawtools.stretchPic`; passed as `width*1.0`, `(x+width)/64.0`. |
+| `height` | `dynamic` | — | Argument 5, 9 of `mq3.client.cgame_drawtools.stretchPic`; passed as `height*1.0`, `(y+height)/64.0`. |
+| `shader` | `dynamic` | — | Argument 10 of `mq3.client.cgame_drawtools.stretchPic`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. Forwarded to `mq3.client.cgame_drawtools.stretchPic`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_drawtools.ml#L248)
 
 <a id="constant-constant-mq3-client-cgame-drawtools-ui-center-const-ui-center-1-src-mq3-client-cgame-drawtools-ml-1034287850"></a>
 ### UI_CENTER

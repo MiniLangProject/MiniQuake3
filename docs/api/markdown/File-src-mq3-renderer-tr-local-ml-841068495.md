@@ -15,17 +15,19 @@ Reachable from entry: **no**
 function checkOverflow(numVertexes, numIndexes, verts, indexes, maxVertexes, maxIndexes)
 ```
 
+Computes `numVertexes+verts>=maxVertexes or numIndexes+indexes>=maxIndexes` for `mq3.renderer.tr_local.checkOverflow`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `numVertexes` | `dynamic` | — |  |
-| `numIndexes` | `dynamic` | — |  |
-| `verts` | `dynamic` | — |  |
-| `indexes` | `dynamic` | — |  |
-| `maxVertexes` | `dynamic` | — |  |
-| `maxIndexes` | `dynamic` | — |  |
+| `numVertexes` | `dynamic` | — | Input used in the result expression `numVertexes+verts>=maxVertexes or numIndexes+indexes>=maxIndexes`. |
+| `numIndexes` | `dynamic` | — | Input used in the result expression `numVertexes+verts>=maxVertexes or numIndexes+indexes>=maxIndexes`. |
+| `verts` | `dynamic` | — | Input used in the result expression `numVertexes+verts>=maxVertexes or numIndexes+indexes>=maxIndexes`. |
+| `indexes` | `dynamic` | — | Input used in the result expression `numVertexes+verts>=maxVertexes or numIndexes+indexes>=maxIndexes`. |
+| `maxVertexes` | `dynamic` | — | Input used in the result expression `numVertexes+verts>=maxVertexes or numIndexes+indexes>=maxIndexes`. |
+| `maxIndexes` | `dynamic` | — | Input used in the result expression `numVertexes+verts>=maxVertexes or numIndexes+indexes>=maxIndexes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L109)
 
 <a id="function-function-mq3-renderer-tr-local-commandbytesavailable-function-commandbytesavailable-used-requested-src-mq3-renderer-tr-local-ml-964456921"></a>
 ### commandBytesAvailable
@@ -34,13 +36,15 @@ function checkOverflow(numVertexes, numIndexes, verts, indexes, maxVertexes, max
 function commandBytesAvailable(used, requested)
 ```
 
+Computes `requested>=0 and used>=0 and used+requested+4<=MAX_RENDER_COMMANDS` for `mq3.renderer.tr_local.commandBytesAvailable`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `used` | `dynamic` | — |  |
-| `requested` | `dynamic` | — |  |
+| `used` | `dynamic` | — | Input used in the result expression `requested>=0 and used>=0 and used+requested+4<=MAX_RENDER_COMMANDS`. |
+| `requested` | `dynamic` | — | Input used in the result expression `requested>=0 and used>=0 and used+requested+4<=MAX_RENDER_COMMANDS`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L101)
 
 <a id="constant-constant-mq3-renderer-tr-local-contents-node-const-contents-node-1-src-mq3-renderer-tr-local-ml-1341465977"></a>
 ### CONTENTS_NODE
@@ -102,8 +106,10 @@ const DRAWSURF_MASK = 65535
 function enumNames()
 ```
 
+Lists the 111 declared names for `mq3.renderer.tr_local.enumNames`, including `ACFF_MODULATE_ALPHA`, `ACFF_MODULATE_RGB`, `ACFF_MODULATE_RGBA`, `ACFF_NONE`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L63)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L73)
 
 <a id="constant-constant-mq3-renderer-tr-local-fog-table-size-const-fog-table-size-256-src-mq3-renderer-tr-local-ml-2108888270"></a>
 ### FOG_TABLE_SIZE
@@ -152,8 +158,10 @@ const FUNCTABLE_SIZE2 = 10
 function functionNames()
 ```
 
+Lists the 159 declared names for `mq3.renderer.tr_local.functionNames`, including `myftol`, `R_ModelInit`, `R_GetModelByHandle`, `R_LerpTag`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L77)
 
 <a id="function-function-mq3-renderer-tr-local-globalnames-function-globalnames-src-mq3-renderer-tr-local-ml-80588024"></a>
 ### globalNames
@@ -162,8 +170,10 @@ function functionNames()
 function globalNames()
 ```
 
+Lists the 98 declared names for `mq3.renderer.tr_local.globalNames`, including `backEnd`, `backEndData`, `glConfig`, `glState`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L79)
 
 <a id="constant-constant-mq3-renderer-tr-local-gls-atest-bits-const-gls-atest-bits-1879048192-src-mq3-renderer-tr-local-ml-1717088040"></a>
 ### GLS_ATEST_BITS
@@ -292,8 +302,10 @@ const LIGHTMAP_WHITEIMAGE = -2
 function macroNames()
 ```
 
+Lists the 73 declared names for `mq3.renderer.tr_local.macroNames`, including `CONTENTS_NODE`, `CULL_CLIP`, `CULL_IN`, `CULL_OUT`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L71)
 
 <a id="constant-constant-mq3-renderer-tr-local-max-drawimages-const-max-drawimages-2048-src-mq3-renderer-tr-local-ml-1505014937"></a>
 ### MAX_DRAWIMAGES
@@ -482,15 +494,17 @@ const NUM_TEXTURE_BUNDLES = 2
 function packSort(shaderNum, entityNum, fogNum, dlightMap)
 ```
 
+Computes `(shaderNum<<QSORT_SHADERNUM_SHIFT)|(entityNum<<QSORT_ENTITYNUM_SHIFT)|(fogNum<<QSORT_FOGNUM_SHIFT)|dlightMap` for `mq3.renderer.tr_local.packSort`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `shaderNum` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `fogNum` | `dynamic` | — |  |
-| `dlightMap` | `dynamic` | — |  |
+| `shaderNum` | `dynamic` | — | Input used in the result expression `(shaderNum<<QSORT_SHADERNUM_SHIFT)\|(entityNum<<QSORT_ENTITYNUM_SHIFT)\|(fogNum<<QSORT_FOGNUM_SHIFT)\|dlightMap`. |
+| `entityNum` | `dynamic` | — | Input used in the result expression `(shaderNum<<QSORT_SHADERNUM_SHIFT)\|(entityNum<<QSORT_ENTITYNUM_SHIFT)\|(fogNum<<QSORT_FOGNUM_SHIFT)\|dlightMap`. |
+| `fogNum` | `dynamic` | — | Input used in the result expression `(shaderNum<<QSORT_SHADERNUM_SHIFT)\|(entityNum<<QSORT_ENTITYNUM_SHIFT)\|(fogNum<<QSORT_FOGNUM_SHIFT)\|dlightMap`. |
+| `dlightMap` | `dynamic` | — | Input used in the result expression `(shaderNum<<QSORT_SHADERNUM_SHIFT)\|(entityNum<<QSORT_ENTITYNUM_SHIFT)\|(fogNum<<QSORT_FOGNUM_SHIFT)\|dlightMap`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L85)
 
 <a id="constant-constant-mq3-renderer-tr-local-qsort-entitynum-shift-const-qsort-entitynum-shift-7-src-mq3-renderer-tr-local-ml-318583610"></a>
 ### QSORT_ENTITYNUM_SHIFT
@@ -572,12 +586,14 @@ const SMP_FRAMES = 2
 function sortDlight(value)
 ```
 
+Computes `value&3` for `mq3.renderer.tr_local.sortDlight`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `value&3`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L97)
 
 <a id="function-function-mq3-renderer-tr-local-sortentity-function-sortentity-value-src-mq3-renderer-tr-local-ml-1930962113"></a>
 ### sortEntity
@@ -586,12 +602,14 @@ function sortDlight(value)
 function sortEntity(value)
 ```
 
+Computes `(value>>QSORT_ENTITYNUM_SHIFT)&1023` for `mq3.renderer.tr_local.sortEntity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `(value>>QSORT_ENTITYNUM_SHIFT)&1023`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L91)
 
 <a id="function-function-mq3-renderer-tr-local-sortfog-function-sortfog-value-src-mq3-renderer-tr-local-ml-661283301"></a>
 ### sortFog
@@ -600,12 +618,14 @@ function sortEntity(value)
 function sortFog(value)
 ```
 
+Computes `(value>>QSORT_FOGNUM_SHIFT)&31` for `mq3.renderer.tr_local.sortFog`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `(value>>QSORT_FOGNUM_SHIFT)&31`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L94)
 
 <a id="function-function-mq3-renderer-tr-local-sortshader-function-sortshader-value-src-mq3-renderer-tr-local-ml-709787177"></a>
 ### sortShader
@@ -614,12 +634,14 @@ function sortFog(value)
 function sortShader(value)
 ```
 
+Computes `value>>QSORT_SHADERNUM_SHIFT` for `mq3.renderer.tr_local.sortShader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `value>>QSORT_SHADERNUM_SHIFT`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L88)
 
 - [mq3.renderer.tr_local.StretchPicCommand](Type-mq3-renderer-tr-local-stretchpiccommand-826043849.md) — struct
 - [mq3.renderer.tr_local.SwapBuffersCommand](Type-mq3-renderer-tr-local-swapbufferscommand-157634796.md) — struct
@@ -640,8 +662,10 @@ const TR_MAX_TEXMODS = 4
 function typeNames()
 ```
 
+Lists the 61 declared names for `mq3.renderer.tr_local.typeNames`, including `acff_t`, `alphaGen_t`, `backEndCounters_t`, `backEndData_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L64)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L75)
 
 <a id="constant-constant-mq3-renderer-tr-local-vertexsize-const-vertexsize-8-src-mq3-renderer-tr-local-ml-877534101"></a>
 ### VERTEXSIZE

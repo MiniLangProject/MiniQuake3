@@ -9,8 +9,10 @@
 struct Point
 ```
 
+Stores base Quake III console background point record, including `x`, `y`, `depth`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ depth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L19)
 
 <a id="field-field-mq3-client-baseq3-console-background-point-x-x-src-mq3-client-baseq3-console-background-ml-1957315425"></a>
 ### x
@@ -32,7 +34,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L19)
 
 <a id="field-field-mq3-client-baseq3-console-background-point-y-y-src-mq3-client-baseq3-console-background-ml-490553613"></a>
 ### y
@@ -42,4 +44,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L19)

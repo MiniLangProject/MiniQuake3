@@ -35,13 +35,15 @@ const CA_AUTHORIZING = 2
 function consoleCommand(state, realtime)
 ```
 
+Calls `mq3.client.ui_vm.invoke` from UI vm `consoleCommand`. The final path returns `invoke(state,[UI_CONSOLE_COMMAND,realtime])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.active`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L111)
 
 <a id="function-function-mq3-client-ui-vm-create-function-create-host-src-mq3-client-ui-vm-ml-2024494568"></a>
 ### create
@@ -50,12 +52,14 @@ function consoleCommand(state, realtime)
 function create(host)
 ```
 
+Calls `mq3.client.ui_vm.State` from UI vm `create`. The final path returns `State(host,void,false,false,0,0,0,-1,[])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.machineRuntime`, `host.syscall`, `host.loadFn`, `host.callFn` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L41)
 
 <a id="function-function-mq3-client-ui-vm-drawconnectscreen-function-drawconnectscreen-state-overlay-src-mq3-client-ui-vm-ml-1526418935"></a>
 ### drawConnectScreen
@@ -64,13 +68,15 @@ function create(host)
 function drawConnectScreen(state, overlay)
 ```
 
+Calls `mq3.client.ui_vm.invoke` from UI vm `drawConnectScreen`. The final path returns `invoke(state,[UI_DRAW_CONNECT_SCREEN,flag])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `overlay` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI vm state passed to the helper calls in `drawConnectScreen`. |
+| `overlay` | `dynamic` | — | Value used by `if overlay then flag=1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L115)
 
 <a id="function-function-mq3-client-ui-vm-initialize-function-initialize-state-connectionstate-connectedtopureserver-vmui-src-mq3-client-ui-vm-ml-887433230"></a>
 ### initialize
@@ -79,15 +85,17 @@ function drawConnectScreen(state, overlay)
 function initialize(state, connectionState, connectedToPureServer, vmUi)
 ```
 
+Updates `state.slot`, `state.active`, `state.apiVersion`, `state.uiStarted` during UI vm `initialize`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `connectionState` | `dynamic` | — |  |
-| `connectedToPureServer` | `dynamic` | — |  |
-| `vmUi` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI vm record/storage; this routine assigns `state.slot`, `state.active`, `state.apiVersion`, `state.uiStarted`. |
+| `connectionState` | `dynamic` | — | Value used by `if connectionState>=CA_AUTHORIZING and connectionState<CA_ACTIVE then connecting=1 end if`. |
+| `connectedToPureServer` | `dynamic` | — | Value used by `if connectedToPureServer!=0 then mode=VMI_COMPILED end if`. |
+| `vmUi` | `dynamic` | — | Value used by `mode=vmUi`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L64)
 
 <a id="function-function-mq3-client-ui-vm-invoke-function-invoke-state-arguments-src-mq3-client-ui-vm-ml-1007047243"></a>
 ### invoke
@@ -96,13 +104,15 @@ function initialize(state, connectionState, connectedToPureServer, vmUi)
 function invoke(state, arguments)
 ```
 
+Updates `state.callCount`, `state.lastExport`, `state.lastArgs` during UI vm `invoke`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI vm record/storage; this routine assigns `state.callCount`, `state.lastExport`, `state.lastArgs`. |
+| `arguments` | `dynamic` | — | Sequence read at `arguments[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L54)
 
 <a id="function-function-mq3-client-ui-vm-isfullscreen-function-isfullscreen-state-src-mq3-client-ui-vm-ml-678153331"></a>
 ### isFullscreen
@@ -111,12 +121,14 @@ function invoke(state, arguments)
 function isFullscreen(state)
 ```
 
+Calls `mq3.client.ui_vm.invoke` from UI vm `isFullscreen`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI vm state passed to the helper calls in `isFullscreen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L103)
 
 <a id="constant-constant-mq3-client-ui-vm-keycatch-ui-const-keycatch-ui-2-src-mq3-client-ui-vm-ml-137168757"></a>
 ### KEYCATCH_UI
@@ -135,14 +147,16 @@ const KEYCATCH_UI = 2
 function keyEvent(state, key, down)
 ```
 
+Calls `mq3.client.ui_vm.invoke` from UI vm `keyEvent`. The final path returns `invoke(state,[UI_KEY_EVENT,key,flag])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `down` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared UI vm state passed to the helper calls in `keyEvent`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI vm entry. |
+| `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L91)
 
 <a id="function-function-mq3-client-ui-vm-mouseevent-function-mouseevent-state-dx-dy-src-mq3-client-ui-vm-ml-732626418"></a>
 ### mouseEvent
@@ -151,14 +165,16 @@ function keyEvent(state, key, down)
 function mouseEvent(state, dx, dy)
 ```
 
+Adapts `mq3.client.ui_vm.invoke` to UI vm `mouseEvent`, returning its result for `state, [UI_MOUSE_EVENT,dx,dy]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `dx` | `dynamic` | — |  |
-| `dy` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_vm.invoke`. |
+| `dx` | `dynamic` | — | Argument 2 of `mq3.client.ui_vm.invoke`; passed as `[UI_MOUSE_EVENT,dx,dy]`. |
+| `dy` | `dynamic` | — | Argument 2 of `mq3.client.ui_vm.invoke`; passed as `[UI_MOUSE_EVENT,dx,dy]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L96)
 
 <a id="function-function-mq3-client-ui-vm-refresh-function-refresh-state-time-src-mq3-client-ui-vm-ml-1866753598"></a>
 ### refresh
@@ -167,13 +183,15 @@ function mouseEvent(state, dx, dy)
 function refresh(state, time)
 ```
 
+Adapts `mq3.client.ui_vm.invoke` to UI vm `refresh`, returning its result for `state, [UI_REFRESH,time]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_vm.invoke`. |
+| `time` | `dynamic` | — | Argument 2 of `mq3.client.ui_vm.invoke`; passed as `[UI_REFRESH,time]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L100)
 
 <a id="function-function-mq3-client-ui-vm-requireactive-function-requireactive-state-src-mq3-client-ui-vm-ml-1383688749"></a>
 ### requireActive
@@ -182,12 +200,14 @@ function refresh(state, time)
 function requireActive(state)
 ```
 
+Evaluates UI vm `requireActive` and returns `error(3451,"UI VM: module is not active")`, `state.slot` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.active`, `state.slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L47)
 
 <a id="function-function-mq3-client-ui-vm-services-function-services-machineruntime-syscall-loadfn-callfn-freefn-src-mq3-client-ui-vm-ml-1985802094"></a>
 ### services
@@ -196,16 +216,18 @@ function requireActive(state)
 function services(machineRuntime, syscall, loadFn, callFn, freeFn)
 ```
 
+Creates a `mq3.client.ui_vm.Services` record. Assigns `machineRuntime` from `machineRuntime`, `syscall` from `syscall`, `loadFn` from `loadFn`, `callFn` from `callFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `machineRuntime` | `dynamic` | — |  |
-| `syscall` | `dynamic` | — |  |
-| `loadFn` | `dynamic` | — |  |
-| `callFn` | `dynamic` | — |  |
-| `freeFn` | `dynamic` | — |  |
+| `machineRuntime` | `dynamic` | — | Value used to initialize `Services.machineRuntime`. |
+| `syscall` | `dynamic` | — | Value used to initialize `Services.syscall`. |
+| `loadFn` | `dynamic` | — | Value used to initialize `Services.loadFn`. |
+| `callFn` | `dynamic` | — | Value used to initialize `Services.callFn`. |
+| `freeFn` | `dynamic` | — | Value used to initialize `Services.freeFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L36)
 
 - [mq3.client.ui_vm.Services](Type-mq3-client-ui-vm-services-284829901.md) — struct
 <a id="function-function-mq3-client-ui-vm-setactivemenu-function-setactivemenu-state-menu-src-mq3-client-ui-vm-ml-2126103760"></a>
@@ -215,13 +237,15 @@ function services(machineRuntime, syscall, loadFn, callFn, freeFn)
 function setActiveMenu(state, menu)
 ```
 
+Adapts `mq3.client.ui_vm.invoke` to UI vm `setActiveMenu`, returning its result for `state, [UI_SET_ACTIVE_MENU,menu]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `menu` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.ui_vm.invoke`. |
+| `menu` | `dynamic` | — | Argument 2 of `mq3.client.ui_vm.invoke`; passed as `[UI_SET_ACTIVE_MENU,menu]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L107)
 
 <a id="function-function-mq3-client-ui-vm-shutdown-function-shutdown-state-src-mq3-client-ui-vm-ml-1553843307"></a>
 ### shutdown
@@ -230,12 +254,14 @@ function setActiveMenu(state, menu)
 function shutdown(state)
 ```
 
+Updates `state.keyCatchers`, `state.uiStarted`, `state.slot`, `state.active` during UI vm `shutdown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI vm record/storage; this routine assigns `state.keyCatchers`, `state.uiStarted`, `state.slot`, `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L80)
 
 - [mq3.client.ui_vm.State](Type-mq3-client-ui-vm-state-459992910.md) — struct
 <a id="constant-constant-mq3-client-ui-vm-ui-api-version-const-ui-api-version-6-src-mq3-client-ui-vm-ml-231608475"></a>
@@ -385,12 +411,14 @@ const UI_SHUTDOWN = 2
 function usesUniqueCdKey(state)
 ```
 
+Calls `mq3.client.ui_vm.invoke` from UI vm `usesUniqueCdKey`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_vm.ml#L118)
 
 <a id="constant-constant-mq3-client-ui-vm-vmi-compiled-const-vmi-compiled-2-src-mq3-client-ui-vm-ml-597660387"></a>
 ### VMI_COMPILED

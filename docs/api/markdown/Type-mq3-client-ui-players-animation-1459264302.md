@@ -9,8 +9,10 @@
 struct Animation
 ```
 
+Stores UI players animation record, including `firstFrame`, `numFrames`, `loopFrames`, `frameLerp`, `initialLerp`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L52)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
 
 ## Members
 
@@ -22,7 +24,7 @@ firstFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-animation-framelerp-framelerp-src-mq3-client-ui-players-ml-1440648491"></a>
 ### frameLerp
@@ -32,7 +34,7 @@ frameLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-animation-initiallerp-initiallerp-src-mq3-client-ui-players-ml-1813786103"></a>
 ### initialLerp
@@ -42,7 +44,7 @@ initialLerp
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-animation-loopframes-loopframes-src-mq3-client-ui-players-ml-613270527"></a>
 ### loopFrames
@@ -52,7 +54,7 @@ loopFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)
 
 <a id="field-field-mq3-client-ui-players-animation-numframes-numframes-src-mq3-client-ui-players-ml-143736159"></a>
 ### numFrames
@@ -62,4 +64,4 @@ numFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L57)

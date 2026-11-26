@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+`Runtime` record for l script, containing `host` and `baseFolder`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L89)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L93)
 
 ## Members
 
@@ -22,7 +24,7 @@ baseFolder
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L93)
 
 <a id="field-field-mq3-botlib-l-script-runtime-host-host-src-mq3-botlib-l-script-ml-34129797"></a>
 ### host
@@ -32,4 +34,4 @@ host
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L93)

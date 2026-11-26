@@ -9,8 +9,10 @@
 struct GlConfig
 ```
 
+Stores UI video gl config record, including `vendor`, `version`, `renderer`, `extensions`, `colorBits`, `depthBits` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 ## Members
 
@@ -22,7 +24,7 @@ colorBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-depthbits-depthbits-src-mq3-client-ui-video-ml-640558956"></a>
 ### depthBits
@@ -32,7 +34,7 @@ depthBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-drivertype-drivertype-src-mq3-client-ui-video-ml-505424872"></a>
 ### driverType
@@ -42,7 +44,7 @@ driverType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-extensions-extensions-src-mq3-client-ui-video-ml-217340472"></a>
 ### extensions
@@ -52,7 +54,7 @@ extensions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-hardwaretype-hardwaretype-src-mq3-client-ui-video-ml-709339256"></a>
 ### hardwareType
@@ -62,7 +64,7 @@ hardwareType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-renderer-renderer-src-mq3-client-ui-video-ml-49893994"></a>
 ### renderer
@@ -72,7 +74,7 @@ renderer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-stencilbits-stencilbits-src-mq3-client-ui-video-ml-2085148292"></a>
 ### stencilBits
@@ -82,7 +84,7 @@ stencilBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-vendor-vendor-src-mq3-client-ui-video-ml-705590112"></a>
 ### vendor
@@ -92,7 +94,7 @@ vendor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)
 
 <a id="field-field-mq3-client-ui-video-glconfig-version-version-src-mq3-client-ui-video-ml-1101617660"></a>
 ### version
@@ -102,4 +104,4 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L32)

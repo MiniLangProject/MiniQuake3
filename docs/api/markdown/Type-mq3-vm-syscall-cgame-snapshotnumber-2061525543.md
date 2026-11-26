@@ -9,8 +9,10 @@
 struct SnapshotNumber
 ```
 
+SnapshotNumber record for vm.syscall_cgame, containing `number`, `serverTime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L18)
 
 <a id="field-field-mq3-vm-syscall-cgame-snapshotnumber-servertime-servertime-src-mq3-vm-syscall-cgame-ml-274167936"></a>
 ### serverTime
@@ -32,4 +34,4 @@ serverTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L18)

@@ -9,8 +9,10 @@
 struct Trail
 ```
 
+Stores playable enemy projectiles trail record, including `projectileId`, `start`, `endPoint`, `fromTime`, `toTime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ endPoint
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L19)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-trail-fromtime-fromtime-src-mq3-client-playable-enemy-projectiles-ml-733604331"></a>
 ### fromTime
@@ -32,7 +34,7 @@ fromTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L19)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-trail-projectileid-projectileid-src-mq3-client-playable-enemy-projectiles-ml-426504417"></a>
 ### projectileId
@@ -42,7 +44,7 @@ projectileId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L19)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-trail-start-start-src-mq3-client-playable-enemy-projectiles-ml-1550941661"></a>
 ### start
@@ -52,7 +54,7 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L19)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-trail-totime-totime-src-mq3-client-playable-enemy-projectiles-ml-1515804525"></a>
 ### toTime
@@ -62,4 +64,4 @@ toTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L19)

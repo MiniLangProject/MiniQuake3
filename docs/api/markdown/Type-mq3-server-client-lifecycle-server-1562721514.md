@@ -9,8 +9,10 @@
 struct Server
 ```
 
+Server record for server.client_lifecycle, containing `time`, `checksumFeed`, `checksumFeedServerId`, `pure`, `configstrings`, `baselines`, and 8 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 ## Members
 
@@ -22,7 +24,7 @@ baselines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-cgamechecksum-cgamechecksum-src-mq3-server-client-lifecycle-ml-1002006302"></a>
 ### cgameChecksum
@@ -32,7 +34,7 @@ cgameChecksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-cgamepakfound-cgamepakfound-src-mq3-server-client-lifecycle-ml-1082437994"></a>
 ### cgamePakFound
@@ -42,7 +44,7 @@ cgamePakFound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-checksumfeed-checksumfeed-src-mq3-server-client-lifecycle-ml-128856252"></a>
 ### checksumFeed
@@ -52,7 +54,7 @@ checksumFeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-checksumfeedserverid-checksumfeedserverid-src-mq3-server-client-lifecycle-ml-150100160"></a>
 ### checksumFeedServerId
@@ -62,7 +64,7 @@ checksumFeedServerId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-clients-clients-src-mq3-server-client-lifecycle-ml-1273866850"></a>
 ### clients
@@ -72,7 +74,7 @@ clients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-configstrings-configstrings-src-mq3-server-client-lifecycle-ml-1871965214"></a>
 ### configstrings
@@ -82,7 +84,7 @@ configstrings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-dedicated-dedicated-src-mq3-server-client-lifecycle-ml-446511138"></a>
 ### dedicated
@@ -92,7 +94,7 @@ dedicated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-lanforcerate-lanforcerate-src-mq3-server-client-lifecycle-ml-1199527330"></a>
 ### lanForceRate
@@ -102,7 +104,7 @@ lanForceRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-loadedpurechecksums-loadedpurechecksums-src-mq3-server-client-lifecycle-ml-1658820214"></a>
 ### loadedPureChecksums
@@ -112,7 +114,7 @@ loadedPureChecksums
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-pure-pure-src-mq3-server-client-lifecycle-ml-1766544198"></a>
 ### pure
@@ -122,7 +124,7 @@ pure
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-time-time-src-mq3-server-client-lifecycle-ml-954059556"></a>
 ### time
@@ -132,7 +134,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-uichecksum-uichecksum-src-mq3-server-client-lifecycle-ml-1337318052"></a>
 ### uiChecksum
@@ -142,7 +144,7 @@ uiChecksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)
 
 <a id="field-field-mq3-server-client-lifecycle-server-uipakfound-uipakfound-src-mq3-server-client-lifecycle-ml-413842422"></a>
 ### uiPakFound
@@ -152,4 +154,4 @@ uiPakFound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L36)

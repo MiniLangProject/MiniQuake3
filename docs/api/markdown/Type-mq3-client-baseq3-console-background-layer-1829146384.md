@@ -9,8 +9,10 @@
 struct Layer
 ```
 
+Stores base Quake III console background layer record, including `stage`, `imageName`, `image`, `slot`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ image
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L15)
 
 <a id="field-field-mq3-client-baseq3-console-background-layer-imagename-imagename-src-mq3-client-baseq3-console-background-ml-2065878118"></a>
 ### imageName
@@ -32,7 +34,7 @@ imageName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L15)
 
 <a id="field-field-mq3-client-baseq3-console-background-layer-slot-slot-src-mq3-client-baseq3-console-background-ml-102155850"></a>
 ### slot
@@ -42,7 +44,7 @@ slot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L15)
 
 <a id="field-field-mq3-client-baseq3-console-background-layer-stage-stage-src-mq3-client-baseq3-console-background-ml-1176593950"></a>
 ### stage
@@ -52,4 +54,4 @@ stage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L15)

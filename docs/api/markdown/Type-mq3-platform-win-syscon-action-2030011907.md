@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Data record for `mq3.platform.win_syscon.Action`; groups `boundary`, `kind`, `text`, `value`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
 
 <a id="field-field-mq3-platform-win-syscon-action-dispatched-dispatched-src-mq3-platform-win-syscon-ml-245270123"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
 
 <a id="field-field-mq3-platform-win-syscon-action-kind-kind-src-mq3-platform-win-syscon-ml-116048189"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
 
 <a id="field-field-mq3-platform-win-syscon-action-text-text-src-mq3-platform-win-syscon-ml-420662499"></a>
 ### text
@@ -52,7 +54,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
 
 <a id="field-field-mq3-platform-win-syscon-action-value-value-src-mq3-platform-win-syscon-ml-1027664893"></a>
 ### value
@@ -62,4 +64,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)

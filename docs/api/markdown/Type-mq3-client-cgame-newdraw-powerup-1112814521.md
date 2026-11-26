@@ -9,8 +9,10 @@
 struct Powerup
 ```
 
+Stores client game newdraw powerup record, including `id`, `expires`, `icon`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L130)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L133)
 
 ## Members
 
@@ -22,7 +24,7 @@ expires
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L133)
 
 <a id="field-field-mq3-client-cgame-newdraw-powerup-icon-icon-src-mq3-client-cgame-newdraw-ml-1117067909"></a>
 ### icon
@@ -32,7 +34,7 @@ icon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L133)
 
 <a id="field-field-mq3-client-cgame-newdraw-powerup-id-id-src-mq3-client-cgame-newdraw-ml-95583901"></a>
 ### id
@@ -42,4 +44,4 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L133)

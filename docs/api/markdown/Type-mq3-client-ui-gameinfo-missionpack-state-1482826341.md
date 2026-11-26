@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI gameinfo missionpack state, including `data`, `arenaInfos`, `botInfos`, `maps`, `gameTypeCounts`, `diagnostics` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-state-arenainfos-arenainfos-src-mq3-client-ui-gameinfo-missionpack-ml-1464759244"></a>
 ### arenaInfos
@@ -32,7 +34,7 @@ arenaInfos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-state-botinfos-botinfos-src-mq3-client-ui-gameinfo-missionpack-ml-1597241920"></a>
 ### botInfos
@@ -42,7 +44,7 @@ botInfos
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-state-data-data-src-mq3-client-ui-gameinfo-missionpack-ml-2062568428"></a>
 ### data
@@ -52,7 +54,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-state-diagnostics-diagnostics-src-mq3-client-ui-gameinfo-missionpack-ml-248376860"></a>
 ### diagnostics
@@ -62,7 +64,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-state-gametypecounts-gametypecounts-src-mq3-client-ui-gameinfo-missionpack-ml-541225676"></a>
 ### gameTypeCounts
@@ -72,7 +74,7 @@ gameTypeCounts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-state-maps-maps-src-mq3-client-ui-gameinfo-missionpack-ml-2058397606"></a>
 ### maps
@@ -82,7 +84,7 @@ maps
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-state-retailactive-retailactive-src-mq3-client-ui-gameinfo-missionpack-ml-773972154"></a>
 ### retailActive
@@ -92,4 +94,4 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L28)

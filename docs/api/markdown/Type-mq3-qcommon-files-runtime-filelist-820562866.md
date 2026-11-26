@@ -9,8 +9,10 @@
 struct FileList
 ```
 
+FileList record for qcommon.files_runtime, containing `count`, `names`, `packed`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ count
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L26)
 
 <a id="field-field-mq3-qcommon-files-runtime-filelist-names-names-src-mq3-qcommon-files-runtime-ml-1768745213"></a>
 ### names
@@ -32,7 +34,7 @@ names
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L26)
 
 <a id="field-field-mq3-qcommon-files-runtime-filelist-packed-packed-src-mq3-qcommon-files-runtime-ml-1701257145"></a>
 ### packed
@@ -42,4 +44,4 @@ packed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L26)

@@ -9,8 +9,10 @@
 struct Buffer
 ```
 
+Data record for `mq3.renderer.surface_polychain.Buffer`; groups `maxVertexes`, `maxIndexes`, `xyz`, `texCoords`, `colors`, `indexes`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ colors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-flushes-flushes-src-mq3-renderer-surface-polychain-ml-298955643"></a>
 ### flushes
@@ -32,7 +34,7 @@ flushes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-indexes-indexes-src-mq3-renderer-surface-polychain-ml-1077036435"></a>
 ### indexes
@@ -42,7 +44,7 @@ indexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-maxindexes-maxindexes-src-mq3-renderer-surface-polychain-ml-156267043"></a>
 ### maxIndexes
@@ -52,7 +54,7 @@ maxIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-maxvertexes-maxvertexes-src-mq3-renderer-surface-polychain-ml-1760261551"></a>
 ### maxVertexes
@@ -62,7 +64,7 @@ maxVertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-numindexes-numindexes-src-mq3-renderer-surface-polychain-ml-1409953083"></a>
 ### numIndexes
@@ -72,7 +74,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-numvertexes-numvertexes-src-mq3-renderer-surface-polychain-ml-1381246523"></a>
 ### numVertexes
@@ -82,7 +84,7 @@ numVertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-texcoords-texcoords-src-mq3-renderer-surface-polychain-ml-618863927"></a>
 ### texCoords
@@ -92,7 +94,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-polychain-buffer-xyz-xyz-src-mq3-renderer-surface-polychain-ml-1721780919"></a>
 ### xyz
@@ -102,4 +104,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)

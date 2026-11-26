@@ -9,8 +9,10 @@
 struct Template
 ```
 
+`Template` record for ai chat matches, containing `context`, `pieces`, `type` and `subtype`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-template-pieces-pieces-src-mq3-botlib-ai-chat-matches-ml-1539439681"></a>
 ### pieces
@@ -32,7 +34,7 @@ pieces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-template-subtype-subtype-src-mq3-botlib-ai-chat-matches-ml-796731863"></a>
 ### subtype
@@ -42,7 +44,7 @@ subtype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-template-type-type-src-mq3-botlib-ai-chat-matches-ml-364446327"></a>
 ### type
@@ -52,4 +54,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L20)

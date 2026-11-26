@@ -9,8 +9,10 @@
 struct Lifecycle
 ```
 
+Data record for `mq3.renderer.tr_font_runtime.Lifecycle`; groups `registry`, `registeredFontCount`, `freeTypeInitialized`, `backend`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ backend
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-lifecycle-freetypeinitialized-freetypeinitialized-src-mq3-renderer-tr-font-runtime-ml-368157113"></a>
 ### freeTypeInitialized
@@ -32,7 +34,7 @@ freeTypeInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-lifecycle-registeredfontcount-registeredfontcount-src-mq3-renderer-tr-font-runtime-ml-104058633"></a>
 ### registeredFontCount
@@ -42,7 +44,7 @@ registeredFontCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-lifecycle-registry-registry-src-mq3-renderer-tr-font-runtime-ml-2049423443"></a>
 ### registry
@@ -52,4 +54,4 @@ registry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L34)

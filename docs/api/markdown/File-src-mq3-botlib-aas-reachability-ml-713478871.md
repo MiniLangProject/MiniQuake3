@@ -22,12 +22,14 @@ Reachable from entry: **no**
 function AAS_AllocReachability(world)
 ```
 
+Record or dispatch `"heap-full"` actions in `AAS_AllocReachability`. Return paths include `Reach(0,0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,true)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `heapUsed` and `heapCapacity`. May update `world.heapUsed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L156)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areaclusterportal-function-aas-areaclusterportal-world-areanum-src-mq3-botlib-aas-reachability-ml-2106552379"></a>
 ### AAS_AreaClusterPortal
@@ -36,13 +38,15 @@ function AAS_AllocReachability(world)
 function AAS_AreaClusterPortal(world, areaNum)
 ```
 
+Return `world.settings[areaNum].contents&AREACONTENTS_CLUSTERPORTAL` for `AAS_AreaClusterPortal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L252)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areacrouch-function-aas-areacrouch-world-areanum-src-mq3-botlib-aas-reachability-ml-1780642137"></a>
 ### AAS_AreaCrouch
@@ -51,13 +55,15 @@ function AAS_AreaClusterPortal(world, areaNum)
 function AAS_AreaCrouch(world, areaNum)
 ```
 
+Test `(world.settings[areaNum].presenceType&PRESENCE_NORMAL)==0` as the condition for `AAS_AreaCrouch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L216)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areadonotenter-function-aas-areadonotenter-world-areanum-src-mq3-botlib-aas-reachability-ml-1184140197"></a>
 ### AAS_AreaDoNotEnter
@@ -66,13 +72,15 @@ function AAS_AreaCrouch(world, areaNum)
 function AAS_AreaDoNotEnter(world, areaNum)
 ```
 
+Return `world.settings[areaNum].contents&AREACONTENTS_DONOTENTER` for `AAS_AreaDoNotEnter`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L256)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areagrounded-function-aas-areagrounded-world-areanum-src-mq3-botlib-aas-reachability-ml-2077094529"></a>
 ### AAS_AreaGrounded
@@ -81,13 +89,15 @@ function AAS_AreaDoNotEnter(world, areaNum)
 function AAS_AreaGrounded(world, areaNum)
 ```
 
+Return `world.settings[areaNum].flags&AREA_GROUNDED` for `AAS_AreaGrounded`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L236)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areagroundfacearea-function-aas-areagroundfacearea-world-areanum-src-mq3-botlib-aas-reachability-ml-1369792117"></a>
 ### AAS_AreaGroundFaceArea
@@ -96,13 +106,15 @@ function AAS_AreaGrounded(world, areaNum)
 function AAS_AreaGroundFaceArea(world, areaNum)
 ```
 
+Apply `mq3.botlib.aas_reachability.valid`, `mq3.format.aas.faceIndex` and `mq3.format.aas.face` while evaluating `AAS_AreaGroundFaceArea`. Return paths include `total`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas` and `map`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L187)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areajumppad-function-aas-areajumppad-world-areanum-src-mq3-botlib-aas-reachability-ml-789272461"></a>
 ### AAS_AreaJumpPad
@@ -111,13 +123,15 @@ function AAS_AreaGroundFaceArea(world, areaNum)
 function AAS_AreaJumpPad(world, areaNum)
 ```
 
+Return `world.settings[areaNum].contents&AREACONTENTS_JUMPPAD` for `AAS_AreaJumpPad`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L244)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-arealadder-function-aas-arealadder-world-areanum-src-mq3-botlib-aas-reachability-ml-1973807149"></a>
 ### AAS_AreaLadder
@@ -126,13 +140,15 @@ function AAS_AreaJumpPad(world, areaNum)
 function AAS_AreaLadder(world, areaNum)
 ```
 
+Return `world.settings[areaNum].flags&AREA_LADDER` for `AAS_AreaLadder`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L240)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-arealava-function-aas-arealava-world-areanum-src-mq3-botlib-aas-reachability-ml-325405305"></a>
 ### AAS_AreaLava
@@ -141,13 +157,15 @@ function AAS_AreaLadder(world, areaNum)
 function AAS_AreaLava(world, areaNum)
 ```
 
+Return `world.settings[areaNum].contents&AREACONTENTS_LAVA` for `AAS_AreaLava`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L228)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-arealiquid-function-aas-arealiquid-world-areanum-src-mq3-botlib-aas-reachability-ml-970751465"></a>
 ### AAS_AreaLiquid
@@ -156,13 +174,15 @@ function AAS_AreaLava(world, areaNum)
 function AAS_AreaLiquid(world, areaNum)
 ```
 
+Forward `AAS_AreaLiquid` to `mq3.botlib.aas_reachability.AAS_AreaSwim` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L224)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areareachability-function-aas-areareachability-world-areanum-src-mq3-botlib-aas-reachability-ml-1615811205"></a>
 ### AAS_AreaReachability
@@ -171,13 +191,15 @@ function AAS_AreaLiquid(world, areaNum)
 function AAS_AreaReachability(world, areaNum)
 ```
 
+Apply `mq3.botlib.aas_reachability.valid` while evaluating `AAS_AreaReachability`. Return paths include `len(world.reachesByArea[areaNum])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `reachesByArea`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L183)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areaslime-function-aas-areaslime-world-areanum-src-mq3-botlib-aas-reachability-ml-1287920355"></a>
 ### AAS_AreaSlime
@@ -186,13 +208,15 @@ function AAS_AreaReachability(world, areaNum)
 function AAS_AreaSlime(world, areaNum)
 ```
 
+Return `world.settings[areaNum].contents&AREACONTENTS_SLIME` for `AAS_AreaSlime`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L232)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areaswim-function-aas-areaswim-world-areanum-src-mq3-botlib-aas-reachability-ml-1486537069"></a>
 ### AAS_AreaSwim
@@ -201,13 +225,15 @@ function AAS_AreaSlime(world, areaNum)
 function AAS_AreaSwim(world, areaNum)
 ```
 
+Test `(world.settings[areaNum].flags&AREA_LIQUID)!=0` as the condition for `AAS_AreaSwim`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L220)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areateleporter-function-aas-areateleporter-world-areanum-src-mq3-botlib-aas-reachability-ml-2137909113"></a>
 ### AAS_AreaTeleporter
@@ -216,13 +242,15 @@ function AAS_AreaSwim(world, areaNum)
 function AAS_AreaTeleporter(world, areaNum)
 ```
 
+Return `world.settings[areaNum].contents&AREACONTENTS_TELEPORTER` for `AAS_AreaTeleporter`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L248)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-areavolume-function-aas-areavolume-world-areanum-src-mq3-botlib-aas-reachability-ml-558475657"></a>
 ### AAS_AreaVolume
@@ -231,13 +259,15 @@ function AAS_AreaTeleporter(world, areaNum)
 function AAS_AreaVolume(world, areaNum)
 ```
 
+Forward `AAS_AreaVolume` to `mq3.botlib.aas_runtime.areaVolume` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `runtime`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L109)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-barrierjumptraveltime-function-aas-barrierjumptraveltime-world-src-mq3-botlib-aas-reachability-ml-1995338640"></a>
 ### AAS_BarrierJumpTravelTime
@@ -246,12 +276,14 @@ function AAS_AreaVolume(world, areaNum)
 function AAS_BarrierJumpTravelTime(world)
 ```
 
+Forward `AAS_BarrierJumpTravelTime` to `mq3.compat.numeric.trunc32` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `physics`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L259)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-bestreachablearea-function-aas-bestreachablearea-world-origin-mins-maxs-goalorigin-src-mq3-botlib-aas-reachability-ml-943636417"></a>
 ### AAS_BestReachableArea
@@ -260,16 +292,18 @@ function AAS_BarrierJumpTravelTime(world)
 function AAS_BestReachableArea(world, origin, mins, maxs, goalOrigin)
 ```
 
+Set `goalOrigin[axis]` to `origin[axis]` in `mq3.botlib.aas_reachability.AAS_BestReachableArea`. Return paths include `AAS_BestReachableLinkArea(world,areas)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
-| `goalOrigin` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `services` and `runtime`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `mins` | `dynamic` | — | Minimum coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum coordinates of the axis-aligned bounds. |
+| `goalOrigin` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L140)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-bestreachablefromjumppadarea-function-aas-bestreachablefromjumppadarea-world-origin-mins-maxs-src-mq3-botlib-aas-reachability-ml-471817384"></a>
 ### AAS_BestReachableFromJumpPadArea
@@ -278,15 +312,17 @@ function AAS_BestReachableArea(world, origin, mins, maxs, goalOrigin)
 function AAS_BestReachableFromJumpPadArea(world, origin, mins, maxs)
 ```
 
+Apply `mq3.botlib.aas_reachability.AAS_AreaVolume` while evaluating `AAS_BestReachableFromJumpPadArea`. Return paths include `best`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials`. |
+| `origin` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BestReachableFromJumpPadArea` signature. |
+| `mins` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BestReachableFromJumpPadArea` signature. |
+| `maxs` | `dynamic` | — | Not read by this implementation; retained in the `AAS_BestReachableFromJumpPadArea` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L131)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-bestreachablelinkarea-function-aas-bestreachablelinkarea-world-areas-src-mq3-botlib-aas-reachability-ml-1599797168"></a>
 ### AAS_BestReachableLinkArea
@@ -295,13 +331,15 @@ function AAS_BestReachableFromJumpPadArea(world, origin, mins, maxs)
 function AAS_BestReachableLinkArea(world, areas)
 ```
 
+Apply `mq3.botlib.aas_reachability.valid`, `mq3.botlib.aas_reachability.AAS_AreaReachability` and `mq3.botlib.aas_reachability.AAS_AreaDoNotEnter` while evaluating `AAS_BestReachableLinkArea`. Return paths include `best`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areas` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areas` | `dynamic` | — | Value used by `AAS_BestReachableLinkArea` in `for each areaNum in areas if valid(world,areaNum) and AAS_AreaReachability(world,areaNum)>0 and not AAS_AreaDoNo...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L113)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-closestedgepoints-function-aas-closestedgepoints-v1-v2-v3-v4-src-mq3-botlib-aas-reachability-ml-903723304"></a>
 ### AAS_ClosestEdgePoints
@@ -310,15 +348,17 @@ function AAS_BestReachableLinkArea(world, areas)
 function AAS_ClosestEdgePoints(v1, v2, v3, v4)
 ```
 
+Apply `mq3.botlib.aas_reachability.vecSub`, `mq3.botlib.aas_reachability.dot` and `mq3.botlib.aas_reachability.VectorDistance` while evaluating `AAS_ClosestEdgePoints`. Return paths include `[VectorDistance(first,second),first,second]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `v1` | `dynamic` | — |  |
-| `v2` | `dynamic` | — |  |
-| `v3` | `dynamic` | — |  |
-| `v4` | `dynamic` | — |  |
+| `v1` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `v2` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `v3` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `v4` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L316)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-continueinitreachability-function-aas-continueinitreachability-world-time-src-mq3-botlib-aas-reachability-ml-1521255489"></a>
 ### AAS_ContinueInitReachability
@@ -327,13 +367,15 @@ function AAS_ClosestEdgePoints(v1, v2, v3, v4)
 function AAS_ContinueInitReachability(world, time)
 ```
 
+Record or dispatch `"complete"` actions in `AAS_ContinueInitReachability`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `loaded`, `numReachabilityAreas`, `areas` and `stored`. May update `world.numReachabilityAreas` in place. |
+| `time` | `dynamic` | — | Not read by this implementation; retained in the `AAS_ContinueInitReachability` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L384)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-facearea-function-aas-facearea-world-face-src-mq3-botlib-aas-reachability-ml-46813981"></a>
 ### AAS_FaceArea
@@ -342,13 +384,15 @@ function AAS_ContinueInitReachability(world, time)
 function AAS_FaceArea(world, face)
 ```
 
+Apply `mq3.botlib.aas_runtime.faceArea` while evaluating `AAS_FaceArea`. Return paths include `0.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `face` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `runtime`. |
+| `face` | `dynamic` | — | AAS face index. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L105)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-facecenter-function-aas-facecenter-world-facenum-src-mq3-botlib-aas-reachability-ml-359545085"></a>
 ### AAS_FaceCenter
@@ -357,13 +401,15 @@ function AAS_FaceArea(world, face)
 function AAS_FaceCenter(world, faceNum)
 ```
 
+Apply `mq3.format.aas.face`, `mq3.format.aas.edgeIndex` and `mq3.format.aas.edge` while evaluating `AAS_FaceCenter`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `faceNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `map`. |
+| `faceNum` | `dynamic` | — | AAS face index. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L193)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-falldamagedistance-function-aas-falldamagedistance-world-src-mq3-botlib-aas-reachability-ml-1401378740"></a>
 ### AAS_FallDamageDistance
@@ -372,12 +418,14 @@ function AAS_FaceCenter(world, faceNum)
 function AAS_FallDamageDistance(world)
 ```
 
+Calculate the fall distance associated with the released fall-damage velocity threshold and configured gravity.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `physics`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L200)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-falldelta-function-aas-falldelta-world-distance-src-mq3-botlib-aas-reachability-ml-1832709961"></a>
 ### AAS_FallDelta
@@ -386,13 +434,15 @@ function AAS_FallDamageDistance(world)
 function AAS_FallDelta(world, distance)
 ```
 
+Convert fall distance into the squared-impact-velocity measure used by AAS fall-damage checks.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `distance` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `physics`. |
+| `distance` | `dynamic` | — | Value used by `AAS_FallDelta` in `magnitude=distance`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L204)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-findfacereachabilities-function-aas-findfacereachabilities-world-areanum-src-mq3-botlib-aas-reachability-ml-790874957"></a>
 ### AAS_FindFaceReachabilities
@@ -401,13 +451,15 @@ function AAS_FallDelta(world, distance)
 function AAS_FindFaceReachabilities(world, areaNum)
 ```
 
+Apply `mq3.botlib.aas_reachability.AAS_ReachabilityExists`, `mq3.botlib.aas_reachability.AAS_Reachability_Swim` and `mq3.botlib.aas_reachability.AAS_Reachability_EqualFloorHeight` while evaluating `AAS_FindFaceReachabilities`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L373)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-freereachability-function-aas-freereachability-world-value-src-mq3-botlib-aas-reachability-ml-2143129127"></a>
 ### AAS_FreeReachability
@@ -416,13 +468,15 @@ function AAS_FindFaceReachabilities(world, areaNum)
 function AAS_FreeReachability(world, value)
 ```
 
+Set `value.allocated` to `false` and `world.heapUsed` to `world.heapUsed-1` in `mq3.botlib.aas_reachability.AAS_FreeReachability`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `heapUsed`. May update `world.heapUsed` in place. |
+| `value` | `dynamic` | — | Value record; accesses `allocated`. May update `value.allocated` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L163)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-getjumppadinfo-function-aas-getjumppadinfo-world-ent-areastart-absmins-absmaxs-velocity-src-mq3-botlib-aas-reachability-ml-1070753015"></a>
 ### AAS_GetJumpPadInfo
@@ -431,17 +485,19 @@ function AAS_FreeReachability(world, value)
 function AAS_GetJumpPadInfo(world, ent, areaStart, absmins, absmaxs, velocity)
 ```
 
+Set `areaStart[axis]` to `value.start[axis]` and `velocity[axis]` to `value.velocity[axis]` in `mq3.botlib.aas_reachability.AAS_GetJumpPadInfo`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `areaStart` | `dynamic` | — |  |
-| `absmins` | `dynamic` | — |  |
-| `absmaxs` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials`. |
+| `ent` | `dynamic` | — | Value used by `AAS_GetJumpPadInfo` in `for each value in world.specials if value.kind=="jumppad" and value.entity==ent then for axis=0 to 2 areaStart[a...`. |
+| `areaStart` | `dynamic` | — | Array or byte sequence accessed at `axis`. Entries are written in place. |
+| `absmins` | `dynamic` | — | Not read by this implementation; retained in the `AAS_GetJumpPadInfo` signature. |
+| `absmaxs` | `dynamic` | — | Not read by this implementation; retained in the `AAS_GetJumpPadInfo` signature. |
+| `velocity` | `dynamic` | — | Three-component movement velocity. Entries may be updated in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L123)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-initreachability-function-aas-initreachability-world-src-mq3-botlib-aas-reachability-ml-1330889100"></a>
 ### AAS_InitReachability
@@ -450,12 +506,14 @@ function AAS_GetJumpPadInfo(world, ent, areaStart, absmins, absmaxs, velocity)
 function AAS_InitReachability(world)
 ```
 
+Update `world.numReachabilityAreas` and `world.saveFile` during `AAS_InitReachability`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `loaded`, `map`, `forceReachability`, `numReachabilityAreas` and `areas` and related fields. May update `world.numReachabilityAreas` and `world.saveFile` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L392)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-maxjumpdistance-function-aas-maxjumpdistance-world-jumpvelocity-src-mq3-botlib-aas-reachability-ml-1752302365"></a>
 ### AAS_MaxJumpDistance
@@ -464,13 +522,15 @@ function AAS_InitReachability(world)
 function AAS_MaxJumpDistance(world, jumpVelocity)
 ```
 
+Estimate maximum horizontal jump distance from fall height, jump velocity, gravity and maximum movement speed.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `jumpVelocity` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `physics`. |
+| `jumpVelocity` | `dynamic` | — | Operand used to evaluate the returned expression `world.physics.maxVelocity*(time+jumpVelocity/world.physics.gravity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L212)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-maxjumpheight-function-aas-maxjumpheight-world-jumpvelocity-src-mq3-botlib-aas-reachability-ml-1927952797"></a>
 ### AAS_MaxJumpHeight
@@ -479,13 +539,15 @@ function AAS_MaxJumpDistance(world, jumpVelocity)
 function AAS_MaxJumpHeight(world, jumpVelocity)
 ```
 
+Return `0.5*world.physics.gravity*(jumpVelocity/world.physics.gravity)*(jumpVelocity/world.physics.gravity)` for `AAS_MaxJumpHeight`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `jumpVelocity` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `physics`. |
+| `jumpVelocity` | `dynamic` | — | Operand used to evaluate the returned expression `0.5*world.physics.gravity*(jumpVelocity/world.physics.gravity)*(jumpVelocity/world.physics.gravity)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L208)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-nearbysolidorgap-function-aas-nearbysolidorgap-world-start-finish-src-mq3-botlib-aas-reachability-ml-116428965"></a>
 ### AAS_NearbySolidOrGap
@@ -494,14 +556,16 @@ function AAS_MaxJumpHeight(world, jumpVelocity)
 function AAS_NearbySolidOrGap(world, start, finish)
 ```
 
+Apply `mq3.botlib.aas_reachability.vecSub`, `mq3.botlib.aas_reachability.length` and `mq3.botlib.aas_runtime.pointAreaNum` while evaluating `AAS_NearbySolidOrGap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `runtime`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L269)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-elevator-function-aas-reachability-elevator-world-src-mq3-botlib-aas-reachability-ml-623777176"></a>
 ### AAS_Reachability_Elevator
@@ -510,12 +574,14 @@ function AAS_NearbySolidOrGap(world, start, finish)
 function AAS_Reachability_Elevator(world)
 ```
 
+Forward `AAS_Reachability_Elevator` to `mq3.botlib.aas_reachability.addSpecial` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L346)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-equalfloorheight-function-aas-reachability-equalfloorheight-world-area1-area2-src-mq3-botlib-aas-reachability-ml-2094120279"></a>
 ### AAS_Reachability_EqualFloorHeight
@@ -524,14 +590,16 @@ function AAS_Reachability_Elevator(world)
 function AAS_Reachability_EqualFloorHeight(world, area1, area2)
 ```
 
+Apply `mq3.botlib.aas_reachability.AAS_AreaGrounded`, `mq3.botlib.aas_reachability.overlap` and `mq3.botlib.aas_reachability.center` while evaluating `AAS_Reachability_EqualFloorHeight`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas` and `physics`. |
+| `area1` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `area2` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L282)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-funcbobbing-function-aas-reachability-funcbobbing-world-src-mq3-botlib-aas-reachability-ml-1837475152"></a>
 ### AAS_Reachability_FuncBobbing
@@ -540,12 +608,14 @@ function AAS_Reachability_EqualFloorHeight(world, area1, area2)
 function AAS_Reachability_FuncBobbing(world)
 ```
 
+Forward `AAS_Reachability_FuncBobbing` to `mq3.botlib.aas_reachability.addSpecial` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L349)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-grapple-function-aas-reachability-grapple-world-area1-area2-src-mq3-botlib-aas-reachability-ml-170844453"></a>
 ### AAS_Reachability_Grapple
@@ -554,14 +624,16 @@ function AAS_Reachability_FuncBobbing(world)
 function AAS_Reachability_Grapple(world, area1, area2)
 ```
 
+Apply `mq3.botlib.aas_reachability.center` and `mq3.botlib.aas_reachability.addReach` while evaluating `AAS_Reachability_Grapple`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `calcGrapple`. |
+| `area1` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `area2` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L357)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-jump-function-aas-reachability-jump-world-area1-area2-src-mq3-botlib-aas-reachability-ml-1491094629"></a>
 ### AAS_Reachability_Jump
@@ -570,14 +642,16 @@ function AAS_Reachability_Grapple(world, area1, area2)
 function AAS_Reachability_Jump(world, area1, area2)
 ```
 
+Apply `mq3.botlib.aas_reachability.center`, `mq3.botlib.aas_reachability.AAS_MaxJumpHeight` and `mq3.botlib.aas_reachability.VectorDistance` while evaluating `AAS_Reachability_Jump`. Return paths include `addReach(world,area1,area2,TRAVEL_JUMP,start,finish,0,0,10)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `physics`. |
+| `area1` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `area2` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L326)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-jumppad-function-aas-reachability-jumppad-world-src-mq3-botlib-aas-reachability-ml-1031239140"></a>
 ### AAS_Reachability_JumpPad
@@ -586,12 +660,14 @@ function AAS_Reachability_Jump(world, area1, area2)
 function AAS_Reachability_JumpPad(world)
 ```
 
+Forward `AAS_Reachability_JumpPad` to `mq3.botlib.aas_reachability.addSpecial` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L352)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-ladder-function-aas-reachability-ladder-world-area1-area2-src-mq3-botlib-aas-reachability-ml-90514941"></a>
 ### AAS_Reachability_Ladder
@@ -600,14 +676,16 @@ function AAS_Reachability_JumpPad(world)
 function AAS_Reachability_Ladder(world, area1, area2)
 ```
 
+Apply `mq3.botlib.aas_reachability.AAS_AreaLadder`, `mq3.botlib.aas_reachability.overlap` and `mq3.botlib.aas_reachability.addReach` while evaluating `AAS_Reachability_Ladder`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas`. |
+| `area1` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `area2` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L331)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-step-barrier-waterjump-walkoffledge-function-aas-reachability-step-barrier-waterjump-walkoffledge-world-area1-area2-src-mq3-botlib-aas-reachability-ml-1301285077"></a>
 ### AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge
@@ -616,14 +694,16 @@ function AAS_Reachability_Ladder(world, area1, area2)
 function AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge(world, area1, area2)
 ```
 
+Apply `mq3.botlib.aas_reachability.overlap`, `mq3.botlib.aas_reachability.center` and `mq3.botlib.aas_reachability.AAS_AreaSwim` while evaluating `AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge`. Return paths include `addReach(world,area1,area2,kind,start,finish,0,0,base)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas` and `physics`. |
+| `area1` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `area2` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L289)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-swim-function-aas-reachability-swim-world-area1-area2-src-mq3-botlib-aas-reachability-ml-373697349"></a>
 ### AAS_Reachability_Swim
@@ -632,14 +712,16 @@ function AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge(world, area1, area
 function AAS_Reachability_Swim(world, area1, area2)
 ```
 
+Apply `mq3.botlib.aas_reachability.AAS_AreaSwim`, `mq3.botlib.aas_reachability.AAS_AreaCrouch` and `mq3.botlib.aas_reachability.overlap` while evaluating `AAS_Reachability_Swim`. Return paths include `addReach(world,area1,area2,TRAVEL_SWIM,center(world,area1),center(world,area2),0,0,time)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas`. |
+| `area1` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `area2` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L277)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-teleport-function-aas-reachability-teleport-world-src-mq3-botlib-aas-reachability-ml-1917534570"></a>
 ### AAS_Reachability_Teleport
@@ -648,12 +730,14 @@ function AAS_Reachability_Swim(world, area1, area2)
 function AAS_Reachability_Teleport(world)
 ```
 
+Forward `AAS_Reachability_Teleport` to `mq3.botlib.aas_reachability.addSpecial` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L343)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-walkoffledge-function-aas-reachability-walkoffledge-world-areanum-src-mq3-botlib-aas-reachability-ml-172404283"></a>
 ### AAS_Reachability_WalkOffLedge
@@ -662,13 +746,15 @@ function AAS_Reachability_Teleport(world)
 function AAS_Reachability_WalkOffLedge(world, areaNum)
 ```
 
+Apply `mq3.botlib.aas_reachability.center`, `mq3.botlib.aas_reachability.overlap` and `mq3.botlib.aas_reachability.addReach` while evaluating `AAS_Reachability_WalkOffLedge`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas` and `physics`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L369)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachability-weaponjump-function-aas-reachability-weaponjump-world-area1-area2-src-mq3-botlib-aas-reachability-ml-1412625501"></a>
 ### AAS_Reachability_WeaponJump
@@ -677,14 +763,16 @@ function AAS_Reachability_WalkOffLedge(world, areaNum)
 function AAS_Reachability_WeaponJump(world, area1, area2)
 ```
 
+Apply `mq3.botlib.aas_reachability.center`, `mq3.botlib.aas_reachability.AAS_MaxJumpHeight` and `mq3.botlib.aas_reachability.addReach` while evaluating `AAS_Reachability_WeaponJump`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings` and `physics`. |
+| `area1` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `area2` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L365)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-reachabilityexists-function-aas-reachabilityexists-world-area1-area2-src-mq3-botlib-aas-reachability-ml-1588466205"></a>
 ### AAS_ReachabilityExists
@@ -693,14 +781,16 @@ function AAS_Reachability_WeaponJump(world, area1, area2)
 function AAS_ReachabilityExists(world, area1, area2)
 ```
 
+Test whether the first area already has a reachability ending in the second area.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `area1` | `dynamic` | — |  |
-| `area2` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `reachesByArea`. |
+| `area1` | `dynamic` | — | Value used by `AAS_ReachabilityExists` in `for each value in world.reachesByArea[area1] if value.areaNum==area2 then return true end if end for`. |
+| `area2` | `dynamic` | — | Value used by `AAS_ReachabilityExists` in `for each value in world.reachesByArea[area1] if value.areaNum==area2 then return true end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L264)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-setupreachabilityheap-function-aas-setupreachabilityheap-world-src-mq3-botlib-aas-reachability-ml-1915048596"></a>
 ### AAS_SetupReachabilityHeap
@@ -709,12 +799,14 @@ function AAS_ReachabilityExists(world, area1, area2)
 function AAS_SetupReachabilityHeap(world)
 ```
 
+Update `world.heapCapacity`, `world.heapUsed`, `world.reachesByArea` and `world.reachesByArea[index]` during `AAS_SetupReachabilityHeap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `heapCapacity`, `heapUsed`, `reachesByArea` and `settings`. May update `world.heapCapacity`, `world.heapUsed` and `world.reachesByArea` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L150)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-setweaponjumpareaflags-function-aas-setweaponjumpareaflags-world-src-mq3-botlib-aas-reachability-ml-940579052"></a>
 ### AAS_SetWeaponJumpAreaFlags
@@ -723,12 +815,14 @@ function AAS_SetupReachabilityHeap(world)
 function AAS_SetWeaponJumpAreaFlags(world)
 ```
 
+Set `world.settings[value.destinationArea].flags` to `world.settings[value.destinationArea].flags|AREA_WEAPONJUMP` in `mq3.botlib.aas_reachability.AAS_SetWeaponJumpAreaFlags`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials` and `settings`. May update `world.settings[value.destinationArea].flags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L360)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-shutdownreachabilityheap-function-aas-shutdownreachabilityheap-world-src-mq3-botlib-aas-reachability-ml-1222531260"></a>
 ### AAS_ShutDownReachabilityHeap
@@ -737,12 +831,14 @@ function AAS_SetWeaponJumpAreaFlags(world)
 function AAS_ShutDownReachabilityHeap(world)
 ```
 
+Set `world.heapCapacity` to `0` and `world.heapUsed` to `0` in `mq3.botlib.aas_reachability.AAS_ShutDownReachabilityHeap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `heapCapacity` and `heapUsed`. May update `world.heapCapacity` and `world.heapUsed` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L153)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-storereachability-function-aas-storereachability-world-src-mq3-botlib-aas-reachability-ml-1203533612"></a>
 ### AAS_StoreReachability
@@ -751,12 +847,14 @@ function AAS_ShutDownReachabilityHeap(world)
 function AAS_StoreReachability(world)
 ```
 
+Update `world.stored`, `world.settings[areaNum].firstReachableArea` and `world.settings[areaNum].numReachableAreas` during `AAS_StoreReachability`. Return paths include `len(world.stored)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `stored`, `settings` and `reachesByArea`. May update `world.stored`, `world.settings[areaNum].firstReachableArea` and `world.settings[areaNum].numReachableAreas` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L378)
 
 <a id="function-function-mq3-botlib-aas-reachability-aas-travelflagsforteam-function-aas-travelflagsforteam-world-ent-src-mq3-botlib-aas-reachability-ml-1917827947"></a>
 ### AAS_TravelFlagsForTeam
@@ -765,13 +863,15 @@ function AAS_StoreReachability(world)
 function AAS_TravelFlagsForTeam(world, ent)
 ```
 
+Use `world.services.teamFn` to perform `AAS_TravelFlagsForTeam`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `services`. |
+| `ent` | `dynamic` | — | Value passed as argument 2 to `world.services.teamFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L335)
 
 - [mq3.botlib.aas_reachability.Action](Type-mq3-botlib-aas-reachability-action-777081141.md) — struct
 <a id="function-function-mq3-botlib-aas-reachability-addreach-function-addreach-world-source-destination-type-start-finish-facenum-edgenum-time-src-mq3-botlib-aas-reachability-ml-458749349"></a>
@@ -781,20 +881,22 @@ function AAS_TravelFlagsForTeam(world, ent)
 function addReach(world, source, destination, type, start, finish, faceNum, edgeNum, time)
 ```
 
+Set `world.reachesByArea[source]` to `[value]+world.reachesByArea[source]` in `mq3.botlib.aas_reachability.addReach`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `destination` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `faceNum` | `dynamic` | — |  |
-| `edgeNum` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `reachesByArea`. May update `world.reachesByArea[source]` in place. |
+| `source` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `destination` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `type` | `dynamic` | — | Value used by `addReach` in `value.travelType=type`. |
+| `start` | `dynamic` | — | Value used by `addReach` in `value.start=start`. |
+| `finish` | `dynamic` | — | Value used by `addReach` in `value.finish=finish`. |
+| `faceNum` | `dynamic` | — | AAS face index. |
+| `edgeNum` | `dynamic` | — | Value used by `addReach` in `value.edgeNum=edgeNum`. |
+| `time` | `dynamic` | — | Time value in the units expected by this module. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L176)
 
 <a id="function-function-mq3-botlib-aas-reachability-addspecial-function-addspecial-world-kind-traveltype-src-mq3-botlib-aas-reachability-ml-951181570"></a>
 ### addSpecial
@@ -803,14 +905,16 @@ function addReach(world, source, destination, type, start, finish, faceNum, edge
 function addSpecial(world, kind, travelType)
 ```
 
+Apply `mq3.botlib.aas_reachability.addReach` while evaluating `addSpecial`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `travelType` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `specials`. |
+| `kind` | `dynamic` | — | Value used by `addSpecial` in `for each value in world.specials if value.kind==kind and addReach(world,value.sourceArea,value.destinationArea,t...`. |
+| `travelType` | `dynamic` | — | AAS reachability travel-type code. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L340)
 
 <a id="constant-constant-mq3-botlib-aas-reachability-area-grounded-const-area-grounded-1-src-mq3-botlib-aas-reachability-ml-1697102744"></a>
 ### AREA_GROUNDED
@@ -919,13 +1023,15 @@ const AREACONTENTS_TELEPORTER = 64
 function center(world, areaNum)
 ```
 
+Return `world.areas[areaNum].center` for `center`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `areas`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L90)
 
 <a id="function-function-mq3-botlib-aas-reachability-create-function-create-rt-src-mq3-botlib-aas-reachability-ml-911538828"></a>
 ### create
@@ -934,12 +1040,14 @@ function center(world, areaNum)
 function create(rt)
 ```
 
+Build the `mq3.botlib.aas_reachability.World` result for `create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rt` | `dynamic` | — |  |
+| `rt` | `dynamic` | — | Rt record; accesses `initialized` and `map`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L59)
 
 <a id="function-function-mq3-botlib-aas-reachability-defaultphysics-function-defaultphysics-src-mq3-botlib-aas-reachability-ml-1492132290"></a>
 ### defaultPhysics
@@ -948,8 +1056,10 @@ function create(rt)
 function defaultPhysics()
 ```
 
+Create a `mq3.botlib.aas_reachability.Physics` record, initializing `gravity` as `800.0`, `jumpVelocity` as `270.0` and `maxVelocity` as `320.0`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L54)
 
 <a id="function-function-mq3-botlib-aas-reachability-dot-function-dot-a-b-src-mq3-botlib-aas-reachability-ml-241211043"></a>
 ### dot
@@ -958,13 +1068,15 @@ function defaultPhysics()
 function dot(a, b)
 ```
 
+Return `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `dot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L83)
 
 <a id="function-function-mq3-botlib-aas-reachability-emit-function-emit-world-kind-source-destination-detail-src-mq3-botlib-aas-reachability-ml-1531487650"></a>
 ### emit
@@ -973,16 +1085,18 @@ function dot(a, b)
 function emit(world, kind, source, destination, detail)
 ```
 
+Set `world.actions` to `world.actions+[event]` in `mq3.botlib.aas_reachability.emit`. Return paths include `event`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `destination` | `dynamic` | — |  |
-| `detail` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `retailActive` and `actions`. May update `world.actions` in place. |
+| `kind` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_reachability.Action.kind`. |
+| `source` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_reachability.Action.source`. |
+| `destination` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_reachability.Action.destination`. |
+| `detail` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_reachability.Action.detail`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L75)
 
 <a id="constant-constant-mq3-botlib-aas-reachability-face-ground-const-face-ground-4-src-mq3-botlib-aas-reachability-ml-1169048661"></a>
 ### FACE_GROUND
@@ -1001,12 +1115,14 @@ const FACE_GROUND = 4
 function length(v)
 ```
 
+Forward `length` to `mq3.compat.numeric.fsqrt` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `v` | `dynamic` | — |  |
+| `v` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L86)
 
 <a id="function-function-mq3-botlib-aas-reachability-overlap-function-overlap-a-b-extra-src-mq3-botlib-aas-reachability-ml-1993923485"></a>
 ### overlap
@@ -1015,14 +1131,16 @@ function length(v)
 function overlap(a, b, extra)
 ```
 
+Test overlap of two AAS area bounds after extending their separation tolerance by the supplied margin.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `extra` | `dynamic` | — |  |
+| `a` | `dynamic` | — | A record; accesses `mins` and `maxs`. |
+| `b` | `dynamic` | — | B record; accesses `maxs` and `mins`. |
+| `extra` | `dynamic` | — | Value used by `overlap` in `for axis=0 to 2 if a.mins[axis]>b.maxs[axis]+extra or a.maxs[axis]<b.mins[axis]-extra then return false end if e...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L95)
 
 - [mq3.botlib.aas_reachability.Physics](Type-mq3-botlib-aas-reachability-physics-1920200268.md) — struct
 <a id="constant-constant-mq3-botlib-aas-reachability-presence-normal-const-presence-normal-2-src-mq3-botlib-aas-reachability-ml-456275999"></a>
@@ -1043,8 +1161,10 @@ const PRESENCE_NORMAL = 2
 function services()
 ```
 
+Create a `mq3.botlib.aas_reachability.Services` record with the declared empty defaults.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L56)
 
 - [mq3.botlib.aas_reachability.Services](Type-mq3-botlib-aas-reachability-services-1249811475.md) — struct
 - [mq3.botlib.aas_reachability.Special](Type-mq3-botlib-aas-reachability-special-1295102430.md) — struct
@@ -1215,14 +1335,16 @@ const TRAVELFLAG_NOTTEAM2 = 33554432
 function travelTime(distance, speed, base)
 ```
 
+Add base travel cost to truncated distance over speed and clamp the result to the unsigned sixteen-bit range excluding zero.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `distance` | `dynamic` | — |  |
-| `speed` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
+| `distance` | `dynamic` | — | Value used by `travelTime` in `value=base+n.trunc32(distance/speed)`. |
+| `speed` | `dynamic` | — | Requested movement speed. |
+| `base` | `dynamic` | — | Value used by `travelTime` in `value=base+n.trunc32(distance/speed)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L100)
 
 <a id="function-function-mq3-botlib-aas-reachability-valid-function-valid-world-areanum-src-mq3-botlib-aas-reachability-ml-2073587449"></a>
 ### valid
@@ -1231,13 +1353,15 @@ function travelTime(distance, speed, base)
 function valid(world, areaNum)
 ```
 
+Test `world!=void and areaNum>0 and areaNum<len(world.settings)` as the condition for `valid`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `world` | `dynamic` | — | World data; accesses `settings`. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L68)
 
 <a id="function-function-mq3-botlib-aas-reachability-vecsub-function-vecsub-a-b-src-mq3-botlib-aas-reachability-ml-642366301"></a>
 ### vecSub
@@ -1246,13 +1370,15 @@ function valid(world, areaNum)
 function vecSub(a, b)
 ```
 
+Return a new array `[a[0]-b[0],a[1]-b[1],a[2]-b[2]]` for `vecSub`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L79)
 
 <a id="function-function-mq3-botlib-aas-reachability-vectorbetweenvectors-function-vectorbetweenvectors-v-v1-v2-src-mq3-botlib-aas-reachability-ml-204215927"></a>
 ### VectorBetweenVectors
@@ -1261,14 +1387,16 @@ function vecSub(a, b)
 function VectorBetweenVectors(v, v1, v2)
 ```
 
+Test `dot(vecSub(v,v1),vecSub(v,v2))<=0.0` as the condition for `VectorBetweenVectors`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `v` | `dynamic` | — |  |
-| `v1` | `dynamic` | — |  |
-| `v2` | `dynamic` | — |  |
+| `v` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `v1` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `v2` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L306)
 
 <a id="function-function-mq3-botlib-aas-reachability-vectordistance-function-vectordistance-v1-v2-src-mq3-botlib-aas-reachability-ml-158007379"></a>
 ### VectorDistance
@@ -1277,13 +1405,15 @@ function VectorBetweenVectors(v, v1, v2)
 function VectorDistance(v1, v2)
 ```
 
+Forward `VectorDistance` to `mq3.botlib.aas_reachability.length` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `v1` | `dynamic` | — |  |
-| `v2` | `dynamic` | — |  |
+| `v1` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `v2` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L301)
 
 <a id="function-function-mq3-botlib-aas-reachability-vectormiddle-function-vectormiddle-v1-v2-src-mq3-botlib-aas-reachability-ml-160487275"></a>
 ### VectorMiddle
@@ -1292,12 +1422,14 @@ function VectorDistance(v1, v2)
 function VectorMiddle(v1, v2)
 ```
 
+Return a new array `[(v1[0]+v2[0])*0.5,(v1[1]+v2[1])*0.5,(v1[2]+v2[2])*0.5]` for `VectorMiddle`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `v1` | `dynamic` | — |  |
-| `v2` | `dynamic` | — |  |
+| `v1` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `v2` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L310)
 
 - [mq3.botlib.aas_reachability.World](Type-mq3-botlib-aas-reachability-world-1893523981.md) — struct

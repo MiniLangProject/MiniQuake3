@@ -27,13 +27,15 @@ Reachable from entry: **no**
 function finish(level, ent)
 ```
 
+Update `ent.enemy`, `ent.think` and `ent.nextthink` during `finish`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `gamePrintFn`, `num_entities` and `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `enemy`, `target`, `think` and `nextthink`. May update `ent.enemy`, `ent.think` and `ent.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L31)
 
 <a id="function-function-mq3-game-shooters-registeritem-function-registeritem-level-index-src-mq3-game-shooters-ml-301716100"></a>
 ### registerItem
@@ -42,13 +44,15 @@ function finish(level, ent)
 function registerItem(level, index)
 ```
 
+Forward `registerItem` to `mq3.game.items.register` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `itemRegistered`. May update `level.itemRegistered[item]` in place. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L16)
 
 <a id="function-function-mq3-game-shooters-use-function-use-level-ent-other-activator-src-mq3-game-shooters-ml-848764082"></a>
 ### use
@@ -57,15 +61,17 @@ function registerItem(level, index)
 function use(level, ent, other, activator)
 ```
 
+Apply `mq3.game.movement.copy`, `mq3.shared.directions.perpendicular` and `mq3.game.entities.random` while evaluating `use`. Return paths include `events.add(level,ent,c.EV_FIRE_WEAPON,0)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `other` | `dynamic` | — |  |
-| `activator` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `randSeed`. May update `level.randSeed` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `enemy`, `s`, `movedir` and `random`. |
+| `other` | `dynamic` | — | Not read by this implementation; retained in the `use` signature. |
+| `activator` | `dynamic` | — | Not read by this implementation; retained in the `use` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L40)
 
 <a id="function-function-mq3-game-shooters-weaponitem-function-weaponitem-weapon-src-mq3-game-shooters-ml-214364138"></a>
 ### weaponItem
@@ -74,9 +80,11 @@ function use(level, ent, other, activator)
 function weaponItem(weapon)
 ```
 
+Apply `mq3.game.constants.itemTag` while evaluating `weaponItem`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `weapon` | `dynamic` | — |  |
+| `weapon` | `dynamic` | — | Weapon identifier used by the action or inventory lookup. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L21)

@@ -106,12 +106,14 @@ const GLHW_RIVA128 = 2
 function isWorldRequired(rdflags)
 ```
 
+Computes `(rdflags&RDF_NOWORLDMODEL)==0` for `mq3.renderer.tr_types.isWorldRequired`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rdflags` | `dynamic` | — |  |
+| `rdflags` | `dynamic` | — | Input used in the result expression `(rdflags&RDF_NOWORLDMODEL)==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L73)
 
 <a id="constant-constant-mq3-renderer-tr-types-max-dlights-const-max-dlights-32-src-mq3-renderer-tr-types-ml-1230943876"></a>
 ### MAX_DLIGHTS
@@ -414,8 +416,10 @@ const TC_S3TC = 1
 function typeNames()
 ```
 
+Lists the 10 declared names for `mq3.renderer.tr_types.typeNames`, including `polyVert_t`, `poly_t`, `refEntityType_t`, `refEntity_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L53)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L59)
 
 <a id="function-function-mq3-renderer-tr-types-validrefentitytype-function-validrefentitytype-value-src-mq3-renderer-tr-types-ml-866261001"></a>
 ### validRefEntityType
@@ -424,12 +428,14 @@ function typeNames()
 function validRefEntityType(value)
 ```
 
+Computes `value>=RT_MODEL and value<RT_MAX_REF_ENTITY_TYPE` for `mq3.renderer.tr_types.validRefEntityType`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `value>=RT_MODEL and value<RT_MAX_REF_ENTITY_TYPE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L62)
 
 <a id="function-function-mq3-renderer-tr-types-visibleinview-function-visibleinview-renderfx-isportal-src-mq3-renderer-tr-types-ml-171282686"></a>
 ### visibleInView
@@ -438,10 +444,12 @@ function validRefEntityType(value)
 function visibleInView(renderfx, isPortal)
 ```
 
+Returns `true` from `mq3.renderer.tr_types.visibleInView`; earlier branches return `false`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `renderfx` | `dynamic` | — |  |
-| `isPortal` | `dynamic` | — |  |
+| `renderfx` | `dynamic` | — | Input tested by `(renderfx&RF_FIRST_PERSON)!=0 and isPortal`. |
+| `isPortal` | `dynamic` | — | Input tested by `(renderfx&RF_FIRST_PERSON)!=0 and isPortal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_types.ml#L66)

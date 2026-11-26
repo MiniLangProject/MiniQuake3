@@ -9,8 +9,10 @@
 struct DispatchResult
 ```
 
+Stores UI main missionpack dispatch result record, including `value`, `action`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L82)
 
 ## Members
 
@@ -22,7 +24,7 @@ action
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L82)
 
 <a id="field-field-mq3-client-ui-main-missionpack-dispatchresult-value-value-src-mq3-client-ui-main-missionpack-ml-1235282946"></a>
 ### value
@@ -32,4 +34,4 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L82)

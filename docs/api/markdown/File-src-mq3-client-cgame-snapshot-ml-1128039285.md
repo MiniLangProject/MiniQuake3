@@ -19,8 +19,10 @@ Reachable from entry: **yes**
 function cent()
 ```
 
+Creates a client entity with separate current/next entity states and cleared interpolation/event history.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L20)
 
 - [mq3.client.cgame_snapshot.Cent](Type-mq3-client-cgame-snapshot-cent-404698587.md) — struct
 <a id="function-function-mq3-client-cgame-snapshot-create-function-create-maxentities-src-mq3-client-cgame-snapshot-ml-329192081"></a>
@@ -30,12 +32,14 @@ function cent()
 function create(maxEntities)
 ```
 
+Creates the client-game snapshot transition state and allocates the requested entity slots.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxEntities` | `dynamic` | — |  |
+| `maxEntities` | `dynamic` | — | Number of client-entity slots allocated; ensureEntity rejects numbers outside this range. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L23)
 
 <a id="constant-constant-mq3-client-cgame-snapshot-ef-teleport-bit-const-ef-teleport-bit-4-src-mq3-client-cgame-snapshot-ml-1131897933"></a>
 ### EF_TELEPORT_BIT
@@ -54,13 +58,15 @@ const EF_TELEPORT_BIT = 4
 function ensureEntity(state, number)
 ```
 
+Lazily creates the requested client entity, or returns error 7701 when its number is outside the entity table.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.entities[number]`. |
+| `number` | `dynamic` | — | Zero-based entity slot to initialize or read. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L33)
 
 <a id="constant-constant-mq3-client-cgame-snapshot-et-player-const-et-player-1-src-mq3-client-cgame-snapshot-ml-1407721840"></a>
 ### ET_PLAYER
@@ -89,13 +95,15 @@ const EVENT_VALID_MSEC = 300
 function executeSequence(state, sequence)
 ```
 
+Appends a reliable server-command sequence to the snapshot model's execution log.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `sequence` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.executedSequences`. |
+| `sequence` | `dynamic` | — | Value used by `state.executedSequences=state.executedSequences+[sequence]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L57)
 
 <a id="function-function-mq3-client-cgame-snapshot-findsnapshot-function-findsnapshot-state-number-src-mq3-client-cgame-snapshot-ml-946366476"></a>
 ### findSnapshot
@@ -104,13 +112,15 @@ function executeSequence(state, sequence)
 function findSnapshot(state, number)
 ```
 
+Finds a buffered snapshot by number, returning void when it has not been published.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.snapshots`. |
+| `number` | `dynamic` | — | Value tested by `snap.number==number` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L86)
 
 <a id="function-function-mq3-client-cgame-snapshot-playerentity-function-playerentity-ps-src-mq3-client-cgame-snapshot-ml-748599323"></a>
 ### playerEntity
@@ -119,12 +129,14 @@ function findSnapshot(state, number)
 function playerEntity(ps)
 ```
 
+Converts player state into an ET_PLAYER entity state, copying position, view angles, flags, client number and weapon.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ps` | `dynamic` | — |  |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.clientNum`, `ps.eFlags`, `ps.origin`, `ps.viewangles` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L39)
 
 <a id="constant-constant-mq3-client-cgame-snapshot-pmf-follow-const-pmf-follow-4096-src-mq3-client-cgame-snapshot-ml-2144983870"></a>
 ### PMF_FOLLOW
@@ -147,11 +159,11 @@ CG_ProcessSnapshots
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.time`. |
+| `time` | `dynamic` | — | Value assigned to `state.time`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L96)
 
 <a id="function-function-mq3-client-cgame-snapshot-publish-function-publish-state-number-source-snapflags-commandsequence-time-src-mq3-client-cgame-snapshot-ml-192774703"></a>
 ### publish
@@ -164,15 +176,15 @@ Engine-side observer: preserve every published snapshot and run the native trans
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `snapFlags` | `dynamic` | — |  |
-| `commandSequence` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.snapshots`, `state.latestSnapshotNum`, `state.latestSnapshotTime`. |
+| `number` | `dynamic` | — | Value assigned to `state.latestSnapshotNum`. |
+| `source` | `dynamic` | — | Record read through `source.serverTime`. |
+| `snapFlags` | `dynamic` | — | Snapshot flags controlling validity, interpolation and server restarts. |
+| `commandSequence` | `dynamic` | — | Reliable server-command sequence associated with the snapshot. |
+| `time` | `dynamic` | — | Value used by `return processSnapshots(state,time)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L113)
 
 <a id="function-function-mq3-client-cgame-snapshot-readnextsnapshot-function-readnextsnapshot-state-src-mq3-client-cgame-snapshot-ml-1608698293"></a>
 ### readNextSnapshot
@@ -185,10 +197,10 @@ CG_ReadNextSnapshot
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.errors`, `state.processedSnapshotNum`, `state.lagometer`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L89)
 
 <a id="function-function-mq3-client-cgame-snapshot-resetentity-function-resetentity-state-value-src-mq3-client-cgame-snapshot-ml-1741398136"></a>
 ### resetEntity
@@ -201,11 +213,11 @@ CG_ResetEntity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.snap.serverTime`. |
+| `value` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `value.previousEvent`, `value.trailTime`, `value.lerpOrigin`, `value.lerpAngles` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L45)
 
 <a id="function-function-mq3-client-cgame-snapshot-setinitialsnapshot-function-setinitialsnapshot-state-snap-src-mq3-client-cgame-snapshot-ml-1451250681"></a>
 ### setInitialSnapshot
@@ -218,11 +230,11 @@ CG_SetInitialSnapshot
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `snap` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.snap`, `state.solidBuilds`, `state.respawns`. |
+| `snap` | `dynamic` | — | Record read through `snap.playerState.clientNum`, `snap.playerState`, `snap.serverCommandSequence`, `snap.entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L61)
 
 <a id="function-function-mq3-client-cgame-snapshot-setnextsnap-function-setnextsnap-state-snap-src-mq3-client-cgame-snapshot-ml-1122401031"></a>
 ### setNextSnap
@@ -235,11 +247,11 @@ CG_SetNextSnap
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `snap` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.nextSnap`, `state.nextFrameTeleport`, `state.solidBuilds`. |
+| `snap` | `dynamic` | — | Record read through `snap.playerState.clientNum`, `snap.playerState`, `snap.entities`, `snap.playerState.eFlags` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L78)
 
 <a id="constant-constant-mq3-client-cgame-snapshot-snapflag-not-active-const-snapflag-not-active-1-src-mq3-client-cgame-snapshot-ml-1352880072"></a>
 ### SNAPFLAG_NOT_ACTIVE
@@ -274,11 +286,11 @@ CG_TransitionEntity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game snapshot state passed to the helper calls in `transitionEntity`. |
+| `value` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `value.currentState`, `value.currentValid`, `value.interpolate`, `value.events`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L51)
 
 <a id="function-function-mq3-client-cgame-snapshot-transitionsnapshot-function-transitionsnapshot-state-src-mq3-client-cgame-snapshot-ml-94513477"></a>
 ### transitionSnapshot
@@ -291,10 +303,10 @@ CG_TransitionSnapshot
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game snapshot record/storage; this routine assigns `state.snap`, `state.nextSnap`, `state.thisFrameTeleport`, `state.playerStateTransitions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L67)
 
 <a id="function-function-mq3-client-cgame-snapshot-wrap-function-wrap-number-source-snapflags-commandsequence-src-mq3-client-cgame-snapshot-ml-235767607"></a>
 ### wrap
@@ -303,12 +315,14 @@ CG_TransitionSnapshot
 function wrap(number, source, snapFlags, commandSequence)
 ```
 
+Wraps parsed player/entity data with its snapshot number, server-command sequence and snapshot flags.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `number` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
-| `snapFlags` | `dynamic` | — |  |
-| `commandSequence` | `dynamic` | — |  |
+| `number` | `dynamic` | — | Value used to initialize `Snapshot.number`. |
+| `source` | `dynamic` | — | Record read through `source.serverTime`, `source.playerState`, `source.entities`. |
+| `snapFlags` | `dynamic` | — | Value used to initialize `Snapshot.snapFlags`. |
+| `commandSequence` | `dynamic` | — | Value used to initialize `Snapshot.serverCommandSequence`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_snapshot.ml#L29)

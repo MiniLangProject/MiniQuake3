@@ -9,8 +9,10 @@
 struct Image
 ```
 
+Data record for `mq3.renderer.image_registry.Image`; groups `texnum`, `imgName`, `width`, `height`, `uploadWidth`, `uploadHeight`, and 7 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ allowPicmip
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-frameused-frameused-src-mq3-renderer-image-registry-ml-1707211538"></a>
 ### frameUsed
@@ -32,7 +34,7 @@ frameUsed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-height-height-src-mq3-renderer-image-registry-ml-1154000996"></a>
 ### height
@@ -42,7 +44,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-imgname-imgname-src-mq3-renderer-image-registry-ml-2078885582"></a>
 ### imgName
@@ -52,7 +54,7 @@ imgName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-internalformat-internalformat-src-mq3-renderer-image-registry-ml-1222937994"></a>
 ### internalFormat
@@ -62,7 +64,7 @@ internalFormat
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-mipmap-mipmap-src-mq3-renderer-image-registry-ml-2018137214"></a>
 ### mipmap
@@ -72,7 +74,7 @@ mipmap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-texnum-texnum-src-mq3-renderer-image-registry-ml-512751092"></a>
 ### texnum
@@ -82,7 +84,7 @@ texnum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-tmu-tmu-src-mq3-renderer-image-registry-ml-1745406206"></a>
 ### TMU
@@ -92,7 +94,7 @@ TMU
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-upload-upload-src-mq3-renderer-image-registry-ml-274931832"></a>
 ### upload
@@ -102,7 +104,7 @@ upload
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-uploadheight-uploadheight-src-mq3-renderer-image-registry-ml-1576706594"></a>
 ### uploadHeight
@@ -112,7 +114,7 @@ uploadHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-uploadwidth-uploadwidth-src-mq3-renderer-image-registry-ml-1914147790"></a>
 ### uploadWidth
@@ -122,7 +124,7 @@ uploadWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-width-width-src-mq3-renderer-image-registry-ml-927051714"></a>
 ### width
@@ -132,7 +134,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)
 
 <a id="field-field-mq3-renderer-image-registry-image-wrapclampmode-wrapclampmode-src-mq3-renderer-image-registry-ml-658067478"></a>
 ### wrapClampMode
@@ -142,4 +144,4 @@ wrapClampMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L29)

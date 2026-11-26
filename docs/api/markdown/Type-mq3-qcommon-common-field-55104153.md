@@ -9,8 +9,10 @@
 struct Field
 ```
 
+Field record for qcommon.common, containing `buffer`, `cursor`, `scroll`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L49)
 
 ## Members
 
@@ -22,7 +24,7 @@ buffer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L49)
 
 <a id="field-field-mq3-qcommon-common-field-cursor-cursor-src-mq3-qcommon-common-ml-1944933525"></a>
 ### cursor
@@ -32,7 +34,7 @@ cursor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L49)
 
 <a id="field-field-mq3-qcommon-common-field-scroll-scroll-src-mq3-qcommon-common-ml-515952159"></a>
 ### scroll
@@ -42,4 +44,4 @@ scroll
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L49)

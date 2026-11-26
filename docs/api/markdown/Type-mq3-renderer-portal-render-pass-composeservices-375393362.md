@@ -9,8 +9,10 @@
 struct ComposeServices
 ```
 
+Callback table for `mq3.renderer.portal_render_pass.ComposeServices`; exposes `drawPortalFn`, `clearDepthFn`, `drawMainFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L107)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L146)
 
 ## Members
 
@@ -22,7 +24,7 @@ clearDepthFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L146)
 
 <a id="field-field-mq3-renderer-portal-render-pass-composeservices-context-context-src-mq3-renderer-portal-render-pass-ml-1023634569"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L146)
 
 <a id="field-field-mq3-renderer-portal-render-pass-composeservices-drawmainfn-drawmainfn-src-mq3-renderer-portal-render-pass-ml-1825383867"></a>
 ### drawMainFn
@@ -42,7 +44,7 @@ drawMainFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L146)
 
 <a id="field-field-mq3-renderer-portal-render-pass-composeservices-drawportalfn-drawportalfn-src-mq3-renderer-portal-render-pass-ml-415000685"></a>
 ### drawPortalFn
@@ -52,4 +54,4 @@ drawPortalFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_render_pass.ml#L146)

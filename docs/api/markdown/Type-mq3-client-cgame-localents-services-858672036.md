@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores client game localents host-service callbacks, including `traceFn`, `pointContentsFn`, `randomFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L65)
 
 ## Members
 
@@ -22,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L65)
 
 <a id="field-field-mq3-client-cgame-localents-services-pointcontentsfn-pointcontentsfn-src-mq3-client-cgame-localents-ml-31027473"></a>
 ### pointContentsFn
@@ -32,7 +34,7 @@ pointContentsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L65)
 
 <a id="field-field-mq3-client-cgame-localents-services-randomfn-randomfn-src-mq3-client-cgame-localents-ml-2125091703"></a>
 ### randomFn
@@ -42,7 +44,7 @@ randomFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L65)
 
 <a id="field-field-mq3-client-cgame-localents-services-tracefn-tracefn-src-mq3-client-cgame-localents-ml-1734228137"></a>
 ### traceFn
@@ -52,4 +54,4 @@ traceFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L65)

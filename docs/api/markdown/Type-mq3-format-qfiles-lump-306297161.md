@@ -9,8 +9,10 @@
 struct Lump
 ```
 
+Lump record for format.qfiles, containing `fileofs`, `filelen`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L104)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L123)
 
 ## Members
 
@@ -22,7 +24,7 @@ filelen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L123)
 
 <a id="field-field-mq3-format-qfiles-lump-fileofs-fileofs-src-mq3-format-qfiles-ml-1519855341"></a>
 ### fileofs
@@ -32,4 +34,4 @@ fileofs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L123)

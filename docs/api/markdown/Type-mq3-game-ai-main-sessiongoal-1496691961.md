@@ -9,8 +9,10 @@
 struct SessionGoal
 ```
 
+`SessionGoal` record for ai main, containing `areanum`, `entitynum`, `flags`, `iteminfo` and `number` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ areanum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 <a id="field-field-mq3-game-ai-main-sessiongoal-entitynum-entitynum-src-mq3-game-ai-main-ml-1207531834"></a>
 ### entitynum
@@ -32,7 +34,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 <a id="field-field-mq3-game-ai-main-sessiongoal-flags-flags-src-mq3-game-ai-main-ml-1436295270"></a>
 ### flags
@@ -42,7 +44,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 <a id="field-field-mq3-game-ai-main-sessiongoal-iteminfo-iteminfo-src-mq3-game-ai-main-ml-793403664"></a>
 ### iteminfo
@@ -52,7 +54,7 @@ iteminfo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 <a id="field-field-mq3-game-ai-main-sessiongoal-maxs-maxs-src-mq3-game-ai-main-ml-1192246084"></a>
 ### maxs
@@ -62,7 +64,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 <a id="field-field-mq3-game-ai-main-sessiongoal-mins-mins-src-mq3-game-ai-main-ml-181342256"></a>
 ### mins
@@ -72,7 +74,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 <a id="field-field-mq3-game-ai-main-sessiongoal-number-number-src-mq3-game-ai-main-ml-1554741452"></a>
 ### number
@@ -82,7 +84,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)
 
 <a id="field-field-mq3-game-ai-main-sessiongoal-origin-origin-src-mq3-game-ai-main-ml-1786544058"></a>
 ### origin
@@ -92,4 +94,4 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L27)

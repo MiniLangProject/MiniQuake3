@@ -9,8 +9,10 @@
 struct InPak
 ```
 
+InPak record for qcommon.files_runtime, containing `found`, `checksum`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ checksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
 
 <a id="field-field-mq3-qcommon-files-runtime-inpak-found-found-src-mq3-qcommon-files-runtime-ml-882545136"></a>
 ### found
@@ -32,4 +34,4 @@ found
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)

@@ -9,8 +9,10 @@
 struct State
 ```
 
+State record for audio.snd_dma_runtime, containing `services`, `started`, `muted`, `registered`, `soundTime`, `paintedTime`, and 14 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 ## Members
 
@@ -22,7 +24,7 @@ backgroundActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-backgroundintro-backgroundintro-src-mq3-audio-snd-dma-runtime-ml-149729316"></a>
 ### backgroundIntro
@@ -32,7 +34,7 @@ backgroundIntro
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-backgroundloop-backgroundloop-src-mq3-audio-snd-dma-runtime-ml-986658236"></a>
 ### backgroundLoop
@@ -42,7 +44,7 @@ backgroundLoop
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-channels-channels-src-mq3-audio-snd-dma-runtime-ml-817327080"></a>
 ### channels
@@ -52,7 +54,7 @@ channels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-inwater-inwater-src-mq3-audio-snd-dma-runtime-ml-316554836"></a>
 ### inWater
@@ -62,7 +64,7 @@ inWater
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-knownsfx-knownsfx-src-mq3-audio-snd-dma-runtime-ml-131709180"></a>
 ### knownSfx
@@ -72,7 +74,7 @@ knownSfx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-listeneraxis-listeneraxis-src-mq3-audio-snd-dma-runtime-ml-1542318194"></a>
 ### listenerAxis
@@ -82,7 +84,7 @@ listenerAxis
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-listenerentity-listenerentity-src-mq3-audio-snd-dma-runtime-ml-1295014498"></a>
 ### listenerEntity
@@ -92,7 +94,7 @@ listenerEntity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-listenerorigin-listenerorigin-src-mq3-audio-snd-dma-runtime-ml-1779071292"></a>
 ### listenerOrigin
@@ -102,7 +104,7 @@ listenerOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-loops-loops-src-mq3-audio-snd-dma-runtime-ml-582771052"></a>
 ### loops
@@ -112,7 +114,7 @@ loops
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-muted-muted-src-mq3-audio-snd-dma-runtime-ml-72504848"></a>
 ### muted
@@ -122,7 +124,7 @@ muted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-nexthandle-nexthandle-src-mq3-audio-snd-dma-runtime-ml-728051422"></a>
 ### nextHandle
@@ -132,7 +134,7 @@ nextHandle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-origins-origins-src-mq3-audio-snd-dma-runtime-ml-1137792772"></a>
 ### origins
@@ -142,7 +144,7 @@ origins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-outputrate-outputrate-src-mq3-audio-snd-dma-runtime-ml-1947180678"></a>
 ### outputRate
@@ -152,7 +154,7 @@ outputRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-paintedtime-paintedtime-src-mq3-audio-snd-dma-runtime-ml-1400093616"></a>
 ### paintedTime
@@ -162,7 +164,7 @@ paintedTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-rawstream-rawstream-src-mq3-audio-snd-dma-runtime-ml-2139746676"></a>
 ### rawStream
@@ -172,7 +174,7 @@ rawStream
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-registered-registered-src-mq3-audio-snd-dma-runtime-ml-983913416"></a>
 ### registered
@@ -182,7 +184,7 @@ registered
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-services-services-src-mq3-audio-snd-dma-runtime-ml-63512772"></a>
 ### services
@@ -192,7 +194,7 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-soundtime-soundtime-src-mq3-audio-snd-dma-runtime-ml-921407340"></a>
 ### soundTime
@@ -202,7 +204,7 @@ soundTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-state-started-started-src-mq3-audio-snd-dma-runtime-ml-960526352"></a>
 ### started
@@ -212,4 +214,4 @@ started
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)

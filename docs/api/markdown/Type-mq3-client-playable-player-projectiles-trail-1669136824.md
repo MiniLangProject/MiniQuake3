@@ -9,8 +9,10 @@
 struct Trail
 ```
 
+Stores playable player projectiles trail record, including `projectileId`, `style`, `start`, `endPoint`, `fromTime`, `toTime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ endPoint
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-fromtime-fromtime-src-mq3-client-playable-player-projectiles-ml-448324275"></a>
 ### fromTime
@@ -32,7 +34,7 @@ fromTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-projectileid-projectileid-src-mq3-client-playable-player-projectiles-ml-1962667557"></a>
 ### projectileId
@@ -42,7 +44,7 @@ projectileId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-start-start-src-mq3-client-playable-player-projectiles-ml-1622950757"></a>
 ### start
@@ -52,7 +54,7 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-style-style-src-mq3-client-playable-player-projectiles-ml-1856886433"></a>
 ### style
@@ -62,7 +64,7 @@ style
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)
 
 <a id="field-field-mq3-client-playable-player-projectiles-trail-totime-totime-src-mq3-client-playable-player-projectiles-ml-2077591573"></a>
 ### toTime
@@ -72,4 +74,4 @@ toTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L26)

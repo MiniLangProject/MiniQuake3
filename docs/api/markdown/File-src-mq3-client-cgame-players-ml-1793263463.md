@@ -23,12 +23,14 @@ Reachable from entry: **yes**
 function absolute(value)
 ```
 
+Evaluates client game players `absolute` and returns `0-value`, `value` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<0` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L270)
 
 - [mq3.client.cgame_players.Action](Type-mq3-client-cgame-players-action-730062975.md) — struct
 <a id="function-function-mq3-client-cgame-players-addpaintwitch-function-addpaintwitch-state-cent-torsoangles-src-mq3-client-cgame-players-ml-631502980"></a>
@@ -42,12 +44,12 @@ CG_AddPainTwitch
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `torsoAngles` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.painTime`, `cent.painDirection`. |
+| `torsoAngles` | `dynamic` | — | Mutable sequence; this routine writes `torsoAngles[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L284)
 
 <a id="function-function-mq3-client-cgame-players-addrefentitywithpowerups-function-addrefentitywithpowerups-state-cent-team-part-retailactive-src-mq3-client-cgame-players-ml-538786318"></a>
 ### addRefEntityWithPowerups
@@ -60,14 +62,14 @@ CG_AddRefEntityWithPowerups
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `team` | `dynamic` | — |  |
-| `part` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.powerups`, `cent.number`, `cent.origin`. |
+| `team` | `dynamic` | — | Value used by `if team==TEAM_RED then shader="red-quad" end if`. |
+| `part` | `dynamic` | — | Value used by `if bit(cent.powerups,PW_INVIS) then effect(state,"scene","model",cent.number,part,"invis",cent.origin,void,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L361)
 
 <a id="function-function-mq3-client-cgame-players-anglemod-function-anglemod-value-src-mq3-client-cgame-players-ml-402215703"></a>
 ### angleMod
@@ -76,12 +78,14 @@ CG_AddRefEntityWithPowerups
 function angleMod(value)
 ```
 
+Computes `(360.0/65536.0)*toFloat(n.trunc32(value*(65536.0/360.0))&65535)` for client game players `angleMod`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `return (360.0/65536.0)*toFloat(n.trunc32(value*(65536.0/360.0))&65535)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L263)
 
 <a id="function-function-mq3-client-cgame-players-anglesubtract-function-anglesubtract-a-b-src-mq3-client-cgame-players-ml-1735393397"></a>
 ### angleSubtract
@@ -90,13 +94,15 @@ function angleMod(value)
 function angleSubtract(a, b)
 ```
 
+Evaluates client game players `angleSubtract` and returns `effect` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Value used by `effect=a-b`. |
+| `b` | `dynamic` | — | Value used by `effect=a-b`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L267)
 
 <a id="constant-constant-mq3-client-cgame-players-anim-togglebit-const-anim-togglebit-128-src-mq3-client-cgame-players-ml-1177731874"></a>
 ### ANIM_TOGGLEBIT
@@ -106,7 +112,7 @@ const ANIM_TOGGLEBIT = 128
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L20)
 
 <a id="function-function-mq3-client-cgame-players-animation-function-animation-firstframe-numframes-loopframes-framelerp-initiallerp-reversed-flipflop-src-mq3-client-cgame-players-ml-1920093542"></a>
 ### animation
@@ -115,18 +121,20 @@ const ANIM_TOGGLEBIT = 128
 function animation(firstFrame, numFrames, loopFrames, frameLerp, initialLerp, reversed, flipflop)
 ```
 
+Creates a `mq3.client.cgame_players.Animation` record. Assigns `firstFrame` from `firstFrame`, `numFrames` from `numFrames`, `loopFrames` from `loopFrames`, `frameLerp` from `frameLerp`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `firstFrame` | `dynamic` | — |  |
-| `numFrames` | `dynamic` | — |  |
-| `loopFrames` | `dynamic` | — |  |
-| `frameLerp` | `dynamic` | — |  |
-| `initialLerp` | `dynamic` | — |  |
-| `reversed` | `dynamic` | — |  |
-| `flipflop` | `dynamic` | — |  |
+| `firstFrame` | `dynamic` | — | Value used to initialize `Animation.firstFrame`. |
+| `numFrames` | `dynamic` | — | Value used to initialize `Animation.numFrames`. |
+| `loopFrames` | `dynamic` | — | Value used to initialize `Animation.loopFrames`. |
+| `frameLerp` | `dynamic` | — | Value used to initialize `Animation.frameLerp`. |
+| `initialLerp` | `dynamic` | — | Value used to initialize `Animation.initialLerp`. |
+| `reversed` | `dynamic` | — | Value used to initialize `Animation.reversed`. |
+| `flipflop` | `dynamic` | — | Value used to initialize `Animation.flipflop`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L85)
 
 - [mq3.client.cgame_players.Animation](Type-mq3-client-cgame-players-animation-967536349.md) — struct
 <a id="extern_function-extern-function-mq3-client-cgame-players-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-client-cgame-players-ml-673233356"></a>
@@ -136,12 +144,16 @@ function animation(firstFrame, numFrames, loopFrames, frameLerp, initialLerp, re
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 ```
 
+Converts a NUL-terminated decimal C string to a signed 32-bit integer using the Windows C runtime. This binding is used by client game players.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `cstr` | — |  |
+| `text` | `cstr` | — | NUL-terminated C string containing the decimal numeric text. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L12)
+**Returns:** The converted integer; a string with no initial numeric conversion yields zero.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L15)
 
 <a id="function-function-mq3-client-cgame-players-bit-function-bit-value-index-src-mq3-client-cgame-players-ml-121605041"></a>
 ### bit
@@ -150,13 +162,15 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 function bit(value, index)
 ```
 
+Computes `(value & (1<<index))!=0` for client game players `bit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `return (value & (1<<index))!=0`. |
+| `index` | `dynamic` | — | Value used by `return (value & (1<<index))!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L116)
 
 <a id="function-function-mq3-client-cgame-players-breathpuffs-function-breathpuffs-state-cent-headorigin-contents-retailactive-src-mq3-client-cgame-players-ml-393605896"></a>
 ### breathPuffs
@@ -169,14 +183,14 @@ CG_BreathPuffs
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `headOrigin` | `dynamic` | — |  |
-| `contents` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`, `state.enableBreath`, `state.localClientNum`, `state.renderingThirdPerson` and additional values. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.clientNum`, `cent.number`, `cent.eFlags`. |
+| `headOrigin` | `dynamic` | — | Value used by `effect(state,"scene","smoke-puff",cent.number,"breath",1500,headOrigin,[1.0,1.0,1.0,0.66],retailActive)`. |
+| `contents` | `dynamic` | — | Value used by `if not state.enableBreath or (cent.number==state.localClientNum and not state.renderingThirdPerson) or (cent.eFlags & EF_DEAD)!=0 or (contents...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L300)
 
 <a id="function-function-mq3-client-cgame-players-clearlerpframe-function-clearlerpframe-state-ci-lf-animationnumber-src-mq3-client-cgame-players-ml-1469924572"></a>
 ### clearLerpFrame
@@ -189,13 +203,13 @@ CG_ClearLerpFrame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
-| `lf` | `dynamic` | — |  |
-| `animationNumber` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `ci` | `dynamic` | — | Client presentation information, including model and player identity. |
+| `lf` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `lf.frameTime`, `lf.oldFrameTime`, `lf.oldFrame`, `lf.frame`. |
+| `animationNumber` | `dynamic` | — | Value used by `setLerpFrameAnimation(ci,lf,animationNumber)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L256)
 
 <a id="function-function-mq3-client-cgame-players-clientinfo-function-clientinfo-src-mq3-client-cgame-players-ml-6606902"></a>
 ### clientInfo
@@ -204,8 +218,10 @@ CG_ClearLerpFrame
 function clientInfo()
 ```
 
+Creates a `mq3.client.cgame_players.ClientInfo` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L68)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L89)
 
 - [mq3.client.cgame_players.ClientInfo](Type-mq3-client-cgame-players-clientinfo-13962238.md) — struct
 <a id="function-function-mq3-client-cgame-players-colorfromstring-function-colorfromstring-value-src-mq3-client-cgame-players-ml-1466996507"></a>
@@ -219,10 +235,10 @@ CG_ColorFromString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `val=atoi(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L200)
 
 <a id="function-function-mq3-client-cgame-players-copyclientinfomodel-function-copyclientinfomodel-sourceinfo-targetinfo-src-mq3-client-cgame-players-ml-315859084"></a>
 ### copyClientInfoModel
@@ -235,11 +251,11 @@ CG_CopyClientInfoModel
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `sourceInfo` | `dynamic` | — |  |
-| `targetInfo` | `dynamic` | — |  |
+| `sourceInfo` | `dynamic` | — | Record read through `sourceInfo.footsteps`, `sourceInfo.gender`, `sourceInfo.headOffset`, `sourceInfo.fixedlegs` and additional values. |
+| `targetInfo` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `targetInfo.footsteps`, `targetInfo.gender`, `targetInfo.headOffset`, `targetInfo.fixedlegs` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L211)
 
 <a id="function-function-mq3-client-cgame-players-create-function-create-src-mq3-client-cgame-players-ml-1414907002"></a>
 ### create
@@ -248,8 +264,10 @@ CG_CopyClientInfoModel
 function create()
 ```
 
+Calls `mq3.client.cgame_players.clientInfo`, `mq3.client.cgame_players.State` from client game players `create`. The final path returns `State(0,0,0,0,false,1,true,false,1,0.3,false,false,clients,[],[])`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L98)
 
 <a id="function-function-mq3-client-cgame-players-customsound-function-customsound-state-clientnum-soundname-retailactive-src-mq3-client-cgame-players-ml-549271645"></a>
 ### customSound
@@ -262,13 +280,13 @@ CG_CustomSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `soundName` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `soundName` | `dynamic` | — | Value used by `if strings.substr(soundName,0,1)!="*" then effect(state,"audio","register-sound",clientNum,soundName,"",void,void,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L125)
 
 <a id="function-function-mq3-client-cgame-players-customsoundnames-function-customsoundnames-src-mq3-client-cgame-players-ml-1655145806"></a>
 ### customSoundNames
@@ -277,8 +295,10 @@ CG_CustomSound
 function customSoundNames()
 ```
 
+Lists the custom sound names catalog for client game players in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L77)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L118)
 
 <a id="function-function-mq3-client-cgame-players-dusttrail-function-dusttrail-state-cent-trace-retailactive-src-mq3-client-cgame-players-ml-1332648521"></a>
 ### dustTrail
@@ -291,13 +311,13 @@ CG_DustTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.enableDust`, `state.time`. |
+| `cent` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `cent.dustTrailTime`. |
+| `trace` | `dynamic` | — | Record read through `trace.surfaceFlags`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L306)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-award-assist-const-ef-award-assist-131072-src-mq3-client-cgame-players-ml-687544033"></a>
 ### EF_AWARD_ASSIST
@@ -307,7 +327,7 @@ const EF_AWARD_ASSIST = 131072
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L57)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-award-cap-const-ef-award-cap-2048-src-mq3-client-cgame-players-ml-386074289"></a>
 ### EF_AWARD_CAP
@@ -317,7 +337,7 @@ const EF_AWARD_CAP = 2048
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L52)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-award-defend-const-ef-award-defend-65536-src-mq3-client-cgame-players-ml-433315194"></a>
 ### EF_AWARD_DEFEND
@@ -327,7 +347,7 @@ const EF_AWARD_DEFEND = 65536
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L56)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-award-excellent-const-ef-award-excellent-8-src-mq3-client-cgame-players-ml-1290080681"></a>
 ### EF_AWARD_EXCELLENT
@@ -337,7 +357,7 @@ const EF_AWARD_EXCELLENT = 8
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L50)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-award-gauntlet-const-ef-award-gauntlet-64-src-mq3-client-cgame-players-ml-78098891"></a>
 ### EF_AWARD_GAUNTLET
@@ -347,7 +367,7 @@ const EF_AWARD_GAUNTLET = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L51)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-award-impressive-const-ef-award-impressive-32768-src-mq3-client-cgame-players-ml-2018840831"></a>
 ### EF_AWARD_IMPRESSIVE
@@ -357,7 +377,7 @@ const EF_AWARD_IMPRESSIVE = 32768
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L55)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-connection-const-ef-connection-8192-src-mq3-client-cgame-players-ml-543849773"></a>
 ### EF_CONNECTION
@@ -367,7 +387,7 @@ const EF_CONNECTION = 8192
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L54)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-dead-const-ef-dead-1-src-mq3-client-cgame-players-ml-1345519572"></a>
 ### EF_DEAD
@@ -377,7 +397,7 @@ const EF_DEAD = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L49)
 
 <a id="constant-constant-mq3-client-cgame-players-ef-talk-const-ef-talk-4096-src-mq3-client-cgame-players-ml-667567494"></a>
 ### EF_TALK
@@ -387,7 +407,7 @@ const EF_TALK = 4096
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L53)
 
 <a id="function-function-mq3-client-cgame-players-effect-function-effect-state-boundary-kind-entitynum-name-value-origin-color-retailactive-src-mq3-client-cgame-players-ml-1479256876"></a>
 ### effect
@@ -396,20 +416,22 @@ const EF_TALK = 4096
 function effect(state, boundary, kind, entityNum, name, value, origin, color, retailActive)
 ```
 
+Updates `state.actions` during client game players `effect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundary` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `entityNum` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `state.actions`. |
+| `boundary` | `dynamic` | — | Engine service boundary recorded on the queued action, such as renderer, audio or cvar. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `entityNum` | `dynamic` | — | Entity number identifying a world or player entity. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game players resource. |
+| `value` | `dynamic` | — | Value used by `item=Action(boundary,kind,entityNum,name,value,origin,color,not retailActive)`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `color` | `dynamic` | — | Color value used by the client game players drawing or interpolation operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L112)
 
 <a id="function-function-mq3-client-cgame-players-entity-function-entity-number-clientnum-src-mq3-client-cgame-players-ml-271671766"></a>
 ### entity
@@ -418,13 +440,15 @@ function effect(state, boundary, kind, entityNum, name, value, origin, color, re
 function entity(number, clientNum)
 ```
 
+Creates a `mq3.client.cgame_players.Entity` record. Assigns `number` from `number`, `clientNum` from `clientNum`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `number` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `number` | `dynamic` | — | Value used to initialize `Entity.number`. |
+| `clientNum` | `dynamic` | — | Value used to initialize `Entity.clientNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L93)
 
 - [mq3.client.cgame_players.Entity](Type-mq3-client-cgame-players-entity-979347290.md) — struct
 <a id="function-function-mq3-client-cgame-players-fileexists-function-fileexists-state-filename-src-mq3-client-cgame-players-ml-294918652"></a>
@@ -438,11 +462,11 @@ CG_FileExists
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `filename` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.files`. |
+| `filename` | `dynamic` | — | File name passed to the corresponding file/asset operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L145)
 
 <a id="function-function-mq3-client-cgame-players-findclientheadfile-function-findclientheadfile-state-ci-teamname-headmodelname-headskinname-base-ext-src-mq3-client-cgame-players-ml-2061008973"></a>
 ### findClientHeadFile
@@ -455,16 +479,16 @@ CG_FindClientHeadFile
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
-| `teamName` | `dynamic` | — |  |
-| `headModelName` | `dynamic` | — |  |
-| `headSkinName` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `ext` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `findClientHeadFile`. |
+| `ci` | `dynamic` | — | Client presentation information, including model and player identity. |
+| `teamName` | `dynamic` | — | Team name used for the menu or model selection. |
+| `headModelName` | `dynamic` | — | Value used by `model=headModelName`. |
+| `headSkinName` | `dynamic` | — | Value used by `for each leaf in [headSkinName+"/"+prefix+base+"_"+team+"."+ext,prefix+base+"_"+team+"."+ext,prefix+base+"_"+headSkinName+"."+ext] path="model...`. |
+| `base` | `dynamic` | — | Value used by `for each leaf in [headSkinName+"/"+prefix+base+"_"+team+"."+ext,prefix+base+"_"+team+"."+ext,prefix+base+"_"+headSkinName+"."+ext] path="model...`. |
+| `ext` | `dynamic` | — | Value used by `for each leaf in [headSkinName+"/"+prefix+base+"_"+team+"."+ext,prefix+base+"_"+team+"."+ext,prefix+base+"_"+headSkinName+"."+ext] path="model...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L169)
 
 <a id="function-function-mq3-client-cgame-players-findclientmodelfile-function-findclientmodelfile-state-ci-teamname-modelname-skinname-base-ext-src-mq3-client-cgame-players-ml-398292759"></a>
 ### findClientModelFile
@@ -477,16 +501,16 @@ CG_FindClientModelFile
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
-| `teamName` | `dynamic` | — |  |
-| `modelName` | `dynamic` | — |  |
-| `skinName` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `ext` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `findClientModelFile`. |
+| `ci` | `dynamic` | — | Client presentation information, including model and player identity. |
+| `teamName` | `dynamic` | — | Team name used for the menu or model selection. |
+| `modelName` | `dynamic` | — | Value used by `for each leaf in [base+"_"+skinName+"_"+team+"."+ext,base+"_"+team+"."+ext,base+"_"+skinName+"."+ext] path="models/players/"+folder+modelName+...`. |
+| `skinName` | `dynamic` | — | Value used by `for each leaf in [base+"_"+skinName+"_"+team+"."+ext,base+"_"+team+"."+ext,base+"_"+skinName+"."+ext] path="models/players/"+folder+modelName+...`. |
+| `base` | `dynamic` | — | Value used by `for each leaf in [base+"_"+skinName+"_"+team+"."+ext,base+"_"+team+"."+ext,base+"_"+skinName+"."+ext] path="models/players/"+folder+modelName+...`. |
+| `ext` | `dynamic` | — | Value used by `for each leaf in [base+"_"+skinName+"_"+team+"."+ext,base+"_"+team+"."+ext,base+"_"+skinName+"."+ext] path="models/players/"+folder+modelName+...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L158)
 
 <a id="constant-constant-mq3-client-cgame-players-flag-run-const-flag-run-33-src-mq3-client-cgame-players-ml-1695454033"></a>
 ### FLAG_RUN
@@ -496,7 +520,7 @@ const FLAG_RUN = 33
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L36)
 
 <a id="constant-constant-mq3-client-cgame-players-flag-stand-const-flag-stand-34-src-mq3-client-cgame-players-ml-558014166"></a>
 ### FLAG_STAND
@@ -506,7 +530,7 @@ const FLAG_STAND = 34
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L37)
 
 <a id="constant-constant-mq3-client-cgame-players-flag-stand2run-const-flag-stand2run-35-src-mq3-client-cgame-players-ml-760433563"></a>
 ### FLAG_STAND2RUN
@@ -516,7 +540,7 @@ const FLAG_STAND2RUN = 35
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L38)
 
 <a id="constant-constant-mq3-client-cgame-players-gt-team-const-gt-team-3-src-mq3-client-cgame-players-ml-529721858"></a>
 ### GT_TEAM
@@ -526,7 +550,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L24)
 
 <a id="function-function-mq3-client-cgame-players-hastetrail-function-hastetrail-state-cent-retailactive-src-mq3-client-cgame-players-ml-1380068130"></a>
 ### hasteTrail
@@ -539,12 +563,12 @@ CG_HasteTrail
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `cent` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `cent.trailTime`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L293)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-back-const-legs-back-16-src-mq3-client-cgame-players-ml-1966084418"></a>
 ### LEGS_BACK
@@ -554,7 +578,7 @@ const LEGS_BACK = 16
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L28)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-backcr-const-legs-backcr-31-src-mq3-client-cgame-players-ml-686493213"></a>
 ### LEGS_BACKCR
@@ -564,7 +588,7 @@ const LEGS_BACKCR = 31
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L34)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-backwalk-const-legs-backwalk-32-src-mq3-client-cgame-players-ml-884296324"></a>
 ### LEGS_BACKWALK
@@ -574,7 +598,7 @@ const LEGS_BACKWALK = 32
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L35)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-idle-const-legs-idle-22-src-mq3-client-cgame-players-ml-1058698473"></a>
 ### LEGS_IDLE
@@ -584,7 +608,7 @@ const LEGS_IDLE = 22
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L31)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-idlecr-const-legs-idlecr-23-src-mq3-client-cgame-players-ml-893957874"></a>
 ### LEGS_IDLECR
@@ -594,7 +618,7 @@ const LEGS_IDLECR = 23
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L32)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-land-const-legs-land-19-src-mq3-client-cgame-players-ml-416266907"></a>
 ### LEGS_LAND
@@ -604,7 +628,7 @@ const LEGS_LAND = 19
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L29)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-landb-const-legs-landb-21-src-mq3-client-cgame-players-ml-527838800"></a>
 ### LEGS_LANDB
@@ -614,7 +638,7 @@ const LEGS_LANDB = 21
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L30)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-run-const-legs-run-15-src-mq3-client-cgame-players-ml-437793927"></a>
 ### LEGS_RUN
@@ -624,7 +648,7 @@ const LEGS_RUN = 15
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L27)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-turn-const-legs-turn-24-src-mq3-client-cgame-players-ml-1981595659"></a>
 ### LEGS_TURN
@@ -634,7 +658,7 @@ const LEGS_TURN = 24
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L33)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-walk-const-legs-walk-14-src-mq3-client-cgame-players-ml-1614573708"></a>
 ### LEGS_WALK
@@ -644,7 +668,7 @@ const LEGS_WALK = 14
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L26)
 
 <a id="constant-constant-mq3-client-cgame-players-legs-walkcr-const-legs-walkcr-13-src-mq3-client-cgame-players-ml-2135999381"></a>
 ### LEGS_WALKCR
@@ -654,7 +678,7 @@ const LEGS_WALKCR = 13
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L25)
 
 <a id="function-function-mq3-client-cgame-players-lerpframe-function-lerpframe-src-mq3-client-cgame-players-ml-1812884570"></a>
 ### lerpFrame
@@ -663,8 +687,10 @@ const LEGS_WALKCR = 13
 function lerpFrame()
 ```
 
+Creates a `mq3.client.cgame_players.LerpFrame` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L67)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L87)
 
 - [mq3.client.cgame_players.LerpFrame](Type-mq3-client-cgame-players-lerpframe-13687381.md) — struct
 <a id="function-function-mq3-client-cgame-players-lightverts-function-lightverts-normal-vertices-ambient-directed-lightdir-src-mq3-client-cgame-players-ml-1424465285"></a>
@@ -678,14 +704,14 @@ CG_LightVerts
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `normal` | `dynamic` | — |  |
-| `vertices` | `dynamic` | — |  |
-| `ambient` | `dynamic` | — |  |
-| `directed` | `dynamic` | — |  |
-| `lightDir` | `dynamic` | — |  |
+| `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
+| `vertices` | `dynamic` | — | Value used by `for each vertex in vertices color=[]`. |
+| `ambient` | `dynamic` | — | Sequence read at `ambient[i]`. |
+| `directed` | `dynamic` | — | Sequence read at `directed[i]`. |
+| `lightDir` | `dynamic` | — | Sequence read at `lightDir[0]`, `lightDir[1]`, `lightDir[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L368)
 
 <a id="function-function-mq3-client-cgame-players-loadclientinfo-function-loadclientinfo-state-ci-animationtext-retailactive-src-mq3-client-cgame-players-ml-2101696987"></a>
 ### loadClientInfo
@@ -698,13 +724,13 @@ CG_LoadClientInfo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
-| `animationText` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `loadClientInfo`. |
+| `ci` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `ci.modelName`, `ci.skinName`, `ci.headModelName`, `ci.headSkinName` and additional values. |
+| `animationText` | `dynamic` | — | Value used by `ok=registerClientModelname(state,ci,ci.modelName,ci.skinName,ci.headModelName,ci.headSkinName,"",animationText,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L206)
 
 <a id="function-function-mq3-client-cgame-players-loaddeferredplayers-function-loaddeferredplayers-state-animationtext-lowmemory-retailactive-src-mq3-client-cgame-players-ml-1943850992"></a>
 ### loadDeferredPlayers
@@ -717,13 +743,13 @@ CG_LoadDeferredPlayers
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `animationText` | `dynamic` | — |  |
-| `lowMemory` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `animationText` | `dynamic` | — | Value used by `for each ci in state.clients if ci.infoValid and ci.deferred then if lowMemory then ci.deferred=false else loadClientInfo(state,ci,animationTe...`. |
+| `lowMemory` | `dynamic` | — | Value used by `for each ci in state.clients if ci.infoValid and ci.deferred then if lowMemory then ci.deferred=false else loadClientInfo(state,ci,animationTe...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L235)
 
 <a id="constant-constant-mq3-client-cgame-players-max-animations-const-max-animations-31-src-mq3-client-cgame-players-ml-784920003"></a>
 ### MAX_ANIMATIONS
@@ -733,7 +759,7 @@ const MAX_ANIMATIONS = 31
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L18)
 
 <a id="constant-constant-mq3-client-cgame-players-max-clients-const-max-clients-64-src-mq3-client-cgame-players-ml-1546309671"></a>
 ### MAX_CLIENTS
@@ -743,7 +769,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L17)
 
 <a id="constant-constant-mq3-client-cgame-players-max-totalanimations-const-max-totalanimations-36-src-mq3-client-cgame-players-ml-1571840188"></a>
 ### MAX_TOTALANIMATIONS
@@ -753,7 +779,7 @@ const MAX_TOTALANIMATIONS = 36
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L19)
 
 <a id="function-function-mq3-client-cgame-players-newclientinfo-function-newclientinfo-state-clientnum-config-animationtext-deferplayers-retailactive-src-mq3-client-cgame-players-ml-877308452"></a>
 ### newClientInfo
@@ -766,15 +792,15 @@ CG_NewClientInfo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `config` | `dynamic` | — |  |
-| `animationText` | `dynamic` | — |  |
-| `deferPlayers` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `state.clients[clientNum]`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `config` | `dynamic` | — | Value used by `if config=="" then state.clients[clientNum]=clientInfo()`. |
+| `animationText` | `dynamic` | — | Value used by `if not scanForExistingClientInfo(state,ci) then if deferPlayers then setDeferredClientInfo(state,ci) else loadClientInfo(state,ci,animationTex...`. |
+| `deferPlayers` | `dynamic` | — | Value used by `if not scanForExistingClientInfo(state,ci) then if deferPlayers then setDeferredClientInfo(state,ci) else loadClientInfo(state,ci,animationTex...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L227)
 
 <a id="constant-constant-mq3-client-cgame-players-pain-twitch-time-const-pain-twitch-time-cgabi-pain-twitch-time-src-mq3-client-cgame-players-ml-431845823"></a>
 ### PAIN_TWITCH_TIME
@@ -784,7 +810,7 @@ const PAIN_TWITCH_TIME = cgabi.PAIN_TWITCH_TIME
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L58)
 
 <a id="function-function-mq3-client-cgame-players-parseanimationfile-function-parseanimationfile-filename-text-ci-src-mq3-client-cgame-players-ml-1207714408"></a>
 ### parseAnimationFile
@@ -797,12 +823,12 @@ CG_ParseAnimationFile
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `filename` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
+| `filename` | `dynamic` | — | Accepted for compatibility with `parseAnimationFile`; the current implementation does not read it. |
+| `text` | `dynamic` | — | Text whose length/content is inspected by `parseAnimationFile`. |
+| `ci` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `ci.footsteps`, `ci.headOffset`, `ci.gender`, `ci.fixedlegs` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L136)
 
 <a id="function-function-mq3-client-cgame-players-player-function-player-state-cent-localteam-shadowtrace-feetcontents-headcontents-splashtrace-retailactive-src-mq3-client-cgame-players-ml-716926067"></a>
 ### player
@@ -815,17 +841,17 @@ CG_Player
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `localTeam` | `dynamic` | — |  |
-| `shadowTrace` | `dynamic` | — |  |
-| `feetContents` | `dynamic` | — |  |
-| `headContents` | `dynamic` | — |  |
-| `splashTrace` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `state.actions`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.clientNum`, `cent.number`, `cent.origin`. |
+| `localTeam` | `dynamic` | — | Value used by `playerSprites(state,cent,localTeam,retailActive)`. |
+| `shadowTrace` | `dynamic` | — | Value used by `shadow=playerShadow(state,cent,shadowTrace,retailActive)`. |
+| `feetContents` | `dynamic` | — | Value used by `playerSplash(state,cent,feetContents,headContents,splashTrace,retailActive)`. |
+| `headContents` | `dynamic` | — | Value used by `playerSplash(state,cent,feetContents,headContents,splashTrace,retailActive)`. |
+| `splashTrace` | `dynamic` | — | Value used by `playerSplash(state,cent,feetContents,headContents,splashTrace,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L378)
 
 <a id="function-function-mq3-client-cgame-players-playerangles-function-playerangles-state-cent-src-mq3-client-cgame-players-ml-820035417"></a>
 ### playerAngles
@@ -838,11 +864,11 @@ CG_PlayerAngles
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `playerAngles`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.eFlags`, `cent.angles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L288)
 
 <a id="function-function-mq3-client-cgame-players-playeranimation-function-playeranimation-state-cent-src-mq3-client-cgame-players-ml-150689595"></a>
 ### playerAnimation
@@ -855,11 +881,11 @@ CG_PlayerAnimation
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.noPlayerAnims`, `state.clients`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.powerups`, `cent.clientNum`, `cent.legsAnim`, `cent.legs.yawing` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L260)
 
 <a id="function-function-mq3-client-cgame-players-playerflag-function-playerflag-state-cent-skin-retailactive-src-mq3-client-cgame-players-ml-1890331057"></a>
 ### playerFlag
@@ -872,13 +898,13 @@ CG_PlayerFlag
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `skin` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.legsAnim`, `cent.clientNum`, `cent.flag`, `cent.number` and additional values. |
+| `skin` | `dynamic` | — | Value used by `effect(state,"scene","tagged-model",cent.number,"flag-flap",skin,cent.origin,void,retailActive)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L318)
 
 <a id="function-function-mq3-client-cgame-players-playerfloatsprite-function-playerfloatsprite-state-cent-shader-retailactive-src-mq3-client-cgame-players-ml-359507561"></a>
 ### playerFloatSprite
@@ -891,13 +917,13 @@ CG_PlayerFloatSprite
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `playerFloatSprite`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.number`, `cent.origin`. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L334)
 
 <a id="function-function-mq3-client-cgame-players-playerpowerups-function-playerpowerups-state-cent-retailactive-src-mq3-client-cgame-players-ml-935712766"></a>
 ### playerPowerups
@@ -910,12 +936,12 @@ CG_PlayerPowerups
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`, `state.actions`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.powerups`, `cent.number`, `cent.origin`, `cent.clientNum`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L328)
 
 <a id="function-function-mq3-client-cgame-players-playershadow-function-playershadow-state-cent-trace-retailactive-src-mq3-client-cgame-players-ml-1260274557"></a>
 ### playerShadow
@@ -928,13 +954,13 @@ CG_PlayerShadow
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.shadows`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.powerups`, `cent.number`. |
+| `trace` | `dynamic` | — | Record read through `trace.fraction`, `trace.startsolid`, `trace.allsolid`, `trace.endpos`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L346)
 
 <a id="function-function-mq3-client-cgame-players-playersplash-function-playersplash-state-cent-feetcontents-headcontents-trace-retailactive-src-mq3-client-cgame-players-ml-675782279"></a>
 ### playerSplash
@@ -947,15 +973,15 @@ CG_PlayerSplash
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `feetContents` | `dynamic` | — |  |
-| `headContents` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.shadows`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.number`. |
+| `feetContents` | `dynamic` | — | Value used by `if state.shadows==0 or (feetContents&56)==0 or (headContents&57)!=0 or trace.fraction==1.0 then return false end if`. |
+| `headContents` | `dynamic` | — | Value used by `if state.shadows==0 or (feetContents&56)==0 or (headContents&57)!=0 or trace.fraction==1.0 then return false end if`. |
+| `trace` | `dynamic` | — | Record read through `trace.fraction`, `trace.endpos`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L354)
 
 <a id="function-function-mq3-client-cgame-players-playersprites-function-playersprites-state-cent-localteam-retailactive-src-mq3-client-cgame-players-ml-826919542"></a>
 ### playerSprites
@@ -968,13 +994,13 @@ CG_PlayerSprites
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `localTeam` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`, `state.clients`, `state.drawFriend`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.eFlags`, `cent.clientNum`. |
+| `localTeam` | `dynamic` | — | Value used by `if (cent.eFlags & EF_DEAD)==0 and state.gametype>=GT_TEAM and state.clients[cent.clientNum].team==localTeam and state.drawFriend then return p...`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L340)
 
 <a id="function-function-mq3-client-cgame-players-playertokens-function-playertokens-state-cent-retailactive-src-mq3-client-cgame-players-ml-227006730"></a>
 ### playerTokens
@@ -987,12 +1013,12 @@ CG_PlayerTokens
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `playerTokens`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.generic1`, `cent.number`, `cent.origin`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L323)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-battlesuit-const-pw-battlesuit-2-src-mq3-client-cgame-players-ml-1023941073"></a>
 ### PW_BATTLESUIT
@@ -1002,7 +1028,7 @@ const PW_BATTLESUIT = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L41)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-blueflag-const-pw-blueflag-8-src-mq3-client-cgame-players-ml-2143538071"></a>
 ### PW_BLUEFLAG
@@ -1012,7 +1038,7 @@ const PW_BLUEFLAG = 8
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L47)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-flight-const-pw-flight-6-src-mq3-client-cgame-players-ml-2076931001"></a>
 ### PW_FLIGHT
@@ -1022,7 +1048,7 @@ const PW_FLIGHT = 6
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L45)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-haste-const-pw-haste-3-src-mq3-client-cgame-players-ml-1499826162"></a>
 ### PW_HASTE
@@ -1032,7 +1058,7 @@ const PW_HASTE = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L42)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-invis-const-pw-invis-4-src-mq3-client-cgame-players-ml-198089619"></a>
 ### PW_INVIS
@@ -1042,7 +1068,7 @@ const PW_INVIS = 4
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L43)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-neutralflag-const-pw-neutralflag-9-src-mq3-client-cgame-players-ml-1272644696"></a>
 ### PW_NEUTRALFLAG
@@ -1052,7 +1078,7 @@ const PW_NEUTRALFLAG = 9
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L48)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-quad-const-pw-quad-1-src-mq3-client-cgame-players-ml-1354318808"></a>
 ### PW_QUAD
@@ -1062,7 +1088,7 @@ const PW_QUAD = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L40)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-redflag-const-pw-redflag-7-src-mq3-client-cgame-players-ml-568005518"></a>
 ### PW_REDFLAG
@@ -1072,7 +1098,7 @@ const PW_REDFLAG = 7
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L46)
 
 <a id="constant-constant-mq3-client-cgame-players-pw-regen-const-pw-regen-5-src-mq3-client-cgame-players-ml-1775199660"></a>
 ### PW_REGEN
@@ -1082,7 +1108,7 @@ const PW_REGEN = 5
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L44)
 
 <a id="function-function-mq3-client-cgame-players-registerclientmodelname-function-registerclientmodelname-state-ci-modelname-skinname-headmodelname-headskinname-teamname-animationtext-retailactive-src-mq3-client-cgame-players-ml-636464989"></a>
 ### registerClientModelname
@@ -1095,18 +1121,18 @@ CG_RegisterClientModelname
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
-| `modelName` | `dynamic` | — |  |
-| `skinName` | `dynamic` | — |  |
-| `headModelName` | `dynamic` | — |  |
-| `headSkinName` | `dynamic` | — |  |
-| `teamName` | `dynamic` | — |  |
-| `animationText` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `registerClientModelname`. |
+| `ci` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `ci.legsModel`, `ci.torsoModel`, `ci.headModel`, `ci.modelIcon` and additional values. |
+| `modelName` | `dynamic` | — | Value used by `if headName=="" then headName=modelName end if`. |
+| `skinName` | `dynamic` | — | Value used by `if not registerClientSkin(state,ci,teamName,modelName,skinName,headName,headSkinName,retailActive) then return false end if`. |
+| `headModelName` | `dynamic` | — | Value used by `headName=headModelName`. |
+| `headSkinName` | `dynamic` | — | Value used by `if not registerClientSkin(state,ci,teamName,modelName,skinName,headName,headSkinName,retailActive) then return false end if`. |
+| `teamName` | `dynamic` | — | Team name used for the menu or model selection. |
+| `animationText` | `dynamic` | — | Value used by `if not parseAnimationFile("models/players/"+modelName+"/animation.cfg",animationText,ci) then return false end if`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L195)
 
 <a id="function-function-mq3-client-cgame-players-registerclientskin-function-registerclientskin-state-ci-teamname-modelname-skinname-headmodelname-headskinname-retailactive-src-mq3-client-cgame-players-ml-464498642"></a>
 ### registerClientSkin
@@ -1119,17 +1145,17 @@ CG_RegisterClientSkin
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
-| `teamName` | `dynamic` | — |  |
-| `modelName` | `dynamic` | — |  |
-| `skinName` | `dynamic` | — |  |
-| `headModelName` | `dynamic` | — |  |
-| `headSkinName` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `registerClientSkin`. |
+| `ci` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `ci.legsSkin`, `ci.torsoSkin`, `ci.headSkin`. |
+| `teamName` | `dynamic` | — | Team name used for the menu or model selection. |
+| `modelName` | `dynamic` | — | Value used by `legs=findClientModelFile(state,ci,teamName,modelName,skinName,"lower","skin")`. |
+| `skinName` | `dynamic` | — | Value used by `legs=findClientModelFile(state,ci,teamName,modelName,skinName,"lower","skin")`. |
+| `headModelName` | `dynamic` | — | Value used by `head=findClientHeadFile(state,ci,teamName,headModelName,headSkinName,"head","skin")`. |
+| `headSkinName` | `dynamic` | — | Value used by `head=findClientHeadFile(state,ci,teamName,headModelName,headSkinName,"head","skin")`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L182)
 
 <a id="function-function-mq3-client-cgame-players-resetplayerentity-function-resetplayerentity-state-cent-src-mq3-client-cgame-players-ml-1075845727"></a>
 ### resetPlayerEntity
@@ -1142,11 +1168,11 @@ CG_ResetPlayerEntity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`, `state.time`. |
+| `cent` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `cent.legs`, `cent.torso`, `cent.flag`, `cent.trailTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L382)
 
 <a id="function-function-mq3-client-cgame-players-runlerpframe-function-runlerpframe-state-ci-lf-newanimation-speedscale-src-mq3-client-cgame-players-ml-618076660"></a>
 ### runLerpFrame
@@ -1159,14 +1185,14 @@ CG_RunLerpFrame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
-| `lf` | `dynamic` | — |  |
-| `newAnimation` | `dynamic` | — |  |
-| `speedScale` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.animSpeed`, `state.time`. |
+| `ci` | `dynamic` | — | Client presentation information, including model and player identity. |
+| `lf` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `lf.oldFrame`, `lf.frame`, `lf.backlerp`, `lf.oldFrameTime` and additional values. |
+| `newAnimation` | `dynamic` | — | Value used by `if newAnimation!=lf.animationNumber or lf.animation==void then setLerpFrameAnimation(ci,lf,newAnimation) end if`. |
+| `speedScale` | `dynamic` | — | Value used by `f=n.trunc32((lf.frameTime-lf.animationTime)/anim.frameLerp*speedScale)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L248)
 
 <a id="function-function-mq3-client-cgame-players-scanforexistingclientinfo-function-scanforexistingclientinfo-state-ci-src-mq3-client-cgame-players-ml-376449315"></a>
 ### scanForExistingClientInfo
@@ -1179,11 +1205,11 @@ CG_ScanForExistingClientInfo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `ci` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `ci.deferred`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L215)
 
 <a id="function-function-mq3-client-cgame-players-setdeferredclientinfo-function-setdeferredclientinfo-state-ci-src-mq3-client-cgame-players-ml-1418101867"></a>
 ### setDeferredClientInfo
@@ -1196,11 +1222,11 @@ CG_SetDeferredClientInfo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.clients`. |
+| `ci` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `ci.deferred`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L219)
 
 <a id="function-function-mq3-client-cgame-players-setlerpframeanimation-function-setlerpframeanimation-ci-lf-newanimation-src-mq3-client-cgame-players-ml-620178008"></a>
 ### setLerpFrameAnimation
@@ -1213,12 +1239,12 @@ CG_SetLerpFrameAnimation
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ci` | `dynamic` | — |  |
-| `lf` | `dynamic` | — |  |
-| `newAnimation` | `dynamic` | — |  |
+| `ci` | `dynamic` | — | Client presentation information, including model and player identity. Record read through `ci.animations`. |
+| `lf` | `dynamic` | — | Mutable client game players record/storage; this routine assigns `lf.animationNumber`, `lf.animation`, `lf.animationTime`. |
+| `newAnimation` | `dynamic` | — | Value assigned to `lf.animationNumber`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L241)
 
 - [mq3.client.cgame_players.State](Type-mq3-client-cgame-players-state-2106043254.md) — struct
 <a id="function-function-mq3-client-cgame-players-swingangles-function-swingangles-frametime-destination-swingtolerance-clamptolerance-speed-angle-swinging-src-mq3-client-cgame-players-ml-1495101627"></a>
@@ -1232,16 +1258,16 @@ CG_SwingAngles
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `frameTime` | `dynamic` | — |  |
-| `destination` | `dynamic` | — |  |
-| `swingTolerance` | `dynamic` | — |  |
-| `clampTolerance` | `dynamic` | — |  |
-| `speed` | `dynamic` | — |  |
-| `angle` | `dynamic` | — |  |
-| `swinging` | `dynamic` | — |  |
+| `frameTime` | `dynamic` | — | Value used by `move=frameTime*scale*speed`. |
+| `destination` | `dynamic` | — | Value used by `if not swinging and (angleSubtract(angle,destination)>swingTolerance or angleSubtract(angle,destination)<0.0-swingTolerance) then swinging=tru...`. |
+| `swingTolerance` | `dynamic` | — | Value used by `if not swinging and (angleSubtract(angle,destination)>swingTolerance or angleSubtract(angle,destination)<0.0-swingTolerance) then swinging=tru...`. |
+| `clampTolerance` | `dynamic` | — | Value used by `if remaining>clampTolerance then angle=angleMod(destination-(clampTolerance-1)) else if remaining<0.0-clampTolerance then angle=angleMod(desti...`. |
+| `speed` | `dynamic` | — | Value used by `move=frameTime*scale*speed`. |
+| `angle` | `dynamic` | — | Value used by `if not swinging and (angleSubtract(angle,destination)>swingTolerance or angleSubtract(angle,destination)<0.0-swingTolerance) then swinging=tru...`. |
+| `swinging` | `dynamic` | — | Value used by `if not swinging and (angleSubtract(angle,destination)>swingTolerance or angleSubtract(angle,destination)<0.0-swingTolerance) then swinging=tru...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L279)
 
 <a id="constant-constant-mq3-client-cgame-players-team-blue-const-team-blue-2-src-mq3-client-cgame-players-ml-1308482485"></a>
 ### TEAM_BLUE
@@ -1251,7 +1277,7 @@ const TEAM_BLUE = 2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L22)
 
 <a id="constant-constant-mq3-client-cgame-players-team-red-const-team-red-1-src-mq3-client-cgame-players-ml-159116556"></a>
 ### TEAM_RED
@@ -1261,7 +1287,7 @@ const TEAM_RED = 1
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L21)
 
 <a id="constant-constant-mq3-client-cgame-players-team-spectator-const-team-spectator-3-src-mq3-client-cgame-players-ml-2009427666"></a>
 ### TEAM_SPECTATOR
@@ -1271,7 +1297,7 @@ const TEAM_SPECTATOR = 3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L23)
 
 <a id="function-function-mq3-client-cgame-players-teamsuffix-function-teamsuffix-state-ci-src-mq3-client-cgame-players-ml-1465920139"></a>
 ### teamSuffix
@@ -1280,13 +1306,15 @@ const TEAM_SPECTATOR = 3
 function teamSuffix(state, ci)
 ```
 
+Evaluates client game players `teamSuffix` and returns `"default"`, `"blue"`, `"red"` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ci` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`. |
+| `ci` | `dynamic` | — | Client presentation information, including model and player identity. Record read through `ci.team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L149)
 
 <a id="function-function-mq3-client-cgame-players-tokens-function-tokens-text-src-mq3-client-cgame-players-ml-1346406955"></a>
 ### tokens
@@ -1295,12 +1323,14 @@ function teamSuffix(state, ci)
 function tokens(text)
 ```
 
+Calls `decode`, `slice` from client game players `tokens`. The final path returns `effect`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `tokens` in the client game players path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L131)
 
 <a id="constant-constant-mq3-client-cgame-players-torso-gesture-const-torso-gesture-6-src-mq3-client-cgame-players-ml-1410037685"></a>
 ### TORSO_GESTURE
@@ -1310,7 +1340,7 @@ const TORSO_GESTURE = 6
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L39)
 
 - [mq3.client.cgame_players.Trace](Type-mq3-client-cgame-players-trace-110358062.md) — struct
 <a id="function-function-mq3-client-cgame-players-trailitem-function-trailitem-state-cent-model-retailactive-src-mq3-client-cgame-players-ml-2010730007"></a>
@@ -1324,13 +1354,13 @@ CG_TrailItem
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `cent` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game players state passed to the helper calls in `trailItem`. |
+| `cent` | `dynamic` | — | Client entity holding current/next state and interpolated presentation data. Record read through `cent.number`, `cent.origin`. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game players operation. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L312)
 
 <a id="function-function-mq3-client-cgame-players-vertex-function-vertex-origin-src-mq3-client-cgame-players-ml-1059003556"></a>
 ### vertex
@@ -1339,11 +1369,13 @@ CG_TrailItem
 function vertex(origin)
 ```
 
+Creates a `mq3.client.cgame_players.Vertex` record. Assigns `origin` from `origin`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Value used to initialize `Vertex.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L96)
 
 - [mq3.client.cgame_players.Vertex](Type-mq3-client-cgame-players-vertex-2071140647.md) — struct

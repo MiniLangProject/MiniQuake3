@@ -9,8 +9,10 @@
 struct Context
 ```
 
+`Context` record for syscall qagame host, containing `services`, `vm` and `base`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ base
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L11)
 
 <a id="field-field-mq3-game-syscall-qagame-host-context-services-services-src-mq3-game-syscall-qagame-host-ml-180759352"></a>
 ### services
@@ -32,7 +34,7 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L11)
 
 <a id="field-field-mq3-game-syscall-qagame-host-context-vm-vm-src-mq3-game-syscall-qagame-host-ml-1858051738"></a>
 ### vm
@@ -42,4 +44,4 @@ vm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L11)

@@ -9,8 +9,10 @@
 struct FogBatch
 ```
 
+Data record for `mq3.renderer.playable_fog.FogBatch`; groups `commands`, `sourcePositions`, `fogIndexes`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L25)
 
 ## Members
 
@@ -22,7 +24,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L25)
 
 <a id="field-field-mq3-renderer-playable-fog-fogbatch-fogindexes-fogindexes-src-mq3-renderer-playable-fog-ml-243154365"></a>
 ### fogIndexes
@@ -32,7 +34,7 @@ fogIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L25)
 
 <a id="field-field-mq3-renderer-playable-fog-fogbatch-sourcepositions-sourcepositions-src-mq3-renderer-playable-fog-ml-72306849"></a>
 ### sourcePositions
@@ -42,4 +44,4 @@ sourcePositions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L25)

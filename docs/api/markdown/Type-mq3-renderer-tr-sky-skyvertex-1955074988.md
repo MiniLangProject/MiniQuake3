@@ -9,8 +9,10 @@
 struct SkyVertex
 ```
 
+Data record for `mq3.renderer.tr_sky.SkyVertex`; groups `xyz`, `st`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ st
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L30)
 
 <a id="field-field-mq3-renderer-tr-sky-skyvertex-xyz-xyz-src-mq3-renderer-tr-sky-ml-1445802328"></a>
 ### xyz
@@ -32,4 +34,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L30)

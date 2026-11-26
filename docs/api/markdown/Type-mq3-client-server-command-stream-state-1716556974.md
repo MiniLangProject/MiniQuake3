@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores server command stream state, including `commandState`, `configstrings`, `commandSequence`, `lastExecuted`, `commands`, `demoPlaying` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ bigConfigString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L33)
 
 <a id="field-field-mq3-client-server-command-stream-state-commands-commands-src-mq3-client-server-command-stream-ml-531856922"></a>
 ### commands
@@ -32,7 +34,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L31)
 
 <a id="field-field-mq3-client-server-command-stream-state-commandsequence-commandsequence-src-mq3-client-server-command-stream-ml-69935682"></a>
 ### commandSequence
@@ -42,7 +44,7 @@ commandSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L29)
 
 <a id="field-field-mq3-client-server-command-stream-state-commandstate-commandstate-src-mq3-client-server-command-stream-ml-78254498"></a>
 ### commandState
@@ -52,7 +54,7 @@ commandState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L27)
 
 <a id="field-field-mq3-client-server-command-stream-state-configstrings-configstrings-src-mq3-client-server-command-stream-ml-1864730730"></a>
 ### configstrings
@@ -62,7 +64,7 @@ configstrings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L28)
 
 <a id="field-field-mq3-client-server-command-stream-state-demoplaying-demoplaying-src-mq3-client-server-command-stream-ml-1116231902"></a>
 ### demoPlaying
@@ -72,7 +74,7 @@ demoPlaying
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L32)
 
 <a id="field-field-mq3-client-server-command-stream-state-lastexecuted-lastexecuted-src-mq3-client-server-command-stream-ml-1854867604"></a>
 ### lastExecuted
@@ -82,4 +84,4 @@ lastExecuted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L30)

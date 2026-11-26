@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI cinematics state, including `data`, `demoVersion`, `names`, `labels`, `enabled`, `cursor` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-cached-cached-src-mq3-client-ui-cinematics-ml-1651072236"></a>
 ### cached
@@ -32,7 +34,7 @@ cached
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-cursor-cursor-src-mq3-client-ui-cinematics-ml-383264088"></a>
 ### cursor
@@ -42,7 +44,7 @@ cursor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-data-data-src-mq3-client-ui-cinematics-ml-1003540184"></a>
 ### data
@@ -52,7 +54,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-demoversion-demoversion-src-mq3-client-ui-cinematics-ml-820964500"></a>
 ### demoVersion
@@ -62,7 +64,7 @@ demoVersion
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-enabled-enabled-src-mq3-client-ui-cinematics-ml-1916747920"></a>
 ### enabled
@@ -72,7 +74,7 @@ enabled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-labels-labels-src-mq3-client-ui-cinematics-ml-1346964090"></a>
 ### labels
@@ -82,7 +84,7 @@ labels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-menuevents-menuevents-src-mq3-client-ui-cinematics-ml-748978756"></a>
 ### menuEvents
@@ -92,7 +94,7 @@ menuEvents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-names-names-src-mq3-client-ui-cinematics-ml-336780536"></a>
 ### names
@@ -102,7 +104,7 @@ names
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-pushed-pushed-src-mq3-client-ui-cinematics-ml-263190918"></a>
 ### pushed
@@ -112,7 +114,7 @@ pushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)
 
 <a id="field-field-mq3-client-ui-cinematics-state-retailactive-retailactive-src-mq3-client-ui-cinematics-ml-211790778"></a>
 ### retailActive
@@ -122,4 +124,4 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L20)

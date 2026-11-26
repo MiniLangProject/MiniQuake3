@@ -9,8 +9,10 @@
 struct Md4Header
 ```
 
+Md4Header record for format.qfiles, containing `ident`, `version`, `name`, `numFrames`, `numBones`, `ofsBoneNames`, and 4 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 ## Members
 
@@ -22,7 +24,7 @@ ident
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-name-name-src-mq3-format-qfiles-ml-1107930381"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-numbones-numbones-src-mq3-format-qfiles-ml-1568061793"></a>
 ### numBones
@@ -42,7 +44,7 @@ numBones
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-numframes-numframes-src-mq3-format-qfiles-ml-16544431"></a>
 ### numFrames
@@ -52,7 +54,7 @@ numFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-numlods-numlods-src-mq3-format-qfiles-ml-116436827"></a>
 ### numLods
@@ -62,7 +64,7 @@ numLods
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-ofsbonenames-ofsbonenames-src-mq3-format-qfiles-ml-1219089591"></a>
 ### ofsBoneNames
@@ -72,7 +74,7 @@ ofsBoneNames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-ofsend-ofsend-src-mq3-format-qfiles-ml-2120806333"></a>
 ### ofsEnd
@@ -82,7 +84,7 @@ ofsEnd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-ofsframes-ofsframes-src-mq3-format-qfiles-ml-452986791"></a>
 ### ofsFrames
@@ -92,7 +94,7 @@ ofsFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-ofslods-ofslods-src-mq3-format-qfiles-ml-242551911"></a>
 ### ofsLods
@@ -102,7 +104,7 @@ ofsLods
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
 
 <a id="field-field-mq3-format-qfiles-md4header-version-version-src-mq3-format-qfiles-ml-657855675"></a>
 ### version
@@ -112,4 +114,4 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)

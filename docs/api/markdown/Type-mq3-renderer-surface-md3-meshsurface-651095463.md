@@ -9,8 +9,10 @@
 struct MeshSurface
 ```
 
+Data record for `mq3.renderer.surface_md3.MeshSurface`; groups `numFrames`, `numVerts`, `numTriangles`, `triangles`, `texCoords`, `frames`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)
 
 <a id="field-field-mq3-renderer-surface-md3-meshsurface-numframes-numframes-src-mq3-renderer-surface-md3-ml-935894539"></a>
 ### numFrames
@@ -32,7 +34,7 @@ numFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)
 
 <a id="field-field-mq3-renderer-surface-md3-meshsurface-numtriangles-numtriangles-src-mq3-renderer-surface-md3-ml-34556133"></a>
 ### numTriangles
@@ -42,7 +44,7 @@ numTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)
 
 <a id="field-field-mq3-renderer-surface-md3-meshsurface-numverts-numverts-src-mq3-renderer-surface-md3-ml-127724387"></a>
 ### numVerts
@@ -52,7 +54,7 @@ numVerts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)
 
 <a id="field-field-mq3-renderer-surface-md3-meshsurface-packedframes-packedframes-src-mq3-renderer-surface-md3-ml-1278402883"></a>
 ### packedFrames
@@ -62,7 +64,7 @@ packedFrames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)
 
 <a id="field-field-mq3-renderer-surface-md3-meshsurface-texcoords-texcoords-src-mq3-renderer-surface-md3-ml-1108532671"></a>
 ### texCoords
@@ -72,7 +74,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)
 
 <a id="field-field-mq3-renderer-surface-md3-meshsurface-triangles-triangles-src-mq3-renderer-surface-md3-ml-167897347"></a>
 ### triangles
@@ -82,4 +84,4 @@ triangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L18)

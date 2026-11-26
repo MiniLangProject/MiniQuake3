@@ -9,8 +9,10 @@
 struct Skin
 ```
 
+Data record for `mq3.renderer.player_skins.Skin`; groups `path`, `mappings`, `tags`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ mappings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)
 
 <a id="field-field-mq3-renderer-player-skins-skin-path-path-src-mq3-renderer-player-skins-ml-1070052574"></a>
 ### path
@@ -32,7 +34,7 @@ path
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)
 
 <a id="field-field-mq3-renderer-player-skins-skin-tags-tags-src-mq3-renderer-player-skins-ml-1332198330"></a>
 ### tags
@@ -42,4 +44,4 @@ tags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)

@@ -20,11 +20,13 @@ Reachable from entry: **yes**
 function inPVS(world, firstPoint, secondPoint)
 ```
 
+Computes `inPVS` from `(mask[secondCluster>>3]&(1<<(secondCluster&7)))!=0` using `mq3.collision.world.pointLeafnum`, `mq3.collision.visibility.leafCluster`, `mq3.collision.visibility.clusterPVS`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `world` | `dynamic` | — |  |
-| `firstPoint` | `dynamic` | — |  |
-| `secondPoint` | `dynamic` | — |  |
+| `world` | `dynamic` | — | Record providing `world.visibility`. |
+| `firstPoint` | `dynamic` | — | Argument 2 supplied to `mq3.collision.world.pointLeafnum`. |
+| `secondPoint` | `dynamic` | — | Argument 2 supplied to `mq3.collision.world.pointLeafnum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/pvs_query.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/pvs_query.ml#L14)

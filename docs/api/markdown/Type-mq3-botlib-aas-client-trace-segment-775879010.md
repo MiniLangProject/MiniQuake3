@@ -9,8 +9,10 @@
 struct Segment
 ```
 
+`Segment` record for aas client trace, containing `start`, `finish`, `nodeNum` and `planeNum`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ finish
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-client-trace-segment-nodenum-nodenum-src-mq3-botlib-aas-client-trace-ml-1100800430"></a>
 ### nodeNum
@@ -32,7 +34,7 @@ nodeNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-client-trace-segment-planenum-planenum-src-mq3-botlib-aas-client-trace-ml-1818324290"></a>
 ### planeNum
@@ -42,7 +44,7 @@ planeNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-client-trace-segment-start-start-src-mq3-botlib-aas-client-trace-ml-333870818"></a>
 ### start
@@ -52,4 +54,4 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L14)

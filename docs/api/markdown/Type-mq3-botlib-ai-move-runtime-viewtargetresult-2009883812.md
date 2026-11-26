@@ -9,8 +9,10 @@
 struct ViewTargetResult
 ```
 
+`ViewTargetResult` record for ai move runtime, containing `found` and `target`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L77)
 
 ## Members
 
@@ -22,7 +24,7 @@ found
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L77)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-viewtargetresult-target-target-src-mq3-botlib-ai-move-runtime-ml-1579258558"></a>
 ### target
@@ -32,4 +34,4 @@ target
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L77)

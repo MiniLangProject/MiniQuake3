@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores system info state, including `serverId`, `demoPlaying`, `connectedPure`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ connectedPure
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 <a id="field-field-mq3-client-system-info-state-demoplaying-demoplaying-src-mq3-client-system-info-ml-1159913102"></a>
 ### demoPlaying
@@ -32,7 +34,7 @@ demoPlaying
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 <a id="field-field-mq3-client-system-info-state-serverid-serverid-src-mq3-client-system-info-ml-1500286498"></a>
 ### serverId
@@ -42,4 +44,4 @@ serverId
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)

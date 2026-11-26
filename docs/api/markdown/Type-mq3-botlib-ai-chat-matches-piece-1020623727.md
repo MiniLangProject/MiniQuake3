@@ -9,8 +9,10 @@
 struct Piece
 ```
 
+`Piece` record for ai chat matches, containing `variable` and `alternatives`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ alternatives
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-piece-variable-variable-src-mq3-botlib-ai-chat-matches-ml-1034197093"></a>
 ### variable
@@ -32,4 +34,4 @@ variable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L18)

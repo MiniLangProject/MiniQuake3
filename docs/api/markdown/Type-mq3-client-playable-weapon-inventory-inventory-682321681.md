@@ -9,8 +9,10 @@
 struct Inventory
 ```
 
+Stores playable weapon inventory inventory record, including `ownedBits`, `ammo`, `selectedWeapon`, `spawnCount`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L28)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ ammo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L32)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-inventory-ownedbits-ownedbits-src-mq3-client-playable-weapon-inventory-ml-2006079271"></a>
 ### ownedBits
@@ -32,7 +34,7 @@ ownedBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L31)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-inventory-selectedweapon-selectedweapon-src-mq3-client-playable-weapon-inventory-ml-1010838485"></a>
 ### selectedWeapon
@@ -42,7 +44,7 @@ selectedWeapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L33)
 
 <a id="field-field-mq3-client-playable-weapon-inventory-inventory-spawncount-spawncount-src-mq3-client-playable-weapon-inventory-ml-2052235703"></a>
 ### spawnCount
@@ -52,4 +54,4 @@ spawnCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L34)

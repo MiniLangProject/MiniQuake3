@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI rankstatus state, including `menu`, `frame`, `message`, `ok`, `status`, `messageText` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-forcedoff-forcedoff-src-mq3-client-ui-rankstatus-ml-267017028"></a>
 ### forcedOff
@@ -32,7 +34,7 @@ forcedOff
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-frame-frame-src-mq3-client-ui-rankstatus-ml-299350448"></a>
 ### frame
@@ -42,7 +44,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-menu-menu-src-mq3-client-ui-rankstatus-ml-80883130"></a>
 ### menu
@@ -52,7 +54,7 @@ menu
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-message-message-src-mq3-client-ui-rankstatus-ml-1022884512"></a>
 ### message
@@ -62,7 +64,7 @@ message
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-messagetext-messagetext-src-mq3-client-ui-rankstatus-ml-1191452712"></a>
 ### messageText
@@ -72,7 +74,7 @@ messageText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-ok-ok-src-mq3-client-ui-rankstatus-ml-1145981104"></a>
 ### ok
@@ -82,7 +84,7 @@ ok
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-popped-popped-src-mq3-client-ui-rankstatus-ml-1795393836"></a>
 ### popped
@@ -92,7 +94,7 @@ popped
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-pushed-pushed-src-mq3-client-ui-rankstatus-ml-1800178470"></a>
 ### pushed
@@ -102,7 +104,7 @@ pushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-retailactive-retailactive-src-mq3-client-ui-rankstatus-ml-541964810"></a>
 ### retailActive
@@ -112,7 +114,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="field-field-mq3-client-ui-rankstatus-state-status-status-src-mq3-client-ui-rankstatus-ml-2103220616"></a>
 ### status
@@ -122,4 +124,4 @@ status
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)

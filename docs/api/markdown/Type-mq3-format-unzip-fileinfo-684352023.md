@@ -9,8 +9,10 @@
 struct FileInfo
 ```
 
+FileInfo record for format.unzip, containing `version`, `versionNeeded`, `flag`, `compressionMethod`, `dosDate`, `crc`, and 12 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ comment
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-compressedsize-compressedsize-src-mq3-format-unzip-ml-1076542175"></a>
 ### compressedSize
@@ -32,7 +34,7 @@ compressedSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-compressionmethod-compressionmethod-src-mq3-format-unzip-ml-1071392627"></a>
 ### compressionMethod
@@ -42,7 +44,7 @@ compressionMethod
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-crc-crc-src-mq3-format-unzip-ml-1328623207"></a>
 ### crc
@@ -52,7 +54,7 @@ crc
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-disknumstart-disknumstart-src-mq3-format-unzip-ml-1955906069"></a>
 ### diskNumStart
@@ -62,7 +64,7 @@ diskNumStart
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-dosdate-dosdate-src-mq3-format-unzip-ml-900552015"></a>
 ### dosDate
@@ -72,7 +74,7 @@ dosDate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-externalfa-externalfa-src-mq3-format-unzip-ml-724659607"></a>
 ### externalFa
@@ -82,7 +84,7 @@ externalFa
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-extra-extra-src-mq3-format-unzip-ml-742078695"></a>
 ### extra
@@ -92,7 +94,7 @@ extra
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-flag-flag-src-mq3-format-unzip-ml-619247443"></a>
 ### flag
@@ -102,7 +104,7 @@ flag
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-internalfa-internalfa-src-mq3-format-unzip-ml-182693615"></a>
 ### internalFa
@@ -112,7 +114,7 @@ internalFa
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-name-name-src-mq3-format-unzip-ml-848442169"></a>
 ### name
@@ -122,7 +124,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-sizefilecomment-sizefilecomment-src-mq3-format-unzip-ml-663917279"></a>
 ### sizeFileComment
@@ -132,7 +134,7 @@ sizeFileComment
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-sizefileextra-sizefileextra-src-mq3-format-unzip-ml-1477554215"></a>
 ### sizeFileExtra
@@ -142,7 +144,7 @@ sizeFileExtra
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-sizefilename-sizefilename-src-mq3-format-unzip-ml-564316039"></a>
 ### sizeFilename
@@ -152,7 +154,7 @@ sizeFilename
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-tmudate-tmudate-src-mq3-format-unzip-ml-1774964087"></a>
 ### tmuDate
@@ -162,7 +164,7 @@ tmuDate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-uncompressedsize-uncompressedsize-src-mq3-format-unzip-ml-1963922849"></a>
 ### uncompressedSize
@@ -172,7 +174,7 @@ uncompressedSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-version-version-src-mq3-format-unzip-ml-1597982019"></a>
 ### version
@@ -182,7 +184,7 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)
 
 <a id="field-field-mq3-format-unzip-fileinfo-versionneeded-versionneeded-src-mq3-format-unzip-ml-883742395"></a>
 ### versionNeeded
@@ -192,4 +194,4 @@ versionNeeded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L30)

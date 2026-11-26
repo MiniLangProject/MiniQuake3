@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for log, containing `variables`, `services`, `filename`, `handle` and `numwrites` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-content-content-src-mq3-botlib-log-ml-1763469484"></a>
 ### content
@@ -32,7 +34,7 @@ content
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-filename-filename-src-mq3-botlib-log-ml-2078902658"></a>
 ### filename
@@ -42,7 +44,7 @@ filename
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-flushes-flushes-src-mq3-botlib-log-ml-300369084"></a>
 ### flushes
@@ -52,7 +54,7 @@ flushes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-handle-handle-src-mq3-botlib-log-ml-768296052"></a>
 ### handle
@@ -62,7 +64,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-numwrites-numwrites-src-mq3-botlib-log-ml-1866396796"></a>
 ### numwrites
@@ -72,7 +74,7 @@ numwrites
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-retailactive-retailactive-src-mq3-botlib-log-ml-1975577270"></a>
 ### retailActive
@@ -82,7 +84,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-services-services-src-mq3-botlib-log-ml-1472319148"></a>
 ### services
@@ -92,7 +94,7 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-time-time-src-mq3-botlib-log-ml-1191225002"></a>
 ### time
@@ -102,7 +104,7 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="field-field-mq3-botlib-log-state-variables-variables-src-mq3-botlib-log-ml-452468056"></a>
 ### variables
@@ -112,4 +114,4 @@ variables
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)

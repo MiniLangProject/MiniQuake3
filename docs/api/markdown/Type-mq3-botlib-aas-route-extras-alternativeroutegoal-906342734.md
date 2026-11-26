@@ -9,8 +9,10 @@
 struct AlternativeRouteGoal
 ```
 
+`AlternativeRouteGoal` record for aas route extras, containing `origin`, `areaNum`, `startTravelTime`, `goalTravelTime` and `extraTravelTime`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-extratraveltime-extratraveltime-src-mq3-botlib-aas-route-extras-ml-1809885614"></a>
 ### extraTravelTime
@@ -32,7 +34,7 @@ extraTravelTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-goaltraveltime-goaltraveltime-src-mq3-botlib-aas-route-extras-ml-1995148726"></a>
 ### goalTravelTime
@@ -42,7 +44,7 @@ goalTravelTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-origin-origin-src-mq3-botlib-aas-route-extras-ml-1986267366"></a>
 ### origin
@@ -52,7 +54,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutegoal-starttraveltime-starttraveltime-src-mq3-botlib-aas-route-extras-ml-449785946"></a>
 ### startTravelTime
@@ -62,4 +64,4 @@ startTravelTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L31)

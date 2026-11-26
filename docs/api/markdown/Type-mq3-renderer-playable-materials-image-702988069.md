@@ -9,8 +9,10 @@
 struct Image
 ```
 
+Data record for `mq3.renderer.playable_materials.Image`; groups `width`, `height`, `pixels`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
 
 <a id="field-field-mq3-renderer-playable-materials-image-pixels-pixels-src-mq3-renderer-playable-materials-ml-37201180"></a>
 ### pixels
@@ -32,7 +34,7 @@ pixels
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)
 
 <a id="field-field-mq3-renderer-playable-materials-image-width-width-src-mq3-renderer-playable-materials-ml-1458953798"></a>
 ### width
@@ -42,4 +44,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L39)

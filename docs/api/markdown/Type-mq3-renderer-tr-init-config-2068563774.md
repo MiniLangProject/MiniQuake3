@@ -9,8 +9,10 @@
 struct Config
 ```
 
+Data record for `mq3.renderer.tr_init.Config`; groups `vendor`, `renderer`, `version`, `extensions`, `maxTextureSize`, `maxActiveTextures`, and 12 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ colorBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-depthbits-depthbits-src-mq3-renderer-tr-init-ml-489818343"></a>
 ### depthBits
@@ -32,7 +34,7 @@ depthBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-displayfrequency-displayfrequency-src-mq3-renderer-tr-init-ml-476580227"></a>
 ### displayFrequency
@@ -42,7 +44,7 @@ displayFrequency
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-extensions-extensions-src-mq3-renderer-tr-init-ml-156657107"></a>
 ### extensions
@@ -52,7 +54,7 @@ extensions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-fullscreen-fullscreen-src-mq3-renderer-tr-init-ml-4237573"></a>
 ### fullscreen
@@ -62,7 +64,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-gamma-gamma-src-mq3-renderer-tr-init-ml-1246743055"></a>
 ### gamma
@@ -72,7 +74,7 @@ gamma
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-hardwaretype-hardwaretype-src-mq3-renderer-tr-init-ml-1812132371"></a>
 ### hardwareType
@@ -82,7 +84,7 @@ hardwareType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-maxactivetextures-maxactivetextures-src-mq3-renderer-tr-init-ml-156826755"></a>
 ### maxActiveTextures
@@ -92,7 +94,7 @@ maxActiveTextures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-maxtexturesize-maxtexturesize-src-mq3-renderer-tr-init-ml-1313863843"></a>
 ### maxTextureSize
@@ -102,7 +104,7 @@ maxTextureSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-renderer-renderer-src-mq3-renderer-tr-init-ml-2143359865"></a>
 ### renderer
@@ -112,7 +114,7 @@ renderer
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-smpactive-smpactive-src-mq3-renderer-tr-init-ml-1088490715"></a>
 ### smpActive
@@ -122,7 +124,7 @@ smpActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-stencilbits-stencilbits-src-mq3-renderer-tr-init-ml-1378714543"></a>
 ### stencilBits
@@ -132,7 +134,7 @@ stencilBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-texturecompression-texturecompression-src-mq3-renderer-tr-init-ml-476419901"></a>
 ### textureCompression
@@ -142,7 +144,7 @@ textureCompression
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-textureenvaddavailable-textureenvaddavailable-src-mq3-renderer-tr-init-ml-1542492451"></a>
 ### textureEnvAddAvailable
@@ -152,7 +154,7 @@ textureEnvAddAvailable
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-vendor-vendor-src-mq3-renderer-tr-init-ml-1704649003"></a>
 ### vendor
@@ -162,7 +164,7 @@ vendor
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-version-version-src-mq3-renderer-tr-init-ml-1375886327"></a>
 ### version
@@ -172,7 +174,7 @@ version
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-vidheight-vidheight-src-mq3-renderer-tr-init-ml-56144603"></a>
 ### vidHeight
@@ -182,7 +184,7 @@ vidHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-init-config-vidwidth-vidwidth-src-mq3-renderer-tr-init-ml-1960245301"></a>
 ### vidWidth
@@ -192,4 +194,4 @@ vidWidth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)

@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Data record for `mq3.renderer.playable_materials.Catalog`; groups `materials`, `scripts`, `attempted`, `loaded`, `textureCount`, `animatedStageCount`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)
 
 ## Members
 
@@ -22,7 +24,7 @@ animatedStageCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)
 
 <a id="field-field-mq3-renderer-playable-materials-catalog-attempted-attempted-src-mq3-renderer-playable-materials-ml-1369203220"></a>
 ### attempted
@@ -32,7 +34,7 @@ attempted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)
 
 <a id="field-field-mq3-renderer-playable-materials-catalog-effectstagecount-effectstagecount-src-mq3-renderer-playable-materials-ml-477881316"></a>
 ### effectStageCount
@@ -42,7 +44,7 @@ effectStageCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)
 
 <a id="field-field-mq3-renderer-playable-materials-catalog-loaded-loaded-src-mq3-renderer-playable-materials-ml-706180254"></a>
 ### loaded
@@ -52,7 +54,7 @@ loaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)
 
 <a id="field-field-mq3-renderer-playable-materials-catalog-materials-materials-src-mq3-renderer-playable-materials-ml-1889441100"></a>
 ### materials
@@ -62,7 +64,7 @@ materials
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)
 
 <a id="field-field-mq3-renderer-playable-materials-catalog-scripts-scripts-src-mq3-renderer-playable-materials-ml-2066701308"></a>
 ### scripts
@@ -72,7 +74,7 @@ scripts
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)
 
 <a id="field-field-mq3-renderer-playable-materials-catalog-texturecount-texturecount-src-mq3-renderer-playable-materials-ml-130803480"></a>
 ### textureCount
@@ -82,4 +84,4 @@ textureCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L47)

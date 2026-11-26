@@ -30,17 +30,21 @@ const ASCII_ENCODING = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST
 function beginUser(state, index, kind, username, password, email)
 ```
 
+Begin user in server.rankings; updates `state.requests`.
+
+Direct state writes: `state.requests`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `username` | `dynamic` | — |  |
-| `password` | `dynamic` | — |  |
-| `email` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `players`, `active`, `gameId`, `requests`, `backendFn`. Updated in place: `requests`. |
+| `index` | `dynamic` | — | Initial `index` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
+| `kind` | `dynamic` | — | Initial `kind` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
+| `username` | `dynamic` | — | Initial `username` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
+| `password` | `dynamic` | — | Initial `password` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
+| `email` | `dynamic` | — | Initial `email` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L136)
 
 <a id="function-function-mq3-server-rankings-context-function-context-state-src-mq3-server-rankings-ml-2025082659"></a>
 ### context
@@ -49,12 +53,16 @@ function beginUser(state, index, kind, username, password, email)
 function context(state)
 ```
 
+Update `state.nextContext`, `state.contexts` in server.rankings; the normal completion returns `value`.
+
+Direct state writes: `state.nextContext`, `state.contexts`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `nextContext`, `contexts`. Updated in place: `nextContext`, `contexts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L85)
 
 <a id="function-function-mq3-server-rankings-create-function-create-maxclients-src-mq3-server-rankings-ml-445925134"></a>
 ### create
@@ -63,12 +71,14 @@ function context(state)
 function create(maxclients)
 ```
 
+Create rankings in server.rankings.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxclients` | `dynamic` | — |  |
+| `maxclients` | `dynamic` | — | Initial `maxclients` field stored in the returned or constructed `mq3.server.rankings.State` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L55)
 
 <a id="function-function-mq3-server-rankings-emit-function-emit-state-kind-context-index-payload-src-mq3-server-rankings-ml-161769104"></a>
 ### emit
@@ -77,16 +87,20 @@ function create(maxclients)
 function emit(state, kind, context, index, payload)
 ```
 
+Emit rankings in server.rankings; the normal completion returns `request`.
+
+Direct state writes: `state.requests`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `payload` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `gameId`, `requests`, `backendFn`. Updated in place: `requests`. |
+| `kind` | `dynamic` | — | Initial `kind` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
+| `context` | `dynamic` | — | Initial `context` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
+| `index` | `dynamic` | — | Initial `index` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
+| `payload` | `dynamic` | — | Initial `payload` field stored in the returned or constructed `mq3.server.rankings.Request` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L71)
 
 <a id="function-function-mq3-server-rankings-gamekeyfor-function-gamekeyfor-state-key-src-mq3-server-rankings-ml-570815768"></a>
 ### gameKeyFor
@@ -95,13 +109,15 @@ function emit(state, kind, context, index, payload)
 function gameKeyFor(state, key)
 ```
 
+Compute game key for in server.rankings; the normal completion returns `key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `officialGameKey`, `gametype`. |
+| `key` | `dynamic` | — | Key used in `(key != state.officialGameKey)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L77)
 
 <a id="constant-constant-mq3-server-rankings-gr-gamekey-const-gr-gamekey-quake-iii-arena-src-mq3-server-rankings-ml-1516826158"></a>
 ### GR_GAMEKEY
@@ -260,13 +276,15 @@ const GR_STATUS_TIMEOUT = 10
 function least(value, maximum)
 ```
 
+Compute least in server.rankings; the normal completion returns `maximum`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `maximum` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `(value < maximum)`. |
+| `maximum` | `dynamic` | — | Maximum used in `(value < maximum)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L62)
 
 <a id="function-function-mq3-server-rankings-player-function-player-src-mq3-server-rankings-ml-732652160"></a>
 ### player
@@ -275,8 +293,10 @@ function least(value, maximum)
 function player()
 ```
 
+Create `mq3.server.rankings.RankedPlayer` with context=0; gameId=0; match=0; playerId=0; token=[]; status=QGR_STATUS_NEW; finalStatus=QGR_STATUS_NEW; rank=0; name="".
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L47)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L52)
 
 <a id="constant-constant-mq3-server-rankings-qgr-status-active-const-qgr-status-active-2-src-mq3-server-rankings-ml-581982259"></a>
 ### QGR_STATUS_ACTIVE
@@ -417,13 +437,15 @@ const QGR_STATUS_VALIDATING = 3
 function reportTarget(state, index)
 ```
 
+Compute report target in server.rankings; the normal completion returns `[p.context, p.match, p.playerId]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `serverContext`, `serverMatch`, `players`. |
+| `index` | `dynamic` | — | Zero-based index into `state.players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L201)
 
 - [mq3.server.rankings.Request](Type-mq3-server-rankings-request-1631012149.md) — struct
 - [mq3.server.rankings.State](Type-mq3-server-rankings-state-1098966033.md) — struct
@@ -438,10 +460,10 @@ SV_RankActive
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L108)
 
 <a id="function-function-mq3-server-rankings-sv-rankasciidecode-function-sv-rankasciidecode-source-src-mq3-server-rankings-ml-297970989"></a>
 ### SV_RankAsciiDecode
@@ -454,10 +476,10 @@ SV_RankAsciiDecode
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Source used in `bytes(source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L160)
 
 <a id="function-function-mq3-server-rankings-sv-rankasciiencode-function-sv-rankasciiencode-source-src-mq3-server-rankings-ml-612100185"></a>
 ### SV_RankAsciiEncode
@@ -470,10 +492,10 @@ SV_RankAsciiEncode
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Source used in `source[i]` and `len(source)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L155)
 
 <a id="function-function-mq3-server-rankings-sv-rankbegin-function-sv-rankbegin-state-gamekey-src-mq3-server-rankings-ml-959708502"></a>
 ### SV_RankBegin
@@ -486,11 +508,11 @@ SV_RankBegin
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `gamekey` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `enabled`, `singlePlayer`, `cvars`, `serverContext`, `leagueName`. Updated in place: `active`, `cvars`, `gameKey`, `serverContext`. |
+| `gamekey` | `dynamic` | — | Key passed as `key` to `mq3.server.rankings.gameKeyFor`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L90)
 
 <a id="function-function-mq3-server-rankings-sv-rankcheckinit-function-sv-rankcheckinit-state-src-mq3-server-rankings-ml-484200101"></a>
 ### SV_RankCheckInit
@@ -503,10 +525,10 @@ SV_RankCheckInit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `contexts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L105)
 
 <a id="function-function-mq3-server-rankings-sv-rankcleanupcbf-function-sv-rankcleanupcbf-state-index-status-src-mq3-server-rankings-ml-1112621399"></a>
 ### SV_RankCleanupCBF
@@ -519,12 +541,12 @@ SV_RankCleanupCBF
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `status` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.server.rankings.SV_RankError`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.SV_RankCloseContext`. |
+| `status` | `dynamic` | — | Status passed as `status` to `mq3.server.rankings.SV_RankStatusString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L264)
 
 <a id="function-function-mq3-server-rankings-sv-rankclosecontext-function-sv-rankclosecontext-state-index-src-mq3-server-rankings-ml-625362313"></a>
 ### SV_RankCloseContext
@@ -537,11 +559,11 @@ SV_RankCloseContext
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `serverContext`, `players`, `contexts`, `cvars`. Updated in place: `serverContext`, `serverMatch`, `contexts`, `active`, `cvars`. |
+| `index` | `dynamic` | — | Zero-based index into `state.players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L268)
 
 <a id="function-function-mq3-server-rankings-sv-rankdecodeplayerid-function-sv-rankdecodeplayerid-value-src-mq3-server-rankings-ml-945625201"></a>
 ### SV_RankDecodePlayerID
@@ -554,10 +576,10 @@ SV_RankDecodePlayerID
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Source passed as `source` to `mq3.server.rankings.SV_RankAsciiDecode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L173)
 
 <a id="function-function-mq3-server-rankings-sv-rankdecodeplayerkey-function-sv-rankdecodeplayerkey-value-src-mq3-server-rankings-ml-671932633"></a>
 ### SV_RankDecodePlayerKey
@@ -570,10 +592,10 @@ SV_RankDecodePlayerKey
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Source passed as `source` to `mq3.server.rankings.SV_RankAsciiDecode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L178)
 
 <a id="function-function-mq3-server-rankings-sv-rankencodegameid-function-sv-rankencodegameid-gameid-length-src-mq3-server-rankings-ml-1844855445"></a>
 ### SV_RankEncodeGameID
@@ -586,11 +608,11 @@ SV_RankEncodeGameID
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `gameId` | `dynamic` | — |  |
-| `length` | `dynamic` | — |  |
+| `gameId` | `dynamic` | — | Game id operand used by `SV_RankEncodeGameID`; its reads are shown in the implementation. |
+| `length` | `dynamic` | — | Length used in `(length < 12)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L168)
 
 <a id="function-function-mq3-server-rankings-sv-rankend-function-sv-rankend-state-src-mq3-server-rankings-ml-1310945917"></a>
 ### SV_RankEnd
@@ -603,10 +625,10 @@ SV_RankEnd
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `maxclients`, `players`, `serverContext`, `cvars`. Updated in place: `active`, `cvars`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L96)
 
 <a id="function-function-mq3-server-rankings-sv-rankerror-function-sv-rankerror-state-message-src-mq3-server-rankings-ml-1046483560"></a>
 ### SV_RankError
@@ -619,11 +641,11 @@ SV_RankError
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `errors`, `cvars`. Updated in place: `errors`, `active`, `cvars`. |
+| `message` | `dynamic` | — | Message used in `(state.errors + [message])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L281)
 
 <a id="function-function-mq3-server-rankings-sv-rankjoingamecbf-function-sv-rankjoingamecbf-state-index-status-playerid-token-rank-src-mq3-server-rankings-ml-2002766572"></a>
 ### SV_RankJoinGameCBF
@@ -636,15 +658,15 @@ SV_RankJoinGameCBF
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `status` | `dynamic` | — |  |
-| `playerId` | `dynamic` | — |  |
-| `token` | `dynamic` | — |  |
-| `rank` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `players`, `nextMatch`. Updated in place: `nextMatch`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.emit`. |
+| `status` | `dynamic` | — | Status passed as `status` to `mq3.server.rankings.SV_RankStatusString`. |
+| `playerId` | `dynamic` | — | Player id operand used by `SV_RankJoinGameCBF`; its reads are shown in the implementation. |
+| `token` | `dynamic` | — | Token operand used by `SV_RankJoinGameCBF`; its reads are shown in the implementation. |
+| `rank` | `dynamic` | — | Rank passed as `rank` to `mq3.server.rankings.SV_RankUserValidate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L250)
 
 <a id="function-function-mq3-server-rankings-sv-ranknewgamecbf-function-sv-ranknewgamecbf-state-status-gameid-src-mq3-server-rankings-ml-1457645914"></a>
 ### SV_RankNewGameCBF
@@ -657,12 +679,12 @@ SV_RankNewGameCBF
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `status` | `dynamic` | — |  |
-| `gameId` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `gameKey`, `maxclients`, `players`, `nextMatch`, `cvars`. Updated in place: `gameId`, `configstring`, `serverMatch`, `nextMatch`, `active`, `cvars`. |
+| `status` | `dynamic` | — | Status passed as `status` to `mq3.server.rankings.SV_RankStatusString`. |
+| `gameId` | `dynamic` | — | Game id passed as `gameId` to `mq3.server.rankings.SV_RankEncodeGameID`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L233)
 
 <a id="function-function-mq3-server-rankings-sv-rankpoll-function-sv-rankpoll-state-src-mq3-server-rankings-ml-100378379"></a>
 ### SV_RankPoll
@@ -675,10 +697,10 @@ SV_RankPoll
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.server.rankings.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L102)
 
 <a id="function-function-mq3-server-rankings-sv-rankquit-function-sv-rankquit-state-src-mq3-server-rankings-ml-1189350079"></a>
 ### SV_RankQuit
@@ -691,10 +713,10 @@ SV_RankQuit
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `contexts`, `maxclients`, `players`. Updated in place: `quitting`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L225)
 
 <a id="function-function-mq3-server-rankings-sv-rankreportint-function-sv-rankreportint-state-index1-index2-key-value-accum-src-mq3-server-rankings-ml-659865799"></a>
 ### SV_RankReportInt
@@ -707,15 +729,15 @@ SV_RankReportInt
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index1` | `dynamic` | — |  |
-| `index2` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `accum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `reports`, `gameId`, `requests`, `backendFn`. Updated in place: `reports`, `requests`. |
+| `index1` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.reportTarget`. |
+| `index2` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.reportTarget`. |
+| `key` | `dynamic` | — | Initial `key` field stored in the returned or constructed `mq3.server.rankings.Report` record. |
+| `value` | `dynamic` | — | Initial `intValue` field stored in the returned or constructed `mq3.server.rankings.Report` record. |
+| `accum` | `dynamic` | — | Initial `accum` field stored in the returned or constructed `mq3.server.rankings.Report` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L211)
 
 <a id="function-function-mq3-server-rankings-sv-rankreportstr-function-sv-rankreportstr-state-index1-index2-key-value-src-mq3-server-rankings-ml-762288968"></a>
 ### SV_RankReportStr
@@ -728,14 +750,14 @@ SV_RankReportStr
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index1` | `dynamic` | — |  |
-| `index2` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `reports`, `gameId`, `requests`, `backendFn`. Updated in place: `reports`, `requests`. |
+| `index1` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.reportTarget`. |
+| `index2` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.reportTarget`. |
+| `key` | `dynamic` | — | Initial `key` field stored in the returned or constructed `mq3.server.rankings.Report` record. |
+| `value` | `dynamic` | — | Initial `strValue` field stored in the returned or constructed `mq3.server.rankings.Report` record. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L220)
 
 <a id="function-function-mq3-server-rankings-sv-ranksendreportscbf-function-sv-ranksendreportscbf-state-index-status-src-mq3-server-rankings-ml-1259214333"></a>
 ### SV_RankSendReportsCBF
@@ -748,12 +770,12 @@ SV_RankSendReportsCBF
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `status` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `serverContext`, `players`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.emit`. |
+| `status` | `dynamic` | — | Status passed as `status` to `mq3.server.rankings.SV_RankStatusString`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L257)
 
 <a id="function-function-mq3-server-rankings-sv-rankstatusstring-function-sv-rankstatusstring-status-src-mq3-server-rankings-ml-338910472"></a>
 ### SV_RankStatusString
@@ -766,10 +788,10 @@ SV_RankStatusString
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `status` | `dynamic` | — |  |
+| `status` | `dynamic` | — | Zero-based index into `names`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L275)
 
 <a id="function-function-mq3-server-rankings-sv-rankusercbf-function-sv-rankusercbf-state-index-status-src-mq3-server-rankings-ml-1027192669"></a>
 ### SV_RankUserCBF
@@ -782,12 +804,12 @@ SV_RankUserCBF
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `status` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `players`, `gameId`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.emit`. |
+| `status` | `dynamic` | — | Status used in `(status == GR_STATUS_OK)` and `(status == GR_STATUS_NOUSER)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L240)
 
 <a id="function-function-mq3-server-rankings-sv-rankusercreate-function-sv-rankusercreate-state-index-username-password-email-src-mq3-server-rankings-ml-845679440"></a>
 ### SV_RankUserCreate
@@ -800,14 +822,14 @@ SV_RankUserCreate
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `username` | `dynamic` | — |  |
-| `password` | `dynamic` | — |  |
-| `email` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.server.rankings.beginUser`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.beginUser`. |
+| `username` | `dynamic` | — | Username passed as `username` to `mq3.server.rankings.beginUser`. |
+| `password` | `dynamic` | — | Password passed as `password` to `mq3.server.rankings.beginUser`. |
+| `email` | `dynamic` | — | Email passed as `email` to `mq3.server.rankings.beginUser`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L145)
 
 <a id="function-function-mq3-server-rankings-sv-rankusergrank-function-sv-rankusergrank-state-index-src-mq3-server-rankings-ml-1382778347"></a>
 ### SV_RankUserGrank
@@ -820,11 +842,11 @@ SV_RankUserGrank
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `players`. |
+| `index` | `dynamic` | — | Zero-based index into `state.players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L116)
 
 <a id="function-function-mq3-server-rankings-sv-rankuserlogin-function-sv-rankuserlogin-state-index-username-password-src-mq3-server-rankings-ml-1386802450"></a>
 ### SV_RankUserLogin
@@ -837,13 +859,13 @@ SV_RankUserLogin
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `username` | `dynamic` | — |  |
-| `password` | `dynamic` | — |  |
+| `state` | `dynamic` | — | State passed as `state` to `mq3.server.rankings.beginUser`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.beginUser`. |
+| `username` | `dynamic` | — | Username passed as `username` to `mq3.server.rankings.beginUser`. |
+| `password` | `dynamic` | — | Password passed as `password` to `mq3.server.rankings.beginUser`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L151)
 
 <a id="function-function-mq3-server-rankings-sv-rankuserlogout-function-sv-rankuserlogout-state-index-src-mq3-server-rankings-ml-808296461"></a>
 ### SV_RankUserLogout
@@ -856,11 +878,11 @@ SV_RankUserLogout
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `players`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L196)
 
 <a id="function-function-mq3-server-rankings-sv-rankuserreset-function-sv-rankuserreset-state-index-src-mq3-server-rankings-ml-932877099"></a>
 ### SV_RankUserReset
@@ -873,11 +895,11 @@ SV_RankUserReset
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `players`. |
+| `index` | `dynamic` | — | Zero-based index into `state.players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L120)
 
 <a id="function-function-mq3-server-rankings-sv-rankuserspectate-function-sv-rankuserspectate-state-index-src-mq3-server-rankings-ml-782799379"></a>
 ### SV_RankUserSpectate
@@ -890,11 +912,11 @@ SV_RankUserSpectate
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `players`. |
+| `index` | `dynamic` | — | Zero-based index into `state.players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L126)
 
 <a id="function-function-mq3-server-rankings-sv-rankuserstatus-function-sv-rankuserstatus-state-index-src-mq3-server-rankings-ml-67417997"></a>
 ### SV_RankUserStatus
@@ -907,11 +929,11 @@ SV_RankUserStatus
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `active`, `players`. |
+| `index` | `dynamic` | — | Zero-based index into `state.players`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L112)
 
 <a id="function-function-mq3-server-rankings-sv-rankuservalidate-function-sv-rankuservalidate-state-index-playerid-key-tokenlength-rank-name-src-mq3-server-rankings-ml-1182609048"></a>
 ### SV_RankUserValidate
@@ -924,13 +946,13 @@ SV_RankUserValidate
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `playerId` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `tokenLength` | `dynamic` | — |  |
-| `rank` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record exposing `players`, `active`, `maxclients`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.server.rankings.emit`. |
+| `playerId` | `dynamic` | — | Value passed as `value` to `mq3.server.rankings.SV_RankDecodePlayerID`. |
+| `key` | `dynamic` | — | Value passed as `value` to `mq3.server.rankings.SV_RankDecodePlayerKey`. |
+| `tokenLength` | `dynamic` | — | Token length used in `emit(state, "validate", p.context, index, [tokenLength, p.playerId, p.token])`. |
+| `rank` | `dynamic` | — | Rank operand used by `SV_RankUserValidate`; its reads are shown in the implementation. |
+| `name` | `dynamic` | — | Name used in `(state.players[i].name == name)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/rankings.ml#L188)

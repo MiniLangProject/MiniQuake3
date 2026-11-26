@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores packet event host-service callbacks, including `connectionlessHost`, `processFn`, `parseFn`, `demoFn`, `context`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ connectionlessHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L27)
 
 <a id="field-field-mq3-client-packet-event-services-context-context-src-mq3-client-packet-event-ml-1742382185"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L27)
 
 <a id="field-field-mq3-client-packet-event-services-demofn-demofn-src-mq3-client-packet-event-ml-1766339851"></a>
 ### demoFn
@@ -42,7 +44,7 @@ demoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L27)
 
 <a id="field-field-mq3-client-packet-event-services-parsefn-parsefn-src-mq3-client-packet-event-ml-645803373"></a>
 ### parseFn
@@ -52,7 +54,7 @@ parseFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L27)
 
 <a id="field-field-mq3-client-packet-event-services-processfn-processfn-src-mq3-client-packet-event-ml-118580021"></a>
 ### processFn
@@ -62,4 +64,4 @@ processFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L27)

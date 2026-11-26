@@ -9,8 +9,10 @@
 struct Optimized
 ```
 
+`Optimized` record for aas optimizer, containing `vertexes`, `edges`, `edgeIndex`, `faces` and `faceIndex` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ areas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-edgeindex-edgeindex-src-mq3-botlib-aas-optimizer-ml-774872698"></a>
 ### edgeIndex
@@ -32,7 +34,7 @@ edgeIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-edgeoptimizeindex-edgeoptimizeindex-src-mq3-botlib-aas-optimizer-ml-566491650"></a>
 ### edgeOptimizeIndex
@@ -42,7 +44,7 @@ edgeOptimizeIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-edges-edges-src-mq3-botlib-aas-optimizer-ml-555679042"></a>
 ### edges
@@ -52,7 +54,7 @@ edges
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-faceindex-faceindex-src-mq3-botlib-aas-optimizer-ml-1040390314"></a>
 ### faceIndex
@@ -62,7 +64,7 @@ faceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-faceoptimizeindex-faceoptimizeindex-src-mq3-botlib-aas-optimizer-ml-1376417426"></a>
 ### faceOptimizeIndex
@@ -72,7 +74,7 @@ faceOptimizeIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-faces-faces-src-mq3-botlib-aas-optimizer-ml-499792586"></a>
 ### faces
@@ -82,7 +84,7 @@ faces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-vertexes-vertexes-src-mq3-botlib-aas-optimizer-ml-502579578"></a>
 ### vertexes
@@ -92,7 +94,7 @@ vertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-optimizer-optimized-vertexoptimizeindex-vertexoptimizeindex-src-mq3-botlib-aas-optimizer-ml-740622562"></a>
 ### vertexOptimizeIndex
@@ -102,4 +104,4 @@ vertexOptimizeIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L27)

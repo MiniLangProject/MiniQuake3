@@ -15,13 +15,15 @@ Reachable from entry: **no**
 function activate(registry, driver)
 ```
 
+Updates `registry.driver`, `registry.loaded` in `mq3.renderer.qgl.activate`; returns `registry.loaded`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `driver` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Mutable record or buffer; this call updates `registry.driver`, `registry.loaded`. |
+| `driver` | `dynamic` | — | Value assigned to `registry.driver`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L57)
 
 <a id="function-function-mq3-renderer-qgl-address-function-address-registry-name-src-mq3-renderer-qgl-ml-1465922362"></a>
 ### address
@@ -30,13 +32,15 @@ function activate(registry, driver)
 function address(registry, name)
 ```
 
+Returns `0` from `mq3.renderer.qgl.address`; earlier branches return `0`, `item.address`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Record providing `registry.bindings`. |
+| `name` | `dynamic` | — | Input used by `for each item in registry.bindings if item.name==name then return item.address`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L44)
 
 <a id="function-function-mq3-renderer-qgl-allentrypoints-function-allentrypoints-src-mq3-renderer-qgl-ml-1088780866"></a>
 ### allEntryPoints
@@ -45,8 +49,10 @@ function address(registry, name)
 function allEntryPoints()
 ```
 
+Calls `mq3.renderer.qgl.coreEntryPoints` with `()+wglEntryPoints()+platformEntryPoints()` and returns its result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L28)
 
 <a id="function-function-mq3-renderer-qgl-bind-function-bind-registry-name-address-extension-src-mq3-renderer-qgl-ml-397525989"></a>
 ### bind
@@ -55,15 +61,17 @@ function allEntryPoints()
 function bind(registry, name, address, extension)
 ```
 
+Updates `registry.bindings` in `mq3.renderer.qgl.bind`; returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `extension` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Mutable record or buffer; this call updates `registry.bindings`. |
+| `name` | `dynamic` | — | Value used for `mq3.renderer.qgl.Binding.name`. |
+| `address` | `dynamic` | — | Value assigned to `item.address`. |
+| `extension` | `dynamic` | — | Value assigned to `item.extension`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L36)
 
 - [mq3.renderer.qgl.Binding](Type-mq3-renderer-qgl-binding-1733404316.md) — struct
 <a id="function-function-mq3-renderer-qgl-coreentrypoints-function-coreentrypoints-src-mq3-renderer-qgl-ml-1531107578"></a>
@@ -73,8 +81,10 @@ function bind(registry, name, address, extension)
 function coreEntryPoints()
 ```
 
+Lists the 341 declared names for `mq3.renderer.qgl.coreEntryPoints`, including `qglAccum`, `qglActiveTextureARB`, `qglAlphaFunc`, `qglAreTexturesResident`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L20)
 
 <a id="function-function-mq3-renderer-qgl-createregistry-function-createregistry-src-mq3-renderer-qgl-ml-314655282"></a>
 ### createRegistry
@@ -83,8 +93,10 @@ function coreEntryPoints()
 function createRegistry()
 ```
 
+Constructs `mq3.renderer.qgl.Registry` with `bindings` = `[]`, `loaded` = `false`, `driver` = `""`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L30)
 
 <a id="constant-constant-mq3-renderer-qgl-gl-active-texture-arb-const-gl-active-texture-arb-34016-src-mq3-renderer-qgl-ml-687394577"></a>
 ### GL_ACTIVE_TEXTURE_ARB
@@ -183,13 +195,15 @@ const GL_TEXTURE3_ARB = 33987
 function has(registry, name)
 ```
 
+Computes `address(registry,name)!=0` for `mq3.renderer.qgl.has`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Value forwarded as `registry` to `mq3.renderer.qgl.address`. |
+| `name` | `dynamic` | — | Value forwarded as `name` to `mq3.renderer.qgl.address`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L48)
 
 <a id="function-function-mq3-renderer-qgl-missingrequired-function-missingrequired-registry-src-mq3-renderer-qgl-ml-1508667805"></a>
 ### missingRequired
@@ -198,12 +212,14 @@ function has(registry, name)
 function missingRequired(registry)
 ```
 
+Returns `missing` from `mq3.renderer.qgl.missingRequired`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Value forwarded as `registry` to `mq3.renderer.qgl.has`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L53)
 
 <a id="function-function-mq3-renderer-qgl-platformentrypoints-function-platformentrypoints-src-mq3-renderer-qgl-ml-1488356746"></a>
 ### platformEntryPoints
@@ -212,8 +228,10 @@ function missingRequired(registry)
 function platformEntryPoints()
 ```
 
+Lists the 12 declared names for `mq3.renderer.qgl.platformEntryPoints`, including `qfxMesaCreateBestContext`, `qfxMesaCreateContext`, `qfxMesaDestroyContext`, `qfxMesaGetCurrentContext`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L24)
 
 <a id="function-function-mq3-renderer-qgl-proceduretypes-function-proceduretypes-src-mq3-renderer-qgl-ml-1175900874"></a>
 ### procedureTypes
@@ -222,8 +240,10 @@ function platformEntryPoints()
 function procedureTypes()
 ```
 
+Lists the 34 declared names for `mq3.renderer.qgl.procedureTypes`, including `PFNGLACTIVETEXTUREARBPROC`, `PFNGLCLIENTACTIVETEXTUREARBPROC`, `PFNGLMULTITEXCOORD1DARBPROC`, `PFNGLMULTITEXCOORD1DVARBPROC`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L26)
 
 - [mq3.renderer.qgl.Registry](Type-mq3-renderer-qgl-registry-1489148500.md) — struct
 <a id="function-function-mq3-renderer-qgl-requiredentrypoints-function-requiredentrypoints-src-mq3-renderer-qgl-ml-482584458"></a>
@@ -233,8 +253,10 @@ function procedureTypes()
 function requiredEntryPoints()
 ```
 
+Lists the 26 declared names for `mq3.renderer.qgl.requiredEntryPoints`, including `qglBindTexture`, `qglBlendFunc`, `qglClear`, `qglClearColor`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L50)
 
 <a id="function-function-mq3-renderer-qgl-reset-function-reset-registry-src-mq3-renderer-qgl-ml-280883181"></a>
 ### reset
@@ -243,12 +265,14 @@ function requiredEntryPoints()
 function reset(registry)
 ```
 
+Updates `registry.bindings`, `registry.loaded`, `registry.driver` in `mq3.renderer.qgl.reset`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `registry` | `dynamic` | — |  |
+| `registry` | `dynamic` | — | Mutable record or buffer; this call updates `registry.bindings`, `registry.loaded`, `registry.driver`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L60)
 
 <a id="function-function-mq3-renderer-qgl-wglentrypoints-function-wglentrypoints-src-mq3-renderer-qgl-ml-1204612094"></a>
 ### wglEntryPoints
@@ -257,5 +281,7 @@ function reset(registry)
 function wglEntryPoints()
 ```
 
+Lists the 24 declared names for `mq3.renderer.qgl.wglEntryPoints`, including `qwglChoosePixelFormat`, `qwglCopyContext`, `qwglCreateContext`, `qwglCreateLayerContext`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L22)

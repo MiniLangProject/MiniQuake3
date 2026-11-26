@@ -25,13 +25,15 @@ Reachable from entry: **no**
 function killBox(level, ent)
 ```
 
+Use `level.damageFn` to perform `killBox`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `scene`, `entities` and `damageFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client` and `r`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L26)
 
 <a id="function-function-mq3-game-teleport-player-function-player-level-ent-origin-angles-src-mq3-game-teleport-ml-286361135"></a>
 ### player
@@ -40,15 +42,17 @@ function killBox(level, ent)
 function player(level, ent, origin, angles)
 ```
 
+Set `ent.r.currentOrigin` to `movement.copy(state.origin)` in `mq3.game.teleport.player`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `s` and `r`. May update `ent.r.currentOrigin` in place. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. Entries may be updated in place. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L44)
 
 <a id="function-function-mq3-game-teleport-setclientviewangle-function-setclientviewangle-ent-angles-src-mq3-game-teleport-ml-1408772677"></a>
 ### setClientViewAngle
@@ -57,10 +61,12 @@ function player(level, ent, origin, angles)
 function setClientViewAngle(ent, angles)
 ```
 
+Update `ent.client.ps.delta_angles[axis]`, `ent.s.angles` and `ent.client.ps.viewangles` during `setClientViewAngle`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ent` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `ent` | `dynamic` | — | Game entity; accesses `client` and `s`. May update `ent.client.ps.delta_angles[axis]`, `ent.s.angles` and `ent.client.ps.viewangles` in place. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L14)

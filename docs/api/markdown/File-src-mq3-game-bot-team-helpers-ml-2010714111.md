@@ -22,12 +22,14 @@ Reachable from entry: **yes**
 function cleanClientText(text)
 ```
 
+Remove Quake color codes and nonprintable bytes from a client name used in team commands.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L367)
 
 <a id="function-function-mq3-game-bot-team-helpers-clientfromname-function-clientfromname-state-name-src-mq3-game-bot-team-helpers-ml-319073762"></a>
 ### clientFromName
@@ -36,13 +38,15 @@ function cleanClientText(text)
 function clientFromName(state, name)
 ```
 
+Apply `mq3.shared.info.value` and `mq3.game.bot_team_helpers.cleanClientText` while evaluating `clientFromName`. Return paths include `-1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `maxclients` and `configs`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L380)
 
 <a id="function-function-mq3-game-bot-team-helpers-clientonsameteamfromname-function-clientonsameteamfromname-state-bot-name-src-mq3-game-bot-team-helpers-ml-289864607"></a>
 ### clientOnSameTeamFromName
@@ -51,14 +55,16 @@ function clientFromName(state, name)
 function clientOnSameTeamFromName(state, bot, name)
 ```
 
+Apply `mq3.game.bot_team_helpers.sameTeam`, `mq3.shared.info.value` and `mq3.game.bot_team_helpers.cleanClientText` while evaluating `clientOnSameTeamFromName`. Return paths include `-1`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `maxclients` and `configs`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L392)
 
 <a id="function-function-mq3-game-bot-team-helpers-create-function-create-src-mq3-game-bot-team-helpers-ml-1494667706"></a>
 ### create
@@ -67,8 +73,10 @@ function clientOnSameTeamFromName(state, bot, name)
 function create()
 ```
 
+Initialize team preferences and client tables and install the four CTF flag-state order callbacks.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L45)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L47)
 
 <a id="function-function-mq3-game-bot-team-helpers-creategroup-function-creategroup-state-bot-teammates-groupsize-src-mq3-game-bot-team-helpers-ml-1004574639"></a>
 ### createGroup
@@ -77,15 +85,17 @@ function create()
 function createGroup(state, bot, teammates, groupSize)
 ```
 
+Use `state.initialChatFn` and `state.orderAlwaysFn` to perform `createGroup`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `teammates` | `dynamic` | — |  |
-| `groupSize` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `names`, `initialChatFn` and `orderAlwaysFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `teammates` | `dynamic` | — | Array or byte sequence accessed at `0` and `index`. |
+| `groupSize` | `dynamic` | — | Value used by `createGroup` in `if groupSize<=1 then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L174)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctforders-function-ctforders-state-bot-redflagstatus-blueflagstatus-src-mq3-game-bot-team-helpers-ml-713252501"></a>
 ### ctfOrders
@@ -94,15 +104,17 @@ function createGroup(state, bot, teammates, groupSize)
 function ctfOrders(state, bot, redFlagStatus, blueFlagStatus)
 ```
 
+Use `state.teamFn`, `state.ctfBothAtBaseFn` and `state.ctfEnemyNotAtBaseFn` to perform `ctfOrders`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `redFlagStatus` | `dynamic` | — |  |
-| `blueFlagStatus` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `teamFn`, `ctfBothAtBaseFn`, `ctfEnemyNotAtBaseFn`, `ctfOwnNotAtBaseFn` and `ctfBothNotAtBaseFn`. |
+| `bot` | `dynamic` | — | Value passed as argument 2 to `state.teamFn`. |
+| `redFlagStatus` | `dynamic` | — | Value used by `ctfOrders` in `if state.teamFn(state,bot)==1 then flagStatus=redFlagStatus*2+blueFlagStatus else flagStatus=blueFlagStatus*2+re...`. |
+| `blueFlagStatus` | `dynamic` | — | Value used by `ctfOrders` in `if state.teamFn(state,bot)==1 then flagStatus=redFlagStatus*2+blueFlagStatus else flagStatus=blueFlagStatus*2+re...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L159)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersbothflagsatbase-function-ctfordersbothflagsatbase-state-bot-src-mq3-game-bot-team-helpers-ml-802520488"></a>
 ### ctfOrdersBothFlagsAtBase
@@ -111,13 +123,15 @@ function ctfOrders(state, bot, redFlagStatus, blueFlagStatus)
 function ctfOrdersBothFlagsAtBase(state, bot)
 ```
 
+Use `state.sortBaseFn` to perform `ctfOrdersBothFlagsAtBase`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `sortBaseFn` and `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ctfstrategy`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L217)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersbothflagsnotatbase-function-ctfordersbothflagsnotatbase-state-bot-src-mq3-game-bot-team-helpers-ml-876664506"></a>
 ### ctfOrdersBothFlagsNotAtBase
@@ -126,13 +140,15 @@ function ctfOrdersBothFlagsAtBase(state, bot)
 function ctfOrdersBothFlagsNotAtBase(state, bot)
 ```
 
+Use `state.sortBaseFn`, `state.initialChatFn` and `state.orderAlwaysFn` to perform `ctfOrdersBothFlagsNotAtBase`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `sortBaseFn`, `names`, `initialChatFn` and `orderAlwaysFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `numteammates`, `flagcarrier` and `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L248)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersenemyflagnotatbase-function-ctfordersenemyflagnotatbase-state-bot-src-mq3-game-bot-team-helpers-ml-167055842"></a>
 ### ctfOrdersEnemyFlagNotAtBase
@@ -141,13 +157,15 @@ function ctfOrdersBothFlagsNotAtBase(state, bot)
 function ctfOrdersEnemyFlagNotAtBase(state, bot)
 ```
 
+Use `state.sortBaseFn` to perform `ctfOrdersEnemyFlagNotAtBase`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `sortBaseFn` and `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `flagcarrier` and `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L314)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersflagnotatbase-function-ctfordersflagnotatbase-state-bot-src-mq3-game-bot-team-helpers-ml-850046076"></a>
 ### ctfOrdersFlagNotAtBase
@@ -156,13 +174,15 @@ function ctfOrdersEnemyFlagNotAtBase(state, bot)
 function ctfOrdersFlagNotAtBase(state, bot)
 ```
 
+Use `state.sortBaseFn` to perform `ctfOrdersFlagNotAtBase`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `sortBaseFn` and `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ctfstrategy` and `numteammates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L286)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-ctfs-agressive-const-ctfs-agressive-aiheaders-ctfs-agressive-src-mq3-game-bot-team-helpers-ml-1634674379"></a>
 ### CTFS_AGRESSIVE
@@ -181,16 +201,18 @@ const CTFS_AGRESSIVE = aiheaders.CTFS_AGRESSIVE
 function deliverOrder(state, bot, kind, args, toClient)
 ```
 
+Use `state.initialChatFn` and `state.orderAlwaysFn` to perform `deliverOrder`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `args` | `dynamic` | — |  |
-| `toClient` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `initialChatFn` and `orderAlwaysFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `cs`. |
+| `kind` | `dynamic` | — | Value passed as argument 3 to `state.initialChatFn`. |
+| `args` | `dynamic` | — | Value passed as argument 4 to `state.initialChatFn`. |
+| `toClient` | `dynamic` | — | Value passed as argument 3 to `state.enterChatFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L208)
 
 <a id="function-function-mq3-game-bot-team-helpers-entityisdead-function-entityisdead-state-entitynumber-src-mq3-game-bot-team-helpers-ml-460699035"></a>
 ### entityIsDead
@@ -199,13 +221,15 @@ function deliverOrder(state, bot, kind, args, toClient)
 function entityIsDead(state, entityNumber)
 ```
 
+Use `state.getClientPmTypeFn` to perform `entityIsDead`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `entityNumber` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `getClientPmTypeFn`. |
+| `entityNumber` | `dynamic` | — | Entity number in the game entity table. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L404)
 
 <a id="function-function-mq3-game-bot-team-helpers-findhumanteamleader-function-findhumanteamleader-state-bot-src-mq3-game-bot-team-helpers-ml-1972469656"></a>
 ### findHumanTeamLeader
@@ -214,13 +238,15 @@ function entityIsDead(state, entityNumber)
 function findHumanTeamLeader(state, bot)
 ```
 
+Set `bot.teamleader` to `state.names[index]` in `mq3.game.bot_team_helpers.findHumanTeamLeader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `entityInUse`, `entitySvFlags`, `notLeader`, `sameTeamFn` and `names` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamleader`. May update `bot.teamleader` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L189)
 
 <a id="function-function-mq3-game-bot-team-helpers-getteammatetaskpreference-function-getteammatetaskpreference-state-bot-teammate-currentname-src-mq3-game-bot-team-helpers-ml-985030952"></a>
 ### getTeamMateTaskPreference
@@ -229,15 +255,17 @@ function findHumanTeamLeader(state, bot)
 function getTeamMateTaskPreference(state, bot, teammate, currentName)
 ```
 
+Read a teammate's saved task preference only when the current player name still matches its owner.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `teammate` | `dynamic` | — |  |
-| `currentName` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `preferences` and `preferenceNames`. |
+| `bot` | `dynamic` | — | Not read by this implementation; retained in the `getTeamMateTaskPreference` signature. |
+| `teammate` | `dynamic` | — | Operand used to evaluate the returned expression `state.preferences[teammate]`. |
+| `currentName` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L95)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-max-clients-const-max-clients-64-src-mq3-game-bot-team-helpers-ml-1931447045"></a>
 ### MAX_CLIENTS
@@ -256,13 +284,15 @@ const MAX_CLIENTS = 64
 function numTeamMates(state, bot)
 ```
 
+Use `state.sameTeamFn` to perform `numTeamMates`. Return paths include `count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `maxclients`, `configs` and `sameTeamFn`. |
+| `bot` | `dynamic` | — | Value passed as argument 2 to `state.sameTeamFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L67)
 
 <a id="function-function-mq3-game-bot-team-helpers-oppositeteam-function-oppositeteam-state-bot-src-mq3-game-bot-team-helpers-ml-1058698984"></a>
 ### oppositeTeam
@@ -271,13 +301,15 @@ function numTeamMates(state, bot)
 function oppositeTeam(state, bot)
 ```
 
+Apply `mq3.game.bot_team_helpers.team` while evaluating `oppositeTeam`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `configs`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L355)
 
 <a id="function-function-mq3-game-bot-team-helpers-sameteam-function-sameteam-state-bot-entitynumber-src-mq3-game-bot-team-helpers-ml-1189746062"></a>
 ### sameTeam
@@ -286,14 +318,16 @@ function oppositeTeam(state, bot)
 function sameTeam(state, bot, entityNumber)
 ```
 
+Apply `mq3.shared.info.value` while evaluating `sameTeam`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `entityNumber` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `gametype` and `configs`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `entityNumber` | `dynamic` | — | Entity number in the game entity table. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L360)
 
 <a id="function-function-mq3-game-bot-team-helpers-sayteamorder-function-sayteamorder-state-bot-toclient-src-mq3-game-bot-team-helpers-ml-1510499058"></a>
 ### sayTeamOrder
@@ -302,14 +336,16 @@ function sameTeam(state, bot, entityNumber)
 function sayTeamOrder(state, bot, toClient)
 ```
 
+Forward `sayTeamOrder` to `mq3.game.bot_team_helpers.sayTeamOrderAlways` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `toClient` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `getChatMessageFn`, `names`, `queueConsoleMessageFn` and `enterChatFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `cs`. |
+| `toClient` | `dynamic` | — | Value passed as argument 3 to `state.enterChatFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L133)
 
 <a id="function-function-mq3-game-bot-team-helpers-sayteamorderalways-function-sayteamorderalways-state-bot-toclient-src-mq3-game-bot-team-helpers-ml-54100570"></a>
 ### sayTeamOrderAlways
@@ -318,14 +354,16 @@ function sayTeamOrder(state, bot, toClient)
 function sayTeamOrderAlways(state, bot, toClient)
 ```
 
+Use `state.getChatMessageFn`, `state.queueConsoleMessageFn` and `state.enterChatFn` to perform `sayTeamOrderAlways`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `toClient` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `getChatMessageFn`, `names`, `queueConsoleMessageFn` and `enterChatFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `cs`. |
+| `toClient` | `dynamic` | — | Value passed as argument 3 to `state.enterChatFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L120)
 
 <a id="function-function-mq3-game-bot-team-helpers-sayvoiceteamorder-function-sayvoiceteamorder-state-bot-toclient-voicechat-src-mq3-game-bot-team-helpers-ml-1062082752"></a>
 ### sayVoiceTeamOrder
@@ -334,15 +372,17 @@ function sayTeamOrderAlways(state, bot, toClient)
 function sayVoiceTeamOrder(state, bot, toClient, voicechat)
 ```
 
+Return `void` for `sayVoiceTeamOrder`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `toClient` | `dynamic` | — |  |
-| `voicechat` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Not read by this implementation; retained in the `sayVoiceTeamOrder` signature. |
+| `bot` | `dynamic` | — | Not read by this implementation; retained in the `sayVoiceTeamOrder` signature. |
+| `toClient` | `dynamic` | — | Not read by this implementation; retained in the `sayVoiceTeamOrder` signature. |
+| `voicechat` | `dynamic` | — | Not read by this implementation; retained in the `sayVoiceTeamOrder` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L152)
 
 <a id="function-function-mq3-game-bot-team-helpers-setteammatetaskpreference-function-setteammatetaskpreference-state-bot-teammate-preference-src-mq3-game-bot-team-helpers-ml-2076476181"></a>
 ### setTeamMateTaskPreference
@@ -351,15 +391,17 @@ function sayVoiceTeamOrder(state, bot, toClient, voicechat)
 function setTeamMateTaskPreference(state, bot, teammate, preference)
 ```
 
+Set `state.preferences[teammate]` to `preference` and `state.preferenceNames[teammate]` to `state.names[teammate]` in `mq3.game.bot_team_helpers.setTeamMateTaskPreference`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `teammate` | `dynamic` | — |  |
-| `preference` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `preferences`, `preferenceNames` and `names`. May update `state.preferences[teammate]` and `state.preferenceNames[teammate]` in place. |
+| `bot` | `dynamic` | — | Not read by this implementation; retained in the `setTeamMateTaskPreference` signature. |
+| `teammate` | `dynamic` | — | Value used by `setTeamMateTaskPreference` in `state.preferences[teammate]=preference`. |
+| `preference` | `dynamic` | — | Value used by `setTeamMateTaskPreference` in `state.preferences[teammate]=preference`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L84)
 
 <a id="function-function-mq3-game-bot-team-helpers-sortteammatesbytaskpreference-function-sortteammatesbytaskpreference-state-bot-teammates-src-mq3-game-bot-team-helpers-ml-1672642199"></a>
 ### sortTeamMatesByTaskPreference
@@ -368,14 +410,16 @@ function setTeamMateTaskPreference(state, bot, teammate, preference)
 function sortTeamMatesByTaskPreference(state, bot, teammates)
 ```
 
+Apply `mq3.game.bot_team_helpers.getTeamMateTaskPreference` while evaluating `sortTeamMatesByTaskPreference`. Return paths include `defenders+roamers+attackers`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `teammates` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `names`. |
+| `bot` | `dynamic` | — | Value passed as argument 2 to `mq3.game.bot_team_helpers.getTeamMateTaskPreference`. |
+| `teammates` | `dynamic` | — | Value used by `sortTeamMatesByTaskPreference` in `for each teammate in teammates`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L105)
 
 - [mq3.game.bot_team_helpers.State](Type-mq3-game-bot-team-helpers-state-1367161120.md) — struct
 <a id="function-function-mq3-game-bot-team-helpers-team-function-team-state-bot-src-mq3-game-bot-team-helpers-ml-2065319044"></a>
@@ -385,13 +429,15 @@ function sortTeamMatesByTaskPreference(state, bot, teammates)
 function team(state, bot)
 ```
 
+Apply `mq3.shared.info.value` while evaluating `team`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `configs`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L346)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-team-spectator-const-team-spectator-3-src-mq3-game-bot-team-helpers-ml-677109062"></a>
 ### TEAM_SPECTATOR
@@ -430,13 +476,15 @@ const TEAMTP_DEFENDER = aiheaders.TEAMTP_DEFENDER
 function validTeamLeader(state, bot)
 ```
 
+Use `state.clientFromNameFn` to perform `validTeamLeader`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot team helpers state; accesses `clientFromNameFn` and `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamleader`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L56)
 
 <a id="function-function-mq3-game-bot-team-helpers-voicechat-function-voicechat-state-bot-toclient-voicechat-src-mq3-game-bot-team-helpers-ml-1844613924"></a>
 ### voiceChat
@@ -449,13 +497,13 @@ These are intentional no-ops in the original baseq3 build; their bodies only con
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `toClient` | `dynamic` | — |  |
-| `voicechat` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Not read by this implementation; retained in the `voiceChat` signature. |
+| `bot` | `dynamic` | — | Not read by this implementation; retained in the `voiceChat` signature. |
+| `toClient` | `dynamic` | — | Not read by this implementation; retained in the `voiceChat` signature. |
+| `voicechat` | `dynamic` | — | Not read by this implementation; retained in the `voiceChat` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L140)
 
 <a id="function-function-mq3-game-bot-team-helpers-voicechatonly-function-voicechatonly-state-bot-toclient-voicechat-src-mq3-game-bot-team-helpers-ml-1992932868"></a>
 ### voiceChatOnly
@@ -464,12 +512,14 @@ These are intentional no-ops in the original baseq3 build; their bodies only con
 function voiceChatOnly(state, bot, toClient, voicechat)
 ```
 
+Return `void` for `voiceChatOnly`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `toClient` | `dynamic` | — |  |
-| `voicechat` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Not read by this implementation; retained in the `voiceChatOnly` signature. |
+| `bot` | `dynamic` | — | Not read by this implementation; retained in the `voiceChatOnly` signature. |
+| `toClient` | `dynamic` | — | Not read by this implementation; retained in the `voiceChatOnly` signature. |
+| `voicechat` | `dynamic` | — | Not read by this implementation; retained in the `voiceChatOnly` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L146)

@@ -9,8 +9,10 @@
 struct Batch
 ```
 
+Stores playable item models batch record, including `triangles`, `drawnItems`, `skippedItems`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L38)
 
 ## Members
 
@@ -22,7 +24,7 @@ drawnItems
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L38)
 
 <a id="field-field-mq3-client-playable-item-models-batch-skippeditems-skippeditems-src-mq3-client-playable-item-models-ml-1960502097"></a>
 ### skippedItems
@@ -32,7 +34,7 @@ skippedItems
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L38)
 
 <a id="field-field-mq3-client-playable-item-models-batch-triangles-triangles-src-mq3-client-playable-item-models-ml-1148985617"></a>
 ### triangles
@@ -42,4 +44,4 @@ triangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L38)

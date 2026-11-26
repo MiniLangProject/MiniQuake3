@@ -25,13 +25,15 @@ Reachable from entry: **no**
 function afterPlayerDie(level, self)
 ```
 
+Apply `mq3.game.combat_missionpack.Kamikaze_DeathTimer` while evaluating `afterPlayerDie`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `inuse` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L88)
 
 <a id="function-function-mq3-game-combat-missionpack-cleanupplayerdie-function-cleanupplayerdie-level-self-src-mq3-game-combat-missionpack-ml-1580319672"></a>
 ### cleanupPlayerDie
@@ -40,13 +42,15 @@ function afterPlayerDie(level, self)
 function cleanupPlayerDie(level, self)
 ```
 
+Update `self.client.ps.eFlags`, `self.activator.think` and `self.activator.nextthink` during `cleanupPlayerDie`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner` and `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `client` and `activator`. May update `self.client.ps.eFlags`, `self.activator.think` and `self.activator.nextthink` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L67)
 
 <a id="constant-constant-mq3-game-combat-missionpack-contents-trigger-const-contents-trigger-headers-contents-trigger-src-mq3-game-combat-missionpack-ml-1791835658"></a>
 ### CONTENTS_TRIGGER
@@ -65,13 +69,15 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 function dropPlayerDeathItems(level, self)
 ```
 
+Apply `mq3.game.combat_missionpack.TossClientPersistantPowerups` and `mq3.game.combat_missionpack.TossClientCubes` while evaluating `dropPlayerDeathItems`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `self` | `dynamic` | — | Game entity; accesses `client`. May update `self.client.ps.stats[STAT_PERSISTANT_POWERUP]` and `self.client.persistantPowerup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L78)
 
 <a id="constant-constant-mq3-game-combat-missionpack-ef-kamikaze-const-ef-kamikaze-512-src-mq3-game-combat-missionpack-ml-669888657"></a>
 ### EF_KAMIKAZE
@@ -110,13 +116,15 @@ const GT_HARVESTER = 7
 function Kamikaze_DeathActivate(level, ent)
 ```
 
+Apply `mq3.game.g_weapon.G_StartKamikaze` and `mq3.game.entities.free` while evaluating `Kamikaze_DeathActivate`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time` and `entities`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`, `activator` and `s`. May update `ent.s.eFlags` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L51)
 
 <a id="function-function-mq3-game-combat-missionpack-kamikaze-deathtimer-function-kamikaze-deathtimer-level-self-src-mq3-game-combat-missionpack-ml-874081074"></a>
 ### Kamikaze_DeathTimer
@@ -125,13 +133,15 @@ function Kamikaze_DeathActivate(level, ent)
 function Kamikaze_DeathTimer(level, self)
 ```
 
+Apply `mq3.game.entities.spawn` while evaluating `Kamikaze_DeathTimer`. Return paths include `timer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L58)
 
 <a id="constant-constant-mq3-game-combat-missionpack-stat-persistant-powerup-const-stat-persistant-powerup-7-src-mq3-game-combat-missionpack-ml-241809358"></a>
 ### STAT_PERSISTANT_POWERUP
@@ -160,13 +170,15 @@ const SVF_NOCLIENT = 1
 function TossClientCubes(level, self)
 ```
 
+Set `self.client.ps.generic1` to `0` in `mq3.game.combat_missionpack.TossClientCubes`. Return paths include `drop`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `self` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `time` and `neutralObelisk`. |
+| `self` | `dynamic` | — | Entity receiving the callback; accesses `client`. May update `self.client.ps.generic1` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L23)
 
 <a id="function-function-mq3-game-combat-missionpack-tossclientpersistantpowerups-function-tossclientpersistantpowerups-level-ent-src-mq3-game-combat-missionpack-ml-735002531"></a>
 ### TossClientPersistantPowerups
@@ -175,10 +187,12 @@ function TossClientCubes(level, self)
 function TossClientPersistantPowerups(level, ent)
 ```
 
+Set `ent.client.ps.stats[STAT_PERSISTANT_POWERUP]` to `0` and `ent.client.persistantPowerup` to `void` in `mq3.game.combat_missionpack.TossClientPersistantPowerups`. Return paths include `powerup`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `scene`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client`. May update `ent.client.ps.stats[STAT_PERSISTANT_POWERUP]` and `ent.client.persistantPowerup` in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat_missionpack.ml#L40)

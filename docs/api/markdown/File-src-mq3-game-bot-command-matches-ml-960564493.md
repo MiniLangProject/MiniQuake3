@@ -37,12 +37,12 @@ BotAddressedToBot
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `randomValue`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `subteam`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L297)
 
 <a id="function-function-mq3-game-bot-command-matches-botgetitemteamgoal-function-botgetitemteamgoal-state-goalname-src-mq3-game-bot-command-matches-ml-597494799"></a>
 ### BotGetItemTeamGoal
@@ -55,11 +55,11 @@ BotGetItemTeamGoal
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `goalname` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `itemGoals`. |
+| `goalname` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L208)
 
 <a id="function-function-mq3-game-bot-command-matches-botgetmessageteamgoal-function-botgetmessageteamgoal-state-bot-goalname-src-mq3-game-bot-command-matches-ml-1410356012"></a>
 ### BotGetMessageTeamGoal
@@ -72,12 +72,12 @@ BotGetMessageTeamGoal
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `goalname` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `itemGoals`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `checkpoints`. |
+| `goalname` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L215)
 
 <a id="function-function-mq3-game-bot-command-matches-botgetpatrolwaypoints-function-botgetpatrolwaypoints-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-318766853"></a>
 ### BotGetPatrolWaypoints
@@ -90,13 +90,13 @@ BotGetPatrolWaypoints
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `matchState`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`, `patrolpoints`, `curpatrolpoint` and `patrolflags`. May update `bot.patrolpoints`, `bot.curpatrolpoint` and `bot.patrolflags` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `lengths` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L284)
 
 <a id="function-function-mq3-game-bot-command-matches-botgettime-function-botgettime-state-match-src-mq3-game-bot-command-matches-ml-1168403572"></a>
 ### BotGetTime
@@ -109,11 +109,11 @@ BotGetTime
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `now`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L221)
 
 <a id="function-function-mq3-game-bot-command-matches-botgpstoposition-function-botgpstoposition-value-src-mq3-game-bot-command-matches-ml-1435933843"></a>
 ### BotGPSToPosition
@@ -126,10 +126,10 @@ BotGPSToPosition
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L306)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-attackenemybase-function-botmatch-attackenemybase-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-2008296343"></a>
 ### BotMatch_AttackEnemyBase
@@ -142,13 +142,13 @@ BotMatch_AttackEnemyBase
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `gametype`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `attackawayTime`. May update `bot.attackawayTime` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L373)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-camp-function-botmatch-camp-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1705816995"></a>
 ### BotMatch_Camp
@@ -161,13 +161,13 @@ BotMatch_Camp
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`, `entitynum`, `areanum`, `origin` and `teamgoal` and related fields. May update `bot.teamgoal`, `bot.teamgoalTime` and `bot.arriveTime` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L348)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-checkpoint-function-botmatch-checkpoint-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-913283765"></a>
 ### BotMatch_CheckPoint
@@ -180,13 +180,13 @@ BotMatch_CheckPoint
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay` and `pointAreas`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `areanum`, `client` and `checkpoints`. May update `bot.checkpoints` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `lengths` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L249)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L421)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-ctf-function-botmatch-ctf-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-895044815"></a>
 ### BotMatch_CTF
@@ -199,13 +199,13 @@ BotMatch_CTF
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `gametype` and `now`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `redflagstatus`, `team`, `flagcarrier`, `blueflagstatus` and `flagstatuschanged` and related fields. May update `bot.redflagstatus`, `bot.flagcarrier` and `bot.blueflagstatus` and additional fields in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
+| `suppressed` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_CTF` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L279)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L502)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-defendkeyarea-function-botmatch-defendkeyarea-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-2146898615"></a>
 ### BotMatch_DefendKeyArea
@@ -218,13 +218,13 @@ BotMatch_DefendKeyArea
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamgoalTime` and `defendawayTime`. May update `bot.teamgoalTime` and `bot.defendawayTime` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L336)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-dismiss-function-botmatch-dismiss-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-2104390103"></a>
 ### BotMatch_Dismiss
@@ -237,13 +237,13 @@ BotMatch_Dismiss
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `decisionmaker`, `ltgtype`, `leadTime` and `lastgoalLtgtype`. May update `bot.decisionmaker`, `bot.ltgtype` and `bot.leadTime` and additional fields in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L433)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-entergame-function-botmatch-entergame-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1081478771"></a>
 ### BotMatch_EnterGame
@@ -256,13 +256,13 @@ BotMatch_EnterGame
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `notleader`. May update `state.notleader[client]` in place. |
+| `bot` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_EnterGame` signature. |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `lengths` and `string`. |
+| `suppressed` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_EnterGame` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L508)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-formationspace-function-botmatch-formationspace-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-152908095"></a>
 ### BotMatch_FormationSpace
@@ -275,13 +275,13 @@ BotMatch_FormationSpace
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `formationDist`. May update `bot.formationDist` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
+| `suppressed` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_FormationSpace` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L427)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-getflag-function-botmatch-getflag-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1241206715"></a>
 ### BotMatch_GetFlag
@@ -294,13 +294,13 @@ BotMatch_GetFlag
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `gametype`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `team`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L367)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-getitem-function-botmatch-getitem-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-269690655"></a>
 ### BotMatch_GetItem
@@ -313,13 +313,13 @@ BotMatch_GetItem
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamgoal`. May update `bot.teamgoal` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L342)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-harvest-function-botmatch-harvest-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1197580511"></a>
 ### BotMatch_Harvest
@@ -332,13 +332,13 @@ BotMatch_Harvest
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `gametype`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `harvestawayTime`. May update `bot.harvestawayTime` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L379)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-helpaccompany-function-botmatch-helpaccompany-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1402892451"></a>
 ### BotMatch_HelpAccompany
@@ -351,13 +351,13 @@ BotMatch_HelpAccompany
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay` and `now`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`, `teamgoal`, `teammate`, `teammatevisibleTime` and `ltgtype` and related fields. May update `bot.teamgoal`, `bot.teammate` and `bot.teammatevisibleTime` and additional fields in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `type`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L315)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-joinsubteam-function-botmatch-joinsubteam-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-284253615"></a>
 ### BotMatch_JoinSubteam
@@ -370,13 +370,13 @@ BotMatch_JoinSubteam
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `subteam`. May update `bot.subteam` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L403)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-kill-function-botmatch-kill-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1736228233"></a>
 ### BotMatch_Kill
@@ -389,13 +389,13 @@ BotMatch_Kill
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`, `now` and `randomValue`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamgoal`, `teammessageTime`, `ltgtype`, `teamgoalTime` and `client`. May update `bot.teamgoal.entitynum`, `bot.teammessageTime` and `bot.ltgtype` and additional fields in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L496)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-leadtheway-function-botmatch-leadtheway-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-2046824237"></a>
 ### BotMatch_LeadTheWay
@@ -408,13 +408,13 @@ BotMatch_LeadTheWay
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`, `now` and `randomValue`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`, `leadTeamgoal`, `leadTeammate`, `leadTime` and `leadvisibleTime` and related fields. May update `bot.leadTeamgoal`, `bot.leadTeammate` and `bot.leadTime` and additional fields in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L490)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-leavesubteam-function-botmatch-leavesubteam-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-357809165"></a>
 ### BotMatch_LeaveSubteam
@@ -427,13 +427,13 @@ BotMatch_LeaveSubteam
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `subteam`. May update `bot.subteam` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L409)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-newleader-function-botmatch-newleader-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1994993855"></a>
 ### BotMatch_NewLeader
@@ -446,13 +446,13 @@ BotMatch_NewLeader
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `maxclients` and `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamleader`. May update `bot.teamleader` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `lengths` and `string`. |
+| `suppressed` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_NewLeader` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L514)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-patrol-function-botmatch-patrol-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-220409381"></a>
 ### BotMatch_Patrol
@@ -465,13 +465,13 @@ BotMatch_Patrol
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamgoalTime`. May update `bot.teamgoalTime` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L228)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L357)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-returnflag-function-botmatch-returnflag-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-188873593"></a>
 ### BotMatch_ReturnFlag
@@ -484,13 +484,13 @@ BotMatch_ReturnFlag
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `gametype`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `rushbaseawayTime`. May update `bot.rushbaseawayTime` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L241)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L397)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-rushbase-function-botmatch-rushbase-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1331110695"></a>
 ### BotMatch_RushBase
@@ -503,13 +503,13 @@ BotMatch_RushBase
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `gametype`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `rushbaseawayTime`. May update `bot.rushbaseawayTime` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L385)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-startteamleadership-function-botmatch-startteamleadership-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1275007151"></a>
 ### BotMatch_StartTeamLeaderShip
@@ -522,13 +522,13 @@ BotMatch_StartTeamLeaderShip
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay` and `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamleader`. May update `bot.teamleader` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
+| `suppressed` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_StartTeamLeaderShip` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L445)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-stopteamleadership-function-botmatch-stopteamleadership-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-508473677"></a>
 ### BotMatch_StopTeamLeaderShip
@@ -541,13 +541,13 @@ BotMatch_StopTeamLeaderShip
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`, `names` and `notleader`. May update `state.notleader[client]` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamleader`. May update `bot.teamleader` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
+| `suppressed` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_StopTeamLeaderShip` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L451)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-suicide-function-botmatch-suicide-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1991758403"></a>
 ### BotMatch_Suicide
@@ -560,13 +560,13 @@ BotMatch_Suicide
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L255)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L439)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-taskpreference-function-botmatch-taskpreference-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-495187693"></a>
 ### BotMatch_TaskPreference
@@ -579,13 +579,13 @@ BotMatch_TaskPreference
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `taskPreferences`, `preferenceNames` and `names`. May update `state.taskPreferences[client]` and `state.preferenceNames[client]` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `teamleader`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L391)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-whatareyoudoing-function-botmatch-whatareyoudoing-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1173788347"></a>
 ### BotMatch_WhatAreYouDoing
@@ -598,13 +598,13 @@ BotMatch_WhatAreYouDoing
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `randomValue`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgtype`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L463)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-whatismycommand-function-botmatch-whatismycommand-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-683363495"></a>
 ### BotMatch_WhatIsMyCommand
@@ -617,13 +617,13 @@ BotMatch_WhatIsMyCommand
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`, `teamleader` and `forceorders`. May update `bot.forceorders` in place. |
+| `match` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_WhatIsMyCommand` signature. |
+| `suppressed` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_WhatIsMyCommand` signature. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L469)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-whereareyou-function-botmatch-whereareyou-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1941821759"></a>
 ### BotMatch_WhereAreYou
@@ -636,13 +636,13 @@ BotMatch_WhereAreYou
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `subteam`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L482)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-whichteam-function-botmatch-whichteam-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1507381867"></a>
 ### BotMatch_WhichTeam
@@ -655,13 +655,13 @@ BotMatch_WhichTeam
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `subteam` and `client`. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L415)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatch-whoisteamleader-function-botmatch-whoisteamleader-state-bot-match-suppressed-src-mq3-game-bot-command-matches-ml-1393400823"></a>
 ### BotMatch_WhoIsTeamLeader
@@ -674,13 +674,13 @@ BotMatch_WhoIsTeamLeader
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `teamleader`. |
+| `match` | `dynamic` | — | Not read by this implementation; retained in the `BotMatch_WhoIsTeamLeader` signature. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L457)
 
 <a id="function-function-mq3-game-bot-command-matches-botmatchmessage-function-botmatchmessage-state-bot-message-suppressed-src-mq3-game-bot-command-matches-ml-1633925671"></a>
 ### BotMatchMessage
@@ -693,13 +693,13 @@ BotMatchMessage
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `matchState`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `message` | `dynamic` | — | Message text supplied to the diagnostic or chat operation. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L521)
 
 <a id="function-function-mq3-game-bot-command-matches-botnearestvisibleitem-function-botnearestvisibleitem-state-bot-itemname-src-mq3-game-bot-command-matches-ml-1172907796"></a>
 ### BotNearestVisibleItem
@@ -712,12 +712,12 @@ BotNearestVisibleItem
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `itemname` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `itemGoals` and `traceVisibleFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `origin`. |
+| `itemname` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L474)
 
 <a id="function-function-mq3-game-bot-command-matches-botprintteamgoal-function-botprintteamgoal-state-bot-suppressed-src-mq3-game-bot-command-matches-ml-532081758"></a>
 ### BotPrintTeamGoal
@@ -730,12 +730,12 @@ BotPrintTeamGoal
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `now`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ltgtype`, `client` and `teamgoalTime`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L201)
 
 <a id="constant-constant-mq3-game-bot-command-matches-chat-team-const-chat-team-1-src-mq3-game-bot-command-matches-ml-1075490004"></a>
 ### CHAT_TEAM
@@ -764,13 +764,15 @@ const CHAT_TELL = 2
 function clientName(state, client)
 ```
 
+Read the command-matching player-name table, using an empty string for an invalid client slot.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `names`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `state.names[client]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L190)
 
 <a id="function-function-mq3-game-bot-command-matches-containsfold-function-containsfold-value-needle-src-mq3-game-bot-command-matches-ml-542512318"></a>
 ### containsFold
@@ -779,13 +781,15 @@ function clientName(state, client)
 function containsFold(value, needle)
 ```
 
+Test `chat.stringContains(value,needle,false)>=0` as the condition for `containsFold`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `needle` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `needle` | `dynamic` | — | Text or value to search for. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L186)
 
 <a id="function-function-mq3-game-bot-command-matches-copygoal-function-copygoal-value-src-mq3-game-bot-command-matches-ml-1575036287"></a>
 ### copyGoal
@@ -794,12 +798,14 @@ function containsFold(value, needle)
 function copyGoal(value)
 ```
 
+Forward `copyGoal` to `mq3.game.bot_command_matches.goal` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value record; accesses `number`, `entitynum`, `areanum`, `origin` and `mins` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L147)
 
 <a id="function-function-mq3-game-bot-command-matches-create-function-create-matchstate-src-mq3-game-bot-command-matches-ml-1196293400"></a>
 ### create
@@ -808,12 +814,14 @@ function copyGoal(value)
 function create(matchState)
 ```
 
+Build the `mq3.game.bot_command_matches.State` result for `create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `matchState` | `dynamic` | — |  |
+| `matchState` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.State.matchState`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L155)
 
 <a id="function-function-mq3-game-bot-command-matches-createbot-function-createbot-client-src-mq3-game-bot-command-matches-ml-764644349"></a>
 ### createBot
@@ -822,12 +830,14 @@ function create(matchState)
 function createBot(client)
 ```
 
+Build the `mq3.game.bot_command_matches.Bot` result for `createBot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.Bot.client`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L150)
 
 <a id="function-function-mq3-game-bot-command-matches-emit-function-emit-state-kind-client-channel-text-arg-value-suppressed-src-mq3-game-bot-command-matches-ml-1125660503"></a>
 ### emit
@@ -836,19 +846,21 @@ function createBot(client)
 function emit(state, kind, client, channel, text, arg, value, suppressed)
 ```
 
+Set `state.actions` to `state.actions+[action]` in `mq3.game.bot_command_matches.emit`. Return paths include `action`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `arg` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `kind` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.kind`. |
+| `client` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.client`. |
+| `channel` | `dynamic` | — | Channel identifier for the requested action. |
+| `text` | `dynamic` | — | Text to parse, format or deliver. |
+| `arg` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.arg`. |
+| `value` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.value`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L168)
 
 <a id="function-function-mq3-game-bot-command-matches-emptygoal-function-emptygoal-src-mq3-game-bot-command-matches-ml-1549671286"></a>
 ### emptyGoal
@@ -857,8 +869,10 @@ function emit(state, kind, client, channel, text, arg, value, suppressed)
 function emptyGoal()
 ```
 
+Forward `emptyGoal` to `mq3.game.bot_command_matches.goal` and return the delegated result.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L128)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L144)
 
 <a id="constant-constant-mq3-game-bot-command-matches-enemy-const-enemy-headers-enemy-src-mq3-game-bot-command-matches-ml-208577843"></a>
 ### ENEMY
@@ -877,16 +891,18 @@ const ENEMY = headers.ENEMY
 function enter(state, bot, client, channel, suppressed)
 ```
 
+Record or dispatch `"enter-chat"` actions in `enter`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `cs`. |
+| `client` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.client`. |
+| `channel` | `dynamic` | — | Channel identifier for the requested action. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L277)
 
 - [mq3.game.bot_command_matches.EntityInfo](Type-mq3-game-bot-command-matches-entityinfo-303929128.md) — struct
 <a id="function-function-mq3-game-bot-command-matches-find-function-find-state-value-context-src-mq3-game-bot-command-matches-ml-315314655"></a>
@@ -896,14 +912,16 @@ function enter(state, bot, client, channel, suppressed)
 function find(state, value, context)
 ```
 
+Forward `find` to `mq3.botlib.ai_chat_matches.findMatch` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `context` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `matchState`. |
+| `value` | `dynamic` | — | Value passed as argument 1 to `bytes`. |
+| `context` | `dynamic` | — | Bit mask selecting the bot-chat contexts accepted by this operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L179)
 
 <a id="function-function-mq3-game-bot-command-matches-findclientbyname-function-findclientbyname-state-name-src-mq3-game-bot-command-matches-ml-1407429270"></a>
 ### FindClientByName
@@ -916,11 +934,11 @@ FindClientByName
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `maxclients` and `names`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L229)
 
 <a id="function-function-mq3-game-bot-command-matches-findenemybyname-function-findenemybyname-state-bot-name-src-mq3-game-bot-command-matches-ml-1967660595"></a>
 ### FindEnemyByName
@@ -933,12 +951,12 @@ FindEnemyByName
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `maxclients` and `names`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `team`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L236)
 
 <a id="constant-constant-mq3-game-bot-command-matches-flag-const-flag-headers-flag-src-mq3-game-bot-command-matches-ml-1641343653"></a>
 ### FLAG
@@ -957,19 +975,21 @@ const FLAG = headers.FLAG
 function goal(number, entitynum, areanum, origin, mins, maxs, flags, name)
 ```
 
+Create a `mq3.game.bot_command_matches.Goal` record, initializing `number` from `number`, `entitynum` from `entitynum` and `areanum` from `areanum`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `number` | `dynamic` | — |  |
-| `entitynum` | `dynamic` | — |  |
-| `areanum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `mins` | `dynamic` | — |  |
-| `maxs` | `dynamic` | — |  |
-| `flags` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `number` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.Goal.number`. |
+| `entitynum` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.Goal.entitynum`. |
+| `areanum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `mins` | `dynamic` | — | Minimum coordinates of the axis-aligned bounds. |
+| `maxs` | `dynamic` | — | Maximum coordinates of the axis-aligned bounds. |
+| `flags` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.Goal.flags`. |
+| `name` | `dynamic` | — | Name used to identify the requested entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L142)
 
 - [mq3.game.bot_command_matches.Goal](Type-mq3-game-bot-command-matches-goal-326680820.md) — struct
 <a id="function-function-mq3-game-bot-command-matches-goalorder-function-goalorder-state-bot-match-varindex-ltg-duration-suppressed-src-mq3-game-bot-command-matches-ml-1335223437"></a>
@@ -979,18 +999,20 @@ function goal(number, entitynum, areanum, origin, mins, maxs, flags, name)
 function goalOrder(state, bot, match, varIndex, ltg, duration, suppressed)
 ```
 
+Set `bot.teamgoal` to `g` in `mq3.game.bot_command_matches.goalOrder`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `match` | `dynamic` | — |  |
-| `varIndex` | `dynamic` | — |  |
-| `ltg` | `dynamic` | — |  |
-| `duration` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teamplay`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `teamgoal`. May update `bot.teamgoal` in place. |
+| `match` | `dynamic` | — | Parsed match record; accesses `subtype` and `string`. |
+| `varIndex` | `dynamic` | — | Index of the entry to access. |
+| `ltg` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.value`. |
+| `duration` | `dynamic` | — | Value used by `order` in `bot.teamgoalTime=state.now+duration`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L328)
 
 <a id="constant-constant-mq3-game-bot-command-matches-gt-1fctf-const-gt-1fctf-5-src-mq3-game-bot-command-matches-ml-540294082"></a>
 ### GT_1FCTF
@@ -1040,16 +1062,18 @@ const GT_OBELISK = 6
 function initial(state, bot, key, arg, suppressed)
 ```
 
+Record or dispatch `"initial-chat"` actions in `initial`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `arg` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client`. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
+| `arg` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.arg`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L270)
 
 <a id="constant-constant-mq3-game-bot-command-matches-item-const-item-headers-item-src-mq3-game-bot-command-matches-ml-1616537826"></a>
 ### ITEM
@@ -1078,12 +1102,14 @@ const KEYAREA = headers.KEYAREA
 function lower(value)
 ```
 
+Return the result of `strings.toLowerAscii(value)` for `lower`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as argument 1 to `std.string.toLowerAscii`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L182)
 
 <a id="constant-constant-mq3-game-bot-command-matches-ltg-attackenemybase-const-ltg-attackenemybase-13-src-mq3-game-bot-command-matches-ml-2056806701"></a>
 ### LTG_ATTACKENEMYBASE
@@ -1786,11 +1812,11 @@ NumPlayersOnSameTeam (the i+1 test preserves the original game's indexing behavi
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `maxclients` and `configs`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L242)
 
 <a id="function-function-mq3-game-bot-command-matches-objectiveready-function-objectiveready-state-kind-src-mq3-game-bot-command-matches-ml-267551265"></a>
 ### objectiveReady
@@ -1799,13 +1825,15 @@ NumPlayersOnSameTeam (the i+1 test preserves the original game's indexing behavi
 function objectiveReady(state, kind)
 ```
 
+Require valid AAS areas for the flag or obelisk objectives used by the requested team task.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `redFlag`, `blueFlag`, `neutralObelisk`, `redObelisk` and `blueObelisk`. |
+| `kind` | `dynamic` | — | Value used by `objectiveReady` in `if kind==LTG_GETFLAG then return state.redFlag.areanum!=0 and state.blueFlag.areanum!=0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L361)
 
 <a id="function-function-mq3-game-bot-command-matches-order-function-order-state-bot-client-ltg-duration-suppressed-src-mq3-game-bot-command-matches-ml-204838244"></a>
 ### order
@@ -1814,17 +1842,19 @@ function objectiveReady(state, kind)
 function order(state, bot, client, ltg, duration, suppressed)
 ```
 
+Record or dispatch `"team-status"` actions in `order`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `ltg` | `dynamic` | — |  |
-| `duration` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `now` and `randomValue`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `decisionmaker`, `ordered`, `orderTime`, `teammessageTime` and `ltgtype` and related fields. May update `bot.decisionmaker`, `bot.ordered` and `bot.orderTime` and additional fields in place. |
+| `client` | `dynamic` | — | Value used by `order` in `bot.decisionmaker=client`. |
+| `ltg` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.HostAction.value`. |
+| `duration` | `dynamic` | — | Value used by `order` in `bot.teamgoalTime=state.now+duration`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L256)
 
 <a id="constant-constant-mq3-game-bot-command-matches-patrol-loop-const-patrol-loop-1-src-mq3-game-bot-command-matches-ml-1333247356"></a>
 ### PATROL_LOOP
@@ -1853,13 +1883,15 @@ const PATROL_REVERSE = 2
 function pointGoal(state, client)
 ```
 
+Apply `mq3.game.bot_command_matches.goal` and `mq3.game.bot_command_matches.clientName` while evaluating `pointGoal`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `entityInfos` and `pointAreas`. |
+| `client` | `dynamic` | — | Initial value stored in `mq3.game.bot_command_matches.Goal.entitynum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L248)
 
 <a id="constant-constant-mq3-game-bot-command-matches-position-const-position-headers-position-src-mq3-game-bot-command-matches-ml-725688134"></a>
 ### POSITION
@@ -1878,14 +1910,16 @@ const POSITION = headers.POSITION
 function remember(state, bot, suppressed)
 ```
 
+Record or dispatch `"remember-task"` actions in `remember`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `suppressed` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `actions` and `hostActionFn`. May update `state.actions` in place. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `client` and `ltgtype`. |
+| `suppressed` | `dynamic` | — | Whether host delivery of the recorded action is suppressed. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L263)
 
 <a id="function-function-mq3-game-bot-command-matches-sameteam-function-sameteam-state-bot-client-src-mq3-game-bot-command-matches-ml-1053165281"></a>
 ### sameTeam
@@ -1894,14 +1928,16 @@ function remember(state, bot, suppressed)
 function sameTeam(state, bot, client)
 ```
 
+Test `client>=0 and client<len(state.teams) and state.teams[client]==bot.team` as the condition for `sameTeam`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Bot command matches state; accesses `teams`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `team`. |
+| `client` | `dynamic` | — | Operand used to evaluate the returned expression `client>=0 and client<len(state.teams) and state.teams[client]==bot.team`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L195)
 
 <a id="constant-constant-mq3-game-bot-command-matches-st-1fctfgotflag-const-st-1fctfgotflag-headers-st-1fctfgotflag-src-mq3-game-bot-command-matches-ml-2062289989"></a>
 ### ST_1FCTFGOTFLAG
@@ -2161,12 +2197,14 @@ const TIME = headers.TIME
 function variable(match, index)
 ```
 
+Forward `variable` to `mq3.botlib.ai_chat_matches.matchVariable` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `match` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `match` | `dynamic` | — | Parsed match record; accesses `offsets`, `lengths` and `string`. |
+| `index` | `dynamic` | — | Index of the entry to access. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L174)
 
 - [mq3.game.bot_command_matches.Waypoint](Type-mq3-game-bot-command-matches-waypoint-1309084116.md) — struct

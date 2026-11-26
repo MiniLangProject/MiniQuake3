@@ -9,8 +9,10 @@
 struct SkyParms
 ```
 
+Data record for `mq3.renderer.shader_runtime.SkyParms`; groups `outerBox`, `cloudHeight`, `innerBox`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ cloudHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
 
 <a id="field-field-mq3-renderer-shader-runtime-skyparms-innerbox-innerbox-src-mq3-renderer-shader-runtime-ml-1002773285"></a>
 ### innerBox
@@ -32,7 +34,7 @@ innerBox
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)
 
 <a id="field-field-mq3-renderer-shader-runtime-skyparms-outerbox-outerbox-src-mq3-renderer-shader-runtime-ml-811577643"></a>
 ### outerBox
@@ -42,4 +44,4 @@ outerBox
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L27)

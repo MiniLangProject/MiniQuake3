@@ -9,8 +9,10 @@
 struct Client
 ```
 
+`Client` record for server bridge, containing `snapshotEntities`, `reliableCommands`, `reliableSequence`, `reliableAcknowledge` and `lastPacketTime` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ lastPacketTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)
 
 <a id="field-field-mq3-botlib-server-bridge-client-pending-pending-src-mq3-botlib-server-bridge-ml-2026315074"></a>
 ### pending
@@ -32,7 +34,7 @@ pending
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)
 
 <a id="field-field-mq3-botlib-server-bridge-client-reliableacknowledge-reliableacknowledge-src-mq3-botlib-server-bridge-ml-134065066"></a>
 ### reliableAcknowledge
@@ -42,7 +44,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)
 
 <a id="field-field-mq3-botlib-server-bridge-client-reliablecommands-reliablecommands-src-mq3-botlib-server-bridge-ml-1591621534"></a>
 ### reliableCommands
@@ -52,7 +54,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)
 
 <a id="field-field-mq3-botlib-server-bridge-client-reliablesequence-reliablesequence-src-mq3-botlib-server-bridge-ml-1366169760"></a>
 ### reliableSequence
@@ -62,7 +64,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)
 
 <a id="field-field-mq3-botlib-server-bridge-client-snapshotentities-snapshotentities-src-mq3-botlib-server-bridge-ml-416007980"></a>
 ### snapshotEntities
@@ -72,7 +74,7 @@ snapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)
 
 <a id="field-field-mq3-botlib-server-bridge-client-usercommand-usercommand-src-mq3-botlib-server-bridge-ml-1391108046"></a>
 ### userCommand
@@ -82,4 +84,4 @@ userCommand
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L19)

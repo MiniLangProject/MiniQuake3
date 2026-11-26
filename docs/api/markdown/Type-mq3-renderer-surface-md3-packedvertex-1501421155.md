@@ -9,8 +9,10 @@
 struct PackedVertex
 ```
 
+Data record for `mq3.renderer.surface_md3.PackedVertex`; groups `xyz`, `packedNormal`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ packedNormal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)
 
 <a id="field-field-mq3-renderer-surface-md3-packedvertex-xyz-xyz-src-mq3-renderer-surface-md3-ml-263249819"></a>
 ### xyz
@@ -32,4 +34,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_md3.ml#L16)

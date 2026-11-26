@@ -31,12 +31,14 @@ Reachable from entry: **yes**
 function advertisedChecksums(text)
 ```
 
+Calls `mq3.qcommon.command_buffer.create`, `mq3.qcommon.command_buffer.tokenizeString`, `mq3.qcommon.command_buffer.argc` and additional helpers from remote pure `advertisedChecksums`. The final path returns `checksums`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `text` | `dynamic` | — |  |
+| `text` | `dynamic` | — | Text consumed or emitted by `advertisedChecksums` in the remote pure path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L27)
 
 <a id="function-function-mq3-client-remote-pure-checksumforentry-function-checksumforentry-archive-packages-name-src-mq3-client-remote-pure-ml-383097346"></a>
 ### checksumForEntry
@@ -45,14 +47,16 @@ function advertisedChecksums(text)
 function checksumForEntry(archive, packages, name)
 ```
 
+Calls `mq3.format.pk3.findEntry` from remote pure `checksumForEntry`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `packages` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. Record read through `archive.path`. |
+| `packages` | `dynamic` | — | Value used by `for each candidate in packages`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding remote pure resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L46)
 
 <a id="constant-constant-mq3-client-remote-pure-max-pure-packages-const-max-pure-packages-128-src-mq3-client-remote-pure-ml-1719307360"></a>
 ### MAX_PURE_PACKAGES
@@ -73,13 +77,15 @@ const MAX_PURE_PACKAGES = 128
 function verify(baseDirectory, systemInfo, checksumFeed, serverId, map)
 ```
 
+Calls `mq3.client.remote_pure.advertisedChecksums`, `mq3.shared.info.value`, `std.fs.listDir` and additional helpers from remote pure `verify`. The final path returns `Verification(archive,builder.toString())`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `baseDirectory` | `dynamic` | — |  |
-| `systemInfo` | `dynamic` | — |  |
-| `checksumFeed` | `dynamic` | — |  |
-| `serverId` | `dynamic` | — |  |
-| `map` | `dynamic` | — |  |
+| `baseDirectory` | `dynamic` | — | Value used by `if baseDirectory=="" then return error(7826,"This connection needs a local baseq3 directory for pure PK3 verification") end if`. |
+| `systemInfo` | `dynamic` | — | Value used by `loaded=advertisedChecksums(pureInfo.value(systemInfo,"sv_paks"))`. |
+| `checksumFeed` | `dynamic` | — | Value used by `candidates.set(checksum,Package(archive,pureMd4.blockChecksumKey(header,checksumFeed)))`. |
+| `serverId` | `dynamic` | — | Value used by `builder.append(str(serverId))`. |
+| `map` | `dynamic` | — | map record passed to the remote pure helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L61)

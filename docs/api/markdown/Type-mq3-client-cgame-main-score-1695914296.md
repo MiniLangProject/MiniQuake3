@@ -9,8 +9,10 @@
 struct Score
 ```
 
+Stores client game main score record, including `client`, `team`, `score`, `time`, `ping`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L58)
 
 ## Members
 
@@ -22,7 +24,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L58)
 
 <a id="field-field-mq3-client-cgame-main-score-ping-ping-src-mq3-client-cgame-main-ml-564003419"></a>
 ### ping
@@ -32,7 +34,7 @@ ping
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L58)
 
 <a id="field-field-mq3-client-cgame-main-score-score-score-src-mq3-client-cgame-main-ml-7550343"></a>
 ### score
@@ -42,7 +44,7 @@ score
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L58)
 
 <a id="field-field-mq3-client-cgame-main-score-team-team-src-mq3-client-cgame-main-ml-1875830637"></a>
 ### team
@@ -52,7 +54,7 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L58)
 
 <a id="field-field-mq3-client-cgame-main-score-time-time-src-mq3-client-cgame-main-ml-1672034053"></a>
 ### time
@@ -62,4 +64,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L58)

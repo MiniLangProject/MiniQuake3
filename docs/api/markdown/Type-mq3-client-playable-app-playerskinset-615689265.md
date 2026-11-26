@@ -9,8 +9,10 @@
 struct PlayerSkinSet
 ```
 
+Stores playable app player skin set record, including `lower`, `upper`, `head`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
 
 ## Members
 
@@ -22,7 +24,7 @@ head
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
 
 <a id="field-field-mq3-client-playable-app-playerskinset-lower-lower-src-mq3-client-playable-app-ml-1836989385"></a>
 ### lower
@@ -32,7 +34,7 @@ lower
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)
 
 <a id="field-field-mq3-client-playable-app-playerskinset-upper-upper-src-mq3-client-playable-app-ml-362546693"></a>
 ### upper
@@ -42,4 +44,4 @@ upper
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L96)

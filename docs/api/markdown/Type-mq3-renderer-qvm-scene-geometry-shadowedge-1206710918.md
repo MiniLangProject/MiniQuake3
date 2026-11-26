@@ -9,8 +9,10 @@
 struct ShadowEdge
 ```
 
+Data record for `mq3.renderer.qvm_scene_geometry.ShadowEdge`; groups `i2`, `facing`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L41)
 
 ## Members
 
@@ -22,7 +24,7 @@ facing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L41)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-shadowedge-i2-i2-src-mq3-renderer-qvm-scene-geometry-ml-405568574"></a>
 ### i2
@@ -32,4 +34,4 @@ i2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L41)

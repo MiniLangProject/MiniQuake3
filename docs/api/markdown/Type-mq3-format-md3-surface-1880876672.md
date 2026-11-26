@@ -9,8 +9,10 @@
 struct Surface
 ```
 
+Surface record for format.md3, containing `name`, `shaders`, `mesh`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ mesh
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L33)
 
 <a id="field-field-mq3-format-md3-surface-name-name-src-mq3-format-md3-ml-1673699034"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L33)
 
 <a id="field-field-mq3-format-md3-surface-shaders-shaders-src-mq3-format-md3-ml-64446152"></a>
 ### shaders
@@ -42,4 +44,4 @@ shaders
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L33)

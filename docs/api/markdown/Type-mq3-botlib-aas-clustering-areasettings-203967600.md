@@ -9,8 +9,10 @@
 struct AreaSettings
 ```
 
+`AreaSettings` record for aas clustering, containing `contents`, `areaFlags`, `presenceType`, `cluster` and `clusterAreaNum` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 ## Members
 
@@ -22,7 +24,7 @@ areaFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-areasettings-cluster-cluster-src-mq3-botlib-aas-clustering-ml-217800913"></a>
 ### cluster
@@ -32,7 +34,7 @@ cluster
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-areasettings-clusterareanum-clusterareanum-src-mq3-botlib-aas-clustering-ml-591387507"></a>
 ### clusterAreaNum
@@ -42,7 +44,7 @@ clusterAreaNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-areasettings-contents-contents-src-mq3-botlib-aas-clustering-ml-947801281"></a>
 ### contents
@@ -52,7 +54,7 @@ contents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-areasettings-firstreachablearea-firstreachablearea-src-mq3-botlib-aas-clustering-ml-1395572209"></a>
 ### firstReachableArea
@@ -62,7 +64,7 @@ firstReachableArea
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-areasettings-numreachableareas-numreachableareas-src-mq3-botlib-aas-clustering-ml-1817660625"></a>
 ### numReachableAreas
@@ -72,7 +74,7 @@ numReachableAreas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-areasettings-presencetype-presencetype-src-mq3-botlib-aas-clustering-ml-1281083411"></a>
 ### presenceType
@@ -82,4 +84,4 @@ presenceType
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)

@@ -19,14 +19,16 @@ Reachable from entry: **yes**
 function build(entries, listenerOrigin, listenerAxis)
 ```
 
+Group active loop sounds by matching source while accumulating their spatialized channel volumes.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entries` | `dynamic` | — |  |
-| `listenerOrigin` | `dynamic` | — |  |
-| `listenerAxis` | `dynamic` | — |  |
+| `entries` | `dynamic` | — | Entries used in `len(entries)` and `entries[index]`. |
+| `listenerOrigin` | `dynamic` | — | Listener origin passed as `listenerOrigin` to `mq3.audio.snd_spatialize.spatialize`. |
+| `listenerAxis` | `dynamic` | — | Listener axis passed as `listenerAxis` to `mq3.audio.snd_spatialize.spatialize`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L18)
 
 - [mq3.audio.snd_loop_channels.Entry](Type-mq3-audio-snd-loop-channels-entry-1333255851.md) — struct
 - [mq3.audio.snd_loop_channels.Group](Type-mq3-audio-snd-loop-channels-group-732355124.md) — struct

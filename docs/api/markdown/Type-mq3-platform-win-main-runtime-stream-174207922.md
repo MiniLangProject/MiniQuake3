@@ -9,8 +9,10 @@
 struct Stream
 ```
 
+Data record for `mq3.platform.win_main_runtime.Stream`; groups `file`, `data`, `position`, `active`, `readFn`, `seekFn`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-context-context-src-mq3-platform-win-main-runtime-ml-1517494677"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-data-data-src-mq3-platform-win-main-runtime-ml-940222313"></a>
 ### data
@@ -42,7 +44,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-file-file-src-mq3-platform-win-main-runtime-ml-371357573"></a>
 ### file
@@ -52,7 +54,7 @@ file
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-position-position-src-mq3-platform-win-main-runtime-ml-270252627"></a>
 ### position
@@ -62,7 +64,7 @@ position
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-readfn-readfn-src-mq3-platform-win-main-runtime-ml-983745133"></a>
 ### readFn
@@ -72,7 +74,7 @@ readFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)
 
 <a id="field-field-mq3-platform-win-main-runtime-stream-seekfn-seekfn-src-mq3-platform-win-main-runtime-ml-1612830705"></a>
 ### seekFn
@@ -82,4 +84,4 @@ seekFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L94)

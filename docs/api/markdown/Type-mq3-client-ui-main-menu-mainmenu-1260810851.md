@@ -9,8 +9,10 @@
 struct MainMenu
 ```
 
+Stores UI main menu main menu record, including `fullscreen`, `wrapAround`, `showlogo`, `items`, `assets`, `cvarWrites` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-assets-assets-src-mq3-client-ui-main-menu-ml-1952647703"></a>
 ### assets
@@ -32,7 +34,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-commands-commands-src-mq3-client-ui-main-menu-ml-1981059101"></a>
 ### commands
@@ -42,7 +44,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-cvarwrites-cvarwrites-src-mq3-client-ui-main-menu-ml-1136936325"></a>
 ### cvarWrites
@@ -52,7 +54,7 @@ cvarWrites
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-errormessage-errormessage-src-mq3-client-ui-main-menu-ml-1404732899"></a>
 ### errorMessage
@@ -62,7 +64,7 @@ errorMessage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-fullscreen-fullscreen-src-mq3-client-ui-main-menu-ml-1624346887"></a>
 ### fullscreen
@@ -72,7 +74,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-items-items-src-mq3-client-ui-main-menu-ml-809051341"></a>
 ### items
@@ -82,7 +84,7 @@ items
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-showlogo-showlogo-src-mq3-client-ui-main-menu-ml-1064630205"></a>
 ### showlogo
@@ -92,7 +94,7 @@ showlogo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="field-field-mq3-client-ui-main-menu-mainmenu-wraparound-wraparound-src-mq3-client-ui-main-menu-ml-986934703"></a>
 ### wrapAround
@@ -102,4 +104,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)

@@ -9,8 +9,10 @@
 struct Client
 ```
 
+Client record for server.user_move, containing `state`, `messageAcknowledge`, `reliableAcknowledge`, `reliableCommands`, `deltaMessage`, `pureAuthentic`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ deltaMessage
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L23)
 
 <a id="field-field-mq3-server-user-move-client-frames-frames-src-mq3-server-user-move-ml-1721311730"></a>
 ### frames
@@ -32,7 +34,7 @@ frames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L26)
 
 <a id="field-field-mq3-server-user-move-client-gotcp-gotcp-src-mq3-server-user-move-ml-457287990"></a>
 ### gotCP
@@ -42,7 +44,7 @@ gotCP
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L25)
 
 <a id="field-field-mq3-server-user-move-client-lastusercmd-lastusercmd-src-mq3-server-user-move-ml-1977452786"></a>
 ### lastUsercmd
@@ -52,7 +54,7 @@ lastUsercmd
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L27)
 
 <a id="field-field-mq3-server-user-move-client-messageacknowledge-messageacknowledge-src-mq3-server-user-move-ml-1151283208"></a>
 ### messageAcknowledge
@@ -62,7 +64,7 @@ messageAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L20)
 
 <a id="field-field-mq3-server-user-move-client-pureauthentic-pureauthentic-src-mq3-server-user-move-ml-303153218"></a>
 ### pureAuthentic
@@ -72,7 +74,7 @@ pureAuthentic
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L24)
 
 <a id="field-field-mq3-server-user-move-client-reliableacknowledge-reliableacknowledge-src-mq3-server-user-move-ml-1721550922"></a>
 ### reliableAcknowledge
@@ -82,7 +84,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L21)
 
 <a id="field-field-mq3-server-user-move-client-reliablecommands-reliablecommands-src-mq3-server-user-move-ml-1682578002"></a>
 ### reliableCommands
@@ -92,7 +94,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L22)
 
 <a id="field-field-mq3-server-user-move-client-state-state-src-mq3-server-user-move-ml-775778334"></a>
 ### state
@@ -102,4 +104,4 @@ state
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/user_move.ml#L19)

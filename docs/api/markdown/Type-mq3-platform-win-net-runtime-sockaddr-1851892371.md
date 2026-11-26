@@ -9,8 +9,10 @@
 struct SockAddr
 ```
 
+Data record for `mq3.platform.win_net_runtime.SockAddr`; groups `family`, `address`, `port`, `ipx`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ address
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
 
 <a id="field-field-mq3-platform-win-net-runtime-sockaddr-family-family-src-mq3-platform-win-net-runtime-ml-1978019610"></a>
 ### family
@@ -32,7 +34,7 @@ family
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
 
 <a id="field-field-mq3-platform-win-net-runtime-sockaddr-ipx-ipx-src-mq3-platform-win-net-runtime-ml-511790982"></a>
 ### ipx
@@ -42,7 +44,7 @@ ipx
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)
 
 <a id="field-field-mq3-platform-win-net-runtime-sockaddr-port-port-src-mq3-platform-win-net-runtime-ml-1483195080"></a>
 ### port
@@ -52,4 +54,4 @@ port
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L22)

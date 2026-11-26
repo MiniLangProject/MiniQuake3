@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+`Runtime` record for l precomp, containing `registry`, `host`, `baseFolder`, `globalDefines` and `actions` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)
 
 <a id="field-field-mq3-botlib-l-precomp-runtime-basefolder-basefolder-src-mq3-botlib-l-precomp-ml-1231593377"></a>
 ### baseFolder
@@ -32,7 +34,7 @@ baseFolder
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)
 
 <a id="field-field-mq3-botlib-l-precomp-runtime-globaldefines-globaldefines-src-mq3-botlib-l-precomp-ml-1677103807"></a>
 ### globalDefines
@@ -42,7 +44,7 @@ globalDefines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)
 
 <a id="field-field-mq3-botlib-l-precomp-runtime-host-host-src-mq3-botlib-l-precomp-ml-505171535"></a>
 ### host
@@ -52,7 +54,7 @@ host
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)
 
 <a id="field-field-mq3-botlib-l-precomp-runtime-registry-registry-src-mq3-botlib-l-precomp-ml-716463121"></a>
 ### registry
@@ -62,7 +64,7 @@ registry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)
 
 <a id="field-field-mq3-botlib-l-precomp-runtime-retailactive-retailactive-src-mq3-botlib-l-precomp-ml-1518787653"></a>
 ### retailActive
@@ -72,7 +74,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)
 
 <a id="field-field-mq3-botlib-l-precomp-runtime-tokenheapinitialized-tokenheapinitialized-src-mq3-botlib-l-precomp-ml-1281043989"></a>
 ### tokenHeapInitialized
@@ -82,4 +84,4 @@ tokenHeapInitialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L49)

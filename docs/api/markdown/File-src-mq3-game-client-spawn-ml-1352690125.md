@@ -37,15 +37,17 @@ Reachable from entry: **no**
 function clearTransient(client, savedPing, persistant, eventSequence)
 ```
 
+Update `client.ps`, `client.ps.ping`, `client.ps.persistant[index]` and `client.ps.eventSequence` and related state during `clearTransient`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `client` | `dynamic` | — |  |
-| `savedPing` | `dynamic` | — |  |
-| `persistant` | `dynamic` | — |  |
-| `eventSequence` | `dynamic` | — |  |
+| `client` | `dynamic` | — | Client state; accesses `ps`, `readyToExit`, `noclip`, `lastCmdTime` and `buttons` and related fields. May update `client.ps`, `client.ps.ping` and `client.ps.persistant[index]` and additional fields in place. |
+| `savedPing` | `dynamic` | — | Value used by `clearTransient` in `client.ps.ping = savedPing`. |
+| `persistant` | `dynamic` | — | Array or byte sequence accessed at `index`. Entries are written in place. |
+| `eventSequence` | `dynamic` | — | Value used by `clearTransient` in `client.ps.eventSequence = eventSequence`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L50)
 
 <a id="function-function-mq3-game-client-spawn-clientbegin-function-clientbegin-level-clientnum-src-mq3-game-client-spawn-ml-1005726709"></a>
 ### clientBegin
@@ -54,13 +56,15 @@ function clearTransient(client, savedPing, persistant, eventSequence)
 function clientBegin(level, clientNum)
 ```
 
+Use `level.serverCommandFn` and `level.gameLogFn` to perform `clientBegin`. Return paths include `scores.calculateRanks(level)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`, `spawner`, `playerDieFn`, `entities` and `time` and related fields. |
+| `clientNum` | `dynamic` | — | Client slot number. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L185)
 
 <a id="constant-constant-mq3-game-client-spawn-contents-body-const-contents-body-headers-contents-body-src-mq3-game-client-spawn-ml-1636033196"></a>
 ### CONTENTS_BODY
@@ -139,13 +143,15 @@ const FL_NO_HUMANS = 16384
 function infoValue(info, key)
 ```
 
+Forward `infoValue` to `mq3.shared.info.value` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `info` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `info` | `dynamic` | — | Text to parse, format or deliver. |
+| `key` | `dynamic` | — | Lookup key or field name used by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L41)
 
 <a id="constant-constant-mq3-game-client-spawn-mask-playersolid-const-mask-playersolid-33619969-src-mq3-game-client-spawn-ml-1245615391"></a>
 ### MASK_PLAYERSOLID
@@ -184,13 +190,15 @@ const PMF_TIME_KNOCKBACK = 64
 function respawn(level, ent)
 ```
 
+Use `level.clientSpawnFn` to perform `respawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clientSpawnFn` and `playerDieFn`. |
+| `ent` | `dynamic` | — | Game entity; accesses `client` and `s`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L71)
 
 <a id="function-function-mq3-game-client-spawn-selectpoint-function-selectpoint-level-ent-client-origin-angles-src-mq3-game-client-spawn-ml-2051663460"></a>
 ### selectPoint
@@ -199,16 +207,18 @@ function respawn(level, ent)
 function selectPoint(level, ent, client, origin, angles)
 ```
 
+Set `client.initialSpawn` to `true` in `mq3.game.client_spawn.selectPoint`. Return paths include `spot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `client` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `spawner`. |
+| `ent` | `dynamic` | — | Game entity; accesses `r`. |
+| `client` | `dynamic` | — | Client state; accesses `team`, `teamStateState`, `initialSpawn`, `localClient` and `ps`. May update `client.initialSpawn` in place. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `angles` | `dynamic` | — | Pitch, yaw and roll angles in degrees. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L88)
 
 <a id="function-function-mq3-game-client-spawn-spawn-function-spawn-level-ent-diefn-src-mq3-game-client-spawn-ml-48002753"></a>
 ### spawn
@@ -217,14 +227,16 @@ function selectPoint(level, ent, client, origin, angles)
 function spawn(level, ent, dieFn)
 ```
 
+Update `level.playerDieFn`, `level.respawnFn`, `level.clientBeginFn` and `ent.s.eFlags` and related state during `spawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
-| `ent` | `dynamic` | — |  |
-| `dieFn` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `clients`, `spawner`, `playerDieFn`, `respawnFn` and `clientBeginFn` and related fields. May update `level.playerDieFn`, `level.respawnFn` and `level.clientBeginFn` in place. |
+| `ent` | `dynamic` | — | Game entity; accesses `slot`, `client`, `s`, `takedamage` and `inuse` and related fields. May update `ent.s.eFlags`, `ent.s.groundEntityNum` and `ent.client` and additional fields in place. |
+| `dieFn` | `dynamic` | — | Value used by `spawn` in `level.playerDieFn = dieFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_spawn.ml#L110)
 
 <a id="constant-constant-mq3-game-client-spawn-svf-bot-const-svf-bot-8-src-mq3-game-client-spawn-ml-1971359301"></a>
 ### SVF_BOT

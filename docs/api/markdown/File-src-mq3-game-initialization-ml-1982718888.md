@@ -19,9 +19,11 @@ Reachable from entry: **no**
 function findTeams(level)
 ```
 
+Use `level.gamePrintFn` to perform `findTeams`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `level` | `dynamic` | — |  |
+| `level` | `dynamic` | — | Game-level state; accesses `num_entities`, `entities` and `gamePrintFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/initialization.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/initialization.ml#L9)

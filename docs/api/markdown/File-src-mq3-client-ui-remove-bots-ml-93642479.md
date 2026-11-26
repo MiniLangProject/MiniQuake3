@@ -105,11 +105,11 @@ UI_RemoveBotsMenu_BackEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.menuEvents`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L67)
 
 <a id="function-function-mq3-client-ui-remove-bots-botevent-function-botevent-state-id-event-src-mq3-client-ui-remove-bots-ml-967789322"></a>
 ### botEvent
@@ -122,12 +122,12 @@ UI_RemoveBotsMenu_BotEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.selectedBotNum`. |
+| `id` | `dynamic` | — | Value used by `selected=id-ID_BOTNAME0`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L63)
 
 <a id="function-function-mq3-client-ui-remove-bots-cache-function-cache-state-src-mq3-client-ui-remove-bots-ml-1387902013"></a>
 ### cache
@@ -140,10 +140,10 @@ UI_RemoveBots_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L78)
 
 <a id="function-function-mq3-client-ui-remove-bots-clean-function-clean-value-src-mq3-client-ui-remove-bots-ml-1765712615"></a>
 ### clean
@@ -152,12 +152,14 @@ UI_RemoveBots_Cache
 function clean(value)
 ```
 
+Evaluates UI remove bots `clean` and returns `result` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence read at `value[at]`, `value[at+1]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L41)
 
 <a id="function-function-mq3-client-ui-remove-bots-create-function-create-retailactive-src-mq3-client-ui-remove-bots-ml-1704023151"></a>
 ### create
@@ -166,12 +168,14 @@ function clean(value)
 function create(retailActive)
 ```
 
+Creates a `mq3.client.ui_remove_bots.State` record. Assigns `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `retailActive` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L31)
 
 <a id="function-function-mq3-client-ui-remove-bots-deleteevent-function-deleteevent-state-event-src-mq3-client-ui-remove-bots-ml-482823747"></a>
 ### deleteEvent
@@ -184,11 +188,11 @@ UI_RemoveBotsMenu_DeleteEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.numBots`, `state.baseBotNum`, `state.selectedBotNum`, `state.botClientNums`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L58)
 
 <a id="function-function-mq3-client-ui-remove-bots-downevent-function-downevent-state-event-src-mq3-client-ui-remove-bots-ml-433972905"></a>
 ### downEvent
@@ -197,13 +201,15 @@ UI_RemoveBotsMenu_DeleteEvent
 function downEvent(state, event)
 ```
 
+Updates `state.baseBotNum` during UI remove bots `downEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.baseBotNum`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L75)
 
 <a id="function-function-mq3-client-ui-remove-bots-emit-function-emit-state-kind-name-text-value-src-mq3-client-ui-remove-bots-ml-839624522"></a>
 ### emit
@@ -212,16 +218,18 @@ function downEvent(state, event)
 function emit(state, kind, name, text, value)
 ```
 
+Appends a UI remove bots action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.actions`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI remove bots resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI remove bots path. |
+| `value` | `dynamic` | — | Value used by `item=Action("ui-remove-bots",kind,name,text,value,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L38)
 
 <a id="function-function-mq3-client-ui-remove-bots-getbots-function-getbots-state-serverinfo-playerinfos-src-mq3-client-ui-remove-bots-ml-1889433770"></a>
 ### getBots
@@ -234,12 +242,12 @@ UI_RemoveBotsMenu_GetBots
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverInfo` | `dynamic` | — |  |
-| `playerInfos` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.playerInfos`, `state.botClientNums`, `state.numBots`. |
+| `serverInfo` | `dynamic` | — | Value used by `maxClients=numbers.atoi(info.value(serverInfo,"sv_maxclients"))`. |
+| `playerInfos` | `dynamic` | — | Sequence read at `playerInfos[n]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L47)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-id-back-const-id-back-13-src-mq3-client-ui-remove-bots-ml-354287039"></a>
 ### ID_BACK
@@ -302,12 +310,12 @@ UI_RemoveBotsMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverInfo` | `dynamic` | — |  |
-| `playerInfos` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.actions`, `state.menuEvents`, `state.baseBotNum`, `state.selectedBotNum` and additional values. |
+| `serverInfo` | `dynamic` | — | Value used by `getBots(state,serverInfo,playerInfos)`. |
+| `playerInfos` | `dynamic` | — | Value used by `getBots(state,serverInfo,playerInfos)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L83)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-qm-activated-const-qm-activated-3-src-mq3-client-ui-remove-bots-ml-1405694944"></a>
 ### QM_ACTIVATED
@@ -330,12 +338,12 @@ UI_RemoveBotsMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverInfo` | `dynamic` | — |  |
-| `playerInfos` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.pushed`, `state.menuEvents`. |
+| `serverInfo` | `dynamic` | — | Value used by `init(state,serverInfo,playerInfos)`. |
+| `playerInfos` | `dynamic` | — | Value used by `init(state,serverInfo,playerInfos)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L88)
 
 <a id="function-function-mq3-client-ui-remove-bots-setbotnames-function-setbotnames-state-src-mq3-client-ui-remove-bots-ml-914433547"></a>
 ### setBotNames
@@ -348,10 +356,10 @@ UI_RemoveBotsMenu_SetBotNames
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.botnames`, `state.botnames[n]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L52)
 
 - [mq3.client.ui_remove_bots.State](Type-mq3-client-ui-remove-bots-state-1890596504.md) — struct
 <a id="function-function-mq3-client-ui-remove-bots-upevent-function-upevent-state-event-src-mq3-client-ui-remove-bots-ml-59274575"></a>
@@ -365,8 +373,8 @@ UI_RemoveBotsMenu_UpEvent / UI_RemoveBotsMenu_DownEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI remove bots record/storage; this routine assigns `state.baseBotNum`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L71)

@@ -9,8 +9,10 @@
 struct ManagedWinding
 ```
 
+ManagedWinding record for collision.winding, containing `points`, `capacity`, `freed`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L19)
 
 ## Members
 
@@ -22,7 +24,7 @@ capacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L19)
 
 <a id="field-field-mq3-collision-winding-managedwinding-freed-freed-src-mq3-collision-winding-ml-1600244428"></a>
 ### freed
@@ -32,7 +34,7 @@ freed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L19)
 
 <a id="field-field-mq3-collision-winding-managedwinding-points-points-src-mq3-collision-winding-ml-71190350"></a>
 ### points
@@ -42,4 +44,4 @@ points
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L19)

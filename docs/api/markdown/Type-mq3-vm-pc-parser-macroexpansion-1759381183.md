@@ -9,8 +9,10 @@
 struct MacroExpansion
 ```
 
+MacroExpansion record for vm.pc_parser, containing `valid`, `invoked`, `tokens`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L36)
 
 ## Members
 
@@ -22,7 +24,7 @@ invoked
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L36)
 
 <a id="field-field-mq3-vm-pc-parser-macroexpansion-tokens-tokens-src-mq3-vm-pc-parser-ml-682897804"></a>
 ### tokens
@@ -32,7 +34,7 @@ tokens
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L36)
 
 <a id="field-field-mq3-vm-pc-parser-macroexpansion-valid-valid-src-mq3-vm-pc-parser-ml-1158855120"></a>
 ### valid
@@ -42,4 +44,4 @@ valid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L36)

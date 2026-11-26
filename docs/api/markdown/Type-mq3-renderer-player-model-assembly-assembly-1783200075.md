@@ -9,8 +9,10 @@
 struct Assembly
 ```
 
+Data record for `mq3.renderer.player_model_assembly.Assembly`; groups `lower`, `upper`, `head`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ head
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L24)
 
 <a id="field-field-mq3-renderer-player-model-assembly-assembly-lower-lower-src-mq3-renderer-player-model-assembly-ml-294313305"></a>
 ### lower
@@ -32,7 +34,7 @@ lower
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L24)
 
 <a id="field-field-mq3-renderer-player-model-assembly-assembly-upper-upper-src-mq3-renderer-player-model-assembly-ml-1951733477"></a>
 ### upper
@@ -42,4 +44,4 @@ upper
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L24)

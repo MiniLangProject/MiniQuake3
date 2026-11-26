@@ -41,13 +41,15 @@ const BFL_IDEALVIEWSET = 32
 function chaseNode(services, bot)
 ```
 
+Update `bot.tfl`, `bot.chaseTime`, `bot.checkTime` and `bot.nbgTime` and related state during `chaseNode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `combatServices`, `observerFn`, `grapple`, `mapScriptsFn` and `touchingGoalFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `entitynum`, `eye`, `viewangles` and `lastEnemyAreaNum` and related fields. May update `bot.tfl`, `bot.chaseTime` and `bot.checkTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L179)
 
 <a id="function-function-mq3-game-bot-fight-state-create-function-create-combatservices-src-mq3-game-bot-fight-state-ml-1870303502"></a>
 ### create
@@ -56,12 +58,14 @@ function chaseNode(services, bot)
 function create(combatServices)
 ```
 
+Create a `mq3.game.bot_fight_state.Services` record, initializing `combatServices` from `combatServices`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `combatServices` | `dynamic` | — |  |
+| `combatServices` | `dynamic` | — | Initial value stored in `mq3.game.bot_fight_state.Services.combatServices`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L69)
 
 <a id="function-function-mq3-game-bot-fight-state-enterchase-function-enterchase-services-bot-reason-src-mq3-game-bot-fight-state-ml-1818300369"></a>
 ### enterChase
@@ -70,14 +74,16 @@ function create(combatServices)
 function enterChase(services, bot, reason)
 ```
 
+Set `bot.chaseTime` to `fightCombat.now(services.combatServices)` and `bot.aiNode` to `NODE_CHASE` in `mq3.game.bot_fight_state.enterChase`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `recordNodeFn` and `combatServices`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `chaseTime` and `aiNode`. May update `bot.chaseTime` and `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L98)
 
 <a id="function-function-mq3-game-bot-fight-state-enterfight-function-enterfight-services-bot-reason-src-mq3-game-bot-fight-state-ml-2102420633"></a>
 ### enterFight
@@ -86,14 +92,16 @@ function enterChase(services, bot, reason)
 function enterFight(services, bot, reason)
 ```
 
+Set `bot.aiNode` to `NODE_FIGHT` in `mq3.game.bot_fight_state.enterFight`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `recordNodeFn` and `resetLastAvoidFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `ms` and `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L84)
 
 <a id="function-function-mq3-game-bot-fight-state-enternbg-function-enternbg-services-bot-reason-src-mq3-game-bot-fight-state-ml-107429025"></a>
 ### enterNbg
@@ -102,14 +110,16 @@ function enterFight(services, bot, reason)
 function enterNbg(services, bot, reason)
 ```
 
+Set `bot.aiNode` to `NODE_NBG` in `mq3.game.bot_fight_state.enterNbg`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `recordNodeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L112)
 
 <a id="function-function-mq3-game-bot-fight-state-enterretreat-function-enterretreat-services-bot-reason-src-mq3-game-bot-fight-state-ml-100480993"></a>
 ### enterRetreat
@@ -118,14 +128,16 @@ function enterNbg(services, bot, reason)
 function enterRetreat(services, bot, reason)
 ```
 
+Set `bot.aiNode` to `NODE_RETREAT` in `mq3.game.bot_fight_state.enterRetreat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `recordNodeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L105)
 
 <a id="function-function-mq3-game-bot-fight-state-entersuicidalfight-function-entersuicidalfight-services-bot-reason-src-mq3-game-bot-fight-state-ml-1678200785"></a>
 ### enterSuicidalFight
@@ -134,14 +146,16 @@ function enterRetreat(services, bot, reason)
 function enterSuicidalFight(services, bot, reason)
 ```
 
+Set `bot.combatFlags` to `bot.combatFlags|BFL_FIGHTSUICIDAL` in `mq3.game.bot_fight_state.enterSuicidalFight`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `recordNodeFn` and `resetLastAvoidFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `combatFlags`. May update `bot.combatFlags` in place. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L91)
 
 <a id="function-function-mq3-game-bot-fight-state-fightnode-function-fightnode-services-bot-src-mq3-game-bot-fight-state-ml-873797165"></a>
 ### fightNode
@@ -150,13 +164,15 @@ function enterSuicidalFight(services, bot, reason)
 function fightNode(services, bot)
 ```
 
+Update `bot.enemyDeathTime`, `bot.standTime`, `bot.ltgTime` and `bot.lastEnemyOrigin` and related state during `fightNode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `combatServices`, `observerFn`, `chatEnemySuicideFn`, `chatKillFn` and `chatTimeFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `enemyDeathTime`, `enemySuicide`, `lastKilledPlayer` and `standTime` and related fields. May update `bot.enemyDeathTime`, `bot.standTime` and `bot.ltgTime` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L140)
 
 <a id="constant-constant-mq3-game-bot-fight-state-moveresult-movementview-const-moveresult-movementview-1-src-mq3-game-bot-fight-state-ml-125712126"></a>
 ### MOVERESULT_MOVEMENTVIEW
@@ -205,13 +221,15 @@ const MOVERESULT_SWIMVIEW = 2
 function nbgNode(services, bot)
 ```
 
+Update `bot.tfl`, `bot.enemyVisibleTime`, `bot.lastEnemyOrigin` and `bot.lastEnemyAreaNum` and related state during `nbgNode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `combatServices`, `observerFn`, `grapple`, `mapScriptsFn` and `missionEnemyTargetFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `tfl`, `entitynum`, `eye` and `viewangles` and related fields. May update `bot.tfl`, `bot.enemyVisibleTime` and `bot.lastEnemyOrigin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L233)
 
 <a id="constant-constant-mq3-game-bot-fight-state-node-chase-const-node-chase-2-src-mq3-game-bot-fight-state-ml-1733232747"></a>
 ### NODE_CHASE
@@ -330,13 +348,15 @@ const PERS_HITS = 1
 function retreatNode(services, bot)
 ```
 
+Update `bot.tfl`, `bot.enemyVisibleTime`, `bot.lastEnemyOrigin` and `bot.lastEnemyAreaNum` and related state during `retreatNode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `combatServices`, `observerFn`, `grapple`, `mapScriptsFn` and `updateBattleFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `enemy`, `tfl`, `gs`, `entitynum` and `eye` and related fields. May update `bot.tfl`, `bot.enemyVisibleTime` and `bot.lastEnemyOrigin` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L208)
 
 <a id="function-function-mq3-game-bot-fight-state-runnode-function-runnode-services-bot-src-mq3-game-bot-fight-state-ml-77315663"></a>
 ### runNode
@@ -345,13 +365,15 @@ function retreatNode(services, bot)
 function runNode(services, bot)
 ```
 
+Apply `mq3.game.bot_fight_state.fightNode`, `mq3.game.bot_fight_state.chaseNode` and `mq3.game.bot_fight_state.retreatNode` while evaluating `runNode`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `combatServices`, `observerFn`, `chatEnemySuicideFn`, `chatKillFn` and `chatTimeFn` and related fields. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L252)
 
 - [mq3.game.bot_fight_state.Services](Type-mq3-game-bot-fight-state-services-2017905966.md) — struct
 <a id="function-function-mq3-game-bot-fight-state-setmovementview-function-setmovementview-services-bot-movement-goal-allowaim-copyviewset-halveroll-src-mq3-game-bot-fight-state-ml-433827964"></a>
@@ -361,18 +383,20 @@ function runNode(services, bot)
 function setMovementView(services, bot, movement, goal, allowAim, copyViewSet, halveRoll)
 ```
 
+Update `bot.idealViewangles`, `bot.idealViewangles[2]` and `bot.weaponnum` during `setMovementView`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `movement` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
-| `allowAim` | `dynamic` | — |  |
-| `copyViewSet` | `dynamic` | — |  |
-| `halveRoll` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `combatServices` and `movementViewTargetFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `idealViewangles`, `combatFlags`, `ms`, `tfl` and `origin` and related fields. May update `bot.idealViewangles`, `bot.idealViewangles[2]` and `bot.weaponnum` in place. |
+| `movement` | `dynamic` | — | Movement record; accesses `flags`, `idealViewangles`, `movedir` and `weapon`. |
+| `goal` | `dynamic` | — | Value passed as argument 3 to `services.movementViewTargetFn`. |
+| `allowAim` | `dynamic` | — | Value used by `setMovementView` in `if allowAim then fightCombat.aimAtEnemy(services.combatServices,bot)`. |
+| `copyViewSet` | `dynamic` | — | Value used by `setMovementView` in `fixed=(movement.flags&(MOVERESULT_MOVEMENTVIEW\|MOVERESULT_SWIMVIEW))!=0 or (copyViewSet and (movement.flags&MOVE...`. |
+| `halveRoll` | `dynamic` | — | Value used by `setMovementView` in `if halveRoll then bot.idealViewangles[2]=n.fmul(bot.idealViewangles[2],0.5) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L123)
 
 <a id="constant-constant-mq3-game-bot-fight-state-tfl-default-const-tfl-default-18616254-src-mq3-game-bot-fight-state-ml-230567952"></a>
 ### TFL_DEFAULT
@@ -431,12 +455,14 @@ const TFL_SLIME = 2097152
 function transition(services, bot, node, reason)
 ```
 
+Set `bot.aiNode` to `node` in `mq3.game.bot_fight_state.transition`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `bot` | `dynamic` | — |  |
-| `node` | `dynamic` | — |  |
-| `reason` | `dynamic` | — |  |
+| `services` | `dynamic` | — | Host service callbacks; accesses `enterNodeFn`. |
+| `bot` | `dynamic` | — | Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place. |
+| `node` | `dynamic` | — | Value passed as argument 3 to `services.enterNodeFn`. |
+| `reason` | `dynamic` | — | Reason text recorded with the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_fight_state.ml#L77)

@@ -15,8 +15,10 @@ Reachable from entry: **yes**
 function aas_altroutegoal_tFields()
 ```
 
+Return a new array `["origin","areanum","starttraveltime","goaltraveltime","extratraveltime"]` for `aas_altroutegoal_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L173)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L184)
 
 <a id="function-function-mq3-botlib-public-headers-aas-areainfo-tfields-function-aas-areainfo-tfields-src-mq3-botlib-public-headers-ml-880371468"></a>
 ### aas_areainfo_tFields
@@ -25,8 +27,10 @@ function aas_altroutegoal_tFields()
 function aas_areainfo_tFields()
 ```
 
+Return a new array `["contents","flags","presencetype","cluster","mins","maxs","center"]` for `aas_areainfo_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L171)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L180)
 
 <a id="function-function-mq3-botlib-public-headers-aas-clientmove-tfields-function-aas-clientmove-tfields-src-mq3-botlib-public-headers-ml-699581376"></a>
 ### aas_clientmove_tFields
@@ -35,8 +39,10 @@ function aas_areainfo_tFields()
 function aas_clientmove_tFields()
 ```
 
+Return a new array `["endpos","endarea","velocity","trace","presencetype","stopevent","endcontents","time","frames"]` for `aas_clientmove_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L172)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L182)
 
 <a id="function-function-mq3-botlib-public-headers-aas-entityinfo-tfields-function-aas-entityinfo-tfields-src-mq3-botlib-public-headers-ml-337602512"></a>
 ### aas_entityinfo_tFields
@@ -45,8 +51,10 @@ function aas_clientmove_tFields()
 function aas_entityinfo_tFields()
 ```
 
+Return the ordered aas entityinfo t fields table for public headers: 23 entries beginning with `"valid"` and `"type"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L170)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L178)
 
 <a id="function-function-mq3-botlib-public-headers-aas-export-tfields-function-aas-export-tfields-src-mq3-botlib-public-headers-ml-220075792"></a>
 ### aas_export_tFields
@@ -55,8 +63,10 @@ function aas_entityinfo_tFields()
 function aas_export_tFields()
 ```
 
+Return the ordered aas export t fields table for public headers: 22 entries beginning with `"AAS_EntityInfo"` and `"AAS_Initialized"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L189)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L216)
 
 <a id="function-function-mq3-botlib-public-headers-aas-predictroute-tfields-function-aas-predictroute-tfields-src-mq3-botlib-public-headers-ml-35507672"></a>
 ### aas_predictroute_tFields
@@ -65,8 +75,10 @@ function aas_export_tFields()
 function aas_predictroute_tFields()
 ```
 
+Return a new array `["endpos","endarea","stopevent","endcontents","endtravelflags","numareas","time"]` for `aas_predictroute_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L174)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L186)
 
 <a id="function-function-mq3-botlib-public-headers-aas-trace-tfields-function-aas-trace-tfields-src-mq3-botlib-public-headers-ml-143144814"></a>
 ### aas_trace_tFields
@@ -75,8 +87,10 @@ function aas_predictroute_tFields()
 function aas_trace_tFields()
 ```
 
+Return a new array `["startsolid","fraction","endpos","ent","lastarea","area","planenum"]` for `aas_trace_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L169)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L176)
 
 <a id="function-function-mq3-botlib-public-headers-abisizes-function-abisizes-src-mq3-botlib-public-headers-ml-1815989364"></a>
 ### abiSizes
@@ -85,8 +99,10 @@ function aas_trace_tFields()
 function abiSizes()
 ```
 
+Return a new array `[4,36,140,52,84,24,36,276,8,328,56,68,52,20,208,552,40,24,84,112,88,88,96,300,536]` for `abiSizes`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L198)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L238)
 
 <a id="constant-constant-mq3-botlib-public-headers-action-affirmative-const-action-affirmative-1048576-src-mq3-botlib-public-headers-ml-1866143986"></a>
 ### ACTION_AFFIRMATIVE
@@ -305,8 +321,10 @@ const ACTION_WALK = 524288
 function ai_export_tFields()
 ```
 
+Return the ordered ai export t fields table for public headers: 75 entries beginning with `"BotLoadCharacter"` and `"BotFreeCharacter"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L191)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L220)
 
 <a id="constant-constant-mq3-botlib-public-headers-altroutegoal-all-const-altroutegoal-all-1-src-mq3-botlib-public-headers-ml-2081789204"></a>
 ### ALTROUTEGOAL_ALL
@@ -505,8 +523,10 @@ const BLERR_WRONGAASFILEVERSION = 6
 function bot_avoidspot_tFields()
 ```
 
+Return a new array `["origin","radius","type"]` for `bot_avoidspot_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L181)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L200)
 
 <a id="function-function-mq3-botlib-public-headers-bot-consolemessage-tfields-function-bot-consolemessage-tfields-src-mq3-botlib-public-headers-ml-332567996"></a>
 ### bot_consolemessage_tFields
@@ -515,8 +535,10 @@ function bot_avoidspot_tFields()
 function bot_consolemessage_tFields()
 ```
 
+Return a new array `["handle","time","type","message","prev","next"]` for `bot_consolemessage_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L175)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L188)
 
 <a id="function-function-mq3-botlib-public-headers-bot-entitystate-tfields-function-bot-entitystate-tfields-src-mq3-botlib-public-headers-ml-1853256480"></a>
 ### bot_entitystate_tFields
@@ -525,8 +547,10 @@ function bot_consolemessage_tFields()
 function bot_entitystate_tFields()
 ```
 
+Return the ordered bot entitystate t fields table for public headers: 18 entries beginning with `"type"` and `"flags"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L187)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L212)
 
 <a id="function-function-mq3-botlib-public-headers-bot-goal-tfields-function-bot-goal-tfields-src-mq3-botlib-public-headers-ml-778823380"></a>
 ### bot_goal_tFields
@@ -535,8 +559,10 @@ function bot_entitystate_tFields()
 function bot_goal_tFields()
 ```
 
+Return a new array `["origin","areanum","mins","maxs","entitynum","number","flags","iteminfo"]` for `bot_goal_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L178)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L194)
 
 <a id="function-function-mq3-botlib-public-headers-bot-initmove-tfields-function-bot-initmove-tfields-src-mq3-botlib-public-headers-ml-548715372"></a>
 ### bot_initmove_tFields
@@ -545,8 +571,10 @@ function bot_goal_tFields()
 function bot_initmove_tFields()
 ```
 
+Return a new array `["origin","velocity","viewoffset","entitynum","client","thinktime","presencetype","viewangles","or_moveflags"]` for `bot_initmove_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L179)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L196)
 
 <a id="function-function-mq3-botlib-public-headers-bot-input-tfields-function-bot-input-tfields-src-mq3-botlib-public-headers-ml-1500996804"></a>
 ### bot_input_tFields
@@ -555,8 +583,10 @@ function bot_initmove_tFields()
 function bot_input_tFields()
 ```
 
+Return a new array `["thinktime","dir","speed","viewangles","actionflags","weapon"]` for `bot_input_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L184)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L206)
 
 <a id="function-function-mq3-botlib-public-headers-bot-match-tfields-function-bot-match-tfields-src-mq3-botlib-public-headers-ml-1076879398"></a>
 ### bot_match_tFields
@@ -565,8 +595,10 @@ function bot_input_tFields()
 function bot_match_tFields()
 ```
 
+Return a new array `["string","type","subtype","variables"]` for `bot_match_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L177)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L192)
 
 <a id="function-function-mq3-botlib-public-headers-bot-matchvariable-tfields-function-bot-matchvariable-tfields-src-mq3-botlib-public-headers-ml-1066377158"></a>
 ### bot_matchvariable_tFields
@@ -575,8 +607,10 @@ function bot_match_tFields()
 function bot_matchvariable_tFields()
 ```
 
+Return a new array `["offset","length"]` for `bot_matchvariable_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L176)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L190)
 
 <a id="function-function-mq3-botlib-public-headers-bot-moveresult-tfields-function-bot-moveresult-tfields-src-mq3-botlib-public-headers-ml-598159292"></a>
 ### bot_moveresult_tFields
@@ -585,8 +619,10 @@ function bot_matchvariable_tFields()
 function bot_moveresult_tFields()
 ```
 
+Return a new array `["failure","type","blocked","blockentity","traveltype","flags","weapon","movedir","ideal_viewangles"]` for `bot_moveresult_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L180)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L198)
 
 <a id="constant-constant-mq3-botlib-public-headers-botfilesbasefolder-const-botfilesbasefolder-botfiles-src-mq3-botlib-public-headers-ml-1354435581"></a>
 ### BOTFILESBASEFOLDER
@@ -615,8 +651,10 @@ const BOTLIB_API_VERSION = 2
 function botlib_export_tFields()
 ```
 
+Return the ordered botlib export t fields table for public headers: 16 entries beginning with `"BotLibSetup"` and `"BotLibShutdown"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L192)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L222)
 
 <a id="function-function-mq3-botlib-public-headers-botlib-import-tfields-function-botlib-import-tfields-src-mq3-botlib-public-headers-ml-448247344"></a>
 ### botlib_import_tFields
@@ -625,8 +663,10 @@ function botlib_export_tFields()
 function botlib_import_tFields()
 ```
 
+Return the ordered botlib import t fields table for public headers: 22 entries beginning with `"Print"` and `"Trace"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L188)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L214)
 
 <a id="function-function-mq3-botlib-public-headers-bsp-surface-tfields-function-bsp-surface-tfields-src-mq3-botlib-public-headers-ml-687778150"></a>
 ### bsp_surface_tFields
@@ -635,8 +675,10 @@ function botlib_import_tFields()
 function bsp_surface_tFields()
 ```
 
+Return a new array `["name","flags","value"]` for `bsp_surface_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L185)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L208)
 
 <a id="function-function-mq3-botlib-public-headers-bsp-trace-tfields-function-bsp-trace-tfields-src-mq3-botlib-public-headers-ml-2091723506"></a>
 ### bsp_trace_tFields
@@ -645,8 +687,10 @@ function bsp_surface_tFields()
 function bsp_trace_tFields()
 ```
 
+Return a new array `["allsolid","startsolid","fraction","endpos","plane","exp_dist","sidenum","surface","contents","ent"]` for `bsp_trace_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L186)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L210)
 
 <a id="constant-constant-mq3-botlib-public-headers-chat-all-const-chat-all-0-src-mq3-botlib-public-headers-ml-1901105999"></a>
 ### CHAT_ALL
@@ -735,8 +779,10 @@ const CMS_NORMAL = 0
 function constantNames()
 ```
 
+Return the ordered constant names table for public headers: 156 entries beginning with `"MAX_STRINGFIELD"` and `"TFL_INVALID"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L163)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L164)
 
 <a id="function-function-mq3-botlib-public-headers-constantvalues-function-constantvalues-src-mq3-botlib-public-headers-ml-309672368"></a>
 ### constantValues
@@ -745,8 +791,10 @@ function constantNames()
 function constantValues()
 ```
 
+Return the ordered constant values table for public headers: 156 entries beginning with `MAX_STRINGFIELD` and `TFL_INVALID`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L164)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L166)
 
 <a id="constant-constant-mq3-botlib-public-headers-damagetype-impact-const-damagetype-impact-1-src-mq3-botlib-public-headers-ml-1772285012"></a>
 ### DAMAGETYPE_IMPACT
@@ -785,8 +833,10 @@ const DAMAGETYPE_VISIBLE = 4
 function declarationNames()
 ```
 
+Return the ordered declaration names table for public headers: 113 entries beginning with `"BotLoadCharacter"` and `"BotFreeCharacter"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L166)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L170)
 
 <a id="function-function-mq3-botlib-public-headers-defaulttravelflags-function-defaulttravelflags-src-mq3-botlib-public-headers-ml-249028092"></a>
 ### defaultTravelFlags
@@ -795,8 +845,10 @@ function declarationNames()
 function defaultTravelFlags()
 ```
 
+Return `TFL_DEFAULT` for `defaultTravelFlags`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L196)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L234)
 
 <a id="function-function-mq3-botlib-public-headers-ea-export-tfields-function-ea-export-tfields-src-mq3-botlib-public-headers-ml-687447098"></a>
 ### ea_export_tFields
@@ -805,8 +857,10 @@ function defaultTravelFlags()
 function ea_export_tFields()
 ```
 
+Return the ordered ea export t fields table for public headers: 24 entries beginning with `"EA_Command"` and `"EA_Say"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L190)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L218)
 
 <a id="function-function-mq3-botlib-public-headers-fieldnames-function-fieldnames-src-mq3-botlib-public-headers-ml-1143968288"></a>
 ### fieldNames
@@ -815,8 +869,10 @@ function ea_export_tFields()
 function fieldNames()
 ```
 
+Return the ordered field names table for public headers: 333 entries beginning with `"startsolid"` and `"fraction"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L168)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L174)
 
 <a id="constant-constant-mq3-botlib-public-headers-gfl-dropped-const-gfl-dropped-4-src-mq3-botlib-public-headers-ml-1007581005"></a>
 ### GFL_DROPPED
@@ -865,13 +921,15 @@ const GFL_ROAM = 2
 function hasTravel(flags, required)
 ```
 
+Test `(flags&required)==required` as the condition for `hasTravel`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flags` | `dynamic` | — |  |
-| `required` | `dynamic` | — |  |
+| `flags` | `dynamic` | — | Operand used to evaluate the returned expression `(flags&required)==required`. |
+| `required` | `dynamic` | — | Operand used to evaluate the returned expression `(flags&required)==required`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L232)
 
 <a id="function-function-mq3-botlib-public-headers-inventorycounts-function-inventorycounts-src-mq3-botlib-public-headers-ml-573568740"></a>
 ### inventoryCounts
@@ -880,8 +938,10 @@ function hasTravel(flags, required)
 function inventoryCounts()
 ```
 
+Return a new array `[156,25,113,24,333]` for `inventoryCounts`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L197)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L236)
 
 <a id="constant-constant-mq3-botlib-public-headers-linecolor-blue-const-linecolor-blue-3-src-mq3-botlib-public-headers-ml-1893741788"></a>
 ### LINECOLOR_BLUE
@@ -1300,8 +1360,10 @@ const PFL_WINDOWDAMAGE = 1
 function projectileinfo_tFields()
 ```
 
+Return a new array `["name","model","flags","gravity","damage","radius","visdamage","damagetype","healthinc","push","detonation","bounce","bouncefric","bouncestop"]` for `projectileinfo_tFields`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L182)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L202)
 
 <a id="constant-constant-mq3-botlib-public-headers-prt-error-const-prt-error-3-src-mq3-botlib-public-headers-ml-1604777466"></a>
 ### PRT_ERROR
@@ -1590,8 +1652,10 @@ const SE_TOUCHTELEPORTER = 256
 function structNames()
 ```
 
+Return the ordered struct names table for public headers: 24 entries beginning with `"aas_trace_t"` and `"aas_entityinfo_t"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L167)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L172)
 
 <a id="constant-constant-mq3-botlib-public-headers-tfl-air-const-tfl-air-524288-src-mq3-botlib-public-headers-ml-1810281850"></a>
 ### TFL_AIR
@@ -1890,8 +1954,10 @@ const TFL_WATERJUMP = 512
 function typeNames()
 ```
 
+Return the ordered type names table for public headers: 25 entries beginning with `"solid_t"` and `"aas_trace_t"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L165)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L168)
 
 <a id="function-function-mq3-botlib-public-headers-validapiversion-function-validapiversion-value-src-mq3-botlib-public-headers-ml-440841125"></a>
 ### validApiVersion
@@ -1900,12 +1966,14 @@ function typeNames()
 function validApiVersion(value)
 ```
 
+Test `value==BOTLIB_API_VERSION` as the condition for `validApiVersion`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value==BOTLIB_API_VERSION`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L225)
 
 <a id="function-function-mq3-botlib-public-headers-validchatgender-function-validchatgender-value-src-mq3-botlib-public-headers-ml-1043912907"></a>
 ### validChatGender
@@ -1914,12 +1982,14 @@ function validApiVersion(value)
 function validChatGender(value)
 ```
 
+Test `value>=CHAT_GENDERLESS and value<=CHAT_GENDERMALE` as the condition for `validChatGender`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value>=CHAT_GENDERLESS and value<=CHAT_GENDERMALE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L228)
 
 <a id="function-function-mq3-botlib-public-headers-weaponinfo-tfields-function-weaponinfo-tfields-src-mq3-botlib-public-headers-ml-1695962352"></a>
 ### weaponinfo_tFields
@@ -1928,8 +1998,10 @@ function validChatGender(value)
 function weaponinfo_tFields()
 ```
 
+Return the ordered weaponinfo t fields table for public headers: 24 entries beginning with `"valid"` and `"number"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L183)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/public_headers.ml#L204)
 
 <a id="constant-constant-mq3-botlib-public-headers-wfl-firereleased-const-wfl-firereleased-1-src-mq3-botlib-public-headers-ml-1198539676"></a>
 ### WFL_FIRERELEASED

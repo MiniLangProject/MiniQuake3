@@ -16,8 +16,10 @@ Reachable from entry: **no**
 function blankRamp()
 ```
 
+Builds `rows[channel]` in `mq3.platform.win_gamma.blankRamp`; returns `rows`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L14)
 
 <a id="function-function-mq3-platform-win-gamma-buildramp-function-buildramp-red-green-blue-iswin2k-src-mq3-platform-win-gamma-ml-771854445"></a>
 ### buildRamp
@@ -26,15 +28,17 @@ function blankRamp()
 function buildRamp(red, green, blue, isWin2k)
 ```
 
+Builds `table[channel][index]`, `table[channel][127]` in `mq3.platform.win_gamma.buildRamp`; returns `table`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
-| `isWin2k` | `dynamic` | — |  |
+| `red` | `dynamic` | — | Input used by `channels=[red,green,blue]`. |
+| `green` | `dynamic` | — | Input used by `channels=[red,green,blue]`. |
+| `blue` | `dynamic` | — | Input used by `channels=[red,green,blue]`. |
+| `isWin2k` | `dynamic` | — | Input tested by `isWin2k`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L65)
 
 <a id="function-function-mq3-platform-win-gamma-copyramp-function-copyramp-source-src-mq3-platform-win-gamma-ml-482879113"></a>
 ### copyRamp
@@ -43,12 +47,14 @@ function buildRamp(red, green, blue, isWin2k)
 function copyRamp(source)
 ```
 
+Builds `result[channel][index]` in `mq3.platform.win_gamma.copyRamp`; returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Nested indexed data; outer entries read at `channel`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L17)
 
 <a id="function-function-mq3-platform-win-gamma-create-function-create-ignorehardwaregamma-drivertype-hasdc-has3dfx-iswin2k-retailactive-src-mq3-platform-win-gamma-ml-532296833"></a>
 ### create
@@ -57,17 +63,19 @@ function copyRamp(source)
 function create(ignoreHardwareGamma, driverType, hasDc, has3dfx, isWin2k, retailActive)
 ```
 
+Constructs `mq3.platform.win_gamma.State` with `deviceSupportsGamma` = `false`, `oldRamp` = `blankRamp()`, `currentRamp` = `blankRamp()`, `actions` = `[]` and the supplied remaining values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ignoreHardwareGamma` | `dynamic` | — |  |
-| `driverType` | `dynamic` | — |  |
-| `hasDc` | `dynamic` | — |  |
-| `has3dfx` | `dynamic` | — |  |
-| `isWin2k` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `ignoreHardwareGamma` | `dynamic` | — | Initial value for `mq3.platform.win_gamma.State.ignoreHardwareGamma`. |
+| `driverType` | `dynamic` | — | Initial value for `mq3.platform.win_gamma.State.driverType`. |
+| `hasDc` | `dynamic` | — | Initial value for `mq3.platform.win_gamma.State.hasDc`. |
+| `has3dfx` | `dynamic` | — | Initial value for `mq3.platform.win_gamma.State.has3dfx`. |
+| `isWin2k` | `dynamic` | — | Initial value for `mq3.platform.win_gamma.State.isWin2k`. |
+| `retailActive` | `dynamic` | — | Initial value for `mq3.platform.win_gamma.State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L25)
 
 <a id="function-function-mq3-platform-win-gamma-emit-function-emit-state-kind-ramp-src-mq3-platform-win-gamma-ml-312823505"></a>
 ### emit
@@ -76,14 +84,16 @@ function create(ignoreHardwareGamma, driverType, hasDc, has3dfx, isWin2k, retail
 function emit(state, kind, ramp)
 ```
 
+Updates `state.actions` in `mq3.platform.win_gamma.emit`; returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `ramp` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.actions`. |
+| `kind` | `dynamic` | — | Value used for `mq3.platform.win_gamma.Action.kind`. |
+| `ramp` | `dynamic` | — | Value forwarded as `source` to `mq3.platform.win_gamma.copyRamp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L37)
 
 <a id="constant-constant-mq3-platform-win-gamma-gldrv-standalone-const-gldrv-standalone-1-src-mq3-platform-win-gamma-ml-400447792"></a>
 ### GLDRV_STANDALONE
@@ -106,13 +116,13 @@ GLimp_SetGamma
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `red` | `dynamic` | — |  |
-| `green` | `dynamic` | — |  |
-| `blue` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.currentRamp`, `state.debug`. |
+| `red` | `dynamic` | — | Value forwarded as `red` to `mq3.platform.win_gamma.buildRamp`. |
+| `green` | `dynamic` | — | Value forwarded as `green` to `mq3.platform.win_gamma.buildRamp`. |
+| `blue` | `dynamic` | — | Value forwarded as `blue` to `mq3.platform.win_gamma.buildRamp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L83)
 
 <a id="function-function-mq3-platform-win-gamma-highbyte-function-highbyte-value-src-mq3-platform-win-gamma-ml-1831636735"></a>
 ### highByte
@@ -121,12 +131,14 @@ GLimp_SetGamma
 function highByte(value)
 ```
 
+Computes `(value>>8)&255` for `mq3.platform.win_gamma.highByte`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Input used in the result expression `(value>>8)&255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L28)
 
 <a id="function-function-mq3-platform-win-gamma-mapgammamax-function-mapgammamax-src-mq3-platform-win-gamma-ml-1898501328"></a>
 ### mapGammaMax
@@ -138,7 +150,7 @@ function mapGammaMax()
 mapGammaMax is disabled in the released build.  Preserve the exact initial probe ramp so the dormant diagnostic can still be compared and inspected.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L99)
 
 - [mq3.platform.win_gamma.State](Type-mq3-platform-win-gamma-state-636485792.md) — struct
 <a id="function-function-mq3-platform-win-gamma-warn-function-warn-state-text-src-mq3-platform-win-gamma-ml-128231862"></a>
@@ -148,13 +160,15 @@ mapGammaMax is disabled in the released build.  Preserve the exact initial probe
 function warn(state, text)
 ```
 
+Updates `state.warnings` in `mq3.platform.win_gamma.warn`; returns `text`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.warnings`. |
+| `text` | `dynamic` | — | Input used by `state.warnings=state.warnings+[text]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L32)
 
 <a id="function-function-mq3-platform-win-gamma-wg-checkhardwaregamma-function-wg-checkhardwaregamma-state-querysucceeded-queriedramp-src-mq3-platform-win-gamma-ml-1628086577"></a>
 ### WG_CheckHardwareGamma
@@ -167,12 +181,12 @@ WG_CheckHardwareGamma
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `querySucceeded` | `dynamic` | — |  |
-| `queriedRamp` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.deviceSupportsGamma`, `state.oldRamp`, `state.oldRamp[channel][index]`. |
+| `querySucceeded` | `dynamic` | — | Value assigned to `state.deviceSupportsGamma`. |
+| `queriedRamp` | `dynamic` | — | Value forwarded as `source` to `mq3.platform.win_gamma.copyRamp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L43)
 
 <a id="function-function-mq3-platform-win-gamma-wg-restoregamma-function-wg-restoregamma-state-src-mq3-platform-win-gamma-ml-721729683"></a>
 ### WG_RestoreGamma
@@ -185,7 +199,7 @@ WG_RestoreGamma
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.currentRamp`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L92)

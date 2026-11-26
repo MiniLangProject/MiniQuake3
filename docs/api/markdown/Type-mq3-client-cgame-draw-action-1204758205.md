@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores client game draw queued engine action, including `kind`, `x`, `y`, `width`, `height`, `text` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 ## Members
 
@@ -22,7 +24,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-color-color-src-mq3-client-cgame-draw-ml-577582617"></a>
 ### color
@@ -32,7 +34,7 @@ color
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-dispatched-dispatched-src-mq3-client-cgame-draw-ml-1859355751"></a>
 ### dispatched
@@ -42,7 +44,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-height-height-src-mq3-client-cgame-draw-ml-1272183471"></a>
 ### height
@@ -52,7 +54,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-kind-kind-src-mq3-client-cgame-draw-ml-1926018033"></a>
 ### kind
@@ -62,7 +64,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-shader-shader-src-mq3-client-cgame-draw-ml-1209821867"></a>
 ### shader
@@ -72,7 +74,7 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-text-text-src-mq3-client-cgame-draw-ml-1755610895"></a>
 ### text
@@ -82,7 +84,7 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-value-value-src-mq3-client-cgame-draw-ml-484886281"></a>
 ### value
@@ -92,7 +94,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-width-width-src-mq3-client-cgame-draw-ml-1203235169"></a>
 ### width
@@ -102,7 +104,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-x-x-src-mq3-client-cgame-draw-ml-828847477"></a>
 ### x
@@ -112,7 +114,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-action-y-y-src-mq3-client-cgame-draw-ml-1119789881"></a>
 ### y
@@ -122,4 +124,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)

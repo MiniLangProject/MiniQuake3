@@ -9,8 +9,10 @@
 struct Extents
 ```
 
+Stores cinematic runtime extents record, including `x`, `y`, `width`, `height`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-width-width-src-mq3-client-cinematic-runtime-ml-1642379986"></a>
 ### width
@@ -32,7 +34,7 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-x-x-src-mq3-client-cinematic-runtime-ml-240205902"></a>
 ### x
@@ -42,7 +44,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)
 
 <a id="field-field-mq3-client-cinematic-runtime-extents-y-y-src-mq3-client-cinematic-runtime-ml-522215746"></a>
 ### y
@@ -52,4 +54,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L23)

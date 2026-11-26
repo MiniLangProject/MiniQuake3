@@ -21,12 +21,14 @@ Reachable from entry: **yes**
 function __fctiw(value)
 ```
 
+Compute fctiw in shared.q_shared_header; the normal completion returns `integer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Floating-point value to narrow and reinterpret. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L105)
 
 <a id="function-function-mq3-shared-q-shared-header-lhbrx-function-lhbrx-data-offset-src-mq3-shared-q-shared-header-ml-30167091"></a>
 ### __lhbrx
@@ -35,13 +37,17 @@ function __fctiw(value)
 function __lhbrx(data, offset)
 ```
 
+Compute lhbrx in shared.q_shared_header; the normal completion returns `(((data[offset] << 8) | data[(offset + 1)]) & 65535)`.
+
+Validation failures include `__lhbrx outside buffer`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[offset]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L99)
 
 <a id="function-function-mq3-shared-q-shared-header-lwbrx-function-lwbrx-data-offset-src-mq3-shared-q-shared-header-ml-730577953"></a>
 ### __lwbrx
@@ -54,11 +60,11 @@ The three names below are PowerPC compiler intrinsics in the original header. Ke
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[offset]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L90)
 
 <a id="constant-constant-mq3-shared-q-shared-header-big-info-string-const-big-info-string-8192-src-mq3-shared-q-shared-header-ml-1786239593"></a>
 ### BIG_INFO_STRING
@@ -77,12 +83,14 @@ const BIG_INFO_STRING = 8192
 function BigFloat(value)
 ```
 
+Return `mq3.shared.q_shared_runtime.bigFloat(value)` from `shared.q_shared_header.BigFloat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.bigFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L45)
 
 <a id="function-function-mq3-shared-q-shared-header-biglong-function-biglong-value-src-mq3-shared-q-shared-header-ml-1903357709"></a>
 ### BigLong
@@ -91,12 +99,14 @@ function BigFloat(value)
 function BigLong(value)
 ```
 
+Return `mq3.shared.q_shared_runtime.bigLong(value)` from `shared.q_shared_header.BigLong`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.bigLong`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L39)
 
 <a id="function-function-mq3-shared-q-shared-header-bigshort-function-bigshort-value-src-mq3-shared-q-shared-header-ml-889830729"></a>
 ### BigShort
@@ -105,12 +115,14 @@ function BigLong(value)
 function BigShort(value)
 ```
 
+Return `mq3.shared.q_shared_runtime.bigShort(value)` from `shared.q_shared_header.BigShort`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.bigShort`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L33)
 
 <a id="function-function-mq3-shared-q-shared-header-crossproduct-function-crossproduct-a-b-src-mq3-shared-q-shared-header-ml-11808991"></a>
 ### CrossProduct
@@ -119,13 +131,15 @@ function BigShort(value)
 function CrossProduct(a, b)
 ```
 
+Return `mq3.shared.math.CrossProduct(a, b)` from `shared.q_shared_header.CrossProduct`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | A passed as `a` to `mq3.shared.math.CrossProduct`. |
+| `b` | `dynamic` | — | B passed as `b` to `mq3.shared.math.CrossProduct`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L53)
 
 <a id="function-function-mq3-shared-q-shared-header-distance-function-distance-a-b-src-mq3-shared-q-shared-header-ml-702567099"></a>
 ### Distance
@@ -134,13 +148,15 @@ function CrossProduct(a, b)
 function Distance(a, b)
 ```
 
+Return `mq3.shared.math.Distance(a, b)` from `shared.q_shared_header.Distance`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | A passed as `a` to `mq3.shared.math.Distance`. |
+| `b` | `dynamic` | — | B passed as `b` to `mq3.shared.math.Distance`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L57)
 
 <a id="function-function-mq3-shared-q-shared-header-distancesquared-function-distancesquared-a-b-src-mq3-shared-q-shared-header-ml-1155531939"></a>
 ### DistanceSquared
@@ -149,13 +165,15 @@ function Distance(a, b)
 function DistanceSquared(a, b)
 ```
 
+Return `mq3.shared.math.DistanceSquared(a, b)` from `shared.q_shared_header.DistanceSquared`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | A passed as `a` to `mq3.shared.math.DistanceSquared`. |
+| `b` | `dynamic` | — | B passed as `b` to `mq3.shared.math.DistanceSquared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L61)
 
 <a id="constant-constant-mq3-shared-q-shared-header-entitynum-max-normal-const-entitynum-max-normal-1022-src-mq3-shared-q-shared-header-ml-1449725282"></a>
 ### ENTITYNUM_MAX_NORMAL
@@ -204,12 +222,14 @@ const GENTITYNUM_BITS = 10
 function LittleFloat(value)
 ```
 
+Return `mq3.shared.q_shared_runtime.littleFloat(value)` from `shared.q_shared_header.LittleFloat`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.littleFloat`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L48)
 
 <a id="function-function-mq3-shared-q-shared-header-littlelong-function-littlelong-value-src-mq3-shared-q-shared-header-ml-899209177"></a>
 ### LittleLong
@@ -218,12 +238,14 @@ function LittleFloat(value)
 function LittleLong(value)
 ```
 
+Return `mq3.shared.q_shared_runtime.littleLong(value)` from `shared.q_shared_header.LittleLong`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.littleLong`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L42)
 
 <a id="function-function-mq3-shared-q-shared-header-littleshort-function-littleshort-value-src-mq3-shared-q-shared-header-ml-633933025"></a>
 ### LittleShort
@@ -232,12 +254,14 @@ function LittleLong(value)
 function LittleShort(value)
 ```
 
+Return `mq3.shared.q_shared_runtime.littleShort(value)` from `shared.q_shared_header.LittleShort`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_runtime.littleShort`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L36)
 
 <a id="constant-constant-mq3-shared-q-shared-header-max-clients-const-max-clients-64-src-mq3-shared-q-shared-header-ml-2009160631"></a>
 ### MAX_CLIENTS
@@ -376,12 +400,14 @@ const PATH_SEP = 92
 function ppcFctiw(value)
 ```
 
+Return `mq3.shared.q_shared_header.__fctiw(value)` from `shared.q_shared_header.ppcFctiw`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.q_shared_header.__fctiw`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L122)
 
 <a id="function-function-mq3-shared-q-shared-header-ppclhbrx-function-ppclhbrx-data-offset-src-mq3-shared-q-shared-header-ml-1664689039"></a>
 ### ppcLhbrx
@@ -390,13 +416,15 @@ function ppcFctiw(value)
 function ppcLhbrx(data, offset)
 ```
 
+Return `mq3.shared.q_shared_header.__lhbrx(data, offset)` from `shared.q_shared_header.ppcLhbrx`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.shared.q_shared_header.__lhbrx`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.shared.q_shared_header.__lhbrx`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L119)
 
 <a id="function-function-mq3-shared-q-shared-header-ppclwbrx-function-ppclwbrx-data-offset-src-mq3-shared-q-shared-header-ml-1561260023"></a>
 ### ppcLwbrx
@@ -405,13 +433,15 @@ function ppcLhbrx(data, offset)
 function ppcLwbrx(data, offset)
 ```
 
+Return `mq3.shared.q_shared_header.__lwbrx(data, offset)` from `shared.q_shared_header.ppcLwbrx`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.shared.q_shared_header.__lwbrx`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.shared.q_shared_header.__lwbrx`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L115)
 
 <a id="function-function-mq3-shared-q-shared-header-q-fabs-function-q-fabs-value-src-mq3-shared-q-shared-header-ml-826381081"></a>
 ### Q_fabs
@@ -420,12 +450,14 @@ function ppcLwbrx(data, offset)
 function Q_fabs(value)
 ```
 
+Return `mq3.shared.math.Q_fabs(value)` from `shared.q_shared_header.Q_fabs`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value passed as `value` to `mq3.shared.math.Q_fabs`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L64)
 
 <a id="function-function-mq3-shared-q-shared-header-q-rsqrt-function-q-rsqrt-value-src-mq3-shared-q-shared-header-ml-382548969"></a>
 ### Q_rsqrt
@@ -434,12 +466,14 @@ function Q_fabs(value)
 function Q_rsqrt(value)
 ```
 
+Return `mq3.shared.math.Q_rsqrt(value)` from `shared.q_shared_header.Q_rsqrt`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Number passed as `number` to `mq3.shared.math.Q_rsqrt`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L67)
 
 <a id="constant-constant-mq3-shared-q-shared-header-qfalse-const-qfalse-0-src-mq3-shared-q-shared-header-ml-1352866927"></a>
 ### qfalse
@@ -468,13 +502,15 @@ const qtrue = 1
 function VectorCompare(a, b)
 ```
 
+Return `mq3.shared.math.VectorCompare(a, b)` from `shared.q_shared_header.VectorCompare`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | A passed as `a` to `mq3.shared.math.VectorCompare`. |
+| `b` | `dynamic` | — | B passed as `b` to `mq3.shared.math.VectorCompare`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L71)
 
 <a id="function-function-mq3-shared-q-shared-header-vectorinverse-function-vectorinverse-value-src-mq3-shared-q-shared-header-ml-1557601583"></a>
 ### VectorInverse
@@ -483,12 +519,14 @@ function VectorCompare(a, b)
 function VectorInverse(value)
 ```
 
+Return `mq3.shared.math.VectorInverse(value)` from `shared.q_shared_header.VectorInverse`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | V passed as `v` to `mq3.shared.math.VectorInverse`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L74)
 
 <a id="function-function-mq3-shared-q-shared-header-vectorlength-function-vectorlength-value-src-mq3-shared-q-shared-header-ml-1033480861"></a>
 ### VectorLength
@@ -497,12 +535,14 @@ function VectorInverse(value)
 function VectorLength(value)
 ```
 
+Return `mq3.shared.math.VectorLength(value)` from `shared.q_shared_header.VectorLength`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | A passed as `a` to `mq3.shared.math.VectorLength`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L77)
 
 <a id="function-function-mq3-shared-q-shared-header-vectorlengthsquared-function-vectorlengthsquared-value-src-mq3-shared-q-shared-header-ml-1666511553"></a>
 ### VectorLengthSquared
@@ -511,12 +551,14 @@ function VectorLength(value)
 function VectorLengthSquared(value)
 ```
 
+Return `mq3.shared.math.VectorLengthSquared(value)` from `shared.q_shared_header.VectorLengthSquared`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | A passed as `a` to `mq3.shared.math.VectorLengthSquared`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L80)
 
 <a id="function-function-mq3-shared-q-shared-header-vectornormalizefast-function-vectornormalizefast-value-src-mq3-shared-q-shared-header-ml-540905673"></a>
 ### VectorNormalizeFast
@@ -525,9 +567,11 @@ function VectorLengthSquared(value)
 function VectorNormalizeFast(value)
 ```
 
+Return `mq3.shared.math.VectorNormalizeFast(value)` from `shared.q_shared_header.VectorNormalizeFast`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | V passed as `v` to `mq3.shared.math.VectorNormalizeFast`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_header.ml#L83)

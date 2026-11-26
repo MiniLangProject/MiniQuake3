@@ -9,8 +9,10 @@
 struct Prepared
 ```
 
+Data record for `mq3.renderer.qvm_scene_batch.Prepared`; groups `geometry`, `batch`, `depthHackGeometry`, `depthHackBatch`, `dynamicGeometry`, `shadowBatch`, and 1 further field.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ batch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)
 
 <a id="field-field-mq3-renderer-qvm-scene-batch-prepared-depthhackbatch-depthhackbatch-src-mq3-renderer-qvm-scene-batch-ml-1293965748"></a>
 ### depthHackBatch
@@ -32,7 +34,7 @@ depthHackBatch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)
 
 <a id="field-field-mq3-renderer-qvm-scene-batch-prepared-depthhackgeometry-depthhackgeometry-src-mq3-renderer-qvm-scene-batch-ml-332639876"></a>
 ### depthHackGeometry
@@ -42,7 +44,7 @@ depthHackGeometry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)
 
 <a id="field-field-mq3-renderer-qvm-scene-batch-prepared-dynamicgeometry-dynamicgeometry-src-mq3-renderer-qvm-scene-batch-ml-960867376"></a>
 ### dynamicGeometry
@@ -52,7 +54,7 @@ dynamicGeometry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)
 
 <a id="field-field-mq3-renderer-qvm-scene-batch-prepared-geometry-geometry-src-mq3-renderer-qvm-scene-batch-ml-464875168"></a>
 ### geometry
@@ -62,7 +64,7 @@ geometry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)
 
 <a id="field-field-mq3-renderer-qvm-scene-batch-prepared-shadowbatch-shadowbatch-src-mq3-renderer-qvm-scene-batch-ml-1355074228"></a>
 ### shadowBatch
@@ -72,7 +74,7 @@ shadowBatch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)
 
 <a id="field-field-mq3-renderer-qvm-scene-batch-prepared-shadowcount-shadowcount-src-mq3-renderer-qvm-scene-batch-ml-197047984"></a>
 ### shadowCount
@@ -82,4 +84,4 @@ shadowCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_batch.ml#L15)

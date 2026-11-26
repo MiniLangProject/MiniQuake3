@@ -9,8 +9,10 @@
 struct Geometry
 ```
 
+Data record for `mq3.renderer.qvm_scene_geometry.Geometry`; groups `triangles`, `triangleCount`, `modelEntities`, `spriteEntities`, `polySurfaces`, `skippedInline`, and 7 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 ## Members
 
@@ -22,7 +24,7 @@ culledInline
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-modelentities-modelentities-src-mq3-renderer-qvm-scene-geometry-ml-167078751"></a>
 ### modelEntities
@@ -32,7 +34,7 @@ modelEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-polysurfaces-polysurfaces-src-mq3-renderer-qvm-scene-geometry-ml-594857379"></a>
 ### polySurfaces
@@ -42,7 +44,7 @@ polySurfaces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-portals-portals-src-mq3-renderer-qvm-scene-geometry-ml-1784167223"></a>
 ### portals
@@ -52,7 +54,7 @@ portals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-shadowtrianglecount-shadowtrianglecount-src-mq3-renderer-qvm-scene-geometry-ml-578353663"></a>
 ### shadowTriangleCount
@@ -62,7 +64,7 @@ shadowTriangleCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-shadowtriangles-shadowtriangles-src-mq3-renderer-qvm-scene-geometry-ml-1615812239"></a>
 ### shadowTriangles
@@ -72,7 +74,7 @@ shadowTriangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-skippedinline-skippedinline-src-mq3-renderer-qvm-scene-geometry-ml-346214511"></a>
 ### skippedInline
@@ -82,7 +84,7 @@ skippedInline
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-skippedunsupported-skippedunsupported-src-mq3-renderer-qvm-scene-geometry-ml-1194223421"></a>
 ### skippedUnsupported
@@ -92,7 +94,7 @@ skippedUnsupported
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-sourcevertices-sourcevertices-src-mq3-renderer-qvm-scene-geometry-ml-1022095603"></a>
 ### sourceVertices
@@ -102,7 +104,7 @@ sourceVertices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-spriteentities-spriteentities-src-mq3-renderer-qvm-scene-geometry-ml-1464899547"></a>
 ### spriteEntities
@@ -112,7 +114,7 @@ spriteEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-trianglecount-trianglecount-src-mq3-renderer-qvm-scene-geometry-ml-906080987"></a>
 ### triangleCount
@@ -122,7 +124,7 @@ triangleCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-triangles-triangles-src-mq3-renderer-qvm-scene-geometry-ml-656518687"></a>
 ### triangles
@@ -132,7 +134,7 @@ triangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)
 
 <a id="field-field-mq3-renderer-qvm-scene-geometry-geometry-vertextransforms-vertextransforms-src-mq3-renderer-qvm-scene-geometry-ml-891805057"></a>
 ### vertexTransforms
@@ -142,4 +144,4 @@ vertexTransforms
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_geometry.ml#L43)

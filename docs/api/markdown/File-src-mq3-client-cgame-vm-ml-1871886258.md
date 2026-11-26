@@ -130,12 +130,14 @@ const CG_SHUTDOWN = cgame_api.CG_SHUTDOWN
 function consoleCommand(state)
 ```
 
+Calls `mq3.client.cgame_vm.invoke` from client game vm `consoleCommand`. The final path returns `invoke(state,[CG_CONSOLE_COMMAND])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L126)
 
 <a id="function-function-mq3-client-cgame-vm-create-function-create-host-src-mq3-client-cgame-vm-ml-396088774"></a>
 ### create
@@ -144,12 +146,14 @@ function consoleCommand(state)
 function create(host)
 ```
 
+Calls `mq3.client.cgame_vm.State` from client game vm `create`. The final path returns `State(host,void,false,false,0,0,"",0,0,-1,[])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Record read through `host.machineRuntime`, `host.syscall`, `host.loadFn`, `host.callFn` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L66)
 
 <a id="function-function-mq3-client-cgame-vm-crosshairplayer-function-crosshairplayer-state-src-mq3-client-cgame-vm-ml-836076003"></a>
 ### crosshairPlayer
@@ -158,12 +162,14 @@ function create(host)
 function crosshairPlayer(state)
 ```
 
+Adapts `mq3.client.cgame_vm.invoke` to client game vm `crosshairPlayer`, returning its result for `state, [CG_CROSSHAIR_PLAYER]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_vm.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L135)
 
 <a id="function-function-mq3-client-cgame-vm-drawactiveframe-function-drawactiveframe-state-servertime-stereo-demoplaying-src-mq3-client-cgame-vm-ml-42415052"></a>
 ### drawActiveFrame
@@ -172,15 +178,17 @@ function crosshairPlayer(state)
 function drawActiveFrame(state, serverTime, stereo, demoPlaying)
 ```
 
+Calls `mq3.client.cgame_vm.invoke` from client game vm `drawActiveFrame`. The final path returns `invoke(state,[CG_DRAW_ACTIVE_FRAME,serverTime,stereo,demo])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverTime` | `dynamic` | — |  |
-| `stereo` | `dynamic` | — |  |
-| `demoPlaying` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game vm state passed to the helper calls in `drawActiveFrame`. |
+| `serverTime` | `dynamic` | — | Authoritative server timestamp in milliseconds. |
+| `stereo` | `dynamic` | — | Value used by `return invoke(state,[CG_DRAW_ACTIVE_FRAME,serverTime,stereo,demo])`. |
+| `demoPlaying` | `dynamic` | — | Value used by `if demoPlaying then demo=1 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L132)
 
 <a id="function-function-mq3-client-cgame-vm-eventhandling-function-eventhandling-state-eventtype-src-mq3-client-cgame-vm-ml-1124358201"></a>
 ### eventHandling
@@ -189,13 +197,15 @@ function drawActiveFrame(state, serverTime, stereo, demoPlaying)
 function eventHandling(state, eventType)
 ```
 
+Adapts `mq3.client.cgame_vm.invoke` to client game vm `eventHandling`, returning its result for `state, [CG_EVENT_HANDLING,eventType]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `eventType` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_vm.invoke`. |
+| `eventType` | `dynamic` | — | Argument 2 of `mq3.client.cgame_vm.invoke`; passed as `[CG_EVENT_HANDLING,eventType]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L152)
 
 <a id="function-function-mq3-client-cgame-vm-initialize-function-initialize-state-servermessagesequence-lastexecutedservercommand-clientnum-connectedtopureserver-vmcgame-src-mq3-client-cgame-vm-ml-1404519605"></a>
 ### initialize
@@ -204,17 +214,19 @@ function eventHandling(state, eventType)
 function initialize(state, serverMessageSequence, lastExecutedServerCommand, clientNum, connectedToPureServer, vmCgame)
 ```
 
+Updates `state.mapname`, `state.slot`, `state.active`, `state.cgameStarted` and additional values during client game vm `initialize`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `serverMessageSequence` | `dynamic` | — |  |
-| `lastExecutedServerCommand` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
-| `connectedToPureServer` | `dynamic` | — |  |
-| `vmCgame` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game vm record/storage; this routine assigns `state.mapname`, `state.slot`, `state.active`, `state.cgameStarted` and additional values. |
+| `serverMessageSequence` | `dynamic` | — | Sequence number of the received server message. |
+| `lastExecutedServerCommand` | `dynamic` | — | Value used by `invoke(state,[CG_INIT,serverMessageSequence,lastExecutedServerCommand,clientNum])`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
+| `connectedToPureServer` | `dynamic` | — | Value used by `if connectedToPureServer!=0 then interpret=VMI_COMPILED end if`. |
+| `vmCgame` | `dynamic` | — | Value used by `interpret=vmCgame`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L95)
 
 <a id="function-function-mq3-client-cgame-vm-invoke-function-invoke-state-arguments-src-mq3-client-cgame-vm-ml-182333903"></a>
 ### invoke
@@ -223,13 +235,15 @@ function initialize(state, serverMessageSequence, lastExecutedServerCommand, cli
 function invoke(state, arguments)
 ```
 
+Updates `state.callCount`, `state.lastExport`, `state.lastArgs` during client game vm `invoke`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `arguments` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game vm record/storage; this routine assigns `state.callCount`, `state.lastExport`, `state.lastArgs`. |
+| `arguments` | `dynamic` | — | Sequence read at `arguments[0]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L81)
 
 <a id="constant-constant-mq3-client-cgame-vm-keycatch-cgame-const-keycatch-cgame-8-src-mq3-client-cgame-vm-ml-626104207"></a>
 ### KEYCATCH_CGAME
@@ -248,14 +262,16 @@ const KEYCATCH_CGAME = 8
 function keyEvent(state, key, down)
 ```
 
+Calls `mq3.client.cgame_vm.invoke` from client game vm `keyEvent`. The final path returns `invoke(state,[CG_KEY_EVENT,key,flag])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
-| `down` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game vm state passed to the helper calls in `keyEvent`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding client game vm entry. |
+| `down` | `dynamic` | — | Whether this event presses the key/button; false represents its release. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L143)
 
 <a id="function-function-mq3-client-cgame-vm-lastattacker-function-lastattacker-state-src-mq3-client-cgame-vm-ml-2110900645"></a>
 ### lastAttacker
@@ -264,12 +280,14 @@ function keyEvent(state, key, down)
 function lastAttacker(state)
 ```
 
+Adapts `mq3.client.cgame_vm.invoke` to client game vm `lastAttacker`, returning its result for `state, [CG_LAST_ATTACKER]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_vm.invoke`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L138)
 
 <a id="function-function-mq3-client-cgame-vm-mouseevent-function-mouseevent-state-dx-dy-src-mq3-client-cgame-vm-ml-204175518"></a>
 ### mouseEvent
@@ -278,14 +296,16 @@ function lastAttacker(state)
 function mouseEvent(state, dx, dy)
 ```
 
+Adapts `mq3.client.cgame_vm.invoke` to client game vm `mouseEvent`, returning its result for `state, [CG_MOUSE_EVENT,dx,dy]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `dx` | `dynamic` | — |  |
-| `dy` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_vm.invoke`. |
+| `dx` | `dynamic` | — | Argument 2 of `mq3.client.cgame_vm.invoke`; passed as `[CG_MOUSE_EVENT,dx,dy]`. |
+| `dy` | `dynamic` | — | Argument 2 of `mq3.client.cgame_vm.invoke`; passed as `[CG_MOUSE_EVENT,dx,dy]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L148)
 
 <a id="function-function-mq3-client-cgame-vm-requireactive-function-requireactive-state-src-mq3-client-cgame-vm-ml-1098689595"></a>
 ### requireActive
@@ -294,12 +314,14 @@ function mouseEvent(state, dx, dy)
 function requireActive(state)
 ```
 
+Evaluates client game vm `requireActive` and returns `error(3441,"cgame VM: module is not active")`, `state.slot` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.active`, `state.slot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L73)
 
 <a id="function-function-mq3-client-cgame-vm-services-function-services-machineruntime-syscall-loadfn-callfn-freefn-src-mq3-client-cgame-vm-ml-1189372574"></a>
 ### services
@@ -308,16 +330,18 @@ function requireActive(state)
 function services(machineRuntime, syscall, loadFn, callFn, freeFn)
 ```
 
+Creates a `mq3.client.cgame_vm.Services` record. Assigns `machineRuntime` from `machineRuntime`, `syscall` from `syscall`, `loadFn` from `loadFn`, `callFn` from `callFn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `machineRuntime` | `dynamic` | — |  |
-| `syscall` | `dynamic` | — |  |
-| `loadFn` | `dynamic` | — |  |
-| `callFn` | `dynamic` | — |  |
-| `freeFn` | `dynamic` | — |  |
+| `machineRuntime` | `dynamic` | — | Value used to initialize `Services.machineRuntime`. |
+| `syscall` | `dynamic` | — | Value used to initialize `Services.syscall`. |
+| `loadFn` | `dynamic` | — | Value used to initialize `Services.loadFn`. |
+| `callFn` | `dynamic` | — | Value used to initialize `Services.callFn`. |
+| `freeFn` | `dynamic` | — | Value used to initialize `Services.freeFn`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L60)
 
 - [mq3.client.cgame_vm.Services](Type-mq3-client-cgame-vm-services-658579082.md) — struct
 <a id="function-function-mq3-client-cgame-vm-shutdown-function-shutdown-state-src-mq3-client-cgame-vm-ml-1298521289"></a>
@@ -327,12 +351,14 @@ function services(machineRuntime, syscall, loadFn, callFn, freeFn)
 function shutdown(state)
 ```
 
+Updates `state.keyCatchers`, `state.cgameStarted`, `state.slot`, `state.active` during client game vm `shutdown`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game vm record/storage; this routine assigns `state.keyCatchers`, `state.cgameStarted`, `state.slot`, `state.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L116)
 
 - [mq3.client.cgame_vm.State](Type-mq3-client-cgame-vm-state-434676315.md) — struct
 <a id="constant-constant-mq3-client-cgame-vm-vmi-compiled-const-vmi-compiled-2-src-mq3-client-cgame-vm-ml-1448107185"></a>

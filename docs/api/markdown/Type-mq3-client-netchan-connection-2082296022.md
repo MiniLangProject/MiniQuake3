@@ -9,8 +9,10 @@
 struct Connection
 ```
 
+Stores netchan connection state, including `challenge`, `reliableCommands`, `serverCommands`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ challenge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L15)
 
 <a id="field-field-mq3-client-netchan-connection-reliablecommands-reliablecommands-src-mq3-client-netchan-ml-1159944969"></a>
 ### reliableCommands
@@ -32,7 +34,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L15)
 
 <a id="field-field-mq3-client-netchan-connection-servercommands-servercommands-src-mq3-client-netchan-ml-706441799"></a>
 ### serverCommands
@@ -42,4 +44,4 @@ serverCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/netchan.ml#L15)

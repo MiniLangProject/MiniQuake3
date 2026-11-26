@@ -9,8 +9,10 @@
 struct Catalog
 ```
 
+Stores playable projectile models catalog record, including `assets`, `textures`, `shaderIndex`, `scriptCount`, `firstTextureSlot`, `maxTextureSlots` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-models-catalog-firsttextureslot-firsttextureslot-src-mq3-client-playable-projectile-models-ml-2034372718"></a>
 ### firstTextureSlot
@@ -32,7 +34,7 @@ firstTextureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-models-catalog-maxtextureslots-maxtextureslots-src-mq3-client-playable-projectile-models-ml-787811360"></a>
 ### maxTextureSlots
@@ -42,7 +44,7 @@ maxTextureSlots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-models-catalog-scriptcount-scriptcount-src-mq3-client-playable-projectile-models-ml-1125084096"></a>
 ### scriptCount
@@ -52,7 +54,7 @@ scriptCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-models-catalog-shaderindex-shaderindex-src-mq3-client-playable-projectile-models-ml-1384087892"></a>
 ### shaderIndex
@@ -62,7 +64,7 @@ shaderIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-models-catalog-skipped-skipped-src-mq3-client-playable-projectile-models-ml-1324484392"></a>
 ### skipped
@@ -72,7 +74,7 @@ skipped
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-models-catalog-textures-textures-src-mq3-client-playable-projectile-models-ml-1643192592"></a>
 ### textures
@@ -82,4 +84,4 @@ textures
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)

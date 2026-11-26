@@ -9,8 +9,10 @@
 struct Tracker
 ```
 
+Stores playable viewmodel tracker record, including `bobPhase`, `lastTime`, `initialized`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ bobPhase
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-tracker-initialized-initialized-src-mq3-client-playable-viewmodel-ml-1162761637"></a>
 ### initialized
@@ -32,7 +34,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-tracker-lasttime-lasttime-src-mq3-client-playable-viewmodel-ml-1041310187"></a>
 ### lastTime
@@ -42,4 +44,4 @@ lastTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)

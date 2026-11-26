@@ -9,8 +9,10 @@
 struct Boundary
 ```
 
+Stores client game ents boundary record, including `boundary`, `kind`, `entity`, `origin`, `velocity`, `render` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-dispatched-dispatched-src-mq3-client-cgame-ents-ml-1673981455"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-entity-entity-src-mq3-client-cgame-ents-ml-1162537351"></a>
 ### entity
@@ -42,7 +44,7 @@ entity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-kind-kind-src-mq3-client-cgame-ents-ml-927452953"></a>
 ### kind
@@ -52,7 +54,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-origin-origin-src-mq3-client-cgame-ents-ml-1848490417"></a>
 ### origin
@@ -62,7 +64,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-render-render-src-mq3-client-cgame-ents-ml-1533362533"></a>
 ### render
@@ -72,7 +74,7 @@ render
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-sound-sound-src-mq3-client-cgame-ents-ml-1248906121"></a>
 ### sound
@@ -82,7 +84,7 @@ sound
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-value-value-src-mq3-client-cgame-ents-ml-645178977"></a>
 ### value
@@ -92,7 +94,7 @@ value
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-boundary-velocity-velocity-src-mq3-client-cgame-ents-ml-18550887"></a>
 ### velocity
@@ -102,4 +104,4 @@ velocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)

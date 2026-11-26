@@ -9,8 +9,10 @@
 struct Item
 ```
 
+Stores UI system config menu item, including `id`, `kind`, `name`, `x`, `y`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-system-config-item-kind-kind-src-mq3-client-ui-system-config-ml-474976812"></a>
 ### kind
@@ -32,7 +34,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-system-config-item-name-name-src-mq3-client-ui-system-config-ml-159339390"></a>
 ### name
@@ -42,7 +44,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-system-config-item-x-x-src-mq3-client-ui-system-config-ml-153415680"></a>
 ### x
@@ -52,7 +54,7 @@ x
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-system-config-item-y-y-src-mq3-client-ui-system-config-ml-1541808628"></a>
 ### y
@@ -62,4 +64,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_system_config.ml#L13)

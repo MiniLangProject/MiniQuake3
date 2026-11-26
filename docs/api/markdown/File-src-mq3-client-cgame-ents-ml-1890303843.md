@@ -28,13 +28,15 @@ Reachable from entry: **yes**
 function add3(first, second)
 ```
 
+Builds the client game ents `add3` sequence from `[n.fadd(first[0],second[0]),n.fadd(first[1],second[1]),n.fadd(first[2],second[2])]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `first` | `dynamic` | — |  |
-| `second` | `dynamic` | — |  |
+| `first` | `dynamic` | — | Sequence read at `first[0]`, `first[1]`, `first[2]`. |
+| `second` | `dynamic` | — | Sequence read at `second[0]`, `second[1]`, `second[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L57)
 
 <a id="function-function-mq3-client-cgame-ents-addcentity-function-addcentity-state-value-predicted-retailactive-src-mq3-client-cgame-ents-ml-413068543"></a>
 ### addCEntity
@@ -47,13 +49,13 @@ CG_AddCEntity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `predicted` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `state.errors`. |
+| `value` | `dynamic` | — | Record read through `value.currentState`, `value.lerpOrigin`. |
+| `predicted` | `dynamic` | — | Value used by `calculated=calcEntityLerpPositions(state,value,predicted)`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L299)
 
 <a id="function-function-mq3-client-cgame-ents-addpacketentities-function-addpacketentities-state-snap-nextsnap-predictedentity-retailactive-src-mq3-client-cgame-ents-ml-1840632352"></a>
 ### addPacketEntities
@@ -66,14 +68,14 @@ CG_AddPacketEntities.  Snapshot entities are observed through private Cent recor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `snap` | `dynamic` | — |  |
-| `nextSnap` | `dynamic` | — |  |
-| `predictedEntity` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `state.snap`, `state.nextSnap`, `state.localClient`, `state.predictedEntity` and additional values. |
+| `snap` | `dynamic` | — | Record read through `snap.playerState.clientNum`, `snap.serverTime`, `snap.entities`. |
+| `nextSnap` | `dynamic` | — | Record read through `nextSnap.serverTime`, `nextSnap.entities`. |
+| `predictedEntity` | `dynamic` | — | Value assigned to `state.predictedEntity`. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L331)
 
 <a id="function-function-mq3-client-cgame-ents-adjustpositionformover-function-adjustpositionformover-input-movervalue-fromtime-totime-src-mq3-client-cgame-ents-ml-2130914375"></a>
 ### adjustPositionForMover
@@ -86,13 +88,13 @@ CG_AdjustPositionForMover
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `input` | `dynamic` | — |  |
-| `moverValue` | `dynamic` | — |  |
-| `fromTime` | `dynamic` | — |  |
-| `toTime` | `dynamic` | — |  |
+| `input` | `dynamic` | — | Value used by `if moverValue==void or moverValue.currentState.number<=0 or moverValue.currentState.number>=ENTITYNUM_MAX_NORMAL or moverValue.currentState.eT...`. |
+| `moverValue` | `dynamic` | — | Record read through `moverValue.currentState.number`, `moverValue.currentState.eType`, `moverValue.currentState.pos`. |
+| `fromTime` | `dynamic` | — | Value used by `oldOrigin=trajectory.evaluate(moverValue.currentState.pos,fromTime)`. |
+| `toTime` | `dynamic` | — | Value used by `origin=trajectory.evaluate(moverValue.currentState.pos,toTime)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L257)
 
 <a id="function-function-mq3-client-cgame-ents-audio-function-audio-state-kind-entity-origin-velocity-sound-emit-src-mq3-client-cgame-ents-ml-1588939537"></a>
 ### audio
@@ -101,18 +103,20 @@ CG_AdjustPositionForMover
 function audio(state, kind, entity, origin, velocity, sound, emit)
 ```
 
+Adapts `mq3.client.cgame_ents.boundary` to client game ents `audio`, returning its result for `state, "audio", kind, entity, origin, velocity, void, sound, 0, emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_ents.boundary`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_ents.boundary`. |
+| `entity` | `dynamic` | — | Argument 4 of `mq3.client.cgame_ents.boundary`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_ents.boundary`. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. Forwarded to `mq3.client.cgame_ents.boundary`. |
+| `sound` | `dynamic` | — | Argument 8 of `mq3.client.cgame_ents.boundary`. |
+| `emit` | `dynamic` | — | Argument 10 of `mq3.client.cgame_ents.boundary`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L108)
 
 <a id="function-function-mq3-client-cgame-ents-beam-function-beam-state-value-emit-src-mq3-client-cgame-ents-ml-54085931"></a>
 ### beam
@@ -125,12 +129,12 @@ CG_Beam
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game ents state passed to the helper calls in `beam`. |
+| `value` | `dynamic` | — | Record read through `value.currentState`. |
+| `emit` | `dynamic` | — | Value used by `scene(state,"beam",es.number,ent,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L240)
 
 <a id="function-function-mq3-client-cgame-ents-boundary-function-boundary-state-boundaryname-kind-entity-origin-velocity-rendervalue-sound-value-emit-src-mq3-client-cgame-ents-ml-1589954536"></a>
 ### boundary
@@ -139,21 +143,23 @@ CG_Beam
 function boundary(state, boundaryName, kind, entity, origin, velocity, renderValue, sound, value, emit)
 ```
 
+Updates `state.actions`, `state.scene`, `state.audio`, `state.soundPositions` and additional values during client game ents `boundary`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundaryName` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `velocity` | `dynamic` | — |  |
-| `renderValue` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `state.actions`, `state.scene`, `state.audio`, `state.soundPositions` and additional values. |
+| `boundaryName` | `dynamic` | — | Value used by `item=Boundary(boundaryName,kind,entity,copy3(origin),copy3(velocity),renderValue,sound,value,emit)`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `entity` | `dynamic` | — | Value used by `item=Boundary(boundaryName,kind,entity,copy3(origin),copy3(velocity),renderValue,sound,value,emit)`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `velocity` | `dynamic` | — | Velocity vector used to advance or orient the effect. |
+| `renderValue` | `dynamic` | — | Value used by `item=Boundary(boundaryName,kind,entity,copy3(origin),copy3(velocity),renderValue,sound,value,emit)`. |
+| `sound` | `dynamic` | — | Sound handle or asset name passed to the audio action. |
+| `value` | `dynamic` | — | Value used by `item=Boundary(boundaryName,kind,entity,copy3(origin),copy3(velocity),renderValue,sound,value,emit)`. |
+| `emit` | `dynamic` | — | Value used by `item=Boundary(boundaryName,kind,entity,copy3(origin),copy3(velocity),renderValue,sound,value,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L87)
 
 - [mq3.client.cgame_ents.Boundary](Type-mq3-client-cgame-ents-boundary-288664833.md) — struct
 <a id="function-function-mq3-client-cgame-ents-calcentitylerppositions-function-calcentitylerppositions-state-value-predicted-src-mq3-client-cgame-ents-ml-1018692588"></a>
@@ -167,12 +173,12 @@ CG_CalcEntityLerpPositions
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `predicted` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.smoothClients`, `state.nextSnap`, `state.snap.serverTime`, `state.nextSnap.serverTime` and additional values. |
+| `value` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `value.nextState.pos.trType`, `value.lerpOrigin`, `value.lerpAngles`. |
+| `predicted` | `dynamic` | — | Value used by `if not predicted and es.groundEntityNum>0 and es.groundEntityNum<len(state.entities) then adjusted=adjustPositionForMover(value.lerpOrigin,sta...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L279)
 
 <a id="function-function-mq3-client-cgame-ents-cent-function-cent-source-src-mq3-client-cgame-ents-ml-693192503"></a>
 ### cent
@@ -181,12 +187,14 @@ CG_CalcEntityLerpPositions
 function cent(source)
 ```
 
+Creates a `mq3.client.cgame_ents.Cent` record. Assigns `currentState` from `source`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `source` | `dynamic` | — |  |
+| `source` | `dynamic` | — | Record read through `source.origin`, `source.angles`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L68)
 
 - [mq3.client.cgame_ents.Cent](Type-mq3-client-cgame-ents-cent-1686050009.md) — struct
 <a id="constant-constant-mq3-client-cgame-ents-chan-item-const-chan-item-3-src-mq3-client-cgame-ents-ml-2043186250"></a>
@@ -206,12 +214,14 @@ const CHAN_ITEM = 3
 function clearBoundaries(state)
 ```
 
+Updates `state.actions`, `state.scene`, `state.audio`, `state.soundPositions` during client game ents `clearBoundaries`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `state.actions`, `state.scene`, `state.audio`, `state.soundPositions`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L341)
 
 <a id="function-function-mq3-client-cgame-ents-copy3-function-copy3-value-src-mq3-client-cgame-ents-ml-1002658789"></a>
 ### copy3
@@ -220,12 +230,14 @@ function clearBoundaries(state)
 function copy3(value)
 ```
 
+Copies the X, Y and Z components into a fresh client game ents vector.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Sequence read at `value[0]`, `value[1]`, `value[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L53)
 
 <a id="function-function-mq3-client-cgame-ents-create-function-create-maxentities-src-mq3-client-cgame-ents-ml-1243534461"></a>
 ### create
@@ -234,12 +246,14 @@ function copy3(value)
 function create(maxEntities)
 ```
 
+Creates a `mq3.client.cgame_ents.State` record.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxEntities` | `dynamic` | — |  |
+| `maxEntities` | `dynamic` | — | Value used to initialize `State.entities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L73)
 
 <a id="function-function-mq3-client-cgame-ents-directionaxis-function-directionaxis-direction-spin-src-mq3-client-cgame-ents-ml-21017057"></a>
 ### directionAxis
@@ -248,13 +262,15 @@ function create(maxEntities)
 function directionAxis(direction, spin)
 ```
 
+Calls `mq3.shared.math.VectorNormalize2`, `mq3.shared.math.VectorLength`, `mq3.shared.directions.perpendicular` and additional helpers from client game ents `directionAxis`. The final path returns `axis`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `direction` | `dynamic` | — |  |
-| `spin` | `dynamic` | — |  |
+| `direction` | `dynamic` | — | Direction vector used by the spatial calculation. |
+| `spin` | `dynamic` | — | Value used by `if spin!=0 then roll=q.AngleVectors([0.0,0.0,spin])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L201)
 
 <a id="constant-constant-mq3-client-cgame-ents-ef-nodraw-const-ef-nodraw-128-src-mq3-client-cgame-ents-ml-602685758"></a>
 ### EF_NODRAW
@@ -273,13 +289,15 @@ const EF_NODRAW = 128
 function ensureCent(state, source)
 ```
 
+Updates `state.entities[source.number]`, `state.entities[source.number].currentState` during client game ents `ensureCent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `source` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `state.entities[source.number]`, `state.entities[source.number].currentState`. |
+| `source` | `dynamic` | — | Record read through `source.number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L320)
 
 <a id="function-function-mq3-client-cgame-ents-entityeffects-function-entityeffects-state-value-emit-src-mq3-client-cgame-ents-ml-2090073313"></a>
 ### entityEffects
@@ -292,12 +310,12 @@ CG_EntityEffects
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game ents state passed to the helper calls in `entityEffects`. |
+| `value` | `dynamic` | — | Record read through `value.currentState`, `value.lerpOrigin`. |
+| `emit` | `dynamic` | — | Value used by `setEntitySoundPosition(state,value,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L147)
 
 <a id="constant-constant-mq3-client-cgame-ents-entitynum-max-normal-const-entitynum-max-normal-1022-src-mq3-client-cgame-ents-ml-985200602"></a>
 ### ENTITYNUM_MAX_NORMAL
@@ -320,12 +338,12 @@ CG_General
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.localClient`. |
+| `value` | `dynamic` | — | Record read through `value.currentState`, `value.lerpOrigin`, `value.lerpAngles`. |
+| `emit` | `dynamic` | — | Value used by `return scene(state,"general",es.number,ent,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L160)
 
 <a id="function-function-mq3-client-cgame-ents-grapple-function-grapple-state-value-emit-src-mq3-client-cgame-ents-ml-2083297133"></a>
 ### grapple
@@ -338,12 +356,12 @@ CG_Grapple
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `value` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `value.lerpAngles`. |
+| `emit` | `dynamic` | — | Value used by `scene(state,"grapple-trail",es.number,trail,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L224)
 
 <a id="constant-constant-mq3-client-cgame-ents-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-ents-ml-711826061"></a>
 ### GT_CTF
@@ -362,8 +380,10 @@ const GT_CTF = 4
 function identityAxis()
 ```
 
+Creates the three orthonormal unit axes used as the identity orientation in client game ents.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L44)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L50)
 
 <a id="function-function-mq3-client-cgame-ents-interpolateentityposition-function-interpolateentityposition-value-snaptime-nextsnaptime-fraction-src-mq3-client-cgame-ents-ml-1909276544"></a>
 ### interpolateEntityPosition
@@ -376,13 +396,13 @@ CG_InterpolateEntityPosition
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `snapTime` | `dynamic` | — |  |
-| `nextSnapTime` | `dynamic` | — |  |
-| `fraction` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `value.lerpOrigin`, `value.lerpAngles`. |
+| `snapTime` | `dynamic` | — | Value used by `current=trajectory.evaluate(value.currentState.pos,snapTime)`. |
+| `nextSnapTime` | `dynamic` | — | Value used by `next=trajectory.evaluate(value.nextState.pos,nextSnapTime)`. |
+| `fraction` | `dynamic` | — | Interpolation or blend fraction between the endpoint values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L267)
 
 <a id="function-function-mq3-client-cgame-ents-item-function-item-state-value-emit-src-mq3-client-cgame-ents-ml-434133103"></a>
 ### item
@@ -395,12 +415,12 @@ CG_Item
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.simpleItems`, `state.time`. |
+| `value` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `value.lerpAngles`. |
+| `emit` | `dynamic` | — | Value used by `return scene(state,"item-sprite",es.number,ent,emit) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L183)
 
 <a id="constant-constant-mq3-client-cgame-ents-item-scaleup-time-const-item-scaleup-time-1000-src-mq3-client-cgame-ents-ml-841356256"></a>
 ### ITEM_SCALEUP_TIME
@@ -433,12 +453,12 @@ CG_Missile
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.missileLights`, `state.missileSounds`, `state.time`. |
+| `value` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `value.lerpAngles`. |
+| `emit` | `dynamic` | — | Value used by `scene(state,"missile-trail",es.number,trail,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L210)
 
 <a id="function-function-mq3-client-cgame-ents-mover-function-mover-state-value-emit-src-mq3-client-cgame-ents-ml-1218246397"></a>
 ### mover
@@ -451,12 +471,12 @@ CG_Mover
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `value` | `dynamic` | — | Record read through `value.currentState`, `value.lerpOrigin`, `value.lerpAngles`. |
+| `emit` | `dynamic` | — | Value used by `scene(state,"mover",es.number,ent,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L232)
 
 <a id="function-function-mq3-client-cgame-ents-portal-function-portal-state-value-emit-src-mq3-client-cgame-ents-ml-1604856411"></a>
 ### portal
@@ -469,12 +489,12 @@ CG_Portal
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game ents state passed to the helper calls in `portal`. |
+| `value` | `dynamic` | — | Record read through `value.currentState`, `value.lerpOrigin`. |
+| `emit` | `dynamic` | — | Value used by `scene(state,"portal",es.number,ent,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L248)
 
 <a id="function-function-mq3-client-cgame-ents-positionentityontag-function-positionentityontag-entity-parent-model-name-src-mq3-client-cgame-ents-ml-1726209933"></a>
 ### positionEntityOnTag
@@ -487,13 +507,13 @@ CG_PositionEntityOnTag
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entity` | `dynamic` | — |  |
-| `parent` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `entity` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `entity.origin`, `entity.axis`, `entity.backlerp`. |
+| `parent` | `dynamic` | — | Record read through `parent.oldframe`, `parent.frame`, `parent.backlerp`, `parent.origin` and additional values. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game ents operation. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game ents resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L115)
 
 <a id="function-function-mq3-client-cgame-ents-positionrotatedentityontag-function-positionrotatedentityontag-entity-parent-model-name-src-mq3-client-cgame-ents-ml-1685792527"></a>
 ### positionRotatedEntityOnTag
@@ -506,13 +526,13 @@ CG_PositionRotatedEntityOnTag
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entity` | `dynamic` | — |  |
-| `parent` | `dynamic` | — |  |
-| `model` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `entity` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `entity.origin`, `entity.axis`. |
+| `parent` | `dynamic` | — | Record read through `parent.oldframe`, `parent.frame`, `parent.backlerp`, `parent.origin` and additional values. |
+| `model` | `dynamic` | — | Model handle, asset or preview record used by this client game ents operation. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding client game ents resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L127)
 
 <a id="function-function-mq3-client-cgame-ents-renderentity-function-renderentity-src-mq3-client-cgame-ents-ml-984449182"></a>
 ### renderEntity
@@ -521,8 +541,10 @@ CG_PositionRotatedEntityOnTag
 function renderEntity()
 ```
 
+Creates a `mq3.client.cgame_ents.RenderEntity` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L48)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L63)
 
 - [mq3.client.cgame_ents.RenderEntity](Type-mq3-client-cgame-ents-renderentity-580160012.md) — struct
 <a id="constant-constant-mq3-client-cgame-ents-rf-minlight-const-rf-minlight-1-src-mq3-client-cgame-ents-ml-875634624"></a>
@@ -602,16 +624,18 @@ const RT_SPRITE = 2
 function scene(state, kind, entity, value, emit)
 ```
 
+Adapts `mq3.client.cgame_ents.boundary` to client game ents `scene`, returning its result for `state, "scene", kind, entity, value.origin, [0.0,0.0,0.0], value, 0, 0, emit`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `entity` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_ents.boundary`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_ents.boundary`. |
+| `entity` | `dynamic` | — | Argument 4 of `mq3.client.cgame_ents.boundary`. |
+| `value` | `dynamic` | — | Record read through `value.origin`. |
+| `emit` | `dynamic` | — | Argument 10 of `mq3.client.cgame_ents.boundary`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L99)
 
 <a id="function-function-mq3-client-cgame-ents-setentitysoundposition-function-setentitysoundposition-state-value-emit-src-mq3-client-cgame-ents-ml-1746493795"></a>
 ### setEntitySoundPosition
@@ -624,12 +648,12 @@ CG_SetEntitySoundPosition
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.inlineMidpoints`. |
+| `value` | `dynamic` | — | Record read through `value.lerpOrigin`, `value.currentState`. |
+| `emit` | `dynamic` | — | Value used by `boundary(state,"sound-position","update",es.number,origin,[0.0,0.0,0.0],void,0,0,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L137)
 
 - [mq3.client.cgame_ents.Snapshot](Type-mq3-client-cgame-ents-snapshot-985388967.md) — struct
 <a id="constant-constant-mq3-client-cgame-ents-solid-bmodel-const-solid-bmodel-16777215-src-mq3-client-cgame-ents-ml-980191329"></a>
@@ -653,12 +677,12 @@ CG_Speaker
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.random`. |
+| `value` | `dynamic` | — | Mutable client game ents record/storage; this routine assigns `value.miscTime`. |
+| `emit` | `dynamic` | — | Value used by `result=audio(state,"speaker",es.number,value.lerpOrigin,[0.0,0.0,0.0],es.eventParm,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L168)
 
 - [mq3.client.cgame_ents.State](Type-mq3-client-cgame-ents-state-1099874224.md) — struct
 <a id="function-function-mq3-client-cgame-ents-sub3-function-sub3-first-second-src-mq3-client-cgame-ents-ml-1384735286"></a>
@@ -668,13 +692,15 @@ CG_Speaker
 function sub3(first, second)
 ```
 
+Builds the client game ents `sub3` sequence from `[n.fsub(first[0],second[0]),n.fsub(first[1],second[1]),n.fsub(first[2],second[2])]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `first` | `dynamic` | — |  |
-| `second` | `dynamic` | — |  |
+| `first` | `dynamic` | — | Sequence read at `first[0]`, `first[1]`, `first[2]`. |
+| `second` | `dynamic` | — | Sequence read at `second[0]`, `second[1]`, `second[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L61)
 
 <a id="constant-constant-mq3-client-cgame-ents-team-blue-const-team-blue-2-src-mq3-client-cgame-ents-ml-1022799807"></a>
 ### TEAM_BLUE
@@ -707,12 +733,12 @@ CG_TeamBase (baseq3 branch)
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `emit` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.gametype`. |
+| `value` | `dynamic` | — | Record read through `value.currentState`, `value.lerpOrigin`. |
+| `emit` | `dynamic` | — | Value used by `scene(state,kind,es.number,ent,emit)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L290)
 
 <a id="function-function-mq3-client-cgame-ents-weaponmidpoint-function-weaponmidpoint-state-weapon-src-mq3-client-cgame-ents-ml-1749170565"></a>
 ### weaponMidpoint
@@ -721,13 +747,15 @@ CG_TeamBase (baseq3 branch)
 function weaponMidpoint(state, weapon)
 ```
 
+Evaluates client game ents `weaponMidpoint` and returns `state.weaponMidpoints[weapon]`, `[0.0,0.0,0.0]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.weaponMidpoints`. |
+| `weapon` | `dynamic` | — | Value used by `if weapon>=0 and weapon<len(state.weaponMidpoints) then return state.weaponMidpoints[weapon] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L175)
 
 <a id="constant-constant-mq3-client-cgame-ents-wp-num-weapons-const-wp-num-weapons-11-src-mq3-client-cgame-ents-ml-1663284551"></a>
 ### WP_NUM_WEAPONS

@@ -9,8 +9,10 @@
 struct Md3Shader
 ```
 
+Md3Shader record for format.qfiles, containing `name`, `shaderIndex`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L91)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)
 
 ## Members
 
@@ -22,7 +24,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)
 
 <a id="field-field-mq3-format-qfiles-md3shader-shaderindex-shaderindex-src-mq3-format-qfiles-ml-339420620"></a>
 ### shaderIndex
@@ -32,4 +34,4 @@ shaderIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)

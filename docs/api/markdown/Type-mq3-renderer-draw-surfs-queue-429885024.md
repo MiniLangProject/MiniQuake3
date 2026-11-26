@@ -9,8 +9,10 @@
 struct Queue
 ```
 
+Data record for `mq3.renderer.draw_surfs.Queue`; groups `drawSurfs`, `capacity`, `numDrawSurfs`, `nextOrdinal`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ capacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L20)
 
 <a id="field-field-mq3-renderer-draw-surfs-queue-drawsurfs-drawsurfs-src-mq3-renderer-draw-surfs-ml-1794440340"></a>
 ### drawSurfs
@@ -32,7 +34,7 @@ drawSurfs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L20)
 
 <a id="field-field-mq3-renderer-draw-surfs-queue-nextordinal-nextordinal-src-mq3-renderer-draw-surfs-ml-121494036"></a>
 ### nextOrdinal
@@ -42,7 +44,7 @@ nextOrdinal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L20)
 
 <a id="field-field-mq3-renderer-draw-surfs-queue-numdrawsurfs-numdrawsurfs-src-mq3-renderer-draw-surfs-ml-1323254914"></a>
 ### numDrawSurfs
@@ -52,4 +54,4 @@ numDrawSurfs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L20)

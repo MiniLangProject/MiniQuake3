@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.qvm_video_materials.State`; groups `cinematics`, `firstScratchSlot`, `scratchSlotCount`, `bindings`, `failedBindings`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L14)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ bindings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-cinematics-cinematics-src-mq3-renderer-qvm-video-materials-ml-1941919796"></a>
 ### cinematics
@@ -32,7 +34,7 @@ cinematics
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-failedbindings-failedbindings-src-mq3-renderer-qvm-video-materials-ml-45074198"></a>
 ### failedBindings
@@ -42,7 +44,7 @@ failedBindings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-firstscratchslot-firstscratchslot-src-mq3-renderer-qvm-video-materials-ml-354431808"></a>
 ### firstScratchSlot
@@ -52,7 +54,7 @@ firstScratchSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-state-scratchslotcount-scratchslotcount-src-mq3-renderer-qvm-video-materials-ml-1041925298"></a>
 ### scratchSlotCount
@@ -62,4 +64,4 @@ scratchSlotCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)

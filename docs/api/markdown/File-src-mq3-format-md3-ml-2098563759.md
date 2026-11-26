@@ -21,13 +21,15 @@ Reachable from entry: **yes**
 function f32(data, offset)
 ```
 
+Compute f 32 in format.md3; the normal completion returns `n.bitsFloat(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.compat.numeric.readU32`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L66)
 
 <a id="function-function-mq3-format-md3-fail-function-fail-message-src-mq3-format-md3-ml-1607374501"></a>
 ### fail
@@ -36,12 +38,14 @@ function f32(data, offset)
 function fail(message)
 ```
 
+Create the format.md3 error for `fail` with 7500 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("MD3: " + message)` and `error(7500, ("MD3: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L41)
 
 <a id="function-function-mq3-format-md3-fixedstring-function-fixedstring-data-offset-capacity-src-mq3-format-md3-ml-933970441"></a>
 ### fixedString
@@ -50,14 +54,16 @@ function fail(message)
 function fixedString(data, offset, capacity)
 ```
 
+Compute fixed string in format.md3; the normal completion returns `decode(slice(data, offset, count))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `capacity` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[(offset + count)]`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.format.md3.span`. |
+| `capacity` | `dynamic` | — | Size passed as `size` to `mq3.format.md3.span`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L77)
 
 - [mq3.format.md3.Frame](Type-mq3-format-md3-frame-922445738.md) — struct
 <a id="constant-constant-mq3-format-md3-frame-size-const-frame-size-56-src-mq3-format-md3-ml-2050191506"></a>
@@ -87,13 +93,15 @@ const HEADER_SIZE = 108
 function i32(data, offset)
 ```
 
+Compute i 32 in format.md3; the normal completion returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.compat.numeric.readI32`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L53)
 
 <a id="function-function-mq3-format-md3-load-function-load-data-src-mq3-format-md3-ml-1715294826"></a>
 ### load
@@ -106,10 +114,10 @@ Both representations pass through the identical complete parser/validation. Publ
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.format.md3.loadMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L97)
 
 <a id="function-function-mq3-format-md3-loadmode-function-loadmode-data-packedonly-src-mq3-format-md3-ml-612140672"></a>
 ### loadMode
@@ -118,13 +126,15 @@ Both representations pass through the identical complete parser/validation. Publ
 function loadMode(data, packedOnly)
 ```
 
+Load mode in format.md3; the normal completion returns `Model(name, flags, numFrames, numTags, numSurfaces, numSkins, frames, tags, surfaces, [boundsMin, boundsMax])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `packedOnly` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.format.md3.i32`. |
+| `packedOnly` | `dynamic` | — | Packed only operand used by `loadMode`; its reads are shown in the implementation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L104)
 
 <a id="function-function-mq3-format-md3-loadpacked-function-loadpacked-data-src-mq3-format-md3-ml-539771930"></a>
 ### loadPacked
@@ -133,12 +143,14 @@ function loadMode(data, packedOnly)
 function loadPacked(data)
 ```
 
+Return `mq3.format.md3.loadMode(data, true)` from `format.md3.loadPacked`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.format.md3.loadMode`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L100)
 
 <a id="constant-constant-mq3-format-md3-max-frames-const-max-frames-1024-src-mq3-format-md3-ml-37711406"></a>
 ### MAX_FRAMES
@@ -232,10 +244,10 @@ The renderer strips a trailing LOD suffix before resolving skin mappings.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Record exposing `surfaces`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L85)
 
 - [mq3.format.md3.RenderTriangle](Type-mq3-format-md3-rendertriangle-1832924873.md) — struct
 <a id="function-function-mq3-format-md3-rendertriangles-function-rendertriangles-model-surfaceindex-frame-oldframe-backlerp-maxtriangles-src-mq3-format-md3-ml-1061731114"></a>
@@ -245,17 +257,19 @@ The renderer strips a trailing LOD suffix before resolving skin mappings.
 function renderTriangles(model, surfaceIndex, frame, oldFrame, backlerp, maxTriangles)
 ```
 
+Return `mq3.format.md3.renderTrianglesCached(model, surfaceIndex, frame, oldFrame, backlerp, maxTriangles, void)` from `format.md3.renderTriangles`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
-| `surfaceIndex` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `oldFrame` | `dynamic` | — |  |
-| `backlerp` | `dynamic` | — |  |
-| `maxTriangles` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Model passed as `model` to `mq3.format.md3.renderTrianglesCached`. |
+| `surfaceIndex` | `dynamic` | — | Surface index passed as `surfaceIndex` to `mq3.format.md3.renderTrianglesCached`. |
+| `frame` | `dynamic` | — | Frame passed as `frame` to `mq3.format.md3.renderTrianglesCached`. |
+| `oldFrame` | `dynamic` | — | Old frame passed as `oldFrame` to `mq3.format.md3.renderTrianglesCached`. |
+| `backlerp` | `dynamic` | — | Backlerp passed as `backlerp` to `mq3.format.md3.renderTrianglesCached`. |
+| `maxTriangles` | `dynamic` | — | Max triangles passed as `maxTriangles` to `mq3.format.md3.renderTrianglesCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L235)
 
 <a id="function-function-mq3-format-md3-rendertrianglescached-function-rendertrianglescached-model-surfaceindex-frame-oldframe-backlerp-maxtriangles-normaltable-src-mq3-format-md3-ml-1576240683"></a>
 ### renderTrianglesCached
@@ -268,16 +282,16 @@ Produces renderer-neutral animated triangles for the playable preview.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
-| `surfaceIndex` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `oldFrame` | `dynamic` | — |  |
-| `backlerp` | `dynamic` | — |  |
-| `maxTriangles` | `dynamic` | — |  |
-| `normalTable` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Record exposing `surfaces`. |
+| `surfaceIndex` | `dynamic` | — | Initial `surfaceIndex` field stored in the returned or constructed `mq3.format.md3.RenderTriangle` record. |
+| `frame` | `dynamic` | — | Frame passed as `frame` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
+| `oldFrame` | `dynamic` | — | Old frame passed as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
+| `backlerp` | `dynamic` | — | Backlerp passed as `backlerp` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
+| `maxTriangles` | `dynamic` | — | Max triangles used in `(maxTriangles < 0)` and `(maxTriangles == 0)`. |
+| `normalTable` | `dynamic` | — | Table passed as `table` to `mq3.renderer.surface_md3.lerpVertexesCached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L209)
 
 <a id="constant-constant-mq3-format-md3-shader-size-const-shader-size-68-src-mq3-format-md3-ml-1019907547"></a>
 ### SHADER_SIZE
@@ -296,14 +310,16 @@ const SHADER_SIZE = 68
 function span(offset, size, limit)
 ```
 
+Test span in format.md3; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `offset` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `limit` | `dynamic` | — |  |
+| `offset` | `dynamic` | — | Offset used in `(offset < 0)` and `(offset > limit)`. |
+| `size` | `dynamic` | — | Size used in `(size < 0)` and `(size > (limit - offset))`. |
+| `limit` | `dynamic` | — | Limit used in `(offset > limit)` and `(limit - offset)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L46)
 
 <a id="constant-constant-mq3-format-md3-st-size-const-st-size-8-src-mq3-format-md3-ml-927917883"></a>
 ### ST_SIZE
@@ -354,13 +370,15 @@ const TRIANGLE_SIZE = 12
 function u16(data, offset)
 ```
 
+Compute u 16 in format.md3; the normal completion returns `(data[offset] | (data[(offset + 1)] << 8))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[offset]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L59)
 
 <a id="function-function-mq3-format-md3-vec3-function-vec3-data-offset-src-mq3-format-md3-ml-1002134419"></a>
 ### vec3
@@ -369,13 +387,15 @@ function u16(data, offset)
 function vec3(data, offset)
 ```
 
+Compute format.md3.vec3 as `[f32(data, offset), f32(data, (offset + 4)), f32(data, (offset + 8))]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.format.md3.f32`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.format.md3.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L72)
 
 <a id="constant-constant-mq3-format-md3-vertex-size-const-vertex-size-8-src-mq3-format-md3-ml-84675519"></a>
 ### VERTEX_SIZE

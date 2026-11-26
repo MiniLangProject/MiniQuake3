@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.platform.win_syscon.State`; groups `created`, `visLevel`, `quitOnClose`, `consoleText`, `returnedText`, `displayText`, and 9 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-consoletext-consoletext-src-mq3-platform-win-syscon-ml-774658378"></a>
 ### consoleText
@@ -32,7 +34,7 @@ consoleText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-created-created-src-mq3-platform-win-syscon-ml-1299309050"></a>
 ### created
@@ -42,7 +44,7 @@ created
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-dedicated-dedicated-src-mq3-platform-win-syscon-ml-1098200990"></a>
 ### dedicated
@@ -52,7 +54,7 @@ dedicated
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-displaytext-displaytext-src-mq3-platform-win-syscon-ml-179806814"></a>
 ### displayText
@@ -62,7 +64,7 @@ displayText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-errorstring-errorstring-src-mq3-platform-win-syscon-ml-1007317970"></a>
 ### errorString
@@ -72,7 +74,7 @@ errorString
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-haserror-haserror-src-mq3-platform-win-syscon-ml-129572266"></a>
 ### hasError
@@ -82,7 +84,7 @@ hasError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-hasinput-hasinput-src-mq3-platform-win-syscon-ml-1141233918"></a>
 ### hasInput
@@ -92,7 +94,7 @@ hasInput
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-quitonclose-quitonclose-src-mq3-platform-win-syscon-ml-431371258"></a>
 ### quitOnClose
@@ -102,7 +104,7 @@ quitOnClose
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-retailactive-retailactive-src-mq3-platform-win-syscon-ml-1870782708"></a>
 ### retailActive
@@ -112,7 +114,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-returnedtext-returnedtext-src-mq3-platform-win-syscon-ml-729853482"></a>
 ### returnedText
@@ -122,7 +124,7 @@ returnedText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-timepolarity-timepolarity-src-mq3-platform-win-syscon-ml-2002757136"></a>
 ### timePolarity
@@ -132,7 +134,7 @@ timePolarity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-totalchars-totalchars-src-mq3-platform-win-syscon-ml-538070768"></a>
 ### totalChars
@@ -142,7 +144,7 @@ totalChars
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-viewlog-viewlog-src-mq3-platform-win-syscon-ml-532772346"></a>
 ### viewlog
@@ -152,7 +154,7 @@ viewlog
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="field-field-mq3-platform-win-syscon-state-vislevel-vislevel-src-mq3-platform-win-syscon-ml-482030146"></a>
 ### visLevel
@@ -162,4 +164,4 @@ visLevel
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)

@@ -25,11 +25,11 @@ CG_PositionRotatedEntityOnTag, including the view weapon's uniform scale.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `parent` | `dynamic` | — |  |
-| `attachment` | `dynamic` | — |  |
+| `parent` | `dynamic` | — | Record read through `parent.origin`, `parent.scale`, `parent.axis`. |
+| `attachment` | `dynamic` | — | Record read through `attachment.origin`, `attachment.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L105)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-classnames-function-classnames-src-mq3-client-playable-muzzle-flash-ml-647291762"></a>
 ### classnames
@@ -38,8 +38,10 @@ CG_PositionRotatedEntityOnTag, including the view weapon's uniform scale.
 function classnames()
 ```
 
+Calls `mq3.client.playable_muzzle_flash.definitions` from playable muzzle flash `classnames`. The final path returns `result`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L35)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L43)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-definition-function-definition-classname-src-mq3-client-playable-muzzle-flash-ml-747150259"></a>
 ### definition
@@ -48,12 +50,14 @@ function classnames()
 function definition(classname)
 ```
 
+Calls `mq3.client.playable_muzzle_flash.definitions`, `stringEqualsIgnoreCaseAscii` from playable muzzle flash `definition`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `classname` | `dynamic` | — |  |
+| `classname` | `dynamic` | — | Value used by `for each value in definitions() if stringEqualsIgnoreCaseAscii(value.weaponClass,classname) then return value end if end for`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L37)
 
 - [mq3.client.playable_muzzle_flash.Definition](Type-mq3-client-playable-muzzle-flash-definition-1390755383.md) — struct
 <a id="function-function-mq3-client-playable-muzzle-flash-definitions-function-definitions-src-mq3-client-playable-muzzle-flash-ml-503162098"></a>
@@ -63,8 +67,10 @@ function definition(classname)
 function definitions()
 ```
 
+Builds the playable muzzle flash `definitions` sequence from `[ Definition("weapon_gauntlet","flash_gauntlet","models/weapons2/gauntlet/gauntlet_flash.md3",true,153,153,255), Definition("weapon_machinegun","flash_machinegun","models/weapons2/machinegun/machin...`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L21)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-dynamiclight-function-dynamiclight-catalog-weaponclass-guntransform-lastfire-now-triggerheld-src-mq3-client-playable-muzzle-flash-ml-1213793118"></a>
 ### dynamicLight
@@ -73,17 +79,19 @@ function definitions()
 function dynamicLight(catalog, weaponClass, gunTransform, lastFire, now, triggerHeld)
 ```
 
+Calls `mq3.client.playable_muzzle_flash.definition`, `mq3.client.playable_muzzle_flash.visible`, `mq3.client.playable_muzzle_flash.muzzleTransform` and additional helpers from playable muzzle flash `dynamicLight`. The final path returns `dynamicLights.Light(placed.origin,lightRadius(now),lightColor(def),false)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `weaponClass` | `dynamic` | — |  |
-| `gunTransform` | `dynamic` | — |  |
-| `lastFire` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `triggerHeld` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `weaponClass` | `dynamic` | — | Value used by `def=definition(weaponClass)`. |
+| `gunTransform` | `dynamic` | — | Value used by `if def==void or not visible(def,lastFire,now,triggerHeld) or catalog==void or gunTransform==void then return void end if`. |
+| `lastFire` | `dynamic` | — | Value used by `if def==void or not visible(def,lastFire,now,triggerHeld) or catalog==void or gunTransform==void then return void end if`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `triggerHeld` | `dynamic` | — | Value used by `if def==void or not visible(def,lastFire,now,triggerHeld) or catalog==void or gunTransform==void then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L131)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-fail-function-fail-message-src-mq3-client-playable-muzzle-flash-ml-233693159"></a>
 ### fail
@@ -92,12 +100,14 @@ function dynamicLight(catalog, weaponClass, gunTransform, lastFire, now, trigger
 function fail(message)
 ```
 
+Creates the playable muzzle flash error `7610` with diagnostic text `"playable muzzle flash: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"playable muzzle flash: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L18)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-lightcolor-function-lightcolor-value-src-mq3-client-playable-muzzle-flash-ml-712941773"></a>
 ### lightColor
@@ -106,12 +116,14 @@ function fail(message)
 function lightColor(value)
 ```
 
+Evaluates playable muzzle flash `lightColor` and returns `[0.0,0.0,0.0]`, `[0.6,0.6,1.0]`, `[1.0,0.7,0.0]` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.weaponClass`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L49)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-lightradius-function-lightradius-now-src-mq3-client-playable-muzzle-flash-ml-1902499602"></a>
 ### lightRadius
@@ -124,10 +136,10 @@ Baseq3 uses 300 + (rand() & 31). Keep that exact radius range while deriving the
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `now` | `dynamic` | — |  |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L62)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-multiplyaxis-function-multiplyaxis-left-right-src-mq3-client-playable-muzzle-flash-ml-374768145"></a>
 ### multiplyAxis
@@ -136,13 +148,15 @@ Baseq3 uses 300 + (rand() & 31). Keep that exact radius range while deriving the
 function multiplyAxis(left, right)
 ```
 
+Evaluates playable muzzle flash `multiplyAxis` and returns `result` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `left` | `dynamic` | — | Sequence read at `left[row]`. |
+| `right` | `dynamic` | — | Sequence read at `right[0]`, `right[1]`, `right[2]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L92)
 
 <a id="constant-constant-mq3-client-playable-muzzle-flash-muzzle-flash-time-const-muzzle-flash-time-20-src-mq3-client-playable-muzzle-flash-ml-552795175"></a>
 ### MUZZLE_FLASH_TIME
@@ -165,12 +179,12 @@ Resolve the weapon's retail tag_flash independently of flash visibility so proje
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `weaponClass` | `dynamic` | — |  |
-| `gunTransform` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `weaponClass` | `dynamic` | — | Value used by `gun=itemModels.find(catalog,weaponClass)`. |
+| `gunTransform` | `dynamic` | — | Value used by `if catalog==void or gunTransform==void then return void end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L117)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-render-function-render-catalog-weaponclass-guntransform-lastfire-now-triggerheld-maxtriangles-src-mq3-client-playable-muzzle-flash-ml-934653947"></a>
 ### render
@@ -179,18 +193,20 @@ Resolve the weapon's retail tag_flash independently of flash visibility so proje
 function render(catalog, weaponClass, gunTransform, lastFire, now, triggerHeld, maxTriangles)
 ```
 
+Calls `mq3.client.playable_muzzle_flash.definition`, `mq3.client.playable_muzzle_flash.visible`, `mq3.client.playable_muzzle_flash.Rendered` and additional helpers from playable muzzle flash `render`. The final path returns `Rendered(triangles,def.red,def.green,def.blue)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `weaponClass` | `dynamic` | — |  |
-| `gunTransform` | `dynamic` | — |  |
-| `lastFire` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `triggerHeld` | `dynamic` | — |  |
-| `maxTriangles` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Asset catalog used to resolve names to loaded resources. |
+| `weaponClass` | `dynamic` | — | Value used by `def=definition(weaponClass)`. |
+| `gunTransform` | `dynamic` | — | Value used by `placed=muzzleTransform(catalog,weaponClass,gunTransform)`. |
+| `lastFire` | `dynamic` | — | Value used by `if def==void or not visible(def,lastFire,now,triggerHeld) then return Rendered([],255,255,255) end if`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `triggerHeld` | `dynamic` | — | Value used by `if def==void or not visible(def,lastFire,now,triggerHeld) then return Rendered([],255,255,255) end if`. |
+| `maxTriangles` | `dynamic` | — | Upper bound on emitted render triangles. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L145)
 
 - [mq3.client.playable_muzzle_flash.Rendered](Type-mq3-client-playable-muzzle-flash-rendered-462901155.md) — struct
 <a id="function-function-mq3-client-playable-muzzle-flash-tag-function-tag-model-name-src-mq3-client-playable-muzzle-flash-ml-135983860"></a>
@@ -200,13 +216,15 @@ function render(catalog, weaponClass, gunTransform, lastFire, now, triggerHeld, 
 function tag(model, name)
 ```
 
+Calls `stringEqualsIgnoreCaseAscii` from playable muzzle flash `tag`. The final path returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `model` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `model` | `dynamic` | — | Record read through `model.tags`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding playable muzzle flash resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L83)
 
 <a id="function-function-mq3-client-playable-muzzle-flash-visible-function-visible-value-lastfire-now-triggerheld-src-mq3-client-playable-muzzle-flash-ml-1943424552"></a>
 ### visible
@@ -219,10 +237,10 @@ CG_AddPlayerWeapon keeps Lightning/Gauntlet flashes while EF_FIRING is set; all 
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `lastFire` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `triggerHeld` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Record read through `value.continuous`. |
+| `lastFire` | `dynamic` | — | Value used by `elapsed=now-lastFire`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `triggerHeld` | `dynamic` | — | Value used by `if value.continuous and triggerHeld then return true end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L73)

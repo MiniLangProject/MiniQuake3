@@ -27,12 +27,12 @@ UI_AddBotsMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `gametype` | `dynamic` | — |  |
-| `spSkill` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.pushed`, `state.menuEvents`. |
+| `gametype` | `dynamic` | — | Quake III game-type identifier. |
+| `spSkill` | `dynamic` | — | Value used by `init(state,gametype,spSkill)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L109)
 
 <a id="constant-constant-mq3-client-ui-add-bots-art-arrowdown-const-art-arrowdown-menu-art-arrows-vert-bot-src-mq3-client-ui-add-bots-ml-1118234397"></a>
 ### ART_ARROWDOWN
@@ -125,11 +125,11 @@ UI_AddBotsMenu_BackEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.menuEvents`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L83)
 
 <a id="function-function-mq3-client-ui-add-bots-botevent-function-botevent-state-id-event-src-mq3-client-ui-add-bots-ml-1902110842"></a>
 ### botEvent
@@ -142,12 +142,12 @@ UI_AddBotsMenu_BotEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.selectedBotNum`. |
+| `id` | `dynamic` | — | Value used by `selected=id-ID_BOTNAME0`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L79)
 
 <a id="function-function-mq3-client-ui-add-bots-cache-function-cache-state-src-mq3-client-ui-add-bots-ml-1702656405"></a>
 ### cache
@@ -160,10 +160,10 @@ UI_AddBots_Cache
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.cached`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L97)
 
 <a id="function-function-mq3-client-ui-add-bots-comparenames-function-comparenames-left-right-src-mq3-client-ui-add-bots-ml-1137370753"></a>
 ### compareNames
@@ -172,13 +172,15 @@ UI_AddBots_Cache
 function compareNames(left, right)
 ```
 
+Calls `std.string.toLowerAscii` from UI add bots `compareNames`. The final path returns `0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `left` | `dynamic` | — |  |
-| `right` | `dynamic` | — |  |
+| `left` | `dynamic` | — | Value used by `a=bytes(strings.toLowerAscii(left))`. |
+| `right` | `dynamic` | — | Value used by `b=bytes(strings.toLowerAscii(right))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L49)
 
 <a id="function-function-mq3-client-ui-add-bots-create-function-create-data-retailactive-src-mq3-client-ui-add-bots-ml-1444973133"></a>
 ### create
@@ -187,13 +189,15 @@ function compareNames(left, right)
 function create(data, retailActive)
 ```
 
+Creates a `mq3.client.ui_add_bots.State` record. Assigns `data` from `data`, `retailActive` from `retailActive`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Value used to initialize `State.data`. |
+| `retailActive` | `dynamic` | — | Value used to initialize `State.retailActive`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L38)
 
 <a id="function-function-mq3-client-ui-add-bots-downevent-function-downevent-state-event-src-mq3-client-ui-add-bots-ml-735871359"></a>
 ### downEvent
@@ -202,13 +206,15 @@ function create(data, retailActive)
 function downEvent(state, event)
 ```
 
+Updates `state.baseBotNum` during UI add bots `downEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.baseBotNum`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L91)
 
 <a id="function-function-mq3-client-ui-add-bots-draw-function-draw-state-src-mq3-client-ui-add-bots-ml-1599315541"></a>
 ### draw
@@ -221,10 +227,10 @@ UI_AddBotsMenu_Draw
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.visibleCount`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L94)
 
 <a id="function-function-mq3-client-ui-add-bots-emit-function-emit-state-kind-name-text-value-src-mq3-client-ui-add-bots-ml-1213056058"></a>
 ### emit
@@ -233,16 +239,18 @@ UI_AddBotsMenu_Draw
 function emit(state, kind, name, text, value)
 ```
 
+Appends a UI add bots action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.actions`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding UI add bots resource. |
+| `text` | `dynamic` | — | Text consumed or emitted by `emit` in the UI add bots path. |
+| `value` | `dynamic` | — | Value used by `item=Action("ui-add-bots",kind,name,text,value,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L45)
 
 <a id="function-function-mq3-client-ui-add-bots-fightevent-function-fightevent-state-event-src-mq3-client-ui-add-bots-ml-270051291"></a>
 ### fightEvent
@@ -255,11 +263,11 @@ UI_AddBotsMenu_FightEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.delay`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L72)
 
 <a id="function-function-mq3-client-ui-add-bots-getsortedbotnums-function-getsortedbotnums-state-src-mq3-client-ui-add-bots-ml-1018533945"></a>
 ### getSortedBotNums
@@ -272,10 +280,10 @@ UI_AddBotsMenu_GetSortedBotNums
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.sortedBotNums`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L60)
 
 <a id="constant-constant-mq3-client-ui-add-bots-gt-team-const-gt-team-3-src-mq3-client-ui-add-bots-ml-1498618060"></a>
 ### GT_TEAM
@@ -378,12 +386,12 @@ UI_AddBotsMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `gametype` | `dynamic` | — |  |
-| `spSkill` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.actions`, `state.menuEvents`, `state.delay`, `state.baseBotNum` and additional values. |
+| `gametype` | `dynamic` | — | Quake III game-type identifier. |
+| `spSkill` | `dynamic` | — | Value used by `state.skill=numbers.atoi(str(spSkill))-1`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L102)
 
 <a id="constant-constant-mq3-client-ui-add-bots-qm-activated-const-qm-activated-3-src-mq3-client-ui-add-bots-ml-900327478"></a>
 ### QM_ACTIVATED
@@ -406,10 +414,10 @@ UI_AddBotsMenu_SetBotNames
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.botnames`, `state.botnames[n]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L66)
 
 <a id="function-function-mq3-client-ui-add-bots-sortcompare-function-sortcompare-state-first-second-src-mq3-client-ui-add-bots-ml-61158379"></a>
 ### sortCompare
@@ -422,12 +430,12 @@ UI_AddBotsMenu_SortCompare
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `first` | `dynamic` | — |  |
-| `second` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.data`. |
+| `first` | `dynamic` | — | Value used by `a=game.UI_GetBotInfoByNumber(state.data,first)`. |
+| `second` | `dynamic` | — | Value used by `b=game.UI_GetBotInfoByNumber(state.data,second)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L57)
 
 - [mq3.client.ui_add_bots.State](Type-mq3-client-ui-add-bots-state-596914609.md) — struct
 <a id="function-function-mq3-client-ui-add-bots-upevent-function-upevent-state-event-src-mq3-client-ui-add-bots-ml-145225133"></a>
@@ -441,8 +449,8 @@ UI_AddBotsMenu_UpEvent / UI_AddBotsMenu_DownEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable UI add bots record/storage; this routine assigns `state.baseBotNum`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L87)

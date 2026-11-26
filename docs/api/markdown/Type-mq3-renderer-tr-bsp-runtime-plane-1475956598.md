@@ -9,8 +9,10 @@
 struct Plane
 ```
 
+Data record for `mq3.renderer.tr_bsp_runtime.Plane`; groups `normal`, `dist`, `type`, `signbits`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L31)
 
 ## Members
 
@@ -22,7 +24,7 @@ dist
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L31)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-plane-normal-normal-src-mq3-renderer-tr-bsp-runtime-ml-203333393"></a>
 ### normal
@@ -32,7 +34,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L31)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-plane-signbits-signbits-src-mq3-renderer-tr-bsp-runtime-ml-148520817"></a>
 ### signbits
@@ -42,7 +44,7 @@ signbits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L31)
 
 <a id="field-field-mq3-renderer-tr-bsp-runtime-plane-type-type-src-mq3-renderer-tr-bsp-runtime-ml-1960182183"></a>
 ### type
@@ -52,4 +54,4 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_bsp_runtime.ml#L31)

@@ -9,8 +9,10 @@
 struct Triangle
 ```
 
+Data record for `mq3.renderer.qvm_2d_batch.Triangle`; groups `positions`, `texCoords`, `colors`, `commandIndex`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ colors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-commandindex-commandindex-src-mq3-renderer-qvm-2d-batch-ml-584765333"></a>
 ### commandIndex
@@ -32,7 +34,7 @@ commandIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-positions-positions-src-mq3-renderer-qvm-2d-batch-ml-1339143843"></a>
 ### positions
@@ -42,7 +44,7 @@ positions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-texcoords-texcoords-src-mq3-renderer-qvm-2d-batch-ml-113587299"></a>
 ### texCoords
@@ -52,4 +54,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)

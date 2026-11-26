@@ -9,8 +9,10 @@
 struct Writer
 ```
 
+`Writer` record for be aas file, containing `header`, `chunks` and `offset`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ chunks
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L23)
 
 <a id="field-field-mq3-botlib-be-aas-file-writer-header-header-src-mq3-botlib-be-aas-file-ml-1800087400"></a>
 ### header
@@ -32,7 +34,7 @@ header
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L23)
 
 <a id="field-field-mq3-botlib-be-aas-file-writer-offset-offset-src-mq3-botlib-be-aas-file-ml-1204094436"></a>
 ### offset
@@ -42,4 +44,4 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L23)

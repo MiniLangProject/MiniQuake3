@@ -123,12 +123,14 @@ Reachable from entry: **yes**
 function formatVector(vector)
 ```
 
+Format a three-component vector as a parenthesized comma-separated diagnostic string.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vector` | `dynamic` | — |  |
+| `vector` | `dynamic` | — | Three-element vector in X, Y, Z order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L110)
 
 <a id="function-function-main-function-main-args-src-main-ml-776500952"></a>
 ### main
@@ -137,12 +139,16 @@ function formatVector(vector)
 function main(args)
 ```
 
+Start the desktop QVM menu or dispatch the selected command-line game, asset, and regression probe.
+
+Validation failures include `could not determine the MiniQuake3 executable directory`; `--qvm-match requires a positive frame count`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `args` | `dynamic` | — |  |
+| `args` | `dynamic` | — | Command-line arguments excluding the executable; an empty list starts the retail menu beside the executable. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L139)
 
 <a id="function-function-mapnamefrompath-function-mapnamefrompath-path-src-main-ml-1759387674"></a>
 ### mapNameFromPath
@@ -151,12 +157,14 @@ function main(args)
 function mapNameFromPath(path)
 ```
 
+Extract the final path component and remove its last extension for use as the map name.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `path` | `dynamic` | — |  |
+| `path` | `dynamic` | — | Map filename using either slash or backslash separators. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L127)
 
 <a id="function-function-printtrace-function-printtrace-result-src-main-ml-1040741020"></a>
 ### printTrace
@@ -165,9 +173,11 @@ function mapNameFromPath(path)
 function printTrace(result)
 ```
 
+Print the collision fraction, endpoint, plane, contents, surface flags, and solid-state diagnostics.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `result` | `dynamic` | — |  |
+| `result` | `dynamic` | — | Collision result with a trace record and endpos vector. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L116)

@@ -9,8 +9,10 @@
 struct Vertex
 ```
 
+Stores client game marks vertex record, including `xyz`, `st`, `modulate`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L22)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ modulate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L23)
 
 <a id="field-field-mq3-client-cgame-marks-vertex-st-st-src-mq3-client-cgame-marks-ml-811363209"></a>
 ### st
@@ -32,7 +34,7 @@ st
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L23)
 
 <a id="field-field-mq3-client-cgame-marks-vertex-xyz-xyz-src-mq3-client-cgame-marks-ml-1822755943"></a>
 ### xyz
@@ -42,4 +44,4 @@ xyz
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L23)

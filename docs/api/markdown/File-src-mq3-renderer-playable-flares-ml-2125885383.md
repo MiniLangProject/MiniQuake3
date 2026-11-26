@@ -25,12 +25,14 @@ Reachable from entry: **yes**
 function colorByte(value)
 ```
 
+Returns `n.trunc32(value)` from `mq3.renderer.playable_flares.colorByte`; earlier branches return `0`, `255`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Argument 1 supplied to `mq3.compat.numeric.trunc32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L144)
 
 <a id="constant-constant-mq3-renderer-playable-flares-default-fade-const-default-fade-7-src-mq3-renderer-playable-flares-ml-1556207384"></a>
 ### DEFAULT_FADE
@@ -59,19 +61,21 @@ const DEFAULT_SIZE = 40
 function drawOne(catalog, fogCatalog, flare, state, projection, area, nowMilliseconds, applyFacing)
 ```
 
+Projects a flare, tests on-screen depth visibility, updates its fade state, and submits its visible quad.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `fogCatalog` | `dynamic` | — |  |
-| `flare` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `projection` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
-| `nowMilliseconds` | `dynamic` | — |  |
-| `applyFacing` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Record providing `catalog.textureSlot`. |
+| `fogCatalog` | `dynamic` | — | Value forwarded as `fogCatalog` to `mq3.renderer.playable_flares.foggedColor`. |
+| `flare` | `dynamic` | — | Record providing `flare.origin`, `flare.normal`, `flare.color`. |
+| `state` | `dynamic` | — | Value forwarded as `state` to `mq3.renderer.playable_flares.updateState`. |
+| `projection` | `dynamic` | — | Record providing `projection.position`, `projection.forward`. |
+| `area` | `dynamic` | — | Record providing `area.x`, `area.width`, `area.y`, `area.height`. |
+| `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_flares.updateState`. |
+| `applyFacing` | `dynamic` | — | Input tested by `applyFacing`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L200)
 
 <a id="function-function-mq3-renderer-playable-flares-drawviewport-function-drawviewport-catalog-fogcatalog-lights-projection-area-nowmilliseconds-viewindex-src-mq3-renderer-playable-flares-ml-231982432"></a>
 ### drawViewport
@@ -80,18 +84,20 @@ function drawOne(catalog, fogCatalog, flare, state, projection, area, nowMillise
 function drawViewport(catalog, fogCatalog, lights, projection, area, nowMilliseconds, viewIndex)
 ```
 
+Draws enabled static and dynamic flares for one view using persistent per-view visibility state.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `fogCatalog` | `dynamic` | — |  |
-| `lights` | `dynamic` | — |  |
-| `projection` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
-| `nowMilliseconds` | `dynamic` | — |  |
-| `viewIndex` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Record providing `catalog.enabled`, `catalog.flares`. |
+| `fogCatalog` | `dynamic` | — | Value forwarded as `fogCatalog` to `mq3.renderer.playable_flares.drawOne`. |
+| `lights` | `dynamic` | — | Indexed input read at `index`. |
+| `projection` | `dynamic` | — | Value forwarded as `projection` to `mq3.renderer.playable_flares.drawOne`. |
+| `area` | `dynamic` | — | Value forwarded as `area` to `mq3.renderer.playable_flares.drawOne`. |
+| `nowMilliseconds` | `dynamic` | — | Value forwarded as `nowMilliseconds` to `mq3.renderer.playable_flares.drawOne`. |
+| `viewIndex` | `dynamic` | — | Value forwarded as `viewIndex` to `mq3.renderer.playable_flares.ensureView`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L225)
 
 <a id="function-function-mq3-renderer-playable-flares-ensuredynamicview-function-ensuredynamicview-catalog-viewindex-count-src-mq3-renderer-playable-flares-ml-2120918795"></a>
 ### ensureDynamicView
@@ -100,14 +106,16 @@ function drawViewport(catalog, fogCatalog, lights, projection, area, nowMillisec
 function ensureDynamicView(catalog, viewIndex, count)
 ```
 
+Updates `catalog.dynamicStates`, `catalog.dynamicStates[viewIndex]` in `mq3.renderer.playable_flares.ensureDynamicView`; returns `states`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `viewIndex` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Mutable record or buffer; this call updates `catalog.dynamicStates`, `catalog.dynamicStates[viewIndex]`. |
+| `viewIndex` | `dynamic` | — | Input tested by `viewIndex<0 or viewIndex>=MAX_VIEW_STATES`. |
+| `count` | `dynamic` | — | Input used by `while len(states)<count states=states+[State(false,0,0.0)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L163)
 
 <a id="function-function-mq3-renderer-playable-flares-ensureview-function-ensureview-catalog-viewindex-src-mq3-renderer-playable-flares-ml-524426880"></a>
 ### ensureView
@@ -116,13 +124,15 @@ function ensureDynamicView(catalog, viewIndex, count)
 function ensureView(catalog, viewIndex)
 ```
 
+Updates `catalog.states` in `mq3.renderer.playable_flares.ensureView`; returns `catalog.states[viewIndex]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
-| `viewIndex` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Mutable record or buffer; this call updates `catalog.states`. |
+| `viewIndex` | `dynamic` | — | Input tested by `viewIndex<0 or viewIndex>=MAX_VIEW_STATES`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L72)
 
 <a id="function-function-mq3-renderer-playable-flares-f32-function-f32-map-offset-src-mq3-renderer-playable-flares-ml-2027149717"></a>
 ### f32
@@ -131,13 +141,15 @@ function ensureView(catalog, viewIndex)
 function f32(map, offset)
 ```
 
+Returns `n.bitsFloat(value)` from `mq3.renderer.playable_flares.f32`; earlier branches return `fail("truncated float")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record providing `map.data`. |
+| `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L38)
 
 <a id="constant-constant-mq3-renderer-playable-flares-face-stride-const-face-stride-104-src-mq3-renderer-playable-flares-ml-1416399680"></a>
 ### FACE_STRIDE
@@ -156,14 +168,16 @@ const FACE_STRIDE = 104
 function facing(origin, point, normal)
 ```
 
+Returns `(dx*normal[0]+dy*normal[1]+dz*normal[2])/length` from `mq3.renderer.playable_flares.facing`; earlier branches return `0.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `origin` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
-| `normal` | `dynamic` | — |  |
+| `origin` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
+| `point` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
+| `normal` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L137)
 
 <a id="function-function-mq3-renderer-playable-flares-fail-function-fail-message-src-mq3-renderer-playable-flares-ml-1828318161"></a>
 ### fail
@@ -172,12 +186,14 @@ function facing(origin, point, normal)
 function fail(message)
 ```
 
+Creates error `7696` with message `"playable flares: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Input used in the result expression `error(7696,"playable flares: "+message)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L31)
 
 - [mq3.renderer.playable_flares.Flare](Type-mq3-renderer-playable-flares-flare-173432619.md) — struct
 <a id="function-function-mq3-renderer-playable-flares-flaresize-function-flaresize-viewportwidth-eyedepth-sizevalue-src-mq3-renderer-playable-flares-ml-385506730"></a>
@@ -187,14 +203,16 @@ function fail(message)
 function flareSize(viewportWidth, eyeDepth, sizeValue)
 ```
 
+Returns `viewportWidth*(sizeValue/640.0+8.0/eyeDepth)` from `mq3.renderer.playable_flares.flareSize`; earlier branches return `0.0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `viewportWidth` | `dynamic` | — |  |
-| `eyeDepth` | `dynamic` | — |  |
-| `sizeValue` | `dynamic` | — |  |
+| `viewportWidth` | `dynamic` | — | Input tested by `viewportWidth<1 or eyeDepth<=0.0`. |
+| `eyeDepth` | `dynamic` | — | Input tested by `viewportWidth<1 or eyeDepth<=0.0`. |
+| `sizeValue` | `dynamic` | — | Input used in the result expression `viewportWidth*(sizeValue/640.0+8.0/eyeDepth)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L132)
 
 <a id="function-function-mq3-renderer-playable-flares-foggedcolor-function-foggedcolor-flare-color-fogcatalog-vieworigin-forward-src-mq3-renderer-playable-flares-ml-402580846"></a>
 ### foggedColor
@@ -207,14 +225,14 @@ RB_RenderFlare begins flareShader with the retained fog number. Its additive ble
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flare` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `fogCatalog` | `dynamic` | — |  |
-| `viewOrigin` | `dynamic` | — |  |
-| `forward` | `dynamic` | — |  |
+| `flare` | `dynamic` | — | Record providing `flare.fogIndex`, `flare.origin`. |
+| `color` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_materials.modulateForFog`. |
+| `fogCatalog` | `dynamic` | — | Record providing `fogCatalog.fogs`. |
+| `viewOrigin` | `dynamic` | — | Argument 3 supplied to `mq3.renderer.playable_fog.density`. |
+| `forward` | `dynamic` | — | Argument 4 supplied to `mq3.renderer.playable_fog.density`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L185)
 
 <a id="function-function-mq3-renderer-playable-flares-fogindexat-function-fogindexat-fogcatalog-origin-src-mq3-renderer-playable-flares-ml-1073932909"></a>
 ### fogIndexAt
@@ -227,11 +245,11 @@ RB_AddDlightFlares assigns each submitted light to the first fog whose axial bru
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fogCatalog` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `fogCatalog` | `dynamic` | — | Record providing `fogCatalog.fogs`. |
+| `origin` | `dynamic` | — | Three-component vector read at indices 0, 1, and 2. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L150)
 
 <a id="function-function-mq3-renderer-playable-flares-i32-function-i32-map-offset-src-mq3-renderer-playable-flares-ml-1774398971"></a>
 ### i32
@@ -240,13 +258,15 @@ RB_AddDlightFlares assigns each submitted light to the first fog whose axial bru
 function i32(map, offset)
 ```
 
+Returns `value` from `mq3.renderer.playable_flares.i32`; earlier branches return `fail("truncated integer")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record providing `map.data`. |
+| `offset` | `dynamic` | — | Argument 2 supplied to `mq3.compat.numeric.readI32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L42)
 
 <a id="function-function-mq3-renderer-playable-flares-load-function-load-archive-map-scripts-textureslot-enabled-src-mq3-renderer-playable-flares-ml-310206068"></a>
 ### load
@@ -255,16 +275,18 @@ function i32(map, offset)
 function load(archive, map, scripts, textureSlot, enabled)
 ```
 
+Builds `mq3.renderer.playable_flares.Catalog` using `mq3.renderer.playable_materials.mappedImageName`, `mq3.renderer.playable_materials.loadImage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `map` | `dynamic` | — |  |
-| `scripts` | `dynamic` | — |  |
-| `textureSlot` | `dynamic` | — |  |
-| `enabled` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_materials.loadImage`. |
+| `map` | `dynamic` | — | Value forwarded as `map` to `mq3.renderer.playable_flares.parse`. |
+| `scripts` | `dynamic` | — | Argument 1 supplied to `mq3.renderer.playable_materials.mappedImageName`. |
+| `textureSlot` | `dynamic` | — | Initial value for `mq3.renderer.playable_flares.Catalog.textureSlot`. |
+| `enabled` | `dynamic` | — | Input tested by `enabled or len(flares)>0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L84)
 
 <a id="function-function-mq3-renderer-playable-flares-makestates-function-makestates-count-src-mq3-renderer-playable-flares-ml-2060215273"></a>
 ### makeStates
@@ -273,12 +295,14 @@ function load(archive, map, scripts, textureSlot, enabled)
 function makeStates(count)
 ```
 
+Returns `result` from `mq3.renderer.playable_flares.makeStates`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `count` | `dynamic` | — |  |
+| `count` | `dynamic` | — | Input used by `for index=0 to count-1 result=result+[State(false,0,0.0)]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L68)
 
 <a id="constant-constant-mq3-renderer-playable-flares-max-view-states-const-max-view-states-16-src-mq3-renderer-playable-flares-ml-1009771882"></a>
 ### MAX_VIEW_STATES
@@ -311,10 +335,10 @@ ParseFlare in tr_bsp.c copies these fields directly from dsurface_t.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record providing `map.counts`, `map.offsets`, `map.data`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L46)
 
 - [mq3.renderer.playable_flares.Point](Type-mq3-renderer-playable-flares-point-586923605.md) — struct
 <a id="function-function-mq3-renderer-playable-flares-release-function-release-catalog-src-mq3-renderer-playable-flares-ml-314946743"></a>
@@ -324,12 +348,14 @@ ParseFlare in tr_bsp.c copies these fields directly from dsurface_t.
 function release(catalog)
 ```
 
+Returns `void` from `mq3.renderer.playable_flares.release`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Record providing `catalog.image`, `catalog.textureSlot`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L104)
 
 <a id="function-function-mq3-renderer-playable-flares-retiredynamicstates-function-retiredynamicstates-states-submittedcount-nowmilliseconds-src-mq3-renderer-playable-flares-ml-1494944380"></a>
 ### retireDynamicStates
@@ -342,12 +368,12 @@ RB_RenderFlares frees active entries that were not submitted this frame. Slot id
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `states` | `dynamic` | — |  |
-| `submittedCount` | `dynamic` | — |  |
-| `nowMilliseconds` | `dynamic` | — |  |
+| `states` | `dynamic` | — | Mutable record or buffer; this call updates `states[index].visible`, `states[index].fadeTime`, `states[index].drawIntensity`. |
+| `submittedCount` | `dynamic` | — | Input used by `for index=submittedCount to len(states)-1 states[index].visible=false`. |
+| `nowMilliseconds` | `dynamic` | — | Input used by `states[index].fadeTime=nowMilliseconds-2000`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L174)
 
 - [mq3.renderer.playable_flares.State](Type-mq3-renderer-playable-flares-state-337903418.md) — struct
 <a id="function-function-mq3-renderer-playable-flares-updatestate-function-updatestate-state-visible-nowmilliseconds-faderate-src-mq3-renderer-playable-flares-ml-2089516995"></a>
@@ -361,13 +387,13 @@ RB_TestFlare changes visibility at now-1 and clamps the linear fade.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `visible` | `dynamic` | — |  |
-| `nowMilliseconds` | `dynamic` | — |  |
-| `fadeRate` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.visible`, `state.fadeTime`, `state.drawIntensity`. |
+| `visible` | `dynamic` | — | Input tested by `visible`. |
+| `nowMilliseconds` | `dynamic` | — | Input used by `state.fadeTime=nowMilliseconds-1`. |
+| `fadeRate` | `dynamic` | — | Input tested by `fadeRate<0.0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L111)
 
 <a id="function-function-mq3-renderer-playable-flares-upload-function-upload-catalog-src-mq3-renderer-playable-flares-ml-336003029"></a>
 ### upload
@@ -376,12 +402,14 @@ RB_TestFlare changes visibility at now-1 and clamps the linear fade.
 function upload(catalog)
 ```
 
+Uploads the enabled flare catalog image to its assigned texture slot and reports upload failure.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `catalog` | `dynamic` | — |  |
+| `catalog` | `dynamic` | — | Record providing `catalog.enabled`, `catalog.textureSlot`, `catalog.image`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L96)
 
 <a id="function-function-mq3-renderer-playable-flares-validmap-function-validmap-map-src-mq3-renderer-playable-flares-ml-1729017914"></a>
 ### validMap
@@ -390,12 +418,14 @@ function upload(catalog)
 function validMap(map)
 ```
 
+Computes `map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>13 and map.counts!=void and len(map.counts)>13` for `mq3.renderer.playable_flares.validMap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record providing `map.data`, `map.offsets`, `map.counts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L34)
 
 <a id="constant-constant-mq3-renderer-playable-flares-visibility-tolerance-const-visibility-tolerance-24-src-mq3-renderer-playable-flares-ml-1802405693"></a>
 ### VISIBILITY_TOLERANCE
@@ -414,10 +444,12 @@ const VISIBILITY_TOLERANCE = 24
 function visibleAtDepth(flareDepth, surfaceDepth)
 ```
 
+Computes `surfaceDepth>0.0 and flareDepth-surfaceDepth<VISIBILITY_TOLERANCE` for `mq3.renderer.playable_flares.visibleAtDepth`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flareDepth` | `dynamic` | — |  |
-| `surfaceDepth` | `dynamic` | — |  |
+| `flareDepth` | `dynamic` | — | Input used in the result expression `surfaceDepth>0.0 and flareDepth-surfaceDepth<VISIBILITY_TOLERANCE`. |
+| `surfaceDepth` | `dynamic` | — | Input used in the result expression `surfaceDepth>0.0 and flareDepth-surfaceDepth<VISIBILITY_TOLERANCE`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L127)

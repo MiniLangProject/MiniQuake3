@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI add bots state, including `data`, `numBots`, `delay`, `baseBotNum`, `selectedBotNum`, `sortedBotNums` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-basebotnum-basebotnum-src-mq3-client-ui-add-bots-ml-851352816"></a>
 ### baseBotNum
@@ -32,7 +34,7 @@ baseBotNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-botnames-botnames-src-mq3-client-ui-add-bots-ml-1795827282"></a>
 ### botnames
@@ -42,7 +44,7 @@ botnames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-cached-cached-src-mq3-client-ui-add-bots-ml-1830324964"></a>
 ### cached
@@ -52,7 +54,7 @@ cached
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-data-data-src-mq3-client-ui-add-bots-ml-106389048"></a>
 ### data
@@ -62,7 +64,7 @@ data
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-delay-delay-src-mq3-client-ui-add-bots-ml-35331860"></a>
 ### delay
@@ -72,7 +74,7 @@ delay
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-menuevents-menuevents-src-mq3-client-ui-add-bots-ml-1729950508"></a>
 ### menuEvents
@@ -82,7 +84,7 @@ menuEvents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-numbots-numbots-src-mq3-client-ui-add-bots-ml-1188950440"></a>
 ### numBots
@@ -92,7 +94,7 @@ numBots
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-pushed-pushed-src-mq3-client-ui-add-bots-ml-505887814"></a>
 ### pushed
@@ -102,7 +104,7 @@ pushed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-retailactive-retailactive-src-mq3-client-ui-add-bots-ml-1093535874"></a>
 ### retailActive
@@ -112,7 +114,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-selectedbotnum-selectedbotnum-src-mq3-client-ui-add-bots-ml-1250102800"></a>
 ### selectedBotNum
@@ -122,7 +124,7 @@ selectedBotNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-skill-skill-src-mq3-client-ui-add-bots-ml-1940949732"></a>
 ### skill
@@ -132,7 +134,7 @@ skill
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-sortedbotnums-sortedbotnums-src-mq3-client-ui-add-bots-ml-1600738392"></a>
 ### sortedBotNums
@@ -142,7 +144,7 @@ sortedBotNums
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-team-team-src-mq3-client-ui-add-bots-ml-1658131742"></a>
 ### team
@@ -152,7 +154,7 @@ team
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-teamgrayed-teamgrayed-src-mq3-client-ui-add-bots-ml-1001487546"></a>
 ### teamGrayed
@@ -162,7 +164,7 @@ teamGrayed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-teamnames-teamnames-src-mq3-client-ui-add-bots-ml-1848959484"></a>
 ### teamNames
@@ -172,7 +174,7 @@ teamNames
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)
 
 <a id="field-field-mq3-client-ui-add-bots-state-visiblecount-visiblecount-src-mq3-client-ui-add-bots-ml-750019858"></a>
 ### visibleCount
@@ -182,4 +184,4 @@ visibleCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_add_bots.ml#L33)

@@ -9,8 +9,10 @@
 struct World
 ```
 
+`World` record for aas clustering, containing `loaded`, `forceClustering`, `forceReachability`, `noFaceFlood` and `planes` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-areas-areas-src-mq3-botlib-aas-clustering-ml-1071212245"></a>
 ### areas
@@ -32,7 +34,7 @@ areas
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-clusters-clusters-src-mq3-botlib-aas-clustering-ml-1970406691"></a>
 ### clusters
@@ -42,7 +44,7 @@ clusters
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-edgeindex-edgeindex-src-mq3-botlib-aas-clustering-ml-614098653"></a>
 ### edgeIndex
@@ -52,7 +54,7 @@ edgeIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-edges-edges-src-mq3-botlib-aas-clustering-ml-2076481285"></a>
 ### edges
@@ -62,7 +64,7 @@ edges
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-entities-entities-src-mq3-botlib-aas-clustering-ml-615727339"></a>
 ### entities
@@ -72,7 +74,7 @@ entities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-faceindex-faceindex-src-mq3-botlib-aas-clustering-ml-705351405"></a>
 ### faceIndex
@@ -82,7 +84,7 @@ faceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-faces-faces-src-mq3-botlib-aas-clustering-ml-1194269741"></a>
 ### faces
@@ -92,7 +94,7 @@ faces
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-forceclustering-forceclustering-src-mq3-botlib-aas-clustering-ml-1603515581"></a>
 ### forceClustering
@@ -102,7 +104,7 @@ forceClustering
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-forcereachability-forcereachability-src-mq3-botlib-aas-clustering-ml-101750577"></a>
 ### forceReachability
@@ -112,7 +114,7 @@ forceReachability
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-loaded-loaded-src-mq3-botlib-aas-clustering-ml-1047898451"></a>
 ### loaded
@@ -122,7 +124,7 @@ loaded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-nofaceflood-nofaceflood-src-mq3-botlib-aas-clustering-ml-164619445"></a>
 ### noFaceFlood
@@ -132,7 +134,7 @@ noFaceFlood
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-planes-planes-src-mq3-botlib-aas-clustering-ml-51218819"></a>
 ### planes
@@ -142,7 +144,7 @@ planes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-portalindex-portalindex-src-mq3-botlib-aas-clustering-ml-730377605"></a>
 ### portalIndex
@@ -152,7 +154,7 @@ portalIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-portals-portals-src-mq3-botlib-aas-clustering-ml-1530483181"></a>
 ### portals
@@ -162,7 +164,7 @@ portals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-reachabilities-reachabilities-src-mq3-botlib-aas-clustering-ml-557982267"></a>
 ### reachabilities
@@ -172,7 +174,7 @@ reachabilities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-retailactive-retailactive-src-mq3-botlib-aas-clustering-ml-431929403"></a>
 ### retailActive
@@ -182,7 +184,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-savefile-savefile-src-mq3-botlib-aas-clustering-ml-553432827"></a>
 ### saveFile
@@ -192,7 +194,7 @@ saveFile
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-settings-settings-src-mq3-botlib-aas-clustering-ml-1351430811"></a>
 ### settings
@@ -202,7 +204,7 @@ settings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-clustering-world-vertexes-vertexes-src-mq3-botlib-aas-clustering-ml-294148189"></a>
 ### vertexes
@@ -212,4 +214,4 @@ vertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L41)

@@ -9,8 +9,10 @@
 struct Upload
 ```
 
+Stores cinematic runtime upload record, including `handle`, `frame`, `dirty`, `shader`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
 
 ## Members
 
@@ -22,7 +24,7 @@ dirty
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
 
 <a id="field-field-mq3-client-cinematic-runtime-upload-frame-frame-src-mq3-client-cinematic-runtime-ml-2059939260"></a>
 ### frame
@@ -32,7 +34,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
 
 <a id="field-field-mq3-client-cinematic-runtime-upload-handle-handle-src-mq3-client-cinematic-runtime-ml-1508171272"></a>
 ### handle
@@ -42,7 +44,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)
 
 <a id="field-field-mq3-client-cinematic-runtime-upload-shader-shader-src-mq3-client-cinematic-runtime-ml-1778940430"></a>
 ### shader
@@ -52,4 +54,4 @@ shader
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L27)

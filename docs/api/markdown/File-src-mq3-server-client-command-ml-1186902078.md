@@ -20,8 +20,10 @@ Reachable from entry: **yes**
 function createClient()
 ```
 
+Create `mq3.server.client_command.Client` with state=0; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L15)
 
 <a id="constant-constant-mq3-server-client-command-cs-active-const-cs-active-4-src-mq3-server-client-command-ml-1308717357"></a>
 ### CS_ACTIVE
@@ -40,14 +42,19 @@ const CS_ACTIVE = 4
 function execute(host, clientState, msg)
 ```
 
+Consume one reliable client command, discard retransmissions, reject sequence gaps, and apply the flood interval before dispatch.
+
+Validation failures include `client command: missing state`.
+Direct state writes: `clientState.nextReliableTime`, `clientState.lastClientCommand`, `clientState.lastClientCommandString`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `host` | `dynamic` | — |  |
-| `clientState` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
+| `host` | `dynamic` | — | Server command callbacks, flood policy, and current millisecond clock. |
+| `clientState` | `dynamic` | — | Mutable client sequencing record; accepted commands update its sequence, text, and next reliable-command time. |
+| `msg` | `dynamic` | — | Network message read at the current cursor: an int32 sequence followed by a C string. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L31)
 
 <a id="function-function-mq3-server-client-command-runtime-function-runtime-src-mq3-server-client-command-ml-413634544"></a>
 ### runtime
@@ -56,7 +63,9 @@ function execute(host, clientState, msg)
 function runtime()
 ```
 
+Create `mq3.server.client_command.Runtime` with time=0; floodProtect=true; clientRunning=false; executeFn=void; dropFn=void; diagnosticFn=void; context=void.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L20)
 
 - [mq3.server.client_command.Runtime](Type-mq3-server-client-command-runtime-180684606.md) — struct

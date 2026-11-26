@@ -21,13 +21,15 @@ Reachable from entry: **yes**
 function baseline(state, number)
 ```
 
+Returns a validated entity baseline or creates a zeroed fallback carrying the requested entity number.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `number` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.entityBaselines`. |
+| `number` | `dynamic` | — | Value assigned to `value.number`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L52)
 
 <a id="function-function-mq3-client-snapshot-parse-createframe-function-createframe-src-mq3-client-snapshot-parse-ml-2002156060"></a>
 ### createFrame
@@ -36,8 +38,10 @@ function baseline(state, number)
 function createFrame()
 ```
 
+Creates an empty packet-entity frame descriptor with zero ring origin and entity count.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L27)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L30)
 
 <a id="function-function-mq3-client-snapshot-parse-createstate-function-createstate-src-mq3-client-snapshot-parse-ml-451193908"></a>
 ### createState
@@ -46,8 +50,10 @@ function createFrame()
 function createState()
 ```
 
+Allocates the 2,048-entry parse-entity ring and 1,024 baseline slots with diagnostic tracing disabled.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L29)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L33)
 
 <a id="function-function-mq3-client-snapshot-parse-deltaentity-function-deltaentity-state-msg-frame-newnum-old-unchanged-src-mq3-client-snapshot-parse-ml-820825949"></a>
 ### deltaEntity
@@ -60,15 +66,15 @@ Mirrors CL_DeltaEntity: removed records occupy no ring slot.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
-| `frame` | `dynamic` | — |  |
-| `newnum` | `dynamic` | — |  |
-| `old` | `dynamic` | — |  |
-| `unchanged` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable snapshot parse record/storage; this routine assigns `state.parseEntities[state.parseEntitiesNum&(MAX_PARSE_ENTITIES-1)]`, `state.parseEntitiesNum`. |
+| `msg` | `dynamic` | — | Value used by `if unchanged then value=entitystate.copy(old) else value=delta.readDeltaEntity(msg,old,newnum) end if`. |
+| `frame` | `dynamic` | — | Mutable snapshot parse record/storage; this routine assigns `frame.numEntities`. |
+| `newnum` | `dynamic` | — | Value used by `if newnum<0 or newnum>=MAX_GENTITIES then return error(6853,"snapshot parse: bad entity number") end if`. |
+| `old` | `dynamic` | — | Value used by `if old==void then old=baseline(state,newnum) end if`. |
+| `unchanged` | `dynamic` | — | Value used by `if unchanged then value=entitystate.copy(old) else value=delta.readDeltaEntity(msg,old,newnum) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L76)
 
 <a id="constant-constant-mq3-client-snapshot-parse-entity-sentinel-const-entity-sentinel-1023-src-mq3-client-snapshot-parse-ml-1719151565"></a>
 ### ENTITY_SENTINEL
@@ -118,14 +124,16 @@ const MAX_PARSE_ENTITIES = 2048
 function nextOld(state, oldframe, index)
 ```
 
+Reads the next entity from the prior snapshot, returning the merge sentinel pair [99999, void] at the end.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `oldframe` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared snapshot parse state passed to the helper calls in `nextOld`. |
+| `oldframe` | `dynamic` | — | Record read through `oldframe.numEntities`, `oldframe.parseEntitiesNum`. |
+| `index` | `dynamic` | — | Value tested by `oldframe==void or index>=oldframe.numEntities` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L91)
 
 <a id="function-function-mq3-client-snapshot-parse-pad3-function-pad3-value-src-mq3-client-snapshot-parse-ml-1597113205"></a>
 ### pad3
@@ -134,12 +142,14 @@ function nextOld(state, oldframe, index)
 function pad3(value)
 ```
 
+Left-pads a packet offset to at least three characters for entity diagnostics.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used by `text=str(value)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L39)
 
 <a id="function-function-mq3-client-snapshot-parse-parsedentity-function-parsedentity-state-absoluteindex-src-mq3-client-snapshot-parse-ml-1814045254"></a>
 ### parsedEntity
@@ -148,13 +158,15 @@ function pad3(value)
 function parsedEntity(state, absoluteIndex)
 ```
 
+Reads an absolute entity sequence through the parse ring, rejecting negative indices and missing history entries.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `absoluteIndex` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.parseEntities`. |
+| `absoluteIndex` | `dynamic` | — | Value used by `if absoluteIndex<0 then return error(6851,"snapshot parse: negative entity index") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L62)
 
 <a id="function-function-mq3-client-snapshot-parse-parsepacketentities-function-parsepacketentities-state-msg-oldframe-newframe-src-mq3-client-snapshot-parse-ml-207349741"></a>
 ### parsePacketEntities
@@ -167,13 +179,13 @@ Merge the sorted wire entity stream with the prior snapshot's sorted ring slice.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
-| `oldframe` | `dynamic` | — |  |
-| `newframe` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.parseEntitiesNum`. |
+| `msg` | `dynamic` | — | Record read through `msg.readcount`, `msg.cursize`. |
+| `oldframe` | `dynamic` | — | Value used by `pair=nextOld(state,oldframe,oldindex)`. |
+| `newframe` | `dynamic` | — | Mutable snapshot parse record/storage; this routine assigns `newframe.parseEntitiesNum`, `newframe.numEntities`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L102)
 
 - [mq3.client.snapshot_parse.State](Type-mq3-client-snapshot-parse-state-1252978174.md) — struct
 <a id="function-function-mq3-client-snapshot-parse-trace-function-trace-state-msg-text-src-mq3-client-snapshot-parse-ml-1471661677"></a>
@@ -183,11 +195,13 @@ Merge the sorted wire entity stream with the prior snapshot's sorted ring slice.
 function trace(state, msg, text)
 ```
 
+Records packet-entity trace lines only at shownet level three.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `msg` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable snapshot parse record/storage; this routine assigns `state.shownetLines`. |
+| `msg` | `dynamic` | — | Record read through `msg.readcount`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `trace` in the snapshot parse path. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_parse.ml#L44)

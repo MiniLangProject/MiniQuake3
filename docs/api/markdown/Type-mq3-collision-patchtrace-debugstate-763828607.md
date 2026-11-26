@@ -9,8 +9,10 @@
 struct DebugState
 ```
 
+DebugState record for collision.patchtrace, containing `patch`, `facet`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ facet
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L26)
 
 <a id="field-field-mq3-collision-patchtrace-debugstate-patch-patch-src-mq3-collision-patchtrace-ml-1524977639"></a>
 ### patch
@@ -32,4 +34,4 @@ patch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L25)

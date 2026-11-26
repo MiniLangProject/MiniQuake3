@@ -9,8 +9,10 @@
 struct Services
 ```
 
+Stores server command stream host-service callbacks, including `context`, `configstringFn`, `systemInfoFn`, `clearNotifyFn`, `clearUsercmdsFn`, `closeConsoleFn` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ clearNotifyFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L18)
 
 <a id="field-field-mq3-client-server-command-stream-services-clearusercmdsfn-clearusercmdsfn-src-mq3-client-server-command-stream-ml-1184587613"></a>
 ### clearUsercmdsFn
@@ -32,7 +34,7 @@ clearUsercmdsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L19)
 
 <a id="field-field-mq3-client-server-command-stream-services-closeconsolefn-closeconsolefn-src-mq3-client-server-command-stream-ml-1794709571"></a>
 ### closeConsoleFn
@@ -42,7 +44,7 @@ closeConsoleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L20)
 
 <a id="field-field-mq3-client-server-command-stream-services-configstringfn-configstringfn-src-mq3-client-server-command-stream-ml-103712943"></a>
 ### configstringFn
@@ -52,7 +54,7 @@ configstringFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L16)
 
 <a id="field-field-mq3-client-server-command-stream-services-context-context-src-mq3-client-server-command-stream-ml-719759785"></a>
 ### context
@@ -62,7 +64,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L15)
 
 <a id="field-field-mq3-client-server-command-stream-services-queueconsolefn-queueconsolefn-src-mq3-client-server-command-stream-ml-2057323217"></a>
 ### queueConsoleFn
@@ -72,7 +74,7 @@ queueConsoleFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L21)
 
 <a id="field-field-mq3-client-server-command-stream-services-serverrunning-serverrunning-src-mq3-client-server-command-stream-ml-379297225"></a>
 ### serverRunning
@@ -82,7 +84,7 @@ serverRunning
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L22)
 
 <a id="field-field-mq3-client-server-command-stream-services-systeminfofn-systeminfofn-src-mq3-client-server-command-stream-ml-211130187"></a>
 ### systemInfoFn
@@ -92,4 +94,4 @@ systemInfoFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L17)

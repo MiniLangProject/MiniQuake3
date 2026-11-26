@@ -9,8 +9,10 @@
 struct PreparedWorld
 ```
 
+Data record for `mq3.renderer.world_surface_selection.PreparedWorld`; groups `selection`, `renderData`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L33)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L37)
 
 ## Members
 
@@ -22,7 +24,7 @@ renderData
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L37)
 
 <a id="field-field-mq3-renderer-world-surface-selection-preparedworld-selection-selection-src-mq3-renderer-world-surface-selection-ml-1305328450"></a>
 ### selection
@@ -32,4 +34,4 @@ selection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L37)

@@ -9,8 +9,10 @@
 struct EndCounters
 ```
 
+Data record for `mq3.renderer.tr_shade_runtime.EndCounters`; groups `shaders`, `vertexes`, `indexes`, `totalIndexes`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
 
 ## Members
 
@@ -22,7 +24,7 @@ indexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-endcounters-shaders-shaders-src-mq3-renderer-tr-shade-runtime-ml-158185637"></a>
 ### shaders
@@ -32,7 +34,7 @@ shaders
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-endcounters-totalindexes-totalindexes-src-mq3-renderer-tr-shade-runtime-ml-750310701"></a>
 ### totalIndexes
@@ -42,7 +44,7 @@ totalIndexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-endcounters-vertexes-vertexes-src-mq3-renderer-tr-shade-runtime-ml-81795541"></a>
 ### vertexes
@@ -52,4 +54,4 @@ vertexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L35)

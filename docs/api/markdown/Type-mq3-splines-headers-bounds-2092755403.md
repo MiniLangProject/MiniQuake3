@@ -9,8 +9,10 @@
 struct Bounds
 ```
 
+Bounds record for splines.headers, containing `mins`, `maxs`, `cleared`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L18)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ cleared
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L23)
 
 <a id="field-field-mq3-splines-headers-bounds-maxs-maxs-src-mq3-splines-headers-ml-1927518258"></a>
 ### maxs
@@ -32,7 +34,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L23)
 
 <a id="field-field-mq3-splines-headers-bounds-mins-mins-src-mq3-splines-headers-ml-1718615862"></a>
 ### mins
@@ -42,4 +44,4 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L23)

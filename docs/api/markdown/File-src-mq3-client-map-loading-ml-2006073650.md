@@ -32,14 +32,16 @@ Reachable from entry: **yes**
 function addIcon(assetList, kindList, name)
 ```
 
+Calls `assetList.len`, `assetList.get`, `assetList.add` and additional helpers from map loading `addIcon`. The final path returns `assetList.len()`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `assetList` | `dynamic` | — |  |
-| `kindList` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `assetList` | `dynamic` | — | Record read through `assetList.len`, `assetList.get`, `assetList.add`. |
+| `kindList` | `dynamic` | — | Record read through `kindList.add`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding map loading resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L104)
 
 <a id="function-function-mq3-client-map-loading-collecticons-function-collecticons-screen-config-assets-kinds-clientnum-src-mq3-client-map-loading-ml-1920454487"></a>
 ### collectIcons
@@ -48,16 +50,18 @@ function addIcon(assetList, kindList, name)
 function collectIcons(screen, config, assets, kinds, clientNum)
 ```
 
+Updates `screen.loadingInfo.itemIcons`, `screen.loadingInfo.playerIcons`, `screen.assets`, `screen.kinds` during map loading `collectIcons`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `screen` | `dynamic` | — |  |
-| `config` | `dynamic` | — |  |
-| `assets` | `dynamic` | — |  |
-| `kinds` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `screen` | `dynamic` | — | Mutable map loading record/storage; this routine assigns `screen.loadingInfo.itemIcons`, `screen.loadingInfo.playerIcons`, `screen.assets`, `screen.kinds`. |
+| `config` | `dynamic` | — | Value used by `bits=bytes(configValue(config,bg.CS_ITEMS))`. |
+| `assets` | `dynamic` | — | Sequence read at `assets[index]`. |
+| `kinds` | `dynamic` | — | Sequence read at `kinds[index]`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L118)
 
 <a id="function-function-mq3-client-map-loading-configvalue-function-configvalue-config-slot-src-mq3-client-map-loading-ml-811999674"></a>
 ### configValue
@@ -66,13 +70,15 @@ function collectIcons(screen, config, assets, kinds, clientNum)
 function configValue(config, slot)
 ```
 
+Evaluates map loading `configValue` and returns `""`, `config[slot]` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `config` | `dynamic` | — |  |
-| `slot` | `dynamic` | — |  |
+| `config` | `dynamic` | — | Sequence read at `config[slot]`. |
+| `slot` | `dynamic` | — | Value used by `if config==void or slot>=len(config) or config[slot]==void then return "" end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L85)
 
 <a id="function-function-mq3-client-map-loading-create-function-create-archive-mapname-servername-localgame-src-mq3-client-map-loading-ml-920644562"></a>
 ### create
@@ -81,15 +87,17 @@ function configValue(config, slot)
 function create(archive, mapName, serverName, localGame)
 ```
 
+Calls `mq3.platform.playable_window.milliseconds`, `mq3.renderer.playable_materials.buildScriptIndex`, `mq3.renderer.shader_index.find` and additional helpers from map loading `create`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `archive` | `dynamic` | — |  |
-| `mapName` | `dynamic` | — |  |
-| `serverName` | `dynamic` | — |  |
-| `localGame` | `dynamic` | — |  |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. |
+| `mapName` | `dynamic` | — | Map name used to select the level and its associated assets. |
+| `serverName` | `dynamic` | — | Value used by `return Screen(archive,scripts,[name,"levelShotDetail","menu/art/font1_prop"],["shaderNoMip","shader","shaderNoMip"],mapName,serverName,localGa...`. |
+| `localGame` | `dynamic` | — | Value used by `return Screen(archive,scripts,[name,"levelShotDetail","menu/art/font1_prop"],["shaderNoMip","shader","shaderNoMip"],mapName,serverName,localGa...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L31)
 
 <a id="constant-constant-mq3-client-map-loading-first-texture-const-first-texture-3072-src-mq3-client-map-loading-ml-275960483"></a>
 ### FIRST_TEXTURE
@@ -110,13 +118,15 @@ The map screen releases its textures before the match uploads its HUD.
 function hasImage(screen, name)
 ```
 
+Calls `mq3.renderer.playable_materials.candidates`, `mq3.format.pk3.findEntry`, `mq3.renderer.shader_index.find` from map loading `hasImage`. The final path returns `shaderIndex.find(screen.scripts[0],name)!=void`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `screen` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
+| `screen` | `dynamic` | — | Record read through `screen.archive`, `screen.scripts`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding map loading resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L93)
 
 <a id="function-function-mq3-client-map-loading-layout-function-layout-screen-loadingtext-width-height-config-src-mq3-client-map-loading-ml-1929648182"></a>
 ### layout
@@ -125,16 +135,18 @@ function hasImage(screen, name)
 function layout(screen, loadingText, width, height, config)
 ```
 
+Calls `mq3.client.map_loading.configValue`, `mq3.shared.info.setValue`, `mq3.client.cgame_info.loadingString` and additional helpers from map loading `layout`. The final path returns `commands.toArray()`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `screen` | `dynamic` | — |  |
-| `loadingText` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `config` | `dynamic` | — |  |
+| `screen` | `dynamic` | — | Record read through `screen.mapName`, `screen.loadingInfo`, `screen.localGame`, `screen.assets` and additional values. |
+| `loadingText` | `dynamic` | — | Value used by `cgameInfo.loadingString(state,loadingText)`. |
+| `width` | `dynamic` | — | Value assigned to `font.screenXScale`. |
+| `height` | `dynamic` | — | Value assigned to `font.screenYScale`, `font.screenXScale`. |
+| `config` | `dynamic` | — | Value used by `server=configValue(config,0)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L154)
 
 <a id="function-function-mq3-client-map-loading-quad-function-quad-commands-x-y-w-h-s1-t1-s2-t2-handle-src-mq3-client-map-loading-ml-1217876750"></a>
 ### quad
@@ -143,21 +155,23 @@ function layout(screen, loadingText, width, height, config)
 function quad(commands, x, y, w, h, s1, t1, s2, t2, handle)
 ```
 
+Calls `commands.add`, `mq3.renderer.command_queue.Command` from map loading `quad`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commands` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `w` | `dynamic` | — |  |
-| `h` | `dynamic` | — |  |
-| `s1` | `dynamic` | — |  |
-| `t1` | `dynamic` | — |  |
-| `s2` | `dynamic` | — |  |
-| `t2` | `dynamic` | — |  |
-| `handle` | `dynamic` | — |  |
+| `commands` | `dynamic` | — | Record read through `commands.add`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `quad`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `quad`. |
+| `w` | `dynamic` | — | Width in the coordinate space used by `quad`. |
+| `h` | `dynamic` | — | Height in the coordinate space used by `quad`. |
+| `s1` | `dynamic` | — | Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`. |
+| `t1` | `dynamic` | — | Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`. |
+| `s2` | `dynamic` | — | Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`. |
+| `t2` | `dynamic` | — | Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`. |
+| `handle` | `dynamic` | — | Handle identifying the parser, file, media or control resource consumed by `quad`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L55)
 
 <a id="function-function-mq3-client-map-loading-release-function-release-screen-src-mq3-client-map-loading-ml-292518628"></a>
 ### release
@@ -166,12 +180,14 @@ function quad(commands, x, y, w, h, s1, t1, s2, t2, handle)
 function release(screen)
 ```
 
+Updates `screen.catalog` during map loading `release`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `screen` | `dynamic` | — |  |
+| `screen` | `dynamic` | — | Mutable map loading record/storage; this routine assigns `screen.catalog`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L209)
 
 - [mq3.client.map_loading.Screen](Type-mq3-client-map-loading-screen-1249177996.md) — struct
 <a id="function-function-mq3-client-map-loading-show-function-show-screen-loadingtext-width-height-config-reupload-src-mq3-client-map-loading-ml-1970888018"></a>
@@ -181,17 +197,19 @@ function release(screen)
 function show(screen, loadingText, width, height, config, reupload)
 ```
 
+Updates `screen.catalog` during map loading `show`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `screen` | `dynamic` | — |  |
-| `loadingText` | `dynamic` | — |  |
-| `width` | `dynamic` | — |  |
-| `height` | `dynamic` | — |  |
-| `config` | `dynamic` | — |  |
-| `reupload` | `dynamic` | — |  |
+| `screen` | `dynamic` | — | Mutable map loading record/storage; this routine assigns `screen.catalog`. |
+| `loadingText` | `dynamic` | — | Value used by `commands=layout(screen,loadingText,width,height,config)`. |
+| `width` | `dynamic` | — | Width in the coordinate space used by `show`. |
+| `height` | `dynamic` | — | Height in the coordinate space used by `show`. |
+| `config` | `dynamic` | — | Value used by `commands=layout(screen,loadingText,width,height,config)`. |
+| `reupload` | `dynamic` | — | Value used by `reupload=true`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L187)
 
 <a id="function-function-mq3-client-map-loading-textline-function-textline-commands-font-x-y-text-small-src-mq3-client-map-loading-ml-2068984852"></a>
 ### textLine
@@ -200,17 +218,19 @@ function show(screen, loadingText, width, height, config, reupload)
 function textLine(commands, font, x, y, text, small)
 ```
 
+Calls `mq3.client.cgame_drawtools.clear`, `mq3.client.cgame_drawtools.drawProportionalString`, `mq3.client.map_loading.quad` and additional helpers from map loading `textLine`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `commands` | `dynamic` | — |  |
-| `font` | `dynamic` | — |  |
-| `x` | `dynamic` | — |  |
-| `y` | `dynamic` | — |  |
-| `text` | `dynamic` | — |  |
-| `small` | `dynamic` | — |  |
+| `commands` | `dynamic` | — | Record read through `commands.add`. |
+| `font` | `dynamic` | — | Record read through `font.actions`. |
+| `x` | `dynamic` | — | Horizontal coordinate in the coordinate space used by `textLine`. |
+| `y` | `dynamic` | — | Vertical coordinate in the coordinate space used by `textLine`. |
+| `text` | `dynamic` | — | Text consumed or emitted by `textLine` in the map loading path. |
+| `small` | `dynamic` | — | Value used by `if small then style=style\|loadFont.UI_SMALLFONT end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L66)
 
 <a id="constant-constant-mq3-client-map-loading-texture-count-const-texture-count-980-src-mq3-client-map-loading-ml-1223601870"></a>
 ### TEXTURE_COUNT

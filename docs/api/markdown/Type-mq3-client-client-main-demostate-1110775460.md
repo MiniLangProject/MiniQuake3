@@ -9,8 +9,10 @@
 struct DemoState
 ```
 
+Stores client main demo state record, including `recording`, `playing`, `file`, `name`, `nextDemo`, `serverMessageSequence` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)
 
 ## Members
 
@@ -22,7 +24,7 @@ file
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)
 
 <a id="field-field-mq3-client-client-main-demostate-name-name-src-mq3-client-client-main-ml-1884269563"></a>
 ### name
@@ -32,7 +34,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)
 
 <a id="field-field-mq3-client-client-main-demostate-nextdemo-nextdemo-src-mq3-client-client-main-ml-2006842513"></a>
 ### nextDemo
@@ -42,7 +44,7 @@ nextDemo
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)
 
 <a id="field-field-mq3-client-client-main-demostate-offset-offset-src-mq3-client-client-main-ml-581866163"></a>
 ### offset
@@ -52,7 +54,7 @@ offset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)
 
 <a id="field-field-mq3-client-client-main-demostate-playing-playing-src-mq3-client-client-main-ml-1661495425"></a>
 ### playing
@@ -62,7 +64,7 @@ playing
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)
 
 <a id="field-field-mq3-client-client-main-demostate-recording-recording-src-mq3-client-client-main-ml-573070117"></a>
 ### recording
@@ -72,7 +74,7 @@ recording
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)
 
 <a id="field-field-mq3-client-client-main-demostate-servermessagesequence-servermessagesequence-src-mq3-client-client-main-ml-1299937797"></a>
 ### serverMessageSequence
@@ -82,4 +84,4 @@ serverMessageSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L44)

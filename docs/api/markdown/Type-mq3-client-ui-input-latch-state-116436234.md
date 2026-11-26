@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI input latch state, including `down`, `pulse`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L7)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L8)
 
 ## Members
 
@@ -22,7 +24,7 @@ down
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L8)
 
 <a id="field-field-mq3-client-ui-input-latch-state-pulse-pulse-src-mq3-client-ui-input-latch-ml-1200502314"></a>
 ### pulse
@@ -32,4 +34,4 @@ pulse
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L8)

@@ -9,8 +9,10 @@
 struct Handlers
 ```
 
+Callback table for `mq3.platform.input_events.Handlers`; exposes `context`, `keyFn`, `charFn`, `mouseFn`, `joystickFn`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L20)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L23)
 
 ## Members
 
@@ -22,7 +24,7 @@ charFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L23)
 
 <a id="field-field-mq3-platform-input-events-handlers-context-context-src-mq3-platform-input-events-ml-682106152"></a>
 ### context
@@ -32,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L23)
 
 <a id="field-field-mq3-platform-input-events-handlers-joystickfn-joystickfn-src-mq3-platform-input-events-ml-1592895296"></a>
 ### joystickFn
@@ -42,7 +44,7 @@ joystickFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L23)
 
 <a id="field-field-mq3-platform-input-events-handlers-keyfn-keyfn-src-mq3-platform-input-events-ml-1068430624"></a>
 ### keyFn
@@ -52,7 +54,7 @@ keyFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L23)
 
 <a id="field-field-mq3-platform-input-events-handlers-mousefn-mousefn-src-mq3-platform-input-events-ml-496852816"></a>
 ### mouseFn
@@ -62,4 +64,4 @@ mouseFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L23)

@@ -9,8 +9,10 @@
 struct Plan
 ```
 
+Stores QVM frame input plan record, including `realtime`, `rawMsec`, `integrationMsec`, `commandNumber`, `send`, `sequence` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ commandNumber
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 <a id="field-field-mq3-client-qvm-frame-input-plan-integrationmsec-integrationmsec-src-mq3-client-qvm-frame-input-ml-521195070"></a>
 ### integrationMsec
@@ -32,7 +34,7 @@ integrationMsec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 <a id="field-field-mq3-client-qvm-frame-input-plan-rawmsec-rawmsec-src-mq3-client-qvm-frame-input-ml-104175310"></a>
 ### rawMsec
@@ -42,7 +44,7 @@ rawMsec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 <a id="field-field-mq3-client-qvm-frame-input-plan-realtime-realtime-src-mq3-client-qvm-frame-input-ml-1296868648"></a>
 ### realtime
@@ -52,7 +54,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 <a id="field-field-mq3-client-qvm-frame-input-plan-send-send-src-mq3-client-qvm-frame-input-ml-488303586"></a>
 ### send
@@ -62,7 +64,7 @@ send
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 <a id="field-field-mq3-client-qvm-frame-input-plan-sequence-sequence-src-mq3-client-qvm-frame-input-ml-878705812"></a>
 ### sequence
@@ -72,7 +74,7 @@ sequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 <a id="field-field-mq3-client-qvm-frame-input-plan-used-used-src-mq3-client-qvm-frame-input-ml-34371980"></a>
 ### used
@@ -82,4 +84,4 @@ used
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)

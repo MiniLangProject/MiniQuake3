@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI players queued engine action, including `boundary`, `kind`, `name`, `detail`, `number`, `vector` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
 
 <a id="field-field-mq3-client-ui-players-action-detail-detail-src-mq3-client-ui-players-ml-1338456657"></a>
 ### detail
@@ -32,7 +34,7 @@ detail
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
 
 <a id="field-field-mq3-client-ui-players-action-dispatched-dispatched-src-mq3-client-ui-players-ml-1714022577"></a>
 ### dispatched
@@ -42,7 +44,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
 
 <a id="field-field-mq3-client-ui-players-action-kind-kind-src-mq3-client-ui-players-ml-1924756559"></a>
 ### kind
@@ -52,7 +54,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
 
 <a id="field-field-mq3-client-ui-players-action-name-name-src-mq3-client-ui-players-ml-882046233"></a>
 ### name
@@ -62,7 +64,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
 
 <a id="field-field-mq3-client-ui-players-action-number-number-src-mq3-client-ui-players-ml-621067397"></a>
 ### number
@@ -72,7 +74,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)
 
 <a id="field-field-mq3-client-ui-players-action-vector-vector-src-mq3-client-ui-players-ml-1029500365"></a>
 ### vector
@@ -82,4 +84,4 @@ vector
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L55)

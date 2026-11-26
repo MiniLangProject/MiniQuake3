@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for qcommon.files_runtime, containing `fs`, `handles`, `config`, `initialized`, `loadStack`, `lastGameDir`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ commandFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-config-config-src-mq3-qcommon-files-runtime-ml-928179871"></a>
 ### config
@@ -32,7 +34,7 @@ config
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-context-context-src-mq3-qcommon-files-runtime-ml-1514426087"></a>
 ### context
@@ -42,7 +44,7 @@ context
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-fs-fs-src-mq3-qcommon-files-runtime-ml-1378901517"></a>
 ### fs
@@ -52,7 +54,7 @@ fs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-handles-handles-src-mq3-qcommon-files-runtime-ml-1819826603"></a>
 ### handles
@@ -62,7 +64,7 @@ handles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-initialized-initialized-src-mq3-qcommon-files-runtime-ml-1031671311"></a>
 ### initialized
@@ -72,7 +74,7 @@ initialized
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-lastgamedir-lastgamedir-src-mq3-qcommon-files-runtime-ml-406640227"></a>
 ### lastGameDir
@@ -82,7 +84,7 @@ lastGameDir
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-listmodsfn-listmodsfn-src-mq3-qcommon-files-runtime-ml-2090842553"></a>
 ### listModsFn
@@ -92,7 +94,7 @@ listModsFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)
 
 <a id="field-field-mq3-qcommon-files-runtime-runtime-loadstack-loadstack-src-mq3-qcommon-files-runtime-ml-103451703"></a>
 ### loadStack
@@ -102,4 +104,4 @@ loadStack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/files_runtime.ml#L30)

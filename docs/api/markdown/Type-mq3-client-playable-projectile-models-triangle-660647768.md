@@ -9,8 +9,10 @@
 struct Triangle
 ```
 
+Stores playable projectile models triangle record, including `positions`, `texCoords`, `normals`, `textureSlot`, `imageName`, `shaderName` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ imageName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-lightorigin-lightorigin-src-mq3-client-playable-projectile-models-ml-153321069"></a>
 ### lightOrigin
@@ -32,7 +34,7 @@ lightOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-normals-normals-src-mq3-client-playable-projectile-models-ml-1251458773"></a>
 ### normals
@@ -42,7 +44,7 @@ normals
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-positions-positions-src-mq3-client-playable-projectile-models-ml-108680289"></a>
 ### positions
@@ -52,7 +54,7 @@ positions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-shadername-shadername-src-mq3-client-playable-projectile-models-ml-1459259925"></a>
 ### shaderName
@@ -62,7 +64,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-style-style-src-mq3-client-playable-projectile-models-ml-1648420561"></a>
 ### style
@@ -72,7 +74,7 @@ style
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-surfaceindex-surfaceindex-src-mq3-client-playable-projectile-models-ml-562890571"></a>
 ### surfaceIndex
@@ -82,7 +84,7 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-texcoords-texcoords-src-mq3-client-playable-projectile-models-ml-55631641"></a>
 ### texCoords
@@ -92,7 +94,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-projectile-models-triangle-textureslot-textureslot-src-mq3-client-playable-projectile-models-ml-510372957"></a>
 ### textureSlot
@@ -102,4 +104,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)

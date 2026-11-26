@@ -9,8 +9,10 @@
 struct Texture
 ```
 
+Data record for `mq3.renderer.qvm_scene_materials.Texture`; groups `imageName`, `image`, `slot`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L17)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L20)
 
 ## Members
 
@@ -22,7 +24,7 @@ image
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-texture-imagename-imagename-src-mq3-renderer-qvm-scene-materials-ml-35619548"></a>
 ### imageName
@@ -32,7 +34,7 @@ imageName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-scene-materials-texture-slot-slot-src-mq3-renderer-qvm-scene-materials-ml-415607008"></a>
 ### slot
@@ -42,4 +44,4 @@ slot
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_scene_materials.ml#L20)

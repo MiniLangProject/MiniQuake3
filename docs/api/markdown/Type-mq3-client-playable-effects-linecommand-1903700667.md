@@ -9,8 +9,10 @@
 struct LineCommand
 ```
 
+Stores playable effects line command record, including `a`, `b`, `red`, `green`, `blue`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L23)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ a
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L26)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-b-b-src-mq3-client-playable-effects-ml-1504802432"></a>
 ### b
@@ -32,7 +34,7 @@ b
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L26)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-blue-blue-src-mq3-client-playable-effects-ml-1736752896"></a>
 ### blue
@@ -42,7 +44,7 @@ blue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L26)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-green-green-src-mq3-client-playable-effects-ml-493370552"></a>
 ### green
@@ -52,7 +54,7 @@ green
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L26)
 
 <a id="field-field-mq3-client-playable-effects-linecommand-red-red-src-mq3-client-playable-effects-ml-1346456652"></a>
 ### red
@@ -62,4 +64,4 @@ red
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L26)

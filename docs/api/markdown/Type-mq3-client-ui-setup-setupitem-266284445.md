@@ -9,8 +9,10 @@
 struct SetupItem
 ```
 
+Stores UI setup setup item record, including `id`, `label`, `y`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L13)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ id
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 <a id="field-field-mq3-client-ui-setup-setupitem-label-label-src-mq3-client-ui-setup-ml-658420767"></a>
 ### label
@@ -32,7 +34,7 @@ label
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 <a id="field-field-mq3-client-ui-setup-setupitem-y-y-src-mq3-client-ui-setup-ml-1489894731"></a>
 ### y
@@ -42,4 +44,4 @@ y
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)

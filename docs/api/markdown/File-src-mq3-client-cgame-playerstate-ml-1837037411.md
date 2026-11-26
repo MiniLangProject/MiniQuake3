@@ -22,13 +22,15 @@ Reachable from entry: **yes**
 function bufferedSound(state, sound)
 ```
 
+Adapts `mq3.client.cgame_playerstate.emit` to client game playerstate `bufferedSound`, returning its result for `state, "bufferedSound", sound, 0, 0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_playerstate.emit`. |
+| `sound` | `dynamic` | — | Argument 3 of `mq3.client.cgame_playerstate.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L100)
 
 <a id="function-function-mq3-client-cgame-playerstate-checkammo-function-checkammo-state-ps-src-mq3-client-cgame-playerstate-ml-173778740"></a>
 ### checkAmmo
@@ -41,11 +43,11 @@ CG_CheckAmmo
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.lowAmmoWarning`. |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.stats`, `ps.ammo`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L105)
 
 <a id="function-function-mq3-client-cgame-playerstate-checkchangedpredictableevents-function-checkchangedpredictableevents-state-ps-src-mq3-client-cgame-playerstate-ml-1711713996"></a>
 ### checkChangedPredictableEvents
@@ -58,11 +60,11 @@ CG_CheckChangedPredictableEvents
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.predictableEvents[remember]`. |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.eventSequence`, `ps.events`, `ps.eventParms`, `ps.clientNum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L163)
 
 <a id="function-function-mq3-client-cgame-playerstate-checklocalsounds-function-checklocalsounds-state-ps-ops-src-mq3-client-cgame-playerstate-ml-129841690"></a>
 ### checkLocalSounds
@@ -75,12 +77,12 @@ CG_CheckLocalSounds
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
-| `ops` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.timelimitWarnings`, `state.fraglimitWarnings`. |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.persistant`, `ps.stats`, `ps.powerups`. |
+| `ops` | `dynamic` | — | Record read through `ops.persistant`, `ops.stats`, `ops.powerups`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L183)
 
 <a id="function-function-mq3-client-cgame-playerstate-checkplayerstateevents-function-checkplayerstateevents-state-ps-ops-src-mq3-client-cgame-playerstate-ml-253176742"></a>
 ### checkPlayerstateEvents
@@ -93,12 +95,12 @@ CG_CheckPlayerstateEvents
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
-| `ops` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.predictableEvents[index&(MAX_PREDICTED_EVENTS-1)]`, `state.eventSequence`. |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.externalEvent`, `ps.externalEventParm`, `ps.clientNum`, `ps.eventSequence` and additional values. |
+| `ops` | `dynamic` | — | Record read through `ops.externalEvent`, `ops.eventSequence`, `ops.events`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L152)
 
 <a id="function-function-mq3-client-cgame-playerstate-create-function-create-src-mq3-client-cgame-playerstate-ml-470676058"></a>
 ### create
@@ -107,8 +109,10 @@ CG_CheckPlayerstateEvents
 function create()
 ```
 
+Creates a `mq3.client.cgame_playerstate.State` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L79)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L81)
 
 <a id="constant-constant-mq3-client-cgame-playerstate-damage-time-const-damage-time-cgabi-damage-time-src-mq3-client-cgame-playerstate-ml-1105723350"></a>
 ### DAMAGE_TIME
@@ -131,14 +135,14 @@ CG_DamageFeedback
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
-| `yawByte` | `dynamic` | — |  |
-| `pitchByte` | `dynamic` | — |  |
-| `damage` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.attackerTime`, `state.damageX`, `state.damageY`, `state.vDmgRoll` and additional values. |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.stats`. |
+| `yawByte` | `dynamic` | — | Value used by `if yawByte==255 and pitchByte==255 then`. |
+| `pitchByte` | `dynamic` | — | Value used by `if yawByte==255 and pitchByte==255 then`. |
+| `damage` | `dynamic` | — | Value used by `kick=n.fmul(damage,scale)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L122)
 
 <a id="function-function-mq3-client-cgame-playerstate-emit-function-emit-state-kind-a-b-c-src-mq3-client-cgame-playerstate-ml-767316005"></a>
 ### emit
@@ -147,16 +151,18 @@ CG_DamageFeedback
 function emit(state, kind, a, b, c)
 ```
 
+Appends a client game playerstate action record to the queued engine requests.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
-| `c` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.actions`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `a` | `dynamic` | — | Value used by `state.actions=state.actions+[[kind,a,b,c]]`. |
+| `b` | `dynamic` | — | Value used by `state.actions=state.actions+[[kind,a,b,c]]`. |
+| `c` | `dynamic` | — | Value used by `state.actions=state.actions+[[kind,a,b,c]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L91)
 
 <a id="function-function-mq3-client-cgame-playerstate-entityevent-function-entityevent-state-event-eventparm-clientnum-src-mq3-client-cgame-playerstate-ml-1709370672"></a>
 ### entityEvent
@@ -165,15 +171,17 @@ function emit(state, kind, a, b, c)
 function entityEvent(state, event, eventParm, clientNum)
 ```
 
+Calls `mq3.client.cgame_playerstate.emit` from client game playerstate `entityEvent`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `event` | `dynamic` | — |  |
-| `eventParm` | `dynamic` | — |  |
-| `clientNum` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game playerstate state passed to the helper calls in `entityEvent`. |
+| `event` | `dynamic` | — | Event identifier compared with the supported activation/input events. |
+| `eventParm` | `dynamic` | — | Value used by `emit(state,"entityEvent",event,eventParm,clientNum)`. |
+| `clientNum` | `dynamic` | — | Client slot identifier used by the client/server protocol. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L146)
 
 <a id="constant-constant-mq3-client-cgame-playerstate-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-playerstate-ml-631942899"></a>
 ### GT_CTF
@@ -202,14 +210,16 @@ const GT_TEAM = 3
 function localSound(state, sound, channel)
 ```
 
+Adapts `mq3.client.cgame_playerstate.emit` to client game playerstate `localSound`, returning its result for `state, "localSound", sound, channel, 0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `channel` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_playerstate.emit`. |
+| `sound` | `dynamic` | — | Argument 3 of `mq3.client.cgame_playerstate.emit`. |
+| `channel` | `dynamic` | — | Argument 4 of `mq3.client.cgame_playerstate.emit`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L96)
 
 <a id="constant-constant-mq3-client-cgame-playerstate-m-assist-const-m-assist-106-src-mq3-client-cgame-playerstate-ml-814980318"></a>
 ### M_ASSIST
@@ -472,13 +482,13 @@ pushReward
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `sound` | `dynamic` | — |  |
-| `shader` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.rewardStack`, `state.rewardSound[state.rewardStack]`, `state.rewardShader[state.rewardStack]`, `state.rewardCount[state.rewardStack]`. |
+| `sound` | `dynamic` | — | Sound handle or asset name passed to the audio action. |
+| `shader` | `dynamic` | — | Shader handle or asset name selected for this draw operation. |
+| `count` | `dynamic` | — | Value used by `state.rewardCount[state.rewardStack]=count end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L175)
 
 <a id="constant-constant-mq3-client-cgame-playerstate-pw-blueflag-const-pw-blueflag-8-src-mq3-client-cgame-playerstate-ml-989223047"></a>
 ### PW_BLUEFLAG
@@ -531,11 +541,11 @@ CG_Respawn
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.thisFrameTeleport`, `state.weaponSelectTime`, `state.weaponSelect`. |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.weapon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L139)
 
 <a id="constant-constant-mq3-client-cgame-playerstate-s-assist-const-s-assist-9-src-mq3-client-cgame-playerstate-ml-904238440"></a>
 ### S_ASSIST
@@ -791,12 +801,12 @@ CG_TransitionPlayerState.  Event and sound actions are observation only.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `ps` | `dynamic` | — |  |
-| `old` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game playerstate record/storage; this routine assigns `state.transitions`, `state.thisFrameTeleport`, `state.mapRestart`, `state.duckChange` and additional values. |
+| `ps` | `dynamic` | — | Player-state record containing authoritative or predicted player data. Record read through `ps.clientNum`, `ps.damageEvent`, `ps.damageCount`, `ps.damageYaw` and additional values. |
+| `old` | `dynamic` | — | Value used by `ops=old`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_playerstate.ml#L221)
 
 <a id="constant-constant-mq3-client-cgame-playerstate-wp-grenade-launcher-const-wp-grenade-launcher-4-src-mq3-client-cgame-playerstate-ml-78066783"></a>
 ### WP_GRENADE_LAUNCHER

@@ -9,8 +9,10 @@
 struct DrawSurf
 ```
 
+Data record for `mq3.renderer.draw_surfs.DrawSurf`; groups `sort`, `surface`, `ordinal`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ ordinal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L18)
 
 <a id="field-field-mq3-renderer-draw-surfs-drawsurf-sort-sort-src-mq3-renderer-draw-surfs-ml-21191365"></a>
 ### sort
@@ -32,7 +34,7 @@ sort
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L18)
 
 <a id="field-field-mq3-renderer-draw-surfs-drawsurf-surface-surface-src-mq3-renderer-draw-surfs-ml-1280017385"></a>
 ### surface
@@ -42,4 +44,4 @@ surface
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L18)

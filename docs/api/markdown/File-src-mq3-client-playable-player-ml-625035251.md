@@ -21,15 +21,17 @@ Reachable from entry: **yes**
 function applyDamage(state, amount, now, bypassArmor)
 ```
 
+Updates `state.armor`, `state.health`, `state.alive`, `state.deaths` and additional values during playable player `applyDamage`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `amount` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
-| `bypassArmor` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable playable player record/storage; this routine assigns `state.armor`, `state.health`, `state.alive`, `state.deaths` and additional values. |
+| `amount` | `dynamic` | — | Value tested by `state==void or amount<0 or now<0`, `if amount==0` before the calculation continues. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
+| `bypassArmor` | `dynamic` | — | Value used by `if not bypassArmor then saved=armorSave(state.armor,amount) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L119)
 
 <a id="function-function-mq3-client-playable-player-applynormaldamage-function-applynormaldamage-state-amount-now-src-mq3-client-playable-player-ml-1329402439"></a>
 ### applyNormalDamage
@@ -38,14 +40,16 @@ function applyDamage(state, amount, now, bypassArmor)
 function applyNormalDamage(state, amount, now)
 ```
 
+Adapts `mq3.client.playable_player.applyDamage` to playable player `applyNormalDamage`, returning its result for `state, amount, now, false`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `amount` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.playable_player.applyDamage`. |
+| `amount` | `dynamic` | — | Argument 2 of `mq3.client.playable_player.applyDamage`. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. Forwarded to `mq3.client.playable_player.applyDamage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L136)
 
 <a id="function-function-mq3-client-playable-player-armorsave-function-armorsave-armor-damage-src-mq3-client-playable-player-ml-1713939486"></a>
 ### armorSave
@@ -58,11 +62,11 @@ Mirrors baseq3 CheckArmor: ceil(damage * 0.66), capped by available armor.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `armor` | `dynamic` | — |  |
-| `damage` | `dynamic` | — |  |
+| `armor` | `dynamic` | — | Value used by `if armor<=0 or damage<=0 then return 0 end if`. |
+| `damage` | `dynamic` | — | Value used by `if armor<=0 or damage<=0 then return 0 end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L108)
 
 <a id="constant-constant-mq3-client-playable-player-camera-eye-height-const-camera-eye-height-48-src-mq3-client-playable-player-ml-237229485"></a>
 ### CAMERA_EYE_HEIGHT
@@ -72,7 +76,7 @@ const CAMERA_EYE_HEIGHT = 48
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L20)
 
 <a id="extern_function-extern-function-mq3-client-playable-player-ceil-extern-function-ceil-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-client-playable-player-ml-1392062964"></a>
 ### ceil
@@ -81,12 +85,16 @@ const CAMERA_EYE_HEIGHT = 48
 extern function ceil(value as double) from "ucrtbase.dll" returns double
 ```
 
+Rounds a floating-point value upward to the nearest integral value using the Windows C runtime. This binding is used by playable player.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `double` | — |  |
+| `value` | `double` | — | Floating-point argument passed to the native mathematical function. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L9)
+**Returns:** The smallest integral-valued double greater than or equal to the argument.
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L12)
 
 <a id="function-function-mq3-client-playable-player-collectspawns-function-collectspawns-entities-classname-src-mq3-client-playable-player-ml-594763458"></a>
 ### collectSpawns
@@ -95,13 +103,15 @@ extern function ceil(value as double) from "ucrtbase.dll" returns double
 function collectSpawns(entities, classname)
 ```
 
+Calls `std.string.toLowerAscii`, `mq3.client.playable_player.field`, `mq3.compat.textnumbers.vector` and additional helpers from playable player `collectSpawns`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entities` | `dynamic` | — |  |
-| `classname` | `dynamic` | — |  |
+| `entities` | `dynamic` | — | Value used by `for each entity in entities`. |
+| `classname` | `dynamic` | — | Value used by `wanted=strings.toLowerAscii(classname)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L49)
 
 <a id="function-function-mq3-client-playable-player-configure-function-configure-state-respawnmilliseconds-invulnerabilitymilliseconds-src-mq3-client-playable-player-ml-1644158026"></a>
 ### configure
@@ -110,14 +120,16 @@ function collectSpawns(entities, classname)
 function configure(state, respawnMilliseconds, invulnerabilityMilliseconds)
 ```
 
+Updates `state.respawnMilliseconds`, `state.invulnerabilityMilliseconds` during playable player `configure`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `respawnMilliseconds` | `dynamic` | — |  |
-| `invulnerabilityMilliseconds` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable playable player record/storage; this routine assigns `state.respawnMilliseconds`, `state.invulnerabilityMilliseconds`. |
+| `respawnMilliseconds` | `dynamic` | — | Value assigned to `state.respawnMilliseconds`. |
+| `invulnerabilityMilliseconds` | `dynamic` | — | Value assigned to `state.invulnerabilityMilliseconds`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L86)
 
 - [mq3.client.playable_player.Damage](Type-mq3-client-playable-player-damage-1907288644.md) — struct
 <a id="constant-constant-mq3-client-playable-player-default-ammo-const-default-ammo-50-src-mq3-client-playable-player-ml-2047110222"></a>
@@ -128,7 +140,7 @@ const DEFAULT_AMMO = 50
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L16)
 
 <a id="constant-constant-mq3-client-playable-player-default-armor-const-default-armor-0-src-mq3-client-playable-player-ml-502826735"></a>
 ### DEFAULT_ARMOR
@@ -138,7 +150,7 @@ const DEFAULT_ARMOR = 0
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-player-default-health-const-default-health-100-src-mq3-client-playable-player-ml-365813562"></a>
 ### DEFAULT_HEALTH
@@ -148,7 +160,7 @@ const DEFAULT_HEALTH = 100
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-player-default-invulnerability-milliseconds-const-default-invulnerability-milliseconds-1000-src-mq3-client-playable-player-ml-759937026"></a>
 ### DEFAULT_INVULNERABILITY_MILLISECONDS
@@ -158,7 +170,7 @@ const DEFAULT_INVULNERABILITY_MILLISECONDS = 1000
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-player-default-respawn-milliseconds-const-default-respawn-milliseconds-1700-src-mq3-client-playable-player-ml-1662729085"></a>
 ### DEFAULT_RESPAWN_MILLISECONDS
@@ -168,7 +180,7 @@ const DEFAULT_RESPAWN_MILLISECONDS = 1700
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L18)
 
 <a id="constant-constant-mq3-client-playable-player-default-weapon-const-default-weapon-weapon-machinegun-src-mq3-client-playable-player-ml-142662893"></a>
 ### DEFAULT_WEAPON
@@ -178,7 +190,7 @@ const DEFAULT_WEAPON = "weapon_machinegun"
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L17)
 
 <a id="function-function-mq3-client-playable-player-fail-function-fail-message-src-mq3-client-playable-player-ml-1274415877"></a>
 ### fail
@@ -187,12 +199,14 @@ const DEFAULT_WEAPON = "weapon_machinegun"
 function fail(message)
 ```
 
+Creates the playable player error `7540` with diagnostic text `"preview player: "+message`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Argument 2 of `error`; passed as `"preview player: "+message`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L33)
 
 <a id="function-function-mq3-client-playable-player-field-function-field-fields-key-src-mq3-client-playable-player-ml-341270780"></a>
 ### field
@@ -201,13 +215,15 @@ function fail(message)
 function field(fields, key)
 ```
 
+Calls `std.string.toLowerAscii` from playable player `field`. The final path returns `""`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fields` | `dynamic` | — |  |
-| `key` | `dynamic` | — |  |
+| `fields` | `dynamic` | — | Value used by `for each pair in fields`. |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding playable player entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L38)
 
 <a id="function-function-mq3-client-playable-player-fromentities-function-fromentities-entities-src-mq3-client-playable-player-ml-1385562923"></a>
 ### fromEntities
@@ -216,12 +232,14 @@ function field(fields, key)
 function fromEntities(entities)
 ```
 
+Calls `mq3.client.playable_player.collectSpawns`, `mq3.client.playable_player.Spawn`, `mq3.client.playable_player.State` from playable player `fromEntities`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `entities` | `dynamic` | — |  |
+| `entities` | `dynamic` | — | Value used by `if entities==void then return fail("entities are required") end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L66)
 
 <a id="function-function-mq3-client-playable-player-load-function-load-map-src-mq3-client-playable-player-ml-1552807674"></a>
 ### load
@@ -230,12 +248,14 @@ function fromEntities(entities)
 function load(map)
 ```
 
+Calls `mq3.format.bsp.entities`, `mq3.client.playable_player.fromEntities` from playable player `load`. The final path returns `fromEntities(entities)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
+| `map` | `dynamic` | — | map record passed to the playable player helper calls. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L77)
 
 <a id="function-function-mq3-client-playable-player-pollrespawn-function-pollrespawn-state-now-src-mq3-client-playable-player-ml-621441937"></a>
 ### pollRespawn
@@ -244,13 +264,15 @@ function load(map)
 function pollRespawn(state, now)
 ```
 
+Updates `state.spawnIndex`, `state.position`, `state.yaw`, `state.health` and additional values during playable player `pollRespawn`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable playable player record/storage; this routine assigns `state.spawnIndex`, `state.position`, `state.yaw`, `state.health` and additional values. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L141)
 
 - [mq3.client.playable_player.Respawn](Type-mq3-client-playable-player-respawn-1369727395.md) — struct
 <a id="function-function-mq3-client-playable-player-setstats-function-setstats-state-health-armor-ammo-weapon-src-mq3-client-playable-player-ml-456380390"></a>
@@ -260,16 +282,18 @@ function pollRespawn(state, now)
 function setStats(state, health, armor, ammo, weapon)
 ```
 
+Updates `state.health`, `state.maxHealth`, `state.armor`, `state.ammo` and additional values during playable player `setStats`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `health` | `dynamic` | — |  |
-| `armor` | `dynamic` | — |  |
-| `ammo` | `dynamic` | — |  |
-| `weapon` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable playable player record/storage; this routine assigns `state.health`, `state.maxHealth`, `state.armor`, `state.ammo` and additional values. |
+| `health` | `dynamic` | — | Value assigned to `state.health`, `state.maxHealth`, `state.alive`. |
+| `armor` | `dynamic` | — | Value assigned to `state.armor`. |
+| `ammo` | `dynamic` | — | Value assigned to `state.ammo`. |
+| `weapon` | `dynamic` | — | Value assigned to `state.weapon`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L98)
 
 - [mq3.client.playable_player.Spawn](Type-mq3-client-playable-player-spawn-644253284.md) — struct
 - [mq3.client.playable_player.State](Type-mq3-client-playable-player-state-1404687306.md) — struct

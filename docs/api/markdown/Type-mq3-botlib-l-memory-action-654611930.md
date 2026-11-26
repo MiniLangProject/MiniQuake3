@@ -9,8 +9,10 @@
 struct Action
 ```
 
+`Action` record for l memory, containing `boundary`, `kind`, `handle`, `size` and `message` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L12)
 
 <a id="field-field-mq3-botlib-l-memory-action-dispatched-dispatched-src-mq3-botlib-l-memory-ml-1835485813"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L12)
 
 <a id="field-field-mq3-botlib-l-memory-action-handle-handle-src-mq3-botlib-l-memory-ml-2081699015"></a>
 ### handle
@@ -42,7 +44,7 @@ handle
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L12)
 
 <a id="field-field-mq3-botlib-l-memory-action-kind-kind-src-mq3-botlib-l-memory-ml-208378439"></a>
 ### kind
@@ -52,7 +54,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L12)
 
 <a id="field-field-mq3-botlib-l-memory-action-message-message-src-mq3-botlib-l-memory-ml-1302528659"></a>
 ### message
@@ -62,7 +64,7 @@ message
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L12)
 
 <a id="field-field-mq3-botlib-l-memory-action-size-size-src-mq3-botlib-l-memory-ml-810404973"></a>
 ### size
@@ -72,4 +74,4 @@ size
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_memory.ml#L12)

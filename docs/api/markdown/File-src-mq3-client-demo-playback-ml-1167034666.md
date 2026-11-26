@@ -31,12 +31,12 @@ Read ahead through the next snapshot for Cgame interpolation. After a new gamest
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `playback` | `dynamic` | — |  |
-| `serverTime` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `playback` | `dynamic` | — | Record read through `playback.completed`, `playback.protocol.dispatcher.snapshotState`, `playback.protocol`. |
+| `serverTime` | `dynamic` | — | Authoritative server timestamp in milliseconds. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L179)
 
 <a id="function-function-mq3-client-demo-playback-close-function-close-playback-src-mq3-client-demo-playback-ml-746511457"></a>
 ### close
@@ -45,12 +45,14 @@ Read ahead through the next snapshot for Cgame interpolation. After a new gamest
 function close(playback)
 ```
 
+Updates `playback.handle`, `playback.archiveData`, `playback.completed` during demo playback `close`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `playback` | `dynamic` | — |  |
+| `playback` | `dynamic` | — | Mutable demo playback record/storage; this routine assigns `playback.handle`, `playback.archiveData`, `playback.completed`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L53)
 
 <a id="constant-constant-mq3-client-demo-playback-extension-const-extension-dm-68-src-mq3-client-demo-playback-ml-1433796997"></a>
 ### EXTENSION
@@ -69,12 +71,14 @@ const EXTENSION = ".dm_68"
 function fail(reason)
 ```
 
+Creates the demo playback error `6928` with diagnostic text `"demo playback: "+reason`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `reason` | `dynamic` | — |  |
+| `reason` | `dynamic` | — | Argument 2 of `error`; passed as `"demo playback: "+reason`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L36)
 
 <a id="function-function-mq3-client-demo-playback-filename-function-filename-name-src-mq3-client-demo-playback-ml-1681053007"></a>
 ### filename
@@ -83,12 +87,14 @@ function fail(reason)
 function filename(name)
 ```
 
+Calls `std.string.toLowerAscii`, `std.string.endsWith` from demo playback `filename`. The final path returns `name+EXTENSION`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `name` | `dynamic` | — |  |
+| `name` | `dynamic` | — | Name used to select or register the corresponding demo playback resource. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L40)
 
 <a id="function-function-mq3-client-demo-playback-loosepath-function-loosepath-dataroot-leaf-src-mq3-client-demo-playback-ml-1884418428"></a>
 ### loosePath
@@ -97,13 +103,15 @@ function filename(name)
 function loosePath(dataRoot, leaf)
 ```
 
+Calls `std.fs.joinPath`, `std.fs.isFile` from demo playback `loosePath`. The final path returns `path`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `dataRoot` | `dynamic` | — |  |
-| `leaf` | `dynamic` | — |  |
+| `dataRoot` | `dynamic` | — | Value used by `if dataRoot=="" then return "" end if`. |
+| `leaf` | `dynamic` | — | Value used by `path=fs.joinPath(fs.joinPath(dataRoot,"demos"),leaf)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L117)
 
 <a id="constant-constant-mq3-client-demo-playback-max-archived-demo-const-max-archived-demo-64-1024-1024-src-mq3-client-demo-playback-ml-1106556961"></a>
 ### MAX_ARCHIVED_DEMO
@@ -142,15 +150,17 @@ const MAX_START_PACKETS = 1024
 function open(dataRoot, archive, name, now)
 ```
 
+Calls `mq3.client.demo_playback.filename`, `mq3.format.pk3.findEntry`, `mq3.client.demo_playback.loosePath` and additional helpers from demo playback `open`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `dataRoot` | `dynamic` | — |  |
-| `archive` | `dynamic` | — |  |
-| `name` | `dynamic` | — |  |
-| `now` | `dynamic` | — |  |
+| `dataRoot` | `dynamic` | — | Value used by `mounted=archive!=void and archive.modArchive!=void and dataRoot!=""`. |
+| `archive` | `dynamic` | — | Opened game archive supplying maps, models, textures or other assets. Record read through `archive.modArchive`. |
+| `name` | `dynamic` | — | Name used to select or register the corresponding demo playback resource. |
+| `now` | `dynamic` | — | Current time used by this operation; it shares the clock domain of the compared timestamps. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L129)
 
 - [mq3.client.demo_playback.Playback](Type-mq3-client-demo-playback-playback-467060537.md) — struct
 <a id="function-function-mq3-client-demo-playback-read-function-read-playback-output-count-src-mq3-client-demo-playback-ml-1355431987"></a>
@@ -160,14 +170,16 @@ function open(dataRoot, archive, name, now)
 function read(playback, output, count)
 ```
 
+Updates `playback.offset` during demo playback `read`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `playback` | `dynamic` | — |  |
-| `output` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
+| `playback` | `dynamic` | — | Mutable demo playback record/storage; this routine assigns `playback.offset`. |
+| `output` | `dynamic` | — | Value used by `if not file.ReadFile(playback.handle,nativeBytesPtr(output),count,playback.transferred,0) then return fail("could not read demo data") end if`. |
+| `count` | `dynamic` | — | Value tested by `not file.ReadFile(playback.handle,nativeBytesPtr(output),count,playback.transferred,0)`, `count>available` and additional values before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L65)
 
 <a id="function-function-mq3-client-demo-playback-readpacket-function-readpacket-playback-realtime-src-mq3-client-demo-playback-ml-859177242"></a>
 ### readPacket
@@ -176,13 +188,15 @@ function read(playback, output, count)
 function readPacket(playback, realtime)
 ```
 
+Updates `playback.msg.cursize` during demo playback `readPacket`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `playback` | `dynamic` | — |  |
-| `realtime` | `dynamic` | — |  |
+| `playback` | `dynamic` | — | Mutable demo playback record/storage; this routine assigns `playback.msg.cursize`. |
+| `realtime` | `dynamic` | — | Current client real-time clock in milliseconds. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L82)
 
 <a id="function-function-mq3-client-demo-playback-updatemap-function-updatemap-playback-src-mq3-client-demo-playback-ml-965245155"></a>
 ### updateMap
@@ -191,9 +205,11 @@ function readPacket(playback, realtime)
 function updateMap(playback)
 ```
 
+Updates `playback.mapName` during demo playback `updateMap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `playback` | `dynamic` | — |  |
+| `playback` | `dynamic` | — | Mutable demo playback record/storage; this routine assigns `playback.mapName`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L106)

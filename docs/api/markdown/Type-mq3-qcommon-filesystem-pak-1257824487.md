@@ -9,8 +9,10 @@
 struct Pak
 ```
 
+Pak record for qcommon.filesystem, containing `archive`, `basename`, `gameName`, `checksum`, `pureChecksum`, `referenced`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ archive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L18)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-basename-basename-src-mq3-qcommon-filesystem-ml-590079225"></a>
 ### basename
@@ -32,7 +34,7 @@ basename
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L19)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-checksum-checksum-src-mq3-qcommon-filesystem-ml-1051411279"></a>
 ### checksum
@@ -42,7 +44,7 @@ checksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L21)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-gamename-gamename-src-mq3-qcommon-filesystem-ml-1158258895"></a>
 ### gameName
@@ -52,7 +54,7 @@ gameName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L20)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-purechecksum-purechecksum-src-mq3-qcommon-filesystem-ml-1775860999"></a>
 ### pureChecksum
@@ -62,7 +64,7 @@ pureChecksum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L22)
 
 <a id="field-field-mq3-qcommon-filesystem-pak-referenced-referenced-src-mq3-qcommon-filesystem-ml-896794447"></a>
 ### referenced
@@ -72,4 +74,4 @@ referenced
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L23)

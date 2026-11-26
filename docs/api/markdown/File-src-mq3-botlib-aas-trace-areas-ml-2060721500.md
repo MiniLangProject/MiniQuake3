@@ -20,12 +20,14 @@ Reachable from entry: **yes**
 function copy(value)
 ```
 
+Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas trace areas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L16)
 
 <a id="function-function-mq3-botlib-aas-trace-areas-dot-function-dot-a-b-src-mq3-botlib-aas-trace-areas-ml-803666653"></a>
 ### dot
@@ -34,13 +36,15 @@ function copy(value)
 function dot(a, b)
 ```
 
+Return `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `dot`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L20)
 
 - [mq3.botlib.aas_trace_areas.Result](Type-mq3-botlib-aas-trace-areas-result-1579758851.md) — struct
 - [mq3.botlib.aas_trace_areas.Segment](Type-mq3-botlib-aas-trace-areas-segment-148974843.md) — struct
@@ -51,12 +55,14 @@ function dot(a, b)
 function trace(runtime, start, finish, maximum)
 ```
 
+Trace a line segment through AAS areas and retain the crossed area numbers and intersection points.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
-| `maximum` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AAS trace areas runtime; accesses `initialized` and `map`. |
+| `start` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `finish` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `maximum` | `dynamic` | — | Upper bound applied by the operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L27)

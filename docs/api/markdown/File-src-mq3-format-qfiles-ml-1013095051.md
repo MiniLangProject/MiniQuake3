@@ -267,14 +267,18 @@ const LUMP_VISIBILITY = 16
 function lumpRange(header, index, totalSize)
 ```
 
+Compute lump range in format.qfiles; the normal completion returns `[lump.fileofs, lump.filelen]`.
+
+Validation failures include `qfiles lump index`; `qfiles lump range`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `header` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `totalSize` | `dynamic` | — |  |
+| `header` | `dynamic` | — | Record exposing `lumps`. |
+| `index` | `dynamic` | — | Zero-based index into `header.lumps`. |
+| `totalSize` | `dynamic` | — | Total size used in `(lump.filelen > totalSize)` and `(totalSize - lump.filelen)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L158)
 
 <a id="constant-constant-mq3-format-qfiles-max-key-const-max-key-32-src-mq3-format-qfiles-ml-1982630912"></a>
 ### MAX_KEY
@@ -751,8 +755,10 @@ const SHADER_MAX_VERTEXES = 1000
 function typeNames()
 ```
 
+List the 32 names in format.qfiles.typeNames, beginning with `vmHeader_t`, `pcx_t`, `TargaHeader`, `md3Frame_t`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L117)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L148)
 
 <a id="constant-constant-mq3-format-qfiles-vm-magic-const-vm-magic-309466180-src-mq3-format-qfiles-ml-1610970666"></a>
 ### VM_MAGIC

@@ -9,8 +9,10 @@
 struct ReliableClient
 ```
 
+ReliableClient record for server.reliable_commands, containing `reliableAcknowledge`, `reliableSequence`, `reliableSent`, `reliableCommands`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L10)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L11)
 
 ## Members
 
@@ -22,7 +24,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L12)
 
 <a id="field-field-mq3-server-reliable-commands-reliableclient-reliablecommands-reliablecommands-src-mq3-server-reliable-commands-ml-361904612"></a>
 ### reliableCommands
@@ -32,7 +34,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L15)
 
 <a id="field-field-mq3-server-reliable-commands-reliableclient-reliablesent-reliablesent-src-mq3-server-reliable-commands-ml-1178746764"></a>
 ### reliableSent
@@ -42,7 +44,7 @@ reliableSent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L14)
 
 <a id="field-field-mq3-server-reliable-commands-reliableclient-reliablesequence-reliablesequence-src-mq3-server-reliable-commands-ml-1927933366"></a>
 ### reliableSequence
@@ -52,4 +54,4 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L13)

@@ -22,12 +22,14 @@ Reachable from entry: **yes**
 function entities(map)
 ```
 
+Compute entities in format.bsp; the normal completion returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`, `offsets`, `lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L119)
 
 <a id="function-function-mq3-format-bsp-fail-function-fail-message-src-mq3-format-bsp-ml-1497269251"></a>
 ### fail
@@ -36,12 +38,14 @@ function entities(map)
 function fail(message)
 ```
 
+Create the format.bsp error for `fail` with 3502 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("BSP46: " + message)` and `error(3502, ("BSP46: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L19)
 
 <a id="function-function-mq3-format-bsp-load-function-load-data-src-mq3-format-bsp-ml-956873278"></a>
 ### load
@@ -50,12 +54,14 @@ function fail(message)
 function load(data)
 ```
 
+Load bsp in format.bsp; the normal completion returns `BSP(data, offsets, lengths, counts)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.compat.numeric.readU32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L34)
 
 <a id="function-function-mq3-format-bsp-range-function-range-first-count-limit-src-mq3-format-bsp-ml-987993176"></a>
 ### range
@@ -64,11 +70,13 @@ function load(data)
 function range(first, count, limit)
 ```
 
+Test range in format.bsp; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `first` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
-| `limit` | `dynamic` | — |  |
+| `first` | `dynamic` | — | First used in `(first < 0)` and `(first + count)`. |
+| `count` | `dynamic` | — | Count used in `(count < 0)` and `(first + count)`. |
+| `limit` | `dynamic` | — | Limit used in `((first + count) > limit)` and `(((first < 0) or (count < 0)) or ((first + count) > limit))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L27)

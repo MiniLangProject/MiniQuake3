@@ -9,8 +9,10 @@
 struct Action
 ```
 
+Stores UI gameinfo missionpack queued engine action, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)
 
 ## Members
 
@@ -22,7 +24,7 @@ boundary
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-action-dispatched-dispatched-src-mq3-client-ui-gameinfo-missionpack-ml-2147266153"></a>
 ### dispatched
@@ -32,7 +34,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-action-kind-kind-src-mq3-client-ui-gameinfo-missionpack-ml-1039933871"></a>
 ### kind
@@ -42,7 +44,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-action-name-name-src-mq3-client-ui-gameinfo-missionpack-ml-1537417169"></a>
 ### name
@@ -52,7 +54,7 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-action-number-number-src-mq3-client-ui-gameinfo-missionpack-ml-14667701"></a>
 ### number
@@ -62,7 +64,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)
 
 <a id="field-field-mq3-client-ui-gameinfo-missionpack-action-text-text-src-mq3-client-ui-gameinfo-missionpack-ml-390658889"></a>
 ### text
@@ -72,4 +74,4 @@ text
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L26)

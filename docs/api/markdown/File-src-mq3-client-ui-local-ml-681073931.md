@@ -79,8 +79,10 @@ const AWARD_PERFECT = 5
 function declaredFunctions()
 ```
 
+Lists the 226 UI local declared functions strings in their declared order, beginning with `"Menu_Cache"`, `"Menu_Focus"`, `"Menu_AddItem"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L77)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L96)
 
 <a id="function-function-mq3-client-ui-local-declaredglobals-function-declaredglobals-src-mq3-client-ui-local-ml-1877285082"></a>
 ### declaredGlobals
@@ -89,8 +91,10 @@ function declaredFunctions()
 function declaredGlobals()
 ```
 
+Lists the 79 UI local declared globals strings in their declared order, beginning with `"ui_ffa_fraglimit"`, `"ui_ffa_timelimit"`, `"ui_tourney_fraglimit"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L78)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L98)
 
 <a id="constant-constant-mq3-client-ui-local-lcolumn-offset-const-lcolumn-offset-16-src-mq3-client-ui-local-ml-846763027"></a>
 ### LCOLUMN_OFFSET
@@ -150,12 +154,14 @@ const MAX_MENUITEMS = 64
 function menuAcceptsInput(flags)
 ```
 
+Computes `(flags&(QMF_GRAYED|QMF_INACTIVE|QMF_HIDDEN))==0` for UI local `menuAcceptsInput`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `flags` | `dynamic` | — |  |
+| `flags` | `dynamic` | — | Value used by `return (flags&(QMF_GRAYED\|QMF_INACTIVE\|QMF_HIDDEN))==0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L91)
 
 - [mq3.client.ui_local.MenuAction](Type-mq3-client-ui-local-menuaction-174075286.md) — struct
 - [mq3.client.ui_local.MenuBitmap](Type-mq3-client-ui-local-menubitmap-1888158079.md) — struct
@@ -284,12 +290,14 @@ const MTYPE_TEXT = 7
 function normalizeCharacterEvent(key)
 ```
 
+Calls `mq3.client.keycodes.isCharacterEvent`, `mq3.client.keycodes.characterCode` from UI local `normalizeCharacterEvent`. The final path returns `key`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Key or control identifier used to select the corresponding UI local entry. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L94)
 
 - [mq3.client.ui_local.PlayerInfo](Type-mq3-client-ui-local-playerinfo-1500161226.md) — struct
 <a id="constant-constant-mq3-client-ui-local-qm-activated-const-qm-activated-3-src-mq3-client-ui-local-ml-1242097852"></a>
@@ -559,8 +567,10 @@ const SLIDER_RANGE = 10
 function typeNames()
 ```
 
+Lists the type names catalog for UI local in its declared source order.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L74)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L88)
 
 <a id="constant-constant-mq3-client-ui-local-ui-api-version-const-ui-api-version-4-src-mq3-client-ui-local-ml-208582639"></a>
 ### UI_API_VERSION

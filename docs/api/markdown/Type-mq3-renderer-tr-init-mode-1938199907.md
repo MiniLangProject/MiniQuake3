@@ -9,8 +9,10 @@
 struct Mode
 ```
 
+Data record for `mq3.renderer.tr_init.Mode`; groups `description`, `width`, `height`, `pixelAspect`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ description
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-init-mode-height-height-src-mq3-renderer-tr-init-ml-1185711664"></a>
 ### height
@@ -32,7 +34,7 @@ height
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-init-mode-pixelaspect-pixelaspect-src-mq3-renderer-tr-init-ml-1116893466"></a>
 ### pixelAspect
@@ -42,7 +44,7 @@ pixelAspect
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-init-mode-width-width-src-mq3-renderer-tr-init-ml-200255318"></a>
 ### width
@@ -52,4 +54,4 @@ width
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L15)

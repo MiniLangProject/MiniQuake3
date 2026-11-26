@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores UI connect state, including `client`, `realtime`, `downloadName`, `downloadSize`, `downloadCount`, `downloadTime` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-cachecalls-cachecalls-src-mq3-client-ui-connect-ml-1557003988"></a>
 ### cacheCalls
@@ -32,7 +34,7 @@ cacheCalls
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-client-client-src-mq3-client-ui-connect-ml-253154324"></a>
 ### client
@@ -42,7 +44,7 @@ client
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadcount-downloadcount-src-mq3-client-ui-connect-ml-1745805430"></a>
 ### downloadCount
@@ -52,7 +54,7 @@ downloadCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadname-downloadname-src-mq3-client-ui-connect-ml-512218252"></a>
 ### downloadName
@@ -62,7 +64,7 @@ downloadName
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadsize-downloadsize-src-mq3-client-ui-connect-ml-1551163600"></a>
 ### downloadSize
@@ -72,7 +74,7 @@ downloadSize
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-downloadtime-downloadtime-src-mq3-client-ui-connect-ml-601644368"></a>
 ### downloadTime
@@ -82,7 +84,7 @@ downloadTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-lastconnstate-lastconnstate-src-mq3-client-ui-connect-ml-415694946"></a>
 ### lastConnState
@@ -92,7 +94,7 @@ lastConnState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-lastloadingtext-lastloadingtext-src-mq3-client-ui-connect-ml-1813914738"></a>
 ### lastLoadingText
@@ -102,7 +104,7 @@ lastLoadingText
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-realtime-realtime-src-mq3-client-ui-connect-ml-244763532"></a>
 ### realtime
@@ -112,7 +114,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="field-field-mq3-client-ui-connect-state-retailactive-retailactive-src-mq3-client-ui-connect-ml-1915171760"></a>
 ### retailActive
@@ -122,4 +124,4 @@ retailActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)

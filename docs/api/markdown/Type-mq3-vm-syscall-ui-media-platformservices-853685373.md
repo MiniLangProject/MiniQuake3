@@ -9,8 +9,10 @@
 struct PlatformServices
 ```
 
+PlatformServices record for vm.syscall_ui_media, containing `realTimeFn`, `remapShaderFn`, `getCdKeyFn`, `setCdKeyFn`, `verifyCdKeyFn`, `seekFn`, and 1 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 ## Members
 
@@ -22,7 +24,7 @@ getCdKeyFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-pbstatusfn-pbstatusfn-src-mq3-vm-syscall-ui-media-ml-446704164"></a>
 ### pbStatusFn
@@ -32,7 +34,7 @@ pbStatusFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-realtimefn-realtimefn-src-mq3-vm-syscall-ui-media-ml-670509166"></a>
 ### realTimeFn
@@ -42,7 +44,7 @@ realTimeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-remapshaderfn-remapshaderfn-src-mq3-vm-syscall-ui-media-ml-1642660632"></a>
 ### remapShaderFn
@@ -52,7 +54,7 @@ remapShaderFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-seekfn-seekfn-src-mq3-vm-syscall-ui-media-ml-1070936276"></a>
 ### seekFn
@@ -62,7 +64,7 @@ seekFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-setcdkeyfn-setcdkeyfn-src-mq3-vm-syscall-ui-media-ml-1799119428"></a>
 ### setCdKeyFn
@@ -72,7 +74,7 @@ setCdKeyFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 <a id="field-field-mq3-vm-syscall-ui-media-platformservices-verifycdkeyfn-verifycdkeyfn-src-mq3-vm-syscall-ui-media-ml-1881614372"></a>
 ### verifyCdKeyFn
@@ -82,4 +84,4 @@ verifyCdKeyFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)

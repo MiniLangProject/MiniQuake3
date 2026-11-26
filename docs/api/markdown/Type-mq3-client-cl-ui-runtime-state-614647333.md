@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores engine client UI runtime state, including `browser`, `cacheHost`, `queryState`, `syscallHost`, `ui`, `clientState` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 ## Members
 
@@ -22,7 +24,7 @@ browser
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-cachehost-cachehost-src-mq3-client-cl-ui-runtime-ml-845624960"></a>
 ### cacheHost
@@ -32,7 +34,7 @@ cacheHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-cdkey-cdkey-src-mq3-client-cl-ui-runtime-ml-97274656"></a>
 ### cdKey
@@ -42,7 +44,7 @@ cdKey
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-clientstate-clientstate-src-mq3-client-cl-ui-runtime-ml-662840732"></a>
 ### clientState
@@ -52,7 +54,7 @@ clientState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-clipboard-clipboard-src-mq3-client-cl-ui-runtime-ml-95825024"></a>
 ### clipboard
@@ -62,7 +64,7 @@ clipboard
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-configstrings-configstrings-src-mq3-client-cl-ui-runtime-ml-1656561480"></a>
 ### configStrings
@@ -72,7 +74,7 @@ configStrings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-fsgame-fsgame-src-mq3-client-cl-ui-runtime-ml-2007269050"></a>
 ### fsGame
@@ -82,7 +84,7 @@ fsGame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-glconfig-glconfig-src-mq3-client-cl-ui-runtime-ml-154268610"></a>
 ### glconfig
@@ -92,7 +94,7 @@ glconfig
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-keycatchers-keycatchers-src-mq3-client-cl-ui-runtime-ml-2002527872"></a>
 ### keyCatchers
@@ -102,7 +104,7 @@ keyCatchers
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-modifiedflags-modifiedflags-src-mq3-client-cl-ui-runtime-ml-1034742064"></a>
 ### modifiedFlags
@@ -112,7 +114,7 @@ modifiedFlags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-querystate-querystate-src-mq3-client-cl-ui-runtime-ml-1267807806"></a>
 ### queryState
@@ -122,7 +124,7 @@ queryState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-realtime-realtime-src-mq3-client-cl-ui-runtime-ml-1094312846"></a>
 ### realtime
@@ -132,7 +134,7 @@ realtime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-syscallhost-syscallhost-src-mq3-client-cl-ui-runtime-ml-1576697468"></a>
 ### syscallHost
@@ -142,7 +144,7 @@ syscallHost
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)
 
 <a id="field-field-mq3-client-cl-ui-runtime-state-ui-ui-src-mq3-client-cl-ui-runtime-ml-1064088724"></a>
 ### ui
@@ -152,4 +154,4 @@ ui
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_ui_runtime.ml#L16)

@@ -15,12 +15,14 @@ Reachable from entry: **no**
 function create(fullscreen)
 ```
 
+Constructs `mq3.platform.win_wndproc_runtime.Runtime` with `activeApp` = `false`, `isMinimized` = `false`, `altTabDisabled` = `false`, `windowCreated` = `false` and the supplied remaining values.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `fullscreen` | `dynamic` | — |  |
+| `fullscreen` | `dynamic` | — | Initial value for `mq3.platform.win_wndproc_runtime.Runtime.fullscreen`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L87)
 
 - [mq3.platform.win_wndproc_runtime.Event](Type-mq3-platform-win-wndproc-runtime-event-384184876.md) — struct
 <a id="constant-constant-mq3-platform-win-wndproc-runtime-k-alt-const-k-alt-136-src-mq3-platform-win-wndproc-runtime-ml-395103331"></a>
@@ -500,20 +502,22 @@ const K_UPARROW = 132
 function MainWndProc(state, message, wParam, lParam, time, inMouse, consoleCatcher, logitechBug, legacyWheelMessage)
 ```
 
+Updates `state.windowCreated`, `state.quitRequested`, `state.soundActivations`, `state.vidX`, `state.vidY` in `mq3.platform.win_wndproc_runtime.MainWndProc`; returns `0`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `message` | `dynamic` | — |  |
-| `wParam` | `dynamic` | — |  |
-| `lParam` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `inMouse` | `dynamic` | — |  |
-| `consoleCatcher` | `dynamic` | — |  |
-| `logitechBug` | `dynamic` | — |  |
-| `legacyWheelMessage` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.windowCreated`, `state.quitRequested`, `state.soundActivations`, `state.vidX`, `state.vidY`. |
+| `message` | `dynamic` | — | Input tested by `inMouse!=1 and message==legacyWheelMessage`. |
+| `wParam` | `dynamic` | — | Value forwarded as `wParam` to `mq3.platform.win_wndproc_runtime.mouseState`. |
+| `lParam` | `dynamic` | — | Value forwarded as `key` to `mq3.platform.win_wndproc_runtime.MapKey`. |
+| `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_wndproc_runtime.wheel`. |
+| `inMouse` | `dynamic` | — | Input tested by `inMouse!=1 and message==legacyWheelMessage`. |
+| `consoleCatcher` | `dynamic` | — | Input tested by `inMouse!=1 or (not state.fullscreen and consoleCatcher)`. |
+| `logitechBug` | `dynamic` | — | Value forwarded as `logitechBug` to `mq3.platform.win_wndproc_runtime.wheel`. |
+| `legacyWheelMessage` | `dynamic` | — | Input tested by `inMouse!=1 and message==legacyWheelMessage`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L157)
 
 <a id="function-function-mq3-platform-win-wndproc-runtime-mapkey-function-mapkey-key-src-mq3-platform-win-wndproc-runtime-ml-1014314511"></a>
 ### MapKey
@@ -522,12 +526,14 @@ function MainWndProc(state, message, wParam, lParam, time, inMouse, consoleCatch
 function MapKey(key)
 ```
 
+Computes `MapKey` from `scanTable()[modified]` using `mq3.platform.win_wndproc_runtime.scanTable`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `dynamic` | — |  |
+| `key` | `dynamic` | — | Input used by `modified=(key>>16)&255`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L118)
 
 <a id="constant-constant-mq3-platform-win-wndproc-runtime-mk-lbutton-const-mk-lbutton-1-src-mq3-platform-win-wndproc-runtime-ml-408130486"></a>
 ### MK_LBUTTON
@@ -566,12 +572,14 @@ const MK_RBUTTON = 2
 function mouseState(wParam)
 ```
 
+Returns `result` from `mq3.platform.win_wndproc_runtime.mouseState`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `wParam` | `dynamic` | — |  |
+| `wParam` | `dynamic` | — | Input tested by `(wParam&MK_LBUTTON)!=0`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L145)
 
 <a id="function-function-mq3-platform-win-wndproc-runtime-queue-function-queue-state-time-type-value-value2-src-mq3-platform-win-wndproc-runtime-ml-40899996"></a>
 ### queue
@@ -580,16 +588,18 @@ function mouseState(wParam)
 function queue(state, time, type, value, value2)
 ```
 
+Updates `state.events` in `mq3.platform.win_wndproc_runtime.queue`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-| `value2` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.events`. |
+| `time` | `dynamic` | — | Value used for `mq3.platform.win_wndproc_runtime.Event.time`. |
+| `type` | `dynamic` | — | Value used for `mq3.platform.win_wndproc_runtime.Event.type`. |
+| `value` | `dynamic` | — | Value used for `mq3.platform.win_wndproc_runtime.Event.value`. |
+| `value2` | `dynamic` | — | Value used for `mq3.platform.win_wndproc_runtime.Event.value2`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L96)
 
 - [mq3.platform.win_wndproc_runtime.Runtime](Type-mq3-platform-win-wndproc-runtime-runtime-32529896.md) — struct
 <a id="constant-constant-mq3-platform-win-wndproc-runtime-sc-screensave-const-sc-screensave-61760-src-mq3-platform-win-wndproc-runtime-ml-1790044173"></a>
@@ -609,8 +619,10 @@ const SC_SCREENSAVE = 61760
 function scanTable()
 ```
 
+Builds the 130-element result for `mq3.platform.win_wndproc_runtime.scanTable` from `0`, `27`, `49`, `50`, `51`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L94)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L113)
 
 <a id="constant-constant-mq3-platform-win-wndproc-runtime-se-char-const-se-char-2-src-mq3-platform-win-wndproc-runtime-ml-1081093659"></a>
 ### SE_CHAR
@@ -639,14 +651,16 @@ const SE_KEY = 1
 function VID_AppActivate(state, active, minimized)
 ```
 
+Updates `state.isMinimized`, `state.clearStateCount`, `state.activeApp`, `state.inputActive` in `mq3.platform.win_wndproc_runtime.VID_AppActivate`; returns `state.activeApp`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `active` | `dynamic` | — |  |
-| `minimized` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.isMinimized`, `state.clearStateCount`, `state.activeApp`, `state.inputActive`. |
+| `active` | `dynamic` | — | Input used by `state.activeApp=active and not minimized`. |
+| `minimized` | `dynamic` | — | Value assigned to `state.isMinimized`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L107)
 
 <a id="function-function-mq3-platform-win-wndproc-runtime-wheel-function-wheel-state-time-delta-logitechbug-src-mq3-platform-win-wndproc-runtime-ml-1686180153"></a>
 ### wheel
@@ -655,15 +669,17 @@ function VID_AppActivate(state, active, minimized)
 function wheel(state, time, delta, logitechBug)
 ```
 
+Updates `state.logitechFlip` in `mq3.platform.win_wndproc_runtime.wheel`; returns `steps`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `delta` | `dynamic` | — |  |
-| `logitechBug` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.logitechFlip`. |
+| `time` | `dynamic` | — | Value forwarded as `time` to `mq3.platform.win_wndproc_runtime.queue`. |
+| `delta` | `dynamic` | — | Input tested by `delta>0`. |
+| `logitechBug` | `dynamic` | — | Input tested by `logitechBug`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L136)
 
 <a id="function-function-mq3-platform-win-wndproc-runtime-win-disablealttab-function-win-disablealttab-state-src-mq3-platform-win-wndproc-runtime-ml-1345114723"></a>
 ### WIN_DisableAltTab
@@ -672,12 +688,14 @@ function wheel(state, time, delta, logitechBug)
 function WIN_DisableAltTab(state)
 ```
 
+Updates `state.altTabDisabled` in `mq3.platform.win_wndproc_runtime.WIN_DisableAltTab`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.altTabDisabled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L99)
 
 <a id="function-function-mq3-platform-win-wndproc-runtime-win-enablealttab-function-win-enablealttab-state-src-mq3-platform-win-wndproc-runtime-ml-775431309"></a>
 ### WIN_EnableAltTab
@@ -686,12 +704,14 @@ function WIN_DisableAltTab(state)
 function WIN_EnableAltTab(state)
 ```
 
+Updates `state.altTabDisabled` in `mq3.platform.win_wndproc_runtime.WIN_EnableAltTab`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable record or buffer; this call updates `state.altTabDisabled`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_wndproc_runtime.ml#L102)
 
 <a id="constant-constant-mq3-platform-win-wndproc-runtime-wm-activate-const-wm-activate-6-src-mq3-platform-win-wndproc-runtime-ml-1854876639"></a>
 ### WM_ACTIVATE

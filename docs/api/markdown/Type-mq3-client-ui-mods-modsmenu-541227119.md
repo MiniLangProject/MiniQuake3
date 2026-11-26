@@ -9,8 +9,10 @@
 struct ModsMenu
 ```
 
+Stores UI mods mods menu record, including `wrapAround`, `fullscreen`, `entries`, `selected`, `assets`, `cvarWrites` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 <a id="field-field-mq3-client-ui-mods-modsmenu-assets-assets-src-mq3-client-ui-mods-ml-549583221"></a>
 ### assets
@@ -32,7 +34,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 <a id="field-field-mq3-client-ui-mods-modsmenu-commands-commands-src-mq3-client-ui-mods-ml-11147371"></a>
 ### commands
@@ -42,7 +44,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 <a id="field-field-mq3-client-ui-mods-modsmenu-cvarwrites-cvarwrites-src-mq3-client-ui-mods-ml-320125091"></a>
 ### cvarWrites
@@ -52,7 +54,7 @@ cvarWrites
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 <a id="field-field-mq3-client-ui-mods-modsmenu-entries-entries-src-mq3-client-ui-mods-ml-1318852595"></a>
 ### entries
@@ -62,7 +64,7 @@ entries
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 <a id="field-field-mq3-client-ui-mods-modsmenu-fullscreen-fullscreen-src-mq3-client-ui-mods-ml-644888997"></a>
 ### fullscreen
@@ -72,7 +74,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 <a id="field-field-mq3-client-ui-mods-modsmenu-selected-selected-src-mq3-client-ui-mods-ml-667666997"></a>
 ### selected
@@ -82,7 +84,7 @@ selected
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)
 
 <a id="field-field-mq3-client-ui-mods-modsmenu-wraparound-wraparound-src-mq3-client-ui-mods-ml-1547325021"></a>
 ### wrapAround
@@ -92,4 +94,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L14)

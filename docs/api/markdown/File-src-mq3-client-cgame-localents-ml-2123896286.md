@@ -28,11 +28,11 @@ CG_AddExplosion
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.refEntity.origin`, `le.refEntity.radius`, `le.refEntity.shaderRGBA`, `le.startTime` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L269)
 
 <a id="function-function-mq3-client-cgame-localents-addfadergb-function-addfadergb-state-le-src-mq3-client-cgame-localents-ml-990725916"></a>
 ### addFadeRGB
@@ -45,11 +45,11 @@ CG_AddFadeRGB
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game localents state passed to the helper calls in `addFadeRGB`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.refEntity.shaderRGBA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L235)
 
 <a id="function-function-mq3-client-cgame-localents-addfallscalefade-function-addfallscalefade-state-le-src-mq3-client-cgame-localents-ml-275019336"></a>
 ### addFallScaleFade
@@ -62,11 +62,11 @@ CG_AddFallScaleFade
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game localents state passed to the helper calls in `addFallScaleFade`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.refEntity.shaderRGBA[3]`, `le.refEntity.origin[2]`, `le.refEntity.radius`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L255)
 
 <a id="function-function-mq3-client-cgame-localents-addfragment-function-addfragment-state-le-src-mq3-client-cgame-localents-ml-2013722758"></a>
 ### addFragment
@@ -79,11 +79,11 @@ CG_AddFragment
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.services.traceFn`, `state.services.context`, `state.services.pointContentsFn`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.refEntity.lightingOrigin`, `le.refEntity.renderfx`, `le.refEntity.origin`, `le.refEntity.axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L209)
 
 <a id="function-function-mq3-client-cgame-localents-addinvulnerabilityimpact-function-addinvulnerabilityimpact-state-le-src-mq3-client-cgame-localents-ml-212222948"></a>
 ### addInvulnerabilityImpact
@@ -96,11 +96,11 @@ CG_AddInvulnerabilityImpact
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_localents.render`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.refEntity.origin`, `le.refEntity.radius`, `le.refEntity.shaderRGBA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L313)
 
 <a id="function-function-mq3-client-cgame-localents-addinvulnerabilityjuiced-function-addinvulnerabilityjuiced-state-le-src-mq3-client-cgame-localents-ml-1691652928"></a>
 ### addInvulnerabilityJuiced
@@ -113,11 +113,11 @@ CG_AddInvulnerabilityJuiced
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.refEntity.axis[0][0]`, `le.refEntity.axis[1][1]`, `le.refEntity.axis[2][2]`, `le.endTime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L318)
 
 <a id="function-function-mq3-client-cgame-localents-addkamikaze-function-addkamikaze-state-le-src-mq3-client-cgame-localents-ml-1907390316"></a>
 ### addKamikaze
@@ -130,11 +130,11 @@ CG_AddKamikaze
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.services.randomFn`, `state.services.context`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.leFlags`, `le.refEntity.shaderRGBA`, `le.angles.trBase`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L295)
 
 <a id="function-function-mq3-client-cgame-localents-addlocalentities-function-addlocalentities-state-time-frametime-vieworg-src-mq3-client-cgame-localents-ml-578118357"></a>
 ### addLocalEntities
@@ -147,13 +147,13 @@ CG_AddLocalEntities
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `time` | `dynamic` | — |  |
-| `frametime` | `dynamic` | — |  |
-| `vieworg` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `state.time`, `state.frametime`, `state.vieworg`. |
+| `time` | `dynamic` | — | Value assigned to `state.time`. |
+| `frametime` | `dynamic` | — | Value assigned to `state.frametime`. |
+| `vieworg` | `dynamic` | — | Value assigned to `state.vieworg`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L371)
 
 <a id="function-function-mq3-client-cgame-localents-addmovescalefade-function-addmovescalefade-state-le-src-mq3-client-cgame-localents-ml-529168064"></a>
 ### addMoveScaleFade
@@ -166,11 +166,11 @@ CG_AddMoveScaleFade
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.refEntity.shaderRGBA[3]`, `le.refEntity.radius`, `le.refEntity.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L240)
 
 <a id="function-function-mq3-client-cgame-localents-addrefentity-function-addrefentity-state-le-src-mq3-client-cgame-localents-ml-1238481932"></a>
 ### addRefEntity
@@ -183,11 +183,11 @@ CG_AddRefEntity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.endTime`, `le.refEntity.origin`, `le.refEntity.radius`, `le.refEntity.shaderRGBA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L326)
 
 <a id="function-function-mq3-client-cgame-localents-addscalefade-function-addscalefade-state-le-src-mq3-client-cgame-localents-ml-488364176"></a>
 ### addScaleFade
@@ -200,11 +200,11 @@ CG_AddScaleFade
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game localents state passed to the helper calls in `addScaleFade`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.refEntity.shaderRGBA[3]`, `le.refEntity.radius`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L250)
 
 <a id="function-function-mq3-client-cgame-localents-addscoreplum-function-addscoreplum-state-le-src-mq3-client-cgame-localents-ml-579877612"></a>
 ### addScorePlum
@@ -217,11 +217,11 @@ CG_AddScorePlum
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.vieworg`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.refEntity.radius`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L338)
 
 <a id="function-function-mq3-client-cgame-localents-addspriteexplosion-function-addspriteexplosion-state-le-src-mq3-client-cgame-localents-ml-1839238052"></a>
 ### addSpriteExplosion
@@ -234,11 +234,11 @@ CG_AddSpriteExplosion
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.endTime`, `le.startTime`, `le.refEntity.origin`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L274)
 
 <a id="function-function-mq3-client-cgame-localents-alloclocalentity-function-alloclocalentity-state-src-mq3-client-cgame-localents-ml-233729137"></a>
 ### allocLocalEntity
@@ -251,10 +251,10 @@ CG_AllocLocalEntity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `state.free`, `state.active`, `state.spawned`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L118)
 
 <a id="function-function-mq3-client-cgame-localents-anglestoaxis-function-anglestoaxis-angles-src-mq3-client-cgame-localents-ml-833977074"></a>
 ### anglesToAxis
@@ -263,12 +263,14 @@ CG_AllocLocalEntity
 function anglesToAxis(angles)
 ```
 
+Calls `mq3.shared.math.AngleVectors`, `mq3.shared.math.VectorScale` from client game localents `anglesToAxis`. The final path returns `[basis[0],qmath.VectorScale(basis[1],-1.0),basis[2]]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `angles` | `dynamic` | — |  |
+| `angles` | `dynamic` | — | Value used by `basis=qmath.AngleVectors(angles)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L204)
 
 <a id="function-function-mq3-client-cgame-localents-bloodtrail-function-bloodtrail-state-le-src-mq3-client-cgame-localents-ml-279841580"></a>
 ### bloodTrail
@@ -281,11 +283,11 @@ CG_BloodTrail (the ledger's spurious `way` candidate comes from this routine's p
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.frametime`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.pos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L167)
 
 <a id="function-function-mq3-client-cgame-localents-boundary-function-boundary-state-boundaryname-kind-le-origin-normal-scalar-color-data-src-mq3-client-cgame-localents-ml-259384491"></a>
 ### boundary
@@ -294,20 +296,22 @@ CG_BloodTrail (the ledger's spurious `way` candidate comes from this routine's p
 function boundary(state, boundaryName, kind, le, origin, normal, scalar, color, data)
 ```
 
+Updates `state.actions`, `state.rendered`, `state.audio`, `state.marks` during client game localents `boundary`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `boundaryName` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `normal` | `dynamic` | — |  |
-| `scalar` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `state.actions`, `state.rendered`, `state.audio`, `state.marks`. |
+| `boundaryName` | `dynamic` | — | Value used by `item=Action(boundaryName,kind,le.id,origin,normal,scalar,color,data,not state.retailActive)`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.id`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. |
+| `scalar` | `dynamic` | — | Value used by `item=Action(boundaryName,kind,le.id,origin,normal,scalar,color,data,not state.retailActive)`. |
+| `color` | `dynamic` | — | Color value used by the client game localents drawing or interpolation operation. |
+| `data` | `dynamic` | — | Value used by `item=Action(boundaryName,kind,le.id,origin,normal,scalar,color,data,not state.retailActive)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L134)
 
 <a id="function-function-mq3-client-cgame-localents-clearboundaryactions-function-clearboundaryactions-state-src-mq3-client-cgame-localents-ml-257064493"></a>
 ### clearBoundaryActions
@@ -316,12 +320,14 @@ function boundary(state, boundaryName, kind, le, origin, normal, scalar, color, 
 function clearBoundaryActions(state)
 ```
 
+Updates `state.actions`, `state.rendered`, `state.audio`, `state.marks` during client game localents `clearBoundaryActions`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `state.actions`, `state.rendered`, `state.audio`, `state.marks`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L378)
 
 <a id="constant-constant-mq3-client-cgame-localents-contents-nodrop-const-contents-nodrop-2147483648-src-mq3-client-cgame-localents-ml-1890346980"></a>
 ### CONTENTS_NODROP
@@ -340,13 +346,15 @@ const CONTENTS_NODROP = 2147483648
 function defaultPointContents(context, point)
 ```
 
+Returns the fixed `0` value for client game localents `defaultPointContents`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `point` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Accepted for compatibility with `defaultPointContents`; the current implementation does not read it. |
+| `point` | `dynamic` | — | Accepted for compatibility with `defaultPointContents`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L86)
 
 <a id="function-function-mq3-client-cgame-localents-defaultrandom-function-defaultrandom-context-src-mq3-client-cgame-localents-ml-1139764423"></a>
 ### defaultRandom
@@ -355,12 +363,14 @@ function defaultPointContents(context, point)
 function defaultRandom(context)
 ```
 
+Returns the fixed `0` value for client game localents `defaultRandom`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Accepted for compatibility with `defaultRandom`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L89)
 
 <a id="function-function-mq3-client-cgame-localents-defaultservices-function-defaultservices-src-mq3-client-cgame-localents-ml-2041069256"></a>
 ### defaultServices
@@ -369,8 +379,10 @@ function defaultRandom(context)
 function defaultServices()
 ```
 
+Creates a `mq3.client.cgame_localents.Services` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L71)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L91)
 
 <a id="function-function-mq3-client-cgame-localents-defaulttrace-function-defaulttrace-context-start-finish-src-mq3-client-cgame-localents-ml-1830361736"></a>
 ### defaultTrace
@@ -379,14 +391,16 @@ function defaultServices()
 function defaultTrace(context, start, finish)
 ```
 
+Reads `void` for client game localents `defaultTrace`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `context` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `finish` | `dynamic` | — |  |
+| `context` | `dynamic` | — | Accepted for compatibility with `defaultTrace`; the current implementation does not read it. |
+| `start` | `dynamic` | — | Accepted for compatibility with `defaultTrace`; the current implementation does not read it. |
+| `finish` | `dynamic` | — | Accepted for compatibility with `defaultTrace`; the current implementation does not read it. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L82)
 
 <a id="function-function-mq3-client-cgame-localents-dispatchlocalentity-function-dispatchlocalentity-state-le-src-mq3-client-cgame-localents-ml-323062168"></a>
 ### dispatchLocalEntity
@@ -395,13 +409,15 @@ function defaultTrace(context, start, finish)
 function dispatchLocalEntity(state, le)
 ```
 
+Updates `state.errors` during client game localents `dispatchLocalEntity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `state.errors`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.leType`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L347)
 
 <a id="function-function-mq3-client-cgame-localents-dynamiclight-function-dynamiclight-state-le-origin-progress-src-mq3-client-cgame-localents-ml-211956979"></a>
 ### dynamicLight
@@ -410,15 +426,17 @@ function dispatchLocalEntity(state, le)
 function dynamicLight(state, le, origin, progress)
 ```
 
+Calls `mq3.client.cgame_localents.render` from client game localents `dynamicLight`. The final path returns `render(state,"dynamic-light",le,origin,intensity,le.lightColor,void)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `progress` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game localents state passed to the helper calls in `dynamicLight`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.light`, `le.lightColor`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `progress` | `dynamic` | — | Value used by `if progress<0.5 then intensity=le.light else intensity=le.light*(1.0-(progress-0.5)*2.0) end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L262)
 
 <a id="function-function-mq3-client-cgame-localents-fragmentbouncemark-function-fragmentbouncemark-state-le-trace-src-mq3-client-cgame-localents-ml-1308133871"></a>
 ### fragmentBounceMark
@@ -431,12 +449,12 @@ CG_FragmentBounceMark
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services.randomFn`, `state.services.context`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.leMarkType`. |
+| `trace` | `dynamic` | — | Record read through `trace.endpos`, `trace.normal`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L178)
 
 <a id="function-function-mq3-client-cgame-localents-fragmentbouncesound-function-fragmentbouncesound-state-le-trace-src-mq3-client-cgame-localents-ml-1466933533"></a>
 ### fragmentBounceSound
@@ -449,12 +467,12 @@ CG_FragmentBounceSound
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.services.randomFn`, `state.services.context`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.leBounceSoundType`. |
+| `trace` | `dynamic` | — | Record read through `trace.endpos`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L188)
 
 <a id="function-function-mq3-client-cgame-localents-freelocalentity-function-freelocalentity-state-le-src-mq3-client-cgame-localents-ml-1431557008"></a>
 ### freeLocalEntity
@@ -467,11 +485,11 @@ CG_FreeLocalEntity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `state.errors`, `state.active`, `state.free`, `state.freed`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.active`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L111)
 
 <a id="function-function-mq3-client-cgame-localents-identityaxis-function-identityaxis-src-mq3-client-cgame-localents-ml-1665086826"></a>
 ### identityAxis
@@ -480,8 +498,10 @@ CG_FreeLocalEntity
 function identityAxis()
 ```
 
+Creates the three orthonormal unit axes used as the identity orientation in client game localents.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L64)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L70)
 
 <a id="function-function-mq3-client-cgame-localents-initlocalentities-function-initlocalentities-services-retailactive-src-mq3-client-cgame-localents-ml-668560581"></a>
 ### initLocalEntities
@@ -494,11 +514,11 @@ CG_InitLocalEntities
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `services` | `dynamic` | — |  |
-| `retailActive` | `dynamic` | — |  |
+| `services` | `dynamic` | — | services record passed to the client game localents helper calls. |
+| `retailActive` | `dynamic` | — | Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L96)
 
 <a id="constant-constant-mq3-client-cgame-localents-kami-boomsphere-maxradius-const-kami-boomsphere-maxradius-720-src-mq3-client-cgame-localents-ml-1637825726"></a>
 ### KAMI_BOOMSPHERE_MAXRADIUS
@@ -647,20 +667,22 @@ const KAMI_SHOCKWAVEMODEL_RADIUS = 88
 function kamiWave(state, le, kind, t, startTime, fadeTime, endTime, maxRadius, angles)
 ```
 
+Calls `mq3.client.cgame_localents.anglesToAxis`, `mq3.client.cgame_localents.render` from client game localents `kamiWave`. The final path returns `render(state,kind,le,le.refEntity.origin,scale,[color,color,color,color],axis)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `t` | `dynamic` | — |  |
-| `startTime` | `dynamic` | — |  |
-| `fadeTime` | `dynamic` | — |  |
-| `endTime` | `dynamic` | — |  |
-| `maxRadius` | `dynamic` | — |  |
-| `angles` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Shared client game localents state passed to the helper calls in `kamiWave`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.refEntity.origin`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. |
+| `t` | `dynamic` | — | Value tested by `t>fadeTime` before the calculation continues. |
+| `startTime` | `dynamic` | — | Value used by `c=(t-startTime)/(endTime-startTime)`. |
+| `fadeTime` | `dynamic` | — | Value used by `if t>fadeTime then color=255.0*(1.0-(t-fadeTime)/(endTime-fadeTime)) end if`. |
+| `endTime` | `dynamic` | — | Value used by `c=(t-startTime)/(endTime-startTime)`. |
+| `maxRadius` | `dynamic` | — | Value used by `scale=c*maxRadius/KAMI_SHOCKWAVEMODEL_RADIUS`. |
+| `angles` | `dynamic` | — | Value used by `axis=anglesToAxis(angles)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L288)
 
 <a id="constant-constant-mq3-client-cgame-localents-le-explosion-const-le-explosion-cgabi-le-explosion-src-mq3-client-cgame-localents-ml-2145192488"></a>
 ### LE_EXPLOSION
@@ -900,18 +922,20 @@ const LEMT_NONE = cgabi.LEMT_NONE
 function mark(state, kind, le, origin, normal, scalar, orientation)
 ```
 
+Adapts `mq3.client.cgame_localents.boundary` to client game localents `mark`, returning its result for `state, "mark", kind, le, origin, normal, scalar, void, orientation`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `normal` | `dynamic` | — |  |
-| `scalar` | `dynamic` | — |  |
-| `orientation` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_localents.boundary`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `normal` | `dynamic` | — | Surface-normal vector used to orient or offset the effect. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `scalar` | `dynamic` | — | Argument 7 of `mq3.client.cgame_localents.boundary`. |
+| `orientation` | `dynamic` | — | Argument 9 of `mq3.client.cgame_localents.boundary`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L162)
 
 <a id="constant-constant-mq3-client-cgame-localents-max-local-entities-const-max-local-entities-512-src-mq3-client-cgame-localents-ml-399103215"></a>
 ### MAX_LOCAL_ENTITIES
@@ -930,14 +954,16 @@ const MAX_LOCAL_ENTITIES = 512
 function nearView(state, origin, radius)
 ```
 
+Calls `mq3.shared.math.VectorLength` from client game localents `nearView`. The final path returns `qmath.VectorLength(delta)<radius`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `radius` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.vieworg`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. |
+| `radius` | `dynamic` | — | Radius used by the spatial or visual calculation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L230)
 
 <a id="function-function-mq3-client-cgame-localents-newlocalentity-function-newlocalentity-id-src-mq3-client-cgame-localents-ml-969776797"></a>
 ### newLocalEntity
@@ -946,12 +972,14 @@ function nearView(state, origin, radius)
 function newLocalEntity(id)
 ```
 
+Creates a `mq3.client.cgame_localents.LocalEntity` record. Assigns `id` from `id`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `id` | `dynamic` | — |  |
+| `id` | `dynamic` | — | Value used to initialize `LocalEntity.id`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L77)
 
 <a id="function-function-mq3-client-cgame-localents-newrefentity-function-newrefentity-src-mq3-client-cgame-localents-ml-2093013094"></a>
 ### newRefEntity
@@ -960,8 +988,10 @@ function newLocalEntity(id)
 function newRefEntity()
 ```
 
+Creates a `mq3.client.cgame_localents.RefEntity` record. Initializes the record with the defaults written in this constructor.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L65)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L72)
 
 <a id="function-function-mq3-client-cgame-localents-newtrajectory-function-newtrajectory-src-mq3-client-cgame-localents-ml-1630612868"></a>
 ### newTrajectory
@@ -970,8 +1000,10 @@ function newRefEntity()
 function newTrajectory()
 ```
 
+Adapts `mq3.game.trajectory.Trajectory` to client game localents `newTrajectory`, returning its result for `TR_STATIONARY, 0, 0, [0.0,0.0,0.0], [0.0,0.0,0.0]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L66)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L74)
 
 <a id="constant-constant-mq3-client-cgame-localents-number-size-const-number-size-8-src-mq3-client-cgame-localents-ml-1177058693"></a>
 ### NUMBER_SIZE
@@ -995,12 +1027,12 @@ CG_ReflectVelocity
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `trace` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`, `state.frametime`. |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.pos.trDelta`, `le.pos.trBase`, `le.pos.trTime`, `le.pos.trType`. |
+| `trace` | `dynamic` | — | Record read through `trace.fraction`, `trace.normal`, `trace.endpos`, `trace.allsolid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L197)
 
 <a id="function-function-mq3-client-cgame-localents-remainingfraction-function-remainingfraction-state-le-src-mq3-client-cgame-localents-ml-796774952"></a>
 ### remainingFraction
@@ -1009,13 +1041,15 @@ CG_ReflectVelocity
 function remainingFraction(state, le)
 ```
 
+Computes `(le.endTime-state.time)*le.lifeRate` for client game localents `remainingFraction`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Record read through `state.time`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Record read through `le.endTime`, `le.lifeRate`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L225)
 
 <a id="function-function-mq3-client-cgame-localents-render-function-render-state-kind-le-origin-scalar-color-data-src-mq3-client-cgame-localents-ml-1156437461"></a>
 ### render
@@ -1024,18 +1058,20 @@ function remainingFraction(state, le)
 function render(state, kind, le, origin, scalar, color, data)
 ```
 
+Adapts `mq3.client.cgame_localents.boundary` to client game localents `render`, returning its result for `state, "render", kind, le, origin, void, scalar, color, data`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `scalar` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_localents.boundary`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `scalar` | `dynamic` | — | Argument 7 of `mq3.client.cgame_localents.boundary`. |
+| `color` | `dynamic` | — | Argument 8 of `mq3.client.cgame_localents.boundary`. |
+| `data` | `dynamic` | — | Argument 9 of `mq3.client.cgame_localents.boundary`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L146)
 
 <a id="function-function-mq3-client-cgame-localents-resetlocalentity-function-resetlocalentity-le-src-mq3-client-cgame-localents-ml-1003827443"></a>
 ### resetLocalEntity
@@ -1044,12 +1080,14 @@ function render(state, kind, le, origin, scalar, color, data)
 function resetLocalEntity(le)
 ```
 
+Updates `le.active`, `le.leType`, `le.leFlags`, `le.startTime` and additional values during client game localents `resetLocalEntity`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `le` | `dynamic` | — |  |
+| `le` | `dynamic` | — | Mutable client game localents record/storage; this routine assigns `le.active`, `le.leType`, `le.leFlags`, `le.startTime` and additional values. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L104)
 
 <a id="constant-constant-mq3-client-cgame-localents-rf-lighting-origin-const-rf-lighting-origin-128-src-mq3-client-cgame-localents-ml-2136918682"></a>
 ### RF_LIGHTING_ORIGIN
@@ -1078,12 +1116,14 @@ const RT_SPRITE = 2
 function scoreColor(score)
 ```
 
+Evaluates client game localents `scoreColor` and returns `[255,17,17]`, `[255,0,255]`, `[0,0,255]` and additional values according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `score` | `dynamic` | — |  |
+| `score` | `dynamic` | — | Value used by `if score<0 then return [255,17,17] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L330)
 
 <a id="function-function-mq3-client-cgame-localents-scoredigits-function-scoredigits-score-src-mq3-client-cgame-localents-ml-1294611456"></a>
 ### scoreDigits
@@ -1092,12 +1132,14 @@ function scoreColor(score)
 function scoreDigits(score)
 ```
 
+Calls `mq3.compat.numeric.trunc32` from client game localents `scoreDigits`. The final path returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `score` | `dynamic` | — |  |
+| `score` | `dynamic` | — | Value used by `score=n.trunc32(score)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L333)
 
 - [mq3.client.cgame_localents.Services](Type-mq3-client-cgame-localents-services-858672036.md) — struct
 <a id="constant-constant-mq3-client-cgame-localents-sink-time-const-sink-time-cgabi-sink-time-src-mq3-client-cgame-localents-ml-1178244138"></a>
@@ -1117,16 +1159,18 @@ const SINK_TIME = cgabi.SINK_TIME
 function sound(state, kind, le, origin, data)
 ```
 
+Adapts `mq3.client.cgame_localents.boundary` to client game localents `sound`, returning its result for `state, "audio", kind, le, origin, void, 0.0, void, data`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `kind` | `dynamic` | — |  |
-| `le` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
+| `state` | `dynamic` | — | Argument 1 of `mq3.client.cgame_localents.boundary`. |
+| `kind` | `dynamic` | — | Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `le` | `dynamic` | — | Local effect entity whose lifetime and rendering state are maintained client-side. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `origin` | `dynamic` | — | World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_localents.boundary`. |
+| `data` | `dynamic` | — | Argument 9 of `mq3.client.cgame_localents.boundary`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L153)
 
 - [mq3.client.cgame_localents.State](Type-mq3-client-cgame-localents-state-1933874705.md) — struct
 <a id="constant-constant-mq3-client-cgame-localents-tr-stationary-const-tr-stationary-0-src-mq3-client-cgame-localents-ml-1511339213"></a>

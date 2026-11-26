@@ -22,15 +22,17 @@ Reachable from entry: **yes**
 function dispatch(runtime, vm, base, op)
 ```
 
+Apply `mq3.botlib.ai_goal_state_syscalls.readGoal`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_move_runtime.moveToGoal` while evaluating `dispatch`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `runtime` | `dynamic` | — |  |
-| `vm` | `dynamic` | — |  |
-| `base` | `dynamic` | — |  |
-| `op` | `dynamic` | — |  |
+| `runtime` | `dynamic` | — | AI move runtime; accesses `router`, `pools`, `services` and `aas`. |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `base` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L40)
 
 <a id="constant-constant-mq3-botlib-ai-move-syscalls-init-move-size-const-init-move-size-68-src-mq3-botlib-ai-move-syscalls-ml-1051044427"></a>
 ### INIT_MOVE_SIZE
@@ -59,13 +61,15 @@ const MOVE_RESULT_SIZE = 52
 function readInitMove(vm, address)
 ```
 
+Build the `mq3.botlib.ai_move_runtime.InitMove` result for `readInitMove`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L21)
 
 <a id="function-function-mq3-botlib-ai-move-syscalls-writemoveresult-function-writemoveresult-vm-address-value-src-mq3-botlib-ai-move-syscalls-ml-559726452"></a>
 ### writeMoveResult
@@ -74,14 +78,16 @@ function readInitMove(vm, address)
 function writeMoveResult(vm, address, value)
 ```
 
+Apply `mq3.vm.syscall_common.pointer` and `mq3.botlib.ai_move_syscalls.writeMoveVector` while evaluating `writeMoveResult`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `vm` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `vm` | `dynamic` | — | Vm record; accesses `data`. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `value` | `dynamic` | — | Value record; accesses `failure`, `blocked`, `type`, `blockEntity` and `travelType` and related fields. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L31)
 
 <a id="function-function-mq3-botlib-ai-move-syscalls-writemovevector-function-writemovevector-data-address-value-src-mq3-botlib-ai-move-syscalls-ml-1278603157"></a>
 ### writeMoveVector
@@ -90,11 +96,13 @@ function writeMoveResult(vm, address, value)
 function writeMoveVector(data, address, value)
 ```
 
+Write a movement vector as three consecutive float words in VM memory.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `address` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Value passed as argument 1 to `mq3.compat.numeric.writeU32`. |
+| `address` | `dynamic` | — | Address within the VM memory or native data buffer. |
+| `value` | `dynamic` | — | Array or byte sequence accessed at `axis`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L17)

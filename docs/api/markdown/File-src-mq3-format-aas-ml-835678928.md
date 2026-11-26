@@ -230,13 +230,15 @@ const AASVERSION_OLD = AAS_VERSION_OLD
 function area(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Area`, `mq3.format.aas.i32` for area in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L240)
 
 - [mq3.format.aas.Area](Type-mq3-format-aas-area-75941019.md) — struct
 <a id="constant-constant-mq3-format-aas-area-bridge-const-area-bridge-16-src-mq3-format-aas-ml-1238121210"></a>
@@ -476,13 +478,15 @@ const AREACONTENTS_WATER = 1
 function areaSettings(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.AreaSettings`, `mq3.format.aas.i32` for area settings in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L244)
 
 - [mq3.format.aas.AreaSettings](Type-mq3-format-aas-areasettings-162440038.md) — struct
 <a id="function-function-mq3-format-aas-bbox-function-bbox-map-index-src-mq3-format-aas-ml-967415512"></a>
@@ -492,13 +496,15 @@ function areaSettings(map, index)
 function bbox(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.BBox`, `mq3.format.aas.i32` for bbox in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L216)
 
 - [mq3.format.aas.BBox](Type-mq3-format-aas-bbox-641438653.md) — struct
 <a id="constant-constant-mq3-format-aas-bbox-size-const-bbox-size-32-src-mq3-format-aas-ml-1168350004"></a>
@@ -518,13 +524,15 @@ const BBOX_SIZE = 32
 function checkBspChecksum(map, expected)
 ```
 
+Check bsp checksum in format.aas; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `expected` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `bspChecksum`. |
+| `expected` | `dynamic` | — | Expected used in `(map.bspChecksum != expected)` and `((map == void) or (map.bspChecksum != expected))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L305)
 
 <a id="function-function-mq3-format-aas-cluster-function-cluster-map-index-src-mq3-format-aas-ml-1936897892"></a>
 ### cluster
@@ -533,13 +541,15 @@ function checkBspChecksum(map, expected)
 function cluster(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Cluster`, `mq3.format.aas.i32` for cluster in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L264)
 
 - [mq3.format.aas.Cluster](Type-mq3-format-aas-cluster-1380852344.md) — struct
 <a id="constant-constant-mq3-format-aas-cluster-size-const-cluster-size-16-src-mq3-format-aas-ml-1429990880"></a>
@@ -559,12 +569,14 @@ const CLUSTER_SIZE = 16
 function ddata(data)
 ```
 
+Compute ddata in format.aas; the normal completion returns `result`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `typeof(data)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L324)
 
 <a id="function-function-mq3-format-aas-decodedheader-function-decodedheader-data-version-src-mq3-format-aas-ml-267961200"></a>
 ### decodedHeader
@@ -573,13 +585,15 @@ function ddata(data)
 function decodedHeader(data, version)
 ```
 
+Compute decoded header in format.aas; the normal completion returns `header`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `version` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `slice(data, 0, HEADER_SIZE)`. |
+| `version` | `dynamic` | — | Version used in `(version == AAS_VERSION)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L203)
 
 <a id="function-function-mq3-format-aas-edge-function-edge-map-index-src-mq3-format-aas-ml-2063502856"></a>
 ### edge
@@ -588,13 +602,15 @@ function decodedHeader(data, version)
 function edge(map, index)
 ```
 
+Compute edge in format.aas; the normal completion returns `[i32(map.data, at, "edge vertex 0"), i32(map.data, (at + 4), "edge vertex 1")]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L224)
 
 <a id="constant-constant-mq3-format-aas-edge-size-const-edge-size-8-src-mq3-format-aas-ml-532984413"></a>
 ### EDGE_SIZE
@@ -613,13 +629,15 @@ const EDGE_SIZE = 8
 function edgeIndex(map, index)
 ```
 
+Compute edge index in format.aas; the normal completion returns `i32(map.data, at, "edge index")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L228)
 
 <a id="function-function-mq3-format-aas-encode-function-encode-map-src-mq3-format-aas-ml-67605492"></a>
 ### encode
@@ -628,12 +646,14 @@ function edgeIndex(map, index)
 function encode(map)
 ```
 
+Encode aas in format.aas; the normal completion returns `output`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `bspChecksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L331)
 
 <a id="function-function-mq3-format-aas-f32-function-f32-data-offset-label-src-mq3-format-aas-ml-1745371125"></a>
 ### f32
@@ -642,14 +662,16 @@ function encode(map)
 function f32(data, offset, label)
 ```
 
+Compute f 32 in format.aas; the normal completion returns `n.bitsFloat(value)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.compat.numeric.readU32`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.compat.numeric.readU32`. |
+| `label` | `dynamic` | — | Label used in `("truncated " + label)` and `fail(("truncated " + label))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L169)
 
 <a id="function-function-mq3-format-aas-face-function-face-map-index-src-mq3-format-aas-ml-1316691416"></a>
 ### face
@@ -658,13 +680,15 @@ function f32(data, offset, label)
 function face(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Face`, `mq3.format.aas.i32` for face in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L232)
 
 - [mq3.format.aas.Face](Type-mq3-format-aas-face-875082823.md) — struct
 <a id="constant-constant-mq3-format-aas-face-bridge-const-face-bridge-64-src-mq3-format-aas-ml-1454235907"></a>
@@ -754,13 +778,15 @@ const FACE_SOLID = 1
 function faceIndex(map, index)
 ```
 
+Compute face index in format.aas; the normal completion returns `i32(map.data, at, "face index")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L236)
 
 <a id="function-function-mq3-format-aas-fail-function-fail-message-src-mq3-format-aas-ml-1664961607"></a>
 ### fail
@@ -769,12 +795,14 @@ function faceIndex(map, index)
 function fail(message)
 ```
 
+Create the format.aas error for `fail` with 7510 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("AAS: " + message)` and `error(7510, ("AAS: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L142)
 
 <a id="function-function-mq3-format-aas-header-function-header-map-src-mq3-format-aas-ml-451164932"></a>
 ### header
@@ -783,12 +811,14 @@ function fail(message)
 function header(map)
 ```
 
+Compute header in format.aas; the normal completion returns `Header(AAS_ID, map.version, map.bspChecksum, lumps)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `offsets`, `lengths`, `version`, `bspChecksum`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L309)
 
 - [mq3.format.aas.Header](Type-mq3-format-aas-header-899928079.md) — struct
 <a id="constant-constant-mq3-format-aas-header-size-const-header-size-124-src-mq3-format-aas-ml-1689934416"></a>
@@ -808,14 +838,16 @@ const HEADER_SIZE = 124
 function i32(data, offset, label)
 ```
 
+Compute i 32 in format.aas; the normal completion returns `value`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.compat.numeric.readI32`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.compat.numeric.readI32`. |
+| `label` | `dynamic` | — | Label used in `("truncated " + label)` and `fail(("truncated " + label))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L159)
 
 <a id="constant-constant-mq3-format-aas-index-size-const-index-size-4-src-mq3-format-aas-ml-1179747435"></a>
 ### INDEX_SIZE
@@ -834,15 +866,17 @@ const INDEX_SIZE = 4
 function indexedRange(first, count, limit, label)
 ```
 
+Test indexed range in format.aas; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `first` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
-| `limit` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `first` | `dynamic` | — | First used in `(first < 0)` and `(first > limit)`. |
+| `count` | `dynamic` | — | Count used in `(count < 0)` and `(count > (limit - first))`. |
+| `limit` | `dynamic` | — | Limit used in `(first > limit)` and `(limit - first)`. |
+| `label` | `dynamic` | — | Label used in `("invalid " + label)` and `(("invalid " + label) + " range")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L190)
 
 <a id="function-function-mq3-format-aas-load-function-load-data-src-mq3-format-aas-ml-734195262"></a>
 ### load
@@ -851,12 +885,14 @@ function indexedRange(first, count, limit, label)
 function load(data)
 ```
 
+Load aas in format.aas; the normal completion returns `map`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.format.aas.i32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L287)
 
 - [mq3.format.aas.Lump](Type-mq3-format-aas-lump-1209201636.md) — struct
 <a id="constant-constant-mq3-format-aas-lump-areas-const-lump-areas-7-src-mq3-format-aas-ml-830829240"></a>
@@ -1016,13 +1052,15 @@ const LUMP_VERTEXES = 1
 function lumpData(map, lump)
 ```
 
+Compute lump data in format.aas; the normal completion returns `slice(map.data, map.offsets[lump], map.lengths[lump])`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `lump` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`, `offsets`, `lengths`. |
+| `lump` | `dynamic` | — | Zero-based index into `map.offsets`, `map.lengths`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L317)
 
 <a id="function-function-mq3-format-aas-lumpnames-function-lumpnames-src-mq3-format-aas-ml-839364286"></a>
 ### lumpNames
@@ -1031,8 +1069,10 @@ function lumpData(map, lump)
 function lumpNames()
 ```
 
+List the 14 names in format.aas.lumpNames, beginning with `bboxes`, `vertexes`, `planes`, `edges`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L130)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L146)
 
 <a id="constant-constant-mq3-format-aas-max-traveltypes-const-max-traveltypes-32-src-mq3-format-aas-ml-1942063372"></a>
 ### MAX_TRAVELTYPES
@@ -1051,13 +1091,15 @@ const MAX_TRAVELTYPES = 32
 function node(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Node`, `mq3.format.aas.i32` for node in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L252)
 
 - [mq3.format.aas.Node](Type-mq3-format-aas-node-1963883082.md) — struct
 <a id="constant-constant-mq3-format-aas-node-size-const-node-size-12-src-mq3-format-aas-ml-1764490274"></a>
@@ -1077,13 +1119,15 @@ const NODE_SIZE = 12
 function plane(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Plane`, `mq3.format.aas.vec3` for plane in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L220)
 
 - [mq3.format.aas.Plane](Type-mq3-format-aas-plane-1144811296.md) — struct
 <a id="constant-constant-mq3-format-aas-plane-size-const-plane-size-20-src-mq3-format-aas-ml-660074749"></a>
@@ -1103,13 +1147,15 @@ const PLANE_SIZE = 20
 function portal(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Portal`, `mq3.format.aas.i32` for portal in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L256)
 
 - [mq3.format.aas.Portal](Type-mq3-format-aas-portal-1572880716.md) — struct
 <a id="constant-constant-mq3-format-aas-portal-size-const-portal-size-20-src-mq3-format-aas-ml-254041211"></a>
@@ -1129,13 +1175,15 @@ const PORTAL_SIZE = 20
 function portalIndex(map, index)
 ```
 
+Compute portal index in format.aas; the normal completion returns `i32(map.data, at, "portal index")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L260)
 
 <a id="constant-constant-mq3-format-aas-presence-crouch-const-presence-crouch-4-src-mq3-format-aas-ml-622911269"></a>
 ### PRESENCE_CROUCH
@@ -1176,13 +1224,15 @@ const PRESENCE_NORMAL = 2
 function reachability(map, index)
 ```
 
+Apply `mq3.format.aas.recordOffset`, `mq3.format.aas.Reachability`, `mq3.format.aas.i32` for reachability in format.aas.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L248)
 
 - [mq3.format.aas.Reachability](Type-mq3-format-aas-reachability-1665315537.md) — struct
 <a id="constant-constant-mq3-format-aas-reachability-size-const-reachability-size-44-src-mq3-format-aas-ml-875255229"></a>
@@ -1202,14 +1252,16 @@ const REACHABILITY_SIZE = 44
 function recordOffset(map, lump, index)
 ```
 
+Compute record offset in format.aas; the normal completion returns `(map.offsets[lump] + (index * strides()[lump]))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `lump` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `counts`, `offsets`. |
+| `lump` | `dynamic` | — | Zero-based index into `map.counts`, `lumpNames()`, `map.offsets`. |
+| `index` | `dynamic` | — | Index used in `(index < 0)` and `(index * strides()[lump])`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L179)
 
 <a id="function-function-mq3-format-aas-signedreference-function-signedreference-value-count-label-src-mq3-format-aas-ml-929920842"></a>
 ### signedReference
@@ -1218,14 +1270,16 @@ function recordOffset(map, lump, index)
 function signedReference(value, count, label)
 ```
 
+Test signed reference in format.aas; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value used in `(value >= count)` and `(value <= (0 - count))`. |
+| `count` | `dynamic` | — | Count used in `(0 - count)` and `(value >= count)`. |
+| `label` | `dynamic` | — | Label used in `("invalid signed " + label)` and `(("invalid signed " + label) + " reference")`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L197)
 
 <a id="function-function-mq3-format-aas-span-function-span-offset-size-limit-label-src-mq3-format-aas-ml-1635777785"></a>
 ### span
@@ -1234,15 +1288,17 @@ function signedReference(value, count, label)
 function span(offset, size, limit, label)
 ```
 
+Test span in format.aas; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `offset` | `dynamic` | — |  |
-| `size` | `dynamic` | — |  |
-| `limit` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `offset` | `dynamic` | — | Offset used in `(offset < 0)` and `(offset > limit)`. |
+| `size` | `dynamic` | — | Size used in `(size < 0)` and `(size > (limit - offset))`. |
+| `limit` | `dynamic` | — | Limit used in `(offset > limit)` and `(limit - offset)`. |
+| `label` | `dynamic` | — | Label used in `(label + " outside file")` and `fail((label + " outside file"))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L152)
 
 <a id="function-function-mq3-format-aas-strides-function-strides-src-mq3-format-aas-ml-1591856078"></a>
 ### strides
@@ -1251,8 +1307,10 @@ function span(offset, size, limit, label)
 function strides()
 ```
 
+Compute format.aas.strides as `[BBOX_SIZE, VERTEX_SIZE, PLANE_SIZE, EDGE_SIZE, INDEX_SIZE, FACE_SIZE, INDEX_SIZE, AREA_SIZE, AREA_SETTINGS_SIZE, REACHABILITY_SIZE, NODE_SIZE, PORTAL_SIZE, INDEX_SIZE, CLUSTER_SIZE]`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L129)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L144)
 
 <a id="constant-constant-mq3-format-aas-travel-barrierjump-const-travel-barrierjump-4-src-mq3-format-aas-ml-1743550575"></a>
 ### TRAVEL_BARRIERJUMP
@@ -1481,14 +1539,16 @@ const TRAVELTYPE_MASK = 16777215
 function u16(data, offset, label)
 ```
 
+Compute u 16 in format.aas; the normal completion returns `(data[offset] | (data[(offset + 1)] << 8))`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data used in `len(data)` and `data[offset]`. |
+| `offset` | `dynamic` | — | Zero-based index into `data`. |
+| `label` | `dynamic` | — | Label used in `("truncated " + label)` and `fail(("truncated " + label))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L164)
 
 <a id="function-function-mq3-format-aas-validatetopology-function-validatetopology-map-src-mq3-format-aas-ml-260760800"></a>
 ### validateTopology
@@ -1497,12 +1557,14 @@ function u16(data, offset, label)
 function validateTopology(map)
 ```
 
+Validate topology in format.aas; the normal completion returns `true`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `counts`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L268)
 
 <a id="function-function-mq3-format-aas-vec3-function-vec3-data-offset-label-src-mq3-format-aas-ml-1849871319"></a>
 ### vec3
@@ -1511,14 +1573,16 @@ function validateTopology(map)
 function vec3(data, offset, label)
 ```
 
+Compute format.aas.vec3 as `[f32(data, offset, label), f32(data, (offset + 4), label), f32(data, (offset + 8), label)]`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `dynamic` | — |  |
-| `offset` | `dynamic` | — |  |
-| `label` | `dynamic` | — |  |
+| `data` | `dynamic` | — | Data passed as `data` to `mq3.format.aas.f32`. |
+| `offset` | `dynamic` | — | Offset passed as `offset` to `mq3.format.aas.f32`. |
+| `label` | `dynamic` | — | Label passed as `label` to `mq3.format.aas.f32`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L174)
 
 <a id="function-function-mq3-format-aas-vertex-function-vertex-map-index-src-mq3-format-aas-ml-290524028"></a>
 ### vertex
@@ -1527,13 +1591,15 @@ function vec3(data, offset, label)
 function vertex(map, index)
 ```
 
+Compute vertex in format.aas; the normal completion returns `vec3(map.data, at, "vertex")`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `map` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `map` | `dynamic` | — | Record exposing `data`. |
+| `index` | `dynamic` | — | Index passed as `index` to `mq3.format.aas.recordOffset`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L212)
 
 <a id="constant-constant-mq3-format-aas-vertex-size-const-vertex-size-12-src-mq3-format-aas-ml-1567632094"></a>
 ### VERTEX_SIZE

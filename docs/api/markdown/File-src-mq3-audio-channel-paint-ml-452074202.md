@@ -19,16 +19,20 @@ Reachable from entry: **yes**
 function addScaled(paint, index, data, leftVolume, rightVolume)
 ```
 
+Accumulate one PCM sample into adjacent left and right paint entries using signed 32-bit mixer arithmetic.
+
+Direct state writes: `paint elements`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `paint` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
-| `data` | `dynamic` | — |  |
-| `leftVolume` | `dynamic` | — |  |
-| `rightVolume` | `dynamic` | — |  |
+| `paint` | `dynamic` | — | Mutable interleaved integer paint buffer. |
+| `index` | `dynamic` | — | Index of the left paint entry; the right entry is index + 1. |
+| `data` | `dynamic` | — | Signed source PCM sample. |
+| `leftVolume` | `dynamic` | — | Left channel scale, shifted right by eight after multiplication. |
+| `rightVolume` | `dynamic` | — | Right channel scale, shifted right by eight after multiplication. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L38)
 
 <a id="function-function-mq3-audio-channel-paint-fail-function-fail-message-src-mq3-audio-channel-paint-ml-1432295113"></a>
 ### fail
@@ -37,12 +41,14 @@ function addScaled(paint, index, data, leftVolume, rightVolume)
 function fail(message)
 ```
 
+Create the audio.channel_paint error for `fail` with 7250 and the supplied diagnostic text.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `message` | `dynamic` | — |  |
+| `message` | `dynamic` | — | Message used in `("audio channel paint: " + message)` and `error(7250, ("audio channel paint: " + message))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L11)
 
 <a id="function-function-mq3-audio-channel-paint-paint16-function-paint16-samples-count-sampleoffset-bufferoffset-leftvol-rightvol-sndvol-doppler-dopplerscale-olddopplerscale-paint-src-mq3-audio-channel-paint-ml-483640766"></a>
 ### paint16
@@ -55,20 +61,20 @@ paint is interleaved [left,right,...]. samples represents the linked 1024 sample
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `samples` | `dynamic` | — |  |
-| `count` | `dynamic` | — |  |
-| `sampleOffset` | `dynamic` | — |  |
-| `bufferOffset` | `dynamic` | — |  |
-| `leftVol` | `dynamic` | — |  |
-| `rightVol` | `dynamic` | — |  |
-| `sndVol` | `dynamic` | — |  |
-| `doppler` | `dynamic` | — |  |
-| `dopplerScale` | `dynamic` | — |  |
-| `oldDopplerScale` | `dynamic` | — |  |
-| `paint` | `dynamic` | — |  |
+| `samples` | `dynamic` | — | Cyclic signed PCM array containing complete 1024-sample chunks. |
+| `count` | `dynamic` | — | Number of output stereo frames to paint. |
+| `sampleOffset` | `dynamic` | — | Starting source sample offset before Doppler adjustment. |
+| `bufferOffset` | `dynamic` | — | Starting stereo-frame offset in paint. |
+| `leftVol` | `dynamic` | — | Left channel gain before sound-volume scaling. |
+| `rightVol` | `dynamic` | — | Right channel gain before sound-volume scaling. |
+| `sndVol` | `dynamic` | — | Overall sound gain multiplied into both channel gains. |
+| `doppler` | `dynamic` | — | Whether to resample using Doppler scale changes. |
+| `dopplerScale` | `dynamic` | — | Positive current source-step scale. |
+| `oldDopplerScale` | `dynamic` | — | Nonnegative scale used to adjust the starting source offset. |
+| `paint` | `dynamic` | — | Mutable interleaved left/right accumulator with room for (bufferOffset + count) * 2 entries. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L58)
 
 <a id="constant-constant-mq3-audio-channel-paint-snd-chunk-size-const-snd-chunk-size-1024-src-mq3-audio-channel-paint-ml-1345138142"></a>
 ### SND_CHUNK_SIZE
@@ -87,13 +93,15 @@ const SND_CHUNK_SIZE = 1024
 function sourceIndex(samples, index)
 ```
 
+Wrap a source sample index into the cyclic PCM array, including negative indices.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `samples` | `dynamic` | — |  |
-| `index` | `dynamic` | — |  |
+| `samples` | `dynamic` | — | Nonempty cyclic sample array. |
+| `index` | `dynamic` | — | Logical sample index before modulo wrapping. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L24)
 
 <a id="function-function-mq3-audio-channel-paint-validsamples-function-validsamples-samples-src-mq3-audio-channel-paint-ml-323786333"></a>
 ### validSamples
@@ -102,9 +110,11 @@ function sourceIndex(samples, index)
 function validSamples(samples)
 ```
 
+Check that channel PCM contains a nonempty integral number of 1024-sample chunks.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `samples` | `dynamic` | — |  |
+| `samples` | `dynamic` | — | PCM sample array representing the cyclic sndBuffer chunk chain. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L17)

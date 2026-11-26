@@ -9,8 +9,10 @@
 struct Surface
 ```
 
+Surface record for collision.world, containing `patch`, `contents`, `flags`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L39)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L94)
 
 ## Members
 
@@ -22,7 +24,7 @@ contents
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L96)
 
 <a id="field-field-mq3-collision-world-surface-flags-flags-src-mq3-collision-world-ml-1969847770"></a>
 ### flags
@@ -32,7 +34,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L97)
 
 <a id="field-field-mq3-collision-world-surface-patch-patch-src-mq3-collision-world-ml-211908322"></a>
 ### patch
@@ -42,4 +44,4 @@ patch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L95)

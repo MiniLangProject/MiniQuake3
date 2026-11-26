@@ -9,8 +9,10 @@
 struct GraphicsState
 ```
 
+Stores UI video graphics state record, including `mode`, `fullscreen`, `tq`, `lighting`, `colorDepth`, `textureBits` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-applyvisible-applyvisible-src-mq3-client-ui-video-ml-1930715487"></a>
 ### applyVisible
@@ -32,7 +34,7 @@ applyVisible
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-assets-assets-src-mq3-client-ui-video-ml-1066033001"></a>
 ### assets
@@ -42,7 +44,7 @@ assets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-choices-choices-src-mq3-client-ui-video-ml-161605135"></a>
 ### choices
@@ -52,7 +54,7 @@ choices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-colordepth-colordepth-src-mq3-client-ui-video-ml-1211919327"></a>
 ### colorDepth
@@ -62,7 +64,7 @@ colorDepth
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-colordepthgrayed-colordepthgrayed-src-mq3-client-ui-video-ml-818342763"></a>
 ### colorDepthGrayed
@@ -72,7 +74,7 @@ colorDepthGrayed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-driver-driver-src-mq3-client-ui-video-ml-1099707191"></a>
 ### driver
@@ -82,7 +84,7 @@ driver
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-driverhidden-driverhidden-src-mq3-client-ui-video-ml-1315710491"></a>
 ### driverHidden
@@ -92,7 +94,7 @@ driverHidden
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-extensions-extensions-src-mq3-client-ui-video-ml-503564023"></a>
 ### extensions
@@ -102,7 +104,7 @@ extensions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-filter-filter-src-mq3-client-ui-video-ml-1023723859"></a>
 ### filter
@@ -112,7 +114,7 @@ filter
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-fullscreen-fullscreen-src-mq3-client-ui-video-ml-1749616601"></a>
 ### fullscreen
@@ -122,7 +124,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-fullscreengrayed-fullscreengrayed-src-mq3-client-ui-video-ml-1668172841"></a>
 ### fullscreenGrayed
@@ -132,7 +134,7 @@ fullscreenGrayed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-geometry-geometry-src-mq3-client-ui-video-ml-212394767"></a>
 ### geometry
@@ -142,7 +144,7 @@ geometry
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-initial-initial-src-mq3-client-ui-video-ml-1141042187"></a>
 ### initial
@@ -152,7 +154,7 @@ initial
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-items-items-src-mq3-client-ui-video-ml-1155103715"></a>
 ### items
@@ -162,7 +164,7 @@ items
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-lighting-lighting-src-mq3-client-ui-video-ml-2004340423"></a>
 ### lighting
@@ -172,7 +174,7 @@ lighting
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-mode-mode-src-mq3-client-ui-video-ml-670737729"></a>
 ### mode
@@ -182,7 +184,7 @@ mode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-preset-preset-src-mq3-client-ui-video-ml-1992073673"></a>
 ### preset
@@ -192,7 +194,7 @@ preset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-texturebits-texturebits-src-mq3-client-ui-video-ml-2060954387"></a>
 ### textureBits
@@ -202,7 +204,7 @@ textureBits
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)
 
 <a id="field-field-mq3-client-ui-video-graphicsstate-tq-tq-src-mq3-client-ui-video-ml-2061067145"></a>
 ### tq
@@ -212,4 +214,4 @@ tq
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L40)

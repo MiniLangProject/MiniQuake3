@@ -9,8 +9,10 @@
 struct Item
 ```
 
+Stores playable items menu item, including `classname`, `kind`, `origin`, `amount`, `cap`, `respawnMs` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 ## Members
 
@@ -22,7 +24,7 @@ active
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-amount-amount-src-mq3-client-playable-items-ml-1186958288"></a>
 ### amount
@@ -32,7 +34,7 @@ amount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-cap-cap-src-mq3-client-playable-items-ml-1311084364"></a>
 ### cap
@@ -42,7 +44,7 @@ cap
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-classname-classname-src-mq3-client-playable-items-ml-1394792860"></a>
 ### classname
@@ -52,7 +54,7 @@ classname
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-kind-kind-src-mq3-client-playable-items-ml-1290073356"></a>
 ### kind
@@ -62,7 +64,7 @@ kind
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-origin-origin-src-mq3-client-playable-items-ml-668584452"></a>
 ### origin
@@ -72,7 +74,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-respawnat-respawnat-src-mq3-client-playable-items-ml-342920220"></a>
 ### respawnAt
@@ -82,7 +84,7 @@ respawnAt
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-respawnms-respawnms-src-mq3-client-playable-items-ml-636244516"></a>
 ### respawnMs
@@ -92,7 +94,7 @@ respawnMs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-item-weapon-weapon-src-mq3-client-playable-items-ml-560706216"></a>
 ### weapon
@@ -102,4 +104,4 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)

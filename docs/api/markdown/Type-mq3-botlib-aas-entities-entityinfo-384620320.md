@@ -9,8 +9,10 @@
 struct EntityInfo
 ```
 
+`EntityInfo` record for aas entities, containing `valid`, `type`, `flags`, `ltime` and `updateTime` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 ## Members
 
@@ -22,7 +24,7 @@ angles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-event-event-src-mq3-botlib-aas-entities-ml-40790366"></a>
 ### event
@@ -32,7 +34,7 @@ event
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-eventparm-eventparm-src-mq3-botlib-aas-entities-ml-1237390806"></a>
 ### eventParm
@@ -42,7 +44,7 @@ eventParm
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-flags-flags-src-mq3-botlib-aas-entities-ml-543275646"></a>
 ### flags
@@ -52,7 +54,7 @@ flags
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-frame-frame-src-mq3-botlib-aas-entities-ml-1032881338"></a>
 ### frame
@@ -62,7 +64,7 @@ frame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-groundent-groundent-src-mq3-botlib-aas-entities-ml-962104402"></a>
 ### groundent
@@ -72,7 +74,7 @@ groundent
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-lastvisorigin-lastvisorigin-src-mq3-botlib-aas-entities-ml-275904642"></a>
 ### lastVisOrigin
@@ -82,7 +84,7 @@ lastVisOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-legsanim-legsanim-src-mq3-botlib-aas-entities-ml-40425174"></a>
 ### legsAnim
@@ -92,7 +94,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-ltime-ltime-src-mq3-botlib-aas-entities-ml-1786397414"></a>
 ### ltime
@@ -102,7 +104,7 @@ ltime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-maxs-maxs-src-mq3-botlib-aas-entities-ml-598013028"></a>
 ### maxs
@@ -112,7 +114,7 @@ maxs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-mins-mins-src-mq3-botlib-aas-entities-ml-720169468"></a>
 ### mins
@@ -122,7 +124,7 @@ mins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-modelindex-modelindex-src-mq3-botlib-aas-entities-ml-1990203540"></a>
 ### modelindex
@@ -132,7 +134,7 @@ modelindex
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-modelindex2-modelindex2-src-mq3-botlib-aas-entities-ml-529951454"></a>
 ### modelindex2
@@ -142,7 +144,7 @@ modelindex2
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-number-number-src-mq3-botlib-aas-entities-ml-94605164"></a>
 ### number
@@ -152,7 +154,7 @@ number
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-oldorigin-oldorigin-src-mq3-botlib-aas-entities-ml-1074297822"></a>
 ### oldOrigin
@@ -162,7 +164,7 @@ oldOrigin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-origin-origin-src-mq3-botlib-aas-entities-ml-1690954406"></a>
 ### origin
@@ -172,7 +174,7 @@ origin
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-powerups-powerups-src-mq3-botlib-aas-entities-ml-666159760"></a>
 ### powerups
@@ -182,7 +184,7 @@ powerups
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-solid-solid-src-mq3-botlib-aas-entities-ml-1446884478"></a>
 ### solid
@@ -192,7 +194,7 @@ solid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-torsoanim-torsoanim-src-mq3-botlib-aas-entities-ml-1656959078"></a>
 ### torsoAnim
@@ -202,7 +204,7 @@ torsoAnim
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-type-type-src-mq3-botlib-aas-entities-ml-2127455466"></a>
 ### type
@@ -212,7 +214,7 @@ type
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-updatetime-updatetime-src-mq3-botlib-aas-entities-ml-1439883106"></a>
 ### updateTime
@@ -222,7 +224,7 @@ updateTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-valid-valid-src-mq3-botlib-aas-entities-ml-1603101910"></a>
 ### valid
@@ -232,7 +234,7 @@ valid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-entityinfo-weapon-weapon-src-mq3-botlib-aas-entities-ml-986180774"></a>
 ### weapon
@@ -242,4 +244,4 @@ weapon
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)

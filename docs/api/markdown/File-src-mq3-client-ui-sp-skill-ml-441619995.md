@@ -19,11 +19,11 @@ UI_SPSkillMenu_BackEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `notification` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI sp skill record/storage; this routine assigns `menu.sounds`, `menu.actions`. |
+| `notification` | `dynamic` | — | Value used by `if notification==QM_ACTIVATED then menu.sounds=menu.sounds+[["sound/misc/silence.wav",CHAN_ANNOUNCER]]`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L54)
 
 <a id="function-function-mq3-client-ui-sp-skill-cache-function-cache-src-mq3-client-ui-sp-skill-ml-329303278"></a>
 ### cache
@@ -35,7 +35,7 @@ function cache()
 UI_SPSkillMenu_Cache
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L60)
 
 <a id="constant-constant-mq3-client-ui-sp-skill-chan-announcer-const-chan-announcer-7-src-mq3-client-ui-sp-skill-ml-574083644"></a>
 ### CHAN_ANNOUNCER
@@ -54,12 +54,14 @@ const CHAN_ANNOUNCER = 7
 function clampSkill(value)
 ```
 
+Evaluates UI sp skill `clampSkill` and returns `1`, `5`, `value` according to its guard/selection conditions.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Value tested by `value<1`, `value>5` before the calculation continues. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L22)
 
 <a id="function-function-mq3-client-ui-sp-skill-fightevent-function-fightevent-menu-notification-src-mq3-client-ui-sp-skill-ml-574740334"></a>
 ### fightEvent
@@ -72,11 +74,11 @@ UI_SPSkillMenu_FightEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `notification` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI sp skill record/storage; this routine assigns `menu.actions`. |
+| `notification` | `dynamic` | — | Value used by `if notification==QM_ACTIVATED then menu.actions=menu.actions+[["spArenaStart",menu.arenaInfo]] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L50)
 
 <a id="constant-constant-mq3-client-ui-sp-skill-id-baby-const-id-baby-10-src-mq3-client-ui-sp-skill-ml-1210328712"></a>
 ### ID_BABY
@@ -159,10 +161,10 @@ UI_SPSkillMenu_Init
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rawSkill` | `dynamic` | — |  |
+| `rawSkill` | `dynamic` | — | Value used by `skill=clampSkill(rawSkill)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L63)
 
 <a id="constant-constant-mq3-client-ui-sp-skill-k-escape-const-k-escape-27-src-mq3-client-ui-sp-skill-ml-254081890"></a>
 ### K_ESCAPE
@@ -195,11 +197,11 @@ UI_SPSkillMenu_Key
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `keyCode` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI sp skill record/storage; this routine assigns `menu.sounds`, `menu.actions`. |
+| `keyCode` | `dynamic` | — | Value used by `if keyCode==K_MOUSE2 or keyCode==K_ESCAPE then menu.sounds=menu.sounds+[["sound/misc/silence.wav",CHAN_ANNOUNCER]] end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L58)
 
 <a id="function-function-mq3-client-ui-sp-skill-open-function-open-arenainfo-rawskill-src-mq3-client-ui-sp-skill-ml-1425356456"></a>
 ### open
@@ -212,11 +214,11 @@ UI_SPSkillMenu
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `arenaInfo` | `dynamic` | — |  |
-| `rawSkill` | `dynamic` | — |  |
+| `arenaInfo` | `dynamic` | — | Value assigned to `menu.arenaInfo`. |
+| `rawSkill` | `dynamic` | — | Value used by `menu=init(rawSkill)`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L72)
 
 <a id="constant-constant-mq3-client-ui-sp-skill-qm-activated-const-qm-activated-3-src-mq3-client-ui-sp-skill-ml-1505075360"></a>
 ### QM_ACTIVATED
@@ -239,12 +241,12 @@ SetSkillColor
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `skill` | `dynamic` | — |  |
-| `color` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI sp skill record/storage; this routine assigns `menu.items[index].color`. |
+| `skill` | `dynamic` | — | Value used by `index=skill-1`. |
+| `color` | `dynamic` | — | Color value used by the UI sp skill drawing or interpolation operation. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L30)
 
 <a id="function-function-mq3-client-ui-sp-skill-skillevent-function-skillevent-menu-id-notification-src-mq3-client-ui-sp-skill-ml-932583569"></a>
 ### skillEvent
@@ -257,12 +259,12 @@ UI_SPSkillMenu_SkillEvent
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `menu` | `dynamic` | — |  |
-| `id` | `dynamic` | — |  |
-| `notification` | `dynamic` | — |  |
+| `menu` | `dynamic` | — | Mutable UI sp skill record/storage; this routine assigns `menu.skill`, `menu.items[5].shader`, `menu.cvarWrites`, `menu.sounds`. |
+| `id` | `dynamic` | — | Value used by `skill=clampSkill(id-ID_BABY+1)`. |
+| `notification` | `dynamic` | — | Value used by `if notification!=QM_ACTIVATED then return menu end if`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L39)
 
 - [mq3.client.ui_sp_skill.SkillItem](Type-mq3-client-ui-sp-skill-skillitem-215826969.md) — struct
 - [mq3.client.ui_sp_skill.SkillMenu](Type-mq3-client-ui-sp-skill-skillmenu-1820080165.md) — struct
@@ -273,9 +275,11 @@ UI_SPSkillMenu_SkillEvent
 function skillPicture(skill)
 ```
 
+Computes `"menu/art/level_complete"+str(clampSkill(skill))` for UI sp skill `skillPicture`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `skill` | `dynamic` | — |  |
+| `skill` | `dynamic` | — | Value used by `return "menu/art/level_complete"+str(clampSkill(skill))`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L25)

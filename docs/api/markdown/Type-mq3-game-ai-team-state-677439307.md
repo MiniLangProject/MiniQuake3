@@ -9,8 +9,10 @@
 struct State
 ```
 
+`State` record for ai team, containing `helper`, `gametype`, `now`, `randomValue` and `maxclients` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L26)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ actions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L37)
 
 <a id="field-field-mq3-game-ai-team-state-clientstatefn-clientstatefn-src-mq3-game-ai-team-ml-1280521908"></a>
 ### clientStateFn
@@ -32,7 +34,7 @@ clientStateFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L40)
 
 <a id="field-field-mq3-game-ai-team-state-configs-configs-src-mq3-game-ai-team-ml-1256228352"></a>
 ### configs
@@ -42,7 +44,7 @@ configs
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L35)
 
 <a id="field-field-mq3-game-ai-team-state-gametype-gametype-src-mq3-game-ai-team-ml-37233248"></a>
 ### gametype
@@ -52,7 +54,7 @@ gametype
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L30)
 
 <a id="field-field-mq3-game-ai-team-state-helper-helper-src-mq3-game-ai-team-ml-762530304"></a>
 ### helper
@@ -62,7 +64,7 @@ helper
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L29)
 
 <a id="field-field-mq3-game-ai-team-state-maxclients-maxclients-src-mq3-game-ai-team-ml-559440680"></a>
 ### maxclients
@@ -72,7 +74,7 @@ maxclients
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L33)
 
 <a id="field-field-mq3-game-ai-team-state-missionpack-missionpack-src-mq3-game-ai-team-ml-815146096"></a>
 ### missionpack
@@ -82,7 +84,7 @@ missionpack
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L39)
 
 <a id="field-field-mq3-game-ai-team-state-names-names-src-mq3-game-ai-team-ml-191411792"></a>
 ### names
@@ -92,7 +94,7 @@ names
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L34)
 
 <a id="field-field-mq3-game-ai-team-state-now-now-src-mq3-game-ai-team-ml-1721138388"></a>
 ### now
@@ -102,7 +104,7 @@ now
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L31)
 
 <a id="field-field-mq3-game-ai-team-state-pointareafn-pointareafn-src-mq3-game-ai-team-ml-1302048056"></a>
 ### pointAreaFn
@@ -112,7 +114,7 @@ pointAreaFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L41)
 
 <a id="field-field-mq3-game-ai-team-state-randomvalue-randomvalue-src-mq3-game-ai-team-ml-269210368"></a>
 ### randomValue
@@ -122,7 +124,7 @@ randomValue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L32)
 
 <a id="field-field-mq3-game-ai-team-state-suppressed-suppressed-src-mq3-game-ai-team-ml-827469556"></a>
 ### suppressed
@@ -132,7 +134,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L38)
 
 <a id="field-field-mq3-game-ai-team-state-traveltimefn-traveltimefn-src-mq3-game-ai-team-ml-1211211950"></a>
 ### travelTimeFn
@@ -142,7 +144,7 @@ travelTimeFn
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L42)
 
 <a id="field-field-mq3-game-ai-team-state-traveltimes-traveltimes-src-mq3-game-ai-team-ml-1056909808"></a>
 ### travelTimes
@@ -152,4 +154,4 @@ travelTimes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_team.ml#L36)

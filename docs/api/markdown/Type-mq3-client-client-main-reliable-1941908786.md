@@ -9,8 +9,10 @@
 struct Reliable
 ```
 
+Stores client main reliable record, including `sequence`, `acknowledge`, `commands`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 ## Members
 
@@ -22,7 +24,7 @@ acknowledge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-reliable-commands-commands-src-mq3-client-client-main-ml-1786256679"></a>
 ### commands
@@ -32,7 +34,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-reliable-sequence-sequence-src-mq3-client-client-main-ml-1549143377"></a>
 ### sequence
@@ -42,4 +44,4 @@ sequence
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)

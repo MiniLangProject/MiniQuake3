@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Runtime record for server.client_lifecycle, containing `server`, `host`, `clientNum`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L151)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L271)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L271)
 
 <a id="field-field-mq3-server-client-lifecycle-runtime-host-host-src-mq3-server-client-lifecycle-ml-760992877"></a>
 ### host
@@ -32,7 +34,7 @@ host
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L271)
 
 <a id="field-field-mq3-server-client-lifecycle-runtime-server-server-src-mq3-server-client-lifecycle-ml-231671599"></a>
 ### server
@@ -42,4 +44,4 @@ server
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_lifecycle.ml#L271)

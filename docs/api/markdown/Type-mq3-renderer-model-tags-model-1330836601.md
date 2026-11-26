@@ -9,8 +9,10 @@
 struct Model
 ```
 
+Data record for `mq3.renderer.model_tags.Model`; groups `brushBounds`, `md3`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)
 
 ## Members
 
@@ -22,7 +24,7 @@ brushBounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)
 
 <a id="field-field-mq3-renderer-model-tags-model-md3-md3-src-mq3-renderer-model-tags-ml-220192882"></a>
 ### md3
@@ -32,4 +34,4 @@ md3
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)

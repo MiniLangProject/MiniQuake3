@@ -9,8 +9,10 @@
 struct Lump
 ```
 
+Lump record for format.aas, containing `fileOffset`, `fileLength`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L125)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L136)
 
 ## Members
 
@@ -22,7 +24,7 @@ fileLength
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L136)
 
 <a id="field-field-mq3-format-aas-lump-fileoffset-fileoffset-src-mq3-format-aas-ml-663497253"></a>
 ### fileOffset
@@ -32,4 +34,4 @@ fileOffset
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L136)

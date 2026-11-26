@@ -9,8 +9,10 @@
 struct Server
 ```
 
+Server record for server.snapshot_send, containing `time`, `snapFlagServerBit`, `snapshotEntities`, `snapshotCapacity`, `nextSnapshotEntities`, `baselines`, and 3 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L56)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L65)
 
 ## Members
 
@@ -22,7 +24,7 @@ baselines
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L71)
 
 <a id="field-field-mq3-server-snapshot-send-server-lanforcerate-lanforcerate-src-mq3-server-snapshot-send-ml-118885926"></a>
 ### lanForceRate
@@ -32,7 +34,7 @@ lanForceRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L74)
 
 <a id="field-field-mq3-server-snapshot-send-server-maxrate-maxrate-src-mq3-server-snapshot-send-ml-1696907554"></a>
 ### maxRate
@@ -42,7 +44,7 @@ maxRate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L73)
 
 <a id="field-field-mq3-server-snapshot-send-server-nextsnapshotentities-nextsnapshotentities-src-mq3-server-snapshot-send-ml-305596094"></a>
 ### nextSnapshotEntities
@@ -52,7 +54,7 @@ nextSnapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L70)
 
 <a id="field-field-mq3-server-snapshot-send-server-padpackets-padpackets-src-mq3-server-snapshot-send-ml-819215558"></a>
 ### padPackets
@@ -62,7 +64,7 @@ padPackets
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L72)
 
 <a id="field-field-mq3-server-snapshot-send-server-snapflagserverbit-snapflagserverbit-src-mq3-server-snapshot-send-ml-986192210"></a>
 ### snapFlagServerBit
@@ -72,7 +74,7 @@ snapFlagServerBit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L67)
 
 <a id="field-field-mq3-server-snapshot-send-server-snapshotcapacity-snapshotcapacity-src-mq3-server-snapshot-send-ml-1038474894"></a>
 ### snapshotCapacity
@@ -82,7 +84,7 @@ snapshotCapacity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L69)
 
 <a id="field-field-mq3-server-snapshot-send-server-snapshotentities-snapshotentities-src-mq3-server-snapshot-send-ml-1317456256"></a>
 ### snapshotEntities
@@ -92,7 +94,7 @@ snapshotEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L68)
 
 <a id="field-field-mq3-server-snapshot-send-server-time-time-src-mq3-server-snapshot-send-ml-1325268956"></a>
 ### time
@@ -102,4 +104,4 @@ time
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L66)

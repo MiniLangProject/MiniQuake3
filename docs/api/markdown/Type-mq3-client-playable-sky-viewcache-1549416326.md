@@ -9,8 +9,10 @@
 struct ViewCache
 ```
 
+Stores playable sky view cache record, including `entries`, `next`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L30)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L70)
 
 ## Members
 
@@ -22,7 +24,7 @@ entries
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L70)
 
 <a id="field-field-mq3-client-playable-sky-viewcache-next-next-src-mq3-client-playable-sky-ml-938752404"></a>
 ### next
@@ -32,4 +34,4 @@ next
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L70)

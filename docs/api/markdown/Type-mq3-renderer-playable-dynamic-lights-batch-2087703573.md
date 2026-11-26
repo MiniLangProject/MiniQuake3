@@ -12,7 +12,7 @@ struct Batch
 origins/axes are parallel to triangles for moving brush models.  The original R_DlightBmodel transforms each world-space light into the model's local orientation before ProjectDlightTexture derives S/T and attenuation. Static world batches keep both arrays void and retain the cheaper path.
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L18)
 
 ## Members
 
@@ -24,7 +24,7 @@ axes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L18)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-batch-bounds-bounds-src-mq3-renderer-playable-dynamic-lights-ml-162852657"></a>
 ### bounds
@@ -34,7 +34,7 @@ bounds
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L18)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-batch-commands-commands-src-mq3-renderer-playable-dynamic-lights-ml-111700635"></a>
 ### commands
@@ -44,7 +44,7 @@ commands
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L18)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-batch-origins-origins-src-mq3-renderer-playable-dynamic-lights-ml-11694343"></a>
 ### origins
@@ -54,7 +54,7 @@ origins
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L18)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-batch-triangles-triangles-src-mq3-renderer-playable-dynamic-lights-ml-925159047"></a>
 ### triangles
@@ -64,4 +64,4 @@ triangles
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L18)

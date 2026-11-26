@@ -9,8 +9,10 @@
 struct Runtime
 ```
 
+Data record for `mq3.platform.engine_loop.Runtime`; groups `inputQueue`, `inputHandlers`, `inputBudget`, `serverState`, `serverServices`, `clientState`, and 7 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 ## Members
 
@@ -22,7 +24,7 @@ clientServices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-clientstate-clientstate-src-mq3-platform-engine-loop-ml-2061250469"></a>
 ### clientState
@@ -32,7 +34,7 @@ clientState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-commandstate-commandstate-src-mq3-platform-engine-loop-ml-1362859897"></a>
 ### commandState
@@ -42,7 +44,7 @@ commandState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-configstate-configstate-src-mq3-platform-engine-loop-ml-1983587865"></a>
 ### configState
@@ -52,7 +54,7 @@ configState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-framecount-framecount-src-mq3-platform-engine-loop-ml-1393524657"></a>
 ### frameCount
@@ -62,7 +64,7 @@ frameCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-inputbudget-inputbudget-src-mq3-platform-engine-loop-ml-697025565"></a>
 ### inputBudget
@@ -72,7 +74,7 @@ inputBudget
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-inputcount-inputcount-src-mq3-platform-engine-loop-ml-1359473687"></a>
 ### inputCount
@@ -82,7 +84,7 @@ inputCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-inputhandlers-inputhandlers-src-mq3-platform-engine-loop-ml-458634621"></a>
 ### inputHandlers
@@ -92,7 +94,7 @@ inputHandlers
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-inputqueue-inputqueue-src-mq3-platform-engine-loop-ml-874601475"></a>
 ### inputQueue
@@ -102,7 +104,7 @@ inputQueue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-lastclientresult-lastclientresult-src-mq3-platform-engine-loop-ml-1488711977"></a>
 ### lastClientResult
@@ -112,7 +114,7 @@ lastClientResult
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-lastserverresult-lastserverresult-src-mq3-platform-engine-loop-ml-1731020649"></a>
 ### lastServerResult
@@ -122,7 +124,7 @@ lastServerResult
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-serverservices-serverservices-src-mq3-platform-engine-loop-ml-839123627"></a>
 ### serverServices
@@ -132,7 +134,7 @@ serverServices
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)
 
 <a id="field-field-mq3-platform-engine-loop-runtime-serverstate-serverstate-src-mq3-platform-engine-loop-ml-1874458589"></a>
 ### serverState
@@ -142,4 +144,4 @@ serverState
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L13)

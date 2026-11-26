@@ -9,8 +9,10 @@
 struct VoiceList
 ```
 
+Stores client game servercmds voice list record, including `name`, `gender`, `chats`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L70)
 
 ## Members
 
@@ -22,7 +24,7 @@ chats
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L70)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicelist-gender-gender-src-mq3-client-cgame-servercmds-ml-188061201"></a>
 ### gender
@@ -32,7 +34,7 @@ gender
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L70)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicelist-name-name-src-mq3-client-cgame-servercmds-ml-667763329"></a>
 ### name
@@ -42,4 +44,4 @@ name
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L70)

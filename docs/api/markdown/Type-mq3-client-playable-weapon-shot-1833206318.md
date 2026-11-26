@@ -9,8 +9,10 @@
 struct Shot
 ```
 
+Stores playable weapon shot record, including `start`, `endPoint`, `hit`, `normal`, `distance`, `fraction`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L31)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L33)
 
 ## Members
 
@@ -22,7 +24,7 @@ distance
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L38)
 
 <a id="field-field-mq3-client-playable-weapon-shot-endpoint-endpoint-src-mq3-client-playable-weapon-ml-544431363"></a>
 ### endPoint
@@ -32,7 +34,7 @@ endPoint
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L35)
 
 <a id="field-field-mq3-client-playable-weapon-shot-fraction-fraction-src-mq3-client-playable-weapon-ml-320766221"></a>
 ### fraction
@@ -42,7 +44,7 @@ fraction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L39)
 
 <a id="field-field-mq3-client-playable-weapon-shot-hit-hit-src-mq3-client-playable-weapon-ml-163328285"></a>
 ### hit
@@ -52,7 +54,7 @@ hit
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L36)
 
 <a id="field-field-mq3-client-playable-weapon-shot-normal-normal-src-mq3-client-playable-weapon-ml-1723053599"></a>
 ### normal
@@ -62,7 +64,7 @@ normal
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L37)
 
 <a id="field-field-mq3-client-playable-weapon-shot-start-start-src-mq3-client-playable-weapon-ml-2079615693"></a>
 ### start
@@ -72,4 +74,4 @@ start
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L34)

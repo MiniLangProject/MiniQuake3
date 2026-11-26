@@ -15,8 +15,10 @@ Reachable from entry: **yes**
 function bgLibFunctionNames()
 ```
 
+Return the ordered bg lib function names table for game internal headers: 31 entries beginning with `"qsort"` and `"srand"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L287)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L290)
 
 <a id="function-function-mq3-game-game-internal-headers-bglibmacronames-function-bglibmacronames-src-mq3-game-game-internal-headers-ml-180793250"></a>
 ### bgLibMacroNames
@@ -25,8 +27,10 @@ function bgLibFunctionNames()
 function bgLibMacroNames()
 ```
 
+Return the ordered bg lib macro names table for game internal headers: 17 entries beginning with `"_INTSIZEOF"` and `"va_start"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L285)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L286)
 
 <a id="function-function-mq3-game-game-internal-headers-bglibtypenames-function-bglibtypenames-src-mq3-game-game-internal-headers-ml-669958162"></a>
 ### bgLibTypeNames
@@ -35,8 +39,10 @@ function bgLibMacroNames()
 function bgLibTypeNames()
 ```
 
+Return a new array `["size_t","va_list","cmp_t"]` for `bgLibTypeNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L286)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L288)
 
 <a id="function-function-mq3-game-game-internal-headers-bglocalconstantnames-function-bglocalconstantnames-src-mq3-game-game-internal-headers-ml-415464962"></a>
 ### bgLocalConstantNames
@@ -45,8 +51,10 @@ function bgLibTypeNames()
 function bgLocalConstantNames()
 ```
 
+Return a new array `["MIN_WALK_NORMAL","STEPSIZE","JUMP_VELOCITY","TIMER_LAND","TIMER_GESTURE","OVERCLIP"]` for `bgLocalConstantNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L288)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L292)
 
 <a id="function-function-mq3-game-game-internal-headers-bglocalconstantvalues-function-bglocalconstantvalues-src-mq3-game-game-internal-headers-ml-405672890"></a>
 ### bgLocalConstantValues
@@ -55,8 +63,10 @@ function bgLocalConstantNames()
 function bgLocalConstantValues()
 ```
 
+Return a new array `[MIN_WALK_NORMAL,STEPSIZE,JUMP_VELOCITY,TIMER_LAND,TIMER_GESTURE,OVERCLIP]` for `bgLocalConstantValues`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L289)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L294)
 
 <a id="function-function-mq3-game-game-internal-headers-bglocalfunctionnames-function-bglocalfunctionnames-src-mq3-game-game-internal-headers-ml-1605406706"></a>
 ### bgLocalFunctionNames
@@ -65,8 +75,10 @@ function bgLocalConstantValues()
 function bgLocalFunctionNames()
 ```
 
+Return a new array `["PM_ClipVelocity","PM_AddTouchEnt","PM_AddEvent","PM_SlideMove","PM_StepSlideMove"]` for `bgLocalFunctionNames`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L291)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L298)
 
 <a id="function-function-mq3-game-game-internal-headers-bglocalglobalnames-function-bglocalglobalnames-src-mq3-game-game-internal-headers-ml-516382290"></a>
 ### bgLocalGlobalNames
@@ -75,8 +87,10 @@ function bgLocalFunctionNames()
 function bgLocalGlobalNames()
 ```
 
+Return the ordered bg local global names table for game internal headers: 14 entries beginning with `"pm"` and `"pml"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L292)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L300)
 
 <a id="constant-constant-mq3-game-game-internal-headers-char-bit-const-char-bit-8-src-mq3-game-game-internal-headers-ml-1349824277"></a>
 ### CHAR_BIT
@@ -95,8 +109,10 @@ const CHAR_BIT = 8
 function headerCounts()
 ```
 
+Return a new array `[17,3,31,6,12,5,14,257]` for `headerCounts`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L295)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L306)
 
 <a id="constant-constant-mq3-game-game-internal-headers-int-max-const-int-max-2147483647-src-mq3-game-game-internal-headers-ml-1069782461"></a>
 ### INT_MAX
@@ -175,8 +191,10 @@ const OVERCLIP = 1.001
 function pmlFieldNames()
 ```
 
+Return the ordered pml field names table for game internal headers: 12 entries beginning with `"forward"` and `"right"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L290)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L296)
 
 <a id="constant-constant-mq3-game-game-internal-headers-qgr-key-ammoregen-const-qgr-key-ammoregen-1111160803-src-mq3-game-game-internal-headers-ml-1228546983"></a>
 ### QGR_KEY_AMMOREGEN
@@ -2755,8 +2773,10 @@ const QGR_KEY_WATER = 1111080100
 function rankingKeyNames()
 ```
 
+Return the ordered ranking key names table for game internal headers: 257 entries beginning with `"QGR_KEY_MATCH_RATING"` and `"QGR_KEY_PLAYED_WITH"`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L293)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L302)
 
 <a id="function-function-mq3-game-game-internal-headers-rankingkeyvalues-function-rankingkeyvalues-src-mq3-game-game-internal-headers-ml-42463342"></a>
 ### rankingKeyValues
@@ -2765,8 +2785,10 @@ function rankingKeyNames()
 function rankingKeyValues()
 ```
 
+Return the ordered ranking key values table for game internal headers: 257 entries beginning with `QGR_KEY_MATCH_RATING` and `QGR_KEY_PLAYED_WITH`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L294)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/game_internal_headers.ml#L304)
 
 <a id="constant-constant-mq3-game-game-internal-headers-schar-max-const-schar-max-127-src-mq3-game-game-internal-headers-ml-270670787"></a>
 ### SCHAR_MAX

@@ -9,8 +9,10 @@
 struct Settings
 ```
 
+`Settings` record for be aas move, containing `gravityDirection`, `friction`, `stopSpeed`, `gravity` and `waterFriction` and related fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L11)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L12)
 
 ## Members
 
@@ -22,7 +24,7 @@ airAccelerate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-falldelta10-falldelta10-src-mq3-botlib-be-aas-move-ml-14707356"></a>
 ### fallDelta10
@@ -32,7 +34,7 @@ fallDelta10
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-falldelta5-falldelta5-src-mq3-botlib-be-aas-move-ml-693280032"></a>
 ### fallDelta5
@@ -42,7 +44,7 @@ fallDelta5
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-friction-friction-src-mq3-botlib-be-aas-move-ml-52769816"></a>
 ### friction
@@ -52,7 +54,7 @@ friction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-gravity-gravity-src-mq3-botlib-be-aas-move-ml-1219606984"></a>
 ### gravity
@@ -62,7 +64,7 @@ gravity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-gravitydirection-gravitydirection-src-mq3-botlib-be-aas-move-ml-1299980290"></a>
 ### gravityDirection
@@ -72,7 +74,7 @@ gravityDirection
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-jumpvelocity-jumpvelocity-src-mq3-botlib-be-aas-move-ml-1502712738"></a>
 ### jumpVelocity
@@ -82,7 +84,7 @@ jumpVelocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxbarrier-maxbarrier-src-mq3-botlib-be-aas-move-ml-2098076498"></a>
 ### maxBarrier
@@ -92,7 +94,7 @@ maxBarrier
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxcrouchvelocity-maxcrouchvelocity-src-mq3-botlib-be-aas-move-ml-2096650952"></a>
 ### maxCrouchVelocity
@@ -102,7 +104,7 @@ maxCrouchVelocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxsteepness-maxsteepness-src-mq3-botlib-be-aas-move-ml-893882904"></a>
 ### maxSteepness
@@ -112,7 +114,7 @@ maxSteepness
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxstep-maxstep-src-mq3-botlib-be-aas-move-ml-1740871748"></a>
 ### maxStep
@@ -122,7 +124,7 @@ maxStep
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxswimvelocity-maxswimvelocity-src-mq3-botlib-be-aas-move-ml-2123825624"></a>
 ### maxSwimVelocity
@@ -132,7 +134,7 @@ maxSwimVelocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxvelocity-maxvelocity-src-mq3-botlib-be-aas-move-ml-260168804"></a>
 ### maxVelocity
@@ -142,7 +144,7 @@ maxVelocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxwalkvelocity-maxwalkvelocity-src-mq3-botlib-be-aas-move-ml-751298172"></a>
 ### maxWalkVelocity
@@ -152,7 +154,7 @@ maxWalkVelocity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-maxwaterjump-maxwaterjump-src-mq3-botlib-be-aas-move-ml-1805197714"></a>
 ### maxWaterJump
@@ -162,7 +164,7 @@ maxWaterJump
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsaircontrolledjumppad-rsaircontrolledjumppad-src-mq3-botlib-be-aas-move-ml-1261669176"></a>
 ### rsAirControlledJumpPad
@@ -172,7 +174,7 @@ rsAirControlledJumpPad
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L19)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsbarrierjump-rsbarrierjump-src-mq3-botlib-be-aas-move-ml-1652432520"></a>
 ### rsBarrierJump
@@ -182,7 +184,7 @@ rsBarrierJump
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsbfgjump-rsbfgjump-src-mq3-botlib-be-aas-move-ml-268987224"></a>
 ### rsBfgJump
@@ -192,7 +194,7 @@ rsBfgJump
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsfalldamage10-rsfalldamage10-src-mq3-botlib-be-aas-move-ml-1210205736"></a>
 ### rsFallDamage10
@@ -202,7 +204,7 @@ rsFallDamage10
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L20)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsfalldamage5-rsfalldamage5-src-mq3-botlib-be-aas-move-ml-162923184"></a>
 ### rsFallDamage5
@@ -212,7 +214,7 @@ rsFallDamage5
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L19)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsfuncbob-rsfuncbob-src-mq3-botlib-be-aas-move-ml-127181184"></a>
 ### rsFuncBob
@@ -222,7 +224,7 @@ rsFuncBob
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L19)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsjumppad-rsjumppad-src-mq3-botlib-be-aas-move-ml-2085551620"></a>
 ### rsJumpPad
@@ -232,7 +234,7 @@ rsJumpPad
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsmaxfallheight-rsmaxfallheight-src-mq3-botlib-be-aas-move-ml-397799624"></a>
 ### rsMaxFallHeight
@@ -242,7 +244,7 @@ rsMaxFallHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L20)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsmaxjumpfallheight-rsmaxjumpfallheight-src-mq3-botlib-be-aas-move-ml-859743960"></a>
 ### rsMaxJumpFallHeight
@@ -252,7 +254,7 @@ rsMaxJumpFallHeight
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L20)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsrocketjump-rsrocketjump-src-mq3-botlib-be-aas-move-ml-1811579386"></a>
 ### rsRocketJump
@@ -262,7 +264,7 @@ rsRocketJump
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsstartcrouch-rsstartcrouch-src-mq3-botlib-be-aas-move-ml-305719296"></a>
 ### rsStartCrouch
@@ -272,7 +274,7 @@ rsStartCrouch
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsstartelevator-rsstartelevator-src-mq3-botlib-be-aas-move-ml-113296760"></a>
 ### rsStartElevator
@@ -282,7 +284,7 @@ rsStartElevator
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L19)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsstartgrapple-rsstartgrapple-src-mq3-botlib-be-aas-move-ml-1130148516"></a>
 ### rsStartGrapple
@@ -292,7 +294,7 @@ rsStartGrapple
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsstartjump-rsstartjump-src-mq3-botlib-be-aas-move-ml-13332144"></a>
 ### rsStartJump
@@ -302,7 +304,7 @@ rsStartJump
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsstartwalkoffledge-rsstartwalkoffledge-src-mq3-botlib-be-aas-move-ml-974794824"></a>
 ### rsStartWalkOffLedge
@@ -312,7 +314,7 @@ rsStartWalkOffLedge
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rsteleport-rsteleport-src-mq3-botlib-be-aas-move-ml-1797397988"></a>
 ### rsTeleport
@@ -322,7 +324,7 @@ rsTeleport
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-rswaterjump-rswaterjump-src-mq3-botlib-be-aas-move-ml-998907704"></a>
 ### rsWaterJump
@@ -332,7 +334,7 @@ rsWaterJump
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-stopspeed-stopspeed-src-mq3-botlib-be-aas-move-ml-315590260"></a>
 ### stopSpeed
@@ -342,7 +344,7 @@ stopSpeed
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-swimaccelerate-swimaccelerate-src-mq3-botlib-be-aas-move-ml-876462362"></a>
 ### swimAccelerate
@@ -352,7 +354,7 @@ swimAccelerate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-walkaccelerate-walkaccelerate-src-mq3-botlib-be-aas-move-ml-1248194104"></a>
 ### walkAccelerate
@@ -362,7 +364,7 @@ walkAccelerate
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L15)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-waterfriction-waterfriction-src-mq3-botlib-be-aas-move-ml-948952300"></a>
 ### waterFriction
@@ -372,7 +374,7 @@ waterFriction
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)
 
 <a id="field-field-mq3-botlib-be-aas-move-settings-watergravity-watergravity-src-mq3-botlib-be-aas-move-ml-1664067682"></a>
 ### waterGravity
@@ -382,4 +384,4 @@ waterGravity
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L13)

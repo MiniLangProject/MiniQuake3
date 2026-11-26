@@ -25,12 +25,14 @@ Reachable from entry: **yes**
 function AAS_InitAlternativeRouting(router)
 ```
 
+Forward `AAS_InitAlternativeRouting` to `mq3.botlib.aas_route_extras.initAlternativeRouting` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `settings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L73)
 
 <a id="function-function-mq3-botlib-aas-route-extras-aas-shutdownalternativerouting-function-aas-shutdownalternativerouting-state-src-mq3-botlib-aas-route-extras-ml-1235845361"></a>
 ### AAS_ShutdownAlternativeRouting
@@ -39,12 +41,14 @@ function AAS_InitAlternativeRouting(router)
 function AAS_ShutdownAlternativeRouting(state)
 ```
 
+Forward `AAS_ShutdownAlternativeRouting` to `mq3.botlib.aas_route_extras.shutdownAlternativeRouting` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS route extras state; accesses `valid`, `clusterAreas`, `numClusterAreas` and `initialized`. May update `state.valid`, `state.clusterAreas` and `state.numClusterAreas` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L76)
 
 <a id="function-function-mq3-botlib-aas-route-extras-absint-function-absint-value-src-mq3-botlib-aas-route-extras-ml-651641365"></a>
 ### absInt
@@ -53,12 +57,14 @@ function AAS_ShutdownAlternativeRouting(state)
 function absInt(value)
 ```
 
+Return the absolute value of the numeric argument for aas route extras.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `0-value`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L45)
 
 - [mq3.botlib.aas_route_extras.AlternativeRouteGoal](Type-mq3-botlib-aas-route-extras-alternativeroutegoal-906342734.md) — struct
 <a id="function-function-mq3-botlib-aas-route-extras-alternativeroutegoals-function-alternativeroutegoals-router-start-startareanum-goal-goalareanum-travelflags-maximum-type-src-mq3-botlib-aas-route-extras-ml-306256186"></a>
@@ -68,19 +74,21 @@ function absInt(value)
 function alternativeRouteGoals(router, start, startAreaNum, goal, goalAreaNum, travelFlags, maximum, type)
 ```
 
+Apply `mq3.botlib.aas_route_extras.validRouter`, `mq3.botlib.aas_route_extras.routeTime` and `mq3.botlib.aas_route_extras.connectedMidrange` while evaluating `alternativeRouteGoals`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `start` | `dynamic` | — |  |
-| `startAreaNum` | `dynamic` | — |  |
-| `goal` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
-| `maximum` | `dynamic` | — |  |
-| `type` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `settings` and `runtime`. |
+| `start` | `dynamic` | — | World-space position as three coordinates. |
+| `startAreaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `goal` | `dynamic` | — | Value used by `alternativeRouteGoals` in `if not validRouter(router) or start==void or goal==void or startAreaNum==0 or goalAreaNum==0 or maximum<=0 then...`. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `maximum` | `dynamic` | — | Upper bound applied by the operation. |
+| `type` | `dynamic` | — | Value used by `alternativeRouteGoals` in `if (type&ALTROUTEGOAL_ALL)==0 and not (((type&ALTROUTEGOAL_CLUSTERPORTALS)!=0 and (contents&AREACONTENTS_CLUSTER...`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L190)
 
 - [mq3.botlib.aas_route_extras.AlternativeRoutingState](Type-mq3-botlib-aas-route-extras-alternativeroutingstate-203968939.md) — struct
 <a id="constant-constant-mq3-botlib-aas-route-extras-altroutegoal-all-const-altroutegoal-all-1-src-mq3-botlib-aas-route-extras-ml-1414014528"></a>
@@ -120,14 +128,16 @@ const ALTROUTEGOAL_VIEWPORTALS = 4
 function altRoutingFloodCluster(router, state, areaNum)
 ```
 
+Update `state.clusterAreas[state.numClusterAreas]`, `state.numClusterAreas` and `state.valid[areaNum]` during `altRoutingFloodCluster`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `state` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime`. |
+| `state` | `dynamic` | — | AAS route extras state; accesses `initialized`, `valid`, `clusterAreas` and `numClusterAreas`. May update `state.clusterAreas[state.numClusterAreas]`, `state.numClusterAreas` and `state.valid[areaNum]` in place. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L82)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-areacontents-clusterportal-const-areacontents-clusterportal-8-src-mq3-botlib-aas-route-extras-ml-1031393207"></a>
 ### AREACONTENTS_CLUSTERPORTAL
@@ -156,14 +166,16 @@ const AREACONTENTS_VIEWPORTAL = 512
 function connectedMidrange(router, first, valid)
 ```
 
+Apply `mq3.botlib.aas_route_extras.altRoutingFloodCluster` while evaluating `connectedMidrange`. Return paths include `routeExtraArrays.slice(state.clusterAreas,0,state.numClusterAreas)`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `first` | `dynamic` | — |  |
-| `valid` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime`. |
+| `first` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `valid` | `dynamic` | — | Initial value stored in `mq3.botlib.aas_route_extras.AlternativeRoutingState.valid`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L172)
 
 <a id="function-function-mq3-botlib-aas-route-extras-copyvector-function-copyvector-value-src-mq3-botlib-aas-route-extras-ml-1440082173"></a>
 ### copyVector
@@ -172,12 +184,14 @@ function connectedMidrange(router, first, valid)
 function copyVector(value)
 ```
 
+Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas route extras.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L39)
 
 <a id="function-function-mq3-botlib-aas-route-extras-distancesquared-function-distancesquared-a-b-src-mq3-botlib-aas-route-extras-ml-530026953"></a>
 ### distanceSquared
@@ -186,13 +200,15 @@ function copyVector(value)
 function distanceSquared(a, b)
 ```
 
+Calculate squared Euclidean distance between two three-component points for aas route extras.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `a` | `dynamic` | — |  |
-| `b` | `dynamic` | — |  |
+| `a` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
+| `b` | `dynamic` | — | Three-component array; components 0, 1 and 2 are used in their stored order. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L179)
 
 <a id="function-function-mq3-botlib-aas-route-extras-initalternativerouting-function-initalternativerouting-router-src-mq3-botlib-aas-route-extras-ml-2034406939"></a>
 ### initAlternativeRouting
@@ -205,10 +221,10 @@ The released botlib keeps these two work arrays as process globals.  The port ke
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `settings`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L61)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-max-reachability-pass-areas-const-max-reachability-pass-areas-32-src-mq3-botlib-aas-route-extras-ml-481694368"></a>
 ### MAX_REACHABILITY_PASS_AREAS
@@ -257,13 +273,15 @@ const OP_PREDICT_ROUTE = 576
 function passedAreas(router, reach)
 ```
 
+Apply `mq3.botlib.aas_trace_areas.trace` while evaluating `passedAreas`. Return paths include `crossed.areas`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `reach` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime`. |
+| `reach` | `dynamic` | — | AAS reachability record; accesses `travelType`, `start` and `finish`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L98)
 
 <a id="function-function-mq3-botlib-aas-route-extras-pointreachabilityareaindex-function-pointreachabilityareaindex-state-origin-src-mq3-botlib-aas-route-extras-ml-1180733955"></a>
 ### pointReachabilityAreaIndex
@@ -272,13 +290,15 @@ function passedAreas(router, reach)
 function pointReachabilityAreaIndex(state, origin)
 ```
 
+Apply `mq3.format.aas.cluster`, `mq3.botlib.aas_runtime.pointAreaNum` and `mq3.botlib.aas_runtime.areaReachability` while evaluating `pointReachabilityAreaIndex`. Return paths include `index+clusterAreaNum`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS route extras state; accesses `initialized` and `map`. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L214)
 
 <a id="function-function-mq3-botlib-aas-route-extras-predictroute-function-predictroute-router-route-areanum-origin-goalareanum-travelflags-maxareas-maxtime-stopevent-stopcontents-stoptfl-stopareanum-src-mq3-botlib-aas-route-extras-ml-164771494"></a>
 ### predictRoute
@@ -287,23 +307,25 @@ function pointReachabilityAreaIndex(state, origin)
 function predictRoute(router, route, areaNum, origin, goalAreaNum, travelFlags, maxAreas, maxTime, stopEvent, stopContents, stopTfl, stopAreaNum)
 ```
 
+Forward `predictRoute` to `mq3.botlib.aas_route_extras.predictRouteCached` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `route` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
-| `maxAreas` | `dynamic` | — |  |
-| `maxTime` | `dynamic` | — |  |
-| `stopEvent` | `dynamic` | — |  |
-| `stopContents` | `dynamic` | — |  |
-| `stopTfl` | `dynamic` | — |  |
-| `stopAreaNum` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `settings` and `reaches`. |
+| `route` | `dynamic` | — | Route record; accesses `stopEvent`, `endArea`, `endContents`, `endTravelFlags` and `endPos` and related fields. May update `route.stopEvent`, `route.endArea` and `route.endContents` and additional fields in place. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `maxAreas` | `dynamic` | — | Value used by `predictRouteCached` in `while currentArea!=goalAreaNum and (maxAreas==0 or step<maxAreas) and step<areaCount`. |
+| `maxTime` | `dynamic` | — | Upper limit on the route travel-time value. |
+| `stopEvent` | `dynamic` | — | Value used by `predictRouteCached` in `route.stopEvent=RSE_NONE`. |
+| `stopContents` | `dynamic` | — | Value used by `predictRouteCached` in `if (stopEvent&RSE_ENTERCONTENTS)!=0 and (router.settings[testArea].contents&stopContents)!=0 then route.stopEven...`. |
+| `stopTfl` | `dynamic` | — | Value used by `predictRouteCached` in `if (reachFlags&stopTfl)!=0 then route.stopEvent=RSE_USETRAVELTYPE`. |
+| `stopAreaNum` | `dynamic` | — | Value used by `predictRouteCached` in `if (stopEvent&RSE_ENTERAREA)!=0 and testArea==stopAreaNum then route.stopEvent=RSE_ENTERAREA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L164)
 
 - [mq3.botlib.aas_route_extras.PredictRoute](Type-mq3-botlib-aas-route-extras-predictroute-1593577971.md) — struct
 <a id="function-function-mq3-botlib-aas-route-extras-predictroutecached-function-predictroutecached-router-cache-route-areanum-origin-goalareanum-travelflags-maxareas-maxtime-stopevent-stopcontents-stoptfl-stopareanum-src-mq3-botlib-aas-route-extras-ml-182676320"></a>
@@ -313,24 +335,26 @@ function predictRoute(router, route, areaNum, origin, goalAreaNum, travelFlags, 
 function predictRouteCached(router, cache, route, areaNum, origin, goalAreaNum, travelFlags, maxAreas, maxTime, stopEvent, stopContents, stopTfl, stopAreaNum)
 ```
 
+Update `route.stopEvent`, `route.endArea`, `route.endContents` and `route.endTravelFlags` and related state during `predictRouteCached`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `cache` | `dynamic` | — |  |
-| `route` | `dynamic` | — |  |
-| `areaNum` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalAreaNum` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
-| `maxAreas` | `dynamic` | — |  |
-| `maxTime` | `dynamic` | — |  |
-| `stopEvent` | `dynamic` | — |  |
-| `stopContents` | `dynamic` | — |  |
-| `stopTfl` | `dynamic` | — |  |
-| `stopAreaNum` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `settings` and `reaches`. |
+| `cache` | `dynamic` | — | Routing cache state; accesses `router`. |
+| `route` | `dynamic` | — | Route record; accesses `stopEvent`, `endArea`, `endContents`, `endTravelFlags` and `endPos` and related fields. May update `route.stopEvent`, `route.endArea` and `route.endContents` and additional fields in place. |
+| `areaNum` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalAreaNum` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
+| `maxAreas` | `dynamic` | — | Value used by `predictRouteCached` in `while currentArea!=goalAreaNum and (maxAreas==0 or step<maxAreas) and step<areaCount`. |
+| `maxTime` | `dynamic` | — | Upper limit on the route travel-time value. |
+| `stopEvent` | `dynamic` | — | Value used by `predictRouteCached` in `route.stopEvent=RSE_NONE`. |
+| `stopContents` | `dynamic` | — | Value used by `predictRouteCached` in `if (stopEvent&RSE_ENTERCONTENTS)!=0 and (router.settings[testArea].contents&stopContents)!=0 then route.stopEven...`. |
+| `stopTfl` | `dynamic` | — | Value used by `predictRouteCached` in `if (reachFlags&stopTfl)!=0 then route.stopEvent=RSE_USETRAVELTYPE`. |
+| `stopAreaNum` | `dynamic` | — | Value used by `predictRouteCached` in `if (stopEvent&RSE_ENTERAREA)!=0 and testArea==stopAreaNum then route.stopEvent=RSE_ENTERAREA`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L121)
 
 <a id="function-function-mq3-botlib-aas-route-extras-routetime-function-routetime-router-area-origin-goalarea-travelflags-src-mq3-botlib-aas-route-extras-ml-1023819155"></a>
 ### routeTime
@@ -339,16 +363,18 @@ function predictRouteCached(router, cache, route, areaNum, origin, goalAreaNum, 
 function routeTime(router, area, origin, goalArea, travelFlags)
 ```
 
+Forward `routeTime` to `mq3.botlib.aas_routing.areaTravelTimeToGoalArea` and return the delegated result.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
-| `area` | `dynamic` | — |  |
-| `origin` | `dynamic` | — |  |
-| `goalArea` | `dynamic` | — |  |
-| `travelFlags` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime` and `settings`. |
+| `area` | `dynamic` | — | AAS area number; zero denotes no area. |
+| `origin` | `dynamic` | — | World-space position as three coordinates. |
+| `goalArea` | `dynamic` | — | Destination AAS area number. |
+| `travelFlags` | `dynamic` | — | Bit mask of permitted AAS travel modes and area restrictions. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L55)
 
 <a id="constant-constant-mq3-botlib-aas-route-extras-rse-enterarea-const-rse-enterarea-8-src-mq3-botlib-aas-route-extras-ml-209110993"></a>
 ### RSE_ENTERAREA
@@ -407,12 +433,14 @@ const RSE_USETRAVELTYPE = 2
 function shutdownAlternativeRouting(state)
 ```
 
+Update `state.valid`, `state.clusterAreas`, `state.numClusterAreas` and `state.initialized` during `shutdownAlternativeRouting`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `state` | `dynamic` | — |  |
+| `state` | `dynamic` | — | AAS route extras state; accesses `valid`, `clusterAreas`, `numClusterAreas` and `initialized`. May update `state.valid`, `state.clusterAreas` and `state.numClusterAreas` and additional fields in place. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L67)
 
 <a id="function-function-mq3-botlib-aas-route-extras-supportstrap-function-supportstrap-op-src-mq3-botlib-aas-route-extras-ml-265223201"></a>
 ### supportsTrap
@@ -421,12 +449,14 @@ function shutdownAlternativeRouting(state)
 function supportsTrap(op)
 ```
 
+Test `op==OP_ALTERNATIVE_ROUTE_GOAL or op==OP_PREDICT_ROUTE or op==OP_POINT_REACHABILITY_AREA_INDEX` as the condition for `supportsTrap`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `op` | `dynamic` | — |  |
+| `op` | `dynamic` | — | Numeric syscall operation identifier. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L223)
 
 <a id="function-function-mq3-botlib-aas-route-extras-u16-function-u16-value-src-mq3-botlib-aas-route-extras-ml-418873693"></a>
 ### u16
@@ -435,12 +465,14 @@ function supportsTrap(op)
 function u16(value)
 ```
 
+Return `value&65535` for `u16`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `dynamic` | — |  |
+| `value` | `dynamic` | — | Operand used to evaluate the returned expression `value&65535`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L42)
 
 <a id="function-function-mq3-botlib-aas-route-extras-validrouter-function-validrouter-router-src-mq3-botlib-aas-route-extras-ml-1848484733"></a>
 ### validRouter
@@ -449,9 +481,11 @@ function u16(value)
 function validRouter(router)
 ```
 
+Test `router!=void and router.runtime!=void and router.runtime.initialized` as the condition for `validRouter`.
+
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `router` | `dynamic` | — |  |
+| `router` | `dynamic` | — | AAS routing state; accesses `runtime`. |
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L48)

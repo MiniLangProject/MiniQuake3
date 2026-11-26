@@ -9,8 +9,10 @@
 struct TextGeometry
 ```
 
+Data record for `mq3.renderer.tr_shade_calc_runtime.TextGeometry`; groups `positions`, `texCoords`, `colors`, `indexes`.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +24,7 @@ colors
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-shade-calc-runtime-textgeometry-indexes-indexes-src-mq3-renderer-tr-shade-calc-runtime-ml-1235774302"></a>
 ### indexes
@@ -32,7 +34,7 @@ indexes
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-shade-calc-runtime-textgeometry-positions-positions-src-mq3-renderer-tr-shade-calc-runtime-ml-1302344738"></a>
 ### positions
@@ -42,7 +44,7 @@ positions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-shade-calc-runtime-textgeometry-texcoords-texcoords-src-mq3-renderer-tr-shade-calc-runtime-ml-12829002"></a>
 ### texCoords
@@ -52,4 +54,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_calc_runtime.ml#L22)

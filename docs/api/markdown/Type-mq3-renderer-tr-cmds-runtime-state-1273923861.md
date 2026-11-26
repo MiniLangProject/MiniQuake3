@@ -9,8 +9,10 @@
 struct State
 ```
 
+Data record for `mq3.renderer.tr_cmds_runtime.State`; groups `queue`, `backend`, `smpActive`, `renderThreadActive`, `blockedOnRender`, `blockedOnMain`, and 9 further fields.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 ## Members
 
@@ -22,7 +24,7 @@ back
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-backend-backend-src-mq3-renderer-tr-cmds-runtime-ml-2094011680"></a>
 ### backend
@@ -32,7 +34,7 @@ backend
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-blockedonmain-blockedonmain-src-mq3-renderer-tr-cmds-runtime-ml-1327578740"></a>
 ### blockedOnMain
@@ -42,7 +44,7 @@ blockedOnMain
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-blockedonrender-blockedonrender-src-mq3-renderer-tr-cmds-runtime-ml-749831476"></a>
 ### blockedOnRender
@@ -52,7 +54,7 @@ blockedOnRender
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-finishcalled-finishcalled-src-mq3-renderer-tr-cmds-runtime-ml-612672300"></a>
 ### finishCalled
@@ -62,7 +64,7 @@ finishCalled
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-framecount-framecount-src-mq3-renderer-tr-cmds-runtime-ml-621034840"></a>
 ### frameCount
@@ -72,7 +74,7 @@ frameCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-framescenenum-framescenenum-src-mq3-renderer-tr-cmds-runtime-ml-2010815552"></a>
 ### frameSceneNum
@@ -82,7 +84,7 @@ frameSceneNum
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-front-front-src-mq3-renderer-tr-cmds-runtime-ml-1688713236"></a>
 ### front
@@ -92,7 +94,7 @@ front
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-frontendmsec-frontendmsec-src-mq3-renderer-tr-cmds-runtime-ml-21136648"></a>
 ### frontEndMsec
@@ -102,7 +104,7 @@ frontEndMsec
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-queue-queue-src-mq3-renderer-tr-cmds-runtime-ml-1538548028"></a>
 ### queue
@@ -112,7 +114,7 @@ queue
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-renderthreadactive-renderthreadactive-src-mq3-renderer-tr-cmds-runtime-ml-1448021460"></a>
 ### renderThreadActive
@@ -122,7 +124,7 @@ renderThreadActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-services-services-src-mq3-renderer-tr-cmds-runtime-ml-918567544"></a>
 ### services
@@ -132,7 +134,7 @@ services
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-settings-settings-src-mq3-renderer-tr-cmds-runtime-ml-2050902158"></a>
 ### settings
@@ -142,7 +144,7 @@ settings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-smpactive-smpactive-src-mq3-renderer-tr-cmds-runtime-ml-139873688"></a>
 ### smpActive
@@ -152,7 +154,7 @@ smpActive
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-state-smpframe-smpframe-src-mq3-renderer-tr-cmds-runtime-ml-449038258"></a>
 ### smpFrame
@@ -162,4 +164,4 @@ smpFrame
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)

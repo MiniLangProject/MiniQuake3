@@ -9,8 +9,10 @@
 struct State
 ```
 
+Stores client game predict state, including `predicted`, `valid`, `solidEntities`, `triggerEntities`, `physicsTime`, `hyperspace` and additional values.
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 ## Members
 
@@ -22,7 +24,7 @@ hyperspace
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-lastmode-lastmode-src-mq3-client-cgame-predict-ml-1158129742"></a>
 ### lastMode
@@ -32,7 +34,7 @@ lastMode
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-moved-moved-src-mq3-client-cgame-predict-ml-985328076"></a>
 ### moved
@@ -42,7 +44,7 @@ moved
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-packetbackupexceeded-packetbackupexceeded-src-mq3-client-cgame-predict-ml-1241326290"></a>
 ### packetBackupExceeded
@@ -52,7 +54,7 @@ packetBackupExceeded
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-physicstime-physicstime-src-mq3-client-cgame-predict-ml-238289264"></a>
 ### physicsTime
@@ -62,7 +64,7 @@ physicsTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-pointcount-pointcount-src-mq3-client-cgame-predict-ml-836308150"></a>
 ### pointCount
@@ -72,7 +74,7 @@ pointCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-predicted-predicted-src-mq3-client-cgame-predict-ml-949765724"></a>
 ### predicted
@@ -82,7 +84,7 @@ predicted
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-predictederror-predictederror-src-mq3-client-cgame-predict-ml-1439069200"></a>
 ### predictedError
@@ -92,7 +94,7 @@ predictedError
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-predictederrortime-predictederrortime-src-mq3-client-cgame-predict-ml-1921507194"></a>
 ### predictedErrorTime
@@ -102,7 +104,7 @@ predictedErrorTime
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-predictions-predictions-src-mq3-client-cgame-predict-ml-1074410812"></a>
 ### predictions
@@ -112,7 +114,7 @@ predictions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-solidentities-solidentities-src-mq3-client-cgame-predict-ml-1845172684"></a>
 ### solidEntities
@@ -122,7 +124,7 @@ solidEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-tracecount-tracecount-src-mq3-client-cgame-predict-ml-787973148"></a>
 ### traceCount
@@ -132,7 +134,7 @@ traceCount
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-transitions-transitions-src-mq3-client-cgame-predict-ml-613465236"></a>
 ### transitions
@@ -142,7 +144,7 @@ transitions
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-triggerentities-triggerentities-src-mq3-client-cgame-predict-ml-855897352"></a>
 ### triggerEntities
@@ -152,7 +154,7 @@ triggerEntities
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-valid-valid-src-mq3-client-cgame-predict-ml-1744925916"></a>
 ### valid
@@ -162,7 +164,7 @@ valid
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
 
 <a id="field-field-mq3-client-cgame-predict-state-warnings-warnings-src-mq3-client-cgame-predict-ml-421589606"></a>
 ### warnings
@@ -172,4 +174,4 @@ warnings
 ```
 
 
-[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_predict.ml#L28)
