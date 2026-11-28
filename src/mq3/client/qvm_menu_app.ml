@@ -23,7 +23,6 @@ import mq3.audio.qvm_sound_assets as qvmSoundAssets
 import mq3.audio.qvm_playback as qvmPlayback
 import mq3.platform.playable_window as window
 import mq3.platform.playable_ambient as audioOutput
-import mq3.platform.playable_multitexture as multitexture
 import mq3.qcommon.command_buffer as commands
 import mq3.client.frame_timing as frameTiming
 import std.time as time
@@ -37,19 +36,6 @@ const SOURCE_HEIGHT=720
 const FIRST_TEXTURE_SLOT=1
 /// Capacity limit for the texture slots collection or bounded storage used by this client module.
 const MAX_TEXTURE_SLOTS=300
-/// Texture-cache slot or starting slot reserved for the cinematic rendering resources.
-const CINEMATIC_TEXTURE_SLOT=4055
-/// Stores QVM menu app screen point record, including `x`, `y`, `depth`.
-struct ScreenPoint
-  /// Horizontal coordinate of a textured quad vertex in the standalone QVM menu viewer's output
-  /// coordinates.
-  x
-  /// Vertical coordinate of a textured quad vertex in the standalone QVM menu viewer's output
-  /// coordinates.
-  y
-  /// When constructing this record, `runCinematic` supplies `depth` for this member.
-  depth
-end struct
 
 /// Creates the QVM menu app error `7688` with diagnostic text `"QVM menu: "+message`.
 /// @param message Argument 2 of `error`; passed as `"QVM menu: "+message`.
@@ -134,8 +120,8 @@ end function
 // CL_PlayCinematic_f takes ownership of the disconnected screen. When the
 // system RoQ ends, CL_HandleCinEnd queues the saved nextmap command.
 /// @param archive Opened game archive supplying maps, models, textures or other assets.
-/// @param session Record read through `session.target`, `session.videoWidth`, `session.videoHeight`.
-/// @param measurePixels Value used by `if measurePixels then lit=window.presentedNonBlack()`.
+/// @param session Desktop session containing the requested clip and its post-playback action.
+/// @param measurePixels Verify complete playback and count visible pixels in the renderer smoke test.
 function runCinematic(archive,session,measurePixels)
   movie=try(cinematics.create(archive));if movie is error then return movie end if
   name=strings.toLowerAscii(session.target)
@@ -149,32 +135,27 @@ function runCinematic(archive,session,measurePixels)
   audio=try(qvmPlayback.create(catalog,22050,qvmSoundAssets.CHUNK_FRAMES));if audio is error then cinematics.closeAll(movie);return audio end if
   soundReady=not (audioOutput.init(22050) is error)
   window.setTitle("MiniQuake3 | "+session.target)
-  window.inputClear();window.inputEvents(256);brightest=0;failure=void
+  window.inputClear();window.inputEvents(256);brightest=0;presentedFrames=0;failure=void
   while not window.shouldClose()
     frameAt=window.milliseconds();window.poll()
     events=try(window.inputEvents(256));if events is error then failure=events;break end if
     skip=false;for each event in events if event.type==window.INPUT_KEY and event.value2!=0 then skip=true;break end if end for
-    if skip then break end if
+    if skip and (not measurePixels or (bits&cinematics.CIN_HOLD)!=0) then break end if
     status=cinematics.run(movie,handle,frameAt)
     if status==cinematics.FMV_EOF then break end if
     draw=cinematics.draw(movie,handle)
     // This frame is presented directly; retaining the QVM draw command would
     // keep every decoded RGBA frame alive until the whole film had finished.
     cinematics.discardDraws(movie)
-    window.beginFrame(0,0,0)
-    if draw!=void then
-      image=try(cinematics.presentation(draw,640,480,session.videoWidth,session.videoHeight));if image is error then failure=image;break end if
-      if image.dirty and not window.uploadTextureNoMip(CINEMATIC_TEXTURE_SLOT,image.pixels,image.sourceWidth,image.sourceHeight) then failure=fail("could not upload cinematic frame");break end if
-      x=image.x;y=image.y;w=image.width;h=image.height;depth=0.001
-      a=ScreenPoint(x,y,depth);b=ScreenPoint(x+w,y,depth);c=ScreenPoint(x+w,y+h,depth);d=ScreenPoint(x,y+h,depth)
-      stateValue=multitexture.setState(multitexture.BLEND_OPAQUE,false,false);if stateValue is error then failure=stateValue;break end if
-      multitexture.setTextureClamp(true)
-      window.drawTriangle(CINEMATIC_TEXTURE_SLOT,a,[0.0,0.0],1.0,b,[1.0,0.0],1.0,c,[1.0,1.0],1.0,255,255,255)
-      window.drawTriangle(CINEMATIC_TEXTURE_SLOT,c,[1.0,1.0],1.0,d,[0.0,1.0],1.0,a,[0.0,0.0],1.0,255,255,255)
-      multitexture.setTextureClamp(false)
+    if draw!=void and draw.dirty then
+      image=draw.frame
+      lit=window.presentCinematic(image.pixels,image.width,image.height,measurePixels)
+      if lit<0 then failure=fail("could not display cinematic frame");break end if
+      if measurePixels then
+        presentedFrames=presentedFrames+1
+        if lit>brightest then brightest=lit end if
+      end if
     end if
-    window.present()
-    if measurePixels then lit=window.presentedNonBlack();if lit>brightest then brightest=lit end if end if
     chunks=cinematics.takeAudio(movie,handle)
     if soundReady then
       for each chunk in chunks queued=qvmPlayback.queueRaw(audio,chunk,1.0);if queued is error then failure=queued;break end if end for
@@ -185,10 +166,16 @@ function runCinematic(archive,session,measurePixels)
       end while
       if failure is error then break end if
     end if
-    sleepMs=frameTiming.remaining(frameAt,window.milliseconds(),16);if sleepMs>0 then time.sleep(sleepMs) end if
+    sleepMs=frameTiming.remaining(frameAt,window.milliseconds(),4);if sleepMs>0 then time.sleep(sleepMs) end if
   end while
-  audioOutput.shutdown();cinematics.closeAll(movie);window.releaseTexture(CINEMATIC_TEXTURE_SLOT)
+  clip=movie.handles[handle];decodedFrames=clip.decoder.frameCount;expectedFrames=clip.movie.videoFrames
+  audioOutput.shutdown();cinematics.closeAll(movie);window.endCinematic()
   if failure is error then return failure end if
+  if measurePixels and (bits&cinematics.CIN_HOLD)==0 then
+    if decodedFrames!=expectedFrames or presentedFrames*10<expectedFrames*9 then
+      return fail("incomplete cinematic playback: decoded "+str(decodedFrames)+" / "+str(expectedFrames)+", presented "+str(presentedFrames))
+    end if
+  end if
   desktopSession.finishCinematic(session)
   return brightest
 end function
@@ -283,11 +270,12 @@ end function
 /// Updates `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded` during QVM menu app `runStream`.
 /// @param baseArchive Value used by `result=try(renderStream(baseArchive,archive,installRoot,qvmRoot,session,source))`.
 /// @param archive Opened game archive supplying maps, models, textures or other assets.
-/// @param installRoot Value used by `if not demoPlaying then remote.setBasePackages(transport,installRoot+"/baseq3") end if`.
+/// @param installRoot EXE directory used to find installed mods.
 /// @param qvmRoot Directory containing the retail QVM bytecode files.
 /// @param session Mutable QVM menu app record/storage; this routine assigns `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded`.
 /// @param demoPlaying Value used by `if demoPlaying then`.
-function runStream(baseArchive,archive,installRoot,qvmRoot,session,demoPlaying)
+/// @param basePackageDirectory Directory containing the mounted retail PK3s for remote pure verification.
+function runStream(baseArchive,archive,installRoot,qvmRoot,session,demoPlaying,basePackageDirectory)
   now=window.milliseconds();name=session.target;transport=void
   previousGame=session.activeGame;previousRoot=session.dataRoot;previousSettings=session.settings;previousConfig=session.configLoaded
   if demoPlaying then
@@ -297,7 +285,7 @@ function runStream(baseArchive,archive,installRoot,qvmRoot,session,demoPlaying)
     transport=try(remote.create(name,userinfo,now))
   end if
   if transport is error then return transport end if
-  if not demoPlaying then remote.setBasePackages(transport,installRoot+"/baseq3") end if
+  if not demoPlaying then remote.setBasePackages(transport,basePackageDirectory) end if
   source=gameApp.StreamSource(transport,transport.protocol,demoPlaying,name,"")
   result=try(renderStream(baseArchive,archive,installRoot,qvmRoot,session,source))
   if demoPlaying then demos.close(transport) else try(remote.close(transport,window.milliseconds())) end if
@@ -311,9 +299,11 @@ end function
 /// @param archive Opened game archive supplying maps, models, textures or other assets.
 /// @param bootstrapMap Value used by `result=try(runMenu(activeArchive,bootstrapMap,qvmRoot,session,request=="levelselect"))`.
 /// @param qvmRoot Directory containing the retail QVM bytecode files.
-function run(archive,bootstrapMap,qvmRoot)
+/// @param basePackageDirectory Directory containing the mounted retail PK3s. Defaults to baseq3 beside the executable.
+function run(archive,bootstrapMap,qvmRoot,basePackageDirectory="")
   if archive==void then return fail("archive is required") end if
   installRoot=window.executableDirectory()
+  if basePackageDirectory=="" then basePackageDirectory=installRoot+"/baseq3" end if
   session=desktopSession.create(installRoot+"/baseq3")
   activeArchive=archive
   request="menu"
@@ -331,7 +321,7 @@ function run(archive,bootstrapMap,qvmRoot)
       result=try(runCinematic(activeArchive,session,false))
       if result is error then session.notice=result.message;desktopSession.finishCinematic(session) end if
     else if request=="connect" or request=="demo" then
-      result=try(runStream(archive,activeArchive,installRoot,qvmRoot,session,request=="demo"))
+      result=try(runStream(archive,activeArchive,installRoot,qvmRoot,session,request=="demo",basePackageDirectory))
       if result is error then
         session.notice=result.message
         print "MiniQuake3: "+session.notice

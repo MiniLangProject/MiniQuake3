@@ -5,6 +5,7 @@ package mq3.client.cinematic_runtime
 import mq3.format.pk3 as pk3
 import mq3.format.roq as roq
 import mq3.video.roq_video as video
+import mq3.compat.numeric as numeric
 import std.string as strings
 import std.ds.list as lists
 
@@ -206,8 +207,10 @@ end function
 function run(state,handle,now)
   if not validHandle(state,handle) then return FMV_EOF end if;clip=state.handles[handle]
   if clip.status==FMV_EOF or clip.status==FMV_IDLE then return clip.status end if
+  // Loading the clip and preparing the renderer must not consume video frames.
+  if clip.chunkIndex==0 then clip.startTime=now;clip.lastTime=now end if
   if clip.shader and now-clip.lastTime>100 then clip.startTime=clip.startTime+(now-clip.lastTime) end if
-  desired=((now-clip.startTime)*clip.movie.fps)/1000+1;if desired<1 then desired=1 end if
+  desired=numeric.quotient((now-clip.startTime)*clip.movie.fps,1000)+1;if desired<1 then desired=1 end if
   while clip.decoder.frameCount<desired and clip.status==FMV_PLAY
     if clip.chunkIndex>=len(clip.movie.chunks) then if not finishClip(clip,now) then break end if;clip.status=FMV_PLAY;desired=1 end if
     if clip.chunkIndex<len(clip.movie.chunks) then

@@ -127,9 +127,14 @@ Copy-Item "$Quake3Root\baseq3\pak*.pk3" .\build\baseq3\
 & .\build\MiniQuake3.exe
 ```
 
-The normal launch discovers data relative to the EXE, loads the installed
-`pak*.pk3` priority chain, and opens the main menu before starting a map. Use
-the QVMs produced by the build; do not substitute unrelated mod DLLs or QVMs.
+On startup, MiniQuake3 checks for `pak0.pk3` directly next to the EXE, then in
+its `baseq3` subdirectory, then on inserted Quake III Arena CDs. It reads the
+PK3s from the first usable location and applies the normal package priority.
+If none of the locations contains usable game data, a Windows error dialog
+tells you where to place the files. Use the QVMs produced by the build.
+
+MiniQuake3 saves `q3config.cfg` in `baseq3` next to the EXE and creates that
+folder on the first save if needed, including when PK3s are loaded from CD.
 
 ## Building
 

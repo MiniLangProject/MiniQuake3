@@ -52,6 +52,9 @@ extern function clipboardNative(output as bytes,capacity as i32) from "miniquake
 /// @param capacity Output-buffer capacity in bytes.
 /// @returns UTF-8 directory length, 0 if no installation is found, or -1 on conversion failure.
 extern function scanCdNative(output as bytes,capacity as i32) from "miniquake3_winmain.dll" symbol "mq3_winmain_scan_cd" returns i32
+/// Get the drive-letter bitmask for optical drives with readable media, where bit 0 represents A:.
+/// @returns Drive-letter bitmask, or zero if no readable optical volume is found.
+extern function retailCdDrivesNative() from "miniquake3_winmain.dll" symbol "mq3_winmain_retail_cd_drives" returns u32
 /// Replaces the currently open diagnostic output file with a UTF-8-selected binary file.
 /// @param path Pointer to the UTF-8 path bytes.
 /// @param length Path length in UTF-8 bytes, excluding any trailing NUL.
@@ -355,6 +358,16 @@ function Sys_FreeFileList(list) if list==void then return 0 end if;return len(li
 
 /// Returns `decode(slice(data,0,length))` from `mq3.platform.win_main_runtime.Sys_ScanForCD`; earlier branches return `""`.
 function Sys_ScanForCD() data=bytes(32768,0);length=scanCdNative(data,len(data));if length<=0 then return "" end if;return decode(slice(data,0,length)) end function
+/// List readable optical volume roots in drive-letter order for retail data discovery.
+function retailCdRoots()
+  mask=retailCdDrivesNative()
+  letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  roots=[]
+  for index=0 to len(letters)-1
+    if (mask&(1<<index))!=0 then roots=roots+[letters[index]+":/"] end if
+  end for
+  return roots
+end function
 /// Returns `true` for the `mq3.platform.win_main_runtime.Sys_CheckCD` compatibility entry point.
 function Sys_CheckCD() return true end function
 /// Returns `decode(slice(data,0,length))` from `mq3.platform.win_main_runtime.Sys_GetClipboardData`; earlier branches return `void`.

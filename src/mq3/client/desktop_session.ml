@@ -11,6 +11,7 @@ import mq3.format.pk3 as pk3
 import mq3.qcommon.command_buffer as commands
 import mq3.qcommon.config_persistence as config
 import mq3.qcommon.cvar as cvar
+import mq3.qcommon.files_runtime as filePaths
 
 /// Moves or replaces a file through the Unicode Windows API for desktop-session persistence. This binding is used by desktop session.
 /// @param existingPath NUL-terminated UTF-16 path of the existing temporary file to move.
@@ -54,6 +55,8 @@ struct Session
   /// When constructing this record, `create` supplies `0` for this member. Used by `save` and `attach`
   /// during subsequent processing.
   savedBindings
+  /// Destination of the last failed automatic config write, or void after a successful save.
+  failedConfigRoot
   /// When constructing this record, `create` supplies `false` for this member. Used by `attach` during
   /// subsequent processing.
   configLoaded
@@ -90,7 +93,7 @@ end struct
 /// Creates a `mq3.client.desktop_session.Session` record. Assigns `dataRoot` from `dataRoot`.
 /// @param dataRoot Value used to initialize `Session.dataRoot`.
 function create(dataRoot)
-  return Session(dataRoot,"","",false,void,void,0,false,false,[],"","","","","","",1280,720)
+  return Session(dataRoot,"","",false,void,void,0,void,false,false,[],"","","","","","",1280,720)
 end function
 
 /// Adapts `mq3.client.key_bindings_config.bindingText` to desktop session `bindingText`, returning its result for `host.bindingState`.
@@ -109,13 +112,14 @@ function commandPrint(commandState,text) return match.emitPrint(commandState.con
 /// @param name Argument 2 of `mq3.qcommon.cvar.variableString`.
 function commandCvar(commandState,name) return cvar.variableString(commandState.context.context.cvars,name) end function
 
-/// Calls `mq3.engine.local_qvm_match.desktopFilePath`, `std.string.endsWith`, `std.string.toLowerAscii` and additional helpers from desktop session `writeConfig`. The final path returns `replaced`.
+/// Create the parent directories and atomically replace a validated desktop configuration file.
 /// @param host Record read through `host.dataRoot`.
 /// @param name Name used to select or register the corresponding desktop session resource.
 /// @param contents Value used by `written=try(fs.writeAllText(temporary,contents))`.
 function writeConfig(host,name,contents)
   path=match.desktopFilePath(host.dataRoot,name)
   if path=="" or not strings.endsWith(strings.toLowerAscii(path),".cfg") then return false end if
+  filePaths.fs_CreatePath(path)
   // Write the new contents before replacing the existing configuration.
   temporary=path+"."+str(GetCurrentProcessId())+".tmp"
   written=try(fs.writeAllText(temporary,contents))
@@ -150,14 +154,19 @@ function readCommandFile(commandState,name)
   return readConfig(context,context.uiLanCacheHost.context.root,name)
 end function
 
-/// Updates `session.savedBindings` during desktop session `save`.
+/// Save dirty settings, retaining them for retry and reporting the first write failure per destination.
 /// @param state Record read through `state.context`.
-/// @param session Mutable desktop session record/storage; this routine assigns `session.savedBindings`.
+/// @param session Desktop session holding persistence state, saved bindings and the last failed destination.
 function save(state,session)
   context=state.context
   if context.cgameKeys.bindingSerial!=session.savedBindings then context.cvars.modifiedFlags=context.cvars.modifiedFlags|cvar.ARCHIVE end if
-  if (context.cvars.modifiedFlags&cvar.ARCHIVE)==0 then return false end if
-  if config.writeConfiguration(session.persistence) then session.savedBindings=context.cgameKeys.bindingSerial;return true end if
+  if (context.cvars.modifiedFlags&cvar.ARCHIVE)==0 or session.persistence==void or not session.persistence.fullyInitialized then return false end if
+  if config.writeConfiguration(session.persistence,session.failedConfigRoot!=session.dataRoot) then
+    session.savedBindings=context.cgameKeys.bindingSerial
+    session.failedConfigRoot=void
+    return true
+  end if
+  session.failedConfigRoot=session.dataRoot
   context.cvars.modifiedFlags=context.cvars.modifiedFlags|cvar.ARCHIVE
   return false
 end function

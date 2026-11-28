@@ -33,7 +33,7 @@ def main() -> int:
         )
     with tempfile.TemporaryDirectory(prefix="mq3-desktop-session-") as storage:
         result = subprocess.run(
-            [binary, data, build / "qvms", storage],
+            [binary, data, build / "qvms", Path(storage) / "baseq3"],
             cwd=build,
             capture_output=True,
             encoding="utf-8",

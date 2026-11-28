@@ -43,6 +43,10 @@ static int requestedWindowWidth;
 static int requestedWindowHeight;
 static int windowCreateSucceeded;
 static SRWLOCK presentationLock = SRWLOCK_INIT;
+static HWND cinematicWindow;
+static uint32_t *cinematicPixels;
+static BITMAPINFO cinematicBitmap;
+static int cinematicPainted;
 static LARGE_INTEGER timerFrequency;
 static LARGE_INTEGER timerStart;
 static HMODULE openGLModule;
@@ -1081,6 +1085,33 @@ static int changeWindowMode(HWND hwnd, const playableDisplayMode *mode) {
     return 1;
 }
 
+/* A separate child DC keeps full-screen RoQ blits out of the double-buffered
+ * WGL pixel format. WM_PAINT can replay the last frame on expose or resize. */
+static LRESULT CALLBACK cinematicWindowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
+    if (message == WM_NCHITTEST) return HTTRANSPARENT;
+    if (message == WM_ERASEBKGND) return 1;
+    if (message == WM_PAINT || message == WM_PRINTCLIENT) {
+        PAINTSTRUCT paint;
+        RECT client;
+        HDC dc = message == WM_PAINT ? BeginPaint(hwnd, &paint) : (HDC)wParam;
+        GetClientRect(hwnd, &client);
+        AcquireSRWLockShared(&presentationLock);
+        if (cinematicPixels && client.right > 0 && client.bottom > 0) {
+            int width = cinematicBitmap.bmiHeader.biWidth;
+            int height = -cinematicBitmap.bmiHeader.biHeight;
+            SetStretchBltMode(dc, COLORONCOLOR);
+            cinematicPainted = StretchDIBits(dc, 0, 0, client.right, client.bottom,
+                0, 0, width, height, cinematicPixels, &cinematicBitmap,
+                DIB_RGB_COLORS, SRCCOPY) > 0;
+        }
+        ReleaseSRWLockShared(&presentationLock);
+        if (message == WM_PAINT) EndPaint(hwnd, &paint);
+        return 0;
+    }
+    if (message == WM_DESTROY) cinematicWindow = NULL;
+    return DefWindowProcW(hwnd, message, wParam, lParam);
+}
+
 static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
     switch (message) {
         case WM_CREATE:
@@ -1101,6 +1132,25 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             playableDisplayMode mode = { LOWORD(lParam), HIWORD(lParam), LOWORD(wParam) != 0, HIWORD(wParam) };
             if (mode.width < 160 || mode.height < 120 || mode.width > 4096 || mode.height > 4096) return 0;
             return changeWindowMode(hwnd, &mode);
+        }
+        case WM_APP + 4: {
+            RECT client;
+            if (!wParam) {
+                if (cinematicWindow) DestroyWindow(cinematicWindow);
+                return 1;
+            }
+            if (!cinematicWindow) {
+                cinematicWindow = CreateWindowExW(0, L"MiniQuake3Cinematic", NULL,
+                    WS_CHILD, 0, 0, 1, 1, hwnd, NULL, GetModuleHandleW(0), NULL);
+                if (!cinematicWindow) return 0;
+            }
+            GetClientRect(hwnd, &client);
+            if (client.right <= 0 || client.bottom <= 0 || IsIconic(hwnd)) return 1;
+            SetWindowPos(cinematicWindow, HWND_TOP, 0, 0, client.right, client.bottom,
+                SWP_NOACTIVATE | SWP_SHOWWINDOW);
+            cinematicPainted = 0;
+            RedrawWindow(cinematicWindow, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW);
+            return cinematicPainted;
         }
         case WM_DESTROY:
             setAltTabDisabled(hwnd, 0);
@@ -1297,6 +1347,13 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
         wc.hCursor = LoadCursorW(0, MAKEINTRESOURCEW(32512));
         wc.hIcon = LoadIconW(0, MAKEINTRESOURCEW(32512));
         wc.lpszClassName = L"MiniQuake3PlayableWindow";
+        if (!RegisterClassExW(&wc) && GetLastError() != ERROR_CLASS_ALREADY_EXISTS) {
+            SetEvent(windowCreatedEvent);
+            return 0;
+        }
+        wc.style = 0;
+        wc.lpfnWndProc = cinematicWindowProc;
+        wc.lpszClassName = L"MiniQuake3Cinematic";
         if (!RegisterClassExW(&wc) && GetLastError() != ERROR_CLASS_ALREADY_EXISTS) {
             SetEvent(windowCreatedEvent);
             return 0;
@@ -3695,6 +3752,44 @@ PLAYABLE_API int playable_window_presented_non_black(void) {
     return nonBlack;
 }
 
+PLAYABLE_API int playable_window_present_cinematic(const unsigned char *rgba,
+        int width, int height, int measurePixels) {
+    HWND parent = windowHandle;
+    int count, index, nonBlack = 0;
+    if (!parent || !rgba || width < 1 || height < 1 || width > 1024 || height > 1024) return -1;
+    count = width * height;
+    AcquireSRWLockExclusive(&presentationLock);
+    if (!cinematicPixels || width != cinematicBitmap.bmiHeader.biWidth ||
+            -height != cinematicBitmap.bmiHeader.biHeight) {
+        uint32_t *next = (uint32_t *)VirtualAlloc(NULL, (SIZE_T)count * sizeof(*next),
+            MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+        if (!next) { ReleaseSRWLockExclusive(&presentationLock); return -1; }
+        if (cinematicPixels) VirtualFree(cinematicPixels, 0, MEM_RELEASE);
+        cinematicPixels = next;
+        ZeroMemory(&cinematicBitmap, sizeof(cinematicBitmap));
+        cinematicBitmap.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+        cinematicBitmap.bmiHeader.biWidth = width;
+        cinematicBitmap.bmiHeader.biHeight = -height;
+        cinematicBitmap.bmiHeader.biPlanes = 1;
+        cinematicBitmap.bmiHeader.biBitCount = 32;
+    }
+    for (index = 0; index < count; ++index, rgba += 4) {
+        uint32_t color = ((uint32_t)rgba[0] << 16) | ((uint32_t)rgba[1] << 8) | rgba[2];
+        cinematicPixels[index] = color;
+        if (measurePixels && color) ++nonBlack;
+    }
+    ReleaseSRWLockExclusive(&presentationLock);
+    return SendMessageW(parent, WM_APP + 4, 1, 0) ? nonBlack : -1;
+}
+
+PLAYABLE_API void playable_window_end_cinematic(void) {
+    if (cinematicWindow && windowHandle) SendMessageW(windowHandle, WM_APP + 4, 0, 0);
+    AcquireSRWLockExclusive(&presentationLock);
+    if (cinematicPixels) VirtualFree(cinematicPixels, 0, MEM_RELEASE);
+    cinematicPixels = NULL;
+    ReleaseSRWLockExclusive(&presentationLock);
+}
+
 PLAYABLE_API void playable_window_gl_end_frame(void) { playable_window_present(); }
 
 PLAYABLE_API void playable_window_gl_log_comment(const unsigned char *comment, int length) {
@@ -3708,6 +3803,7 @@ PLAYABLE_API void playable_window_gl_log_comment(const unsigned char *comment, i
 PLAYABLE_API void playable_window_shutdown(void) {
     HWND oldWindow = windowHandle;
     int slot;
+    playable_window_end_cinematic();
     shutdownMidi();
     playable_window_input_activate(0);
     shutdownOpenGL();

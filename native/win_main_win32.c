@@ -4,7 +4,7 @@
  */
 #define WIN32_LEAN_AND_MEAN
 #ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0600
+#define _WIN32_WINNT 0x0601
 #endif
 #include <windows.h>
 #include <mmsystem.h>
@@ -109,6 +109,25 @@ API int mq3_winmain_scan_cd(unsigned char *output, int capacity) {
     }
     if (output && capacity > 0) output[0] = 0;
     return 0;
+}
+
+/* Return the drive-letter mask for readable optical volumes. Suppress Windows'
+ * own insert-disc dialog while probing an empty drive. */
+API DWORD mq3_winmain_retail_cd_drives(void) {
+    DWORD drives = GetLogicalDrives(), ready = 0, previousMode;
+    wchar_t root[] = L"A:\\";
+    int letter;
+    if (!SetThreadErrorMode(GetThreadErrorMode() | SEM_FAILCRITICALERRORS, &previousMode)) return 0;
+    for (letter = 0; letter < 26; ++letter) {
+        DWORD bit = 1u << letter;
+        if (!(drives & bit)) continue;
+        root[0] = (wchar_t)(L'A' + letter);
+        if (GetDriveTypeW(root) == DRIVE_CDROM &&
+            GetVolumeInformationW(root, NULL, 0, NULL, NULL, NULL, NULL, 0))
+            ready |= bit;
+    }
+    SetThreadErrorMode(previousMode, NULL);
+    return ready;
 }
 
 API int mq3_winmain_spk_open(const unsigned char *path, int length) {

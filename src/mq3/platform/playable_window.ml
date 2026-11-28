@@ -307,6 +307,15 @@ extern function presentNative() from "playable_window.dll" symbol "playable_wind
 /// Counts non-black pixels in the last presented native image.
 /// @returns The detected non-black pixel count, or 0 when no image can be inspected.
 extern function presentedNonBlackNative() from "playable_window.dll" symbol "playable_window_presented_non_black" returns i32
+/// Present an opaque RGBA frame in the main window's dedicated cinematic surface.
+/// @param rgba Pointer to width * height * 4 RGBA8 bytes, copied during the call.
+/// @param width Decoded frame width in pixels.
+/// @param height Decoded frame height in pixels.
+/// @param measurePixels Nonzero to count source pixels with visible RGB.
+/// @returns Nonblack pixel count when requested, zero on success without measurement, or -1 on failure.
+extern function presentCinematicNative(rgba as ptr,width as i32,height as i32,measurePixels as i32) from "playable_window.dll" symbol "playable_window_present_cinematic" returns i32
+/// Hide the cinematic surface and release its retained frame.
+extern function endCinematic() from "playable_window.dll" symbol "playable_window_end_cinematic" returns void
 /// Destroys the preview window and releases native rendering/input resources.
 extern function shutdownNative() from "playable_window.dll" symbol "playable_window_shutdown" returns void
 /// Clears native depth storage to the supplied depth value.
@@ -871,6 +880,16 @@ end function
 function present() presentNative();return void end function
 /// Calls `mq3.platform.playable_window.presentedNonBlackNative` with `()` and returns its result.
 function presentedNonBlack() return presentedNonBlackNative() end function
+/// Validate and present one decoded RGBA frame, returning a pixel count or -1 on failure.
+/// @param rgba The complete RGBA byte buffer for the decoded frame.
+/// @param width Decoded frame width in pixels.
+/// @param height Decoded frame height in pixels.
+/// @param measurePixels Whether to count visible source pixels for the smoke test.
+function presentCinematic(rgba,width,height,measurePixels)
+  if typeof(rgba)!="bytes" or width<1 or width>1024 or height<1 or height>1024 or len(rgba)!=width*height*4 then return -1 end if
+  measure=0;if measurePixels then measure=1 end if
+  return presentCinematicNative(nativeBytesPtr(rgba),width,height,measure)
+end function
 /// Returns `void` from `mq3.platform.playable_window.endFrame`.
 function endFrame() glEndFrameNative();return void end function
 /// Returns `void` from `mq3.platform.playable_window.shutdown`.

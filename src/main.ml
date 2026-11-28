@@ -68,6 +68,7 @@ import mq3.client.playable_viewer as playableViewer
 import mq3.client.playable_app as playableApp
 import mq3.client.qvm_preview_app as qvmPreviewApp
 import mq3.client.qvm_menu_app as qvmMenuApp
+import mq3.client.startup_assets as startupAssets
 import mq3.client.desktop_session as desktopSession
 import mq3.engine.local_qvm_match as localQvmMatch
 import mq3.audio.wav as wav
@@ -134,8 +135,8 @@ function mapNameFromPath(path)
 end function
 /// Start the desktop QVM menu or dispatch the selected command-line game, asset, and regression probe.
 ///
-/// Validation failures include `could not determine the MiniQuake3 executable directory`; `--qvm-match requires a positive frame count`.
-/// @param args Command-line arguments excluding the executable; an empty list starts the retail menu beside the executable.
+/// An argument-free launch looks beside the executable and on optical media for retail PK3s and displays a dialog if none can be opened.
+/// @param args Command-line arguments excluding the executable; an empty list starts the retail menu.
 function main(args)
   if len(args)==3 and args[0]=="--cinematic-smoke" then
     archive=try(pk3.open(args[1]));if archive is error then return archive end if
@@ -149,13 +150,15 @@ function main(args)
   if len(args)==0 then
     executableRoot=playableWindow.executableDirectory()
     if executableRoot=="" then return error(7688,"could not determine the MiniQuake3 executable directory") end if
-    baseq3Path=executableRoot+"/baseq3";pakPath=baseq3Path+"/pak0.pk3"
-    archive=try(pk3.openStandard(baseq3Path))
-    if archive is error then return error(7689,"Quake III retail data was not found. Expected "+pakPath) end if
+    data=startupAssets.openRetailArchive(executableRoot)
+    if data==void then
+      startupAssets.showMissingPaks()
+      return error(7689,"Quake III retail PK3 files could not be opened beside the executable or on CD")
+    end if
     qvmRoot=executableRoot+"/qvms"
     uiQvm=try(fs.fileSize(qvmRoot+"/ui.qvm"));gameQvm=try(fs.fileSize(qvmRoot+"/qagame.qvm"));cgameQvm=try(fs.fileSize(qvmRoot+"/cgame.qvm"))
     if uiQvm is error or gameQvm is error or cgameQvm is error then return error(7691,"Compatible original QVMs were not found. Expected ui.qvm, qagame.qvm and cgame.qvm in "+qvmRoot) end if
-    return qvmMenuApp.run(archive,void,qvmRoot)
+    return qvmMenuApp.run(data.archive,void,qvmRoot,data.directory)
   end if
   if len(args)==4 and args[0]=="--menu-qvm" then
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmMenuApp.run(archive,map,args[3])

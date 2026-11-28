@@ -82,23 +82,28 @@ end function
 /// Validation failures include `Configuration persistence requires registry and write service`.
 /// @param state Record exposing `registry`, `services`.
 /// @param filename Filename used in `("Couldn't write " + filename)` and `(("Couldn't write " + filename) + ".\n")`.
-function writeConfigToFile(state,filename)
+/// @param reportFailure Whether to print a diagnostic if the write fails. Defaults to true.
+function writeConfigToFile(state,filename,reportFailure=true)
   if state==void or state.registry==void or state.services==void or state.services.writeFn==void then
     return error(3513,"Configuration persistence requires registry and write service")
   end if
   written=state.services.writeFn(state.services.context,filename,configText(state))
-  if not written then emit(state,"Couldn't write "+filename+".\n");return false end if
+  if not written then
+    if reportFailure then emit(state,"Couldn't write "+filename+".\n") end if
+    return false
+  end if
   return true
 end function
 
 // Com_WriteConfiguration: archive dirtiness is consumed before attempting the
 // write, matching the original failure behavior.
 /// @param state Record exposing `fullyInitialized`, `registry`.
-function writeConfiguration(state)
+/// @param reportFailure Whether to report a write failure. Defaults to true.
+function writeConfiguration(state,reportFailure=true)
   if state==void or not state.fullyInitialized then return false end if
   if (state.registry.modifiedFlags & cvar.ARCHIVE)==0 then return false end if
   state.registry.modifiedFlags=state.registry.modifiedFlags & ~cvar.ARCHIVE
-  return writeConfigToFile(state,"q3config.cfg")
+  return writeConfigToFile(state,"q3config.cfg",reportFailure)
 end function
 
 /// Write config command in qcommon.config_persistence; the normal completion returns `writeConfigToFile(state, filename)`.

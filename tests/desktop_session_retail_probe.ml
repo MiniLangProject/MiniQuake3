@@ -12,6 +12,9 @@ import mq3.qcommon.cvar as cvar
 
 function fail(message) return error(7688,"desktop session probe: "+message) end function
 
+function failConfigWrite(host,name,contents) return false end function
+function captureConfigDiagnostic(host,text) host.context.prints=host.context.prints+[text] end function
+
 function main(args)
   if len(args)!=3 then print "usage: desktop_session_retail_probe <baseq3> <qvms> <empty-config-directory>";return 2 end if
   archive=pk3.openStandard(args[0]);qvms=args[1];dataRoot=args[2]
@@ -73,10 +76,22 @@ function main(args)
   started=match.bootUi(menu);if started is error then return started end if
   if cvar.variableValue(menu.context.cvars,"sensitivity")!=6.25 or cvar.variableString(menu.context.cvars,"g_spScores2")!=score then return fail("settings or QVM score did not survive restart") end if
   if match.keyBinding(menu,156)!="say ready; +scores" then return fail("binding with a quoted semicolon did not survive restart") end if
-  match.executeClientConsole(menu,"writeconfig named")
-  if not fs.isFile(fs.joinPath(dataRoot,"named.cfg")) then return fail("writeconfig did not use the configured directory") end if
-  match.executeClientConsole(menu,"exec named")
+  match.executeClientConsole(menu,"writeconfig profiles/named")
+  if not fs.isFile(fs.joinPath(dataRoot,"profiles/named.cfg")) then return fail("writeconfig did not create the requested subdirectory") end if
+  match.executeClientConsole(menu,"exec profiles/named")
   commands.execute(menu.context.commandState)
+  settingsHost=reloaded.persistence.services
+  settingsHost.writeFn=failConfigWrite
+  settingsHost.printFn=captureConfigDiagnostic
+  menu.context.prints=[]
+  match.executeClientConsole(menu,"seta sensitivity 7.5")
+  if desktop.save(menu,reloaded) or desktop.save(menu,reloaded) then return fail("blocked autosave should fail and stay pending") end if
+  if len(menu.context.prints)!=1 or menu.context.prints[0]!="Couldn't write q3config.cfg.\n" then return fail("repeated autosave failures must produce one diagnostic") end if
+  settingsHost.writeFn=desktop.writeConfig
+  if not desktop.save(menu,reloaded) or reloaded.failedConfigRoot!=void then return fail("pending autosave did not recover") end if
+  settingsHost.writeFn=failConfigWrite
+  match.executeClientConsole(menu,"seta sensitivity 8.0")
+  if desktop.save(menu,reloaded) or len(menu.context.prints)!=2 then return fail("a new autosave failure after recovery was not reported") end if
   match.executeClientConsole(menu,"vid_restart")
   if not reloaded.videoRestart then return fail("video action was not forwarded") end if
   match.shutdown(menu)

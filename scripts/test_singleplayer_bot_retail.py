@@ -27,6 +27,15 @@ def main():
         if not {0, 1}.issubset(clients):
             raise RuntimeError(f"human and arena opponent absent from scoreboard: {score_line}")
         print(result)
+    feedback = ROOT / "build/retail_match_feedback_probe.exe"
+    subprocess.run([sys.executable, ROOT / "scripts/build.py", "--source",
+                    "tests/retail_match_feedback_probe.ml", "--output",
+                    feedback.name], cwd=ROOT, check=True)
+    result = run([feedback, (args.data_root / "baseq3").resolve(),
+                  ROOT / "build/reference/qvms"], ROOT / "build", timeout=240).strip()
+    if "PASS: original single-player cgame announced 3/2/1 frags and displayed retail bot chat" not in result.splitlines():
+        raise RuntimeError(result)
+    print(result)
 
 if __name__ == "__main__":
     main()

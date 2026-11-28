@@ -817,11 +817,18 @@ function sendServerCommand(context,client,text)
     else for index=0 to len(context.clientStates)-1 if context.clientStates[index]==2 then botServerBridge.queueConsoleMessage(context.botServer,index,text) end if end for end if
   end if;return void
 end function
-/// Set configstring in engine.local_qvm_match.
+/// Store a game configstring and notify the running local cgame when the score leader changes.
 /// @param context Record exposing `configstrings`.
 /// @param index Index used in `(index >= 0)` and `(index < MAX_CONFIGSTRINGS)`.
 /// @param text Text operand used by `setConfigstring`; its reads are shown in the implementation.
-function setConfigstring(context,index,text) if index>=0 and index<MAX_CONFIGSTRINGS then context.configstrings[index]=text end if;return void end function
+function setConfigstring(context,index,text)
+  if index<0 or index>=MAX_CONFIGSTRINGS or context.configstrings[index]==text then return void end if
+  context.configstrings[index]=text
+  if context.latestSnapshot!=void and (index==nativeCgameServercmds.CS_SCORES1 or index==nativeCgameServercmds.CS_SCORES2) then
+    serverCommandStream.queue(context.cgameServerCommands,serverInit.quoteCommand("cs",index,text))
+  end if
+  return void
+end function
 /// Get configstring in engine.local_qvm_match; the normal completion returns `context.configstrings[index]`.
 /// @param context Record exposing `configstrings`.
 /// @param index Zero-based index into `context.configstrings`.
@@ -976,13 +983,15 @@ function freeBot(context,index)
   if context.gameEntities>0 and context.entityStride>0 and context.machineRuntime.current!=void then machine=gameMachine(context);base=context.gameEntities+index*context.entityStride;n.writeU32(machine.data,base+R_SVFLAGS,n.readI32(machine.data,base+R_SVFLAGS)&(~8)) end if
   return void
 end function
-/// Update `context.console` in engine.local_qvm_match.
-///
-/// Direct state writes: `context.console`.
-/// @param context Record exposing `console`. Updated in place: `console`.
-/// @param client Client used in `(context.console + [[client, ("bot " + text)]])`.
-/// @param text Text used in `("bot " + text)` and `(context.console + [[client, ("bot " + text)]])`.
-function botClientCommand(context,client,text) context.console=context.console+[[client,"bot "+text]];return void end function
+/// Route a bot's command through the original qagame client-command handler.
+/// @param context Local server state holding the game VM and shared command buffer.
+/// @param client Connected bot client slot.
+/// @param text Bot command text, including chat and team-chat commands.
+function botClientCommand(context,client,text)
+  if context.game==void or client<0 or client>=len(context.clientStates) or context.clientStates[client]!=2 then return void end if
+  commands.tokenizeString(context.commandState,text)
+  return gameVm.clientCommand(context.game,client)
+end function
 /// Compute bot character read in engine.local_qvm_match; the normal completion returns `data`.
 /// @param context Record exposing `archive`.
 /// @param path Name passed as `name` to `mq3.format.pk3.read`.
